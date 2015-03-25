@@ -2021,6 +2021,64 @@ function ConfigCommon.ground_coxmunk_plus_lamb:register_output(ro)
 end
 
 ------------------------------------------------------------
+--- Breon veg ground state vector component and initial guess
+------------------------------------------------------------
+
+ConfigCommon.breon_veg_retrieval = CreatorApriori:new {}
+
+function ConfigCommon.breon_veg_retrieval:create()
+   return GroundBreonVeg(self:apriori_v()(0), self:apriori_v()(1), self:apriori_v()(2),
+                         self:retrieval_flag()(0), self:retrieval_flag()(1), self:retrieval_flag()(2))
+end
+
+------------------------------------------------------------
+--- Sets up the ground using only using a Breon veg retrieval
+------------------------------------------------------------
+
+ConfigCommon.ground_breon_veg = CompositeCreator:new {}
+
+function ConfigCommon.ground_breon_veg:sub_object_key()
+   return { "breon_veg" }
+end
+
+function ConfigCommon.ground_breon_veg:create_parent_object(sub_object)
+   return self.config.breon_veg
+end
+
+function ConfigCommon.ground_breon_veg:register_output(ro)
+   --ro:push_back(GroundBreonOutput.create(self.config.breon_veg))
+end
+
+------------------------------------------------------------
+--- Breon soil ground state vector component and initial guess
+------------------------------------------------------------
+
+ConfigCommon.breon_soil_retrieval = CreatorApriori:new {}
+
+function ConfigCommon.breon_soil_retrieval:create()
+   return GroundBreonSoil(self:apriori_v()(0), self:apriori_v()(1), self:apriori_v()(2),
+                          self:retrieval_flag()(0), self:retrieval_flag()(1), self:retrieval_flag()(2))
+end
+
+------------------------------------------------------------
+--- Sets up the ground using only using a Breon soil retrieval
+------------------------------------------------------------
+
+ConfigCommon.ground_breon_soil = CompositeCreator:new {}
+
+function ConfigCommon.ground_breon_soil:sub_object_key()
+   return { "breon_soil" }
+end
+
+function ConfigCommon.ground_breon_soil:create_parent_object(sub_object)
+   return self.config.breon_soil
+end
+
+function ConfigCommon.ground_breon_soil:register_output(ro)
+   --ro:push_back(GroundBreonOutput.create(self.config.breon_soil))
+end
+
+------------------------------------------------------------
 --- Create lambertian ground initial guess from radiance
 --- and the other parts from the static HDF file
 ---

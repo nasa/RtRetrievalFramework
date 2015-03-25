@@ -122,6 +122,34 @@ public:
   standard set of objects, similar to what we generate when running
   l2_fp. This is fairly expensive to create, so 
   this fixture creates one copy for all the tests and add handling for
+  sharing it. This version reads config_breon_veg.lua
+*******************************************************************/
+class ConfigurationBreonVegFixture: public ConfigurationFixture {
+public:
+  ConfigurationBreonVegFixture()
+    : ConfigurationFixture("config_breon_veg.lua") {}
+  virtual ~ConfigurationBreonVegFixture() {}
+};
+
+/****************************************************************//**
+  There are a number of tests that need to use a 
+  standard set of objects, similar to what we generate when running
+  l2_fp. This is fairly expensive to create, so 
+  this fixture creates one copy for all the tests and add handling for
+  sharing it. This version reads config_breon_soil.lua
+*******************************************************************/
+class ConfigurationBreonSoilFixture: public ConfigurationFixture {
+public:
+  ConfigurationBreonSoilFixture()
+    : ConfigurationFixture("config_breon_soil.lua") {}
+  virtual ~ConfigurationBreonSoilFixture() {}
+};
+
+/****************************************************************//**
+  There are a number of tests that need to use a 
+  standard set of objects, similar to what we generate when running
+  l2_fp. This is fairly expensive to create, so 
+  this fixture creates one copy for all the tests and add handling for
   sharing it. This version reads config_oco2.lua
 *******************************************************************/
 class ConfigurationOco2Fixture: public ConfigurationFixture {

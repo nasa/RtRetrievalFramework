@@ -4,6 +4,7 @@
 #include "ground_lambertian.h"
 #include "ground_coxmunk.h"
 #include "ground_coxmunk_plus_lambertian.h"
+#include "ground_breon.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -193,8 +194,15 @@ void LRadRt::initialize(const SpectralBound& Spec_bound, double Spectrum_spacing
         surface_type_int = LRadRt::COXMUNK;
     } else if(dynamic_cast<GroundCoxmunkPlusLambertian*>(atm->ground().get())) {
         surface_type_int = LRadRt::COXMUNK;
+    } else if(dynamic_cast<GroundBreonVeg*>(atm->ground().get())) {
+        surface_type_int = LRadRt::BREONVEG;
+    } else if(dynamic_cast<GroundBreonSoil*>(atm->ground().get())) {
+        surface_type_int = LRadRt::BREONSOIL;
     } else {
-        throw Exception("Can not determine surface type integer from ground class");
+        Exception err_msg;
+        err_msg << "Spurr RT can not determine surface type integer from ground class: "
+                << atm->ground();
+        throw(err_msg);
     }
 
     // Watch atmosphere for changes, so we clear cache if needed.
