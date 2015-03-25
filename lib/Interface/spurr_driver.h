@@ -60,6 +60,8 @@ protected:
 
   virtual void setup_lambertian_inputs(int kernel_index, ArrayAd<double, 1>& surface_parameters, const blitz::Array<int, 1>& parameter_indexes) const;
   virtual void setup_coxmunk_inputs(int kernel_index, ArrayAd<double, 1>& surface_parameters, const blitz::Array<int, 1>& parameter_indexes) const;
+  virtual void setup_rahman_inputs(int kernel_index, ArrayAd<double, 1>& surface_parameters, const blitz::Array<int, 1>& parameter_indexes) const;
+  virtual void setup_breon_inputs(int kernel_index, ArrayAd<double, 1>& surface_parameters, const blitz::Array<int, 1>& parameter_indexes) const;
 
   virtual void calculate_brdf() const = 0;
 

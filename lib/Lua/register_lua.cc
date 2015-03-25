@@ -235,6 +235,8 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(GroundCoxmunkOutput);
   REGISTER_LUA_LIST(GroundCoxmunkPlusLambertian);
   REGISTER_LUA_LIST(GroundCoxmunkPlusLambertianOutput);
+  REGISTER_LUA_LIST(GroundBreonVeg);
+  REGISTER_LUA_LIST(GroundBreonSoil);
   REGISTER_LUA_LIST(AltitudeHydrostatic);
   REGISTER_LUA_LIST(AbsorberVmrFixedLevel);
   REGISTER_LUA_LIST(AbsorberVmrFixedLevelOutput);

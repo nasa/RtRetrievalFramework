@@ -488,6 +488,7 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/ground_lambertian_wrap.cc \
 	@swigsrc@/ground_coxmunk_wrap.cc \
 	@swigsrc@/ground_coxmunk_plus_lambertian_wrap.cc \
+	@swigsrc@/ground_breon_wrap.cc \
 	@swigsrc@/initial_guess_value_wrap.cc \
 	@swigsrc@/aerosol_wrap.cc @swigsrc@/merra_aerosol_wrap.cc \
 	@swigsrc@/rayleigh_wrap.cc @swigsrc@/atmosphere_oco_wrap.cc \
@@ -709,6 +710,7 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-ground_lambertian_wrap.lo \
 	@swigsrc@/_swig_wrap_la-ground_coxmunk_wrap.lo \
 	@swigsrc@/_swig_wrap_la-ground_coxmunk_plus_lambertian_wrap.lo \
+	@swigsrc@/_swig_wrap_la-ground_breon_wrap.lo \
 	@swigsrc@/_swig_wrap_la-initial_guess_value_wrap.lo \
 	@swigsrc@/_swig_wrap_la-aerosol_wrap.lo \
 	@swigsrc@/_swig_wrap_la-merra_aerosol_wrap.lo \
@@ -899,10 +901,11 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@implsrc@/level_1b_cache.cc @implsrc@/absorber_absco.cc \
 	@implsrc@/ground_lambertian.cc @implsrc@/ground_coxmunk.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian.cc \
-	@implsrc@/aerosol.cc @implsrc@/atmosphere_oco.cc \
-	@implsrc@/altitude_hydrostatic.cc @implsrc@/rayleigh.cc \
-	@implsrc@/rayleigh_f.F90 @implsrc@/absco.cc \
-	@implsrc@/absco_hdf.cc @implsrc@/uniform_spectrum_sampling.cc \
+	@implsrc@/ground_breon.cc @implsrc@/aerosol.cc \
+	@implsrc@/atmosphere_oco.cc @implsrc@/altitude_hydrostatic.cc \
+	@implsrc@/rayleigh.cc @implsrc@/rayleigh_f.F90 \
+	@implsrc@/absco.cc @implsrc@/absco_hdf.cc \
+	@implsrc@/uniform_spectrum_sampling.cc \
 	@implsrc@/spectrum_sampling_fixed_spacing.cc \
 	@implsrc@/lidort_interface_types.F90 \
 	@implsrc@/lidort_interface_types_io.F90 \
@@ -1150,6 +1153,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@implsrc@/libfp_la-ground_lambertian.lo \
 	@implsrc@/libfp_la-ground_coxmunk.lo \
 	@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo \
+	@implsrc@/libfp_la-ground_breon.lo \
 	@implsrc@/libfp_la-aerosol.lo \
 	@implsrc@/libfp_la-atmosphere_oco.lo \
 	@implsrc@/libfp_la-altitude_hydrostatic.lo \
@@ -1481,7 +1485,8 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@implsrc@/ground_lambertian_test.cc \
 	@implsrc@/ground_coxmunk_test.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian_test.cc \
-	@implsrc@/aerosol_test.cc @implsrc@/atmosphere_oco_test.cc \
+	@implsrc@/ground_breon_test.cc @implsrc@/aerosol_test.cc \
+	@implsrc@/atmosphere_oco_test.cc \
 	@implsrc@/altitude_hydrostatic_test.cc \
 	@implsrc@/rayleigh_test.cc @implsrc@/absco_hdf_test.cc \
 	@implsrc@/uniform_spectrum_sampling_test.cc \
@@ -1640,6 +1645,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@implsrc@/ground_lambertian_test.$(OBJEXT) \
 	@implsrc@/ground_coxmunk_test.$(OBJEXT) \
 	@implsrc@/ground_coxmunk_plus_lambertian_test.$(OBJEXT) \
+	@implsrc@/ground_breon_test.$(OBJEXT) \
 	@implsrc@/aerosol_test.$(OBJEXT) \
 	@implsrc@/atmosphere_oco_test.$(OBJEXT) \
 	@implsrc@/altitude_hydrostatic_test.$(OBJEXT) \
@@ -1927,7 +1933,8 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@implsrc@/level_1b_oco.h @implsrc@/level_1b_cache.h \
 	@implsrc@/absorber_absco.h @implsrc@/ground_lambertian.h \
 	@implsrc@/ground_coxmunk.h \
-	@implsrc@/ground_coxmunk_plus_lambertian.h @implsrc@/aerosol.h \
+	@implsrc@/ground_coxmunk_plus_lambertian.h \
+	@implsrc@/ground_breon.h @implsrc@/aerosol.h \
 	@implsrc@/atmosphere_oco.h @implsrc@/altitude_hydrostatic.h \
 	@implsrc@/rayleigh.h @implsrc@/absco.h @implsrc@/absco_hdf.h \
 	@implsrc@/scattering_moment_interpolator.h \
@@ -2556,7 +2563,8 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@implsrc@/level_1b_oco.h @implsrc@/level_1b_cache.h \
 	@implsrc@/absorber_absco.h @implsrc@/ground_lambertian.h \
 	@implsrc@/ground_coxmunk.h \
-	@implsrc@/ground_coxmunk_plus_lambertian.h @implsrc@/aerosol.h \
+	@implsrc@/ground_coxmunk_plus_lambertian.h \
+	@implsrc@/ground_breon.h @implsrc@/aerosol.h \
 	@implsrc@/atmosphere_oco.h @implsrc@/altitude_hydrostatic.h \
 	@implsrc@/rayleigh.h @implsrc@/absco.h @implsrc@/absco_hdf.h \
 	@implsrc@/scattering_moment_interpolator.h \
@@ -2724,7 +2732,8 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@implsrc@/ground_lambertian_test.cc \
 	@implsrc@/ground_coxmunk_test.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian_test.cc \
-	@implsrc@/aerosol_test.cc @implsrc@/atmosphere_oco_test.cc \
+	@implsrc@/ground_breon_test.cc @implsrc@/aerosol_test.cc \
+	@implsrc@/atmosphere_oco_test.cc \
 	@implsrc@/altitude_hydrostatic_test.cc \
 	@implsrc@/rayleigh_test.cc @implsrc@/absco_hdf_test.cc \
 	@implsrc@/uniform_spectrum_sampling_test.cc \
@@ -3001,6 +3010,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/ground_lambertian_wrap.cc \
 	@swigsrc@/ground_coxmunk_wrap.cc \
 	@swigsrc@/ground_coxmunk_plus_lambertian_wrap.cc \
+	@swigsrc@/ground_breon_wrap.cc \
 	@swigsrc@/initial_guess_value_wrap.cc \
 	@swigsrc@/aerosol_wrap.cc @swigsrc@/merra_aerosol_wrap.cc \
 	@swigsrc@/rayleigh_wrap.cc @swigsrc@/atmosphere_oco_wrap.cc \
@@ -3241,10 +3251,11 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@implsrc@/level_1b_cache.cc @implsrc@/absorber_absco.cc \
 	@implsrc@/ground_lambertian.cc @implsrc@/ground_coxmunk.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian.cc \
-	@implsrc@/aerosol.cc @implsrc@/atmosphere_oco.cc \
-	@implsrc@/altitude_hydrostatic.cc @implsrc@/rayleigh.cc \
-	@implsrc@/rayleigh_f.F90 @implsrc@/absco.cc \
-	@implsrc@/absco_hdf.cc @implsrc@/uniform_spectrum_sampling.cc \
+	@implsrc@/ground_breon.cc @implsrc@/aerosol.cc \
+	@implsrc@/atmosphere_oco.cc @implsrc@/altitude_hydrostatic.cc \
+	@implsrc@/rayleigh.cc @implsrc@/rayleigh_f.F90 \
+	@implsrc@/absco.cc @implsrc@/absco_hdf.cc \
+	@implsrc@/uniform_spectrum_sampling.cc \
 	@implsrc@/spectrum_sampling_fixed_spacing.cc \
 	@implsrc@/lidort_interface_types.F90 \
 	@implsrc@/lidort_interface_types_io.F90 \
@@ -4126,6 +4137,8 @@ clean-pkgpythonswigLTLIBRARIES:
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-ground_coxmunk_plus_lambertian_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
+@swigsrc@/_swig_wrap_la-ground_breon_wrap.lo:  \
+	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-initial_guess_value_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-aerosol_wrap.lo: @swigsrc@/$(am__dirstamp) \
@@ -4651,6 +4664,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo:  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-ground_breon.lo: @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-aerosol.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-atmosphere_oco.lo: @implsrc@/$(am__dirstamp) \
@@ -5542,6 +5557,8 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/ground_coxmunk_plus_lambertian_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/ground_breon_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/aerosol_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/atmosphere_oco_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
@@ -5852,6 +5869,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/fp_logger_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/full_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/gosat_noise_model_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_breon_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_coxmunk_plus_lambertian_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_coxmunk_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_lambertian_test.Po@am__quote@
@@ -5908,6 +5926,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-fp_logger.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-freudenstein_roth_nlls_problem.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-gosat_noise_model.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-ground_breon.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-ground_lambertian.Plo@am__quote@
@@ -6294,6 +6313,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-gas_absorption_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-generic_object_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-gosat_noise_model_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_breon_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_coxmunk_plus_lambertian_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_coxmunk_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_lambertian_wrap.Plo@am__quote@
@@ -7779,6 +7799,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/ground_coxmunk_plus_lambertian_wrap.cc' object='@swigsrc@/_swig_wrap_la-ground_coxmunk_plus_lambertian_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-ground_coxmunk_plus_lambertian_wrap.lo `test -f '@swigsrc@/ground_coxmunk_plus_lambertian_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/ground_coxmunk_plus_lambertian_wrap.cc
+
+@swigsrc@/_swig_wrap_la-ground_breon_wrap.lo: @swigsrc@/ground_breon_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-ground_breon_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_breon_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-ground_breon_wrap.lo `test -f '@swigsrc@/ground_breon_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/ground_breon_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_breon_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_breon_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/ground_breon_wrap.cc' object='@swigsrc@/_swig_wrap_la-ground_breon_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-ground_breon_wrap.lo `test -f '@swigsrc@/ground_breon_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/ground_breon_wrap.cc
 
 @swigsrc@/_swig_wrap_la-initial_guess_value_wrap.lo: @swigsrc@/initial_guess_value_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-initial_guess_value_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-initial_guess_value_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-initial_guess_value_wrap.lo `test -f '@swigsrc@/initial_guess_value_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/initial_guess_value_wrap.cc
@@ -9284,6 +9311,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/ground_coxmunk_plus_lambertian.cc' object='@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo `test -f '@implsrc@/ground_coxmunk_plus_lambertian.cc' || echo '$(srcdir)/'`@implsrc@/ground_coxmunk_plus_lambertian.cc
+
+@implsrc@/libfp_la-ground_breon.lo: @implsrc@/ground_breon.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-ground_breon.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-ground_breon.Tpo -c -o @implsrc@/libfp_la-ground_breon.lo `test -f '@implsrc@/ground_breon.cc' || echo '$(srcdir)/'`@implsrc@/ground_breon.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-ground_breon.Tpo @implsrc@/$(DEPDIR)/libfp_la-ground_breon.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/ground_breon.cc' object='@implsrc@/libfp_la-ground_breon.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_breon.lo `test -f '@implsrc@/ground_breon.cc' || echo '$(srcdir)/'`@implsrc@/ground_breon.cc
 
 @implsrc@/libfp_la-aerosol.lo: @implsrc@/aerosol.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-aerosol.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-aerosol.Tpo -c -o @implsrc@/libfp_la-aerosol.lo `test -f '@implsrc@/aerosol.cc' || echo '$(srcdir)/'`@implsrc@/aerosol.cc

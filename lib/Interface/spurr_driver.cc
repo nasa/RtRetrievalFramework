@@ -20,6 +20,11 @@ void SpurrBrdfDriver::initialize_brdf_inputs(int surface_type)
     initialize_brdf_kernel(COXMUNK);
     initialize_brdf_kernel(LAMBERTIAN);
     break;
+  case BREONVEG:
+  case BREONSOIL:
+    initialize_brdf_kernel(RAHMAN);
+    initialize_brdf_kernel(surface_type);
+    break;
   default:
     Exception e("Unhandled BRDF type index: ");
     e << surface_type;
@@ -43,7 +48,7 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
   bool do_factor_wfs;
   Array<bool, 1> do_params_wfs;
   switch (which_brdf) {
-  case LAMBERTIAN:
+  LAMBERTIAN:
     lambertian_flag = true;
     n_brdf_parameters = 1;
 
@@ -62,6 +67,22 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
     do_params_wfs(0) = true;
     do_params_wfs(1) = true;
     do_params_wfs(2) = false;
+    break;
+  case RAHMAN:
+    n_brdf_parameters = 3;
+
+    do_factor_wfs = false;
+
+    do_params_wfs.resize(n_brdf_parameters);
+    do_params_wfs(0) = true;
+    break;
+  case BREONVEG:
+  case BREONSOIL:
+    n_brdf_parameters = 0;
+
+    do_factor_wfs = false;
+
+    do_params_wfs.resize(n_brdf_parameters);
     break;
   default:
     Exception e("Unhandled BRDF kernel type: ");
@@ -119,6 +140,17 @@ ArrayAd<double, 1> SpurrBrdfDriver::setup_brdf_inputs(int surface_type, const Ar
     parameter_indexes(0) = 2;
     setup_lambertian_inputs(1, rt_surf_params, parameter_indexes);
     break;
+  case BREONVEG:
+  case BREONSOIL:
+    parameter_indexes.resize(3);
+    parameter_indexes(0) = 0;
+    parameter_indexes(1) = 1;
+    parameter_indexes(2) = 2;
+    setup_rahman_inputs(0, rt_surf_params, parameter_indexes);
+
+    parameter_indexes.resize(0);
+    setup_breon_inputs(1, rt_surf_params, parameter_indexes);
+    break;
   default:
     Exception e("Unhandled BRDF type index: ");
     e << surface_type;
@@ -169,7 +201,28 @@ void SpurrBrdfDriver::setup_coxmunk_inputs(int kernel_index, ArrayAd<double, 1>&
   // Shadowing flag that seems independent of value passed to kernel function,
   // or possibly value above is overwritten by this flag
   do_shadow_effect(surface_parameters(shadow_idx).value() > 0.0);
+}
 
+void SpurrBrdfDriver::setup_rahman_inputs(int kernel_index, ArrayAd<double, 1>& surface_parameters, const Array<int, 1>& parameter_indexes) const
+{
+  brdf_factors(kernel_index) = 1.0;
+
+  // Modify surface_parameters in place so that jacobians reflect modifications
+  int ampl_idx = parameter_indexes(0);
+  int asym_idx = parameter_indexes(1);
+  int geom_idx = parameter_indexes(2);
+
+  // Overall amplitude
+  brdf_params(kernel_index, 0) = surface_parameters(ampl_idx).value();
+  // Asymmetry parameter
+  brdf_params(kernel_index, 1) = surface_parameters(asym_idx).value();
+  // Geometric factor
+  brdf_params(kernel_index, 2) = surface_parameters(geom_idx).value();
+}
+
+void SpurrBrdfDriver::setup_breon_inputs(int kernel_index, ArrayAd<double, 1>& surface_parameters, const Array<int, 1>& parameter_indexes) const
+{
+  brdf_factors(kernel_index) = 1.0;
 }
 
 /********************************************************************/

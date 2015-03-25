@@ -6,6 +6,7 @@
 #include "ground_lambertian.h"
 #include "ground_coxmunk.h"
 #include "ground_coxmunk_plus_lambertian.h"
+#include "ground_breon.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -59,8 +60,15 @@ SpurrRt::SpurrRt(const boost::shared_ptr<RtAtmosphere>& Atm,
     surface_type_int = COXMUNK;
   } else if(dynamic_cast<GroundCoxmunkPlusLambertian*>(atm->ground().get())) {
     surface_type_int = COXMUNK;
-  } else {
-    throw Exception("Can not determine surface type integer from ground class");
+  } else if(dynamic_cast<GroundBreonVeg*>(atm->ground().get())) {
+    surface_type_int = BREONVEG;
+  } else if(dynamic_cast<GroundBreonSoil*>(atm->ground().get())) {
+    surface_type_int = BREONSOIL;
+   } else {
+    Exception err_msg;
+    err_msg << "Spurr RT can not determine surface type integer from ground class: "
+            << atm->ground();
+    throw(err_msg);
   }
 }
 
