@@ -1041,9 +1041,17 @@ contains
 !  Finish
 
       return
-      end subroutine ls_brdf_fourier
+      end subroutine Ls_brdf_fourier
 
-      subroutine landbrdf_fourier &
+!###################################################################
+!###################################################################
+! NEW ROUTINES to deal with LAND SURFACE BRDFS
+!    Added 02 July 2008 by V. Natraj and R. Spurr
+!    Modified 24 March 2015 for consistency with LIDORT by V. Natraj
+!###################################################################
+!###################################################################
+
+      SUBROUTINE LANDBRDF_FOURIER &
         (NPARS, PARS, HFUNCTION_INDEX, & !I
          XJ, SXJ, XI, SXI, & !I
          CKPHI_REF, SKPHI_REF, & !I
@@ -1061,6 +1069,9 @@ contains
 
 !  Critical exponent taken out
 
+      DOUBLE PRECISION PIE
+      PARAMETER       (PIE = 180.d0*1.7453292519943d-2)
+
 !  Local variables
 
       DOUBLE PRECISION CKPHI_INC, SKPHI_INC
@@ -1075,8 +1086,19 @@ contains
       DOUBLE PRECISION VP1, VP2, VP3, DMOD
       DOUBLE PRECISION AF11, AF12, AF21, AF22
       DOUBLE PRECISION CTTTP, CTTPT, CTTPP, CTPPT, CTPPP, CPTPP
+
+      DOUBLE PRECISION ATTEN, PROJECTIONS
+      DOUBLE PRECISION sgamma, cgamma, calpha, calpha_sq, salpha
+      DOUBLE PRECISION PLEAF, GS, GV
+
       DOUBLE PRECISION RAHMAN_KERNEL
-      
+
+!  Data coefficients
+
+      DOUBLE PRECISION PLAGIOPHILE_COEFFS(4)
+      DATA PLAGIOPHILE_COEFFS /0.43181098d0,  0.011187479d0, &
+                               0.043329567d0, 0.19262991d0/
+
 !   Transcription of the RMATR subroutine from Mishchenko/Travis code.
 
 !   CALCULATION OF THE STOKES REFLECTION MATRIX FOR ILLUMINATION FROM
@@ -1164,16 +1186,6 @@ contains
       E3 = TIKR*PRKI
       E4 = PIKR*TRKI
 
-!  Set the H-function
-!   IF index = 1, Rondeaux-Herman (vegetation)
-!   IF index = 2, Breon           (Desert)
-
-      IF ( HFUNCTION_INDEX .EQ. 1 ) THEN
-        HFUNCTION = 0.25d0 / ( XI + XJ )
-      ELSE IF ( HFUNCTION_INDEX .EQ. 2 ) THEN
-        HFUNCTION = 0.25d0 / ( XI * XJ )
-      ENDIF
-
 !  Settting (1,1), (1,2), (2,1) and (2,2) components
 !  -------------------------------------------------
 
@@ -1200,7 +1212,7 @@ contains
       AF21 = AF21*AF21
       AF22 = AF22*AF22
 
-      FACTOR = 0.5d0 * HFUNCTION / DMOD
+      FACTOR = 0.5d0/DMOD
       R1M(1,1)=(AF11+AF12+AF21+AF22)*FACTOR
       R1M(1,2)=(AF11-AF12+AF21-AF22)*FACTOR
       R1M(2,1)=(AF11-AF22+AF12-AF21)*FACTOR
@@ -1216,7 +1228,7 @@ contains
       CTPPP=CF12*CF22
       CPTPP=CF21*CF22
 
-      FACTOR = HFUNCTION / DMOD
+      FACTOR = 1.d0/DMOD
       R1M(1,3)= (-CTTTP-CPTPP)*FACTOR
       R1M(2,3)= (-CTTTP+CPTPP)*FACTOR
       R1M(3,1)= (-CTTPT-CTPPP)*FACTOR
@@ -1224,12 +1236,62 @@ contains
       R1M(3,3)= (CTTPP+CTPPT)*FACTOR
       R1M(4,4)= (CTTPP-CTPPT)*FACTOR
 
+!  Set the H-function
+!  IF index = 1, Breon vegetation
+!  IF index = 2, Breon soil
+
+      IF ( HFUNCTION_INDEX .EQ. 1 ) THEN
+
+!  Angle of the surface that generates specular reflection from
+!  sun to view directions (theta)
+
+         calpha    = 0.5d0 * (XI + XJ) / XI1
+         calpha_sq = calpha*calpha
+         salpha    = dsqrt(1.d0 - calpha_sq)
+
+!  Projection of leaf surface to outgoing direction
+
+         GV = PLAGIOPHILE_COEFFS(1) + XI * &
+             (PLAGIOPHILE_COEFFS(2) + XI * &
+             (PLAGIOPHILE_COEFFS(3) + PLAGIOPHILE_COEFFS(4)*XI))
+
+!  Projection of leaf surface to incident direction
+
+         GS = PLAGIOPHILE_COEFFS(1) + XJ * &
+             (PLAGIOPHILE_COEFFS(2) + XJ * &
+             (PLAGIOPHILE_COEFFS(3) + PLAGIOPHILE_COEFFS(4)*XJ))
+
+!  Probability of leaf orientation (plagiophile distr.)
+
+         PLEAF = 16.d0 * calpha_sq * salpha  / PIE
+
+!  Polarization model for vegetation
+
+         PROJECTIONS =  GV/XI + GS/XJ
+
+         HFUNCTION = 0.25d0 * PLEAF / XI / XJ / PROJECTIONS
+
+      ELSE IF ( HFUNCTION_INDEX .EQ. 2 ) THEN
+
+         HFUNCTION = 0.25d0 / XI / XJ
+
+      ENDIF
+
+      R1M = R1M * HFUNCTION
+
+!  BRDF with attenuation factor  
+
+      cgamma = XI1
+      sgamma = dsqrt ( 1.d0 - cgamma * cgamma )
+      atten  = 1.d0 - sgamma
+      R1M = R1M * atten
+
 !  Add the Diffuse term to R1(1,1)
 !  -------------------------------
 
 !  This is just the Rahman Kernel.........different name !!
 
-      CALL rahman_function  &
+      CALL RAHMAN_FUNCTION_2OS  &
              ( NPARS, PARS, & !I
                XJ, SXJ, XI, SXI, & !I
                CKPHI_REF, SKPHI_REF, & !I
@@ -1242,9 +1304,9 @@ contains
 !  Finish
 
       RETURN
-      end subroutine landbrdf_fourier
+      END SUBROUTINE LANDBRDF_FOURIER
 
-      subroutine landbrdf_fourier_plus &
+      SUBROUTINE LANDBRDF_FOURIER_PLUS &
         (NPARS, PARS, HFUNCTION_INDEX, & !I
          XJ, SXJ, XI, SXI, & !I
          CKPHI_REF, SKPHI_REF, & !I
@@ -1261,6 +1323,8 @@ contains
 
 !  Critical exponent taken out
 
+      DOUBLE PRECISION PIE
+      PARAMETER       (PIE = 180.d0*1.7453292519943d-2)
 
 !  Local variables
 
@@ -1277,9 +1341,19 @@ contains
       DOUBLE PRECISION AF11, AF12, AF21, AF22
       DOUBLE PRECISION CTTTP, CTTPT, CTTPP, CTPPT, CTPPP, CPTPP
 
+      DOUBLE PRECISION ATTEN, PROJECTIONS 
+      DOUBLE PRECISION sgamma, cgamma, calpha, calpha_sq, salpha
+      DOUBLE PRECISION PLEAF, GS, GV
+
       LOGICAL          DO_DERIV_PARS ( NPARS )
       DOUBLE PRECISION RAHMAN_KERNEL
       DOUBLE PRECISION RAHMAN_DERIVATIVES ( NPARS )
+
+!  Data coefficients  
+
+      DOUBLE PRECISION PLAGIOPHILE_COEFFS(4)
+      DATA PLAGIOPHILE_COEFFS /0.43181098d0,  0.011187479d0, &
+                               0.043329567d0, 0.19262991d0/
 
 !   Transcription of the RMATR subroutine from Mishchenko/Travis code.
 
@@ -1369,16 +1443,6 @@ contains
       E3 = TIKR*PRKI
       E4 = PIKR*TRKI
 
-!  Set the H-function
-!   IF index = 1, Rondeaux-Herman (vegetation)
-!   IF index = 2, Breon           (Desert)
-
-      IF ( HFUNCTION_INDEX .EQ. 1 ) THEN
-        HFUNCTION = 0.25d0 / ( XI + XJ )
-      ELSE IF ( HFUNCTION_INDEX .EQ. 2 ) THEN
-        HFUNCTION = 0.25d0 / ( XI * XJ )
-      ENDIF
-
 !  Settting (1,1), (1,2), (2,1) and (2,2) components
 !  -------------------------------------------------
 
@@ -1405,7 +1469,7 @@ contains
       AF21 = AF21*AF21
       AF22 = AF22*AF22
 
-      FACTOR = 0.5d0 * HFUNCTION / DMOD
+      FACTOR = 0.5d0/DMOD
       R1M(1,1)=(AF11+AF12+AF21+AF22)*FACTOR
       R1M(1,2)=(AF11-AF12+AF21-AF22)*FACTOR
       R1M(2,1)=(AF11-AF22+AF12-AF21)*FACTOR
@@ -1421,13 +1485,63 @@ contains
       CTPPP=CF12*CF22
       CPTPP=CF21*CF22
 
-      FACTOR = HFUNCTION / DMOD
+      FACTOR = 1.d0/DMOD
       R1M(1,3)= (-CTTTP-CPTPP)*FACTOR
       R1M(2,3)= (-CTTTP+CPTPP)*FACTOR
       R1M(3,1)= (-CTTPT-CTPPP)*FACTOR
       R1M(3,2)= (-CTTPT+CTPPP)*FACTOR
       R1M(3,3)= (CTTPP+CTPPT)*FACTOR
       R1M(4,4)= (CTTPP-CTPPT)*FACTOR
+
+!  Set the H-function
+!  IF index = 1, Breon vegetation
+!  IF index = 2, Breon soil
+
+      IF ( HFUNCTION_INDEX .EQ. 1 ) THEN
+
+!  Angle of the surface that generates specular reflection from
+!  sun to view directions (theta)
+
+         calpha    = 0.5d0 * (XI + XJ) / XI1
+         calpha_sq = calpha*calpha
+         salpha    = dsqrt(1.d0 - calpha_sq)
+
+!  Projection of leaf surface to outgoing direction
+
+         GV = PLAGIOPHILE_COEFFS(1) + XI * &
+             (PLAGIOPHILE_COEFFS(2) + XI * &
+             (PLAGIOPHILE_COEFFS(3) + PLAGIOPHILE_COEFFS(4)*XI))
+
+!  Projection of leaf surface to incident direction
+
+         GS = PLAGIOPHILE_COEFFS(1) + XJ * &
+             (PLAGIOPHILE_COEFFS(2) + XJ * &
+             (PLAGIOPHILE_COEFFS(3) + PLAGIOPHILE_COEFFS(4)*XJ))
+
+!  Probability of leaf orientation (plagiophile distr.)
+
+         PLEAF = 16.d0 * calpha_sq * salpha  / PIE
+
+!  Polarization model for vegetation
+
+         PROJECTIONS =  GV/XI + GS/XJ
+
+         HFUNCTION = 0.25d0 * PLEAF / XI / XJ / PROJECTIONS
+
+      ELSE IF ( HFUNCTION_INDEX .EQ. 2 ) THEN
+
+         HFUNCTION = 0.25d0 / XI / XJ
+
+      ENDIF
+
+      R1M = R1M * HFUNCTION
+
+!  BRDF with attenuation factor
+
+      cgamma = XI1
+      sgamma = dsqrt ( 1.d0 - cgamma * cgamma )
+      atten  = 1.d0 - sgamma
+      R1M = R1M * atten
 
 !  Add the Diffuse term to R1m(1,1)
 !  --------------------------------
@@ -1438,7 +1552,7 @@ contains
 
 !  This is just the Rahman Kernel.........different name !!
 
-      CALL rahman_function_plus &
+      CALL RAHMAN_FUNCTION_2OS_PLUS &
              ( NPARS, PARS, DO_DERIV_PARS, & !I
                XJ, SXJ, XI, SXI, & !I
                CKPHI_REF, SKPHI_REF, & !I
@@ -1452,13 +1566,13 @@ contains
 
       DO J = 1, NPARS
         IF ( DO_DERIV_PARS(J) ) THEN
-          LS_R1M(1,1,J) = RAHMAN_DERIVATIVES(J)
+          Ls_R1M(1,1,J) = RAHMAN_DERIVATIVES(J)
         ENDIF
       ENDDO
 
 !  Finish
 
       RETURN
-      end subroutine landbrdf_fourier_plus
+      END SUBROUTINE LANDBRDF_FOURIER_PLUS
 
 END module l_surface_fourier_m
