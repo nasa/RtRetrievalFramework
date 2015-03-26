@@ -48,7 +48,7 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
   bool do_factor_wfs;
   Array<bool, 1> do_params_wfs;
   switch (which_brdf) {
-  LAMBERTIAN:
+  case LAMBERTIAN:
     lambertian_flag = true;
     n_brdf_parameters = 1;
 
