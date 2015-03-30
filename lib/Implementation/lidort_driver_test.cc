@@ -351,3 +351,76 @@ BOOST_AUTO_TEST_CASE(simple)
 }
 
 BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_FIXTURE_TEST_SUITE(lidort_driver_breon_veg, LidortDriverCommonFixture)
+
+BOOST_AUTO_TEST_CASE(simple)
+{
+
+  int nstreams = 4;
+  int nmoms = 2*nstreams;
+  bool do_multiple_scattering_only = false;
+
+  // Use simple BREON throughout
+  int surface_type = BREONVEG;
+  Array<double, 1> surface_params(3); 
+  surface_params = 0.0;
+
+  boost::shared_ptr<LidortRtDriver> lidort_driver(new LidortRtDriver(nstreams, nmoms, do_multiple_scattering_only, surface_type, zen, pure_nadir));
+
+  int nlayer = 1;
+  Array<double, 1> heights(nlayer+1);
+  Array<double, 1> od(nlayer);
+  Array<double, 1> ssa(nlayer);
+  Array<double, 2> pf(lidort_driver->number_moment(),nlayer);
+  double taug, taur;
+  Range all = Range::all();
+
+  double refl_calc;
+  double refl_expected;
+
+  // Turn off delta-m scaling
+  lidort_driver->lidort_interface()->lidort_modin().mbool().ts_do_deltam_scaling(false);
+
+  // Plane-parallel
+  lidort_driver->set_plane_parallel();
+
+  // Simple height grid evenly spaced
+  heights(0) = 100;
+  for(int hidx = 1; hidx < nlayer+1; hidx++) {
+    heights(hidx) = heights(hidx-1) - heights(0)/nlayer;
+  }
+
+  // No aerosols, and depolization factor = 0 
+  // so simplified phase function moments:
+  pf = 0.0;
+  pf(0, all) = 1.0;
+  pf(2, all) = 0.5;
+
+  ////////////////
+  // Surface only
+  surface_params(0) = 0.1;
+  surface_params(1) = 0.3;
+  surface_params(2) = 1.5;
+
+  taur = 1.0e-6/nlayer;
+  taug = 1.0e-6/nlayer;
+
+  od = taur + taug;
+  ssa = taur / od;
+
+  // Set sza to compare with that used in the l_rad test we compare against
+  sza = 0.1;
+
+  refl_calc = lidort_driver->reflectance_calculate(heights, sza(0), zen(0), azm(0),
+                                                   surface_type, surface_params,
+                                                   od, ssa, pf);
+
+  std::cerr << "--->" << refl_calc << std::endl;
+  
+  // Compare against a value calculated by l_rad for the same setup
+  refl_expected = 0.0354263 * 2.0;
+  BOOST_CHECK_CLOSE(refl_expected, refl_calc, 1e-3);
+}
+
+BOOST_AUTO_TEST_SUITE_END()
