@@ -10,9 +10,9 @@ using namespace boost::assign; // bring 'operator+=()' into scope
 using namespace FullPhysics;
 using namespace blitz;
 
-BOOST_FIXTURE_TEST_SUITE(l_rad_driver_lambertian, ConfigurationFixture)
+BOOST_FIXTURE_TEST_SUITE(l_rad_driver, ConfigurationFixture)
 
-BOOST_AUTO_TEST_CASE(first_order)
+BOOST_AUTO_TEST_CASE(lambertian_first_order)
 {
     // Blitz tensor and range variables
     firstIndex i1; secondIndex i2; thirdIndex i3;
@@ -169,6 +169,79 @@ BOOST_AUTO_TEST_CASE(first_order)
         0.01471310439105843679, -0.00014581179209741254, 0.0;
 
     BOOST_CHECK_MATRIX_CLOSE_TOL(expt_stokes, l_rad->stokes(), 1e-7);
+}
+
+BOOST_AUTO_TEST_CASE(simple_breon)
+{
+    int nstream = 4;
+    int nmoms = 2*nstream;
+    int nstokes = 3;
+    LRadDriver::PsMode ps_mode = LRadDriver::REGULAR;
+     
+    // Lambertian surface type
+    int surface_type = 3; // BREONVEG
+    Array<double, 1> surface_params(3);
+   
+    bool tms_correction = false;
+    bool pure_nadir = false;
+
+    // Load l_rad inputs from offline driver test data
+    double sza = 0.1; // theta0
+    double zen = 0.0; // theta
+    double azm = 0.0; // phi
+
+    int nlayer = 1;
+    Array<double, 1> heights(nlayer+1);
+    Array<double, 1> od(nlayer);
+    Array<double, 1> ssa(nlayer);
+    double taug, taur;
+    Range all = Range::all();
+    
+    // Simple height grid evenly spaced
+    heights(0) = 100;
+    for(int hidx = 1; hidx < nlayer+1; hidx++) {
+      heights(hidx) = heights(hidx-1) - heights(0)/nlayer;
+    }
+  
+    // No aerosols, and depolization factor = 0 
+    // so simplified phase function moments:
+    ArrayAd<double, 3> phase_func(nmoms, nlayer, 6, 0);
+    phase_func = 0.0;
+    phase_func.value()(0, all, all) = 1.0;
+    phase_func.value()(2, all, all) = 0.5;
+  
+    ////////////////
+    // Surface only
+    surface_params(0) = 0.1;
+    surface_params(1) = 0.3;
+    surface_params(2) = 1.5;
+  
+    taur = 1.0e-6/nlayer;
+    taug = 1.0e-6/nlayer;
+  
+    od = taur + taug;
+    ssa = taur / od;
+
+    // Run l_rad with imputs
+    boost::shared_ptr<LRadDriver> l_rad(new LRadDriver(nstream, nstokes, surface_type,
+                                                       tms_correction, pure_nadir, ps_mode));
+
+    l_rad->setup_geometry(heights, sza, zen, azm);
+    l_rad->setup_surface_params(surface_params);
+
+    // Must be called AFTER setup_geometry or else the correct values will not be used
+    ArrayAd<double, 2> z_matrix(l_rad->z_matrix(phase_func));
+
+    l_rad->setup_optical_inputs(od, ssa, phase_func.value(), z_matrix.value());
+
+    l_rad->clear_linear_inputs();
+    l_rad->calculate_first_order();
+
+    // Value from LIDORT
+    double expt_val = 0.0708526 / 2.0;
+
+    BOOST_CHECK_CLOSE(expt_val, l_rad->stokes()(0), 1e-7);
+    std::cerr << "--->" << l_rad->stokes() << std::endl;
 }
 
 BOOST_AUTO_TEST_SUITE_END()
