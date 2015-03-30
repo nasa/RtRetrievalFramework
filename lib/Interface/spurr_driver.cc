@@ -78,7 +78,7 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
     break;
   case BREONVEG:
   case BREONSOIL:
-    n_brdf_parameters = 0;
+    n_brdf_parameters = 1;
 
     do_factor_wfs = false;
 
