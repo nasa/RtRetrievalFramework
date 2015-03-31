@@ -61,7 +61,7 @@ def find_valid_file(check_list, ext_check_dict):
 
     return None
 
-def process_l1b_sounding_ids(template_obj, l1b_obj, filter_funcs):
+def process_l1b_sounding_ids(template_obj, l1b_obj, filter_funcs=[], l1b_keyword='L1BFile', id_list_sect=None):
     
     inp_prod_section = template_obj.get_section(INP_PROD_SECTION_NAME)
 
@@ -69,7 +69,7 @@ def process_l1b_sounding_ids(template_obj, l1b_obj, filter_funcs):
         print template_obj.get_all_section_names()
         raise IOError('Could not find input product file section of %s' % template_obj.filename)
 
-    inp_prod_section[0].set_keyword_value('L1BFile', l1b_obj.filename)
+    inp_prod_section[0].set_keyword_value(l1b_keyword, l1b_obj.filename)
 
     snd_id_matrix = l1b_obj.get_sounding_ids()
     num_snd_dims = len(snd_id_matrix.shape)
@@ -95,7 +95,11 @@ def process_l1b_sounding_ids(template_obj, l1b_obj, filter_funcs):
                 config_ids += curr_sounding_ids
 
     sounding_ids_val_sect = []
-    sounding_id_list_sect = GEN_LIST_SECTION_TMPL % l1b_obj.instrument_name
+    if id_list_sect == None:
+        sounding_id_list_sect = GEN_LIST_SECTION_TMPL % l1b_obj.instrument_name
+    else:
+        sounding_id_list_sect = id_list_sect
+
     for list_sect in template_obj.get_section(sounding_id_list_sect + '->LIST'):
         list_name = list_sect.get_keyword_value('name')
         if list_name == SOUNDING_ID_LIST_NAME:
@@ -327,6 +331,16 @@ def handle_fts_config(template_obj, out_config_filename, used_files, filter_opti
     obs_ids.sort()
     obs_id_sec = template_obj.get_section('input->FTSFullPhysics->LIST->VALUES')[0]
     obs_id_sec.set_matrix_data(obs_ids)
+
+    template_obj.write(out_config_filename, doIndent=True)
+
+def handle_uq_config(template_obj, out_config_filename, used_files, filter_options):
+
+    inp_prod_section = template_obj.get_section(INP_PROD_SECTION_NAME)[0] 
+
+    uq_obj = acos_file.L1B(used_files[0])
+
+    process_l1b_sounding_ids(template_obj, uq_obj, l1b_keyword='UqFile', id_list_sect='input->UqFullPhysics')
 
     template_obj.write(out_config_filename, doIndent=True)
 
