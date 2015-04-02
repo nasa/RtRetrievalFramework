@@ -26,6 +26,7 @@ pkgpython_PYTHON+= @pythonlibsrc@/fts_populator.py
 pkgpython_PYTHON+= @pythonlibsrc@/gosat_populator.py
 pkgpython_PYTHON+= @pythonlibsrc@/oco_populator.py
 pkgpython_PYTHON+= @pythonlibsrc@/oco_uplooking_populator.py
+pkgpython_PYTHON+= @pythonlibsrc@/uq_populator.py
 pkgpython_PYTHON+= @pythonlibsrc@/progress.py
 pkgpython_PYTHON+= @pythonlibsrc@/plot_util.py
 pkgpython_PYTHON+= @pythonlibsrc@/l2_lua.py
@@ -40,6 +41,7 @@ pkgpythontemplate_DATA+= @pythontemplatesrc@/oco_config.tmpl
 pkgpythontemplate_DATA+= @pythontemplatesrc@/oco_uplooking_config.tmpl
 pkgpythontemplate_DATA+= @pythontemplatesrc@/fts_config.tmpl
 pkgpythontemplate_DATA+= @pythontemplatesrc@/gosat_config.tmpl
+pkgpythontemplate_DATA+= @pythontemplatesrc@/uq_config.tmpl
 
 EXTRA_DIST+= @pythonlibsrc@/*_test.py
 

@@ -2,7 +2,6 @@
 #define OCO_NOISE_MODEL_H
 #include "hdf_file.h"
 #include "hdf_sounding_id.h"
-#include "heritage_file.h"
 #include "noise_model.h"
 
 namespace FullPhysics {
@@ -37,16 +36,16 @@ public:
   { range_max_check(Spec_index, coef_background_.extent(blitz::secondDim)+1);
     return coef_background_(blitz::Range::all(), Spec_index); }
 
-private:
-  void read_hdf_noise(const HdfFile& Hfile, 
-		      const HdfSoundingId& Sounding_id);
-  
-  void read_ascii_noise_file(const HeritageFile& Noise_file);
-  
+protected:
+  // For inheriting class
+  OcoNoiseModel() {}
+
   blitz::Array<double, 2> coef_photon_;
   blitz::Array<double, 2> coef_background_;
-
   blitz::Array<double, 1> max_ms_;
+
+private:
+  virtual void read_hdf_noise(const HdfFile& Hfile, const HdfSoundingId& Sounding_id);
  
 };
 }

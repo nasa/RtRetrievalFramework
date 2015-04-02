@@ -78,13 +78,18 @@ public:
   }
   
 protected:
+  // For sub classes
+  Level1bOco() {}
+
   virtual SpectralRange radiance_no_uncertainty(int Spec_index) const;
-private:
-  void initialize();
+
   DoubleWithUnit solar_distance_, solar_velocity_;
   double land_fraction_;
   bool has_solar_relative_velocity_;
   std::string acquisition_mode_;
+
+private:
+  void initialize();
 };
 }
 

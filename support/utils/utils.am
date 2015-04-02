@@ -36,3 +36,4 @@ bin_SCRIPTS += @supportutilssrc@/tkdiffwrap.sh
 bin_SCRIPTS += @supportutilssrc@/xco2_bias_calc
 bin_SCRIPTS += @supportutilssrc@/populate.py
 bin_SCRIPTS += @supportutilssrc@/create_config.py
+bin_SCRIPTS += @supportutilssrc@/uq_experiment.py
