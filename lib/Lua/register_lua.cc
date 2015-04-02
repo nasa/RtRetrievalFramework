@@ -189,6 +189,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(HeritageFile);
   REGISTER_LUA_LIST(AcosSoundingId);
   REGISTER_LUA_LIST(OcoSoundingId);
+  REGISTER_LUA_LIST(UqSoundingId);
   REGISTER_LUA_LIST(VectorHdfSoundingId);
   REGISTER_LUA_LIST(AerosolAodOutput);
   REGISTER_LUA_LIST(AerosolParamOutput);
@@ -202,6 +203,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(FtsRunLogOutput);
   REGISTER_LUA_LIST(Level1bFts);
   REGISTER_LUA_LIST(Level1bOco);
+  REGISTER_LUA_LIST(Level1bUq);
   REGISTER_LUA_LIST(Ecmwf);
   REGISTER_LUA_LIST(AcosEcmwf);
   REGISTER_LUA_LIST(OcoEcmwf);
@@ -235,8 +237,6 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(GroundCoxmunkOutput);
   REGISTER_LUA_LIST(GroundCoxmunkPlusLambertian);
   REGISTER_LUA_LIST(GroundCoxmunkPlusLambertianOutput);
-  REGISTER_LUA_LIST(GroundBreonVeg);
-  REGISTER_LUA_LIST(GroundBreonSoil);
   REGISTER_LUA_LIST(AltitudeHydrostatic);
   REGISTER_LUA_LIST(AbsorberVmrFixedLevel);
   REGISTER_LUA_LIST(AbsorberVmrFixedLevelOutput);
@@ -263,7 +263,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(PrecomputedNoiseModel);
   REGISTER_LUA_LIST(GosatNoiseModel);
   REGISTER_LUA_LIST(OcoNoiseModel);
-  REGISTER_LUA_LIST(BadSampleNoiseModel);
+  REGISTER_LUA_LIST(UqNoiseModel);
   REGISTER_LUA_LIST(SpectrumSamplingFixedSpacing);
   REGISTER_LUA_LIST(StateVector);
   REGISTER_LUA_LIST(OcoForwardModel);

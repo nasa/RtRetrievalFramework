@@ -7,11 +7,11 @@ class UqPopulator(AcosPopulator):
         # Default value for this. Populator may have this overriden
         self.l2_config_filename = \
             os.path.join(os.environ.get('L2_INPUT_PATH', ''),
-                         "uq/config/config.lua")
+                         "oco/config/config_uq.lua")
         config_sounding_id_section = "input/UqFullPhysics/SoundingIds"
 
         config_input_keywords = \
-        { 'uq_file': "input/InputProductFiles/UqFile",
+        { 'spectrum_file': "input/InputProductFiles/UqFile",
         }
 
         AcosPopulator.__init__(self, config_sounding_id_section,

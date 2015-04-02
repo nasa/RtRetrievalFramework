@@ -30,6 +30,7 @@ extern "C" {
   void init_hdf_sounding_id(void);
   void init_acos_sounding_id(void);
   void init_oco_sounding_id(void);
+  void init_uq_sounding_id(void);
   void init_ecmwf(void);
   void init_acos_ecmwf(void);
   void init_oco_ecmwf(void);
@@ -138,6 +139,7 @@ extern "C" {
   void init_level_1b_acos(void);
   void init_level_1b_average(void);
   void init_level_1b_oco(void);
+  void init_level_1b_uq(void);
   void init_level_1b_cache(void);
   void init_gosat_noise_model(void);
   void init_precomputed_noise_model(void);
@@ -317,6 +319,7 @@ void init_swig_wrap(void)
   init_extension_module(package, "_hdf_sounding_id", init_hdf_sounding_id);
   init_extension_module(package, "_acos_sounding_id", init_acos_sounding_id);
   init_extension_module(package, "_oco_sounding_id", init_oco_sounding_id);
+  init_extension_module(package, "_uq_sounding_id", init_uq_sounding_id);
   init_extension_module(package, "_ecmwf", init_ecmwf);
   init_extension_module(package, "_acos_ecmwf", init_acos_ecmwf);
   init_extension_module(package, "_oco_ecmwf", init_oco_ecmwf);
@@ -425,6 +428,7 @@ void init_swig_wrap(void)
   init_extension_module(package, "_level_1b_acos", init_level_1b_acos);
   init_extension_module(package, "_level_1b_average", init_level_1b_average);
   init_extension_module(package, "_level_1b_oco", init_level_1b_oco);
+  init_extension_module(package, "_level_1b_uq", init_level_1b_uq);
   init_extension_module(package, "_level_1b_cache", init_level_1b_cache);
   init_extension_module(package, "_gosat_noise_model", init_gosat_noise_model);
   init_extension_module(package, "_precomputed_noise_model", init_precomputed_noise_model);
