@@ -34,6 +34,7 @@ extern "C" {
   void init_ecmwf(void);
   void init_acos_ecmwf(void);
   void init_oco_ecmwf(void);
+  void init_uq_ecmwf(void);
   void init_oco_sim_met_ecmwf(void);
   void init_observer(void);
   void init_fts_run_log(void);
@@ -323,6 +324,7 @@ void init_swig_wrap(void)
   init_extension_module(package, "_ecmwf", init_ecmwf);
   init_extension_module(package, "_acos_ecmwf", init_acos_ecmwf);
   init_extension_module(package, "_oco_ecmwf", init_oco_ecmwf);
+  init_extension_module(package, "_uq_ecmwf", init_uq_ecmwf);
   init_extension_module(package, "_oco_sim_met_ecmwf", init_oco_sim_met_ecmwf);
   init_extension_module(package, "_observer", init_observer);
   init_extension_module(package, "_fts_run_log", init_fts_run_log);
