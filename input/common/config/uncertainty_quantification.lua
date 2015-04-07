@@ -117,7 +117,7 @@ function init_uq(config)
     config.fm.instrument.ils_func.creator = ils_table_uq
 
     -- Use a static value for the lambertian albedo first guess. Can't generate it from the spectra since it has 
-    -- not yet been generated!
+    -- not yet been generated! Make sure to include slope in the state vector
     function static_value_1d(size, value)
         if value == nil then
             value = 0
@@ -130,6 +130,39 @@ function init_uq(config)
             end
     end
 
-    config.fm.atmosphere.ground.lambertian.apriori = static_value_1d(1)
+    config.fm.atmosphere.ground.lambertian.apriori = static_value_1d(2)
+
+    -- Reconfigure portions of the fluoresence creator to not rely on getting data from the L1B radiance routine
+    uq_fluorescence = ConfigCommon.fluorescence_effect:new()
+
+    function uq_fluorescence:create()
+       local ground_type = self.config:ground_type_name()
+
+       -- Only use this for coxmunk runs
+       if(ground_type == "lambertian") then
+            local flag = self:retrieval_flag()
+ 
+            local rad_unit = Unit("Ph sec^{-1} m^{-2} sr^{-1} um^{-1}")
+            self.fluorescence_effect = FluorescenceEffect(self:apriori(), flag,
+                               self.config.atmosphere,
+                               self.config.stokes_coefficient,
+                               self.config.l1b:zen_with_unit(0),
+                               0, self:reference_point(), rad_unit)
+            local res = {}
+            res[1] =  self.fluorescence_effect
+            return res
+        else
+            return nil
+        end
+    end
+
+    config.fm.spectrum_effect.fluorescence.creator = uq_fluorescence
+    config.fm.spectrum_effect.fluorescence.covariance = ConfigCommon.hdf_covariance("Fluorescence")
+
+    -- Remove EOF from state vector
+    config.fm.instrument.instrument_correction.ic_nadir = {}
+    config.fm.instrument.instrument_correction.ic_glint = {}
+    config.fm.instrument.instrument_correction.ic_target = {}
+
 
 end

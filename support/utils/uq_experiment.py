@@ -20,6 +20,25 @@ class UqExperiment(object):
         # Now create everything
         self.lua_config.do_config(self.lua_config)
 
+        # Update the statevector with the values from the UQ file
+        self.load_uq_sv()
+
+    def load_uq_sv(self):
+        uq_obj = HdfFile(self.lua_config.spectrum_file)
+        frame_idx = self.lua_config.l1b_sid_list(self.lua_config).frame_number
+        initial_sv = uq_obj.read_double_2d("/StateVector/sampled_state_vectors")[:, frame_idx]
+
+        ig_orig = self.lua_config.initial_guess
+        ig_v = fp.InitialGuessValue()
+        ig_v.initial_guess = initial_sv
+        ig_v.apriori = ig_orig.apriori
+        ig_v.apriori_covariance = ig_orig.apriori_covariance
+        ig_new = fp.CompositeInitialGuess()
+        ig_new.add_builder(ig_v)
+        self.ls.globals["initial_guess"] = ig_new
+        self.lua_config.state_vector.update_state(initial_sv)
+
+
     def run(self):
         l2_lua.run_retrieval(self.ls, self.output_file)
 
