@@ -21,6 +21,16 @@ function init_uq(config)
         return self.l1b_sid_list_v
     end
 
+
+    -- Use UQ specific reader for ECMWF file
+    function config:ecmwf()
+        if(self.spectrum_file and not self.ecmwf_v) then 
+            self.ecmwf_v = UqEcmwf(self.spectrum_file)
+            self.input_file_description = self.input_file_description .. "ECMWF input file:    " .. self.spectrum_file .. "\n"
+        end
+        return self.ecmwf_v
+    end
+
     -- No sounding dimension in UQ files so use a new bad sample mask
     -- function that is aware of this
     function snr_coef_bad_sample_mask_uq(self)
@@ -106,7 +116,8 @@ function init_uq(config)
 
     config.fm.instrument.ils_func.creator = ils_table_uq
 
-    -- Use a static value for atmospheric value apriori so we don't need a ECMWF file
+    -- Use a static value for the lambertian albedo first guess. Can't generate it from the spectra since it has 
+    -- not yet been generated!
     function static_value_1d(size, value)
         if value == nil then
             value = 0
@@ -119,16 +130,6 @@ function init_uq(config)
             end
     end
 
-    config.fm.atmosphere.pressure.apriori = static_value_1d(1)
-
     config.fm.atmosphere.ground.lambertian.apriori = static_value_1d(1)
-    config.fm.atmosphere.ground.coxmunk.apriori = static_value_1d(1)
-
-    -- Read temperature and water levels from UQ file
-    config.fm.atmosphere.temperature.creator = ConfigCommon.temperature_level_offset
-    config.fm.atmosphere.temperature.temperature_levels = 
-    --config.fm.atmosphere.absorber.H2O.apriori =
-
-    --config.fm.atmosphere.absorber.CO2.apriori =
 
 end

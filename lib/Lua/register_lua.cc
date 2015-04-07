@@ -207,6 +207,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(Ecmwf);
   REGISTER_LUA_LIST(AcosEcmwf);
   REGISTER_LUA_LIST(OcoEcmwf);
+  REGISTER_LUA_LIST(UqEcmwf);
   REGISTER_LUA_LIST(OcoSimMetEcmwf);
   REGISTER_LUA_LIST(HdfFile);
   REGISTER_LUA_LIST(HdfConstant);
