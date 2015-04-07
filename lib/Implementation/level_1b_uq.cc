@@ -170,6 +170,6 @@ void Level1bUq::initialize()
 
 SpectralRange Level1bUq::radiance_no_uncertainty(int Spec_index) const
 {
-    // TBD
+    throw Exception("radiance not yet implemented");
 }
 
