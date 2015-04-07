@@ -12,7 +12,8 @@
 namespace FullPhysics {
 class Level1bUq: public Level1bOco {
 public:
-  Level1bUq(const boost::shared_ptr<HdfFile>& Hfile, 
-            const boost::shared_ptr<HdfSoundingId>& Sounding_id);
+    Level1bUq(const boost::shared_ptr<HdfFile>& Hfile, 
+              const boost::shared_ptr<HdfSoundingId>& Sounding_id);
+    void set_radiance(int Spec_index, boost::shared_ptr<SpectralRange>& Rad);
 };
 }

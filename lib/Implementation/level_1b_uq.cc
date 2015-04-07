@@ -168,8 +168,23 @@ void Level1bUq::initialize()
     }
 }
 
+void Level1bUq::set_radiance(int Spec_index, boost::shared_ptr<SpectralRange>& Rad)
+{
+    if (radiance.size() < Spec_index + 1) {
+        radiance.resize(Spec_index + 1);
+    }
+
+    radiance[Spec_index] = Rad;
+}
+
 SpectralRange Level1bUq::radiance_no_uncertainty(int Spec_index) const
 {
-    throw Exception("radiance not yet implemented");
+    if(radiance.size() < Spec_index + 1) {
+        Exception err_msg;
+        err_msg << "Radiance for spectrometer: " << Spec_index << " not yet set.";
+        throw err_msg;
+    }
+
+    return *radiance[Spec_index];
 }
 

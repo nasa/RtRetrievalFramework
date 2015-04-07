@@ -127,7 +127,15 @@ class Level1bUq(full_physics_swig.level_1b_oco.Level1bOco):
 
         """
         _level_1b_uq.Level1bUq_swiginit(self,_level_1b_uq.new_Level1bUq(*args))
+    def set_radiance(self, *args):
+        """
+        void Level1bUq::set_radiance(int Spec_index, boost::shared_ptr< SpectralRange > &Rad)
+
+        """
+        return _level_1b_uq.Level1bUq_set_radiance(self, *args)
+
     __swig_destroy__ = _level_1b_uq.delete_Level1bUq
+Level1bUq.set_radiance = new_instancemethod(_level_1b_uq.Level1bUq_set_radiance,None,Level1bUq)
 Level1bUq_swigregister = _level_1b_uq.Level1bUq_swigregister
 Level1bUq_swigregister(Level1bUq)
 

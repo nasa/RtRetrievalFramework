@@ -1409,7 +1409,6 @@ function ConfigCommon.fluorescence_effect:initial_guess(i)
    local ig = InitialGuessValue()
    ig:apriori_subset(rflag, self:apriori_v())
 
-   print("HERE")
    ig:apriori_covariance_subset(rflag, self:covariance())
    ig.initial_guess = self:iguess_v()
    return ig
