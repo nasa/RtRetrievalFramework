@@ -13,11 +13,15 @@ public:
     Level1bUq(const boost::shared_ptr<HdfFile>& Hfile,
               const boost::shared_ptr<HdfSoundingId>& Sounding_id);
 
+    void set_radiance(int Spec_index, boost::shared_ptr<SpectralRange>& Rad);
+
 protected:
     virtual SpectralRange radiance_no_uncertainty(int Spec_index) const;
 
 private:
     void initialize();
+
+    std::vector<boost::shared_ptr<SpectralRange> > radiance;
 };
 }
 

@@ -20,6 +20,9 @@ class UqExperiment(object):
         # Now create everything
         self.lua_config.do_config(self.lua_config)
 
+        # Number of spectrometers
+        self.num_spec = self.lua_config.number_pixel.rows(self.lua_config.number_pixel)
+
         # Update the statevector with the values from the UQ file
         self.load_uq_sv()
 
@@ -38,6 +41,13 @@ class UqExperiment(object):
         self.ls.globals["initial_guess"] = ig_new
         self.lua_config.state_vector.update_state(initial_sv)
 
+    def calculate_uq_radiance(self):
+        skip_jacobian = True
+        for spec_idx in range(int(self.num_spec)):
+            uq_spectrum = self.lua_config.fm.config.forward_model.radiance(spec_idx, skip_jacobian)
+            uq_spec_range = uq_spectrum.spectral_range.convert(Unit("Ph sec^{-1} m^{-2} sr^{-1} um^{-1}"))
+            l1b = self.lua_config.l1b
+            l1b.set_radiance(spec_idx, uq_spec_range)
 
     def run(self):
         l2_lua.run_retrieval(self.ls, self.output_file)
@@ -54,4 +64,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     uq = UqExperiment(args.lua_config, args.output_file)
+    uq.calculate_uq_radiance()
     uq.run()
