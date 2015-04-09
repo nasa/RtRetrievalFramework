@@ -237,11 +237,9 @@ BOOST_AUTO_TEST_CASE(simple_breon)
     l_rad->clear_linear_inputs();
     l_rad->calculate_first_order();
 
-    // Value from LIDORT
-    double expt_val = 0.0708526 / 2.0;
-
+    // Value from offline calculation, could also compare to LIDORT value
+    double expt_val = 0.03540773173555763;
     BOOST_CHECK_CLOSE(expt_val, l_rad->stokes()(0), 1e-7);
-    std::cerr << "--->" << l_rad->stokes() << std::endl;
 }
 
 BOOST_AUTO_TEST_SUITE_END()

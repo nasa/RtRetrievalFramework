@@ -416,10 +416,8 @@ BOOST_AUTO_TEST_CASE(simple)
                                                    surface_type, surface_params,
                                                    od, ssa, pf);
 
-  std::cerr << "--->" << refl_calc << std::endl;
-  
-  // Compare against a value calculated by l_rad for the same setup
-  refl_expected = 0.0354263 * 2.0;
+  // Compare against an offline calculated value, or could compare against value from l_rad
+  refl_expected = 0.03540780793662445;
   BOOST_CHECK_CLOSE(refl_expected, refl_calc, 1e-3);
 }
 
