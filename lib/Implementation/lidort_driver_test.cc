@@ -363,21 +363,22 @@ BOOST_AUTO_TEST_CASE(simple)
 
   // Use simple BREON throughout
   int surface_type = BREONVEG;
-  Array<double, 1> surface_params(3); 
+  ArrayAd<double, 1> surface_params(3, 1); 
   surface_params = 0.0;
 
   boost::shared_ptr<LidortRtDriver> lidort_driver(new LidortRtDriver(nstreams, nmoms, do_multiple_scattering_only, surface_type, zen, pure_nadir));
 
   int nlayer = 1;
   Array<double, 1> heights(nlayer+1);
-  Array<double, 1> od(nlayer);
-  Array<double, 1> ssa(nlayer);
-  Array<double, 2> pf(lidort_driver->number_moment(),nlayer);
+  ArrayAd<double, 1> od(nlayer,1);
+  ArrayAd<double, 1> ssa(nlayer,1);
+  ArrayAd<double, 2> pf(lidort_driver->number_moment(),nlayer,1);
   double taug, taur;
   Range all = Range::all();
 
   double refl_calc;
-  double refl_expected;
+  blitz::Array<double, 2> jac_atm;
+  blitz::Array<double, 1> jac_surf;
 
   // Turn off delta-m scaling
   lidort_driver->lidort_interface()->lidort_modin().mbool().ts_do_deltam_scaling(false);
@@ -407,18 +408,46 @@ BOOST_AUTO_TEST_CASE(simple)
   taug = 1.0e-6/nlayer;
 
   od = taur + taug;
-  ssa = taur / od;
+  ssa = 0;
+  ssa.value() = taur / od.value();
 
   // Set sza to compare with that used in the l_rad test we compare against
   sza = 0.1;
 
-  refl_calc = lidort_driver->reflectance_calculate(heights, sza(0), zen(0), azm(0),
-                                                   surface_type, surface_params,
-                                                   od, ssa, pf);
+  lidort_driver->reflectance_and_jacobian_calculate(heights, sza(0), zen(0), azm(0),
+                                                    surface_type, surface_params,
+                                                    od, ssa, pf, refl_calc, jac_atm, jac_surf);
 
   // Compare against an offline calculated value, or could compare against value from l_rad
-  refl_expected = 0.03540780793662445;
+  double refl_expected = 0.03540780793662445;
   BOOST_CHECK_CLOSE(refl_expected, refl_calc, 1e-3);
+
+  // Check surface jacobians against FD
+
+  blitz::Array<double, 1> pert_values(surface_params.rows());
+  pert_values = 1e-8, 1e-8, 1e-6;
+
+  blitz::Array<double, 1> jac_surf_fd( jac_surf.extent() );
+  double refl_fd;
+
+  jac_surf_fd = 0.0;
+  refl_fd = 0.0;
+
+  // First check PP mode against value just computed
+  for(int p_idx = 0; p_idx < pert_values.extent(firstDim); p_idx++) {
+    blitz::Array<double,1> surface_params_pert( surface_params.rows() );
+    surface_params_pert = surface_params.value();
+    surface_params_pert(p_idx) += pert_values(p_idx);
+
+    refl_fd = lidort_driver->reflectance_calculate(heights, sza(0), zen(0), azm(0),
+                                                   surface_type, surface_params_pert,
+                                                   od.value(), ssa.value(), pf.value());
+
+    jac_surf_fd(p_idx) = (refl_fd - refl_calc) / pert_values(p_idx);
+  }
+
+  BOOST_CHECK_MATRIX_CLOSE_TOL(jac_surf, jac_surf_fd, 1e-7);
+
 }
 
 BOOST_AUTO_TEST_SUITE_END()
