@@ -192,8 +192,8 @@ BOOST_AUTO_TEST_CASE(simple_breon)
 
     int nlayer = 1;
     Array<double, 1> heights(nlayer+1);
-    Array<double, 1> od(nlayer);
-    Array<double, 1> ssa(nlayer);
+    ArrayAd<double, 1> od(nlayer, 1);
+    ArrayAd<double, 1> ssa(nlayer, 1);
     double taug, taur;
     Range all = Range::all();
     
@@ -220,7 +220,8 @@ BOOST_AUTO_TEST_CASE(simple_breon)
     taug = 1.0e-6/nlayer;
   
     od = taur + taug;
-    ssa = taur / od;
+    ssa = 0;
+    ssa.value() = taur / od.value();
 
     // Run l_rad with imputs
     boost::shared_ptr<LRadDriver> l_rad(new LRadDriver(nstream, nstokes, surface_type,
@@ -231,15 +232,48 @@ BOOST_AUTO_TEST_CASE(simple_breon)
 
     // Must be called AFTER setup_geometry or else the correct values will not be used
     ArrayAd<double, 2> z_matrix(l_rad->z_matrix(phase_func));
+    z_matrix.resize_number_variable(1);
 
-    l_rad->setup_optical_inputs(od, ssa, phase_func.value(), z_matrix.value());
+    l_rad->setup_optical_inputs(od.value(), ssa.value(), phase_func.value(), z_matrix.value());
 
-    l_rad->clear_linear_inputs();
+    l_rad->setup_linear_inputs(od, ssa, phase_func, z_matrix);
+
     l_rad->calculate_first_order();
+
+    double refl_calc = l_rad->stokes()(0);
 
     // Value from offline calculation, could also compare to LIDORT value
     double expt_val = 0.03540773173555763;
-    BOOST_CHECK_CLOSE(expt_val, l_rad->stokes()(0), 1e-7);
+    BOOST_CHECK_CLOSE(expt_val, refl_calc, 1e-7);
+
+    // Check surface jacobians against FD
+  
+    Array<double, 1> pert_values(surface_params.rows());
+    pert_values = 1e-8, 1e-8, 1e-6;
+  
+    Array<double, 1> jac_surf( l_rad->surface_jacobian()(0, all) );
+    Array<double, 1> jac_surf_fd( jac_surf.extent() );
+    double refl_fd;
+  
+    jac_surf_fd = 0.0;
+    refl_fd = 0.0;
+  
+    // First check PP mode against value just computed
+    for(int p_idx = 0; p_idx < pert_values.extent(firstDim); p_idx++) {
+        blitz::Array<double,1> surface_params_pert( surface_params.rows() );
+        surface_params_pert = surface_params;
+        surface_params_pert(p_idx) += pert_values(p_idx);
+    
+        l_rad->setup_surface_params(surface_params_pert);
+        l_rad->calculate_first_order();
+  
+        refl_fd = l_rad->stokes()(0);
+    
+        jac_surf_fd(p_idx) = (refl_fd - refl_calc) / pert_values(p_idx);
+    }
+
+    BOOST_CHECK_MATRIX_CLOSE_TOL(jac_surf, jac_surf_fd, 1e-6);
+
 }
 
 BOOST_AUTO_TEST_SUITE_END()

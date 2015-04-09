@@ -323,7 +323,7 @@ void LRadDriver::check_rt_inputs()
         }
 
         if(l_zmat_f.rows() == 0) {
-            throw Exception(" not allocated");
+            throw Exception("l_zmat_f not allocated");
         }
 
         if(l_fscale_f.rows() == 0) {
