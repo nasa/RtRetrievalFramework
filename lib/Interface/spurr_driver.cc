@@ -22,8 +22,8 @@ void SpurrBrdfDriver::initialize_brdf_inputs(int surface_type)
     break;
   case BREONVEG:
   case BREONSOIL:
-    initialize_brdf_kernel(RAHMAN);
     initialize_brdf_kernel(surface_type);
+    initialize_brdf_kernel(RAHMAN);
     break;
   default:
     Exception e("Unhandled BRDF type index: ");
@@ -74,7 +74,7 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
     do_factor_wfs = false;
 
     do_params_wfs.resize(n_brdf_parameters);
-    do_params_wfs(0) = true;
+    do_params_wfs = true;
     break;
   case BREONVEG:
   case BREONSOIL:
@@ -83,6 +83,7 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
     do_factor_wfs = false;
 
     do_params_wfs.resize(n_brdf_parameters);
+    do_params_wfs(0) = false;
     break;
   default:
     Exception e("Unhandled BRDF kernel type: ");
@@ -142,14 +143,14 @@ ArrayAd<double, 1> SpurrBrdfDriver::setup_brdf_inputs(int surface_type, const Ar
     break;
   case BREONVEG:
   case BREONSOIL:
+    parameter_indexes.resize(0);
+    setup_breon_inputs(0, rt_surf_params, parameter_indexes);
+
     parameter_indexes.resize(3);
     parameter_indexes(0) = 0;
     parameter_indexes(1) = 1;
     parameter_indexes(2) = 2;
-    setup_rahman_inputs(0, rt_surf_params, parameter_indexes);
-
-    parameter_indexes.resize(0);
-    setup_breon_inputs(1, rt_surf_params, parameter_indexes);
+    setup_rahman_inputs(1, rt_surf_params, parameter_indexes);
     break;
   default:
     Exception e("Unhandled BRDF type index: ");
@@ -223,6 +224,7 @@ void SpurrBrdfDriver::setup_rahman_inputs(int kernel_index, ArrayAd<double, 1>& 
 void SpurrBrdfDriver::setup_breon_inputs(int kernel_index, ArrayAd<double, 1>& surface_parameters, const Array<int, 1>& parameter_indexes) const
 {
   brdf_factors(kernel_index) = 1.0;
+  brdf_params(kernel_index, 0) = 2.25; // Refractive index squared, same as hardcoded value inside lrad, should be same as value in ground_breon.cc
 }
 
 /********************************************************************/
