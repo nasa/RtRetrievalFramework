@@ -274,6 +274,39 @@ BOOST_AUTO_TEST_CASE(coxmunk)
   test_twostream(surface_type, surface_params, taug, taur, pert_atm, pert_surf, debug_output);
 }
 
+BOOST_AUTO_TEST_CASE(breon)
+{
+  bool debug_output = false;
+
+  int nlayer = 2;
+  int nparam = 2;
+  ArrayAd<double, 1> surface_params(3, 1); 
+  ArrayAd<double, 1> taug(nlayer, nparam);
+  ArrayAd<double, 1> taur(nlayer, nparam);
+
+  // Use simple lambertian throughout
+  int surface_type = BREONVEG;
+  
+  // Check jacobian using finite derivatives
+  // od, ssa
+  blitz::Array<double, 1> pert_atm(2);
+
+  // Perturbation value for surface fd checking
+  Array<double, 1> pert_surf(3);
+  pert_surf = 1e-8;
+
+  ////////////////
+  // Surface only
+  surface_params.value()(0) = 0.1;
+  surface_params.value()(1) = 0.3;
+  surface_params.value()(2) = 1.5;
+
+  taur = 1.0e-6/nlayer;
+  taug = 1.0e-6/nlayer;
+
+  pert_atm = 1e-4, 1e-4;
+  test_twostream(surface_type, surface_params, taug, taur, pert_atm, pert_surf, debug_output);
+}
 
 BOOST_AUTO_TEST_CASE(valgrind_problem)
 {

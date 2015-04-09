@@ -23,7 +23,7 @@ TwostreamBrdfDriver::TwostreamBrdfDriver(int surface_type)
   case LAMBERTIAN:
   case BREONVEG:
   case BREONSOIL:
-    nspars = 1;
+    nspars = 3;
     break;
   case COXMUNK:
     nspars = 3;
@@ -49,7 +49,6 @@ void TwostreamBrdfDriver::setup_geometry(double sza, double azm, double zen) con
   // Solar zenith angles (degrees) [0,90]
   Array<double, 1> beam_szas( twostream_brdf_->beam_szas() );
   beam_szas(0) = sza;
-
 
   // Viewing zenith angle (degrees)
   Array<double, 1> user_angles( twostream_brdf_->user_angles() );
