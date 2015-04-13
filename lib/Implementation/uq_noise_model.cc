@@ -18,7 +18,7 @@ void UqNoiseModel::read_hdf_noise(const HdfFile& Hfile, const HdfSoundingId& Sou
     TinyVector<int, 3> sz = Hfile.read_shape<3>("InstrumentHeader/snr_coef");
     Array<double, 3> snr_coefs = 
     Hfile.read_field<double, 3>("InstrumentHeader/snr_coef", 
-       TinyVector<int, 3>(0,0,0), TinyVector<int, 3>(sz[0], sz[2], 2));
+       TinyVector<int, 3>(0,0,0), TinyVector<int, 3>(sz[0], sz[1], 2));
 
     coef_photon_.reference(snr_coefs(ra, ra, 0));
     coef_background_.reference(snr_coefs(ra, ra, 1));
