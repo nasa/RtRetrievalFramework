@@ -34,7 +34,7 @@ public:
   virtual ~OcoForwardModel() {}
   virtual void setup_grid()
   {
-    g.reset(new ForwardModelSpectralGrid(*inst, *swin, *spectrum_sampling_));
+    g.reset(new ForwardModelSpectralGrid(inst, swin, spectrum_sampling_));
   }
   virtual boost::shared_ptr<StateVector> state_vector() const { return statev; }
   virtual int number_spectrometer() const {return swin->number_spectrometer();}

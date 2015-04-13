@@ -52,8 +52,7 @@ BOOST_AUTO_TEST_CASE(small_range)
     (new UniformSpectrumSampling(12930.15, 12931.14, 0.01,
 				 12930.15, 12931.14, 0.01,
 				 12930.15, 12931.14, 0.01) );
-  ForwardModelSpectralGrid fg(*config_instrument, *config_spectral_window,
-			      *spec_samp);
+  ForwardModelSpectralGrid fg(config_instrument, config_spectral_window, spec_samp);
   int num_jac = 2;
   SpectralDomain sd = spec_samp->spectral_domain(0, lowres_grid(0), 
 						 ils_half_width(0));
@@ -112,8 +111,7 @@ BOOST_AUTO_TEST_CASE(small_range)
 BOOST_AUTO_TEST_CASE(timing)
 {
   is_timing_test();
-  ForwardModelSpectralGrid fg(*config_instrument, *config_spectral_window,
-			      *config_spectrum_sampling);
+  ForwardModelSpectralGrid fg(config_instrument, config_spectral_window, config_spectrum_sampling);
   RtAtmosphere& atm = *config_atmosphere;
   SpectralDomain sd = config_spectrum_sampling->
     spectral_domain(0, lowres_grid(0), ils_half_width(0));
