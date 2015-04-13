@@ -204,6 +204,7 @@ EXTRA_DIST += @interfacesrc@/spectrum_doxygen.h
 # Test files
 lib_test_all_SOURCES+= @interfacesrc@/output_test.cc
 lib_test_all_SOURCES+= @interfacesrc@/composite_initial_guess_test.cc
+lib_test_all_SOURCES+= @interfacesrc@/forward_model_spectral_grid_test.cc
 
 # Allow files to be included in other directories.
 AM_CPPFLAGS+= -I$(srcdir)/@interfacesrc@
