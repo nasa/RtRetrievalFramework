@@ -2,12 +2,13 @@
 #define FORWARD_MODEL_SPECTRAL_GRID_H
 #include "printable.h"
 #include "spectrum.h"
-#include <vector>
+#include "instrument.h"
+#include "spectral_window.h"
+#include "spectrum_sampling.h"
+#include "spectral_domain.h"
 
 namespace FullPhysics {
-  class Instrument;
-  class SpectralWindow;
-  class SpectrumSampling;
+
 /****************************************************************//**
   This is the Forward Model spectral grid. This is in a separate class
   because this is a bit complicated. We have 3 grids to worry about
@@ -28,62 +29,50 @@ namespace FullPhysics {
 class ForwardModelSpectralGrid : public Printable<ForwardModelSpectralGrid> {
 public:
   ForwardModelSpectralGrid(
-   const Instrument& Inst,
-   const SpectralWindow& Spectral_window,
-   const SpectrumSampling& Spectrum_sampling);
+   const boost::shared_ptr<Instrument>& Inst,
+   const boost::shared_ptr<SpectralWindow>& Spectral_window,
+   const boost::shared_ptr<SpectrumSampling>& Spectrum_sampling) 
+      : inst(Inst), spectral_window(Spectral_window), spectrum_sampling(Spectrum_sampling) {};
+
   ForwardModelSpectralGrid() {}
   virtual ~ForwardModelSpectralGrid() {}
   virtual void print(std::ostream& Os) const {Os << "ForwardModelSpectralGrid";}
 
-//-----------------------------------------------------------------------
-/// Number of spectrometer.
-//-----------------------------------------------------------------------
+  //-----------------------------------------------------------------------
+  /// Number of spectrometer.
+  //-----------------------------------------------------------------------
 
-  int number_spectrometer() const { return (int) lgrid.size(); }
+  int number_spectrometer() const { return spectral_window->number_spectrometer(); }
 
-//-----------------------------------------------------------------------
-/// The low resolution grid.
-//-----------------------------------------------------------------------
+  //-----------------------------------------------------------------------
+  /// The low resolution grid.
+  //-----------------------------------------------------------------------
 
-  const SpectralDomain& low_resolution_grid(int Spec_index) const
-  { 
-    range_check(Spec_index, 0, number_spectrometer());
-    return lgrid[Spec_index];
-  }
+  const SpectralDomain low_resolution_grid(int Spec_index) const;
 
-//-----------------------------------------------------------------------
-/// The high resolution grid, possibly nonuniform
-//-----------------------------------------------------------------------
+  //-----------------------------------------------------------------------
+  /// The high resolution grid, possibly nonuniform
+  //-----------------------------------------------------------------------
 
-  const SpectralDomain& high_resolution_grid(int Spec_index) const
-  { 
-    range_check(Spec_index, 0, number_spectrometer());
-    return hgrid[Spec_index]; 
-  }
+  const SpectralDomain high_resolution_grid(int Spec_index) const;
 
-//-----------------------------------------------------------------------
-/// The high resolution grid, interpolated to be uniform.
-//-----------------------------------------------------------------------
+  //-----------------------------------------------------------------------
+  /// The high resolution grid, interpolated to be uniform.
+  //-----------------------------------------------------------------------
 
-  const SpectralDomain& high_resolution_interpolated_grid(int Spec_index) const
-  { 
-    range_check(Spec_index, 0, number_spectrometer());
-    return hgrid_inter[Spec_index]; 
-  }
+  const SpectralDomain high_resolution_interpolated_grid(int Spec_index) const;
+
   Spectrum interpolate_spectrum(const Spectrum& Spec_in, int Spec_index) const;
 
-//-----------------------------------------------------------------------
-/// Pixel indexes to use for low resolution grid.
-//-----------------------------------------------------------------------
-  const std::vector<int>& pixel_list(int Spec_index) const
-  {
-    range_check(Spec_index, 0, number_spectrometer());
-    return plist[Spec_index];
-  }
+  //-----------------------------------------------------------------------
+  /// Pixel indexes to use for low resolution grid.
+  //-----------------------------------------------------------------------
+  const std::vector<int> pixel_list(int Spec_index) const;
+
 private:
-  std::vector<SpectralDomain> lgrid, hgrid, hgrid_inter;
-  std::vector<std::vector<int> > plist;
-  std::vector<bool> need_interpolation;
+  boost::shared_ptr<Instrument> inst;
+  boost::shared_ptr<SpectralWindow> spectral_window;
+  boost::shared_ptr<SpectrumSampling> spectrum_sampling;
 };
 }
 #endif

@@ -5275,100 +5275,103 @@ extern "C" {
 #endif
 SWIGINTERN PyObject *_wrap_new_ForwardModelSpectralGrid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Instrument *arg1 = 0 ;
-  FullPhysics::SpectralWindow *arg2 = 0 ;
-  FullPhysics::SpectrumSampling *arg3 = 0 ;
-  void *argp1 = 0 ;
+  boost::shared_ptr< FullPhysics::Instrument > *arg1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpectralWindow > *arg2 = 0 ;
+  boost::shared_ptr< FullPhysics::SpectrumSampling > *arg3 = 0 ;
+  void *argp1 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Instrument const > tempshared1 ;
-  void *argp2 = 0 ;
+  boost::shared_ptr< FullPhysics::Instrument > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Instrument > temp2shared1 ;
+  void *argp2 ;
   int res2 = 0 ;
-  boost::shared_ptr< FullPhysics::SpectralWindow const > tempshared2 ;
-  void *argp3 = 0 ;
+  boost::shared_ptr< FullPhysics::SpectralWindow > tempshared2 ;
+  boost::shared_ptr< FullPhysics::SpectralWindow > temp2shared2 ;
+  void *argp3 ;
   int res3 = 0 ;
-  boost::shared_ptr< FullPhysics::SpectrumSampling const > tempshared3 ;
+  boost::shared_ptr< FullPhysics::SpectrumSampling > tempshared3 ;
+  boost::shared_ptr< FullPhysics::SpectrumSampling > temp2shared3 ;
   PyObject *swig_obj[3] ;
   FullPhysics::ForwardModelSpectralGrid *result = 0 ;
   
   if (!SWIG_Python_UnpackTuple(args,"new_ForwardModelSpectralGrid",3,3,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
-    // Added mms
-    // First check to see if all ready pointer type
-    FullPhysics::Instrument *ptr;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], (void**)(&ptr), SWIGTYPE_p_FullPhysics__Instrument,  0 , &newmem);
-    if (SWIG_IsOK(res1)) {
-      arg1 = ptr;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Instrument_t,  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ForwardModelSpectralGrid" "', argument " "1"" of type '" "boost::shared_ptr< FullPhysics::Instrument > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp1) tempshared1 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Instrument > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::Instrument > * >(argp1);
+      arg1 = &tempshared1;
     } else {
-      res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Instrument_t,  0 , &newmem);
-      if (!SWIG_IsOK(res1)) {
-        SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ForwardModelSpectralGrid" "', argument " "1"" of type '" "FullPhysics::Instrument const &""'"); 
-      }
-      if (!argp1) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ForwardModelSpectralGrid" "', argument " "1"" of type '" "FullPhysics::Instrument const &""'"); 
-      }
-      if (newmem & SWIG_CAST_NEW_MEMORY) {
-        tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Instrument > * >(argp1);
-        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Instrument > * >(argp1);
-        arg1 = const_cast< FullPhysics::Instrument * >(tempshared1.get());
-      } else {
-        arg1 = const_cast< FullPhysics::Instrument * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::Instrument > * >(argp1)->get());
-      }
+      arg1 = (argp1) ? reinterpret_cast< boost::shared_ptr< FullPhysics::Instrument > * >(argp1) : &tempshared1;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg1->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared1.reset(arg1->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg1 = &temp2shared1;
     }
   }
   {
     int newmem = 0;
-    // Added mms
-    // First check to see if all ready pointer type
-    FullPhysics::SpectralWindow *ptr;
-    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__SpectralWindow,  0 , &newmem);
-    if (SWIG_IsOK(res2)) {
-      arg2 = ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralWindow_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ForwardModelSpectralGrid" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::SpectralWindow > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::SpectralWindow > * >(argp2);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::SpectralWindow > * >(argp2);
+      arg2 = &tempshared2;
     } else {
-      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralWindow_t,  0 , &newmem);
-      if (!SWIG_IsOK(res2)) {
-        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ForwardModelSpectralGrid" "', argument " "2"" of type '" "FullPhysics::SpectralWindow const &""'"); 
-      }
-      if (!argp2) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ForwardModelSpectralGrid" "', argument " "2"" of type '" "FullPhysics::SpectralWindow const &""'"); 
-      }
-      if (newmem & SWIG_CAST_NEW_MEMORY) {
-        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpectralWindow > * >(argp2);
-        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpectralWindow > * >(argp2);
-        arg2 = const_cast< FullPhysics::SpectralWindow * >(tempshared2.get());
-      } else {
-        arg2 = const_cast< FullPhysics::SpectralWindow * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::SpectralWindow > * >(argp2)->get());
-      }
+      arg2 = (argp2) ? reinterpret_cast< boost::shared_ptr< FullPhysics::SpectralWindow > * >(argp2) : &tempshared2;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg2->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared2.reset(arg2->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg2 = &temp2shared2;
     }
   }
   {
     int newmem = 0;
-    // Added mms
-    // First check to see if all ready pointer type
-    FullPhysics::SpectrumSampling *ptr;
-    res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], (void**)(&ptr), SWIGTYPE_p_FullPhysics__SpectrumSampling,  0 , &newmem);
-    if (SWIG_IsOK(res3)) {
-      arg3 = ptr;
+    res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectrumSampling_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ForwardModelSpectralGrid" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::SpectrumSampling > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp3) tempshared3 = *reinterpret_cast< boost::shared_ptr< FullPhysics::SpectrumSampling > * >(argp3);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::SpectrumSampling > * >(argp3);
+      arg3 = &tempshared3;
     } else {
-      res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectrumSampling_t,  0 , &newmem);
-      if (!SWIG_IsOK(res3)) {
-        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ForwardModelSpectralGrid" "', argument " "3"" of type '" "FullPhysics::SpectrumSampling const &""'"); 
-      }
-      if (!argp3) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ForwardModelSpectralGrid" "', argument " "3"" of type '" "FullPhysics::SpectrumSampling const &""'"); 
-      }
-      if (newmem & SWIG_CAST_NEW_MEMORY) {
-        tempshared3 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpectrumSampling > * >(argp3);
-        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpectrumSampling > * >(argp3);
-        arg3 = const_cast< FullPhysics::SpectrumSampling * >(tempshared3.get());
-      } else {
-        arg3 = const_cast< FullPhysics::SpectrumSampling * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::SpectrumSampling > * >(argp3)->get());
-      }
+      arg3 = (argp3) ? reinterpret_cast< boost::shared_ptr< FullPhysics::SpectrumSampling > * >(argp3) : &tempshared3;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg3->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared3.reset(arg3->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg3 = &temp2shared3;
     }
   }
   {
     try {
-      result = (FullPhysics::ForwardModelSpectralGrid *)new FullPhysics::ForwardModelSpectralGrid((FullPhysics::Instrument const &)*arg1,(FullPhysics::SpectralWindow const &)*arg2,(FullPhysics::SpectrumSampling const &)*arg3);
+      result = (FullPhysics::ForwardModelSpectralGrid *)new FullPhysics::ForwardModelSpectralGrid((boost::shared_ptr< FullPhysics::Instrument > const &)*arg1,(boost::shared_ptr< FullPhysics::SpectralWindow > const &)*arg2,(boost::shared_ptr< FullPhysics::SpectrumSampling > const &)*arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -5482,7 +5485,7 @@ SWIGINTERN PyObject *_wrap_ForwardModelSpectralGrid_low_resolution_grid(PyObject
   int val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
-  FullPhysics::SpectralDomain *result = 0 ;
+  SwigValueWrapper< FullPhysics::SpectralDomain > result;
   
   if (!SWIG_Python_UnpackTuple(args,"ForwardModelSpectralGrid_low_resolution_grid",2,2,swig_obj)) SWIG_fail;
   {
@@ -5507,7 +5510,7 @@ SWIGINTERN PyObject *_wrap_ForwardModelSpectralGrid_low_resolution_grid(PyObject
   arg2 = static_cast< int >(val2);
   {
     try {
-      result = (FullPhysics::SpectralDomain *) &((FullPhysics::ForwardModelSpectralGrid const *)arg1)->low_resolution_grid(arg2);
+      result = ((FullPhysics::ForwardModelSpectralGrid const *)arg1)->low_resolution_grid(arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -5515,7 +5518,7 @@ SWIGINTERN PyObject *_wrap_ForwardModelSpectralGrid_low_resolution_grid(PyObject
     }
   }
   {
-    boost::shared_ptr< const FullPhysics::SpectralDomain > *smartresult = new boost::shared_ptr< const FullPhysics::SpectralDomain >(result SWIG_NO_NULL_DELETER_0);
+    boost::shared_ptr< const FullPhysics::SpectralDomain > *smartresult = new boost::shared_ptr< const FullPhysics::SpectralDomain >(new FullPhysics::SpectralDomain((FullPhysics::SpectralDomain &)result));
     resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralDomain_t, SWIG_POINTER_OWN);
   }
   return resultobj;
@@ -5535,7 +5538,7 @@ SWIGINTERN PyObject *_wrap_ForwardModelSpectralGrid_high_resolution_grid(PyObjec
   int val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
-  FullPhysics::SpectralDomain *result = 0 ;
+  SwigValueWrapper< FullPhysics::SpectralDomain > result;
   
   if (!SWIG_Python_UnpackTuple(args,"ForwardModelSpectralGrid_high_resolution_grid",2,2,swig_obj)) SWIG_fail;
   {
@@ -5560,7 +5563,7 @@ SWIGINTERN PyObject *_wrap_ForwardModelSpectralGrid_high_resolution_grid(PyObjec
   arg2 = static_cast< int >(val2);
   {
     try {
-      result = (FullPhysics::SpectralDomain *) &((FullPhysics::ForwardModelSpectralGrid const *)arg1)->high_resolution_grid(arg2);
+      result = ((FullPhysics::ForwardModelSpectralGrid const *)arg1)->high_resolution_grid(arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -5568,7 +5571,7 @@ SWIGINTERN PyObject *_wrap_ForwardModelSpectralGrid_high_resolution_grid(PyObjec
     }
   }
   {
-    boost::shared_ptr< const FullPhysics::SpectralDomain > *smartresult = new boost::shared_ptr< const FullPhysics::SpectralDomain >(result SWIG_NO_NULL_DELETER_0);
+    boost::shared_ptr< const FullPhysics::SpectralDomain > *smartresult = new boost::shared_ptr< const FullPhysics::SpectralDomain >(new FullPhysics::SpectralDomain((FullPhysics::SpectralDomain &)result));
     resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralDomain_t, SWIG_POINTER_OWN);
   }
   return resultobj;
@@ -5588,7 +5591,7 @@ SWIGINTERN PyObject *_wrap_ForwardModelSpectralGrid_high_resolution_interpolated
   int val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
-  FullPhysics::SpectralDomain *result = 0 ;
+  SwigValueWrapper< FullPhysics::SpectralDomain > result;
   
   if (!SWIG_Python_UnpackTuple(args,"ForwardModelSpectralGrid_high_resolution_interpolated_grid",2,2,swig_obj)) SWIG_fail;
   {
@@ -5613,7 +5616,7 @@ SWIGINTERN PyObject *_wrap_ForwardModelSpectralGrid_high_resolution_interpolated
   arg2 = static_cast< int >(val2);
   {
     try {
-      result = (FullPhysics::SpectralDomain *) &((FullPhysics::ForwardModelSpectralGrid const *)arg1)->high_resolution_interpolated_grid(arg2);
+      result = ((FullPhysics::ForwardModelSpectralGrid const *)arg1)->high_resolution_interpolated_grid(arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -5621,7 +5624,7 @@ SWIGINTERN PyObject *_wrap_ForwardModelSpectralGrid_high_resolution_interpolated
     }
   }
   {
-    boost::shared_ptr< const FullPhysics::SpectralDomain > *smartresult = new boost::shared_ptr< const FullPhysics::SpectralDomain >(result SWIG_NO_NULL_DELETER_0);
+    boost::shared_ptr< const FullPhysics::SpectralDomain > *smartresult = new boost::shared_ptr< const FullPhysics::SpectralDomain >(new FullPhysics::SpectralDomain((FullPhysics::SpectralDomain &)result));
     resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralDomain_t, SWIG_POINTER_OWN);
   }
   return resultobj;
@@ -5827,15 +5830,15 @@ static PyMethodDef SwigMethods[] = {
 		"Number of spectrometer. \n"
 		""},
 	 { (char *)"ForwardModelSpectralGrid_low_resolution_grid", _wrap_ForwardModelSpectralGrid_low_resolution_grid, METH_VARARGS, (char *)"\n"
-		"const SpectralDomain& FullPhysics::ForwardModelSpectralGrid::low_resolution_grid(int Spec_index) const\n"
+		"const SpectralDomain ForwardModelSpectralGrid::low_resolution_grid(int Spec_index) const\n"
 		"The low resolution grid. \n"
 		""},
 	 { (char *)"ForwardModelSpectralGrid_high_resolution_grid", _wrap_ForwardModelSpectralGrid_high_resolution_grid, METH_VARARGS, (char *)"\n"
-		"const SpectralDomain& FullPhysics::ForwardModelSpectralGrid::high_resolution_grid(int Spec_index) const\n"
+		"const SpectralDomain ForwardModelSpectralGrid::high_resolution_grid(int Spec_index) const\n"
 		"The high resolution grid, possibly nonuniform. \n"
 		""},
 	 { (char *)"ForwardModelSpectralGrid_high_resolution_interpolated_grid", _wrap_ForwardModelSpectralGrid_high_resolution_interpolated_grid, METH_VARARGS, (char *)"\n"
-		"const SpectralDomain& FullPhysics::ForwardModelSpectralGrid::high_resolution_interpolated_grid(int Spec_index) const\n"
+		"const SpectralDomain ForwardModelSpectralGrid::high_resolution_interpolated_grid(int Spec_index) const\n"
 		"The high resolution grid, interpolated to be uniform. \n"
 		""},
 	 { (char *)"ForwardModelSpectralGrid_interpolate_spectrum", _wrap_ForwardModelSpectralGrid_interpolate_spectrum, METH_VARARGS, (char *)"\n"
@@ -5844,7 +5847,7 @@ static PyMethodDef SwigMethods[] = {
 		"sampling. \n"
 		""},
 	 { (char *)"ForwardModelSpectralGrid_pixel_list", _wrap_ForwardModelSpectralGrid_pixel_list, METH_VARARGS, (char *)"\n"
-		"const std::vector<int>& FullPhysics::ForwardModelSpectralGrid::pixel_list(int Spec_index) const\n"
+		"const std::vector< int > ForwardModelSpectralGrid::pixel_list(int Spec_index) const\n"
 		"Pixel indexes to use for low resolution grid. \n"
 		""},
 	 { (char *)"delete_ForwardModelSpectralGrid", (PyCFunction)_wrap_delete_ForwardModelSpectralGrid, METH_O, (char *)"\n"

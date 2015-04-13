@@ -155,21 +155,21 @@ class ForwardModelSpectralGrid(full_physics_swig.generic_object.GenericObject):
 
     def low_resolution_grid(self, *args):
         """
-        const SpectralDomain& FullPhysics::ForwardModelSpectralGrid::low_resolution_grid(int Spec_index) const
+        const SpectralDomain ForwardModelSpectralGrid::low_resolution_grid(int Spec_index) const
         The low resolution grid. 
         """
         return _forward_model_spectral_grid.ForwardModelSpectralGrid_low_resolution_grid(self, *args)
 
     def high_resolution_grid(self, *args):
         """
-        const SpectralDomain& FullPhysics::ForwardModelSpectralGrid::high_resolution_grid(int Spec_index) const
+        const SpectralDomain ForwardModelSpectralGrid::high_resolution_grid(int Spec_index) const
         The high resolution grid, possibly nonuniform. 
         """
         return _forward_model_spectral_grid.ForwardModelSpectralGrid_high_resolution_grid(self, *args)
 
     def high_resolution_interpolated_grid(self, *args):
         """
-        const SpectralDomain& FullPhysics::ForwardModelSpectralGrid::high_resolution_interpolated_grid(int Spec_index) const
+        const SpectralDomain ForwardModelSpectralGrid::high_resolution_interpolated_grid(int Spec_index) const
         The high resolution grid, interpolated to be uniform. 
         """
         return _forward_model_spectral_grid.ForwardModelSpectralGrid_high_resolution_interpolated_grid(self, *args)
@@ -184,7 +184,7 @@ class ForwardModelSpectralGrid(full_physics_swig.generic_object.GenericObject):
 
     def pixel_list(self, *args):
         """
-        const std::vector<int>& FullPhysics::ForwardModelSpectralGrid::pixel_list(int Spec_index) const
+        const std::vector< int > ForwardModelSpectralGrid::pixel_list(int Spec_index) const
         Pixel indexes to use for low resolution grid. 
         """
         return _forward_model_spectral_grid.ForwardModelSpectralGrid_pixel_list(self, *args)
