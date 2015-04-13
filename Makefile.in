@@ -1451,6 +1451,7 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@supportsrc@/polynomial_eval_test.cc \
 	@interfacesrc@/output_test.cc \
 	@interfacesrc@/composite_initial_guess_test.cc \
+	@interfacesrc@/forward_model_spectral_grid_test.cc \
 	@implsrc@/configuration_fixture.cc \
 	@implsrc@/atmosphere_fixture.cc @implsrc@/lidort_fixture.cc \
 	@implsrc@/solver_finished_fixture.cc \
@@ -1605,6 +1606,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@supportsrc@/polynomial_eval_test.$(OBJEXT) \
 	@interfacesrc@/output_test.$(OBJEXT) \
 	@interfacesrc@/composite_initial_guess_test.$(OBJEXT) \
+	@interfacesrc@/forward_model_spectral_grid_test.$(OBJEXT) \
 	@implsrc@/configuration_fixture.$(OBJEXT) \
 	@implsrc@/atmosphere_fixture.$(OBJEXT) \
 	@implsrc@/lidort_fixture.$(OBJEXT) \
@@ -2695,6 +2697,7 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@supportsrc@/polynomial_eval_test.cc \
 	@interfacesrc@/output_test.cc \
 	@interfacesrc@/composite_initial_guess_test.cc \
+	@interfacesrc@/forward_model_spectral_grid_test.cc \
 	@implsrc@/configuration_fixture.cc \
 	@implsrc@/atmosphere_fixture.cc @implsrc@/lidort_fixture.cc \
 	@implsrc@/solver_finished_fixture.cc \
@@ -5482,6 +5485,9 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 @interfacesrc@/composite_initial_guess_test.$(OBJEXT):  \
 	@interfacesrc@/$(am__dirstamp) \
 	@interfacesrc@/$(DEPDIR)/$(am__dirstamp)
+@interfacesrc@/forward_model_spectral_grid_test.$(OBJEXT):  \
+	@interfacesrc@/$(am__dirstamp) \
+	@interfacesrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/configuration_fixture.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/atmosphere_fixture.$(OBJEXT): @implsrc@/$(am__dirstamp) \
@@ -6049,6 +6055,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/uniform_spectrum_sampling_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/zero_offset_waveform_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/composite_initial_guess_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/forward_model_spectral_grid_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-absorber.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-absorber_vmr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-absorber_vmr_scaled.Plo@am__quote@
