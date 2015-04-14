@@ -86,6 +86,9 @@ class UqExperiment(object):
         self.lua_config.spec_win.bad_sample_mask = orig_bad_samp_mask
 
     def run(self):
+        # Calculate the radiances need for the retrieval
+        self.calculate_uq_radiance()
+
         l2_lua.run_retrieval(self.ls, self.output_file)
 
 if __name__ == "__main__":
@@ -100,5 +103,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     uq = UqExperiment(args.lua_config, args.output_file)
-    uq.calculate_uq_radiance()
     uq.run()
