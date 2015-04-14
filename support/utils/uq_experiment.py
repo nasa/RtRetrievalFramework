@@ -27,6 +27,8 @@ class UqExperiment(object):
         self.load_uq_sv()
 
     def load_uq_sv(self):
+        'Load initial guess for state vector from UQ file'
+
         uq_obj = HdfFile(self.lua_config.spectrum_file)
         frame_idx = self.lua_config.l1b_sid_list(self.lua_config).frame_number
         initial_sv = uq_obj.read_double_2d("/StateVector/sampled_state_vectors")[:, frame_idx]
@@ -42,12 +44,46 @@ class UqExperiment(object):
         self.lua_config.state_vector.update_state(initial_sv)
 
     def calculate_uq_radiance(self):
+        'Compute radiances for use by UQ L1B. Noise is added based on the L1B noise model'
+
+        # Change SpectralWindows so that all radiances points are computed
+        spec_win_range = self.lua_config.spec_win.range_array
+        orig_spec_win_value = spec_win_range.value.copy()
+        new_spec_win_value = spec_win_range.value.copy()
+
+        orig_bad_samp_mask = self.lua_config.spec_win.bad_sample_mask.copy()
+        new_bad_samp_mask = self.lua_config.spec_win.bad_sample_mask.copy()
+
+        for spec_idx in range(int(self.num_spec)):
+            # Use all samples (pixels), + 1 because the range is not inclusive
+            new_spec_win_value[spec_idx, 0, 0] = 0
+            new_spec_win_value[spec_idx, 0, 1] = self.lua_config.number_pixel(spec_idx) + 1
+
+        new_bad_samp_mask[:, :] = False
+
+        spec_win_range.value = new_spec_win_value
+        self.lua_config.spec_win.range_array = spec_win_range
+        self.lua_config.spec_win.bad_sample_mask = new_bad_samp_mask
+
+        # Calculate radiances for use by UQ object
         skip_jacobian = True
         for spec_idx in range(int(self.num_spec)):
             uq_spectrum = self.lua_config.fm.config.forward_model.radiance(spec_idx, skip_jacobian)
             uq_spec_range = uq_spectrum.spectral_range.convert(Unit("Ph sec^{-1} m^{-2} sr^{-1} um^{-1}"))
-            l1b = self.lua_config.l1b
-            l1b.set_radiance(spec_idx, uq_spec_range)
+
+            # Add noise to radiances using nose model uncertainty for gaussian, use
+            # sounding id number as seed for reproducability
+            uncertainty = self.lua_config.l1b.noise_model.uncertainty(spec_idx, uq_spec_range.data)
+            noisified_radiance = numpy.random.normal(uq_spec_range.data, uncertainty)
+            noisified_range = SpectralRange(noisified_radiance, uq_spec_range.units)
+
+            # Save noisified spectra into the L1B class
+            self.lua_config.l1b.set_radiance(spec_idx, noisified_range)
+
+        # Reset spectral window range to original value
+        spec_win_range.value = orig_spec_win_value
+        self.lua_config.spec_win.range_array = spec_win_range
+        self.lua_config.spec_win.bad_sample_mask = orig_bad_samp_mask
 
     def run(self):
         l2_lua.run_retrieval(self.ls, self.output_file)

@@ -116,21 +116,12 @@ function init_uq(config)
 
     config.fm.instrument.ils_func.creator = ils_table_uq
 
-    -- Use a static value for the lambertian albedo first guess. Can't generate it from the spectra since it has 
-    -- not yet been generated! Make sure to include slope in the state vector
-    function static_value_1d(size, value)
-        if value == nil then
-            value = 0
-        end
-
-        return function ()
-            local arr = Blitz_double_array_1d(size)
-            arr:set(Range.all(), value)
-            return arr                
-            end
+    -- Use apriori value from the UQ file for albedo instead of the usual method of deriving it from the radiance
+    function albedo_apriori_uq(self, i)
+        local l1b_hdf_file = self.config:l1b_hdf_file()
+        return l1b_hdf_file:read_double_2d("/Ground/Albedo/a_priori")(i, Range.all())
     end
-
-    config.fm.atmosphere.ground.lambertian.apriori = static_value_1d(2)
+    config.fm.atmosphere.ground.lambertian.apriori = albedo_apriori_uq
 
     -- Reconfigure portions of the fluoresence creator to not rely on getting data from the L1B radiance routine
     uq_fluorescence = ConfigCommon.fluorescence_effect:new()
@@ -163,6 +154,5 @@ function init_uq(config)
     config.fm.instrument.instrument_correction.ic_nadir = {}
     config.fm.instrument.instrument_correction.ic_glint = {}
     config.fm.instrument.instrument_correction.ic_target = {}
-
 
 end
