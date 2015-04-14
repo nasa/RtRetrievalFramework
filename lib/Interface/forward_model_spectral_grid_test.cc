@@ -6,7 +6,7 @@
 #include "nonuniform_spectrum_sampling.h"
 #include "uniform_spectrum_sampling.h"
 
-#define OUTPUT_EXPECTED false 
+#define OUTPUT_EXPECTED false
 
 using namespace FullPhysics;
 using namespace blitz;

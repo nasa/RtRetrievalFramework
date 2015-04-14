@@ -68,7 +68,7 @@ Spectrum ForwardModelSpectralGrid::interpolate_spectrum
 (const Spectrum& Spec_in, int Spec_index) const
 { 
   range_check(Spec_index, 0, number_spectrometer());
-  if(spectrum_sampling->need_interpolation(Spec_index))
+  if(!spectrum_sampling->need_interpolation(Spec_index))
     return Spec_in;
   Range ra(Range::all());
   SpectralDomain hgrid_inter = high_resolution_interpolated_grid(Spec_index);
