@@ -112,108 +112,7 @@ import full_physics_swig.ground
 import full_physics_swig.observer
 import full_physics_swig.generic_object
 import full_physics_swig.sub_state_vector_array
-class GroundBreon(object):
-    """
-    This class implements the Breon + Rahman ground type.
-
-    The retrieved parameters are for the Rahman type. Refractive index is
-    hardcoded at 1.5 as it is hard coded inside of LIDORT and l_rad.
-
-    Base class for both Vegetative and Soil types which share the same
-    mechanisms but are implemented differently in RT codes
-
-    C++ includes: ground_breon.h 
-    """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-    def surface_parameter(self, *args):
-        """
-        ArrayAd< double, 1 > GroundBreon::surface_parameter(const double wn, const int spec_index) const
-
-        """
-        return _ground_breon.GroundBreon_surface_parameter(self, *args)
-
-    def overall_amplitude(self):
-        """
-        const AutoDerivative< double > GroundBreon::overall_amplitude() const
-        Rahmann overall amplitude parameter. 
-        """
-        return _ground_breon.GroundBreon_overall_amplitude(self)
-
-    def asymmetry_parameter(self):
-        """
-        const AutoDerivative< double > GroundBreon::asymmetry_parameter() const
-
-        """
-        return _ground_breon.GroundBreon_asymmetry_parameter(self)
-
-    def geometric_factor(self):
-        """
-        const AutoDerivative< double > GroundBreon::geometric_factor() const
-
-        """
-        return _ground_breon.GroundBreon_geometric_factor(self)
-
-    def refractive_index(self, *args):
-        """
-        virtual const double FullPhysics::GroundBreon::refractive_index(const int Spec_idx) const
-        Returns hard coded value of 1.5 since that is the value hardcoded into
-        LIDORT. 
-        """
-        return _ground_breon.GroundBreon_refractive_index(self, *args)
-
-    def breon_type(self):
-        """
-        virtual const std::string FullPhysics::GroundBreon::breon_type() const =0
-        String describing which type of Breon surface type, also makes this
-        class abstract. 
-        """
-        return _ground_breon.GroundBreon_breon_type(self)
-
-    def clone(self):
-        """
-        virtual boost::shared_ptr<Ground> FullPhysics::GroundBreon::clone() const =0
-
-        """
-        return _ground_breon.GroundBreon_clone(self)
-
-    def state_vector_name_i(self, *args):
-        """
-        std::string GroundBreon::state_vector_name_i(int i) const
-
-        """
-        return _ground_breon.GroundBreon_state_vector_name_i(self, *args)
-
-    def print_desc(self, *args):
-        """
-        void GroundBreon::print(std::ostream &Os) const
-
-        """
-        return _ground_breon.GroundBreon_print_desc(self, *args)
-
-    def desc(self):
-        """
-        virtual std::string FullPhysics::GroundBreon::desc() const
-
-        """
-        return _ground_breon.GroundBreon_desc(self)
-
-    __swig_destroy__ = _ground_breon.delete_GroundBreon
-GroundBreon.surface_parameter = new_instancemethod(_ground_breon.GroundBreon_surface_parameter,None,GroundBreon)
-GroundBreon.overall_amplitude = new_instancemethod(_ground_breon.GroundBreon_overall_amplitude,None,GroundBreon)
-GroundBreon.asymmetry_parameter = new_instancemethod(_ground_breon.GroundBreon_asymmetry_parameter,None,GroundBreon)
-GroundBreon.geometric_factor = new_instancemethod(_ground_breon.GroundBreon_geometric_factor,None,GroundBreon)
-GroundBreon.refractive_index = new_instancemethod(_ground_breon.GroundBreon_refractive_index,None,GroundBreon)
-GroundBreon.breon_type = new_instancemethod(_ground_breon.GroundBreon_breon_type,None,GroundBreon)
-GroundBreon.clone = new_instancemethod(_ground_breon.GroundBreon_clone,None,GroundBreon)
-GroundBreon.state_vector_name_i = new_instancemethod(_ground_breon.GroundBreon_state_vector_name_i,None,GroundBreon)
-GroundBreon.print_desc = new_instancemethod(_ground_breon.GroundBreon_print_desc,None,GroundBreon)
-GroundBreon.desc = new_instancemethod(_ground_breon.GroundBreon_desc,None,GroundBreon)
-GroundBreon_swigregister = _ground_breon.GroundBreon_swigregister
-GroundBreon_swigregister(GroundBreon)
-
-class GroundBreonVeg(GroundBreon):
+class GroundBreonVeg(full_physics_swig.ground.Ground):
     """
     C++ includes: ground_breon.h
 
@@ -228,11 +127,93 @@ class GroundBreonVeg(GroundBreon):
 
         """
         _ground_breon.GroundBreonVeg_swiginit(self,_ground_breon.new_GroundBreonVeg(*args))
+    def _v_overall_amplitude(self, *args):
+        """
+        void GroundBreon::overall_amplitude(const AutoDerivative< double > &val)
+
+        """
+        return _ground_breon.GroundBreonVeg__v_overall_amplitude(self, *args)
+
+    @property
+    def overall_amplitude(self):
+        return self._v_overall_amplitude()
+
+    @overall_amplitude.setter
+    def overall_amplitude(self, value):
+      self._v_overall_amplitude(value)
+
+    def _v_asymmetry_parameter(self, *args):
+        """
+        void GroundBreon::asymmetry_parameter(const AutoDerivative< double > &val)
+
+        """
+        return _ground_breon.GroundBreonVeg__v_asymmetry_parameter(self, *args)
+
+    @property
+    def asymmetry_parameter(self):
+        return self._v_asymmetry_parameter()
+
+    @asymmetry_parameter.setter
+    def asymmetry_parameter(self, value):
+      self._v_asymmetry_parameter(value)
+
+    def _v_geometric_factor(self, *args):
+        """
+        void GroundBreon::geometric_factor(const AutoDerivative< double > &val)
+
+        """
+        return _ground_breon.GroundBreonVeg__v_geometric_factor(self, *args)
+
+    @property
+    def geometric_factor(self):
+        return self._v_geometric_factor()
+
+    @geometric_factor.setter
+    def geometric_factor(self, value):
+      self._v_geometric_factor(value)
+
+    def refractive_index(self, *args):
+        """
+        virtual const double FullPhysics::GroundBreon::refractive_index(const int Spec_idx) const
+        Returns hard coded value of 1.5 since that is the value hardcoded into
+        LIDORT. 
+        """
+        return _ground_breon.GroundBreonVeg_refractive_index(self, *args)
+
+    def breon_type(self):
+        """
+        virtual const std::string FullPhysics::GroundBreonVeg::breon_type() const
+        String describing which type of Breon surface type, also makes this
+        class abstract. 
+        """
+        return _ground_breon.GroundBreonVeg_breon_type(self)
+
+    def state_vector_name_i(self, *args):
+        """
+        std::string GroundBreon::state_vector_name_i(int i) const
+
+        """
+        return _ground_breon.GroundBreonVeg_state_vector_name_i(self, *args)
+
+    def desc(self):
+        """
+        virtual std::string FullPhysics::GroundBreon::desc() const
+
+        """
+        return _ground_breon.GroundBreonVeg_desc(self)
+
     __swig_destroy__ = _ground_breon.delete_GroundBreonVeg
+GroundBreonVeg._v_overall_amplitude = new_instancemethod(_ground_breon.GroundBreonVeg__v_overall_amplitude,None,GroundBreonVeg)
+GroundBreonVeg._v_asymmetry_parameter = new_instancemethod(_ground_breon.GroundBreonVeg__v_asymmetry_parameter,None,GroundBreonVeg)
+GroundBreonVeg._v_geometric_factor = new_instancemethod(_ground_breon.GroundBreonVeg__v_geometric_factor,None,GroundBreonVeg)
+GroundBreonVeg.refractive_index = new_instancemethod(_ground_breon.GroundBreonVeg_refractive_index,None,GroundBreonVeg)
+GroundBreonVeg.breon_type = new_instancemethod(_ground_breon.GroundBreonVeg_breon_type,None,GroundBreonVeg)
+GroundBreonVeg.state_vector_name_i = new_instancemethod(_ground_breon.GroundBreonVeg_state_vector_name_i,None,GroundBreonVeg)
+GroundBreonVeg.desc = new_instancemethod(_ground_breon.GroundBreonVeg_desc,None,GroundBreonVeg)
 GroundBreonVeg_swigregister = _ground_breon.GroundBreonVeg_swigregister
 GroundBreonVeg_swigregister(GroundBreonVeg)
 
-class GroundBreonSoil(GroundBreon):
+class GroundBreonSoil(full_physics_swig.ground.Ground):
     """
     C++ includes: ground_breon.h
 
@@ -247,7 +228,89 @@ class GroundBreonSoil(GroundBreon):
 
         """
         _ground_breon.GroundBreonSoil_swiginit(self,_ground_breon.new_GroundBreonSoil(*args))
+    def _v_overall_amplitude(self, *args):
+        """
+        void GroundBreon::overall_amplitude(const AutoDerivative< double > &val)
+
+        """
+        return _ground_breon.GroundBreonSoil__v_overall_amplitude(self, *args)
+
+    @property
+    def overall_amplitude(self):
+        return self._v_overall_amplitude()
+
+    @overall_amplitude.setter
+    def overall_amplitude(self, value):
+      self._v_overall_amplitude(value)
+
+    def _v_asymmetry_parameter(self, *args):
+        """
+        void GroundBreon::asymmetry_parameter(const AutoDerivative< double > &val)
+
+        """
+        return _ground_breon.GroundBreonSoil__v_asymmetry_parameter(self, *args)
+
+    @property
+    def asymmetry_parameter(self):
+        return self._v_asymmetry_parameter()
+
+    @asymmetry_parameter.setter
+    def asymmetry_parameter(self, value):
+      self._v_asymmetry_parameter(value)
+
+    def _v_geometric_factor(self, *args):
+        """
+        void GroundBreon::geometric_factor(const AutoDerivative< double > &val)
+
+        """
+        return _ground_breon.GroundBreonSoil__v_geometric_factor(self, *args)
+
+    @property
+    def geometric_factor(self):
+        return self._v_geometric_factor()
+
+    @geometric_factor.setter
+    def geometric_factor(self, value):
+      self._v_geometric_factor(value)
+
+    def refractive_index(self, *args):
+        """
+        virtual const double FullPhysics::GroundBreon::refractive_index(const int Spec_idx) const
+        Returns hard coded value of 1.5 since that is the value hardcoded into
+        LIDORT. 
+        """
+        return _ground_breon.GroundBreonSoil_refractive_index(self, *args)
+
+    def breon_type(self):
+        """
+        virtual const std::string FullPhysics::GroundBreonSoil::breon_type() const
+        String describing which type of Breon surface type, also makes this
+        class abstract. 
+        """
+        return _ground_breon.GroundBreonSoil_breon_type(self)
+
+    def state_vector_name_i(self, *args):
+        """
+        std::string GroundBreon::state_vector_name_i(int i) const
+
+        """
+        return _ground_breon.GroundBreonSoil_state_vector_name_i(self, *args)
+
+    def desc(self):
+        """
+        virtual std::string FullPhysics::GroundBreon::desc() const
+
+        """
+        return _ground_breon.GroundBreonSoil_desc(self)
+
     __swig_destroy__ = _ground_breon.delete_GroundBreonSoil
+GroundBreonSoil._v_overall_amplitude = new_instancemethod(_ground_breon.GroundBreonSoil__v_overall_amplitude,None,GroundBreonSoil)
+GroundBreonSoil._v_asymmetry_parameter = new_instancemethod(_ground_breon.GroundBreonSoil__v_asymmetry_parameter,None,GroundBreonSoil)
+GroundBreonSoil._v_geometric_factor = new_instancemethod(_ground_breon.GroundBreonSoil__v_geometric_factor,None,GroundBreonSoil)
+GroundBreonSoil.refractive_index = new_instancemethod(_ground_breon.GroundBreonSoil_refractive_index,None,GroundBreonSoil)
+GroundBreonSoil.breon_type = new_instancemethod(_ground_breon.GroundBreonSoil_breon_type,None,GroundBreonSoil)
+GroundBreonSoil.state_vector_name_i = new_instancemethod(_ground_breon.GroundBreonSoil_state_vector_name_i,None,GroundBreonSoil)
+GroundBreonSoil.desc = new_instancemethod(_ground_breon.GroundBreonSoil_desc,None,GroundBreonSoil)
 GroundBreonSoil_swigregister = _ground_breon.GroundBreonSoil_swigregister
 GroundBreonSoil_swigregister(GroundBreonSoil)
 

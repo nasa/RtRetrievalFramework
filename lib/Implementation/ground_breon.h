@@ -22,11 +22,15 @@ public:
 
     virtual ArrayAd<double, 1> surface_parameter(const double wn, const int spec_index) const;
 
-    /// Rahmann overall amplitude parameter
+    // Rahman parameters
     virtual const AutoDerivative<double> overall_amplitude() const;
     virtual const AutoDerivative<double> asymmetry_parameter() const;
     virtual const AutoDerivative<double> geometric_factor() const;
-  
+
+    virtual void overall_amplitude(const AutoDerivative<double>& val);
+    virtual void asymmetry_parameter(const AutoDerivative<double>& val);
+    virtual void geometric_factor(const AutoDerivative<double>& val);
+   
     /// Returns hard coded value of 1.5 since that is the value hardcoded into LIDORT
     virtual const double refractive_index(const int Spec_idx) const { return 1.5; }
   
