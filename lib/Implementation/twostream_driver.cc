@@ -21,6 +21,8 @@ TwostreamBrdfDriver::TwostreamBrdfDriver(int surface_type)
   int nspars;
   switch(surface_type) {
   case LAMBERTIAN:
+    nspars = 1;
+    break;
   case BREONVEG:
   case BREONSOIL:
     nspars = 3;
