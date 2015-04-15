@@ -56,6 +56,21 @@ const AutoDerivative<double> GroundBreon::geometric_factor() const
     return coefficient()(2);
 }
 
+void GroundBreon::overall_amplitude(const AutoDerivative<double>& val)
+{
+    coefficient()(0) = val;
+}
+
+void GroundBreon::asymmetry_parameter(const AutoDerivative<double>& val)
+{
+    coefficient()(1) = val;
+}
+
+void GroundBreon::geometric_factor(const AutoDerivative<double>& val)
+{
+    coefficient()(2) = val;
+}
+
 std::string GroundBreon::state_vector_name_i(int i) const {
     std::string sv_name_prefix = "Ground Breon ";
     switch (i) {

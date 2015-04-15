@@ -3449,75 +3449,73 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t swig_types[0]
-#define SWIGTYPE_p_FullPhysics__AutoDerivativeRefT_double_t swig_types[1]
-#define SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t swig_types[2]
-#define SWIGTYPE_p_FullPhysics__AutoDerivativeWithUnitT_double_t swig_types[3]
-#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[4]
-#define SWIGTYPE_p_FullPhysics__Ground swig_types[5]
-#define SWIGTYPE_p_FullPhysics__GroundBreon swig_types[6]
-#define SWIGTYPE_p_FullPhysics__GroundBreonSoil swig_types[7]
-#define SWIGTYPE_p_FullPhysics__GroundBreonVeg swig_types[8]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Ground_t swig_types[9]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[10]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[11]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[12]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[13]
-#define SWIGTYPE_p_FullPhysics__Pressure swig_types[14]
-#define SWIGTYPE_p_FullPhysics__StateVector swig_types[15]
-#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[16]
-#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[17]
-#define SWIGTYPE_p_FullPhysics__Unit swig_types[18]
-#define SWIGTYPE_p_allocator_type swig_types[19]
-#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[20]
-#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[21]
-#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[22]
-#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[23]
-#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[24]
-#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[25]
-#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[26]
-#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[27]
-#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[28]
-#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[29]
-#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[30]
-#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[31]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[32]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[33]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[34]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[35]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t swig_types[36]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t swig_types[37]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ground_t swig_types[38]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t swig_types[39]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[40]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[41]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[42]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[43]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[44]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[45]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[46]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[47]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[48]
-#define SWIGTYPE_p_char swig_types[49]
-#define SWIGTYPE_p_char_type swig_types[50]
-#define SWIGTYPE_p_difference_type swig_types[51]
-#define SWIGTYPE_p_fmtflags swig_types[52]
-#define SWIGTYPE_p_int_type swig_types[53]
-#define SWIGTYPE_p_iostate swig_types[54]
-#define SWIGTYPE_p_off_type swig_types[55]
-#define SWIGTYPE_p_openmode swig_types[56]
-#define SWIGTYPE_p_pos_type swig_types[57]
-#define SWIGTYPE_p_seekdir swig_types[58]
-#define SWIGTYPE_p_size_t swig_types[59]
-#define SWIGTYPE_p_size_type swig_types[60]
-#define SWIGTYPE_p_state_type swig_types[61]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[62]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[63]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[64]
-#define SWIGTYPE_p_traits_type swig_types[65]
-#define SWIGTYPE_p_value_type swig_types[66]
-static swig_type_info *swig_types[68];
-static swig_module_info swig_module = {swig_types, 67, 0, 0, 0, 0};
+#define SWIGTYPE_p_FullPhysics__AutoDerivativeRefT_double_t swig_types[0]
+#define SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t swig_types[1]
+#define SWIGTYPE_p_FullPhysics__AutoDerivativeWithUnitT_double_t swig_types[2]
+#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[3]
+#define SWIGTYPE_p_FullPhysics__Ground swig_types[4]
+#define SWIGTYPE_p_FullPhysics__GroundBreonSoil swig_types[5]
+#define SWIGTYPE_p_FullPhysics__GroundBreonVeg swig_types[6]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Ground_t swig_types[7]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[8]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[9]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[10]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[11]
+#define SWIGTYPE_p_FullPhysics__Pressure swig_types[12]
+#define SWIGTYPE_p_FullPhysics__StateVector swig_types[13]
+#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[14]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[15]
+#define SWIGTYPE_p_FullPhysics__Unit swig_types[16]
+#define SWIGTYPE_p_allocator_type swig_types[17]
+#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[18]
+#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[19]
+#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[20]
+#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[21]
+#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[22]
+#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[23]
+#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[24]
+#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[25]
+#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[26]
+#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[27]
+#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[28]
+#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[29]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[30]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[31]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[32]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[33]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t swig_types[34]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t swig_types[35]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ground_t swig_types[36]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t swig_types[37]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[38]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[39]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[40]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[41]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[42]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[43]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[44]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[45]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[46]
+#define SWIGTYPE_p_char swig_types[47]
+#define SWIGTYPE_p_char_type swig_types[48]
+#define SWIGTYPE_p_difference_type swig_types[49]
+#define SWIGTYPE_p_fmtflags swig_types[50]
+#define SWIGTYPE_p_int_type swig_types[51]
+#define SWIGTYPE_p_iostate swig_types[52]
+#define SWIGTYPE_p_off_type swig_types[53]
+#define SWIGTYPE_p_openmode swig_types[54]
+#define SWIGTYPE_p_pos_type swig_types[55]
+#define SWIGTYPE_p_seekdir swig_types[56]
+#define SWIGTYPE_p_size_t swig_types[57]
+#define SWIGTYPE_p_size_type swig_types[58]
+#define SWIGTYPE_p_state_type swig_types[59]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[60]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[61]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[62]
+#define SWIGTYPE_p_traits_type swig_types[63]
+#define SWIGTYPE_p_value_type swig_types[64]
+static swig_type_info *swig_types[66];
+static swig_module_info swig_module = {swig_types, 65, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4968,16 +4966,6 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 }
 
 
-#include <limits.h>
-#if !defined(SWIG_NO_LLONG_MAX)
-# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
-#   define LLONG_MAX __LONG_LONG_MAX__
-#   define LLONG_MIN (-LLONG_MAX - 1LL)
-#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
-# endif
-#endif
-
-
 #include <float.h>
 
 
@@ -5054,6 +5042,40 @@ SWIG_AsVal_long (PyObject *obj, long* val)
 
 
 SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
+
+struct SWIG_null_deleter {
+  void operator() (void const *) const {
+  }
+};
+#define SWIG_NO_NULL_DELETER_0 , SWIG_null_deleter()
+#define SWIG_NO_NULL_DELETER_1
+#define SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW
+#define SWIG_NO_NULL_DELETER_SWIG_POINTER_OWN
+
+
+#define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
+
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+SWIGINTERN int
 SWIG_AsVal_int (PyObject * obj, int *val)
 {
   long v;
@@ -5113,30 +5135,6 @@ SWIG_From_std_string  (const std::string& s)
 }
 
 
-SWIGINTERN int
-SWIG_AsVal_bool (PyObject *obj, bool *val)
-{
-  int r = PyObject_IsTrue(obj);
-  if (r == -1)
-    return SWIG_ERROR;
-  if (val) *val = r ? true : false;
-  return SWIG_OK;
-}
-
-
-struct SWIG_null_deleter {
-  void operator() (void const *) const {
-  }
-};
-#define SWIG_NO_NULL_DELETER_0 , SWIG_null_deleter()
-#define SWIG_NO_NULL_DELETER_1
-#define SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW
-#define SWIG_NO_NULL_DELETER_SWIG_POINTER_OWN
-
-
-#define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
-
-
 
 /* ---------------------------------------------------
  * C++ director class methods
@@ -5147,402 +5145,6 @@ struct SWIG_null_deleter {
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_GroundBreon_surface_parameter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::GroundBreon *arg1 = (FullPhysics::GroundBreon *) 0 ;
-  double arg2 ;
-  int arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
-  PyObject *swig_obj[3] ;
-  SwigValueWrapper< FullPhysics::ArrayAd< double,1 > > result;
-  
-  if (!SWIG_Python_UnpackTuple(args,"GroundBreon_surface_parameter",3,3,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__GroundBreon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreon_surface_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBreon const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::GroundBreon * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBreon_surface_parameter" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GroundBreon_surface_parameter" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
-  {
-    try {
-      result = ((FullPhysics::GroundBreon const *)arg1)->surface_parameter(arg2,arg3);
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,1 >(static_cast< const FullPhysics::ArrayAd< double,1 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroundBreon_overall_amplitude(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::GroundBreon *arg1 = (FullPhysics::GroundBreon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::AutoDerivative< double > result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__GroundBreon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreon_overall_amplitude" "', argument " "1"" of type '" "FullPhysics::GroundBreon const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::GroundBreon * >(argp1);
-  {
-    try {
-      result = ((FullPhysics::GroundBreon const *)arg1)->overall_amplitude();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  {
-    boost::shared_ptr< const FullPhysics::AutoDerivative<double> > *smartresult = new boost::shared_ptr< const FullPhysics::AutoDerivative<double> >(new FullPhysics::AutoDerivative< double >((FullPhysics::AutoDerivative< double > &)result));
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, SWIG_POINTER_OWN);
-  }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroundBreon_asymmetry_parameter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::GroundBreon *arg1 = (FullPhysics::GroundBreon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::AutoDerivative< double > result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__GroundBreon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreon_asymmetry_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBreon const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::GroundBreon * >(argp1);
-  {
-    try {
-      result = ((FullPhysics::GroundBreon const *)arg1)->asymmetry_parameter();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  {
-    boost::shared_ptr< const FullPhysics::AutoDerivative<double> > *smartresult = new boost::shared_ptr< const FullPhysics::AutoDerivative<double> >(new FullPhysics::AutoDerivative< double >((FullPhysics::AutoDerivative< double > &)result));
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, SWIG_POINTER_OWN);
-  }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroundBreon_geometric_factor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::GroundBreon *arg1 = (FullPhysics::GroundBreon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::AutoDerivative< double > result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__GroundBreon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreon_geometric_factor" "', argument " "1"" of type '" "FullPhysics::GroundBreon const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::GroundBreon * >(argp1);
-  {
-    try {
-      result = ((FullPhysics::GroundBreon const *)arg1)->geometric_factor();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  {
-    boost::shared_ptr< const FullPhysics::AutoDerivative<double> > *smartresult = new boost::shared_ptr< const FullPhysics::AutoDerivative<double> >(new FullPhysics::AutoDerivative< double >((FullPhysics::AutoDerivative< double > &)result));
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, SWIG_POINTER_OWN);
-  }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroundBreon_refractive_index(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::GroundBreon *arg1 = (FullPhysics::GroundBreon *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  double result;
-  
-  if (!SWIG_Python_UnpackTuple(args,"GroundBreon_refractive_index",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__GroundBreon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreon_refractive_index" "', argument " "1"" of type '" "FullPhysics::GroundBreon const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::GroundBreon * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBreon_refractive_index" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  {
-    try {
-      result = (double)((FullPhysics::GroundBreon const *)arg1)->refractive_index(arg2);
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroundBreon_breon_type(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::GroundBreon *arg1 = (FullPhysics::GroundBreon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__GroundBreon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreon_breon_type" "', argument " "1"" of type '" "FullPhysics::GroundBreon const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::GroundBreon * >(argp1);
-  {
-    try {
-      result = ((FullPhysics::GroundBreon const *)arg1)->breon_type();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroundBreon_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::GroundBreon *arg1 = (FullPhysics::GroundBreon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  boost::shared_ptr< FullPhysics::Ground > result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__GroundBreon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreon_clone" "', argument " "1"" of type '" "FullPhysics::GroundBreon const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::GroundBreon * >(argp1);
-  {
-    try {
-      result = ((FullPhysics::GroundBreon const *)arg1)->clone();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  {
-    resultobj = FullPhysics::swig_to_python(result);
-  }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroundBreon_state_vector_name_i(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::GroundBreon *arg1 = (FullPhysics::GroundBreon *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  std::string result;
-  
-  if (!SWIG_Python_UnpackTuple(args,"GroundBreon_state_vector_name_i",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__GroundBreon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreon_state_vector_name_i" "', argument " "1"" of type '" "FullPhysics::GroundBreon const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::GroundBreon * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBreon_state_vector_name_i" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  {
-    try {
-      result = ((FullPhysics::GroundBreon const *)arg1)->state_vector_name_i(arg2);
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroundBreon_print_desc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::GroundBreon *arg1 = (FullPhysics::GroundBreon *) 0 ;
-  std::ostream *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"GroundBreon_print_desc",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__GroundBreon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreon_print_desc" "', argument " "1"" of type '" "FullPhysics::GroundBreon const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::GroundBreon * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroundBreon_print_desc" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBreon_print_desc" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::ostream * >(argp2);
-  {
-    try {
-      ((FullPhysics::GroundBreon const *)arg1)->print(*arg2);
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroundBreon_desc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::GroundBreon *arg1 = (FullPhysics::GroundBreon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__GroundBreon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreon_desc" "', argument " "1"" of type '" "FullPhysics::GroundBreon const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::GroundBreon * >(argp1);
-  {
-    try {
-      result = ((FullPhysics::GroundBreon const *)arg1)->desc();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_GroundBreon(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::GroundBreon *arg1 = (FullPhysics::GroundBreon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__GroundBreon, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_GroundBreon" "', argument " "1"" of type '" "FullPhysics::GroundBreon *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::GroundBreon * >(argp1);
-  {
-    try {
-      delete arg1;
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *GroundBreon_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_FullPhysics__GroundBreon, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
 SWIGINTERN PyObject *_wrap_new_GroundBreonVeg(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   double arg1 ;
@@ -5610,6 +5212,597 @@ SWIGINTERN PyObject *_wrap_new_GroundBreonVeg(PyObject *SWIGUNUSEDPARM(self), Py
     boost::shared_ptr<  FullPhysics::GroundBreonVeg > *smartresult = result ? new boost::shared_ptr<  FullPhysics::GroundBreonVeg >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
     resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
   }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg__v_overall_amplitude__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonVeg *arg1 = (FullPhysics::GroundBreonVeg *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > *smartarg1 = 0 ;
+  FullPhysics::AutoDerivative< double > result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonVeg__v_overall_amplitude" "', argument " "1"" of type '" "FullPhysics::GroundBreonVeg const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::GroundBreonVeg const *)arg1)->overall_amplitude();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::AutoDerivative<double> > *smartresult = new boost::shared_ptr<  FullPhysics::AutoDerivative<double> >(new FullPhysics::AutoDerivative< double >((FullPhysics::AutoDerivative< double > &)result));
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg__v_overall_amplitude__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonVeg *arg1 = (FullPhysics::GroundBreonVeg *) 0 ;
+  FullPhysics::AutoDerivative< double > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::AutoDerivative< double > const > tempshared2 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonVeg__v_overall_amplitude" "', argument " "1"" of type '" "FullPhysics::GroundBreonVeg *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonVeg > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::AutoDerivative<double> *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t,  0 , &newmem);
+    if (SWIG_IsOK(res2)) {
+      arg2 = ptr;
+    } else {
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,  0 , &newmem);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroundBreonVeg__v_overall_amplitude" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (!argp2) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBreonVeg__v_overall_amplitude" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(tempshared2.get());
+      } else {
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2)->get());
+      }
+    }
+  }
+  {
+    try {
+      (arg1)->overall_amplitude((FullPhysics::AutoDerivative< double > const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg__v_overall_amplitude(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBreonVeg__v_overall_amplitude",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_GroundBreonVeg__v_overall_amplitude__SWIG_0(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_GroundBreonVeg__v_overall_amplitude__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBreonVeg__v_overall_amplitude'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::GroundBreonVeg::overall_amplitude() const\n"
+    "    FullPhysics::GroundBreonVeg::overall_amplitude(FullPhysics::AutoDerivative< double > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg__v_asymmetry_parameter__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonVeg *arg1 = (FullPhysics::GroundBreonVeg *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > *smartarg1 = 0 ;
+  FullPhysics::AutoDerivative< double > result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonVeg__v_asymmetry_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBreonVeg const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::GroundBreonVeg const *)arg1)->asymmetry_parameter();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::AutoDerivative<double> > *smartresult = new boost::shared_ptr<  FullPhysics::AutoDerivative<double> >(new FullPhysics::AutoDerivative< double >((FullPhysics::AutoDerivative< double > &)result));
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg__v_asymmetry_parameter__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonVeg *arg1 = (FullPhysics::GroundBreonVeg *) 0 ;
+  FullPhysics::AutoDerivative< double > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::AutoDerivative< double > const > tempshared2 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonVeg__v_asymmetry_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBreonVeg *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonVeg > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::AutoDerivative<double> *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t,  0 , &newmem);
+    if (SWIG_IsOK(res2)) {
+      arg2 = ptr;
+    } else {
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,  0 , &newmem);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroundBreonVeg__v_asymmetry_parameter" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (!argp2) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBreonVeg__v_asymmetry_parameter" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(tempshared2.get());
+      } else {
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2)->get());
+      }
+    }
+  }
+  {
+    try {
+      (arg1)->asymmetry_parameter((FullPhysics::AutoDerivative< double > const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg__v_asymmetry_parameter(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBreonVeg__v_asymmetry_parameter",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_GroundBreonVeg__v_asymmetry_parameter__SWIG_0(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_GroundBreonVeg__v_asymmetry_parameter__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBreonVeg__v_asymmetry_parameter'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::GroundBreonVeg::asymmetry_parameter() const\n"
+    "    FullPhysics::GroundBreonVeg::asymmetry_parameter(FullPhysics::AutoDerivative< double > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg__v_geometric_factor__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonVeg *arg1 = (FullPhysics::GroundBreonVeg *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > *smartarg1 = 0 ;
+  FullPhysics::AutoDerivative< double > result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonVeg__v_geometric_factor" "', argument " "1"" of type '" "FullPhysics::GroundBreonVeg const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::GroundBreonVeg const *)arg1)->geometric_factor();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::AutoDerivative<double> > *smartresult = new boost::shared_ptr<  FullPhysics::AutoDerivative<double> >(new FullPhysics::AutoDerivative< double >((FullPhysics::AutoDerivative< double > &)result));
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg__v_geometric_factor__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonVeg *arg1 = (FullPhysics::GroundBreonVeg *) 0 ;
+  FullPhysics::AutoDerivative< double > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::AutoDerivative< double > const > tempshared2 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonVeg__v_geometric_factor" "', argument " "1"" of type '" "FullPhysics::GroundBreonVeg *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonVeg > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::AutoDerivative<double> *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t,  0 , &newmem);
+    if (SWIG_IsOK(res2)) {
+      arg2 = ptr;
+    } else {
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,  0 , &newmem);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroundBreonVeg__v_geometric_factor" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (!argp2) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBreonVeg__v_geometric_factor" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(tempshared2.get());
+      } else {
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2)->get());
+      }
+    }
+  }
+  {
+    try {
+      (arg1)->geometric_factor((FullPhysics::AutoDerivative< double > const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg__v_geometric_factor(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBreonVeg__v_geometric_factor",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_GroundBreonVeg__v_geometric_factor__SWIG_0(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_GroundBreonVeg__v_geometric_factor__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBreonVeg__v_geometric_factor'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::GroundBreonVeg::geometric_factor() const\n"
+    "    FullPhysics::GroundBreonVeg::geometric_factor(FullPhysics::AutoDerivative< double > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg_refractive_index(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonVeg *arg1 = (FullPhysics::GroundBreonVeg *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"GroundBreonVeg_refractive_index",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonVeg_refractive_index" "', argument " "1"" of type '" "FullPhysics::GroundBreonVeg const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBreonVeg_refractive_index" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = (double)((FullPhysics::GroundBreonVeg const *)arg1)->refractive_index(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg_breon_type(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonVeg *arg1 = (FullPhysics::GroundBreonVeg *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonVeg_breon_type" "', argument " "1"" of type '" "FullPhysics::GroundBreonVeg const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::GroundBreonVeg const *)arg1)->breon_type();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg_state_vector_name_i(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonVeg *arg1 = (FullPhysics::GroundBreonVeg *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  std::string result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"GroundBreonVeg_state_vector_name_i",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonVeg_state_vector_name_i" "', argument " "1"" of type '" "FullPhysics::GroundBreonVeg const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBreonVeg_state_vector_name_i" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = ((FullPhysics::GroundBreonVeg const *)arg1)->state_vector_name_i(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonVeg_desc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonVeg *arg1 = (FullPhysics::GroundBreonVeg *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonVeg const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonVeg_desc" "', argument " "1"" of type '" "FullPhysics::GroundBreonVeg const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonVeg * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::GroundBreonVeg const *)arg1)->desc();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -5742,6 +5935,597 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GroundBreonSoil__v_overall_amplitude__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonSoil *arg1 = (FullPhysics::GroundBreonSoil *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > *smartarg1 = 0 ;
+  FullPhysics::AutoDerivative< double > result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonSoil__v_overall_amplitude" "', argument " "1"" of type '" "FullPhysics::GroundBreonSoil const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::GroundBreonSoil const *)arg1)->overall_amplitude();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::AutoDerivative<double> > *smartresult = new boost::shared_ptr<  FullPhysics::AutoDerivative<double> >(new FullPhysics::AutoDerivative< double >((FullPhysics::AutoDerivative< double > &)result));
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonSoil__v_overall_amplitude__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonSoil *arg1 = (FullPhysics::GroundBreonSoil *) 0 ;
+  FullPhysics::AutoDerivative< double > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::AutoDerivative< double > const > tempshared2 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonSoil__v_overall_amplitude" "', argument " "1"" of type '" "FullPhysics::GroundBreonSoil *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonSoil > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::AutoDerivative<double> *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t,  0 , &newmem);
+    if (SWIG_IsOK(res2)) {
+      arg2 = ptr;
+    } else {
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,  0 , &newmem);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroundBreonSoil__v_overall_amplitude" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (!argp2) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBreonSoil__v_overall_amplitude" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(tempshared2.get());
+      } else {
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2)->get());
+      }
+    }
+  }
+  {
+    try {
+      (arg1)->overall_amplitude((FullPhysics::AutoDerivative< double > const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonSoil__v_overall_amplitude(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBreonSoil__v_overall_amplitude",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_GroundBreonSoil__v_overall_amplitude__SWIG_0(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_GroundBreonSoil__v_overall_amplitude__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBreonSoil__v_overall_amplitude'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::GroundBreonSoil::overall_amplitude() const\n"
+    "    FullPhysics::GroundBreonSoil::overall_amplitude(FullPhysics::AutoDerivative< double > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonSoil__v_asymmetry_parameter__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonSoil *arg1 = (FullPhysics::GroundBreonSoil *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > *smartarg1 = 0 ;
+  FullPhysics::AutoDerivative< double > result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonSoil__v_asymmetry_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBreonSoil const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::GroundBreonSoil const *)arg1)->asymmetry_parameter();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::AutoDerivative<double> > *smartresult = new boost::shared_ptr<  FullPhysics::AutoDerivative<double> >(new FullPhysics::AutoDerivative< double >((FullPhysics::AutoDerivative< double > &)result));
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonSoil__v_asymmetry_parameter__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonSoil *arg1 = (FullPhysics::GroundBreonSoil *) 0 ;
+  FullPhysics::AutoDerivative< double > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::AutoDerivative< double > const > tempshared2 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonSoil__v_asymmetry_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBreonSoil *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonSoil > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::AutoDerivative<double> *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t,  0 , &newmem);
+    if (SWIG_IsOK(res2)) {
+      arg2 = ptr;
+    } else {
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,  0 , &newmem);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroundBreonSoil__v_asymmetry_parameter" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (!argp2) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBreonSoil__v_asymmetry_parameter" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(tempshared2.get());
+      } else {
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2)->get());
+      }
+    }
+  }
+  {
+    try {
+      (arg1)->asymmetry_parameter((FullPhysics::AutoDerivative< double > const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonSoil__v_asymmetry_parameter(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBreonSoil__v_asymmetry_parameter",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_GroundBreonSoil__v_asymmetry_parameter__SWIG_0(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_GroundBreonSoil__v_asymmetry_parameter__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBreonSoil__v_asymmetry_parameter'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::GroundBreonSoil::asymmetry_parameter() const\n"
+    "    FullPhysics::GroundBreonSoil::asymmetry_parameter(FullPhysics::AutoDerivative< double > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonSoil__v_geometric_factor__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonSoil *arg1 = (FullPhysics::GroundBreonSoil *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > *smartarg1 = 0 ;
+  FullPhysics::AutoDerivative< double > result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonSoil__v_geometric_factor" "', argument " "1"" of type '" "FullPhysics::GroundBreonSoil const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::GroundBreonSoil const *)arg1)->geometric_factor();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::AutoDerivative<double> > *smartresult = new boost::shared_ptr<  FullPhysics::AutoDerivative<double> >(new FullPhysics::AutoDerivative< double >((FullPhysics::AutoDerivative< double > &)result));
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonSoil__v_geometric_factor__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonSoil *arg1 = (FullPhysics::GroundBreonSoil *) 0 ;
+  FullPhysics::AutoDerivative< double > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::AutoDerivative< double > const > tempshared2 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonSoil__v_geometric_factor" "', argument " "1"" of type '" "FullPhysics::GroundBreonSoil *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonSoil > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::AutoDerivative<double> *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t,  0 , &newmem);
+    if (SWIG_IsOK(res2)) {
+      arg2 = ptr;
+    } else {
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,  0 , &newmem);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroundBreonSoil__v_geometric_factor" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (!argp2) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBreonSoil__v_geometric_factor" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(tempshared2.get());
+      } else {
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2)->get());
+      }
+    }
+  }
+  {
+    try {
+      (arg1)->geometric_factor((FullPhysics::AutoDerivative< double > const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonSoil__v_geometric_factor(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBreonSoil__v_geometric_factor",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_GroundBreonSoil__v_geometric_factor__SWIG_0(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_GroundBreonSoil__v_geometric_factor__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBreonSoil__v_geometric_factor'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::GroundBreonSoil::geometric_factor() const\n"
+    "    FullPhysics::GroundBreonSoil::geometric_factor(FullPhysics::AutoDerivative< double > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonSoil_refractive_index(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonSoil *arg1 = (FullPhysics::GroundBreonSoil *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"GroundBreonSoil_refractive_index",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonSoil_refractive_index" "', argument " "1"" of type '" "FullPhysics::GroundBreonSoil const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBreonSoil_refractive_index" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = (double)((FullPhysics::GroundBreonSoil const *)arg1)->refractive_index(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonSoil_breon_type(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonSoil *arg1 = (FullPhysics::GroundBreonSoil *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonSoil_breon_type" "', argument " "1"" of type '" "FullPhysics::GroundBreonSoil const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::GroundBreonSoil const *)arg1)->breon_type();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonSoil_state_vector_name_i(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonSoil *arg1 = (FullPhysics::GroundBreonSoil *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  std::string result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"GroundBreonSoil_state_vector_name_i",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonSoil_state_vector_name_i" "', argument " "1"" of type '" "FullPhysics::GroundBreonSoil const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBreonSoil_state_vector_name_i" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = ((FullPhysics::GroundBreonSoil const *)arg1)->state_vector_name_i(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroundBreonSoil_desc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBreonSoil *arg1 = (FullPhysics::GroundBreonSoil *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBreonSoil const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBreonSoil_desc" "', argument " "1"" of type '" "FullPhysics::GroundBreonSoil const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBreonSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBreonSoil * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::GroundBreonSoil const *)arg1)->desc();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_GroundBreonSoil(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBreonSoil *arg1 = (FullPhysics::GroundBreonSoil *) 0 ;
@@ -5797,54 +6581,40 @@ SWIGINTERN PyObject *GroundBreonSoil_swiginit(PyObject *SWIGUNUSEDPARM(self), Py
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"GroundBreon_surface_parameter", _wrap_GroundBreon_surface_parameter, METH_VARARGS, (char *)"\n"
-		"ArrayAd< double, 1 > GroundBreon::surface_parameter(const double wn, const int spec_index) const\n"
-		"\n"
-		""},
-	 { (char *)"GroundBreon_overall_amplitude", (PyCFunction)_wrap_GroundBreon_overall_amplitude, METH_O, (char *)"\n"
-		"const AutoDerivative< double > GroundBreon::overall_amplitude() const\n"
-		"Rahmann overall amplitude parameter. \n"
-		""},
-	 { (char *)"GroundBreon_asymmetry_parameter", (PyCFunction)_wrap_GroundBreon_asymmetry_parameter, METH_O, (char *)"\n"
-		"const AutoDerivative< double > GroundBreon::asymmetry_parameter() const\n"
-		"\n"
-		""},
-	 { (char *)"GroundBreon_geometric_factor", (PyCFunction)_wrap_GroundBreon_geometric_factor, METH_O, (char *)"\n"
-		"const AutoDerivative< double > GroundBreon::geometric_factor() const\n"
-		"\n"
-		""},
-	 { (char *)"GroundBreon_refractive_index", _wrap_GroundBreon_refractive_index, METH_VARARGS, (char *)"\n"
-		"virtual const double FullPhysics::GroundBreon::refractive_index(const int Spec_idx) const\n"
-		"Returns hard coded value of 1.5 since that is the value hardcoded into\n"
-		"LIDORT. \n"
-		""},
-	 { (char *)"GroundBreon_breon_type", (PyCFunction)_wrap_GroundBreon_breon_type, METH_O, (char *)"\n"
-		"virtual const std::string FullPhysics::GroundBreon::breon_type() const =0\n"
-		"String describing which type of Breon surface type, also makes this\n"
-		"class abstract. \n"
-		""},
-	 { (char *)"GroundBreon_clone", (PyCFunction)_wrap_GroundBreon_clone, METH_O, (char *)"\n"
-		"virtual boost::shared_ptr<Ground> FullPhysics::GroundBreon::clone() const =0\n"
-		"\n"
-		""},
-	 { (char *)"GroundBreon_state_vector_name_i", _wrap_GroundBreon_state_vector_name_i, METH_VARARGS, (char *)"\n"
-		"std::string GroundBreon::state_vector_name_i(int i) const\n"
-		"\n"
-		""},
-	 { (char *)"GroundBreon_print_desc", _wrap_GroundBreon_print_desc, METH_VARARGS, (char *)"\n"
-		"void GroundBreon::print(std::ostream &Os) const\n"
-		"\n"
-		""},
-	 { (char *)"GroundBreon_desc", (PyCFunction)_wrap_GroundBreon_desc, METH_O, (char *)"\n"
-		"virtual std::string FullPhysics::GroundBreon::desc() const\n"
-		"\n"
-		""},
-	 { (char *)"delete_GroundBreon", (PyCFunction)_wrap_delete_GroundBreon, METH_O, NULL},
-	 { (char *)"GroundBreon_swigregister", GroundBreon_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_GroundBreonVeg", _wrap_new_GroundBreonVeg, METH_VARARGS, (char *)"\n"
 		"FullPhysics::GroundBreonVeg::GroundBreonVeg(const double Amplitude, const double Asymmetry, const double\n"
 		"Geometric, const bool Ampl_flag, const bool Asym_flag, const bool\n"
 		"Geom_flag)\n"
+		"\n"
+		""},
+	 { (char *)"GroundBreonVeg__v_overall_amplitude", _wrap_GroundBreonVeg__v_overall_amplitude, METH_VARARGS, (char *)"\n"
+		"void GroundBreon::overall_amplitude(const AutoDerivative< double > &val)\n"
+		"\n"
+		""},
+	 { (char *)"GroundBreonVeg__v_asymmetry_parameter", _wrap_GroundBreonVeg__v_asymmetry_parameter, METH_VARARGS, (char *)"\n"
+		"void GroundBreon::asymmetry_parameter(const AutoDerivative< double > &val)\n"
+		"\n"
+		""},
+	 { (char *)"GroundBreonVeg__v_geometric_factor", _wrap_GroundBreonVeg__v_geometric_factor, METH_VARARGS, (char *)"\n"
+		"void GroundBreon::geometric_factor(const AutoDerivative< double > &val)\n"
+		"\n"
+		""},
+	 { (char *)"GroundBreonVeg_refractive_index", _wrap_GroundBreonVeg_refractive_index, METH_VARARGS, (char *)"\n"
+		"virtual const double FullPhysics::GroundBreon::refractive_index(const int Spec_idx) const\n"
+		"Returns hard coded value of 1.5 since that is the value hardcoded into\n"
+		"LIDORT. \n"
+		""},
+	 { (char *)"GroundBreonVeg_breon_type", (PyCFunction)_wrap_GroundBreonVeg_breon_type, METH_O, (char *)"\n"
+		"virtual const std::string FullPhysics::GroundBreonVeg::breon_type() const\n"
+		"String describing which type of Breon surface type, also makes this\n"
+		"class abstract. \n"
+		""},
+	 { (char *)"GroundBreonVeg_state_vector_name_i", _wrap_GroundBreonVeg_state_vector_name_i, METH_VARARGS, (char *)"\n"
+		"std::string GroundBreon::state_vector_name_i(int i) const\n"
+		"\n"
+		""},
+	 { (char *)"GroundBreonVeg_desc", (PyCFunction)_wrap_GroundBreonVeg_desc, METH_O, (char *)"\n"
+		"virtual std::string FullPhysics::GroundBreon::desc() const\n"
 		"\n"
 		""},
 	 { (char *)"delete_GroundBreonVeg", (PyCFunction)_wrap_delete_GroundBreonVeg, METH_O, NULL},
@@ -5854,6 +6624,36 @@ static PyMethodDef SwigMethods[] = {
 		"FullPhysics::GroundBreonSoil::GroundBreonSoil(const double Amplitude, const double Asymmetry, const double\n"
 		"Geometric, const bool Ampl_flag, const bool Asym_flag, const bool\n"
 		"Geom_flag)\n"
+		"\n"
+		""},
+	 { (char *)"GroundBreonSoil__v_overall_amplitude", _wrap_GroundBreonSoil__v_overall_amplitude, METH_VARARGS, (char *)"\n"
+		"void GroundBreon::overall_amplitude(const AutoDerivative< double > &val)\n"
+		"\n"
+		""},
+	 { (char *)"GroundBreonSoil__v_asymmetry_parameter", _wrap_GroundBreonSoil__v_asymmetry_parameter, METH_VARARGS, (char *)"\n"
+		"void GroundBreon::asymmetry_parameter(const AutoDerivative< double > &val)\n"
+		"\n"
+		""},
+	 { (char *)"GroundBreonSoil__v_geometric_factor", _wrap_GroundBreonSoil__v_geometric_factor, METH_VARARGS, (char *)"\n"
+		"void GroundBreon::geometric_factor(const AutoDerivative< double > &val)\n"
+		"\n"
+		""},
+	 { (char *)"GroundBreonSoil_refractive_index", _wrap_GroundBreonSoil_refractive_index, METH_VARARGS, (char *)"\n"
+		"virtual const double FullPhysics::GroundBreon::refractive_index(const int Spec_idx) const\n"
+		"Returns hard coded value of 1.5 since that is the value hardcoded into\n"
+		"LIDORT. \n"
+		""},
+	 { (char *)"GroundBreonSoil_breon_type", (PyCFunction)_wrap_GroundBreonSoil_breon_type, METH_O, (char *)"\n"
+		"virtual const std::string FullPhysics::GroundBreonSoil::breon_type() const\n"
+		"String describing which type of Breon surface type, also makes this\n"
+		"class abstract. \n"
+		""},
+	 { (char *)"GroundBreonSoil_state_vector_name_i", _wrap_GroundBreonSoil_state_vector_name_i, METH_VARARGS, (char *)"\n"
+		"std::string GroundBreon::state_vector_name_i(int i) const\n"
+		"\n"
+		""},
+	 { (char *)"GroundBreonSoil_desc", (PyCFunction)_wrap_GroundBreonSoil_desc, METH_O, (char *)"\n"
+		"virtual std::string FullPhysics::GroundBreon::desc() const\n"
 		"\n"
 		""},
 	 { (char *)"delete_GroundBreonSoil", (PyCFunction)_wrap_delete_GroundBreonSoil, METH_O, NULL},
@@ -5882,11 +6682,11 @@ static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptr
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::Pressure > *)x);
 }
-static void *_p_FullPhysics__GroundBreonSoilTo_p_FullPhysics__GroundBreon(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GroundBreon *)  ((FullPhysics::GroundBreonSoil *) x));
+static void *_p_FullPhysics__GroundBreonSoilTo_p_FullPhysics__Ground(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Ground *)  ((FullPhysics::GroundBreonSoil *) x));
 }
-static void *_p_FullPhysics__GroundBreonVegTo_p_FullPhysics__GroundBreon(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GroundBreon *)  ((FullPhysics::GroundBreonVeg *) x));
+static void *_p_FullPhysics__GroundBreonVegTo_p_FullPhysics__Ground(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Ground *)  ((FullPhysics::GroundBreonVeg *) x));
 }
 static void *_p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::SubStateVectorObserver *) x));
@@ -5896,6 +6696,9 @@ static void *_p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver(void 
 }
 static void *_p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::StateVector > *) ((FullPhysics::StateVector *) x));
+}
+static void *_p_FullPhysics__GroundBreonSoilTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::Ground > *)(FullPhysics::Ground *) ((FullPhysics::GroundBreonSoil *) x));
 }
 static void *_p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::StateVector > *) x));
@@ -5924,8 +6727,19 @@ static void *_p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__
 static void *_p_FullPhysics__PressureTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::Pressure > *) ((FullPhysics::Pressure *) x));
 }
+static void *_p_FullPhysics__GroundBreonVegTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::Ground > *)(FullPhysics::Ground *) ((FullPhysics::GroundBreonVeg *) x));
+}
 static void *_p_FullPhysics__ObservableT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::Ground > *) x));
+}
+static void *_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Ground > >(*(boost::shared_ptr< FullPhysics::GroundBreonSoil > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Ground > >(*(boost::shared_ptr< FullPhysics::GroundBreonVeg > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__Ground_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -5960,13 +6774,30 @@ static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__ba
 static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_ostream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
 }
+static void *_p_FullPhysics__GroundBreonSoilTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::Ground > *) (FullPhysics::Ground *) ((FullPhysics::GroundBreonSoil *) x));
+}
+static void *_p_FullPhysics__GroundTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::Ground > *)  ((FullPhysics::Ground *) x));
+}
+static void *_p_FullPhysics__GroundBreonVegTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::Ground > *) (FullPhysics::Ground *) ((FullPhysics::GroundBreonVeg *) x));
+}
 static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AutoDerivative< double > > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::GroundBreonSoil > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Unit > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::GroundBreonVeg > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -6004,19 +6835,22 @@ static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::Pressure > > *)x);
 }
-static void *_p_FullPhysics__GroundTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observable< FullPhysics::Ground > *)  ((FullPhysics::Ground *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_tTo_p_boost__shared_ptrT_FullPhysics__Ground_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Ground >(*(boost::shared_ptr< FullPhysics::GroundBreonSoil > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_tTo_p_boost__shared_ptrT_FullPhysics__Ground_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Ground >(*(boost::shared_ptr< FullPhysics::GroundBreonVeg > *)x);
 }
 static void *_p_FullPhysics__PressureTo_p_FullPhysics__ObservableT_FullPhysics__Pressure_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observable< FullPhysics::Pressure > *)  ((FullPhysics::Pressure *) x));
 }
-static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_1_t = {"_p_FullPhysics__ArrayAdT_double_1_t", "FullPhysics::ArrayAd< double,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeRefT_double_t = {"_p_FullPhysics__AutoDerivativeRefT_double_t", "FullPhysics::AutoDerivativeRef< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeT_double_t = {"_p_FullPhysics__AutoDerivativeT_double_t", "FullPhysics::AutoDerivative< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t = {"_p_FullPhysics__AutoDerivativeWithUnitT_double_t", "FullPhysics::AutoDerivativeWithUnit< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__GenericObject = {"_p_FullPhysics__GenericObject", "FullPhysics::GenericObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Ground = {"_p_FullPhysics__Ground", "FullPhysics::Ground *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_FullPhysics__GroundBreon = {"_p_FullPhysics__GroundBreon", "FullPhysics::GroundBreon *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__GroundBreonSoil = {"_p_FullPhysics__GroundBreonSoil", "FullPhysics::GroundBreonSoil *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__GroundBreonVeg = {"_p_FullPhysics__GroundBreonVeg", "FullPhysics::GroundBreonVeg *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t = {"_p_FullPhysics__ObservableT_FullPhysics__Ground_t", "FullPhysics::Observable< FullPhysics::Ground > *", 0, 0, (void*)0, 0};
@@ -6079,13 +6913,11 @@ static swig_type_info _swigt__p_traits_type = {"_p_traits_type", "traits_type *"
 static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_FullPhysics__ArrayAdT_double_1_t,
   &_swigt__p_FullPhysics__AutoDerivativeRefT_double_t,
   &_swigt__p_FullPhysics__AutoDerivativeT_double_t,
   &_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t,
   &_swigt__p_FullPhysics__GenericObject,
   &_swigt__p_FullPhysics__Ground,
-  &_swigt__p_FullPhysics__GroundBreon,
   &_swigt__p_FullPhysics__GroundBreonSoil,
   &_swigt__p_FullPhysics__GroundBreonVeg,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t,
@@ -6148,16 +6980,14 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_value_type,
 };
 
-static swig_cast_info _swigc__p_FullPhysics__ArrayAdT_double_1_t[] = {  {&_swigt__p_FullPhysics__ArrayAdT_double_1_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeRefT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeWithUnitT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, _p_FullPhysics__AutoDerivativeWithUnitT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Unit, _p_FullPhysics__UnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, _p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t, _p_FullPhysics__ObservableT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__Ground, _p_FullPhysics__GroundTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, _p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, _p_FullPhysics__ObservableT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__Ground[] = {  {&_swigt__p_FullPhysics__Ground, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__GroundBreon[] = {  {&_swigt__p_FullPhysics__GroundBreonSoil, _p_FullPhysics__GroundBreonSoilTo_p_FullPhysics__GroundBreon, 0, 0},  {&_swigt__p_FullPhysics__GroundBreon, 0, 0, 0},  {&_swigt__p_FullPhysics__GroundBreonVeg, _p_FullPhysics__GroundBreonVegTo_p_FullPhysics__GroundBreon, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t, _p_FullPhysics__ObservableT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Ground, _p_FullPhysics__GroundTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, _p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, _p_FullPhysics__AutoDerivativeWithUnitT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GroundBreonSoil, _p_FullPhysics__GroundBreonSoilTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GroundBreonVeg, _p_FullPhysics__GroundBreonVegTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Unit, _p_FullPhysics__UnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, _p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, _p_FullPhysics__ObservableT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Ground[] = {  {&_swigt__p_FullPhysics__GroundBreonSoil, _p_FullPhysics__GroundBreonSoilTo_p_FullPhysics__Ground, 0, 0},  {&_swigt__p_FullPhysics__Ground, 0, 0, 0},  {&_swigt__p_FullPhysics__GroundBreonVeg, _p_FullPhysics__GroundBreonVegTo_p_FullPhysics__Ground, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__GroundBreonSoil[] = {  {&_swigt__p_FullPhysics__GroundBreonSoil, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__GroundBreonVeg[] = {  {&_swigt__p_FullPhysics__GroundBreonVeg, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Ground_t[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Ground, _p_FullPhysics__GroundTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Ground_t[] = {  {&_swigt__p_FullPhysics__GroundBreonSoil, _p_FullPhysics__GroundBreonSoilTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Ground, _p_FullPhysics__GroundTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0},  {&_swigt__p_FullPhysics__GroundBreonVeg, _p_FullPhysics__GroundBreonVegTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Pressure_t[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObservableT_FullPhysics__Pressure_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__StateVector_t[] = {  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__ObservableT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Pressure_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -6183,11 +7013,11 @@ static swig_cast_info _swigc__p_blitz__ArrayT_int_4_t[] = {  {&_swigt__p_blitz__
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, _p_boost__shared_ptrT_FullPhysics__Ground_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, _p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, _p_boost__shared_ptrT_FullPhysics__Ground_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, _p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Ground_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, _p_boost__shared_ptrT_FullPhysics__Ground_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Ground_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, _p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_tTo_p_boost__shared_ptrT_FullPhysics__Ground_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, _p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_tTo_p_boost__shared_ptrT_FullPhysics__Ground_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_t, _p_boost__shared_ptrT_FullPhysics__GroundBreonSoil_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, _p_boost__shared_ptrT_FullPhysics__Ground_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_t, _p_boost__shared_ptrT_FullPhysics__GroundBreonVeg_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -6217,13 +7047,11 @@ static swig_cast_info _swigc__p_traits_type[] = {  {&_swigt__p_traits_type, 0, 0
 static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_FullPhysics__ArrayAdT_double_1_t,
   _swigc__p_FullPhysics__AutoDerivativeRefT_double_t,
   _swigc__p_FullPhysics__AutoDerivativeT_double_t,
   _swigc__p_FullPhysics__AutoDerivativeWithUnitT_double_t,
   _swigc__p_FullPhysics__GenericObject,
   _swigc__p_FullPhysics__Ground,
-  _swigc__p_FullPhysics__GroundBreon,
   _swigc__p_FullPhysics__GroundBreonSoil,
   _swigc__p_FullPhysics__GroundBreonVeg,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__Ground_t,
