@@ -460,6 +460,19 @@ function ConfigCommon:ecmwf()
 end
 
 ------------------------------------------------------------
+-- Allows an apriori or covariance to be a function
+-- that returns the value or a simple type
+------------------------------------------------------------
+
+function function_or_simple_value(val, ...)
+    if type(val) == "function" then
+        return val(...)
+    else
+        return val
+    end
+end
+
+------------------------------------------------------------
 --- Return various HDF creators
 ------------------------------------------------------------
 
@@ -2580,13 +2593,13 @@ ConfigCommon.vmr_fixed_level_scaled = CreatorVmr:new()
 
 function ConfigCommon.vmr_fixed_level_scaled:apriori_v()
    local r = Blitz_double_array_1d(1)
-   r:set(0, self.scale_apriori)
+   r:set(0, function_or_simple_value(self.scale_apriori, self))
    return r
 end
 
 function ConfigCommon.vmr_fixed_level_scaled:covariance_v()
    local r = Blitz_double_array_2d(1, 1)
-   r:set(0, 0, self.scale_cov)
+   r:set(0, 0, function_or_simple_value(self.scale_cov, self))
    return r
 end
 
@@ -2595,7 +2608,7 @@ function ConfigCommon.vmr_fixed_level_scaled:create_vmr()
                                           self.config.pinp, 
                                           self:apriori(),
                                           self:retrieval_flag()(0),
-                                          self.scale_apriori, self.name)
+                                          function_or_simple_value(self.scale_apriori, self), self.name)
    return self.vmr
 end
 
@@ -2611,20 +2624,20 @@ ConfigCommon.vmr_ecmwf = CreatorVmr:new()
 
 function ConfigCommon.vmr_ecmwf:apriori_v()
    local r = Blitz_double_array_1d(1)
-   r:set(0, self.scale_apriori)
+   r:set(0, function_or_simple_value(self.scale_apriori, self))
    return r
 end
 
 function ConfigCommon.vmr_ecmwf:covariance_v()
    local r = Blitz_double_array_2d(1, 1)
-   r:set(0, 0, self.scale_cov)
+   r:set(0, 0, function_or_simple_value(self.scale_cov, self))
    return r
 end
 
 function ConfigCommon.vmr_ecmwf:create_vmr()
    self.vmr = AbsorberVmrEcmwf(self.config:ecmwf(),
                                self.config.pressure,
-                               self.scale_apriori, 
+                               function_or_simple_value(self.scale_apriori, self), 
                                self:retrieval_flag()(0),
                                self.name)
    return self.vmr
@@ -2642,20 +2655,20 @@ ConfigCommon.vmr_level_scaled = CreatorVmr:new()
 
 function ConfigCommon.vmr_level_scaled:apriori_v()
    local r = Blitz_double_array_1d(1)
-   r:set(0, self.scale_apriori)
+   r:set(0, function_or_simple_value(self.scale_apriori, self))
    return r
 end
 
 function ConfigCommon.vmr_level_scaled:covariance_v()
    local r = Blitz_double_array_2d(1, 1)
-   r:set(0, 0, self.scale_cov)
+   r:set(0, 0, function_or_simple_value(self.scale_cov, self))
    return r
 end
 
 function ConfigCommon.vmr_level_scaled:create_vmr()
    self.vmr = AbsorberVmrLevelScaled(self.config.pressure,
                                      self:vmr_profile(), 
-                                     self.scale_apriori, 
+                                     function_or_simple_value(self.scale_apriori, self), 
                                      self:retrieval_flag()(0),
                                      self.name)
    return self.vmr

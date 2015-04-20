@@ -5,31 +5,37 @@ function init_uq(config)
 
     config.diagnostic = true
 
-    -- Redefine the sounding id list function to use a class that
-    -- can handle the UQ Sounding Ids
-    function config:l1b_sid_list()
-        if (not self.sid_string or self.sid_string == "") then
-            error("Sounding id string not defined")
+    ------------
+    -- Common --
+    ------------
+    
+    function uq_apriori(field)
+        return function(self)
+            return self.config:l1b_hdf_file():read_double_1d(field .. "/a_priori")
         end
-        if(not self.l1b_sid_list_v) then
-           local hv = self:l1b_hdf_file()
-           if(hv) then
-              self.l1b_sid_list_v = UqSoundingId(hv, self.sid_string)
-              self.sid = self.l1b_sid_list_v
-           end
-        end
-        return self.l1b_sid_list_v
     end
 
-
-    -- Use UQ specific reader for ECMWF file
-    function config:ecmwf()
-        if(self.spectrum_file and not self.ecmwf_v) then 
-            self.ecmwf_v = UqEcmwf(self.spectrum_file)
-            self.input_file_description = self.input_file_description .. "ECMWF input file:    " .. self.spectrum_file .. "\n"
+    function uq_apriori_i(field)
+        return function(self, i)
+            return self.config:l1b_hdf_file():read_double_2d(field .. "/a_priori")(i, Range.all())
         end
-        return self.ecmwf_v
     end
+
+    function uq_covariance(field)
+        return function(self)
+            return self.config:l1b_hdf_file():read_double_2d(field .. "/covariance")
+        end
+    end
+
+    function uq_covariance_i(field)
+        return function(self, i)
+            return self.config:l1b_hdf_file():read_double_3d(field .. "/covariance")(i, Range.all(), Range.all())
+        end
+    end
+
+    ---------------
+    -- SNR Coefs --
+    ---------------
 
     -- No sounding dimension in UQ files so use a new bad sample mask
     -- function that is aware of this
@@ -48,6 +54,10 @@ function init_uq(config)
 
     config.fm.spec_win.bad_sample_mask = snr_coef_bad_sample_mask_uq
 
+    -----------
+    -- Noise --
+    -----------
+
     -- Redefined noise function due to change in dataset sizes
     uq_noise = Creator:new()
 
@@ -64,6 +74,26 @@ function init_uq(config)
 
     config.fm.l1b.noise.creator = uq_noise
 
+    ---------
+    -- L1B --
+    ---------
+
+    -- Redefine the sounding id list function to use a class that
+    -- can handle the UQ Sounding Ids
+    function config:l1b_sid_list()
+        if (not self.sid_string or self.sid_string == "") then
+            error("Sounding id string not defined")
+        end
+        if(not self.l1b_sid_list_v) then
+           local hv = self:l1b_hdf_file()
+           if(hv) then
+              self.l1b_sid_list_v = UqSoundingId(hv, self.sid_string)
+              self.sid = self.l1b_sid_list_v
+           end
+        end
+        return self.l1b_sid_list_v
+    end
+
     -- Use custom L1B class
     level1b_uq = CreatorL1b:new()
 
@@ -76,6 +106,23 @@ function init_uq(config)
     end
  
     config.fm.l1b.creator = level1b_uq
+
+    -----------
+    -- ECMWF --
+    -----------
+
+    -- Use UQ specific reader for ECMWF file
+    function config:ecmwf()
+        if(self.spectrum_file and not self.ecmwf_v) then 
+            self.ecmwf_v = UqEcmwf(self.spectrum_file)
+            self.input_file_description = self.input_file_description .. "ECMWF input file:    " .. self.spectrum_file .. "\n"
+        end
+        return self.ecmwf_v
+    end
+
+    ---------
+    -- ILS --
+    ---------
 
     -- Use custom ILS table creator due to change in dataset shape
     ils_table_uq = Creator:new()
@@ -116,12 +163,90 @@ function init_uq(config)
 
     config.fm.instrument.ils_func.creator = ils_table_uq
 
-    -- Use apriori value from the UQ file for albedo instead of the usual method of deriving it from the radiance
-    function albedo_apriori_uq(self, i)
+    ----------------
+    -- Dispersion --
+    ----------------
+    
+    -- A priori and covariance from UQ file only supply values for the dispersion offset term
+   
+    local orig_disp_ap = config.fm.instrument.dispersion.apriori
+    function uq_dispersion_ap(self, i)
+        local ap = orig_disp_ap(self, i)
+
         local l1b_hdf_file = self.config:l1b_hdf_file()
-        return l1b_hdf_file:read_double_2d("/Ground/Albedo/a_priori")(i, Range.all())
+        local offset_mean = l1b_hdf_file:read_double_1d("/Instrument/Dispersion/a_priori")(i)
+
+        ap.value:set(0, offset_mean)
+
+        return ap
     end
-    config.fm.atmosphere.ground.lambertian.apriori = albedo_apriori_uq
+
+    local orig_disp_cov = config.fm.instrument.dispersion.covariance
+    function uq_dispersion_cov(self, i)
+        local cov = orig_disp_cov(self, i)
+
+        local l1b_hdf_file = self.config:l1b_hdf_file()
+        local offset_cov = l1b_hdf_file:read_double_2d("/Instrument/Dispersion/covariance")(i, i)
+
+        cov:set(0, 0, offset_cov)
+
+        return cov
+    end
+    
+    config.fm.instrument.dispersion.apriori = uq_dispersion_ap
+    config.fm.instrument.dispersion.covariance = uq_dispersion_cov
+
+    ------------
+    -- Ground --
+    ------------
+
+    config.fm.atmosphere.ground.lambertian.apriori = uq_apriori_i("Ground/Albedo")
+    config.fm.atmosphere.ground.lambertian.covariance = uq_covariance_i("Ground/Albedo")
+
+    ---------
+    -- Gas --
+    ---------
+
+    config.fm.atmosphere.absorber.CO2.apriori = uq_apriori("Gas/CO2")
+    config.fm.atmosphere.absorber.CO2.covariance = uq_covariance("Gas/CO2")
+
+    function uq_h2o_ap(self)
+        local l1b_hdf_file = self.config:l1b_hdf_file()
+        return l1b_hdf_file:read_double_1d("Gas/H2O_Scaling_factor/a_priori")(0)
+    end
+
+
+    function uq_h2o_cov(self)
+        local l1b_hdf_file = self.config:l1b_hdf_file()
+        return l1b_hdf_file:read_double_2d("Gas/H2O_Scaling_factor/covariance")(0, 0)
+    end
+
+    config.fm.atmosphere.absorber.H2O.scale_apriori = uq_h2o_ap
+    config.fm.atmosphere.absorber.H2O.scale_cov = uq_h2o_cov
+
+    -----------------
+    -- Temperature --
+    -----------------
+
+    config.fm.atmosphere.temperature.apriori = uq_apriori("Temperature/Offset")
+    config.fm.atmosphere.temperature.covariance = uq_covariance("Temperature/Offset")
+    
+    ----------------------
+    -- Surface Pressure --
+    ----------------------
+
+    config.fm.atmosphere.pressure.apriori = uq_apriori("Surface_Pressure")
+    config.fm.atmosphere.pressure.covariance = uq_covariance("Surface_Pressure")
+
+    -------------
+    -- Aerosol --
+    -------------
+
+
+
+    ------------------
+    -- Fluorescence -- 
+    ------------------
 
     -- Reconfigure portions of the fluoresence creator to not rely on getting data from the L1B radiance routine
     uq_fluorescence = ConfigCommon.fluorescence_effect:new()
@@ -148,7 +273,8 @@ function init_uq(config)
     end
 
     config.fm.spectrum_effect.fluorescence.creator = uq_fluorescence
-    config.fm.spectrum_effect.fluorescence.covariance = ConfigCommon.hdf_covariance("Fluorescence")
+    config.fm.spectrum_effect.fluorescence.covariance = uq_apriori("Fluorescence")
+    config.fm.spectrum_effect.fluorescence.covariance = uq_covariance("Fluorescence")
 
     -- Remove EOF from state vector
     config.fm.instrument.instrument_correction.ic_nadir = {}
