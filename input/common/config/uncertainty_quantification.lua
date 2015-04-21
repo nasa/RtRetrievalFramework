@@ -59,7 +59,7 @@ function init_uq(config)
     -----------
 
     -- Redefined noise function due to change in dataset sizes
-    uq_noise = Creator:new()
+    local uq_noise = Creator:new()
 
     function uq_noise:create(hdf_file, sid)
         local hv = self.config:l1b_hdf_file()
@@ -95,7 +95,7 @@ function init_uq(config)
     end
 
     -- Use custom L1B class
-    level1b_uq = CreatorL1b:new()
+    local level1b_uq = CreatorL1b:new()
 
     function level1b_uq:create_parent_object()
        local hv = self.config:l1b_hdf_file()
@@ -125,7 +125,7 @@ function init_uq(config)
     ---------
 
     -- Use custom ILS table creator due to change in dataset shape
-    ils_table_uq = Creator:new()
+    local ils_table_uq = Creator:new()
 
     function ils_table_uq:create()
         -- Load reference to L1B HDF file
@@ -241,8 +241,19 @@ function init_uq(config)
     -------------
     -- Aerosol --
     -------------
+    
+    -- Set Ice and Water apriori and covariances
+    config.fm.atmosphere.aerosol.Water.apriori = uq_apriori("Aerosol/Water/Gaussian/Log")
+    config.fm.atmosphere.aerosol.Water.covariance = uq_covariance("Aerosol/Water/Gaussian/Log")
 
+    config.fm.atmosphere.aerosol.Ice.apriori = uq_apriori("Aerosol/Ice/Gaussian/Log")
+    config.fm.atmosphere.aerosol.Ice.covariance = uq_covariance("Aerosol/Ice/Gaussian/Log")
 
+    -- Set Merra particle apriori and covariances by modifying the creator to not use Merra
+    -- initial guess value
+    config.fm.atmosphere.aerosol.ignore_merra_aod = true
+    config.fm.atmosphere.aerosol.apriori = uq_apriori_i("Aerosol/Merra/Gaussian/Log")
+    config.fm.atmosphere.aerosol.covariance = uq_covariance_i("Aerosol/Merra/Gaussian/Log")
 
     ------------------
     -- Fluorescence -- 
