@@ -2366,7 +2366,10 @@ function ConfigCommon.merra_aerosol_creator:create_parent_object(sub_object)
      self.config.l1b:latitude(0),
      self.config.l1b:longitude(0),
      self.config.pressure,
-     self:covariance(),
+     -- In production, have a single covariance for all merra types,
+     -- but allow for using functions that have a different covariance
+     -- for different types
+     self:covariance(0), 
      mq)
    self.sub_object_save = sub_object
    local i, t
@@ -2383,23 +2386,34 @@ function ConfigCommon.merra_aerosol_creator:initial_guess()
    local flag = ConfigCommon.create_flag(3, Range.all())
    local cig_merra = CompositeInitialGuess()
    cig_merra:add_builder(self.merra_aerosol:initial_guess())
-   local ig_merra = cig_merra:initial_guess()
+
    --- Use AOD from merra, but leave the remaining shape parameters at values
    --- fixed at the supplied apriori values (e.g., read from HDF file, or 
    --- whatever).
+   local ig_merra = cig_merra:initial_guess()
    for i=1,self.merra_aerosol:number_merra_particle() do
-      local oval = self:apriori()
-      oval:set(0, ig_merra((i - 1) * 3))
+      -- Send particle number to ap and cov functions in case they
+      -- can use them
+      local oval = self:apriori(i-1)
+
+      -- Optionally ignore the merra initial guess value and just use
+      -- value from apriori function
+      if (self.config.ignore_merra_aod == nil) then
+        oval:set(0, ig_merra((i - 1) * 3))
+      end
+
       local ig = InitialGuessValue()
       ig:apriori_subset(flag, oval)
-      ig:apriori_covariance_subset(flag, self:covariance())
+      ig:apriori_covariance_subset(flag, self:covariance(i-1))
       cig:add_builder(ig)
    end
-   local i, t
+
    --- Now add in the fixed particles.
+   local i, t
    for i, t in ipairs(self.sub_object_save) do
       cig:add_builder(t.initial_guess)
    end
+
    return cig
 end
 
@@ -3158,7 +3172,7 @@ function ConfigCommon.oco_forward_model:register_output(ro)
       end
    end
 
-   -- Add absco files
+   -- Add absco filesself.ignore_merra_ig)
    for i,gas_name in ipairs(self.config.fm.atmosphere.absorber.gases) do
       dataset_name:push_back("AbscoFile" .. gas_name)
       file_name:push_back(self.config.fm.atmosphere.absorber[gas_name].absco)
