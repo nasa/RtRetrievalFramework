@@ -22,6 +22,7 @@ class StateVectorOutput : public RegisterOutputBase {
 public:
   StateVectorOutput(const boost::shared_ptr<StateVector>& Sv) : sv(Sv) {}
   virtual ~StateVectorOutput() {}
+  virtual void register_output_apriori(const boost::shared_ptr<Output>& out) const;
   virtual void register_output(const boost::shared_ptr<Output>& out) const;
 private:
   boost::shared_ptr<StateVector> sv;
