@@ -18,7 +18,7 @@ def modified_lua_config(config_filename):
             # or var_name = OtherVar:new {
             # and extract the variable name being set
             new_match = re.search('^\s*(\w+)\s*=\s*\w+:new\s*(\(\s*\)|\s*{)\s*$', lua_line) 
-            if new_match:
+            if new_match and config_var_name != None:
                 config_var_name = new_match.groups()[0]
 
             # Look for var_name:do_config()
@@ -28,7 +28,7 @@ def modified_lua_config(config_filename):
             if do_config_match:
                 do_var_name = do_config_match.groups()[0] 
                 if config_var_name and config_var_name != do_var_name:
-                    raise ValueError("Found different variable name: %s for :do_config than found for :new in Lua config: %s" % (do_var_name, config_var_name, config_filename))
+                    raise ValueError("Found different variable name: '%s' for :do_config than found for :new '%s' in Lua config: %s" % (do_var_name, config_var_name, config_filename))
                 else:
                     config_var_name = do_var_name
             else:
