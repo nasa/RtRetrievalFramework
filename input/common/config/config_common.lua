@@ -2429,7 +2429,7 @@ function ConfigCommon.merra_aerosol_creator:initial_guess()
 
       -- Optionally ignore the merra initial guess value and just use
       -- value from apriori function
-      if (self.config.ignore_merra_aod == nil) then
+      if (self.ignore_merra_aod == nil) then
         oval:set(0, ig_merra((i - 1) * 3))
       end
 

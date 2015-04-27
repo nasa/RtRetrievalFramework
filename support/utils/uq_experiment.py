@@ -14,6 +14,10 @@ class UqExperiment(object):
         # Load Lua state, and config object
         self.ls, self.lua_config = l2_lua.load_lua_config(config_filename)
 
+        # Seed the random number generator with the sounding id number
+        # to ensure consistent results when rerun
+        numpy.random.seed(int(self.lua_config.sid_string))
+
         # Where results are saved
         self.output_file = output_file
 

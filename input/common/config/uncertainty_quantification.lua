@@ -284,7 +284,7 @@ function init_uq(config)
     end
 
     config.fm.spectrum_effect.fluorescence.creator = uq_fluorescence
-    config.fm.spectrum_effect.fluorescence.covariance = uq_apriori("Fluorescence")
+    config.fm.spectrum_effect.fluorescence.apriori = uq_apriori("Fluorescence")
     config.fm.spectrum_effect.fluorescence.covariance = uq_covariance("Fluorescence")
 
     -- Remove EOF from state vector
