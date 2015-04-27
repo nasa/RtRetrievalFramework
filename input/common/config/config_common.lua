@@ -307,11 +307,24 @@ function CreatorMultiSpec:covariance_v(i)
 end
 
 function CreatorMultiSpec:initial_guess(i)
-   local flag = self:retrieval_flag(i)
-   local ig = InitialGuessValue()
-   ig:apriori_subset(flag, self:apriori_v(i - 1))
-   ig:apriori_covariance_subset(flag, self:covariance_v(i - 1))
-   ig.initial_guess = self:iguess_v(i - 1)
+   local ig
+   if (i == nil) then
+       -- Initial guess routine not called as part of a CompositeMultiSpec
+       -- return all band's values
+       ig = CompositeInitialGuess()
+       for i=1,self.config.number_pixel:rows() do
+           ig:add_builder(self:initial_guess(i))
+       end
+   else
+      -- Called as part of a CompositeMultiSpec, return spectromteter's
+      -- values
+      local flag = self:retrieval_flag(i)
+      ig = InitialGuessValue()
+      ig:apriori_subset(flag, self:apriori_v(i - 1))
+      ig:apriori_covariance_subset(flag, self:covariance_v(i - 1))
+      ig.initial_guess = self:iguess_v(i - 1)
+   end
+
    return ig 
 end
 
@@ -2037,11 +2050,20 @@ end
 --- Breon veg ground state vector component and initial guess
 ------------------------------------------------------------
 
-ConfigCommon.breon_veg_retrieval = CreatorApriori:new {}
+ConfigCommon.breon_veg_retrieval = CreatorMultiSpec:new {}
 
 function ConfigCommon.breon_veg_retrieval:create()
-   return GroundBreonVeg(self:apriori_v()(0), self:apriori_v()(1), self:apriori_v()(2),
-                         self:retrieval_flag()(0), self:retrieval_flag()(1), self:retrieval_flag()(2))
+   local num_spec = self.config.number_pixel:rows()
+
+   local ap = Blitz_double_array_2d(num_spec, 3)
+   local flag = Blitz_bool_array_2d(num_spec, 3)
+
+   for i = 1, num_spec do
+       ap:set(i-1, Range.all(), self:apriori_v(i - 1))
+       flag:set(i-1, Range.all(), self:retrieval_flag(i))
+   end
+
+   return GroundBreonVeg(ap, flag, self.config.common.desc_band_name)
 end
 
 ------------------------------------------------------------
@@ -2066,11 +2088,20 @@ end
 --- Breon soil ground state vector component and initial guess
 ------------------------------------------------------------
 
-ConfigCommon.breon_soil_retrieval = CreatorApriori:new {}
+ConfigCommon.breon_soil_retrieval = CreatorMultiSpec:new {}
 
 function ConfigCommon.breon_soil_retrieval:create()
-   return GroundBreonSoil(self:apriori_v()(0), self:apriori_v()(1), self:apriori_v()(2),
-                          self:retrieval_flag()(0), self:retrieval_flag()(1), self:retrieval_flag()(2))
+   local num_spec = self.config.number_pixel:rows()
+
+   local ap = Blitz_double_array_2d(num_spec, 3)
+   local flag = Blitz_bool_array_2d(num_spec, 3)
+
+   for i = 1, num_spec do
+       ap:set(i-1, Range.all(), self:apriori_v(i - 1))
+       flag:set(i-1, Range.all(), self:retrieval_flag(i))
+   end
+
+   return GroundBreonSoil(ap, flag, self.config.common.desc_band_name)
 end
 
 ------------------------------------------------------------

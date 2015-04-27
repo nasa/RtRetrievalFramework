@@ -121,56 +121,38 @@ class GroundBreonVeg(full_physics_swig.ground.Ground):
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
-        FullPhysics::GroundBreonVeg::GroundBreonVeg(const double Amplitude, const double Asymmetry, const double
-        Geometric, const bool Ampl_flag, const bool Asym_flag, const bool
-        Geom_flag)
+        FullPhysics::GroundBreonVeg::GroundBreonVeg(const blitz::Array< double, 2 > &Rahman_params, const blitz::Array<
+        bool, 2 > &Flag, const std::vector< std::string > &Desc_band_names)
 
         """
         _ground_breon.GroundBreonVeg_swiginit(self,_ground_breon.new_GroundBreonVeg(*args))
-    def _v_overall_amplitude(self, *args):
+    def number_spectrometer(self):
         """
-        void GroundBreon::overall_amplitude(const AutoDerivative< double > &val)
-
-        """
-        return _ground_breon.GroundBreonVeg__v_overall_amplitude(self, *args)
-
-    @property
-    def overall_amplitude(self):
-        return self._v_overall_amplitude()
-
-    @overall_amplitude.setter
-    def overall_amplitude(self, value):
-      self._v_overall_amplitude(value)
-
-    def _v_asymmetry_parameter(self, *args):
-        """
-        void GroundBreon::asymmetry_parameter(const AutoDerivative< double > &val)
+        virtual const int FullPhysics::GroundBreon::number_spectrometer() const
 
         """
-        return _ground_breon.GroundBreonVeg__v_asymmetry_parameter(self, *args)
+        return _ground_breon.GroundBreonVeg_number_spectrometer(self)
 
-    @property
-    def asymmetry_parameter(self):
-        return self._v_asymmetry_parameter()
-
-    @asymmetry_parameter.setter
-    def asymmetry_parameter(self, value):
-      self._v_asymmetry_parameter(value)
-
-    def _v_geometric_factor(self, *args):
+    def overall_amplitude(self, *args):
         """
-        void GroundBreon::geometric_factor(const AutoDerivative< double > &val)
+        void GroundBreon::overall_amplitude(const int spec_index, const AutoDerivative< double > &val)
 
         """
-        return _ground_breon.GroundBreonVeg__v_geometric_factor(self, *args)
+        return _ground_breon.GroundBreonVeg_overall_amplitude(self, *args)
 
-    @property
-    def geometric_factor(self):
-        return self._v_geometric_factor()
+    def asymmetry_parameter(self, *args):
+        """
+        void GroundBreon::asymmetry_parameter(const int spec_index, const AutoDerivative< double > &val)
 
-    @geometric_factor.setter
-    def geometric_factor(self, value):
-      self._v_geometric_factor(value)
+        """
+        return _ground_breon.GroundBreonVeg_asymmetry_parameter(self, *args)
+
+    def geometric_factor(self, *args):
+        """
+        void GroundBreon::geometric_factor(const int spec_index, const AutoDerivative< double > &val)
+
+        """
+        return _ground_breon.GroundBreonVeg_geometric_factor(self, *args)
 
     def refractive_index(self, *args):
         """
@@ -203,9 +185,10 @@ class GroundBreonVeg(full_physics_swig.ground.Ground):
         return _ground_breon.GroundBreonVeg_desc(self)
 
     __swig_destroy__ = _ground_breon.delete_GroundBreonVeg
-GroundBreonVeg._v_overall_amplitude = new_instancemethod(_ground_breon.GroundBreonVeg__v_overall_amplitude,None,GroundBreonVeg)
-GroundBreonVeg._v_asymmetry_parameter = new_instancemethod(_ground_breon.GroundBreonVeg__v_asymmetry_parameter,None,GroundBreonVeg)
-GroundBreonVeg._v_geometric_factor = new_instancemethod(_ground_breon.GroundBreonVeg__v_geometric_factor,None,GroundBreonVeg)
+GroundBreonVeg.number_spectrometer = new_instancemethod(_ground_breon.GroundBreonVeg_number_spectrometer,None,GroundBreonVeg)
+GroundBreonVeg.overall_amplitude = new_instancemethod(_ground_breon.GroundBreonVeg_overall_amplitude,None,GroundBreonVeg)
+GroundBreonVeg.asymmetry_parameter = new_instancemethod(_ground_breon.GroundBreonVeg_asymmetry_parameter,None,GroundBreonVeg)
+GroundBreonVeg.geometric_factor = new_instancemethod(_ground_breon.GroundBreonVeg_geometric_factor,None,GroundBreonVeg)
 GroundBreonVeg.refractive_index = new_instancemethod(_ground_breon.GroundBreonVeg_refractive_index,None,GroundBreonVeg)
 GroundBreonVeg.breon_type = new_instancemethod(_ground_breon.GroundBreonVeg_breon_type,None,GroundBreonVeg)
 GroundBreonVeg.state_vector_name_i = new_instancemethod(_ground_breon.GroundBreonVeg_state_vector_name_i,None,GroundBreonVeg)
@@ -222,56 +205,38 @@ class GroundBreonSoil(full_physics_swig.ground.Ground):
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
-        FullPhysics::GroundBreonSoil::GroundBreonSoil(const double Amplitude, const double Asymmetry, const double
-        Geometric, const bool Ampl_flag, const bool Asym_flag, const bool
-        Geom_flag)
+        FullPhysics::GroundBreonSoil::GroundBreonSoil(const blitz::Array< double, 2 > &Rahman_params, const blitz::Array<
+        bool, 2 > &Flag, const std::vector< std::string > &Desc_band_names)
 
         """
         _ground_breon.GroundBreonSoil_swiginit(self,_ground_breon.new_GroundBreonSoil(*args))
-    def _v_overall_amplitude(self, *args):
+    def number_spectrometer(self):
         """
-        void GroundBreon::overall_amplitude(const AutoDerivative< double > &val)
-
-        """
-        return _ground_breon.GroundBreonSoil__v_overall_amplitude(self, *args)
-
-    @property
-    def overall_amplitude(self):
-        return self._v_overall_amplitude()
-
-    @overall_amplitude.setter
-    def overall_amplitude(self, value):
-      self._v_overall_amplitude(value)
-
-    def _v_asymmetry_parameter(self, *args):
-        """
-        void GroundBreon::asymmetry_parameter(const AutoDerivative< double > &val)
+        virtual const int FullPhysics::GroundBreon::number_spectrometer() const
 
         """
-        return _ground_breon.GroundBreonSoil__v_asymmetry_parameter(self, *args)
+        return _ground_breon.GroundBreonSoil_number_spectrometer(self)
 
-    @property
-    def asymmetry_parameter(self):
-        return self._v_asymmetry_parameter()
-
-    @asymmetry_parameter.setter
-    def asymmetry_parameter(self, value):
-      self._v_asymmetry_parameter(value)
-
-    def _v_geometric_factor(self, *args):
+    def overall_amplitude(self, *args):
         """
-        void GroundBreon::geometric_factor(const AutoDerivative< double > &val)
+        void GroundBreon::overall_amplitude(const int spec_index, const AutoDerivative< double > &val)
 
         """
-        return _ground_breon.GroundBreonSoil__v_geometric_factor(self, *args)
+        return _ground_breon.GroundBreonSoil_overall_amplitude(self, *args)
 
-    @property
-    def geometric_factor(self):
-        return self._v_geometric_factor()
+    def asymmetry_parameter(self, *args):
+        """
+        void GroundBreon::asymmetry_parameter(const int spec_index, const AutoDerivative< double > &val)
 
-    @geometric_factor.setter
-    def geometric_factor(self, value):
-      self._v_geometric_factor(value)
+        """
+        return _ground_breon.GroundBreonSoil_asymmetry_parameter(self, *args)
+
+    def geometric_factor(self, *args):
+        """
+        void GroundBreon::geometric_factor(const int spec_index, const AutoDerivative< double > &val)
+
+        """
+        return _ground_breon.GroundBreonSoil_geometric_factor(self, *args)
 
     def refractive_index(self, *args):
         """
@@ -304,9 +269,10 @@ class GroundBreonSoil(full_physics_swig.ground.Ground):
         return _ground_breon.GroundBreonSoil_desc(self)
 
     __swig_destroy__ = _ground_breon.delete_GroundBreonSoil
-GroundBreonSoil._v_overall_amplitude = new_instancemethod(_ground_breon.GroundBreonSoil__v_overall_amplitude,None,GroundBreonSoil)
-GroundBreonSoil._v_asymmetry_parameter = new_instancemethod(_ground_breon.GroundBreonSoil__v_asymmetry_parameter,None,GroundBreonSoil)
-GroundBreonSoil._v_geometric_factor = new_instancemethod(_ground_breon.GroundBreonSoil__v_geometric_factor,None,GroundBreonSoil)
+GroundBreonSoil.number_spectrometer = new_instancemethod(_ground_breon.GroundBreonSoil_number_spectrometer,None,GroundBreonSoil)
+GroundBreonSoil.overall_amplitude = new_instancemethod(_ground_breon.GroundBreonSoil_overall_amplitude,None,GroundBreonSoil)
+GroundBreonSoil.asymmetry_parameter = new_instancemethod(_ground_breon.GroundBreonSoil_asymmetry_parameter,None,GroundBreonSoil)
+GroundBreonSoil.geometric_factor = new_instancemethod(_ground_breon.GroundBreonSoil_geometric_factor,None,GroundBreonSoil)
 GroundBreonSoil.refractive_index = new_instancemethod(_ground_breon.GroundBreonSoil_refractive_index,None,GroundBreonSoil)
 GroundBreonSoil.breon_type = new_instancemethod(_ground_breon.GroundBreonSoil_breon_type,None,GroundBreonSoil)
 GroundBreonSoil.state_vector_name_i = new_instancemethod(_ground_breon.GroundBreonSoil_state_vector_name_i,None,GroundBreonSoil)
