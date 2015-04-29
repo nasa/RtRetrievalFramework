@@ -43,7 +43,7 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
   int kernel_index = n_brdf_kernels();
   n_brdf_kernels(n_brdf_kernels()+1);
 
-  bool lambertian_flag;
+  bool lambertian_flag = false;
   int n_brdf_parameters;
   bool do_factor_wfs;
   Array<bool, 1> do_params_wfs;
@@ -58,7 +58,6 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
     do_params_wfs(0) = false;
     break;
   case COXMUNK:
-    lambertian_flag = false;
     n_brdf_parameters = 3;
 
     do_factor_wfs = false;
