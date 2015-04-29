@@ -1370,6 +1370,9 @@
 !  Fill BRDF arrays
 !  ----------------
 
+      ! Initialize all values so will not cause uninitialized to be read
+      LOCAL_BRDF_DERIVS = .FALSE.
+
       DO K = 1, N_BRDF_KERNELS
 
 !  Copy parameter variables into local quantities
