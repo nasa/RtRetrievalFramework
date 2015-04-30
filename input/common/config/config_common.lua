@@ -2055,8 +2055,8 @@ ConfigCommon.breon_veg_retrieval = CreatorMultiSpec:new {}
 function ConfigCommon.breon_veg_retrieval:create()
    local num_spec = self.config.number_pixel:rows()
 
-   local ap = Blitz_double_array_2d(num_spec, 3)
-   local flag = Blitz_bool_array_2d(num_spec, 3)
+   local ap = Blitz_double_array_2d(num_spec, 5)
+   local flag = Blitz_bool_array_2d(num_spec, 5)
 
    for i = 1, num_spec do
        ap:set(i-1, Range.all(), self:apriori_v(i - 1))
@@ -2093,8 +2093,8 @@ ConfigCommon.breon_soil_retrieval = CreatorMultiSpec:new {}
 function ConfigCommon.breon_soil_retrieval:create()
    local num_spec = self.config.number_pixel:rows()
 
-   local ap = Blitz_double_array_2d(num_spec, 3)
-   local flag = Blitz_bool_array_2d(num_spec, 3)
+   local ap = Blitz_double_array_2d(num_spec, 5)
+   local flag = Blitz_bool_array_2d(num_spec, 5)
 
    for i = 1, num_spec do
        ap:set(i-1, Range.all(), self:apriori_v(i - 1))

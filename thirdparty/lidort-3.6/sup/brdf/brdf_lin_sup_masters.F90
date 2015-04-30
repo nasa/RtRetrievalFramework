@@ -1456,6 +1456,7 @@
             DO UM = 1, N_USER_STREAMS
               EXACTDB_BRDFUNC(UM,IA,IB) = EXACTDB_BRDFUNC(UM,IA,IB) &
                 + FF * DBKERNEL_BRDFUNC(UM,IA,IB)
+              write(*, *) K, BRDF_FACTORS(K), FF, "--", UM, IA, IB, DBKERNEL_BRDFUNC(UM,IA,IB), EXACTDB_BRDFUNC(UM,IA,IB)
             ENDDO
           ENDDO
         ENDDO

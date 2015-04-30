@@ -22,8 +22,8 @@ void SpurrBrdfDriver::initialize_brdf_inputs(int surface_type)
     break;
   case BREONVEG:
   case BREONSOIL:
-    initialize_brdf_kernel(surface_type);
     initialize_brdf_kernel(RAHMAN);
+    initialize_brdf_kernel(surface_type);
     break;
   default:
     Exception e("Unhandled BRDF type index: ");
@@ -70,7 +70,7 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
   case RAHMAN:
     n_brdf_parameters = 3;
 
-    do_factor_wfs = false;
+    do_factor_wfs = true;
 
     do_params_wfs.resize(n_brdf_parameters);
     do_params_wfs = true;
@@ -79,7 +79,7 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
   case BREONSOIL:
     n_brdf_parameters = 1;
 
-    do_factor_wfs = false;
+    do_factor_wfs = true;
 
     do_params_wfs.resize(n_brdf_parameters);
     do_params_wfs(0) = false;
@@ -100,8 +100,8 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
   n_kernel_params_wfs(n_kernel_params_wfs() + n_param_wfs);
   n_surface_wfs(n_surface_wfs() + n_factor_wfs + n_param_wfs); 
 
-  // Determine if any wfs are computed for current kernel
-  do_kparams_derivs(kernel_index, do_factor_wfs || any(do_params_wfs(Range::all())));
+  // Determine if any parameter wfs are computed for current kernel
+  do_kparams_derivs(kernel_index, any(do_params_wfs(Range::all())));
 }
 
 //-----------------------------------------------------------------------
@@ -142,14 +142,16 @@ ArrayAd<double, 1> SpurrBrdfDriver::setup_brdf_inputs(int surface_type, const Ar
     break;
   case BREONVEG:
   case BREONSOIL:
-    parameter_indexes.resize(0);
-    setup_breon_inputs(0, rt_surf_params, parameter_indexes);
+    parameter_indexes.resize(4);
+    parameter_indexes(0) = 0; // rahman kernel factor
+    parameter_indexes(1) = 1; // overall amplitude
+    parameter_indexes(2) = 2; // asymmetry
+    parameter_indexes(3) = 3; // geometric factor
+    setup_rahman_inputs(0, rt_surf_params, parameter_indexes);
 
-    parameter_indexes.resize(3);
-    parameter_indexes(0) = 0;
-    parameter_indexes(1) = 1;
-    parameter_indexes(2) = 2;
-    setup_rahman_inputs(1, rt_surf_params, parameter_indexes);
+    parameter_indexes.resize(1);
+    parameter_indexes(0) = 4; // breon kernel factor
+    setup_breon_inputs(1, rt_surf_params, parameter_indexes);
     break;
   default:
     Exception e("Unhandled BRDF type index: ");
@@ -205,12 +207,13 @@ void SpurrBrdfDriver::setup_coxmunk_inputs(int kernel_index, ArrayAd<double, 1>&
 
 void SpurrBrdfDriver::setup_rahman_inputs(int kernel_index, ArrayAd<double, 1>& surface_parameters, const Array<int, 1>& parameter_indexes) const
 {
-  brdf_factors(kernel_index) = 1.0;
-
   // Modify surface_parameters in place so that jacobians reflect modifications
-  int ampl_idx = parameter_indexes(0);
-  int asym_idx = parameter_indexes(1);
-  int geom_idx = parameter_indexes(2);
+  int kf_idx   = parameter_indexes(0);
+  int ampl_idx = parameter_indexes(1);
+  int asym_idx = parameter_indexes(2);
+  int geom_idx = parameter_indexes(3);
+
+  brdf_factors(kernel_index) = surface_parameters(kf_idx).value();
 
   // Overall amplitude
   brdf_params(kernel_index, 0) = surface_parameters(ampl_idx).value();
@@ -222,7 +225,9 @@ void SpurrBrdfDriver::setup_rahman_inputs(int kernel_index, ArrayAd<double, 1>& 
 
 void SpurrBrdfDriver::setup_breon_inputs(int kernel_index, ArrayAd<double, 1>& surface_parameters, const Array<int, 1>& parameter_indexes) const
 {
-  brdf_factors(kernel_index) = 1.0;
+  int kf_idx = parameter_indexes(0);
+  
+  brdf_factors(kernel_index) = surface_parameters(kf_idx).value();
   brdf_params(kernel_index, 0) = 2.25; // Refractive index squared, same as hardcoded value inside lrad, should be same as value in ground_breon.cc
 }
 

@@ -363,7 +363,7 @@ BOOST_AUTO_TEST_CASE(simple)
 
   // Use simple BREON throughout
   int surface_type = BREONVEG;
-  ArrayAd<double, 1> surface_params(3, 1); 
+  ArrayAd<double, 1> surface_params(5, 1); 
   surface_params = 0.0;
 
   boost::shared_ptr<LidortRtDriver> lidort_driver(new LidortRtDriver(nstreams, nmoms, do_multiple_scattering_only, surface_type, zen, pure_nadir));
@@ -400,9 +400,11 @@ BOOST_AUTO_TEST_CASE(simple)
 
   ////////////////
   // Surface only
-  surface_params(0) = 0.1;
-  surface_params(1) = 0.3;
-  surface_params(2) = 1.5;
+  surface_params(0) = 1.0; // rahman kernel factor
+  surface_params(1) = 0.1; // overall amplitude
+  surface_params(2) = 0.3; // asymmetry
+  surface_params(3) = 1.5; // geometric factor
+  surface_params(4) = 1.0; // breon kernel factor
 
   taur = 1.0e-6/nlayer;
   taug = 1.0e-6/nlayer;
@@ -425,7 +427,7 @@ BOOST_AUTO_TEST_CASE(simple)
   // Check surface jacobians against FD
 
   blitz::Array<double, 1> pert_values(surface_params.rows());
-  pert_values = 1e-8, 1e-8, 1e-6;
+  pert_values = 1e-8, 1e-8, 1e-6, 1e-6, 1e-6;
 
   blitz::Array<double, 1> jac_surf_fd( jac_surf.extent() );
   double refl_fd;
@@ -446,7 +448,7 @@ BOOST_AUTO_TEST_CASE(simple)
     jac_surf_fd(p_idx) = (refl_fd - refl_calc) / pert_values(p_idx);
   }
 
-  BOOST_CHECK_MATRIX_CLOSE_TOL(jac_surf, jac_surf_fd, 1e-7);
+  BOOST_CHECK_MATRIX_CLOSE_TOL(jac_surf, jac_surf_fd, 2e-7);
 
 }
 

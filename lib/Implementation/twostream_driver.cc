@@ -25,7 +25,7 @@ TwostreamBrdfDriver::TwostreamBrdfDriver(int surface_type)
     break;
   case BREONVEG:
   case BREONSOIL:
-    nspars = 3;
+    nspars = 5;
     break;
   case COXMUNK:
     nspars = 3;

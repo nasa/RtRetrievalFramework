@@ -180,7 +180,7 @@ BOOST_AUTO_TEST_CASE(simple_breon)
      
     // Lambertian surface type
     int surface_type = 3; // BREONVEG
-    Array<double, 1> surface_params(3);
+    Array<double, 1> surface_params(5);
    
     bool tms_correction = false;
     bool pure_nadir = false;
@@ -212,10 +212,12 @@ BOOST_AUTO_TEST_CASE(simple_breon)
   
     ////////////////
     // Surface only
-    surface_params(0) = 0.1;
-    surface_params(1) = 0.3;
-    surface_params(2) = 1.5;
-  
+    surface_params(0) = 1.0; // rahman kernel factor
+    surface_params(1) = 0.1; // overall amplitude
+    surface_params(2) = 0.3; // asymmetry
+    surface_params(3) = 1.5; // geometric factor
+    surface_params(4) = 1.0; // breon kernel factor
+ 
     taur = 1.0e-6/nlayer;
     taug = 1.0e-6/nlayer;
   
@@ -249,7 +251,7 @@ BOOST_AUTO_TEST_CASE(simple_breon)
     // Check surface jacobians against FD
   
     Array<double, 1> pert_values(surface_params.rows());
-    pert_values = 1e-8, 1e-8, 1e-6;
+    pert_values = 1e-8;
   
     Array<double, 1> jac_surf( l_rad->surface_jacobian()(0, all) );
     Array<double, 1> jac_surf_fd( jac_surf.extent() );

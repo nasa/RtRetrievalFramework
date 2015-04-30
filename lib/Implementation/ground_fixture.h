@@ -51,17 +51,17 @@ public:
         coxmunk.reset(new GroundCoxmunk(7.1, false, refr_index));
 
         // Breon 
-        Array<double, 2> rahman_params(3, 3);
-        rahman_params = 
-            // amplitude, asymmetry, geometric
-            0.1, 0.3, 1.5,
-            0.2, 0.4, 1.6,
-            0.3, 0.5, 1.7;
-        Array<bool, 2> flag(3, 3);
+        Array<double, 2> breon_coeffs(3, 5);
+        breon_coeffs = 
+            // rahman_factor, amplitude, asymmetry, geometric, breon_factor
+            1.0, 0.1, 0.3, 1.5, 2.0,
+            1.1, 0.2, 0.4, 1.6, 2.1,
+            1.2, 0.3, 0.5, 1.7, 2.2;
+        Array<bool, 2> flag(3, 5);
         flag = true;
             
-        breon_veg.reset(new GroundBreonVeg(rahman_params, flag, band_name));
-        breon_soil.reset(new GroundBreonSoil(rahman_params, flag, band_name));
+        breon_veg.reset(new GroundBreonVeg(breon_coeffs, flag, band_name));
+        breon_soil.reset(new GroundBreonSoil(breon_coeffs, flag, band_name));
 
   }
 };
