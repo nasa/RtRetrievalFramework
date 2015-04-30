@@ -1292,14 +1292,14 @@ contains
 !  This is just the Rahman Kernel.........different name !!
 
       CALL RAHMAN_FUNCTION_2OS  &
-             ( NPARS, PARS, & !I
+             ( 3, PARS(2:4), & !I
                XJ, SXJ, XI, SXI, & !I
                CKPHI_REF, SKPHI_REF, & !I
                RAHMAN_KERNEL )
 
 !  Add to the specular term
 
-      R1M(1,1) = R1M(1,1) + RAHMAN_KERNEL
+      R1M(1,1) = PARS(5)*R1M(1,1) + PARS(1)*RAHMAN_KERNEL
 
 !  Finish
 
@@ -1553,22 +1553,24 @@ contains
 !  This is just the Rahman Kernel.........different name !!
 
       CALL RAHMAN_FUNCTION_2OS_PLUS &
-             ( NPARS, PARS, DO_DERIV_PARS, & !I
+             ( 3, PARS(2:4), DO_DERIV_PARS, & !I
                XJ, SXJ, XI, SXI, & !I
                CKPHI_REF, SKPHI_REF, & !I
                RAHMAN_KERNEL, RAHMAN_DERIVATIVES )
 
 !  Add to the specular term
 
-      R1M(1,1) = R1M(1,1) + RAHMAN_KERNEL
+      R1M(1,1) = PARS(5)*R1M(1,1) + PARS(1)*RAHMAN_KERNEL
 
 !  Derivatives
 
-      DO J = 1, NPARS
+      DO J = 1, 3
         IF ( DO_DERIV_PARS(J) ) THEN
-          Ls_R1M(1,1,J) = RAHMAN_DERIVATIVES(J)
+          Ls_R1M(1,1,J+1) = RAHMAN_DERIVATIVES(J)
         ENDIF
       ENDDO
+      Ls_R1M(1,1,1) = RAHMAN_KERNEL
+      Ls_R1M(1,1,5) = (R1M(1,1)-PARS(1)*RAHMAN_KERNEL)/PARS(5)
 
 !  Finish
 

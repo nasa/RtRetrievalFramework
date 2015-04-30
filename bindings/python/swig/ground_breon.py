@@ -121,8 +121,8 @@ class GroundBreonVeg(full_physics_swig.ground.Ground):
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
-        FullPhysics::GroundBreonVeg::GroundBreonVeg(const blitz::Array< double, 2 > &Rahman_params, const blitz::Array<
-        bool, 2 > &Flag, const std::vector< std::string > &Desc_band_names)
+        FullPhysics::GroundBreonVeg::GroundBreonVeg(const blitz::Array< double, 2 > &Coeffs, const blitz::Array< bool, 2
+        > &Flag, const std::vector< std::string > &Desc_band_names)
 
         """
         _ground_breon.GroundBreonVeg_swiginit(self,_ground_breon.new_GroundBreonVeg(*args))
@@ -132,6 +132,13 @@ class GroundBreonVeg(full_physics_swig.ground.Ground):
 
         """
         return _ground_breon.GroundBreonVeg_number_spectrometer(self)
+
+    def rahman_factor(self, *args):
+        """
+        void GroundBreon::rahman_factor(const int spec_index, const AutoDerivative< double > &val)
+
+        """
+        return _ground_breon.GroundBreonVeg_rahman_factor(self, *args)
 
     def overall_amplitude(self, *args):
         """
@@ -153,6 +160,13 @@ class GroundBreonVeg(full_physics_swig.ground.Ground):
 
         """
         return _ground_breon.GroundBreonVeg_geometric_factor(self, *args)
+
+    def breon_factor(self, *args):
+        """
+        void GroundBreon::breon_factor(const int spec_index, const AutoDerivative< double > &val)
+
+        """
+        return _ground_breon.GroundBreonVeg_breon_factor(self, *args)
 
     def refractive_index(self, *args):
         """
@@ -186,9 +200,11 @@ class GroundBreonVeg(full_physics_swig.ground.Ground):
 
     __swig_destroy__ = _ground_breon.delete_GroundBreonVeg
 GroundBreonVeg.number_spectrometer = new_instancemethod(_ground_breon.GroundBreonVeg_number_spectrometer,None,GroundBreonVeg)
+GroundBreonVeg.rahman_factor = new_instancemethod(_ground_breon.GroundBreonVeg_rahman_factor,None,GroundBreonVeg)
 GroundBreonVeg.overall_amplitude = new_instancemethod(_ground_breon.GroundBreonVeg_overall_amplitude,None,GroundBreonVeg)
 GroundBreonVeg.asymmetry_parameter = new_instancemethod(_ground_breon.GroundBreonVeg_asymmetry_parameter,None,GroundBreonVeg)
 GroundBreonVeg.geometric_factor = new_instancemethod(_ground_breon.GroundBreonVeg_geometric_factor,None,GroundBreonVeg)
+GroundBreonVeg.breon_factor = new_instancemethod(_ground_breon.GroundBreonVeg_breon_factor,None,GroundBreonVeg)
 GroundBreonVeg.refractive_index = new_instancemethod(_ground_breon.GroundBreonVeg_refractive_index,None,GroundBreonVeg)
 GroundBreonVeg.breon_type = new_instancemethod(_ground_breon.GroundBreonVeg_breon_type,None,GroundBreonVeg)
 GroundBreonVeg.state_vector_name_i = new_instancemethod(_ground_breon.GroundBreonVeg_state_vector_name_i,None,GroundBreonVeg)
@@ -205,8 +221,8 @@ class GroundBreonSoil(full_physics_swig.ground.Ground):
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
-        FullPhysics::GroundBreonSoil::GroundBreonSoil(const blitz::Array< double, 2 > &Rahman_params, const blitz::Array<
-        bool, 2 > &Flag, const std::vector< std::string > &Desc_band_names)
+        FullPhysics::GroundBreonSoil::GroundBreonSoil(const blitz::Array< double, 2 > &Coeffs, const blitz::Array< bool, 2
+        > &Flag, const std::vector< std::string > &Desc_band_names)
 
         """
         _ground_breon.GroundBreonSoil_swiginit(self,_ground_breon.new_GroundBreonSoil(*args))
@@ -216,6 +232,13 @@ class GroundBreonSoil(full_physics_swig.ground.Ground):
 
         """
         return _ground_breon.GroundBreonSoil_number_spectrometer(self)
+
+    def rahman_factor(self, *args):
+        """
+        void GroundBreon::rahman_factor(const int spec_index, const AutoDerivative< double > &val)
+
+        """
+        return _ground_breon.GroundBreonSoil_rahman_factor(self, *args)
 
     def overall_amplitude(self, *args):
         """
@@ -237,6 +260,13 @@ class GroundBreonSoil(full_physics_swig.ground.Ground):
 
         """
         return _ground_breon.GroundBreonSoil_geometric_factor(self, *args)
+
+    def breon_factor(self, *args):
+        """
+        void GroundBreon::breon_factor(const int spec_index, const AutoDerivative< double > &val)
+
+        """
+        return _ground_breon.GroundBreonSoil_breon_factor(self, *args)
 
     def refractive_index(self, *args):
         """
@@ -270,9 +300,11 @@ class GroundBreonSoil(full_physics_swig.ground.Ground):
 
     __swig_destroy__ = _ground_breon.delete_GroundBreonSoil
 GroundBreonSoil.number_spectrometer = new_instancemethod(_ground_breon.GroundBreonSoil_number_spectrometer,None,GroundBreonSoil)
+GroundBreonSoil.rahman_factor = new_instancemethod(_ground_breon.GroundBreonSoil_rahman_factor,None,GroundBreonSoil)
 GroundBreonSoil.overall_amplitude = new_instancemethod(_ground_breon.GroundBreonSoil_overall_amplitude,None,GroundBreonSoil)
 GroundBreonSoil.asymmetry_parameter = new_instancemethod(_ground_breon.GroundBreonSoil_asymmetry_parameter,None,GroundBreonSoil)
 GroundBreonSoil.geometric_factor = new_instancemethod(_ground_breon.GroundBreonSoil_geometric_factor,None,GroundBreonSoil)
+GroundBreonSoil.breon_factor = new_instancemethod(_ground_breon.GroundBreonSoil_breon_factor,None,GroundBreonSoil)
 GroundBreonSoil.refractive_index = new_instancemethod(_ground_breon.GroundBreonSoil_refractive_index,None,GroundBreonSoil)
 GroundBreonSoil.breon_type = new_instancemethod(_ground_breon.GroundBreonSoil_breon_type,None,GroundBreonSoil)
 GroundBreonSoil.state_vector_name_i = new_instancemethod(_ground_breon.GroundBreonSoil_state_vector_name_i,None,GroundBreonSoil)

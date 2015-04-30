@@ -280,7 +280,7 @@ BOOST_AUTO_TEST_CASE(breon)
 
   int nlayer = 2;
   int nparam = 2;
-  ArrayAd<double, 1> surface_params(3, 1); 
+  ArrayAd<double, 1> surface_params(5, 1); 
   ArrayAd<double, 1> taug(nlayer, nparam);
   ArrayAd<double, 1> taur(nlayer, nparam);
 
@@ -292,14 +292,16 @@ BOOST_AUTO_TEST_CASE(breon)
   blitz::Array<double, 1> pert_atm(2);
 
   // Perturbation value for surface fd checking
-  Array<double, 1> pert_surf(3);
+  Array<double, 1> pert_surf(5);
   pert_surf = 1e-8;
 
   ////////////////
   // Surface only
-  surface_params.value()(0) = 0.1;
-  surface_params.value()(1) = 0.3;
-  surface_params.value()(2) = 1.5;
+  surface_params.value()(0) = 1.0; // rahman kernel factor
+  surface_params.value()(1) = 0.1; // overall amplitude
+  surface_params.value()(2) = 0.3; // asymmetry
+  surface_params.value()(3) = 1.5; // geometric factor
+  surface_params.value()(4) = 1.0; // breon kernel factor
 
   taur = 1.0e-6/nlayer;
   taug = 1.0e-6/nlayer;

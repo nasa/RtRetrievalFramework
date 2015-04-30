@@ -17,11 +17,7 @@ namespace FullPhysics {
 *******************************************************************/
 class GroundBreon: public SubStateVectorArray<Ground> {
 public:
-    GroundBreon(const double Amplitude, const double Asymmetry, const double Geometric,
-                const bool Ampl_flag, const bool Asym_flag, const bool Geom_flag, 
-                const std::vector<std::string>& Desc_band_names);
-
-    GroundBreon(const blitz::Array<double, 2>& Rahman_params,
+    GroundBreon(const blitz::Array<double, 2>& Coeffs,
                 const blitz::Array<bool, 2>& Flag,
                 const std::vector<std::string>& Desc_band_names);
 
@@ -30,13 +26,17 @@ public:
     virtual const int number_spectrometer() const { return desc_band_names.size(); }
 
     // Rahman parameters
+    virtual const AutoDerivative<double> rahman_factor(const int spec_index) const;
     virtual const AutoDerivative<double> overall_amplitude(const int spec_index) const;
     virtual const AutoDerivative<double> asymmetry_parameter(const int spec_index) const;
     virtual const AutoDerivative<double> geometric_factor(const int spec_index) const;
+    virtual const AutoDerivative<double> breon_factor(const int spec_index) const;
 
+    virtual void rahman_factor(const int spec_index, const AutoDerivative<double>& val);
     virtual void overall_amplitude(const int spec_index, const AutoDerivative<double>& val);
     virtual void asymmetry_parameter(const int spec_index, const AutoDerivative<double>& val);
     virtual void geometric_factor(const int spec_index, const AutoDerivative<double>& val);
+    virtual void breon_factor(const int spec_index, const AutoDerivative<double>& val);
    
     /// Returns hard coded value of 1.5 since that is the value hardcoded into LIDORT
     virtual const double refractive_index(const int Spec_idx) const { return 1.5; }
@@ -64,15 +64,10 @@ protected:
 
 class GroundBreonVeg: public GroundBreon {
 public:
-    GroundBreonVeg(const double Amplitude, const double Asymmetry, const double Geometric,
-                const bool Ampl_flag, const bool Asym_flag, const bool Geom_flag,
-                const std::vector<std::string>& Desc_band_names) :
-        GroundBreon(Amplitude, Asymmetry, Geometric, Ampl_flag, Asym_flag, Geom_flag, Desc_band_names) {}
-
-    GroundBreonVeg(const blitz::Array<double, 2>& Rahman_params,
+    GroundBreonVeg(const blitz::Array<double, 2>& Coeffs,
                 const blitz::Array<bool, 2>& Flag,
                 const std::vector<std::string>& Desc_band_names) :
-        GroundBreon(Rahman_params, Flag, Desc_band_names) {}
+        GroundBreon(Coeffs, Flag, Desc_band_names) {}
 
     virtual const std::string breon_type() const { return "Vegetative"; }
 
@@ -88,15 +83,10 @@ private:
 
 class GroundBreonSoil: public GroundBreon {
 public:
-    GroundBreonSoil(const double Amplitude, const double Asymmetry, const double Geometric,
-                const bool Ampl_flag, const bool Asym_flag, const bool Geom_flag,
-                const std::vector<std::string>& Desc_band_names) :
-        GroundBreon(Amplitude, Asymmetry, Geometric, Ampl_flag, Asym_flag, Geom_flag, Desc_band_names) {}
-
-    GroundBreonSoil(const blitz::Array<double, 2>& Rahman_params,
+    GroundBreonSoil(const blitz::Array<double, 2>& Coeffs,
                 const blitz::Array<bool, 2>& Flag,
                 const std::vector<std::string>& Desc_band_names) :
-        GroundBreon(Rahman_params, Flag, Desc_band_names) {}
+        GroundBreon(Coeffs, Flag, Desc_band_names) {}
 
     virtual const std::string breon_type() const { return "Soil"; }
 
