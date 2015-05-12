@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(full_physics, 6.0.00)
+AC_INIT(full_physics, 7.0.00)
 
 # Base version for commlib.
 [commonlib_version='6.00.00a']
