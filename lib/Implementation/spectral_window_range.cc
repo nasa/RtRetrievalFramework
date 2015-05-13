@@ -85,6 +85,13 @@ SpectralBound SpectralWindowRange::spectral_bound() const
     DoubleWithUnit uv(max(range_.value(i, ra, ra)), range_.units);
     if(range_.units.is_commensurate(units::sample_index) && disp_.size() > 0) {
       SpectralDomain pgrid = disp_[i]->pixel_grid();
+      // Special handling for SampleIndex, so it isn't out of range
+      if(lv.units.is_commensurate(units::sample_index)) {
+	if(lv.value < 0)
+	  lv.value = 0;
+	if(uv.value > pgrid.data().rows() - 1)
+	  uv.value = pgrid.data().rows() - 1;
+      }
       lv = lv.convert_wave(pgrid.units(), pgrid);
       uv = uv.convert_wave(pgrid.units(), pgrid);
       // Might switch the direction of upper and lower
