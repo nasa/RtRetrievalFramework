@@ -37,7 +37,7 @@ BOOST_AUTO_TEST_CASE(basic)
   SpectrumSamplingFixedSpacing ssamp(spec_spac_awu);
 
   // Hardcoded results that we expect;
-  UniformSpectrumSampling sexpect(12969.12, 13179.56, 0.01,
+  UniformSpectrumSampling sexpect(12961.46, 13182.49, 0.01,
                                   6180.52, 6264.61, 0.01,
                                   4810.08, 4891.33, 0.01);
 

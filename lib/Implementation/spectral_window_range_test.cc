@@ -98,9 +98,9 @@ BOOST_AUTO_TEST_CASE(hdf_read)
 {
   Array<double, 2> expect_range(3, 2);
   expect_range =
-      0.7591592378, 0.7706653223,
-      1.597346492, 1.616932485,
-      2.045831846, 2.077599596;
+    0.75899101635934307, 0.77112064381379375,
+    1.597346492, 1.616932485,
+    2.045831846, 2.077599596;
 
   SpectralBound sb = config_spectral_window->spectral_bound();
   for (int i = 0; i < expect_range.rows(); i++) {
