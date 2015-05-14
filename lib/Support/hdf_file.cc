@@ -131,6 +131,22 @@ Array<double, 4> hdf_file_read_double_4d(const HdfFile& h,
   return h.read_field<double, 4>(fname);
 }
 
+// We have a number of places where we read a 4d field and only want
+// one sounding number. Have code for doing this.
+Array<double, 3> hdf_file_read_double_4d_sounding(const HdfFile& h,
+						  const std::string& fname,
+						  int Sounding_num)
+{
+  TinyVector<int, 4> shp = h.read_shape<4>(fname);
+  TinyVector<int,4> start;
+  TinyVector<int,4> sz;  
+  start = 0, Sounding_num, 0, 0;
+  sz = shp(0), 1, shp(2), shp(3);
+  return h.read_field<double, 4>(fname, start, sz)(Range::all(), 0, 
+						   Range::all(), Range::all());
+}
+
+
 double hdf_file_read_double_4d_i(const HdfFile& h, 
 			       const std::string& fname,
 			       int I, int J, int K, int L)
@@ -217,7 +233,7 @@ REGISTER_LUA_CLASS(HdfFile)
 .def("read_double_3d", &hdf_file_read_double_3d_i)
 .def("read_double_with_unit_3d", &hdf_file_read_double_with_unit_3d)
 .def("read_double_4d", &hdf_file_read_double_4d)
-.def("read_double_4d", &hdf_file_read_double_4d_i)
+.def("read_double_4d_sounding", &hdf_file_read_double_4d_sounding)
 .def("apriori", &hdf_file_apriori)
 .def("apriori_with_unit", &hdf_file_apriori_with_unit)
 .def("apriori", &hdf_file_apriori2)

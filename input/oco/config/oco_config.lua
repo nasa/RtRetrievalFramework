@@ -145,12 +145,13 @@ end
 
 function OcoConfig:snr_coef_bad_sample_mask()
     local l1b_hdf_file = self.config:l1b_hdf_file()
-    local snr_coef = l1b_hdf_file:read_double_4d("/InstrumentHeader/snr_coef")
+    local sid = self.config:l1b_sid_list()
+    local sounding_num = sid:sounding_number()
+    local snr_coef = l1b_hdf_file:read_double_4d_sounding("/InstrumentHeader/snr_coef", sounding_num)
 
-    if (snr_coef:fourth_dim() > 2) then
-        local sid = self.config:l1b_sid_list()
-        local sounding_num = sid:sounding_number()
-        local bad_sample_mask = snr_coef(Range.all(), sounding_num, Range.all(), 2)
+    if (snr_coef:depth() > 2) then
+        local bad_sample_mask = snr_coef(Range.all(), Range.all(), 2)
+	print(bad_sample_mask)
         return bad_sample_mask
     end
     
@@ -357,12 +358,13 @@ function OcoConfig.ils_table_l1b:create()
       local desc_band_name = self.config.common.desc_band_name:value(idx)
 
       -- Delta lambda
-      delta_lambda = l1b_hdf_file:read_double_4d("/InstrumentHeader/ils_delta_lambda")
-      delta_lambda = delta_lambda(idx, sounding_num, Range.all(), Range.all())
+      delta_lambda = l1b_hdf_file:read_double_4d_sounding("/InstrumentHeader/ils_delta_lambda", sounding_num)
+      delta_lambda = delta_lambda(idx, Range.all(), Range.all())
 
       -- Load ILS response values
-      response = l1b_hdf_file:read_double_4d("/InstrumentHeader/ils_relative_response")
-      response = response(idx, sounding_num, Range.all(), Range.all())
+      response = l1b_hdf_file:read_double_4d_sounding("/InstrumentHeader/ils_relative_response", sounding_num)
+      response = response(idx, Range.all(), Range.all())
+
 
       -- Calculate center wavenumber from dispersion, there should be number pixel
       -- of these per spectrometer
