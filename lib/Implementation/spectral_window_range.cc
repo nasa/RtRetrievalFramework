@@ -87,10 +87,14 @@ SpectralBound SpectralWindowRange::spectral_bound() const
       SpectralDomain pgrid = disp_[i]->pixel_grid();
       // Special handling for SampleIndex, so it isn't out of range
       if(lv.units.is_commensurate(units::sample_index)) {
-	if(lv.value < 0)
-	  lv.value = 0;
-	if(uv.value > pgrid.data().rows() - 1)
-	  uv.value = pgrid.data().rows() - 1;
+	if(lv.value < 1)
+	  lv.value = 1;
+	if(lv.value > pgrid.data().rows())
+	  lv.value = pgrid.data().rows();
+	if(uv.value < 1)
+	  uv.value = 1;
+	if(uv.value > pgrid.data().rows())
+	  uv.value = pgrid.data().rows();
       }
       lv = lv.convert_wave(pgrid.units(), pgrid);
       uv = uv.convert_wave(pgrid.units(), pgrid);
