@@ -151,7 +151,6 @@ function OcoConfig:snr_coef_bad_sample_mask()
 
     if (snr_coef:depth() > 2) then
         local bad_sample_mask = snr_coef(Range.all(), Range.all(), 2)
-	print(bad_sample_mask)
         return bad_sample_mask
     end
     
