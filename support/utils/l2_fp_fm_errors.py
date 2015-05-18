@@ -297,7 +297,7 @@ def spectroscopy_error_case(lua_config, pert_gas, pert_table, pert_amount):
 
 class FmErrors(object):
 
-    def __init__(self, config_filename, output_file, use_existing=False, check_reset=False, error_type_filters=[], run_retrieval=True, save_stokes=True, calc_perturbed=True):
+    def __init__(self, config_filename, output_file, use_existing=False, check_reset=False, error_type_filters=[], run_retrieval=True, save_stokes=True, num_perturbed_iterations=0):
         # Load Lua state, and config object
         self.ls, self.lua_config = l2_lua.load_lua_config(config_filename)
 
@@ -312,7 +312,7 @@ class FmErrors(object):
         self.save_stokes = save_stokes
 
         # Optionally perform a one iteration retrieval and then FM only calculation on the pertubed FM setup with the initial SV
-        self.calc_perturbed = calc_perturbed
+        self.num_perturbed_iterations = num_perturbed_iterations
      
         # Get the list of error case functions that will be run
         self.filtered_error_funcs = filter_error_funcs(_fm_error_funcs, error_type_filters)
@@ -384,7 +384,7 @@ class FmErrors(object):
                 ds_name = "%s_%s" % (save_band_name, STOKES_NAMES[stoke_idx])
                 create_sounding_dataset(stokes_grp, ds_name, numpy.array(all_band_data, dtype=float), "SciColor") 
 
-    def one_iteration_retrieval(self, meas_spec, err_desc, fm_err_grp, units_name):
+    def perturbed_retrieval(self, meas_spec, err_desc, fm_err_grp, units_name):
         log_info("Running 1 iteration retrieval for perturbed FM state\n")
         sv = self.lua_config.state_vector
         solver = self.lua_config.fm.config.conn_solver
@@ -395,7 +395,7 @@ class FmErrors(object):
         orig_max_iter = solver.convergence_check.maximum_number_iteration
 
         # Perform retrieval using initial state vector and save the values
-        solver.convergence_check.maximum_number_iteration = 1
+        solver.convergence_check.maximum_number_iteration = self.num_perturbed_iterations 
         sv.update_state(self.initial_sv)
 
         solver.solve(ig.initial_guess, ig.apriori, ig.apriori_covariance)
@@ -448,8 +448,8 @@ class FmErrors(object):
                 out_hdf.flush()
 
                 # Perform a 1 iteration retrieval on perturbed FM state using apriori statevector
-                if self.calc_perturbed:
-                    self.one_iteration_retrieval(meas_spec, err_desc, fm_err_grp, unpert_spec_range.units.name)
+                if self.num_perturbed_iterations > 0:
+                    self.perturbed_retrieval(meas_spec, err_desc, fm_err_grp, unpert_spec_range.units.name)
                     out_hdf.flush()
 
                 # Call generator to reset state, it will return True if there are more
@@ -567,10 +567,9 @@ if __name__ == "__main__":
                        default=True,
                        help="Skips convolving unperturbed stokes components and saving the result")
 
-    parser.add_option( "--no_perturbed", dest="calc_perturbed",
-                       action="store_false",
-                       default=True,
-                       help="Skips calculating perturbed residual from perturbed context with initial state vector (1 FM+Jac, 1 FM only calculation)")
+    parser.add_option( "--num_perturbed", dest="num_perturbed_iterations",
+                       type=int, default=0,
+                       help="Number of iterations for calculating perturbed residual from perturbed context with initial state vector (1 FM+Jac, 1 FM only calculation). A value of 0 disables perturbed retrievals. Default is 0.")
 
     # Parse command line arguments
     (options, args) = parser.parse_args()
@@ -588,7 +587,7 @@ if __name__ == "__main__":
         # about not using paths as supplied on command line
         config_filename, output_file = [ os.path.realpath(fn) for fn in args ]
 
-        fm_errors = FmErrors(config_filename, output_file, options.use_existing, options.check_reset, options.error_type_filters, run_retrieval=options.run_retrieval, save_stokes=options.save_stokes, calc_perturbed=options.calc_perturbed)
+        fm_errors = FmErrors(config_filename, output_file, options.use_existing, options.check_reset, options.error_type_filters, run_retrieval=options.run_retrieval, save_stokes=options.save_stokes, num_perturbed_iterations=options.num_perturbed_iterations)
         fm_errors.run()
 
     else:
