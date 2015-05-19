@@ -178,7 +178,7 @@ void getsp(int nlev, double * z, double * p, double * t, double ths, double roc,
   //  iteration loop tp find the angle ths which gives rise to a particular
   //  astronomical solar zenith angle.
 
-  int const maxstep=6400;
+  int const maxstep=64000;
   int lev1,lev2,k;
   double ztoa,zhp,del_zlev,pres,temp,x1,x2,a1,a2,con;
   double ds,dx,dz,dt,dphi,phi,th,thp,zh,rpsh,rp;
@@ -310,7 +310,7 @@ void UplookingRaytracing::tlpath(int nlev,double * z, double * t, double * p, do
   double & zmin = *zmin_out;
   double & bend = *bend_out;
 
-  int const mlev = 250;
+  int const mlev = 1000;
   int lev1,lev2,it,iter,k,l;
   double spg[mlev];
   double asza,zmin0,bend0,bendx,rsza,del_zlev,
@@ -320,7 +320,7 @@ void UplookingRaytracing::tlpath(int nlev,double * z, double * t, double * p, do
   double opcon_tkr,opcon_mic,rizobs,riztan,rtnt;
   double const pi=3.1415926536;
   double const d2r=pi/180.0;
-  int const maxiter=22;
+  int const maxiter=mlev/2;
 
   *ifail=0;
   if(nlev==1) {
