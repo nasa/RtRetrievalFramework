@@ -25,6 +25,11 @@ function OcoConfig.instrument_correction_list_acquisition_mode:sub_object_key()
       res = self.ic_glint
    elseif self.config.l1b:acquisition_mode() == "Target" then 
       res = self.ic_target
+   elseif self.config.l1b:acquisition_mode() == "Transition" then 
+      --- We treat this the same as target. We can make a separate ic_transition
+      --- if needed in the future, but for now just do what we do with target
+      --- mode
+      res = self.ic_target
    elseif self.config.l1b:acquisition_mode() == "Nadir" then 
       res = self.ic_nadir
    else
