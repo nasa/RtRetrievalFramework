@@ -385,7 +385,7 @@ class FmErrors(object):
                 create_sounding_dataset(stokes_grp, ds_name, numpy.array(all_band_data, dtype=float), "SciColor") 
 
     def perturbed_retrieval(self, meas_spec, err_desc, fm_err_grp, units_name):
-        log_info("Running 1 iteration retrieval for perturbed FM state\n")
+        log_info("Running %d iteration retrieval for perturbed FM state\n" % self.num_perturbed_iterations)
         sv = self.lua_config.state_vector
         solver = self.lua_config.fm.config.conn_solver
         ig = self.lua_config.fm.config.initial_guess
@@ -400,17 +400,14 @@ class FmErrors(object):
 
         solver.solve(ig.initial_guess, ig.apriori, ig.apriori_covariance)
 
-        # Since solver stops before finding a solution, we must extract the updated SV using dx
-        updated_sv = solver.x_solution + solver.state.dx
-
-        # Update statevector and perform an additional FM calculation
-        sv.update_state(updated_sv)
+        # Perform an additional FM calculation from the retrieved state
+        log_info("Performing final perturbed retrieval FM calculation")
         skip_jacobian = True
         pert_spec = self.lua_config.fm.config.forward_model.radiance_all(skip_jacobian)
         pert_range = pert_spec.spectral_range.convert(meas_spec.spectral_range.units)
         residual = pert_range.data - meas_spec.spectral_range.data
 
-        err_desc.write_perturb_datasets(fm_err_grp, updated_sv, residual, units_name)
+        err_desc.write_perturb_datasets(fm_err_grp, solver.x_solution, residual, units_name)
 
         # Reset back to state before we began
         sv.update_state(orig_state)
