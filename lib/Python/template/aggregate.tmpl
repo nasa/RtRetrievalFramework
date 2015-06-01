@@ -53,7 +53,7 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
     rm $snd_id_tmp1 
 
     # Extract orbit number 
-    orbit_ident=$(echo $l1b_file | sed -r 's/.*_L1bScND_([^_]+)_.*/\1/')
+    orbit_ident=$(echo $l1b_file | sed -r 's/.*_L1bSc[^_]+_*([^_]+)_.*/\1/')
 
     # Try and find IMAP file based on L1B filename
     find_extra_product "$l1b_file" "L2IDP" "oco2_L2IDP" "IMAP DOAS" "DOAS"
