@@ -41,6 +41,9 @@ public:
     /// Returns hard coded value of 1.5 since that is the value hardcoded into LIDORT
     virtual const double refractive_index(const int Spec_idx) const { return 1.5; }
 
+    // Uses LIDORT to compute the black sky albedo from the parameters
+    virtual const double black_sky_albedo(const int Spec_index, const double Sza) = 0;
+  
     /// String describing which type of Breon surface type, also makes this class abstract
     virtual const std::string breon_type() const = 0;
     
@@ -69,6 +72,7 @@ public:
                 const std::vector<std::string>& Desc_band_names) :
         GroundBrdf(Coeffs, Flag, Desc_band_names) {}
 
+    virtual const double black_sky_albedo(const int Spec_index, const double Sza);
     virtual const std::string breon_type() const { return "Vegetative"; }
 
     virtual boost::shared_ptr<Ground> clone() const {
@@ -88,6 +92,7 @@ public:
                 const std::vector<std::string>& Desc_band_names) :
         GroundBrdf(Coeffs, Flag, Desc_band_names) {}
 
+    virtual const double black_sky_albedo(const int Spec_index, const double Sza);
     virtual const std::string breon_type() const { return "Soil"; }
 
     virtual boost::shared_ptr<Ground> clone() const {

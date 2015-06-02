@@ -78,6 +78,7 @@ fullphysicsinc_HEADERS += @implsrc@/ground_coxmunk_plus_lambertian.h
 libfp_la_SOURCES += @implsrc@/ground_coxmunk_plus_lambertian.cc
 fullphysicsinc_HEADERS += @implsrc@/ground_brdf.h
 libfp_la_SOURCES += @implsrc@/ground_brdf.cc
+libfp_la_SOURCES += @implsrc@/black_sky_albedo.F90
 fullphysicsinc_HEADERS += @implsrc@/aerosol.h
 libfp_la_SOURCES += @implsrc@/aerosol.cc
 fullphysicsinc_HEADERS += @implsrc@/atmosphere_oco.h
