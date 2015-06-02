@@ -171,7 +171,7 @@ BOOST_AUTO_TEST_CASE(lambertian_first_order)
     BOOST_CHECK_MATRIX_CLOSE_TOL(expt_stokes, l_rad->stokes(), 1e-7);
 }
 
-BOOST_AUTO_TEST_CASE(simple_breon)
+BOOST_AUTO_TEST_CASE(simple_brdf)
 {
     int nstream = 4;
     int nmoms = 2*nstream;

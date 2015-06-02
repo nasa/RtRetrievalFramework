@@ -228,7 +228,7 @@ void SpurrBrdfDriver::setup_breon_inputs(int kernel_index, ArrayAd<double, 1>& s
   int kf_idx = parameter_indexes(0);
   
   brdf_factors(kernel_index) = surface_parameters(kf_idx).value();
-  brdf_params(kernel_index, 0) = 2.25; // Refractive index squared, same as hardcoded value inside lrad, should be same as value in ground_breon.cc
+  brdf_params(kernel_index, 0) = 2.25; // Refractive index squared, same as hardcoded value inside lrad, should be same as value in ground_brdf.cc
 }
 
 /********************************************************************/

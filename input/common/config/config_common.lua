@@ -2050,9 +2050,9 @@ end
 --- Breon veg ground state vector component and initial guess
 ------------------------------------------------------------
 
-ConfigCommon.breon_veg_retrieval = CreatorMultiSpec:new {}
+ConfigCommon.brdf_veg_retrieval = CreatorMultiSpec:new {}
 
-function ConfigCommon.breon_veg_retrieval:create()
+function ConfigCommon.brdf_veg_retrieval:create()
    local num_spec = self.config.number_pixel:rows()
 
    local ap = Blitz_double_array_2d(num_spec, 5)
@@ -2063,34 +2063,34 @@ function ConfigCommon.breon_veg_retrieval:create()
        flag:set(i-1, Range.all(), self:retrieval_flag(i))
    end
 
-   return GroundBreonVeg(ap, flag, self.config.common.desc_band_name)
+   return GroundBrdfVeg(ap, flag, self.config.common.desc_band_name)
 end
 
 ------------------------------------------------------------
 --- Sets up the ground using only using a Breon veg retrieval
 ------------------------------------------------------------
 
-ConfigCommon.ground_breon_veg = CompositeCreator:new {}
+ConfigCommon.ground_brdf_veg = CompositeCreator:new {}
 
-function ConfigCommon.ground_breon_veg:sub_object_key()
-   return { "breon_veg" }
+function ConfigCommon.ground_brdf_veg:sub_object_key()
+   return { "brdf_veg" }
 end
 
-function ConfigCommon.ground_breon_veg:create_parent_object(sub_object)
-   return self.config.breon_veg
+function ConfigCommon.ground_brdf_veg:create_parent_object(sub_object)
+   return self.config.brdf_veg
 end
 
-function ConfigCommon.ground_breon_veg:register_output(ro)
-   --ro:push_back(GroundBreonOutput.create(self.config.breon_veg))
+function ConfigCommon.ground_brdf_veg:register_output(ro)
+   --ro:push_back(GroundBrdfOutput.create(self.config.brdf_veg))
 end
 
 ------------------------------------------------------------
 --- Breon soil ground state vector component and initial guess
 ------------------------------------------------------------
 
-ConfigCommon.breon_soil_retrieval = CreatorMultiSpec:new {}
+ConfigCommon.brdf_soil_retrieval = CreatorMultiSpec:new {}
 
-function ConfigCommon.breon_soil_retrieval:create()
+function ConfigCommon.brdf_soil_retrieval:create()
    local num_spec = self.config.number_pixel:rows()
 
    local ap = Blitz_double_array_2d(num_spec, 5)
@@ -2101,25 +2101,25 @@ function ConfigCommon.breon_soil_retrieval:create()
        flag:set(i-1, Range.all(), self:retrieval_flag(i))
    end
 
-   return GroundBreonSoil(ap, flag, self.config.common.desc_band_name)
+   return GroundBrdfSoil(ap, flag, self.config.common.desc_band_name)
 end
 
 ------------------------------------------------------------
 --- Sets up the ground using only using a Breon soil retrieval
 ------------------------------------------------------------
 
-ConfigCommon.ground_breon_soil = CompositeCreator:new {}
+ConfigCommon.ground_brdf_soil = CompositeCreator:new {}
 
-function ConfigCommon.ground_breon_soil:sub_object_key()
-   return { "breon_soil" }
+function ConfigCommon.ground_brdf_soil:sub_object_key()
+   return { "brdf_soil" }
 end
 
-function ConfigCommon.ground_breon_soil:create_parent_object(sub_object)
-   return self.config.breon_soil
+function ConfigCommon.ground_brdf_soil:create_parent_object(sub_object)
+   return self.config.brdf_soil
 end
 
-function ConfigCommon.ground_breon_soil:register_output(ro)
-   --ro:push_back(GroundBreonOutput.create(self.config.breon_soil))
+function ConfigCommon.ground_brdf_soil:register_output(ro)
+   --ro:push_back(GroundBrdfOutput.create(self.config.brdf_soil))
 end
 
 ------------------------------------------------------------

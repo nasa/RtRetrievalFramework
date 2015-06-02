@@ -151,7 +151,7 @@ extern "C" {
   void init_ground_lambertian(void);
   void init_ground_coxmunk(void);
   void init_ground_coxmunk_plus_lambertian(void);
-  void init_ground_breon(void);
+  void init_ground_brdf(void);
   void init_initial_guess_value(void);
   void init_aerosol(void);
   void init_merra_aerosol(void);
@@ -441,7 +441,7 @@ void init_swig_wrap(void)
   init_extension_module(package, "_ground_lambertian", init_ground_lambertian);
   init_extension_module(package, "_ground_coxmunk", init_ground_coxmunk);
   init_extension_module(package, "_ground_coxmunk_plus_lambertian", init_ground_coxmunk_plus_lambertian);
-  init_extension_module(package, "_ground_breon", init_ground_breon);
+  init_extension_module(package, "_ground_brdf", init_ground_brdf);
   init_extension_module(package, "_initial_guess_value", init_initial_guess_value);
   init_extension_module(package, "_aerosol", init_aerosol);
   init_extension_module(package, "_merra_aerosol", init_merra_aerosol);

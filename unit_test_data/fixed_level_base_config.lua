@@ -217,18 +217,18 @@ FixedLevelBaseConfig = AcosConfig:new {
                creator = ConfigCommon.lambertian_retrieval,
             },
 
-            -- Breon vegetative kernel with Rahman retrieved parameters
-            breon_veg = {
-               apriori = ConfigCommon.hdf_apriori_i("Ground/Breon"),
-               covariance = ConfigCommon.hdf_covariance_i("Ground/Breon"),
-               creator = ConfigCommon.breon_veg_retrieval,
+            -- Brdf vegetative kernel with Rahman retrieved parameters
+            brdf_veg = {
+               apriori = ConfigCommon.hdf_apriori_i("Ground/Brdf"),
+               covariance = ConfigCommon.hdf_covariance_i("Ground/Brdf"),
+               creator = ConfigCommon.brdf_veg_retrieval,
             },
             
-            -- Breon soil kernel with Rahman retrieved parameters
-            breon_soil = {
-               apriori = ConfigCommon.hdf_apriori_i("Ground/Breon"),
-               covariance = ConfigCommon.hdf_covariance_i("Ground/Breon"),
-               creator = ConfigCommon.breon_soil_retrieval,
+            -- Brdf soil kernel with Rahman retrieved parameters
+            brdf_soil = {
+               apriori = ConfigCommon.hdf_apriori_i("Ground/Brdf"),
+               covariance = ConfigCommon.hdf_covariance_i("Ground/Brdf"),
+               creator = ConfigCommon.brdf_soil_retrieval,
             },
 
             creator = ConfigCommon.ground_lambertian,
