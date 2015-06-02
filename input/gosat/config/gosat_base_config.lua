@@ -290,20 +290,20 @@ GosatBaseConfig = AcosConfig:new {
                creator = ConfigCommon.lambertian_retrieval,
             },
             
-            -- Breon vegetative kernel with Rahman retrieved parameters
-            breon_veg = {
-               apriori = ConfigCommon.hdf_apriori_i("Ground/Breon"),
-               covariance = ConfigCommon.hdf_covariance_i("Ground/Breon"),
+            -- Brdf vegetative kernel with Rahman retrieved parameters
+            brdf_veg = {
+               apriori = ConfigCommon.hdf_apriori_i("Ground/Brdf"),
+               covariance = ConfigCommon.hdf_covariance_i("Ground/Brdf"),
                retrieve_bands = { true, true, true },
-               creator = ConfigCommon.breon_veg_retrieval,
+               creator = ConfigCommon.brdf_veg_retrieval,
             },
             
-            -- Breon soil kernel with Rahman retrieved parameters
-            breon_soil = {
-               apriori = ConfigCommon.hdf_apriori_i("Ground/Breon"),
-               covariance = ConfigCommon.hdf_covariance_i("Ground/Breon"),
+            -- Brdf soil kernel with Rahman retrieved parameters
+            brdf_soil = {
+               apriori = ConfigCommon.hdf_apriori_i("Ground/Brdf"),
+               covariance = ConfigCommon.hdf_covariance_i("Ground/Brdf"),
                retrieve_bands = { true, true, true },
-               creator = ConfigCommon.breon_soil_retrieval,
+               creator = ConfigCommon.brdf_soil_retrieval,
             },
 
             creator = AcosConfig.ground_land_fraction,

@@ -352,7 +352,7 @@ BOOST_AUTO_TEST_CASE(simple)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-BOOST_FIXTURE_TEST_SUITE(lidort_driver_breon_veg, LidortDriverCommonFixture)
+BOOST_FIXTURE_TEST_SUITE(lidort_driver_brdf_veg, LidortDriverCommonFixture)
 
 BOOST_AUTO_TEST_CASE(simple)
 {

@@ -1,6 +1,6 @@
 #include "ground_lambertian.h"
 #include "ground_coxmunk.h"
-#include "ground_breon.h"
+#include "ground_brdf.h"
 #include "configuration_fixture.h"
 #include "unit_test_support.h"
 
@@ -11,8 +11,8 @@ class GroundFixture : public GlobalFixture {
 public:
     boost::shared_ptr<GroundLambertian> lambertian;
     boost::shared_ptr<GroundCoxmunk> coxmunk;
-    boost::shared_ptr<GroundBreonVeg> breon_veg;
-    boost::shared_ptr<GroundBreonSoil> breon_soil;
+    boost::shared_ptr<GroundBrdfVeg> brdf_veg;
+    boost::shared_ptr<GroundBrdfSoil> brdf_soil;
 
     GroundFixture() {
         // Lambertian
@@ -50,9 +50,9 @@ public:
 
         coxmunk.reset(new GroundCoxmunk(7.1, false, refr_index));
 
-        // Breon 
-        Array<double, 2> breon_coeffs(3, 5);
-        breon_coeffs = 
+        // BRDF (Rahman + Breon)
+        Array<double, 2> brdf_coeffs(3, 5);
+        brdf_coeffs = 
             // rahman_factor, amplitude, asymmetry, geometric, breon_factor
             1.0, 0.1, 0.3, 1.5, 2.0,
             1.1, 0.2, 0.4, 1.6, 2.1,
@@ -60,8 +60,8 @@ public:
         Array<bool, 2> flag(3, 5);
         flag = true;
             
-        breon_veg.reset(new GroundBreonVeg(breon_coeffs, flag, band_name));
-        breon_soil.reset(new GroundBreonSoil(breon_coeffs, flag, band_name));
+        brdf_veg.reset(new GroundBrdfVeg(brdf_coeffs, flag, band_name));
+        brdf_soil.reset(new GroundBrdfSoil(brdf_coeffs, flag, band_name));
 
   }
 };

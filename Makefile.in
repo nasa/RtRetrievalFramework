@@ -391,12 +391,10 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/rayleigh_greek_moment_wrap.cc \
 	@swigsrc@/hdf_file_wrap.cc @swigsrc@/hdf_sounding_id_wrap.cc \
 	@swigsrc@/acos_sounding_id_wrap.cc \
-	@swigsrc@/oco_sounding_id_wrap.cc \
-	@swigsrc@/uq_sounding_id_wrap.cc @swigsrc@/ecmwf_wrap.cc \
+	@swigsrc@/oco_sounding_id_wrap.cc @swigsrc@/ecmwf_wrap.cc \
 	@swigsrc@/acos_ecmwf_wrap.cc @swigsrc@/oco_ecmwf_wrap.cc \
-	@swigsrc@/uq_ecmwf_wrap.cc @swigsrc@/oco_sim_met_ecmwf_wrap.cc \
-	@swigsrc@/observer_wrap.cc @swigsrc@/fts_run_log_wrap.cc \
-	@swigsrc@/spectral_range_wrap.cc \
+	@swigsrc@/oco_sim_met_ecmwf_wrap.cc @swigsrc@/observer_wrap.cc \
+	@swigsrc@/fts_run_log_wrap.cc @swigsrc@/spectral_range_wrap.cc \
 	@swigsrc@/spectral_bound_wrap.cc @swigsrc@/spectrum_wrap.cc \
 	@swigsrc@/named_spectrum_wrap.cc \
 	@swigsrc@/state_vector_wrap.cc \
@@ -479,7 +477,7 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/level_1b_heritage_wrap.cc \
 	@swigsrc@/level_1b_acos_wrap.cc \
 	@swigsrc@/level_1b_average_wrap.cc \
-	@swigsrc@/level_1b_oco_wrap.cc @swigsrc@/level_1b_uq_wrap.cc \
+	@swigsrc@/level_1b_oco_wrap.cc \
 	@swigsrc@/level_1b_cache_wrap.cc \
 	@swigsrc@/gosat_noise_model_wrap.cc \
 	@swigsrc@/precomputed_noise_model_wrap.cc \
@@ -489,6 +487,7 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/ground_lambertian_wrap.cc \
 	@swigsrc@/ground_coxmunk_wrap.cc \
 	@swigsrc@/ground_coxmunk_plus_lambertian_wrap.cc \
+	@swigsrc@/ground_brdf_wrap.cc \
 	@swigsrc@/initial_guess_value_wrap.cc \
 	@swigsrc@/aerosol_wrap.cc @swigsrc@/merra_aerosol_wrap.cc \
 	@swigsrc@/rayleigh_wrap.cc @swigsrc@/atmosphere_oco_wrap.cc \
@@ -592,11 +591,9 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-hdf_sounding_id_wrap.lo \
 	@swigsrc@/_swig_wrap_la-acos_sounding_id_wrap.lo \
 	@swigsrc@/_swig_wrap_la-oco_sounding_id_wrap.lo \
-	@swigsrc@/_swig_wrap_la-uq_sounding_id_wrap.lo \
 	@swigsrc@/_swig_wrap_la-ecmwf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-acos_ecmwf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-oco_ecmwf_wrap.lo \
-	@swigsrc@/_swig_wrap_la-uq_ecmwf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-oco_sim_met_ecmwf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-observer_wrap.lo \
 	@swigsrc@/_swig_wrap_la-fts_run_log_wrap.lo \
@@ -701,7 +698,6 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-level_1b_acos_wrap.lo \
 	@swigsrc@/_swig_wrap_la-level_1b_average_wrap.lo \
 	@swigsrc@/_swig_wrap_la-level_1b_oco_wrap.lo \
-	@swigsrc@/_swig_wrap_la-level_1b_uq_wrap.lo \
 	@swigsrc@/_swig_wrap_la-level_1b_cache_wrap.lo \
 	@swigsrc@/_swig_wrap_la-gosat_noise_model_wrap.lo \
 	@swigsrc@/_swig_wrap_la-precomputed_noise_model_wrap.lo \
@@ -712,6 +708,7 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-ground_lambertian_wrap.lo \
 	@swigsrc@/_swig_wrap_la-ground_coxmunk_wrap.lo \
 	@swigsrc@/_swig_wrap_la-ground_coxmunk_plus_lambertian_wrap.lo \
+	@swigsrc@/_swig_wrap_la-ground_brdf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-initial_guess_value_wrap.lo \
 	@swigsrc@/_swig_wrap_la-aerosol_wrap.lo \
 	@swigsrc@/_swig_wrap_la-merra_aerosol_wrap.lo \
@@ -829,9 +826,8 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@supportsrc@/hdf_file_generating.cc \
 	@supportsrc@/hdf_sounding_id.cc \
 	@supportsrc@/acos_sounding_id.cc \
-	@supportsrc@/oco_sounding_id.cc @supportsrc@/uq_sounding_id.cc \
-	@supportsrc@/ecmwf.cc @supportsrc@/acos_ecmwf.cc \
-	@supportsrc@/oco_ecmwf.cc @supportsrc@/uq_ecmwf.cc \
+	@supportsrc@/oco_sounding_id.cc @supportsrc@/ecmwf.cc \
+	@supportsrc@/acos_ecmwf.cc @supportsrc@/oco_ecmwf.cc \
 	@supportsrc@/oco_sim_met_ecmwf.cc @supportsrc@/fts_run_log.cc \
 	@supportsrc@/spectrum.cc @supportsrc@/state_vector.cc \
 	@supportsrc@/sub_state_vector_proxy.cc \
@@ -900,14 +896,14 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@implsrc@/solver_iteration_log.cc \
 	@implsrc@/level_1b_heritage.cc @implsrc@/level_1b_acos.cc \
 	@implsrc@/level_1b_average.cc @implsrc@/level_1b_oco.cc \
-	@implsrc@/level_1b_uq.cc @implsrc@/level_1b_cache.cc \
-	@implsrc@/absorber_absco.cc @implsrc@/ground_lambertian.cc \
-	@implsrc@/ground_coxmunk.cc \
+	@implsrc@/level_1b_cache.cc @implsrc@/absorber_absco.cc \
+	@implsrc@/ground_lambertian.cc @implsrc@/ground_coxmunk.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian.cc \
-	@implsrc@/aerosol.cc @implsrc@/atmosphere_oco.cc \
-	@implsrc@/altitude_hydrostatic.cc @implsrc@/rayleigh.cc \
-	@implsrc@/rayleigh_f.F90 @implsrc@/absco.cc \
-	@implsrc@/absco_hdf.cc @implsrc@/uniform_spectrum_sampling.cc \
+	@implsrc@/ground_brdf.cc @implsrc@/aerosol.cc \
+	@implsrc@/atmosphere_oco.cc @implsrc@/altitude_hydrostatic.cc \
+	@implsrc@/rayleigh.cc @implsrc@/rayleigh_f.F90 \
+	@implsrc@/absco.cc @implsrc@/absco_hdf.cc \
+	@implsrc@/uniform_spectrum_sampling.cc \
 	@implsrc@/spectrum_sampling_fixed_spacing.cc \
 	@implsrc@/lidort_interface_types.F90 \
 	@implsrc@/lidort_interface_types_io.F90 \
@@ -925,7 +921,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@implsrc@/spectral_window_range.cc @implsrc@/output_hdf.cc \
 	@implsrc@/output_hdf_iteration.cc @implsrc@/error_analysis.cc \
 	@implsrc@/fm_nlls_problem.cc @implsrc@/gosat_noise_model.cc \
-	@implsrc@/oco_noise_model.cc @implsrc@/uq_noise_model.cc \
+	@implsrc@/oco_noise_model.cc \
 	@implsrc@/precomputed_noise_model.cc @implsrc@/level_1b_fts.cc \
 	@implsrc@/level_1b_fts_f.F90 \
 	@implsrc@/aerosol_extinction_linear.cc \
@@ -1052,11 +1048,9 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@supportsrc@/libfp_la-hdf_sounding_id.lo \
 	@supportsrc@/libfp_la-acos_sounding_id.lo \
 	@supportsrc@/libfp_la-oco_sounding_id.lo \
-	@supportsrc@/libfp_la-uq_sounding_id.lo \
 	@supportsrc@/libfp_la-ecmwf.lo \
 	@supportsrc@/libfp_la-acos_ecmwf.lo \
 	@supportsrc@/libfp_la-oco_ecmwf.lo \
-	@supportsrc@/libfp_la-uq_ecmwf.lo \
 	@supportsrc@/libfp_la-oco_sim_met_ecmwf.lo \
 	@supportsrc@/libfp_la-fts_run_log.lo \
 	@supportsrc@/libfp_la-spectrum.lo \
@@ -1151,12 +1145,12 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@implsrc@/libfp_la-level_1b_acos.lo \
 	@implsrc@/libfp_la-level_1b_average.lo \
 	@implsrc@/libfp_la-level_1b_oco.lo \
-	@implsrc@/libfp_la-level_1b_uq.lo \
 	@implsrc@/libfp_la-level_1b_cache.lo \
 	@implsrc@/libfp_la-absorber_absco.lo \
 	@implsrc@/libfp_la-ground_lambertian.lo \
 	@implsrc@/libfp_la-ground_coxmunk.lo \
 	@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo \
+	@implsrc@/libfp_la-ground_brdf.lo \
 	@implsrc@/libfp_la-aerosol.lo \
 	@implsrc@/libfp_la-atmosphere_oco.lo \
 	@implsrc@/libfp_la-altitude_hydrostatic.lo \
@@ -1192,7 +1186,6 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@implsrc@/libfp_la-fm_nlls_problem.lo \
 	@implsrc@/libfp_la-gosat_noise_model.lo \
 	@implsrc@/libfp_la-oco_noise_model.lo \
-	@implsrc@/libfp_la-uq_noise_model.lo \
 	@implsrc@/libfp_la-precomputed_noise_model.lo \
 	@implsrc@/libfp_la-level_1b_fts.lo \
 	@implsrc@/libfp_la-level_1b_fts_f.lo \
@@ -1451,7 +1444,6 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@supportsrc@/polynomial_eval_test.cc \
 	@interfacesrc@/output_test.cc \
 	@interfacesrc@/composite_initial_guess_test.cc \
-	@interfacesrc@/forward_model_spectral_grid_test.cc \
 	@implsrc@/configuration_fixture.cc \
 	@implsrc@/atmosphere_fixture.cc @implsrc@/lidort_fixture.cc \
 	@implsrc@/solver_finished_fixture.cc \
@@ -1488,7 +1480,8 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@implsrc@/ground_lambertian_test.cc \
 	@implsrc@/ground_coxmunk_test.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian_test.cc \
-	@implsrc@/aerosol_test.cc @implsrc@/atmosphere_oco_test.cc \
+	@implsrc@/ground_brdf_test.cc @implsrc@/aerosol_test.cc \
+	@implsrc@/atmosphere_oco_test.cc \
 	@implsrc@/altitude_hydrostatic_test.cc \
 	@implsrc@/rayleigh_test.cc @implsrc@/absco_hdf_test.cc \
 	@implsrc@/uniform_spectrum_sampling_test.cc \
@@ -1606,7 +1599,6 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@supportsrc@/polynomial_eval_test.$(OBJEXT) \
 	@interfacesrc@/output_test.$(OBJEXT) \
 	@interfacesrc@/composite_initial_guess_test.$(OBJEXT) \
-	@interfacesrc@/forward_model_spectral_grid_test.$(OBJEXT) \
 	@implsrc@/configuration_fixture.$(OBJEXT) \
 	@implsrc@/atmosphere_fixture.$(OBJEXT) \
 	@implsrc@/lidort_fixture.$(OBJEXT) \
@@ -1647,6 +1639,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@implsrc@/ground_lambertian_test.$(OBJEXT) \
 	@implsrc@/ground_coxmunk_test.$(OBJEXT) \
 	@implsrc@/ground_coxmunk_plus_lambertian_test.$(OBJEXT) \
+	@implsrc@/ground_brdf_test.$(OBJEXT) \
 	@implsrc@/aerosol_test.$(OBJEXT) \
 	@implsrc@/atmosphere_oco_test.$(OBJEXT) \
 	@implsrc@/altitude_hydrostatic_test.$(OBJEXT) \
@@ -1850,9 +1843,8 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@supportsrc@/heritage_matrix_write.h @supportsrc@/hdf_file.h \
 	@supportsrc@/hdf_file_generating.h \
 	@supportsrc@/hdf_sounding_id.h @supportsrc@/acos_sounding_id.h \
-	@supportsrc@/oco_sounding_id.h @supportsrc@/uq_sounding_id.h \
-	@supportsrc@/ecmwf.h @supportsrc@/acos_ecmwf.h \
-	@supportsrc@/oco_ecmwf.h @supportsrc@/uq_ecmwf.h \
+	@supportsrc@/oco_sounding_id.h @supportsrc@/ecmwf.h \
+	@supportsrc@/acos_ecmwf.h @supportsrc@/oco_ecmwf.h \
 	@supportsrc@/oco_sim_met_ecmwf.h \
 	@supportsrc@/linear_interpolate.h \
 	@supportsrc@/linear_interpolate_ad.h @supportsrc@/bin_map.h \
@@ -1932,10 +1924,11 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@implsrc@/chisq_convergence.h @implsrc@/connor_convergence.h \
 	@implsrc@/solver_iteration_log.h @implsrc@/level_1b_heritage.h \
 	@implsrc@/level_1b_acos.h @implsrc@/level_1b_average.h \
-	@implsrc@/level_1b_oco.h @implsrc@/level_1b_uq.h \
-	@implsrc@/level_1b_cache.h @implsrc@/absorber_absco.h \
-	@implsrc@/ground_lambertian.h @implsrc@/ground_coxmunk.h \
-	@implsrc@/ground_coxmunk_plus_lambertian.h @implsrc@/aerosol.h \
+	@implsrc@/level_1b_oco.h @implsrc@/level_1b_cache.h \
+	@implsrc@/absorber_absco.h @implsrc@/ground_lambertian.h \
+	@implsrc@/ground_coxmunk.h \
+	@implsrc@/ground_coxmunk_plus_lambertian.h \
+	@implsrc@/ground_brdf.h @implsrc@/aerosol.h \
 	@implsrc@/atmosphere_oco.h @implsrc@/altitude_hydrostatic.h \
 	@implsrc@/rayleigh.h @implsrc@/absco.h @implsrc@/absco_hdf.h \
 	@implsrc@/scattering_moment_interpolator.h \
@@ -1953,7 +1946,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@implsrc@/spectral_window_range.h @implsrc@/output_hdf.h \
 	@implsrc@/output_hdf_iteration.h @implsrc@/error_analysis.h \
 	@implsrc@/fm_nlls_problem.h @implsrc@/gosat_noise_model.h \
-	@implsrc@/oco_noise_model.h @implsrc@/uq_noise_model.h \
+	@implsrc@/oco_noise_model.h \
 	@implsrc@/precomputed_noise_model.h @implsrc@/level_1b_fts.h \
 	@implsrc@/aerosol_extinction_linear.h \
 	@implsrc@/aerosol_extinction_log.h \
@@ -2392,8 +2385,7 @@ bin_SCRIPTS = @supportutilssrc@/addSoundingHeader.py \
 	@supportutilssrc@/tkdiffrevs.sh \
 	@supportutilssrc@/tkdiffwrap.sh \
 	@supportutilssrc@/xco2_bias_calc @supportutilssrc@/populate.py \
-	@supportutilssrc@/create_config.py \
-	@supportutilssrc@/uq_experiment.py
+	@supportutilssrc@/create_config.py
 # Test files
 #SWIG_SRC += @swigsrc@/merra_aerosol_wrap.cc
 
@@ -2481,9 +2473,8 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@supportsrc@/heritage_matrix_write.h @supportsrc@/hdf_file.h \
 	@supportsrc@/hdf_file_generating.h \
 	@supportsrc@/hdf_sounding_id.h @supportsrc@/acos_sounding_id.h \
-	@supportsrc@/oco_sounding_id.h @supportsrc@/uq_sounding_id.h \
-	@supportsrc@/ecmwf.h @supportsrc@/acos_ecmwf.h \
-	@supportsrc@/oco_ecmwf.h @supportsrc@/uq_ecmwf.h \
+	@supportsrc@/oco_sounding_id.h @supportsrc@/ecmwf.h \
+	@supportsrc@/acos_ecmwf.h @supportsrc@/oco_ecmwf.h \
 	@supportsrc@/oco_sim_met_ecmwf.h \
 	@supportsrc@/linear_interpolate.h \
 	@supportsrc@/linear_interpolate_ad.h @supportsrc@/bin_map.h \
@@ -2563,10 +2554,11 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@implsrc@/chisq_convergence.h @implsrc@/connor_convergence.h \
 	@implsrc@/solver_iteration_log.h @implsrc@/level_1b_heritage.h \
 	@implsrc@/level_1b_acos.h @implsrc@/level_1b_average.h \
-	@implsrc@/level_1b_oco.h @implsrc@/level_1b_uq.h \
-	@implsrc@/level_1b_cache.h @implsrc@/absorber_absco.h \
-	@implsrc@/ground_lambertian.h @implsrc@/ground_coxmunk.h \
-	@implsrc@/ground_coxmunk_plus_lambertian.h @implsrc@/aerosol.h \
+	@implsrc@/level_1b_oco.h @implsrc@/level_1b_cache.h \
+	@implsrc@/absorber_absco.h @implsrc@/ground_lambertian.h \
+	@implsrc@/ground_coxmunk.h \
+	@implsrc@/ground_coxmunk_plus_lambertian.h \
+	@implsrc@/ground_brdf.h @implsrc@/aerosol.h \
 	@implsrc@/atmosphere_oco.h @implsrc@/altitude_hydrostatic.h \
 	@implsrc@/rayleigh.h @implsrc@/absco.h @implsrc@/absco_hdf.h \
 	@implsrc@/scattering_moment_interpolator.h \
@@ -2584,7 +2576,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@implsrc@/spectral_window_range.h @implsrc@/output_hdf.h \
 	@implsrc@/output_hdf_iteration.h @implsrc@/error_analysis.h \
 	@implsrc@/fm_nlls_problem.h @implsrc@/gosat_noise_model.h \
-	@implsrc@/oco_noise_model.h @implsrc@/uq_noise_model.h \
+	@implsrc@/oco_noise_model.h \
 	@implsrc@/precomputed_noise_model.h @implsrc@/level_1b_fts.h \
 	@implsrc@/aerosol_extinction_linear.h \
 	@implsrc@/aerosol_extinction_log.h \
@@ -2697,7 +2689,6 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@supportsrc@/polynomial_eval_test.cc \
 	@interfacesrc@/output_test.cc \
 	@interfacesrc@/composite_initial_guess_test.cc \
-	@interfacesrc@/forward_model_spectral_grid_test.cc \
 	@implsrc@/configuration_fixture.cc \
 	@implsrc@/atmosphere_fixture.cc @implsrc@/lidort_fixture.cc \
 	@implsrc@/solver_finished_fixture.cc \
@@ -2734,7 +2725,8 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@implsrc@/ground_lambertian_test.cc \
 	@implsrc@/ground_coxmunk_test.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian_test.cc \
-	@implsrc@/aerosol_test.cc @implsrc@/atmosphere_oco_test.cc \
+	@implsrc@/ground_brdf_test.cc @implsrc@/aerosol_test.cc \
+	@implsrc@/atmosphere_oco_test.cc \
 	@implsrc@/altitude_hydrostatic_test.cc \
 	@implsrc@/rayleigh_test.cc @implsrc@/absco_hdf_test.cc \
 	@implsrc@/uniform_spectrum_sampling_test.cc \
@@ -2816,7 +2808,6 @@ config_DATA = @commonconfigsrc@/config_common.lua \
 	@commonconfigsrc@/aerosol_interference.lua \
 	@commonconfigsrc@/helper_functions.lua \
 	@commonconfigsrc@/rail_road_valley.lua \
-	@commonconfigsrc@/uncertainty_quantification.lua \
 	@ftsconfigsrc@/fts_config.lua \
 	@ftsconfigsrc@/fts_base_config.lua \
 	@gosatconfigsrc@/acos_config.lua \
@@ -2890,9 +2881,8 @@ pkgpython_PYTHON = @pythonlibsrc@/__init__.py \
 	@pythonlibsrc@/gosat_populator.py \
 	@pythonlibsrc@/oco_populator.py \
 	@pythonlibsrc@/oco_uplooking_populator.py \
-	@pythonlibsrc@/uq_populator.py @pythonlibsrc@/progress.py \
-	@pythonlibsrc@/plot_util.py @pythonlibsrc@/l2_lua.py \
-	@pythonlibsrc@/splice_tool_mapping.py
+	@pythonlibsrc@/progress.py @pythonlibsrc@/plot_util.py \
+	@pythonlibsrc@/l2_lua.py @pythonlibsrc@/splice_tool_mapping.py
 
 # Files that contain SWIG wrapper information
 
@@ -2916,12 +2906,10 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/rayleigh_greek_moment_wrap.cc \
 	@swigsrc@/hdf_file_wrap.cc @swigsrc@/hdf_sounding_id_wrap.cc \
 	@swigsrc@/acos_sounding_id_wrap.cc \
-	@swigsrc@/oco_sounding_id_wrap.cc \
-	@swigsrc@/uq_sounding_id_wrap.cc @swigsrc@/ecmwf_wrap.cc \
+	@swigsrc@/oco_sounding_id_wrap.cc @swigsrc@/ecmwf_wrap.cc \
 	@swigsrc@/acos_ecmwf_wrap.cc @swigsrc@/oco_ecmwf_wrap.cc \
-	@swigsrc@/uq_ecmwf_wrap.cc @swigsrc@/oco_sim_met_ecmwf_wrap.cc \
-	@swigsrc@/observer_wrap.cc @swigsrc@/fts_run_log_wrap.cc \
-	@swigsrc@/spectral_range_wrap.cc \
+	@swigsrc@/oco_sim_met_ecmwf_wrap.cc @swigsrc@/observer_wrap.cc \
+	@swigsrc@/fts_run_log_wrap.cc @swigsrc@/spectral_range_wrap.cc \
 	@swigsrc@/spectral_bound_wrap.cc @swigsrc@/spectrum_wrap.cc \
 	@swigsrc@/named_spectrum_wrap.cc \
 	@swigsrc@/state_vector_wrap.cc \
@@ -3004,7 +2992,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/level_1b_heritage_wrap.cc \
 	@swigsrc@/level_1b_acos_wrap.cc \
 	@swigsrc@/level_1b_average_wrap.cc \
-	@swigsrc@/level_1b_oco_wrap.cc @swigsrc@/level_1b_uq_wrap.cc \
+	@swigsrc@/level_1b_oco_wrap.cc \
 	@swigsrc@/level_1b_cache_wrap.cc \
 	@swigsrc@/gosat_noise_model_wrap.cc \
 	@swigsrc@/precomputed_noise_model_wrap.cc \
@@ -3014,6 +3002,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/ground_lambertian_wrap.cc \
 	@swigsrc@/ground_coxmunk_wrap.cc \
 	@swigsrc@/ground_coxmunk_plus_lambertian_wrap.cc \
+	@swigsrc@/ground_brdf_wrap.cc \
 	@swigsrc@/initial_guess_value_wrap.cc \
 	@swigsrc@/aerosol_wrap.cc @swigsrc@/merra_aerosol_wrap.cc \
 	@swigsrc@/rayleigh_wrap.cc @swigsrc@/atmosphere_oco_wrap.cc \
@@ -3181,9 +3170,8 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@supportsrc@/hdf_file_generating.cc \
 	@supportsrc@/hdf_sounding_id.cc \
 	@supportsrc@/acos_sounding_id.cc \
-	@supportsrc@/oco_sounding_id.cc @supportsrc@/uq_sounding_id.cc \
-	@supportsrc@/ecmwf.cc @supportsrc@/acos_ecmwf.cc \
-	@supportsrc@/oco_ecmwf.cc @supportsrc@/uq_ecmwf.cc \
+	@supportsrc@/oco_sounding_id.cc @supportsrc@/ecmwf.cc \
+	@supportsrc@/acos_ecmwf.cc @supportsrc@/oco_ecmwf.cc \
 	@supportsrc@/oco_sim_met_ecmwf.cc @supportsrc@/fts_run_log.cc \
 	@supportsrc@/spectrum.cc @supportsrc@/state_vector.cc \
 	@supportsrc@/sub_state_vector_proxy.cc \
@@ -3252,14 +3240,14 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@implsrc@/solver_iteration_log.cc \
 	@implsrc@/level_1b_heritage.cc @implsrc@/level_1b_acos.cc \
 	@implsrc@/level_1b_average.cc @implsrc@/level_1b_oco.cc \
-	@implsrc@/level_1b_uq.cc @implsrc@/level_1b_cache.cc \
-	@implsrc@/absorber_absco.cc @implsrc@/ground_lambertian.cc \
-	@implsrc@/ground_coxmunk.cc \
+	@implsrc@/level_1b_cache.cc @implsrc@/absorber_absco.cc \
+	@implsrc@/ground_lambertian.cc @implsrc@/ground_coxmunk.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian.cc \
-	@implsrc@/aerosol.cc @implsrc@/atmosphere_oco.cc \
-	@implsrc@/altitude_hydrostatic.cc @implsrc@/rayleigh.cc \
-	@implsrc@/rayleigh_f.F90 @implsrc@/absco.cc \
-	@implsrc@/absco_hdf.cc @implsrc@/uniform_spectrum_sampling.cc \
+	@implsrc@/ground_brdf.cc @implsrc@/aerosol.cc \
+	@implsrc@/atmosphere_oco.cc @implsrc@/altitude_hydrostatic.cc \
+	@implsrc@/rayleigh.cc @implsrc@/rayleigh_f.F90 \
+	@implsrc@/absco.cc @implsrc@/absco_hdf.cc \
+	@implsrc@/uniform_spectrum_sampling.cc \
 	@implsrc@/spectrum_sampling_fixed_spacing.cc \
 	@implsrc@/lidort_interface_types.F90 \
 	@implsrc@/lidort_interface_types_io.F90 \
@@ -3277,7 +3265,7 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@implsrc@/spectral_window_range.cc @implsrc@/output_hdf.cc \
 	@implsrc@/output_hdf_iteration.cc @implsrc@/error_analysis.cc \
 	@implsrc@/fm_nlls_problem.cc @implsrc@/gosat_noise_model.cc \
-	@implsrc@/oco_noise_model.cc @implsrc@/uq_noise_model.cc \
+	@implsrc@/oco_noise_model.cc \
 	@implsrc@/precomputed_noise_model.cc @implsrc@/level_1b_fts.cc \
 	@implsrc@/level_1b_fts_f.F90 \
 	@implsrc@/aerosol_extinction_linear.cc \
@@ -3386,8 +3374,7 @@ pkgpythontemplate_DATA = @pythontemplatesrc@/aggregate.tmpl \
 	@pythontemplatesrc@/oco_config.tmpl \
 	@pythontemplatesrc@/oco_uplooking_config.tmpl \
 	@pythontemplatesrc@/fts_config.tmpl \
-	@pythontemplatesrc@/gosat_config.tmpl \
-	@pythontemplatesrc@/uq_config.tmpl
+	@pythontemplatesrc@/gosat_config.tmpl
 pkgl2analysisdir = @pkgpythondir@/l2_analysis
 pkgl2analysis_PYTHON = @l2analysissrc@/ @l2analysissrc@/__init__.py \
 	@l2analysissrc@/albedo_plot_routines.py \
@@ -3674,7 +3661,7 @@ gosatconfig_DATA = @gosatconfigsrc@/config.lua \
 ococonfigdir = @configdir@/oco/config
 ococonfig_DATA = @ococonfigsrc@/config.lua \
 	@ococonfigsrc@/config_uplooking.lua \
-	@ococonfigsrc@/config_rrv.lua @ococonfigsrc@/config_uq.lua
+	@ococonfigsrc@/config_rrv.lua
 @BUILD_PYTHON_SWIG_TRUE@pkgpythonswigdir = @pythondir@/full_physics_swig
 @BUILD_PYTHON_SWIG_TRUE@pkgpythonswig_PYTHON =  \
 @BUILD_PYTHON_SWIG_TRUE@	@pythonsrc@/__init__.py $(patsubst \
@@ -3905,15 +3892,11 @@ clean-pkgpythonswigLTLIBRARIES:
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-oco_sounding_id_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
-@swigsrc@/_swig_wrap_la-uq_sounding_id_wrap.lo:  \
-	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-ecmwf_wrap.lo: @swigsrc@/$(am__dirstamp) \
 	@swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-acos_ecmwf_wrap.lo: @swigsrc@/$(am__dirstamp) \
 	@swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-oco_ecmwf_wrap.lo: @swigsrc@/$(am__dirstamp) \
-	@swigsrc@/$(DEPDIR)/$(am__dirstamp)
-@swigsrc@/_swig_wrap_la-uq_ecmwf_wrap.lo: @swigsrc@/$(am__dirstamp) \
 	@swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-oco_sim_met_ecmwf_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -4123,8 +4106,6 @@ clean-pkgpythonswigLTLIBRARIES:
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-level_1b_oco_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
-@swigsrc@/_swig_wrap_la-level_1b_uq_wrap.lo:  \
-	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-level_1b_cache_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-gosat_noise_model_wrap.lo:  \
@@ -4144,6 +4125,8 @@ clean-pkgpythonswigLTLIBRARIES:
 @swigsrc@/_swig_wrap_la-ground_coxmunk_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-ground_coxmunk_plus_lambertian_wrap.lo:  \
+	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
+@swigsrc@/_swig_wrap_la-ground_brdf_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-initial_guess_value_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -4403,15 +4386,11 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 @supportsrc@/libfp_la-oco_sounding_id.lo:  \
 	@supportsrc@/$(am__dirstamp) \
 	@supportsrc@/$(DEPDIR)/$(am__dirstamp)
-@supportsrc@/libfp_la-uq_sounding_id.lo: @supportsrc@/$(am__dirstamp) \
-	@supportsrc@/$(DEPDIR)/$(am__dirstamp)
 @supportsrc@/libfp_la-ecmwf.lo: @supportsrc@/$(am__dirstamp) \
 	@supportsrc@/$(DEPDIR)/$(am__dirstamp)
 @supportsrc@/libfp_la-acos_ecmwf.lo: @supportsrc@/$(am__dirstamp) \
 	@supportsrc@/$(DEPDIR)/$(am__dirstamp)
 @supportsrc@/libfp_la-oco_ecmwf.lo: @supportsrc@/$(am__dirstamp) \
-	@supportsrc@/$(DEPDIR)/$(am__dirstamp)
-@supportsrc@/libfp_la-uq_ecmwf.lo: @supportsrc@/$(am__dirstamp) \
 	@supportsrc@/$(DEPDIR)/$(am__dirstamp)
 @supportsrc@/libfp_la-oco_sim_met_ecmwf.lo:  \
 	@supportsrc@/$(am__dirstamp) \
@@ -4664,8 +4643,6 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-level_1b_oco.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
-@implsrc@/libfp_la-level_1b_uq.lo: @implsrc@/$(am__dirstamp) \
-	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-level_1b_cache.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-absorber_absco.lo: @implsrc@/$(am__dirstamp) \
@@ -4676,6 +4653,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo:  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-ground_brdf.lo: @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-aerosol.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-atmosphere_oco.lo: @implsrc@/$(am__dirstamp) \
@@ -4749,8 +4728,6 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 @implsrc@/libfp_la-gosat_noise_model.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-oco_noise_model.lo: @implsrc@/$(am__dirstamp) \
-	@implsrc@/$(DEPDIR)/$(am__dirstamp)
-@implsrc@/libfp_la-uq_noise_model.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-precomputed_noise_model.lo:  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -5485,9 +5462,6 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 @interfacesrc@/composite_initial_guess_test.$(OBJEXT):  \
 	@interfacesrc@/$(am__dirstamp) \
 	@interfacesrc@/$(DEPDIR)/$(am__dirstamp)
-@interfacesrc@/forward_model_spectral_grid_test.$(OBJEXT):  \
-	@interfacesrc@/$(am__dirstamp) \
-	@interfacesrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/configuration_fixture.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/atmosphere_fixture.$(OBJEXT): @implsrc@/$(am__dirstamp) \
@@ -5568,6 +5542,8 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/ground_coxmunk_plus_lambertian_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/ground_brdf_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/aerosol_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/atmosphere_oco_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
@@ -5877,6 +5853,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/fp_logger_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/full_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/gosat_noise_model_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_brdf_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_coxmunk_plus_lambertian_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_coxmunk_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_lambertian_test.Po@am__quote@
@@ -5932,6 +5909,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-fp_logger.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-freudenstein_roth_nlls_problem.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-gosat_noise_model.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-ground_brdf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-ground_lambertian.Plo@am__quote@
@@ -5956,7 +5934,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-level_1b_fts.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-level_1b_heritage.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-level_1b_oco.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-level_1b_uq.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-lidort_driver.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-lidort_rt.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-log_timing.Plo@am__quote@
@@ -6010,7 +5987,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-twostream_rt.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-uniform_spectrum_sampling.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-uplooking_raytracing.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-uq_noise_model.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-zero_offset_waveform.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/lidort_driver_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/lidort_fixture.Po@am__quote@
@@ -6055,7 +6031,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/uniform_spectrum_sampling_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/zero_offset_waveform_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/composite_initial_guess_test.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/forward_model_spectral_grid_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-absorber.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-absorber_vmr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-absorber_vmr_scaled.Plo@am__quote@
@@ -6230,8 +6205,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-state_vector.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-sub_state_vector_proxy.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-unit.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-uq_ecmwf.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-uq_sounding_id.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/linear_algebra_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/linear_interpolate_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/log_interpolate_test.Po@am__quote@
@@ -6322,6 +6295,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-gas_absorption_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-generic_object_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-gosat_noise_model_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_brdf_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_coxmunk_plus_lambertian_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_coxmunk_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_lambertian_wrap.Plo@am__quote@
@@ -6357,7 +6331,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_heritage_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_oco_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_output_wrap.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_uq_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-lidort_driver_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-lidort_interface_masters_wrap.Plo@am__quote@
@@ -6472,8 +6445,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-twostream_rt_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-uniform_spectrum_sampling_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-unit_wrap.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-uq_ecmwf_wrap.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-uq_sounding_id_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-zero_offset_waveform_output_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-zero_offset_waveform_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@lib/$(DEPDIR)/test_all.Po@am__quote@
@@ -6985,13 +6956,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-oco_sounding_id_wrap.lo `test -f '@swigsrc@/oco_sounding_id_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/oco_sounding_id_wrap.cc
 
-@swigsrc@/_swig_wrap_la-uq_sounding_id_wrap.lo: @swigsrc@/uq_sounding_id_wrap.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-uq_sounding_id_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-uq_sounding_id_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-uq_sounding_id_wrap.lo `test -f '@swigsrc@/uq_sounding_id_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/uq_sounding_id_wrap.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-uq_sounding_id_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-uq_sounding_id_wrap.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/uq_sounding_id_wrap.cc' object='@swigsrc@/_swig_wrap_la-uq_sounding_id_wrap.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-uq_sounding_id_wrap.lo `test -f '@swigsrc@/uq_sounding_id_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/uq_sounding_id_wrap.cc
-
 @swigsrc@/_swig_wrap_la-ecmwf_wrap.lo: @swigsrc@/ecmwf_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-ecmwf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-ecmwf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-ecmwf_wrap.lo `test -f '@swigsrc@/ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/ecmwf_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-ecmwf_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-ecmwf_wrap.Plo
@@ -7012,13 +6976,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/oco_ecmwf_wrap.cc' object='@swigsrc@/_swig_wrap_la-oco_ecmwf_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-oco_ecmwf_wrap.lo `test -f '@swigsrc@/oco_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/oco_ecmwf_wrap.cc
-
-@swigsrc@/_swig_wrap_la-uq_ecmwf_wrap.lo: @swigsrc@/uq_ecmwf_wrap.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-uq_ecmwf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-uq_ecmwf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-uq_ecmwf_wrap.lo `test -f '@swigsrc@/uq_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/uq_ecmwf_wrap.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-uq_ecmwf_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-uq_ecmwf_wrap.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/uq_ecmwf_wrap.cc' object='@swigsrc@/_swig_wrap_la-uq_ecmwf_wrap.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-uq_ecmwf_wrap.lo `test -f '@swigsrc@/uq_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/uq_ecmwf_wrap.cc
 
 @swigsrc@/_swig_wrap_la-oco_sim_met_ecmwf_wrap.lo: @swigsrc@/oco_sim_met_ecmwf_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-oco_sim_met_ecmwf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-oco_sim_met_ecmwf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-oco_sim_met_ecmwf_wrap.lo `test -f '@swigsrc@/oco_sim_met_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/oco_sim_met_ecmwf_wrap.cc
@@ -7748,13 +7705,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-level_1b_oco_wrap.lo `test -f '@swigsrc@/level_1b_oco_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/level_1b_oco_wrap.cc
 
-@swigsrc@/_swig_wrap_la-level_1b_uq_wrap.lo: @swigsrc@/level_1b_uq_wrap.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-level_1b_uq_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_uq_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-level_1b_uq_wrap.lo `test -f '@swigsrc@/level_1b_uq_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/level_1b_uq_wrap.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_uq_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_uq_wrap.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/level_1b_uq_wrap.cc' object='@swigsrc@/_swig_wrap_la-level_1b_uq_wrap.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-level_1b_uq_wrap.lo `test -f '@swigsrc@/level_1b_uq_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/level_1b_uq_wrap.cc
-
 @swigsrc@/_swig_wrap_la-level_1b_cache_wrap.lo: @swigsrc@/level_1b_cache_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-level_1b_cache_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_cache_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-level_1b_cache_wrap.lo `test -f '@swigsrc@/level_1b_cache_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/level_1b_cache_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_cache_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_cache_wrap.Plo
@@ -7824,6 +7774,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/ground_coxmunk_plus_lambertian_wrap.cc' object='@swigsrc@/_swig_wrap_la-ground_coxmunk_plus_lambertian_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-ground_coxmunk_plus_lambertian_wrap.lo `test -f '@swigsrc@/ground_coxmunk_plus_lambertian_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/ground_coxmunk_plus_lambertian_wrap.cc
+
+@swigsrc@/_swig_wrap_la-ground_brdf_wrap.lo: @swigsrc@/ground_brdf_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-ground_brdf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_brdf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-ground_brdf_wrap.lo `test -f '@swigsrc@/ground_brdf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/ground_brdf_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_brdf_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_brdf_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/ground_brdf_wrap.cc' object='@swigsrc@/_swig_wrap_la-ground_brdf_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-ground_brdf_wrap.lo `test -f '@swigsrc@/ground_brdf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/ground_brdf_wrap.cc
 
 @swigsrc@/_swig_wrap_la-initial_guess_value_wrap.lo: @swigsrc@/initial_guess_value_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-initial_guess_value_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-initial_guess_value_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-initial_guess_value_wrap.lo `test -f '@swigsrc@/initial_guess_value_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/initial_guess_value_wrap.cc
@@ -8616,13 +8573,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @supportsrc@/libfp_la-oco_sounding_id.lo `test -f '@supportsrc@/oco_sounding_id.cc' || echo '$(srcdir)/'`@supportsrc@/oco_sounding_id.cc
 
-@supportsrc@/libfp_la-uq_sounding_id.lo: @supportsrc@/uq_sounding_id.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @supportsrc@/libfp_la-uq_sounding_id.lo -MD -MP -MF @supportsrc@/$(DEPDIR)/libfp_la-uq_sounding_id.Tpo -c -o @supportsrc@/libfp_la-uq_sounding_id.lo `test -f '@supportsrc@/uq_sounding_id.cc' || echo '$(srcdir)/'`@supportsrc@/uq_sounding_id.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @supportsrc@/$(DEPDIR)/libfp_la-uq_sounding_id.Tpo @supportsrc@/$(DEPDIR)/libfp_la-uq_sounding_id.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@supportsrc@/uq_sounding_id.cc' object='@supportsrc@/libfp_la-uq_sounding_id.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @supportsrc@/libfp_la-uq_sounding_id.lo `test -f '@supportsrc@/uq_sounding_id.cc' || echo '$(srcdir)/'`@supportsrc@/uq_sounding_id.cc
-
 @supportsrc@/libfp_la-ecmwf.lo: @supportsrc@/ecmwf.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @supportsrc@/libfp_la-ecmwf.lo -MD -MP -MF @supportsrc@/$(DEPDIR)/libfp_la-ecmwf.Tpo -c -o @supportsrc@/libfp_la-ecmwf.lo `test -f '@supportsrc@/ecmwf.cc' || echo '$(srcdir)/'`@supportsrc@/ecmwf.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @supportsrc@/$(DEPDIR)/libfp_la-ecmwf.Tpo @supportsrc@/$(DEPDIR)/libfp_la-ecmwf.Plo
@@ -8643,13 +8593,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@supportsrc@/oco_ecmwf.cc' object='@supportsrc@/libfp_la-oco_ecmwf.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @supportsrc@/libfp_la-oco_ecmwf.lo `test -f '@supportsrc@/oco_ecmwf.cc' || echo '$(srcdir)/'`@supportsrc@/oco_ecmwf.cc
-
-@supportsrc@/libfp_la-uq_ecmwf.lo: @supportsrc@/uq_ecmwf.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @supportsrc@/libfp_la-uq_ecmwf.lo -MD -MP -MF @supportsrc@/$(DEPDIR)/libfp_la-uq_ecmwf.Tpo -c -o @supportsrc@/libfp_la-uq_ecmwf.lo `test -f '@supportsrc@/uq_ecmwf.cc' || echo '$(srcdir)/'`@supportsrc@/uq_ecmwf.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @supportsrc@/$(DEPDIR)/libfp_la-uq_ecmwf.Tpo @supportsrc@/$(DEPDIR)/libfp_la-uq_ecmwf.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@supportsrc@/uq_ecmwf.cc' object='@supportsrc@/libfp_la-uq_ecmwf.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @supportsrc@/libfp_la-uq_ecmwf.lo `test -f '@supportsrc@/uq_ecmwf.cc' || echo '$(srcdir)/'`@supportsrc@/uq_ecmwf.cc
 
 @supportsrc@/libfp_la-oco_sim_met_ecmwf.lo: @supportsrc@/oco_sim_met_ecmwf.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @supportsrc@/libfp_la-oco_sim_met_ecmwf.lo -MD -MP -MF @supportsrc@/$(DEPDIR)/libfp_la-oco_sim_met_ecmwf.Tpo -c -o @supportsrc@/libfp_la-oco_sim_met_ecmwf.lo `test -f '@supportsrc@/oco_sim_met_ecmwf.cc' || echo '$(srcdir)/'`@supportsrc@/oco_sim_met_ecmwf.cc
@@ -9309,13 +9252,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-level_1b_oco.lo `test -f '@implsrc@/level_1b_oco.cc' || echo '$(srcdir)/'`@implsrc@/level_1b_oco.cc
 
-@implsrc@/libfp_la-level_1b_uq.lo: @implsrc@/level_1b_uq.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-level_1b_uq.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-level_1b_uq.Tpo -c -o @implsrc@/libfp_la-level_1b_uq.lo `test -f '@implsrc@/level_1b_uq.cc' || echo '$(srcdir)/'`@implsrc@/level_1b_uq.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-level_1b_uq.Tpo @implsrc@/$(DEPDIR)/libfp_la-level_1b_uq.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/level_1b_uq.cc' object='@implsrc@/libfp_la-level_1b_uq.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-level_1b_uq.lo `test -f '@implsrc@/level_1b_uq.cc' || echo '$(srcdir)/'`@implsrc@/level_1b_uq.cc
-
 @implsrc@/libfp_la-level_1b_cache.lo: @implsrc@/level_1b_cache.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-level_1b_cache.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-level_1b_cache.Tpo -c -o @implsrc@/libfp_la-level_1b_cache.lo `test -f '@implsrc@/level_1b_cache.cc' || echo '$(srcdir)/'`@implsrc@/level_1b_cache.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-level_1b_cache.Tpo @implsrc@/$(DEPDIR)/libfp_la-level_1b_cache.Plo
@@ -9350,6 +9286,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/ground_coxmunk_plus_lambertian.cc' object='@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo `test -f '@implsrc@/ground_coxmunk_plus_lambertian.cc' || echo '$(srcdir)/'`@implsrc@/ground_coxmunk_plus_lambertian.cc
+
+@implsrc@/libfp_la-ground_brdf.lo: @implsrc@/ground_brdf.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-ground_brdf.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-ground_brdf.Tpo -c -o @implsrc@/libfp_la-ground_brdf.lo `test -f '@implsrc@/ground_brdf.cc' || echo '$(srcdir)/'`@implsrc@/ground_brdf.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-ground_brdf.Tpo @implsrc@/$(DEPDIR)/libfp_la-ground_brdf.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/ground_brdf.cc' object='@implsrc@/libfp_la-ground_brdf.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_brdf.lo `test -f '@implsrc@/ground_brdf.cc' || echo '$(srcdir)/'`@implsrc@/ground_brdf.cc
 
 @implsrc@/libfp_la-aerosol.lo: @implsrc@/aerosol.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-aerosol.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-aerosol.Tpo -c -o @implsrc@/libfp_la-aerosol.lo `test -f '@implsrc@/aerosol.cc' || echo '$(srcdir)/'`@implsrc@/aerosol.cc
@@ -9553,13 +9496,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/oco_noise_model.cc' object='@implsrc@/libfp_la-oco_noise_model.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-oco_noise_model.lo `test -f '@implsrc@/oco_noise_model.cc' || echo '$(srcdir)/'`@implsrc@/oco_noise_model.cc
-
-@implsrc@/libfp_la-uq_noise_model.lo: @implsrc@/uq_noise_model.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-uq_noise_model.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-uq_noise_model.Tpo -c -o @implsrc@/libfp_la-uq_noise_model.lo `test -f '@implsrc@/uq_noise_model.cc' || echo '$(srcdir)/'`@implsrc@/uq_noise_model.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-uq_noise_model.Tpo @implsrc@/$(DEPDIR)/libfp_la-uq_noise_model.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/uq_noise_model.cc' object='@implsrc@/libfp_la-uq_noise_model.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-uq_noise_model.lo `test -f '@implsrc@/uq_noise_model.cc' || echo '$(srcdir)/'`@implsrc@/uq_noise_model.cc
 
 @implsrc@/libfp_la-precomputed_noise_model.lo: @implsrc@/precomputed_noise_model.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-precomputed_noise_model.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-precomputed_noise_model.Tpo -c -o @implsrc@/libfp_la-precomputed_noise_model.lo `test -f '@implsrc@/precomputed_noise_model.cc' || echo '$(srcdir)/'`@implsrc@/precomputed_noise_model.cc

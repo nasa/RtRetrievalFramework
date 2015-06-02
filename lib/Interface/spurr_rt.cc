@@ -6,7 +6,7 @@
 #include "ground_lambertian.h"
 #include "ground_coxmunk.h"
 #include "ground_coxmunk_plus_lambertian.h"
-#include "ground_breon.h"
+#include "ground_brdf.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -60,9 +60,9 @@ SpurrRt::SpurrRt(const boost::shared_ptr<RtAtmosphere>& Atm,
     surface_type_int = COXMUNK;
   } else if(dynamic_cast<GroundCoxmunkPlusLambertian*>(atm->ground().get())) {
     surface_type_int = COXMUNK;
-  } else if(dynamic_cast<GroundBreonVeg*>(atm->ground().get())) {
+  } else if(dynamic_cast<GroundBrdfVeg*>(atm->ground().get())) {
     surface_type_int = BREONVEG;
-  } else if(dynamic_cast<GroundBreonSoil*>(atm->ground().get())) {
+  } else if(dynamic_cast<GroundBrdfSoil*>(atm->ground().get())) {
     surface_type_int = BREONSOIL;
    } else {
     Exception err_msg;

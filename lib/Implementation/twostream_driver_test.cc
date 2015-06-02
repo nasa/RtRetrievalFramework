@@ -274,7 +274,7 @@ BOOST_AUTO_TEST_CASE(coxmunk)
   test_twostream(surface_type, surface_params, taug, taur, pert_atm, pert_surf, debug_output);
 }
 
-BOOST_AUTO_TEST_CASE(breon)
+BOOST_AUTO_TEST_CASE(brdf)
 {
   bool debug_output = false;
 

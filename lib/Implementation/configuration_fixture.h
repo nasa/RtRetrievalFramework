@@ -122,13 +122,13 @@ public:
   standard set of objects, similar to what we generate when running
   l2_fp. This is fairly expensive to create, so 
   this fixture creates one copy for all the tests and add handling for
-  sharing it. This version reads config_breon_veg.lua
+  sharing it. This version reads config_brdf_veg.lua
 *******************************************************************/
-class ConfigurationBreonVegFixture: public ConfigurationFixture {
+class ConfigurationBrdfVegFixture: public ConfigurationFixture {
 public:
-  ConfigurationBreonVegFixture()
-    : ConfigurationFixture("config_breon_veg.lua") {}
-  virtual ~ConfigurationBreonVegFixture() {}
+  ConfigurationBrdfVegFixture()
+    : ConfigurationFixture("config_brdf_veg.lua") {}
+  virtual ~ConfigurationBrdfVegFixture() {}
 };
 
 /****************************************************************//**
@@ -136,13 +136,13 @@ public:
   standard set of objects, similar to what we generate when running
   l2_fp. This is fairly expensive to create, so 
   this fixture creates one copy for all the tests and add handling for
-  sharing it. This version reads config_breon_soil.lua
+  sharing it. This version reads config_brdf_soil.lua
 *******************************************************************/
-class ConfigurationBreonSoilFixture: public ConfigurationFixture {
+class ConfigurationBrdfSoilFixture: public ConfigurationFixture {
 public:
-  ConfigurationBreonSoilFixture()
-    : ConfigurationFixture("config_breon_soil.lua") {}
-  virtual ~ConfigurationBreonSoilFixture() {}
+  ConfigurationBrdfSoilFixture()
+    : ConfigurationFixture("config_brdf_soil.lua") {}
+  virtual ~ConfigurationBrdfSoilFixture() {}
 };
 
 /****************************************************************//**
