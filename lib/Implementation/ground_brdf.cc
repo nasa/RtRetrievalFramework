@@ -4,6 +4,11 @@
 using namespace FullPhysics;
 using namespace blitz;
 
+extern "C" {
+    double black_sky_albedo_veg_f(const double* params, const double* sza);
+    double black_sky_albedo_soil_f(const double* params, const double* sza);
+}
+
 #ifdef HAVE_LUA
 #include "register_lua.h"
 REGISTER_LUA_DERIVED_CLASS(GroundBrdfVeg, Ground)
@@ -156,6 +161,28 @@ void GroundBrdf::breon_factor(const int spec_index, const AutoDerivative<double>
     range_check(spec_index, 0, number_spectrometer());
 
     coeff(NUM_COEFF * spec_index + 4) = val;
+}
+
+const double GroundBrdfVeg::black_sky_albedo(const int Spec_index, const double Sza)
+{
+    blitz::Array<double, 1> params(NUM_COEFF, blitz::ColumnMajorArray<1>());
+    params(0) = rahman_factor(Spec_index).value();
+    params(1) = overall_amplitude(Spec_index).value();
+    params(2) = asymmetry_parameter(Spec_index).value();
+    params(3) = geometric_factor(Spec_index).value();
+    params(4) = breon_factor(Spec_index).value();
+    return black_sky_albedo_veg_f(params.dataFirst(), &Sza);
+}
+
+const double GroundBrdfSoil::black_sky_albedo(const int Spec_index, const double Sza)
+{
+    blitz::Array<double, 1> params(NUM_COEFF, blitz::ColumnMajorArray<1>());
+    params(0) = rahman_factor(Spec_index).value();
+    params(1) = overall_amplitude(Spec_index).value();
+    params(2) = asymmetry_parameter(Spec_index).value();
+    params(3) = geometric_factor(Spec_index).value();
+    params(4) = breon_factor(Spec_index).value();
+    return black_sky_albedo_soil_f(params.dataFirst(), &Sza);
 }
 
 std::string GroundBrdf::state_vector_name_i(int i) const {

@@ -899,11 +899,11 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@implsrc@/level_1b_cache.cc @implsrc@/absorber_absco.cc \
 	@implsrc@/ground_lambertian.cc @implsrc@/ground_coxmunk.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian.cc \
-	@implsrc@/ground_brdf.cc @implsrc@/aerosol.cc \
-	@implsrc@/atmosphere_oco.cc @implsrc@/altitude_hydrostatic.cc \
-	@implsrc@/rayleigh.cc @implsrc@/rayleigh_f.F90 \
-	@implsrc@/absco.cc @implsrc@/absco_hdf.cc \
-	@implsrc@/uniform_spectrum_sampling.cc \
+	@implsrc@/ground_brdf.cc @implsrc@/black_sky_albedo.F90 \
+	@implsrc@/aerosol.cc @implsrc@/atmosphere_oco.cc \
+	@implsrc@/altitude_hydrostatic.cc @implsrc@/rayleigh.cc \
+	@implsrc@/rayleigh_f.F90 @implsrc@/absco.cc \
+	@implsrc@/absco_hdf.cc @implsrc@/uniform_spectrum_sampling.cc \
 	@implsrc@/spectrum_sampling_fixed_spacing.cc \
 	@implsrc@/lidort_interface_types.F90 \
 	@implsrc@/lidort_interface_types_io.F90 \
@@ -1151,6 +1151,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@implsrc@/libfp_la-ground_coxmunk.lo \
 	@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo \
 	@implsrc@/libfp_la-ground_brdf.lo \
+	@implsrc@/libfp_la-black_sky_albedo.lo \
 	@implsrc@/libfp_la-aerosol.lo \
 	@implsrc@/libfp_la-atmosphere_oco.lo \
 	@implsrc@/libfp_la-altitude_hydrostatic.lo \
@@ -3243,11 +3244,11 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@implsrc@/level_1b_cache.cc @implsrc@/absorber_absco.cc \
 	@implsrc@/ground_lambertian.cc @implsrc@/ground_coxmunk.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian.cc \
-	@implsrc@/ground_brdf.cc @implsrc@/aerosol.cc \
-	@implsrc@/atmosphere_oco.cc @implsrc@/altitude_hydrostatic.cc \
-	@implsrc@/rayleigh.cc @implsrc@/rayleigh_f.F90 \
-	@implsrc@/absco.cc @implsrc@/absco_hdf.cc \
-	@implsrc@/uniform_spectrum_sampling.cc \
+	@implsrc@/ground_brdf.cc @implsrc@/black_sky_albedo.F90 \
+	@implsrc@/aerosol.cc @implsrc@/atmosphere_oco.cc \
+	@implsrc@/altitude_hydrostatic.cc @implsrc@/rayleigh.cc \
+	@implsrc@/rayleigh_f.F90 @implsrc@/absco.cc \
+	@implsrc@/absco_hdf.cc @implsrc@/uniform_spectrum_sampling.cc \
 	@implsrc@/spectrum_sampling_fixed_spacing.cc \
 	@implsrc@/lidort_interface_types.F90 \
 	@implsrc@/lidort_interface_types_io.F90 \
@@ -4654,6 +4655,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 @implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo:  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-ground_brdf.lo: @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-black_sky_albedo.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-aerosol.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -6466,6 +6469,9 @@ distclean-compile:
 
 @implsrc@/libfp_la-ils_fts_f.lo: @implsrc@/ils_fts_f.F90
 	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(libfp_la_FCFLAGS) $(FCFLAGS) -c -o @implsrc@/libfp_la-ils_fts_f.lo `test -f '@implsrc@/ils_fts_f.F90' || echo '$(srcdir)/'`@implsrc@/ils_fts_f.F90
+
+@implsrc@/libfp_la-black_sky_albedo.lo: @implsrc@/black_sky_albedo.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(libfp_la_FCFLAGS) $(FCFLAGS) -c -o @implsrc@/libfp_la-black_sky_albedo.lo `test -f '@implsrc@/black_sky_albedo.F90' || echo '$(srcdir)/'`@implsrc@/black_sky_albedo.F90
 
 @implsrc@/libfp_la-rayleigh_f.lo: @implsrc@/rayleigh_f.F90
 	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(libfp_la_FCFLAGS) $(FCFLAGS) -c -o @implsrc@/libfp_la-rayleigh_f.lo `test -f '@implsrc@/rayleigh_f.F90' || echo '$(srcdir)/'`@implsrc@/rayleigh_f.F90

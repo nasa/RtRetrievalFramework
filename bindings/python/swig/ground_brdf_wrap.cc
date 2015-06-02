@@ -6303,6 +6303,64 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GroundBrdfVeg_black_sky_albedo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBrdfVeg *arg1 = (FullPhysics::GroundBrdfVeg *) 0 ;
+  int arg2 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBrdfVeg > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBrdfVeg > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"GroundBrdfVeg_black_sky_albedo",3,3,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfVeg_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfVeg_black_sky_albedo" "', argument " "1"" of type '" "FullPhysics::GroundBrdfVeg *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBrdfVeg > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBrdfVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBrdfVeg * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBrdfVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBrdfVeg * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfVeg_black_sky_albedo" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GroundBrdfVeg_black_sky_albedo" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      result = (double)(arg1)->black_sky_albedo(arg2,arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_GroundBrdfVeg_breon_type(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfVeg *arg1 = (FullPhysics::GroundBrdfVeg *) 0 ;
@@ -7408,6 +7466,64 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GroundBrdfSoil_black_sky_albedo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBrdfSoil *arg1 = (FullPhysics::GroundBrdfSoil *) 0 ;
+  int arg2 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBrdfSoil > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBrdfSoil > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"GroundBrdfSoil_black_sky_albedo",3,3,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfSoil_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfSoil_black_sky_albedo" "', argument " "1"" of type '" "FullPhysics::GroundBrdfSoil *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBrdfSoil > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBrdfSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBrdfSoil * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBrdfSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBrdfSoil * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfSoil_black_sky_albedo" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GroundBrdfSoil_black_sky_albedo" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      result = (double)(arg1)->black_sky_albedo(arg2,arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_GroundBrdfSoil_breon_type(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfSoil *arg1 = (FullPhysics::GroundBrdfSoil *) 0 ;
@@ -7633,6 +7749,10 @@ static PyMethodDef SwigMethods[] = {
 		"Returns hard coded value of 1.5 since that is the value hardcoded into\n"
 		"LIDORT. \n"
 		""},
+	 { (char *)"GroundBrdfVeg_black_sky_albedo", _wrap_GroundBrdfVeg_black_sky_albedo, METH_VARARGS, (char *)"\n"
+		"const double GroundBrdfVeg::black_sky_albedo(const int Spec_index, const double Sza)\n"
+		"\n"
+		""},
 	 { (char *)"GroundBrdfVeg_breon_type", (PyCFunction)_wrap_GroundBrdfVeg_breon_type, METH_O, (char *)"\n"
 		"virtual const std::string FullPhysics::GroundBrdfVeg::breon_type() const\n"
 		"String describing which type of Breon surface type, also makes this\n"
@@ -7682,6 +7802,10 @@ static PyMethodDef SwigMethods[] = {
 		"virtual const double FullPhysics::GroundBrdf::refractive_index(const int Spec_idx) const\n"
 		"Returns hard coded value of 1.5 since that is the value hardcoded into\n"
 		"LIDORT. \n"
+		""},
+	 { (char *)"GroundBrdfSoil_black_sky_albedo", _wrap_GroundBrdfSoil_black_sky_albedo, METH_VARARGS, (char *)"\n"
+		"const double GroundBrdfSoil::black_sky_albedo(const int Spec_index, const double Sza)\n"
+		"\n"
 		""},
 	 { (char *)"GroundBrdfSoil_breon_type", (PyCFunction)_wrap_GroundBrdfSoil_breon_type, METH_O, (char *)"\n"
 		"virtual const std::string FullPhysics::GroundBrdfSoil::breon_type() const\n"

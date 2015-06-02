@@ -52,7 +52,7 @@
 
       PRIVATE
       PUBLIC :: BRDF_MAKER, &
-                BRDF_FOURIER
+                BRDF_FOURIER, BRDF_FUNCTION
 
       CONTAINS
 

@@ -95,7 +95,21 @@ BOOST_AUTO_TEST_CASE(basic)
     BOOST_CHECK_CLOSE(brdf_soil->surface_parameter(13000, 2)(4).value(), 2.2, 1e-8);
 }
 
+BOOST_AUTO_TEST_CASE(black_sky_albedo)
+{
+    double bsa_veg = brdf_veg->black_sky_albedo(0, 0.1);
+
+    // Value calculated in offline tester (same code as in L2, but as an independent program)
+    BOOST_CHECK_CLOSE(bsa_veg, 9.4759272047492515E-002, 1e-10);
+
+    double bsa_soil = brdf_soil->black_sky_albedo(0, 0.1);
+
+    // Value calculated in offline tester (same code as in L2, but as an independent program)
+    BOOST_CHECK_CLOSE(bsa_soil, 9.7429948880185635E-002, 1e-10);
+}
+
 BOOST_AUTO_TEST_SUITE_END()
+
 
 BOOST_FIXTURE_TEST_SUITE(ground_brdf_veg_config, ConfigurationBrdfVegFixture)
 
@@ -111,7 +125,9 @@ BOOST_AUTO_TEST_CASE(jacobian)
     }
 }
 
+ 
 BOOST_AUTO_TEST_SUITE_END()
+
 
 BOOST_FIXTURE_TEST_SUITE(ground_brdf_soil_config, ConfigurationBrdfVegFixture)
 
