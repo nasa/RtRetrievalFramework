@@ -190,7 +190,7 @@ std::string GroundBrdf::state_vector_name_i(int i) const {
     int c_idx = i - NUM_COEFF * b_idx;
 
     std::stringstream name;
-    name << "Ground Breon " << breon_type() << " " << desc_band_names[b_idx] << " ";
+    name << "Ground BRDF " << breon_type() << " " << desc_band_names[b_idx] << " ";
     switch (c_idx) {
     case 0:
         name << "Rahman Factor";
