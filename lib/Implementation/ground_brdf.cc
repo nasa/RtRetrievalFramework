@@ -11,12 +11,29 @@ extern "C" {
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
+
+double black_sky_albedo_simple_veg(const blitz::Array<double, 1>& params, const double sza) {
+    return black_sky_albedo_veg_f(params.dataFirst(), &sza);
+}
+
+double black_sky_albedo_simple_soil(const blitz::Array<double, 1>& params, const double sza) {
+    return black_sky_albedo_soil_f(params.dataFirst(), &sza);
+}
+
 REGISTER_LUA_DERIVED_CLASS(GroundBrdfVeg, Ground)
 .def(luabind::constructor<const blitz::Array<double, 2>&, const blitz::Array<bool, 2>&, const std::vector<std::string>&>())
+.scope
+[
+    luabind::def("black_sky_albedo", &black_sky_albedo_simple_veg)
+]
 REGISTER_LUA_END()
 
 REGISTER_LUA_DERIVED_CLASS(GroundBrdfSoil, Ground)
 .def(luabind::constructor<const blitz::Array<double, 2>&, const blitz::Array<bool, 2>&, const std::vector<std::string>&>())
+.scope
+[
+    luabind::def("black_sky_albedo", &black_sky_albedo_simple_soil)
+]
 REGISTER_LUA_END()
 #endif
 
