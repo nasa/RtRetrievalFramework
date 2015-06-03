@@ -136,6 +136,11 @@ int level_1b_month(const Level1b& Lev1, int i)
   return to_tm(t).tm_mon + 1;
 }
 
+DoubleWithUnit l1b_signal_no_indexes(const boost::shared_ptr<Level1b>& l1b, int Spec_index)
+{
+    return l1b->signal(Spec_index, std::vector<int>());
+}
+
 #include "register_lua.h"
 REGISTER_LUA_CLASS(Level1b)
 .def("number_spectrometer", &Level1b::number_spectrometer)
@@ -160,6 +165,7 @@ REGISTER_LUA_CLASS(Level1b)
 .def("radiance_with_unit", &level_1b_radiance_with_unit)
 .def("radiance_spectral_range", &level_1b_radiance_spectral_range)
 .def("signal", &Level1b::signal)
+.def("signal", &l1b_signal_no_indexes)
 .def("relative_velocity", &level_1b_relative_velocity)
 .def("time", &Level1b::time)
 REGISTER_LUA_END()

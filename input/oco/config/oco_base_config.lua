@@ -357,6 +357,9 @@ OcoBaseConfig = OcoConfig:new {
             creator = ConfigCommon.temperature_ecmwf,
          },
          ground = {
+            -- Instrument specific solar strengths used for ground calculations 
+            solar_strength = {4.87e21, 2.096e21, 1.15e21},
+
             -- Pure lambertian
             lambertian = {
                apriori = OcoConfig.oco_albedo_from_radiance(1),  
@@ -383,7 +386,7 @@ OcoBaseConfig = OcoConfig:new {
 
             -- Brdf vegetative kernel with Rahman retrieved parameters
             brdf_veg = {
-               apriori = ConfigCommon.hdf_apriori_i("Ground/Brdf"),
+               apriori = ConfigCommon.brdf_veg_apriori("Ground/Brdf"),
                covariance = ConfigCommon.hdf_covariance_i("Ground/Brdf"),
                retrieve_bands = { true, true, true },
                creator = ConfigCommon.brdf_veg_retrieval,
@@ -391,7 +394,7 @@ OcoBaseConfig = OcoConfig:new {
             
             -- Brdf soil kernel with Rahman retrieved parameters
             brdf_soil = {
-               apriori = ConfigCommon.hdf_apriori_i("Ground/Brdf"),
+               apriori = ConfigCommon.brdf_soil_apriori("Ground/Brdf"),
                covariance = ConfigCommon.hdf_covariance_i("Ground/Brdf"),
                retrieve_bands = { true, true, true },
                creator = ConfigCommon.brdf_soil_retrieval,

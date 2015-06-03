@@ -925,6 +925,26 @@ function ConfigCommon:l1b_spectral_coefficient_i(spec_idx)
 end
 
 ------------------------------------------------------------
+-- Continuum signal level of measurement spectral 
+-- Will only take into account samples used in retrieval
+-- when called after spec_win, dispesion and l1b are set up
+-- Indexing is zero based
+------------------------------------------------------------
+
+function ConfigCommon:meas_cont_signal(spec_idx)
+    local signal
+    if self.dispersion[spec_idx+1] ~= nil then
+        local pixel_grid = self.dispersion[spec_idx+1]:pixel_grid()
+        local grid_indexes = self.spec_win:grid_indexes(pixel_grid, spec_idx)
+        signal = self.l1b:signal(spec_idx, grid_indexes) 
+    else
+        self:diagnostic_message("Not removing bad samples or out of range samples for measurement continuum signal calculation")
+        signal = self.l1b:signal(spec_idx) 
+    end
+    return signal
+end
+
+------------------------------------------------------------
 --- Evaluates the table elements that are functions in the
 --- context of the configuration environment.
 --- This is useful for pull information out of the HDF
@@ -2044,6 +2064,45 @@ end
 
 function ConfigCommon.ground_coxmunk_plus_lamb:register_output(ro)
    ro:push_back(GroundCoxmunkPlusLambertianOutput.create(self.config.coxmunk, self.config.coxmunk_lambertian, self.config.common.hdf_band_name))
+end
+
+------------------------------------------------------------
+--- Modify the GroundBrdf a_priori, scaling by the black
+--- sky albedo
+------------------------------------------------------------
+
+function ConfigCommon.brdf_scale_factor(self, brdf_class, params, i)
+   local signal = self.config:meas_cont_signal(i).value
+   local solar_strength = self.config.fm.atmosphere.ground.solar_strength[i+1]
+   local sza_d = self.config.l1b:sza()(i) 
+   local sza_r = sza_d * math.pi / 180.0
+   local bsa_cont = signal / (math.cos(sza_r) * solar_strength)
+   local bsa_calc = brdf_class.black_sky_albedo(params, sza_d)
+   local scaling = bsa_cont / bsa_calc
+
+   return scaling
+end
+
+function ConfigCommon.brdf_veg_apriori(field)
+    return function(self, i)
+        local ap = self.config:h():apriori(field, i) 
+        local scaling = ConfigCommon.brdf_scale_factor(self, GroundBrdfVeg, ap, i)
+        -- Scale the Rahman and Breon BRDF factors
+        ap:set(0, ap(0) * scaling)
+        ap:set(4, ap(4) * scaling)
+        return ap
+    end
+end
+
+function ConfigCommon.brdf_soil_apriori(field)
+    return function(self, i)
+        local ap = self.config:h():apriori(field, i) 
+        local scaling = ConfigCommon.brdf_scale_factor(self, GroundBrdfSoil, ap, i)
+        -- Scale the Rahman and Breon BRDF factors
+        ap:set(0, ap(0) * scaling)
+        ap:set(4, ap(4) * scaling)
+        return ap
+    end
 end
 
 ------------------------------------------------------------

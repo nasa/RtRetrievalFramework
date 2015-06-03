@@ -196,7 +196,6 @@ end
 
 function AcosConfig.gosat_albedo_from_radiance(polynomial_degree)
    return function(self, band_idx)
-      MAX_MS = {7.2e-6, 6.5e-6, 4.5e-6}
       BAND_CONTINUUMS = 
          { { Range(491, 529), Range(1586, 1602) },
            { Range(2390, 2394), Range(2400, 2404) },
@@ -204,7 +203,7 @@ function AcosConfig.gosat_albedo_from_radiance(polynomial_degree)
          }
       USE_RANGE_MAX = { false, false, true }
 
-      return ConfigCommon.albedo_from_radiance(self, band_idx, MAX_MS, BAND_CONTINUUMS, USE_RANGE_MAX, polynomial_degree)
+      return ConfigCommon.albedo_from_radiance(self, band_idx, self.config.fm.atmosphere.ground.solar_strength, BAND_CONTINUUMS, USE_RANGE_MAX, polynomial_degree)
    end
 end
 
