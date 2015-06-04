@@ -23,7 +23,7 @@ ABSCO_BASE_PATH = "error_analysis_411"
 BASE_ABSCO_FILES = {
         'CO2': "unperturbed/co2_v4.1.1-lowres.hdf",
         'H2O': "unperturbed/h2o_v4.1.1-lowres.hdf",
-        'O2':  "unperturbed/o2_v4.1.1-lowres.hdf",
+        'O2':  "unperturbed/o2_v4.1.0_baseline.hdf",
         }
 
 PERT_ABSCO_FILES = {
@@ -44,14 +44,14 @@ PERT_ABSCO_FILES = {
                  ("temperature/weak_co2_v4.1.1-combined.hdf", 0.005),
                ),
         'O2': ( 
-                ("air_broaden/o2_v4.1.1-lowres.hdf", 0.005),
+                ("air_broaden/o2_v4.1.0_yang.hdf", 0.005),
                 ("cia/o2_v4.1.1-lowres.hdf", 0.05),
                 ("dicke/o2_v4.1.1-lowres.hdf", 0.05),
-                ("intensity/o2_v4.1.1-lowres.hdf", 0.005),
+                ("intensity/o2_v4.1.0_intensity.hdf", 0.005),
                 ("line_mixing/o2_v4.1.1-lowres.hdf", 0.05),
-                ("pressure_shift/o2_v4.1.1-lowres.hdf", 0.005),
+                ("pressure_shift/o2_v4.1.0_pressure_shift.hdf", 0.005),
                 ("speed/o2_v4.1.1-lowres.hdf", 0.05),
-                ("temperature/o2_v4.1.1-lowres.hdf", 0.005),
+                ("temperature/o2_v4.1.0_temperature.hdf", 0.05),
             ),
         }
 
