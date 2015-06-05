@@ -1,6 +1,7 @@
 // -*- mode: c++; -*-
 // (Not really c++, but closest emacs mode)
 %include "common.i"
+%include "spurr_driver.i"
 %{
 #include "lidort_driver.h"
 %}
@@ -10,10 +11,9 @@
 
 %fp_shared_ptr(FullPhysics::LidortBrdfDriver);
 %fp_shared_ptr(FullPhysics::LidortRtDriver);
-%fp_shared_ptr(FullPhysics::LidortBrdfDriver);
 
 namespace FullPhysics {
-class LidortBrdfDriver {
+class LidortBrdfDriver : public SpurrBrdfDriver {
 public:
   LidortBrdfDriver(int nstream, int nmoment);
   virtual ~LidortBrdfDriver();
@@ -30,7 +30,7 @@ public:
   virtual bool do_kparams_derivs(const int kernel_index) const;
 };
 
-class LidortRtDriver  {
+class LidortRtDriver : public SpurrRtDriver {
 public:
   LidortRtDriver(int nstream, int nmoment, bool do_multi_scatt_only, int surface_type, const blitz::Array<double, 1>& zen, bool pure_nadir);
 

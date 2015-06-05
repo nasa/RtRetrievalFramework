@@ -108,6 +108,19 @@ BOOST_AUTO_TEST_CASE(black_sky_albedo)
     BOOST_CHECK_CLOSE(bsa_soil, 9.7429948880185635E-002, 1e-10);
 }
 
+BOOST_AUTO_TEST_CASE(albedo)
+{
+    double alb_veg = brdf_veg->albedo(0, 0.1);
+
+    // Value calculated in offline tester (same code as in L2, but as an independent program)
+    BOOST_CHECK_CLOSE(alb_veg, 0.11126961064722829, 1e-10);
+
+    double alb_soil = brdf_soil->albedo(0, 0.1);
+
+    // Value calculated in offline tester (same code as in L2, but as an independent program)
+    BOOST_CHECK_CLOSE(alb_soil, 0.13118678508450493, 1e-10);
+}
+
 BOOST_AUTO_TEST_SUITE_END()
 
 

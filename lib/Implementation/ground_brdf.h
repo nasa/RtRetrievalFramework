@@ -43,6 +43,9 @@ public:
 
     // Uses LIDORT to compute the black sky albedo from the parameters
     virtual const double black_sky_albedo(const int Spec_index, const double Sza) = 0;
+
+    // Computes albedo using parameters and specified geometry
+    virtual const double albedo(const int Spec_index, const double Sza) = 0;
   
     /// String describing which type of Breon surface type, also makes this class abstract
     virtual const std::string breon_type() const = 0;
@@ -62,6 +65,9 @@ protected:
                 const std::vector<std::string>& Desc_band_names);
 
     std::vector<std::string> desc_band_names;
+
+    // Helper function for routines that call fortran codes
+    blitz::Array<double, 1> albedo_calc_params(const int Spec_index);
 };
 
 
@@ -73,6 +79,7 @@ public:
         GroundBrdf(Coeffs, Flag, Desc_band_names) {}
 
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
+    virtual const double albedo(const int Spec_index, const double Sza);
     virtual const std::string breon_type() const { return "Vegetative"; }
 
     virtual boost::shared_ptr<Ground> clone() const {
@@ -93,6 +100,7 @@ public:
         GroundBrdf(Coeffs, Flag, Desc_band_names) {}
 
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
+    virtual const double albedo(const int Spec_index, const double Sza);
     virtual const std::string breon_type() const { return "Soil"; }
 
     virtual boost::shared_ptr<Ground> clone() const {

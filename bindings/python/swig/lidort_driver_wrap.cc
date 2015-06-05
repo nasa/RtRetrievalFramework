@@ -3457,47 +3457,52 @@ namespace Swig {
 #define SWIGTYPE_p_FullPhysics__LidortBrdfDriver swig_types[5]
 #define SWIGTYPE_p_FullPhysics__LidortRtDriver swig_types[6]
 #define SWIGTYPE_p_FullPhysics__Lidort_Pars swig_types[7]
-#define SWIGTYPE_p_allocator_type swig_types[8]
-#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[9]
-#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[10]
-#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[11]
-#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[12]
-#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[13]
-#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[14]
-#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[15]
-#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[16]
-#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[17]
-#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[18]
-#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[19]
-#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[20]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[21]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[22]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Linsup_Masters_t swig_types[23]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[24]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t swig_types[25]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t swig_types[26]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t swig_types[27]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t swig_types[28]
-#define SWIGTYPE_p_char swig_types[29]
-#define SWIGTYPE_p_char_type swig_types[30]
-#define SWIGTYPE_p_difference_type swig_types[31]
-#define SWIGTYPE_p_fmtflags swig_types[32]
-#define SWIGTYPE_p_int_type swig_types[33]
-#define SWIGTYPE_p_iostate swig_types[34]
-#define SWIGTYPE_p_off_type swig_types[35]
-#define SWIGTYPE_p_openmode swig_types[36]
-#define SWIGTYPE_p_pos_type swig_types[37]
-#define SWIGTYPE_p_seekdir swig_types[38]
-#define SWIGTYPE_p_size_t swig_types[39]
-#define SWIGTYPE_p_size_type swig_types[40]
-#define SWIGTYPE_p_state_type swig_types[41]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[42]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[43]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[44]
-#define SWIGTYPE_p_traits_type swig_types[45]
-#define SWIGTYPE_p_value_type swig_types[46]
-static swig_type_info *swig_types[48];
-static swig_module_info swig_module = {swig_types, 47, 0, 0, 0, 0};
+#define SWIGTYPE_p_FullPhysics__SpurrBrdfDriver swig_types[8]
+#define SWIGTYPE_p_FullPhysics__SpurrRtDriver swig_types[9]
+#define SWIGTYPE_p_allocator_type swig_types[10]
+#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[11]
+#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[12]
+#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[13]
+#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[14]
+#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[15]
+#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[16]
+#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[17]
+#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[18]
+#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[19]
+#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[20]
+#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[21]
+#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[22]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[23]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[24]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Linsup_Masters_t swig_types[25]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[26]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t swig_types[27]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t swig_types[28]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t swig_types[29]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t swig_types[30]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t swig_types[31]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t swig_types[32]
+#define SWIGTYPE_p_char swig_types[33]
+#define SWIGTYPE_p_char_type swig_types[34]
+#define SWIGTYPE_p_difference_type swig_types[35]
+#define SWIGTYPE_p_double swig_types[36]
+#define SWIGTYPE_p_fmtflags swig_types[37]
+#define SWIGTYPE_p_int_type swig_types[38]
+#define SWIGTYPE_p_iostate swig_types[39]
+#define SWIGTYPE_p_off_type swig_types[40]
+#define SWIGTYPE_p_openmode swig_types[41]
+#define SWIGTYPE_p_pos_type swig_types[42]
+#define SWIGTYPE_p_seekdir swig_types[43]
+#define SWIGTYPE_p_size_t swig_types[44]
+#define SWIGTYPE_p_size_type swig_types[45]
+#define SWIGTYPE_p_state_type swig_types[46]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[47]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[48]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[49]
+#define SWIGTYPE_p_traits_type swig_types[50]
+#define SWIGTYPE_p_value_type swig_types[51]
+static swig_type_info *swig_types[53];
+static swig_module_info swig_module = {swig_types, 52, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4900,7 +4905,7 @@ template<class T, int D> inline blitz::Array<T, D>
 
 
 
-#include "lidort_driver.h"
+#include "spurr_driver.h"
 
 
 #include <limits.h>
@@ -5048,24 +5053,14 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 }
 
 
-struct SWIG_null_deleter {
-  void operator() (void const *) const {
-  }
-};
-#define SWIG_NO_NULL_DELETER_0 , SWIG_null_deleter()
-#define SWIG_NO_NULL_DELETER_1
-#define SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW
-#define SWIG_NO_NULL_DELETER_SWIG_POINTER_OWN
-
-
-#define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
-
-
 SWIGINTERNINLINE PyObject*
   SWIG_From_bool  (bool value)
 {
   return PyBool_FromLong(value ? 1 : 0);
 }
+
+
+  #define SWIG_From_double   PyFloat_FromDouble 
 
 
 SWIGINTERN int
@@ -5079,7 +5074,20 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 }
 
 
-  #define SWIG_From_double   PyFloat_FromDouble 
+#include "lidort_driver.h"
+
+
+struct SWIG_null_deleter {
+  void operator() (void const *) const {
+  }
+};
+#define SWIG_NO_NULL_DELETER_0 , SWIG_null_deleter()
+#define SWIG_NO_NULL_DELETER_1
+#define SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW
+#define SWIG_NO_NULL_DELETER_SWIG_POINTER_OWN
+
+
+#define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
 
 
 
@@ -5092,6 +5100,1377 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_SpurrBrdfDriver_initialize_brdf_inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SpurrBrdfDriver_initialize_brdf_inputs",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrBrdfDriver_initialize_brdf_inputs" "', argument " "1"" of type '" "FullPhysics::SpurrBrdfDriver *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SpurrBrdfDriver_initialize_brdf_inputs" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      (arg1)->initialize_brdf_inputs(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrBrdfDriver_setup_geometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
+  double arg2 ;
+  double arg3 ;
+  double arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > *smartarg1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[4] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SpurrBrdfDriver_setup_geometry",4,4,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrBrdfDriver_setup_geometry" "', argument " "1"" of type '" "FullPhysics::SpurrBrdfDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SpurrBrdfDriver_setup_geometry" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SpurrBrdfDriver_setup_geometry" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "SpurrBrdfDriver_setup_geometry" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  {
+    try {
+      ((FullPhysics::SpurrBrdfDriver const *)arg1)->setup_geometry(arg2,arg3,arg4);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrBrdfDriver_setup_brdf_inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
+  int arg2 ;
+  FullPhysics::ArrayAd< double,1 > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  SwigValueWrapper< FullPhysics::ArrayAd< double,1 > > result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SpurrBrdfDriver_setup_brdf_inputs",3,3,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrBrdfDriver_setup_brdf_inputs" "', argument " "1"" of type '" "FullPhysics::SpurrBrdfDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SpurrBrdfDriver_setup_brdf_inputs" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SpurrBrdfDriver_setup_brdf_inputs" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrBrdfDriver_setup_brdf_inputs" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  arg3 = reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(argp3);
+  {
+    try {
+      result = ((FullPhysics::SpurrBrdfDriver const *)arg1)->setup_brdf_inputs(arg2,(FullPhysics::ArrayAd< double,1 > const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,1 >(static_cast< const FullPhysics::ArrayAd< double,1 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrBrdfDriver_set_lambertian_albedo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
+  blitz::Array< double,1 > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver > *smartarg1 = 0 ;
+  blitz::Array< double,1 > a2 ;
+  PythonObject numpy2 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SpurrBrdfDriver_set_lambertian_albedo",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrBrdfDriver_set_lambertian_albedo" "', argument " "1"" of type '" "FullPhysics::SpurrBrdfDriver *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy2.obj = to_numpy<double>(swig_obj[1]);
+      if(!numpy2.obj)
+      return NULL;
+      a2.reference(to_blitz_array<double, 1>(numpy2));
+      arg2 = &a2;
+    }
+  }
+  {
+    try {
+      (arg1)->set_lambertian_albedo((blitz::Array< double,1 > const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrBrdfDriver__v_n_brdf_kernels(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrBrdfDriver__v_n_brdf_kernels" "', argument " "1"" of type '" "FullPhysics::SpurrBrdfDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (int)((FullPhysics::SpurrBrdfDriver const *)arg1)->n_brdf_kernels();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrBrdfDriver__v_n_kernel_factor_wfs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrBrdfDriver__v_n_kernel_factor_wfs" "', argument " "1"" of type '" "FullPhysics::SpurrBrdfDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (int)((FullPhysics::SpurrBrdfDriver const *)arg1)->n_kernel_factor_wfs();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrBrdfDriver__v_n_kernel_params_wfs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrBrdfDriver__v_n_kernel_params_wfs" "', argument " "1"" of type '" "FullPhysics::SpurrBrdfDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (int)((FullPhysics::SpurrBrdfDriver const *)arg1)->n_kernel_params_wfs();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrBrdfDriver__v_n_surface_wfs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrBrdfDriver__v_n_surface_wfs" "', argument " "1"" of type '" "FullPhysics::SpurrBrdfDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (int)((FullPhysics::SpurrBrdfDriver const *)arg1)->n_surface_wfs();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrBrdfDriver__v_do_shadow_effect(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrBrdfDriver__v_do_shadow_effect" "', argument " "1"" of type '" "FullPhysics::SpurrBrdfDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (bool)((FullPhysics::SpurrBrdfDriver const *)arg1)->do_shadow_effect();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SpurrBrdfDriver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SpurrBrdfDriver" "', argument " "1"" of type '" "FullPhysics::SpurrBrdfDriver *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (void)arg1; delete smartarg1;
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SpurrBrdfDriver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_SpurrRtDriver_reflectance_calculate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrRtDriver *arg1 = (FullPhysics::SpurrRtDriver *) 0 ;
+  blitz::Array< double,1 > *arg2 = 0 ;
+  double arg3 ;
+  double arg4 ;
+  double arg5 ;
+  int arg6 ;
+  blitz::Array< double,1 > *arg7 = 0 ;
+  blitz::Array< double,1 > *arg8 = 0 ;
+  blitz::Array< double,1 > *arg9 = 0 ;
+  blitz::Array< double,2 > *arg10 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver > *smartarg1 = 0 ;
+  blitz::Array< double,1 > a2 ;
+  PythonObject numpy2 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  int val6 ;
+  int ecode6 = 0 ;
+  blitz::Array< double,1 > a7 ;
+  PythonObject numpy7 ;
+  blitz::Array< double,1 > a8 ;
+  PythonObject numpy8 ;
+  blitz::Array< double,1 > a9 ;
+  PythonObject numpy9 ;
+  blitz::Array< double,2 > a10 ;
+  PythonObject numpy10 ;
+  PyObject *swig_obj[10] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SpurrRtDriver_reflectance_calculate",10,10,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrRtDriver_reflectance_calculate" "', argument " "1"" of type '" "FullPhysics::SpurrRtDriver *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrRtDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy2.obj = to_numpy<double>(swig_obj[1]);
+      if(!numpy2.obj)
+      return NULL;
+      a2.reference(to_blitz_array<double, 1>(numpy2));
+      arg2 = &a2;
+    }
+  }
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SpurrRtDriver_reflectance_calculate" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "SpurrRtDriver_reflectance_calculate" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "SpurrRtDriver_reflectance_calculate" "', argument " "5"" of type '" "double""'");
+  } 
+  arg5 = static_cast< double >(val5);
+  ecode6 = SWIG_AsVal_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "SpurrRtDriver_reflectance_calculate" "', argument " "6"" of type '" "int""'");
+  } 
+  arg6 = static_cast< int >(val6);
+  {
+    int res = SWIG_ConvertPtr(swig_obj[6], (void**)(&arg7), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy7.obj = to_numpy<double>(swig_obj[6]);
+      if(!numpy7.obj)
+      return NULL;
+      a7.reference(to_blitz_array<double, 1>(numpy7));
+      arg7 = &a7;
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[7], (void**)(&arg8), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy8.obj = to_numpy<double>(swig_obj[7]);
+      if(!numpy8.obj)
+      return NULL;
+      a8.reference(to_blitz_array<double, 1>(numpy8));
+      arg8 = &a8;
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[8], (void**)(&arg9), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy9.obj = to_numpy<double>(swig_obj[8]);
+      if(!numpy9.obj)
+      return NULL;
+      a9.reference(to_blitz_array<double, 1>(numpy9));
+      arg9 = &a9;
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[9], (void**)(&arg10), SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy10.obj = to_numpy<double>(swig_obj[9]);
+      if(!numpy10.obj)
+      return NULL;
+      a10.reference(to_blitz_array<double, 2>(numpy10));
+      arg10 = &a10;
+    }
+  }
+  {
+    try {
+      result = (double)(arg1)->reflectance_calculate((blitz::Array< double,1 > const &)*arg2,arg3,arg4,arg5,arg6,(blitz::Array< double,1 > const &)*arg7,(blitz::Array< double,1 > const &)*arg8,(blitz::Array< double,1 > const &)*arg9,(blitz::Array< double,2 > const &)*arg10);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrRtDriver_reflectance_and_jacobian_calculate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrRtDriver *arg1 = (FullPhysics::SpurrRtDriver *) 0 ;
+  blitz::Array< double,1 > *arg2 = 0 ;
+  double arg3 ;
+  double arg4 ;
+  double arg5 ;
+  int arg6 ;
+  FullPhysics::ArrayAd< double,1 > *arg7 = 0 ;
+  FullPhysics::ArrayAd< double,1 > *arg8 = 0 ;
+  FullPhysics::ArrayAd< double,1 > *arg9 = 0 ;
+  FullPhysics::ArrayAd< double,2 > *arg10 = 0 ;
+  double *arg11 = 0 ;
+  blitz::Array< double,2 > *arg12 = 0 ;
+  blitz::Array< double,1 > *arg13 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver > *smartarg1 = 0 ;
+  blitz::Array< double,1 > a2 ;
+  PythonObject numpy2 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  int val6 ;
+  int ecode6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  void *argp9 = 0 ;
+  int res9 = 0 ;
+  void *argp10 = 0 ;
+  int res10 = 0 ;
+  void *argp11 = 0 ;
+  int res11 = 0 ;
+  void *argp12 = 0 ;
+  int res12 = 0 ;
+  void *argp13 = 0 ;
+  int res13 = 0 ;
+  PyObject *swig_obj[13] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SpurrRtDriver_reflectance_and_jacobian_calculate",13,13,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "1"" of type '" "FullPhysics::SpurrRtDriver *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrRtDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy2.obj = to_numpy<double>(swig_obj[1]);
+      if(!numpy2.obj)
+      return NULL;
+      a2.reference(to_blitz_array<double, 1>(numpy2));
+      arg2 = &a2;
+    }
+  }
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "5"" of type '" "double""'");
+  } 
+  arg5 = static_cast< double >(val5);
+  ecode6 = SWIG_AsVal_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "6"" of type '" "int""'");
+  } 
+  arg6 = static_cast< int >(val6);
+  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "7"" of type '" "FullPhysics::ArrayAd< double,1 > &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "7"" of type '" "FullPhysics::ArrayAd< double,1 > &""'"); 
+  }
+  arg7 = reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(argp7);
+  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0  | 0);
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "8"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "8"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  arg8 = reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(argp8);
+  res9 = SWIG_ConvertPtr(swig_obj[8], &argp9, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0  | 0);
+  if (!SWIG_IsOK(res9)) {
+    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "9"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  if (!argp9) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "9"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  arg9 = reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(argp9);
+  res10 = SWIG_ConvertPtr(swig_obj[9], &argp10, SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t,  0  | 0);
+  if (!SWIG_IsOK(res10)) {
+    SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "10"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
+  }
+  if (!argp10) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "10"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
+  }
+  arg10 = reinterpret_cast< FullPhysics::ArrayAd< double,2 > * >(argp10);
+  res11 = SWIG_ConvertPtr(swig_obj[10], &argp11, SWIGTYPE_p_double,  0 );
+  if (!SWIG_IsOK(res11)) {
+    SWIG_exception_fail(SWIG_ArgError(res11), "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "11"" of type '" "double &""'"); 
+  }
+  if (!argp11) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "11"" of type '" "double &""'"); 
+  }
+  arg11 = reinterpret_cast< double * >(argp11);
+  res12 = SWIG_ConvertPtr(swig_obj[11], &argp12, SWIGTYPE_p_blitz__ArrayT_double_2_t,  0 );
+  if (!SWIG_IsOK(res12)) {
+    SWIG_exception_fail(SWIG_ArgError(res12), "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "12"" of type '" "blitz::Array< double,2 > &""'"); 
+  }
+  if (!argp12) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "12"" of type '" "blitz::Array< double,2 > &""'"); 
+  }
+  arg12 = reinterpret_cast< blitz::Array< double,2 > * >(argp12);
+  res13 = SWIG_ConvertPtr(swig_obj[12], &argp13, SWIGTYPE_p_blitz__ArrayT_double_1_t,  0 );
+  if (!SWIG_IsOK(res13)) {
+    SWIG_exception_fail(SWIG_ArgError(res13), "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "13"" of type '" "blitz::Array< double,1 > &""'"); 
+  }
+  if (!argp13) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrRtDriver_reflectance_and_jacobian_calculate" "', argument " "13"" of type '" "blitz::Array< double,1 > &""'"); 
+  }
+  arg13 = reinterpret_cast< blitz::Array< double,1 > * >(argp13);
+  {
+    try {
+      (arg1)->reflectance_and_jacobian_calculate((blitz::Array< double,1 > const &)*arg2,arg3,arg4,arg5,arg6,*arg7,(FullPhysics::ArrayAd< double,1 > const &)*arg8,(FullPhysics::ArrayAd< double,1 > const &)*arg9,(FullPhysics::ArrayAd< double,2 > const &)*arg10,*arg11,*arg12,*arg13);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrRtDriver__v_brdf_driver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrRtDriver *arg1 = (FullPhysics::SpurrRtDriver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  boost::shared_ptr< FullPhysics::SpurrBrdfDriver > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrRtDriver__v_brdf_driver" "', argument " "1"" of type '" "FullPhysics::SpurrRtDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::SpurrRtDriver const *)arg1)->brdf_driver();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrRtDriver_setup_height_grid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrRtDriver *arg1 = (FullPhysics::SpurrRtDriver *) 0 ;
+  blitz::Array< double,1 > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > *smartarg1 = 0 ;
+  blitz::Array< double,1 > a2 ;
+  PythonObject numpy2 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SpurrRtDriver_setup_height_grid",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrRtDriver_setup_height_grid" "', argument " "1"" of type '" "FullPhysics::SpurrRtDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy2.obj = to_numpy<double>(swig_obj[1]);
+      if(!numpy2.obj)
+      return NULL;
+      a2.reference(to_blitz_array<double, 1>(numpy2));
+      arg2 = &a2;
+    }
+  }
+  {
+    try {
+      ((FullPhysics::SpurrRtDriver const *)arg1)->setup_height_grid((blitz::Array< double,1 > const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrRtDriver_setup_geometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrRtDriver *arg1 = (FullPhysics::SpurrRtDriver *) 0 ;
+  double arg2 ;
+  double arg3 ;
+  double arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > *smartarg1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[4] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SpurrRtDriver_setup_geometry",4,4,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrRtDriver_setup_geometry" "', argument " "1"" of type '" "FullPhysics::SpurrRtDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SpurrRtDriver_setup_geometry" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SpurrRtDriver_setup_geometry" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "SpurrRtDriver_setup_geometry" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  {
+    try {
+      ((FullPhysics::SpurrRtDriver const *)arg1)->setup_geometry(arg2,arg3,arg4);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrRtDriver_setup_optical_inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrRtDriver *arg1 = (FullPhysics::SpurrRtDriver *) 0 ;
+  blitz::Array< double,1 > *arg2 = 0 ;
+  blitz::Array< double,1 > *arg3 = 0 ;
+  blitz::Array< double,2 > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > *smartarg1 = 0 ;
+  blitz::Array< double,1 > a2 ;
+  PythonObject numpy2 ;
+  blitz::Array< double,1 > a3 ;
+  PythonObject numpy3 ;
+  blitz::Array< double,2 > a4 ;
+  PythonObject numpy4 ;
+  PyObject *swig_obj[4] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SpurrRtDriver_setup_optical_inputs",4,4,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrRtDriver_setup_optical_inputs" "', argument " "1"" of type '" "FullPhysics::SpurrRtDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy2.obj = to_numpy<double>(swig_obj[1]);
+      if(!numpy2.obj)
+      return NULL;
+      a2.reference(to_blitz_array<double, 1>(numpy2));
+      arg2 = &a2;
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[2], (void**)(&arg3), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy3.obj = to_numpy<double>(swig_obj[2]);
+      if(!numpy3.obj)
+      return NULL;
+      a3.reference(to_blitz_array<double, 1>(numpy3));
+      arg3 = &a3;
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[3], (void**)(&arg4), SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy4.obj = to_numpy<double>(swig_obj[3]);
+      if(!numpy4.obj)
+      return NULL;
+      a4.reference(to_blitz_array<double, 2>(numpy4));
+      arg4 = &a4;
+    }
+  }
+  {
+    try {
+      ((FullPhysics::SpurrRtDriver const *)arg1)->setup_optical_inputs((blitz::Array< double,1 > const &)*arg2,(blitz::Array< double,1 > const &)*arg3,(blitz::Array< double,2 > const &)*arg4);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrRtDriver_clear_linear_inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrRtDriver *arg1 = (FullPhysics::SpurrRtDriver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrRtDriver_clear_linear_inputs" "', argument " "1"" of type '" "FullPhysics::SpurrRtDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      ((FullPhysics::SpurrRtDriver const *)arg1)->clear_linear_inputs();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrRtDriver_setup_linear_inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrRtDriver *arg1 = (FullPhysics::SpurrRtDriver *) 0 ;
+  FullPhysics::ArrayAd< double,1 > *arg2 = 0 ;
+  FullPhysics::ArrayAd< double,1 > *arg3 = 0 ;
+  FullPhysics::ArrayAd< double,2 > *arg4 = 0 ;
+  bool arg5 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
+  PyObject *swig_obj[5] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SpurrRtDriver_setup_linear_inputs",5,5,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrRtDriver_setup_linear_inputs" "', argument " "1"" of type '" "FullPhysics::SpurrRtDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SpurrRtDriver_setup_linear_inputs" "', argument " "2"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrRtDriver_setup_linear_inputs" "', argument " "2"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  arg2 = reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SpurrRtDriver_setup_linear_inputs" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrRtDriver_setup_linear_inputs" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  arg3 = reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "SpurrRtDriver_setup_linear_inputs" "', argument " "4"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrRtDriver_setup_linear_inputs" "', argument " "4"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
+  }
+  arg4 = reinterpret_cast< FullPhysics::ArrayAd< double,2 > * >(argp4);
+  ecode5 = SWIG_AsVal_bool(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "SpurrRtDriver_setup_linear_inputs" "', argument " "5"" of type '" "bool""'");
+  } 
+  arg5 = static_cast< bool >(val5);
+  {
+    try {
+      ((FullPhysics::SpurrRtDriver const *)arg1)->setup_linear_inputs((FullPhysics::ArrayAd< double,1 > const &)*arg2,(FullPhysics::ArrayAd< double,1 > const &)*arg3,(FullPhysics::ArrayAd< double,2 > const &)*arg4,arg5);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrRtDriver_calculate_rt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrRtDriver *arg1 = (FullPhysics::SpurrRtDriver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrRtDriver_calculate_rt" "', argument " "1"" of type '" "FullPhysics::SpurrRtDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      ((FullPhysics::SpurrRtDriver const *)arg1)->calculate_rt();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrRtDriver_get_intensity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrRtDriver *arg1 = (FullPhysics::SpurrRtDriver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrRtDriver_get_intensity" "', argument " "1"" of type '" "FullPhysics::SpurrRtDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((FullPhysics::SpurrRtDriver const *)arg1)->get_intensity();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SpurrRtDriver_copy_jacobians(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrRtDriver *arg1 = (FullPhysics::SpurrRtDriver *) 0 ;
+  blitz::Array< double,2 > *arg2 = 0 ;
+  blitz::Array< double,1 > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver const > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SpurrRtDriver_copy_jacobians",3,3,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrRtDriver_copy_jacobians" "', argument " "1"" of type '" "FullPhysics::SpurrRtDriver const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_blitz__ArrayT_double_2_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SpurrRtDriver_copy_jacobians" "', argument " "2"" of type '" "blitz::Array< double,2 > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrRtDriver_copy_jacobians" "', argument " "2"" of type '" "blitz::Array< double,2 > &""'"); 
+  }
+  arg2 = reinterpret_cast< blitz::Array< double,2 > * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_blitz__ArrayT_double_1_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SpurrRtDriver_copy_jacobians" "', argument " "3"" of type '" "blitz::Array< double,1 > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SpurrRtDriver_copy_jacobians" "', argument " "3"" of type '" "blitz::Array< double,1 > &""'"); 
+  }
+  arg3 = reinterpret_cast< blitz::Array< double,1 > * >(argp3);
+  {
+    try {
+      ((FullPhysics::SpurrRtDriver const *)arg1)->copy_jacobians(*arg2,*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SpurrRtDriver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpurrRtDriver *arg1 = (FullPhysics::SpurrRtDriver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpurrRtDriver > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SpurrRtDriver" "', argument " "1"" of type '" "FullPhysics::SpurrRtDriver *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrRtDriver > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrRtDriver > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpurrRtDriver * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (void)arg1; delete smartarg1;
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SpurrRtDriver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_new_LidortBrdfDriver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
@@ -5212,286 +6591,6 @@ SWIGINTERN PyObject *_wrap_LidortBrdfDriver__v_brdf_interface(PyObject *SWIGUNUS
     }
   }
   resultobj = SWIG_NewPointerObj((new boost::shared_ptr< FullPhysics::Brdf_Linsup_Masters >(static_cast< const boost::shared_ptr< FullPhysics::Brdf_Linsup_Masters >& >(result))), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Linsup_Masters_t, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortBrdfDriver_setup_geometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortBrdfDriver *arg1 = (FullPhysics::LidortBrdfDriver *) 0 ;
-  double arg2 ;
-  double arg3 ;
-  double arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortBrdfDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortBrdfDriver const > *smartarg1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  double val4 ;
-  int ecode4 = 0 ;
-  PyObject *swig_obj[4] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"LidortBrdfDriver_setup_geometry",4,4,swig_obj)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortBrdfDriver_setup_geometry" "', argument " "1"" of type '" "FullPhysics::LidortBrdfDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortBrdfDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LidortBrdfDriver_setup_geometry" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "LidortBrdfDriver_setup_geometry" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "LidortBrdfDriver_setup_geometry" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
-  {
-    try {
-      ((FullPhysics::LidortBrdfDriver const *)arg1)->setup_geometry(arg2,arg3,arg4);
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortBrdfDriver__v_n_brdf_kernels(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortBrdfDriver *arg1 = (FullPhysics::LidortBrdfDriver *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortBrdfDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortBrdfDriver const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortBrdfDriver__v_n_brdf_kernels" "', argument " "1"" of type '" "FullPhysics::LidortBrdfDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortBrdfDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      result = (int)((FullPhysics::LidortBrdfDriver const *)arg1)->n_brdf_kernels();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortBrdfDriver__v_n_kernel_factor_wfs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortBrdfDriver *arg1 = (FullPhysics::LidortBrdfDriver *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortBrdfDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortBrdfDriver const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortBrdfDriver__v_n_kernel_factor_wfs" "', argument " "1"" of type '" "FullPhysics::LidortBrdfDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortBrdfDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      result = (int)((FullPhysics::LidortBrdfDriver const *)arg1)->n_kernel_factor_wfs();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortBrdfDriver__v_n_kernel_params_wfs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortBrdfDriver *arg1 = (FullPhysics::LidortBrdfDriver *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortBrdfDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortBrdfDriver const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortBrdfDriver__v_n_kernel_params_wfs" "', argument " "1"" of type '" "FullPhysics::LidortBrdfDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortBrdfDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      result = (int)((FullPhysics::LidortBrdfDriver const *)arg1)->n_kernel_params_wfs();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortBrdfDriver__v_n_surface_wfs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortBrdfDriver *arg1 = (FullPhysics::LidortBrdfDriver *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortBrdfDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortBrdfDriver const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortBrdfDriver__v_n_surface_wfs" "', argument " "1"" of type '" "FullPhysics::LidortBrdfDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortBrdfDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      result = (int)((FullPhysics::LidortBrdfDriver const *)arg1)->n_surface_wfs();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortBrdfDriver__v_do_shadow_effect(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortBrdfDriver *arg1 = (FullPhysics::LidortBrdfDriver *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortBrdfDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortBrdfDriver const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  bool result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortBrdfDriver__v_do_shadow_effect" "', argument " "1"" of type '" "FullPhysics::LidortBrdfDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortBrdfDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      result = (bool)((FullPhysics::LidortBrdfDriver const *)arg1)->do_shadow_effect();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
   return NULL;
@@ -6158,481 +7257,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_LidortRtDriver_setup_height_grid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortRtDriver *arg1 = (FullPhysics::LidortRtDriver *) 0 ;
-  blitz::Array< double,1 > *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > *smartarg1 = 0 ;
-  blitz::Array< double,1 > a2 ;
-  PythonObject numpy2 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"LidortRtDriver_setup_height_grid",2,2,swig_obj)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortRtDriver_setup_height_grid" "', argument " "1"" of type '" "FullPhysics::LidortRtDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    int res = SWIG_ConvertPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy2.obj = to_numpy<double>(swig_obj[1]);
-      if(!numpy2.obj)
-      return NULL;
-      a2.reference(to_blitz_array<double, 1>(numpy2));
-      arg2 = &a2;
-    }
-  }
-  {
-    try {
-      ((FullPhysics::LidortRtDriver const *)arg1)->setup_height_grid((blitz::Array< double,1 > const &)*arg2);
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortRtDriver_setup_geometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortRtDriver *arg1 = (FullPhysics::LidortRtDriver *) 0 ;
-  double arg2 ;
-  double arg3 ;
-  double arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > *smartarg1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  double val4 ;
-  int ecode4 = 0 ;
-  PyObject *swig_obj[4] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"LidortRtDriver_setup_geometry",4,4,swig_obj)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortRtDriver_setup_geometry" "', argument " "1"" of type '" "FullPhysics::LidortRtDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LidortRtDriver_setup_geometry" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "LidortRtDriver_setup_geometry" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "LidortRtDriver_setup_geometry" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
-  {
-    try {
-      ((FullPhysics::LidortRtDriver const *)arg1)->setup_geometry(arg2,arg3,arg4);
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortRtDriver_setup_optical_inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortRtDriver *arg1 = (FullPhysics::LidortRtDriver *) 0 ;
-  blitz::Array< double,1 > *arg2 = 0 ;
-  blitz::Array< double,1 > *arg3 = 0 ;
-  blitz::Array< double,2 > *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > *smartarg1 = 0 ;
-  blitz::Array< double,1 > a2 ;
-  PythonObject numpy2 ;
-  blitz::Array< double,1 > a3 ;
-  PythonObject numpy3 ;
-  blitz::Array< double,2 > a4 ;
-  PythonObject numpy4 ;
-  PyObject *swig_obj[4] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"LidortRtDriver_setup_optical_inputs",4,4,swig_obj)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortRtDriver_setup_optical_inputs" "', argument " "1"" of type '" "FullPhysics::LidortRtDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    int res = SWIG_ConvertPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy2.obj = to_numpy<double>(swig_obj[1]);
-      if(!numpy2.obj)
-      return NULL;
-      a2.reference(to_blitz_array<double, 1>(numpy2));
-      arg2 = &a2;
-    }
-  }
-  {
-    int res = SWIG_ConvertPtr(swig_obj[2], (void**)(&arg3), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy3.obj = to_numpy<double>(swig_obj[2]);
-      if(!numpy3.obj)
-      return NULL;
-      a3.reference(to_blitz_array<double, 1>(numpy3));
-      arg3 = &a3;
-    }
-  }
-  {
-    int res = SWIG_ConvertPtr(swig_obj[3], (void**)(&arg4), SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy4.obj = to_numpy<double>(swig_obj[3]);
-      if(!numpy4.obj)
-      return NULL;
-      a4.reference(to_blitz_array<double, 2>(numpy4));
-      arg4 = &a4;
-    }
-  }
-  {
-    try {
-      ((FullPhysics::LidortRtDriver const *)arg1)->setup_optical_inputs((blitz::Array< double,1 > const &)*arg2,(blitz::Array< double,1 > const &)*arg3,(blitz::Array< double,2 > const &)*arg4);
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortRtDriver_clear_linear_inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortRtDriver *arg1 = (FullPhysics::LidortRtDriver *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortRtDriver_clear_linear_inputs" "', argument " "1"" of type '" "FullPhysics::LidortRtDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      ((FullPhysics::LidortRtDriver const *)arg1)->clear_linear_inputs();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortRtDriver_setup_linear_inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortRtDriver *arg1 = (FullPhysics::LidortRtDriver *) 0 ;
-  FullPhysics::ArrayAd< double,1 > *arg2 = 0 ;
-  FullPhysics::ArrayAd< double,1 > *arg3 = 0 ;
-  FullPhysics::ArrayAd< double,2 > *arg4 = 0 ;
-  bool arg5 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > *smartarg1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  bool val5 ;
-  int ecode5 = 0 ;
-  PyObject *swig_obj[5] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"LidortRtDriver_setup_linear_inputs",5,5,swig_obj)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortRtDriver_setup_linear_inputs" "', argument " "1"" of type '" "FullPhysics::LidortRtDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LidortRtDriver_setup_linear_inputs" "', argument " "2"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LidortRtDriver_setup_linear_inputs" "', argument " "2"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
-  }
-  arg2 = reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "LidortRtDriver_setup_linear_inputs" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LidortRtDriver_setup_linear_inputs" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
-  }
-  arg3 = reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t,  0  | 0);
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "LidortRtDriver_setup_linear_inputs" "', argument " "4"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LidortRtDriver_setup_linear_inputs" "', argument " "4"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
-  }
-  arg4 = reinterpret_cast< FullPhysics::ArrayAd< double,2 > * >(argp4);
-  ecode5 = SWIG_AsVal_bool(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "LidortRtDriver_setup_linear_inputs" "', argument " "5"" of type '" "bool""'");
-  } 
-  arg5 = static_cast< bool >(val5);
-  {
-    try {
-      ((FullPhysics::LidortRtDriver const *)arg1)->setup_linear_inputs((FullPhysics::ArrayAd< double,1 > const &)*arg2,(FullPhysics::ArrayAd< double,1 > const &)*arg3,(FullPhysics::ArrayAd< double,2 > const &)*arg4,arg5);
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortRtDriver_calculate_rt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortRtDriver *arg1 = (FullPhysics::LidortRtDriver *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortRtDriver_calculate_rt" "', argument " "1"" of type '" "FullPhysics::LidortRtDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      ((FullPhysics::LidortRtDriver const *)arg1)->calculate_rt();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortRtDriver_get_intensity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortRtDriver *arg1 = (FullPhysics::LidortRtDriver *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  double result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortRtDriver_get_intensity" "', argument " "1"" of type '" "FullPhysics::LidortRtDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      result = (double)((FullPhysics::LidortRtDriver const *)arg1)->get_intensity();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_LidortRtDriver_copy_jacobians(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::LidortRtDriver *arg1 = (FullPhysics::LidortRtDriver *) 0 ;
-  blitz::Array< double,2 > *arg2 = 0 ;
-  blitz::Array< double,1 > *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::LidortRtDriver const > *smartarg1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  PyObject *swig_obj[3] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"LidortRtDriver_copy_jacobians",3,3,swig_obj)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LidortRtDriver_copy_jacobians" "', argument " "1"" of type '" "FullPhysics::LidortRtDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::LidortRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::LidortRtDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_blitz__ArrayT_double_2_t,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LidortRtDriver_copy_jacobians" "', argument " "2"" of type '" "blitz::Array< double,2 > &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LidortRtDriver_copy_jacobians" "', argument " "2"" of type '" "blitz::Array< double,2 > &""'"); 
-  }
-  arg2 = reinterpret_cast< blitz::Array< double,2 > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_blitz__ArrayT_double_1_t,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "LidortRtDriver_copy_jacobians" "', argument " "3"" of type '" "blitz::Array< double,1 > &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LidortRtDriver_copy_jacobians" "', argument " "3"" of type '" "blitz::Array< double,1 > &""'"); 
-  }
-  arg3 = reinterpret_cast< blitz::Array< double,1 > * >(argp3);
-  {
-    try {
-      ((FullPhysics::LidortRtDriver const *)arg1)->copy_jacobians(*arg2,*arg3);
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_delete_LidortRtDriver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::LidortRtDriver *arg1 = (FullPhysics::LidortRtDriver *) 0 ;
@@ -6688,6 +7312,30 @@ SWIGINTERN PyObject *LidortRtDriver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyO
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { (char *)"SpurrBrdfDriver_initialize_brdf_inputs", _wrap_SpurrBrdfDriver_initialize_brdf_inputs, METH_VARARGS, NULL},
+	 { (char *)"SpurrBrdfDriver_setup_geometry", _wrap_SpurrBrdfDriver_setup_geometry, METH_VARARGS, NULL},
+	 { (char *)"SpurrBrdfDriver_setup_brdf_inputs", _wrap_SpurrBrdfDriver_setup_brdf_inputs, METH_VARARGS, NULL},
+	 { (char *)"SpurrBrdfDriver_set_lambertian_albedo", _wrap_SpurrBrdfDriver_set_lambertian_albedo, METH_VARARGS, NULL},
+	 { (char *)"SpurrBrdfDriver__v_n_brdf_kernels", (PyCFunction)_wrap_SpurrBrdfDriver__v_n_brdf_kernels, METH_O, NULL},
+	 { (char *)"SpurrBrdfDriver__v_n_kernel_factor_wfs", (PyCFunction)_wrap_SpurrBrdfDriver__v_n_kernel_factor_wfs, METH_O, NULL},
+	 { (char *)"SpurrBrdfDriver__v_n_kernel_params_wfs", (PyCFunction)_wrap_SpurrBrdfDriver__v_n_kernel_params_wfs, METH_O, NULL},
+	 { (char *)"SpurrBrdfDriver__v_n_surface_wfs", (PyCFunction)_wrap_SpurrBrdfDriver__v_n_surface_wfs, METH_O, NULL},
+	 { (char *)"SpurrBrdfDriver__v_do_shadow_effect", (PyCFunction)_wrap_SpurrBrdfDriver__v_do_shadow_effect, METH_O, NULL},
+	 { (char *)"delete_SpurrBrdfDriver", (PyCFunction)_wrap_delete_SpurrBrdfDriver, METH_O, NULL},
+	 { (char *)"SpurrBrdfDriver_swigregister", SpurrBrdfDriver_swigregister, METH_VARARGS, NULL},
+	 { (char *)"SpurrRtDriver_reflectance_calculate", _wrap_SpurrRtDriver_reflectance_calculate, METH_VARARGS, NULL},
+	 { (char *)"SpurrRtDriver_reflectance_and_jacobian_calculate", _wrap_SpurrRtDriver_reflectance_and_jacobian_calculate, METH_VARARGS, NULL},
+	 { (char *)"SpurrRtDriver__v_brdf_driver", (PyCFunction)_wrap_SpurrRtDriver__v_brdf_driver, METH_O, NULL},
+	 { (char *)"SpurrRtDriver_setup_height_grid", _wrap_SpurrRtDriver_setup_height_grid, METH_VARARGS, NULL},
+	 { (char *)"SpurrRtDriver_setup_geometry", _wrap_SpurrRtDriver_setup_geometry, METH_VARARGS, NULL},
+	 { (char *)"SpurrRtDriver_setup_optical_inputs", _wrap_SpurrRtDriver_setup_optical_inputs, METH_VARARGS, NULL},
+	 { (char *)"SpurrRtDriver_clear_linear_inputs", (PyCFunction)_wrap_SpurrRtDriver_clear_linear_inputs, METH_O, NULL},
+	 { (char *)"SpurrRtDriver_setup_linear_inputs", _wrap_SpurrRtDriver_setup_linear_inputs, METH_VARARGS, NULL},
+	 { (char *)"SpurrRtDriver_calculate_rt", (PyCFunction)_wrap_SpurrRtDriver_calculate_rt, METH_O, NULL},
+	 { (char *)"SpurrRtDriver_get_intensity", (PyCFunction)_wrap_SpurrRtDriver_get_intensity, METH_O, NULL},
+	 { (char *)"SpurrRtDriver_copy_jacobians", _wrap_SpurrRtDriver_copy_jacobians, METH_VARARGS, NULL},
+	 { (char *)"delete_SpurrRtDriver", (PyCFunction)_wrap_delete_SpurrRtDriver, METH_O, NULL},
+	 { (char *)"SpurrRtDriver_swigregister", SpurrRtDriver_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_LidortBrdfDriver", _wrap_new_LidortBrdfDriver, METH_VARARGS, (char *)"\n"
 		"LidortBrdfDriver::LidortBrdfDriver(int nstream, int nmoment)\n"
 		"Initialize Lidort BRDF interface. \n"
@@ -6699,30 +7347,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"LidortBrdfDriver__v_brdf_interface", (PyCFunction)_wrap_LidortBrdfDriver__v_brdf_interface, METH_O, (char *)"\n"
 		"const boost::shared_ptr<Brdf_Linsup_Masters> FullPhysics::LidortBrdfDriver::brdf_interface() const\n"
 		"Interface to BRDF interface to allow changing configuration to values.\n"
-		"\n"
-		""},
-	 { (char *)"LidortBrdfDriver_setup_geometry", _wrap_LidortBrdfDriver_setup_geometry, METH_VARARGS, (char *)"\n"
-		"void LidortBrdfDriver::setup_geometry(double sza, double azm, double zen) const\n"
-		"\n"
-		""},
-	 { (char *)"LidortBrdfDriver__v_n_brdf_kernels", (PyCFunction)_wrap_LidortBrdfDriver__v_n_brdf_kernels, METH_O, (char *)"\n"
-		"int LidortBrdfDriver::n_brdf_kernels() const\n"
-		"\n"
-		""},
-	 { (char *)"LidortBrdfDriver__v_n_kernel_factor_wfs", (PyCFunction)_wrap_LidortBrdfDriver__v_n_kernel_factor_wfs, METH_O, (char *)"\n"
-		"int LidortBrdfDriver::n_kernel_factor_wfs() const\n"
-		"\n"
-		""},
-	 { (char *)"LidortBrdfDriver__v_n_kernel_params_wfs", (PyCFunction)_wrap_LidortBrdfDriver__v_n_kernel_params_wfs, METH_O, (char *)"\n"
-		"int LidortBrdfDriver::n_kernel_params_wfs() const\n"
-		"\n"
-		""},
-	 { (char *)"LidortBrdfDriver__v_n_surface_wfs", (PyCFunction)_wrap_LidortBrdfDriver__v_n_surface_wfs, METH_O, (char *)"\n"
-		"int LidortBrdfDriver::n_surface_wfs() const\n"
-		"\n"
-		""},
-	 { (char *)"LidortBrdfDriver__v_do_shadow_effect", (PyCFunction)_wrap_LidortBrdfDriver__v_do_shadow_effect, METH_O, (char *)"\n"
-		"bool LidortBrdfDriver::do_shadow_effect() const\n"
 		"\n"
 		""},
 	 { (char *)"LidortBrdfDriver_do_kparams_derivs", _wrap_LidortBrdfDriver_do_kparams_derivs, METH_VARARGS, (char *)"\n"
@@ -6786,41 +7410,6 @@ static PyMethodDef SwigMethods[] = {
 		"Interface to LIDORT RT software inputs to allow changing LIDORT\n"
 		"configuration to values other than default. \n"
 		""},
-	 { (char *)"LidortRtDriver_setup_height_grid", _wrap_LidortRtDriver_setup_height_grid, METH_VARARGS, (char *)"\n"
-		"void LidortRtDriver::setup_height_grid(const blitz::Array< double, 1 > &height_grid) const\n"
-		"\n"
-		""},
-	 { (char *)"LidortRtDriver_setup_geometry", _wrap_LidortRtDriver_setup_geometry, METH_VARARGS, (char *)"\n"
-		"void LidortRtDriver::setup_geometry(double sza, double azm, double zen) const\n"
-		"\n"
-		""},
-	 { (char *)"LidortRtDriver_setup_optical_inputs", _wrap_LidortRtDriver_setup_optical_inputs, METH_VARARGS, (char *)"\n"
-		"void LidortRtDriver::setup_optical_inputs(const blitz::Array< double, 1 > &od, const blitz::Array< double, 1 >\n"
-		"&ssa, const blitz::Array< double, 2 > &pf) const\n"
-		"\n"
-		""},
-	 { (char *)"LidortRtDriver_clear_linear_inputs", (PyCFunction)_wrap_LidortRtDriver_clear_linear_inputs, METH_O, (char *)"\n"
-		"void LidortRtDriver::clear_linear_inputs() const\n"
-		"\n"
-		""},
-	 { (char *)"LidortRtDriver_setup_linear_inputs", _wrap_LidortRtDriver_setup_linear_inputs, METH_VARARGS, (char *)"\n"
-		"void LidortRtDriver::setup_linear_inputs(const ArrayAd< double, 1 > &od, const ArrayAd< double, 1 > &ssa,\n"
-		"const ArrayAd< double, 2 > &pf, bool do_surface_linearization) const\n"
-		"\n"
-		""},
-	 { (char *)"LidortRtDriver_calculate_rt", (PyCFunction)_wrap_LidortRtDriver_calculate_rt, METH_O, (char *)"\n"
-		"void LidortRtDriver::calculate_rt() const\n"
-		"\n"
-		""},
-	 { (char *)"LidortRtDriver_get_intensity", (PyCFunction)_wrap_LidortRtDriver_get_intensity, METH_O, (char *)"\n"
-		"double LidortRtDriver::get_intensity() const\n"
-		"\n"
-		""},
-	 { (char *)"LidortRtDriver_copy_jacobians", _wrap_LidortRtDriver_copy_jacobians, METH_VARARGS, (char *)"\n"
-		"void LidortRtDriver::copy_jacobians(blitz::Array< double, 2 > &jac_atm, blitz::Array< double, 1 >\n"
-		"&jac_surf) const\n"
-		"\n"
-		""},
 	 { (char *)"delete_LidortRtDriver", (PyCFunction)_wrap_delete_LidortRtDriver, METH_O, NULL},
 	 { (char *)"LidortRtDriver_swigregister", LidortRtDriver_swigregister, METH_VARARGS, NULL},
 	 { (char *)"LidortRtDriver_swiginit", LidortRtDriver_swiginit, METH_VARARGS, NULL},
@@ -6830,17 +7419,27 @@ static PyMethodDef SwigMethods[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static void *_p_FullPhysics__LidortBrdfDriverTo_p_FullPhysics__SpurrBrdfDriver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::SpurrBrdfDriver *)  ((FullPhysics::LidortBrdfDriver *) x));
+}
+static void *_p_FullPhysics__LidortRtDriverTo_p_FullPhysics__SpurrRtDriver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::SpurrRtDriver *)  ((FullPhysics::LidortRtDriver *) x));
+}
+static void *_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_tTo_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::SpurrRtDriver >(*(boost::shared_ptr< FullPhysics::LidortRtDriver > *)x);
+}
 static void *_p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::AutoDerivative< double > *) x));
 }
 static void *_p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::AutoDerivativeRef< double > *) x));
 }
-static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((std::basic_ostream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
-}
 static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_istreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_istream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
+}
+static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((std::basic_ostream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
 }
 static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -6850,6 +7449,10 @@ static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AutoDerivativeRef< double > > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_tTo_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::SpurrBrdfDriver >(*(boost::shared_ptr< FullPhysics::LidortBrdfDriver > *)x);
+}
 static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_1_t = {"_p_FullPhysics__ArrayAdT_double_1_t", "FullPhysics::ArrayAd< double,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_2_t = {"_p_FullPhysics__ArrayAdT_double_2_t", "FullPhysics::ArrayAd< double,2 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeRefT_double_t = {"_p_FullPhysics__AutoDerivativeRefT_double_t", "FullPhysics::AutoDerivativeRef< double > *", 0, 0, (void*)0, 0};
@@ -6858,6 +7461,8 @@ static swig_type_info _swigt__p_FullPhysics__GenericObject = {"_p_FullPhysics__G
 static swig_type_info _swigt__p_FullPhysics__LidortBrdfDriver = {"_p_FullPhysics__LidortBrdfDriver", "FullPhysics::LidortBrdfDriver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__LidortRtDriver = {"_p_FullPhysics__LidortRtDriver", "FullPhysics::LidortRtDriver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Pars = {"_p_FullPhysics__Lidort_Pars", "FullPhysics::Lidort_Pars *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__SpurrBrdfDriver = {"_p_FullPhysics__SpurrBrdfDriver", "FullPhysics::SpurrBrdfDriver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__SpurrRtDriver = {"_p_FullPhysics__SpurrRtDriver", "FullPhysics::SpurrRtDriver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_bool_1_t = {"_p_blitz__ArrayT_bool_1_t", "blitz::Array< bool,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_bool_2_t = {"_p_blitz__ArrayT_bool_2_t", "blitz::Array< bool,2 > *", 0, 0, (void*)0, 0};
@@ -6879,9 +7484,12 @@ static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t = {"_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t", "boost::shared_ptr< FullPhysics::LidortRtDriver > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t", "boost::shared_ptr< FullPhysics::Lidort_Lps_Masters > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t", "boost::shared_ptr< FullPhysics::Lidort_Pars > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t = {"_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t", "boost::shared_ptr< FullPhysics::SpurrBrdfDriver > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t = {"_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t", "boost::shared_ptr< FullPhysics::SpurrRtDriver > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char_type = {"_p_char_type", "char_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_fmtflags = {"_p_fmtflags", "fmtflags *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int_type = {"_p_int_type", "int_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_iostate = {"_p_iostate", "iostate *", 0, 0, (void*)0, 0};
@@ -6907,6 +7515,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__LidortBrdfDriver,
   &_swigt__p_FullPhysics__LidortRtDriver,
   &_swigt__p_FullPhysics__Lidort_Pars,
+  &_swigt__p_FullPhysics__SpurrBrdfDriver,
+  &_swigt__p_FullPhysics__SpurrRtDriver,
   &_swigt__p_allocator_type,
   &_swigt__p_blitz__ArrayT_bool_1_t,
   &_swigt__p_blitz__ArrayT_bool_2_t,
@@ -6928,9 +7538,12 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t,
   &_swigt__p_char,
   &_swigt__p_char_type,
   &_swigt__p_difference_type,
+  &_swigt__p_double,
   &_swigt__p_fmtflags,
   &_swigt__p_int_type,
   &_swigt__p_iostate,
@@ -6956,6 +7569,8 @@ static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_Fu
 static swig_cast_info _swigc__p_FullPhysics__LidortBrdfDriver[] = {  {&_swigt__p_FullPhysics__LidortBrdfDriver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__LidortRtDriver[] = {  {&_swigt__p_FullPhysics__LidortRtDriver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Pars[] = {  {&_swigt__p_FullPhysics__Lidort_Pars, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__SpurrBrdfDriver[] = {  {&_swigt__p_FullPhysics__SpurrBrdfDriver, 0, 0, 0},  {&_swigt__p_FullPhysics__LidortBrdfDriver, _p_FullPhysics__LidortBrdfDriverTo_p_FullPhysics__SpurrBrdfDriver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__SpurrRtDriver[] = {  {&_swigt__p_FullPhysics__SpurrRtDriver, 0, 0, 0},  {&_swigt__p_FullPhysics__LidortRtDriver, _p_FullPhysics__LidortRtDriverTo_p_FullPhysics__SpurrRtDriver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_bool_1_t[] = {  {&_swigt__p_blitz__ArrayT_bool_1_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_bool_2_t[] = {  {&_swigt__p_blitz__ArrayT_bool_2_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -6977,9 +7592,12 @@ static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t, _p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_tTo_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, _p_boost__shared_ptrT_FullPhysics__LidortRtDriver_tTo_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char_type[] = {  {&_swigt__p_char_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_fmtflags[] = {  {&_swigt__p_fmtflags, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int_type[] = {  {&_swigt__p_int_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_iostate[] = {  {&_swigt__p_iostate, 0, 0, 0},{0, 0, 0, 0}};
@@ -7005,6 +7623,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__LidortBrdfDriver,
   _swigc__p_FullPhysics__LidortRtDriver,
   _swigc__p_FullPhysics__Lidort_Pars,
+  _swigc__p_FullPhysics__SpurrBrdfDriver,
+  _swigc__p_FullPhysics__SpurrRtDriver,
   _swigc__p_allocator_type,
   _swigc__p_blitz__ArrayT_bool_1_t,
   _swigc__p_blitz__ArrayT_bool_2_t,
@@ -7026,9 +7646,12 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t,
   _swigc__p_char,
   _swigc__p_char_type,
   _swigc__p_difference_type,
+  _swigc__p_double,
   _swigc__p_fmtflags,
   _swigc__p_int_type,
   _swigc__p_iostate,
@@ -7730,16 +8353,20 @@ SWIG_init(void) {
   
   SWIG_Python_SetConstant(d, "SHARED_PTR_DISOWN",SWIG_From_int(static_cast< int >(0)));
   
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::SpurrBrdfDriver))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::SpurrBrdfDriver >("boost::shared_ptr< FullPhysics::SpurrBrdfDriver > *"));
+  
+  
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::SpurrRtDriver))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::SpurrRtDriver >("boost::shared_ptr< FullPhysics::SpurrRtDriver > *"));
+  
+  
   FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::LidortBrdfDriver))] =
   boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::LidortBrdfDriver >("boost::shared_ptr< FullPhysics::LidortBrdfDriver > *"));
   
   
   FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::LidortRtDriver))] =
   boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::LidortRtDriver >("boost::shared_ptr< FullPhysics::LidortRtDriver > *"));
-  
-  
-  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::LidortBrdfDriver))] =
-  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::LidortBrdfDriver >("boost::shared_ptr< FullPhysics::LidortBrdfDriver > *"));
   
 #if PY_VERSION_HEX >= 0x03000000
   return m;

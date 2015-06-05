@@ -183,6 +183,13 @@ class GroundBrdfVeg(full_physics_swig.ground.Ground):
         """
         return _ground_brdf.GroundBrdfVeg_black_sky_albedo(self, *args)
 
+    def albedo(self, *args):
+        """
+        const double GroundBrdfVeg::albedo(const int Spec_index, const double Sza)
+
+        """
+        return _ground_brdf.GroundBrdfVeg_albedo(self, *args)
+
     def breon_type(self):
         """
         virtual const std::string FullPhysics::GroundBrdfVeg::breon_type() const
@@ -214,6 +221,7 @@ GroundBrdfVeg.geometric_factor = new_instancemethod(_ground_brdf.GroundBrdfVeg_g
 GroundBrdfVeg.breon_factor = new_instancemethod(_ground_brdf.GroundBrdfVeg_breon_factor,None,GroundBrdfVeg)
 GroundBrdfVeg.refractive_index = new_instancemethod(_ground_brdf.GroundBrdfVeg_refractive_index,None,GroundBrdfVeg)
 GroundBrdfVeg.black_sky_albedo = new_instancemethod(_ground_brdf.GroundBrdfVeg_black_sky_albedo,None,GroundBrdfVeg)
+GroundBrdfVeg.albedo = new_instancemethod(_ground_brdf.GroundBrdfVeg_albedo,None,GroundBrdfVeg)
 GroundBrdfVeg.breon_type = new_instancemethod(_ground_brdf.GroundBrdfVeg_breon_type,None,GroundBrdfVeg)
 GroundBrdfVeg.state_vector_name_i = new_instancemethod(_ground_brdf.GroundBrdfVeg_state_vector_name_i,None,GroundBrdfVeg)
 GroundBrdfVeg.desc = new_instancemethod(_ground_brdf.GroundBrdfVeg_desc,None,GroundBrdfVeg)
@@ -291,6 +299,13 @@ class GroundBrdfSoil(full_physics_swig.ground.Ground):
         """
         return _ground_brdf.GroundBrdfSoil_black_sky_albedo(self, *args)
 
+    def albedo(self, *args):
+        """
+        const double GroundBrdfSoil::albedo(const int Spec_index, const double Sza)
+
+        """
+        return _ground_brdf.GroundBrdfSoil_albedo(self, *args)
+
     def breon_type(self):
         """
         virtual const std::string FullPhysics::GroundBrdfSoil::breon_type() const
@@ -322,6 +337,7 @@ GroundBrdfSoil.geometric_factor = new_instancemethod(_ground_brdf.GroundBrdfSoil
 GroundBrdfSoil.breon_factor = new_instancemethod(_ground_brdf.GroundBrdfSoil_breon_factor,None,GroundBrdfSoil)
 GroundBrdfSoil.refractive_index = new_instancemethod(_ground_brdf.GroundBrdfSoil_refractive_index,None,GroundBrdfSoil)
 GroundBrdfSoil.black_sky_albedo = new_instancemethod(_ground_brdf.GroundBrdfSoil_black_sky_albedo,None,GroundBrdfSoil)
+GroundBrdfSoil.albedo = new_instancemethod(_ground_brdf.GroundBrdfSoil_albedo,None,GroundBrdfSoil)
 GroundBrdfSoil.breon_type = new_instancemethod(_ground_brdf.GroundBrdfSoil_breon_type,None,GroundBrdfSoil)
 GroundBrdfSoil.state_vector_name_i = new_instancemethod(_ground_brdf.GroundBrdfSoil_state_vector_name_i,None,GroundBrdfSoil)
 GroundBrdfSoil.desc = new_instancemethod(_ground_brdf.GroundBrdfSoil_desc,None,GroundBrdfSoil)
