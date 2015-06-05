@@ -256,7 +256,7 @@ class OcoForwardModel(full_physics_swig.forward_model.ForwardModel,full_physics_
     @property
     def spectrum_effect(self):
       res = []
-      for i in range(self.speceff_size()):
+      for i in range(self.speceff_size):
          res2 = []
          for j in range(self.speceff_size2(i)):
             res2.append(self.speceff_val(i,j))

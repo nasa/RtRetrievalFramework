@@ -109,7 +109,67 @@ def _new_from_set(cls, version, *args):
     return inst
 
 import full_physics_swig.generic_object
-class LidortBrdfDriver(object):
+class SpurrBrdfDriver(object):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    @property
+    def n_brdf_kernels(self):
+        return self._v_n_brdf_kernels()
+
+    @property
+    def n_kernel_factor_wfs(self):
+        return self._v_n_kernel_factor_wfs()
+
+    @property
+    def n_kernel_params_wfs(self):
+        return self._v_n_kernel_params_wfs()
+
+    @property
+    def n_surface_wfs(self):
+        return self._v_n_surface_wfs()
+
+    @property
+    def do_shadow_effect(self):
+        return self._v_do_shadow_effect()
+
+    __swig_destroy__ = _lidort_driver.delete_SpurrBrdfDriver
+SpurrBrdfDriver.initialize_brdf_inputs = new_instancemethod(_lidort_driver.SpurrBrdfDriver_initialize_brdf_inputs,None,SpurrBrdfDriver)
+SpurrBrdfDriver.setup_geometry = new_instancemethod(_lidort_driver.SpurrBrdfDriver_setup_geometry,None,SpurrBrdfDriver)
+SpurrBrdfDriver.setup_brdf_inputs = new_instancemethod(_lidort_driver.SpurrBrdfDriver_setup_brdf_inputs,None,SpurrBrdfDriver)
+SpurrBrdfDriver.set_lambertian_albedo = new_instancemethod(_lidort_driver.SpurrBrdfDriver_set_lambertian_albedo,None,SpurrBrdfDriver)
+SpurrBrdfDriver._v_n_brdf_kernels = new_instancemethod(_lidort_driver.SpurrBrdfDriver__v_n_brdf_kernels,None,SpurrBrdfDriver)
+SpurrBrdfDriver._v_n_kernel_factor_wfs = new_instancemethod(_lidort_driver.SpurrBrdfDriver__v_n_kernel_factor_wfs,None,SpurrBrdfDriver)
+SpurrBrdfDriver._v_n_kernel_params_wfs = new_instancemethod(_lidort_driver.SpurrBrdfDriver__v_n_kernel_params_wfs,None,SpurrBrdfDriver)
+SpurrBrdfDriver._v_n_surface_wfs = new_instancemethod(_lidort_driver.SpurrBrdfDriver__v_n_surface_wfs,None,SpurrBrdfDriver)
+SpurrBrdfDriver._v_do_shadow_effect = new_instancemethod(_lidort_driver.SpurrBrdfDriver__v_do_shadow_effect,None,SpurrBrdfDriver)
+SpurrBrdfDriver_swigregister = _lidort_driver.SpurrBrdfDriver_swigregister
+SpurrBrdfDriver_swigregister(SpurrBrdfDriver)
+
+class SpurrRtDriver(object):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    @property
+    def brdf_driver(self):
+        return self._v_brdf_driver()
+
+    __swig_destroy__ = _lidort_driver.delete_SpurrRtDriver
+SpurrRtDriver.reflectance_calculate = new_instancemethod(_lidort_driver.SpurrRtDriver_reflectance_calculate,None,SpurrRtDriver)
+SpurrRtDriver.reflectance_and_jacobian_calculate = new_instancemethod(_lidort_driver.SpurrRtDriver_reflectance_and_jacobian_calculate,None,SpurrRtDriver)
+SpurrRtDriver._v_brdf_driver = new_instancemethod(_lidort_driver.SpurrRtDriver__v_brdf_driver,None,SpurrRtDriver)
+SpurrRtDriver.setup_height_grid = new_instancemethod(_lidort_driver.SpurrRtDriver_setup_height_grid,None,SpurrRtDriver)
+SpurrRtDriver.setup_geometry = new_instancemethod(_lidort_driver.SpurrRtDriver_setup_geometry,None,SpurrRtDriver)
+SpurrRtDriver.setup_optical_inputs = new_instancemethod(_lidort_driver.SpurrRtDriver_setup_optical_inputs,None,SpurrRtDriver)
+SpurrRtDriver.clear_linear_inputs = new_instancemethod(_lidort_driver.SpurrRtDriver_clear_linear_inputs,None,SpurrRtDriver)
+SpurrRtDriver.setup_linear_inputs = new_instancemethod(_lidort_driver.SpurrRtDriver_setup_linear_inputs,None,SpurrRtDriver)
+SpurrRtDriver.calculate_rt = new_instancemethod(_lidort_driver.SpurrRtDriver_calculate_rt,None,SpurrRtDriver)
+SpurrRtDriver.get_intensity = new_instancemethod(_lidort_driver.SpurrRtDriver_get_intensity,None,SpurrRtDriver)
+SpurrRtDriver.copy_jacobians = new_instancemethod(_lidort_driver.SpurrRtDriver_copy_jacobians,None,SpurrRtDriver)
+SpurrRtDriver_swigregister = _lidort_driver.SpurrRtDriver_swigregister
+SpurrRtDriver_swigregister(SpurrRtDriver)
+
+class LidortBrdfDriver(SpurrBrdfDriver):
     """
     LIDORT specific BRDF driver implementation.
 
@@ -136,63 +196,21 @@ class LidortBrdfDriver(object):
     def brdf_interface(self):
         return self._v_brdf_interface()
 
-    def setup_geometry(self, *args):
-        """
-        void LidortBrdfDriver::setup_geometry(double sza, double azm, double zen) const
-
-        """
-        return _lidort_driver.LidortBrdfDriver_setup_geometry(self, *args)
-
-    def _v_n_brdf_kernels(self):
-        """
-        int LidortBrdfDriver::n_brdf_kernels() const
-
-        """
-        return _lidort_driver.LidortBrdfDriver__v_n_brdf_kernels(self)
-
     @property
     def n_brdf_kernels(self):
         return self._v_n_brdf_kernels()
-
-    def _v_n_kernel_factor_wfs(self):
-        """
-        int LidortBrdfDriver::n_kernel_factor_wfs() const
-
-        """
-        return _lidort_driver.LidortBrdfDriver__v_n_kernel_factor_wfs(self)
 
     @property
     def n_kernel_factor_wfs(self):
         return self._v_n_kernel_factor_wfs()
 
-    def _v_n_kernel_params_wfs(self):
-        """
-        int LidortBrdfDriver::n_kernel_params_wfs() const
-
-        """
-        return _lidort_driver.LidortBrdfDriver__v_n_kernel_params_wfs(self)
-
     @property
     def n_kernel_params_wfs(self):
         return self._v_n_kernel_params_wfs()
 
-    def _v_n_surface_wfs(self):
-        """
-        int LidortBrdfDriver::n_surface_wfs() const
-
-        """
-        return _lidort_driver.LidortBrdfDriver__v_n_surface_wfs(self)
-
     @property
     def n_surface_wfs(self):
         return self._v_n_surface_wfs()
-
-    def _v_do_shadow_effect(self):
-        """
-        bool LidortBrdfDriver::do_shadow_effect() const
-
-        """
-        return _lidort_driver.LidortBrdfDriver__v_do_shadow_effect(self)
 
     @property
     def do_shadow_effect(self):
@@ -206,17 +224,11 @@ class LidortBrdfDriver(object):
         return _lidort_driver.LidortBrdfDriver_do_kparams_derivs(self, *args)
 
 LidortBrdfDriver._v_brdf_interface = new_instancemethod(_lidort_driver.LidortBrdfDriver__v_brdf_interface,None,LidortBrdfDriver)
-LidortBrdfDriver.setup_geometry = new_instancemethod(_lidort_driver.LidortBrdfDriver_setup_geometry,None,LidortBrdfDriver)
-LidortBrdfDriver._v_n_brdf_kernels = new_instancemethod(_lidort_driver.LidortBrdfDriver__v_n_brdf_kernels,None,LidortBrdfDriver)
-LidortBrdfDriver._v_n_kernel_factor_wfs = new_instancemethod(_lidort_driver.LidortBrdfDriver__v_n_kernel_factor_wfs,None,LidortBrdfDriver)
-LidortBrdfDriver._v_n_kernel_params_wfs = new_instancemethod(_lidort_driver.LidortBrdfDriver__v_n_kernel_params_wfs,None,LidortBrdfDriver)
-LidortBrdfDriver._v_n_surface_wfs = new_instancemethod(_lidort_driver.LidortBrdfDriver__v_n_surface_wfs,None,LidortBrdfDriver)
-LidortBrdfDriver._v_do_shadow_effect = new_instancemethod(_lidort_driver.LidortBrdfDriver__v_do_shadow_effect,None,LidortBrdfDriver)
 LidortBrdfDriver.do_kparams_derivs = new_instancemethod(_lidort_driver.LidortBrdfDriver_do_kparams_derivs,None,LidortBrdfDriver)
 LidortBrdfDriver_swigregister = _lidort_driver.LidortBrdfDriver_swigregister
 LidortBrdfDriver_swigregister(LidortBrdfDriver)
 
-class LidortRtDriver(object):
+class LidortRtDriver(SpurrRtDriver):
     """
     LIDORT specific Radiative transfer interface implementation.
 
@@ -345,65 +357,6 @@ class LidortRtDriver(object):
     def lidort_interface(self):
         return self._v_lidort_interface()
 
-    def setup_height_grid(self, *args):
-        """
-        void LidortRtDriver::setup_height_grid(const blitz::Array< double, 1 > &height_grid) const
-
-        """
-        return _lidort_driver.LidortRtDriver_setup_height_grid(self, *args)
-
-    def setup_geometry(self, *args):
-        """
-        void LidortRtDriver::setup_geometry(double sza, double azm, double zen) const
-
-        """
-        return _lidort_driver.LidortRtDriver_setup_geometry(self, *args)
-
-    def setup_optical_inputs(self, *args):
-        """
-        void LidortRtDriver::setup_optical_inputs(const blitz::Array< double, 1 > &od, const blitz::Array< double, 1 >
-        &ssa, const blitz::Array< double, 2 > &pf) const
-
-        """
-        return _lidort_driver.LidortRtDriver_setup_optical_inputs(self, *args)
-
-    def clear_linear_inputs(self):
-        """
-        void LidortRtDriver::clear_linear_inputs() const
-
-        """
-        return _lidort_driver.LidortRtDriver_clear_linear_inputs(self)
-
-    def setup_linear_inputs(self, *args):
-        """
-        void LidortRtDriver::setup_linear_inputs(const ArrayAd< double, 1 > &od, const ArrayAd< double, 1 > &ssa,
-        const ArrayAd< double, 2 > &pf, bool do_surface_linearization) const
-
-        """
-        return _lidort_driver.LidortRtDriver_setup_linear_inputs(self, *args)
-
-    def calculate_rt(self):
-        """
-        void LidortRtDriver::calculate_rt() const
-
-        """
-        return _lidort_driver.LidortRtDriver_calculate_rt(self)
-
-    def get_intensity(self):
-        """
-        double LidortRtDriver::get_intensity() const
-
-        """
-        return _lidort_driver.LidortRtDriver_get_intensity(self)
-
-    def copy_jacobians(self, *args):
-        """
-        void LidortRtDriver::copy_jacobians(blitz::Array< double, 2 > &jac_atm, blitz::Array< double, 1 >
-        &jac_surf) const
-
-        """
-        return _lidort_driver.LidortRtDriver_copy_jacobians(self, *args)
-
     __swig_destroy__ = _lidort_driver.delete_LidortRtDriver
 LidortRtDriver._v_number_moment = new_instancemethod(_lidort_driver.LidortRtDriver__v_number_moment,None,LidortRtDriver)
 LidortRtDriver._v_number_stream = new_instancemethod(_lidort_driver.LidortRtDriver__v_number_stream,None,LidortRtDriver)
@@ -417,14 +370,6 @@ LidortRtDriver._v_pure_nadir = new_instancemethod(_lidort_driver.LidortRtDriver_
 LidortRtDriver._v_lidort_brdf_driver = new_instancemethod(_lidort_driver.LidortRtDriver__v_lidort_brdf_driver,None,LidortRtDriver)
 LidortRtDriver._v_brdf_interface = new_instancemethod(_lidort_driver.LidortRtDriver__v_brdf_interface,None,LidortRtDriver)
 LidortRtDriver._v_lidort_interface = new_instancemethod(_lidort_driver.LidortRtDriver__v_lidort_interface,None,LidortRtDriver)
-LidortRtDriver.setup_height_grid = new_instancemethod(_lidort_driver.LidortRtDriver_setup_height_grid,None,LidortRtDriver)
-LidortRtDriver.setup_geometry = new_instancemethod(_lidort_driver.LidortRtDriver_setup_geometry,None,LidortRtDriver)
-LidortRtDriver.setup_optical_inputs = new_instancemethod(_lidort_driver.LidortRtDriver_setup_optical_inputs,None,LidortRtDriver)
-LidortRtDriver.clear_linear_inputs = new_instancemethod(_lidort_driver.LidortRtDriver_clear_linear_inputs,None,LidortRtDriver)
-LidortRtDriver.setup_linear_inputs = new_instancemethod(_lidort_driver.LidortRtDriver_setup_linear_inputs,None,LidortRtDriver)
-LidortRtDriver.calculate_rt = new_instancemethod(_lidort_driver.LidortRtDriver_calculate_rt,None,LidortRtDriver)
-LidortRtDriver.get_intensity = new_instancemethod(_lidort_driver.LidortRtDriver_get_intensity,None,LidortRtDriver)
-LidortRtDriver.copy_jacobians = new_instancemethod(_lidort_driver.LidortRtDriver_copy_jacobians,None,LidortRtDriver)
 LidortRtDriver_swigregister = _lidort_driver.LidortRtDriver_swigregister
 LidortRtDriver_swigregister(LidortRtDriver)
 

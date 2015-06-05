@@ -35,6 +35,7 @@ public:
     virtual void breon_factor(const int spec_index, const AutoDerivative<double>& val);
     virtual const double refractive_index(const int Spec_idx) const;
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
+    virtual const double albedo(const int Spec_index, const double Sza);
     virtual const std::string breon_type() const;
     virtual boost::shared_ptr<Ground> clone() const;
     virtual std::string state_vector_name_i(int i) const;
@@ -61,6 +62,7 @@ public:
     virtual void breon_factor(const int spec_index, const AutoDerivative<double>& val);
     virtual const double refractive_index(const int Spec_idx) const;
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
+    virtual const double albedo(const int Spec_index, const double Sza);
     virtual const std::string breon_type() const;
     virtual boost::shared_ptr<Ground> clone() const;
     virtual std::string state_vector_name_i(int i) const;

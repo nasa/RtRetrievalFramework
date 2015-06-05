@@ -7,7 +7,8 @@ using namespace blitz;
 extern "C" {
     double black_sky_albedo_veg_f(const double* params, const double* sza);
     double black_sky_albedo_soil_f(const double* params, const double* sza);
-}
+    double exact_brdf_value_veg_f(const double* params, const double* sza);
+    double exact_brdf_value_soil_f(const double* params, const double* sza);}
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
@@ -20,11 +21,23 @@ double black_sky_albedo_simple_soil(const blitz::Array<double, 1>& params, const
     return black_sky_albedo_soil_f(params.dataFirst(), &sza);
 }
 
+double exact_brdf_value_simple_veg(const blitz::Array<double, 1>& params, const double sza) {
+    return exact_brdf_value_veg_f(params.dataFirst(), &sza);
+}
+
+double exact_brdf_value_simple_soil(const blitz::Array<double, 1>& params, const double sza) {
+    return exact_brdf_value_soil_f(params.dataFirst(), &sza);
+}
+
 REGISTER_LUA_DERIVED_CLASS(GroundBrdfVeg, Ground)
 .def(luabind::constructor<const blitz::Array<double, 2>&, const blitz::Array<bool, 2>&, const std::vector<std::string>&>())
 .scope
 [
     luabind::def("black_sky_albedo", &black_sky_albedo_simple_veg)
+]
+.scope
+[
+    luabind::def("albedo", &exact_brdf_value_simple_veg)
 ]
 REGISTER_LUA_END()
 
@@ -33,6 +46,10 @@ REGISTER_LUA_DERIVED_CLASS(GroundBrdfSoil, Ground)
 .scope
 [
     luabind::def("black_sky_albedo", &black_sky_albedo_simple_soil)
+]
+.scope
+[
+    luabind::def("albedo", &exact_brdf_value_simple_soil)
 ]
 REGISTER_LUA_END()
 #endif
@@ -180,7 +197,8 @@ void GroundBrdf::breon_factor(const int spec_index, const AutoDerivative<double>
     coeff(NUM_COEFF * spec_index + 4) = val;
 }
 
-const double GroundBrdfVeg::black_sky_albedo(const int Spec_index, const double Sza)
+// Helper function 
+blitz::Array<double, 1> GroundBrdf::albedo_calc_params(const int Spec_index)
 {
     blitz::Array<double, 1> params(NUM_COEFF, blitz::ColumnMajorArray<1>());
     params(0) = rahman_factor(Spec_index).value();
@@ -188,18 +206,31 @@ const double GroundBrdfVeg::black_sky_albedo(const int Spec_index, const double 
     params(2) = asymmetry_parameter(Spec_index).value();
     params(3) = geometric_factor(Spec_index).value();
     params(4) = breon_factor(Spec_index).value();
+    return params;
+}
+
+const double GroundBrdfVeg::black_sky_albedo(const int Spec_index, const double Sza)
+{
+    blitz::Array<double, 1> params = albedo_calc_params(Spec_index);
     return black_sky_albedo_veg_f(params.dataFirst(), &Sza);
 }
 
 const double GroundBrdfSoil::black_sky_albedo(const int Spec_index, const double Sza)
 {
-    blitz::Array<double, 1> params(NUM_COEFF, blitz::ColumnMajorArray<1>());
-    params(0) = rahman_factor(Spec_index).value();
-    params(1) = overall_amplitude(Spec_index).value();
-    params(2) = asymmetry_parameter(Spec_index).value();
-    params(3) = geometric_factor(Spec_index).value();
-    params(4) = breon_factor(Spec_index).value();
+    blitz::Array<double, 1> params = albedo_calc_params(Spec_index);
     return black_sky_albedo_soil_f(params.dataFirst(), &Sza);
+}
+
+const double GroundBrdfVeg::albedo(const int Spec_index, const double Sza)
+{
+    blitz::Array<double, 1> params = albedo_calc_params(Spec_index);
+    return exact_brdf_value_veg_f(params.dataFirst(), &Sza);
+}
+
+const double GroundBrdfSoil::albedo(const int Spec_index, const double Sza)
+{
+    blitz::Array<double, 1> params = albedo_calc_params(Spec_index);
+    return exact_brdf_value_soil_f(params.dataFirst(), &Sza);
 }
 
 std::string GroundBrdf::state_vector_name_i(int i) const {
@@ -233,15 +264,15 @@ std::string GroundBrdf::state_vector_name_i(int i) const {
 
 void GroundBrdf::print(std::ostream& Os) const
 {
-    OstreamPad opad(Os, "        ");
     Os << "GroundBrdf:\n";
     for(int spec_idx = 0; spec_idx < number_spectrometer(); spec_idx++) {
         Os << "    " << desc_band_names[spec_idx] << ":" << std::endl;
+        OstreamPad opad(Os, "        ");
         opad << "Rahman Factor: " << rahman_factor(spec_idx).value() << std::endl
              << "Overall Amplitude: " << overall_amplitude(spec_idx).value() << std::endl
              << "Asymmetry Parameter: " << asymmetry_parameter(spec_idx).value() << std::endl
              << "Geometric Factor: " << geometric_factor(spec_idx).value() << std::endl
              << "Breon Factor: " << breon_factor(spec_idx).value() << std::endl;
+        opad.strict_sync();
     }
-    opad.strict_sync();
 }

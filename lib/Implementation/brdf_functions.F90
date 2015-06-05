@@ -1,14 +1,155 @@
-module black_sky_albedo_m
+module brdf_functions_m
 
     use iso_c_binding
 
     USE LIDORT_pars, only : fpk, DEG_TO_RAD, MAXBEAMS, MAXSTREAMS_BRDF, MAX_BRDF_KERNELS, &
-                            MAXSTHALF_BRDF, MAX_BRDF_PARAMETERS, ZERO, ONE, TWO, &
+                            MAXSTHALF_BRDF, MAX_BRDF_PARAMETERS, ZERO, ONE, TWO, PIE, &
+                            MAX_USER_STREAMS, MAX_USER_RELAZMS, &
                             BREONVEG_IDX, BREONSOIL_IDX, RAHMAN_IDX
 
     implicit none
 
 contains
+
+    real(kind=c_double) function exact_brdf_value_veg_f(params, sza) bind(c)
+        real(kind=c_double), intent(in) :: params(5)
+        real(kind=c_double), intent(in) :: sza
+
+        exact_brdf_value_veg_f = exact_brdf_value_f(BREONVEG_IDX, params, sza)
+    end function exact_brdf_value_veg_f
+
+    real(kind=c_double) function exact_brdf_value_soil_f(params, sza) bind(c)
+        real(kind=c_double), intent(in) :: params(5)
+        real(kind=c_double), intent(in) :: sza
+
+        exact_brdf_value_soil_f = exact_brdf_value_f(BREONSOIL_IDX, params, sza)
+    end function exact_brdf_value_soil_f
+ 
+    real(kind=c_double) function exact_brdf_value_f(breon_type, params, sza) bind(c)
+
+      USE brdf_sup_routines_m, only : BRDF_FUNCTION
+
+      integer(c_int), intent(in)      :: breon_type
+      real(kind=c_double), intent(in) :: params(5)
+      real(kind=c_double), intent(in) :: sza
+
+!  Number and index-list of bidirectional functions
+
+      INTEGER   :: N_BRDF_KERNELS
+      INTEGER   :: WHICH_BRDF ( MAX_BRDF_KERNELS )
+
+!  Parameters required for Kernel families
+
+      INTEGER   :: N_BRDF_PARAMETERS ( MAX_BRDF_KERNELS )
+      REAL(fpk) :: BRDF_PARAMETERS   ( MAX_BRDF_KERNELS, MAX_BRDF_PARAMETERS )
+
+!  Input kernel amplitude factors
+
+      REAL(fpk) :: BRDF_FACTORS ( MAX_BRDF_KERNELS )
+
+!  Cos and since of SZAs
+
+      REAL(fpk)   :: SZASURCOS(MAXBEAMS)
+      REAL(fpk)   :: SZASURSIN(MAXBEAMS)
+
+!  Local angle control
+
+      INTEGER    :: NBEAMS
+      INTEGER    :: N_USER_STREAMS
+      INTEGER    :: N_USER_RELAZMS
+
+!  Angles
+
+      REAL(fpk) :: BEAM_SZAS         (MAXBEAMS)
+      REAL(fpk) :: USER_ANGLES_INPUT (MAX_USER_STREAMS)
+      REAL(fpk) :: USER_RELAZMS      (MAX_USER_RELAZMS)
+      REAL(fpk) :: USER_STREAMS      (MAX_USER_STREAMS)
+      REAL(fpk) :: USER_SINES        (MAX_USER_STREAMS)
+      REAL(fpk) :: PHIANG            (MAX_USER_RELAZMS)
+      REAL(fpk) :: COSPHI            (MAX_USER_RELAZMS)
+      REAL(fpk) :: SINPHI            (MAX_USER_RELAZMS)
+
+!  Exact DB values 
+
+      REAL(fpk)  :: EXACTDB_BRDFUNC ( MAX_USER_STREAMS, MAX_USER_RELAZMS, MAXBEAMS )
+
+!  Help
+
+      INTEGER    :: IB, K, UI, IA
+      REAL(fpk)  :: MUX
+
+!  Set values for the basic variables
+
+      N_BRDF_KERNELS = 2
+      WHICH_BRDF(1) = breon_type 
+      WHICH_BRDF(2) = RAHMAN_IDX
+      N_BRDF_PARAMETERS(1) = 1
+      N_BRDF_PARAMETERS(2) = 3
+      BRDF_PARAMETERS = ZERO
+      ! Breon refactive index squared, same as value hardcoded inside lrad
+      BRDF_PARAMETERS(1,1)   = 2.25_fpk 
+      BRDF_PARAMETERS(2,1)   = params(2) ! Overall amplitude
+      BRDF_PARAMETERS(2,2)   = params(3) ! Asymmetry parameter
+      BRDF_PARAMETERS(2,3)   = params(4) ! Geometric factor
+      BRDF_FACTORS(1) = params(5) ! Breon factor
+      BRDF_FACTORS(2) = params(1) ! Rahman factor
+      NBEAMS = 1
+      BEAM_SZAS(1) = sza
+      N_USER_STREAMS = 1
+      USER_ANGLES_INPUT(1) = 0.0_fpk
+      N_USER_RELAZMS = 1
+      USER_RELAZMS(1) = 0.0_fpk
+
+!  Cosine and since of SZA
+
+      DO IB = 1, NBEAMS
+         MUX =  COS(BEAM_SZAS(IB)*DEG_TO_RAD)
+         SZASURCOS(IB) = MUX
+         SZASURSIN(IB) = SQRT(1.0_fpk-MUX*MUX)
+      ENDDO
+
+!  Cosine and since of VZA
+
+      DO UI = 1, N_USER_STREAMS
+         MUX =  COS(USER_ANGLES_INPUT(UI)*DEG_TO_RAD)
+         USER_STREAMS(UI) = MUX
+         USER_SINES(UI) = SQRT(1.0_fpk-MUX*MUX)
+      ENDDO
+
+!  Cosine and since of AZM
+
+      DO IA = 1, N_USER_RELAZMS
+         PHIANG(IA) = USER_RELAZMS(IA)*DEG_TO_RAD
+         COSPHI(IA) = COS(PHIANG(IA))
+         SINPHI(IA) = SIN(PHIANG(IA))
+      ENDDO
+
+!  Exact BRDF
+!  ----------
+
+      EXACT_BRDF_VALUE_f = ZERO
+
+!  Kernel loop
+
+      DO K = 1, N_BRDF_KERNELS
+
+         DO IA = 1, N_USER_RELAZMS
+            DO IB = 1, NBEAMS
+               DO UI = 1, N_USER_STREAMS
+                  CALL BRDF_FUNCTION &
+                     ( MAX_BRDF_PARAMETERS, WHICH_BRDF(K), N_BRDF_PARAMETERS(K), BRDF_PARAMETERS(K,:), & ! Inputs
+                       SZASURCOS(IB), SZASURSIN(IB), USER_STREAMS(UI),         & ! Inputs
+                       USER_SINES(UI), PHIANG(IA), COSPHI(IA), SINPHI(IA),     & ! Inputs
+                       EXACTDB_BRDFUNC(UI,IA,IB) )                               ! Output
+               ENDDO
+            ENDDO
+         ENDDO
+
+         EXACT_BRDF_VALUE_f = EXACT_BRDF_VALUE_f + BRDF_FACTORS(K) * EXACTDB_BRDFUNC(1,1,1)
+
+      ENDDO
+
+    END FUNCTION exact_brdf_value_f
 
     real(kind=c_double) function black_sky_albedo_veg_f(params, sza) bind(c)
         real(kind=c_double), intent(in) :: params(5)
@@ -350,4 +491,4 @@ contains
       RETURN
       END SUBROUTINE SCALING_FOURIER_ZERO
 
-end module black_sky_albedo_m
+end module brdf_functions_m
