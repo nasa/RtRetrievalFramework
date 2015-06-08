@@ -185,7 +185,8 @@ class GroundBrdfVeg(full_physics_swig.ground.Ground):
 
     def albedo(self, *args):
         """
-        const double GroundBrdfVeg::albedo(const int Spec_index, const double Sza)
+        const double GroundBrdfVeg::albedo(const int Spec_index, const double Sza, const double Vza, const
+        double Azm, const blitz::Array< double, 1 > &Stokes_coef)
 
         """
         return _ground_brdf.GroundBrdfVeg_albedo(self, *args)
@@ -301,7 +302,8 @@ class GroundBrdfSoil(full_physics_swig.ground.Ground):
 
     def albedo(self, *args):
         """
-        const double GroundBrdfSoil::albedo(const int Spec_index, const double Sza)
+        const double GroundBrdfSoil::albedo(const int Spec_index, const double Sza, const double Vza, const
+        double Azm, const blitz::Array< double, 1 > &Stokes_coef)
 
         """
         return _ground_brdf.GroundBrdfSoil_albedo(self, *args)

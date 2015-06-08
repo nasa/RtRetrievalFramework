@@ -2075,9 +2075,12 @@ function ConfigCommon.brdf_scale_factor(self, brdf_class, params, i)
    local signal = self.config:meas_cont_signal(i).value
    local solar_strength = self.config.fm.atmosphere.ground.solar_strength[i+1]
    local sza_d = self.config.l1b:sza()(i) 
+   local vza_d = self.config.l1b:zen()(i) 
+   local azm_d = self.config.l1b:azm()(i) 
    local sza_r = sza_d * math.pi / 180.0
+   local stokes_coef = self.config.l1b:stokes_coef()(i, Range.all())
    local alb_cont = math.pi * signal / (math.cos(sza_r) * solar_strength)
-   local alb_calc = brdf_class.albedo(params, sza_d)
+   local alb_calc = brdf_class.albedo(params, sza_d, vza_d, azm_d, stokes_coef)
    local scaling = alb_cont / alb_calc
 
    return scaling
