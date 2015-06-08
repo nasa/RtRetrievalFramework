@@ -6366,6 +6366,9 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_albedo(PyObject *SWIGUNUSEDPARM(self), 
   FullPhysics::GroundBrdfVeg *arg1 = (FullPhysics::GroundBrdfVeg *) 0 ;
   int arg2 ;
   double arg3 ;
+  double arg4 ;
+  double arg5 ;
+  blitz::Array< double,1 > *arg6 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   boost::shared_ptr< FullPhysics::GroundBrdfVeg > tempshared1 ;
@@ -6374,10 +6377,16 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_albedo(PyObject *SWIGUNUSEDPARM(self), 
   int ecode2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
-  PyObject *swig_obj[3] ;
+  double val4 ;
+  int ecode4 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  blitz::Array< double,1 > a6 ;
+  PythonObject numpy6 ;
+  PyObject *swig_obj[6] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"GroundBrdfVeg_albedo",3,3,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"GroundBrdfVeg_albedo",6,6,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfVeg_t, 0 |  0 , &newmem);
@@ -6403,9 +6412,30 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_albedo(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GroundBrdfVeg_albedo" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "GroundBrdfVeg_albedo" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "GroundBrdfVeg_albedo" "', argument " "5"" of type '" "double""'");
+  } 
+  arg5 = static_cast< double >(val5);
+  {
+    int res = SWIG_ConvertPtr(swig_obj[5], (void**)(&arg6), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy6.obj = to_numpy<double>(swig_obj[5]);
+      if(!numpy6.obj)
+      return NULL;
+      a6.reference(to_blitz_array<double, 1>(numpy6));
+      arg6 = &a6;
+    }
+  }
   {
     try {
-      result = (double)(arg1)->albedo(arg2,arg3);
+      result = (double)(arg1)->albedo(arg2,arg3,arg4,arg5,(blitz::Array< double,1 > const &)*arg6);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7587,6 +7617,9 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_albedo(PyObject *SWIGUNUSEDPARM(self),
   FullPhysics::GroundBrdfSoil *arg1 = (FullPhysics::GroundBrdfSoil *) 0 ;
   int arg2 ;
   double arg3 ;
+  double arg4 ;
+  double arg5 ;
+  blitz::Array< double,1 > *arg6 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   boost::shared_ptr< FullPhysics::GroundBrdfSoil > tempshared1 ;
@@ -7595,10 +7628,16 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_albedo(PyObject *SWIGUNUSEDPARM(self),
   int ecode2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
-  PyObject *swig_obj[3] ;
+  double val4 ;
+  int ecode4 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  blitz::Array< double,1 > a6 ;
+  PythonObject numpy6 ;
+  PyObject *swig_obj[6] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"GroundBrdfSoil_albedo",3,3,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"GroundBrdfSoil_albedo",6,6,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfSoil_t, 0 |  0 , &newmem);
@@ -7624,9 +7663,30 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_albedo(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GroundBrdfSoil_albedo" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "GroundBrdfSoil_albedo" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "GroundBrdfSoil_albedo" "', argument " "5"" of type '" "double""'");
+  } 
+  arg5 = static_cast< double >(val5);
+  {
+    int res = SWIG_ConvertPtr(swig_obj[5], (void**)(&arg6), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy6.obj = to_numpy<double>(swig_obj[5]);
+      if(!numpy6.obj)
+      return NULL;
+      a6.reference(to_blitz_array<double, 1>(numpy6));
+      arg6 = &a6;
+    }
+  }
   {
     try {
-      result = (double)(arg1)->albedo(arg2,arg3);
+      result = (double)(arg1)->albedo(arg2,arg3,arg4,arg5,(blitz::Array< double,1 > const &)*arg6);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7870,7 +7930,8 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		""},
 	 { (char *)"GroundBrdfVeg_albedo", _wrap_GroundBrdfVeg_albedo, METH_VARARGS, (char *)"\n"
-		"const double GroundBrdfVeg::albedo(const int Spec_index, const double Sza)\n"
+		"const double GroundBrdfVeg::albedo(const int Spec_index, const double Sza, const double Vza, const\n"
+		"double Azm, const blitz::Array< double, 1 > &Stokes_coef)\n"
 		"\n"
 		""},
 	 { (char *)"GroundBrdfVeg_breon_type", (PyCFunction)_wrap_GroundBrdfVeg_breon_type, METH_O, (char *)"\n"
@@ -7928,7 +7989,8 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		""},
 	 { (char *)"GroundBrdfSoil_albedo", _wrap_GroundBrdfSoil_albedo, METH_VARARGS, (char *)"\n"
-		"const double GroundBrdfSoil::albedo(const int Spec_index, const double Sza)\n"
+		"const double GroundBrdfSoil::albedo(const int Spec_index, const double Sza, const double Vza, const\n"
+		"double Azm, const blitz::Array< double, 1 > &Stokes_coef)\n"
 		"\n"
 		""},
 	 { (char *)"GroundBrdfSoil_breon_type", (PyCFunction)_wrap_GroundBrdfSoil_breon_type, METH_O, (char *)"\n"

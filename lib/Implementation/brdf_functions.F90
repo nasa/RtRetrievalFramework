@@ -11,27 +11,44 @@ module brdf_functions_m
 
 contains
 
-    real(kind=c_double) function exact_brdf_value_veg_f(params, sza) bind(c)
+    real(kind=c_double) function exact_brdf_value_veg_f(params, sza, vza, azm, stokes_coef, nstokes) bind(c)
         real(kind=c_double), intent(in) :: params(5)
         real(kind=c_double), intent(in) :: sza
+        real(kind=c_double), intent(in) :: vza
+        real(kind=c_double), intent(in) :: azm
+        integer(c_int), intent(in)      :: nstokes
+        real(kind=c_double), intent(in) :: stokes_coef(nstokes)
 
-        exact_brdf_value_veg_f = exact_brdf_value_f(BREONVEG_IDX, params, sza)
+        exact_brdf_value_veg_f = exact_brdf_value_f(BREONVEG_IDX, params, sza, &
+                                                    vza, azm, stokes_coef, nstokes)
     end function exact_brdf_value_veg_f
 
-    real(kind=c_double) function exact_brdf_value_soil_f(params, sza) bind(c)
+    real(kind=c_double) function exact_brdf_value_soil_f(params, sza, vza, azm, stokes_coef, nstokes) bind(c)
         real(kind=c_double), intent(in) :: params(5)
         real(kind=c_double), intent(in) :: sza
+        real(kind=c_double), intent(in) :: vza
+        real(kind=c_double), intent(in) :: azm
+        integer(c_int), intent(in)      :: nstokes
+        real(kind=c_double), intent(in) :: stokes_coef(nstokes)
 
-        exact_brdf_value_soil_f = exact_brdf_value_f(BREONSOIL_IDX, params, sza)
+        exact_brdf_value_soil_f = exact_brdf_value_f(BREONSOIL_IDX, params, sza, &
+                                                    vza, azm, stokes_coef, nstokes)
     end function exact_brdf_value_soil_f
  
-    real(kind=c_double) function exact_brdf_value_f(breon_type, params, sza) bind(c)
+    real(kind=c_double) function exact_brdf_value_f(breon_type, params, sza, vza, azm, stokes_coef, nstokes) bind(c)
 
       USE brdf_sup_routines_m, only : BRDF_FUNCTION
+      USE l_surface_m
+
+      INTEGER, PARAMETER :: NSPARS = 5
 
       integer(c_int), intent(in)      :: breon_type
-      real(kind=c_double), intent(in) :: params(5)
+      real(kind=c_double), intent(in) :: params(NSPARS)
       real(kind=c_double), intent(in) :: sza
+      real(kind=c_double), intent(in) :: vza
+      real(kind=c_double), intent(in) :: azm
+      integer(c_int), intent(in)      :: nstokes
+      real(kind=c_double), intent(in) :: stokes_coef(nstokes)
 
 !  Number and index-list of bidirectional functions
 
@@ -69,16 +86,29 @@ contains
       REAL(fpk) :: COSPHI            (MAX_USER_RELAZMS)
       REAL(fpk) :: SINPHI            (MAX_USER_RELAZMS)
 
-!  Exact DB values 
+!  Exact DB values from LIDORT
 
       REAL(fpk)  :: EXACTDB_BRDFUNC ( MAX_USER_STREAMS, MAX_USER_RELAZMS, MAXBEAMS )
+
+!  Lrad variables
+
+      INTEGER   :: HFUNCTION_INDEX
+      real(fpk) :: SPARS(NSPARS)
+      real(fpk) :: XI, SXI, XJ, SXJ
+      real(fpk) :: CKPHI_REF, SKPHI_REF
+      real(fpk) :: R1(NSTOKES)
+
+!  Calculated BRDF
+
+      REAL(fpk)  :: EXACT_BRDF_VALUE(NSTOKES)
+      REAL(fpk)  :: EXACT_CALC_BRDF
 
 !  Help
 
       INTEGER    :: IB, K, UI, IA
       REAL(fpk)  :: MUX
 
-!  Set values for the basic variables
+!  Set values for the basic LIDORT variables
 
       N_BRDF_KERNELS = 2
       WHICH_BRDF(1) = breon_type 
@@ -96,9 +126,18 @@ contains
       NBEAMS = 1
       BEAM_SZAS(1) = sza
       N_USER_STREAMS = 1
-      USER_ANGLES_INPUT(1) = 0.0_fpk
+      USER_ANGLES_INPUT(1) = vza
       N_USER_RELAZMS = 1
-      USER_RELAZMS(1) = 0.0_fpk
+      USER_RELAZMS(1) = azm
+
+!  Set values for the basic l_rad variables
+
+      spars(1) = BRDF_PARAMETERS(2,1)
+      spars(2) = BRDF_PARAMETERS(2,2)
+      spars(3) = BRDF_PARAMETERS(2,3)
+      spars(4) = BRDF_FACTORS(1)
+      spars(5) = BRDF_FACTORS(2)
+      hfunction_index = 1
 
 !  Cosine and since of SZA
 
@@ -108,6 +147,9 @@ contains
          SZASURSIN(IB) = SQRT(1.0_fpk-MUX*MUX)
       ENDDO
 
+      XI = SZASURCOS(1)
+      SXI = SZASURSIN(1)
+
 !  Cosine and since of VZA
 
       DO UI = 1, N_USER_STREAMS
@@ -115,6 +157,9 @@ contains
          USER_STREAMS(UI) = MUX
          USER_SINES(UI) = SQRT(1.0_fpk-MUX*MUX)
       ENDDO
+
+      XJ = USER_STREAMS(1)
+      SXJ = USER_SINES(1)
 
 !  Cosine and since of AZM
 
@@ -124,10 +169,13 @@ contains
          SINPHI(IA) = SIN(PHIANG(IA))
       ENDDO
 
-!  Exact BRDF
-!  ----------
+      CKPHI_REF = COSPHI(1)
+      SKPHI_REF = SINPHI(1)
 
-      EXACT_BRDF_VALUE_f = ZERO
+!  Exact BRDF (LIDORT)
+!  -------------------
+
+      EXACT_BRDF_VALUE(1) = ZERO
 
 !  Kernel loop
 
@@ -145,9 +193,25 @@ contains
             ENDDO
          ENDDO
 
-         EXACT_BRDF_VALUE_f = EXACT_BRDF_VALUE_f + BRDF_FACTORS(K) * EXACTDB_BRDFUNC(1,1,1)
+         EXACT_BRDF_VALUE(1) = EXACT_BRDF_VALUE(1) + BRDF_FACTORS(K) * EXACTDB_BRDFUNC(1,1,1)
 
       ENDDO
+
+!  Exact BRDF (l_rad)
+!  ------------------
+
+      CALL LANDBRDF_VFUNCTION &
+          (NSTOKES, NSPARS, SPARS, HFUNCTION_INDEX, & !inputs
+           XJ, SXJ, XI, SXI, & !inputs
+           CKPHI_REF, SKPHI_REF, & !inputs
+           R1 ) ! output
+
+      EXACT_BRDF_VALUE(2) = R1(2)
+      EXACT_BRDF_VALUE(3) = R1(3)
+
+      EXACT_CALC_BRDF = DOT_PRODUCT(EXACT_BRDF_VALUE(1:NSTOKES),STOKES_COEF(1:NSTOKES))
+
+      exact_brdf_value_f = EXACT_CALC_BRDF
 
     END FUNCTION exact_brdf_value_f
 

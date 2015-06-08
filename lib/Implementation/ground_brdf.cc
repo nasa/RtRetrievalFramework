@@ -7,8 +7,8 @@ using namespace blitz;
 extern "C" {
     double black_sky_albedo_veg_f(const double* params, const double* sza);
     double black_sky_albedo_soil_f(const double* params, const double* sza);
-    double exact_brdf_value_veg_f(const double* params, const double* sza);
-    double exact_brdf_value_soil_f(const double* params, const double* sza);}
+    double exact_brdf_value_veg_f(const double* params, const double* sza, const double* vza, const double* azm, const double* stokes_coef, const int* nstokes);
+    double exact_brdf_value_soil_f(const double* params, const double* sza, const double* vza, const double* azm, const double* stokes_coef, const int* nstokes);}
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
@@ -21,12 +21,14 @@ double black_sky_albedo_simple_soil(const blitz::Array<double, 1>& params, const
     return black_sky_albedo_soil_f(params.dataFirst(), &sza);
 }
 
-double exact_brdf_value_simple_veg(const blitz::Array<double, 1>& params, const double sza) {
-    return exact_brdf_value_veg_f(params.dataFirst(), &sza);
+double exact_brdf_value_simple_veg(const blitz::Array<double, 1>& params, const double sza, const double vza, const double azm, blitz::Array<double, 1>& stokes_coef) {
+    int nstokes = stokes_coef.rows();
+    return exact_brdf_value_veg_f(params.dataFirst(), &sza, &vza, &azm, stokes_coef.dataFirst(), &nstokes);
 }
 
-double exact_brdf_value_simple_soil(const blitz::Array<double, 1>& params, const double sza) {
-    return exact_brdf_value_soil_f(params.dataFirst(), &sza);
+double exact_brdf_value_simple_soil(const blitz::Array<double, 1>& params, const double sza, const double vza, const double azm, blitz::Array<double, 1>& stokes_coef) {
+    int nstokes = stokes_coef.rows();
+    return exact_brdf_value_soil_f(params.dataFirst(), &sza, &vza, &azm, stokes_coef.dataFirst(), &nstokes);
 }
 
 REGISTER_LUA_DERIVED_CLASS(GroundBrdfVeg, Ground)
@@ -221,16 +223,18 @@ const double GroundBrdfSoil::black_sky_albedo(const int Spec_index, const double
     return black_sky_albedo_soil_f(params.dataFirst(), &Sza);
 }
 
-const double GroundBrdfVeg::albedo(const int Spec_index, const double Sza)
+const double GroundBrdfVeg::albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef)
 {
     blitz::Array<double, 1> params = albedo_calc_params(Spec_index);
-    return exact_brdf_value_veg_f(params.dataFirst(), &Sza);
+    int nstokes = Stokes_coef.rows();
+    return exact_brdf_value_veg_f(params.dataFirst(), &Sza, &Vza, &Azm, Stokes_coef.dataFirst(), &nstokes);
 }
 
-const double GroundBrdfSoil::albedo(const int Spec_index, const double Sza)
+const double GroundBrdfSoil::albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef)
 {
     blitz::Array<double, 1> params = albedo_calc_params(Spec_index);
-    return exact_brdf_value_soil_f(params.dataFirst(), &Sza);
+    int nstokes = Stokes_coef.rows();
+    return exact_brdf_value_soil_f(params.dataFirst(), &Sza, &Vza, &Azm, Stokes_coef.dataFirst(), &nstokes);
 }
 
 std::string GroundBrdf::state_vector_name_i(int i) const {
