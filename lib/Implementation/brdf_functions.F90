@@ -35,11 +35,14 @@ contains
                                                     vza, azm, stokes_coef, nstokes)
     end function exact_brdf_value_soil_f
  
-    real(kind=c_double) function exact_brdf_value_f(breon_type, params, sza, vza, azm, stokes_coef, nstokes) bind(c)
+    real(kind=c_double) function exact_brdf_value_f(breon_type, params, sza, vza, azm, stokes_coef, nstokes_arr) bind(c)
 
       USE brdf_sup_routines_m, only : BRDF_FUNCTION
       USE l_surface_m
 
+!  Parameters for lrad
+
+      INTEGER, PARAMETER :: NSTOKES = 3
       INTEGER, PARAMETER :: NSPARS = 5
 
       integer(c_int), intent(in)      :: breon_type
@@ -47,8 +50,8 @@ contains
       real(kind=c_double), intent(in) :: sza
       real(kind=c_double), intent(in) :: vza
       real(kind=c_double), intent(in) :: azm
-      integer(c_int), intent(in)      :: nstokes
-      real(kind=c_double), intent(in) :: stokes_coef(nstokes)
+      integer(c_int), intent(in)      :: nstokes_arr
+      real(kind=c_double), intent(in) :: stokes_coef(nstokes_arr)
 
 !  Number and index-list of bidirectional functions
 
@@ -108,6 +111,12 @@ contains
       INTEGER    :: IB, K, UI, IA
       REAL(fpk)  :: MUX
 
+!  Ensure that nstokes_arr is at least as big as nstokes
+      if (NSTOKES > nstokes_arr) then 
+          write(*,*) "exact_brdf_value_f: Size of stokes coefficient array must be at least 3, not: ", nstokes_arr
+          return 
+      endif
+
 !  Set values for the basic LIDORT variables
 
       N_BRDF_KERNELS = 2
@@ -137,7 +146,13 @@ contains
       spars(3) = BRDF_PARAMETERS(2,3)
       spars(4) = BRDF_FACTORS(1)
       spars(5) = BRDF_FACTORS(2)
-      hfunction_index = 1
+
+      hfunction_index = 0
+      if (breon_type == BREONVEG_IDX) then
+          hfunction_index = 1
+      else if (breon_type == BREONSOIL_IDX) then
+          hfunction_index = 2
+      endif
 
 !  Cosine and since of SZA
 

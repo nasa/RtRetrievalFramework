@@ -125,7 +125,7 @@ BOOST_AUTO_TEST_CASE(albedo)
     double alb_soil = brdf_soil->albedo(spec_idx, sza, vza, azm, stokes);
 
     // Value calculated in offline tester (same code as in L2, but as an independent program)
-    BOOST_CHECK_CLOSE(alb_soil, 5.1840168878536937E-002, 1e-10);
+    BOOST_CHECK_CLOSE(alb_soil, 5.4043628069741674E-002, 1e-10);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

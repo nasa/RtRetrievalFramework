@@ -148,8 +148,8 @@ contains
 
 !  input angles
 
-        xi = emu
-        xj = emu0
+        xi = emu0
+        xj = emu
         sxi = dsqrt(1.d0-xi*xi)
         sxj = dsqrt(1.d0-xj*xj)
         ckphi_ref = dcos(phi*deg_to_rad)
