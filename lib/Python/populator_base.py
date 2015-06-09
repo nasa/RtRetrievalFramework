@@ -42,6 +42,7 @@ class PopulatorBase(object):
         self.l2_binary_filename = None
         self.abscoversion = ""
         self.group_size = 1
+        self.parallel_size = 1
 
         # Add cluster specific template substition values
         if user_settings.has_key('target_cluster'):
