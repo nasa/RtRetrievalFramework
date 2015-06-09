@@ -2,13 +2,13 @@
 
 # Things that vary from one run to the next
 {0.variable_exports}
-l2_binary_filename={0.l2_binary_filename}
-l2_config_filename={0.l2_config_filename}
-processing_dir={0.processing_dir}
-log_directory={0.log_directory}
-sounding_id_list_filename={0.sounding_id_list_filename}
-output_directory={0.output_directory}
-group_size={0.group_size}
+export l2_binary_filename={0.l2_binary_filename}
+export l2_config_filename={0.l2_config_filename}
+export processing_dir={0.processing_dir}
+export log_directory={0.log_directory}
+export sounding_id_list_filename={0.sounding_id_list_filename}
+export output_directory={0.output_directory}
+export group_size={0.group_size}
 export PYTHONPATH={0.python_path}
 export PATH={0.bin_path}
 export LD_LIBRARY_PATH={0.lib_path}
@@ -85,15 +85,13 @@ fi
 if [ "$force_quiet" = "yes" ]; then
    do_tee="no"
 fi
+export do_tee
 
 {0.addl_var_run_export}
 
-beg_id_index=$(expr ${{job_index}} '*' ${{group_size}})
-end_id_index=$(expr ${{beg_id_index}} '+' ${{group_size}} '-' 1)
-if [ ${{end_id_index}} -gt ${{#id_list[@]}} ]; then
-    end_id_index=$(expr ${{#id_list[@]}} - 1)
-fi
-for id_index in $(seq ${{beg_id_index}} ${{end_id_index}}); do
+run_job_index() {{
+    id_index=$1
+    id_list=( `cat ${{sounding_id_list_filename}}` )
     export sounding_id="${{id_list[${{id_index}}]}}"
     
     # The mac doesn't have the same options in the time command as on linux
@@ -117,7 +115,16 @@ for id_index in $(seq ${{beg_id_index}} ${{end_id_index}}); do
        fi
        mv -f ${{log_directory}}/l2_${{sounding_id}}.log.running ${{log_directory}}/l2_${{sounding_id}}.log
     fi
-done
+}}
+export -f run_job_index
+
+beg_id_index=$(expr ${{job_index}} '*' ${{group_size}})
+end_id_index=$(expr ${{beg_id_index}} '+' ${{group_size}} '-' 1)
+if [ ${{end_id_index}} -gt ${{#id_list[@]}} ]; then
+    end_id_index=$(expr ${{#id_list[@]}} - 1)
+fi
+
+seq ${{beg_id_index}} ${{end_id_index}} | parallel -j {0.parallel_size} --no-notice --ungroup --env run_job_index 'run_job_index {{}}'
 
 if [ "$keep_exit" = "yes" ]; then
    exit ${{l2_run_status}}

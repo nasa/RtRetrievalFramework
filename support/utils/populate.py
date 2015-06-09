@@ -37,7 +37,11 @@ Options:
       Number of L2 jobs to group together in a single instance
       on the cluster.
       [default: 1]
-   
+
+  -p, --parallel_size=NUM
+      Number of L2 jobs from a group to run in parallel
+      [default: 1]
+    
   --absco-version=V
       Version of ABSCO to use. This is only used by Pleiades runs.
       [default: v4.2.0_unscaled]
@@ -80,6 +84,7 @@ populate_options["aggregate"] = args.aggregate
 populate_options["abscoversion"] = args.absco_version
 populate_options["target_cluster"] = args.target_cluster
 populate_options["group_size"] = int(args.group_size)
+populate_options["parallel_size"] = int(args.parallel_size)
 
 for config_file in args.config_file:
     logger.info('Populating using configuration file: %s' % config_file)
