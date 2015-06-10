@@ -283,8 +283,8 @@ function OcoConfig.oco_albedo_from_radiance(polynomial_degree)
    return function(self, band_idx)
 
       -- Fsun0 - Roughly at 1 AU
-      local solar_strength = self.config.fm.atmosphere.ground.solar_strength
       local stokes_coef = self.config.l1b:stokes_coef()
+      local solar_strength = {}
       for idx = 1, self.config.number_pixel:rows() do
          -- Create SolarDopplerShiftPolynomial so we can compute solar distance
          solar_doppler_shift = 
@@ -292,6 +292,7 @@ function OcoConfig.oco_albedo_from_radiance(polynomial_degree)
          solar_dist = solar_doppler_shift:solar_distance().value
 
          -- Account for solar distance Fsun = Fsun0 / (solar_distance_meters/AU)^2
+         solar_strength[idx] = self.config.fm.atmosphere.ground.solar_strength[idx]
          solar_strength[idx] = solar_strength[idx] / solar_dist^2
  
          -- Account for stokes element for I
