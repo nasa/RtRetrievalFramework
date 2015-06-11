@@ -239,7 +239,7 @@ def ils_band_error(ls, lua_config, band_idx, band_name, dl_pert=0.01):
 def parse_absco_case_name(gas_name, table_filename):
     "Helper for parsing table filename into something that can be used as a case name / hdf group"
 
-    pert_name_match = re.search("(.*)_v4\.1\.1(-combined)?(-lowres)?(_5)?\.hdf$", table_filename)
+    pert_name_match = re.search("(.*)_v4\.1\.[01](-combined)?(-lowres)?(_.+)?\.hdf$", table_filename)
     if not pert_name_match:
         raise ValueError("Could not parse table filename to create case name: %s" % table_filename)
 
