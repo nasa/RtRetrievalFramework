@@ -14,6 +14,7 @@ class OcoPopulator(AcosPopulator):
         { 'spectrum_file': "input/InputProductFiles/L1BFile",
           'ecmwf_file':    "input/InputProductFiles/ResampledMetFile",
           'imap_file':     "input/InputProductFiles/IMAPFile",
+          'aband_file':     "input/InputProductFiles/ABandFile",
           'rrv_file':      "input/InputProductFiles/RRVFile",
           }
         AcosPopulator.__init__(self, config_sounding_id_section,
