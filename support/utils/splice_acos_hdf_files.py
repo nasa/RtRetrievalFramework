@@ -21,6 +21,7 @@ import h5py
 
 import full_physics.acos_file as acos_file
 from full_physics import write_progress
+from full_physics.fill_value import FILL_VALUE
 
 from full_physics.splice_tool_mapping import aggregator_dataset_mapping, aggregator_dataset_dest_names
 
@@ -333,7 +334,19 @@ def create_output_dataset(out_hdf_obj, dataset_info, splice_size=None, collapse_
         out_group_obj = out_hdf_obj
 
     logger.debug( "Creating new dataset: %s/%s sized: %s" % (dst_group, dst_name, dst_shape) )
-    out_dataset_obj = out_group_obj.create_dataset(dst_name, data=numpy.zeros(dst_shape, dtype=dataset_info.out_type), maxshape=max_shape, compression="gzip", compression_opts=2)
+    out_dataset_obj = out_group_obj.create_dataset(dst_name, data=numpy.empty(dst_shape, dtype=dataset_info.out_type), maxshape=max_shape, compression="gzip", compression_opts=2)
+
+    # Fill new dataset with the correct fill value based on type
+    if dataset_info.out_type == numpy.object:
+        fill_type = str
+    else:
+        fill_type = dataset_info.out_type.type
+
+    try:
+        out_dataset_obj[:] = FILL_VALUE[fill_type]
+    except KeyError as exc:
+        logger.warning("Could not find specific fill value for dataset: %s of type %s" % (dst_name, fill_type))
+        out_dataset_obj[:] = 0
 
     # Now create copied attributes from original dataset
     # Just copy from first for now, leave code to do multiple if needed
@@ -382,10 +395,13 @@ def get_dataset_slice(acos_hdf_obj, in_dataset_obj, dataset_info, in_data_idx, o
     in_dataset_indexes = dataset_info.input_data_indexes(in_dataset_obj, in_data_idx)
 
     # Obtain selected data for copying into output dataset
-    if len(in_dataset_indexes) == 1 and not isinstance(in_dataset_indexes[0], slice):
-        in_data = in_dataset_obj[:][numpy.array(in_dataset_indexes[0])]
-    else:
-        in_data = in_dataset_obj[:][tuple(in_dataset_indexes)]
+    try:
+        if len(in_dataset_indexes) == 1 and not isinstance(in_dataset_indexes[0], slice):
+            in_data = in_dataset_obj[:][numpy.array(in_dataset_indexes[0])]
+        else:
+            in_data = in_dataset_obj[:][tuple(in_dataset_indexes)]
+    except IOError as exc:
+        raise IOError("Can not read dataset %s from file %s: %s" % (dataset_info.inp_name, acos_hdf_obj.filename, exc))
 
     # Set sliced data into output dataset
     if numpy.product(in_data.shape) > numpy.product(out_shape):
@@ -485,7 +501,7 @@ def get_datasets_for_file(curr_file, curr_snd_indexes, inp_datasets_info, output
                         stored_data = get_dataset_slice(curr_hdf_obj, curr_ds_obj, curr_dataset_info, curr_snd_indexes, out_shape)
                         yield curr_dataset_name, out_dataset_idx, stored_data
       
-                    except ValueError as e:
+                    except (ValueError, IOError) as e:
                         logger.error('Error copying dataset: "%s", dataset may be corrupt: %s' % (curr_dataset_name, e))
                         logger.debug('Exception: %s' % traceback.format_exc())
                 else:

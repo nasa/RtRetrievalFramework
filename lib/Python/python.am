@@ -31,6 +31,7 @@ pkgpython_PYTHON+= @pythonlibsrc@/progress.py
 pkgpython_PYTHON+= @pythonlibsrc@/plot_util.py
 pkgpython_PYTHON+= @pythonlibsrc@/l2_lua.py
 pkgpython_PYTHON+= @pythonlibsrc@/splice_tool_mapping.py
+pkgpython_PYTHON+= @pythonlibsrc@/fill_value.py
 pkgpythontemplate_DATA = @pythontemplatesrc@/aggregate.tmpl
 pkgpythontemplate_DATA+= @pythontemplatesrc@/aggregate_nol1b1.tmpl
 pkgpythontemplate_DATA+= @pythontemplatesrc@/empty_launch_jobs.tmpl
