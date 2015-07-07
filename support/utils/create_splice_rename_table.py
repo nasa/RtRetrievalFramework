@@ -33,6 +33,7 @@ search_groups = [
         "SubsettedL1BFrameFieldNames",
         "SubsettedDOASFieldNames",
         "SubsettedCloudFieldNames",
+        "SubsettedSndSelFieldNames",
         ]
 
 search_fields = []

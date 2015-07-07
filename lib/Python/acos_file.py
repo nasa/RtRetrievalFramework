@@ -868,13 +868,27 @@ class IdDatasetFinder(SoundingDataFile):
             self._sounding_id_dataset = '/RetrievalHeader/sounding_id_reference'
             self._id_dim_names = ('Retrieval',)
 
+        elif self.get('/RetrievalHeader/sounding_id') != None:
+            # L2AggPGE output files:
+            self._sounding_id_dataset = '/RetrievalHeader/sounding_id'
+            self._id_dim_names = ('Retrieval',)
+
         elif self.get('/DOASCloudScreen/co2_ratio_idp') != None or self.get('/ABandRetrieval/cloud_flag_abp') != None:
-            # IMAP DOAS or ABand Could files
+            # IMAP DOAS or ABand Cloud files
             self._sounding_id_dataset = '/SoundingGeometry/sounding_id'
             if single_id_dim:
                 self._id_dim_names = ('Frame',)
             else:
                 self._id_dim_names = ('Frame', 'Sounding')
+
+        elif self.get('/RadianceStatistics_spectra/sounding_id') != None:
+            # L1BSt file
+            self._sounding_id_dataset = '/RadianceStatistics_spectra/sounding_id'
+            if single_id_dim:
+                self._id_dim_names = ('Frame',)
+            else:
+                self._id_dim_names = ('Frame', 'Sounding')
+
         else:
             for ds_name in srch_dim_ids.keys():
                 if self.get(ds_name) != None:
