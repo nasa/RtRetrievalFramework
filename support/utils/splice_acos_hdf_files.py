@@ -334,7 +334,10 @@ def create_output_dataset(out_hdf_obj, dataset_info, splice_size=None, collapse_
         out_group_obj = out_hdf_obj
 
     logger.debug( "Creating new dataset: %s/%s sized: %s" % (dst_group, dst_name, dst_shape) )
-    out_dataset_obj = out_group_obj.create_dataset(dst_name, data=numpy.empty(dst_shape, dtype=dataset_info.out_type), maxshape=max_shape, compression="gzip", compression_opts=2)
+    try:
+        out_dataset_obj = out_group_obj.create_dataset(dst_name, data=numpy.empty(dst_shape, dtype=dataset_info.out_type), maxshape=max_shape, compression="gzip", compression_opts=2)
+    except RuntimeError as exc:
+        raise RuntimeError("Error creating dataset %s/%s: %s" % (dst_group/dst_name, exc))
 
     # Fill new dataset with the correct fill value based on type
     if dataset_info.out_type == numpy.object:
@@ -425,7 +428,11 @@ def create_dest_file_datasets(out_hdf_obj, in_filenames, inp_datasets_info, out_
 
         id_dimension = curr_dataset_info.inp_id_dims
 
-        if len(id_dimension) > 0: 
+        if out_hdf_obj.get(curr_dataset_info.out_name, None) != None:
+            logger.debug("Destination dataset %s for %s already exists in output file, ignoring duplicate" % (curr_dataset_info.out_name, curr_dataset_name))
+            del inp_datasets_info[curr_dataset_name]
+
+        elif len(id_dimension) > 0: 
             # Create a dataset that does have an id dimension
             out_dataset_objs[curr_dataset_name] = create_output_dataset(out_hdf_obj, curr_dataset_info, out_num_soundings, collapse_id_dim=multi_source_mode)
         
