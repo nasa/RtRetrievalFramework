@@ -16,6 +16,7 @@ FILE_SEARCH_GROUPS = { "L1BFile" :   ['InstrumentHeader'],
                        "IMAPFile" :  ['DOASFluorescence'],
                        "ABandFile" : ['ABandRetrieval'],
                        "RRVFile" :   ['campaign'],
+                       'UqFile'  :   ['StateVector'],
                       }
 
 HDF_VALID_EXTENSIONS = ['.h5', '.hdf']
@@ -45,8 +46,7 @@ def check_file_type(filename):
                     return keyword_name
     return None
 
-def handle_common_config(template_obj, out_config_filename, used_files, sounding_ids):
-
+def handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, ids_file_keyword='L1BFile', id_list_sect=None):
     inp_prod_section = template_obj.get_section(INP_PROD_SECTION_NAME)
 
     if len(inp_prod_section) == 0:
@@ -63,22 +63,25 @@ def handle_common_config(template_obj, out_config_filename, used_files, sounding
         if keyword_name != None:
             inp_prod_section[0].set_keyword_value(keyword_name, curr_file)
     
-    l1b_file = inp_prod_section[0].get_keyword_value('L1BFile')
-    if l1b_file != None:
+    ids_file = inp_prod_section[0].get_keyword_value(ids_file_keyword)
+    if ids_file != None:
 
-        l1b_obj = acos_file.L1B(l1b_file)
+        l1b_obj = acos_file.L1B(ids_file)
         if sounding_ids == None:
             sounding_ids = list(l1b_obj.get_sounding_ids()[:].ravel())
 
         sounding_ids_val_sect = []
-        sounding_id_list_sect = GEN_LIST_SECTION_TMPL % l1b_obj.instrument_name
-        for list_sect in template_obj.get_section(sounding_id_list_sect + '->LIST'):
+
+        if id_list_sect == None:
+            id_list_sect = GEN_LIST_SECTION_TMPL % l1b_obj.instrument_name
+
+        for list_sect in template_obj.get_section(id_list_sect + '->LIST'):
             list_name = list_sect.get_keyword_value('name')
             if list_name == SOUNDING_ID_LIST_NAME:
                 sounding_ids_val_sect = list_sect.get_section('->VALUES')
 
         if len(sounding_ids_val_sect) == 0:
-            raise IOError('Could not find sounding id list section named %s in %s' % (sounding_id_list_sect, template_obj.filename))
+            raise IOError('Could not find sounding id list section named %s in %s' % (id_list_sect, template_obj.filename))
 
         sounding_ids_val_sect[0].set_matrix_data(sounding_ids)
    
@@ -135,6 +138,10 @@ def handle_fts_config(template_obj, out_config_filename, used_files, sounding_id
     obs_id_sec.set_matrix_data(obs_ids)
 
     template_obj.write(out_config_filename, doIndent=True)
+
+def handle_uq_config(template_obj, out_config_filename, used_files, filter_options):
+
+    handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, ids_file_keyword='UqFile', id_list_sect='input->UqFullPhysics')
 
 if __name__ == "__main__":
     
