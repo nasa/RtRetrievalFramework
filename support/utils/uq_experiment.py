@@ -2,12 +2,16 @@
 
 import os
 import sys
+import itertools
 from contextlib import closing
 
 import h5py
 import numpy
 
 from full_physics import *
+
+class StateVectorError(BaseException):
+    pass
 
 class UqExperiment(object):
 
@@ -39,7 +43,10 @@ class UqExperiment(object):
         ig_new = fp.CompositeInitialGuess()
         ig_new.add_builder(ig_v)
         self.ls.globals["initial_guess"] = ig_new
-        self.lua_config.state_vector.update_state(new_sv)
+        try:
+            self.lua_config.state_vector.update_state(new_sv)
+        except RuntimeError as exc:
+            raise StateVectorError(exc.message)
 
     def calculate_uq_radiance(self):
         'Compute radiances for use by UQ L1B. Noise is added based on the L1B noise model'
@@ -49,7 +56,13 @@ class UqExperiment(object):
         with closing(HdfFile(self.lua_config.spectrum_file)) as uq_obj:
             frame_idx = self.lua_config.l1b_sid_list(self.lua_config).frame_number
             true_sv = uq_obj.read_double_2d("/StateVector/sampled_state_vectors")[:, frame_idx]
-            self.update_initial_guess(true_sv)
+
+            try:
+                self.update_initial_guess(true_sv)
+            except StateVectorError as exc:
+                self.compare_svs(exc.message)
+                raise exc
+
 
         # Change SpectralWindows so that all radiances points are computed
         spec_win_range = self.lua_config.spec_win.range_array
@@ -92,6 +105,27 @@ class UqExperiment(object):
 
         # Reset initial guess to values loaded by Lua
         self.update_initial_guess(orig_sv)
+
+    def compare_svs(self, err_message=None):
+        if err_message != None:
+            print >>sys.stderr, err_message
+
+        file_sv_names = []
+        with closing(h5py.File(self.lua_config.spectrum_file, "r")) as uq_obj:
+            file_sv_names = uq_obj['/StateVector/state_vector_names'][:]
+        config_sv_names = self.lua_config.state_vector.state_vector_name
+
+        name_len = 0
+        for name in itertools.chain(file_sv_names, config_sv_names):
+            name_len = max(name_len, len(name))
+
+        hdr_format = "    %"+str(name_len)+"s %"+str(name_len)+"s"
+        line_format = "% 3d %"+str(name_len)+"s %"+str(name_len)+"s"
+
+        print >>sys.stderr, hdr_format % ("Scence File SV Name", "Config SV Name")
+        print >>sys.stderr, "-" * (name_len*2+6)
+        for idx, (file_name, config_name) in enumerate(itertools.izip_longest(file_sv_names, config_sv_names)):
+            print >>sys.stderr, line_format % (idx, file_name, config_name)
 
     def run(self):
         # Calculate the radiances need for the retrieval
