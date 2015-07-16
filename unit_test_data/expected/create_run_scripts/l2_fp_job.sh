@@ -7,13 +7,13 @@ export ecmwf_file="/fake_path/ecmwf.h5"
 
 export imap_file="/fake_path/imap.h5"
 
-l2_binary_filename=/fake_path/l2_fp
-l2_config_filename=/fake_path/input/gosat/config/config.lua
-processing_dir=create_run_scripts_test
-log_directory=create_run_scripts_test/log
-sounding_id_list_filename=create_run_scripts_test/sounding_id.list
-output_directory=create_run_scripts_test/output
-group_size=1
+export l2_binary_filename=/fake_path/l2_fp
+export l2_config_filename=/fake_path/input/gosat/config/config.lua
+export processing_dir=create_run_scripts_test
+export log_directory=create_run_scripts_test/log
+export sounding_id_list_filename=create_run_scripts_test/sounding_id.list
+export output_directory=create_run_scripts_test/output
+export group_size=1
 export PYTHONPATH=/fake_python_path
 export PATH=/fake_bin_path
 export LD_LIBRARY_PATH=/fake_lib_path
@@ -90,15 +90,13 @@ fi
 if [ "$force_quiet" = "yes" ]; then
    do_tee="no"
 fi
+export do_tee
 
 
 
-beg_id_index=$(expr ${job_index} '*' ${group_size})
-end_id_index=$(expr ${beg_id_index} '+' ${group_size} '-' 1)
-if [ ${end_id_index} -gt ${#id_list[@]} ]; then
-    end_id_index=$(expr ${#id_list[@]} - 1)
-fi
-for id_index in $(seq ${beg_id_index} ${end_id_index}); do
+run_job_index() {
+    id_index=$1
+    id_list=( `cat ${sounding_id_list_filename}` )
     export sounding_id="${id_list[${id_index}]}"
     
     # The mac doesn't have the same options in the time command as on linux
@@ -122,7 +120,16 @@ for id_index in $(seq ${beg_id_index} ${end_id_index}); do
        fi
        mv -f ${log_directory}/l2_${sounding_id}.log.running ${log_directory}/l2_${sounding_id}.log
     fi
-done
+}
+export -f run_job_index
+
+beg_id_index=$(expr ${job_index} '*' ${group_size})
+end_id_index=$(expr ${beg_id_index} '+' ${group_size} '-' 1)
+if [ ${end_id_index} -gt ${#id_list[@]} ]; then
+    end_id_index=$(expr ${#id_list[@]} - 1)
+fi
+
+seq ${beg_id_index} ${end_id_index} | parallel -j 1 --no-notice --ungroup --env run_job_index 'run_job_index {}'
 
 if [ "$keep_exit" = "yes" ]; then
    exit ${l2_run_status}
