@@ -213,7 +213,18 @@ class PopulatorBase(object):
 
         id_list = self.read_id_list_file(sounding_id_file, sounding_id_sect)
     
-        self.max_array_index = len(id_list) / self.group_size
+        if len(id_list) > self.group_size:
+            self.max_array_index = len(id_list) / self.group_size
+        else:
+            # There is really only 1 index to be run, but without specficially setting this to 1
+            # the range would be 0-0. But qsub does not like that range and will complain. So
+            # we give it one more index so it at least runs the one we want and run_job will just 
+            # skip the extra index
+            #
+            # Edge condition of either 1 sounding id or a single group of soundings smaller than
+            # the grouping size
+            self.max_array_index = 1
+
         # Subtract 1 if the group size is an integer multiple of the number of ids
         if self.max_array_index * self.group_size == len(id_list):
             self.max_array_index -= 1
