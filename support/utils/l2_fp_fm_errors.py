@@ -565,8 +565,8 @@ if __name__ == "__main__":
                        help="Skips convolving unperturbed stokes components and saving the result")
 
     parser.add_option( "--num_perturbed", dest="num_perturbed_iterations",
-                       type=int, default=0,
-                       help="Number of iterations for calculating perturbed residual from perturbed context with initial state vector (1 FM+Jac, 1 FM only calculation). A value of 0 disables perturbed retrievals. Default is 0.")
+                       type=int, default=10,
+                       help="Number of iterations for calculating perturbed residual from perturbed context with initial state vector (1 FM+Jac, 1 FM only calculation). A value of 0 disables perturbed retrievals. Default is 10.")
 
     # Parse command line arguments
     (options, args) = parser.parse_args()
