@@ -120,7 +120,7 @@ void Level1bUq::initialize()
     // Load dispersion coefficients
     ArrayWithUnit<double, 2> wl_coeffs;
     wl_coeffs = hfile->read_field_with_unit<double, 2>("/InstrumentHeader/dispersion_coef_samp", units::micron);
-    spectral_coefficient_.value.resize(wl_coeffs.value.extent(0), wl_coeffs.value.extent(2));
+    spectral_coefficient_.value.resize(wl_coeffs.value.extent(0), wl_coeffs.value.extent(1));
     spectral_coefficient_.value = wl_coeffs.value(ra, ra);
     spectral_coefficient_.units = wl_coeffs.units;
 
