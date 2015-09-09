@@ -21,6 +21,33 @@ function init_uq(config)
         end
     end
 
+    function uq_apriori_sounding_scalar(field)
+        return function(self)
+            local sid = self.config:l1b_sid_list()
+            local frame_idx = sid:frame_number()
+            local ap = Blitz_double_array_1d(1)
+            ap:set(0, self.config:l1b_hdf_file():read_double_1d(field .. "/a_priori")(frame_idx))
+            return ap
+        end
+    end
+
+    function uq_apriori_sounding(field)
+        return function(self)
+            local sid = self.config:l1b_sid_list()
+            local frame_idx = sid:frame_number()
+            return self.config:l1b_hdf_file():read_double_2d(field .. "/a_priori")(Range.all(), frame_idx)
+        end
+    end
+
+    function uq_apriori_sounding_i(field)
+        return function(self, i)
+            local sid = self.config:l1b_sid_list()
+            local frame_idx = sid:frame_number()
+            return self.config:l1b_hdf_file():read_double_3d(field .. "/a_priori")(i, Range.all(), frame_idx)
+        end
+    end
+
+
     function uq_covariance(field)
         return function(self)
             return self.config:l1b_hdf_file():read_double_2d(field .. "/covariance")
@@ -174,7 +201,9 @@ function init_uq(config)
         local ap = orig_disp_ap(self, i)
 
         local l1b_hdf_file = self.config:l1b_hdf_file()
-        local offset_mean = l1b_hdf_file:read_double_1d("/Instrument/Dispersion/a_priori")(i)
+        local sid = self.config:l1b_sid_list()
+        local frame_idx = sid:frame_number()
+        local offset_mean = l1b_hdf_file:read_double_2d("/Instrument/Dispersion/a_priori")(i, frame_idx)
 
         ap.value:set(0, offset_mean)
 
@@ -200,14 +229,14 @@ function init_uq(config)
     -- Ground --
     ------------
 
-    config.fm.atmosphere.ground.lambertian.apriori = uq_apriori_i("Ground/Albedo")
+    config.fm.atmosphere.ground.lambertian.apriori = uq_apriori_sounding_i("Ground/Albedo")
     config.fm.atmosphere.ground.lambertian.covariance = uq_covariance_i("Ground/Albedo")
 
     ---------
     -- Gas --
     ---------
 
-    config.fm.atmosphere.absorber.CO2.apriori = uq_apriori("Gas/CO2")
+    config.fm.atmosphere.absorber.CO2.apriori = uq_apriori_sounding("Gas/CO2")
     config.fm.atmosphere.absorber.CO2.covariance = uq_covariance("Gas/CO2")
 
     function uq_h2o_ap(self)
@@ -228,14 +257,14 @@ function init_uq(config)
     -- Temperature --
     -----------------
 
-    config.fm.atmosphere.temperature.apriori = uq_apriori("Temperature/Offset")
+    config.fm.atmosphere.temperature.apriori = uq_apriori_sounding_scalar("Temperature/Offset")
     config.fm.atmosphere.temperature.covariance = uq_covariance("Temperature/Offset")
     
     ----------------------
     -- Surface Pressure --
     ----------------------
 
-    config.fm.atmosphere.pressure.apriori = uq_apriori("Surface_Pressure")
+    config.fm.atmosphere.pressure.apriori = uq_apriori_sounding_scalar("Surface_Pressure")
     config.fm.atmosphere.pressure.covariance = uq_covariance("Surface_Pressure")
 
     -------------
@@ -243,16 +272,16 @@ function init_uq(config)
     -------------
     
     -- Set Ice and Water apriori and covariances
-    config.fm.atmosphere.aerosol.Water.apriori = uq_apriori("Aerosol/Water/Gaussian/Log")
+    config.fm.atmosphere.aerosol.Water.apriori = uq_apriori_sounding("Aerosol/Water/Gaussian/Log")
     config.fm.atmosphere.aerosol.Water.covariance = uq_covariance("Aerosol/Water/Gaussian/Log")
 
-    config.fm.atmosphere.aerosol.Ice.apriori = uq_apriori("Aerosol/Ice/Gaussian/Log")
+    config.fm.atmosphere.aerosol.Ice.apriori = uq_apriori_sounding("Aerosol/Ice/Gaussian/Log")
     config.fm.atmosphere.aerosol.Ice.covariance = uq_covariance("Aerosol/Ice/Gaussian/Log")
 
     -- Set Merra particle apriori and covariances by modifying the creator to not use Merra
     -- initial guess value
     config.fm.atmosphere.aerosol.ignore_merra_aod = true
-    config.fm.atmosphere.aerosol.apriori = uq_apriori_i("Aerosol/Merra/Gaussian/Log")
+    config.fm.atmosphere.aerosol.apriori = uq_apriori_sounding_i("Aerosol/Merra/Gaussian/Log")
     config.fm.atmosphere.aerosol.covariance = uq_covariance_i("Aerosol/Merra/Gaussian/Log")
 
     ------------------
@@ -284,7 +313,7 @@ function init_uq(config)
     end
 
     config.fm.spectrum_effect.fluorescence.creator = uq_fluorescence
-    config.fm.spectrum_effect.fluorescence.apriori = uq_apriori("Fluorescence")
+    config.fm.spectrum_effect.fluorescence.apriori = uq_apriori_sounding("Fluorescence")
     config.fm.spectrum_effect.fluorescence.covariance = uq_covariance("Fluorescence")
 
     -- Remove EOF from state vector

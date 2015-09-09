@@ -30,9 +30,9 @@ SpectralDomain SpectrumSamplingFixedSpacing::spectral_domain
   if (!u_orig.is_commensurate(Ils_half_width.units)) {
     std::stringstream err_msg;
     err_msg << "Low res grid units:" << std::endl
-	    << u_orig << std::endl
-	    << "are not commensurate with ils half width units:" << std::endl
-	    << Ils_half_width.units;
+          << u_orig << std::endl
+          << "are not commensurate with ils half width units:" << std::endl
+          << Ils_half_width.units;
     throw Exception(err_msg.str());
   }
 
@@ -60,9 +60,9 @@ SpectralDomain SpectrumSamplingFixedSpacing::spectral_domain
     // one or the other could be the larger value
     DoubleWithUnit begval = 
       min( (lres_conv[0].convert_wave(u_orig) - Ils_half_width).
-	   convert_wave(u_comp), 
-	   (lres_conv[0].convert_wave(u_orig) + Ils_half_width).
-	   convert_wave(u_comp) );
+         convert_wave(u_comp), 
+         (lres_conv[0].convert_wave(u_orig) + Ils_half_width).
+         convert_wave(u_comp) );
 
     DoubleWithUnit fpoint = floor(begval / sp) * sp;   
     hres.push_back(fpoint.convert_wave(u_orig).value);
@@ -72,9 +72,9 @@ SpectralDomain SpectrumSamplingFixedSpacing::spectral_domain
 
     BOOST_FOREACH(DoubleWithUnit v, lres_conv) {
       DoubleWithUnit minusval = (v.convert_wave(u_orig) - Ils_half_width).
-	convert_wave(u_comp);
+      convert_wave(u_comp);
       DoubleWithUnit plusval  = (v.convert_wave(u_orig) + Ils_half_width).
-	convert_wave(u_comp);
+      convert_wave(u_comp);
 
       // Pick values appropriately accounting for ordering change
       // due to conversion of units back and forth
@@ -84,12 +84,12 @@ SpectralDomain SpectrumSamplingFixedSpacing::spectral_domain
       int fmin = (int) floor(preval / sp).value;
       int fmax = (int) ceil(postval / sp).value;
       for(int f = std::max(fmin, smax + 1); f < fmax; ++f) {
-	// Convert back to original units
-	DoubleWithUnit fval(f * sp.value, u_comp);
-	hres.push_back(fval.convert_wave(u_orig).value);
+        // Convert back to original units
+        DoubleWithUnit fval(f * sp.value, u_comp);
+        hres.push_back(fval.convert_wave(u_orig).value);
 
-	// For next iteration
-	smax = (int) round(fval / sp).value;
+        // For next iteration
+        smax = (int) round(fval / sp).value;
       }
     }
   }
