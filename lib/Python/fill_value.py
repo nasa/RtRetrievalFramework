@@ -14,6 +14,4 @@ FILL_VALUE = {  float: float(-999999),
                 np.uint16:  np.uint16(65534),
                 np.uint32:  np.uint32(4294967294),
                 np.uint64:  np.uint64(18446744073709551614),
-                str: "NA",  
-                np.string_: "NA",  
               }

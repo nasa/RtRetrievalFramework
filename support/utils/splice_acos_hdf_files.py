@@ -333,23 +333,25 @@ def create_output_dataset(out_hdf_obj, dataset_info, splice_size=None, collapse_
         dst_name = ds_name_clean
         out_group_obj = out_hdf_obj
 
-    logger.debug( "Creating new dataset: %s/%s sized: %s" % (dst_group, dst_name, dst_shape) )
-    try:
-        out_dataset_obj = out_group_obj.create_dataset(dst_name, data=numpy.empty(dst_shape, dtype=dataset_info.out_type), maxshape=max_shape, compression="gzip", compression_opts=2)
-    except RuntimeError as exc:
-        raise RuntimeError("Error creating dataset %s/%s: %s" % (dst_group/dst_name, exc))
-
     # Fill new dataset with the correct fill value based on type
-    if dataset_info.out_type == numpy.object:
-        fill_type = str
-    else:
+    if dataset_info.out_type != numpy.object and dataset_info.out_type.type != numpy.string_:
         fill_type = dataset_info.out_type.type
 
+        if FILL_VALUE.has_key(fill_type):
+            dataset_fill = FILL_VALUE[fill_type]
+        else:
+            logger.warning("Could not find specific fill value for dataset: %s of type %s" % (dst_name, fill_type))
+            dataset_fill = None
+    else:
+        # Use default fill for string types
+        fill_type = None
+        dataset_fill = None
+
+    logger.debug( "Creating new dataset: %s/%s sized: %s with fill type: %s and value: %s" % (dst_group, dst_name, dst_shape, fill_type, dataset_fill) )
     try:
-        out_dataset_obj[:] = FILL_VALUE[fill_type]
-    except KeyError as exc:
-        logger.warning("Could not find specific fill value for dataset: %s of type %s" % (dst_name, fill_type))
-        out_dataset_obj[:] = 0
+        out_dataset_obj = out_group_obj.create_dataset(dst_name, data=numpy.empty(dst_shape, dtype=dataset_info.out_type), maxshape=max_shape, compression="gzip", compression_opts=2, fillvalue=dataset_fill)
+    except RuntimeError as exc:
+        raise RuntimeError("Error creating dataset %s/%s: %s" % (dst_group/dst_name, exc))
 
     # Now create copied attributes from original dataset
     # Just copy from first for now, leave code to do multiple if needed
