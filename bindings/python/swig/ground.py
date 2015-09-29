@@ -110,6 +110,7 @@ def _new_from_set(cls, version, *args):
 
 import full_physics_swig.observer
 import full_physics_swig.generic_object
+import full_physics_swig.state_vector
 class ObservableGround(full_physics_swig.generic_object.GenericObject):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
@@ -120,6 +121,18 @@ ObservableGround.add_observer = new_instancemethod(_ground.ObservableGround_add_
 ObservableGround.remove_observer = new_instancemethod(_ground.ObservableGround_remove_observer,None,ObservableGround)
 ObservableGround_swigregister = _ground.ObservableGround_swigregister
 ObservableGround_swigregister(ObservableGround)
+
+class ObserverGround(full_physics_swig.generic_object.GenericObject):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self): 
+        _ground.ObserverGround_swiginit(self,_ground.new_ObserverGround())
+    __swig_destroy__ = _ground.delete_ObserverGround
+ObserverGround.notify_update = new_instancemethod(_ground.ObserverGround_notify_update,None,ObserverGround)
+ObserverGround.notify_add = new_instancemethod(_ground.ObserverGround_notify_add,None,ObserverGround)
+ObserverGround.notify_remove = new_instancemethod(_ground.ObserverGround_notify_remove,None,ObserverGround)
+ObserverGround_swigregister = _ground.ObserverGround_swigregister
+ObserverGround_swigregister(ObserverGround)
 
 class Ground(ObservableGround):
     """
@@ -172,6 +185,37 @@ Ground.clone = new_instancemethod(_ground.Ground_clone,None,Ground)
 Ground.print_desc = new_instancemethod(_ground.Ground_print_desc,None,Ground)
 Ground_swigregister = _ground.Ground_swigregister
 Ground_swigregister(Ground)
+
+class SubStateVectorArrayGround(Ground,full_physics_swig.state_vector.SubStateVectorObserver):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _ground.delete_SubStateVectorArrayGround
+    @property
+    def coefficient(self):
+        return self._v_coefficient()
+
+    @property
+    def used_flag_value(self):
+        return self._v_used_flag_value()
+
+    @property
+    def statevector_covariance(self):
+        return self._v_statevector_covariance()
+
+    @property
+    def pressure(self):
+        return self._v_pressure()
+
+SubStateVectorArrayGround.init = new_instancemethod(_ground.SubStateVectorArrayGround_init,None,SubStateVectorArrayGround)
+SubStateVectorArrayGround.state_vector_name_i = new_instancemethod(_ground.SubStateVectorArrayGround_state_vector_name_i,None,SubStateVectorArrayGround)
+SubStateVectorArrayGround.update_sub_state_hook = new_instancemethod(_ground.SubStateVectorArrayGround_update_sub_state_hook,None,SubStateVectorArrayGround)
+SubStateVectorArrayGround._v_coefficient = new_instancemethod(_ground.SubStateVectorArrayGround__v_coefficient,None,SubStateVectorArrayGround)
+SubStateVectorArrayGround._v_used_flag_value = new_instancemethod(_ground.SubStateVectorArrayGround__v_used_flag_value,None,SubStateVectorArrayGround)
+SubStateVectorArrayGround._v_statevector_covariance = new_instancemethod(_ground.SubStateVectorArrayGround__v_statevector_covariance,None,SubStateVectorArrayGround)
+SubStateVectorArrayGround._v_pressure = new_instancemethod(_ground.SubStateVectorArrayGround__v_pressure,None,SubStateVectorArrayGround)
+SubStateVectorArrayGround_swigregister = _ground.SubStateVectorArrayGround_swigregister
+SubStateVectorArrayGround_swigregister(SubStateVectorArrayGround)
 
 
 

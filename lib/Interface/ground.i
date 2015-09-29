@@ -7,20 +7,25 @@
 #include "ground.h"
 #include "sub_state_vector_array.h"
 #include "pressure.h"
+#include "sub_state_vector_array.h"
 %}
 
-namespace FullPhysics {
-  class Ground;
-}
-
 %base_import(observer)
+%base_import(state_vector)
+%import "sub_state_vector_array.i"
 %import "array_ad.i"
 
 %fp_shared_ptr(FullPhysics::Ground)
+%fp_shared_ptr(FullPhysics::SubStateVectorArray<FullPhysics::Ground>);
+namespace FullPhysics {
+  class Ground;
+}
 %fp_shared_ptr(FullPhysics::Observable<FullPhysics::Ground>)
+%fp_shared_ptr(FullPhysics::Observer<FullPhysics::Ground>)
 
 namespace FullPhysics {
-%template(ObservableGround) FullPhysics::Observable<Ground>;
+%template(ObservableGround) FullPhysics::Observable<FullPhysics::Ground>;
+%template(ObserverGround) FullPhysics::Observer<FullPhysics::Ground>;
 
 class Ground : public Observable<Ground> {
 public:
@@ -34,3 +39,6 @@ public:
   virtual void print(std::ostream& Os) const = 0;
 };
 }
+
+%template(SubStateVectorArrayGround) 
+FullPhysics::SubStateVectorArray<FullPhysics::Ground>;

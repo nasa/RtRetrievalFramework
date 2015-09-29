@@ -133,10 +133,49 @@ def _new_from_set(cls, version, *args):
     inst.set(*args)
     return inst
 
+import full_physics_swig.observer
 import full_physics_swig.generic_object
-class AerosolProperty(full_physics_swig.generic_object.GenericObject):
+import full_physics_swig.state_vector
+class ObservableAerosolProperty(full_physics_swig.generic_object.GenericObject):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _aerosol_property.delete_ObservableAerosolProperty
+ObservableAerosolProperty.add_observer_and_keep_reference = new_instancemethod(_aerosol_property.ObservableAerosolProperty_add_observer_and_keep_reference,None,ObservableAerosolProperty)
+ObservableAerosolProperty.add_observer = new_instancemethod(_aerosol_property.ObservableAerosolProperty_add_observer,None,ObservableAerosolProperty)
+ObservableAerosolProperty.remove_observer = new_instancemethod(_aerosol_property.ObservableAerosolProperty_remove_observer,None,ObservableAerosolProperty)
+ObservableAerosolProperty_swigregister = _aerosol_property.ObservableAerosolProperty_swigregister
+ObservableAerosolProperty_swigregister(ObservableAerosolProperty)
+
+class ObserverAerosolProperty(full_physics_swig.generic_object.GenericObject):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self): 
+        _aerosol_property.ObserverAerosolProperty_swiginit(self,_aerosol_property.new_ObserverAerosolProperty())
+    __swig_destroy__ = _aerosol_property.delete_ObserverAerosolProperty
+ObserverAerosolProperty.notify_update = new_instancemethod(_aerosol_property.ObserverAerosolProperty_notify_update,None,ObserverAerosolProperty)
+ObserverAerosolProperty.notify_add = new_instancemethod(_aerosol_property.ObserverAerosolProperty_notify_add,None,ObserverAerosolProperty)
+ObserverAerosolProperty.notify_remove = new_instancemethod(_aerosol_property.ObserverAerosolProperty_notify_remove,None,ObserverAerosolProperty)
+ObserverAerosolProperty_swigregister = _aerosol_property.ObserverAerosolProperty_swigregister
+ObserverAerosolProperty_swigregister(ObserverAerosolProperty)
+
+class AerosolProperty(full_physics_swig.state_vector.StateVectorObserver,ObservableAerosolProperty):
     """
     This gives the Aerosol properties for an Aerosol.
+
+    Our current AerosolProperty - AerosolPropertyHdf - doesn't make any
+    use of our StateVector, we don't have aerosol properties in it. But we
+    may want to have this in the future, so we've made this class a
+    StateVectorObserver.
+
+    Other objects may depend on the AerosolProperty, and should be updated
+    when the AerosolProperty is updated. To facilitate that, this class in
+    an Oberverable, and objects can add themselves as Observers to be
+    notified when the AerosolProperty is updated.
+
+    When implementing a new class, you almost always will want to derive
+    from AerosolPropertyImpBase rather than from this class. See that
+    class for a description.
 
     C++ includes: aerosol_property.h 
     """
@@ -144,6 +183,20 @@ class AerosolProperty(full_physics_swig.generic_object.GenericObject):
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
     __swig_destroy__ = _aerosol_property.delete_AerosolProperty
+    def clone(self):
+        """
+        virtual boost::shared_ptr<AerosolProperty> FullPhysics::AerosolProperty::clone() const =0
+        Clone a AerosolProperty object.
+
+        Note that the cloned version will not be attached to a StateVector or
+        Observer<AerosolProperty>, although you can of course attach them
+        after receiving the cloned object.
+
+        Because this isn't attached to the StateVector, one use of the clone
+        operator is to create a "frozen" AerosolProperty object. 
+        """
+        return _aerosol_property.AerosolProperty_clone(self)
+
     def extinction_coefficient(self, *args):
         """
         virtual double FullPhysics::AerosolProperty::extinction_coefficient(double wn) const =0
@@ -191,6 +244,7 @@ class AerosolProperty(full_physics_swig.generic_object.GenericObject):
         """
         return _aerosol_property.AerosolProperty_phase_function_moment(self, *args)
 
+AerosolProperty.clone = new_instancemethod(_aerosol_property.AerosolProperty_clone,None,AerosolProperty)
 AerosolProperty.extinction_coefficient = new_instancemethod(_aerosol_property.AerosolProperty_extinction_coefficient,None,AerosolProperty)
 AerosolProperty.scattering_coefficient = new_instancemethod(_aerosol_property.AerosolProperty_scattering_coefficient,None,AerosolProperty)
 AerosolProperty.phase_function_moment = new_instancemethod(_aerosol_property.AerosolProperty_phase_function_moment,None,AerosolProperty)

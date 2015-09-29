@@ -36,6 +36,12 @@ AerosolPropertyHdf::AerosolPropertyHdf(const HdfFile& F,
 					   pf_vec.begin()));
 }
 
+boost::shared_ptr<AerosolProperty> AerosolPropertyHdf::clone() const
+{
+  HdfFile f(hdf_file);
+  return boost::shared_ptr<AerosolProperty>(new AerosolPropertyHdf(f, hdf_group));
+}
+
 void AerosolPropertyHdf::print(std::ostream& Os) const 
 { 
   Os << "AerosolPropertyHdf:\n"
