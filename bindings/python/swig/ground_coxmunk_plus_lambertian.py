@@ -111,8 +111,8 @@ def _new_from_set(cls, version, *args):
 import full_physics_swig.ground
 import full_physics_swig.observer
 import full_physics_swig.generic_object
+import full_physics_swig.state_vector
 import full_physics_swig.sub_state_vector_proxy
-import full_physics_swig.sub_state_vector_array
 class GroundCoxmunkPlusLambertian(full_physics_swig.ground.Ground,full_physics_swig.sub_state_vector_proxy.SubStateVectorProxy):
     """
     This class implements a Coxmunk plus Lambertian ground type.

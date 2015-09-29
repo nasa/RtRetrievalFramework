@@ -111,8 +111,8 @@ def _new_from_set(cls, version, *args):
 import full_physics_swig.ground
 import full_physics_swig.observer
 import full_physics_swig.generic_object
-import full_physics_swig.sub_state_vector_array
-class GroundCoxmunk(object):
+import full_physics_swig.state_vector
+class GroundCoxmunk(full_physics_swig.ground.SubStateVectorArrayGround):
     """
     This class implements a Coxmunk ground type.
 
@@ -127,13 +127,6 @@ class GroundCoxmunk(object):
 
         """
         _ground_coxmunk.GroundCoxmunk_swiginit(self,_ground_coxmunk.new_GroundCoxmunk(*args))
-    def surface_parameter(self, *args):
-        """
-        ArrayAd< double, 1 > GroundCoxmunk::surface_parameter(const double wn, const int spec_index) const
-
-        """
-        return _ground_coxmunk.GroundCoxmunk_surface_parameter(self, *args)
-
     def windspeed(self):
         """
         const AutoDerivative< double > GroundCoxmunk::windspeed() const
@@ -148,42 +141,9 @@ class GroundCoxmunk(object):
         """
         return _ground_coxmunk.GroundCoxmunk_refractive_index(self, *args)
 
-    def clone(self):
-        """
-        boost::shared_ptr< Ground > GroundCoxmunk::clone() const
-
-        """
-        return _ground_coxmunk.GroundCoxmunk_clone(self)
-
-    def state_vector_name_i(self, *args):
-        """
-        std::string GroundCoxmunk::state_vector_name_i(int i) const
-
-        """
-        return _ground_coxmunk.GroundCoxmunk_state_vector_name_i(self, *args)
-
-    def print_desc(self, *args):
-        """
-        void GroundCoxmunk::print(std::ostream &Os) const
-
-        """
-        return _ground_coxmunk.GroundCoxmunk_print_desc(self, *args)
-
-    def update_sub_state_hook(self):
-        """
-        void GroundCoxmunk::update_sub_state_hook()
-
-        """
-        return _ground_coxmunk.GroundCoxmunk_update_sub_state_hook(self)
-
     __swig_destroy__ = _ground_coxmunk.delete_GroundCoxmunk
-GroundCoxmunk.surface_parameter = new_instancemethod(_ground_coxmunk.GroundCoxmunk_surface_parameter,None,GroundCoxmunk)
 GroundCoxmunk.windspeed = new_instancemethod(_ground_coxmunk.GroundCoxmunk_windspeed,None,GroundCoxmunk)
 GroundCoxmunk.refractive_index = new_instancemethod(_ground_coxmunk.GroundCoxmunk_refractive_index,None,GroundCoxmunk)
-GroundCoxmunk.clone = new_instancemethod(_ground_coxmunk.GroundCoxmunk_clone,None,GroundCoxmunk)
-GroundCoxmunk.state_vector_name_i = new_instancemethod(_ground_coxmunk.GroundCoxmunk_state_vector_name_i,None,GroundCoxmunk)
-GroundCoxmunk.print_desc = new_instancemethod(_ground_coxmunk.GroundCoxmunk_print_desc,None,GroundCoxmunk)
-GroundCoxmunk.update_sub_state_hook = new_instancemethod(_ground_coxmunk.GroundCoxmunk_update_sub_state_hook,None,GroundCoxmunk)
 GroundCoxmunk_swigregister = _ground_coxmunk.GroundCoxmunk_swigregister
 GroundCoxmunk_swigregister(GroundCoxmunk)
 

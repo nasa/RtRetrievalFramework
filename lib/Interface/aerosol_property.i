@@ -5,13 +5,29 @@
 %{
 #include "aerosol_property.h"
 %}
+%base_import(observer)
+%base_import(state_vector)
 %base_import(generic_object)
 
 %fp_shared_ptr(FullPhysics::AerosolProperty)
 namespace FullPhysics {
-class AerosolProperty : public GenericObject {
+  class AerosolProperty;
+}
+
+%fp_shared_ptr(FullPhysics::Observable<FullPhysics::AerosolProperty>);
+%fp_shared_ptr(FullPhysics::Observer<FullPhysics::AerosolProperty>);
+
+namespace FullPhysics {
+%template(ObservableAerosolProperty) FullPhysics::Observable<AerosolProperty>;
+%template(ObserverAerosolProperty) FullPhysics::Observer<AerosolProperty>;
+
+class AerosolProperty : virtual public StateVectorObserver, 
+		 public Observable<AerosolProperty> {
 public:
   virtual ~AerosolProperty();
+  virtual void add_observer(Observer<AerosolProperty>& Obs); 
+  virtual void remove_observer(Observer<AerosolProperty>& Obs);
+  virtual boost::shared_ptr<AerosolProperty> clone() const = 0;
   virtual double extinction_coefficient(double wn) const = 0;
   virtual double scattering_coefficient(double wn) const = 0;
   virtual blitz::Array<double, 2> phase_function_moment(double wn, 

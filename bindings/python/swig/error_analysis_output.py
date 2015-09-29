@@ -117,7 +117,6 @@ import full_physics_swig.problem_state
 import full_physics_swig.rt_atmosphere
 import full_physics_swig.state_vector
 import full_physics_swig.aerosol
-import full_physics_swig.pressure
 import full_physics_swig.aerosol_extinction
 class ErrorAnalysisOutput(full_physics_swig.register_output_base.RegisterOutputBase):
     """

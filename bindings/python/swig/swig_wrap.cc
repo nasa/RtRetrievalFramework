@@ -97,6 +97,7 @@ extern "C" {
   void init_hres_wrapper(void);
   void init_spurr_driver(void);
   void init_aerosol_property(void);
+  void init_aerosol_property_imp_base(void);
   void init_aerosol_extinction(void);
   void init_aerosol_extinction_imp_base(void);
   void init_cost_func(void);
@@ -387,6 +388,7 @@ void init_swig_wrap(void)
   init_extension_module(package, "_hres_wrapper", init_hres_wrapper);
   init_extension_module(package, "_spurr_driver", init_spurr_driver);
   init_extension_module(package, "_aerosol_property", init_aerosol_property);
+  init_extension_module(package, "_aerosol_property_imp_base", init_aerosol_property_imp_base);
   init_extension_module(package, "_aerosol_extinction", init_aerosol_extinction);
   init_extension_module(package, "_aerosol_extinction_imp_base", init_aerosol_extinction_imp_base);
   init_extension_module(package, "_cost_func", init_cost_func);

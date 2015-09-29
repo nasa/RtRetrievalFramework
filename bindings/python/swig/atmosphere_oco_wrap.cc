@@ -3472,117 +3472,125 @@ namespace Swig {
 #define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t swig_types[20]
 #define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Absorber_t swig_types[21]
 #define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t swig_types[22]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Aerosol_t swig_types[23]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Altitude_t swig_types[24]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t swig_types[25]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Ground_t swig_types[26]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[27]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Rayleigh_t swig_types[28]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t swig_types[29]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[30]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Temperature_t swig_types[31]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t swig_types[32]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Absorber_t swig_types[33]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t swig_types[34]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Aerosol_t swig_types[35]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Altitude_t swig_types[36]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t swig_types[37]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[38]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Rayleigh_t swig_types[39]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t swig_types[40]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[41]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Temperature_t swig_types[42]
-#define SWIGTYPE_p_FullPhysics__Pressure swig_types[43]
-#define SWIGTYPE_p_FullPhysics__Rayleigh swig_types[44]
-#define SWIGTYPE_p_FullPhysics__RtAtmosphere swig_types[45]
-#define SWIGTYPE_p_FullPhysics__StateVector swig_types[46]
-#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[47]
-#define SWIGTYPE_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t swig_types[48]
-#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[49]
-#define SWIGTYPE_p_FullPhysics__Temperature swig_types[50]
-#define SWIGTYPE_p_FullPhysics__Unit swig_types[51]
-#define SWIGTYPE_p_allocator_type swig_types[52]
-#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[53]
-#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[54]
-#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[55]
-#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[56]
-#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[57]
-#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[58]
-#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[59]
-#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[60]
-#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[61]
-#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[62]
-#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[63]
-#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[64]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t swig_types[65]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Absorber_t swig_types[66]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t swig_types[67]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolProperty_t swig_types[68]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t swig_types[69]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Altitude_t swig_types[70]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t swig_types[71]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t swig_types[72]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t swig_types[73]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AtmosphereOco_t swig_types[74]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[75]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[76]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[77]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Constant_t swig_types[78]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t swig_types[79]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[80]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ground_t swig_types[81]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t swig_types[82]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_t swig_types[83]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t swig_types[84]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t swig_types[85]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_t swig_types[86]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t_t swig_types[87]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t swig_types[88]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[89]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Rayleigh_t_t swig_types[90]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_t swig_types[91]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[92]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t swig_types[93]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t swig_types[94]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_t swig_types[95]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t swig_types[96]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t swig_types[97]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_t swig_types[98]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t_t swig_types[99]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[100]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Rayleigh_t_t swig_types[101]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t swig_types[102]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[103]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t swig_types[104]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[105]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Rayleigh_t swig_types[106]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t swig_types[107]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[108]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[109]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t swig_types[110]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[111]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Temperature_t swig_types[112]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[113]
-#define SWIGTYPE_p_char swig_types[114]
-#define SWIGTYPE_p_char_type swig_types[115]
-#define SWIGTYPE_p_difference_type swig_types[116]
-#define SWIGTYPE_p_fmtflags swig_types[117]
-#define SWIGTYPE_p_int_type swig_types[118]
-#define SWIGTYPE_p_iostate swig_types[119]
-#define SWIGTYPE_p_off_type swig_types[120]
-#define SWIGTYPE_p_openmode swig_types[121]
-#define SWIGTYPE_p_pos_type swig_types[122]
-#define SWIGTYPE_p_seekdir swig_types[123]
-#define SWIGTYPE_p_size_t swig_types[124]
-#define SWIGTYPE_p_size_type swig_types[125]
-#define SWIGTYPE_p_state_type swig_types[126]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[127]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[128]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[129]
-#define SWIGTYPE_p_traits_type swig_types[130]
-#define SWIGTYPE_p_value_type swig_types[131]
-static swig_type_info *swig_types[133];
-static swig_module_info swig_module = {swig_types, 132, 0, 0, 0, 0};
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t swig_types[23]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Aerosol_t swig_types[24]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Altitude_t swig_types[25]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t swig_types[26]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Ground_t swig_types[27]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[28]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Rayleigh_t swig_types[29]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t swig_types[30]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[31]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Temperature_t swig_types[32]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t swig_types[33]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Absorber_t swig_types[34]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t swig_types[35]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t swig_types[36]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Aerosol_t swig_types[37]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Altitude_t swig_types[38]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t swig_types[39]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Ground_t swig_types[40]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[41]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Rayleigh_t swig_types[42]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t swig_types[43]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[44]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Temperature_t swig_types[45]
+#define SWIGTYPE_p_FullPhysics__Pressure swig_types[46]
+#define SWIGTYPE_p_FullPhysics__Rayleigh swig_types[47]
+#define SWIGTYPE_p_FullPhysics__RtAtmosphere swig_types[48]
+#define SWIGTYPE_p_FullPhysics__StateVector swig_types[49]
+#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[50]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t swig_types[51]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t swig_types[52]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[53]
+#define SWIGTYPE_p_FullPhysics__Temperature swig_types[54]
+#define SWIGTYPE_p_FullPhysics__Unit swig_types[55]
+#define SWIGTYPE_p_allocator_type swig_types[56]
+#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[57]
+#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[58]
+#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[59]
+#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[60]
+#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[61]
+#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[62]
+#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[63]
+#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[64]
+#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[65]
+#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[66]
+#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[67]
+#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[68]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t swig_types[69]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Absorber_t swig_types[70]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t swig_types[71]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolProperty_t swig_types[72]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t swig_types[73]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Altitude_t swig_types[74]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t swig_types[75]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t swig_types[76]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t swig_types[77]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AtmosphereOco_t swig_types[78]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[79]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[80]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[81]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Constant_t swig_types[82]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t swig_types[83]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[84]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ground_t swig_types[85]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t swig_types[86]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_t swig_types[87]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t swig_types[88]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t swig_types[89]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t swig_types[90]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_t swig_types[91]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t_t swig_types[92]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t swig_types[93]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[94]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Rayleigh_t_t swig_types[95]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_t swig_types[96]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[97]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t swig_types[98]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t swig_types[99]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_t swig_types[100]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t swig_types[101]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t swig_types[102]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t swig_types[103]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_t swig_types[104]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t_t swig_types[105]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_t swig_types[106]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[107]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Rayleigh_t_t swig_types[108]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t swig_types[109]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[110]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t swig_types[111]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[112]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Rayleigh_t swig_types[113]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t swig_types[114]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[115]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[116]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t swig_types[117]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t swig_types[118]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[119]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Temperature_t swig_types[120]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[121]
+#define SWIGTYPE_p_char swig_types[122]
+#define SWIGTYPE_p_char_type swig_types[123]
+#define SWIGTYPE_p_difference_type swig_types[124]
+#define SWIGTYPE_p_fmtflags swig_types[125]
+#define SWIGTYPE_p_int_type swig_types[126]
+#define SWIGTYPE_p_iostate swig_types[127]
+#define SWIGTYPE_p_off_type swig_types[128]
+#define SWIGTYPE_p_openmode swig_types[129]
+#define SWIGTYPE_p_pos_type swig_types[130]
+#define SWIGTYPE_p_seekdir swig_types[131]
+#define SWIGTYPE_p_size_t swig_types[132]
+#define SWIGTYPE_p_size_type swig_types[133]
+#define SWIGTYPE_p_state_type swig_types[134]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[135]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[136]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[137]
+#define SWIGTYPE_p_traits_type swig_types[138]
+#define SWIGTYPE_p_value_type swig_types[139]
+static swig_type_info *swig_types[141];
+static swig_module_info swig_module = {swig_types, 140, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -7422,6 +7430,9 @@ static PyMethodDef SwigMethods[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__Ground(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Ground *)  ((FullPhysics::SubStateVectorArray< FullPhysics::Ground > *) x));
+}
 static void *_p_FullPhysics__AtmosphereOcoTo_p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observable< FullPhysics::RtAtmosphere > *) (FullPhysics::RtAtmosphere *) ((FullPhysics::AtmosphereOco *) x));
 }
@@ -7441,17 +7452,16 @@ static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_Fu
 static void *_p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observable< FullPhysics::AerosolExtinction > *)  ((FullPhysics::AerosolExtinction *) x));
 }
+static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorObserver >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Ground > > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorObserver >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Absorber > > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolExtinction > >(*(boost::shared_ptr< FullPhysics::AerosolExtinction > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > >(*(boost::shared_ptr< FullPhysics::Pressure > *)x);
+static void *_p_FullPhysics__AerosolPropertyTo_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::AerosolProperty > *)  ((FullPhysics::AerosolProperty *) x));
 }
 static void *_p_boost__shared_ptrT_FullPhysics__RtAtmosphere_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -7461,13 +7471,29 @@ static void *_p_boost__shared_ptrT_FullPhysics__AtmosphereOco_tTo_p_boost__share
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::RtAtmosphere > >(*(boost::shared_ptr< FullPhysics::AtmosphereOco > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Ground > >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Ground > > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__Ground_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Ground > >(*(boost::shared_ptr< FullPhysics::Ground > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > >(*(boost::shared_ptr< FullPhysics::Pressure > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::StateVector > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolExtinction > >(*(boost::shared_ptr< FullPhysics::AerosolExtinction > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolProperty > >(*(boost::shared_ptr< FullPhysics::AerosolProperty > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -7550,10 +7576,6 @@ static void *_p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Temperature > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::AbsorberVmr > > *)x);
-}
 static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::Altitude > > *)x);
@@ -7566,6 +7588,10 @@ static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolProperty > > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolExtinction > > *)x);
@@ -7577,6 +7603,14 @@ static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosph
 static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::Pressure > > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::Ground > > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::AbsorberVmr > > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -7594,14 +7628,6 @@ static void *_p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__sha
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AerosolProperty > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::Absorber > > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > > *)x);
-}
 static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::Altitude > > *)x);
@@ -7614,6 +7640,10 @@ static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolProperty > > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolExtinction > > *)x);
@@ -7621,6 +7651,10 @@ static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol
 static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::StateVector > > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -7630,17 +7664,25 @@ static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmos
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::RtAtmosphere > > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > > *)x);
-}
 static void *_p_boost__shared_ptrT_FullPhysics__Altitude_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Altitude > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::Absorber > > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Rayleigh_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::Rayleigh > > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Ground > > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -7733,17 +7775,20 @@ static void *_p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__Generi
 static void *_p_FullPhysics__AutoDerivativeWithUnitT_double_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::AutoDerivativeWithUnit< double > *) x));
 }
-static void *_p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observer< FullPhysics::AbsorberVmr > *) x));
+static void *_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::AerosolProperty > *) x));
 }
 static void *_p_FullPhysics__GroundTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::Ground > *) ((FullPhysics::Ground *) x));
 }
-static void *_p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::RtAtmosphere > *) x));
+static void *_p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observer< FullPhysics::AbsorberVmr > *) x));
 }
 static void *_p_FullPhysics__RtAtmosphereTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::RtAtmosphere > *) ((FullPhysics::RtAtmosphere *) x));
+}
+static void *_p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::RtAtmosphere > *) x));
 }
 static void *_p_FullPhysics__ObserverT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observer< FullPhysics::Temperature > *) x));
@@ -7766,11 +7811,17 @@ static void *_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_tTo_p_FullPhys
 static void *_p_FullPhysics__ObservableT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::Temperature > *) x));
 }
+static void *_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observer< FullPhysics::AerosolProperty > *) x));
+}
+static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::Ground > *)(FullPhysics::Ground *) ((FullPhysics::SubStateVectorArray< FullPhysics::Ground > *) x));
+}
 static void *_p_FullPhysics__DoubleWithUnitTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::DoubleWithUnit *) x));
 }
 static void *_p_FullPhysics__AerosolPropertyTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::AerosolProperty *) x));
+    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::AerosolProperty > *) ((FullPhysics::AerosolProperty *) x));
 }
 static void *_p_FullPhysics__ObserverT_FullPhysics__Altitude_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observer< FullPhysics::Altitude > *) x));
@@ -7784,17 +7835,20 @@ static void *_p_FullPhysics__TemperatureTo_p_FullPhysics__GenericObject(void *x,
 static void *_p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observer< FullPhysics::AerosolExtinction > *) x));
 }
-static void *_p_FullPhysics__AbsorberVmrTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmr *) x));
-}
 static void *_p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::AerosolExtinction > *) x));
+}
+static void *_p_FullPhysics__AbsorberVmrTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmr *) x));
 }
 static void *_p_FullPhysics__ArrayWithUnitT_double_3_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::ArrayWithUnit< double,3 > *) x));
 }
 static void *_p_FullPhysics__ObservableT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::Ground > *) x));
+}
+static void *_p_FullPhysics__ObserverT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observer< FullPhysics::Ground > *) x));
 }
 static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::Absorber > *)(FullPhysics::Absorber *) ((FullPhysics::SubStateVectorArray< FullPhysics::Absorber > *) x));
@@ -7828,9 +7882,17 @@ static void *_p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::Temperature > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::AerosolProperty > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::Aerosol > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Ground > > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__Absorber_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -7883,9 +7945,17 @@ static void *_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_tTo_p_boost_
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::StateVectorObserver > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::AerosolProperty > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::Aerosol > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Ground > > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__Absorber_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -7927,8 +7997,15 @@ static void *_p_boost__shared_ptrT_FullPhysics__Rayleigh_tTo_p_boost__shared_ptr
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::Altitude > >(*(boost::shared_ptr< FullPhysics::Rayleigh > *)x);
 }
+static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::Ground > *) (FullPhysics::Ground *) ((FullPhysics::SubStateVectorArray< FullPhysics::Ground > *) x));
+}
 static void *_p_FullPhysics__GroundTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observable< FullPhysics::Ground > *)  ((FullPhysics::Ground *) x));
+}
+static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__Ground_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Ground >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Ground > > *)x);
 }
 static void *_p_FullPhysics__RayleighTo_p_FullPhysics__ObserverT_FullPhysics__Pressure_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observer< FullPhysics::Pressure > *)  ((FullPhysics::Rayleigh *) x));
@@ -7941,6 +8018,12 @@ static void *_p_FullPhysics__PressureTo_p_FullPhysics__ObservableT_FullPhysics__
 }
 static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_FullPhysics__Absorber(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Absorber *)  ((FullPhysics::SubStateVectorArray< FullPhysics::Absorber > *) x));
+}
+static void *_p_FullPhysics__AerosolPropertyTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::AerosolProperty *) x));
+}
+static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *)(FullPhysics::SubStateVectorObserver *) ((FullPhysics::SubStateVectorArray< FullPhysics::Ground > *) x));
 }
 static void *_p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::Aerosol *) x));
@@ -7963,11 +8046,11 @@ static void *_p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__ObserverT_FullPh
 static void *_p_FullPhysics__AbsorberTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::Absorber *) x));
 }
-static void *_p_FullPhysics__RtAtmosphereTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::RtAtmosphere *) x));
-}
 static void *_p_FullPhysics__PressureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::Pressure *) x));
+}
+static void *_p_FullPhysics__RtAtmosphereTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::RtAtmosphere *) x));
 }
 static void *_p_FullPhysics__AbsorberVmrTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::AbsorberVmr *) x));
@@ -7981,8 +8064,17 @@ static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__ba
 static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_istreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_istream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
 }
+static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::SubStateVectorObserver *)  ((FullPhysics::SubStateVectorArray< FullPhysics::Ground > *) x));
+}
 static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::SubStateVectorObserver *)  ((FullPhysics::SubStateVectorArray< FullPhysics::Absorber > *) x));
+}
+static void *_p_FullPhysics__AerosolPropertyTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::AerosolProperty *) x));
+}
+static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::StateVectorObserver *) (FullPhysics::SubStateVectorObserver *) ((FullPhysics::SubStateVectorArray< FullPhysics::Ground > *) x));
 }
 static void *_p_FullPhysics__AerosolTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::Aerosol *) x));
@@ -8002,11 +8094,11 @@ static void *_p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__StateVectorObser
 static void *_p_FullPhysics__AbsorberTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::Absorber *) x));
 }
-static void *_p_FullPhysics__RtAtmosphereTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::RtAtmosphere *) x));
-}
 static void *_p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::Pressure *) x));
+}
+static void *_p_FullPhysics__RtAtmosphereTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::RtAtmosphere *) x));
 }
 static void *_p_FullPhysics__AbsorberVmrTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::AbsorberVmr *) x));
@@ -8046,6 +8138,7 @@ static swig_type_info _swigt__p_FullPhysics__Ground = {"_p_FullPhysics__Ground",
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t = {"_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t", "FullPhysics::Observable< FullPhysics::AbsorberVmr > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__Absorber_t = {"_p_FullPhysics__ObservableT_FullPhysics__Absorber_t", "FullPhysics::Observable< FullPhysics::Absorber > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t = {"_p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t", "FullPhysics::Observable< FullPhysics::AerosolExtinction > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t = {"_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t", "FullPhysics::Observable< FullPhysics::AerosolProperty > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t = {"_p_FullPhysics__ObservableT_FullPhysics__Aerosol_t", "FullPhysics::Observable< FullPhysics::Aerosol > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__Altitude_t = {"_p_FullPhysics__ObservableT_FullPhysics__Altitude_t", "FullPhysics::Observable< FullPhysics::Altitude > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t = {"_p_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t", "FullPhysics::Observable< FullPhysics::AtmosphereOco > *", 0, 0, (void*)0, 0};
@@ -8058,9 +8151,11 @@ static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__Temperatur
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t = {"_p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t", "FullPhysics::Observer< FullPhysics::AbsorberVmr > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__Absorber_t = {"_p_FullPhysics__ObserverT_FullPhysics__Absorber_t", "FullPhysics::Observer< FullPhysics::Absorber > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t = {"_p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t", "FullPhysics::Observer< FullPhysics::AerosolExtinction > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t = {"_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t", "FullPhysics::Observer< FullPhysics::AerosolProperty > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t = {"_p_FullPhysics__ObserverT_FullPhysics__Aerosol_t", "FullPhysics::Observer< FullPhysics::Aerosol > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__Altitude_t = {"_p_FullPhysics__ObserverT_FullPhysics__Altitude_t", "FullPhysics::Observer< FullPhysics::Altitude > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t = {"_p_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t", "FullPhysics::Observer< FullPhysics::AtmosphereOco > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__Ground_t = {"_p_FullPhysics__ObserverT_FullPhysics__Ground_t", "FullPhysics::Observer< FullPhysics::Ground > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t = {"_p_FullPhysics__ObserverT_FullPhysics__Pressure_t", "FullPhysics::Observer< FullPhysics::Pressure > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__Rayleigh_t = {"_p_FullPhysics__ObserverT_FullPhysics__Rayleigh_t", "FullPhysics::Observer< FullPhysics::Rayleigh > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t = {"_p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t", "FullPhysics::Observer< FullPhysics::RtAtmosphere > *", 0, 0, (void*)0, 0};
@@ -8072,6 +8167,7 @@ static swig_type_info _swigt__p_FullPhysics__RtAtmosphere = {"_p_FullPhysics__Rt
 static swig_type_info _swigt__p_FullPhysics__StateVector = {"_p_FullPhysics__StateVector", "FullPhysics::StateVector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__StateVectorObserver = {"_p_FullPhysics__StateVectorObserver", "FullPhysics::StateVectorObserver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t = {"_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t", "FullPhysics::SubStateVectorArray< FullPhysics::Absorber > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t = {"_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t", "FullPhysics::SubStateVectorArray< FullPhysics::Ground > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__SubStateVectorObserver = {"_p_FullPhysics__SubStateVectorObserver", "FullPhysics::SubStateVectorObserver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Temperature = {"_p_FullPhysics__Temperature", "FullPhysics::Temperature *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Unit = {"_p_FullPhysics__Unit", "FullPhysics::Unit *", 0, 0, (void*)0, 0};
@@ -8108,6 +8204,7 @@ static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Ground_t = {"_p_
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::Absorber > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolExtinction > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolProperty > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::Altitude > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::AtmosphereOco > > *", 0, 0, (void*)0, 0};
@@ -8120,9 +8217,11 @@ static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_Full
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::AbsorberVmr > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::Absorber > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolExtinction > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolProperty > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::Altitude > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::AtmosphereOco > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::Ground > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::Pressure > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Rayleigh_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Rayleigh_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::Rayleigh > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::RtAtmosphere > > *", 0, 0, (void*)0, 0};
@@ -8134,6 +8233,7 @@ static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t =
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t = {"_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t", "boost::shared_ptr< FullPhysics::StateVectorObserver > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t = {"_p_boost__shared_ptrT_FullPhysics__StateVector_t", "boost::shared_ptr< FullPhysics::StateVector > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t = {"_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t", "boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Absorber > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t = {"_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t", "boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Ground > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t = {"_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t", "boost::shared_ptr< FullPhysics::SubStateVectorObserver > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t = {"_p_boost__shared_ptrT_FullPhysics__Temperature_t", "boost::shared_ptr< FullPhysics::Temperature > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Unit_t = {"_p_boost__shared_ptrT_FullPhysics__Unit_t", "boost::shared_ptr< FullPhysics::Unit > *", 0, 0, (void*)0, 0};
@@ -8180,6 +8280,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__Absorber_t,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t,
+  &_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__Altitude_t,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t,
@@ -8192,9 +8293,11 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t,
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__Absorber_t,
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t,
+  &_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t,
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t,
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__Altitude_t,
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t,
+  &_swigt__p_FullPhysics__ObserverT_FullPhysics__Ground_t,
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t,
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__Rayleigh_t,
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t,
@@ -8206,6 +8309,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__StateVector,
   &_swigt__p_FullPhysics__StateVectorObserver,
   &_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t,
+  &_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t,
   &_swigt__p_FullPhysics__SubStateVectorObserver,
   &_swigt__p_FullPhysics__Temperature,
   &_swigt__p_FullPhysics__Unit,
@@ -8242,6 +8346,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t_t,
@@ -8254,9 +8359,11 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Rayleigh_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t,
@@ -8268,6 +8375,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t,
@@ -8309,15 +8417,16 @@ static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeT_double_t[] = {  {&_
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeWithUnitT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Constant[] = {  {&_swigt__p_FullPhysics__Constant, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__DoubleWithUnit[] = {  {&_swigt__p_FullPhysics__DoubleWithUnit, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_2_t, _p_FullPhysics__ArrayWithUnitT_double_2_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t, _p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t, _p_FullPhysics__ObservableT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, _p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Constant, _p_FullPhysics__ConstantTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Absorber, _p_FullPhysics__AbsorberTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Absorber_t, _p_FullPhysics__ObservableT_FullPhysics__Absorber_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Altitude, _p_FullPhysics__AltitudeTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Rayleigh_t, _p_FullPhysics__ObserverT_FullPhysics__Rayleigh_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t, _p_FullPhysics__ObserverT_FullPhysics__Aerosol_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t, _p_FullPhysics__ObservableT_FullPhysics__Aerosol_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Absorber_t, _p_FullPhysics__ObserverT_FullPhysics__Absorber_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Unit, _p_FullPhysics__UnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_1_t, _p_FullPhysics__ArrayWithUnitT_double_1_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, _p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__RtAtmosphere, _p_FullPhysics__RtAtmosphereTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t, _p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, _p_FullPhysics__AutoDerivativeWithUnitT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Rayleigh, _p_FullPhysics__RayleighTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AtmosphereOco, _p_FullPhysics__AtmosphereOcoTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, _p_FullPhysics__ObservableT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t, _p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Temperature_t, _p_FullPhysics__ObservableT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Ground, _p_FullPhysics__GroundTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__DoubleWithUnit, _p_FullPhysics__DoubleWithUnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_3_t, _p_FullPhysics__ArrayWithUnitT_double_3_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__AerosolProperty, _p_FullPhysics__AerosolPropertyTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t, _p_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Temperature_t, _p_FullPhysics__ObserverT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Altitude_t, _p_FullPhysics__ObservableT_FullPhysics__Altitude_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Altitude_t, _p_FullPhysics__ObserverT_FullPhysics__Altitude_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t, _p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Rayleigh_t, _p_FullPhysics__ObservableT_FullPhysics__Rayleigh_tTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__Ground[] = {  {&_swigt__p_FullPhysics__Ground, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_2_t, _p_FullPhysics__ArrayWithUnitT_double_2_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t, _p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t, _p_FullPhysics__ObservableT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Ground_t, _p_FullPhysics__ObserverT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, _p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Constant, _p_FullPhysics__ConstantTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Absorber, _p_FullPhysics__AbsorberTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Absorber_t, _p_FullPhysics__ObservableT_FullPhysics__Absorber_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Altitude, _p_FullPhysics__AltitudeTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t, _p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t, _p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Rayleigh_t, _p_FullPhysics__ObserverT_FullPhysics__Rayleigh_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t, _p_FullPhysics__ObserverT_FullPhysics__Aerosol_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t, _p_FullPhysics__ObservableT_FullPhysics__Aerosol_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Absorber_t, _p_FullPhysics__ObserverT_FullPhysics__Absorber_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Unit, _p_FullPhysics__UnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_1_t, _p_FullPhysics__ArrayWithUnitT_double_1_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, _p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__RtAtmosphere, _p_FullPhysics__RtAtmosphereTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t, _p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, _p_FullPhysics__AutoDerivativeWithUnitT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Rayleigh, _p_FullPhysics__RayleighTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AtmosphereOco, _p_FullPhysics__AtmosphereOcoTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, _p_FullPhysics__ObservableT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t, _p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Temperature_t, _p_FullPhysics__ObservableT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Ground, _p_FullPhysics__GroundTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__DoubleWithUnit, _p_FullPhysics__DoubleWithUnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_3_t, _p_FullPhysics__ArrayWithUnitT_double_3_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__AerosolProperty, _p_FullPhysics__AerosolPropertyTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t, _p_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Temperature_t, _p_FullPhysics__ObserverT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Altitude_t, _p_FullPhysics__ObservableT_FullPhysics__Altitude_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Altitude_t, _p_FullPhysics__ObserverT_FullPhysics__Altitude_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t, _p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Rayleigh_t, _p_FullPhysics__ObservableT_FullPhysics__Rayleigh_tTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Ground[] = {  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__Ground, 0, 0},  {&_swigt__p_FullPhysics__Ground, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Absorber_t[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Absorber_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Absorber, _p_FullPhysics__AbsorberTo_p_FullPhysics__ObservableT_FullPhysics__Absorber_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_FullPhysics__ObservableT_FullPhysics__Absorber_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t[] = {  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t[] = {  {&_swigt__p_FullPhysics__AerosolProperty, _p_FullPhysics__AerosolPropertyTo_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t[] = {  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__ObservableT_FullPhysics__Aerosol_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Altitude_t[] = {  {&_swigt__p_FullPhysics__Altitude, _p_FullPhysics__AltitudeTo_p_FullPhysics__ObservableT_FullPhysics__Altitude_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Altitude_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Ground_t[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Ground, _p_FullPhysics__GroundTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Ground_t[] = {  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Ground, _p_FullPhysics__GroundTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Pressure_t[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObservableT_FullPhysics__Pressure_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Rayleigh_t[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Rayleigh_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t[] = {  {&_swigt__p_FullPhysics__AtmosphereOco, _p_FullPhysics__AtmosphereOcoTo_p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t, 0, 0, 0},  {&_swigt__p_FullPhysics__RtAtmosphere, _p_FullPhysics__RtAtmosphereTo_p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t, 0, 0},{0, 0, 0, 0}};
@@ -8326,21 +8435,24 @@ static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Temperatur
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Absorber_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Absorber_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t[] = {  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t[] = {  {&_swigt__p_FullPhysics__AtmosphereOco, _p_FullPhysics__AtmosphereOcoTo_p_FullPhysics__ObserverT_FullPhysics__Aerosol_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Altitude_t[] = {  {&_swigt__p_FullPhysics__Rayleigh, _p_FullPhysics__RayleighTo_p_FullPhysics__ObserverT_FullPhysics__Altitude_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Altitude_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Ground_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Ground_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Pressure_t[] = {  {&_swigt__p_FullPhysics__Rayleigh, _p_FullPhysics__RayleighTo_p_FullPhysics__ObserverT_FullPhysics__Pressure_t, 0, 0},  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__Pressure_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Rayleigh_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Rayleigh_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__StateVector_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AtmosphereOco, _p_FullPhysics__AtmosphereOcoTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, _p_FullPhysics__StateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__Absorber, _p_FullPhysics__AbsorberTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__RtAtmosphere, _p_FullPhysics__RtAtmosphereTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__StateVector_t[] = {  {&_swigt__p_FullPhysics__RtAtmosphere, _p_FullPhysics__RtAtmosphereTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, _p_FullPhysics__StateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AtmosphereOco, _p_FullPhysics__AtmosphereOcoTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__Absorber, _p_FullPhysics__AbsorberTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AerosolProperty, _p_FullPhysics__AerosolPropertyTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Temperature_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Temperature_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Pressure[] = {  {&_swigt__p_FullPhysics__Pressure, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Rayleigh[] = {  {&_swigt__p_FullPhysics__Rayleigh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__RtAtmosphere[] = {  {&_swigt__p_FullPhysics__AtmosphereOco, _p_FullPhysics__AtmosphereOcoTo_p_FullPhysics__RtAtmosphere, 0, 0},  {&_swigt__p_FullPhysics__RtAtmosphere, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__StateVector[] = {  {&_swigt__p_FullPhysics__StateVector, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__StateVectorObserver[] = {  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AtmosphereOco, _p_FullPhysics__AtmosphereOcoTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Absorber, _p_FullPhysics__AbsorberTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__RtAtmosphere, _p_FullPhysics__RtAtmosphereTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__StateVectorObserver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__StateVectorObserver[] = {  {&_swigt__p_FullPhysics__AerosolProperty, _p_FullPhysics__AerosolPropertyTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AtmosphereOco, _p_FullPhysics__AtmosphereOcoTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Absorber, _p_FullPhysics__AbsorberTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__RtAtmosphere, _p_FullPhysics__RtAtmosphereTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__StateVectorObserver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t[] = {  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__SubStateVectorObserver[] = {  {&_swigt__p_FullPhysics__SubStateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_FullPhysics__SubStateVectorObserver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t[] = {  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__SubStateVectorObserver[] = {  {&_swigt__p_FullPhysics__SubStateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__SubStateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_tTo_p_FullPhysics__SubStateVectorObserver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Temperature[] = {  {&_swigt__p_FullPhysics__Temperature, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Unit[] = {  {&_swigt__p_FullPhysics__Unit, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -8371,15 +8483,16 @@ static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Constant_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Constant_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, _p_boost__shared_ptrT_FullPhysics__Ground_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t, _p_boost__shared_ptrT_FullPhysics__RtAtmosphere_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Rayleigh_t, _p_boost__shared_ptrT_FullPhysics__Rayleigh_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Absorber_t, _p_boost__shared_ptrT_FullPhysics__Absorber_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AtmosphereOco_t, _p_boost__shared_ptrT_FullPhysics__AtmosphereOco_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Constant_t, _p_boost__shared_ptrT_FullPhysics__Constant_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Rayleigh_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Rayleigh_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Rayleigh_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Rayleigh_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t, _p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Altitude_t, _p_boost__shared_ptrT_FullPhysics__Altitude_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Ground_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, _p_boost__shared_ptrT_FullPhysics__Ground_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t, _p_boost__shared_ptrT_FullPhysics__RtAtmosphere_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Rayleigh_t, _p_boost__shared_ptrT_FullPhysics__Rayleigh_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Absorber_t, _p_boost__shared_ptrT_FullPhysics__Absorber_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AtmosphereOco_t, _p_boost__shared_ptrT_FullPhysics__AtmosphereOco_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Constant_t, _p_boost__shared_ptrT_FullPhysics__Constant_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Rayleigh_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Rayleigh_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Rayleigh_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Rayleigh_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t, _p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Altitude_t, _p_boost__shared_ptrT_FullPhysics__Altitude_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Ground_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__Ground_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Absorber_t, _p_boost__shared_ptrT_FullPhysics__Absorber_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Altitude_t, _p_boost__shared_ptrT_FullPhysics__Altitude_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, _p_boost__shared_ptrT_FullPhysics__Ground_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, _p_boost__shared_ptrT_FullPhysics__Ground_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Rayleigh_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Rayleigh_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t, _p_boost__shared_ptrT_FullPhysics__RtAtmosphere_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AtmosphereOco_t, _p_boost__shared_ptrT_FullPhysics__AtmosphereOco_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_t, 0, 0},{0, 0, 0, 0}};
@@ -8388,21 +8501,24 @@ static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_Full
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AtmosphereOco_t, _p_boost__shared_ptrT_FullPhysics__AtmosphereOco_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Rayleigh_t, _p_boost__shared_ptrT_FullPhysics__Rayleigh_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Rayleigh_t, _p_boost__shared_ptrT_FullPhysics__Rayleigh_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Rayleigh_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Rayleigh_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__StateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Absorber_t, _p_boost__shared_ptrT_FullPhysics__Absorber_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t, _p_boost__shared_ptrT_FullPhysics__RtAtmosphere_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AtmosphereOco_t, _p_boost__shared_ptrT_FullPhysics__AtmosphereOco_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__StateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Absorber_t, _p_boost__shared_ptrT_FullPhysics__Absorber_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t, _p_boost__shared_ptrT_FullPhysics__RtAtmosphere_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AtmosphereOco_t, _p_boost__shared_ptrT_FullPhysics__AtmosphereOco_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Pressure_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Rayleigh_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Rayleigh_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AtmosphereOco_t, _p_boost__shared_ptrT_FullPhysics__AtmosphereOco_tTo_p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Absorber_t, _p_boost__shared_ptrT_FullPhysics__Absorber_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t, _p_boost__shared_ptrT_FullPhysics__RtAtmosphere_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AtmosphereOco_t, _p_boost__shared_ptrT_FullPhysics__AtmosphereOco_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Absorber_t, _p_boost__shared_ptrT_FullPhysics__Absorber_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t, _p_boost__shared_ptrT_FullPhysics__RtAtmosphere_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AtmosphereOco_t, _p_boost__shared_ptrT_FullPhysics__AtmosphereOco_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVector_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Temperature_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -8448,6 +8564,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__Absorber_t,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t,
+  _swigc__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__Altitude_t,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t,
@@ -8460,9 +8577,11 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t,
   _swigc__p_FullPhysics__ObserverT_FullPhysics__Absorber_t,
   _swigc__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t,
+  _swigc__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t,
   _swigc__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t,
   _swigc__p_FullPhysics__ObserverT_FullPhysics__Altitude_t,
   _swigc__p_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t,
+  _swigc__p_FullPhysics__ObserverT_FullPhysics__Ground_t,
   _swigc__p_FullPhysics__ObserverT_FullPhysics__Pressure_t,
   _swigc__p_FullPhysics__ObserverT_FullPhysics__Rayleigh_t,
   _swigc__p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t,
@@ -8474,6 +8593,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__StateVector,
   _swigc__p_FullPhysics__StateVectorObserver,
   _swigc__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t,
+  _swigc__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t,
   _swigc__p_FullPhysics__SubStateVectorObserver,
   _swigc__p_FullPhysics__Temperature,
   _swigc__p_FullPhysics__Unit,
@@ -8510,6 +8630,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Absorber_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Altitude_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AtmosphereOco_t_t,
@@ -8522,9 +8643,11 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Absorber_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Altitude_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AtmosphereOco_t_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Rayleigh_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t,
@@ -8536,6 +8659,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__StateVector_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Temperature_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t,

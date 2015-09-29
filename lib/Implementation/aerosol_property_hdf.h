@@ -1,6 +1,6 @@
 #ifndef AEROSOL_PROPERTY_HDF_H
 #define AEROSOL_PROPERTY_HDF_H
-#include "aerosol_property.h"
+#include "aerosol_property_imp_base.h"
 #include "hdf_file.h"
 #include "linear_interpolate.h"
 #include "scattering_moment_interpolator.h"
@@ -19,10 +19,11 @@ namespace FullPhysics {
   outside the range of the file is requested, then we extrapolate to
   get the value.
 *******************************************************************/
-class AerosolPropertyHdf : public AerosolProperty {
+class AerosolPropertyHdf : public AerosolPropertyImpBase {
 public:
   AerosolPropertyHdf(const HdfFile& F, const std::string& Group_name);
   virtual ~AerosolPropertyHdf() {}
+  virtual boost::shared_ptr<AerosolProperty> clone() const;
   virtual double extinction_coefficient(double wn) const 
   { return (*qext)(wn); }
   virtual double scattering_coefficient(double wn) const

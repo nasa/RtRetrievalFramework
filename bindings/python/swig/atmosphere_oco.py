@@ -113,7 +113,6 @@ import full_physics_swig.observer
 import full_physics_swig.generic_object
 import full_physics_swig.state_vector
 import full_physics_swig.aerosol
-import full_physics_swig.pressure
 import full_physics_swig.aerosol_extinction
 class ObserverAtmosphereOco(full_physics_swig.generic_object.GenericObject):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')

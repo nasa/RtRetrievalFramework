@@ -1,15 +1,45 @@
 #ifndef AEROSOL_PROPERTY_H
 #define AEROSOL_PROPERTY_H
-#include "printable.h"
+#include "state_vector.h"
 #include <blitz/array.h>
 
 namespace FullPhysics {
 /****************************************************************//**
   This gives the Aerosol properties for an Aerosol.
+
+  Our current AerosolProperty - AerosolPropertyHdf - doesn't make any
+  use of our StateVector, we don't have aerosol properties in it.
+  But we may want to have this in the future, so we've made this class 
+  a StateVectorObserver.
+
+  Other objects may depend on the AerosolProperty, and should be updated
+  when the AerosolProperty is updated. To facilitate that, this class in
+  an Oberverable, and objects can add themselves as Observers to be
+  notified when the AerosolProperty is updated.
+
+  When implementing a new class, you almost always will want to derive
+  from AerosolPropertyImpBase rather than from this class. See that
+  class for a description.
 *******************************************************************/
-class AerosolProperty : public Printable<AerosolProperty> {
+class AerosolProperty : virtual public StateVectorObserver,
+			public Observable<AerosolProperty> {
 public:
   virtual ~AerosolProperty() {}
+  virtual void add_observer(Observer<AerosolProperty>& Obs) 
+  { add_observer_do(Obs, *this);}
+  virtual void remove_observer(Observer<AerosolProperty>& Obs) 
+  { remove_observer_do(Obs, *this);}
+
+//-----------------------------------------------------------------------
+/// Clone a AerosolProperty object. Note that the cloned version will *not*
+/// be attached to a StateVector or Observer<AerosolProperty>, although you
+/// can of course attach them after receiving the cloned object.
+///
+/// Because this isn't attached to the StateVector, one use of the
+/// clone operator is to create a "frozen" AerosolProperty object.
+//-----------------------------------------------------------------------
+
+  virtual boost::shared_ptr<AerosolProperty> clone() const = 0;
 
 //-----------------------------------------------------------------------
 /// Return extinction coefficient for the given wave number.
@@ -42,8 +72,6 @@ public:
 
   virtual blitz::Array<double, 2> phase_function_moment(double wn, 
 			int nmom = -1, int nscatt = -1) const = 0;
-
-  virtual void print(std::ostream& Os) const { Os << "AerosolProperty";}
 };
 }
 #endif

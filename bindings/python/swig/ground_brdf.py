@@ -111,7 +111,7 @@ def _new_from_set(cls, version, *args):
 import full_physics_swig.ground
 import full_physics_swig.observer
 import full_physics_swig.generic_object
-import full_physics_swig.sub_state_vector_array
+import full_physics_swig.state_vector
 class GroundBrdfVeg(full_physics_swig.ground.Ground):
     """
     C++ includes: ground_brdf.h

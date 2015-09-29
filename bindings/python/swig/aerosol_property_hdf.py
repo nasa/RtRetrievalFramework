@@ -109,7 +109,9 @@ def _new_from_set(cls, version, *args):
     return inst
 
 import full_physics_swig.aerosol_property
+import full_physics_swig.observer
 import full_physics_swig.generic_object
+import full_physics_swig.state_vector
 class AerosolPropertyHdf(full_physics_swig.aerosol_property.AerosolProperty):
     """
     This gives the Aerosol properties for an Aerosol.
@@ -127,13 +129,8 @@ class AerosolPropertyHdf(full_physics_swig.aerosol_property.AerosolProperty):
     C++ includes: aerosol_property_hdf.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """
-        AerosolPropertyHdf::AerosolPropertyHdf(const HdfFile &F, const std::string &Group_name)
-        Read the given group in the given file for the aerosol properties. 
-        """
-        _aerosol_property_hdf.AerosolPropertyHdf_swiginit(self,_aerosol_property_hdf.new_AerosolPropertyHdf(*args))
     def phase_function_moment(self, *args):
         """
         virtual blitz::Array<double, 2> FullPhysics::AerosolPropertyHdf::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const

@@ -111,8 +111,8 @@ def _new_from_set(cls, version, *args):
 import full_physics_swig.ground
 import full_physics_swig.observer
 import full_physics_swig.generic_object
-import full_physics_swig.sub_state_vector_array
-class GroundLambertian(object):
+import full_physics_swig.state_vector
+class GroundLambertian(full_physics_swig.ground.SubStateVectorArrayGround):
     """
     This class implements a Lambertian albedo as a ground type.
 
@@ -128,13 +128,6 @@ class GroundLambertian(object):
 
         """
         _ground_lambertian.GroundLambertian_swiginit(self,_ground_lambertian.new_GroundLambertian(*args))
-    def surface_parameter(self, *args):
-        """
-        ArrayAd< double, 1 > GroundLambertian::surface_parameter(const double wn, const int spec_index) const
-
-        """
-        return _ground_lambertian.GroundLambertian_surface_parameter(self, *args)
-
     def albedo(self, *args):
         """
         const AutoDerivative< double > GroundLambertian::albedo(const DoubleWithUnit wave_point, const int spec_index) const
@@ -178,27 +171,6 @@ class GroundLambertian(object):
         """
         return _ground_lambertian.GroundLambertian_reference_point(self, *args)
 
-    def clone(self):
-        """
-        boost::shared_ptr< Ground > GroundLambertian::clone() const
-
-        """
-        return _ground_lambertian.GroundLambertian_clone(self)
-
-    def state_vector_name_i(self, *args):
-        """
-        std::string GroundLambertian::state_vector_name_i(int i) const
-
-        """
-        return _ground_lambertian.GroundLambertian_state_vector_name_i(self, *args)
-
-    def print_desc(self, *args):
-        """
-        void GroundLambertian::print(std::ostream &Os) const
-
-        """
-        return _ground_lambertian.GroundLambertian_print_desc(self, *args)
-
     def desc(self):
         """
         virtual std::string FullPhysics::GroundLambertian::desc() const
@@ -207,16 +179,12 @@ class GroundLambertian(object):
         return _ground_lambertian.GroundLambertian_desc(self)
 
     __swig_destroy__ = _ground_lambertian.delete_GroundLambertian
-GroundLambertian.surface_parameter = new_instancemethod(_ground_lambertian.GroundLambertian_surface_parameter,None,GroundLambertian)
 GroundLambertian.albedo = new_instancemethod(_ground_lambertian.GroundLambertian_albedo,None,GroundLambertian)
 GroundLambertian.number_spectrometer = new_instancemethod(_ground_lambertian.GroundLambertian_number_spectrometer,None,GroundLambertian)
 GroundLambertian.number_params = new_instancemethod(_ground_lambertian.GroundLambertian_number_params,None,GroundLambertian)
 GroundLambertian.albedo_coefficients = new_instancemethod(_ground_lambertian.GroundLambertian_albedo_coefficients,None,GroundLambertian)
 GroundLambertian.albedo_covariance = new_instancemethod(_ground_lambertian.GroundLambertian_albedo_covariance,None,GroundLambertian)
 GroundLambertian.reference_point = new_instancemethod(_ground_lambertian.GroundLambertian_reference_point,None,GroundLambertian)
-GroundLambertian.clone = new_instancemethod(_ground_lambertian.GroundLambertian_clone,None,GroundLambertian)
-GroundLambertian.state_vector_name_i = new_instancemethod(_ground_lambertian.GroundLambertian_state_vector_name_i,None,GroundLambertian)
-GroundLambertian.print_desc = new_instancemethod(_ground_lambertian.GroundLambertian_print_desc,None,GroundLambertian)
 GroundLambertian.desc = new_instancemethod(_ground_lambertian.GroundLambertian_desc,None,GroundLambertian)
 GroundLambertian_swigregister = _ground_lambertian.GroundLambertian_swigregister
 GroundLambertian_swigregister(GroundLambertian)
