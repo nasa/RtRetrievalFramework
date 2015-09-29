@@ -71,4 +71,29 @@ void LuabindObject::set_index
 }
 
 
+//-----------------------------------------------------------------------
+/// Create a LuabindObject from a GenericObject. This is really meant
+/// for use in python, in C++ you can just directly use the templated
+/// constructor with the actually type.
+//-----------------------------------------------------------------------
 
+boost::shared_ptr<LuabindObject> 
+LuabindObject::create_luabind_object
+(const boost::shared_ptr<LuaState>& Ls,
+ const boost::shared_ptr<GenericObject>& Obj)
+{
+  boost::shared_ptr<LuabindObject> res;
+  BOOST_FOREACH(const boost::shared_ptr<BridgeLuabindAndGenericBase>& v,
+		derived_bridge) {
+    res = v->luabind_object(Ls, Obj);
+    if(res)
+      return res;
+  }
+  BOOST_FOREACH(const boost::shared_ptr<BridgeLuabindAndGenericBase>& v,
+		base_bridge) {
+    res = v->luabind_object(Ls, Obj);
+    if(res)
+      return res;
+  }
+  throw Exception("Unrecognized type in LuabindObject::set_index"); 
+}

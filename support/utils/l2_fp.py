@@ -7,8 +7,6 @@ import imp
 import re
 from full_physics import *
 
-import l2_lua
-
 def run_python_config(config_filename, output_file):
     """Runs a python configurations which is expected to load a Lua configuration itself
        and create a global in it's name space named "ls" 

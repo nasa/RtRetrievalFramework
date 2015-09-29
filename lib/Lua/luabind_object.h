@@ -24,6 +24,16 @@ public:
   virtual ~BridgeLuabindAndGenericBase() {}
 
 //-----------------------------------------------------------------------
+/// Create a LuabindObject from the given type, or return a null
+/// pointer if we can't.
+//-----------------------------------------------------------------------
+
+  virtual boost::shared_ptr<LuabindObject> 
+  luabind_object(const boost::shared_ptr<LuaState>& Ls,
+		 const boost::shared_ptr<GenericObject>& Obj)
+    const = 0;
+
+//-----------------------------------------------------------------------
 /// Return a GenericObject if we can convert, or a null pointer if
 /// we can't.
 //-----------------------------------------------------------------------
@@ -106,6 +116,9 @@ public:
   void set_value(const std::string& Vname, 
 				const boost::shared_ptr<GenericObject>& V);
   void set_index(int Vidx, const boost::shared_ptr<GenericObject>& V);
+  static boost::shared_ptr<LuabindObject> 
+  create_luabind_object(const boost::shared_ptr<LuaState>& Ls,
+			const boost::shared_ptr<GenericObject>& Obj);
 
 //-----------------------------------------------------------------------
 /// Return a variable found in this table as another LuabindObject.
@@ -475,6 +488,18 @@ template<class T>  class BridgeLuabindAndGeneric :
 public:
   BridgeLuabindAndGeneric() {}
   virtual ~BridgeLuabindAndGeneric() {}
+  virtual boost::shared_ptr<LuabindObject> 
+  luabind_object(const boost::shared_ptr<LuaState>& Ls,
+		 const boost::shared_ptr<GenericObject>& Obj)
+    const 
+  {
+    boost::shared_ptr<T> v = boost::dynamic_pointer_cast<T>(Obj);
+    boost::shared_ptr<LuabindObject> res;
+    if(v)
+      res.reset(new LuabindObject(Ls, v));
+    return res;
+  }
+  
   virtual boost::shared_ptr<GenericObject> value(const LuabindObject& Lobj) 
     const
   {

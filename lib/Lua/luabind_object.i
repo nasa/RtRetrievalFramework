@@ -154,6 +154,12 @@ public:
  LuabindObject(const boost::shared_ptr<LuaState>& Ls, const blitz::Array<int, 2>& V);
  LuabindObject(const boost::shared_ptr<LuaState>& Ls, const blitz::Array<int, 3>& V);
 %extend {
+  LuabindObject(const boost::shared_ptr<LuaState>& Ls, 
+		const boost::shared_ptr<GenericObject>& Obj)
+    {
+      boost::shared_ptr<FullPhysics::LuabindObject> lb = FullPhysics::LuabindObject::create_luabind_object(Ls, Obj);
+      return new FullPhysics::LuabindObject(*lb);
+    }
   void set_value_bool(const std::string& Vname, bool V)
   { $self->set_value(Vname, V); }
   void set_index_bool(int Vidx, bool V)
