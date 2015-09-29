@@ -5382,6 +5382,10 @@ SWIGINTERN bool FullPhysics_LuabindObject_isblitzarray2d_double(FullPhysics::Lua
 SWIGINTERN blitz::Array< double,2 > FullPhysics_LuabindObject_getblitzarray2d_double(FullPhysics::LuabindObject const *self){ return self->value<blitz::Array<double, 2> >(); }
 SWIGINTERN bool FullPhysics_LuabindObject_isblitzarray1d_bool(FullPhysics::LuabindObject const *self){ return self->is_type<blitz::Array<bool, 1> >(); }
 SWIGINTERN blitz::Array< bool,1 > FullPhysics_LuabindObject_getblitzarray1d_bool(FullPhysics::LuabindObject const *self){ return self->value<blitz::Array<bool, 1> >(); }
+SWIGINTERN FullPhysics::LuabindObject *new_FullPhysics_LuabindObject__SWIG_13(boost::shared_ptr< FullPhysics::LuaState > const &Ls,boost::shared_ptr< FullPhysics::GenericObject > const &Obj){
+      boost::shared_ptr<FullPhysics::LuabindObject> lb = FullPhysics::LuabindObject::create_luabind_object(Ls, Obj);
+      return new FullPhysics::LuabindObject(*lb);
+    }
 
 SWIGINTERN int
 SWIG_AsVal_bool (PyObject *obj, bool *val)
@@ -10800,6 +10804,90 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_LuabindObject__SWIG_13(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  boost::shared_ptr< FullPhysics::LuaState > *arg1 = 0 ;
+  boost::shared_ptr< FullPhysics::GenericObject > *arg2 = 0 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::LuaState > tempshared1 ;
+  boost::shared_ptr< FullPhysics::LuaState > temp2shared1 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::GenericObject > tempshared2 ;
+  boost::shared_ptr< FullPhysics::GenericObject > temp2shared2 ;
+  FullPhysics::LuabindObject *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LuaState_t,  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_LuabindObject" "', argument " "1"" of type '" "boost::shared_ptr< FullPhysics::LuaState > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp1) tempshared1 = *reinterpret_cast< boost::shared_ptr< FullPhysics::LuaState > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::LuaState > * >(argp1);
+      arg1 = &tempshared1;
+    } else {
+      arg1 = (argp1) ? reinterpret_cast< boost::shared_ptr< FullPhysics::LuaState > * >(argp1) : &tempshared1;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg1->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared1.reset(arg1->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg1 = &temp2shared1;
+    }
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_LuabindObject" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::GenericObject > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::GenericObject > * >(argp2);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::GenericObject > * >(argp2);
+      arg2 = &tempshared2;
+    } else {
+      arg2 = (argp2) ? reinterpret_cast< boost::shared_ptr< FullPhysics::GenericObject > * >(argp2) : &tempshared2;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg2->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared2.reset(arg2->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg2 = &temp2shared2;
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::LuabindObject *)new_FullPhysics_LuabindObject__SWIG_13((boost::shared_ptr< FullPhysics::LuaState > const &)*arg1,(boost::shared_ptr< FullPhysics::GenericObject > const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::LuabindObject > *smartresult = result ? new boost::shared_ptr<  FullPhysics::LuabindObject >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LuabindObject_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_LuabindObject(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
@@ -10820,13 +10908,11 @@ check_1:
   if (argc == 2) {
     int _v = 0;
     {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0);
+      _v = SWIG_CheckState(res);
     }
     if (!_v) goto check_2;
-    return _wrap_new_LuabindObject__SWIG_1(self, argc, argv);
+    return _wrap_new_LuabindObject__SWIG_13(self, argc, argv);
   }
 check_2:
   
@@ -10834,12 +10920,12 @@ check_2:
     int _v = 0;
     {
       {
-        PythonObject t(to_numpy<double>(argv[1]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==1 ? 1 : 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
     }
     if (!_v) goto check_3;
-    return _wrap_new_LuabindObject__SWIG_4(self, argc, argv);
+    return _wrap_new_LuabindObject__SWIG_1(self, argc, argv);
   }
 check_3:
   
@@ -10951,14 +11037,27 @@ check_11:
     int _v = 0;
     {
       {
+        PythonObject t(to_numpy<double>(argv[1]));
+        _v = (t.obj && PyArray_NDIM(t.obj) ==1 ? 1 : 0);
+      }
+    }
+    if (!_v) goto check_12;
+    return _wrap_new_LuabindObject__SWIG_4(self, argc, argv);
+  }
+check_12:
+  
+  if (argc == 2) {
+    int _v = 0;
+    {
+      {
         int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
     }
-    if (!_v) goto check_12;
+    if (!_v) goto check_13;
     return _wrap_new_LuabindObject__SWIG_2(self, argc, argv);
   }
-check_12:
+check_13:
   
   if (argc == 2) {
     return _wrap_new_LuabindObject__SWIG_0(self, argc, argv);
@@ -10979,7 +11078,8 @@ fail:
     "    FullPhysics::LuabindObject::LuabindObject(boost::shared_ptr< FullPhysics::LuaState > const &,blitz::Array< bool,3 > const &)\n"
     "    FullPhysics::LuabindObject::LuabindObject(boost::shared_ptr< FullPhysics::LuaState > const &,blitz::Array< int,1 > const &)\n"
     "    FullPhysics::LuabindObject::LuabindObject(boost::shared_ptr< FullPhysics::LuaState > const &,blitz::Array< int,2 > const &)\n"
-    "    FullPhysics::LuabindObject::LuabindObject(boost::shared_ptr< FullPhysics::LuaState > const &,blitz::Array< int,3 > const &)\n");
+    "    FullPhysics::LuabindObject::LuabindObject(boost::shared_ptr< FullPhysics::LuaState > const &,blitz::Array< int,3 > const &)\n"
+    "    FullPhysics::LuabindObject::LuabindObject(boost::shared_ptr< FullPhysics::LuaState > const &,boost::shared_ptr< FullPhysics::GenericObject > const &)\n");
   return 0;
 }
 
