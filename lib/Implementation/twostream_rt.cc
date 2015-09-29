@@ -39,6 +39,9 @@ const bool dump_data = false;
 /// \param Azm Azimuth angle (degrees), in range 0 to 360, and have size
 ///      number_spectrometer()
 /// \param do_fullquadrature false only for comparison against LIDORT 
+/// \param pure_nadir Flag for controlling azimuth dependence in the
+///      output LIDORT will complain if user zenith is 0 and this is
+///      not set, when not using ss correction mode
 //-----------------------------------------------------------------------
 
 TwostreamRt::TwostreamRt(const boost::shared_ptr<RtAtmosphere>& Atm,

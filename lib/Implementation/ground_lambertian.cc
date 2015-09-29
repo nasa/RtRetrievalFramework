@@ -39,7 +39,7 @@ GroundLambertian::GroundLambertian(const blitz::Array<double, 2>& Spec_coeffs,
         throw err_msg;
     }
 
-    if(Spec_coeffs.rows() != Desc_band_names.size()) {
+    if(Spec_coeffs.rows() != (int) Desc_band_names.size()) {
         Exception err_msg;
         err_msg << "Number of spectrometers in Spec_coeffs: " << Spec_coeffs.rows() << " does not match the number in Desc_band_names: " << Desc_band_names.size();
         throw err_msg;
@@ -59,7 +59,8 @@ GroundLambertian::GroundLambertian(const blitz::Array<double, 1>& Spec_coeffs,
                                    const blitz::Array<bool, 1>& Flag, 
                                    const ArrayWithUnit<double, 1>& Ref_points,
                                    const std::vector<std::string>& Desc_band_names)
-: reference_points(Ref_points), desc_band_names(Desc_band_names), SubStateVectorArray<Ground>(Spec_coeffs, Flag)
+  : SubStateVectorArray<Ground>(Spec_coeffs, Flag), 
+    reference_points(Ref_points), desc_band_names(Desc_band_names) 
 {
 }
 

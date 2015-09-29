@@ -55,8 +55,6 @@ void Level1bUq::initialize()
     /// Read all of the data we need.
     //-----------------------------------------------------------------------
 
-    int frame_index = hdf_sounding_id_->frame_number();
-
     // All soundings and spectrometers in a UQ file have most of the same values
     // So most datasets are either just arrays or scalars. But need to resize
     // the internal data by spectrometers, so we get the number of spectrometers
@@ -170,7 +168,7 @@ void Level1bUq::initialize()
 
 void Level1bUq::set_radiance(int Spec_index, boost::shared_ptr<SpectralRange>& Rad)
 {
-    if (radiance.size() < Spec_index + 1) {
+  if ((int) radiance.size() < Spec_index + 1) {
         radiance.resize(Spec_index + 1);
     }
 
@@ -179,7 +177,7 @@ void Level1bUq::set_radiance(int Spec_index, boost::shared_ptr<SpectralRange>& R
 
 SpectralRange Level1bUq::radiance_no_uncertainty(int Spec_index) const
 {
-    if(radiance.size() < Spec_index + 1) {
+  if((int) radiance.size() < Spec_index + 1) {
         Exception err_msg;
         err_msg << "Radiance for spectrometer: " << Spec_index << " not yet set.";
         throw err_msg;

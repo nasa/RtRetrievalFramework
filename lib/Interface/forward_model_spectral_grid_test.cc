@@ -16,30 +16,30 @@ BOOST_FIXTURE_TEST_SUITE(forward_model_spectral_grid, ConfigurationFixture)
 // Use to print out expected values
 void print_grid(std::ostream& out, std::vector<SpectralDomain>& grid)
 {
-    out << std::setprecision(20);
-    for(int spec_idx = 0; spec_idx < grid.size(); spec_idx++) {
-        out << "# Spectrometer: " << spec_idx << std::endl
-            << grid[spec_idx].data() << std::endl;
-    }
+  out << std::setprecision(20);
+  for(int spec_idx = 0; spec_idx < (int) grid.size(); spec_idx++) {
+    out << "# Spectrometer: " << spec_idx << std::endl
+	<< grid[spec_idx].data() << std::endl;
+  }
 }
 
 void print_pixel_list(std::ostream& out, std::vector<std::vector<int> >& plist)
 {
-    for(int spec_idx = 0; spec_idx < plist.size(); spec_idx++) {
-        out << "# Spectrometer: " << spec_idx << std::endl
-            << plist[spec_idx].size() << std::endl;
-        for(int pix = 0; pix < plist[spec_idx].size(); pix++) {
-            out << plist[spec_idx][pix] << " ";
-        }
-        out << std::endl;
+  for(int spec_idx = 0; spec_idx < (int) plist.size(); spec_idx++) {
+    out << "# Spectrometer: " << spec_idx << std::endl
+	<< plist[spec_idx].size() << std::endl;
+    for(int pix = 0; pix < (int) plist[spec_idx].size(); pix++) {
+      out << plist[spec_idx][pix] << " ";
     }
+    out << std::endl;
+  }
 }
 
 void check_expected_grid(std::string filename, std::vector<SpectralDomain>& calc_grids)
 {
     IfstreamCs expected_inputs(filename);
 
-    for(int spec_idx = 0; spec_idx < calc_grids.size(); spec_idx++) {
+    for(int spec_idx = 0; spec_idx < (int) calc_grids.size(); spec_idx++) {
         blitz::Array<double, 1> expt_grid;
         expected_inputs >> expt_grid;
 
@@ -51,7 +51,7 @@ void check_expected_pixel_list(std::string filename, std::vector<std::vector<int
 {
     IfstreamCs expected_inputs(filename);
 
-    for(int spec_idx = 0; spec_idx < calc_lists.size(); spec_idx++) {
+    for(int spec_idx = 0; spec_idx < (int) calc_lists.size(); spec_idx++) {
         int num_pix;
         expected_inputs >> num_pix;
 

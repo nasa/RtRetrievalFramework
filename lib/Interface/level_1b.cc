@@ -195,7 +195,7 @@ DoubleWithUnit Level1b::signal(int Spec_index, const std::vector<int>& Sample_in
         used_rad = rad.data();
     } else {
         used_rad.resize(Sample_indexes.size());
-        for(int samp_idx = 0; samp_idx < Sample_indexes.size(); samp_idx++) {
+        for(int samp_idx = 0; samp_idx < (int) Sample_indexes.size(); samp_idx++) {
             used_rad(samp_idx) = rad.data()(Sample_indexes[samp_idx]);
         }
     }

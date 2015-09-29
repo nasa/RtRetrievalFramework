@@ -12,7 +12,6 @@ REGISTER_LUA_END()
 
 void UqNoiseModel::read_hdf_noise(const HdfFile& Hfile, const HdfSoundingId& Sounding_id)
 {
-    int sindex = Sounding_id.sounding_number(); 
     Range ra = Range::all();
 
     TinyVector<int, 3> sz = Hfile.read_shape<3>("InstrumentHeader/snr_coef");

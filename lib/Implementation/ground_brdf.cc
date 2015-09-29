@@ -94,7 +94,7 @@ GroundBrdf::GroundBrdf(const blitz::Array<double, 2>& Coeffs,
         throw err_msg;
     }
 
-    if(Coeffs.rows() != Desc_band_names.size()) {
+    if(Coeffs.rows() != (int) Desc_band_names.size()) {
         Exception err_msg;
         err_msg << "Number of spectrometers in Coeffs: " << Coeffs.rows() << " does not match the number in Desc_band_names: " << Desc_band_names.size();
         throw err_msg;
@@ -113,7 +113,8 @@ GroundBrdf::GroundBrdf(const blitz::Array<double, 2>& Coeffs,
 GroundBrdf::GroundBrdf(const blitz::Array<double, 1>& Spec_coeffs,
                          const blitz::Array<bool, 1>& Flag, 
                          const std::vector<std::string>& Desc_band_names)
-: desc_band_names(Desc_band_names), SubStateVectorArray<Ground>(Spec_coeffs, Flag)
+  : SubStateVectorArray<Ground>(Spec_coeffs, Flag),
+    desc_band_names(Desc_band_names)
 {
 }
 

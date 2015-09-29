@@ -19,9 +19,9 @@ public:
   virtual void register_output(const boost::shared_ptr<Output>& out) const;
   virtual void register_output_apriori(const boost::shared_ptr<Output>& out) const;
 private:
-  const std::string surface_type;
   boost::shared_ptr<GroundLambertian> lambertian;
-  const std::vector<std::string> hdf_band_names;
+  std::vector<std::string> hdf_band_names;
+  std::string surface_type;
 };
 
 }

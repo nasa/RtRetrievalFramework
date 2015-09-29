@@ -31,6 +31,9 @@ REGISTER_LUA_END()
 ///      number_spectrometer()
 /// \param Azm Azimuth angle (degrees), in range 0 to 360, and have size
 ///      number_spectrometer()
+/// \param Pure_nadir Flag for controlling azimuth dependence in the
+///      output LIDORT will complain if user zenith is 0 and this is
+///      not set, when not using ss correction mode
 /// \param Number_streams Number of streams to use
 /// \param Number_moments Number of moments to use in phase function (-1 to use
 ///     full resolution
