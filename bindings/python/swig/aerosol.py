@@ -112,6 +112,7 @@ import full_physics_swig.state_vector
 import full_physics_swig.generic_object
 import full_physics_swig.pressure
 import full_physics_swig.aerosol_extinction
+import full_physics_swig.aerosol_property
 class ObserverAerosol(full_physics_swig.generic_object.GenericObject):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -135,7 +136,7 @@ ObservableAerosol.remove_observer = new_instancemethod(_aerosol.ObservableAeroso
 ObservableAerosol_swigregister = _aerosol.ObservableAerosol_swigregister
 ObservableAerosol_swigregister(ObservableAerosol)
 
-class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_swig.pressure.ObserverPressure,full_physics_swig.aerosol_extinction.ObserverAerosolExtinction,ObservableAerosol):
+class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_swig.pressure.ObserverPressure,full_physics_swig.aerosol_extinction.ObserverAerosolExtinction,full_physics_swig.aerosol_property.ObserverAerosolProperty,ObservableAerosol):
     """
     This class maintains the aerosol portion of the state.
 
@@ -202,7 +203,7 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
 
     def notify_update(self, *args):
         """
-        virtual void FullPhysics::Aerosol::notify_update(const AerosolExtinction &A)
+        virtual void FullPhysics::Aerosol::notify_update(const AerosolProperty &A)
 
         """
         return _aerosol.Aerosol_notify_update(self, *args)

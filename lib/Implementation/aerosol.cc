@@ -40,15 +40,15 @@ Aerosol::Aerosol(const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
 : aext(Aext),
   aprop(Aerosol_prop),
   press(Press), 
+  reference_wn_(Reference_wn),
   cache_is_stale(true),
   // Need at least 1 jacobian var such as when not running a retrieval
   nvar(1)
 {
   if((int) aprop.size() != number_particle())
     throw Exception("aprop needs to be size of number_particle()");
-  qext_at_ref.resize(number_particle());
   for(int i = 0; i < number_particle(); ++i) {
-    qext_at_ref(i) = aprop[i]->extinction_coefficient(Reference_wn);
+    aprop[i]->add_observer(*this);
     aext[i]->add_observer(*this);
   }
   press->add_observer(*this);
@@ -58,11 +58,15 @@ void Aerosol::notify_add(StateVector& Sv)
 {
   BOOST_FOREACH(boost::shared_ptr<AerosolExtinction>& i, aext)
     Sv.add_observer(*i);
+  BOOST_FOREACH(boost::shared_ptr<AerosolProperty>& i, aprop)
+    Sv.add_observer(*i);
 }
 
 void Aerosol::notify_remove(StateVector& Sv)
 {
   BOOST_FOREACH(boost::shared_ptr<AerosolExtinction>& i, aext)
+    Sv.remove_observer(*i);
+  BOOST_FOREACH(boost::shared_ptr<AerosolProperty>& i, aprop)
     Sv.remove_observer(*i);
 }
 
@@ -105,7 +109,10 @@ void Aerosol::fill_cache() const
       dp.gradient().resize(nvar);
 
     for(int j = 0; j < number_particle(); ++j) {
-      od_ind_wn(i, j) = 1.0 / qext_at_ref(j) * 
+      /// We scale the extinction coefficient return by aprop at the 
+      /// reference wave number, so that aext of 1 means the extinction
+      /// coefficient for a particle is 1.
+      od_ind_wn(i, j) = 1.0 / aprop[j]->extinction_coefficient(reference_wn_) *
         dp * aext[j]->extinction_for_layer(i);
     }
   }
@@ -311,7 +318,10 @@ Aerosol::clone(const boost::shared_ptr<Pressure>& Press) const
   std::vector<boost::shared_ptr<AerosolExtinction> > aext_clone;
   BOOST_FOREACH(const boost::shared_ptr<AerosolExtinction>& i, aext)
     aext_clone.push_back(i->clone(Press));
-  boost::shared_ptr<Aerosol> res(new Aerosol(aext_clone, aprop, Press));
+  std::vector<boost::shared_ptr<AerosolProperty> > aprop_clone;
+  BOOST_FOREACH(const boost::shared_ptr<AerosolProperty>& i, aprop)
+    aprop_clone.push_back(i->clone());
+  boost::shared_ptr<Aerosol> res(new Aerosol(aext_clone, aprop_clone, Press));
   return res;
 }
 
