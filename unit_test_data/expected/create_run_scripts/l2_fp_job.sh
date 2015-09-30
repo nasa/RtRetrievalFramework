@@ -129,7 +129,7 @@ if [ ${end_id_index} -gt ${#id_list[@]} ]; then
     end_id_index=$(expr ${#id_list[@]} - 1)
 fi
 
-seq ${beg_id_index} ${end_id_index} | parallel -j 1 --ungroup --env run_job_index 'run_job_index {}'
+seq ${beg_id_index} ${end_id_index} | parallel --gnu -j 1 --ungroup --env run_job_index 'run_job_index {}'
 
 if [ "$keep_exit" = "yes" ]; then
    exit ${l2_run_status}
