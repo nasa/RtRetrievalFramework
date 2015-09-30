@@ -175,8 +175,22 @@ class SolarAbsorptionGfitFile(full_physics_swig.solar_absorption_spectrum.SolarA
     C++ includes: solar_absorption_gfit_file.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """
+        SolarAbsorptionGfitFile::SolarAbsorptionGfitFile(const std::string &Line_list_file, double
+        Fraction_solar_diameter=1.0)
+        Read the given line list file, and use for calculating the solar
+        absorption spectrum.
+
+        Parameters:
+        -----------
+
+        Line_list_file:  Line list file
+
+        Fraction_solar_diameter:  Fraction of Solar diameter viewed. 
+        """
+        _solar_absorption_gfit_file.SolarAbsorptionGfitFile_swiginit(self,_solar_absorption_gfit_file.new_SolarAbsorptionGfitFile(*args))
     def solar_absorption_spectrum(self, *args):
         """
         Spectrum SolarAbsorptionGfitFile::solar_absorption_spectrum(const SpectralDomain &spec_domain) const
