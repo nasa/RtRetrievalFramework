@@ -119,12 +119,34 @@ public:
   { range_check(i, 0, number_particle()); return aext[i];}
 
 //-----------------------------------------------------------------------
+/// Set AerosolExtinction.
+//-----------------------------------------------------------------------
+
+  void aerosol_extinction(int i, const boost::shared_ptr<AerosolExtinction>& V)
+  { range_check(i, 0, number_particle()); aext[i] = V; 
+    cache_is_stale = true; notify_update_do(*this); }
+
+//-----------------------------------------------------------------------
 /// Return aerosol property
 //-----------------------------------------------------------------------
 
   const boost::shared_ptr<AerosolProperty>& aerosol_property(int i) const
   { range_check(i, 0, number_particle()); return aprop[i];}
 
+//-----------------------------------------------------------------------
+/// Set AerosolProperty.
+//-----------------------------------------------------------------------
+
+  void aerosol_property(int i, const boost::shared_ptr<AerosolProperty>& V)
+  { range_check(i, 0, number_particle()); aprop[i] = V; 
+    cache_is_stale = true; notify_update_do(*this); }
+
+//-----------------------------------------------------------------------
+/// Return pressure
+//-----------------------------------------------------------------------
+
+  const boost::shared_ptr<Pressure>& pressure() const
+  { return press; }
 private:
   std::vector<boost::shared_ptr<AerosolExtinction> > aext;
   std::vector<boost::shared_ptr<AerosolProperty> > aprop;
