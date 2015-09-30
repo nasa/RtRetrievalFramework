@@ -7784,7 +7784,52 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_extinction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Aerosol__v_pressure(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  boost::shared_ptr< FullPhysics::Pressure > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol__v_pressure" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
+      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
+      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::Aerosol const *)arg1)->pressure();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Aerosol_aerosol_extinction__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
   int arg2 ;
@@ -7794,10 +7839,9 @@ SWIGINTERN PyObject *_wrap_Aerosol_aerosol_extinction(PyObject *SWIGUNUSEDPARM(s
   boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
   boost::shared_ptr< FullPhysics::AerosolExtinction > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"Aerosol_aerosol_extinction",2,2,swig_obj)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
@@ -7836,7 +7880,107 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_property(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Aerosol_aerosol_extinction__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  int arg2 ;
+  boost::shared_ptr< FullPhysics::AerosolExtinction > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Aerosol > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Aerosol > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolExtinction > tempshared3 ;
+  boost::shared_ptr< FullPhysics::AerosolExtinction > temp2shared3 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_aerosol_extinction" "', argument " "1"" of type '" "FullPhysics::Aerosol *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
+      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
+      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_aerosol_extinction" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Aerosol_aerosol_extinction" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::AerosolExtinction > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp3) tempshared3 = *reinterpret_cast< boost::shared_ptr< FullPhysics::AerosolExtinction > * >(argp3);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::AerosolExtinction > * >(argp3);
+      arg3 = &tempshared3;
+    } else {
+      arg3 = (argp3) ? reinterpret_cast< boost::shared_ptr< FullPhysics::AerosolExtinction > * >(argp3) : &tempshared3;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg3->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared3.reset(arg3->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg3 = &temp2shared3;
+    }
+  }
+  {
+    try {
+      (arg1)->aerosol_extinction(arg2,(boost::shared_ptr< FullPhysics::AerosolExtinction > const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Aerosol_aerosol_extinction(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"Aerosol_aerosol_extinction",0,3,argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    return _wrap_Aerosol_aerosol_extinction__SWIG_0(self, argc, argv);
+  }
+  if (argc == 3) {
+    return _wrap_Aerosol_aerosol_extinction__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Aerosol_aerosol_extinction'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::Aerosol::aerosol_extinction(int) const\n"
+    "    FullPhysics::Aerosol::aerosol_extinction(int,boost::shared_ptr< FullPhysics::AerosolExtinction > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Aerosol_aerosol_property__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
   int arg2 ;
@@ -7846,10 +7990,9 @@ SWIGINTERN PyObject *_wrap_Aerosol_aerosol_property(PyObject *SWIGUNUSEDPARM(sel
   boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
   boost::shared_ptr< FullPhysics::AerosolProperty > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"Aerosol_aerosol_property",2,2,swig_obj)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
@@ -7885,6 +8028,106 @@ SWIGINTERN PyObject *_wrap_Aerosol_aerosol_property(PyObject *SWIGUNUSEDPARM(sel
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Aerosol_aerosol_property__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  int arg2 ;
+  boost::shared_ptr< FullPhysics::AerosolProperty > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Aerosol > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Aerosol > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolProperty > tempshared3 ;
+  boost::shared_ptr< FullPhysics::AerosolProperty > temp2shared3 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_aerosol_property" "', argument " "1"" of type '" "FullPhysics::Aerosol *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
+      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
+      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_aerosol_property" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolProperty_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Aerosol_aerosol_property" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::AerosolProperty > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp3) tempshared3 = *reinterpret_cast< boost::shared_ptr< FullPhysics::AerosolProperty > * >(argp3);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::AerosolProperty > * >(argp3);
+      arg3 = &tempshared3;
+    } else {
+      arg3 = (argp3) ? reinterpret_cast< boost::shared_ptr< FullPhysics::AerosolProperty > * >(argp3) : &tempshared3;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg3->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared3.reset(arg3->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg3 = &temp2shared3;
+    }
+  }
+  {
+    try {
+      (arg1)->aerosol_property(arg2,(boost::shared_ptr< FullPhysics::AerosolProperty > const &)*arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Aerosol_aerosol_property(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"Aerosol_aerosol_property",0,3,argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    return _wrap_Aerosol_aerosol_property__SWIG_0(self, argc, argv);
+  }
+  if (argc == 3) {
+    return _wrap_Aerosol_aerosol_property__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Aerosol_aerosol_property'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::Aerosol::aerosol_property(int) const\n"
+    "    FullPhysics::Aerosol::aerosol_property(int,boost::shared_ptr< FullPhysics::AerosolProperty > const &)\n");
+  return 0;
 }
 
 
@@ -8060,13 +8303,17 @@ static PyMethodDef SwigMethods[] = {
 		"std::vector because this is what is needed to write this out to HDF.\n"
 		"\n"
 		""},
+	 { (char *)"Aerosol__v_pressure", (PyCFunction)_wrap_Aerosol__v_pressure, METH_O, (char *)"\n"
+		"const boost::shared_ptr<Pressure>& FullPhysics::Aerosol::pressure() const\n"
+		"Return pressure. \n"
+		""},
 	 { (char *)"Aerosol_aerosol_extinction", _wrap_Aerosol_aerosol_extinction, METH_VARARGS, (char *)"\n"
-		"const boost::shared_ptr<AerosolExtinction>& FullPhysics::Aerosol::aerosol_extinction(int i) const\n"
-		"Return aerosol extinction. \n"
+		"void FullPhysics::Aerosol::aerosol_extinction(int i, const boost::shared_ptr< AerosolExtinction > &V)\n"
+		"Set AerosolExtinction. \n"
 		""},
 	 { (char *)"Aerosol_aerosol_property", _wrap_Aerosol_aerosol_property, METH_VARARGS, (char *)"\n"
-		"const boost::shared_ptr<AerosolProperty>& FullPhysics::Aerosol::aerosol_property(int i) const\n"
-		"Return aerosol property. \n"
+		"void FullPhysics::Aerosol::aerosol_property(int i, const boost::shared_ptr< AerosolProperty > &V)\n"
+		"Set AerosolProperty. \n"
 		""},
 	 { (char *)"delete_Aerosol", (PyCFunction)_wrap_delete_Aerosol, METH_O, (char *)"\n"
 		"virtual FullPhysics::Aerosol::~Aerosol()\n"

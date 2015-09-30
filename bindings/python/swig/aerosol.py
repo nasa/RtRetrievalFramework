@@ -297,17 +297,28 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
     def aerosol_name_arr(self):
         return self._v_aerosol_name_arr()
 
+    def _v_pressure(self):
+        """
+        const boost::shared_ptr<Pressure>& FullPhysics::Aerosol::pressure() const
+        Return pressure. 
+        """
+        return _aerosol.Aerosol__v_pressure(self)
+
+    @property
+    def pressure(self):
+        return self._v_pressure()
+
     def aerosol_extinction(self, *args):
         """
-        const boost::shared_ptr<AerosolExtinction>& FullPhysics::Aerosol::aerosol_extinction(int i) const
-        Return aerosol extinction. 
+        void FullPhysics::Aerosol::aerosol_extinction(int i, const boost::shared_ptr< AerosolExtinction > &V)
+        Set AerosolExtinction. 
         """
         return _aerosol.Aerosol_aerosol_extinction(self, *args)
 
     def aerosol_property(self, *args):
         """
-        const boost::shared_ptr<AerosolProperty>& FullPhysics::Aerosol::aerosol_property(int i) const
-        Return aerosol property. 
+        void FullPhysics::Aerosol::aerosol_property(int i, const boost::shared_ptr< AerosolProperty > &V)
+        Set AerosolProperty. 
         """
         return _aerosol.Aerosol_aerosol_property(self, *args)
 
@@ -323,6 +334,7 @@ Aerosol.aerosol_optical_depth_total = new_instancemethod(_aerosol.Aerosol_aeroso
 Aerosol.clone = new_instancemethod(_aerosol.Aerosol_clone,None,Aerosol)
 Aerosol._v_aerosol_name = new_instancemethod(_aerosol.Aerosol__v_aerosol_name,None,Aerosol)
 Aerosol._v_aerosol_name_arr = new_instancemethod(_aerosol.Aerosol__v_aerosol_name_arr,None,Aerosol)
+Aerosol._v_pressure = new_instancemethod(_aerosol.Aerosol__v_pressure,None,Aerosol)
 Aerosol.aerosol_extinction = new_instancemethod(_aerosol.Aerosol_aerosol_extinction,None,Aerosol)
 Aerosol.aerosol_property = new_instancemethod(_aerosol.Aerosol_aerosol_property,None,Aerosol)
 Aerosol_swigregister = _aerosol.Aerosol_swigregister

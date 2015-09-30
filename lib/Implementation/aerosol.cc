@@ -8,12 +8,13 @@ using namespace blitz;
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
+typedef const boost::shared_ptr<AerosolExtinction>& (Aerosol::*a1)(int) const;
 REGISTER_LUA_CLASS(Aerosol)
 .def(luabind::constructor<const std::vector<boost::shared_ptr<AerosolExtinction> >&,
      const std::vector<boost::shared_ptr<AerosolProperty> >&,
      const boost::shared_ptr<Pressure>&>())
 .def("number_particle", &Aerosol::number_particle)
-.def("aerosol_extinction", &Aerosol::aerosol_extinction)
+.def("aerosol_extinction", ((a1) &Aerosol::aerosol_extinction))
 REGISTER_LUA_END()
 #endif
 

@@ -63,10 +63,12 @@ public:
   boost::shared_ptr<Aerosol> clone() const;
   boost::shared_ptr<Aerosol> 
   clone(const boost::shared_ptr<Pressure>& Press) const;
-  %python_attribute(aerosol_name, std::vector<std::string>)
-  %python_attribute(aerosol_name_arr, blitz::Array<std::string, 1>)
-
+  %python_attribute(aerosol_name, std::vector<std::string>);
+  %python_attribute(aerosol_name_arr, blitz::Array<std::string, 1>);
+  %python_attribute(pressure, boost::shared_ptr<Pressure>);
   boost::shared_ptr<AerosolExtinction> aerosol_extinction(int i) const;
+  void aerosol_extinction(int i, const boost::shared_ptr<AerosolExtinction>& V);
   boost::shared_ptr<AerosolProperty> aerosol_property(int i) const;
+  void aerosol_property(int i, const boost::shared_ptr<AerosolProperty>& V);
 };
 }
