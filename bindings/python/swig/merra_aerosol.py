@@ -111,6 +111,7 @@ def _new_from_set(cls, version, *args):
 import full_physics_swig.generic_object
 import full_physics_swig.state_vector
 import full_physics_swig.aerosol_extinction
+import full_physics_swig.aerosol_property
 import full_physics_swig.initial_guess
 class MerraAerosol(full_physics_swig.generic_object.GenericObject):
     """

@@ -118,6 +118,7 @@ import full_physics_swig.rt_atmosphere
 import full_physics_swig.state_vector
 import full_physics_swig.aerosol
 import full_physics_swig.aerosol_extinction
+import full_physics_swig.aerosol_property
 class ErrorAnalysisOutput(full_physics_swig.register_output_base.RegisterOutputBase):
     """
     This registers the portions of the ErrorAnalysis class that should be

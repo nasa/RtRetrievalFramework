@@ -7,7 +7,7 @@
 %base_import(state_vector)
 %base_import(pressure)
 %base_import(aerosol_extinction)
-%import "aerosol_property.i"
+%base_import(aerosol_property)
 %fp_shared_ptr(FullPhysics::Aerosol);
 %fp_shared_ptr(FullPhysics::Observer<FullPhysics::Aerosol>)
 %fp_shared_ptr(FullPhysics::Observable<FullPhysics::Aerosol>)
@@ -22,6 +22,7 @@ namespace FullPhysics {
 class Aerosol: public StateVectorObserver,
                public Observer<Pressure>,
 	       public Observer<AerosolExtinction>,
+	       public Observer<AerosolProperty>,
 	       public Observable<Aerosol> {
 public:
   std::string print_to_string() const;
@@ -44,6 +45,7 @@ public:
   ssa_each_layer(double wn) const;
   virtual void notify_update(const Pressure& P);
   virtual void notify_update(const AerosolExtinction& A);
+  virtual void notify_update(const AerosolProperty& A);
   blitz::Array<double, 2> pf_mom(double wn, int pindex) const;
   blitz::Array<double, 3> pf_mom(double wn, 
 				 const blitz::Array<double, 2>& frac_aer) const;

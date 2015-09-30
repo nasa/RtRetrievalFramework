@@ -20,6 +20,7 @@ namespace FullPhysics {
 class Aerosol: public StateVectorObserver,
                public Observer<Pressure>,
 	       public Observer<AerosolExtinction>,
+	       public Observer<AerosolProperty>,
 	       public Observable<Aerosol> {
 public:
   Aerosol(const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
@@ -61,6 +62,11 @@ public:
     notify_update_do(*this);
   }
   virtual void notify_update(const AerosolExtinction& A)
+  {
+    cache_is_stale = true;
+    notify_update_do(*this);
+  }
+  virtual void notify_update(const AerosolProperty& A)
   {
     cache_is_stale = true;
     notify_update_do(*this);
@@ -122,11 +128,8 @@ public:
 private:
   std::vector<boost::shared_ptr<AerosolExtinction> > aext;
   std::vector<boost::shared_ptr<AerosolProperty> > aprop;
-  /// The extinction coefficient return by aprop at the reference wave
-  /// number. We scale by this, so that aext of 1 means the extinction
-  /// coefficient for a particle is 1.
-  blitz::Array<double, 1> qext_at_ref;
   boost::shared_ptr<Pressure> press;
+  double reference_wn_;
   // We cache to part of optical_depth_each_layer calculation that
   // independent of wn.
   mutable bool cache_is_stale;
