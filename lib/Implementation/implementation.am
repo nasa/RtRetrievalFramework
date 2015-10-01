@@ -369,6 +369,7 @@ lib_test_all_SOURCES+= @implsrc@/full_output_test.cc
 lib_test_all_SOURCES+= @implsrc@/hdf_constant_test.cc
 lib_test_all_SOURCES+= @implsrc@/aerosol_property_hdf_test.cc
 lib_test_all_SOURCES+= @implsrc@/solar_absorption_table_test.cc
+lib_test_all_SOURCES+= @implsrc@/solar_absorption_gfit_file_test.cc
 lib_test_all_SOURCES+= @implsrc@/solar_continuum_table_test.cc
 lib_test_all_SOURCES+= @implsrc@/solar_doppler_shift_polynomial_test.cc
 lib_test_all_SOURCES+= @implsrc@/solar_doppler_shift_l1b_test.cc

@@ -33,58 +33,6 @@ integer function lnbc(string)
       return   ! Abnormal return; no non-blanks found.
 end function lnbc
 
-function file_size_in_bytes(lunr,file_path)
-!  Returns the size of any file (in bytes)
-!
-!  Inputs:
-!      LUNR               I*4  Logical Unit Number
-!      FILE_PATH          C*(*) Full path name
-!
-!  Output:
-!      file_size_in_bytes I*4  File size (bytes)
-!
-!  Performs direct-access reads to detect the EOF location.
-!  Keeps track of which reads are within the file and which
-!  fall off the end.
-!  For a large file such as the atm.101 linelist (117 Mbytes)
-!  It will take 27 reads to fall off the EOF and then another
-!  27 reads to determine the exact EOF position. This is much
-!  faster than reading the entire file from beginning to end.
-!
-      implicit none
-      integer*4 file_size_in_bytes, lunr, new, nhi, nlo, istat
-      character file_path*(*),string*1
-      open(lunr,file=file_path,access='direct', form='unformatted',status='old',recl=1)
-!
-! Initialize
-      nlo=0
-      nhi=0
-      istat=0
-!
-!  Keep doubling NHI until it falls off the end of file (EOF)
-      do while (istat.eq.0)
-         nlo=nhi
-         nhi=2*nhi+1
-         read(lunr,rec=nhi,iostat=istat) string
-      end do
-!  So now we know that the EOF lies between NLO and NHI
-!
-!  Find the exact EOF location by iterative bisection.
-      do while (nhi-nlo.gt.1)
-         new=(nhi+nlo)/2
-         read(lunr,rec=new,iostat=istat) string
-         if(istat.eq.0) then
-            nlo=new
-         else
-            nhi=new
-         endif
-      end do
-!
-      close(lunr)
-      file_size_in_bytes=nlo
-      return
-end function file_size_in_bytes
-
 integer function posnall(unit,fpos,nrec)
 !
 !  Version:   2.1.0    16-5-95     GCT
@@ -265,7 +213,7 @@ subroutine solar_pts(lunr,filename,filename_len,fzero,grid,frac,spts,ncp) bind(C
 !  Determine the total size of the solar linelist (FSIB)
 !  and divide this by RECLEN to find the number of lines (NLINES).
 !  Check that NLINES is an integer.
-      fsib=file_size_in_bytes(lunr,solarll)
+      inquire(FILE=solarll, SIZE=fsib)
       nlines=fsib/reclen
       if ( nlines*reclen .ne. fsib ) then
          write(*,*)'Linelist size not divisible by record length',reclen
