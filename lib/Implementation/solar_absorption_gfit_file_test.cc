@@ -19,7 +19,16 @@ BOOST_AUTO_TEST_CASE(basic)
 
   blitz::Array<double, 1> res(sol_abs_file.solar_absorption_spectrum(wn).spectral_range().data());
 
-  BOOST_CHECK_MATRIX_CLOSE_TOL(sabs_expt, res, 1e-8);
+  // Write out if we need to for debugging or to update expected results.
+  if(false) {
+    std::cerr << std::setprecision(20) << std::scientific
+	      << "#  Wave number to calculate at\n"
+	      << wn << "\n"
+	      << "# Expected absorption value\n"
+	      << res << "\n";
+  }
+
+  BOOST_CHECK_MATRIX_CLOSE_TOL(sabs_expt, res, 1e-4);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

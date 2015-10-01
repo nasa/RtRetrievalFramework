@@ -1454,6 +1454,7 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@implsrc@/full_output_test.cc @implsrc@/hdf_constant_test.cc \
 	@implsrc@/aerosol_property_hdf_test.cc \
 	@implsrc@/solar_absorption_table_test.cc \
+	@implsrc@/solar_absorption_gfit_file_test.cc \
 	@implsrc@/solar_continuum_table_test.cc \
 	@implsrc@/solar_doppler_shift_polynomial_test.cc \
 	@implsrc@/solar_doppler_shift_l1b_test.cc \
@@ -1611,6 +1612,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@implsrc@/hdf_constant_test.$(OBJEXT) \
 	@implsrc@/aerosol_property_hdf_test.$(OBJEXT) \
 	@implsrc@/solar_absorption_table_test.$(OBJEXT) \
+	@implsrc@/solar_absorption_gfit_file_test.$(OBJEXT) \
 	@implsrc@/solar_continuum_table_test.$(OBJEXT) \
 	@implsrc@/solar_doppler_shift_polynomial_test.$(OBJEXT) \
 	@implsrc@/solar_doppler_shift_l1b_test.$(OBJEXT) \
@@ -2701,6 +2703,7 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@implsrc@/full_output_test.cc @implsrc@/hdf_constant_test.cc \
 	@implsrc@/aerosol_property_hdf_test.cc \
 	@implsrc@/solar_absorption_table_test.cc \
+	@implsrc@/solar_absorption_gfit_file_test.cc \
 	@implsrc@/solar_continuum_table_test.cc \
 	@implsrc@/solar_doppler_shift_polynomial_test.cc \
 	@implsrc@/solar_doppler_shift_l1b_test.cc \
@@ -5490,6 +5493,8 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/solar_absorption_table_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/solar_absorption_gfit_file_test.$(OBJEXT):  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/solar_continuum_table_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/solar_doppler_shift_polynomial_test.$(OBJEXT):  \
@@ -6023,6 +6028,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/rayleigh_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/refractive_index_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/solar_absorption_and_continuum_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/solar_absorption_gfit_file_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/solar_absorption_table_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/solar_continuum_table_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/solar_doppler_shift_l1b_test.Po@am__quote@
