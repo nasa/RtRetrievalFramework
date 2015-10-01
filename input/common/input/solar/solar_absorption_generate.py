@@ -40,8 +40,8 @@ for ds_name, data, unit in output_data:
     if hout.get(ds_name, None):
         del hout[ds_name]
     ds = hout.create_dataset(ds_name, data=data)
-    ds.attrs['Units'] = np.array([ unit + '\0' ])
+    ds.attrs['Units'] = unit
     if ds_name.find("wavenumber") >= 0:
-        ds.attrs['Frame'] = "Solar rest frame" + '\0'
+        ds.attrs['Frame'] = "Solar rest frame"
 
 hout.close()
