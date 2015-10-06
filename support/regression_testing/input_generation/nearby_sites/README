@@ -1,9 +1,0 @@
-Included here are scripts used to generate spliced input HDF5 files
-used for regression testing with soundings close to certain defined
-sites. The site_configs directory contains one definition file for
-each site. The scripts under scripts/ use these config files for
-directing spliced file production.
-
-The assemble.sh script here uses these configs and scripts to produce
-the files in the expected directory structure needed by the regression
-setup and run scripts.
