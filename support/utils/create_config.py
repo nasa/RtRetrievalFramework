@@ -21,6 +21,9 @@ FILE_SEARCH_GROUPS = { "L1BFile" :   ['InstrumentHeader'],
 
 HDF_VALID_EXTENSIONS = ['.h5', '.hdf']
 
+INPUT_FILE_MAP_EXT = ".map"
+INPUT_FILE_MAP_KEYWORD = "InputFileMapping"
+
 # What to modify in input config templates
 INP_PROD_SECTION_NAME     = 'input->InputProductFiles'
 ALT_SETTINGS_SECTION_NAME = 'input->AlternativeSettings'
@@ -39,58 +42,56 @@ def insert_alternative_settings(template_obj, alt_settings_hash):
             alt_sect[0].set_keyword_value(alt_key, alt_val)
 
 def check_file_type(filename):
-    with h5py.File(filename, 'r') as hdf_obj:
-        for keyword_name, groups in FILE_SEARCH_GROUPS.items():
-            for curr_group in groups:
-                if curr_group in hdf_obj.keys():
-                    return keyword_name
-    return None
+    (file_prefix, file_ext) = os.path.splitext(curr_file)
+    if file_ext in HDF_VALID_EXTENSIONS:
+        with h5py.File(filename, 'r') as hdf_obj:
+            for keyword_name, groups in FILE_SEARCH_GROUPS.items():
+                for curr_group in groups:
+                    if curr_group in hdf_obj.keys():
+                        return keyword_name
+    elif file_ext == INPUT_FILE_MAP_EXT:
+        return INPUT_FILE_MAP_KEYWORD
+    else:
+        return None
 
-def handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, ids_file_keyword='L1BFile', id_list_sect=None):
+def handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, run_type, ids_file_keyword='L1BFile', id_list_sect=None):
     inp_prod_section = template_obj.get_section(INP_PROD_SECTION_NAME)
 
     if len(inp_prod_section) == 0:
         print template_obj.get_all_section_names()
         raise IOError('Could not find input product file section of %s' % template_obj.filename)
 
-
     for curr_file in used_files:
-        (file_prefix, file_ext) = os.path.splitext(curr_file)
-        if file_ext not in HDF_VALID_EXTENSIONS:
-            continue
-
         keyword_name = check_file_type(curr_file)
         if keyword_name != None:
             inp_prod_section[0].set_keyword_value(keyword_name, curr_file)
     
     ids_file = inp_prod_section[0].get_keyword_value(ids_file_keyword)
-    if ids_file != None:
-
+    if ids_file != None and len(ids_file) > 0 and ids_file != "NONE" and sounding_ids == None:
         l1b_obj = acos_file.L1B(ids_file)
-        if sounding_ids == None:
-            sounding_ids = list(l1b_obj.get_sounding_ids()[:].ravel())
+        sounding_ids = list(l1b_obj.get_sounding_ids()[:].ravel())
 
-        sounding_ids_val_sect = []
+    sounding_ids_val_sect = []
 
-        if id_list_sect == None:
-            id_list_sect = GEN_LIST_SECTION_TMPL % l1b_obj.instrument_name
+    if id_list_sect == None:
+        id_list_sect = GEN_LIST_SECTION_TMPL % run_type.upper()
 
-        for list_sect in template_obj.get_section(id_list_sect + '->LIST'):
-            list_name = list_sect.get_keyword_value('name')
-            if list_name == SOUNDING_ID_LIST_NAME:
-                sounding_ids_val_sect = list_sect.get_section('->VALUES')
+    for list_sect in template_obj.get_section(id_list_sect + '->LIST'):
+        list_name = list_sect.get_keyword_value('name')
+        if list_name == SOUNDING_ID_LIST_NAME:
+            sounding_ids_val_sect = list_sect.get_section('->VALUES')
 
-        if len(sounding_ids_val_sect) == 0:
-            raise IOError('Could not find sounding id list section named %s in %s' % (id_list_sect, template_obj.filename))
+    if len(sounding_ids_val_sect) == 0:
+        raise IOError('Could not find sounding id list section named %s in %s' % (id_list_sect, template_obj.filename))
 
-        sounding_ids_val_sect[0].set_matrix_data(sounding_ids)
+    sounding_ids_val_sect[0].set_matrix_data(sounding_ids)
    
     template_obj.write(out_config_filename, doIndent=True)
 
 # Same as gen_config with defaults
 handle_oco_config = handle_common_config
 
-def handle_oco_uplooking_config(template_obj, out_config_filename, used_files, sounding_ids):
+def handle_oco_uplooking_config(template_obj, out_config_filename, used_files, sounding_ids, run_type):
 
     inp_prod_section = template_obj.get_section(INP_PROD_SECTION_NAME)[0]                                                                                                        
     for curr_file in used_files:
@@ -99,13 +100,13 @@ def handle_oco_uplooking_config(template_obj, out_config_filename, used_files, s
         if extension == 'dat':
             inp_prod_section.set_keyword_value('AtmosphereFile', curr_file)
 
-    handle_common_config(template_obj, out_config_filename, used_files, sounding_ids)
+    handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, run_type)
 
-def handle_gosat_config(template_obj, out_config_filename, used_files, sounding_ids):
+def handle_gosat_config(template_obj, out_config_filename, used_files, sounding_ids, run_type):
 
-    handle_common_config(template_obj, out_config_filename, used_files, sounding_ids)
+    handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, run_type)
 
-def handle_fts_config(template_obj, out_config_filename, used_files, sounding_ids):
+def handle_fts_config(template_obj, out_config_filename, used_files, sounding_ids, run_type):
 
     inp_prod_section = template_obj.get_section(INP_PROD_SECTION_NAME)[0] 
     spectrum_files_section = inp_prod_section.get_section('->SpectrumFiles')[0]
@@ -139,7 +140,7 @@ def handle_fts_config(template_obj, out_config_filename, used_files, sounding_id
 
     template_obj.write(out_config_filename, doIndent=True)
 
-def handle_uq_config(template_obj, out_config_filename, used_files, filter_options):
+def handle_uq_config(template_obj, out_config_filename, used_files, filter_options, run_type):
 
     handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, ids_file_keyword='UqFile', id_list_sect='input->UqFullPhysics')
 
@@ -213,4 +214,4 @@ if __name__ == "__main__":
     alt_settings_hash = parse_keyval_str_list(cmd_options.alternative_settings)
     insert_alternative_settings(tmpl_obj, alt_settings_hash)
 
-    eval('handle_%s_config(tmpl_obj, out_config_filename, used_files, sounding_ids)' % cmd_options.run_type)
+    eval('handle_%s_config(tmpl_obj, out_config_filename, used_files, sounding_ids, cmd_options.run_type)' % cmd_options.run_type)

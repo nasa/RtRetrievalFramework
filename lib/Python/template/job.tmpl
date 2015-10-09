@@ -93,6 +93,17 @@ run_job_index() {{
     id_index=$1
     id_list=( `cat ${{sounding_id_list_filename}}` )
     export sounding_id="${{id_list[${{id_index}}]}}"
+
+    if [ ! -z "$input_file_mapping" ] && [ -e "$input_file_mapping" ]; then
+        # If there is an input file mapping, then extract declarations of filenames from it
+        # Expected format is 1 line per sounding id: 
+        # Sounding id with space seperating it from key=value pairs seperated by semicolons, ie:
+        # <sounding_id> inp_file1=/path/to/file1;inp_file2=/path/to/file2
+        # The keywords names are evaluated as variables so they should match the expected enviromental variable names
+        # used by this script.
+        file_decls=$(grep ^$sounding_id $input_file_mapping | sed "s/^$sounding_id //" | tr ';' '\n' | sed 's/^/export /g')
+        eval $file_decls
+    fi
     
     # The mac doesn't have the same options in the time command as on linux
     if test ! -z "`uname | grep Darwin`"
