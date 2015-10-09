@@ -11,11 +11,12 @@ class OcoPopulator(AcosPopulator):
         config_sounding_id_section = "input/OCOFullPhysics/SoundingIds"
 
         config_input_keywords = \
-        { 'spectrum_file': "input/InputProductFiles/L1BFile",
-          'ecmwf_file':    "input/InputProductFiles/ResampledMetFile",
-          'imap_file':     "input/InputProductFiles/IMAPFile",
-          'aband_file':     "input/InputProductFiles/ABandFile",
-          'rrv_file':      "input/InputProductFiles/RRVFile",
+        { 'spectrum_file':      "input/InputProductFiles/L1BFile",
+          'ecmwf_file':         "input/InputProductFiles/ResampledMetFile",
+          'imap_file':          "input/InputProductFiles/IMAPFile",
+          'aband_file':         "input/InputProductFiles/ABandFile",
+          'rrv_file':           "input/InputProductFiles/RRVFile",
+          'input_file_mapping': "input/InputProductFiles/InputFileMapping",
           }
         AcosPopulator.__init__(self, config_sounding_id_section,
                                config_input_keywords,
