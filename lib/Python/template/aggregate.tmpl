@@ -31,7 +31,7 @@ else
 fi
 
 if [ ! -e "$l2_plus_more_agg_fn" ]; then
-    echo "Creating L2 plus L1B aggregated file"
+    echo "Creating L2 plus more aggregated file"
     # Extract sounding ids, and reformat into a format that can be used by splice tool
     # Take sounding ids from L2 aggregate so we know which soundings actually completed
     # Otherwise we will have empty values for L2 datasets when we include IMAP or ABO2
@@ -46,14 +46,34 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
 
     # Combine L1B and L2 files into one file
     # with IMAP and ABand files if they are supplied
-    echo "Combining L2 and L1B into a single file"
-    {0.l2_support_path}/utils/splice_product_files.py --splice-all --rename_mapping --agg_names_filter -o $l2_plus_more_agg_fn $l2_agg_fn $spectrum_file $imap_file $aband_file -s $l2_snd_id_tmp2
-    rm $l2_snd_id_tmp2
+    inp_files_tmp=$(mktemp)
+    echo $l2_agg_fn > $inp_files_tmp
+    if [ ! -z "$input_file_mapping" ] && [ -e "$input_file_mapping" ]; then
+        # Set up input files from file mapping
+        while read -r sounding_id file_map; do
+            eval $(echo $file_map | tr ';' '\n')
+            if [ ! -z "$spectrum_file" ] && [ ! -z "$imap_file" ] && [ ! -z "$aband_file" ]; then
+                echo $spectrum_file
+                echo $imap_file 
+                echo $aband_file 
+            fi
+        done < $input_file_mapping | sort | uniq >> $inp_files_tmp
+    else
+        # Use input files from script variables
+        for fn in $spectrum_file $imap_file $aband_file; do
+            echo $fn >> $inp_files_tmp
+        done
+    fi
+
+    {0.l2_support_path}/utils/splice_product_files.py --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2
+    rm $l2_snd_id_tmp2 $inp_files_tmp
 
     # Create retrieval_index dataset based on L1B file
-    echo "Adding retrieval information datasets"
-    {0.l2_support_path}/utils/add_spliced_retrieval_info.py $spectrum_file $l2_plus_more_agg_fn
+    if [ ! -z "$spectrum_file" ]; then
+        echo "Adding retrieval information datasets"
+        {0.l2_support_path}/utils/add_spliced_retrieval_info.py $spectrum_file $l2_plus_more_agg_fn
+    fi
 else
-    echo "L2 plus L1B file exists, skipping creation"
+    echo "L2 plus more file exists, skipping creation"
 fi
 
