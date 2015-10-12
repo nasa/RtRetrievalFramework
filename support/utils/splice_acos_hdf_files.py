@@ -7,7 +7,7 @@ import os
 import re
 import sys
 import copy
-from optparse import OptionParser
+from argparse import ArgumentParser
 from operator import itemgetter
 from collections import Counter, deque
 from contextlib import closing
@@ -25,7 +25,7 @@ from full_physics.fill_value import FILL_VALUE
 
 from full_physics.splice_tool_mapping import aggregator_dataset_mapping, aggregator_dataset_dest_names
 
-DEFAULT_FN_TMPL = "{input_name}_spliced.h5"
+DEFAULT_OUTPUT_FILENAME = "spliced_output.h5"
 
 logger = logging.getLogger()
 
@@ -62,6 +62,7 @@ def find_sounding_indexes(in_filenames, in_srch_sounding_ids=None, multi_source_
     all_sounding_ids = set()
     
     if in_srch_sounding_ids != None:
+        # Cast sounding ids supplied to data type that can be compared
         in_srch_sounding_ids = set(numpy.array(in_srch_sounding_ids, dtype=numpy.int64))
 
     for file_idx, curr_file in enumerate(in_filenames):
@@ -349,7 +350,7 @@ def create_output_dataset(out_hdf_obj, dataset_info, splice_size=None, collapse_
 
     logger.debug( "Creating new dataset: %s/%s sized: %s with fill type: %s and value: %s" % (dst_group, dst_name, dst_shape, fill_type, dataset_fill) )
     try:
-        out_dataset_obj = out_group_obj.create_dataset(dst_name, data=numpy.empty(dst_shape, dtype=dataset_info.out_type), maxshape=max_shape, compression="gzip", compression_opts=2, fillvalue=dataset_fill)
+        out_dataset_obj = out_group_obj.create_dataset(dst_name, shape=dst_shape, dtype=dataset_info.out_type, maxshape=max_shape, compression="gzip", compression_opts=2, fillvalue=dataset_fill)
     except RuntimeError as exc:
         raise RuntimeError("Error creating dataset %s/%s: %s" % (dst_group/dst_name, exc))
 
@@ -379,16 +380,6 @@ def create_output_dataset(out_hdf_obj, dataset_info, splice_size=None, collapse_
     # reshaped the data
     if dataset_info.out_shape_names:
         out_dataset_obj.attrs["Shape"] = numpy.array(["_".join(dataset_info.out_shape_names) + "_Array"]) 
-
-    # Only add dimensions for individual files if files had differing dimension sizes
-    file_shapes = dataset_info.inp_file_shapes
-    if len(file_shapes) > 0 and (len(filter(lambda x: x == file_shapes[0], file_shapes)) != len(file_shapes)):
-        try:
-            file_shapes_arr = numpy.array(file_shapes) 
-            out_dataset_obj.attrs.create("File_Dimensions", data=file_shapes_arr)
-        except RuntimeError:
-            # This will happen if the dataset would be too big
-            logger.warning("Unable to add File_Dimensions attribute to %s dataset" % dataset_info.out_name)
 
     return out_dataset_obj
 
@@ -569,68 +560,41 @@ def determine_multi_source(check_files):
 
     return multi_source_mode
 
-def splice_acos_hdf_files(id_src_files, sounding_ids, output_id_src, output_addl={}, splice_all=False, desired_datasets_list=None, search_all_files=True, rename_mapping=False):
-
+def splice_acos_hdf_files(source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, search_all_files=True, rename_mapping=False):
     # Determine if input files are of different types
-    multi_source_mode = determine_multi_source(id_src_files)
-    
-    for addl_files in output_addl.values():
-        if len(addl_files) != len(id_src_files):
-            raise Exception("Additional files lists must have same number of files as l1b file list")
-
-    dest_id_obj = h5py.File(output_id_src, 'w')
-
-    copy_filenames_dict = {}
-    copy_filenames_dict[dest_id_obj] = id_src_files
-    
-    for addl_outname, addl_file_list in output_addl.items():
-        try:
-            dest_addl_obj = h5py.File(addl_outname, 'w')
-        except IOError as e:
-            raise IOError("Could not create output file: %s\n%s" % (addl_outname, e))
-        copy_filenames_dict[dest_addl_obj] = addl_file_list
+    logger.info("Determining multi source mode")
+    multi_source_mode = determine_multi_source(source_files)
 
     # Match sounding ids to files and indexes using L1B files
     logger.info("Finding sounding indexes from source file sounding ids")
     with Timer() as t:
-        (sounding_id_matches, sounding_index_matches, total_num_soundings) = find_sounding_indexes(id_src_files, sounding_ids, multi_source_mode=multi_source_mode)
-    logger.info("Found %d total soundings from %d files in %.03f seconds" % (total_num_soundings, len(id_src_files), t.interval))
+        (sounding_id_matches, sounding_index_matches, total_num_soundings) = find_sounding_indexes(source_files, sounding_ids, multi_source_mode=multi_source_mode)
 
-    # Sort filename based lists
-    # Pack together, sort, then unpack
-    for dest_obj in copy_filenames_dict.keys():
-        sort_lists = zip(sounding_id_matches, sounding_index_matches, copy_filenames_dict[dest_obj])
-        sort_lists.sort(key=itemgetter(0)) # Sort by sounding id
-        copy_filenames_dict[dest_obj] = map(itemgetter(2), sort_lists)
+    logger.info("Found %d total soundings from %d files in %.03f seconds" % (total_num_soundings, len(source_files), t.interval))
 
-    # Do not extract these till after we have sorted all dest_objs
-    # In the loop above these two will get sorted multiple times,
-    # Serving as the key for the sort of the other objs. But we
-    # have to leave the input for sort unsorted to get the same
-    # sorting behavior for each dest obj
+    # Sort filenames, sounding ids and indexes based on sounding ids
+    sort_lists = zip(sounding_id_matches, sounding_index_matches, source_files)
+    sort_lists.sort(key=itemgetter(0)) # Sort by sounding id
     sounding_id_matches = map(itemgetter(0), sort_lists)
     sounding_index_matches = map(itemgetter(1), sort_lists)
+    source_files = map(itemgetter(2), sort_lists)
+
+    # Trim out files that have no matched soundings
+    where_has_snd_ids = filter(lambda i: len(sounding_index_matches[i]) > 0, range(len(sounding_index_matches)))
+    if len(where_has_snd_ids) == 0:
+        raise Exception("Failed to find any files with matching sounding ids in them")
+    get_valid = itemgetter(*where_has_snd_ids)
+    in_filenames = get_valid(source_files)
+    copy_indexes = get_valid(sounding_index_matches)
+
+    # Make a list if getter found only one item and made it just a single string
+    if not hasattr(in_filenames, "__iter__"):
+        in_filenames = [ in_filenames ]
+        copy_indexes = [ copy_indexes ]
        
     # Copy over all datasets in files
-    for dest_obj, in_filenames in copy_filenames_dict.items():
-        logger.info( "Splicing into: %s" % dest_obj.filename )
-
-        # Trim out files that have no matched soundings
-        if len(in_filenames) > 1:
-            where_has_snd_ids = filter(lambda i: len(sounding_index_matches[i]) > 0, range(len(sounding_index_matches)))
-            if len(where_has_snd_ids) == 0:
-                raise Exception("Failed to find any files with matching sounding ids in them")
-            get_valid = itemgetter(*where_has_snd_ids)
-            in_filenames = get_valid(in_filenames)
-            copy_indexes = get_valid(sounding_index_matches)
-
-            # Make a list if getter found only one item and made it just a single string
-            if not hasattr(in_filenames, "__iter__"):
-                in_filenames = [ in_filenames ]
-                copy_indexes = [ copy_indexes ]
-        else:
-            copy_indexes = sounding_index_matches
-        
+    logger.info("Splicing into: %s" % output_filename)
+    with closing(h5py.File(output_filename, 'w')) as dest_obj:
         # Determine information on datasets found in input files
         (copy_datasets, file_id_names) = determine_datasets_info(in_filenames, desired_datasets_list, search_all_files, multi_source_mode=multi_source_mode, rename_mapping=rename_mapping)
 
@@ -643,72 +607,72 @@ def splice_acos_hdf_files(id_src_files, sounding_ids, output_id_src, output_addl
             copy_multiple_datasets(out_dataset_objs, in_filenames, copy_indexes, file_id_names, copy_datasets, multi_source_mode=multi_source_mode)
 
         logger.info("Datasets copying took %.03f seconds" % (t.interval))
-        dest_obj.close()
 
-def common_default_filename(fullnames):
-    basenames = [os.path.basename(fn) for fn in fullnames]
-    common_name = os.path.commonprefix(basenames)
-    common_name = common_name.rstrip("_").rstrip("-") # convience to remove maybe a common _ mark
-    return DEFAULT_FN_TMPL.format(input_name=os.path.splitext(common_name)[0])
+def load_source_files(filenames, input_list_file=None):
+    source_list = []
+    if len(filenames) > 0:
+        source_list += filenames
+
+    if input_list_file != None:
+        source_list += [ fn.strip() for fn in open(input_list_file).readlines() ]
     
+    return source_list
+
 def standalone_main():
-    parser = OptionParser(usage="usage: %prog [ -i <id_file_plus_addl_list_file> | <filename_1> <filename_2> ... ] [ -s <sounding_id_file> ] [ -o <first_output_file> ] [ -a <additional_output_name> ... ]")
+    parser = ArgumentParser(description="Splices together input HDF5 products for a given set of sounding ids")
 
-    parser.add_option( "-i", "--input_files_list", dest="input_files_list",
-                       metavar="FILE",
-                       help="text file with main input filename plus any additional filenames to splice separated by whitespace on each line")
+    parser.add_argument( "filenames", metavar="FILE", nargs='*',
+                         help="files to splice, may be left blank if using the -i --input-files-list option" )
 
-    parser.add_option( "-s", "--sounding_id_file", dest="sounding_id_file",
-                       metavar="FILE",
-                       help="file containing list of soundings for destination file(s)")
+    parser.add_argument( "-i", "--input-files-list", dest="input_files_list",
+                         metavar="FILE",
+                         help="text file with input filenames to splice")
 
-    parser.add_option( "-o", "--output_file", dest="first_output_file",
-                       metavar="FILE",
-                       help="name for main output filename, aka the files containing the sounding ids")
+    parser.add_argument( "-s", "--sounding-id-file", dest="sounding_id_file",
+                         metavar="FILE",
+                         help="file containing list of soundings for destination file")
 
-    parser.add_option( "-a", "--addl_output_file", dest="addl_output_file",
-                       metavar="FILE",
-                       action="append",
-                       help="spliced output filenames other than main output file, specify one for each additional file in input file list")
+    parser.add_argument( "-o", "--output-file", dest="output_filename",
+                         metavar="FILE", default=DEFAULT_OUTPUT_FILENAME,
+                         help="output filename of splice data, default: %s" % DEFAULT_OUTPUT_FILENAME)
 
-    parser.add_option( "-d", "--datasets_list_file", dest="datasets_list_file",
-                       metavar="FILE",
-                       help="file containing list of only datasets to consider for copying. If rename_mapping is enabled then the names are matched on their destination dataset name")
+    parser.add_argument( "-d", "--datasets-list-file", dest="datasets_list_file",
+                         metavar="FILE",
+                         help="file containing list of only datasets to consider for copying. If rename_mapping is enabled then the names are matched on their destination dataset name")
 
-    parser.add_option( "-r", "--rename_mapping", dest="rename_mapping",
-                       action="store_true",
-                       default=False,
-                       help="rename datasets into output file according to internal mapping table as they would appear in the L2Agg PGE")
+    parser.add_argument( "-r", "--rename-mapping", dest="rename_mapping",
+                         action="store_true",
+                         default=False,
+                        help="rename datasets into output file according to internal mapping table as they would appear in the L2Agg PGE")
 
-    parser.add_option( "--agg_names_filter", dest="agg_names_filter",
-                       action="store_true",
-                       default=False,
-                       help="include only dataset names that would appear in the L2Agg PGE. Its only makes sense to use this option with --rename_mapping")
+    parser.add_argument( "--agg-names-filter", dest="agg_names_filter",
+                         action="store_true",
+                         default=False,
+                         help="include only dataset names that would appear in the L2Agg PGE. Its only makes sense to use this option with --rename_mapping")
 
-    parser.add_option( "--no-search-all", dest="search_all_files",
-                       action="store_false",
-                       default=True,
-                       help="search all files to discover all possible datasets and maximum shapes")
+    parser.add_argument( "--no-search-all", dest="search_all_files",
+                         action="store_false",
+                         default=True,
+                         help="search all files to discover all possible datasets and maximum shapes")
 
-    parser.add_option( "--splice-all", dest="splice_all",
-                       action="store_true",
-                       default=False,
-                       help="splice all datasets, including those which do not have a sounding dimension. Note that datasets without an explicit handler and no sounding dimension are simply copied from the first file.")
+    parser.add_argument( "--splice-all", dest="splice_all",
+                         action="store_true",
+                         default=False,
+                         help="splice all datasets, including those which do not have a sounding dimension. Note that datasets without an explicit handler and no sounding dimension are simply copied from the first file.")
 
-    parser.add_option( "-v", "--verbose", dest="verbose",
-                       action="store_true",
-                       default=False,
-                       help="enable verbose informational reporting")
-
+    parser.add_argument( "-v", "--verbose", dest="verbose",
+                         action="store_true",
+                         default=False,
+                         help="enable verbose informational reporting")
 
     # Parse command line arguments
-    (options, args) = parser.parse_args()
+    args = parser.parse_args()
 
-    if len(args) == 0 and options.input_files_list == None:
+    if len(args.filenames) == 0 and args.input_files_list == None:
         parser.error('input list file must be specified')
 
     # Set up logging
-    if options.verbose:
+    if args.verbose:
         # Include HDF5 errors in output
         h5py._errors.unsilence_errors()
 
@@ -718,81 +682,25 @@ def standalone_main():
     console = logging.StreamHandler(stream=sys.stdout)
     logger.addHandler(console)
 
-    id_src_files = []
-    addl_inp_files = []
-    if len(args) > 0:
-        # Make sure to only add unique filenames
-        # Otherwise indexing can be messed up
-        for curr_fn in args:
-            real_fn = os.path.realpath(curr_fn)
-            if real_fn not in id_src_files:
-                id_src_files.append(real_fn)
-            else:
-                logger.error("Duplicate filename: %s" % real_fn)
+    source_files = load_source_files(args.filenames, args.input_files_list)
 
-        addl_inp_files = [ tuple() for fn in id_src_files ]
-    else:
-        last_seen_addl_len = 0
-        line_count = 0
-        with open(options.input_files_list) as input_list_fo:
-            for row_string in input_list_fo:
-                line_count += 1
-
-                row_filenames = row_string.split()
-                id_filename = os.path.realpath(row_filenames.pop(0))
-                if not id_filename in id_src_files:
-                    id_src_files.append(id_filename)
-                else:
-                    logger.error("Duplicate filename: %s" % id_filename)
-
-                # All tuples in addl_inp_files have same length by virtual of this check
-                if last_seen_addl_len> 0 and last_seen_addl_len != len(row_filenames):
-                    parser.error("Each line of input files list must have same number of filenames. Error at line %d" % line_count)
-
-                addl_inp_files.append( tuple(row_filenames) )
-                last_seen_addl_len = len(row_filenames)
-
-    if options.first_output_file == None:
-        first_output_file = common_default_filename(id_src_files)
-    else:
-        first_output_file = options.first_output_file
-
-    addl_out_names = []
-    if options.addl_output_file == None:
-        # Use common name among inputted files to make an output file
-        for addl_idx in range(len(addl_inp_files[0])):
-            fullnames = map(itemgetter(addl_idx), addl_inp_files)
-            addl_out_names.append( common_default_filename(fullnames) )
-                                   
-    elif len(options.addl_output_file) != len(addl_inp_files[0]):
-        raise parser.error("When specifying additional output file names, must specify one for each type that shows up in list file")
-    else:
-        addl_out_names = options.addl_output_file
-
-    addl_out_dict = {}
-    for addl_idx, addl_name in enumerate(addl_out_names):
-        addl_out_dict[addl_name] = map(itemgetter(addl_idx), addl_inp_files)
-
-    if options.sounding_id_file != None:
-        sounding_ids = []
-        with open(options.sounding_id_file) as id_fo:
-            for snd_id_line in id_fo:
-                sounding_ids.append( snd_id_line.strip() )
+    if args.sounding_id_file != None:
+        sounding_ids = [ sid.strip() for sid in open(args.sounding_id_file).readlines() ]
     else:
         logger.info("No sounding ids file supplied, aggregating all ids from all files")
         sounding_ids = None
 
     copy_datasets_list = None
-    if options.datasets_list_file != None:
-        with open(options.datasets_list_file) as ds_list_fo:
-            copy_datasets_list = [ ln.strip() for ln in ds_list_fo.readlines() ]
-    if options.agg_names_filter:
+    if args.datasets_list_file != None:
+        copy_datasets_list = [ ds.strip() for ds in open(args.datasets_list_file).readlines() ]
+
+    if args.agg_names_filter:
         if copy_datasets_list == None:
             copy_datasets_list = aggregator_dataset_dest_names
         else:
             copy_datasets_list += aggregator_dataset_dest_names
 
-    splice_acos_hdf_files(id_src_files, sounding_ids, first_output_file, addl_out_dict, splice_all=options.splice_all, desired_datasets_list=copy_datasets_list, search_all_files=options.search_all_files, rename_mapping=options.rename_mapping)
+    splice_acos_hdf_files(source_files, args.output_filename, sounding_ids, splice_all=args.splice_all, desired_datasets_list=copy_datasets_list, search_all_files=args.search_all_files, rename_mapping=args.rename_mapping)
 
 if __name__ == "__main__":
     standalone_main()
