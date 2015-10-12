@@ -99,7 +99,7 @@ def setupRuns(options):
             f.write('# tools for running in ' +  outputDirectory + '\n')
             f.write('cd ' + os.path.abspath(outputDirectory) + '\n')
             l2_final = 'l2_' + version + '_orbit_' +  orbit +  '.h5'
-            f.write('splice_acos_hdf_files.py --aggregate -o '+ l2_final + ' output/*.h5\n')
+            f.write('splice_product_files.py -o '+ l2_final + ' output/*.h5\n')
             f.write('mergeOrbitSimOutput.py --l2='+l2_final+' --l1b='+l1b+' --logFile=' + logFile + ' --sceneFile=' + sceneFile + ' --detailedLog='+hdf_logFile+ ' --optFile='+opt_file+ ' --cloudFile='+cloud_file+'\n')
     r.close()
     f.close()

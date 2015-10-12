@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Extracts only the essential datasets from a L1B file for a given set of sounding ids
-# This script uses splice_acos_hdf_files.py to accomplish this task and mainly exists
+# This script uses splice_product_files.py to accomplish this task and mainly exists
 # just to easily se tup the inputs to achieve this.
 
 function usage
@@ -82,15 +82,15 @@ if [ $# -gt 0 ]; then
     sounding_id_file=`mktemp`
     echo $* | sed 's| |\n|g' > ${sounding_id_file}
     # Remove sounding posistion if we have oco files so
-    # we are instead using frame ids as splice_acos_hdf_files.py expects
+    # we are instead using frame ids as splice_product_files.py expects
     if [[ "$base_names" =~ "oco.*\.h5" ]]; then
         sed -i 's|.$||g' $sounding_id_file
     fi
 
-    splice_acos_hdf_files.py --splice-all -d ${datasets_input_file} -i ${input_files} -s ${sounding_id_file}
+    splice_product_files.py --splice-all -d ${datasets_input_file} -i ${input_files} -s ${sounding_id_file}
     rm -f ${sounding_id_file}
 else
-    splice_acos_hdf_files.py --splice-all -d ${datasets_input_file} -i ${input_files} --aggregate
+    splice_product_files.py --splice-all -d ${datasets_input_file} -i ${input_files} 
 fi
 
 rm -f ${input_files}
