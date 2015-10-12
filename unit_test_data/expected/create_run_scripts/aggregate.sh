@@ -27,7 +27,7 @@ if [ ! -e "$l2_agg_fn" ]; then
     cat $sounding_id_list_filename | tr ' ' '\n' > $in_snd_id_tmp
 
     echo "Aggregating L2 output files"
-    /l2_support_fake_path/utils/splice_acos_hdf_files.py -o $l2_agg_fn -i $input_files_tmp -s $in_snd_id_tmp $*
+    /l2_support_fake_path/utils/splice_product_files.py -o $l2_agg_fn -i $input_files_tmp -s $in_snd_id_tmp $*
 
     rm $input_files_tmp
     rm $in_snd_id_tmp
@@ -52,7 +52,7 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
     # Combine L1B and L2 files into one file
     # with IMAP and ABand files if they are supplied
     echo "Combining L2 and L1B into a single file"
-    /l2_support_fake_path/utils/splice_acos_hdf_files.py --splice-all --rename_mapping --agg_names_filter -o $l2_plus_more_agg_fn $l2_agg_fn $spectrum_file $imap_file $aband_file -s $l2_snd_id_tmp2
+    /l2_support_fake_path/utils/splice_product_files.py --splice-all --rename_mapping --agg_names_filter -o $l2_plus_more_agg_fn $l2_agg_fn $spectrum_file $imap_file $aband_file -s $l2_snd_id_tmp2
     rm $l2_snd_id_tmp2
 
     # Create retrieval_index dataset based on L1B file

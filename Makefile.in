@@ -2384,7 +2384,7 @@ bin_SCRIPTS = @supportutilssrc@/addSoundingHeader.py \
 	@supportutilssrc@/runs_database \
 	@supportutilssrc@/setupOrbitSimulator.py \
 	@supportutilssrc@/show_l1b_pixels_used.py \
-	@supportutilssrc@/splice_acos_hdf_files.py \
+	@supportutilssrc@/splice_product_files.py \
 	@supportutilssrc@/sron2acos.py @supportutilssrc@/stats.py \
 	@supportutilssrc@/sza.py @supportutilssrc@/text_to_pdf.py \
 	@supportutilssrc@/timing_summary \
