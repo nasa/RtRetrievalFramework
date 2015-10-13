@@ -229,7 +229,7 @@ class DatasetInformation(object):
 
 class SourceInformation(object):
 
-    def __init__(self, src_filenames, sounding_ids=None, desired_datasets=None, rename_mapping=False, multi_source_mode=False):
+    def __init__(self, src_filenames, sounding_ids=None, desired_datasets=None, rename_mapping=False, multi_source_types=False):
 
         # Filenames to splice from, will be modified to remove any which have no sounding ids present
         self.src_filenames = list(src_filenames)
@@ -245,7 +245,7 @@ class SourceInformation(object):
         # Flags
         self.desired_datasets = desired_datasets
         self.rename_mapping = rename_mapping
-        self.multi_source_mode = multi_source_mode
+        self.multi_source_types = multi_source_types
 
         # Sounding ids per file and their indexes in those files
         self.file_sounding_ids = []
@@ -328,7 +328,7 @@ class SourceInformation(object):
             check_files = copy(self.src_filenames)
 
             for file_idx, curr_file in enumerate(check_files):
-                with closing(InputContainerChooser(curr_file, single_id_dim=not self.multi_source_mode)) as hdf_obj:
+                with closing(InputContainerChooser(curr_file, single_id_dim=not self.multi_source_types)) as hdf_obj:
                     num_ids = self.process_file_ids(hdf_obj)
 
                     if num_ids > 0:
@@ -436,7 +436,7 @@ def get_dataset_slice(acos_hdf_obj, in_dataset_obj, dataset_info, in_data_idx, o
 
     return stored_data
 
-def create_dest_file_datasets(out_hdf_obj, source_info, copy_all=False, multi_source_mode=False):
+def create_dest_file_datasets(out_hdf_obj, source_info, copy_all=False, multi_source_types=False):
     logger.info("Creating output file datasets")
 
     # Loop over dataset names/shapes
@@ -454,13 +454,13 @@ def create_dest_file_datasets(out_hdf_obj, source_info, copy_all=False, multi_so
 
         elif len(id_dimension) > 0: 
             # Create a dataset that does have an id dimension
-            out_dataset_objs[curr_dataset_name] = create_output_dataset(out_hdf_obj, curr_dataset_info, source_info.num_soundings, collapse_id_dim=multi_source_mode)
+            out_dataset_objs[curr_dataset_name] = create_output_dataset(out_hdf_obj, curr_dataset_info, source_info.num_soundings, collapse_id_dim=multi_source_types)
         
         elif copy_all:
             logger.debug("Non sounding id dataset, copying from first file: %s" % curr_dataset_name)
                 
             # Copy dataset with no sounding dimension directly from first file
-            out_dataset_obj = create_output_dataset(out_hdf_obj, curr_dataset_info, collapse_id_dim=multi_source_mode)
+            out_dataset_obj = create_output_dataset(out_hdf_obj, curr_dataset_info, collapse_id_dim=multi_source_types)
            
             # Search for first file that has the desired dataset. Can't just take
             # from first in cases when splicing dissimilar files
@@ -505,12 +505,12 @@ def output_indexes_shape(in_dataset_obj, dataset_info, out_data_idx, collapse_id
 
     return out_dataset_idx, out_shape
 
-def get_datasets_for_file(curr_file, curr_snd_indexes, inp_datasets_info, output_index, multi_source_mode=False):
+def get_datasets_for_file(curr_file, curr_snd_indexes, inp_datasets_info, output_index, multi_source_types=False):
     # Ignore current file if no soundings
     if len(curr_snd_indexes) == 0:
         return     
 
-    with closing(InputContainerChooser(curr_file, single_id_dim=not multi_source_mode)) as curr_hdf_obj:
+    with closing(InputContainerChooser(curr_file, single_id_dim=not multi_source_types)) as curr_hdf_obj:
         # Copy each dataset for current file
         for curr_dataset_name, curr_dataset_info in inp_datasets_info.items():
 
@@ -523,7 +523,7 @@ def get_datasets_for_file(curr_file, curr_snd_indexes, inp_datasets_info, output
                 if not 0 in curr_ds_obj.shape:
                     # Copy dataset's relevant contents into output
                     try:
-                        out_dataset_idx, out_shape = output_indexes_shape(curr_ds_obj, curr_dataset_info, output_slice, collapse_id_dim=multi_source_mode)
+                        out_dataset_idx, out_shape = output_indexes_shape(curr_ds_obj, curr_dataset_info, output_slice, collapse_id_dim=multi_source_types)
 
                         stored_data = get_dataset_slice(curr_hdf_obj, curr_ds_obj, curr_dataset_info, curr_snd_indexes, out_shape)
                         yield curr_dataset_name, out_dataset_idx, stored_data
@@ -538,7 +538,7 @@ def get_datasets_for_file(curr_file, curr_snd_indexes, inp_datasets_info, output
                 # Ok if not found, just treat as empty dataset
                 logger.debug('Dataset: "%s" is missing, not actually copy any values from: %s' % (curr_dataset_name, curr_file))
 
-def copy_multiple_datasets(out_dataset_objs, source_info, multi_source_mode=False):
+def copy_multiple_datasets(out_dataset_objs, source_info, multi_source_types=False):
     """Given an input and output hdf object, copies the specified soundings ids for the specified
     dataset names along the specified shape dimention to the output file"""
 
@@ -551,21 +551,21 @@ def copy_multiple_datasets(out_dataset_objs, source_info, multi_source_mode=Fals
 
         write_progress(file_index-1, len(source_info.src_filenames))
 
-        for curr_dataset_name, out_dataset_idx, stored_data in get_datasets_for_file(curr_file, curr_snd_indexes, source_info.datasets_info, output_index, multi_source_mode):
+        for curr_dataset_name, out_dataset_idx, stored_data in get_datasets_for_file(curr_file, curr_snd_indexes, source_info.datasets_info, output_index, multi_source_types):
             out_dataset_objs[curr_dataset_name].__setitem__(tuple(out_dataset_idx), stored_data)
 
         write_progress(file_index, len(source_info.src_filenames))
 
         # Increment where to start in the index into output sounding indexes
-        # Only increment if not in multi-source mode because when using different
+        # Only increment if not using multiple source types because when using different
         # inputs to a single output we will be pulling the same sounding ids (hopefully)
-        if not multi_source_mode:
+        if not multi_source_types:
             output_index += len(curr_snd_indexes) 
 
 def determine_multi_source(check_files):
 
-    # Looks through input hdf files and see if we are in multi-source combination mode, ie different types of files combined into one
-    multi_source_mode = False
+    # Looks through input hdf files and see if we are using multiple source types, ie different types of files combined into one
+    multi_source_types = False
 
     file_id_names = []
     for curr_file in check_files:
@@ -578,26 +578,27 @@ def determine_multi_source(check_files):
     id_match_counts = numpy.array([ len(filter(lambda x: x == idn, file_id_names)) for idn in file_id_names ])
 
     if(all(id_match_counts == len(id_match_counts))):
-        logger.debug("Not using multi source mode")
+        logger.debug("Not using multiple source types")
     elif(len(id_match_counts) > 1 and all(id_match_counts >= 1) and all(id_match_counts < len(id_match_counts))):
-        multi_source_mode = True
-        logger.debug("Using multi source mode")
+        multi_source_types = True
+        logger.debug("Using multiple source types")
     else:
-        raise Exception("Error determining multi source mode with id match counts: %s" % id_match_counts)
+        raise Exception("Error determining if using multiple source types with id match counts: %s" % id_match_counts)
 
-    return multi_source_mode
+    return multi_source_types
 
-def splice_files(source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False):
+def splice_files(source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False, multi_source_types=None):
 
     logger.info("Splicing into: %s" % output_filename)
 
     # Determine if input files are of different types
-    logger.info("Determining multi source mode")
-    multi_source_mode = determine_multi_source(source_files)
+    if multi_source_types == None:
+        logger.info("Determining if using multiple source types")
+        multi_source_types = determine_multi_source(source_files)
 
     # Match sounding ids to files and indexes using L1B files
     logger.info("Analyzing source files")
-    source_info = SourceInformation(source_files, sounding_ids, desired_datasets_list, rename_mapping, multi_source_mode)
+    source_info = SourceInformation(source_files, sounding_ids, desired_datasets_list, rename_mapping, multi_source_types)
     source_info.analyze_files()
 
     # Copy over all datasets in files
@@ -605,13 +606,13 @@ def splice_files(source_files, output_filename, sounding_ids, splice_all=False, 
 
         # Create datasets in the output file so we have somewhere to dump the input
         with Timer() as t:
-            out_dataset_objs = create_dest_file_datasets(dest_obj, source_info, splice_all, multi_source_mode)
+            out_dataset_objs = create_dest_file_datasets(dest_obj, source_info, splice_all, multi_source_types)
             dest_obj.flush()
         logger.info("Datasets creation took %.03f seconds" % (t.interval))
 
         # Now copy desired datasets from source file to destination files
         with Timer() as t:
-            copy_multiple_datasets(out_dataset_objs, source_info, multi_source_mode=multi_source_mode)
+            copy_multiple_datasets(out_dataset_objs, source_info, multi_source_types=multi_source_types)
 
         logger.info("Datasets copying took %.03f seconds" % (t.interval))
 
@@ -662,6 +663,12 @@ def standalone_main():
                          default=False,
                          help="splice all datasets, including those which do not have a sounding dimension. Note that datasets without an explicit handler and no sounding dimension are simply copied from the first file.")
 
+    parser.add_argument( "--multiple-file-types", dest="multi_source_types", action="store_true", default=None,
+                         help="indicates that multiple file type sources are being spliced. Speeds up multiple source type determination stage by being specified." )
+
+    parser.add_argument( "--single-file-type", dest="multi_source_types", action="store_false", default=None,
+                         help="indicates that a single type of file is being spliced. Speeds up multiple source type determination stage by being specified." )
+
     parser.add_argument( "-v", "--verbose", dest="verbose",
                          action="store_true",
                          default=False,
@@ -702,7 +709,7 @@ def standalone_main():
         else:
             copy_datasets_list += aggregator_dataset_dest_names
 
-    splice_files(source_files, args.output_filename, sounding_ids, splice_all=args.splice_all, desired_datasets_list=copy_datasets_list, rename_mapping=args.rename_mapping)
+    splice_files(source_files, args.output_filename, sounding_ids, splice_all=args.splice_all, desired_datasets_list=copy_datasets_list, rename_mapping=args.rename_mapping, multi_source_types=args.multi_source_types)
 
 if __name__ == "__main__":
     standalone_main()
