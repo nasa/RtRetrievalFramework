@@ -6,16 +6,15 @@
 import os
 import re
 import sys
-import copy
+from copy import copy
 from argparse import ArgumentParser
 from operator import itemgetter
-from collections import Counter, deque
+from collections import Counter
 from contextlib import closing
 import logging
 import traceback
-import subprocess
-import logging
 import time
+
 import numpy
 import h5py
 
@@ -53,43 +52,6 @@ class Timer:
         self.end = time.time()
         self.interval = self.end - self.start
    
-def find_sounding_indexes(in_filenames, in_srch_sounding_ids=None, multi_source_mode=False):
-    """Returns a list of ids for each passed object as well as a list of indexes for each file
-    where these sounding ids come from the list passed as an argument"""
-    
-    ids_by_file = []
-    indexes_by_file = []
-    all_sounding_ids = set()
-    
-    if in_srch_sounding_ids != None:
-        # Cast sounding ids supplied to data type that can be compared
-        in_srch_sounding_ids = set(numpy.array(in_srch_sounding_ids, dtype=numpy.int64))
-
-    for file_idx, curr_file in enumerate(in_filenames):
-        # Write progress at beginning of loop so code doesn't look stalled out
-        # -1 since we have not completed work on this iteration
-        write_progress(file_idx-1, len(in_filenames))
-            
-        with closing(InputContainerChooser(curr_file, single_id_dim=not multi_source_mode)) as hdf_obj:
-            file_sounding_ids = set(numpy.ravel(hdf_obj.get_sounding_ids()))
-
-            if in_srch_sounding_ids == None:
-                matching_ids = file_sounding_ids
-            else:
-                matching_ids = file_sounding_ids.intersection(in_srch_sounding_ids)
-            all_sounding_ids.update(matching_ids)
-
-            matching_ids = sorted(matching_ids)
-            matching_indexes = [ hdf_obj.get_sounding_indexes(curr_id) for curr_id in matching_ids ] 
-
-            ids_by_file.append( tuple(matching_ids) )
-            indexes_by_file.append( tuple(matching_indexes) )
-
-        write_progress(file_idx, len(in_filenames))
-
-    total_found = len(all_sounding_ids)
-    return (ids_by_file, indexes_by_file, total_found)
-
 class DatasetInformation(object):
 
     def __init__(self, dataset_name, rename_mapping=False):
@@ -265,55 +227,120 @@ class DatasetInformation(object):
 
         return dst_shape, max_shape
 
-def determine_datasets_info(in_filenames, desired_datasets=None, search_all_files=True, multi_source_mode=False, rename_mapping=False):
-    # Arrays returned
-    copy_datasets = {}
+class SourceInformation(object):
 
-    logger.info("Determining datasets information")
+    def __init__(self, src_filenames, sounding_ids=None, desired_datasets=None, rename_mapping=False, multi_source_mode=False):
 
-    # Always check first file 
-    check_files = [ in_filenames[0] ]
+        # Filenames to splice from, will be modified to remove any which have no sounding ids present
+        self.src_filenames = list(src_filenames)
 
-    # Optionally search for all other files for datasets and sizes
-    if search_all_files and len(in_filenames) > 1:
-        logger.info("Will search all files for dataset information")
-        check_files += in_filenames[1:]
+        if sounding_ids != None:
+            self.inp_sounding_ids = set(numpy.array(sounding_ids, dtype=numpy.int64))
+        else:
+            self.inp_sounding_ids = None
 
-    ignored_datasets = []
-    file_id_names = []
-    with Timer() as t:
-        for file_idx, curr_file in enumerate(check_files):
-            with closing(InputContainerChooser(curr_file, single_id_dim=not multi_source_mode)) as hdf_obj:
-                def check_dataset(ds_name, ds_obj):
-                    if isinstance(ds_obj, h5py.Group) or ds_name in ignored_datasets:
-                        return None
+        # All sounding ids found from source files that match input list
+        self.found_sounding_ids = set()
 
-                    ds_info = copy_datasets.get(ds_name, DatasetInformation(ds_name, rename_mapping))
+        # Flags
+        self.desired_datasets = desired_datasets
+        self.rename_mapping = rename_mapping
+        self.multi_source_mode = multi_source_mode
 
-                    # Search list of datasets based upon the destination dataset name, which is the same ass
-                    # the input name when rename mapping is not used
-                    if desired_datasets != None and len(filter(lambda ds: re.search(ds_info.out_name, ds), desired_datasets)) == 0:
-                        logger.debug('Ignoring dataset not in list of datasets to consider: "%s"' % ds_name)
-                        ignored_datasets.append(ds_name)
-                        return None
+        # Sounding ids per file and their indexes in those files
+        self.file_sounding_ids = []
+        self.file_indexes = []
 
-                    ds_info.add_instance(hdf_obj, ds_obj)
-                    if len(ds_info.inp_shape_names) > 0:
-                        copy_datasets[ds_name] = ds_info
+        # Mapping of dataset names to their information object
+        self.datasets_info = {}
+        
+        # Datasets to ignore on subsequent passes, datasets added to this list to speed up
+        # processing and eliminate the need to compare against the desired dataset list on
+        # each encounter
+        self._ignored_datasets = []
+
+    @property
+    def num_soundings(self):
+        return len(self.found_sounding_ids)
+
+    def process_file_ids(self, hdf_obj):
+        file_sounding_ids = set(numpy.ravel(hdf_obj.get_sounding_ids()))
+
+        if self.inp_sounding_ids == None:
+            matching_ids = file_sounding_ids
+        else:
+            matching_ids = sorted(file_sounding_ids.intersection(self.inp_sounding_ids))
+
+        if len(matching_ids) > 0:
+            self.found_sounding_ids.update(matching_ids)
+            
+            matching_indexes = [ hdf_obj.get_sounding_indexes(curr_id) for curr_id in matching_ids ] 
+
+            self.file_sounding_ids.append( tuple(matching_ids) )
+            self.file_indexes.append( tuple(matching_indexes) )
+
+        return len(matching_ids)
+
+    def process_dataset_info(self, hdf_obj):
+        def _check_dataset(ds_name, ds_obj):
+            if isinstance(ds_obj, h5py.Group) or ds_name in self._ignored_datasets:
+                return None
+
+            # Search list of datasets based upon the destination dataset name, which is the same as
+            # the input name when rename mapping is not used
+            if self.desired_datasets != None and len(filter(lambda ds: re.search(ds_info.out_name, ds), self.desired_datasets)) == 0:
+                logger.debug('Ignoring dataset not in list of datasets to consider: "%s"' % ds_name)
+                self._ignored_datasets.append(ds_name)
+                return None
+
+            ds_info = self.datasets_info.get(ds_name, None)
+            if ds_info == None:
+                ds_info = DatasetInformation(ds_name, self.rename_mapping)
+
+            # Add a new instance of the dataset from a new file
+            ds_info.add_instance(hdf_obj, ds_obj)
+
+            if len(ds_info.inp_shape_names) > 0:
+                self.datasets_info[ds_name] = ds_info
+            else:
+                logger.warning( "Ignoring dataset which is not an array: %s" % ds_name)
+
+        hdf_obj.visititems(_check_dataset)
+
+    def _sort_file_lists(self):
+        # Sort filenames, sounding ids and indexes based on sounding ids
+        sort_lists = zip(self.file_sounding_ids, self.file_indexes, self.src_filenames)
+        sort_lists.sort(key=itemgetter(0)) # Sort by sounding id
+        self.file_sounding_ids = map(itemgetter(0), sort_lists)
+        self.file_indexes = map(itemgetter(1), sort_lists)
+        self.src_filenames = map(itemgetter(2), sort_lists)
+
+        # Make a list if getter found only one item and made it just a single string
+        if not hasattr(self.src_filenames, "__iter__"):
+            self.file_sounding_ids = [ self.file_sounding_ids ]
+            self.file_indexes = [ self.file_indexes ]
+            self.src_filenames = [ self.src_filenames ]
+
+    def analyze_files(self):
+        with Timer() as t:
+            # Loop over a copy of the source filenames as we will remove from the original list any that
+            # have no matching sounding ids
+            check_files = copy(self.src_filenames)
+
+            for file_idx, curr_file in enumerate(check_files):
+                with closing(InputContainerChooser(curr_file, single_id_dim=not self.multi_source_mode)) as hdf_obj:
+                    num_ids = self.process_file_ids(hdf_obj)
+
+                    if num_ids > 0:
+                        self.process_dataset_info(hdf_obj)
                     else:
-                        logger.warning( "Ignoring dataset which is not an array: %s" % ds_name )
+                        self.src_filenames.remove(curr_file)
 
-                hdf_obj.visititems(check_dataset)
+                write_progress(file_idx, len(check_files))
+        
+        self._sort_file_lists()
 
-                if len(check_files) > 1:
-                    write_progress(file_idx, len(check_files))
-
-                # Add file id names, for checking for the type of the file, w/o opening it again
-                file_id_names.append(hdf_obj.get_id_dim_names())
-
-    logger.info("Analyzed %d files and found %d unique datasets in %.03f seconds" % (len(check_files), len(copy_datasets), t.interval))
-
-    return (copy_datasets, file_id_names)
+        logger.info("Analyzed %d files, found %d sounding ids and %d unique datasets in %d files taking %.03f seconds" % (len(check_files), len(self.found_sounding_ids), len(self.datasets_info), len(self.src_filenames), t.interval))
 
 def create_output_dataset(out_hdf_obj, dataset_info, splice_size=None, collapse_id_dim=False):
     """Duplicates a dataset from the input file into the output hdf object as it exists
@@ -409,25 +436,25 @@ def get_dataset_slice(acos_hdf_obj, in_dataset_obj, dataset_info, in_data_idx, o
 
     return stored_data
 
-def create_dest_file_datasets(out_hdf_obj, in_filenames, inp_datasets_info, out_num_soundings, copy_all=False, multi_source_mode=False):
+def create_dest_file_datasets(out_hdf_obj, source_info, copy_all=False, multi_source_mode=False):
     logger.info("Creating output file datasets")
 
     # Loop over dataset names/shapes
     # Create datasets and copy any non id_shape datasets
-    num_datasets = len(inp_datasets_info.keys())
+    num_datasets = len(source_info.datasets_info.keys())
     out_dataset_objs = {}
-    for curr_index, (curr_dataset_name, curr_dataset_info) in enumerate(inp_datasets_info.items()):
+    for curr_index, (curr_dataset_name, curr_dataset_info) in enumerate(source_info.datasets_info.items()):
         write_progress(curr_index-1, num_datasets)
 
         id_dimension = curr_dataset_info.inp_id_dims
 
         if out_hdf_obj.get(curr_dataset_info.out_name, None) != None:
             logger.debug("Destination dataset %s for %s already exists in output file, ignoring duplicate" % (curr_dataset_info.out_name, curr_dataset_name))
-            del inp_datasets_info[curr_dataset_name]
+            del source_info.datasets_info[curr_dataset_name]
 
         elif len(id_dimension) > 0: 
             # Create a dataset that does have an id dimension
-            out_dataset_objs[curr_dataset_name] = create_output_dataset(out_hdf_obj, curr_dataset_info, out_num_soundings, collapse_id_dim=multi_source_mode)
+            out_dataset_objs[curr_dataset_name] = create_output_dataset(out_hdf_obj, curr_dataset_info, source_info.num_soundings, collapse_id_dim=multi_source_mode)
         
         elif copy_all:
             logger.debug("Non sounding id dataset, copying from first file: %s" % curr_dataset_name)
@@ -437,7 +464,7 @@ def create_dest_file_datasets(out_hdf_obj, in_filenames, inp_datasets_info, out_
            
             # Search for first file that has the desired dataset. Can't just take
             # from first in cases when splicing dissimilar files
-            for inp_fn in in_filenames:
+            for inp_fn in source_info.src_filenames:
                 with closing(h5py.File(inp_fn, 'r')) as hdf_obj:
                     if hdf_obj.get(curr_dataset_name, None):
                         # Do not try and copy empty datasets
@@ -446,7 +473,7 @@ def create_dest_file_datasets(out_hdf_obj, in_filenames, inp_datasets_info, out_
                         inp_datasets_info.pop(curr_dataset_name)
                         break
         else:
-            del inp_datasets_info[curr_dataset_name]
+            del source_info.datasets_info[curr_dataset_name]
             logger.debug( "Ignoring non sounding id dataset: %s" % curr_dataset_name )
 
         write_progress(curr_index, num_datasets)
@@ -511,7 +538,7 @@ def get_datasets_for_file(curr_file, curr_snd_indexes, inp_datasets_info, output
                 # Ok if not found, just treat as empty dataset
                 logger.debug('Dataset: "%s" is missing, not actually copy any values from: %s' % (curr_dataset_name, curr_file))
 
-def copy_multiple_datasets(out_dataset_objs, in_filenames, inp_snd_indexes, file_id_names, inp_datasets_info, multi_source_mode=False):
+def copy_multiple_datasets(out_dataset_objs, source_info, multi_source_mode=False):
     """Given an input and output hdf object, copies the specified soundings ids for the specified
     dataset names along the specified shape dimention to the output file"""
 
@@ -519,15 +546,15 @@ def copy_multiple_datasets(out_dataset_objs, in_filenames, inp_snd_indexes, file
  
     # Loop over dataset names/shapes
     output_index = 0
-    for file_index, (curr_file, curr_snd_indexes) in enumerate(zip(in_filenames, inp_snd_indexes)):
-        logger.debug( 'Copying %d sounding(s) from %s (%d / %d)' % (len(curr_snd_indexes), os.path.basename(curr_file), file_index+1, len(in_filenames)) )
+    for file_index, (curr_file, curr_snd_indexes) in enumerate(zip(source_info.src_filenames, source_info.file_indexes)):
+        logger.debug( 'Copying %d sounding(s) from %s (%d / %d)' % (len(curr_snd_indexes), os.path.basename(curr_file), file_index+1, len(source_info.src_filenames)) )
 
-        write_progress(file_index-1, len(in_filenames))
+        write_progress(file_index-1, len(source_info.src_filenames))
 
-        for curr_dataset_name, out_dataset_idx, stored_data in get_datasets_for_file(curr_file, curr_snd_indexes, inp_datasets_info, output_index, multi_source_mode):
+        for curr_dataset_name, out_dataset_idx, stored_data in get_datasets_for_file(curr_file, curr_snd_indexes, source_info.datasets_info, output_index, multi_source_mode):
             out_dataset_objs[curr_dataset_name].__setitem__(tuple(out_dataset_idx), stored_data)
 
-        write_progress(file_index, len(in_filenames))
+        write_progress(file_index, len(source_info.src_filenames))
 
         # Increment where to start in the index into output sounding indexes
         # Only increment if not in multi-source mode because when using different
@@ -560,51 +587,31 @@ def determine_multi_source(check_files):
 
     return multi_source_mode
 
-def splice_acos_hdf_files(source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, search_all_files=True, rename_mapping=False):
+def splice_files(source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False):
+
+    logger.info("Splicing into: %s" % output_filename)
+
     # Determine if input files are of different types
     logger.info("Determining multi source mode")
     multi_source_mode = determine_multi_source(source_files)
 
     # Match sounding ids to files and indexes using L1B files
-    logger.info("Finding sounding indexes from source file sounding ids")
-    with Timer() as t:
-        (sounding_id_matches, sounding_index_matches, total_num_soundings) = find_sounding_indexes(source_files, sounding_ids, multi_source_mode=multi_source_mode)
+    logger.info("Analyzing source files")
+    source_info = SourceInformation(source_files, sounding_ids, desired_datasets_list, rename_mapping, multi_source_mode)
+    source_info.analyze_files()
 
-    logger.info("Found %d total soundings from %d files in %.03f seconds" % (total_num_soundings, len(source_files), t.interval))
-
-    # Sort filenames, sounding ids and indexes based on sounding ids
-    sort_lists = zip(sounding_id_matches, sounding_index_matches, source_files)
-    sort_lists.sort(key=itemgetter(0)) # Sort by sounding id
-    sounding_id_matches = map(itemgetter(0), sort_lists)
-    sounding_index_matches = map(itemgetter(1), sort_lists)
-    source_files = map(itemgetter(2), sort_lists)
-
-    # Trim out files that have no matched soundings
-    where_has_snd_ids = filter(lambda i: len(sounding_index_matches[i]) > 0, range(len(sounding_index_matches)))
-    if len(where_has_snd_ids) == 0:
-        raise Exception("Failed to find any files with matching sounding ids in them")
-    get_valid = itemgetter(*where_has_snd_ids)
-    in_filenames = get_valid(source_files)
-    copy_indexes = get_valid(sounding_index_matches)
-
-    # Make a list if getter found only one item and made it just a single string
-    if not hasattr(in_filenames, "__iter__"):
-        in_filenames = [ in_filenames ]
-        copy_indexes = [ copy_indexes ]
-       
     # Copy over all datasets in files
-    logger.info("Splicing into: %s" % output_filename)
     with closing(h5py.File(output_filename, 'w')) as dest_obj:
-        # Determine information on datasets found in input files
-        (copy_datasets, file_id_names) = determine_datasets_info(in_filenames, desired_datasets_list, search_all_files, multi_source_mode=multi_source_mode, rename_mapping=rename_mapping)
 
         # Create datasets in the output file so we have somewhere to dump the input
-        out_dataset_objs = create_dest_file_datasets(dest_obj, in_filenames, copy_datasets, total_num_soundings, splice_all, multi_source_mode)
-        dest_obj.flush()
+        with Timer() as t:
+            out_dataset_objs = create_dest_file_datasets(dest_obj, source_info, splice_all, multi_source_mode)
+            dest_obj.flush()
+        logger.info("Datasets creation took %.03f seconds" % (t.interval))
 
         # Now copy desired datasets from source file to destination files
         with Timer() as t:
-            copy_multiple_datasets(out_dataset_objs, in_filenames, copy_indexes, file_id_names, copy_datasets, multi_source_mode=multi_source_mode)
+            copy_multiple_datasets(out_dataset_objs, source_info, multi_source_mode=multi_source_mode)
 
         logger.info("Datasets copying took %.03f seconds" % (t.interval))
 
@@ -649,11 +656,6 @@ def standalone_main():
                          action="store_true",
                          default=False,
                          help="include only dataset names that would appear in the L2Agg PGE. Its only makes sense to use this option with --rename_mapping")
-
-    parser.add_argument( "--no-search-all", dest="search_all_files",
-                         action="store_false",
-                         default=True,
-                         help="search all files to discover all possible datasets and maximum shapes")
 
     parser.add_argument( "--splice-all", dest="splice_all",
                          action="store_true",
@@ -700,7 +702,7 @@ def standalone_main():
         else:
             copy_datasets_list += aggregator_dataset_dest_names
 
-    splice_acos_hdf_files(source_files, args.output_filename, sounding_ids, splice_all=args.splice_all, desired_datasets_list=copy_datasets_list, search_all_files=args.search_all_files, rename_mapping=args.rename_mapping)
+    splice_files(source_files, args.output_filename, sounding_ids, splice_all=args.splice_all, desired_datasets_list=copy_datasets_list, rename_mapping=args.rename_mapping)
 
 if __name__ == "__main__":
     standalone_main()
