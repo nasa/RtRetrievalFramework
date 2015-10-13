@@ -8,4 +8,4 @@ export LUA_PATH="{0.l2_lua_path}"
 
 # Aggregate all single sounding output hdf files into a single hdf file
 echo "Aggregating L2 output files"
-{0.l2_support_path}/utils/splice_product_files.py -o $l2_agg_fn {0.output_directory}/*.h5 $*
+{0.l2_support_path}/utils/splice_product_files.py --single-file-type -o $l2_agg_fn {0.output_directory}/*.h5 $*
