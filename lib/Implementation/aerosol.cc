@@ -142,13 +142,19 @@ ArrayAd<double, 2>
 Aerosol::optical_depth_each_layer(double wn) const
 {
   Range ra(Range::all());
+  firstIndex i1; secondIndex i2; thirdIndex i3;
   FunctionTimer ft(timer.function_timer());
   fill_cache();
   ArrayAd<double, 2> res(od_ind_wn.copy());
   for(int i = 0; i < number_particle(); ++i) {
-    double t = aprop[i]->extinction_coefficient(wn).value();
-    res.value()(ra, i) *= t;
-    res.jacobian()(ra, i, ra) *= t;
+    AutoDerivative<double> t = aprop[i]->extinction_coefficient(wn);
+    Array<double, 1> v(res.value()(ra, i));
+    Array<double, 2> jac(res.jacobian()(ra, i, ra));
+    v *= t.value();
+    if(t.is_constant())
+      jac *= t.value();
+    else
+      jac = t.value() * jac + v(i1) * t.gradient()(i2);
   }
   return res;
 }
