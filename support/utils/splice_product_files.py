@@ -286,16 +286,16 @@ class SourceInformation(object):
             if isinstance(ds_obj, h5py.Group) or ds_name in self._ignored_datasets:
                 return None
 
+            ds_info = self.datasets_info.get(ds_name, None)
+            if ds_info == None:
+                ds_info = DatasetInformation(ds_name, self.rename_mapping)
+
             # Search list of datasets based upon the destination dataset name, which is the same as
             # the input name when rename mapping is not used
             if self.desired_datasets != None and len(filter(lambda ds: re.search(ds_info.out_name, ds), self.desired_datasets)) == 0:
                 logger.debug('Ignoring dataset not in list of datasets to consider: "%s"' % ds_name)
                 self._ignored_datasets.append(ds_name)
                 return None
-
-            ds_info = self.datasets_info.get(ds_name, None)
-            if ds_info == None:
-                ds_info = DatasetInformation(ds_name, self.rename_mapping)
 
             # Add a new instance of the dataset from a new file
             ds_info.add_instance(hdf_obj, ds_obj)
@@ -470,7 +470,7 @@ def create_dest_file_datasets(out_hdf_obj, source_info, copy_all=False, multi_so
                         # Do not try and copy empty datasets
                         if hdf_obj[curr_dataset_name].len() > 0:
                             out_dataset_obj[:] = hdf_obj[curr_dataset_name][:]
-                        inp_datasets_info.pop(curr_dataset_name)
+                        source_info.datasets_info.pop(curr_dataset_name)
                         break
         else:
             del source_info.datasets_info[curr_dataset_name]
