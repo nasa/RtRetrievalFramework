@@ -301,23 +301,37 @@ ArrayAd<double, 3> Aerosol::pf_mom(double wn,
     throw Exception(err_msg.str());
   }
 
-  std::vector<Array<double, 2> > pf;
+  std::vector<ArrayAd<double, 2> > pf;
   int s1 = 0;
   int s2 = 0;
   int nvar = frac_aer.number_variable();
   for(int j = 0; j < frac_aer.cols(); ++j) {
-    pf.push_back(aprop[j]->phase_function_moment(wn, nummom, numscat).value());
+    pf.push_back(aprop[j]->phase_function_moment(wn, nummom, numscat));
     s1 = std::max(s1, pf[j].rows());
     s2 = std::max(s2, pf[j].cols());
+    nvar = std::max(nvar, pf[j].number_variable());
   }
   ArrayAd<double, 3> res(s1, nlay, s2, nvar);
   res = 0;
   for(int j = 0; j < frac_aer.cols(); ++j) {
     Range r1(0, pf[j].rows() - 1);
     Range r2(0, pf[j].cols() - 1);
-    res.value()(r1,ra,r2) += frac_aer.value()(ra,j)(i2) * pf[j](i1, i3);
-    res.jacobian()(r1,ra,r2,ra) += 
-      frac_aer.jacobian()(ra,j,ra)(i2,i4) * pf[j](i1, i3);
+    Array<double, 3> rv(res.value()(r1,ra,r2));
+    Array<double, 4> rjac(res.jacobian()(r1,ra,r2,ra));
+    Array<double, 1> fv(frac_aer.value()(ra,j));
+    Array<double, 2> fjac(frac_aer.jacobian()(ra,j, ra));
+    Array<double, 2> pv(pf[j].value());
+    Array<double, 3> pjac(pf[j].jacobian());
+    rv += fv(i2) * pv(i1, i3);
+    if(pf[j].is_constant()) {
+      if(!frac_aer.is_constant())
+	rjac += fjac(i2,i4) * pv(i1, i3);
+    } else {
+      if(frac_aer.is_constant())
+	rjac += fv(i2) * pv(i1, i3, i4);
+      else
+	rjac += fjac(i2,i4) * pv(i1, i3) + fv(i2) * pv(i1, i3, i4);
+    }
   }
   return res;
 }
