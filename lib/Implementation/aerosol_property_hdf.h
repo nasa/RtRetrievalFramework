@@ -24,11 +24,11 @@ public:
   AerosolPropertyHdf(const HdfFile& F, const std::string& Group_name);
   virtual ~AerosolPropertyHdf() {}
   virtual boost::shared_ptr<AerosolProperty> clone() const;
-  virtual double extinction_coefficient(double wn) const 
+  virtual AutoDerivative<double> extinction_coefficient(double wn) const 
   { return (*qext)(wn); }
-  virtual double scattering_coefficient(double wn) const
+  virtual AutoDerivative<double> scattering_coefficient(double wn) const
   { return (*qscat)(wn); }
-  virtual blitz::Array<double, 2> phase_function_moment(double wn, 
+  virtual ArrayAd<double, 2> phase_function_moment(double wn, 
 	int nmom = -1, int nscatt = -1) const
   { return (*pf)(wn, nmom, nscatt); }
   virtual void print(std::ostream& Os) const;

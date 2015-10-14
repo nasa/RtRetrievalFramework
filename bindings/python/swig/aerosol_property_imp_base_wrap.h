@@ -29,9 +29,9 @@ public:
     virtual void add_observer(FullPhysics::Observer< FullPhysics::AerosolProperty > &Obs);
     virtual void remove_observer(FullPhysics::Observer< FullPhysics::AerosolProperty > &Obs);
     virtual boost::shared_ptr< FullPhysics::AerosolProperty > clone() const;
-    virtual double extinction_coefficient(double wn) const;
-    virtual double scattering_coefficient(double wn) const;
-    virtual blitz::Array< double,2 > phase_function_moment(double wn, int nmom = -1, int nscatt = -1) const;
+    virtual FullPhysics::AutoDerivative< double > extinction_coefficient(double wn) const;
+    virtual FullPhysics::AutoDerivative< double > scattering_coefficient(double wn) const;
+    virtual FullPhysics::ArrayAd< double,2 > phase_function_moment(double wn, int nmom = -1, int nscatt = -1) const;
     virtual void update_sub_state(FullPhysics::ArrayAd< double,1 > const &Sv_sub, blitz::Array< double,2 > const &Cov_sub);
     virtual void mark_used_sub(blitz::Array< bool,1 > &Used) const;
     virtual void state_vector_name_sub(blitz::Array< std::string,1 > &Sv_name) const;

@@ -133,7 +133,7 @@ class AerosolPropertyHdf(full_physics_swig.aerosol_property.AerosolProperty):
     __repr__ = _swig_repr
     def phase_function_moment(self, *args):
         """
-        virtual blitz::Array<double, 2> FullPhysics::AerosolPropertyHdf::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const
+        virtual ArrayAd<double, 2> FullPhysics::AerosolPropertyHdf::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const
 
         """
         return _aerosol_property_hdf.AerosolPropertyHdf_phase_function_moment(self, *args)

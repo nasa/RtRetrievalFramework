@@ -3451,71 +3451,72 @@ namespace Swig {
 
 #define SWIGTYPE_p_FullPhysics__AerosolProperty swig_types[0]
 #define SWIGTYPE_p_FullPhysics__AerosolPropertyHdf swig_types[1]
-#define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_1_t swig_types[2]
-#define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_2_t swig_types[3]
-#define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_3_t swig_types[4]
-#define SWIGTYPE_p_FullPhysics__AutoDerivativeRefT_double_t swig_types[5]
-#define SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t swig_types[6]
-#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[7]
-#define SWIGTYPE_p_FullPhysics__HdfFile swig_types[8]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t swig_types[9]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[10]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t swig_types[11]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[12]
-#define SWIGTYPE_p_FullPhysics__StateVector swig_types[13]
-#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[14]
-#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[15]
-#define SWIGTYPE_p_FullPhysics__Unit swig_types[16]
-#define SWIGTYPE_p_allocator_type swig_types[17]
-#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[18]
-#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[19]
-#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[20]
-#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[21]
-#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[22]
-#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[23]
-#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[24]
-#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[25]
-#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[26]
-#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[27]
-#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[28]
-#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[29]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolPropertyHdf_t swig_types[30]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolProperty_t swig_types[31]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t swig_types[32]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t swig_types[33]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t swig_types[34]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[35]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[36]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[37]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfFile_t swig_types[38]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t swig_types[39]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[40]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t swig_types[41]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[42]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[43]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[44]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[45]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[46]
-#define SWIGTYPE_p_char swig_types[47]
-#define SWIGTYPE_p_char_type swig_types[48]
-#define SWIGTYPE_p_difference_type swig_types[49]
-#define SWIGTYPE_p_fmtflags swig_types[50]
-#define SWIGTYPE_p_int_type swig_types[51]
-#define SWIGTYPE_p_iostate swig_types[52]
-#define SWIGTYPE_p_off_type swig_types[53]
-#define SWIGTYPE_p_openmode swig_types[54]
-#define SWIGTYPE_p_pos_type swig_types[55]
-#define SWIGTYPE_p_seekdir swig_types[56]
-#define SWIGTYPE_p_size_t swig_types[57]
-#define SWIGTYPE_p_size_type swig_types[58]
-#define SWIGTYPE_p_state_type swig_types[59]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[60]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[61]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[62]
-#define SWIGTYPE_p_traits_type swig_types[63]
-#define SWIGTYPE_p_value_type swig_types[64]
-static swig_type_info *swig_types[66];
-static swig_module_info swig_module = {swig_types, 65, 0, 0, 0, 0};
+#define SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t swig_types[2]
+#define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_1_t swig_types[3]
+#define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_2_t swig_types[4]
+#define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_3_t swig_types[5]
+#define SWIGTYPE_p_FullPhysics__AutoDerivativeRefT_double_t swig_types[6]
+#define SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t swig_types[7]
+#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[8]
+#define SWIGTYPE_p_FullPhysics__HdfFile swig_types[9]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t swig_types[10]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[11]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t swig_types[12]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[13]
+#define SWIGTYPE_p_FullPhysics__StateVector swig_types[14]
+#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[15]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[16]
+#define SWIGTYPE_p_FullPhysics__Unit swig_types[17]
+#define SWIGTYPE_p_allocator_type swig_types[18]
+#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[19]
+#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[20]
+#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[21]
+#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[22]
+#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[23]
+#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[24]
+#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[25]
+#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[26]
+#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[27]
+#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[28]
+#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[29]
+#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[30]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolPropertyHdf_t swig_types[31]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolProperty_t swig_types[32]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t swig_types[33]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t swig_types[34]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t swig_types[35]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[36]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[37]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[38]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfFile_t swig_types[39]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t swig_types[40]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[41]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t swig_types[42]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[43]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[44]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[45]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[46]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[47]
+#define SWIGTYPE_p_char swig_types[48]
+#define SWIGTYPE_p_char_type swig_types[49]
+#define SWIGTYPE_p_difference_type swig_types[50]
+#define SWIGTYPE_p_fmtflags swig_types[51]
+#define SWIGTYPE_p_int_type swig_types[52]
+#define SWIGTYPE_p_iostate swig_types[53]
+#define SWIGTYPE_p_off_type swig_types[54]
+#define SWIGTYPE_p_openmode swig_types[55]
+#define SWIGTYPE_p_pos_type swig_types[56]
+#define SWIGTYPE_p_seekdir swig_types[57]
+#define SWIGTYPE_p_size_t swig_types[58]
+#define SWIGTYPE_p_size_type swig_types[59]
+#define SWIGTYPE_p_state_type swig_types[60]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[61]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[62]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[63]
+#define SWIGTYPE_p_traits_type swig_types[64]
+#define SWIGTYPE_p_value_type swig_types[65]
+static swig_type_info *swig_types[67];
+static swig_module_info swig_module = {swig_types, 66, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5092,7 +5093,7 @@ SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_0(PyOb
   int ecode3 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
-  SwigValueWrapper< blitz::Array< double,2 > > result;
+  SwigValueWrapper< FullPhysics::ArrayAd< double,2 > > result;
   
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   {
@@ -5134,21 +5135,7 @@ SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_0(PyOb
       SWIG_fail; 
     }
   }
-  {
-    npy_intp dims[2], stride[2];
-    for(int i = 0; i < 2; ++i) {
-      dims[i] = (&result)->extent(i);
-      // Note numpy stride is in terms of bytes, while blitz in in terms
-      // of type T.
-      stride[i] = (&result)->stride(i) * sizeof(double);
-    }
-    resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
-      stride, (&result)->data(), 0, 0, 0);
-    blitz::Array<double, 2>* t = new blitz::Array<double, 2>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
-  }
+  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,2 >(static_cast< const FullPhysics::ArrayAd< double,2 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5168,7 +5155,7 @@ SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_1(PyOb
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
-  SwigValueWrapper< blitz::Array< double,2 > > result;
+  SwigValueWrapper< FullPhysics::ArrayAd< double,2 > > result;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
@@ -5205,21 +5192,7 @@ SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_1(PyOb
       SWIG_fail; 
     }
   }
-  {
-    npy_intp dims[2], stride[2];
-    for(int i = 0; i < 2; ++i) {
-      dims[i] = (&result)->extent(i);
-      // Note numpy stride is in terms of bytes, while blitz in in terms
-      // of type T.
-      stride[i] = (&result)->stride(i) * sizeof(double);
-    }
-    resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
-      stride, (&result)->data(), 0, 0, 0);
-    blitz::Array<double, 2>* t = new blitz::Array<double, 2>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
-  }
+  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,2 >(static_cast< const FullPhysics::ArrayAd< double,2 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5236,7 +5209,7 @@ SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_2(PyOb
   boost::shared_ptr< FullPhysics::AerosolPropertyHdf const > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  SwigValueWrapper< blitz::Array< double,2 > > result;
+  SwigValueWrapper< FullPhysics::ArrayAd< double,2 > > result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
@@ -5268,21 +5241,7 @@ SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_2(PyOb
       SWIG_fail; 
     }
   }
-  {
-    npy_intp dims[2], stride[2];
-    for(int i = 0; i < 2; ++i) {
-      dims[i] = (&result)->extent(i);
-      // Note numpy stride is in terms of bytes, while blitz in in terms
-      // of type T.
-      stride[i] = (&result)->stride(i) * sizeof(double);
-    }
-    resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
-      stride, (&result)->data(), 0, 0, 0);
-    blitz::Array<double, 2>* t = new blitz::Array<double, 2>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
-  }
+  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,2 >(static_cast< const FullPhysics::ArrayAd< double,2 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5367,7 +5326,7 @@ SWIGINTERN PyObject *AerosolPropertyHdf_swigregister(PyObject *SWIGUNUSEDPARM(se
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"AerosolPropertyHdf_phase_function_moment", _wrap_AerosolPropertyHdf_phase_function_moment, METH_VARARGS, (char *)"\n"
-		"virtual blitz::Array<double, 2> FullPhysics::AerosolPropertyHdf::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const\n"
+		"virtual ArrayAd<double, 2> FullPhysics::AerosolPropertyHdf::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const\n"
 		"\n"
 		""},
 	 { (char *)"delete_AerosolPropertyHdf", (PyCFunction)_wrap_delete_AerosolPropertyHdf, METH_O, (char *)"\n"
@@ -5557,6 +5516,7 @@ static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolPr
 }
 static swig_type_info _swigt__p_FullPhysics__AerosolProperty = {"_p_FullPhysics__AerosolProperty", "FullPhysics::AerosolProperty *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AerosolPropertyHdf = {"_p_FullPhysics__AerosolPropertyHdf", "FullPhysics::AerosolPropertyHdf *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_2_t = {"_p_FullPhysics__ArrayAdT_double_2_t", "FullPhysics::ArrayAd< double,2 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_1_t = {"_p_FullPhysics__ArrayWithUnitT_double_1_t", "FullPhysics::ArrayWithUnit< double,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_2_t = {"_p_FullPhysics__ArrayWithUnitT_double_2_t", "FullPhysics::ArrayWithUnit< double,2 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_3_t = {"_p_FullPhysics__ArrayWithUnitT_double_3_t", "FullPhysics::ArrayWithUnit< double,3 > *", 0, 0, (void*)0, 0};
@@ -5624,6 +5584,7 @@ static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__AerosolProperty,
   &_swigt__p_FullPhysics__AerosolPropertyHdf,
+  &_swigt__p_FullPhysics__ArrayAdT_double_2_t,
   &_swigt__p_FullPhysics__ArrayWithUnitT_double_1_t,
   &_swigt__p_FullPhysics__ArrayWithUnitT_double_2_t,
   &_swigt__p_FullPhysics__ArrayWithUnitT_double_3_t,
@@ -5691,6 +5652,7 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_FullPhysics__AerosolProperty[] = {  {&_swigt__p_FullPhysics__AerosolProperty, 0, 0, 0},  {&_swigt__p_FullPhysics__AerosolPropertyHdf, _p_FullPhysics__AerosolPropertyHdfTo_p_FullPhysics__AerosolProperty, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AerosolPropertyHdf[] = {  {&_swigt__p_FullPhysics__AerosolPropertyHdf, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ArrayAdT_double_2_t[] = {  {&_swigt__p_FullPhysics__ArrayAdT_double_2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ArrayWithUnitT_double_1_t[] = {  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_1_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ArrayWithUnitT_double_2_t[] = {  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ArrayWithUnitT_double_3_t[] = {  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_3_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5758,6 +5720,7 @@ static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__AerosolProperty,
   _swigc__p_FullPhysics__AerosolPropertyHdf,
+  _swigc__p_FullPhysics__ArrayAdT_double_2_t,
   _swigc__p_FullPhysics__ArrayWithUnitT_double_1_t,
   _swigc__p_FullPhysics__ArrayWithUnitT_double_2_t,
   _swigc__p_FullPhysics__ArrayWithUnitT_double_3_t,

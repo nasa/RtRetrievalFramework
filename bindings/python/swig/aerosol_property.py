@@ -199,7 +199,7 @@ class AerosolProperty(full_physics_swig.state_vector.StateVectorObserver,Observa
 
     def extinction_coefficient(self, *args):
         """
-        virtual double FullPhysics::AerosolProperty::extinction_coefficient(double wn) const =0
+        virtual AutoDerivative<double> FullPhysics::AerosolProperty::extinction_coefficient(double wn) const =0
         Return extinction coefficient for the given wave number.
 
         Parameters:
@@ -211,7 +211,7 @@ class AerosolProperty(full_physics_swig.state_vector.StateVectorObserver,Observa
 
     def scattering_coefficient(self, *args):
         """
-        virtual double FullPhysics::AerosolProperty::scattering_coefficient(double wn) const =0
+        virtual AutoDerivative<double> FullPhysics::AerosolProperty::scattering_coefficient(double wn) const =0
         Return scattering coefficient for the given wave number.
 
         Parameters:
@@ -223,7 +223,7 @@ class AerosolProperty(full_physics_swig.state_vector.StateVectorObserver,Observa
 
     def phase_function_moment(self, *args):
         """
-        virtual blitz::Array<double, 2> FullPhysics::AerosolProperty::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const =0
+        virtual ArrayAd<double, 2> FullPhysics::AerosolProperty::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const =0
         Return phase function moments for the given wave number.
 
         Note that we use the de Rooij convention for the scattering matrix
