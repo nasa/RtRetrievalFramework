@@ -148,6 +148,8 @@ Aerosol::optical_depth_each_layer(double wn) const
   ArrayAd<double, 2> res(od_ind_wn.copy());
   for(int i = 0; i < number_particle(); ++i) {
     AutoDerivative<double> t = aprop[i]->extinction_coefficient(wn);
+    if(res.is_constant() && !t.is_constant())
+      res.resize_number_variable(t.number_variable());
     Array<double, 1> v(res.value()(ra, i));
     Array<double, 2> jac(res.jacobian()(ra, i, ra));
     v *= t.value();
@@ -181,14 +183,21 @@ ArrayAd<double, 1> Aerosol::ssa_each_layer
  int particle_index,
  const ArrayAd<double, 1>& Od) const
 {
+  firstIndex i1; secondIndex i2; thirdIndex i3;
   FunctionTimer ft(timer.function_timer());
   ArrayAd<double, 1> res(Od.copy());
-  double t = aprop[particle_index]->scattering_coefficient(wn).value() / 
-    aprop[particle_index]->extinction_coefficient(wn).value();
+  AutoDerivative<double> t = 
+    aprop[particle_index]->scattering_coefficient(wn) / 
     aprop[particle_index]->extinction_coefficient(wn);
-  res.value() *= t;
-  if(!res.is_constant())
-    res.jacobian() *= t;
+  if(res.is_constant() && !t.is_constant())
+    res.resize_number_variable(t.number_variable());
+  Array<double, 1> v(res.value());
+  Array<double, 2> jac(res.jacobian());
+  v *= t.value();
+  if(t.is_constant())
+    jac *= t.value();
+  else
+    jac = t.value() * jac + v(i1) * t.gradient()(i2);
   return res;
 }
 
