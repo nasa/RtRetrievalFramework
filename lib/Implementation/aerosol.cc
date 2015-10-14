@@ -146,9 +146,9 @@ Aerosol::optical_depth_each_layer(double wn) const
   fill_cache();
   ArrayAd<double, 2> res(od_ind_wn.copy());
   for(int i = 0; i < number_particle(); ++i) {
-    AutoDerivative<double> t = aprop[i]->extinction_coefficient(wn);
-    for(int j = 0; j < res.rows(); ++j)
-      res(j, i) = res(j, i) * t;
+    double t = aprop[i]->extinction_coefficient(wn).value();
+    res.value()(ra, i) *= t;
+    res.jacobian()(ra, i, ra) *= t;
   }
   return res;
 }
@@ -177,11 +177,12 @@ ArrayAd<double, 1> Aerosol::ssa_each_layer
 {
   FunctionTimer ft(timer.function_timer());
   ArrayAd<double, 1> res(Od.copy());
-  AutoDerivative<double> t = 
-    aprop[particle_index]->scattering_coefficient(wn) / 
+  double t = aprop[particle_index]->scattering_coefficient(wn).value() / 
+    aprop[particle_index]->extinction_coefficient(wn).value();
     aprop[particle_index]->extinction_coefficient(wn);
-  for(int i = 0; i < res.rows(); ++i)
-    res(i) = res(i) * t;
+  res.value() *= t;
+  if(!res.is_constant())
+    res.jacobian() *= t;
   return res;
 }
 
@@ -249,7 +250,7 @@ blitz::Array<double, 3> Aerosol::pf_mom(double wn,
 	    << frac_aer.rows() << " x " << frac_aer.cols();
     throw Exception(err_msg.str());
   }
-  std::vector<blitz::Array<double, 2> > pf;
+  std::vector<Array<double, 2> > pf;
   int s1 = 0;
   int s2 = 0;
   for(int j = 0; j < frac_aer.cols(); ++j) {
@@ -285,23 +286,23 @@ ArrayAd<double, 3> Aerosol::pf_mom(double wn,
     throw Exception(err_msg.str());
   }
 
-  std::vector<ArrayAd<double, 2> > pf;
+  std::vector<Array<double, 2> > pf;
   int s1 = 0;
   int s2 = 0;
   int nvar = frac_aer.number_variable();
   for(int j = 0; j < frac_aer.cols(); ++j) {
-    pf.push_back(aprop[j]->phase_function_moment(wn, nummom, numscat));
+    pf.push_back(aprop[j]->phase_function_moment(wn, nummom, numscat).value());
     s1 = std::max(s1, pf[j].rows());
     s2 = std::max(s2, pf[j].cols());
-    nvar = std::max(nvar, pf[j].number_variable());
   }
   ArrayAd<double, 3> res(s1, nlay, s2, nvar);
   res = 0;
   for(int j = 0; j < frac_aer.cols(); ++j) {
-    for(int i1 = 0; i1 < pf[j].rows(); ++i1)
-      for(int i2 = 0; i2 < res.cols(); ++i2)
-	for(int i3 = 0; i3 < pf[j].cols(); ++i3)
-	  res(i1,i2,i3) = res(i1,i2,i3) + frac_aer(i2,j) * pf[j](i1, i3);
+    Range r1(0, pf[j].rows() - 1);
+    Range r2(0, pf[j].cols() - 1);
+    res.value()(r1,ra,r2) += frac_aer.value()(ra,j)(i2) * pf[j](i1, i3);
+    res.jacobian()(r1,ra,r2,ra) += 
+      frac_aer.jacobian()(ra,j,ra)(i2,i4) * pf[j](i1, i3);
   }
   return res;
 }
