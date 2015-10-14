@@ -169,21 +169,21 @@ class AerosolPropertyImpBase(SubStateVectorArrayAerosolProperty):
 
     def extinction_coefficient(self, *args):
         """
-        virtual double FullPhysics::AerosolPropertyImpBase::extinction_coefficient(double wn) const =0
+        virtual AutoDerivative<double> FullPhysics::AerosolPropertyImpBase::extinction_coefficient(double wn) const =0
 
         """
         return _aerosol_property_imp_base.AerosolPropertyImpBase_extinction_coefficient(self, *args)
 
     def scattering_coefficient(self, *args):
         """
-        virtual double FullPhysics::AerosolPropertyImpBase::scattering_coefficient(double wn) const =0
+        virtual AutoDerivative<double> FullPhysics::AerosolPropertyImpBase::scattering_coefficient(double wn) const =0
 
         """
         return _aerosol_property_imp_base.AerosolPropertyImpBase_scattering_coefficient(self, *args)
 
     def phase_function_moment(self, *args):
         """
-        virtual blitz::Array<double, 2> FullPhysics::AerosolPropertyImpBase::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const =0
+        virtual ArrayAd<double, 2> FullPhysics::AerosolPropertyImpBase::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const =0
 
         """
         return _aerosol_property_imp_base.AerosolPropertyImpBase_phase_function_moment(self, *args)

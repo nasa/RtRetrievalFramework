@@ -11,9 +11,9 @@ namespace FullPhysics {
 class AerosolPropertyHdf : public AerosolProperty {
 public:
   AerosolPropertyHdf(const HdfFile& F, const std::string& Group_name);
-  virtual double extinction_coefficient(double wn) const;
-  virtual double scattering_coefficient(double wn) const;
-  virtual blitz::Array<double, 2> phase_function_moment(double wn, 
+  virtual AutoDerivative<double> extinction_coefficient(double wn) const;
+  virtual AutoDerivative<double> scattering_coefficient(double wn) const;
+  virtual ArrayAd<double, 2> phase_function_moment(double wn, 
 		int nmom = -1, int nscatt = -1) const;
 
 };

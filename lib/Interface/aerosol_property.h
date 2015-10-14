@@ -46,14 +46,14 @@ public:
 /// \param wn - Wavenumber
 //-----------------------------------------------------------------------
 
-  virtual double extinction_coefficient(double wn) const = 0;
+  virtual AutoDerivative<double> extinction_coefficient(double wn) const = 0;
 
 //-----------------------------------------------------------------------
 /// Return scattering coefficient for the given wave number.
 /// \param wn - Wavenumber
 //-----------------------------------------------------------------------
 
-  virtual double scattering_coefficient(double wn) const = 0;
+  virtual AutoDerivative<double> scattering_coefficient(double wn) const = 0;
 
 //-----------------------------------------------------------------------
 /// Return phase function moments for the given wave number.
@@ -70,8 +70,8 @@ public:
 /// scattering elements. 
 //-----------------------------------------------------------------------
 
-  virtual blitz::Array<double, 2> phase_function_moment(double wn, 
-			int nmom = -1, int nscatt = -1) const = 0;
+  virtual ArrayAd<double, 2> 
+  phase_function_moment(double wn, int nmom = -1, int nscatt = -1) const = 0;
 };
 }
 #endif

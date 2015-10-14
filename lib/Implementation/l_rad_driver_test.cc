@@ -122,7 +122,7 @@ BOOST_AUTO_TEST_CASE(lambertian_first_order)
     int s2 = 0;
     for(int aer_idx = 0; aer_idx < (int) aerosol_types.size(); aer_idx++) {
         aer_properties.push_back(boost::shared_ptr<AerosolProperty>(new AerosolPropertyHdf(aerosol_prop_inp, aerosol_types[aer_idx] + "/Properties")));
-        aer_pf.push_back(aer_properties[aer_idx]->phase_function_moment(wn));
+        aer_pf.push_back(aer_properties[aer_idx]->phase_function_moment(wn).value());
         s1 = std::max(s1, aer_pf[aer_idx].rows());
         s2 = std::max(s2, aer_pf[aer_idx].cols());
     }

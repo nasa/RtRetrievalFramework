@@ -72,9 +72,9 @@ public:
     notify_update_do(*this);
   }
 
-  blitz::Array<double, 2> pf_mom(double wn, int pindex) const;
+  ArrayAd<double, 2> pf_mom(double wn, int pindex) const;
   blitz::Array<double, 3> pf_mom(double wn, 
-				 const blitz::Array<double, 2>& frac_aer) const;
+			    const blitz::Array<double, 2>& frac_aer) const;
   ArrayAd<double, 3> pf_mom(double wn, 
 	 const ArrayAd<double, 2>& frac_aer,
 	 int nummom = -1, int numscat = -1) const;
