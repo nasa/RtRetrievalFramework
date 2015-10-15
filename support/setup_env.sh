@@ -23,26 +23,16 @@ then
 else
     export L2_SUPPORT_PATH="$support_dir"
 
-    # Fullerene has custom python location. Put before other paths
-    # so this python version takes predence
-    if [ -e "/opt/local/depot/python-64/2.7.3/bin" ]
+    if [ -e "/opt/local/depot/python/2.7.10/bin" ]
     then
-        export PATH="/opt/local/depot/python-64/2.7.3/bin:$PATH"
-        export LD_LIBRARY_PATH="/opt/local/depot/python-64/2.7.3/lib:$LD_LIBRARY_PATH"
-    fi
-
-    # scf-srv3 has yet another python location
-    if [ -e "/opt/local/depot/python/2.7.5/bin" ]
-    then
-        export PATH="/opt/local/depot/python/2.7.5/bin:$PATH"
-        export LD_LIBRARY_PATH="/opt/local/depot/python/2.7.5/lib:$LD_LIBRARY_PATH"
+        export PATH="/opt/local/depot/python/2.7.10/bin:$PATH"
+        export LD_LIBRARY_PATH="/opt/local/depot/python/2.7.10/lib:$LD_LIBRARY_PATH"
     fi
 
     # Path to h5diff, the system one doesn't work for us
-    if [ -e "/opt/local/depot/hdf5/1.8.7/bin" ]
+    if [ -e "/opt/local/depot/hdf5/1.8.14/bin" ]
     then
-        export PATH="/opt/local/depot/hdf5/1.8.7/bin:$PATH"
-        export LD_LIBRARY_PATH="/opt/local/depot/python/2.7.5/lib:$LD_LIBRARY_PATH"
+        export PATH="/opt/local/depot/hdf5/1.8.14/bin:$PATH"
     fi
 
     # Set up paths so executable scripts can be found
