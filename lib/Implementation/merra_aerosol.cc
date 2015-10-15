@@ -1,4 +1,5 @@
 #include "merra_aerosol.h"
+#include "aerosol_optical.h"
 #include "aerosol_property_hdf.h"
 #include "aerosol_shape_gaussian.h"
 #include "initial_guess_value.h"
@@ -141,7 +142,7 @@ MerraAerosol::MerraAerosol
 /// Return the aerosol setup generated from this class.
 //-----------------------------------------------------------------------
 
-boost::shared_ptr<AerosolOptical> MerraAerosol::aerosol() const 
+boost::shared_ptr<Aerosol> MerraAerosol::aerosol() const 
 { 
   if(!aerosol_)
     aerosol_.reset(new AerosolOptical(aext, aprop, press, ref_wn));

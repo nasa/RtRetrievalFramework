@@ -11,14 +11,15 @@ BOOST_FIXTURE_TEST_SUITE(aerosol_optical, AtmosphereFixture)
 
 BOOST_AUTO_TEST_CASE(config_file)
 {
-  AerosolOptical& a = *config_aerosol;
+  boost::shared_ptr<AerosolOptical> a =
+    boost::dynamic_pointer_cast<AerosolOptical>(config_aerosol);
   Array<double, 1> od_expect(4);
   od_expect =  0.0300339738374, 0.0300339738374, 
     0.0325219546595, 0.036014594462;
   for(int aer_idx = 0; aer_idx < od_expect.rows(); aer_idx++)
-    BOOST_CHECK_CLOSE(a.aerosol_optical_depth(aer_idx), od_expect(aer_idx), 1e-4);
+    BOOST_CHECK_CLOSE(a->aerosol_optical_depth(aer_idx), od_expect(aer_idx), 1e-4);
   double total_expect = sum(od_expect);
-  BOOST_CHECK_CLOSE(a.aerosol_optical_depth_total(), total_expect, 1e-4);
+  BOOST_CHECK_CLOSE(a->aerosol_optical_depth_total(), total_expect, 1e-4);
 }
 
 BOOST_AUTO_TEST_CASE(layer_parameters)
@@ -26,7 +27,8 @@ BOOST_AUTO_TEST_CASE(layer_parameters)
   firstIndex i1; secondIndex i2;
   // Expected values were gotten by running the old Fortran code and
   // extracting out the answer from that.
-  AerosolOptical& a = *config_aerosol;
+  boost::shared_ptr<AerosolOptical> a =
+    boost::dynamic_pointer_cast<AerosolOptical>(config_aerosol);
   Array<double, 1> od_expect(18);
   Array<double, 1> ssa_expect(18);
   od_expect = 2.74194178225e-11, 1.57679009526e-05,
@@ -40,9 +42,9 @@ BOOST_AUTO_TEST_CASE(layer_parameters)
     0.00542243887556, 0.00629774362343, 0.00728802039782, 0.008153167367,
     0.00879544773679, 0.0092289066228, 0.0095323323439,
     0.00980895573824, 0.0101600695552, 0.010671683777, 0.00391749916961;
-  BOOST_CHECK_MATRIX_CLOSE(sum(a.optical_depth_each_layer(12929.94).value(),i2),
+  BOOST_CHECK_MATRIX_CLOSE(sum(a->optical_depth_each_layer(12929.94).value(),i2),
 			   od_expect);
-  BOOST_CHECK_MATRIX_CLOSE(a.ssa_each_layer(12929.94).value(), ssa_expect);
+  BOOST_CHECK_MATRIX_CLOSE(a->ssa_each_layer(12929.94).value(), ssa_expect);
   od_expect = 2.74196241536e-11, 1.57678789317e-05, 0.00466534958506,
     0.00940061234245, 0.00904058419521, 0.00542318125538, 
     0.00514670462721, 0.00563375538688, 0.0065878464798, 
@@ -54,9 +56,9 @@ BOOST_AUTO_TEST_CASE(layer_parameters)
     0.00542244559708, 0.00629775440118, 0.00728803463588, 0.00815318440425, 
     0.00879546698692, 0.00922892768541, 0.00953235506478, 
     0.00980898022095, 0.0101600961393, 0.010671713, 0.00391751034701;
-  BOOST_CHECK_MATRIX_CLOSE(sum(a.optical_depth_each_layer(12930.30).value(),i2),
+  BOOST_CHECK_MATRIX_CLOSE(sum(a->optical_depth_each_layer(12930.30).value(),i2),
 			   od_expect);
-  BOOST_CHECK_MATRIX_CLOSE(a.ssa_each_layer(12930.30).value(), ssa_expect);
+  BOOST_CHECK_MATRIX_CLOSE(a->ssa_each_layer(12930.30).value(), ssa_expect);
   
 }
 
@@ -66,11 +68,12 @@ BOOST_FIXTURE_TEST_SUITE(aerosol_jac, ConfigurationFixture)
 
 BOOST_AUTO_TEST_CASE(optical_depth_jac)
 {
-  const AerosolOptical& a = *config_aerosol;
+  boost::shared_ptr<AerosolOptical> a =
+    boost::dynamic_pointer_cast<AerosolOptical>(config_aerosol);
   StateVector& sv = *config_state_vector;
   Array<double, 1> sv0(sv.state().copy());
   double wn = 4820.0;
-  ArrayAd<double, 2> od = a.optical_depth_each_layer(wn);
+  ArrayAd<double, 2> od = a->optical_depth_each_layer(wn);
   Array<double, 2> od0(od.shape());
   od0 = od.value();
   Array<double, 3> jac = od.jacobian().copy();
@@ -79,7 +82,7 @@ BOOST_AUTO_TEST_CASE(optical_depth_jac)
     svn(i) += epsilon(i);
     sv.update_state(svn);
     Array<double, 2> jacfd(od0.shape());
-    jacfd = (a.optical_depth_each_layer(wn).value() - od0) / epsilon(i);
+    jacfd = (a->optical_depth_each_layer(wn).value() - od0) / epsilon(i);
     if(false) {			// Can turn this off to dump values,
 				// if needed for debugging
       double diff = max(abs(jac(Range::all(), Range::all(), i) - jacfd));
@@ -95,11 +98,12 @@ BOOST_AUTO_TEST_CASE(optical_depth_jac)
 
 BOOST_AUTO_TEST_CASE(ssa_jac)
 {
-  const AerosolOptical& a = *config_aerosol;
+  boost::shared_ptr<AerosolOptical> a =
+    boost::dynamic_pointer_cast<AerosolOptical>(config_aerosol);
   StateVector& sv = *config_state_vector;
   Array<double, 1> sv0(sv.state().copy());
   double wn = 4820.0;
-  ArrayAd<double, 1> ssa = a.ssa_each_layer(wn);
+  ArrayAd<double, 1> ssa = a->ssa_each_layer(wn);
   Array<double, 1> ssa0(ssa.shape());
   ssa0 = ssa.value();
   Array<double, 2> jac = ssa.jacobian().copy();
@@ -108,7 +112,7 @@ BOOST_AUTO_TEST_CASE(ssa_jac)
     svn(i) += epsilon(i);
     sv.update_state(svn);
     Array<double, 1> jacfd(ssa0.shape());
-    jacfd = (a.ssa_each_layer(wn).value() - ssa0) / epsilon(i);
+    jacfd = (a->ssa_each_layer(wn).value() - ssa0) / epsilon(i);
     if(false) {			// Can turn this off to dump values,
 				// if needed for debugging
       double diff = max(abs(jac(Range::all(), i) - jacfd));

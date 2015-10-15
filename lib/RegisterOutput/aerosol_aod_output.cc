@@ -7,8 +7,8 @@ using namespace FullPhysics;
 #ifdef HAVE_LUA
 #include "register_lua.h"
 REGISTER_LUA_DERIVED_CLASS(AerosolAodOutput, RegisterOutputBase)
-.def(luabind::constructor<const boost::shared_ptr<AerosolOptical>&>())
-.def(luabind::constructor<const boost::shared_ptr<AerosolOptical>&, bool>())
+.def(luabind::constructor<const boost::shared_ptr<Aerosol>&>())
+.def(luabind::constructor<const boost::shared_ptr<Aerosol>&, bool>())
 REGISTER_LUA_END()
 #endif
 
@@ -17,6 +17,20 @@ const double AerosolAodOutput::low_boundary = 800e2;
 
 /// The boundary for calculating retrieved_aerosol_aod_by_type_high
 const double AerosolAodOutput::high_boundary = 500e2;
+
+AerosolAodOutput::AerosolAodOutput(const boost::shared_ptr<Aerosol>& A, 
+		 bool Number_instead_of_name)
+: number_instead_of_name(Number_instead_of_name)
+{
+  // Right now we only work with AerosolOptical. Not sure if this is
+  // a *real* requirement, or just that our Aerosol base class should
+  // have the additional functions AerosolOptical supplies. But for
+  // now just fail miserably if we are using a different kind of
+  // Aerosol. 
+  a = boost::dynamic_pointer_cast<AerosolOptical>(A);
+  if(!a)
+    throw Exception("Currently only support AerosolOptical");
+}
 
 // See base class for description
 

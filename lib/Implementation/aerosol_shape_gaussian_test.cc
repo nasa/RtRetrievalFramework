@@ -58,7 +58,8 @@ BOOST_AUTO_TEST_CASE(basic)
 
 BOOST_AUTO_TEST_CASE(config)
 {
-  boost::shared_ptr<AerosolOptical> aer = config_aerosol;
+  boost::shared_ptr<AerosolOptical> aer = 
+    boost::dynamic_pointer_cast<AerosolOptical>(config_aerosol);
 
   // Loaded expected results
   IfstreamCs gaussian_expt(test_data_dir() + "expected/aerosol_shape/gaussian");

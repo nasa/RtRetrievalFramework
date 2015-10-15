@@ -38,7 +38,7 @@ public:
   { config_state_vector->update_state(sv_initial); }
 
   boost::shared_ptr<Absorber> config_absorber;
-  boost::shared_ptr<AerosolOptical> config_aerosol;
+  boost::shared_ptr<Aerosol> config_aerosol;
   boost::shared_ptr<RtAtmosphere> config_atmosphere;
   boost::shared_ptr<StateVector> config_state_vector;
   boost::shared_ptr<PressureLevelInput> config_pressure_level_input;

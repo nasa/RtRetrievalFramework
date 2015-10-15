@@ -1,4 +1,5 @@
 #include "merra_aerosol.h"
+#include "aerosol_optical.h"
 #include "pressure_sigma.h"
 #include "unit_test_support.h"
 
@@ -25,9 +26,10 @@ BOOST_AUTO_TEST_CASE(basic)
     0, 0, 1e-4;
   MerraAerosol ma(*mclimate, aprop, DoubleWithUnit(36.278789520264, "deg"),
 		  DoubleWithUnit(140.2403717041, "deg"), p, cov);
-  BOOST_CHECK(ma.aerosol()->number_particle() == 2);
-  BOOST_CHECK(ma.aerosol()->aerosol_name()[0] == "DU");
-  BOOST_CHECK(ma.aerosol()->aerosol_name()[1] == "SO");
+  boost::shared_ptr<AerosolOptical> aop = boost::dynamic_pointer_cast<AerosolOptical>(ma.aerosol());
+  BOOST_CHECK(aop->number_particle() == 2);
+  BOOST_CHECK(aop->aerosol_name()[0] == "DU");
+  BOOST_CHECK(aop->aerosol_name()[1] == "SO");
   boost::shared_ptr<CompositeInitialGuess> ig =
     boost::dynamic_pointer_cast<CompositeInitialGuess>(ma.initial_guess());
   Array<double, 1> ig_expect(6);
@@ -62,9 +64,10 @@ BOOST_AUTO_TEST_CASE(dateline)
     0, 0, 1e-4;
   MerraAerosol ma(*mclimate, aprop, DoubleWithUnit(36.278789520264, "deg"),
 		  DoubleWithUnit(179.4, "deg"), p, cov);
-  BOOST_CHECK(ma.aerosol()->number_particle() == 2);
-  BOOST_CHECK(ma.aerosol()->aerosol_name()[0] == "SS");
-  BOOST_CHECK(ma.aerosol()->aerosol_name()[1] == "DU");
+  boost::shared_ptr<AerosolOptical> aop = boost::dynamic_pointer_cast<AerosolOptical>(ma.aerosol());
+  BOOST_CHECK(aop->number_particle() == 2);
+  BOOST_CHECK(aop->aerosol_name()[0] == "SS");
+  BOOST_CHECK(aop->aerosol_name()[1] == "DU");
 }
 
 BOOST_AUTO_TEST_CASE(dateline2)
@@ -85,9 +88,10 @@ BOOST_AUTO_TEST_CASE(dateline2)
     0, 0, 1e-4;
   MerraAerosol ma(*mclimate, aprop, DoubleWithUnit(36.278789520264, "deg"),
 		  DoubleWithUnit(-180.001, "deg"), p, cov);
-  BOOST_CHECK(ma.aerosol()->number_particle() == 2);
-  BOOST_CHECK(ma.aerosol()->aerosol_name()[0] == "SS");
-  BOOST_CHECK(ma.aerosol()->aerosol_name()[1] == "DU");
+  boost::shared_ptr<AerosolOptical> aop = boost::dynamic_pointer_cast<AerosolOptical>(ma.aerosol());
+  BOOST_CHECK(aop->number_particle() == 2);
+  BOOST_CHECK(aop->aerosol_name()[0] == "SS");
+  BOOST_CHECK(aop->aerosol_name()[1] == "DU");
 }
 
 BOOST_AUTO_TEST_CASE(dejian_example)
@@ -117,18 +121,22 @@ BOOST_AUTO_TEST_CASE(dejian_example)
 		   DoubleWithUnit(116.4060, "deg"), p, cov);
   MerraAerosol ma4(*mclimate, aprop, DoubleWithUnit(-7.9165, "deg"),
 		   DoubleWithUnit(-14.3325, "deg"), p, cov);
-  BOOST_CHECK(ma1.aerosol()->number_particle() == 2);
-  BOOST_CHECK(ma1.aerosol()->aerosol_name()[0] == "DU");
-  BOOST_CHECK(ma1.aerosol()->aerosol_name()[1] == "SO");
-  BOOST_CHECK(ma2.aerosol()->number_particle() == 2);
-  BOOST_CHECK(ma2.aerosol()->aerosol_name()[0] == "SO");
-  BOOST_CHECK(ma2.aerosol()->aerosol_name()[1] == "OC");
-  BOOST_CHECK(ma3.aerosol()->number_particle() == 2);
-  BOOST_CHECK(ma3.aerosol()->aerosol_name()[0] == "DU");
-  BOOST_CHECK(ma3.aerosol()->aerosol_name()[1] == "SO");
-  BOOST_CHECK(ma4.aerosol()->number_particle() == 2);
-  BOOST_CHECK(ma4.aerosol()->aerosol_name()[0] == "SS");
-  BOOST_CHECK(ma4.aerosol()->aerosol_name()[1] == "OC");
+  boost::shared_ptr<AerosolOptical> aop1 = boost::dynamic_pointer_cast<AerosolOptical>(ma1.aerosol());
+  boost::shared_ptr<AerosolOptical> aop2 = boost::dynamic_pointer_cast<AerosolOptical>(ma2.aerosol());
+  boost::shared_ptr<AerosolOptical> aop3 = boost::dynamic_pointer_cast<AerosolOptical>(ma3.aerosol());
+  boost::shared_ptr<AerosolOptical> aop4 = boost::dynamic_pointer_cast<AerosolOptical>(ma4.aerosol());
+  BOOST_CHECK(aop1->number_particle() == 2);
+  BOOST_CHECK(aop1->aerosol_name()[0] == "DU");
+  BOOST_CHECK(aop1->aerosol_name()[1] == "SO");
+  BOOST_CHECK(aop2->number_particle() == 2);
+  BOOST_CHECK(aop2->aerosol_name()[0] == "SO");
+  BOOST_CHECK(aop2->aerosol_name()[1] == "OC");
+  BOOST_CHECK(aop3->number_particle() == 2);
+  BOOST_CHECK(aop3->aerosol_name()[0] == "DU");
+  BOOST_CHECK(aop3->aerosol_name()[1] == "SO");
+  BOOST_CHECK(aop4->number_particle() == 2);
+  BOOST_CHECK(aop4->aerosol_name()[0] == "SS");
+  BOOST_CHECK(aop4->aerosol_name()[1] == "OC");
 }
 
 BOOST_AUTO_TEST_SUITE_END()
