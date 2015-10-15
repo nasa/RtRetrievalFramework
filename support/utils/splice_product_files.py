@@ -339,222 +339,268 @@ class SourceInformation(object):
     
         self._sort_file_lists()
 
-def create_output_dataset(out_hdf_obj, dataset_info, splice_size=None, collapse_id_dim=False):
-    """Duplicates a dataset from the input file into the output hdf object as it exists
-    except for its dimensions"""
+class ProductSplicer(object):
 
-    logger.debug("Creating new output dataset: %s" % dataset_info.out_name)
-
-    dst_shape, max_shape, dst_shape_names = dataset_info.output_dataset_shape(splice_size, collapse_id_dim) 
-
-    # Split name into two and create a group if needed
-    # then create the desire dataset or load existing group
-    ds_name_clean = dataset_info.out_name.lstrip('/').rstrip('/')
-    if ds_name_clean.find("/") > 0:
-        dst_group, dst_name = dataset_info.out_name.lstrip('/').rstrip('/').split('/', 1)
-        out_group_obj = out_hdf_obj.require_group(dst_group) 
-    else:
-        dst_group = ""
-        dst_name = ds_name_clean
-        out_group_obj = out_hdf_obj
-
-    # Fill new dataset with the correct fill value based on type
-    if dataset_info.out_type != numpy.object and dataset_info.out_type.type != numpy.string_:
-        fill_type = dataset_info.out_type.type
-
-        if FILL_VALUE.has_key(fill_type):
-            dataset_fill = FILL_VALUE[fill_type]
-        else:
-            logger.warning("Could not find specific fill value for dataset: %s of type %s" % (dst_name, fill_type))
-            dataset_fill = None
-    else:
-        # Use default fill for string types
-        fill_type = None
-        dataset_fill = None
-
-    logger.debug( "Creating new dataset: %s/%s sized: %s with fill type: %s and value: %s" % (dst_group, dst_name, dst_shape, fill_type, dataset_fill) )
-    try:
-        out_dataset_obj = out_group_obj.create_dataset(dst_name, shape=dst_shape, dtype=dataset_info.out_type, maxshape=max_shape, compression="gzip", compression_opts=2, fillvalue=dataset_fill)
-    except RuntimeError as exc:
-        raise RuntimeError("Error creating dataset %s/%s: %s" % (dst_group/dst_name, exc))
-
-    # Now create copied attributes from original dataset
-    # Just copy from first for now, leave code to do multiple if needed
-    for curr_file in dataset_info.inp_filenames[0:1]:
-        with closing(h5py.File(curr_file, 'r')) as curr_hdf_obj:
-            curr_dataset_obj = curr_hdf_obj[dataset_info.inp_name]
-            for attr_name, attr_value in curr_dataset_obj.attrs.items():
-                # Skip if copied already from a file, assuming all files
-                # have same attributes for now, we just will get
-                # all uniquely named ones
-                if attr_name in out_dataset_obj.attrs.keys():
-                    continue
+    def __init__(self, source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False, multi_source_types=None):
         
-                # If the dtype of the attribute is an object dtype, then assume
-                # its a variable length string
-                if hasattr(attr_value, "dtype") and attr_value.dtype.kind == "O":
-                    logger.debug('Copying variable length string attribute: "%s" with value: "%s"' % (attr_name, attr_value[0]))
-                    vlen_dt = h5py.special_dtype(vlen=str)
-                    out_dataset_obj.attrs.create(attr_name, attr_value, dtype=vlen_dt)
-                else:
-                    logger.debug('Copying attribute: "%s" with value: "%s"' % (attr_name, attr_value))
-                    out_dataset_obj.attrs.create(attr_name, attr_value)
+        self.splice_all = splice_all
+        self.multi_source_types = multi_source_types
 
-    # Add extra information for dataset, overwrite an existing shape, because we may have
-    # reshaped the data
-    if dst_shape_names:
-        out_dataset_obj.attrs["Shape"] = numpy.array(["_".join(dst_shape_names) + "_Array"]) 
+        self.source_info = SourceInformation(source_files, sounding_ids, desired_datasets_list, rename_mapping, multi_source_types)
+        self.dest_obj = h5py.File(output_filename, 'w')
+        self.out_dataset_objs = {}
 
-    return out_dataset_obj
+    def __exit__(self):
+        "Close output file on loss of context"
+        self.dest_obj.close()
 
-def create_dest_file_datasets(out_hdf_obj, source_info, copy_all=False, multi_source_types=False):
+    def analyze(self):
 
-    # Loop over dataset names/shapes
-    # Create datasets and copy any non id_shape datasets
-    num_datasets = len(source_info.datasets_info.keys())
-    out_dataset_objs = {}
-    for curr_index, (curr_dataset_name, curr_dataset_info) in enumerate(source_info.datasets_info.items()):
-        write_progress(curr_index-1, num_datasets)
-
-        id_dimension = curr_dataset_info.inp_id_dims
-
-        if out_hdf_obj.get(curr_dataset_info.out_name, None) != None:
-            logger.debug("Destination dataset %s for %s already exists in output file, ignoring duplicate" % (curr_dataset_info.out_name, curr_dataset_name))
-            del source_info.datasets_info[curr_dataset_name]
-
-        elif len(id_dimension) > 0: 
-            # Create a dataset that does have an id dimension
-            out_dataset_objs[curr_dataset_name] = create_output_dataset(out_hdf_obj, curr_dataset_info, source_info.num_soundings, collapse_id_dim=multi_source_types)
-        
-        elif copy_all:
-            logger.debug("Non sounding id dataset, copying from first file: %s" % curr_dataset_name)
-                
-            # Copy dataset with no sounding dimension directly from first file
-            out_dataset_obj = create_output_dataset(out_hdf_obj, curr_dataset_info, collapse_id_dim=multi_source_types)
-           
-            # Search for first file that has the desired dataset. Can't just take
-            # from first in cases when splicing dissimilar files
-            for inp_fn in source_info.src_filenames:
-                with closing(h5py.File(inp_fn, 'r')) as hdf_obj:
-                    if hdf_obj.get(curr_dataset_name, None):
-                        # Do not try and copy empty datasets
-                        if hdf_obj[curr_dataset_name].len() > 0:
-                            out_dataset_obj[:] = hdf_obj[curr_dataset_name][:]
-                        source_info.datasets_info.pop(curr_dataset_name)
-                        break
-        else:
-            del source_info.datasets_info[curr_dataset_name]
-            logger.debug( "Ignoring non sounding id dataset: %s" % curr_dataset_name )
-
-        write_progress(curr_index, num_datasets)
+        self.source_info.analyze_files()
     
-    return out_dataset_objs
 
-def output_indexes_shape(in_dataset_obj, dataset_info, out_data_idx, collapse_id_dim=False):
-    # Create output dataset indexes, removing any concatenated dimensions 
-    splice_dim = dataset_info.inp_id_dims 
-    out_dataset_idx = [ slice(dim_size) for dim_size in in_dataset_obj.shape ]
-    out_dataset_idx[splice_dim[0]] = out_data_idx
-    if collapse_id_dim:
-        for sidx in splice_dim[1:][::-1]:
-            out_dataset_idx.pop(sidx)
+    def create_output_dataset(self, dataset_info, splice_size=None):
+        """Duplicates a dataset from the input file into the output hdf object as it exists
+        except for its dimensions"""
 
-    # Get destination dataset shape so we can reshape the incoming data to match
-    out_shape = []
-    for idx in out_dataset_idx:
-        if type(idx) is slice:
-            start = idx.start and idx.start or 0
-            stop = idx.stop
-            if idx.step:
-                raise NotImplementedError("stepped slices not supported yet")
-            out_shape.append(stop - start)
-        elif type(idx) is int:
-            out_shape.append(1)
+        logger.debug("Creating new output dataset: %s" % dataset_info.out_name)
+
+        dst_shape, max_shape, dst_shape_names = dataset_info.output_dataset_shape(splice_size, self.multi_source_types) 
+
+        # Split name into two and create a group if needed
+        # then create the desire dataset or load existing group
+        ds_name_clean = dataset_info.out_name.lstrip('/').rstrip('/')
+        if ds_name_clean.find("/") > 0:
+            dst_group, dst_name = dataset_info.out_name.lstrip('/').rstrip('/').split('/', 1)
+            out_group_obj = self.dest_obj.require_group(dst_group) 
         else:
-            raise ValueError("Unknown type %s in indexes: %s" % (type(idx), out_dataset_idx))
+            dst_group = ""
+            dst_name = ds_name_clean
+            out_group_obj = self.dest_obj
 
-    return out_dataset_idx, out_shape
+        # Fill new dataset with the correct fill value based on type
+        if dataset_info.out_type != numpy.object and dataset_info.out_type.type != numpy.string_:
+            fill_type = dataset_info.out_type.type
 
-def get_dataset_slice(acos_hdf_obj, in_dataset_obj, dataset_info, in_data_idx, out_shape):
-    """Copys dataset values from one dataset object to another, but only certain indexes along a
-    specific dimension of the data"""
-
-    # Determine how to extact data other than the splice dimension
-    in_dataset_indexes = dataset_info.input_data_indexes(in_dataset_obj, in_data_idx)
-
-    # Obtain selected data for copying into output dataset
-    try:
-        if len(in_dataset_indexes) == 1 and not isinstance(in_dataset_indexes[0], slice):
-            in_data = in_dataset_obj[:][numpy.array(in_dataset_indexes[0])]
+            if FILL_VALUE.has_key(fill_type):
+                dataset_fill = FILL_VALUE[fill_type]
+            else:
+                logger.warning("Could not find specific fill value for dataset: %s of type %s" % (dst_name, fill_type))
+                dataset_fill = None
         else:
-            in_data = in_dataset_obj[:][tuple(in_dataset_indexes)]
-    except IOError as exc:
-        raise IOError("Can not read dataset %s from file %s: %s" % (dataset_info.inp_name, acos_hdf_obj.filename, exc))
+            # Use default fill for string types
+            fill_type = None
+            dataset_fill = None
 
-    # Set sliced data into output dataset
-    if numpy.product(in_data.shape) > numpy.product(out_shape):
-        logger.warning("Dataset %s requires destructive resizing" % (dataset_info.out_name))
-        logger.debug("At indexes %s resizing source data of shape %s to %s." % (in_data_idx, in_data.shape, out_shape)) 
-        stored_data = numpy.resize(in_data, out_shape)
-    else:
-        stored_data = in_data.reshape(out_shape)
+        logger.debug( "Creating new dataset: %s/%s sized: %s with fill type: %s and value: %s" % (dst_group, dst_name, dst_shape, fill_type, dataset_fill) )
+        try:
+            out_dataset_obj = out_group_obj.create_dataset(dst_name, shape=dst_shape, dtype=dataset_info.out_type, maxshape=max_shape, compression="gzip", compression_opts=2, fillvalue=dataset_fill)
+        except RuntimeError as exc:
+            raise RuntimeError("Error creating dataset %s/%s: %s" % (dst_group/dst_name, exc))
 
-    return stored_data
-def get_datasets_for_file(curr_file, curr_snd_indexes, inp_datasets_info, output_index, multi_source_types=False):
-    # Ignore current file if no soundings
-    if len(curr_snd_indexes) == 0:
-        return     
+        # Now create copied attributes from original dataset
+        # Just copy from first for now, leave code to do multiple if needed
+        for curr_file in dataset_info.inp_filenames[0:1]:
+            with closing(h5py.File(curr_file, 'r')) as curr_hdf_obj:
+                curr_dataset_obj = curr_hdf_obj[dataset_info.inp_name]
+                for attr_name, attr_value in curr_dataset_obj.attrs.items():
+                    # Skip if copied already from a file, assuming all files
+                    # have same attributes for now, we just will get
+                    # all uniquely named ones
+                    if attr_name in out_dataset_obj.attrs.keys():
+                        continue
+            
+                    # If the dtype of the attribute is an object dtype, then assume
+                    # its a variable length string
+                    if hasattr(attr_value, "dtype") and attr_value.dtype.kind == "O":
+                        logger.debug('Copying variable length string attribute: "%s" with value: "%s"' % (attr_name, attr_value[0]))
+                        vlen_dt = h5py.special_dtype(vlen=str)
+                        out_dataset_obj.attrs.create(attr_name, attr_value, dtype=vlen_dt)
+                    else:
+                        logger.debug('Copying attribute: "%s" with value: "%s"' % (attr_name, attr_value))
+                        out_dataset_obj.attrs.create(attr_name, attr_value)
 
-    with closing(InputContainerChooser(curr_file, single_id_dim=not multi_source_types)) as curr_hdf_obj:
-        # Copy each dataset for current file
-        for curr_dataset_name, curr_dataset_info in inp_datasets_info.items():
+        # Add extra information for dataset, overwrite an existing shape, because we may have
+        # reshaped the data
+        if dst_shape_names:
+            out_dataset_obj.attrs["Shape"] = numpy.array(["_".join(dst_shape_names) + "_Array"]) 
 
-            curr_ds_obj = curr_hdf_obj.get(curr_dataset_name, None)
-            if curr_ds_obj != None:
-                output_slice = slice(output_index, output_index+len(curr_snd_indexes))
+        return out_dataset_obj
 
-                # Only actually perform the copy if the object does not contain an empty dimension
-                # otherwise we leave the created output dataset empty
-                if not 0 in curr_ds_obj.shape:
-                    # Copy dataset's relevant contents into output
-                    try:
-                        out_dataset_idx, out_shape = output_indexes_shape(curr_ds_obj, curr_dataset_info, output_slice, collapse_id_dim=multi_source_types)
+    def create_datasets(self):
 
-                        stored_data = get_dataset_slice(curr_hdf_obj, curr_ds_obj, curr_dataset_info, curr_snd_indexes, out_shape)
-                        yield curr_dataset_name, out_dataset_idx, stored_data
-      
-                    except (ValueError, IOError) as e:
-                        logger.error('Error copying dataset: "%s", dataset may be corrupt: %s' % (curr_dataset_name, e))
-                        logger.debug('Exception: %s' % traceback.format_exc())
-                else:
-                    logger.debug('Dataset: "%s" has an empty dimension in its shape: %s, not actually copying any values from: %s' % (curr_dataset_name, curr_ds_obj.shape, curr_file))
+        # Loop over dataset names/shapes
+        # Create datasets and copy any non id_shape datasets
+        num_datasets = len(self.source_info.datasets_info.keys())
+        for curr_index, (curr_dataset_name, curr_dataset_info) in enumerate(self.source_info.datasets_info.items()):
+            write_progress(curr_index-1, num_datasets)
 
-            else: 
-                # Ok if not found, just treat as empty dataset
-                logger.debug('Dataset: "%s" is missing, not actually copy any values from: %s' % (curr_dataset_name, curr_file))
+            id_dimension = curr_dataset_info.inp_id_dims
 
-def copy_multiple_datasets(out_dataset_objs, source_info, multi_source_types=False):
-    """Given an input and output hdf object, copies the specified soundings ids for the specified
-    dataset names along the specified shape dimention to the output file"""
+            if self.dest_obj.get(curr_dataset_info.out_name, None) != None:
+                logger.debug("Destination dataset %s for %s already exists in output file, ignoring duplicate" % (curr_dataset_info.out_name, curr_dataset_name))
+                del self.source_info.datasets_info[curr_dataset_name]
 
-    # Loop over dataset names/shapes
-    output_index = 0
-    for file_index, (curr_file, curr_snd_indexes) in enumerate(zip(source_info.src_filenames, source_info.file_indexes)):
-        logger.debug( 'Copying %d sounding(s) from %s (%d / %d)' % (len(curr_snd_indexes), os.path.basename(curr_file), file_index+1, len(source_info.src_filenames)) )
+            elif len(id_dimension) > 0: 
+                # Create a dataset that does have an id dimension
+                self.out_dataset_objs[curr_dataset_name] = self.create_output_dataset(curr_dataset_info, self.source_info.num_soundings)
+            
+            elif self.splice_all:
+                logger.debug("Non sounding id dataset, copying from first file: %s" % curr_dataset_name)
+                    
+                # Copy dataset with no sounding dimension directly from first file
+                out_dataset_obj = self.create_output_dataset(curr_dataset_info)
+               
+                # Search for first file that has the desired dataset. Can't just take
+                # from first in cases when splicing dissimilar files
+                for inp_fn in self.source_info.src_filenames:
+                    with closing(h5py.File(inp_fn, 'r')) as hdf_obj:
+                        if hdf_obj.get(curr_dataset_name, None):
+                            # Do not try and copy empty datasets
+                            if hdf_obj[curr_dataset_name].len() > 0:
+                                out_dataset_obj[:] = hdf_obj[curr_dataset_name][:]
+                            self.source_info.datasets_info.pop(curr_dataset_name)
+                            break
+            else:
+                del self.source_info.datasets_info[curr_dataset_name]
+                logger.debug( "Ignoring non sounding id dataset: %s" % curr_dataset_name )
 
-        write_progress(file_index-1, len(source_info.src_filenames))
+            write_progress(curr_index, num_datasets)
 
-        for curr_dataset_name, out_dataset_idx, stored_data in get_datasets_for_file(curr_file, curr_snd_indexes, source_info.datasets_info, output_index, multi_source_types):
-            out_dataset_objs[curr_dataset_name].__setitem__(tuple(out_dataset_idx), stored_data)
+        self.dest_obj.flush()
 
-        write_progress(file_index, len(source_info.src_filenames))
+    def output_indexes_shape(self, in_dataset_obj, dataset_info, out_data_idx):
+        # Create output dataset indexes, removing any concatenated dimensions 
+        splice_dim = dataset_info.inp_id_dims 
+        out_dataset_idx = [ slice(dim_size) for dim_size in in_dataset_obj.shape ]
+        out_dataset_idx[splice_dim[0]] = out_data_idx
 
-        # Increment where to start in the index into output sounding indexes
-        # Only increment if not using multiple source types because when using different
-        # inputs to a single output we will be pulling the same sounding ids (hopefully)
-        if not multi_source_types:
-            output_index += len(curr_snd_indexes) 
+        if self.multi_source_types:
+            for sidx in splice_dim[1:][::-1]:
+                out_dataset_idx.pop(sidx)
 
+        # Get destination dataset shape so we can reshape the incoming data to match
+        out_shape = []
+        for idx in out_dataset_idx:
+            if type(idx) is slice:
+                start = idx.start and idx.start or 0
+                stop = idx.stop
+                if idx.step:
+                    raise NotImplementedError("stepped slices not supported yet")
+                out_shape.append(stop - start)
+            elif type(idx) is int:
+                out_shape.append(1)
+            else:
+                raise ValueError("Unknown type %s in indexes: %s" % (type(idx), out_dataset_idx))
+
+        return out_dataset_idx, out_shape
+
+    def get_dataset_slice(self, in_dataset_obj, dataset_info, in_data_idx, out_shape, inp_filename=""):
+        """Copys dataset values from one dataset object to another, but only certain indexes along a
+        specific dimension of the data"""
+
+        # Determine how to extact data other than the splice dimension
+        in_dataset_indexes = dataset_info.input_data_indexes(in_dataset_obj, in_data_idx)
+
+        # Obtain selected data for copying into output dataset
+        try:
+            if len(in_dataset_indexes) == 1 and not isinstance(in_dataset_indexes[0], slice):
+                in_data = in_dataset_obj[:][numpy.array(in_dataset_indexes[0])]
+            else:
+                in_data = in_dataset_obj[:][tuple(in_dataset_indexes)]
+        except IOError as exc:
+            raise IOError("Can not read dataset %s from file %s: %s" % (dataset_info.inp_name, inp_filename, exc))
+
+        # Set sliced data into output dataset
+        if numpy.product(in_data.shape) > numpy.product(out_shape):
+            logger.warning("Dataset %s requires destructive resizing" % (dataset_info.out_name))
+            logger.debug("At indexes %s resizing source data of shape %s to %s." % (in_data_idx, in_data.shape, out_shape)) 
+            stored_data = numpy.resize(in_data, out_shape)
+        else:
+            stored_data = in_data.reshape(out_shape)
+
+        return stored_data
+
+    def get_datasets_for_file(self, curr_file, curr_snd_indexes, output_index):
+        # Ignore current file if no soundings
+        if len(curr_snd_indexes) == 0:
+            return     
+
+        with closing(InputContainerChooser(curr_file, single_id_dim=not self.multi_source_types)) as curr_hdf_obj:
+            # Copy each dataset for current file
+            for curr_dataset_name, curr_dataset_info in self.source_info.datasets_info.items():
+
+                curr_ds_obj = curr_hdf_obj.get(curr_dataset_name, None)
+                if curr_ds_obj != None:
+                    output_slice = slice(output_index, output_index+len(curr_snd_indexes))
+
+                    # Only actually perform the copy if the object does not contain an empty dimension
+                    # otherwise we leave the created output dataset empty
+                    if not 0 in curr_ds_obj.shape:
+                        # Copy dataset's relevant contents into output
+                        try:
+                            out_dataset_idx, out_shape = self.output_indexes_shape(curr_ds_obj, curr_dataset_info, output_slice)
+
+                            stored_data = self.get_dataset_slice(curr_ds_obj, curr_dataset_info, curr_snd_indexes, out_shape, curr_hdf_obj.filename)
+                            yield curr_dataset_name, out_dataset_idx, stored_data
+          
+                        except (ValueError, IOError) as e:
+                            logger.error('Error copying dataset: "%s", dataset may be corrupt: %s' % (curr_dataset_name, e))
+                            logger.debug('Exception: %s' % traceback.format_exc())
+                    else:
+                        logger.debug('Dataset: "%s" has an empty dimension in its shape: %s, not actually copying any values from: %s' % (curr_dataset_name, curr_ds_obj.shape, curr_file))
+
+                else: 
+                    # Ok if not found, just treat as empty dataset
+                    logger.debug('Dataset: "%s" is missing, not actually copy any values from: %s' % (curr_dataset_name, curr_file))
+
+    def copy_datasets(self):
+        """Given an input and output hdf object, copies the specified soundings ids for the specified
+        dataset names along the specified shape dimention to the output file"""
+
+        # Loop over dataset names/shapes
+        output_index = 0
+        for file_index, (curr_file, curr_snd_indexes) in enumerate(zip(self.source_info.src_filenames, self.source_info.file_indexes)):
+            logger.debug( 'Copying %d sounding(s) from %s (%d / %d)' % (len(curr_snd_indexes), os.path.basename(curr_file), file_index+1, len(self.source_info.src_filenames)) )
+
+            write_progress(file_index-1, len(self.source_info.src_filenames))
+
+            for curr_dataset_name, out_dataset_idx, stored_data in self.get_datasets_for_file(curr_file, curr_snd_indexes, output_index):
+                self.out_dataset_objs[curr_dataset_name].__setitem__(tuple(out_dataset_idx), stored_data)
+
+            write_progress(file_index, len(self.source_info.src_filenames))
+
+            # Increment where to start in the index into output sounding indexes
+            # Only increment if not using multiple source types because when using different
+            # inputs to a single output we will be pulling the same sounding ids (hopefully)
+            if not self.multi_source_types:
+                output_index += len(curr_snd_indexes) 
+
+    def splice_files(self):
+
+        logger.info("Splicing into: %s" % self.dest_obj.filename)
+
+        # Match sounding ids to files and indexes using L1B files
+        with Timer() as t:
+            logger.info("Analyzing source files")
+            self.analyze()
+
+        logger.info("Found %d sounding ids and %d unique datasets in %d files taking %.03f seconds" % (len(self.source_info.found_sounding_ids), len(self.source_info.datasets_info), len(self.source_info.src_filenames), t.interval))
+
+        # Create datasets in the output file so we have somewhere to dump the input
+        with Timer() as t:
+            logger.info("Creating output file datasets")
+            self.create_datasets()
+
+        logger.info("Datasets creation took %.03f seconds" % (t.interval))
+
+        # Now copy desired datasets from source file to destination files
+        with Timer() as t:
+            logger.info("Copying data to output")
+            self.copy_datasets()
+
+        logger.info("Datasets copying took %.03f seconds" % (t.interval))
+    
 def determine_multi_source(check_files):
 
     # Looks through input hdf files and see if we are using multiple source types, ie different types of files combined into one
@@ -580,40 +626,15 @@ def determine_multi_source(check_files):
 
     return multi_source_types
 
-def splice_files(source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False, multi_source_types=None):
-
-    logger.info("Splicing into: %s" % output_filename)
+def process_files(source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False, multi_source_types=None):
 
     # Determine if input files are of different types
     if multi_source_types == None:
         logger.info("Determining if using multiple source types")
         multi_source_types = determine_multi_source(source_files)
 
-    # Match sounding ids to files and indexes using L1B files
-    source_info = SourceInformation(source_files, sounding_ids, desired_datasets_list, rename_mapping, multi_source_types)
-    with Timer() as t:
-        logger.info("Analyzing source files")
-        source_info.analyze_files()
-
-    logger.info("Analyzed %d files, found %d sounding ids and %d unique datasets in %d files taking %.03f seconds" % (len(source_files), len(source_info.found_sounding_ids), len(source_info.datasets_info), len(source_info.src_filenames), t.interval))
-
-    # Copy over all datasets in files
-    with closing(h5py.File(output_filename, 'w')) as dest_obj:
-
-        # Create datasets in the output file so we have somewhere to dump the input
-        with Timer() as t:
-            logger.info("Creating output file datasets")
-            out_dataset_objs = create_dest_file_datasets(dest_obj, source_info, splice_all, multi_source_types)
-            dest_obj.flush()
-
-        logger.info("Datasets creation took %.03f seconds" % (t.interval))
-
-        # Now copy desired datasets from source file to destination files
-        with Timer() as t:
-            logger.info("Copying data to output")
-            copy_multiple_datasets(out_dataset_objs, source_info, multi_source_types=multi_source_types)
-
-        logger.info("Datasets copying took %.03f seconds" % (t.interval))
+    splicer = ProductSplicer(source_files, output_filename, sounding_ids, splice_all, desired_datasets_list, rename_mapping, multi_source_types)
+    splicer.splice_files()
 
 def load_source_files(filenames, input_list_file=None):
     source_list = []
@@ -708,7 +729,7 @@ def standalone_main():
         else:
             copy_datasets_list += aggregator_dataset_dest_names
 
-    splice_files(source_files, args.output_filename, sounding_ids, splice_all=args.splice_all, desired_datasets_list=copy_datasets_list, rename_mapping=args.rename_mapping, multi_source_types=args.multi_source_types)
+    process_files(source_files, args.output_filename, sounding_ids, splice_all=args.splice_all, desired_datasets_list=copy_datasets_list, rename_mapping=args.rename_mapping, multi_source_types=args.multi_source_types)
 
 if __name__ == "__main__":
     standalone_main()
