@@ -232,6 +232,7 @@ class SourceInformation(object):
     def __init__(self, src_filenames, sounding_ids=None, desired_datasets=None, rename_mapping=False, multi_source_types=False):
 
         # Filenames to splice from, will be modified to remove any which have no sounding ids present
+        # Ensure it is a list so we can modify it as we go
         self.src_filenames = list(src_filenames)
 
         if sounding_ids != None:
@@ -264,12 +265,12 @@ class SourceInformation(object):
         return len(self.found_sounding_ids)
 
     def process_file_ids(self, hdf_obj):
-        file_sounding_ids = set(numpy.ravel(hdf_obj.get_sounding_ids()))
+        curr_sounding_ids = set(numpy.ravel(hdf_obj.get_sounding_ids()))
 
         if self.inp_sounding_ids == None:
-            matching_ids = file_sounding_ids
+            matching_ids = curr_sounding_ids
         else:
-            matching_ids = sorted(file_sounding_ids.intersection(self.inp_sounding_ids))
+            matching_ids = sorted(curr_sounding_ids.intersection(self.inp_sounding_ids))
 
         if len(matching_ids) > 0:
             self.found_sounding_ids.update(matching_ids)
@@ -322,25 +323,22 @@ class SourceInformation(object):
             self.src_filenames = [ self.src_filenames ]
 
     def analyze_files(self):
-        with Timer() as t:
-            # Loop over a copy of the source filenames as we will remove from the original list any that
-            # have no matching sounding ids
-            check_files = copy(self.src_filenames)
+        # Loop over a copy of the source filenames as we will remove from the original list any that
+        # have no matching sounding ids
+        check_files = copy(self.src_filenames)
 
-            for file_idx, curr_file in enumerate(check_files):
-                with closing(InputContainerChooser(curr_file, single_id_dim=not self.multi_source_types)) as hdf_obj:
-                    num_ids = self.process_file_ids(hdf_obj)
+        for file_idx, curr_file in enumerate(check_files):
+            with closing(InputContainerChooser(curr_file, single_id_dim=not self.multi_source_types)) as hdf_obj:
+                num_ids = self.process_file_ids(hdf_obj)
 
-                    if num_ids > 0:
-                        self.process_dataset_info(hdf_obj)
-                    else:
-                        self.src_filenames.remove(curr_file)
+                if num_ids > 0:
+                    self.process_dataset_info(hdf_obj)
+                else:
+                    self.src_filenames.remove(curr_file)
 
-                write_progress(file_idx, len(check_files))
-        
+            write_progress(file_idx, len(check_files))
+    
         self._sort_file_lists()
-
-        logger.info("Analyzed %d files, found %d sounding ids and %d unique datasets in %d files taking %.03f seconds" % (len(check_files), len(self.found_sounding_ids), len(self.datasets_info), len(self.src_filenames), t.interval))
 
 def create_output_dataset(out_hdf_obj, dataset_info, splice_size=None, collapse_id_dim=False):
     """Duplicates a dataset from the input file into the output hdf object as it exists
@@ -437,7 +435,6 @@ def get_dataset_slice(acos_hdf_obj, in_dataset_obj, dataset_info, in_data_idx, o
     return stored_data
 
 def create_dest_file_datasets(out_hdf_obj, source_info, copy_all=False, multi_source_types=False):
-    logger.info("Creating output file datasets")
 
     # Loop over dataset names/shapes
     # Create datasets and copy any non id_shape datasets
@@ -542,8 +539,6 @@ def copy_multiple_datasets(out_dataset_objs, source_info, multi_source_types=Fal
     """Given an input and output hdf object, copies the specified soundings ids for the specified
     dataset names along the specified shape dimention to the output file"""
 
-    logger.info("Copying data to output")
- 
     # Loop over dataset names/shapes
     output_index = 0
     for file_index, (curr_file, curr_snd_indexes) in enumerate(zip(source_info.src_filenames, source_info.file_indexes)):
@@ -597,21 +592,27 @@ def splice_files(source_files, output_filename, sounding_ids, splice_all=False, 
         multi_source_types = determine_multi_source(source_files)
 
     # Match sounding ids to files and indexes using L1B files
-    logger.info("Analyzing source files")
     source_info = SourceInformation(source_files, sounding_ids, desired_datasets_list, rename_mapping, multi_source_types)
-    source_info.analyze_files()
+    with Timer() as t:
+        logger.info("Analyzing source files")
+        source_info.analyze_files()
+
+    logger.info("Analyzed %d files, found %d sounding ids and %d unique datasets in %d files taking %.03f seconds" % (len(source_files), len(source_info.found_sounding_ids), len(source_info.datasets_info), len(source_info.src_filenames), t.interval))
 
     # Copy over all datasets in files
     with closing(h5py.File(output_filename, 'w')) as dest_obj:
 
         # Create datasets in the output file so we have somewhere to dump the input
         with Timer() as t:
+            logger.info("Creating output file datasets")
             out_dataset_objs = create_dest_file_datasets(dest_obj, source_info, splice_all, multi_source_types)
             dest_obj.flush()
+
         logger.info("Datasets creation took %.03f seconds" % (t.interval))
 
         # Now copy desired datasets from source file to destination files
         with Timer() as t:
+            logger.info("Copying data to output")
             copy_multiple_datasets(out_dataset_objs, source_info, multi_source_types=multi_source_types)
 
         logger.info("Datasets copying took %.03f seconds" % (t.interval))
