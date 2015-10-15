@@ -3449,8 +3449,8 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_FullPhysics__Aerosol swig_types[0]
-#define SWIGTYPE_p_FullPhysics__AerosolExtinction swig_types[1]
+#define SWIGTYPE_p_FullPhysics__AerosolExtinction swig_types[0]
+#define SWIGTYPE_p_FullPhysics__AerosolOptical swig_types[1]
 #define SWIGTYPE_p_FullPhysics__AerosolProperty swig_types[2]
 #define SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t swig_types[3]
 #define SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t swig_types[4]
@@ -3460,13 +3460,13 @@ namespace Swig {
 #define SWIGTYPE_p_FullPhysics__AutoDerivativeWithUnitT_double_t swig_types[8]
 #define SWIGTYPE_p_FullPhysics__GenericObject swig_types[9]
 #define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t swig_types[10]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t swig_types[11]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Aerosol_t swig_types[12]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t swig_types[11]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t swig_types[12]
 #define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[13]
 #define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[14]
 #define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t swig_types[15]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t swig_types[16]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Aerosol_t swig_types[17]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t swig_types[16]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t swig_types[17]
 #define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[18]
 #define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[19]
 #define SWIGTYPE_p_FullPhysics__Pressure swig_types[20]
@@ -3489,20 +3489,20 @@ namespace Swig {
 #define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[37]
 #define SWIGTYPE_p_blitz__ArrayT_std__string_1_t swig_types[38]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t swig_types[39]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolProperty_t swig_types[40]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t swig_types[41]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t swig_types[40]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolProperty_t swig_types[41]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[42]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[43]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[44]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[45]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t swig_types[46]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t swig_types[47]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t swig_types[48]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t swig_types[47]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t swig_types[48]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[49]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[50]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t swig_types[51]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t swig_types[52]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t swig_types[53]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t swig_types[52]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t swig_types[53]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[54]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[55]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[56]
@@ -3555,16 +3555,16 @@ static swig_module_info swig_module = {swig_types, 79, 0, 0, 0, 0};
 #define SWIG_TypeQuery SWIG_Python_TypeQuery
 
 /*-----------------------------------------------
-              @(target):= _aerosol.so
+              @(target):= _aerosol_optical.so
   ------------------------------------------------*/
 #if PY_VERSION_HEX >= 0x03000000
-#  define SWIG_init    PyInit__aerosol
+#  define SWIG_init    PyInit__aerosol_optical
 
 #else
-#  define SWIG_init    init_aerosol
+#  define SWIG_init    init_aerosol_optical
 
 #endif
-#define SWIG_name    "_aerosol"
+#define SWIG_name    "_aerosol_optical"
 
 #define SWIGVERSION 0x020009 
 #define SWIG_VERSION SWIGVERSION
@@ -5431,19 +5431,19 @@ namespace swig {
  * C++ director class methods
  * --------------------------------------------------- */
 
-#include "aerosol_wrap.h"
+#include "aerosol_optical_wrap.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 SWIGINTERN PyObject *_wrap_new_ObserverAerosol(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Observer< FullPhysics::Aerosol > *result = 0 ;
+  FullPhysics::Observer< FullPhysics::AerosolOptical > *result = 0 ;
   
   if (!SWIG_Python_UnpackTuple(args,"new_ObserverAerosol",0,0,0)) SWIG_fail;
   {
     try {
-      result = (FullPhysics::Observer< FullPhysics::Aerosol > *)new FullPhysics::Observer< FullPhysics::Aerosol >();
+      result = (FullPhysics::Observer< FullPhysics::AerosolOptical > *)new FullPhysics::Observer< FullPhysics::AerosolOptical >();
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -5451,8 +5451,8 @@ SWIGINTERN PyObject *_wrap_new_ObserverAerosol(PyObject *SWIGUNUSEDPARM(self), P
     }
   }
   {
-    boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+    boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
   }
   return resultobj;
 fail:
@@ -5462,28 +5462,28 @@ fail:
 
 SWIGINTERN PyObject *_wrap_delete_ObserverAerosol(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Observer< FullPhysics::Aerosol > *arg1 = (FullPhysics::Observer< FullPhysics::Aerosol > *) 0 ;
+  FullPhysics::Observer< FullPhysics::AerosolOptical > *arg1 = (FullPhysics::Observer< FullPhysics::AerosolOptical > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ObserverAerosol" "', argument " "1"" of type '" "FullPhysics::Observer< FullPhysics::Aerosol > *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ObserverAerosol" "', argument " "1"" of type '" "FullPhysics::Observer< FullPhysics::AerosolOptical > *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observer< FullPhysics::Aerosol > * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observer< FullPhysics::AerosolOptical > * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observer< FullPhysics::Aerosol > * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observer< FullPhysics::AerosolOptical > * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
@@ -5504,61 +5504,61 @@ fail:
 
 SWIGINTERN PyObject *_wrap_ObserverAerosol_notify_update(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Observer< FullPhysics::Aerosol > *arg1 = (FullPhysics::Observer< FullPhysics::Aerosol > *) 0 ;
-  FullPhysics::Aerosol *arg2 = 0 ;
+  FullPhysics::Observer< FullPhysics::AerosolOptical > *arg1 = (FullPhysics::Observer< FullPhysics::AerosolOptical > *) 0 ;
+  FullPhysics::AerosolOptical *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > *smartarg1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared2 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared2 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ObserverAerosol_notify_update",2,2,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ObserverAerosol_notify_update" "', argument " "1"" of type '" "FullPhysics::Observer< FullPhysics::Aerosol > *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ObserverAerosol_notify_update" "', argument " "1"" of type '" "FullPhysics::Observer< FullPhysics::AerosolOptical > *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observer< FullPhysics::Aerosol > * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observer< FullPhysics::AerosolOptical > * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observer< FullPhysics::Aerosol > * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observer< FullPhysics::AerosolOptical > * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     int newmem = 0;
     // Added mms
     // First check to see if all ready pointer type
-    FullPhysics::Aerosol *ptr;
-    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__Aerosol,  0 , &newmem);
+    FullPhysics::AerosolOptical *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__AerosolOptical,  0 , &newmem);
     if (SWIG_IsOK(res2)) {
       arg2 = ptr;
     } else {
-      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t,  0 , &newmem);
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t,  0 , &newmem);
       if (!SWIG_IsOK(res2)) {
-        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ObserverAerosol_notify_update" "', argument " "2"" of type '" "FullPhysics::Aerosol const &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ObserverAerosol_notify_update" "', argument " "2"" of type '" "FullPhysics::AerosolOptical const &""'"); 
       }
       if (!argp2) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ObserverAerosol_notify_update" "', argument " "2"" of type '" "FullPhysics::Aerosol const &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ObserverAerosol_notify_update" "', argument " "2"" of type '" "FullPhysics::AerosolOptical const &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
-        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp2);
-        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp2);
-        arg2 = const_cast< FullPhysics::Aerosol * >(tempshared2.get());
+        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp2);
+        arg2 = const_cast< FullPhysics::AerosolOptical * >(tempshared2.get());
       } else {
-        arg2 = const_cast< FullPhysics::Aerosol * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp2)->get());
+        arg2 = const_cast< FullPhysics::AerosolOptical * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp2)->get());
       }
     }
   }
   {
     try {
-      (arg1)->notify_update((FullPhysics::Aerosol const &)*arg2);
+      (arg1)->notify_update((FullPhysics::AerosolOptical const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -5574,55 +5574,55 @@ fail:
 
 SWIGINTERN PyObject *_wrap_ObserverAerosol_notify_add(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Observer< FullPhysics::Aerosol > *arg1 = (FullPhysics::Observer< FullPhysics::Aerosol > *) 0 ;
-  FullPhysics::Aerosol *arg2 = 0 ;
+  FullPhysics::Observer< FullPhysics::AerosolOptical > *arg1 = (FullPhysics::Observer< FullPhysics::AerosolOptical > *) 0 ;
+  FullPhysics::AerosolOptical *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > *smartarg1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol > tempshared2 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > tempshared2 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ObserverAerosol_notify_add",2,2,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ObserverAerosol_notify_add" "', argument " "1"" of type '" "FullPhysics::Observer< FullPhysics::Aerosol > *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ObserverAerosol_notify_add" "', argument " "1"" of type '" "FullPhysics::Observer< FullPhysics::AerosolOptical > *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observer< FullPhysics::Aerosol > * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observer< FullPhysics::AerosolOptical > * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observer< FullPhysics::Aerosol > * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observer< FullPhysics::AerosolOptical > * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     int newmem = 0;
     // Added mms
     // First check to see if all ready pointer type
-    FullPhysics::Aerosol *ptr;
-    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__Aerosol,  0 , &newmem);
+    FullPhysics::AerosolOptical *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__AerosolOptical,  0 , &newmem);
     if (SWIG_IsOK(res2)) {
       arg2 = ptr;
     } else {
-      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t,  0 , &newmem);
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t,  0 , &newmem);
       if (!SWIG_IsOK(res2)) {
-        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ObserverAerosol_notify_add" "', argument " "2"" of type '" "FullPhysics::Aerosol &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ObserverAerosol_notify_add" "', argument " "2"" of type '" "FullPhysics::AerosolOptical &""'"); 
       }
       if (!argp2) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ObserverAerosol_notify_add" "', argument " "2"" of type '" "FullPhysics::Aerosol &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ObserverAerosol_notify_add" "', argument " "2"" of type '" "FullPhysics::AerosolOptical &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
-        tempshared2 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp2);
-        delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp2);
-        arg2 = const_cast< FullPhysics::Aerosol * >(tempshared2.get());
+        tempshared2 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp2);
+        arg2 = const_cast< FullPhysics::AerosolOptical * >(tempshared2.get());
       } else {
-        arg2 = const_cast< FullPhysics::Aerosol * >(reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp2)->get());
+        arg2 = const_cast< FullPhysics::AerosolOptical * >(reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp2)->get());
       }
     }
   }
@@ -5644,55 +5644,55 @@ fail:
 
 SWIGINTERN PyObject *_wrap_ObserverAerosol_notify_remove(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Observer< FullPhysics::Aerosol > *arg1 = (FullPhysics::Observer< FullPhysics::Aerosol > *) 0 ;
-  FullPhysics::Aerosol *arg2 = 0 ;
+  FullPhysics::Observer< FullPhysics::AerosolOptical > *arg1 = (FullPhysics::Observer< FullPhysics::AerosolOptical > *) 0 ;
+  FullPhysics::AerosolOptical *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > *smartarg1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol > tempshared2 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > tempshared2 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ObserverAerosol_notify_remove",2,2,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ObserverAerosol_notify_remove" "', argument " "1"" of type '" "FullPhysics::Observer< FullPhysics::Aerosol > *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ObserverAerosol_notify_remove" "', argument " "1"" of type '" "FullPhysics::Observer< FullPhysics::AerosolOptical > *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observer< FullPhysics::Aerosol > * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observer< FullPhysics::AerosolOptical > * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observer< FullPhysics::Aerosol > * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observer< FullPhysics::AerosolOptical > * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     int newmem = 0;
     // Added mms
     // First check to see if all ready pointer type
-    FullPhysics::Aerosol *ptr;
-    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__Aerosol,  0 , &newmem);
+    FullPhysics::AerosolOptical *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__AerosolOptical,  0 , &newmem);
     if (SWIG_IsOK(res2)) {
       arg2 = ptr;
     } else {
-      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t,  0 , &newmem);
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t,  0 , &newmem);
       if (!SWIG_IsOK(res2)) {
-        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ObserverAerosol_notify_remove" "', argument " "2"" of type '" "FullPhysics::Aerosol &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ObserverAerosol_notify_remove" "', argument " "2"" of type '" "FullPhysics::AerosolOptical &""'"); 
       }
       if (!argp2) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ObserverAerosol_notify_remove" "', argument " "2"" of type '" "FullPhysics::Aerosol &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ObserverAerosol_notify_remove" "', argument " "2"" of type '" "FullPhysics::AerosolOptical &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
-        tempshared2 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp2);
-        delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp2);
-        arg2 = const_cast< FullPhysics::Aerosol * >(tempshared2.get());
+        tempshared2 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp2);
+        arg2 = const_cast< FullPhysics::AerosolOptical * >(tempshared2.get());
       } else {
-        arg2 = const_cast< FullPhysics::Aerosol * >(reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp2)->get());
+        arg2 = const_cast< FullPhysics::AerosolOptical * >(reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp2)->get());
       }
     }
   }
@@ -5715,7 +5715,7 @@ fail:
 SWIGINTERN PyObject *ObserverAerosol_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -5725,28 +5725,28 @@ SWIGINTERN PyObject *ObserverAerosol_swiginit(PyObject *SWIGUNUSEDPARM(self), Py
 
 SWIGINTERN PyObject *_wrap_delete_ObservableAerosol(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Observable< FullPhysics::Aerosol > *arg1 = (FullPhysics::Observable< FullPhysics::Aerosol > *) 0 ;
+  FullPhysics::Observable< FullPhysics::AerosolOptical > *arg1 = (FullPhysics::Observable< FullPhysics::AerosolOptical > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolOptical > > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolOptical > > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ObservableAerosol" "', argument " "1"" of type '" "FullPhysics::Observable< FullPhysics::Aerosol > *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ObservableAerosol" "', argument " "1"" of type '" "FullPhysics::Observable< FullPhysics::AerosolOptical > *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::Aerosol> > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observable< FullPhysics::Aerosol > * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::AerosolOptical> > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observable< FullPhysics::AerosolOptical > * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observable< FullPhysics::Aerosol > * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observable< FullPhysics::AerosolOptical > * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
@@ -5767,46 +5767,46 @@ fail:
 
 SWIGINTERN PyObject *_wrap_ObservableAerosol_add_observer_and_keep_reference(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Observable< FullPhysics::Aerosol > *arg1 = (FullPhysics::Observable< FullPhysics::Aerosol > *) 0 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > *arg2 = 0 ;
+  FullPhysics::Observable< FullPhysics::AerosolOptical > *arg1 = (FullPhysics::Observable< FullPhysics::AerosolOptical > *) 0 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolOptical > > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolOptical > > *smartarg1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > tempshared2 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > temp2shared2 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > tempshared2 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > temp2shared2 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ObservableAerosol_add_observer_and_keep_reference",2,2,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ObservableAerosol_add_observer_and_keep_reference" "', argument " "1"" of type '" "FullPhysics::Observable< FullPhysics::Aerosol > *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ObservableAerosol_add_observer_and_keep_reference" "', argument " "1"" of type '" "FullPhysics::Observable< FullPhysics::AerosolOptical > *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::Aerosol> > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observable< FullPhysics::Aerosol > * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::AerosolOptical> > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observable< FullPhysics::AerosolOptical > * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observable< FullPhysics::Aerosol > * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observable< FullPhysics::AerosolOptical > * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t,  0 , &newmem);
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t,  0 , &newmem);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ObservableAerosol_add_observer_and_keep_reference" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ObservableAerosol_add_observer_and_keep_reference" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > &""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > * >(argp2);
-      delete reinterpret_cast< boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > * >(argp2);
+      if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > * >(argp2);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > * >(argp2);
       arg2 = &tempshared2;
     } else {
-      arg2 = (argp2) ? reinterpret_cast< boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > * >(argp2) : &tempshared2;
+      arg2 = (argp2) ? reinterpret_cast< boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > * >(argp2) : &tempshared2;
     }
     // Special handling if this is a director class. In that case, we
     // don't own the underlying python object. Instead,
@@ -5838,55 +5838,55 @@ fail:
 
 SWIGINTERN PyObject *_wrap_ObservableAerosol_add_observer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Observable< FullPhysics::Aerosol > *arg1 = (FullPhysics::Observable< FullPhysics::Aerosol > *) 0 ;
-  FullPhysics::Observer< FullPhysics::Aerosol > *arg2 = 0 ;
+  FullPhysics::Observable< FullPhysics::AerosolOptical > *arg1 = (FullPhysics::Observable< FullPhysics::AerosolOptical > *) 0 ;
+  FullPhysics::Observer< FullPhysics::AerosolOptical > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolOptical > > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolOptical > > *smartarg1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > tempshared2 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > tempshared2 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ObservableAerosol_add_observer",2,2,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ObservableAerosol_add_observer" "', argument " "1"" of type '" "FullPhysics::Observable< FullPhysics::Aerosol > *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ObservableAerosol_add_observer" "', argument " "1"" of type '" "FullPhysics::Observable< FullPhysics::AerosolOptical > *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::Aerosol> > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observable< FullPhysics::Aerosol > * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::AerosolOptical> > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observable< FullPhysics::AerosolOptical > * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observable< FullPhysics::Aerosol > * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observable< FullPhysics::AerosolOptical > * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     int newmem = 0;
     // Added mms
     // First check to see if all ready pointer type
-    FullPhysics::Observer<FullPhysics::Aerosol> *ptr;
-    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Aerosol_t,  0 , &newmem);
+    FullPhysics::Observer<FullPhysics::AerosolOptical> *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t,  0 , &newmem);
     if (SWIG_IsOK(res2)) {
       arg2 = ptr;
     } else {
-      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t,  0 , &newmem);
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t,  0 , &newmem);
       if (!SWIG_IsOK(res2)) {
-        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ObservableAerosol_add_observer" "', argument " "2"" of type '" "FullPhysics::Observer< FullPhysics::Aerosol > &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ObservableAerosol_add_observer" "', argument " "2"" of type '" "FullPhysics::Observer< FullPhysics::AerosolOptical > &""'"); 
       }
       if (!argp2) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ObservableAerosol_add_observer" "', argument " "2"" of type '" "FullPhysics::Observer< FullPhysics::Aerosol > &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ObservableAerosol_add_observer" "', argument " "2"" of type '" "FullPhysics::Observer< FullPhysics::AerosolOptical > &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
-        tempshared2 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp2);
-        delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp2);
-        arg2 = const_cast< FullPhysics::Observer< FullPhysics::Aerosol > * >(tempshared2.get());
+        tempshared2 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp2);
+        arg2 = const_cast< FullPhysics::Observer< FullPhysics::AerosolOptical > * >(tempshared2.get());
       } else {
-        arg2 = const_cast< FullPhysics::Observer< FullPhysics::Aerosol > * >(reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp2)->get());
+        arg2 = const_cast< FullPhysics::Observer< FullPhysics::AerosolOptical > * >(reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp2)->get());
       }
     }
   }
@@ -5908,55 +5908,55 @@ fail:
 
 SWIGINTERN PyObject *_wrap_ObservableAerosol_remove_observer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Observable< FullPhysics::Aerosol > *arg1 = (FullPhysics::Observable< FullPhysics::Aerosol > *) 0 ;
-  FullPhysics::Observer< FullPhysics::Aerosol > *arg2 = 0 ;
+  FullPhysics::Observable< FullPhysics::AerosolOptical > *arg1 = (FullPhysics::Observable< FullPhysics::AerosolOptical > *) 0 ;
+  FullPhysics::Observer< FullPhysics::AerosolOptical > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolOptical > > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolOptical > > *smartarg1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > tempshared2 ;
+  boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > tempshared2 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ObservableAerosol_remove_observer",2,2,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ObservableAerosol_remove_observer" "', argument " "1"" of type '" "FullPhysics::Observable< FullPhysics::Aerosol > *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ObservableAerosol_remove_observer" "', argument " "1"" of type '" "FullPhysics::Observable< FullPhysics::AerosolOptical > *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::Aerosol> > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observable< FullPhysics::Aerosol > * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::AerosolOptical> > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observable< FullPhysics::AerosolOptical > * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::Aerosol> > * >(argp1);
-      arg1 = const_cast< FullPhysics::Observable< FullPhysics::Aerosol > * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Observable<FullPhysics::AerosolOptical> > * >(argp1);
+      arg1 = const_cast< FullPhysics::Observable< FullPhysics::AerosolOptical > * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     int newmem = 0;
     // Added mms
     // First check to see if all ready pointer type
-    FullPhysics::Observer<FullPhysics::Aerosol> *ptr;
-    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Aerosol_t,  0 , &newmem);
+    FullPhysics::Observer<FullPhysics::AerosolOptical> *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t,  0 , &newmem);
     if (SWIG_IsOK(res2)) {
       arg2 = ptr;
     } else {
-      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t,  0 , &newmem);
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t,  0 , &newmem);
       if (!SWIG_IsOK(res2)) {
-        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ObservableAerosol_remove_observer" "', argument " "2"" of type '" "FullPhysics::Observer< FullPhysics::Aerosol > &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ObservableAerosol_remove_observer" "', argument " "2"" of type '" "FullPhysics::Observer< FullPhysics::AerosolOptical > &""'"); 
       }
       if (!argp2) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ObservableAerosol_remove_observer" "', argument " "2"" of type '" "FullPhysics::Observer< FullPhysics::Aerosol > &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ObservableAerosol_remove_observer" "', argument " "2"" of type '" "FullPhysics::Observer< FullPhysics::AerosolOptical > &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
-        tempshared2 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp2);
-        delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp2);
-        arg2 = const_cast< FullPhysics::Observer< FullPhysics::Aerosol > * >(tempshared2.get());
+        tempshared2 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp2);
+        arg2 = const_cast< FullPhysics::Observer< FullPhysics::AerosolOptical > * >(tempshared2.get());
       } else {
-        arg2 = const_cast< FullPhysics::Observer< FullPhysics::Aerosol > * >(reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::Aerosol> > * >(argp2)->get());
+        arg2 = const_cast< FullPhysics::Observer< FullPhysics::AerosolOptical > * >(reinterpret_cast< boost::shared_ptr<  FullPhysics::Observer<FullPhysics::AerosolOptical> > * >(argp2)->get());
       }
     }
   }
@@ -5979,17 +5979,17 @@ fail:
 SWIGINTERN PyObject *ObservableAerosol_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_Aerosol___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   std::string result;
   
@@ -5997,22 +5997,22 @@ SWIGINTERN PyObject *_wrap_Aerosol___str__(PyObject *SWIGUNUSEDPARM(self), PyObj
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol___str__" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical___str__" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->print_to_string();
+      result = ((FullPhysics::AerosolOptical const *)arg1)->print_to_string();
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -6026,7 +6026,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Aerosol__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_AerosolOptical__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > *arg1 = 0 ;
   std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > *arg2 = 0 ;
@@ -6040,17 +6040,17 @@ SWIGINTERN PyObject *_wrap_new_Aerosol__SWIG_0(PyObject *SWIGUNUSEDPARM(self), i
   boost::shared_ptr< FullPhysics::Pressure > temp2shared3 ;
   double val4 ;
   int ecode4 = 0 ;
-  FullPhysics::Aerosol *result = 0 ;
+  FullPhysics::AerosolOptical *result = 0 ;
   
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   {
     std::vector<boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > *ptr = (std::vector<boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > *)0;
     res1 = swig::asptr(swig_obj[0], &ptr);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Aerosol" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_AerosolOptical" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Aerosol" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_AerosolOptical" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &""'"); 
     }
     arg1 = ptr;
   }
@@ -6058,10 +6058,10 @@ SWIGINTERN PyObject *_wrap_new_Aerosol__SWIG_0(PyObject *SWIGUNUSEDPARM(self), i
     std::vector<boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > *ptr = (std::vector<boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > *)0;
     res2 = swig::asptr(swig_obj[1], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Aerosol" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_AerosolOptical" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Aerosol" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_AerosolOptical" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &""'"); 
     }
     arg2 = ptr;
   }
@@ -6069,7 +6069,7 @@ SWIGINTERN PyObject *_wrap_new_Aerosol__SWIG_0(PyObject *SWIGUNUSEDPARM(self), i
     int newmem = 0;
     res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 , &newmem);
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_Aerosol" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_AerosolOptical" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       if (argp3) tempshared3 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp3);
@@ -6092,12 +6092,12 @@ SWIGINTERN PyObject *_wrap_new_Aerosol__SWIG_0(PyObject *SWIGUNUSEDPARM(self), i
   }
   ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Aerosol" "', argument " "4"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_AerosolOptical" "', argument " "4"" of type '" "double""'");
   } 
   arg4 = static_cast< double >(val4);
   {
     try {
-      result = (FullPhysics::Aerosol *)new FullPhysics::Aerosol((std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &)*arg1,(std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &)*arg2,(boost::shared_ptr< FullPhysics::Pressure > const &)*arg3,arg4);
+      result = (FullPhysics::AerosolOptical *)new FullPhysics::AerosolOptical((std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &)*arg1,(std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &)*arg2,(boost::shared_ptr< FullPhysics::Pressure > const &)*arg3,arg4);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -6105,8 +6105,8 @@ SWIGINTERN PyObject *_wrap_new_Aerosol__SWIG_0(PyObject *SWIGUNUSEDPARM(self), i
     }
   }
   {
-    boost::shared_ptr<  FullPhysics::Aerosol > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Aerosol >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+    boost::shared_ptr<  FullPhysics::AerosolOptical > *smartresult = result ? new boost::shared_ptr<  FullPhysics::AerosolOptical >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
   }
   if (SWIG_IsNewObj(res1)) delete arg1;
   if (SWIG_IsNewObj(res2)) delete arg2;
@@ -6118,7 +6118,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Aerosol__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_AerosolOptical__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > *arg1 = 0 ;
   std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > *arg2 = 0 ;
@@ -6129,17 +6129,17 @@ SWIGINTERN PyObject *_wrap_new_Aerosol__SWIG_1(PyObject *SWIGUNUSEDPARM(self), i
   int res3 = 0 ;
   boost::shared_ptr< FullPhysics::Pressure > tempshared3 ;
   boost::shared_ptr< FullPhysics::Pressure > temp2shared3 ;
-  FullPhysics::Aerosol *result = 0 ;
+  FullPhysics::AerosolOptical *result = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
     std::vector<boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > *ptr = (std::vector<boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > *)0;
     res1 = swig::asptr(swig_obj[0], &ptr);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Aerosol" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_AerosolOptical" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Aerosol" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_AerosolOptical" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &""'"); 
     }
     arg1 = ptr;
   }
@@ -6147,10 +6147,10 @@ SWIGINTERN PyObject *_wrap_new_Aerosol__SWIG_1(PyObject *SWIGUNUSEDPARM(self), i
     std::vector<boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > *ptr = (std::vector<boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > *)0;
     res2 = swig::asptr(swig_obj[1], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Aerosol" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_AerosolOptical" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Aerosol" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_AerosolOptical" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &""'"); 
     }
     arg2 = ptr;
   }
@@ -6158,7 +6158,7 @@ SWIGINTERN PyObject *_wrap_new_Aerosol__SWIG_1(PyObject *SWIGUNUSEDPARM(self), i
     int newmem = 0;
     res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 , &newmem);
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_Aerosol" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_AerosolOptical" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       if (argp3) tempshared3 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp3);
@@ -6181,7 +6181,7 @@ SWIGINTERN PyObject *_wrap_new_Aerosol__SWIG_1(PyObject *SWIGUNUSEDPARM(self), i
   }
   {
     try {
-      result = (FullPhysics::Aerosol *)new FullPhysics::Aerosol((std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &)*arg1,(std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &)*arg2,(boost::shared_ptr< FullPhysics::Pressure > const &)*arg3);
+      result = (FullPhysics::AerosolOptical *)new FullPhysics::AerosolOptical((std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &)*arg1,(std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &)*arg2,(boost::shared_ptr< FullPhysics::Pressure > const &)*arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -6189,8 +6189,8 @@ SWIGINTERN PyObject *_wrap_new_Aerosol__SWIG_1(PyObject *SWIGUNUSEDPARM(self), i
     }
   }
   {
-    boost::shared_ptr<  FullPhysics::Aerosol > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Aerosol >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+    boost::shared_ptr<  FullPhysics::AerosolOptical > *smartresult = result ? new boost::shared_ptr<  FullPhysics::AerosolOptical >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
   }
   if (SWIG_IsNewObj(res1)) delete arg1;
   if (SWIG_IsNewObj(res2)) delete arg2;
@@ -6202,36 +6202,36 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Aerosol(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_AerosolOptical(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[5];
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"new_Aerosol",0,4,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_AerosolOptical",0,4,argv))) SWIG_fail;
   --argc;
   if (argc == 3) {
-    return _wrap_new_Aerosol__SWIG_1(self, argc, argv);
+    return _wrap_new_AerosolOptical__SWIG_1(self, argc, argv);
   }
   if (argc == 4) {
-    return _wrap_new_Aerosol__SWIG_0(self, argc, argv);
+    return _wrap_new_AerosolOptical__SWIG_0(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_Aerosol'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_AerosolOptical'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::Aerosol::Aerosol(std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &,std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &,boost::shared_ptr< FullPhysics::Pressure > const &,double)\n"
-    "    FullPhysics::Aerosol::Aerosol(std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &,std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &,boost::shared_ptr< FullPhysics::Pressure > const &)\n");
+    "    FullPhysics::AerosolOptical::AerosolOptical(std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &,std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &,boost::shared_ptr< FullPhysics::Pressure > const &,double)\n"
+    "    FullPhysics::AerosolOptical::AerosolOptical(std::vector< boost::shared_ptr< FullPhysics::AerosolExtinction >,std::allocator< boost::shared_ptr< FullPhysics::AerosolExtinction > > > const &,std::vector< boost::shared_ptr< FullPhysics::AerosolProperty >,std::allocator< boost::shared_ptr< FullPhysics::AerosolProperty > > > const &,boost::shared_ptr< FullPhysics::Pressure > const &)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_notify_update__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_notify_update__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   FullPhysics::StateVector *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > *smartarg1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   boost::shared_ptr< FullPhysics::StateVector const > tempshared2 ;
@@ -6239,17 +6239,17 @@ SWIGINTERN PyObject *_wrap_Aerosol_notify_update__SWIG_0(PyObject *SWIGUNUSEDPAR
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_notify_update" "', argument " "1"" of type '" "FullPhysics::Aerosol *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_notify_update" "', argument " "1"" of type '" "FullPhysics::AerosolOptical *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
@@ -6263,10 +6263,10 @@ SWIGINTERN PyObject *_wrap_Aerosol_notify_update__SWIG_0(PyObject *SWIGUNUSEDPAR
     } else {
       res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t,  0 , &newmem);
       if (!SWIG_IsOK(res2)) {
-        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Aerosol_notify_update" "', argument " "2"" of type '" "FullPhysics::StateVector const &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AerosolOptical_notify_update" "', argument " "2"" of type '" "FullPhysics::StateVector const &""'"); 
       }
       if (!argp2) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Aerosol_notify_update" "', argument " "2"" of type '" "FullPhysics::StateVector const &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AerosolOptical_notify_update" "', argument " "2"" of type '" "FullPhysics::StateVector const &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
         tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::StateVector > * >(argp2);
@@ -6293,43 +6293,43 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_optical_depth_each_layer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_optical_depth_each_layer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   SwigValueWrapper< FullPhysics::ArrayAd< double,2 > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"Aerosol_optical_depth_each_layer",2,2,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"AerosolOptical_optical_depth_each_layer",2,2,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_optical_depth_each_layer" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_optical_depth_each_layer" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_optical_depth_each_layer" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_optical_depth_each_layer" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->optical_depth_each_layer(arg2);
+      result = ((FullPhysics::AerosolOptical const *)arg1)->optical_depth_each_layer(arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -6343,16 +6343,16 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_ssa_each_layer__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_ssa_each_layer__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   double arg2 ;
   int arg3 ;
   FullPhysics::ArrayAd< double,1 > *arg4 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   int val3 ;
@@ -6364,40 +6364,40 @@ SWIGINTERN PyObject *_wrap_Aerosol_ssa_each_layer__SWIG_0(PyObject *SWIGUNUSEDPA
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_ssa_each_layer" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_ssa_each_layer" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_ssa_each_layer" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_ssa_each_layer" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Aerosol_ssa_each_layer" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "AerosolOptical_ssa_each_layer" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
   res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0  | 0);
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Aerosol_ssa_each_layer" "', argument " "4"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "AerosolOptical_ssa_each_layer" "', argument " "4"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
   }
   if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Aerosol_ssa_each_layer" "', argument " "4"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AerosolOptical_ssa_each_layer" "', argument " "4"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
   }
   arg4 = reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(argp4);
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->ssa_each_layer(arg2,arg3,(FullPhysics::ArrayAd< double,1 > const &)*arg4);
+      result = ((FullPhysics::AerosolOptical const *)arg1)->ssa_each_layer(arg2,arg3,(FullPhysics::ArrayAd< double,1 > const &)*arg4);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -6411,14 +6411,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_ssa_each_layer__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_ssa_each_layer__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   SwigValueWrapper< FullPhysics::ArrayAd< double,1 > > result;
@@ -6426,27 +6426,27 @@ SWIGINTERN PyObject *_wrap_Aerosol_ssa_each_layer__SWIG_1(PyObject *SWIGUNUSEDPA
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_ssa_each_layer" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_ssa_each_layer" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_ssa_each_layer" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_ssa_each_layer" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->ssa_each_layer(arg2);
+      result = ((FullPhysics::AerosolOptical const *)arg1)->ssa_each_layer(arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -6460,36 +6460,36 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_ssa_each_layer(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_ssa_each_layer(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[5];
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"Aerosol_ssa_each_layer",0,4,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"AerosolOptical_ssa_each_layer",0,4,argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
-    return _wrap_Aerosol_ssa_each_layer__SWIG_1(self, argc, argv);
+    return _wrap_AerosolOptical_ssa_each_layer__SWIG_1(self, argc, argv);
   }
   if (argc == 4) {
-    return _wrap_Aerosol_ssa_each_layer__SWIG_0(self, argc, argv);
+    return _wrap_AerosolOptical_ssa_each_layer__SWIG_0(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Aerosol_ssa_each_layer'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AerosolOptical_ssa_each_layer'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::Aerosol::ssa_each_layer(double,int,FullPhysics::ArrayAd< double,1 > const &) const\n"
-    "    FullPhysics::Aerosol::ssa_each_layer(double) const\n");
+    "    FullPhysics::AerosolOptical::ssa_each_layer(double,int,FullPhysics::ArrayAd< double,1 > const &) const\n"
+    "    FullPhysics::AerosolOptical::ssa_each_layer(double) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_notify_update__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_notify_update__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   FullPhysics::Pressure *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > *smartarg1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   boost::shared_ptr< FullPhysics::Pressure const > tempshared2 ;
@@ -6497,17 +6497,17 @@ SWIGINTERN PyObject *_wrap_Aerosol_notify_update__SWIG_1(PyObject *SWIGUNUSEDPAR
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_notify_update" "', argument " "1"" of type '" "FullPhysics::Aerosol *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_notify_update" "', argument " "1"" of type '" "FullPhysics::AerosolOptical *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
@@ -6521,10 +6521,10 @@ SWIGINTERN PyObject *_wrap_Aerosol_notify_update__SWIG_1(PyObject *SWIGUNUSEDPAR
     } else {
       res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 , &newmem);
       if (!SWIG_IsOK(res2)) {
-        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Aerosol_notify_update" "', argument " "2"" of type '" "FullPhysics::Pressure const &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AerosolOptical_notify_update" "', argument " "2"" of type '" "FullPhysics::Pressure const &""'"); 
       }
       if (!argp2) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Aerosol_notify_update" "', argument " "2"" of type '" "FullPhysics::Pressure const &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AerosolOptical_notify_update" "', argument " "2"" of type '" "FullPhysics::Pressure const &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
         tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Pressure > * >(argp2);
@@ -6551,14 +6551,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_notify_update__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_notify_update__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   FullPhysics::AerosolExtinction *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > *smartarg1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   boost::shared_ptr< FullPhysics::AerosolExtinction const > tempshared2 ;
@@ -6566,17 +6566,17 @@ SWIGINTERN PyObject *_wrap_Aerosol_notify_update__SWIG_2(PyObject *SWIGUNUSEDPAR
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_notify_update" "', argument " "1"" of type '" "FullPhysics::Aerosol *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_notify_update" "', argument " "1"" of type '" "FullPhysics::AerosolOptical *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
@@ -6590,10 +6590,10 @@ SWIGINTERN PyObject *_wrap_Aerosol_notify_update__SWIG_2(PyObject *SWIGUNUSEDPAR
     } else {
       res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t,  0 , &newmem);
       if (!SWIG_IsOK(res2)) {
-        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Aerosol_notify_update" "', argument " "2"" of type '" "FullPhysics::AerosolExtinction const &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AerosolOptical_notify_update" "', argument " "2"" of type '" "FullPhysics::AerosolExtinction const &""'"); 
       }
       if (!argp2) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Aerosol_notify_update" "', argument " "2"" of type '" "FullPhysics::AerosolExtinction const &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AerosolOptical_notify_update" "', argument " "2"" of type '" "FullPhysics::AerosolExtinction const &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
         tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolExtinction > * >(argp2);
@@ -6620,14 +6620,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_notify_update__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_notify_update__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   FullPhysics::AerosolProperty *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > *smartarg1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   boost::shared_ptr< FullPhysics::AerosolProperty const > tempshared2 ;
@@ -6635,17 +6635,17 @@ SWIGINTERN PyObject *_wrap_Aerosol_notify_update__SWIG_3(PyObject *SWIGUNUSEDPAR
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_notify_update" "', argument " "1"" of type '" "FullPhysics::Aerosol *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_notify_update" "', argument " "1"" of type '" "FullPhysics::AerosolOptical *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
@@ -6659,10 +6659,10 @@ SWIGINTERN PyObject *_wrap_Aerosol_notify_update__SWIG_3(PyObject *SWIGUNUSEDPAR
     } else {
       res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolProperty_t,  0 , &newmem);
       if (!SWIG_IsOK(res2)) {
-        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Aerosol_notify_update" "', argument " "2"" of type '" "FullPhysics::AerosolProperty const &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AerosolOptical_notify_update" "', argument " "2"" of type '" "FullPhysics::AerosolProperty const &""'"); 
       }
       if (!argp2) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Aerosol_notify_update" "', argument " "2"" of type '" "FullPhysics::AerosolProperty const &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AerosolOptical_notify_update" "', argument " "2"" of type '" "FullPhysics::AerosolProperty const &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
         tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolProperty > * >(argp2);
@@ -6689,11 +6689,11 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_notify_update(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_notify_update(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"Aerosol_notify_update",0,2,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"AerosolOptical_notify_update",0,2,argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
     int _v = 0;
@@ -6702,7 +6702,7 @@ SWIGINTERN PyObject *_wrap_Aerosol_notify_update(PyObject *self, PyObject *args)
       _v = SWIG_CheckState(res);
     }
     if (!_v) goto check_1;
-    return _wrap_Aerosol_notify_update__SWIG_0(self, argc, argv);
+    return _wrap_AerosolOptical_notify_update__SWIG_0(self, argc, argv);
   }
 check_1:
   
@@ -6713,7 +6713,7 @@ check_1:
       _v = SWIG_CheckState(res);
     }
     if (!_v) goto check_2;
-    return _wrap_Aerosol_notify_update__SWIG_1(self, argc, argv);
+    return _wrap_AerosolOptical_notify_update__SWIG_1(self, argc, argv);
   }
 check_2:
   
@@ -6724,34 +6724,34 @@ check_2:
       _v = SWIG_CheckState(res);
     }
     if (!_v) goto check_3;
-    return _wrap_Aerosol_notify_update__SWIG_2(self, argc, argv);
+    return _wrap_AerosolOptical_notify_update__SWIG_2(self, argc, argv);
   }
 check_3:
   
   if (argc == 2) {
-    return _wrap_Aerosol_notify_update__SWIG_3(self, argc, argv);
+    return _wrap_AerosolOptical_notify_update__SWIG_3(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Aerosol_notify_update'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AerosolOptical_notify_update'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::Aerosol::notify_update(FullPhysics::StateVector const &)\n"
-    "    FullPhysics::Aerosol::notify_update(FullPhysics::Pressure const &)\n"
-    "    FullPhysics::Aerosol::notify_update(FullPhysics::AerosolExtinction const &)\n"
-    "    FullPhysics::Aerosol::notify_update(FullPhysics::AerosolProperty const &)\n");
+    "    FullPhysics::AerosolOptical::notify_update(FullPhysics::StateVector const &)\n"
+    "    FullPhysics::AerosolOptical::notify_update(FullPhysics::Pressure const &)\n"
+    "    FullPhysics::AerosolOptical::notify_update(FullPhysics::AerosolExtinction const &)\n"
+    "    FullPhysics::AerosolOptical::notify_update(FullPhysics::AerosolProperty const &)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_pf_mom__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_pf_mom__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   double arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   int val3 ;
@@ -6761,32 +6761,32 @@ SWIGINTERN PyObject *_wrap_Aerosol_pf_mom__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_pf_mom" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_pf_mom" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_pf_mom" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_pf_mom" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Aerosol_pf_mom" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "AerosolOptical_pf_mom" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->pf_mom(arg2,arg3);
+      result = ((FullPhysics::AerosolOptical const *)arg1)->pf_mom(arg2,arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -6814,15 +6814,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_pf_mom__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_pf_mom__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   double arg2 ;
   blitz::Array< double,2 > *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   blitz::Array< double,2 > a3 ;
@@ -6832,22 +6832,22 @@ SWIGINTERN PyObject *_wrap_Aerosol_pf_mom__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_pf_mom" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_pf_mom" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_pf_mom" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_pf_mom" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   {
@@ -6863,7 +6863,7 @@ SWIGINTERN PyObject *_wrap_Aerosol_pf_mom__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->pf_mom(arg2,(blitz::Array< double,2 > const &)*arg3);
+      result = ((FullPhysics::AerosolOptical const *)arg1)->pf_mom(arg2,(blitz::Array< double,2 > const &)*arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -6891,17 +6891,17 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_pf_mom__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_pf_mom__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   double arg2 ;
   FullPhysics::ArrayAd< double,2 > *arg3 = 0 ;
   int arg4 ;
   int arg5 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   void *argp3 = 0 ;
@@ -6915,45 +6915,45 @@ SWIGINTERN PyObject *_wrap_Aerosol_pf_mom__SWIG_2(PyObject *SWIGUNUSEDPARM(self)
   if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_pf_mom" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_pf_mom" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_pf_mom" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_pf_mom" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Aerosol_pf_mom" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "AerosolOptical_pf_mom" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Aerosol_pf_mom" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AerosolOptical_pf_mom" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
   }
   arg3 = reinterpret_cast< FullPhysics::ArrayAd< double,2 > * >(argp3);
   ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Aerosol_pf_mom" "', argument " "4"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "AerosolOptical_pf_mom" "', argument " "4"" of type '" "int""'");
   } 
   arg4 = static_cast< int >(val4);
   ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
   if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "Aerosol_pf_mom" "', argument " "5"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "AerosolOptical_pf_mom" "', argument " "5"" of type '" "int""'");
   } 
   arg5 = static_cast< int >(val5);
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->pf_mom(arg2,(FullPhysics::ArrayAd< double,2 > const &)*arg3,arg4,arg5);
+      result = ((FullPhysics::AerosolOptical const *)arg1)->pf_mom(arg2,(FullPhysics::ArrayAd< double,2 > const &)*arg3,arg4,arg5);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -6967,16 +6967,16 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_pf_mom__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_pf_mom__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   double arg2 ;
   FullPhysics::ArrayAd< double,2 > *arg3 = 0 ;
   int arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   void *argp3 = 0 ;
@@ -6988,40 +6988,40 @@ SWIGINTERN PyObject *_wrap_Aerosol_pf_mom__SWIG_3(PyObject *SWIGUNUSEDPARM(self)
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_pf_mom" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_pf_mom" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_pf_mom" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_pf_mom" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Aerosol_pf_mom" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "AerosolOptical_pf_mom" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Aerosol_pf_mom" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AerosolOptical_pf_mom" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
   }
   arg3 = reinterpret_cast< FullPhysics::ArrayAd< double,2 > * >(argp3);
   ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Aerosol_pf_mom" "', argument " "4"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "AerosolOptical_pf_mom" "', argument " "4"" of type '" "int""'");
   } 
   arg4 = static_cast< int >(val4);
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->pf_mom(arg2,(FullPhysics::ArrayAd< double,2 > const &)*arg3,arg4);
+      result = ((FullPhysics::AerosolOptical const *)arg1)->pf_mom(arg2,(FullPhysics::ArrayAd< double,2 > const &)*arg3,arg4);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7035,15 +7035,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_pf_mom__SWIG_4(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_pf_mom__SWIG_4(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   double arg2 ;
   FullPhysics::ArrayAd< double,2 > *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   void *argp3 = 0 ;
@@ -7053,35 +7053,35 @@ SWIGINTERN PyObject *_wrap_Aerosol_pf_mom__SWIG_4(PyObject *SWIGUNUSEDPARM(self)
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_pf_mom" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_pf_mom" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_pf_mom" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_pf_mom" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Aerosol_pf_mom" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "AerosolOptical_pf_mom" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Aerosol_pf_mom" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AerosolOptical_pf_mom" "', argument " "3"" of type '" "FullPhysics::ArrayAd< double,2 > const &""'"); 
   }
   arg3 = reinterpret_cast< FullPhysics::ArrayAd< double,2 > * >(argp3);
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->pf_mom(arg2,(FullPhysics::ArrayAd< double,2 > const &)*arg3);
+      result = ((FullPhysics::AerosolOptical const *)arg1)->pf_mom(arg2,(FullPhysics::ArrayAd< double,2 > const &)*arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7095,11 +7095,11 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_pf_mom(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_pf_mom(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[6];
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"Aerosol_pf_mom",0,5,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"AerosolOptical_pf_mom",0,5,argv))) SWIG_fail;
   --argc;
   if (argc == 3) {
     int _v = 0;
@@ -7108,7 +7108,7 @@ SWIGINTERN PyObject *_wrap_Aerosol_pf_mom(PyObject *self, PyObject *args) {
       _v = SWIG_CheckState(res);
     }
     if (!_v) goto check_1;
-    return _wrap_Aerosol_pf_mom__SWIG_4(self, argc, argv);
+    return _wrap_AerosolOptical_pf_mom__SWIG_4(self, argc, argv);
   }
 check_1:
   
@@ -7121,39 +7121,39 @@ check_1:
       }
     }
     if (!_v) goto check_2;
-    return _wrap_Aerosol_pf_mom__SWIG_0(self, argc, argv);
+    return _wrap_AerosolOptical_pf_mom__SWIG_0(self, argc, argv);
   }
 check_2:
   
   if (argc == 3) {
-    return _wrap_Aerosol_pf_mom__SWIG_1(self, argc, argv);
+    return _wrap_AerosolOptical_pf_mom__SWIG_1(self, argc, argv);
   }
   if (argc == 4) {
-    return _wrap_Aerosol_pf_mom__SWIG_3(self, argc, argv);
+    return _wrap_AerosolOptical_pf_mom__SWIG_3(self, argc, argv);
   }
   if (argc == 5) {
-    return _wrap_Aerosol_pf_mom__SWIG_2(self, argc, argv);
+    return _wrap_AerosolOptical_pf_mom__SWIG_2(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Aerosol_pf_mom'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AerosolOptical_pf_mom'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::Aerosol::pf_mom(double,int) const\n"
-    "    FullPhysics::Aerosol::pf_mom(double,blitz::Array< double,2 > const &) const\n"
-    "    FullPhysics::Aerosol::pf_mom(double,FullPhysics::ArrayAd< double,2 > const &,int,int) const\n"
-    "    FullPhysics::Aerosol::pf_mom(double,FullPhysics::ArrayAd< double,2 > const &,int) const\n"
-    "    FullPhysics::Aerosol::pf_mom(double,FullPhysics::ArrayAd< double,2 > const &) const\n");
+    "    FullPhysics::AerosolOptical::pf_mom(double,int) const\n"
+    "    FullPhysics::AerosolOptical::pf_mom(double,blitz::Array< double,2 > const &) const\n"
+    "    FullPhysics::AerosolOptical::pf_mom(double,FullPhysics::ArrayAd< double,2 > const &,int,int) const\n"
+    "    FullPhysics::AerosolOptical::pf_mom(double,FullPhysics::ArrayAd< double,2 > const &,int) const\n"
+    "    FullPhysics::AerosolOptical::pf_mom(double,FullPhysics::ArrayAd< double,2 > const &) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol__v_number_particle(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical__v_number_particle(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   int result;
   
@@ -7161,22 +7161,22 @@ SWIGINTERN PyObject *_wrap_Aerosol__v_number_particle(PyObject *SWIGUNUSEDPARM(s
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol__v_number_particle" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical__v_number_particle" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = (int)((FullPhysics::Aerosol const *)arg1)->number_particle();
+      result = (int)((FullPhysics::AerosolOptical const *)arg1)->number_particle();
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7190,16 +7190,16 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_optical_depth__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   int arg2 ;
   double arg3 ;
   double arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   double val3 ;
@@ -7211,37 +7211,37 @@ SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth__SWIG_0(PyObject *SWIGU
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_aerosol_optical_depth" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_aerosol_optical_depth" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_aerosol_optical_depth" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_aerosol_optical_depth" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Aerosol_aerosol_optical_depth" "', argument " "3"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "AerosolOptical_aerosol_optical_depth" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
   ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Aerosol_aerosol_optical_depth" "', argument " "4"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "AerosolOptical_aerosol_optical_depth" "', argument " "4"" of type '" "double""'");
   } 
   arg4 = static_cast< double >(val4);
   {
     try {
-      result = (double)((FullPhysics::Aerosol const *)arg1)->aerosol_optical_depth(arg2,arg3,arg4);
+      result = (double)((FullPhysics::AerosolOptical const *)arg1)->aerosol_optical_depth(arg2,arg3,arg4);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7255,15 +7255,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_optical_depth__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   int arg2 ;
   double arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   double val3 ;
@@ -7273,32 +7273,32 @@ SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth__SWIG_1(PyObject *SWIGU
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_aerosol_optical_depth" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_aerosol_optical_depth" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_aerosol_optical_depth" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_aerosol_optical_depth" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Aerosol_aerosol_optical_depth" "', argument " "3"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "AerosolOptical_aerosol_optical_depth" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
   {
     try {
-      result = (double)((FullPhysics::Aerosol const *)arg1)->aerosol_optical_depth(arg2,arg3);
+      result = (double)((FullPhysics::AerosolOptical const *)arg1)->aerosol_optical_depth(arg2,arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7312,14 +7312,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_optical_depth__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   double result;
@@ -7327,27 +7327,27 @@ SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth__SWIG_2(PyObject *SWIGU
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_aerosol_optical_depth" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_aerosol_optical_depth" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_aerosol_optical_depth" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_aerosol_optical_depth" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
     try {
-      result = (double)((FullPhysics::Aerosol const *)arg1)->aerosol_optical_depth(arg2);
+      result = (double)((FullPhysics::AerosolOptical const *)arg1)->aerosol_optical_depth(arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7361,41 +7361,41 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_optical_depth(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[5];
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"Aerosol_aerosol_optical_depth",0,4,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"AerosolOptical_aerosol_optical_depth",0,4,argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
-    return _wrap_Aerosol_aerosol_optical_depth__SWIG_2(self, argc, argv);
+    return _wrap_AerosolOptical_aerosol_optical_depth__SWIG_2(self, argc, argv);
   }
   if (argc == 3) {
-    return _wrap_Aerosol_aerosol_optical_depth__SWIG_1(self, argc, argv);
+    return _wrap_AerosolOptical_aerosol_optical_depth__SWIG_1(self, argc, argv);
   }
   if (argc == 4) {
-    return _wrap_Aerosol_aerosol_optical_depth__SWIG_0(self, argc, argv);
+    return _wrap_AerosolOptical_aerosol_optical_depth__SWIG_0(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Aerosol_aerosol_optical_depth'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AerosolOptical_aerosol_optical_depth'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::Aerosol::aerosol_optical_depth(int,double,double) const\n"
-    "    FullPhysics::Aerosol::aerosol_optical_depth(int,double) const\n"
-    "    FullPhysics::Aerosol::aerosol_optical_depth(int) const\n");
+    "    FullPhysics::AerosolOptical::aerosol_optical_depth(int,double,double) const\n"
+    "    FullPhysics::AerosolOptical::aerosol_optical_depth(int,double) const\n"
+    "    FullPhysics::AerosolOptical::aerosol_optical_depth(int) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth_total__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_optical_depth_total__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   double arg2 ;
   double arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   double val3 ;
@@ -7405,32 +7405,32 @@ SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth_total__SWIG_0(PyObject 
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_aerosol_optical_depth_total" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_aerosol_optical_depth_total" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_aerosol_optical_depth_total" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_aerosol_optical_depth_total" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Aerosol_aerosol_optical_depth_total" "', argument " "3"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "AerosolOptical_aerosol_optical_depth_total" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
   {
     try {
-      result = (double)((FullPhysics::Aerosol const *)arg1)->aerosol_optical_depth_total(arg2,arg3);
+      result = (double)((FullPhysics::AerosolOptical const *)arg1)->aerosol_optical_depth_total(arg2,arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7444,14 +7444,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth_total__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_optical_depth_total__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   double result;
@@ -7459,27 +7459,27 @@ SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth_total__SWIG_1(PyObject 
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_aerosol_optical_depth_total" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_aerosol_optical_depth_total" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_aerosol_optical_depth_total" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_aerosol_optical_depth_total" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   {
     try {
-      result = (double)((FullPhysics::Aerosol const *)arg1)->aerosol_optical_depth_total(arg2);
+      result = (double)((FullPhysics::AerosolOptical const *)arg1)->aerosol_optical_depth_total(arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7493,34 +7493,34 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth_total__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_optical_depth_total__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   double result;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_aerosol_optical_depth_total" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_aerosol_optical_depth_total" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = (double)((FullPhysics::Aerosol const *)arg1)->aerosol_optical_depth_total();
+      result = (double)((FullPhysics::AerosolOptical const *)arg1)->aerosol_optical_depth_total();
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7534,60 +7534,60 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_optical_depth_total(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_optical_depth_total(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"Aerosol_aerosol_optical_depth_total",0,3,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"AerosolOptical_aerosol_optical_depth_total",0,3,argv))) SWIG_fail;
   --argc;
   if (argc == 1) {
-    return _wrap_Aerosol_aerosol_optical_depth_total__SWIG_2(self, argc, argv);
+    return _wrap_AerosolOptical_aerosol_optical_depth_total__SWIG_2(self, argc, argv);
   }
   if (argc == 2) {
-    return _wrap_Aerosol_aerosol_optical_depth_total__SWIG_1(self, argc, argv);
+    return _wrap_AerosolOptical_aerosol_optical_depth_total__SWIG_1(self, argc, argv);
   }
   if (argc == 3) {
-    return _wrap_Aerosol_aerosol_optical_depth_total__SWIG_0(self, argc, argv);
+    return _wrap_AerosolOptical_aerosol_optical_depth_total__SWIG_0(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Aerosol_aerosol_optical_depth_total'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AerosolOptical_aerosol_optical_depth_total'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::Aerosol::aerosol_optical_depth_total(double,double) const\n"
-    "    FullPhysics::Aerosol::aerosol_optical_depth_total(double) const\n"
-    "    FullPhysics::Aerosol::aerosol_optical_depth_total() const\n");
+    "    FullPhysics::AerosolOptical::aerosol_optical_depth_total(double,double) const\n"
+    "    FullPhysics::AerosolOptical::aerosol_optical_depth_total(double) const\n"
+    "    FullPhysics::AerosolOptical::aerosol_optical_depth_total() const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_clone__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_clone__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol > result;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > result;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_clone" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_clone" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->clone();
+      result = ((FullPhysics::AerosolOptical const *)arg1)->clone();
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7603,41 +7603,41 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_clone__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_clone__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   boost::shared_ptr< FullPhysics::Pressure > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
   boost::shared_ptr< FullPhysics::Pressure > tempshared2 ;
   boost::shared_ptr< FullPhysics::Pressure > temp2shared2 ;
-  boost::shared_ptr< FullPhysics::Aerosol > result;
+  boost::shared_ptr< FullPhysics::AerosolOptical > result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_clone" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_clone" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     int newmem = 0;
     res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 , &newmem);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Aerosol_clone" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AerosolOptical_clone" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp2);
@@ -7660,7 +7660,7 @@ SWIGINTERN PyObject *_wrap_Aerosol_clone__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->clone((boost::shared_ptr< FullPhysics::Pressure > const &)*arg2);
+      result = ((FullPhysics::AerosolOptical const *)arg1)->clone((boost::shared_ptr< FullPhysics::Pressure > const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7676,35 +7676,35 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_clone(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_clone(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"Aerosol_clone",0,2,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"AerosolOptical_clone",0,2,argv))) SWIG_fail;
   --argc;
   if (argc == 1) {
-    return _wrap_Aerosol_clone__SWIG_0(self, argc, argv);
+    return _wrap_AerosolOptical_clone__SWIG_0(self, argc, argv);
   }
   if (argc == 2) {
-    return _wrap_Aerosol_clone__SWIG_1(self, argc, argv);
+    return _wrap_AerosolOptical_clone__SWIG_1(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Aerosol_clone'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AerosolOptical_clone'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::Aerosol::clone() const\n"
-    "    FullPhysics::Aerosol::clone(boost::shared_ptr< FullPhysics::Pressure > const &) const\n");
+    "    FullPhysics::AerosolOptical::clone() const\n"
+    "    FullPhysics::AerosolOptical::clone(boost::shared_ptr< FullPhysics::Pressure > const &) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol__v_aerosol_name(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical__v_aerosol_name(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   std::vector< std::string,std::allocator< std::string > > result;
   
@@ -7712,22 +7712,22 @@ SWIGINTERN PyObject *_wrap_Aerosol__v_aerosol_name(PyObject *SWIGUNUSEDPARM(self
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol__v_aerosol_name" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical__v_aerosol_name" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->aerosol_name();
+      result = ((FullPhysics::AerosolOptical const *)arg1)->aerosol_name();
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7741,13 +7741,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol__v_aerosol_name_arr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical__v_aerosol_name_arr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   SwigValueWrapper< blitz::Array< std::string,1 > > result;
   
@@ -7755,22 +7755,22 @@ SWIGINTERN PyObject *_wrap_Aerosol__v_aerosol_name_arr(PyObject *SWIGUNUSEDPARM(
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol__v_aerosol_name_arr" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical__v_aerosol_name_arr" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->aerosol_name_arr();
+      result = ((FullPhysics::AerosolOptical const *)arg1)->aerosol_name_arr();
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7784,13 +7784,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol__v_pressure(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical__v_pressure(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   boost::shared_ptr< FullPhysics::Pressure > result;
   
@@ -7798,22 +7798,22 @@ SWIGINTERN PyObject *_wrap_Aerosol__v_pressure(PyObject *SWIGUNUSEDPARM(self), P
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol__v_pressure" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical__v_pressure" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->pressure();
+      result = ((FullPhysics::AerosolOptical const *)arg1)->pressure();
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7829,14 +7829,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_extinction__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_extinction__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   boost::shared_ptr< FullPhysics::AerosolExtinction > result;
@@ -7844,27 +7844,27 @@ SWIGINTERN PyObject *_wrap_Aerosol_aerosol_extinction__SWIG_0(PyObject *SWIGUNUS
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_aerosol_extinction" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_aerosol_extinction" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_aerosol_extinction" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_aerosol_extinction" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->aerosol_extinction(arg2);
+      result = ((FullPhysics::AerosolOptical const *)arg1)->aerosol_extinction(arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -7880,15 +7880,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_extinction__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_extinction__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   int arg2 ;
   boost::shared_ptr< FullPhysics::AerosolExtinction > *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > *smartarg1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   void *argp3 ;
@@ -7899,29 +7899,29 @@ SWIGINTERN PyObject *_wrap_Aerosol_aerosol_extinction__SWIG_1(PyObject *SWIGUNUS
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_aerosol_extinction" "', argument " "1"" of type '" "FullPhysics::Aerosol *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_aerosol_extinction" "', argument " "1"" of type '" "FullPhysics::AerosolOptical *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_aerosol_extinction" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_aerosol_extinction" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
     int newmem = 0;
     res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t,  0 , &newmem);
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Aerosol_aerosol_extinction" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::AerosolExtinction > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "AerosolOptical_aerosol_extinction" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::AerosolExtinction > const &""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       if (argp3) tempshared3 = *reinterpret_cast< boost::shared_ptr< FullPhysics::AerosolExtinction > * >(argp3);
@@ -7958,36 +7958,36 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_extinction(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_extinction(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"Aerosol_aerosol_extinction",0,3,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"AerosolOptical_aerosol_extinction",0,3,argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
-    return _wrap_Aerosol_aerosol_extinction__SWIG_0(self, argc, argv);
+    return _wrap_AerosolOptical_aerosol_extinction__SWIG_0(self, argc, argv);
   }
   if (argc == 3) {
-    return _wrap_Aerosol_aerosol_extinction__SWIG_1(self, argc, argv);
+    return _wrap_AerosolOptical_aerosol_extinction__SWIG_1(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Aerosol_aerosol_extinction'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AerosolOptical_aerosol_extinction'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::Aerosol::aerosol_extinction(int) const\n"
-    "    FullPhysics::Aerosol::aerosol_extinction(int,boost::shared_ptr< FullPhysics::AerosolExtinction > const &)\n");
+    "    FullPhysics::AerosolOptical::aerosol_extinction(int) const\n"
+    "    FullPhysics::AerosolOptical::aerosol_extinction(int,boost::shared_ptr< FullPhysics::AerosolExtinction > const &)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_property__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_property__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical const > *smartarg1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   boost::shared_ptr< FullPhysics::AerosolProperty > result;
@@ -7995,27 +7995,27 @@ SWIGINTERN PyObject *_wrap_Aerosol_aerosol_property__SWIG_0(PyObject *SWIGUNUSED
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_aerosol_property" "', argument " "1"" of type '" "FullPhysics::Aerosol const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_aerosol_property" "', argument " "1"" of type '" "FullPhysics::AerosolOptical const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_aerosol_property" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_aerosol_property" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->aerosol_property(arg2);
+      result = ((FullPhysics::AerosolOptical const *)arg1)->aerosol_property(arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
@@ -8031,15 +8031,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_property__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_property__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   int arg2 ;
   boost::shared_ptr< FullPhysics::AerosolProperty > *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > *smartarg1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   void *argp3 ;
@@ -8050,29 +8050,29 @@ SWIGINTERN PyObject *_wrap_Aerosol_aerosol_property__SWIG_1(PyObject *SWIGUNUSED
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Aerosol_aerosol_property" "', argument " "1"" of type '" "FullPhysics::Aerosol *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolOptical_aerosol_property" "', argument " "1"" of type '" "FullPhysics::AerosolOptical *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Aerosol_aerosol_property" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolOptical_aerosol_property" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
     int newmem = 0;
     res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolProperty_t,  0 , &newmem);
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Aerosol_aerosol_property" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::AerosolProperty > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "AerosolOptical_aerosol_property" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::AerosolProperty > const &""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       if (argp3) tempshared3 = *reinterpret_cast< boost::shared_ptr< FullPhysics::AerosolProperty > * >(argp3);
@@ -8109,52 +8109,52 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Aerosol_aerosol_property(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolOptical_aerosol_property(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"Aerosol_aerosol_property",0,3,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"AerosolOptical_aerosol_property",0,3,argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
-    return _wrap_Aerosol_aerosol_property__SWIG_0(self, argc, argv);
+    return _wrap_AerosolOptical_aerosol_property__SWIG_0(self, argc, argv);
   }
   if (argc == 3) {
-    return _wrap_Aerosol_aerosol_property__SWIG_1(self, argc, argv);
+    return _wrap_AerosolOptical_aerosol_property__SWIG_1(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Aerosol_aerosol_property'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AerosolOptical_aerosol_property'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::Aerosol::aerosol_property(int) const\n"
-    "    FullPhysics::Aerosol::aerosol_property(int,boost::shared_ptr< FullPhysics::AerosolProperty > const &)\n");
+    "    FullPhysics::AerosolOptical::aerosol_property(int) const\n"
+    "    FullPhysics::AerosolOptical::aerosol_property(int,boost::shared_ptr< FullPhysics::AerosolProperty > const &)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_Aerosol(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_AerosolOptical(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
+  FullPhysics::AerosolOptical *arg1 = (FullPhysics::AerosolOptical *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Aerosol > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Aerosol > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolOptical > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Aerosol" "', argument " "1"" of type '" "FullPhysics::Aerosol *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AerosolOptical" "', argument " "1"" of type '" "FullPhysics::AerosolOptical *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Aerosol > * >(argp1);
-      arg1 = const_cast< FullPhysics::Aerosol * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::AerosolOptical > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolOptical * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
@@ -8173,14 +8173,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *Aerosol_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *AerosolOptical_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *Aerosol_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *AerosolOptical_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -8198,9 +8198,9 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ObservableAerosol_add_observer", _wrap_ObservableAerosol_add_observer, METH_VARARGS, NULL},
 	 { (char *)"ObservableAerosol_remove_observer", _wrap_ObservableAerosol_remove_observer, METH_VARARGS, NULL},
 	 { (char *)"ObservableAerosol_swigregister", ObservableAerosol_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Aerosol___str__", (PyCFunction)_wrap_Aerosol___str__, METH_O, NULL},
-	 { (char *)"new_Aerosol", _wrap_new_Aerosol, METH_VARARGS, (char *)"\n"
-		"Aerosol::Aerosol(const std::vector< boost::shared_ptr< AerosolExtinction > > &Aext,\n"
+	 { (char *)"AerosolOptical___str__", (PyCFunction)_wrap_AerosolOptical___str__, METH_O, NULL},
+	 { (char *)"new_AerosolOptical", _wrap_new_AerosolOptical, METH_VARARGS, (char *)"\n"
+		"AerosolOptical::AerosolOptical(const std::vector< boost::shared_ptr< AerosolExtinction > > &Aext,\n"
 		"const std::vector< boost::shared_ptr< AerosolProperty > >\n"
 		"&Aerosol_prop, const boost::shared_ptr< Pressure > &Press, double\n"
 		"Reference_wn=1e4/0.755)\n"
@@ -8209,9 +8209,9 @@ static PyMethodDef SwigMethods[] = {
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"Aext:   Aerosol extinction for each aerosol.\n"
+		"Aext:  Aerosol extinction for each aerosol.\n"
 		"\n"
-		"Aerosol_prop:   Aerosol properties for each aerosol.\n"
+		"Aerosol_prop:  Aerosol properties for each aerosol.\n"
 		"\n"
 		"Press:  The Pressure object that gives the pressure grid.\n"
 		"\n"
@@ -8219,8 +8219,8 @@ static PyMethodDef SwigMethods[] = {
 		"optional, the default value matches the reference band given in the\n"
 		"ATB. \n"
 		""},
-	 { (char *)"Aerosol_optical_depth_each_layer", _wrap_Aerosol_optical_depth_each_layer, METH_VARARGS, (char *)"\n"
-		"ArrayAd< double, 2 > Aerosol::optical_depth_each_layer(double wn) const\n"
+	 { (char *)"AerosolOptical_optical_depth_each_layer", _wrap_AerosolOptical_optical_depth_each_layer, METH_VARARGS, (char *)"\n"
+		"ArrayAd< double, 2 > AerosolOptical::optical_depth_each_layer(double wn) const\n"
 		"This gives the optical depth for each layer, for the given wave\n"
 		"number.\n"
 		"\n"
@@ -8231,8 +8231,8 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"This has size of number_active_layer() x number_particle(). \n"
 		""},
-	 { (char *)"Aerosol_ssa_each_layer", _wrap_Aerosol_ssa_each_layer, METH_VARARGS, (char *)"\n"
-		"ArrayAd< double, 1 > Aerosol::ssa_each_layer(double wn) const\n"
+	 { (char *)"AerosolOptical_ssa_each_layer", _wrap_AerosolOptical_ssa_each_layer, METH_VARARGS, (char *)"\n"
+		"ArrayAd< double, 1 > AerosolOptical::ssa_each_layer(double wn) const\n"
 		"This gives the single scatter albedo for each layer, for the given\n"
 		"wave number.\n"
 		"\n"
@@ -8243,21 +8243,21 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"This has size of number_active_layer() \n"
 		""},
-	 { (char *)"Aerosol_notify_update", _wrap_Aerosol_notify_update, METH_VARARGS, (char *)"\n"
-		"virtual void FullPhysics::Aerosol::notify_update(const AerosolProperty &A)\n"
+	 { (char *)"AerosolOptical_notify_update", _wrap_AerosolOptical_notify_update, METH_VARARGS, (char *)"\n"
+		"virtual void FullPhysics::AerosolOptical::notify_update(const AerosolProperty &A)\n"
 		"\n"
 		""},
-	 { (char *)"Aerosol_pf_mom", _wrap_Aerosol_pf_mom, METH_VARARGS, (char *)"\n"
-		"ArrayAd< double, 3 > Aerosol::pf_mom(double wn, const ArrayAd< double, 2 > &frac_aer, int nummom=-1, int\n"
+	 { (char *)"AerosolOptical_pf_mom", _wrap_AerosolOptical_pf_mom, METH_VARARGS, (char *)"\n"
+		"ArrayAd< double, 3 > AerosolOptical::pf_mom(double wn, const ArrayAd< double, 2 > &frac_aer, int nummom=-1, int\n"
 		"numscat=-1) const\n"
 		"\n"
 		""},
-	 { (char *)"Aerosol__v_number_particle", (PyCFunction)_wrap_Aerosol__v_number_particle, METH_O, (char *)"\n"
-		"int FullPhysics::Aerosol::number_particle() const\n"
+	 { (char *)"AerosolOptical__v_number_particle", (PyCFunction)_wrap_AerosolOptical__v_number_particle, METH_O, (char *)"\n"
+		"int FullPhysics::AerosolOptical::number_particle() const\n"
 		"Number of aerosol particles. \n"
 		""},
-	 { (char *)"Aerosol_aerosol_optical_depth", _wrap_Aerosol_aerosol_optical_depth, METH_VARARGS, (char *)"\n"
-		"double Aerosol::aerosol_optical_depth(int aer_idx, double pmin=std::numeric_limits< double >::min(), double\n"
+	 { (char *)"AerosolOptical_aerosol_optical_depth", _wrap_AerosolOptical_aerosol_optical_depth, METH_VARARGS, (char *)"\n"
+		"double AerosolOptical::aerosol_optical_depth(int aer_idx, double pmin=std::numeric_limits< double >::min(), double\n"
 		"pmax=std::numeric_limits< double >::max()) const\n"
 		"This gives the total aerosol optical depth for a given particle.\n"
 		"\n"
@@ -8265,8 +8265,8 @@ static PyMethodDef SwigMethods[] = {
 		"the aod for the levels that fall in that range. The default is to use\n"
 		"everything. \n"
 		""},
-	 { (char *)"Aerosol_aerosol_optical_depth_total", _wrap_Aerosol_aerosol_optical_depth_total, METH_VARARGS, (char *)"\n"
-		"double Aerosol::aerosol_optical_depth_total(double pmin=std::numeric_limits< double >::min(), double\n"
+	 { (char *)"AerosolOptical_aerosol_optical_depth_total", _wrap_AerosolOptical_aerosol_optical_depth_total, METH_VARARGS, (char *)"\n"
+		"double AerosolOptical::aerosol_optical_depth_total(double pmin=std::numeric_limits< double >::min(), double\n"
 		"pmax=std::numeric_limits< double >::max()) const\n"
 		"This gives the total optical depth for each particle, plus adds the\n"
 		"total optical depth for all particles as the 1st entry.\n"
@@ -8278,8 +8278,8 @@ static PyMethodDef SwigMethods[] = {
 		"the aod for the levels that fall in that range. The default is to use\n"
 		"everything. \n"
 		""},
-	 { (char *)"Aerosol_clone", _wrap_Aerosol_clone, METH_VARARGS, (char *)"\n"
-		"boost::shared_ptr< Aerosol > Aerosol::clone(const boost::shared_ptr< Pressure > &Press) const\n"
+	 { (char *)"AerosolOptical_clone", _wrap_AerosolOptical_clone, METH_VARARGS, (char *)"\n"
+		"boost::shared_ptr< AerosolOptical > AerosolOptical::clone(const boost::shared_ptr< Pressure > &Press) const\n"
 		"This version of clone takes a pressure to use.\n"
 		"\n"
 		"The intent is that the pressure has been cloned from the original\n"
@@ -8287,12 +8287,12 @@ static PyMethodDef SwigMethods[] = {
 		"sets of objects to be cloned using a common Pressure clone, e.g.\n"
 		"Atmosphere. \n"
 		""},
-	 { (char *)"Aerosol__v_aerosol_name", (PyCFunction)_wrap_Aerosol__v_aerosol_name, METH_O, (char *)"\n"
-		"std::vector< std::string > Aerosol::aerosol_name() const\n"
+	 { (char *)"AerosolOptical__v_aerosol_name", (PyCFunction)_wrap_AerosolOptical__v_aerosol_name, METH_O, (char *)"\n"
+		"std::vector< std::string > AerosolOptical::aerosol_name() const\n"
 		"Name of aerosols. \n"
 		""},
-	 { (char *)"Aerosol__v_aerosol_name_arr", (PyCFunction)_wrap_Aerosol__v_aerosol_name_arr, METH_O, (char *)"\n"
-		"blitz::Array< std::string, 1 > Aerosol::aerosol_name_arr() const\n"
+	 { (char *)"AerosolOptical__v_aerosol_name_arr", (PyCFunction)_wrap_AerosolOptical__v_aerosol_name_arr, METH_O, (char *)"\n"
+		"blitz::Array< std::string, 1 > AerosolOptical::aerosol_name_arr() const\n"
 		"Aerosol names, plus the string \"total\" as the 1st entry.\n"
 		"\n"
 		"This matches what is returned by\n"
@@ -8303,24 +8303,24 @@ static PyMethodDef SwigMethods[] = {
 		"std::vector because this is what is needed to write this out to HDF.\n"
 		"\n"
 		""},
-	 { (char *)"Aerosol__v_pressure", (PyCFunction)_wrap_Aerosol__v_pressure, METH_O, (char *)"\n"
-		"const boost::shared_ptr<Pressure>& FullPhysics::Aerosol::pressure() const\n"
+	 { (char *)"AerosolOptical__v_pressure", (PyCFunction)_wrap_AerosolOptical__v_pressure, METH_O, (char *)"\n"
+		"const boost::shared_ptr<Pressure>& FullPhysics::AerosolOptical::pressure() const\n"
 		"Return pressure. \n"
 		""},
-	 { (char *)"Aerosol_aerosol_extinction", _wrap_Aerosol_aerosol_extinction, METH_VARARGS, (char *)"\n"
-		"void FullPhysics::Aerosol::aerosol_extinction(int i, const boost::shared_ptr< AerosolExtinction > &V)\n"
+	 { (char *)"AerosolOptical_aerosol_extinction", _wrap_AerosolOptical_aerosol_extinction, METH_VARARGS, (char *)"\n"
+		"void FullPhysics::AerosolOptical::aerosol_extinction(int i, const boost::shared_ptr< AerosolExtinction > &V)\n"
 		"Set AerosolExtinction. \n"
 		""},
-	 { (char *)"Aerosol_aerosol_property", _wrap_Aerosol_aerosol_property, METH_VARARGS, (char *)"\n"
-		"void FullPhysics::Aerosol::aerosol_property(int i, const boost::shared_ptr< AerosolProperty > &V)\n"
+	 { (char *)"AerosolOptical_aerosol_property", _wrap_AerosolOptical_aerosol_property, METH_VARARGS, (char *)"\n"
+		"void FullPhysics::AerosolOptical::aerosol_property(int i, const boost::shared_ptr< AerosolProperty > &V)\n"
 		"Set AerosolProperty. \n"
 		""},
-	 { (char *)"delete_Aerosol", (PyCFunction)_wrap_delete_Aerosol, METH_O, (char *)"\n"
-		"virtual FullPhysics::Aerosol::~Aerosol()\n"
+	 { (char *)"delete_AerosolOptical", (PyCFunction)_wrap_delete_AerosolOptical, METH_O, (char *)"\n"
+		"virtual FullPhysics::AerosolOptical::~AerosolOptical()\n"
 		"\n"
 		""},
-	 { (char *)"Aerosol_swigregister", Aerosol_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Aerosol_swiginit", Aerosol_swiginit, METH_VARARGS, NULL},
+	 { (char *)"AerosolOptical_swigregister", AerosolOptical_swigregister, METH_VARARGS, NULL},
+	 { (char *)"AerosolOptical_swiginit", AerosolOptical_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -8349,9 +8349,9 @@ static void *_p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::StateVector > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > >(*(boost::shared_ptr< FullPhysics::Aerosol > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolOptical > >(*(boost::shared_ptr< FullPhysics::AerosolOptical > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -8369,9 +8369,9 @@ static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVe
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::StateVector > > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolOptical > > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -8397,9 +8397,9 @@ static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::Pressure > > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -8409,13 +8409,13 @@ static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_b
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AutoDerivative< double > > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AerosolOptical > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Unit > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Aerosol > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -8425,14 +8425,11 @@ static void *_p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::StateVector > *)x);
 }
-static void *_p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::AerosolExtinction > *)  ((FullPhysics::Aerosol *) x));
+static void *_p_FullPhysics__AerosolOpticalTo_p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::AerosolExtinction > *)  ((FullPhysics::AerosolOptical *) x));
 }
 static void *_p_FullPhysics__UnitTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Unit *) x));
-}
-static void *_p_FullPhysics__AerosolTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observer< FullPhysics::Pressure > *) ((FullPhysics::Aerosol *) x));
 }
 static void *_p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::StateVector > *) x));
@@ -8470,17 +8467,23 @@ static void *_p_FullPhysics__AerosolPropertyTo_p_FullPhysics__GenericObject(void
 static void *_p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::StateVector > *) ((FullPhysics::StateVector *) x));
 }
-static void *_p_FullPhysics__ObserverT_FullPhysics__Aerosol_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observer< FullPhysics::Aerosol > *) x));
-}
-static void *_p_FullPhysics__ObservableT_FullPhysics__Aerosol_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::Aerosol > *) x));
-}
 static void *_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observer< FullPhysics::AerosolProperty > *) x));
 }
+static void *_p_FullPhysics__ObservableT_FullPhysics__AerosolOptical_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::AerosolOptical > *) x));
+}
+static void *_p_FullPhysics__ObserverT_FullPhysics__AerosolOptical_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observer< FullPhysics::AerosolOptical > *) x));
+}
+static void *_p_FullPhysics__AerosolOpticalTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observer< FullPhysics::Pressure > *) ((FullPhysics::AerosolOptical *) x));
+}
 static void *_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::AerosolProperty > *) x));
+}
+static void *_p_FullPhysics__AerosolOpticalTo_p_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::AerosolOptical > *)  ((FullPhysics::AerosolOptical *) x));
 }
 static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -8490,9 +8493,9 @@ static void *_p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__sha
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::AerosolProperty > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::Aerosol > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::AerosolOptical > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -8502,17 +8505,17 @@ static void *_p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__s
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::AerosolExtinction > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolProperty > >(*(boost::shared_ptr< FullPhysics::Aerosol > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolProperty > >(*(boost::shared_ptr< FullPhysics::AerosolOptical > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolExtinction > >(*(boost::shared_ptr< FullPhysics::Aerosol > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolExtinction > >(*(boost::shared_ptr< FullPhysics::AerosolOptical > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::Pressure > >(*(boost::shared_ptr< FullPhysics::Aerosol > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::Pressure > >(*(boost::shared_ptr< FullPhysics::AerosolOptical > *)x);
 }
 static void *_p_FullPhysics__StateVectorTo_p_FullPhysics__ObservableT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observable< FullPhysics::StateVector > *)  ((FullPhysics::StateVector *) x));
@@ -8529,9 +8532,9 @@ static void *_p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__sha
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::AerosolProperty > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::Aerosol > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::AerosolOptical > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -8544,14 +8547,14 @@ static void *_p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__s
 static void *_p_FullPhysics__PressureTo_p_FullPhysics__ObservableT_FullPhysics__Pressure_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observable< FullPhysics::Pressure > *)  ((FullPhysics::Pressure *) x));
 }
-static void *_p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__Pressure_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::Pressure > *)  ((FullPhysics::Aerosol *) x));
+static void *_p_FullPhysics__AerosolOpticalTo_p_FullPhysics__ObserverT_FullPhysics__Pressure_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::Pressure > *)  ((FullPhysics::AerosolOptical *) x));
 }
 static void *_p_FullPhysics__AerosolPropertyTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::AerosolProperty *) x));
 }
-static void *_p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::Aerosol *) x));
+static void *_p_FullPhysics__AerosolOpticalTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::AerosolOptical *) x));
 }
 static void *_p_FullPhysics__StateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *)  ((FullPhysics::StateVectorObserver *) x));
@@ -8571,14 +8574,14 @@ static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__ba
 static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_istreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_istream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
 }
-static void *_p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::AerosolProperty > *)  ((FullPhysics::Aerosol *) x));
+static void *_p_FullPhysics__AerosolOpticalTo_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::AerosolProperty > *)  ((FullPhysics::AerosolOptical *) x));
 }
 static void *_p_FullPhysics__AerosolPropertyTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::AerosolProperty *) x));
 }
-static void *_p_FullPhysics__AerosolTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::Aerosol *) x));
+static void *_p_FullPhysics__AerosolOpticalTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::AerosolOptical *) x));
 }
 static void *_p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::SubStateVectorObserver *) x));
@@ -8589,11 +8592,8 @@ static void *_p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__StateVectorObser
 static void *_p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::Pressure *) x));
 }
-static void *_p_FullPhysics__AerosolTo_p_FullPhysics__ObservableT_FullPhysics__Aerosol_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observable< FullPhysics::Aerosol > *)  ((FullPhysics::Aerosol *) x));
-}
-static swig_type_info _swigt__p_FullPhysics__Aerosol = {"_p_FullPhysics__Aerosol", "FullPhysics::Aerosol *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AerosolExtinction = {"_p_FullPhysics__AerosolExtinction", "FullPhysics::AerosolExtinction *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__AerosolOptical = {"_p_FullPhysics__AerosolOptical", "FullPhysics::AerosolOptical *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AerosolProperty = {"_p_FullPhysics__AerosolProperty", "FullPhysics::AerosolProperty *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_1_t = {"_p_FullPhysics__ArrayAdT_double_1_t", "FullPhysics::ArrayAd< double,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_2_t = {"_p_FullPhysics__ArrayAdT_double_2_t", "FullPhysics::ArrayAd< double,2 > *", 0, 0, (void*)0, 0};
@@ -8603,13 +8603,13 @@ static swig_type_info _swigt__p_FullPhysics__AutoDerivativeT_double_t = {"_p_Ful
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t = {"_p_FullPhysics__AutoDerivativeWithUnitT_double_t", "FullPhysics::AutoDerivativeWithUnit< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__GenericObject = {"_p_FullPhysics__GenericObject", "FullPhysics::GenericObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t = {"_p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t", "FullPhysics::Observable< FullPhysics::AerosolExtinction > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t = {"_p_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t", "FullPhysics::Observable< FullPhysics::AerosolOptical > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t = {"_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t", "FullPhysics::Observable< FullPhysics::AerosolProperty > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t = {"_p_FullPhysics__ObservableT_FullPhysics__Aerosol_t", "FullPhysics::Observable< FullPhysics::Aerosol > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t = {"_p_FullPhysics__ObservableT_FullPhysics__Pressure_t", "FullPhysics::Observable< FullPhysics::Pressure > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t = {"_p_FullPhysics__ObservableT_FullPhysics__StateVector_t", "FullPhysics::Observable< FullPhysics::StateVector > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t = {"_p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t", "FullPhysics::Observer< FullPhysics::AerosolExtinction > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t = {"_p_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t", "FullPhysics::Observer< FullPhysics::AerosolOptical > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t = {"_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t", "FullPhysics::Observer< FullPhysics::AerosolProperty > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t = {"_p_FullPhysics__ObserverT_FullPhysics__Aerosol_t", "FullPhysics::Observer< FullPhysics::Aerosol > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t = {"_p_FullPhysics__ObserverT_FullPhysics__Pressure_t", "FullPhysics::Observer< FullPhysics::Pressure > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObserverT_FullPhysics__StateVector_t = {"_p_FullPhysics__ObserverT_FullPhysics__StateVector_t", "FullPhysics::Observer< FullPhysics::StateVector > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Pressure = {"_p_FullPhysics__Pressure", "FullPhysics::Pressure *", 0, 0, (void*)0, 0};
@@ -8632,20 +8632,20 @@ static swig_type_info _swigt__p_blitz__ArrayT_int_3_t = {"_p_blitz__ArrayT_int_3
 static swig_type_info _swigt__p_blitz__ArrayT_int_4_t = {"_p_blitz__ArrayT_int_4_t", "blitz::Array< int,4 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_std__string_1_t = {"_p_blitz__ArrayT_std__string_1_t", "blitz::Array< std::string,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t = {"_p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t", "boost::shared_ptr< FullPhysics::AerosolExtinction > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AerosolOptical_t = {"_p_boost__shared_ptrT_FullPhysics__AerosolOptical_t", "boost::shared_ptr< FullPhysics::AerosolOptical > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t = {"_p_boost__shared_ptrT_FullPhysics__AerosolProperty_t", "boost::shared_ptr< FullPhysics::AerosolProperty > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t = {"_p_boost__shared_ptrT_FullPhysics__Aerosol_t", "boost::shared_ptr< FullPhysics::Aerosol > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivativeRef< double > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivative< double > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivativeWithUnit< double > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t = {"_p_boost__shared_ptrT_FullPhysics__GenericObject_t", "boost::shared_ptr< FullPhysics::GenericObject > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolExtinction > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolOptical > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolProperty > > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::Aerosol > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::StateVector > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolExtinction > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolOptical > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolProperty > > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::Aerosol > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::Pressure > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t", "boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t = {"_p_boost__shared_ptrT_FullPhysics__Pressure_t", "boost::shared_ptr< FullPhysics::Pressure > *", 0, 0, (void*)0, 0};
@@ -8673,8 +8673,8 @@ static swig_type_info _swigt__p_traits_type = {"_p_traits_type", "traits_type *"
 static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_FullPhysics__Aerosol,
   &_swigt__p_FullPhysics__AerosolExtinction,
+  &_swigt__p_FullPhysics__AerosolOptical,
   &_swigt__p_FullPhysics__AerosolProperty,
   &_swigt__p_FullPhysics__ArrayAdT_double_1_t,
   &_swigt__p_FullPhysics__ArrayAdT_double_2_t,
@@ -8684,13 +8684,13 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t,
   &_swigt__p_FullPhysics__GenericObject,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t,
+  &_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t,
-  &_swigt__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t,
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t,
+  &_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t,
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t,
-  &_swigt__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t,
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t,
   &_swigt__p_FullPhysics__ObserverT_FullPhysics__StateVector_t,
   &_swigt__p_FullPhysics__Pressure,
@@ -8713,20 +8713,20 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_blitz__ArrayT_int_4_t,
   &_swigt__p_blitz__ArrayT_std__string_1_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__AerosolOptical_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t,
-  &_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t,
-  &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t,
-  &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t,
@@ -8754,8 +8754,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_value_type,
 };
 
-static swig_cast_info _swigc__p_FullPhysics__Aerosol[] = {  {&_swigt__p_FullPhysics__Aerosol, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AerosolExtinction[] = {  {&_swigt__p_FullPhysics__AerosolExtinction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__AerosolOptical[] = {  {&_swigt__p_FullPhysics__AerosolOptical, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AerosolProperty[] = {  {&_swigt__p_FullPhysics__AerosolProperty, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ArrayAdT_double_1_t[] = {  {&_swigt__p_FullPhysics__ArrayAdT_double_1_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ArrayAdT_double_2_t[] = {  {&_swigt__p_FullPhysics__ArrayAdT_double_2_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -8763,20 +8763,20 @@ static swig_cast_info _swigc__p_FullPhysics__ArrayAdT_double_3_t[] = {  {&_swigt
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeRefT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeWithUnitT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t, _p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, _p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t, _p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, _p_FullPhysics__AutoDerivativeWithUnitT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t, _p_FullPhysics__ObservableT_FullPhysics__Aerosol_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t, _p_FullPhysics__ObserverT_FullPhysics__Aerosol_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Unit, _p_FullPhysics__UnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AerosolProperty, _p_FullPhysics__AerosolPropertyTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t, _p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, _p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t, _p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, _p_FullPhysics__ObservableT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t, _p_FullPhysics__ObserverT_FullPhysics__AerosolOptical_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t, _p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, _p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t, _p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t, _p_FullPhysics__ObservableT_FullPhysics__AerosolOptical_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, _p_FullPhysics__AutoDerivativeWithUnitT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Unit, _p_FullPhysics__UnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AerosolProperty, _p_FullPhysics__AerosolPropertyTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t, _p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__AerosolOptical, _p_FullPhysics__AerosolOpticalTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, _p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t, _p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, _p_FullPhysics__ObservableT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t[] = {  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t, 0, 0, 0},  {&_swigt__p_FullPhysics__AerosolOptical, _p_FullPhysics__AerosolOpticalTo_p_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t[] = {  {&_swigt__p_FullPhysics__AerosolProperty, _p_FullPhysics__AerosolPropertyTo_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t[] = {  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__ObservableT_FullPhysics__Aerosol_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Pressure_t[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObservableT_FullPhysics__Pressure_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__StateVector_t[] = {  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__ObservableT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t[] = {  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t[] = {  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Pressure_t[] = {  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__Pressure_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__StateVector_t[] = {  {&_swigt__p_FullPhysics__AerosolProperty, _p_FullPhysics__AerosolPropertyTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, _p_FullPhysics__StateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t[] = {  {&_swigt__p_FullPhysics__AerosolOptical, _p_FullPhysics__AerosolOpticalTo_p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t[] = {  {&_swigt__p_FullPhysics__AerosolOptical, _p_FullPhysics__AerosolOpticalTo_p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Pressure_t[] = {  {&_swigt__p_FullPhysics__AerosolOptical, _p_FullPhysics__AerosolOpticalTo_p_FullPhysics__ObserverT_FullPhysics__Pressure_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__StateVector_t[] = {  {&_swigt__p_FullPhysics__AerosolProperty, _p_FullPhysics__AerosolPropertyTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AerosolOptical, _p_FullPhysics__AerosolOpticalTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, _p_FullPhysics__StateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Pressure[] = {  {&_swigt__p_FullPhysics__Pressure, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__StateVector[] = {  {&_swigt__p_FullPhysics__StateVector, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__StateVectorObserver[] = {  {&_swigt__p_FullPhysics__AerosolProperty, _p_FullPhysics__AerosolPropertyTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Aerosol, _p_FullPhysics__AerosolTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__StateVectorObserver[] = {  {&_swigt__p_FullPhysics__AerosolProperty, _p_FullPhysics__AerosolPropertyTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AerosolOptical, _p_FullPhysics__AerosolOpticalTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AerosolExtinction, _p_FullPhysics__AerosolExtinctionTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__SubStateVectorObserver[] = {  {&_swigt__p_FullPhysics__SubStateVectorObserver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Unit[] = {  {&_swigt__p_FullPhysics__Unit, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -8794,24 +8794,24 @@ static swig_cast_info _swigc__p_blitz__ArrayT_int_3_t[] = {  {&_swigt__p_blitz__
 static swig_cast_info _swigc__p_blitz__ArrayT_int_4_t[] = {  {&_swigt__p_blitz__ArrayT_int_4_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_std__string_1_t[] = {  {&_swigt__p_blitz__ArrayT_std__string_1_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AerosolOptical_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Aerosol_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, _p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, _p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__StateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, _p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, _p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, _p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__StateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, _p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Pressure_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Aerosol_t, _p_boost__shared_ptrT_FullPhysics__Aerosol_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolOptical_t, _p_boost__shared_ptrT_FullPhysics__AerosolOptical_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t, _p_boost__shared_ptrT_FullPhysics__AerosolExtinction_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVector_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -8835,8 +8835,8 @@ static swig_cast_info _swigc__p_traits_type[] = {  {&_swigt__p_traits_type, 0, 0
 static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_FullPhysics__Aerosol,
   _swigc__p_FullPhysics__AerosolExtinction,
+  _swigc__p_FullPhysics__AerosolOptical,
   _swigc__p_FullPhysics__AerosolProperty,
   _swigc__p_FullPhysics__ArrayAdT_double_1_t,
   _swigc__p_FullPhysics__ArrayAdT_double_2_t,
@@ -8846,13 +8846,13 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__AutoDerivativeWithUnitT_double_t,
   _swigc__p_FullPhysics__GenericObject,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t,
+  _swigc__p_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t,
-  _swigc__p_FullPhysics__ObservableT_FullPhysics__Aerosol_t,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__Pressure_t,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__StateVector_t,
   _swigc__p_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t,
+  _swigc__p_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t,
   _swigc__p_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t,
-  _swigc__p_FullPhysics__ObserverT_FullPhysics__Aerosol_t,
   _swigc__p_FullPhysics__ObserverT_FullPhysics__Pressure_t,
   _swigc__p_FullPhysics__ObserverT_FullPhysics__StateVector_t,
   _swigc__p_FullPhysics__Pressure,
@@ -8875,20 +8875,20 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_blitz__ArrayT_int_4_t,
   _swigc__p_blitz__ArrayT_std__string_1_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AerosolExtinction_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__AerosolOptical_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t,
-  _swigc__p_boost__shared_ptrT_FullPhysics__Aerosol_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolExtinction_t_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolOptical_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t,
-  _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Aerosol_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolExtinction_t_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolOptical_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t,
-  _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Aerosol_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Pressure_t,
@@ -9600,16 +9600,16 @@ SWIG_init(void) {
   
   SWIG_Python_SetConstant(d, "SHARED_PTR_DISOWN",SWIG_From_int(static_cast< int >(0)));
   
-  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Aerosol))] =
-  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Aerosol >("boost::shared_ptr< FullPhysics::Aerosol > *"));
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::AerosolOptical))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::AerosolOptical >("boost::shared_ptr< FullPhysics::AerosolOptical > *"));
   
   
-  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Observer<FullPhysics::Aerosol>))] =
-  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Observer<FullPhysics::Aerosol> >("boost::shared_ptr< FullPhysics::Observer<FullPhysics::Aerosol> > *"));
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Observer<FullPhysics::AerosolOptical>))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Observer<FullPhysics::AerosolOptical> >("boost::shared_ptr< FullPhysics::Observer<FullPhysics::AerosolOptical> > *"));
   
   
-  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Observable<FullPhysics::Aerosol>))] =
-  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Observable<FullPhysics::Aerosol> >("boost::shared_ptr< FullPhysics::Observable<FullPhysics::Aerosol> > *"));
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Observable<FullPhysics::AerosolOptical>))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Observable<FullPhysics::AerosolOptical> >("boost::shared_ptr< FullPhysics::Observable<FullPhysics::AerosolOptical> > *"));
   
 #if PY_VERSION_HEX >= 0x03000000
   return m;

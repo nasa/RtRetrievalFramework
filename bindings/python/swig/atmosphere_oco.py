@@ -112,7 +112,7 @@ import full_physics_swig.rt_atmosphere
 import full_physics_swig.observer
 import full_physics_swig.generic_object
 import full_physics_swig.state_vector
-import full_physics_swig.aerosol
+import full_physics_swig.aerosol_optical
 import full_physics_swig.aerosol_extinction
 import full_physics_swig.aerosol_property
 class ObserverAtmosphereOco(full_physics_swig.generic_object.GenericObject):
@@ -127,7 +127,7 @@ ObserverAtmosphereOco.notify_remove = new_instancemethod(_atmosphere_oco.Observe
 ObserverAtmosphereOco_swigregister = _atmosphere_oco.ObserverAtmosphereOco_swigregister
 ObserverAtmosphereOco_swigregister(ObserverAtmosphereOco)
 
-class AtmosphereOco(full_physics_swig.rt_atmosphere.RtAtmosphere,full_physics_swig.aerosol.ObserverAerosol):
+class AtmosphereOco(full_physics_swig.rt_atmosphere.RtAtmosphere,full_physics_swig.aerosol_optical.ObserverAerosol):
     """
     This class maintains the atmosphere portion of the state, and uses
     this to set up the atmosphere and ground information needed to run the
@@ -216,7 +216,7 @@ class AtmosphereOco(full_physics_swig.rt_atmosphere.RtAtmosphere,full_physics_sw
 
     def _v_aerosol(self):
         """
-        const boost::shared_ptr<Aerosol>& FullPhysics::AtmosphereOco::aerosol_ptr() const
+        const boost::shared_ptr<AerosolOptical>& FullPhysics::AtmosphereOco::aerosol_ptr() const
 
         """
         return _atmosphere_oco.AtmosphereOco__v_aerosol(self)

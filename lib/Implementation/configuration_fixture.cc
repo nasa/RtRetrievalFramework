@@ -36,7 +36,7 @@ ConfigurationFixture::ConfigurationFixture(const std::string& Config_file)
   // Allow this to fail, we don't have aerosols if we happen to have a 
   // Rayleigh only atmosphere
   try {
-    config_aerosol = lua_config["aerosol"].value_ptr<Aerosol>();
+    config_aerosol = lua_config["aerosol"].value_ptr<AerosolOptical>();
   } catch(const std::exception& e) {
     ;
   }

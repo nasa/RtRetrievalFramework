@@ -8,7 +8,7 @@
 
 from sys import version_info
 if version_info >= (3,0,0):
-    new_instancemethod = lambda func, inst, cls: _aerosol.SWIG_PyInstanceMethod_New(func)
+    new_instancemethod = lambda func, inst, cls: _aerosol_optical.SWIG_PyInstanceMethod_New(func)
 else:
     from new import instancemethod as new_instancemethod
 if version_info >= (2,6,0):
@@ -17,20 +17,20 @@ if version_info >= (2,6,0):
         import imp
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_aerosol', [dirname(__file__)])
+            fp, pathname, description = imp.find_module('_aerosol_optical', [dirname(__file__)])
         except ImportError:
-            import _aerosol
-            return _aerosol
+            import _aerosol_optical
+            return _aerosol_optical
         if fp is not None:
             try:
-                _mod = imp.load_module('_aerosol', fp, pathname, description)
+                _mod = imp.load_module('_aerosol_optical', fp, pathname, description)
             finally:
                 fp.close()
             return _mod
-    _aerosol = swig_import_helper()
+    _aerosol_optical = swig_import_helper()
     del swig_import_helper
 else:
-    import _aerosol
+    import _aerosol_optical
 del version_info
 try:
     _swig_property = property
@@ -88,7 +88,7 @@ except:
     weakref_proxy = lambda x: x
 
 
-SHARED_PTR_DISOWN = _aerosol.SHARED_PTR_DISOWN
+SHARED_PTR_DISOWN = _aerosol_optical.SHARED_PTR_DISOWN
 def _new_from_init(cls, version, *args):
     '''For use with pickle, covers common case where we just store the
     arguments needed to create an object. See for example HdfFile'''
@@ -117,26 +117,26 @@ class ObserverAerosol(full_physics_swig.generic_object.GenericObject):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def __init__(self): 
-        _aerosol.ObserverAerosol_swiginit(self,_aerosol.new_ObserverAerosol())
-    __swig_destroy__ = _aerosol.delete_ObserverAerosol
-ObserverAerosol.notify_update = new_instancemethod(_aerosol.ObserverAerosol_notify_update,None,ObserverAerosol)
-ObserverAerosol.notify_add = new_instancemethod(_aerosol.ObserverAerosol_notify_add,None,ObserverAerosol)
-ObserverAerosol.notify_remove = new_instancemethod(_aerosol.ObserverAerosol_notify_remove,None,ObserverAerosol)
-ObserverAerosol_swigregister = _aerosol.ObserverAerosol_swigregister
+        _aerosol_optical.ObserverAerosol_swiginit(self,_aerosol_optical.new_ObserverAerosol())
+    __swig_destroy__ = _aerosol_optical.delete_ObserverAerosol
+ObserverAerosol.notify_update = new_instancemethod(_aerosol_optical.ObserverAerosol_notify_update,None,ObserverAerosol)
+ObserverAerosol.notify_add = new_instancemethod(_aerosol_optical.ObserverAerosol_notify_add,None,ObserverAerosol)
+ObserverAerosol.notify_remove = new_instancemethod(_aerosol_optical.ObserverAerosol_notify_remove,None,ObserverAerosol)
+ObserverAerosol_swigregister = _aerosol_optical.ObserverAerosol_swigregister
 ObserverAerosol_swigregister(ObserverAerosol)
 
 class ObservableAerosol(full_physics_swig.generic_object.GenericObject):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-    __swig_destroy__ = _aerosol.delete_ObservableAerosol
-ObservableAerosol.add_observer_and_keep_reference = new_instancemethod(_aerosol.ObservableAerosol_add_observer_and_keep_reference,None,ObservableAerosol)
-ObservableAerosol.add_observer = new_instancemethod(_aerosol.ObservableAerosol_add_observer,None,ObservableAerosol)
-ObservableAerosol.remove_observer = new_instancemethod(_aerosol.ObservableAerosol_remove_observer,None,ObservableAerosol)
-ObservableAerosol_swigregister = _aerosol.ObservableAerosol_swigregister
+    __swig_destroy__ = _aerosol_optical.delete_ObservableAerosol
+ObservableAerosol.add_observer_and_keep_reference = new_instancemethod(_aerosol_optical.ObservableAerosol_add_observer_and_keep_reference,None,ObservableAerosol)
+ObservableAerosol.add_observer = new_instancemethod(_aerosol_optical.ObservableAerosol_add_observer,None,ObservableAerosol)
+ObservableAerosol.remove_observer = new_instancemethod(_aerosol_optical.ObservableAerosol_remove_observer,None,ObservableAerosol)
+ObservableAerosol_swigregister = _aerosol_optical.ObservableAerosol_swigregister
 ObservableAerosol_swigregister(ObservableAerosol)
 
-class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_swig.pressure.ObserverPressure,full_physics_swig.aerosol_extinction.ObserverAerosolExtinction,full_physics_swig.aerosol_property.ObserverAerosolProperty,ObservableAerosol):
+class AerosolOptical(full_physics_swig.state_vector.StateVectorObserver,full_physics_swig.pressure.ObserverPressure,full_physics_swig.aerosol_extinction.ObserverAerosolExtinction,full_physics_swig.aerosol_property.ObserverAerosolProperty,ObservableAerosol):
     """
     This class maintains the aerosol portion of the state.
 
@@ -145,13 +145,16 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
     Oberverable, and objects can add themselves as Observers to be
     notified when the aerosol is updated.
 
-    C++ includes: aerosol.h 
+    This particular implementation does the aerosol calculation by using
+    the aerosol optical properties.
+
+    C++ includes: aerosol_optical.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
-        Aerosol::Aerosol(const std::vector< boost::shared_ptr< AerosolExtinction > > &Aext,
+        AerosolOptical::AerosolOptical(const std::vector< boost::shared_ptr< AerosolExtinction > > &Aext,
         const std::vector< boost::shared_ptr< AerosolProperty > >
         &Aerosol_prop, const boost::shared_ptr< Pressure > &Press, double
         Reference_wn=1e4/0.755)
@@ -160,9 +163,9 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
         Parameters:
         -----------
 
-        Aext:   Aerosol extinction for each aerosol.
+        Aext:  Aerosol extinction for each aerosol.
 
-        Aerosol_prop:   Aerosol properties for each aerosol.
+        Aerosol_prop:  Aerosol properties for each aerosol.
 
         Press:  The Pressure object that gives the pressure grid.
 
@@ -170,10 +173,10 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
         optional, the default value matches the reference band given in the
         ATB. 
         """
-        _aerosol.Aerosol_swiginit(self,_aerosol.new_Aerosol(*args))
+        _aerosol_optical.AerosolOptical_swiginit(self,_aerosol_optical.new_AerosolOptical(*args))
     def optical_depth_each_layer(self, *args):
         """
-        ArrayAd< double, 2 > Aerosol::optical_depth_each_layer(double wn) const
+        ArrayAd< double, 2 > AerosolOptical::optical_depth_each_layer(double wn) const
         This gives the optical depth for each layer, for the given wave
         number.
 
@@ -184,11 +187,11 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
 
         This has size of number_active_layer() x number_particle(). 
         """
-        return _aerosol.Aerosol_optical_depth_each_layer(self, *args)
+        return _aerosol_optical.AerosolOptical_optical_depth_each_layer(self, *args)
 
     def ssa_each_layer(self, *args):
         """
-        ArrayAd< double, 1 > Aerosol::ssa_each_layer(double wn) const
+        ArrayAd< double, 1 > AerosolOptical::ssa_each_layer(double wn) const
         This gives the single scatter albedo for each layer, for the given
         wave number.
 
@@ -199,29 +202,29 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
 
         This has size of number_active_layer() 
         """
-        return _aerosol.Aerosol_ssa_each_layer(self, *args)
+        return _aerosol_optical.AerosolOptical_ssa_each_layer(self, *args)
 
     def notify_update(self, *args):
         """
-        virtual void FullPhysics::Aerosol::notify_update(const AerosolProperty &A)
+        virtual void FullPhysics::AerosolOptical::notify_update(const AerosolProperty &A)
 
         """
-        return _aerosol.Aerosol_notify_update(self, *args)
+        return _aerosol_optical.AerosolOptical_notify_update(self, *args)
 
     def pf_mom(self, *args):
         """
-        ArrayAd< double, 3 > Aerosol::pf_mom(double wn, const ArrayAd< double, 2 > &frac_aer, int nummom=-1, int
+        ArrayAd< double, 3 > AerosolOptical::pf_mom(double wn, const ArrayAd< double, 2 > &frac_aer, int nummom=-1, int
         numscat=-1) const
 
         """
-        return _aerosol.Aerosol_pf_mom(self, *args)
+        return _aerosol_optical.AerosolOptical_pf_mom(self, *args)
 
     def _v_number_particle(self):
         """
-        int FullPhysics::Aerosol::number_particle() const
+        int FullPhysics::AerosolOptical::number_particle() const
         Number of aerosol particles. 
         """
-        return _aerosol.Aerosol__v_number_particle(self)
+        return _aerosol_optical.AerosolOptical__v_number_particle(self)
 
     @property
     def number_particle(self):
@@ -229,7 +232,7 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
 
     def aerosol_optical_depth(self, *args):
         """
-        double Aerosol::aerosol_optical_depth(int aer_idx, double pmin=std::numeric_limits< double >::min(), double
+        double AerosolOptical::aerosol_optical_depth(int aer_idx, double pmin=std::numeric_limits< double >::min(), double
         pmax=std::numeric_limits< double >::max()) const
         This gives the total aerosol optical depth for a given particle.
 
@@ -237,11 +240,11 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
         the aod for the levels that fall in that range. The default is to use
         everything. 
         """
-        return _aerosol.Aerosol_aerosol_optical_depth(self, *args)
+        return _aerosol_optical.AerosolOptical_aerosol_optical_depth(self, *args)
 
     def aerosol_optical_depth_total(self, *args):
         """
-        double Aerosol::aerosol_optical_depth_total(double pmin=std::numeric_limits< double >::min(), double
+        double AerosolOptical::aerosol_optical_depth_total(double pmin=std::numeric_limits< double >::min(), double
         pmax=std::numeric_limits< double >::max()) const
         This gives the total optical depth for each particle, plus adds the
         total optical depth for all particles as the 1st entry.
@@ -253,11 +256,11 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
         the aod for the levels that fall in that range. The default is to use
         everything. 
         """
-        return _aerosol.Aerosol_aerosol_optical_depth_total(self, *args)
+        return _aerosol_optical.AerosolOptical_aerosol_optical_depth_total(self, *args)
 
     def clone(self, *args):
         """
-        boost::shared_ptr< Aerosol > Aerosol::clone(const boost::shared_ptr< Pressure > &Press) const
+        boost::shared_ptr< AerosolOptical > AerosolOptical::clone(const boost::shared_ptr< Pressure > &Press) const
         This version of clone takes a pressure to use.
 
         The intent is that the pressure has been cloned from the original
@@ -265,14 +268,14 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
         sets of objects to be cloned using a common Pressure clone, e.g.
         Atmosphere. 
         """
-        return _aerosol.Aerosol_clone(self, *args)
+        return _aerosol_optical.AerosolOptical_clone(self, *args)
 
     def _v_aerosol_name(self):
         """
-        std::vector< std::string > Aerosol::aerosol_name() const
+        std::vector< std::string > AerosolOptical::aerosol_name() const
         Name of aerosols. 
         """
-        return _aerosol.Aerosol__v_aerosol_name(self)
+        return _aerosol_optical.AerosolOptical__v_aerosol_name(self)
 
     @property
     def aerosol_name(self):
@@ -280,7 +283,7 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
 
     def _v_aerosol_name_arr(self):
         """
-        blitz::Array< std::string, 1 > Aerosol::aerosol_name_arr() const
+        blitz::Array< std::string, 1 > AerosolOptical::aerosol_name_arr() const
         Aerosol names, plus the string "total" as the 1st entry.
 
         This matches what is returned by
@@ -291,7 +294,7 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
         std::vector because this is what is needed to write this out to HDF.
 
         """
-        return _aerosol.Aerosol__v_aerosol_name_arr(self)
+        return _aerosol_optical.AerosolOptical__v_aerosol_name_arr(self)
 
     @property
     def aerosol_name_arr(self):
@@ -299,10 +302,10 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
 
     def _v_pressure(self):
         """
-        const boost::shared_ptr<Pressure>& FullPhysics::Aerosol::pressure() const
+        const boost::shared_ptr<Pressure>& FullPhysics::AerosolOptical::pressure() const
         Return pressure. 
         """
-        return _aerosol.Aerosol__v_pressure(self)
+        return _aerosol_optical.AerosolOptical__v_pressure(self)
 
     @property
     def pressure(self):
@@ -310,35 +313,35 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver,full_physics_sw
 
     def aerosol_extinction(self, *args):
         """
-        void FullPhysics::Aerosol::aerosol_extinction(int i, const boost::shared_ptr< AerosolExtinction > &V)
+        void FullPhysics::AerosolOptical::aerosol_extinction(int i, const boost::shared_ptr< AerosolExtinction > &V)
         Set AerosolExtinction. 
         """
-        return _aerosol.Aerosol_aerosol_extinction(self, *args)
+        return _aerosol_optical.AerosolOptical_aerosol_extinction(self, *args)
 
     def aerosol_property(self, *args):
         """
-        void FullPhysics::Aerosol::aerosol_property(int i, const boost::shared_ptr< AerosolProperty > &V)
+        void FullPhysics::AerosolOptical::aerosol_property(int i, const boost::shared_ptr< AerosolProperty > &V)
         Set AerosolProperty. 
         """
-        return _aerosol.Aerosol_aerosol_property(self, *args)
+        return _aerosol_optical.AerosolOptical_aerosol_property(self, *args)
 
-    __swig_destroy__ = _aerosol.delete_Aerosol
-Aerosol.__str__ = new_instancemethod(_aerosol.Aerosol___str__,None,Aerosol)
-Aerosol.optical_depth_each_layer = new_instancemethod(_aerosol.Aerosol_optical_depth_each_layer,None,Aerosol)
-Aerosol.ssa_each_layer = new_instancemethod(_aerosol.Aerosol_ssa_each_layer,None,Aerosol)
-Aerosol.notify_update = new_instancemethod(_aerosol.Aerosol_notify_update,None,Aerosol)
-Aerosol.pf_mom = new_instancemethod(_aerosol.Aerosol_pf_mom,None,Aerosol)
-Aerosol._v_number_particle = new_instancemethod(_aerosol.Aerosol__v_number_particle,None,Aerosol)
-Aerosol.aerosol_optical_depth = new_instancemethod(_aerosol.Aerosol_aerosol_optical_depth,None,Aerosol)
-Aerosol.aerosol_optical_depth_total = new_instancemethod(_aerosol.Aerosol_aerosol_optical_depth_total,None,Aerosol)
-Aerosol.clone = new_instancemethod(_aerosol.Aerosol_clone,None,Aerosol)
-Aerosol._v_aerosol_name = new_instancemethod(_aerosol.Aerosol__v_aerosol_name,None,Aerosol)
-Aerosol._v_aerosol_name_arr = new_instancemethod(_aerosol.Aerosol__v_aerosol_name_arr,None,Aerosol)
-Aerosol._v_pressure = new_instancemethod(_aerosol.Aerosol__v_pressure,None,Aerosol)
-Aerosol.aerosol_extinction = new_instancemethod(_aerosol.Aerosol_aerosol_extinction,None,Aerosol)
-Aerosol.aerosol_property = new_instancemethod(_aerosol.Aerosol_aerosol_property,None,Aerosol)
-Aerosol_swigregister = _aerosol.Aerosol_swigregister
-Aerosol_swigregister(Aerosol)
+    __swig_destroy__ = _aerosol_optical.delete_AerosolOptical
+AerosolOptical.__str__ = new_instancemethod(_aerosol_optical.AerosolOptical___str__,None,AerosolOptical)
+AerosolOptical.optical_depth_each_layer = new_instancemethod(_aerosol_optical.AerosolOptical_optical_depth_each_layer,None,AerosolOptical)
+AerosolOptical.ssa_each_layer = new_instancemethod(_aerosol_optical.AerosolOptical_ssa_each_layer,None,AerosolOptical)
+AerosolOptical.notify_update = new_instancemethod(_aerosol_optical.AerosolOptical_notify_update,None,AerosolOptical)
+AerosolOptical.pf_mom = new_instancemethod(_aerosol_optical.AerosolOptical_pf_mom,None,AerosolOptical)
+AerosolOptical._v_number_particle = new_instancemethod(_aerosol_optical.AerosolOptical__v_number_particle,None,AerosolOptical)
+AerosolOptical.aerosol_optical_depth = new_instancemethod(_aerosol_optical.AerosolOptical_aerosol_optical_depth,None,AerosolOptical)
+AerosolOptical.aerosol_optical_depth_total = new_instancemethod(_aerosol_optical.AerosolOptical_aerosol_optical_depth_total,None,AerosolOptical)
+AerosolOptical.clone = new_instancemethod(_aerosol_optical.AerosolOptical_clone,None,AerosolOptical)
+AerosolOptical._v_aerosol_name = new_instancemethod(_aerosol_optical.AerosolOptical__v_aerosol_name,None,AerosolOptical)
+AerosolOptical._v_aerosol_name_arr = new_instancemethod(_aerosol_optical.AerosolOptical__v_aerosol_name_arr,None,AerosolOptical)
+AerosolOptical._v_pressure = new_instancemethod(_aerosol_optical.AerosolOptical__v_pressure,None,AerosolOptical)
+AerosolOptical.aerosol_extinction = new_instancemethod(_aerosol_optical.AerosolOptical_aerosol_extinction,None,AerosolOptical)
+AerosolOptical.aerosol_property = new_instancemethod(_aerosol_optical.AerosolOptical_aerosol_property,None,AerosolOptical)
+AerosolOptical_swigregister = _aerosol_optical.AerosolOptical_swigregister
+AerosolOptical_swigregister(AerosolOptical)
 
 
 

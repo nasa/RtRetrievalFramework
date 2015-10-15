@@ -1,4 +1,4 @@
-#include "aerosol.h"
+#include "aerosol_optical.h"
 #include "fp_exception.h"
 #include "ostream_pad.h"
 #include <boost/lexical_cast.hpp>
@@ -8,13 +8,13 @@ using namespace blitz;
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
-typedef const boost::shared_ptr<AerosolExtinction>& (Aerosol::*a1)(int) const;
-REGISTER_LUA_CLASS(Aerosol)
+typedef const boost::shared_ptr<AerosolExtinction>& (AerosolOptical::*a1)(int) const;
+REGISTER_LUA_CLASS(AerosolOptical)
 .def(luabind::constructor<const std::vector<boost::shared_ptr<AerosolExtinction> >&,
      const std::vector<boost::shared_ptr<AerosolProperty> >&,
      const boost::shared_ptr<Pressure>&>())
-.def("number_particle", &Aerosol::number_particle)
-.def("aerosol_extinction", ((a1) &Aerosol::aerosol_extinction))
+.def("number_particle", &AerosolOptical::number_particle)
+.def("aerosol_extinction", ((a1) &AerosolOptical::aerosol_extinction))
 REGISTER_LUA_END()
 #endif
 
@@ -22,7 +22,7 @@ REGISTER_LUA_END()
 /// Timer for Aerosol
 //-----------------------------------------------------------------------
 
-AccumulatedTimer Aerosol::timer("Aerosol");
+AccumulatedTimer AerosolOptical::timer("Aerosol");
 
 //-----------------------------------------------------------------------
 /// Create an aerosol.
@@ -34,10 +34,11 @@ AccumulatedTimer Aerosol::timer("Aerosol");
 ///    in the ATB.
 //-----------------------------------------------------------------------
 
-Aerosol::Aerosol(const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
-	 const std::vector<boost::shared_ptr<AerosolProperty> >& Aerosol_prop,
-	 const boost::shared_ptr<Pressure>& Press,
-		 double Reference_wn)
+AerosolOptical::AerosolOptical
+(const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
+ const std::vector<boost::shared_ptr<AerosolProperty> >& Aerosol_prop,
+ const boost::shared_ptr<Pressure>& Press,
+ double Reference_wn)
 : aext(Aext),
   aprop(Aerosol_prop),
   press(Press), 
@@ -55,7 +56,7 @@ Aerosol::Aerosol(const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
   press->add_observer(*this);
 }
 
-void Aerosol::notify_add(StateVector& Sv)
+void AerosolOptical::notify_add(StateVector& Sv)
 {
   BOOST_FOREACH(boost::shared_ptr<AerosolExtinction>& i, aext)
     Sv.add_observer(*i);
@@ -63,7 +64,7 @@ void Aerosol::notify_add(StateVector& Sv)
     Sv.add_observer(*i);
 }
 
-void Aerosol::notify_remove(StateVector& Sv)
+void AerosolOptical::notify_remove(StateVector& Sv)
 {
   BOOST_FOREACH(boost::shared_ptr<AerosolExtinction>& i, aext)
     Sv.remove_observer(*i);
@@ -82,7 +83,7 @@ void Aerosol::notify_remove(StateVector& Sv)
 /// to write this out to HDF.
 //-----------------------------------------------------------------------
 
-blitz::Array<std::string, 1> Aerosol::aerosol_name_arr() const
+blitz::Array<std::string, 1> AerosolOptical::aerosol_name_arr() const
 {
   blitz::Array<std::string, 1> res((int) aext.size());
   for(int i = 0; i < res.rows(); i++)
@@ -95,7 +96,7 @@ blitz::Array<std::string, 1> Aerosol::aerosol_name_arr() const
 /// is independent of wn.
 //-----------------------------------------------------------------------
 
-void Aerosol::fill_cache() const
+void AerosolOptical::fill_cache() const
 {
   if(!cache_is_stale)
     return;
@@ -139,7 +140,7 @@ void Aerosol::fill_cache() const
 //-----------------------------------------------------------------------
 
 ArrayAd<double, 2> 
-Aerosol::optical_depth_each_layer(double wn) const
+AerosolOptical::optical_depth_each_layer(double wn) const
 {
   Range ra(Range::all());
   firstIndex i1; secondIndex i2; thirdIndex i3;
@@ -178,7 +179,7 @@ Aerosol::optical_depth_each_layer(double wn) const
 /// This has size of number_active_layer()
 //-----------------------------------------------------------------------
 
-ArrayAd<double, 1> Aerosol::ssa_each_layer
+ArrayAd<double, 1> AerosolOptical::ssa_each_layer
 (double wn,
  int particle_index,
  const ArrayAd<double, 1>& Od) const
@@ -213,7 +214,7 @@ ArrayAd<double, 1> Aerosol::ssa_each_layer
 //-----------------------------------------------------------------------
 
 ArrayAd<double, 1> 
-Aerosol::ssa_each_layer(double wn) const
+AerosolOptical::ssa_each_layer(double wn) const
 {
   FunctionTimer ft(timer.function_timer());
   ArrayAd<double, 2> od(optical_depth_each_layer(wn));
@@ -235,7 +236,7 @@ Aerosol::ssa_each_layer(double wn) const
 /// \param pindex The particle index.
 //-----------------------------------------------------------------------
 
-ArrayAd<double, 2> Aerosol::pf_mom(double wn, int pindex) const
+ArrayAd<double, 2> AerosolOptical::pf_mom(double wn, int pindex) const
 {
   FunctionTimer ft(timer.function_timer());
   range_check(pindex, 0, number_particle());
@@ -249,7 +250,7 @@ ArrayAd<double, 2> Aerosol::pf_mom(double wn, int pindex) const
 /// \param frac_aer This is number_active_layer() x number_particle()
 //-----------------------------------------------------------------------
 
-blitz::Array<double, 3> Aerosol::pf_mom(double wn, 
+blitz::Array<double, 3> AerosolOptical::pf_mom(double wn, 
 		const blitz::Array<double, 2>& frac_aer) const
 {
   FunctionTimer ft(timer.function_timer());
@@ -283,7 +284,7 @@ blitz::Array<double, 3> Aerosol::pf_mom(double wn,
   return res;
 }
 
-ArrayAd<double, 3> Aerosol::pf_mom(double wn, 
+ArrayAd<double, 3> AerosolOptical::pf_mom(double wn, 
 				   const ArrayAd<double, 2>& frac_aer,
 				   int nummom, int numscat) const
 {
@@ -343,8 +344,8 @@ ArrayAd<double, 3> Aerosol::pf_mom(double wn,
 /// to be cloned using a common Pressure clone, e.g. Atmosphere.
 //-----------------------------------------------------------------------
 
-boost::shared_ptr<Aerosol> 
-Aerosol::clone(const boost::shared_ptr<Pressure>& Press) const
+boost::shared_ptr<AerosolOptical> 
+AerosolOptical::clone(const boost::shared_ptr<Pressure>& Press) const
 {
   std::vector<boost::shared_ptr<AerosolExtinction> > aext_clone;
   BOOST_FOREACH(const boost::shared_ptr<AerosolExtinction>& i, aext)
@@ -352,7 +353,7 @@ Aerosol::clone(const boost::shared_ptr<Pressure>& Press) const
   std::vector<boost::shared_ptr<AerosolProperty> > aprop_clone;
   BOOST_FOREACH(const boost::shared_ptr<AerosolProperty>& i, aprop)
     aprop_clone.push_back(i->clone());
-  boost::shared_ptr<Aerosol> res(new Aerosol(aext_clone, aprop_clone, Press));
+  boost::shared_ptr<AerosolOptical> res(new AerosolOptical(aext_clone, aprop_clone, Press));
   return res;
 }
 
@@ -364,7 +365,7 @@ Aerosol::clone(const boost::shared_ptr<Pressure>& Press) const
 /// is to use everything.
 //-----------------------------------------------------------------------
 
-double Aerosol::aerosol_optical_depth(int aer_idx,
+double AerosolOptical::aerosol_optical_depth(int aer_idx,
 				      double pmin, 
 				      double pmax) const
 {
@@ -398,7 +399,7 @@ double Aerosol::aerosol_optical_depth(int aer_idx,
 /// is to use everything.
 //-----------------------------------------------------------------------
 
-double Aerosol::aerosol_optical_depth_total
+double AerosolOptical::aerosol_optical_depth_total
 (double pmin, double pmax) const
 {
   double res = 0.0;
@@ -410,7 +411,7 @@ double Aerosol::aerosol_optical_depth_total
 //-----------------------------------------------------------------------
 /// Name of aerosols.
 //-----------------------------------------------------------------------
-std::vector<std::string> Aerosol::aerosol_name() const 
+std::vector<std::string> AerosolOptical::aerosol_name() const 
 {
   std::vector<std::string> res;
   BOOST_FOREACH(const boost::shared_ptr<AerosolExtinction>& i, aext)
@@ -418,12 +419,12 @@ std::vector<std::string> Aerosol::aerosol_name() const
   return res;
 }
 
-void Aerosol::print(std::ostream& Os) const 
+void AerosolOptical::print(std::ostream& Os) const 
 { 
   OstreamPad opad(Os, "    ");
-  Os << "Aerosol:";
+  Os << "AerosolOptical:";
   for(int i = 0; i < (int) aprop.size(); ++i) {
-    Os << "  Aerosol Property[" << i << "]:\n";
+    Os << "  Aerosol Optical Property[" << i << "]:\n";
     opad << *aprop[i] << "\n";
     opad.strict_sync();
     Os << "  Aerosol Extinction[" << i << "]:\n";

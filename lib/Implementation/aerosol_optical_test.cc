@@ -1,4 +1,4 @@
-#include "aerosol.h"
+#include "aerosol_optical.h"
 #include "pressure.h"
 #include "unit_test_support.h"
 #include "atmosphere_fixture.h"
@@ -7,11 +7,11 @@
 using namespace FullPhysics;
 using namespace blitz;
 
-BOOST_FIXTURE_TEST_SUITE(aerosol, AtmosphereFixture)
+BOOST_FIXTURE_TEST_SUITE(aerosol_optical, AtmosphereFixture)
 
 BOOST_AUTO_TEST_CASE(config_file)
 {
-  Aerosol& a = *config_aerosol;
+  AerosolOptical& a = *config_aerosol;
   Array<double, 1> od_expect(4);
   od_expect =  0.0300339738374, 0.0300339738374, 
     0.0325219546595, 0.036014594462;
@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(layer_parameters)
   firstIndex i1; secondIndex i2;
   // Expected values were gotten by running the old Fortran code and
   // extracting out the answer from that.
-  Aerosol& a = *config_aerosol;
+  AerosolOptical& a = *config_aerosol;
   Array<double, 1> od_expect(18);
   Array<double, 1> ssa_expect(18);
   od_expect = 2.74194178225e-11, 1.57679009526e-05,
@@ -66,7 +66,7 @@ BOOST_FIXTURE_TEST_SUITE(aerosol_jac, ConfigurationFixture)
 
 BOOST_AUTO_TEST_CASE(optical_depth_jac)
 {
-  const Aerosol& a = *config_aerosol;
+  const AerosolOptical& a = *config_aerosol;
   StateVector& sv = *config_state_vector;
   Array<double, 1> sv0(sv.state().copy());
   double wn = 4820.0;
@@ -95,7 +95,7 @@ BOOST_AUTO_TEST_CASE(optical_depth_jac)
 
 BOOST_AUTO_TEST_CASE(ssa_jac)
 {
-  const Aerosol& a = *config_aerosol;
+  const AerosolOptical& a = *config_aerosol;
   StateVector& sv = *config_state_vector;
   Array<double, 1> sv0(sv.state().copy());
   double wn = 4820.0;

@@ -141,10 +141,10 @@ MerraAerosol::MerraAerosol
 /// Return the aerosol setup generated from this class.
 //-----------------------------------------------------------------------
 
-boost::shared_ptr<Aerosol> MerraAerosol::aerosol() const 
+boost::shared_ptr<AerosolOptical> MerraAerosol::aerosol() const 
 { 
   if(!aerosol_)
-    aerosol_.reset(new Aerosol(aext, aprop, press, ref_wn));
+    aerosol_.reset(new AerosolOptical(aext, aprop, press, ref_wn));
   return aerosol_;
 }
 

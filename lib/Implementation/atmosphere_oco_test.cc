@@ -83,7 +83,7 @@ BOOST_AUTO_TEST_CASE(rayleigh_atmosphere)
     alt_clone.push_back(a->clone(pressure_clone, temperature_clone));
   boost::shared_ptr<Absorber> absorber_clone =
     atm->absorber_ptr()->clone(pressure_clone, temperature_clone, alt_clone);
-  boost::shared_ptr<Aerosol> aerosol_null;
+  boost::shared_ptr<AerosolOptical> aerosol_null;
   boost::shared_ptr<AtmosphereOco> 
     atm_rayleigh(new AtmosphereOco(absorber_clone,
 				   pressure_clone,
@@ -125,7 +125,7 @@ BOOST_AUTO_TEST_CASE(uplooking_atmosphere)
   boost::shared_ptr<Pressure> pressure_clone = atm->pressure_ptr()->clone();
   boost::shared_ptr<Temperature> temperature_clone = 
     atm->temperature_ptr()->clone(pressure_clone);
-  boost::shared_ptr<Aerosol> aerosol_clone =
+  boost::shared_ptr<AerosolOptical> aerosol_clone =
     atm->aerosol_ptr()->clone();
   std::vector<boost::shared_ptr<Altitude> > alt_clone;
   BOOST_FOREACH(const boost::shared_ptr<Altitude>& a, atm->altitude_ptr())

@@ -8,8 +8,8 @@
  * interface file instead. 
  * ----------------------------------------------------------------------------- */
 
-#ifndef SWIG_aerosol_WRAP_H_
-#define SWIG_aerosol_WRAP_H_
+#ifndef SWIG_aerosol_optical_WRAP_H_
+#define SWIG_aerosol_optical_WRAP_H_
 
 #include <map>
 #include <string>
