@@ -113,37 +113,10 @@ import full_physics_swig.generic_object
 import full_physics_swig.pressure
 import full_physics_swig.aerosol_extinction
 import full_physics_swig.aerosol_property
-class ObserverAerosol(full_physics_swig.generic_object.GenericObject):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __init__(self): 
-        _aerosol_optical.ObserverAerosol_swiginit(self,_aerosol_optical.new_ObserverAerosol())
-    __swig_destroy__ = _aerosol_optical.delete_ObserverAerosol
-ObserverAerosol.notify_update = new_instancemethod(_aerosol_optical.ObserverAerosol_notify_update,None,ObserverAerosol)
-ObserverAerosol.notify_add = new_instancemethod(_aerosol_optical.ObserverAerosol_notify_add,None,ObserverAerosol)
-ObserverAerosol.notify_remove = new_instancemethod(_aerosol_optical.ObserverAerosol_notify_remove,None,ObserverAerosol)
-ObserverAerosol_swigregister = _aerosol_optical.ObserverAerosol_swigregister
-ObserverAerosol_swigregister(ObserverAerosol)
-
-class ObservableAerosol(full_physics_swig.generic_object.GenericObject):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-    __swig_destroy__ = _aerosol_optical.delete_ObservableAerosol
-ObservableAerosol.add_observer_and_keep_reference = new_instancemethod(_aerosol_optical.ObservableAerosol_add_observer_and_keep_reference,None,ObservableAerosol)
-ObservableAerosol.add_observer = new_instancemethod(_aerosol_optical.ObservableAerosol_add_observer,None,ObservableAerosol)
-ObservableAerosol.remove_observer = new_instancemethod(_aerosol_optical.ObservableAerosol_remove_observer,None,ObservableAerosol)
-ObservableAerosol_swigregister = _aerosol_optical.ObservableAerosol_swigregister
-ObservableAerosol_swigregister(ObservableAerosol)
-
-class AerosolOptical(full_physics_swig.state_vector.StateVectorObserver,full_physics_swig.pressure.ObserverPressure,full_physics_swig.aerosol_extinction.ObserverAerosolExtinction,full_physics_swig.aerosol_property.ObserverAerosolProperty,ObservableAerosol):
+import full_physics_swig.aerosol
+class AerosolOptical(full_physics_swig.aerosol.Aerosol,full_physics_swig.pressure.ObserverPressure,full_physics_swig.aerosol_extinction.ObserverAerosolExtinction,full_physics_swig.aerosol_property.ObserverAerosolProperty):
     """
-    This class maintains the aerosol portion of the state.
-
-    Other objects may depend on the aerosol, and should be updated when
-    the aerosol is updated. To facilitate that, this class in an
-    Oberverable, and objects can add themselves as Observers to be
-    notified when the aerosol is updated.
+    Implementation of Aerosol.
 
     This particular implementation does the aerosol calculation by using
     the aerosol optical properties.
@@ -174,21 +147,6 @@ class AerosolOptical(full_physics_swig.state_vector.StateVectorObserver,full_phy
         ATB. 
         """
         _aerosol_optical.AerosolOptical_swiginit(self,_aerosol_optical.new_AerosolOptical(*args))
-    def optical_depth_each_layer(self, *args):
-        """
-        ArrayAd< double, 2 > AerosolOptical::optical_depth_each_layer(double wn) const
-        This gives the optical depth for each layer, for the given wave
-        number.
-
-        Note this only includes the aerosol portion of this, Atmosphere class
-        combines this with Absorbers and rayleigh scattering.
-
-        This calculates the derivatives with respect to the state vector.
-
-        This has size of number_active_layer() x number_particle(). 
-        """
-        return _aerosol_optical.AerosolOptical_optical_depth_each_layer(self, *args)
-
     def ssa_each_layer(self, *args):
         """
         ArrayAd< double, 1 > AerosolOptical::ssa_each_layer(double wn) const
@@ -221,8 +179,8 @@ class AerosolOptical(full_physics_swig.state_vector.StateVectorObserver,full_phy
 
     def _v_number_particle(self):
         """
-        int FullPhysics::AerosolOptical::number_particle() const
-        Number of aerosol particles. 
+        virtual int FullPhysics::AerosolOptical::number_particle() const
+
         """
         return _aerosol_optical.AerosolOptical__v_number_particle(self)
 
@@ -260,7 +218,7 @@ class AerosolOptical(full_physics_swig.state_vector.StateVectorObserver,full_phy
 
     def clone(self, *args):
         """
-        boost::shared_ptr< AerosolOptical > AerosolOptical::clone(const boost::shared_ptr< Pressure > &Press) const
+        boost::shared_ptr< Aerosol > AerosolOptical::clone(const boost::shared_ptr< Pressure > &Press) const
         This version of clone takes a pressure to use.
 
         The intent is that the pressure has been cloned from the original
@@ -326,8 +284,6 @@ class AerosolOptical(full_physics_swig.state_vector.StateVectorObserver,full_phy
         return _aerosol_optical.AerosolOptical_aerosol_property(self, *args)
 
     __swig_destroy__ = _aerosol_optical.delete_AerosolOptical
-AerosolOptical.__str__ = new_instancemethod(_aerosol_optical.AerosolOptical___str__,None,AerosolOptical)
-AerosolOptical.optical_depth_each_layer = new_instancemethod(_aerosol_optical.AerosolOptical_optical_depth_each_layer,None,AerosolOptical)
 AerosolOptical.ssa_each_layer = new_instancemethod(_aerosol_optical.AerosolOptical_ssa_each_layer,None,AerosolOptical)
 AerosolOptical.notify_update = new_instancemethod(_aerosol_optical.AerosolOptical_notify_update,None,AerosolOptical)
 AerosolOptical.pf_mom = new_instancemethod(_aerosol_optical.AerosolOptical_pf_mom,None,AerosolOptical)

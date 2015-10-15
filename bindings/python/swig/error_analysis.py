@@ -115,9 +115,7 @@ import full_physics_swig.model_state
 import full_physics_swig.problem_state
 import full_physics_swig.rt_atmosphere
 import full_physics_swig.state_vector
-import full_physics_swig.aerosol_optical
-import full_physics_swig.aerosol_extinction
-import full_physics_swig.aerosol_property
+import full_physics_swig.aerosol
 class ErrorAnalysis(full_physics_swig.generic_object.GenericObject):
     """
     This calculates a variety of values to help with the error analysis of

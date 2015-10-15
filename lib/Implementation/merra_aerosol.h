@@ -1,6 +1,8 @@
 #ifndef MERRA_AEROSOL_H
 #define MERRA_AEROSOL_H
-#include "aerosol_optical.h"
+#include "aerosol.h"
+#include "aerosol_extinction.h"
+#include "aerosol_property.h"
 #include "hdf_file.h"
 #include "pressure.h"
 #include "composite_initial_guess.h"
@@ -24,7 +26,7 @@ public:
 	       double Max_residual = 0.005,
 	       double Reference_wn=1e4/0.755);
   virtual ~MerraAerosol() {}
-  boost::shared_ptr<AerosolOptical> aerosol() const;
+  boost::shared_ptr<Aerosol> aerosol() const;
   void add_aerosol(const boost::shared_ptr<AerosolExtinction>& Aext,
 		   const boost::shared_ptr<AerosolProperty>& Aprop,
 		   const boost::shared_ptr<InitialGuessBuilder>& Ig);
@@ -43,7 +45,7 @@ public:
 
   virtual void print(std::ostream& Os) const;
 private:
-  mutable boost::shared_ptr<AerosolOptical> aerosol_;
+  mutable boost::shared_ptr<Aerosol> aerosol_;
   int number_merra_particle_;
   std::vector<boost::shared_ptr<AerosolExtinction> > aext;
   std::vector<boost::shared_ptr<AerosolProperty> > aprop;

@@ -55,6 +55,7 @@ extern "C" {
   void init_spectrum_effect(void);
   void init_solar_model(void);
   void init_instrument(void);
+  void init_aerosol(void);
   void init_ils(void);
   void init_ils_function(void);
   void init_instrument_correction(void);
@@ -346,6 +347,7 @@ void init_swig_wrap(void)
   init_extension_module(package, "_spectrum_effect", init_spectrum_effect);
   init_extension_module(package, "_solar_model", init_solar_model);
   init_extension_module(package, "_instrument", init_instrument);
+  init_extension_module(package, "_aerosol", init_aerosol);
   init_extension_module(package, "_ils", init_ils);
   init_extension_module(package, "_ils_function", init_ils_function);
   init_extension_module(package, "_instrument_correction", init_instrument_correction);

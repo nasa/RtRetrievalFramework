@@ -16,7 +16,7 @@ REGISTER_LUA_DERIVED_CLASS(AtmosphereOco, RtAtmosphere)
 .def(luabind::constructor<const boost::shared_ptr<Absorber>&,
 	     const boost::shared_ptr<Pressure>&,
 	     const boost::shared_ptr<Temperature>&,
-	     const boost::shared_ptr<AerosolOptical>&,
+	     const boost::shared_ptr<Aerosol>&,
 	     const boost::shared_ptr<Ground>&,
 	     const std::vector<boost::shared_ptr<Altitude> >&,
 	     const boost::shared_ptr<Constant>&>())
@@ -29,7 +29,7 @@ REGISTER_LUA_DERIVED_CLASS(AtmosphereOco, RtAtmosphere)
 .def(luabind::constructor<const boost::shared_ptr<Absorber>&,
 	     const boost::shared_ptr<Pressure>&,
 	     const boost::shared_ptr<Temperature>&,
-	     const boost::shared_ptr<AerosolOptical>&,
+	     const boost::shared_ptr<Aerosol>&,
 	     const std::vector<boost::shared_ptr<Altitude> >&,
 	     const boost::shared_ptr<Constant>&>())
 .def(luabind::constructor<const boost::shared_ptr<Absorber>&,
@@ -60,7 +60,7 @@ const int taua_0_index = 2;
 AtmosphereOco::AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 	     const boost::shared_ptr<Pressure>& pressurev,
 	     const boost::shared_ptr<Temperature>& temperaturev,
-	     const boost::shared_ptr<AerosolOptical>& aerosolv,
+	     const boost::shared_ptr<Aerosol>& aerosolv,
              const boost::shared_ptr<Ground>& groundv,
 	     const std::vector<boost::shared_ptr<Altitude> >& altv,
 	     const boost::shared_ptr<Constant>& C)
@@ -96,7 +96,7 @@ AtmosphereOco::AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 AtmosphereOco::AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 	     const boost::shared_ptr<Pressure>& pressurev,
 	     const boost::shared_ptr<Temperature>& temperaturev,
-	     const boost::shared_ptr<AerosolOptical>& aerosolv,
+	     const boost::shared_ptr<Aerosol>& aerosolv,
 	     const std::vector<boost::shared_ptr<Altitude> >& altv,
 	     const boost::shared_ptr<Constant>& C)
   : absorber(absorberv), pressure(pressurev), temperature(temperaturev),
@@ -279,7 +279,7 @@ AtmosphereOco::scattering_moment_common(double wn, int nummom,
 void AtmosphereOco::reset_timer()
 { 
   RtAtmosphere::reset_timer(); 
-  AerosolOptical::timer.reset_elapsed();
+  Aerosol::timer.reset_elapsed();
   Absorber::timer.reset_elapsed();
 }
 
@@ -288,7 +288,7 @@ std::string AtmosphereOco::timer_info() const
   std::ostringstream os;
   os << RtAtmosphere::timer_info() << "\n"
      << "   " << Absorber::timer << "\n"
-     << "   " << AerosolOptical::timer << "\n";
+     << "   " << Aerosol::timer << "\n";
   return os.str();
 }
 
@@ -298,7 +298,7 @@ std::string AtmosphereOco::timer_info() const
 /// and mark the cache when it changes. 
 //-----------------------------------------------------------------------
 
-void AtmosphereOco::notify_update(const AerosolOptical& A)
+void AtmosphereOco::notify_update(const Aerosol& A)
 {
   wn_tau_cache = -1;
   notify_update_do(*this);
@@ -517,7 +517,7 @@ boost::shared_ptr<AtmosphereOco> AtmosphereOco::clone() const
   boost::shared_ptr<Pressure> pressure_clone = pressure->clone();
   boost::shared_ptr<Temperature> temperature_clone = 
     temperature->clone(pressure_clone);
-  boost::shared_ptr<AerosolOptical> aerosol_clone;
+  boost::shared_ptr<Aerosol> aerosol_clone;
   if(aerosol)
     aerosol_clone = aerosol->clone(pressure_clone);
   boost::shared_ptr<Ground> ground_clone;

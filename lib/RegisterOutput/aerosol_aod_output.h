@@ -19,9 +19,8 @@ public:
 /// (e.g., aerosol_1_aod). This is controlled by the
 /// Number_instead_of_name field.
 //-----------------------------------------------------------------------
-  AerosolAodOutput(const boost::shared_ptr<AerosolOptical>& A, 
-		   bool Number_instead_of_name = false) 
-    : a(A), number_instead_of_name(Number_instead_of_name) {}
+  AerosolAodOutput(const boost::shared_ptr<Aerosol>& A, 
+		   bool Number_instead_of_name = false);
   virtual ~AerosolAodOutput() {}
   virtual void register_output(const boost::shared_ptr<Output>& out) const;
   static const double low_boundary;

@@ -9,7 +9,7 @@ using namespace blitz;
 #ifdef HAVE_LUA
 #include "register_lua.h"
 typedef const boost::shared_ptr<AerosolExtinction>& (AerosolOptical::*a1)(int) const;
-REGISTER_LUA_CLASS(AerosolOptical)
+REGISTER_LUA_DERIVED_CLASS(AerosolOptical, Aerosol)
 .def(luabind::constructor<const std::vector<boost::shared_ptr<AerosolExtinction> >&,
      const std::vector<boost::shared_ptr<AerosolProperty> >&,
      const boost::shared_ptr<Pressure>&>())
@@ -17,12 +17,6 @@ REGISTER_LUA_CLASS(AerosolOptical)
 .def("aerosol_extinction", ((a1) &AerosolOptical::aerosol_extinction))
 REGISTER_LUA_END()
 #endif
-
-//-----------------------------------------------------------------------
-/// Timer for Aerosol
-//-----------------------------------------------------------------------
-
-AccumulatedTimer AerosolOptical::timer("Aerosol");
 
 //-----------------------------------------------------------------------
 /// Create an aerosol.
@@ -344,7 +338,7 @@ ArrayAd<double, 3> AerosolOptical::pf_mom(double wn,
 /// to be cloned using a common Pressure clone, e.g. Atmosphere.
 //-----------------------------------------------------------------------
 
-boost::shared_ptr<AerosolOptical> 
+boost::shared_ptr<Aerosol> 
 AerosolOptical::clone(const boost::shared_ptr<Pressure>& Press) const
 {
   std::vector<boost::shared_ptr<AerosolExtinction> > aext_clone;
@@ -353,7 +347,7 @@ AerosolOptical::clone(const boost::shared_ptr<Pressure>& Press) const
   std::vector<boost::shared_ptr<AerosolProperty> > aprop_clone;
   BOOST_FOREACH(const boost::shared_ptr<AerosolProperty>& i, aprop)
     aprop_clone.push_back(i->clone());
-  boost::shared_ptr<AerosolOptical> res(new AerosolOptical(aext_clone, aprop_clone, Press));
+  boost::shared_ptr<Aerosol> res(new AerosolOptical(aext_clone, aprop_clone, Press));
   return res;
 }
 

@@ -1,36 +1,25 @@
 #ifndef AEROSOL_OPTICAL_H
 #define AEROSOL_OPTICAL_H
-#include "state_vector.h"
+#include "aerosol.h"
 #include "aerosol_property.h"
 #include "aerosol_extinction.h"
-#include "pressure.h"
-#include "accumulated_timer.h"
 #include <limits>
 #include <vector>
 
 namespace FullPhysics {
 /****************************************************************//**
-  This class maintains the aerosol portion of the state.
-
-  Other objects may depend on the aerosol, and should be updated
-  when the aerosol is updated. To facilitate that, this class in
-  an Oberverable, and objects can add themselves as Observers to be
-  notified when the aerosol is updated.
-
-  This particular implementation does the aerosol calculation by using
-  the aerosol optical properties.
+  Implementation of Aerosol. This particular implementation does 
+  the aerosol calculation by using the aerosol optical properties.
 *******************************************************************/
-class AerosolOptical: public StateVectorObserver,
+class AerosolOptical: public Aerosol,
                public Observer<Pressure>,
 	       public Observer<AerosolExtinction>,
-	       public Observer<AerosolProperty>,
-	       public Observable<AerosolOptical> {
+	       public Observer<AerosolProperty> {
 public:
   AerosolOptical(const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
 	  const std::vector<boost::shared_ptr<AerosolProperty> >& Aerosol_prop,
 	  const boost::shared_ptr<Pressure>& Press,
 	  double Reference_wn = 1e4/0.755);
-  static AccumulatedTimer timer;
   virtual ~AerosolOptical() {}
   virtual void notify_add(StateVector& Sv);
   virtual void notify_remove(StateVector& Sv);
@@ -40,17 +29,12 @@ public:
     notify_update_do(*this); 
   }
 
-  virtual void add_observer(Observer<AerosolOptical>& Obs) 
-  { add_observer_do(Obs, *this);}
-  virtual void remove_observer(Observer<AerosolOptical>& Obs)
-  { remove_observer_do(Obs, *this);}
-
-  ArrayAd<double, 2> optical_depth_each_layer(double wn) 
+  virtual ArrayAd<double, 2> optical_depth_each_layer(double wn) 
     const;
-  ArrayAd<double, 1> 
+  virtual ArrayAd<double, 1> 
   ssa_each_layer(double wn, int particle_index,
 		 const ArrayAd<double, 1>& Od) const;
-  ArrayAd<double, 1> 
+  virtual ArrayAd<double, 1> 
   ssa_each_layer(double wn) const;
 
 //-----------------------------------------------------------------------
@@ -75,18 +59,13 @@ public:
     notify_update_do(*this);
   }
 
-  ArrayAd<double, 2> pf_mom(double wn, int pindex) const;
-  blitz::Array<double, 3> pf_mom(double wn, 
+  virtual ArrayAd<double, 2> pf_mom(double wn, int pindex) const;
+  virtual blitz::Array<double, 3> pf_mom(double wn, 
 			    const blitz::Array<double, 2>& frac_aer) const;
-  ArrayAd<double, 3> pf_mom(double wn, 
-	 const ArrayAd<double, 2>& frac_aer,
-	 int nummom = -1, int numscat = -1) const;
-
-//-----------------------------------------------------------------------
-/// Number of aerosol particles
-//-----------------------------------------------------------------------
-
-  int number_particle() const { return (int) aext.size(); }
+  virtual ArrayAd<double, 3> pf_mom(double wn, 
+				    const ArrayAd<double, 2>& frac_aer,
+				    int nummom = -1, int numscat = -1) const;
+  virtual int number_particle() const { return (int) aext.size(); }
 
   virtual void print(std::ostream& Os) const;
 
@@ -107,9 +86,9 @@ public:
 /// can of course attach them after receiving the cloned object.
 //-----------------------------------------------------------------------
 
-  boost::shared_ptr<AerosolOptical> clone() const 
+  virtual boost::shared_ptr<Aerosol> clone() const 
   { return clone(press->clone()); }
-  boost::shared_ptr<AerosolOptical> 
+  virtual boost::shared_ptr<Aerosol> 
   clone(const boost::shared_ptr<Pressure>& Press) const;
   std::vector<std::string> aerosol_name() const;
 
