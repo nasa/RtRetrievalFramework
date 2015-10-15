@@ -67,7 +67,6 @@ class DatasetInformation(object):
         # Default values
         self.id_names = None
         self.inp_shape_names = None
-        self.out_shape_names = None
         self.inp_id_dims = None
 
         # Store shapes for each file so we can attach this as an attribute
@@ -88,7 +87,6 @@ class DatasetInformation(object):
         res += "out_name: %s\n" % self.out_name
         res += "id_names: %s\n" % self.id_names
         res += "inp_shape_names: %s\n" % self.inp_shape_names
-        res += "out_shape_names: %s\n" % self.out_shape_names
         res += "inp_id_dims: %s\n" % self.inp_id_dims
         res += "inp_file_shapes: %s\n" % self.inp_file_shapes
         res += "inp_filenames: %d files\n" % len(self.inp_filenames)
@@ -103,6 +101,7 @@ class DatasetInformation(object):
         # Track the file objects considered for this dataset
         self.inp_filenames.append(file_obj.filename)
 
+        # These don't change between files, load on the first encounter
         if self.inp_shape_names == None: 
             # Find the names of dimensions
             self._find_dim_names(file_obj, dataset_obj)
@@ -198,7 +197,7 @@ class DatasetInformation(object):
     def output_dataset_shape(self, splice_size=None, collapse_id_dim=False):
         # Make a copy of dataset shape size and names as they will be modified
         dst_shape = self.out_shape 
-        self.out_shape_names = list(self.inp_shape_names)
+        out_shape_names = list(self.inp_shape_names)
         splice_dim = self.inp_id_dims
 
         if splice_dim != None and len(splice_dim) > 0 and splice_size != None:
@@ -209,23 +208,23 @@ class DatasetInformation(object):
             # Go through and collapse splice_dim dim(s) into a single one of
             # sized according to splice_dim
             if collapse_id_dim:
-                if self.out_shape_names != None:
-                    out_id_name = ''.join([ self.out_shape_names[didx] for didx in splice_dim ])
-                    self.out_shape_names[splice_dim[0]] = out_id_name
+                if out_shape_names != None:
+                    out_id_name = ''.join([ out_shape_names[didx] for didx in splice_dim ])
+                    out_shape_names[splice_dim[0]] = out_id_name
 
                 # Remove any other splice dims,
                 # Iterate backwards since we are
                 # popping from dst_shape
                 for s_dim in splice_dim[1:][::-1]:
                     dst_shape.pop(s_dim)
-                    if self.out_shape_names != None:
-                        self.out_shape_names.pop(s_dim)
+                    if out_shape_names != None:
+                        out_shape_names.pop(s_dim)
 
         # Make sure any zero sized datasets are indicated as unlimited
         # by identifying them as None in the maxshape argument
         max_shape = map(lambda s: None if s == 0 else s, dst_shape)
 
-        return dst_shape, max_shape
+        return dst_shape, max_shape, out_shape_names
 
 class SourceInformation(object):
 
@@ -346,7 +345,7 @@ def create_output_dataset(out_hdf_obj, dataset_info, splice_size=None, collapse_
 
     logger.debug("Creating new output dataset: %s" % dataset_info.out_name)
 
-    dst_shape, max_shape = dataset_info.output_dataset_shape(splice_size, collapse_id_dim) 
+    dst_shape, max_shape, dst_shape_names = dataset_info.output_dataset_shape(splice_size, collapse_id_dim) 
 
     # Split name into two and create a group if needed
     # then create the desire dataset or load existing group
@@ -403,8 +402,8 @@ def create_output_dataset(out_hdf_obj, dataset_info, splice_size=None, collapse_
 
     # Add extra information for dataset, overwrite an existing shape, because we may have
     # reshaped the data
-    if dataset_info.out_shape_names:
-        out_dataset_obj.attrs["Shape"] = numpy.array(["_".join(dataset_info.out_shape_names) + "_Array"]) 
+    if dst_shape_names:
+        out_dataset_obj.attrs["Shape"] = numpy.array(["_".join(dst_shape_names) + "_Array"]) 
 
     return out_dataset_obj
 
