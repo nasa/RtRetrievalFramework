@@ -2401,7 +2401,7 @@ function ConfigCommon.aerosol_creator:create_parent_object(sub_object)
       self.vex:push_back(t.extinction)
       self.config.number_aerosol = self.config.number_aerosol + 1
    end
-   return Aerosol(self.vex, self.vap, self.config.pressure)
+   return AerosolOptical(self.vex, self.vap, self.config.pressure)
 end
 
 function ConfigCommon.aerosol_creator:register_output(ro)

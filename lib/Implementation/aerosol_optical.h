@@ -1,5 +1,5 @@
-#ifndef AEROSOL_H
-#define AEROSOL_H
+#ifndef AEROSOL_OPTICAL_H
+#define AEROSOL_OPTICAL_H
 #include "state_vector.h"
 #include "aerosol_property.h"
 #include "aerosol_extinction.h"
@@ -16,19 +16,22 @@ namespace FullPhysics {
   when the aerosol is updated. To facilitate that, this class in
   an Oberverable, and objects can add themselves as Observers to be
   notified when the aerosol is updated.
+
+  This particular implementation does the aerosol calculation by using
+  the aerosol optical properties.
 *******************************************************************/
-class Aerosol: public StateVectorObserver,
+class AerosolOptical: public StateVectorObserver,
                public Observer<Pressure>,
 	       public Observer<AerosolExtinction>,
 	       public Observer<AerosolProperty>,
-	       public Observable<Aerosol> {
+	       public Observable<AerosolOptical> {
 public:
-  Aerosol(const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
+  AerosolOptical(const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
 	  const std::vector<boost::shared_ptr<AerosolProperty> >& Aerosol_prop,
 	  const boost::shared_ptr<Pressure>& Press,
 	  double Reference_wn = 1e4/0.755);
   static AccumulatedTimer timer;
-  virtual ~Aerosol() {}
+  virtual ~AerosolOptical() {}
   virtual void notify_add(StateVector& Sv);
   virtual void notify_remove(StateVector& Sv);
   virtual void notify_update(const StateVector& Sv) 
@@ -37,9 +40,9 @@ public:
     notify_update_do(*this); 
   }
 
-  virtual void add_observer(Observer<Aerosol>& Obs) 
+  virtual void add_observer(Observer<AerosolOptical>& Obs) 
   { add_observer_do(Obs, *this);}
-  virtual void remove_observer(Observer<Aerosol>& Obs)
+  virtual void remove_observer(Observer<AerosolOptical>& Obs)
   { remove_observer_do(Obs, *this);}
 
   ArrayAd<double, 2> optical_depth_each_layer(double wn) 
@@ -104,9 +107,9 @@ public:
 /// can of course attach them after receiving the cloned object.
 //-----------------------------------------------------------------------
 
-  boost::shared_ptr<Aerosol> clone() const 
+  boost::shared_ptr<AerosolOptical> clone() const 
   { return clone(press->clone()); }
-  boost::shared_ptr<Aerosol> 
+  boost::shared_ptr<AerosolOptical> 
   clone(const boost::shared_ptr<Pressure>& Press) const;
   std::vector<std::string> aerosol_name() const;
 

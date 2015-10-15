@@ -1,7 +1,7 @@
 #ifndef CONFIGURATION_FIXTURE_H
 #define CONFIGURATION_FIXTURE_H
 #include "absorber.h"
-#include "aerosol.h"
+#include "aerosol_optical.h"
 #include "pressure_level_input.h"
 #include "error_analysis.h"
 #include "connor_solver.h"
@@ -38,7 +38,7 @@ public:
   { config_state_vector->update_state(sv_initial); }
 
   boost::shared_ptr<Absorber> config_absorber;
-  boost::shared_ptr<Aerosol> config_aerosol;
+  boost::shared_ptr<AerosolOptical> config_aerosol;
   boost::shared_ptr<RtAtmosphere> config_atmosphere;
   boost::shared_ptr<StateVector> config_state_vector;
   boost::shared_ptr<PressureLevelInput> config_pressure_level_input;

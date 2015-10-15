@@ -165,7 +165,7 @@ class MerraAerosol(full_physics_swig.generic_object.GenericObject):
         _merra_aerosol.MerraAerosol_swiginit(self,_merra_aerosol.new_MerraAerosol(*args))
     def _v_aerosol(self):
         """
-        boost::shared_ptr< Aerosol > MerraAerosol::aerosol() const
+        boost::shared_ptr< AerosolOptical > MerraAerosol::aerosol() const
         Return the aerosol setup generated from this class. 
         """
         return _merra_aerosol.MerraAerosol__v_aerosol(self)

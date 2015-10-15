@@ -8,7 +8,7 @@
 %import "hdf_file.i"
 %import "double_with_unit.i"
 %import "pressure.i"
-%import "aerosol.i"
+%import "aerosol_optical.i"
 %import "composite_initial_guess.i"
 %fp_shared_ptr(FullPhysics::MerraAerosol);
 
@@ -26,7 +26,7 @@ public:
 	       int Max_types = 4,
 	       double Max_residual = 0.005,
 	       double Reference_wn=1e4/0.755);
-  %python_attribute(aerosol, boost::shared_ptr<Aerosol>); 
+  %python_attribute(aerosol, boost::shared_ptr<AerosolOptical>); 
   %python_attribute(initial_guess, boost::shared_ptr<InitialGuessBuilder>);
   %python_attribute(number_merra_particle, int);
 };

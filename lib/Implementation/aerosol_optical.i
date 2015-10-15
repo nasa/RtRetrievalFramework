@@ -8,33 +8,33 @@
 %base_import(pressure)
 %base_import(aerosol_extinction)
 %base_import(aerosol_property)
-%fp_shared_ptr(FullPhysics::Aerosol);
-%fp_shared_ptr(FullPhysics::Observer<FullPhysics::Aerosol>)
-%fp_shared_ptr(FullPhysics::Observable<FullPhysics::Aerosol>)
+%fp_shared_ptr(FullPhysics::AerosolOptical);
+%fp_shared_ptr(FullPhysics::Observer<FullPhysics::AerosolOptical>)
+%fp_shared_ptr(FullPhysics::Observable<FullPhysics::AerosolOptical>)
 
 namespace FullPhysics {
-class Aerosol;
+class AerosolOptical;
 }
 
 namespace FullPhysics {
-%template(ObserverAerosol) FullPhysics::Observer<Aerosol>;
-%template(ObservableAerosol) FullPhysics::Observable<Aerosol>;
-class Aerosol: public StateVectorObserver,
+%template(ObserverAerosol) FullPhysics::Observer<AerosolOptical>;
+%template(ObservableAerosol) FullPhysics::Observable<AerosolOptical>;
+class AerosolOptical: public StateVectorObserver,
                public Observer<Pressure>,
 	       public Observer<AerosolExtinction>,
 	       public Observer<AerosolProperty>,
-	       public Observable<Aerosol> {
+	       public Observable<AerosolOptical> {
 public:
   std::string print_to_string() const;
-  Aerosol(const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
+  AerosolOptical(const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
 	  const std::vector<boost::shared_ptr<AerosolProperty> >& Aerosol_prop,
 	  const boost::shared_ptr<Pressure>& Press,
 	  double Reference_wn = 1e4/0.755);
   virtual void notify_add(StateVector& Sv);
   virtual void notify_remove(StateVector& Sv);
   virtual void notify_update(const StateVector& Sv);
-  virtual void add_observer(Observer<Aerosol>& Obs);
-  virtual void remove_observer(Observer<Aerosol>& Obs);
+  virtual void add_observer(Observer<AerosolOptical>& Obs);
+  virtual void remove_observer(Observer<AerosolOptical>& Obs);
 
   ArrayAd<double, 2> optical_depth_each_layer(double wn) 
     const;
@@ -60,8 +60,8 @@ public:
   double aerosol_optical_depth_total
   (double pmin = std::numeric_limits<double>::min(),
    double pmax = std::numeric_limits<double>::max()) const;
-  boost::shared_ptr<Aerosol> clone() const;
-  boost::shared_ptr<Aerosol> 
+  boost::shared_ptr<AerosolOptical> clone() const;
+  boost::shared_ptr<AerosolOptical> 
   clone(const boost::shared_ptr<Pressure>& Press) const;
   %python_attribute(aerosol_name, std::vector<std::string>);
   %python_attribute(aerosol_name_arr, blitz::Array<std::string, 1>);

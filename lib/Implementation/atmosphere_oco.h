@@ -4,7 +4,7 @@
 #include "absorber.h"
 #include "pressure.h"
 #include "temperature.h"
-#include "aerosol.h"
+#include "aerosol_optical.h"
 #include "ground.h"
 #include "rayleigh.h"
 #include "rayleigh_greek_moment.h"
@@ -27,20 +27,20 @@ namespace FullPhysics {
   the radiative transfer.
 *******************************************************************/
 class AtmosphereOco : public RtAtmosphere,
-		      public Observer<Aerosol>, 
+		      public Observer<AerosolOptical>, 
 		      public Observer<Pressure> {
 public:
   AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 		const boost::shared_ptr<Pressure>& pressurev,
 		const boost::shared_ptr<Temperature>& temperaturev,
-		const boost::shared_ptr<Aerosol>& aerosolv,
+		const boost::shared_ptr<AerosolOptical>& aerosolv,
 		const boost::shared_ptr<Ground>& groundv,
 		const std::vector<boost::shared_ptr<Altitude> >& altv,
 		const boost::shared_ptr<Constant>& C);
   AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 		const boost::shared_ptr<Pressure>& pressurev,
 		const boost::shared_ptr<Temperature>& temperaturev,
-		const boost::shared_ptr<Aerosol>& aerosolv,
+		const boost::shared_ptr<AerosolOptical>& aerosolv,
 		const std::vector<boost::shared_ptr<Altitude> >& altv,
 		const boost::shared_ptr<Constant>& C);
   AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
@@ -146,7 +146,7 @@ public:
   { notify_update_do(*this); sv_size = (int) Sv.state().size();}
 
   virtual void print(std::ostream& Os) const;
-  virtual void notify_update(const Aerosol& A);
+  virtual void notify_update(const AerosolOptical& A);
   virtual void notify_update(const Pressure& P)
   { nlay = -1; }
 
@@ -157,7 +157,7 @@ public:
   const boost::shared_ptr<Absorber>& absorber_ptr() const {return absorber;}
   const boost::shared_ptr<Temperature>& temperature_ptr() const 
   {return temperature;}
-  const boost::shared_ptr<Aerosol>& aerosol_ptr() const {return aerosol;}
+  const boost::shared_ptr<AerosolOptical>& aerosol_ptr() const {return aerosol;}
   const boost::shared_ptr<Constant>& constant_ptr() const {return constant;}
   const boost::shared_ptr<Rayleigh>& rayleigh_ptr() const {return rayleigh;}
   const std::vector<boost::shared_ptr<Altitude> >& altitude_ptr() const
@@ -179,7 +179,7 @@ private:
   boost::shared_ptr<Absorber> absorber;
   boost::shared_ptr<Pressure> pressure;
   boost::shared_ptr<Temperature> temperature;
-  boost::shared_ptr<Aerosol> aerosol;
+  boost::shared_ptr<AerosolOptical> aerosol;
   boost::shared_ptr<Ground> ground_ptr;
   boost::shared_ptr<Rayleigh> rayleigh;
   boost::shared_ptr<Constant> constant;

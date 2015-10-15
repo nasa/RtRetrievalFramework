@@ -1,7 +1,7 @@
 #ifndef AEROSOL_AOD_OUTPUT_H
 #define AEROSOL_AOD_OUTPUT_H
 #include "register_output_base.h"
-#include "aerosol.h"
+#include "aerosol_optical.h"
 
 namespace FullPhysics {
 /****************************************************************//**
@@ -19,7 +19,7 @@ public:
 /// (e.g., aerosol_1_aod). This is controlled by the
 /// Number_instead_of_name field.
 //-----------------------------------------------------------------------
-  AerosolAodOutput(const boost::shared_ptr<Aerosol>& A, 
+  AerosolAodOutput(const boost::shared_ptr<AerosolOptical>& A, 
 		   bool Number_instead_of_name = false) 
     : a(A), number_instead_of_name(Number_instead_of_name) {}
   virtual ~AerosolAodOutput() {}
@@ -27,7 +27,7 @@ public:
   static const double low_boundary;
   static const double high_boundary;
 private:
-  boost::shared_ptr<Aerosol> a;
+  boost::shared_ptr<AerosolOptical> a;
   int number_instead_of_name;
 };
 }

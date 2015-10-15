@@ -8,7 +8,7 @@
 %}
 %fp_shared_ptr(FullPhysics::AtmosphereOco);
 %base_import(rt_atmosphere)
-%base_import(aerosol)
+%base_import(aerosol_optical)
 %import "absorber.i"
 %import "temperature.i"
 %import "rayleigh.i"
@@ -24,12 +24,12 @@ namespace FullPhysics {
 %template(ObserverAtmosphereOco) FullPhysics::Observer<AtmosphereOco>;
 
 class AtmosphereOco : public RtAtmosphere,
-    public Observer<Aerosol> {
+    public Observer<AerosolOptical> {
 public:
   AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 	     const boost::shared_ptr<Pressure>& pressurev,
 	     const boost::shared_ptr<Temperature>& temperaturev,
-	     const boost::shared_ptr<Aerosol>& aerosolv,
+	     const boost::shared_ptr<AerosolOptical>& aerosolv,
 	     const boost::shared_ptr<Ground>& groundv,
 	     const std::vector<boost::shared_ptr<Altitude> >& altv,
 	     const boost::shared_ptr<Constant>& C);
@@ -62,12 +62,12 @@ public:
   %python_attribute_derived(ground, boost::shared_ptr<Ground>)
   %python_attribute_derived(uplooking, bool)
   virtual void notify_update(const StateVector& Sv);
-  virtual void notify_update(const Aerosol& A);
+  virtual void notify_update(const AerosolOptical& A);
   virtual void reset_timer();
   %python_attribute_derived(timer_info, std::string)
   %python_attribute2(pressure, pressure_ptr, boost::shared_ptr<Pressure>)
   %python_attribute2(absorber, absorber_ptr, boost::shared_ptr<Absorber>)
-  %python_attribute2(aerosol, aerosol_ptr, boost::shared_ptr<Aerosol>)
+  %python_attribute2(aerosol, aerosol_ptr, boost::shared_ptr<AerosolOptical>)
   %python_attribute2(temperature, temperature_ptr, boost::shared_ptr<Temperature>)
   %python_attribute2(constant, constant_ptr, boost::shared_ptr<Constant>)
   %python_attribute2(rayleigh, rayleigh_ptr, boost::shared_ptr<Rayleigh>)

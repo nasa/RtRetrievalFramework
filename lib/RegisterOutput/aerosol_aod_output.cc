@@ -7,8 +7,8 @@ using namespace FullPhysics;
 #ifdef HAVE_LUA
 #include "register_lua.h"
 REGISTER_LUA_DERIVED_CLASS(AerosolAodOutput, RegisterOutputBase)
-.def(luabind::constructor<const boost::shared_ptr<Aerosol>&>())
-.def(luabind::constructor<const boost::shared_ptr<Aerosol>&, bool>())
+.def(luabind::constructor<const boost::shared_ptr<AerosolOptical>&>())
+.def(luabind::constructor<const boost::shared_ptr<AerosolOptical>&, bool>())
 REGISTER_LUA_END()
 #endif
 
@@ -26,7 +26,7 @@ void AerosolAodOutput::register_output(const boost::shared_ptr<Output>& out) con
   double minv = std::numeric_limits<double>::min();
   double maxv = std::numeric_limits<double>::max();
 
-  out->register_data_source("/Metadata/AerosolTypes", &Aerosol::aerosol_name_arr, a);
+  out->register_data_source("/Metadata/AerosolTypes", &AerosolOptical::aerosol_name_arr, a);
 
   typedef boost::function<double ()> func_type;
   std::vector<std::string> aerosol_names = a->aerosol_name();
@@ -40,41 +40,41 @@ void AerosolAodOutput::register_output(const boost::shared_ptr<Output>& out) con
     }
 
     func_type func_all = 
-      boost::bind(&Aerosol::aerosol_optical_depth, a, aer_idx, minv, maxv);
+      boost::bind(&AerosolOptical::aerosol_optical_depth, a, aer_idx, minv, maxv);
     out->register_data_source("/RetrievalResults/aerosol_" + aer_name + "_aod", func_all);
 
     func_type func_low = 
-      boost::bind(&Aerosol::aerosol_optical_depth, a, aer_idx, low_boundary, maxv);
+      boost::bind(&AerosolOptical::aerosol_optical_depth, a, aer_idx, low_boundary, maxv);
     out->register_data_source
       ("/RetrievalResults/aerosol_" + aer_name + "_aod_low", func_low);
 
     func_type func_mid = 
-      boost::bind(&Aerosol::aerosol_optical_depth, a, aer_idx, high_boundary, low_boundary);
+      boost::bind(&AerosolOptical::aerosol_optical_depth, a, aer_idx, high_boundary, low_boundary);
     out->register_data_source
       ("/RetrievalResults/aerosol_" + aer_name + "_aod_mid", func_mid);
 
     func_type func_high = 
-      boost::bind(&Aerosol::aerosol_optical_depth, a, aer_idx, minv, high_boundary);
+      boost::bind(&AerosolOptical::aerosol_optical_depth, a, aer_idx, minv, high_boundary);
     out->register_data_source
       ("/RetrievalResults/aerosol_" + aer_name + "_aod_high", func_high);
   }
 
   func_type func_tot_all = 
-    boost::bind(&Aerosol::aerosol_optical_depth_total, a, minv, maxv);
+    boost::bind(&AerosolOptical::aerosol_optical_depth_total, a, minv, maxv);
   out->register_data_source("/RetrievalResults/aerosol_total_aod", func_tot_all);
 
   func_type func_tot_low = 
-    boost::bind(&Aerosol::aerosol_optical_depth_total, a, low_boundary, maxv);
+    boost::bind(&AerosolOptical::aerosol_optical_depth_total, a, low_boundary, maxv);
   out->register_data_source
     ("/RetrievalResults/aerosol_total_aod_low", func_tot_low);
 
   func_type func_tot_mid = 
-    boost::bind(&Aerosol::aerosol_optical_depth_total, a, high_boundary, low_boundary);
+    boost::bind(&AerosolOptical::aerosol_optical_depth_total, a, high_boundary, low_boundary);
   out->register_data_source
     ("/RetrievalResults/aerosol_total_aod_mid", func_tot_mid);
 
   func_type func_tot_high = 
-    boost::bind(&Aerosol::aerosol_optical_depth_total, a, minv, high_boundary);
+    boost::bind(&AerosolOptical::aerosol_optical_depth_total, a, minv, high_boundary);
   out->register_data_source
     ("/RetrievalResults/aerosol_total_aod_high", func_tot_high);
 

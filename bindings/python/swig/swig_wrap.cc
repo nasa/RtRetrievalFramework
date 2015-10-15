@@ -154,7 +154,7 @@ extern "C" {
   void init_ground_coxmunk_plus_lambertian(void);
   void init_ground_brdf(void);
   void init_initial_guess_value(void);
-  void init_aerosol(void);
+  void init_aerosol_optical(void);
   void init_merra_aerosol(void);
   void init_rayleigh(void);
   void init_atmosphere_oco(void);
@@ -445,7 +445,7 @@ void init_swig_wrap(void)
   init_extension_module(package, "_ground_coxmunk_plus_lambertian", init_ground_coxmunk_plus_lambertian);
   init_extension_module(package, "_ground_brdf", init_ground_brdf);
   init_extension_module(package, "_initial_guess_value", init_initial_guess_value);
-  init_extension_module(package, "_aerosol", init_aerosol);
+  init_extension_module(package, "_aerosol_optical", init_aerosol_optical);
   init_extension_module(package, "_merra_aerosol", init_merra_aerosol);
   init_extension_module(package, "_rayleigh", init_rayleigh);
   init_extension_module(package, "_atmosphere_oco", init_atmosphere_oco);
