@@ -45,11 +45,11 @@ class InputContainerChooser(object):
 
 class Timer:    
     def __enter__(self):
-        self.start = time.time()
+        self.start = time.clock()
         return self
 
     def __exit__(self, *args):
-        self.end = time.time()
+        self.end = time.clock()
         self.interval = self.end - self.start
    
 class DatasetInformation(object):
