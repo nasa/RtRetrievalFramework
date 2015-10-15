@@ -407,32 +407,6 @@ def create_output_dataset(out_hdf_obj, dataset_info, splice_size=None, collapse_
 
     return out_dataset_obj
 
-def get_dataset_slice(acos_hdf_obj, in_dataset_obj, dataset_info, in_data_idx, out_shape):
-    """Copys dataset values from one dataset object to another, but only certain indexes along a
-    specific dimension of the data"""
-
-    # Determine how to extact data other than the splice dimension
-    in_dataset_indexes = dataset_info.input_data_indexes(in_dataset_obj, in_data_idx)
-
-    # Obtain selected data for copying into output dataset
-    try:
-        if len(in_dataset_indexes) == 1 and not isinstance(in_dataset_indexes[0], slice):
-            in_data = in_dataset_obj[:][numpy.array(in_dataset_indexes[0])]
-        else:
-            in_data = in_dataset_obj[:][tuple(in_dataset_indexes)]
-    except IOError as exc:
-        raise IOError("Can not read dataset %s from file %s: %s" % (dataset_info.inp_name, acos_hdf_obj.filename, exc))
-
-    # Set sliced data into output dataset
-    if numpy.product(in_data.shape) > numpy.product(out_shape):
-        logger.warning("Dataset %s requires destructive resizing" % (dataset_info.out_name))
-        logger.debug("At indexes %s resizing source data of shape %s to %s." % (in_data_idx, in_data.shape, out_shape)) 
-        stored_data = numpy.resize(in_data, out_shape)
-    else:
-        stored_data = in_data.reshape(out_shape)
-
-    return stored_data
-
 def create_dest_file_datasets(out_hdf_obj, source_info, copy_all=False, multi_source_types=False):
 
     # Loop over dataset names/shapes
@@ -501,6 +475,31 @@ def output_indexes_shape(in_dataset_obj, dataset_info, out_data_idx, collapse_id
 
     return out_dataset_idx, out_shape
 
+def get_dataset_slice(acos_hdf_obj, in_dataset_obj, dataset_info, in_data_idx, out_shape):
+    """Copys dataset values from one dataset object to another, but only certain indexes along a
+    specific dimension of the data"""
+
+    # Determine how to extact data other than the splice dimension
+    in_dataset_indexes = dataset_info.input_data_indexes(in_dataset_obj, in_data_idx)
+
+    # Obtain selected data for copying into output dataset
+    try:
+        if len(in_dataset_indexes) == 1 and not isinstance(in_dataset_indexes[0], slice):
+            in_data = in_dataset_obj[:][numpy.array(in_dataset_indexes[0])]
+        else:
+            in_data = in_dataset_obj[:][tuple(in_dataset_indexes)]
+    except IOError as exc:
+        raise IOError("Can not read dataset %s from file %s: %s" % (dataset_info.inp_name, acos_hdf_obj.filename, exc))
+
+    # Set sliced data into output dataset
+    if numpy.product(in_data.shape) > numpy.product(out_shape):
+        logger.warning("Dataset %s requires destructive resizing" % (dataset_info.out_name))
+        logger.debug("At indexes %s resizing source data of shape %s to %s." % (in_data_idx, in_data.shape, out_shape)) 
+        stored_data = numpy.resize(in_data, out_shape)
+    else:
+        stored_data = in_data.reshape(out_shape)
+
+    return stored_data
 def get_datasets_for_file(curr_file, curr_snd_indexes, inp_datasets_info, output_index, multi_source_types=False):
     # Ignore current file if no soundings
     if len(curr_snd_indexes) == 0:
