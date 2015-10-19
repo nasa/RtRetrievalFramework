@@ -108,7 +108,7 @@ void AerosolOptical::fill_cache() const
       /// We scale the extinction coefficient return by aprop at the 
       /// reference wave number, so that aext of 1 means the extinction
       /// coefficient for a particle is 1.
-      od_ind_wn(i, j) = 1.0 / aprop[j]->extinction_coefficient(reference_wn_) *
+      od_ind_wn(i, j) = 1.0 / aprop[j]->extinction_coefficient_each_layer(reference_wn_)(0) *
         dp * aext[j]->extinction_for_layer(i);
     }
   }
@@ -142,7 +142,7 @@ AerosolOptical::optical_depth_each_layer(double wn) const
   fill_cache();
   ArrayAd<double, 2> res(od_ind_wn.copy());
   for(int i = 0; i < number_particle(); ++i) {
-    AutoDerivative<double> t = aprop[i]->extinction_coefficient(wn);
+    AutoDerivative<double> t = aprop[i]->extinction_coefficient_each_layer(wn)(0);
     if(res.is_constant() && !t.is_constant())
       res.resize_number_variable(t.number_variable());
     Array<double, 1> v(res.value()(ra, i));
@@ -182,8 +182,8 @@ ArrayAd<double, 1> AerosolOptical::ssa_each_layer
   FunctionTimer ft(timer.function_timer());
   ArrayAd<double, 1> res(Od.copy());
   AutoDerivative<double> t = 
-    aprop[particle_index]->scattering_coefficient(wn) / 
-    aprop[particle_index]->extinction_coefficient(wn);
+    aprop[particle_index]->scattering_coefficient_each_layer(wn)(0) / 
+    aprop[particle_index]->extinction_coefficient_each_layer(wn)(0);
   if(res.is_constant() && !t.is_constant())
     res.resize_number_variable(t.number_variable());
   Array<double, 1> v(res.value());
@@ -232,9 +232,10 @@ AerosolOptical::ssa_each_layer(double wn) const
 
 ArrayAd<double, 2> AerosolOptical::pf_mom(double wn, int pindex) const
 {
+  Range ra(Range::all());
   FunctionTimer ft(timer.function_timer());
   range_check(pindex, 0, number_particle());
-  return aprop[pindex]->phase_function_moment(wn);
+  return aprop[pindex]->phase_function_moment_each_layer(wn)(0, ra, ra);
 }
 
 //-----------------------------------------------------------------------
@@ -301,7 +302,7 @@ ArrayAd<double, 3> AerosolOptical::pf_mom(double wn,
   int s2 = 0;
   int nvar = frac_aer.number_variable();
   for(int j = 0; j < frac_aer.cols(); ++j) {
-    pf.push_back(aprop[j]->phase_function_moment(wn, nummom, numscat));
+    pf.push_back(aprop[j]->phase_function_moment_each_layer(wn, nummom, numscat)(0, ra, ra));
     s1 = std::max(s1, pf[j].rows());
     s2 = std::max(s2, pf[j].cols());
     nvar = std::max(nvar, pf[j].number_variable());

@@ -3451,7 +3451,7 @@ namespace Swig {
 
 #define SWIGTYPE_p_FullPhysics__AerosolProperty swig_types[0]
 #define SWIGTYPE_p_FullPhysics__AerosolPropertyHdf swig_types[1]
-#define SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t swig_types[2]
+#define SWIGTYPE_p_FullPhysics__ArrayAdT_double_3_t swig_types[2]
 #define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_1_t swig_types[3]
 #define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_2_t swig_types[4]
 #define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_3_t swig_types[5]
@@ -3497,26 +3497,27 @@ namespace Swig {
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[45]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[46]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[47]
-#define SWIGTYPE_p_char swig_types[48]
-#define SWIGTYPE_p_char_type swig_types[49]
-#define SWIGTYPE_p_difference_type swig_types[50]
-#define SWIGTYPE_p_fmtflags swig_types[51]
-#define SWIGTYPE_p_int_type swig_types[52]
-#define SWIGTYPE_p_iostate swig_types[53]
-#define SWIGTYPE_p_off_type swig_types[54]
-#define SWIGTYPE_p_openmode swig_types[55]
-#define SWIGTYPE_p_pos_type swig_types[56]
-#define SWIGTYPE_p_seekdir swig_types[57]
-#define SWIGTYPE_p_size_t swig_types[58]
-#define SWIGTYPE_p_size_type swig_types[59]
-#define SWIGTYPE_p_state_type swig_types[60]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[61]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[62]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[63]
-#define SWIGTYPE_p_traits_type swig_types[64]
-#define SWIGTYPE_p_value_type swig_types[65]
-static swig_type_info *swig_types[67];
-static swig_module_info swig_module = {swig_types, 66, 0, 0, 0, 0};
+#define SWIGTYPE_p_boost__shared_ptrT_Pressure_t swig_types[48]
+#define SWIGTYPE_p_char swig_types[49]
+#define SWIGTYPE_p_char_type swig_types[50]
+#define SWIGTYPE_p_difference_type swig_types[51]
+#define SWIGTYPE_p_fmtflags swig_types[52]
+#define SWIGTYPE_p_int_type swig_types[53]
+#define SWIGTYPE_p_iostate swig_types[54]
+#define SWIGTYPE_p_off_type swig_types[55]
+#define SWIGTYPE_p_openmode swig_types[56]
+#define SWIGTYPE_p_pos_type swig_types[57]
+#define SWIGTYPE_p_seekdir swig_types[58]
+#define SWIGTYPE_p_size_t swig_types[59]
+#define SWIGTYPE_p_size_type swig_types[60]
+#define SWIGTYPE_p_state_type swig_types[61]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[62]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[63]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[64]
+#define SWIGTYPE_p_traits_type swig_types[65]
+#define SWIGTYPE_p_value_type swig_types[66]
+static swig_type_info *swig_types[68];
+static swig_module_info swig_module = {swig_types, 67, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4922,6 +4923,139 @@ template<class T, int D> inline blitz::Array<T, D>
 #include "aerosol_property_hdf.h"
 
 
+SWIGINTERN swig_type_info*
+SWIG_pchar_descriptor(void)
+{
+  static int init = 0;
+  static swig_type_info* info = 0;
+  if (!init) {
+    info = SWIG_TypeQuery("_p_char");
+    init = 1;
+  }
+  return info;
+}
+
+
+SWIGINTERN int
+SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
+{
+#if PY_VERSION_HEX>=0x03000000
+  if (PyUnicode_Check(obj))
+#else  
+  if (PyString_Check(obj))
+#endif
+  {
+    char *cstr; Py_ssize_t len;
+#if PY_VERSION_HEX>=0x03000000
+    if (!alloc && cptr) {
+        /* We can't allow converting without allocation, since the internal
+           representation of string in Python 3 is UCS-2/UCS-4 but we require
+           a UTF-8 representation.
+           TODO(bhy) More detailed explanation */
+        return SWIG_RuntimeError;
+    }
+    obj = PyUnicode_AsUTF8String(obj);
+    PyBytes_AsStringAndSize(obj, &cstr, &len);
+    if(alloc) *alloc = SWIG_NEWOBJ;
+#else
+    PyString_AsStringAndSize(obj, &cstr, &len);
+#endif
+    if (cptr) {
+      if (alloc) {
+	/* 
+	   In python the user should not be able to modify the inner
+	   string representation. To warranty that, if you define
+	   SWIG_PYTHON_SAFE_CSTRINGS, a new/copy of the python string
+	   buffer is always returned.
+
+	   The default behavior is just to return the pointer value,
+	   so, be careful.
+	*/ 
+#if defined(SWIG_PYTHON_SAFE_CSTRINGS)
+	if (*alloc != SWIG_OLDOBJ) 
+#else
+	if (*alloc == SWIG_NEWOBJ) 
+#endif
+	  {
+	    *cptr = reinterpret_cast< char* >(memcpy((new char[len + 1]), cstr, sizeof(char)*(len + 1)));
+	    *alloc = SWIG_NEWOBJ;
+	  }
+	else {
+	  *cptr = cstr;
+	  *alloc = SWIG_OLDOBJ;
+	}
+      } else {
+        #if PY_VERSION_HEX>=0x03000000
+        assert(0); /* Should never reach here in Python 3 */
+        #endif
+	*cptr = SWIG_Python_str_AsChar(obj);
+      }
+    }
+    if (psize) *psize = len + 1;
+#if PY_VERSION_HEX>=0x03000000
+    Py_XDECREF(obj);
+#endif
+    return SWIG_OK;
+  } else {
+    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+    if (pchar_descriptor) {
+      void* vptr = 0;
+      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
+	if (cptr) *cptr = (char *) vptr;
+	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
+	if (alloc) *alloc = SWIG_OLDOBJ;
+	return SWIG_OK;
+      }
+    }
+  }
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsPtr_std_string (PyObject * obj, std::string **val) 
+{
+  char* buf = 0 ; size_t size = 0; int alloc = SWIG_OLDOBJ;
+  if (SWIG_IsOK((SWIG_AsCharPtrAndSize(obj, &buf, &size, &alloc)))) {
+    if (buf) {
+      if (val) *val = new std::string(buf, size - 1);
+      if (alloc == SWIG_NEWOBJ) delete[] buf;
+      return SWIG_NEWOBJ;
+    } else {
+      if (val) *val = 0;
+      return SWIG_OLDOBJ;
+    }
+  } else {
+    static int init = 0;
+    static swig_type_info* descriptor = 0;
+    if (!init) {
+      descriptor = SWIG_TypeQuery("std::string" " *");
+      init = 1;
+    }
+    if (descriptor) {
+      std::string *vptr;
+      int res = SWIG_ConvertPtr(obj, (void**)&vptr, descriptor, 0);
+      if (SWIG_IsOK(res) && val) *val = vptr;
+      return res;
+    }
+  }
+  return SWIG_ERROR;
+}
+
+
+struct SWIG_null_deleter {
+  void operator() (void const *) const {
+  }
+};
+#define SWIG_NO_NULL_DELETER_0 , SWIG_null_deleter()
+#define SWIG_NO_NULL_DELETER_1
+#define SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW
+#define SWIG_NO_NULL_DELETER_SWIG_POINTER_OWN
+
+
+#define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
+
+
 SWIGINTERN int
 SWIG_AsVal_double (PyObject *obj, double *val)
 {
@@ -5077,7 +5211,195 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_AerosolPropertyHdf(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::HdfFile *arg1 = 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::HdfFile const > tempshared1 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  FullPhysics::AerosolPropertyHdf *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"new_AerosolPropertyHdf",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::HdfFile *ptr;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], (void**)(&ptr), SWIGTYPE_p_FullPhysics__HdfFile,  0 , &newmem);
+    if (SWIG_IsOK(res1)) {
+      arg1 = ptr;
+    } else {
+      res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfFile_t,  0 , &newmem);
+      if (!SWIG_IsOK(res1)) {
+        SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_AerosolPropertyHdf" "', argument " "1"" of type '" "FullPhysics::HdfFile const &""'"); 
+      }
+      if (!argp1) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_AerosolPropertyHdf" "', argument " "1"" of type '" "FullPhysics::HdfFile const &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp1);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp1);
+        arg1 = const_cast< FullPhysics::HdfFile * >(tempshared1.get());
+      } else {
+        arg1 = const_cast< FullPhysics::HdfFile * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp1)->get());
+      }
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_AerosolPropertyHdf" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_AerosolPropertyHdf" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      result = (FullPhysics::AerosolPropertyHdf *)new FullPhysics::AerosolPropertyHdf((FullPhysics::HdfFile const &)*arg1,(std::string const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::AerosolPropertyHdf > *smartresult = result ? new boost::shared_ptr<  FullPhysics::AerosolPropertyHdf >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolPropertyHdf_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_clone__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::AerosolPropertyHdf *arg1 = (FullPhysics::AerosolPropertyHdf *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolPropertyHdf const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolPropertyHdf const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolProperty > result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolPropertyHdf_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolPropertyHdf_clone" "', argument " "1"" of type '" "FullPhysics::AerosolPropertyHdf const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolPropertyHdf > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolPropertyHdf > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolPropertyHdf * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolPropertyHdf > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolPropertyHdf * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::AerosolPropertyHdf const *)arg1)->clone();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_clone__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::AerosolPropertyHdf *arg1 = (FullPhysics::AerosolPropertyHdf *) 0 ;
+  boost::shared_ptr< Pressure > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolPropertyHdf const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AerosolPropertyHdf const > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::AerosolProperty > result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolPropertyHdf_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolPropertyHdf_clone" "', argument " "1"" of type '" "FullPhysics::AerosolPropertyHdf const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolPropertyHdf > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolPropertyHdf > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolPropertyHdf * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolPropertyHdf > * >(argp1);
+      arg1 = const_cast< FullPhysics::AerosolPropertyHdf * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_Pressure_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AerosolPropertyHdf_clone" "', argument " "2"" of type '" "boost::shared_ptr< Pressure > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AerosolPropertyHdf_clone" "', argument " "2"" of type '" "boost::shared_ptr< Pressure > const &""'"); 
+  }
+  arg2 = reinterpret_cast< boost::shared_ptr< Pressure > * >(argp2);
+  {
+    try {
+      result = ((FullPhysics::AerosolPropertyHdf const *)arg1)->clone((boost::shared_ptr< Pressure > const &)*arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_clone(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"AerosolPropertyHdf_clone",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_AerosolPropertyHdf_clone__SWIG_0(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_AerosolPropertyHdf_clone__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AerosolPropertyHdf_clone'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::AerosolPropertyHdf::clone() const\n"
+    "    FullPhysics::AerosolPropertyHdf::clone(boost::shared_ptr< Pressure > const &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment_each_layer__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::AerosolPropertyHdf *arg1 = (FullPhysics::AerosolPropertyHdf *) 0 ;
   double arg2 ;
@@ -5093,14 +5415,14 @@ SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_0(PyOb
   int ecode3 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
-  SwigValueWrapper< FullPhysics::ArrayAd< double,2 > > result;
+  SwigValueWrapper< FullPhysics::ArrayAd< double,3 > > result;
   
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolPropertyHdf_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolPropertyHdf_phase_function_moment" "', argument " "1"" of type '" "FullPhysics::AerosolPropertyHdf const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolPropertyHdf_phase_function_moment_each_layer" "', argument " "1"" of type '" "FullPhysics::AerosolPropertyHdf const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolPropertyHdf > * >(argp1);
@@ -5113,36 +5435,36 @@ SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_0(PyOb
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolPropertyHdf_phase_function_moment" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolPropertyHdf_phase_function_moment_each_layer" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "AerosolPropertyHdf_phase_function_moment" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "AerosolPropertyHdf_phase_function_moment_each_layer" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
   ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "AerosolPropertyHdf_phase_function_moment" "', argument " "4"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "AerosolPropertyHdf_phase_function_moment_each_layer" "', argument " "4"" of type '" "int""'");
   } 
   arg4 = static_cast< int >(val4);
   {
     try {
-      result = ((FullPhysics::AerosolPropertyHdf const *)arg1)->phase_function_moment(arg2,arg3,arg4);
+      result = ((FullPhysics::AerosolPropertyHdf const *)arg1)->phase_function_moment_each_layer(arg2,arg3,arg4);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,2 >(static_cast< const FullPhysics::ArrayAd< double,2 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,3 >(static_cast< const FullPhysics::ArrayAd< double,3 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_3_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment_each_layer__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::AerosolPropertyHdf *arg1 = (FullPhysics::AerosolPropertyHdf *) 0 ;
   double arg2 ;
@@ -5155,14 +5477,14 @@ SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_1(PyOb
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
-  SwigValueWrapper< FullPhysics::ArrayAd< double,2 > > result;
+  SwigValueWrapper< FullPhysics::ArrayAd< double,3 > > result;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolPropertyHdf_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolPropertyHdf_phase_function_moment" "', argument " "1"" of type '" "FullPhysics::AerosolPropertyHdf const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolPropertyHdf_phase_function_moment_each_layer" "', argument " "1"" of type '" "FullPhysics::AerosolPropertyHdf const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolPropertyHdf > * >(argp1);
@@ -5175,31 +5497,31 @@ SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_1(PyOb
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolPropertyHdf_phase_function_moment" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolPropertyHdf_phase_function_moment_each_layer" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "AerosolPropertyHdf_phase_function_moment" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "AerosolPropertyHdf_phase_function_moment_each_layer" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
   {
     try {
-      result = ((FullPhysics::AerosolPropertyHdf const *)arg1)->phase_function_moment(arg2,arg3);
+      result = ((FullPhysics::AerosolPropertyHdf const *)arg1)->phase_function_moment_each_layer(arg2,arg3);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,2 >(static_cast< const FullPhysics::ArrayAd< double,2 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,3 >(static_cast< const FullPhysics::ArrayAd< double,3 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_3_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment_each_layer__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::AerosolPropertyHdf *arg1 = (FullPhysics::AerosolPropertyHdf *) 0 ;
   double arg2 ;
@@ -5209,14 +5531,14 @@ SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_2(PyOb
   boost::shared_ptr< FullPhysics::AerosolPropertyHdf const > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  SwigValueWrapper< FullPhysics::ArrayAd< double,2 > > result;
+  SwigValueWrapper< FullPhysics::ArrayAd< double,3 > > result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolPropertyHdf_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolPropertyHdf_phase_function_moment" "', argument " "1"" of type '" "FullPhysics::AerosolPropertyHdf const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AerosolPropertyHdf_phase_function_moment_each_layer" "', argument " "1"" of type '" "FullPhysics::AerosolPropertyHdf const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AerosolPropertyHdf > * >(argp1);
@@ -5229,47 +5551,47 @@ SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment__SWIG_2(PyOb
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolPropertyHdf_phase_function_moment" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AerosolPropertyHdf_phase_function_moment_each_layer" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   {
     try {
-      result = ((FullPhysics::AerosolPropertyHdf const *)arg1)->phase_function_moment(arg2);
+      result = ((FullPhysics::AerosolPropertyHdf const *)arg1)->phase_function_moment_each_layer(arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }
   }
-  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,2 >(static_cast< const FullPhysics::ArrayAd< double,2 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,3 >(static_cast< const FullPhysics::ArrayAd< double,3 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_3_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_AerosolPropertyHdf_phase_function_moment_each_layer(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[5];
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"AerosolPropertyHdf_phase_function_moment",0,4,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"AerosolPropertyHdf_phase_function_moment_each_layer",0,4,argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
-    return _wrap_AerosolPropertyHdf_phase_function_moment__SWIG_2(self, argc, argv);
+    return _wrap_AerosolPropertyHdf_phase_function_moment_each_layer__SWIG_2(self, argc, argv);
   }
   if (argc == 3) {
-    return _wrap_AerosolPropertyHdf_phase_function_moment__SWIG_1(self, argc, argv);
+    return _wrap_AerosolPropertyHdf_phase_function_moment_each_layer__SWIG_1(self, argc, argv);
   }
   if (argc == 4) {
-    return _wrap_AerosolPropertyHdf_phase_function_moment__SWIG_0(self, argc, argv);
+    return _wrap_AerosolPropertyHdf_phase_function_moment_each_layer__SWIG_0(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AerosolPropertyHdf_phase_function_moment'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AerosolPropertyHdf_phase_function_moment_each_layer'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::AerosolPropertyHdf::phase_function_moment(double,int,int) const\n"
-    "    FullPhysics::AerosolPropertyHdf::phase_function_moment(double,int) const\n"
-    "    FullPhysics::AerosolPropertyHdf::phase_function_moment(double) const\n");
+    "    FullPhysics::AerosolPropertyHdf::phase_function_moment_each_layer(double,int,int) const\n"
+    "    FullPhysics::AerosolPropertyHdf::phase_function_moment_each_layer(double,int) const\n"
+    "    FullPhysics::AerosolPropertyHdf::phase_function_moment_each_layer(double) const\n");
   return 0;
 }
 
@@ -5323,10 +5645,23 @@ SWIGINTERN PyObject *AerosolPropertyHdf_swigregister(PyObject *SWIGUNUSEDPARM(se
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *AerosolPropertyHdf_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"AerosolPropertyHdf_phase_function_moment", _wrap_AerosolPropertyHdf_phase_function_moment, METH_VARARGS, (char *)"\n"
-		"virtual ArrayAd<double, 2> FullPhysics::AerosolPropertyHdf::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const\n"
+	 { (char *)"new_AerosolPropertyHdf", _wrap_new_AerosolPropertyHdf, METH_VARARGS, (char *)"\n"
+		"AerosolPropertyHdf::AerosolPropertyHdf(const HdfFile &F, const std::string &Group_name, const\n"
+		"boost::shared_ptr< Pressure > &Press)\n"
+		"Read the given group in the given file for the aerosol properties. \n"
+		""},
+	 { (char *)"AerosolPropertyHdf_clone", _wrap_AerosolPropertyHdf_clone, METH_VARARGS, (char *)"\n"
+		"boost::shared_ptr< AerosolProperty > AerosolPropertyHdf::clone(const boost::shared_ptr< Pressure > &Press) const\n"
+		"\n"
+		""},
+	 { (char *)"AerosolPropertyHdf_phase_function_moment_each_layer", _wrap_AerosolPropertyHdf_phase_function_moment_each_layer, METH_VARARGS, (char *)"\n"
+		"ArrayAd< double, 3 > AerosolPropertyHdf::phase_function_moment_each_layer(double wn, int nmom=-1, int nscatt=-1) const\n"
 		"\n"
 		""},
 	 { (char *)"delete_AerosolPropertyHdf", (PyCFunction)_wrap_delete_AerosolPropertyHdf, METH_O, (char *)"\n"
@@ -5334,6 +5669,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		""},
 	 { (char *)"AerosolPropertyHdf_swigregister", AerosolPropertyHdf_swigregister, METH_VARARGS, NULL},
+	 { (char *)"AerosolPropertyHdf_swiginit", AerosolPropertyHdf_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5516,7 +5852,7 @@ static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolPr
 }
 static swig_type_info _swigt__p_FullPhysics__AerosolProperty = {"_p_FullPhysics__AerosolProperty", "FullPhysics::AerosolProperty *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AerosolPropertyHdf = {"_p_FullPhysics__AerosolPropertyHdf", "FullPhysics::AerosolPropertyHdf *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_2_t = {"_p_FullPhysics__ArrayAdT_double_2_t", "FullPhysics::ArrayAd< double,2 > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_3_t = {"_p_FullPhysics__ArrayAdT_double_3_t", "FullPhysics::ArrayAd< double,3 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_1_t = {"_p_FullPhysics__ArrayWithUnitT_double_1_t", "FullPhysics::ArrayWithUnit< double,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_2_t = {"_p_FullPhysics__ArrayWithUnitT_double_2_t", "FullPhysics::ArrayWithUnit< double,2 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_3_t = {"_p_FullPhysics__ArrayWithUnitT_double_3_t", "FullPhysics::ArrayWithUnit< double,3 > *", 0, 0, (void*)0, 0};
@@ -5562,6 +5898,7 @@ static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObser
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t = {"_p_boost__shared_ptrT_FullPhysics__StateVector_t", "boost::shared_ptr< FullPhysics::StateVector > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t = {"_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t", "boost::shared_ptr< FullPhysics::SubStateVectorObserver > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Unit_t = {"_p_boost__shared_ptrT_FullPhysics__Unit_t", "boost::shared_ptr< FullPhysics::Unit > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_Pressure_t = {"_p_boost__shared_ptrT_Pressure_t", "boost::shared_ptr< Pressure > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char_type = {"_p_char_type", "char_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
@@ -5584,7 +5921,7 @@ static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__AerosolProperty,
   &_swigt__p_FullPhysics__AerosolPropertyHdf,
-  &_swigt__p_FullPhysics__ArrayAdT_double_2_t,
+  &_swigt__p_FullPhysics__ArrayAdT_double_3_t,
   &_swigt__p_FullPhysics__ArrayWithUnitT_double_1_t,
   &_swigt__p_FullPhysics__ArrayWithUnitT_double_2_t,
   &_swigt__p_FullPhysics__ArrayWithUnitT_double_3_t,
@@ -5630,6 +5967,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t,
+  &_swigt__p_boost__shared_ptrT_Pressure_t,
   &_swigt__p_char,
   &_swigt__p_char_type,
   &_swigt__p_difference_type,
@@ -5652,7 +5990,7 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_FullPhysics__AerosolProperty[] = {  {&_swigt__p_FullPhysics__AerosolProperty, 0, 0, 0},  {&_swigt__p_FullPhysics__AerosolPropertyHdf, _p_FullPhysics__AerosolPropertyHdfTo_p_FullPhysics__AerosolProperty, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AerosolPropertyHdf[] = {  {&_swigt__p_FullPhysics__AerosolPropertyHdf, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ArrayAdT_double_2_t[] = {  {&_swigt__p_FullPhysics__ArrayAdT_double_2_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ArrayAdT_double_3_t[] = {  {&_swigt__p_FullPhysics__ArrayAdT_double_3_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ArrayWithUnitT_double_1_t[] = {  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_1_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ArrayWithUnitT_double_2_t[] = {  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ArrayWithUnitT_double_3_t[] = {  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_3_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5698,6 +6036,7 @@ static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVectorObser
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVector_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_Pressure_t[] = {  {&_swigt__p_boost__shared_ptrT_Pressure_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char_type[] = {  {&_swigt__p_char_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -5720,7 +6059,7 @@ static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__AerosolProperty,
   _swigc__p_FullPhysics__AerosolPropertyHdf,
-  _swigc__p_FullPhysics__ArrayAdT_double_2_t,
+  _swigc__p_FullPhysics__ArrayAdT_double_3_t,
   _swigc__p_FullPhysics__ArrayWithUnitT_double_1_t,
   _swigc__p_FullPhysics__ArrayWithUnitT_double_2_t,
   _swigc__p_FullPhysics__ArrayWithUnitT_double_3_t,
@@ -5766,6 +6105,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__StateVector_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t,
+  _swigc__p_boost__shared_ptrT_Pressure_t,
   _swigc__p_char,
   _swigc__p_char_type,
   _swigc__p_difference_type,

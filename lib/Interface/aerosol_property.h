@@ -1,6 +1,7 @@
 #ifndef AEROSOL_PROPERTY_H
 #define AEROSOL_PROPERTY_H
 #include "state_vector.h"
+#include "pressure.h"
 #include <blitz/array.h>
 
 namespace FullPhysics {
@@ -42,21 +43,34 @@ public:
   virtual boost::shared_ptr<AerosolProperty> clone() const = 0;
 
 //-----------------------------------------------------------------------
-/// Return extinction coefficient for the given wave number.
+/// This version of clone takes a pressure to use. The intent is that
+/// the pressure has been cloned from the original pressure (although
+/// this class has no way to verify this). This allows sets of objects
+/// to be cloned using a common Pressure clone, e.g. Atmosphere.
+//-----------------------------------------------------------------------
+
+  virtual boost::shared_ptr<AerosolProperty> 
+  clone(const boost::shared_ptr<Pressure>& Press) const = 0;
+
+//-----------------------------------------------------------------------
+/// Return extinction coefficient for the given wave number, for each
+/// layer. 
 /// \param wn - Wavenumber
 //-----------------------------------------------------------------------
 
-  virtual AutoDerivative<double> extinction_coefficient(double wn) const = 0;
+  virtual ArrayAd<double, 1> extinction_coefficient_each_layer(double wn) 
+    const = 0;
 
 //-----------------------------------------------------------------------
-/// Return scattering coefficient for the given wave number.
+/// Return scattering coefficient for the given wave number for each layer.
 /// \param wn - Wavenumber
 //-----------------------------------------------------------------------
 
-  virtual AutoDerivative<double> scattering_coefficient(double wn) const = 0;
+  virtual ArrayAd<double, 1> scattering_coefficient_each_layer(double wn)
+    const = 0;
 
 //-----------------------------------------------------------------------
-/// Return phase function moments for the given wave number.
+/// Return phase function moments for the given wave number for each layer.
 ///
 /// Note that we use the de Rooij convention for the scattering matrix
 /// moments. 
@@ -66,12 +80,13 @@ public:
 ///     moments.
 /// \param nscatt Optional number of scattering elements to
 ///     return. Default is all of them.
-/// \return Phase function moment. This is nmom + 1 x number
+/// \return Phase function moment. This is nlayer x nmom + 1 x number
 /// scattering elements. 
 //-----------------------------------------------------------------------
 
-  virtual ArrayAd<double, 2> 
-  phase_function_moment(double wn, int nmom = -1, int nscatt = -1) const = 0;
+  virtual ArrayAd<double, 3> 
+  phase_function_moment_each_layer(double wn, int nmom = -1, 
+				   int nscatt = -1) const = 0;
 };
 }
 #endif

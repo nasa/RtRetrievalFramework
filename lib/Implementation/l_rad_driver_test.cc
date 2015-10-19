@@ -1,5 +1,6 @@
 #include "unit_test_support.h"
 #include "l_rad_driver.h"
+#include "pressure_sigma.h"
 #include "configuration_fixture.h"
 
 #include "aerosol_property_hdf.h"
@@ -116,15 +117,19 @@ BOOST_AUTO_TEST_CASE(lambertian_first_order)
 
     // Load aerosol properties from common aerosol input file
     HdfFile aerosol_prop_inp = HdfFile(input_dir() + "common/input/l2_aerosol_combined.h5", HdfFile::READ);
+    Array<double, 1> a1(3), b(3);
+    a1 = 0; b = 0.3, 0.6, 1.0;
+    double psurf = 10;
+    boost::shared_ptr<Pressure> p(new PressureSigma(a1,b, psurf, true));
     std::vector< boost::shared_ptr<AerosolProperty> > aer_properties;
     std::vector<Array<double, 2> > aer_pf;
     int s1 = 0;
     int s2 = 0;
     for(int aer_idx = 0; aer_idx < (int) aerosol_types.size(); aer_idx++) {
-        aer_properties.push_back(boost::shared_ptr<AerosolProperty>(new AerosolPropertyHdf(aerosol_prop_inp, aerosol_types[aer_idx] + "/Properties")));
-        aer_pf.push_back(aer_properties[aer_idx]->phase_function_moment(wn).value());
-        s1 = std::max(s1, aer_pf[aer_idx].rows());
-        s2 = std::max(s2, aer_pf[aer_idx].cols());
+      aer_properties.push_back(boost::shared_ptr<AerosolProperty>(new AerosolPropertyHdf(aerosol_prop_inp, aerosol_types[aer_idx] + "/Properties", p)));
+      aer_pf.push_back(aer_properties[aer_idx]->phase_function_moment_each_layer(wn).value()(0, ra, ra));
+      s1 = std::max(s1, aer_pf[aer_idx].rows());
+      s2 = std::max(s2, aer_pf[aer_idx].cols());
     }
 
     // Phase function is sized according to the maximum number of moments and scattering coefficents for each aerosol type

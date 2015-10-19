@@ -6,7 +6,8 @@ using namespace blitz;
 #ifdef HAVE_LUA
 #include "register_lua.h"
 REGISTER_LUA_DERIVED_CLASS(AerosolPropertyHdf, AerosolProperty)
-.def(luabind::constructor<const HdfFile&, const std::string&>())
+.def(luabind::constructor<const HdfFile&, const std::string&, 
+     const boost::shared_ptr<Pressure>&>())
 REGISTER_LUA_END()
 #endif
 
@@ -14,10 +15,14 @@ REGISTER_LUA_END()
 /// Read the given group in the given file for the aerosol properties.
 //-----------------------------------------------------------------------
 
-AerosolPropertyHdf::AerosolPropertyHdf(const HdfFile& F, 
-				       const std::string& Group_name)
+AerosolPropertyHdf::AerosolPropertyHdf
+(const HdfFile& F, 
+ const std::string& Group_name,
+ const boost::shared_ptr<Pressure>& Press
+)
 : hdf_file(F.file_name()), hdf_group(Group_name)
 {
+  press = Press;
   Array<double, 1> wn(F.read_field<double, 1>(Group_name + "/wave_number"));
   Array<double, 1> 
     qscatv(F.read_field<double, 1>(Group_name + "/scattering_coefficient"));
@@ -38,8 +43,52 @@ AerosolPropertyHdf::AerosolPropertyHdf(const HdfFile& F,
 
 boost::shared_ptr<AerosolProperty> AerosolPropertyHdf::clone() const
 {
+  return clone(press->clone());
+}
+
+boost::shared_ptr<AerosolProperty> AerosolPropertyHdf::clone
+(const boost::shared_ptr<Pressure>& Press) const
+{
   HdfFile f(hdf_file);
-  return boost::shared_ptr<AerosolProperty>(new AerosolPropertyHdf(f, hdf_group));
+  return boost::shared_ptr<AerosolProperty>
+    (new AerosolPropertyHdf(f, hdf_group, Press));
+}
+
+ArrayAd<double, 1> AerosolPropertyHdf::extinction_coefficient_each_layer
+(double wn) const
+{
+  firstIndex i1; secondIndex i2;
+  AutoDerivative<double> t = (*qext)(wn);
+  ArrayAd<double, 1> res(press->number_layer(), t.number_variable());
+  res.value() = t.value();
+  if(t.number_variable() > 0)
+    res.jacobian() = t.gradient()(i2);
+  return res;
+}
+
+ArrayAd<double, 1> AerosolPropertyHdf::scattering_coefficient_each_layer
+(double wn) const
+{
+  firstIndex i1; secondIndex i2;
+  AutoDerivative<double> t = (*qscat)(wn);
+  ArrayAd<double, 1> res(press->number_layer(), t.number_variable());
+  res.value() = t.value();
+  if(t.number_variable() > 0)
+    res.jacobian() = t.gradient()(i2);
+  return res;
+}
+
+ArrayAd<double, 3> AerosolPropertyHdf::phase_function_moment_each_layer
+(double wn, int nmom, int nscatt) const
+{ 
+  firstIndex i1; secondIndex i2; thirdIndex i3; fourthIndex i4;
+  ArrayAd<double, 2> t = (*pf)(wn, nmom, nscatt);
+  ArrayAd<double, 3> res(press->number_layer(), t.rows(),
+			 t.cols(), t.number_variable());
+  res.value() = t.value()(i2, i3);
+  if(t.number_variable() > 0)
+    res.jacobian() = t.jacobian()(i2, i3, i4);
+  return res; 
 }
 
 void AerosolPropertyHdf::print(std::ostream& Os) const 

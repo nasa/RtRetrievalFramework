@@ -160,33 +160,33 @@ class AerosolPropertyImpBase(SubStateVectorArrayAerosolProperty):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     __swig_destroy__ = _aerosol_property_imp_base.delete_AerosolPropertyImpBase
-    def clone(self):
+    def clone(self, *args):
         """
-        virtual boost::shared_ptr<AerosolProperty> FullPhysics::AerosolPropertyImpBase::clone() const =0
+        virtual boost::shared_ptr<AerosolProperty> FullPhysics::AerosolPropertyImpBase::clone(const boost::shared_ptr< Pressure > &Press) const =0
 
         """
-        return _aerosol_property_imp_base.AerosolPropertyImpBase_clone(self)
+        return _aerosol_property_imp_base.AerosolPropertyImpBase_clone(self, *args)
 
-    def extinction_coefficient(self, *args):
+    def extinction_coefficient_each_layer(self, *args):
         """
-        virtual AutoDerivative<double> FullPhysics::AerosolPropertyImpBase::extinction_coefficient(double wn) const =0
-
-        """
-        return _aerosol_property_imp_base.AerosolPropertyImpBase_extinction_coefficient(self, *args)
-
-    def scattering_coefficient(self, *args):
-        """
-        virtual AutoDerivative<double> FullPhysics::AerosolPropertyImpBase::scattering_coefficient(double wn) const =0
+        virtual ArrayAd<double,1> FullPhysics::AerosolPropertyImpBase::extinction_coefficient_each_layer(double wn) const =0
 
         """
-        return _aerosol_property_imp_base.AerosolPropertyImpBase_scattering_coefficient(self, *args)
+        return _aerosol_property_imp_base.AerosolPropertyImpBase_extinction_coefficient_each_layer(self, *args)
 
-    def phase_function_moment(self, *args):
+    def scattering_coefficient_each_layer(self, *args):
         """
-        virtual ArrayAd<double, 2> FullPhysics::AerosolPropertyImpBase::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const =0
+        virtual ArrayAd<double, 1> FullPhysics::AerosolPropertyImpBase::scattering_coefficient_each_layer(double wn) const =0
 
         """
-        return _aerosol_property_imp_base.AerosolPropertyImpBase_phase_function_moment(self, *args)
+        return _aerosol_property_imp_base.AerosolPropertyImpBase_scattering_coefficient_each_layer(self, *args)
+
+    def phase_function_moment_each_layer(self, *args):
+        """
+        virtual ArrayAd<double, 3> FullPhysics::AerosolPropertyImpBase::phase_function_moment_each_layer(double wn, int nmom=-1, int nscatt=-1) const =0
+
+        """
+        return _aerosol_property_imp_base.AerosolPropertyImpBase_phase_function_moment_each_layer(self, *args)
 
     def desc(self):
         """
@@ -256,9 +256,9 @@ class AerosolPropertyImpBase(SubStateVectorArrayAerosolProperty):
         _aerosol_property_imp_base.disown_AerosolPropertyImpBase(self)
         return weakref_proxy(self)
 AerosolPropertyImpBase.clone = new_instancemethod(_aerosol_property_imp_base.AerosolPropertyImpBase_clone,None,AerosolPropertyImpBase)
-AerosolPropertyImpBase.extinction_coefficient = new_instancemethod(_aerosol_property_imp_base.AerosolPropertyImpBase_extinction_coefficient,None,AerosolPropertyImpBase)
-AerosolPropertyImpBase.scattering_coefficient = new_instancemethod(_aerosol_property_imp_base.AerosolPropertyImpBase_scattering_coefficient,None,AerosolPropertyImpBase)
-AerosolPropertyImpBase.phase_function_moment = new_instancemethod(_aerosol_property_imp_base.AerosolPropertyImpBase_phase_function_moment,None,AerosolPropertyImpBase)
+AerosolPropertyImpBase.extinction_coefficient_each_layer = new_instancemethod(_aerosol_property_imp_base.AerosolPropertyImpBase_extinction_coefficient_each_layer,None,AerosolPropertyImpBase)
+AerosolPropertyImpBase.scattering_coefficient_each_layer = new_instancemethod(_aerosol_property_imp_base.AerosolPropertyImpBase_scattering_coefficient_each_layer,None,AerosolPropertyImpBase)
+AerosolPropertyImpBase.phase_function_moment_each_layer = new_instancemethod(_aerosol_property_imp_base.AerosolPropertyImpBase_phase_function_moment_each_layer,None,AerosolPropertyImpBase)
 AerosolPropertyImpBase.desc = new_instancemethod(_aerosol_property_imp_base.AerosolPropertyImpBase_desc,None,AerosolPropertyImpBase)
 AerosolPropertyImpBase.add_observer = new_instancemethod(_aerosol_property_imp_base.AerosolPropertyImpBase_add_observer,None,AerosolPropertyImpBase)
 AerosolPropertyImpBase.remove_observer = new_instancemethod(_aerosol_property_imp_base.AerosolPropertyImpBase_remove_observer,None,AerosolPropertyImpBase)

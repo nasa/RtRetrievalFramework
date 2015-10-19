@@ -28,10 +28,15 @@ public:
   virtual void add_observer(Observer<AerosolProperty>& Obs); 
   virtual void remove_observer(Observer<AerosolProperty>& Obs);
   virtual boost::shared_ptr<AerosolProperty> clone() const = 0;
-  virtual AutoDerivative<double> extinction_coefficient(double wn) const = 0;
-  virtual AutoDerivative<double> scattering_coefficient(double wn) const = 0;
-  virtual ArrayAd<double, 2> phase_function_moment(double wn, 
-			int nmom = -1, int nscatt = -1) const = 0;
+  virtual boost::shared_ptr<AerosolProperty> 
+  clone(const boost::shared_ptr<Pressure>& Press) const = 0;
+  virtual ArrayAd<double, 1> extinction_coefficient_each_layer(double wn) 
+    const = 0;
+  virtual ArrayAd<double, 1> scattering_coefficient_each_layer(double wn) 
+    const = 0;
+  virtual ArrayAd<double, 3> 
+  phase_function_moment_each_layer(double wn, int nmom = -1, 
+				   int nscatt = -1) const = 0;
   std::string print_to_string() const;
 };
 }
