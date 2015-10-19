@@ -9527,7 +9527,7 @@ static PyMethodDef SwigMethods[] = {
 		"nscatt:  Optional number of scattering elements to return. Default is\n"
 		"all of them.\n"
 		"\n"
-		"Phase function moment. This is nlayer x nmom + 1 x number scattering\n"
+		"Phase function moment. This is nmom + 1 x nlayer x number scattering\n"
 		"elements. \n"
 		""},
 	 { (char *)"AerosolProperty___str__", (PyCFunction)_wrap_AerosolProperty___str__, METH_O, NULL},

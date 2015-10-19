@@ -240,7 +240,7 @@ class AerosolProperty(full_physics_swig.state_vector.StateVectorObserver,Observa
         nscatt:  Optional number of scattering elements to return. Default is
         all of them.
 
-        Phase function moment. This is nlayer x nmom + 1 x number scattering
+        Phase function moment. This is nmom + 1 x nlayer x number scattering
         elements. 
         """
         return _aerosol_property.AerosolProperty_phase_function_moment_each_layer(self, *args)
