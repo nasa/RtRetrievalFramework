@@ -331,7 +331,7 @@ class SoundingDataFile(h5py.File):
 
         dataset_shape = dataset_obj.attrs.get('Shape', None)
 
-        if dataset_shape != None:
+        if dataset_shape is not None:
             # Make value from file is an array
             if not hasattr(dataset_shape, "__iter__"):
                 dataset_shape = [ dataset_shape ]
