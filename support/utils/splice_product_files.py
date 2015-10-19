@@ -3,6 +3,8 @@
 # containing a list of sounding ids. The program will then extract the data for those sounding
 # ids from the various files and splice them into a new L1B and and additional files.
 
+from __future__ import print_function
+
 import os
 import re
 import sys
@@ -15,11 +17,16 @@ import logging
 import traceback
 import time
 
+# Should be progressbar2
+from progressbar import ProgressBar, Percentage, SimpleProgress, Bar
+
+# For terminal control
+from blessings import Terminal
+
 import numpy
 import h5py
 
 import full_physics.acos_file as acos_file
-from full_physics import write_progress
 from full_physics.fill_value import FILL_VALUE
 
 from full_physics.splice_tool_mapping import aggregator_dataset_mapping, aggregator_dataset_dest_names
@@ -51,7 +58,7 @@ class Timer:
     def __exit__(self, *args):
         self.end = time.clock()
         self.interval = self.end - self.start
-   
+
 class DatasetInformation(object):
 
     def __init__(self, dataset_name, rename_mapping=False):
@@ -228,7 +235,7 @@ class DatasetInformation(object):
 
 class SourceInformation(object):
 
-    def __init__(self, src_filenames, sounding_ids=None, desired_datasets=None, rename_mapping=False, multi_source_types=False):
+    def __init__(self, src_filenames, sounding_ids=None, desired_datasets=None, rename_mapping=False, multi_source_types=False, progress=ProgressBar()):
 
         # Filenames to splice from, will be modified to remove any which have no sounding ids present
         # Ensure it is a list so we can modify it as we go
@@ -246,6 +253,10 @@ class SourceInformation(object):
         self.desired_datasets = desired_datasets
         self.rename_mapping = rename_mapping
         self.multi_source_types = multi_source_types
+
+        # Progress bar
+        self.progress = copy(progress)
+        self.progress.widgets = [ 'Analyzing sources ' ] + self.progress.widgets
 
         # Sounding ids per file and their indexes in those files
         self.file_sounding_ids = []
@@ -326,6 +337,7 @@ class SourceInformation(object):
         # have no matching sounding ids
         check_files = copy(self.src_filenames)
 
+        self.progress.start(len(check_files))
         for file_idx, curr_file in enumerate(check_files):
             with closing(InputContainerChooser(curr_file, single_id_dim=not self.multi_source_types)) as hdf_obj:
                 num_ids = self.process_file_ids(hdf_obj)
@@ -335,18 +347,24 @@ class SourceInformation(object):
                 else:
                     self.src_filenames.remove(curr_file)
 
-            write_progress(file_idx, len(check_files))
-    
+            self.progress.update(file_idx + 1)
+
+        self.progress.finish()
+        print("\r", file=self.progress.fd)
+        
         self._sort_file_lists()
 
 class ProductSplicer(object):
 
-    def __init__(self, source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False, multi_source_types=None):
+    def __init__(self, source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False, multi_source_types=None, progress=ProgressBar()):
         
         self.splice_all = splice_all
         self.multi_source_types = multi_source_types
 
-        self.source_info = SourceInformation(source_files, sounding_ids, desired_datasets_list, rename_mapping, multi_source_types)
+        self.progress = copy(progress)
+        self.progress.widgets = ['Copying data '] + self.progress.widgets
+
+        self.source_info = SourceInformation(source_files, sounding_ids, desired_datasets_list, rename_mapping, multi_source_types, progress)
         self.dest_obj = h5py.File(output_filename, 'w')
         self.out_dataset_objs = {}
 
@@ -433,8 +451,6 @@ class ProductSplicer(object):
         # Create datasets and copy any non id_shape datasets
         num_datasets = len(self.source_info.datasets_info.keys())
         for curr_index, (curr_dataset_name, curr_dataset_info) in enumerate(self.source_info.datasets_info.items()):
-            write_progress(curr_index-1, num_datasets)
-
             id_dimension = curr_dataset_info.inp_id_dims
 
             if self.dest_obj.get(curr_dataset_info.out_name, None) != None:
@@ -464,8 +480,6 @@ class ProductSplicer(object):
             else:
                 del self.source_info.datasets_info[curr_dataset_name]
                 logger.debug( "Ignoring non sounding id dataset: %s" % curr_dataset_name )
-
-            write_progress(curr_index, num_datasets)
 
         self.dest_obj.flush()
 
@@ -560,21 +574,23 @@ class ProductSplicer(object):
 
         # Loop over dataset names/shapes
         output_index = 0
+        self.progress.start(len(self.source_info.src_filenames))
         for file_index, (curr_file, curr_snd_indexes) in enumerate(zip(self.source_info.src_filenames, self.source_info.file_indexes)):
             logger.debug( 'Copying %d sounding(s) from %s (%d / %d)' % (len(curr_snd_indexes), os.path.basename(curr_file), file_index+1, len(self.source_info.src_filenames)) )
-
-            write_progress(file_index-1, len(self.source_info.src_filenames))
 
             for curr_dataset_name, out_dataset_idx, stored_data in self.get_datasets_for_file(curr_file, curr_snd_indexes, output_index):
                 self.out_dataset_objs[curr_dataset_name].__setitem__(tuple(out_dataset_idx), stored_data)
 
-            write_progress(file_index, len(self.source_info.src_filenames))
+            self.progress.update(file_index)
 
             # Increment where to start in the index into output sounding indexes
             # Only increment if not using multiple source types because when using different
             # inputs to a single output we will be pulling the same sounding ids (hopefully)
             if not self.multi_source_types:
                 output_index += len(curr_snd_indexes) 
+
+        self.progress.finish()
+        print("\r", file=self.progress.fd)
 
     def splice_files(self):
 
@@ -633,7 +649,10 @@ def process_files(source_files, output_filename, sounding_ids, splice_all=False,
         logger.info("Determining if using multiple source types")
         multi_source_types = determine_multi_source(source_files)
 
-    splicer = ProductSplicer(source_files, output_filename, sounding_ids, splice_all, desired_datasets_list, rename_mapping, multi_source_types)
+    widgets= [ Bar(), ' ', Percentage(), ' (', SimpleProgress(), ')' ]
+    progress = ProgressBar(widgets=widgets)
+
+    splicer = ProductSplicer(source_files, output_filename, sounding_ids, splice_all, desired_datasets_list, rename_mapping, multi_source_types, progress)
     splicer.splice_files()
 
 def load_source_files(filenames, input_list_file=None):
