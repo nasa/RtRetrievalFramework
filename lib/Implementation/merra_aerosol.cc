@@ -128,7 +128,8 @@ MerraAerosol::MerraAerosol
 	 (new AerosolShapeGaussian(press, flag, coeff, aname, false)));
       aprop.push_back
 	(boost::shared_ptr<AerosolProperty>
-	 (new AerosolPropertyHdf(Aerosol_property, aname + "/Properties")));
+	 (new AerosolPropertyHdf(Aerosol_property, aname + "/Properties", 
+				 press)));
       boost::shared_ptr<InitialGuessValue> nig(new InitialGuessValue);
       nig->apriori(coeff);
       nig->apriori_covariance(Aerosol_cov);

@@ -21,16 +21,19 @@ namespace FullPhysics {
 *******************************************************************/
 class AerosolPropertyHdf : public AerosolPropertyImpBase {
 public:
-  AerosolPropertyHdf(const HdfFile& F, const std::string& Group_name);
+  AerosolPropertyHdf(const HdfFile& F, const std::string& Group_name,
+		     const boost::shared_ptr<Pressure>& Press);
   virtual ~AerosolPropertyHdf() {}
   virtual boost::shared_ptr<AerosolProperty> clone() const;
-  virtual AutoDerivative<double> extinction_coefficient(double wn) const 
-  { return (*qext)(wn); }
-  virtual AutoDerivative<double> scattering_coefficient(double wn) const
-  { return (*qscat)(wn); }
-  virtual ArrayAd<double, 2> phase_function_moment(double wn, 
-	int nmom = -1, int nscatt = -1) const
-  { return (*pf)(wn, nmom, nscatt); }
+  virtual boost::shared_ptr<AerosolProperty> 
+  clone(const boost::shared_ptr<Pressure>& Press) const;
+  virtual ArrayAd<double, 1> extinction_coefficient_each_layer(double wn) 
+    const;
+  virtual ArrayAd<double, 1> scattering_coefficient_each_layer(double wn)
+    const;
+  virtual ArrayAd<double, 3> 
+  phase_function_moment_each_layer(double wn, int nmom = -1, 
+				   int nscatt = -1) const;
   virtual void print(std::ostream& Os) const;
 private:
   boost::shared_ptr<LinearInterpolate<double, double> > qext;

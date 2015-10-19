@@ -183,48 +183,49 @@ class AerosolProperty(full_physics_swig.state_vector.StateVectorObserver,Observa
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
     __swig_destroy__ = _aerosol_property.delete_AerosolProperty
-    def clone(self):
+    def clone(self, *args):
         """
-        virtual boost::shared_ptr<AerosolProperty> FullPhysics::AerosolProperty::clone() const =0
-        Clone a AerosolProperty object.
+        virtual boost::shared_ptr<AerosolProperty> FullPhysics::AerosolProperty::clone(const boost::shared_ptr< Pressure > &Press) const =0
+        This version of clone takes a pressure to use.
 
-        Note that the cloned version will not be attached to a StateVector or
-        Observer<AerosolProperty>, although you can of course attach them
-        after receiving the cloned object.
-
-        Because this isn't attached to the StateVector, one use of the clone
-        operator is to create a "frozen" AerosolProperty object. 
+        The intent is that the pressure has been cloned from the original
+        pressure (although this class has no way to verify this). This allows
+        sets of objects to be cloned using a common Pressure clone, e.g.
+        Atmosphere. 
         """
-        return _aerosol_property.AerosolProperty_clone(self)
+        return _aerosol_property.AerosolProperty_clone(self, *args)
 
-    def extinction_coefficient(self, *args):
+    def extinction_coefficient_each_layer(self, *args):
         """
-        virtual AutoDerivative<double> FullPhysics::AerosolProperty::extinction_coefficient(double wn) const =0
-        Return extinction coefficient for the given wave number.
+        virtual ArrayAd<double, 1> FullPhysics::AerosolProperty::extinction_coefficient_each_layer(double wn) const =0
+        Return extinction coefficient for the given wave number, for each
+        layer.
 
         Parameters:
         -----------
 
         wn:  - Wavenumber 
         """
-        return _aerosol_property.AerosolProperty_extinction_coefficient(self, *args)
+        return _aerosol_property.AerosolProperty_extinction_coefficient_each_layer(self, *args)
 
-    def scattering_coefficient(self, *args):
+    def scattering_coefficient_each_layer(self, *args):
         """
-        virtual AutoDerivative<double> FullPhysics::AerosolProperty::scattering_coefficient(double wn) const =0
-        Return scattering coefficient for the given wave number.
+        virtual ArrayAd<double, 1> FullPhysics::AerosolProperty::scattering_coefficient_each_layer(double wn) const =0
+        Return scattering coefficient for the given wave number for each
+        layer.
 
         Parameters:
         -----------
 
         wn:  - Wavenumber 
         """
-        return _aerosol_property.AerosolProperty_scattering_coefficient(self, *args)
+        return _aerosol_property.AerosolProperty_scattering_coefficient_each_layer(self, *args)
 
-    def phase_function_moment(self, *args):
+    def phase_function_moment_each_layer(self, *args):
         """
-        virtual ArrayAd<double, 2> FullPhysics::AerosolProperty::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const =0
-        Return phase function moments for the given wave number.
+        virtual ArrayAd<double, 3> FullPhysics::AerosolProperty::phase_function_moment_each_layer(double wn, int nmom=-1, int nscatt=-1) const =0
+        Return phase function moments for the given wave number for each
+        layer.
 
         Note that we use the de Rooij convention for the scattering matrix
         moments.
@@ -239,15 +240,15 @@ class AerosolProperty(full_physics_swig.state_vector.StateVectorObserver,Observa
         nscatt:  Optional number of scattering elements to return. Default is
         all of them.
 
-        Phase function moment. This is nmom + 1 x number scattering elements.
-
+        Phase function moment. This is nlayer x nmom + 1 x number scattering
+        elements. 
         """
-        return _aerosol_property.AerosolProperty_phase_function_moment(self, *args)
+        return _aerosol_property.AerosolProperty_phase_function_moment_each_layer(self, *args)
 
 AerosolProperty.clone = new_instancemethod(_aerosol_property.AerosolProperty_clone,None,AerosolProperty)
-AerosolProperty.extinction_coefficient = new_instancemethod(_aerosol_property.AerosolProperty_extinction_coefficient,None,AerosolProperty)
-AerosolProperty.scattering_coefficient = new_instancemethod(_aerosol_property.AerosolProperty_scattering_coefficient,None,AerosolProperty)
-AerosolProperty.phase_function_moment = new_instancemethod(_aerosol_property.AerosolProperty_phase_function_moment,None,AerosolProperty)
+AerosolProperty.extinction_coefficient_each_layer = new_instancemethod(_aerosol_property.AerosolProperty_extinction_coefficient_each_layer,None,AerosolProperty)
+AerosolProperty.scattering_coefficient_each_layer = new_instancemethod(_aerosol_property.AerosolProperty_scattering_coefficient_each_layer,None,AerosolProperty)
+AerosolProperty.phase_function_moment_each_layer = new_instancemethod(_aerosol_property.AerosolProperty_phase_function_moment_each_layer,None,AerosolProperty)
 AerosolProperty.__str__ = new_instancemethod(_aerosol_property.AerosolProperty___str__,None,AerosolProperty)
 AerosolProperty_swigregister = _aerosol_property.AerosolProperty_swigregister
 AerosolProperty_swigregister(AerosolProperty)

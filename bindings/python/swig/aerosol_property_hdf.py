@@ -129,17 +129,31 @@ class AerosolPropertyHdf(full_physics_swig.aerosol_property.AerosolProperty):
     C++ includes: aerosol_property_hdf.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-    def phase_function_moment(self, *args):
+    def __init__(self, *args): 
         """
-        virtual ArrayAd<double, 2> FullPhysics::AerosolPropertyHdf::phase_function_moment(double wn, int nmom=-1, int nscatt=-1) const
+        AerosolPropertyHdf::AerosolPropertyHdf(const HdfFile &F, const std::string &Group_name, const
+        boost::shared_ptr< Pressure > &Press)
+        Read the given group in the given file for the aerosol properties. 
+        """
+        _aerosol_property_hdf.AerosolPropertyHdf_swiginit(self,_aerosol_property_hdf.new_AerosolPropertyHdf(*args))
+    def clone(self, *args):
+        """
+        boost::shared_ptr< AerosolProperty > AerosolPropertyHdf::clone(const boost::shared_ptr< Pressure > &Press) const
 
         """
-        return _aerosol_property_hdf.AerosolPropertyHdf_phase_function_moment(self, *args)
+        return _aerosol_property_hdf.AerosolPropertyHdf_clone(self, *args)
+
+    def phase_function_moment_each_layer(self, *args):
+        """
+        ArrayAd< double, 3 > AerosolPropertyHdf::phase_function_moment_each_layer(double wn, int nmom=-1, int nscatt=-1) const
+
+        """
+        return _aerosol_property_hdf.AerosolPropertyHdf_phase_function_moment_each_layer(self, *args)
 
     __swig_destroy__ = _aerosol_property_hdf.delete_AerosolPropertyHdf
-AerosolPropertyHdf.phase_function_moment = new_instancemethod(_aerosol_property_hdf.AerosolPropertyHdf_phase_function_moment,None,AerosolPropertyHdf)
+AerosolPropertyHdf.clone = new_instancemethod(_aerosol_property_hdf.AerosolPropertyHdf_clone,None,AerosolPropertyHdf)
+AerosolPropertyHdf.phase_function_moment_each_layer = new_instancemethod(_aerosol_property_hdf.AerosolPropertyHdf_phase_function_moment_each_layer,None,AerosolPropertyHdf)
 AerosolPropertyHdf_swigregister = _aerosol_property_hdf.AerosolPropertyHdf_swigregister
 AerosolPropertyHdf_swigregister(AerosolPropertyHdf)
 

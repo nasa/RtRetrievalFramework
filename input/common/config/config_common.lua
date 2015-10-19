@@ -650,7 +650,7 @@ function ConfigCommon.hdf_aerosol_property(aer_group)
                 aer_group = config_name
              end
 
-             return AerosolPropertyHdf(self.config:h_aerosol(), aer_group .. "/Properties")
+             return AerosolPropertyHdf(self.config:h_aerosol(), aer_group .. "/Properties", self.config.pressure)
           end
 end
 
@@ -667,7 +667,7 @@ function hdf_aerosol_property_file(fname, aer_group)
 	     local h = HdfFile(fname)
 	     self.config.input_file_description = self.config.input_file_description ..
 		"Aerosol input file:  " .. fname .. "\n"
-             return AerosolPropertyHdf(h, aer_group .. "/Properties")
+             return AerosolPropertyHdf(h, aer_group .. "/Properties", self.config.pressure)
           end
 end      
 
