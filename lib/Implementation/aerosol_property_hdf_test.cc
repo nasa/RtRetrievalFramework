@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(basic)
     1, 0, 0, 0.895197915, 0, 0,
     2.178746875, 0, 0, 2.24237365833, 0, 0;
   BOOST_CHECK_MATRIX_CLOSE(a.phase_function_moment_each_layer(13000).value()
-			   (0, Range(0,1), Range::all()), pf_expect);
+			   (Range(0,1), 0, Range::all()), pf_expect);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

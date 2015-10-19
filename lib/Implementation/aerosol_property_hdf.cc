@@ -83,11 +83,11 @@ ArrayAd<double, 3> AerosolPropertyHdf::phase_function_moment_each_layer
 { 
   firstIndex i1; secondIndex i2; thirdIndex i3; fourthIndex i4;
   ArrayAd<double, 2> t = (*pf)(wn, nmom, nscatt);
-  ArrayAd<double, 3> res(press->number_layer(), t.rows(),
+  ArrayAd<double, 3> res(t.rows(), press->number_layer(), 
 			 t.cols(), t.number_variable());
-  res.value() = t.value()(i2, i3);
+  res.value() = t.value()(i1, i3);
   if(t.number_variable() > 0)
-    res.jacobian() = t.jacobian()(i2, i3, i4);
+    res.jacobian() = t.jacobian()(i1, i3, i4);
   return res; 
 }
 

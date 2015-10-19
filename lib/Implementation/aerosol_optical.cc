@@ -108,7 +108,7 @@ void AerosolOptical::fill_cache() const
       /// We scale the extinction coefficient return by aprop at the 
       /// reference wave number, so that aext of 1 means the extinction
       /// coefficient for a particle is 1.
-      od_ind_wn(i, j) = 1.0 / aprop[j]->extinction_coefficient_each_layer(reference_wn_)(0) *
+      od_ind_wn(i, j) = 1.0 / aprop[j]->extinction_coefficient_each_layer(reference_wn_)(i) *
         dp * aext[j]->extinction_for_layer(i);
     }
   }
@@ -142,16 +142,16 @@ AerosolOptical::optical_depth_each_layer(double wn) const
   fill_cache();
   ArrayAd<double, 2> res(od_ind_wn.copy());
   for(int i = 0; i < number_particle(); ++i) {
-    AutoDerivative<double> t = aprop[i]->extinction_coefficient_each_layer(wn)(0);
+    ArrayAd<double, 1> t = aprop[i]->extinction_coefficient_each_layer(wn);
     if(res.is_constant() && !t.is_constant())
       res.resize_number_variable(t.number_variable());
     Array<double, 1> v(res.value()(ra, i));
     Array<double, 2> jac(res.jacobian()(ra, i, ra));
     v *= t.value();
     if(t.is_constant())
-      jac *= t.value();
+      jac = t.value()(i1) * jac(i1, i2);
     else
-      jac = t.value() * jac + v(i1) * t.gradient()(i2);
+      jac = t.value()(i1) * jac(i1,i2) + v(i1) * t.jacobian()(i1, i2);
   }
   return res;
 }
@@ -181,18 +181,21 @@ ArrayAd<double, 1> AerosolOptical::ssa_each_layer
   firstIndex i1; secondIndex i2; thirdIndex i3;
   FunctionTimer ft(timer.function_timer());
   ArrayAd<double, 1> res(Od.copy());
-  AutoDerivative<double> t = 
-    aprop[particle_index]->scattering_coefficient_each_layer(wn)(0) / 
-    aprop[particle_index]->extinction_coefficient_each_layer(wn)(0);
+  ArrayAd<double, 1> t = aprop[particle_index]->scattering_coefficient_each_layer(wn);
+  ArrayAd<double, 1> t2 = aprop[particle_index]->extinction_coefficient_each_layer(wn);
+  t.value() /= t2.value();
+  if(!t.is_constant())
+    t.jacobian() = 1 / t2.value()(i1) * t.jacobian()(i1,i2) -
+      t.value()(i1)/(t2.value()(i1) * t2.value()(i1))  * t2.jacobian()(i1,i2);
   if(res.is_constant() && !t.is_constant())
     res.resize_number_variable(t.number_variable());
   Array<double, 1> v(res.value());
   Array<double, 2> jac(res.jacobian());
   v *= t.value();
   if(t.is_constant())
-    jac *= t.value();
+    jac = t.value()(i1) * jac(i1, i2);
   else
-    jac = t.value() * jac + v(i1) * t.gradient()(i2);
+    jac = t.value()(i1) * jac(i1,i2) + v(i1) * t.jacobian()(i1,i2);
   return res;
 }
 
@@ -225,17 +228,20 @@ AerosolOptical::ssa_each_layer(double wn) const
 
 //-----------------------------------------------------------------------
 /// This calculates the portion of the phase function moments that
-/// come from the aerosol for a single particle.
+/// come from the aerosol for a single particle. This is
+/// number_layer x number_moments x number_scatter
 /// \param wn The wave number.
 /// \param pindex The particle index.
+/// \return Scattering moments for each layer. This is 
+///         number_moment + 1 x number_layer() x number scattering
+///         matrix elements
 //-----------------------------------------------------------------------
 
-ArrayAd<double, 2> AerosolOptical::pf_mom(double wn, int pindex) const
+ArrayAd<double, 3> AerosolOptical::pf_mom(double wn, int pindex) const
 {
-  Range ra(Range::all());
   FunctionTimer ft(timer.function_timer());
   range_check(pindex, 0, number_particle());
-  return aprop[pindex]->phase_function_moment_each_layer(wn)(0, ra, ra);
+  return aprop[pindex]->phase_function_moment_each_layer(wn);
 }
 
 //-----------------------------------------------------------------------
@@ -243,6 +249,9 @@ ArrayAd<double, 2> AerosolOptical::pf_mom(double wn, int pindex) const
 /// come from the aerosol.
 /// \param wn The wave number.
 /// \param frac_aer This is number_active_layer() x number_particle()
+/// \return Scattering moments for each layer. This is 
+///         number_moment + 1 x number_layer() x number scattering
+///         matrix elements
 //-----------------------------------------------------------------------
 
 blitz::Array<double, 3> AerosolOptical::pf_mom(double wn, 
@@ -261,20 +270,20 @@ blitz::Array<double, 3> AerosolOptical::pf_mom(double wn,
 	    << frac_aer.rows() << " x " << frac_aer.cols();
     throw Exception(err_msg.str());
   }
-  std::vector<Array<double, 2> > pf;
+  std::vector<Array<double, 3> > pf;
   int s1 = 0;
   int s2 = 0;
   for(int j = 0; j < frac_aer.cols(); ++j) {
     pf.push_back(pf_mom(wn, j).value());
     s1 = std::max(s1, pf[j].rows());
-    s2 = std::max(s2, pf[j].cols());
+    s2 = std::max(s2, pf[j].depth());
   }
   blitz::Array<double, 3> res(s1, nlay, s2);
   res = 0;
   for(int j = 0; j < frac_aer.cols(); ++j) {
     Range r1(0, pf[j].rows() - 1);
-    Range r2(0, pf[j].cols() - 1);
-    res(r1,ra,r2) += frac_aer(ra,j)(i2) * pf[j](i1, i3);
+    Range r2(0, pf[j].depth() - 1);
+    res(r1,ra,r2) += frac_aer(ra,j)(i2) * pf[j](i1, i2, i3);
   }
   return res;
 }
@@ -297,36 +306,36 @@ ArrayAd<double, 3> AerosolOptical::pf_mom(double wn,
     throw Exception(err_msg.str());
   }
 
-  std::vector<ArrayAd<double, 2> > pf;
+  std::vector<ArrayAd<double, 3> > pf;
   int s1 = 0;
   int s2 = 0;
   int nvar = frac_aer.number_variable();
   for(int j = 0; j < frac_aer.cols(); ++j) {
-    pf.push_back(aprop[j]->phase_function_moment_each_layer(wn, nummom, numscat)(0, ra, ra));
+    pf.push_back(aprop[j]->phase_function_moment_each_layer(wn, nummom, numscat));
     s1 = std::max(s1, pf[j].rows());
-    s2 = std::max(s2, pf[j].cols());
+    s2 = std::max(s2, pf[j].depth());
     nvar = std::max(nvar, pf[j].number_variable());
   }
   ArrayAd<double, 3> res(s1, nlay, s2, nvar);
   res = 0;
   for(int j = 0; j < frac_aer.cols(); ++j) {
     Range r1(0, pf[j].rows() - 1);
-    Range r2(0, pf[j].cols() - 1);
+    Range r2(0, pf[j].depth() - 1);
     Array<double, 3> rv(res.value()(r1,ra,r2));
     Array<double, 4> rjac(res.jacobian()(r1,ra,r2,ra));
     Array<double, 1> fv(frac_aer.value()(ra,j));
     Array<double, 2> fjac(frac_aer.jacobian()(ra,j, ra));
-    Array<double, 2> pv(pf[j].value());
-    Array<double, 3> pjac(pf[j].jacobian());
-    rv += fv(i2) * pv(i1, i3);
+    Array<double, 3> pv(pf[j].value());
+    Array<double, 4> pjac(pf[j].jacobian());
+    rv += fv(i2) * pv(i1, i2, i3);
     if(pf[j].is_constant()) {
       if(!frac_aer.is_constant())
-	rjac += fjac(i2,i4) * pv(i1, i3);
+	rjac += fjac(i2,i4) * pv(i1, i2, i3);
     } else {
       if(frac_aer.is_constant())
-	rjac += fv(i2) * pv(i1, i3, i4);
+	rjac += fv(i2) * pjac(i1, i2, i3, i4);
       else
-	rjac += fjac(i2,i4) * pv(i1, i3) + fv(i2) * pv(i1, i3, i4);
+	rjac += fjac(i2,i4) * pv(i1, i2, i3) + fv(i2) * pjac(i1, i2, i3, i4);
     }
   }
   return res;

@@ -80,7 +80,7 @@ public:
 ///     moments.
 /// \param nscatt Optional number of scattering elements to
 ///     return. Default is all of them.
-/// \return Phase function moment. This is nlayer x nmom + 1 x number
+/// \return Phase function moment. This is nmom + 1 x nlayer x number
 /// scattering elements. 
 //-----------------------------------------------------------------------
 
