@@ -4934,7 +4934,7 @@ template<class T, int D> inline blitz::Array<T, D>
 
 
 
-#include "aerosol_optical_depth.h"
+#include "aerosol_optical.h"
 
 
   namespace swig {
@@ -6037,7 +6037,7 @@ SWIGINTERN PyObject *_wrap_AerosolOptical_pf_mom__SWIG_0(PyObject *SWIGUNUSEDPAR
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
-  SwigValueWrapper< blitz::Array< double,2 > > result;
+  SwigValueWrapper< FullPhysics::ArrayAd< double,3 > > result;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
@@ -6074,21 +6074,7 @@ SWIGINTERN PyObject *_wrap_AerosolOptical_pf_mom__SWIG_0(PyObject *SWIGUNUSEDPAR
       SWIG_fail; 
     }
   }
-  {
-    npy_intp dims[2], stride[2];
-    for(int i = 0; i < 2; ++i) {
-      dims[i] = (&result)->extent(i);
-      // Note numpy stride is in terms of bytes, while blitz in in terms
-      // of type T.
-      stride[i] = (&result)->stride(i) * sizeof(double);
-    }
-    resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
-      stride, (&result)->data(), 0, 0, 0);
-    blitz::Array<double, 2>* t = new blitz::Array<double, 2>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
-  }
+  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,3 >(static_cast< const FullPhysics::ArrayAd< double,3 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_3_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;

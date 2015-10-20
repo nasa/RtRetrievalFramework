@@ -29,7 +29,7 @@ public:
     virtual void add_observer(FullPhysics::Observer< FullPhysics::AerosolProperty > &Obs);
     virtual void remove_observer(FullPhysics::Observer< FullPhysics::AerosolProperty > &Obs);
     virtual boost::shared_ptr< FullPhysics::AerosolProperty > clone() const;
-    virtual boost::shared_ptr< FullPhysics::AerosolProperty > clone(boost::shared_ptr< Pressure > const &Press) const;
+    virtual boost::shared_ptr< FullPhysics::AerosolProperty > clone(boost::shared_ptr< FullPhysics::Pressure > const &Press) const;
     virtual FullPhysics::ArrayAd< double,1 > extinction_coefficient_each_layer(double wn) const;
     virtual FullPhysics::ArrayAd< double,1 > scattering_coefficient_each_layer(double wn) const;
     virtual FullPhysics::ArrayAd< double,3 > phase_function_moment_each_layer(double wn, int nmom = -1, int nscatt = -1) const;
@@ -39,7 +39,6 @@ public:
     virtual void print(std::ostream &Os) const;
     virtual std::string state_vector_name_i(int i) const;
     virtual void update_sub_state_hook();
-    virtual boost::shared_ptr< FullPhysics::AerosolProperty > clone(boost::shared_ptr< FullPhysics::Pressure > const &Press) const;
     virtual std::string desc() const;
     using FullPhysics::AerosolPropertyImpBase::init;
 
@@ -75,7 +74,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[21];
+    mutable swig::SwigVar_PyObject vtable[20];
 #endif
 
 };
