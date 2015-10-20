@@ -380,6 +380,7 @@ class SourceInformation(object):
             self.progress.update(file_idx + 1)
 
         self.progress.finish()
+        self.progress.fd.write('\n')
         
         self._sort_file_lists()
 
@@ -621,6 +622,7 @@ class ProductSplicer(object):
                 output_index += len(curr_snd_indexes) 
 
         self.progress.finish()
+        self.progress.fd.write('\n')
 
         # Flush our copies to disk
         self.dest_obj.flush()
@@ -697,15 +699,17 @@ def splice_worker(worker_idx, source_files, output_fn, sounding_ids, splice_all,
 
 def process_files(source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False, multi_source_types=None, workers=1, temp_dir=None, main_logger=logging.getLogger(), log_file=None):
 
-    # Sort source files in case ordering matters when splicing in parallel
-    source_files.sort()
-
     # Determine if input files are of different types
     if multi_source_types == None:
         main_logger.info("Determining if using multiple source types")
         multi_source_types = determine_multi_source(source_files, main_logger)
 
     if workers > 1 and len(source_files) >= workers:
+        # Clear screen to make cursor indexing easier
+        sys.stdout.write(term.clear)
+    
+        # Make space for progress bars
+        sys.stdout.write(term.move_down * workers)
 
         # Split source files into equal groups, one group for each worker
         group_size = int(math.ceil(len(source_files) / workers))
@@ -738,13 +742,15 @@ def process_files(source_files, output_filename, sounding_ids, splice_all=False,
 
         # Clear screen for final splicing if just used parallel mode
         sys.stdout.write(term.clear)
+        final_writer = ProgressWriter((0, 0))
 
     else:
         # No parallelization, source files ae the final files we deal with
         final_files = source_files
         temp_files = []
+        final_writer = sys.stdout
 
-    progress = ProgressBar(widgets=PROGRESS_WIDGETS, fd=ProgressWriter((0,0)))
+    progress = ProgressBar(widgets=PROGRESS_WIDGETS, fd=final_writer)
 
     final_splicer = ProductSplicer(final_files, output_filename, sounding_ids, splice_all, desired_datasets_list, rename_mapping, multi_source_types, main_logger, progress)
     final_splicer.splice_files()
@@ -842,18 +848,12 @@ def standalone_main():
     else:
         log_file = None
 
-    # Clear screen to make cursor indexing easier
-    sys.stdout.write(term.clear)
-    
-    # Make space for progress bars
-    sys.stdout.write(term.move_down * args.workers)
-
     source_files = load_source_files(args.filenames, args.input_files_list)
 
     if args.sounding_id_file != None:
         sounding_ids = [ sid.strip() for sid in open(args.sounding_id_file).readlines() ]
     else:
-        main_logger.info("No sounding ids file supplied, aggregating all ids from all files")
+        main_logger.debug("No sounding ids file supplied, aggregating all ids from all files")
         sounding_ids = None
 
     copy_datasets_list = None
