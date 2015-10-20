@@ -2,7 +2,7 @@
 // (Not really c++, but closest emacs mode)
 %include "common.i"
 %{
-#include "aerosol_optical_depth.h"
+#include "aerosol_optical.h"
 %}
 %base_import(state_vector)
 %base_import(pressure)
@@ -31,7 +31,7 @@ public:
   virtual void notify_update(const Pressure& P);
   virtual void notify_update(const AerosolExtinction& A);
   virtual void notify_update(const AerosolProperty& A);
-  virtual blitz::Array<double, 2> pf_mom(double wn, int pindex) const;
+  virtual ArrayAd<double, 3> pf_mom(double wn, int pindex) const;
   virtual blitz::Array<double, 3> pf_mom(double wn, 
 				 const blitz::Array<double, 2>& frac_aer) const;
   virtual ArrayAd<double, 3> pf_mom(double wn, 

@@ -108,11 +108,13 @@ def _new_from_set(cls, version, *args):
     inst.set(*args)
     return inst
 
+import full_physics_swig.aerosol_property_imp_base
 import full_physics_swig.aerosol_property
 import full_physics_swig.observer
 import full_physics_swig.generic_object
 import full_physics_swig.state_vector
-class AerosolPropertyHdf(full_physics_swig.aerosol_property.AerosolProperty):
+import full_physics_swig.sub_state_vector_array
+class AerosolPropertyHdf(full_physics_swig.aerosol_property_imp_base.AerosolPropertyImpBase):
     """
     This gives the Aerosol properties for an Aerosol.
 

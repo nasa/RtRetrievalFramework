@@ -3501,27 +3501,26 @@ namespace Swig {
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_t swig_types[49]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[50]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[51]
-#define SWIGTYPE_p_boost__shared_ptrT_Pressure_t swig_types[52]
-#define SWIGTYPE_p_char swig_types[53]
-#define SWIGTYPE_p_char_type swig_types[54]
-#define SWIGTYPE_p_difference_type swig_types[55]
-#define SWIGTYPE_p_fmtflags swig_types[56]
-#define SWIGTYPE_p_int_type swig_types[57]
-#define SWIGTYPE_p_iostate swig_types[58]
-#define SWIGTYPE_p_off_type swig_types[59]
-#define SWIGTYPE_p_openmode swig_types[60]
-#define SWIGTYPE_p_pos_type swig_types[61]
-#define SWIGTYPE_p_seekdir swig_types[62]
-#define SWIGTYPE_p_size_t swig_types[63]
-#define SWIGTYPE_p_size_type swig_types[64]
-#define SWIGTYPE_p_state_type swig_types[65]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[66]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[67]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[68]
-#define SWIGTYPE_p_traits_type swig_types[69]
-#define SWIGTYPE_p_value_type swig_types[70]
-static swig_type_info *swig_types[72];
-static swig_module_info swig_module = {swig_types, 71, 0, 0, 0, 0};
+#define SWIGTYPE_p_char swig_types[52]
+#define SWIGTYPE_p_char_type swig_types[53]
+#define SWIGTYPE_p_difference_type swig_types[54]
+#define SWIGTYPE_p_fmtflags swig_types[55]
+#define SWIGTYPE_p_int_type swig_types[56]
+#define SWIGTYPE_p_iostate swig_types[57]
+#define SWIGTYPE_p_off_type swig_types[58]
+#define SWIGTYPE_p_openmode swig_types[59]
+#define SWIGTYPE_p_pos_type swig_types[60]
+#define SWIGTYPE_p_seekdir swig_types[61]
+#define SWIGTYPE_p_size_t swig_types[62]
+#define SWIGTYPE_p_size_type swig_types[63]
+#define SWIGTYPE_p_state_type swig_types[64]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[65]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[66]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[67]
+#define SWIGTYPE_p_traits_type swig_types[68]
+#define SWIGTYPE_p_value_type swig_types[69]
+static swig_type_info *swig_types[71];
+static swig_module_info swig_module = {swig_types, 70, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5550,13 +5549,13 @@ boost::shared_ptr< FullPhysics::AerosolProperty > SwigDirector_AerosolPropertyIm
 }
 
 
-boost::shared_ptr< FullPhysics::AerosolProperty > SwigDirector_AerosolPropertyImpBase::clone(boost::shared_ptr< Pressure > const &Press) const {
+boost::shared_ptr< FullPhysics::AerosolProperty > SwigDirector_AerosolPropertyImpBase::clone(boost::shared_ptr< FullPhysics::Pressure > const &Press) const {
   void *swig_argp ;
   int swig_res = 0 ;
   
   boost::shared_ptr< FullPhysics::AerosolProperty > c_result;
   swig::SwigVar_PyObject obj0;
-  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&Press), SWIGTYPE_p_boost__shared_ptrT_Pressure_t,  0 );
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&Press), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 );
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call AerosolPropertyImpBase.__init__.");
   }
@@ -5900,64 +5899,13 @@ void SwigDirector_AerosolPropertyImpBase::update_sub_state_hook() {
 }
 
 
-boost::shared_ptr< FullPhysics::AerosolProperty > SwigDirector_AerosolPropertyImpBase::clone(boost::shared_ptr< FullPhysics::Pressure > const &Press) const {
-  void *swig_argp ;
-  int swig_res = 0 ;
-  
-  boost::shared_ptr< FullPhysics::AerosolProperty > c_result;
-  swig::SwigVar_PyObject obj0;
-  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&Press), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 );
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call AerosolPropertyImpBase.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
-  const char * const swig_method_name = "clone";
-  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
-  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
-#else
-  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar((char *)"clone");
-  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
-#endif
-  if (!result) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        FullPhysics::Exception e;
-        e << "Python error occured:\n"
-        << parse_python_exception();
-        throw e;
-      }
-    }
-  }
-  int newmem = 0;
-  swig_res = SWIG_ConvertPtrAndOwn(result,&swig_argp,SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AerosolProperty_t,  0  | 0, &newmem);
-  if (!SWIG_IsOK(swig_res)) {
-    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""boost::shared_ptr< FullPhysics::AerosolProperty >""'");
-  }
-  c_result = *(reinterpret_cast< boost::shared_ptr< FullPhysics::AerosolProperty > * >(swig_argp));
-  // Special handling if this is a director class. In that case, we
-  // don't own the underlying python object. Instead,
-  // we tell python we have a reference to the underlying object, and
-  // when this gets destroyed we decrement the reference to the python
-  // object. 
-  Swig::Director* dp = dynamic_cast<Swig::Director*>(c_result.get());
-  if(dp) {
-    Py_INCREF(dp->swig_get_self());
-    c_result.reset(c_result.get(), PythonRefPtrCleanup(dp->swig_get_self()));
-  }
-  if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< boost::shared_ptr< FullPhysics::AerosolProperty > * >(swig_argp);
-  return (boost::shared_ptr< FullPhysics::AerosolProperty >) c_result;
-}
-
-
 std::string SwigDirector_AerosolPropertyImpBase::desc() const {
   std::string c_result;
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call AerosolPropertyImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
+  const size_t swig_method_index = 19;
   const char * const swig_method_name = "desc";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject args = PyTuple_New(0);
@@ -8777,10 +8725,6 @@ static void *_p_FullPhysics__AerosolPropertyImpBaseTo_p_FullPhysics__ObservableT
 static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_tTo_p_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observable< FullPhysics::AerosolProperty > *) (FullPhysics::AerosolProperty *) ((FullPhysics::SubStateVectorArray< FullPhysics::AerosolProperty > *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > >(*(boost::shared_ptr< FullPhysics::Pressure > *)x);
-}
 static void *_p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolProperty > >(*(boost::shared_ptr< FullPhysics::AerosolProperty > *)x);
@@ -8793,17 +8737,21 @@ static void *_p_boost__shared_ptrT_FullPhysics__AerosolPropertyImpBase_tTo_p_boo
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolProperty > >(*(boost::shared_ptr< FullPhysics::AerosolPropertyImpBase > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > >(*(boost::shared_ptr< FullPhysics::Pressure > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::StateVector > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > > *)x);
-}
 static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::AerosolProperty > > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -8829,13 +8777,13 @@ static void *_p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__sha
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AerosolProperty > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::Pressure > > *)x);
-}
 static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::AerosolProperty > > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::Pressure > > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -9063,7 +9011,6 @@ static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t = 
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_t = {"_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_t", "boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AerosolProperty > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t = {"_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t", "boost::shared_ptr< FullPhysics::SubStateVectorObserver > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Unit_t = {"_p_boost__shared_ptrT_FullPhysics__Unit_t", "boost::shared_ptr< FullPhysics::Unit > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__shared_ptrT_Pressure_t = {"_p_boost__shared_ptrT_Pressure_t", "boost::shared_ptr< Pressure > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char_type = {"_p_char_type", "char_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
@@ -9136,7 +9083,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t,
-  &_swigt__p_boost__shared_ptrT_Pressure_t,
   &_swigt__p_char,
   &_swigt__p_char_type,
   &_swigt__p_difference_type,
@@ -9196,7 +9142,7 @@ static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AerosolProperty_
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolPropertyImpBase_t, _p_boost__shared_ptrT_FullPhysics__AerosolPropertyImpBase_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolPropertyImpBase_t, _p_boost__shared_ptrT_FullPhysics__AerosolPropertyImpBase_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolProperty_t, _p_boost__shared_ptrT_FullPhysics__AerosolProperty_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolPropertyImpBase_t, _p_boost__shared_ptrT_FullPhysics__AerosolPropertyImpBase_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AerosolProperty_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
@@ -9209,7 +9155,6 @@ static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVector_t[] 
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolPropertyImpBase_t, _p_boost__shared_ptrT_FullPhysics__AerosolPropertyImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AerosolPropertyImpBase_t, _p_boost__shared_ptrT_FullPhysics__AerosolPropertyImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_Pressure_t[] = {  {&_swigt__p_boost__shared_ptrT_Pressure_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char_type[] = {  {&_swigt__p_char_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -9282,7 +9227,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AerosolProperty_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t,
-  _swigc__p_boost__shared_ptrT_Pressure_t,
   _swigc__p_char,
   _swigc__p_char_type,
   _swigc__p_difference_type,

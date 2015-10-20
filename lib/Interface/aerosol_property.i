@@ -8,6 +8,7 @@
 %base_import(observer)
 %base_import(state_vector)
 %base_import(generic_object)
+%import "pressure.i"
 
 %fp_shared_ptr(FullPhysics::AerosolProperty)
 namespace FullPhysics {
