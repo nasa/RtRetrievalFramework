@@ -924,6 +924,9 @@ class SoundingFirstFile(SoundingDataFile):
             self._id_dim_names = ('Exposure',) 
 
     def get_sounding_ids(self):
-        indexes = numpy.zeros(self.values()[0].values()[0].shape, dtype=int)
-        indexes.ravel()[:] = range(numpy.product(indexes.shape)) 
+        if len(self.values()) > 0 and len(self.values()[0].values()) > 0:
+            indexes = numpy.zeros(self.values()[0].values()[0].shape, dtype=int)
+            indexes.ravel()[:] = range(numpy.product(indexes.shape)) 
+        else:
+            indexes = []
         return indexes 
