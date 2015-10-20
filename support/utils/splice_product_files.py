@@ -4,10 +4,12 @@
 # ids from the various files and splice them into a new L1B and and additional files.
 
 from __future__ import print_function
+from __future__ import division
 
 import os
 import re
 import sys
+import math
 from copy import copy
 from argparse import ArgumentParser
 from operator import itemgetter
@@ -16,6 +18,9 @@ from contextlib import closing
 import logging
 import traceback
 import time
+
+import multiprocessing
+from tempfile import mkstemp
 
 # Should be progressbar2
 from progressbar import ProgressBar, Percentage, SimpleProgress, Bar
@@ -28,12 +33,16 @@ import h5py
 
 import full_physics.acos_file as acos_file
 from full_physics.fill_value import FILL_VALUE
+from full_physics import log_util
 
 from full_physics.splice_tool_mapping import aggregator_dataset_mapping, aggregator_dataset_dest_names
 
 DEFAULT_OUTPUT_FILENAME = "spliced_output.h5"
 
-logger = logging.getLogger()
+# Base progress bar widgets
+PROGRESS_WIDGETS = [ Bar(), ' ', Percentage(), ' (', SimpleProgress(), ')' ]
+
+term = Terminal()
 
 # These ID dimensions are used by IdDatasetFinder for use by the splice tool and l2_analysis
 ID_DIMENSIONS = { 'SoundingGeometry/sounding_id':  ('Frame', 'Sounding'),
@@ -58,6 +67,24 @@ class Timer:
     def __exit__(self, *args):
         self.end = time.clock()
         self.interval = self.end - self.start
+
+class ProgressWriter(object):
+    "Writes progress bar to a specific location on the screen, but only if terminal supports it, other wise no progress bar is printed"
+
+    def __init__(self, location, fd=sys.stdout):
+        """
+        Input: location - tuple of ints (x, y), the position
+                          of the bar in the terminal
+        """
+
+        self.location = location
+        self.fd = fd
+
+    def write(self, string):
+        # Only write progress is terminal supports it and is not being piped
+        if term.does_styling:
+            with term.location(*self.location):
+                print(string, file=self.fd)
 
 class DatasetInformation(object):
 
@@ -235,7 +262,7 @@ class DatasetInformation(object):
 
 class SourceInformation(object):
 
-    def __init__(self, src_filenames, sounding_ids=None, desired_datasets=None, rename_mapping=False, multi_source_types=False, progress=ProgressBar()):
+    def __init__(self, src_filenames, sounding_ids=None, desired_datasets=None, rename_mapping=False, multi_source_types=False, logger=logging.getLogger(), progress=ProgressBar()):
 
         # Filenames to splice from, will be modified to remove any which have no sounding ids present
         # Ensure it is a list so we can modify it as we go
@@ -257,6 +284,9 @@ class SourceInformation(object):
         # Progress bar
         self.progress = copy(progress)
         self.progress.widgets = [ 'Analyzing sources ' ] + self.progress.widgets
+
+        # Logger to use for class
+        self.logger = logger
 
         # Sounding ids per file and their indexes in those files
         self.file_sounding_ids = []
@@ -304,7 +334,7 @@ class SourceInformation(object):
             # Search list of datasets based upon the destination dataset name, which is the same as
             # the input name when rename mapping is not used
             if self.desired_datasets != None and len(filter(lambda ds: re.search(ds_info.out_name, ds), self.desired_datasets)) == 0:
-                logger.debug('Ignoring dataset not in list of datasets to consider: "%s"' % ds_name)
+                self.logger.debug('Ignoring dataset not in list of datasets to consider: "%s"' % ds_name)
                 self._ignored_datasets.append(ds_name)
                 return None
 
@@ -314,7 +344,7 @@ class SourceInformation(object):
             if len(ds_info.inp_shape_names) > 0:
                 self.datasets_info[ds_name] = ds_info
             else:
-                logger.warning( "Ignoring dataset which is not an array: %s" % ds_name)
+                self.logger.warning( "Ignoring dataset which is not an array: %s" % ds_name)
 
         hdf_obj.visititems(_check_dataset)
 
@@ -350,13 +380,12 @@ class SourceInformation(object):
             self.progress.update(file_idx + 1)
 
         self.progress.finish()
-        print("\r", file=self.progress.fd)
         
         self._sort_file_lists()
 
 class ProductSplicer(object):
 
-    def __init__(self, source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False, multi_source_types=None, progress=ProgressBar()):
+    def __init__(self, source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False, multi_source_types=None, logger=logging.getLogger(), progress=ProgressBar()):
         
         self.splice_all = splice_all
         self.multi_source_types = multi_source_types
@@ -364,7 +393,9 @@ class ProductSplicer(object):
         self.progress = copy(progress)
         self.progress.widgets = ['Copying data '] + self.progress.widgets
 
-        self.source_info = SourceInformation(source_files, sounding_ids, desired_datasets_list, rename_mapping, multi_source_types, progress)
+        self.logger = logger
+
+        self.source_info = SourceInformation(source_files, sounding_ids, desired_datasets_list, rename_mapping, multi_source_types, logger, progress)
         self.dest_obj = h5py.File(output_filename, 'w')
         self.out_dataset_objs = {}
 
@@ -381,7 +412,7 @@ class ProductSplicer(object):
         """Duplicates a dataset from the input file into the output hdf object as it exists
         except for its dimensions"""
 
-        logger.debug("Creating new output dataset: %s" % dataset_info.out_name)
+        self.logger.debug("Creating new output dataset: %s" % dataset_info.out_name)
 
         dst_shape, max_shape, dst_shape_names = dataset_info.output_dataset_shape(splice_size, self.multi_source_types) 
 
@@ -403,14 +434,14 @@ class ProductSplicer(object):
             if FILL_VALUE.has_key(fill_type):
                 dataset_fill = FILL_VALUE[fill_type]
             else:
-                logger.warning("Could not find specific fill value for dataset: %s of type %s" % (dst_name, fill_type))
+                self.logger.warning("Could not find specific fill value for dataset: %s of type %s" % (dst_name, fill_type))
                 dataset_fill = None
         else:
             # Use default fill for string types
             fill_type = None
             dataset_fill = None
 
-        logger.debug( "Creating new dataset: %s/%s sized: %s with fill type: %s and value: %s" % (dst_group, dst_name, dst_shape, fill_type, dataset_fill) )
+        self.logger.debug( "Creating new dataset: %s/%s sized: %s with fill type: %s and value: %s" % (dst_group, dst_name, dst_shape, fill_type, dataset_fill) )
         try:
             out_dataset_obj = out_group_obj.create_dataset(dst_name, shape=dst_shape, dtype=dataset_info.out_type, maxshape=max_shape, compression="gzip", compression_opts=2, fillvalue=dataset_fill)
         except RuntimeError as exc:
@@ -431,11 +462,11 @@ class ProductSplicer(object):
                     # If the dtype of the attribute is an object dtype, then assume
                     # its a variable length string
                     if hasattr(attr_value, "dtype") and attr_value.dtype.kind == "O":
-                        logger.debug('Copying variable length string attribute: "%s" with value: "%s"' % (attr_name, attr_value[0]))
+                        self.logger.debug('Copying variable length string attribute: "%s" with value: "%s"' % (attr_name, attr_value[0]))
                         vlen_dt = h5py.special_dtype(vlen=str)
                         out_dataset_obj.attrs.create(attr_name, attr_value, dtype=vlen_dt)
                     else:
-                        logger.debug('Copying attribute: "%s" with value: "%s"' % (attr_name, attr_value))
+                        self.logger.debug('Copying attribute: "%s" with value: "%s"' % (attr_name, attr_value))
                         out_dataset_obj.attrs.create(attr_name, attr_value)
 
         # Add extra information for dataset, overwrite an existing shape, because we may have
@@ -454,7 +485,7 @@ class ProductSplicer(object):
             id_dimension = curr_dataset_info.inp_id_dims
 
             if self.dest_obj.get(curr_dataset_info.out_name, None) != None:
-                logger.debug("Destination dataset %s for %s already exists in output file, ignoring duplicate" % (curr_dataset_info.out_name, curr_dataset_name))
+                self.logger.debug("Destination dataset %s for %s already exists in output file, ignoring duplicate" % (curr_dataset_info.out_name, curr_dataset_name))
                 del self.source_info.datasets_info[curr_dataset_name]
 
             elif len(id_dimension) > 0: 
@@ -462,7 +493,7 @@ class ProductSplicer(object):
                 self.out_dataset_objs[curr_dataset_name] = self.create_output_dataset(curr_dataset_info, self.source_info.num_soundings)
             
             elif self.splice_all:
-                logger.debug("Non sounding id dataset, copying from first file: %s" % curr_dataset_name)
+                self.logger.debug("Non sounding id dataset, copying from first file: %s" % curr_dataset_name)
                     
                 # Copy dataset with no sounding dimension directly from first file
                 out_dataset_obj = self.create_output_dataset(curr_dataset_info)
@@ -479,7 +510,7 @@ class ProductSplicer(object):
                             break
             else:
                 del self.source_info.datasets_info[curr_dataset_name]
-                logger.debug( "Ignoring non sounding id dataset: %s" % curr_dataset_name )
+                self.logger.debug("Ignoring non sounding id dataset: %s" % curr_dataset_name)
 
         self.dest_obj.flush()
 
@@ -527,8 +558,8 @@ class ProductSplicer(object):
 
         # Set sliced data into output dataset
         if numpy.product(in_data.shape) > numpy.product(out_shape):
-            logger.warning("Dataset %s requires destructive resizing" % (dataset_info.out_name))
-            logger.debug("At indexes %s resizing source data of shape %s to %s." % (in_data_idx, in_data.shape, out_shape)) 
+            self.logger.warning("Dataset %s requires destructive resizing" % (dataset_info.out_name))
+            self.logger.debug("At indexes %s resizing source data of shape %s to %s." % (in_data_idx, in_data.shape, out_shape)) 
             stored_data = numpy.resize(in_data, out_shape)
         else:
             stored_data = in_data.reshape(out_shape)
@@ -559,14 +590,14 @@ class ProductSplicer(object):
                             yield curr_dataset_name, out_dataset_idx, stored_data
           
                         except (ValueError, IOError) as e:
-                            logger.error('Error copying dataset: "%s", dataset may be corrupt: %s' % (curr_dataset_name, e))
-                            logger.debug('Exception: %s' % traceback.format_exc())
+                            self.logger.error('Error copying dataset: "%s", dataset may be corrupt: %s' % (curr_dataset_name, e))
+                            self.logger.debug('Exception: %s' % traceback.format_exc())
                     else:
-                        logger.debug('Dataset: "%s" has an empty dimension in its shape: %s, not actually copying any values from: %s' % (curr_dataset_name, curr_ds_obj.shape, curr_file))
+                        self.logger.debug('Dataset: "%s" has an empty dimension in its shape: %s, not actually copying any values from: %s' % (curr_dataset_name, curr_ds_obj.shape, curr_file))
 
                 else: 
                     # Ok if not found, just treat as empty dataset
-                    logger.debug('Dataset: "%s" is missing, not actually copy any values from: %s' % (curr_dataset_name, curr_file))
+                    self.logger.debug('Dataset: "%s" is missing, not actually copy any values from: %s' % (curr_dataset_name, curr_file))
 
     def copy_datasets(self):
         """Given an input and output hdf object, copies the specified soundings ids for the specified
@@ -576,7 +607,7 @@ class ProductSplicer(object):
         output_index = 0
         self.progress.start(len(self.source_info.src_filenames))
         for file_index, (curr_file, curr_snd_indexes) in enumerate(zip(self.source_info.src_filenames, self.source_info.file_indexes)):
-            logger.debug( 'Copying %d sounding(s) from %s (%d / %d)' % (len(curr_snd_indexes), os.path.basename(curr_file), file_index+1, len(self.source_info.src_filenames)) )
+            self.logger.debug( 'Copying %d sounding(s) from %s (%d / %d)' % (len(curr_snd_indexes), os.path.basename(curr_file), file_index+1, len(self.source_info.src_filenames)) )
 
             for curr_dataset_name, out_dataset_idx, stored_data in self.get_datasets_for_file(curr_file, curr_snd_indexes, output_index):
                 self.out_dataset_objs[curr_dataset_name].__setitem__(tuple(out_dataset_idx), stored_data)
@@ -590,34 +621,36 @@ class ProductSplicer(object):
                 output_index += len(curr_snd_indexes) 
 
         self.progress.finish()
-        print("\r", file=self.progress.fd)
+
+        # Flush our copies to disk
+        self.dest_obj.flush()
 
     def splice_files(self):
 
-        logger.info("Splicing into: %s" % self.dest_obj.filename)
+        self.logger.info("Splicing into: %s" % self.dest_obj.filename)
 
         # Match sounding ids to files and indexes using L1B files
         with Timer() as t:
-            logger.info("Analyzing source files")
+            self.logger.info("Analyzing source files")
             self.analyze()
 
-        logger.info("Found %d sounding ids and %d unique datasets in %d files taking %.03f seconds" % (len(self.source_info.found_sounding_ids), len(self.source_info.datasets_info), len(self.source_info.src_filenames), t.interval))
+        self.logger.info("Found %d sounding ids and %d unique datasets in %d files taking %.03f seconds" % (len(self.source_info.found_sounding_ids), len(self.source_info.datasets_info), len(self.source_info.src_filenames), t.interval))
 
         # Create datasets in the output file so we have somewhere to dump the input
         with Timer() as t:
-            logger.info("Creating output file datasets")
+            self.logger.info("Creating output file datasets")
             self.create_datasets()
 
-        logger.info("Datasets creation took %.03f seconds" % (t.interval))
+        self.logger.info("Datasets creation took %.03f seconds" % (t.interval))
 
         # Now copy desired datasets from source file to destination files
         with Timer() as t:
-            logger.info("Copying data to output")
+            self.logger.info("Copying data to output")
             self.copy_datasets()
 
-        logger.info("Datasets copying took %.03f seconds" % (t.interval))
+        self.logger.info("Datasets copying took %.03f seconds" % (t.interval))
     
-def determine_multi_source(check_files):
+def determine_multi_source(check_files, logger):
 
     # Looks through input hdf files and see if we are using multiple source types, ie different types of files combined into one
     multi_source_types = False
@@ -642,18 +675,82 @@ def determine_multi_source(check_files):
 
     return multi_source_types
 
-def process_files(source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False, multi_source_types=None):
+
+def splice_worker(worker_idx, source_files, output_fn, sounding_ids, splice_all, desired_datasets_list, rename_mapping, multi_source_types, log_file):
+    # Put worker names into logger and progress bars
+    progress = ProgressBar(widgets=PROGRESS_WIDGETS, fd=ProgressWriter((0, worker_idx)))
+    progress.widgets.append(' - Worker #%02d' % (worker_idx + 1))
+
+    logger = logging.getLogger("Worker%02d" % (worker_idx + 1))
+    logger.propagate = False
+    if log_file != None:
+        logger.addHandler(log_file)
+    else:
+        # Use a null handler to avoid no handlers could be found message
+        class NullHandler(logging.Handler):
+            def emit(self, record):
+                pass
+        logger.addHandler(NullHandler())
+
+    worker_splicer = ProductSplicer(source_files, output_fn, sounding_ids, splice_all, desired_datasets_list, rename_mapping, multi_source_types, logger, progress)
+    worker_splicer.splice_files()
+
+def process_files(source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False, multi_source_types=None, workers=1, temp_dir=None, main_logger=logging.getLogger(), log_file=None):
+
+    # Sort source files in case ordering matters when splicing in parallel
+    source_files.sort()
 
     # Determine if input files are of different types
     if multi_source_types == None:
-        logger.info("Determining if using multiple source types")
-        multi_source_types = determine_multi_source(source_files)
+        main_logger.info("Determining if using multiple source types")
+        multi_source_types = determine_multi_source(source_files, main_logger)
 
-    widgets= [ Bar(), ' ', Percentage(), ' (', SimpleProgress(), ')' ]
-    progress = ProgressBar(widgets=widgets)
+    if workers > 1 and len(source_files) >= workers:
 
-    splicer = ProductSplicer(source_files, output_filename, sounding_ids, splice_all, desired_datasets_list, rename_mapping, multi_source_types, progress)
-    splicer.splice_files()
+        # Split source files into equal groups, one group for each worker
+        group_size = int(math.ceil(len(source_files) / workers))
+        source_groups = [ source_files[pos:pos + group_size] for pos in range(0, len(source_files), group_size) ]
+
+        main_logger.info("Splicing into %d temporary files in parallel" % len(source_groups))
+
+        processes = []
+        final_files = []
+        temp_files = []
+
+        # Launch workers then wait for their completion
+        for worker_idx in range(len(source_groups)):
+            # Save into a temporary file
+            temp_obj, temp_fn = mkstemp(suffix=".h5", dir=temp_dir)
+
+            final_files.append(temp_fn)
+            temp_files.append(temp_fn)
+
+            proc = multiprocessing.Process(target=splice_worker, args=(worker_idx, source_groups[worker_idx], temp_fn, sounding_ids, splice_all, desired_datasets_list, rename_mapping, multi_source_types, log_file))
+            processes.append(proc)
+
+        # Start processes
+        for proc in processes:
+            proc.start()
+
+        # Wait till all processes end
+        for proc in processes:
+            proc.join()
+
+        # Clear screen for final splicing if just used parallel mode
+        sys.stdout.write(term.clear)
+
+    else:
+        # No parallelization, source files ae the final files we deal with
+        final_files = source_files
+        temp_files = []
+
+    progress = ProgressBar(widgets=PROGRESS_WIDGETS, fd=ProgressWriter((0,0)))
+
+    final_splicer = ProductSplicer(final_files, output_filename, sounding_ids, splice_all, desired_datasets_list, rename_mapping, multi_source_types, main_logger, progress)
+    final_splicer.splice_files()
+
+    for fn in temp_files:
+        os.unlink(fn)
 
 def load_source_files(filenames, input_list_file=None):
     source_list = []
@@ -690,7 +787,16 @@ def standalone_main():
     parser.add_argument( "-r", "--rename-mapping", dest="rename_mapping",
                          action="store_true",
                          default=False,
-                        help="rename datasets into output file according to internal mapping table as they would appear in the L2Agg PGE")
+                         help="rename datasets into output file according to internal mapping table as they would appear in the L2Agg PGE")
+
+    parser.add_argument( "-w", "--workers", dest="workers", type=int, default=1,
+                         help="Number of workers to use when parallelizing splicing" )
+
+    parser.add_argument( "--temp", dest="temp_dir", default=os.curdir,
+                         help="Directory where temporary files are saved when number of parallel workers is greater than 1" )
+
+    parser.add_argument( "-l", "--log_file", dest="log_file", 
+                         help="Save verbose information to log file" )
 
     parser.add_argument( "--agg-names-filter", dest="agg_names_filter",
                          action="store_true",
@@ -717,25 +823,37 @@ def standalone_main():
     args = parser.parse_args()
 
     if len(args.filenames) == 0 and args.input_files_list == None:
-        parser.error('input list file must be specified')
+        parser.error("Input list file must be specified")
 
     # Set up logging
     if args.verbose:
         # Include HDF5 errors in output
         h5py._errors.unsilence_errors()
 
-        logger.setLevel(logging.DEBUG)
+        log_level = logging.DEBUG
     else:
-        logger.setLevel(logging.INFO)
-    console = logging.StreamHandler(stream=sys.stdout)
-    logger.addHandler(console)
+        log_level = logging.INFO
+    main_logger = log_util.init_logging(log_level=log_level, format="%(message)s")
+        
+    # Initialize logging
+    if args.log_file:
+        log_file = log_util.open_log_file(args.log_file, logger=main_logger)
+        log_file.setFormatter( logging.Formatter("%(asctime)s: %(name)8s - %(levelname)7s - %(message)s") )
+    else:
+        log_file = None
+
+    # Clear screen to make cursor indexing easier
+    sys.stdout.write(term.clear)
+    
+    # Make space for progress bars
+    sys.stdout.write(term.move_down * args.workers)
 
     source_files = load_source_files(args.filenames, args.input_files_list)
 
     if args.sounding_id_file != None:
         sounding_ids = [ sid.strip() for sid in open(args.sounding_id_file).readlines() ]
     else:
-        logger.info("No sounding ids file supplied, aggregating all ids from all files")
+        main_logger.info("No sounding ids file supplied, aggregating all ids from all files")
         sounding_ids = None
 
     copy_datasets_list = None
@@ -748,7 +866,7 @@ def standalone_main():
         else:
             copy_datasets_list += aggregator_dataset_dest_names
 
-    process_files(source_files, args.output_filename, sounding_ids, splice_all=args.splice_all, desired_datasets_list=copy_datasets_list, rename_mapping=args.rename_mapping, multi_source_types=args.multi_source_types)
+    process_files(source_files, args.output_filename, sounding_ids, splice_all=args.splice_all, desired_datasets_list=copy_datasets_list, rename_mapping=args.rename_mapping, multi_source_types=args.multi_source_types, workers=args.workers, temp_dir=args.temp_dir, main_logger=main_logger, log_file=log_file)
 
 if __name__ == "__main__":
     standalone_main()

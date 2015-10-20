@@ -102,9 +102,6 @@ for config_file in args.config_file:
         for tb_line in traceback.format_exception(*sys.exc_info()):
             logger.error(tb_line.strip())
 
-if log_obj != None:
-    log_util.close_log_file(log_obj)
-
 if success:
     logger.info("Population was successful")
     sys.exit(0)
