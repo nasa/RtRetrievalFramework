@@ -1,0 +1,12 @@
+# Required Python packages
+# Use with pip install -r requirements.txt
+ply
+numpy
+scipy
+matplotlib
+h5py
+nosetests
+pyproj
+pyephem
+blessings
+progressbar2
