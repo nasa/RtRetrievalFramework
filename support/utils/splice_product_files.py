@@ -13,7 +13,7 @@ import math
 from copy import copy
 from argparse import ArgumentParser
 from operator import itemgetter
-from collections import Counter
+from collections import Counter, Iterable
 from contextlib import closing
 import logging
 import traceback
@@ -275,6 +275,7 @@ class SourceInformation(object):
 
         # All sounding ids found from source files that match input list
         self.found_sounding_ids = set()
+        self.found_ids_to_index = {}
 
         # Flags
         self.desired_datasets = desired_datasets
@@ -361,6 +362,12 @@ class SourceInformation(object):
             self.file_sounding_ids = [ self.file_sounding_ids ]
             self.file_indexes = [ self.file_indexes ]
             self.src_filenames = [ self.src_filenames ]
+
+        # Make sure list of destination ids is in a sorted order
+        self.found_sounding_ids = sorted(self.found_sounding_ids)
+        
+        # Make a mapping of sounding ids to index
+        self.found_ids_to_index = { sid: index for (index, sid) in numpy.ndenumerate(self.found_sounding_ids) }
 
     def analyze_files(self):
         # Loop over a copy of the source filenames as we will remove from the original list any that
@@ -534,6 +541,8 @@ class ProductSplicer(object):
                 if idx.step:
                     raise NotImplementedError("stepped slices not supported yet")
                 out_shape.append(stop - start)
+            elif isinstance(idx, Iterable):
+                out_shape.append(len(idx))
             elif type(idx) is int:
                 out_shape.append(1)
             else:
@@ -567,7 +576,7 @@ class ProductSplicer(object):
 
         return stored_data
 
-    def get_datasets_for_file(self, curr_file, curr_snd_indexes, output_index):
+    def get_datasets_for_file(self, curr_file, curr_snd_indexes, output_slice):
         # Ignore current file if no soundings
         if len(curr_snd_indexes) == 0:
             return     
@@ -578,8 +587,6 @@ class ProductSplicer(object):
 
                 curr_ds_obj = curr_hdf_obj.get(curr_dataset_name, None)
                 if curr_ds_obj != None:
-                    output_slice = slice(output_index, output_index+len(curr_snd_indexes))
-
                     # Only actually perform the copy if the object does not contain an empty dimension
                     # otherwise we leave the created output dataset empty
                     if not 0 in curr_ds_obj.shape:
@@ -596,30 +603,28 @@ class ProductSplicer(object):
                     else:
                         self.logger.debug('Dataset: "%s" has an empty dimension in its shape: %s, not actually copying any values from: %s' % (curr_dataset_name, curr_ds_obj.shape, curr_file))
 
-                else: 
-                    # Ok if not found, just treat as empty dataset
-                    self.logger.debug('Dataset: "%s" is missing, not actually copy any values from: %s' % (curr_dataset_name, curr_file))
-
     def copy_datasets(self):
         """Given an input and output hdf object, copies the specified soundings ids for the specified
         dataset names along the specified shape dimention to the output file"""
 
-        # Loop over dataset names/shapes
-        output_index = 0
         self.progress.start(len(self.source_info.src_filenames))
-        for file_index, (curr_file, curr_snd_indexes) in enumerate(zip(self.source_info.src_filenames, self.source_info.file_indexes)):
+
+        # For each file copy all of its datasets to the destination file
+        for file_index, (curr_file, curr_snd_ids, curr_snd_indexes) in enumerate(zip(self.source_info.src_filenames, self.source_info.file_sounding_ids, self.source_info.file_indexes)):
             self.logger.debug( 'Copying %d sounding(s) from %s (%d / %d)' % (len(curr_snd_indexes), os.path.basename(curr_file), file_index+1, len(self.source_info.src_filenames)) )
 
-            for curr_dataset_name, out_dataset_idx, stored_data in self.get_datasets_for_file(curr_file, curr_snd_indexes, output_index):
+            # Figure out where into the output file to copy source data for this file
+            output_indexes = numpy.array([ self.source_info.found_ids_to_index[sid] for sid in curr_snd_ids ])
+            index_count = numpy.sum(output_indexes[1:] - output_indexes[:-1]) + 1
+            if index_count != output_indexes.shape[0]:
+                raise ValueError("Output indexes do not appear to be contiguous: %s vs %s" % (index_count, output_indexes.shape[0]))
+            output_slice = slice(output_indexes[0], output_indexes[-1] + 1)
+
+            for curr_dataset_name, out_dataset_idx, stored_data in self.get_datasets_for_file(curr_file, curr_snd_indexes, output_slice):
+                self.logger.debug("%s: %s -> %s - %s" % (curr_dataset_name, out_dataset_idx, stored_data.shape, self.out_dataset_objs[curr_dataset_name].shape))
                 self.out_dataset_objs[curr_dataset_name].__setitem__(tuple(out_dataset_idx), stored_data)
 
             self.progress.update(file_index)
-
-            # Increment where to start in the index into output sounding indexes
-            # Only increment if not using multiple source types because when using different
-            # inputs to a single output we will be pulling the same sounding ids (hopefully)
-            if not self.multi_source_types:
-                output_index += len(curr_snd_indexes) 
 
         self.progress.finish()
         self.progress.fd.write('\n')
