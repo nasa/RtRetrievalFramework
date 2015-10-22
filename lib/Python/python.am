@@ -27,7 +27,6 @@ pkgpython_PYTHON+= @pythonlibsrc@/gosat_populator.py
 pkgpython_PYTHON+= @pythonlibsrc@/oco_populator.py
 pkgpython_PYTHON+= @pythonlibsrc@/oco_uplooking_populator.py
 pkgpython_PYTHON+= @pythonlibsrc@/uq_populator.py
-pkgpython_PYTHON+= @pythonlibsrc@/progress.py
 pkgpython_PYTHON+= @pythonlibsrc@/plot_util.py
 pkgpython_PYTHON+= @pythonlibsrc@/l2_lua.py
 pkgpython_PYTHON+= @pythonlibsrc@/splice_tool_mapping.py

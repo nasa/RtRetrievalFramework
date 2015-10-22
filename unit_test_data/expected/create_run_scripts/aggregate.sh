@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#PBS -l select=ncpus=16
+
 export spectrum_file="/fake_path/spectrum.h5"
 
 export ecmwf_file="/fake_path/ecmwf.h5"
@@ -14,6 +16,12 @@ export PATH=/fake_bin_path
 export LD_LIBRARY_PATH=/fake_lib_path
 export LUA_PATH="/fake_path/input/gosat/config/?.lua;/l2_lua_fake_path"
 
+if [ -w "/state/partition1/" ]; then
+    worker_temp=/state/partition1/
+else
+    worker_temp=create_run_scripts_test
+fi
+
 # Aggregate all single sounding output hdf files into a single hdf file
 if [ ! -e "$l2_agg_fn" ]; then
     # Use find instead of a glob because there could be too much files that
@@ -27,7 +35,8 @@ if [ ! -e "$l2_agg_fn" ]; then
     cat $sounding_id_list_filename | tr ' ' '\n' > $in_snd_id_tmp
 
     echo "Aggregating L2 output files"
-    /l2_support_fake_path/utils/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -s $in_snd_id_tmp $*
+    log_file=agg_$(basename ${l2_agg_fn} | sed 's/\.h5$/.log/')
+    /l2_support_fake_path/utils/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -s $in_snd_id_tmp -l create_run_scripts_test/log/$log_file $* -w 16 --temp $worker_temp
 
     rm $input_files_tmp
     rm $in_snd_id_tmp
@@ -70,7 +79,8 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
         done
     fi
 
-    /l2_support_fake_path/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2
+    log_file=agg_$(basename ${l2_plus_more_agg_fn} | sed 's/\.h5$/.log/')
+    /l2_support_fake_path/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l create_run_scripts_test/log/$log_file
     rm $l2_snd_id_tmp2 $inp_files_tmp
 
     # Create retrieval_index dataset based on L1B file
