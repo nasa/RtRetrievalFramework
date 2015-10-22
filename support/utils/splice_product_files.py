@@ -71,7 +71,7 @@ class Timer:
 class ProgressWriter(object):
     "Writes progress bar to a specific location on the screen, but only if terminal supports it, other wise no progress bar is printed"
 
-    def __init__(self, location, fd=sys.stdout):
+    def __init__(self, location=(), fd=sys.stdout):
         """
         Input: location - tuple of ints (x, y), the position
                           of the bar in the terminal
@@ -83,8 +83,11 @@ class ProgressWriter(object):
     def write(self, string):
         # Only write progress is terminal supports it and is not being piped
         if term.does_styling:
-            with term.location(*self.location):
-                print(string, file=self.fd)
+            if self.location != None and len(self.location) > 0:
+                with term.location(*self.location):
+                    print(string, file=self.fd)
+            else:
+                self.fd.write(string)
 
 class DatasetInformation(object):
 
@@ -274,7 +277,7 @@ class SourceInformation(object):
             self.inp_sounding_ids = None
 
         # All sounding ids found from source files that match input list
-        self.found_sounding_ids = set()
+        self.found_sounding_ids = set() # Will be a list after analyze is run
         self.found_ids_to_index = {}
 
         # Flags
@@ -306,12 +309,14 @@ class SourceInformation(object):
         return len(self.found_sounding_ids)
 
     def process_file_ids(self, hdf_obj):
-        curr_sounding_ids = set(numpy.ravel(hdf_obj.get_sounding_ids()))
+        curr_sounding_ids = numpy.ravel(hdf_obj.get_sounding_ids())
 
+        # Convert curr_sounding_ids to a set in place, because if we use all sounding ids
+        # we don't want an unsorted set used which can mess up the ordering of sounding ids
         if self.inp_sounding_ids == None:
             matching_ids = curr_sounding_ids
         else:
-            matching_ids = sorted(curr_sounding_ids.intersection(self.inp_sounding_ids))
+            matching_ids = sorted(set(curr_sounding_ids).intersection(self.inp_sounding_ids))
 
         if len(matching_ids) > 0:
             self.found_sounding_ids.update(matching_ids)
@@ -365,7 +370,7 @@ class SourceInformation(object):
 
         # Make sure list of destination ids is in a sorted order
         self.found_sounding_ids = sorted(self.found_sounding_ids)
-        
+
         # Make a mapping of sounding ids to index
         self.found_ids_to_index = { sid: index for (index, sid) in numpy.ndenumerate(self.found_sounding_ids) }
 
@@ -415,7 +420,6 @@ class ProductSplicer(object):
 
         self.source_info.analyze_files()
     
-
     def create_output_dataset(self, dataset_info, splice_size=None):
         """Duplicates a dataset from the input file into the output hdf object as it exists
         except for its dimensions"""
@@ -611,7 +615,9 @@ class ProductSplicer(object):
 
         # For each file copy all of its datasets to the destination file
         for file_index, (curr_file, curr_snd_ids, curr_snd_indexes) in enumerate(zip(self.source_info.src_filenames, self.source_info.file_sounding_ids, self.source_info.file_indexes)):
-            self.logger.debug( 'Copying %d sounding(s) from %s (%d / %d)' % (len(curr_snd_indexes), os.path.basename(curr_file), file_index+1, len(self.source_info.src_filenames)) )
+            # Output as simpler message on progress when progress bar output is disabled
+            if not term.does_styling:
+                self.logger.info('Copying %d sounding(s) from %s (%d / %d)' % (len(curr_snd_indexes), os.path.basename(curr_file), file_index+1, len(self.source_info.src_filenames)))
 
             # Figure out where into the output file to copy source data for this file
             output_indexes = numpy.array([ self.source_info.found_ids_to_index[sid] for sid in curr_snd_ids ])
@@ -621,7 +627,6 @@ class ProductSplicer(object):
             output_slice = slice(output_indexes[0], output_indexes[-1] + 1)
 
             for curr_dataset_name, out_dataset_idx, stored_data in self.get_datasets_for_file(curr_file, curr_snd_indexes, output_slice):
-                self.logger.debug("%s: %s -> %s - %s" % (curr_dataset_name, out_dataset_idx, stored_data.shape, self.out_dataset_objs[curr_dataset_name].shape))
                 self.out_dataset_objs[curr_dataset_name].__setitem__(tuple(out_dataset_idx), stored_data)
 
             self.progress.update(file_index)
@@ -704,6 +709,9 @@ def splice_worker(worker_idx, source_files, output_fn, sounding_ids, splice_all,
 
 def process_files(source_files, output_filename, sounding_ids, splice_all=False, desired_datasets_list=None, rename_mapping=False, multi_source_types=None, workers=1, temp_dir=None, main_logger=logging.getLogger(), log_file=None):
 
+    # Sort source files to reduce chance of out of order sounding ids when processing in parallel
+    source_files.sort()
+
     # Determine if input files are of different types
     if multi_source_types == None:
         main_logger.info("Determining if using multiple source types")
@@ -753,7 +761,7 @@ def process_files(source_files, output_filename, sounding_ids, splice_all=False,
         # No parallelization, source files ae the final files we deal with
         final_files = source_files
         temp_files = []
-        final_writer = sys.stdout
+        final_writer = ProgressWriter()
 
     progress = ProgressBar(widgets=PROGRESS_WIDGETS, fd=final_writer)
 
