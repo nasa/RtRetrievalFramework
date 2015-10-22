@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#PBS -l select=ncpus=16
+
 {0.variable_exports}
 sounding_id_list_filename={0.sounding_id_list_filename}
 l2_agg_fn={0.processing_dir}/l2_aggregate.h5
@@ -8,6 +10,12 @@ export PYTHONPATH={0.python_path}
 export PATH={0.bin_path}
 export LD_LIBRARY_PATH={0.lib_path}
 export LUA_PATH="{0.l2_lua_path}"
+
+if [ -w "/state/partition1/" ]; then
+    worker_temp=/state/partition1/
+else
+    worker_temp={0.processing_dir}
+fi
 
 # Aggregate all single sounding output hdf files into a single hdf file
 if [ ! -e "$l2_agg_fn" ]; then
@@ -22,7 +30,8 @@ if [ ! -e "$l2_agg_fn" ]; then
     cat $sounding_id_list_filename | tr ' ' '\n' > $in_snd_id_tmp
 
     echo "Aggregating L2 output files"
-    {0.l2_support_path}/utils/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -s $in_snd_id_tmp $*
+    log_file=agg_$(basename ${{l2_agg_fn}} | sed 's/\.h5$/.log/')
+    {0.l2_support_path}/utils/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -s $in_snd_id_tmp -l {0.log_directory}/$log_file $* -w 16 --temp $worker_temp
 
     rm $input_files_tmp
     rm $in_snd_id_tmp
@@ -65,7 +74,8 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
         done
     fi
 
-    {0.l2_support_path}/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2
+    log_file=agg_$(basename ${{l2_plus_more_agg_fn}} | sed 's/\.h5$/.log/')
+    {0.l2_support_path}/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l {0.log_directory}/$log_file
     rm $l2_snd_id_tmp2 $inp_files_tmp
 
     # Create retrieval_index dataset based on L1B file
