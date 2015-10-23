@@ -316,7 +316,7 @@ class SoundingDataFile(h5py.File):
         while len(id_indexes) < len(dim_names):
             id_indexes.append(None)
 
-        index_tuple = index_class(*id_indexes)
+        index_tuple = index_class(*id_indexes[:len(dim_names)])
 
         return index_tuple
 
@@ -853,15 +853,14 @@ class IdDatasetFinder(SoundingDataFile):
 
         self._id_dim_names = None
 
-        if single_id_dim and self.get('/FrameHeader/frame_id') != None:
-            # OCO-2 file using only a single id dimension
-            self._sounding_id_dataset = '/FrameHeader/frame_id'
-            self._id_dim_names = ('Frame',)
+        if self.get('/SoundingGeometry/sounding_id') != None and len(self['/SoundingGeometry/sounding_id'].shape) == 2:
 
-        elif single_id_dim and self.get('/ABandRetrieval') != None and self.get('/SoundingGeometry/sounding_id') != None and len(self['/SoundingGeometry/sounding_id'].shape) == 2:
-            # OCO2- Cloud screener
+            # OCO-2 L1B, ECMWF, IMAP  or ABand Cloud screener files
             self._sounding_id_dataset = '/SoundingGeometry/sounding_id'
-            self._id_dim_names = ('Frame',)
+            if single_id_dim:
+                self._id_dim_names = ('Frame',)
+            else:
+                self._id_dim_names = ('Frame', 'Sounding')
 
         elif self.get('/RetrievalHeader/sounding_id_reference') != None:
             # L2 output files:
@@ -872,14 +871,6 @@ class IdDatasetFinder(SoundingDataFile):
             # L2AggPGE output files:
             self._sounding_id_dataset = '/RetrievalHeader/sounding_id'
             self._id_dim_names = ('Retrieval',)
-
-        elif self.get('/DOASCloudScreen/co2_ratio_idp') != None or self.get('/ABandRetrieval/cloud_flag_abp') != None:
-            # IMAP DOAS or ABand Cloud files
-            self._sounding_id_dataset = '/SoundingGeometry/sounding_id'
-            if single_id_dim:
-                self._id_dim_names = ('Frame',)
-            else:
-                self._id_dim_names = ('Frame', 'Sounding')
 
         elif self.get('/RadianceStatistics_spectra/sounding_id') != None:
             # L1BSt file
