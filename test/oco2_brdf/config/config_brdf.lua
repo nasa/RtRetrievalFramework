@@ -54,7 +54,8 @@ function cov_ampl_geom(orig_cov_func)
         local cov = orig_cov_func(self, i)
         cov:set(0,0, 1e-20)
         cov:set(2,2, 1e-20)
-        cov:set(4,4, 1e-20)
+        cov:set(3,3, 1e-20)
+        cov:set(5,5, 1e-20)
         return cov
     end
 end
