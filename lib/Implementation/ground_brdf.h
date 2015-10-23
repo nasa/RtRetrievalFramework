@@ -3,6 +3,7 @@
 
 #include "ground.h"
 #include "auto_derivative.h"
+#include "array_with_unit.h"
 #include "sub_state_vector_array.h"
 
 namespace FullPhysics {
@@ -18,8 +19,9 @@ namespace FullPhysics {
 class GroundBrdf: public SubStateVectorArray<Ground> {
 public:
     GroundBrdf(const blitz::Array<double, 2>& Coeffs,
-                const blitz::Array<bool, 2>& Flag,
-                const std::vector<std::string>& Desc_band_names);
+               const blitz::Array<bool, 2>& Flag,
+               const ArrayWithUnit<double, 1>& Ref_points,
+               const std::vector<std::string>& Desc_band_names);
 
     virtual ArrayAd<double, 1> surface_parameter(const double wn, const int spec_index) const;
 
@@ -27,13 +29,16 @@ public:
 
     // Rahman parameters
     virtual const AutoDerivative<double> rahman_factor(const int spec_index) const;
-    virtual const AutoDerivative<double> overall_amplitude(const int spec_index) const;
+    virtual const AutoDerivative<double> overall_amplitude(const double wn, const int spec_index) const;
+    virtual const AutoDerivative<double> overall_amplitude_intercept(const int spec_index) const;
+    virtual const AutoDerivative<double> overall_amplitude_slope(const int spec_index) const;
     virtual const AutoDerivative<double> asymmetry_parameter(const int spec_index) const;
     virtual const AutoDerivative<double> geometric_factor(const int spec_index) const;
     virtual const AutoDerivative<double> breon_factor(const int spec_index) const;
 
     virtual void rahman_factor(const int spec_index, const AutoDerivative<double>& val);
-    virtual void overall_amplitude(const int spec_index, const AutoDerivative<double>& val);
+    virtual void overall_amplitude_intercept(const int spec_index, const AutoDerivative<double>& val);
+    virtual void overall_amplitude_slope(const int spec_index, const AutoDerivative<double>& val);
     virtual void asymmetry_parameter(const int spec_index, const AutoDerivative<double>& val);
     virtual void geometric_factor(const int spec_index, const AutoDerivative<double>& val);
     virtual void breon_factor(const int spec_index, const AutoDerivative<double>& val);
@@ -49,7 +54,10 @@ public:
   
     /// String describing which type of Breon surface type, also makes this class abstract
     virtual const std::string breon_type() const = 0;
-    
+
+    /// Center wavelength that spectrally dependent parameter is referenced to
+    virtual const DoubleWithUnit reference_point(const int spec_index) const { return reference_points(spec_index); } 
+
     virtual boost::shared_ptr<Ground> clone() const = 0;
   
     virtual std::string state_vector_name_i(int i) const;
@@ -61,9 +69,11 @@ public:
 protected:
 
     GroundBrdf(const blitz::Array<double, 1>& Spec_coeffs,
-                const blitz::Array<bool, 1>& Flag, 
-                const std::vector<std::string>& Desc_band_names);
+               const blitz::Array<bool, 1>& Flag, 
+               const ArrayWithUnit<double, 1>& Ref_points,
+               const std::vector<std::string>& Desc_band_names);
 
+    ArrayWithUnit<double, 1> reference_points;
     std::vector<std::string> desc_band_names;
 
     // Helper function for routines that call fortran codes
@@ -74,43 +84,47 @@ protected:
 class GroundBrdfVeg: public GroundBrdf {
 public:
     GroundBrdfVeg(const blitz::Array<double, 2>& Coeffs,
-                const blitz::Array<bool, 2>& Flag,
-                const std::vector<std::string>& Desc_band_names) :
-        GroundBrdf(Coeffs, Flag, Desc_band_names) {}
+                  const blitz::Array<bool, 2>& Flag,
+                  const ArrayWithUnit<double, 1>& Ref_points,
+                  const std::vector<std::string>& Desc_band_names) :
+        GroundBrdf(Coeffs, Flag, Ref_points, Desc_band_names) {}
 
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
     virtual const double albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef);
     virtual const std::string breon_type() const { return "Vegetative"; }
 
     virtual boost::shared_ptr<Ground> clone() const {
-      return boost::shared_ptr<Ground>(new GroundBrdfVeg(coefficient().value(), used_flag_value(), desc_band_names));
+      return boost::shared_ptr<Ground>(new GroundBrdfVeg(coefficient().value(), used_flag_value(), reference_points, desc_band_names));
     }
 private:
     GroundBrdfVeg(const blitz::Array<double, 1>& Spec_coeffs,
-                const blitz::Array<bool, 1>& Flag, 
-                const std::vector<std::string>& Desc_band_names) :
-        GroundBrdf(Spec_coeffs, Flag, Desc_band_names) {}
+                  const blitz::Array<bool, 1>& Flag, 
+                  const ArrayWithUnit<double, 1>& Ref_points,
+                  const std::vector<std::string>& Desc_band_names) :
+        GroundBrdf(Spec_coeffs, Flag, Ref_points, Desc_band_names) {}
 };
 
 class GroundBrdfSoil: public GroundBrdf {
 public:
     GroundBrdfSoil(const blitz::Array<double, 2>& Coeffs,
-                const blitz::Array<bool, 2>& Flag,
-                const std::vector<std::string>& Desc_band_names) :
-        GroundBrdf(Coeffs, Flag, Desc_band_names) {}
+                   const blitz::Array<bool, 2>& Flag,
+                   const ArrayWithUnit<double, 1>& Ref_points,
+                   const std::vector<std::string>& Desc_band_names) :
+        GroundBrdf(Coeffs, Flag, Ref_points, Desc_band_names) {}
 
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
     virtual const double albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef);
     virtual const std::string breon_type() const { return "Soil"; }
 
     virtual boost::shared_ptr<Ground> clone() const {
-      return boost::shared_ptr<Ground>(new GroundBrdfSoil(coefficient().value(), used_flag_value(), desc_band_names));
+      return boost::shared_ptr<Ground>(new GroundBrdfSoil(coefficient().value(), used_flag_value(), reference_points, desc_band_names));
     }
 private:
     GroundBrdfSoil(const blitz::Array<double, 1>& Spec_coeffs,
-                const blitz::Array<bool, 1>& Flag, 
-                const std::vector<std::string>& Desc_band_names) :
-        GroundBrdf(Spec_coeffs, Flag, Desc_band_names) {}
+                   const blitz::Array<bool, 1>& Flag, 
+                   const ArrayWithUnit<double, 1>& Ref_points,
+                   const std::vector<std::string>& Desc_band_names) :
+        GroundBrdf(Spec_coeffs, Flag, Ref_points, Desc_band_names) {}
 };
 
 } // End of namespace

@@ -82,7 +82,6 @@ const AutoDerivative<double> GroundLambertian::albedo(const DoubleWithUnit Wave_
     return surface_poly(wn - ref_wn);
 }
 
-
 const ArrayAd<double, 1> GroundLambertian::albedo_coefficients(const int spec_index) const
 {
     range_check(spec_index, 0, number_spectrometer());

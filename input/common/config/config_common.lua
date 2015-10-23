@@ -2092,7 +2092,7 @@ function ConfigCommon.brdf_veg_apriori(field)
         local scaling = ConfigCommon.brdf_scale_factor(self, GroundBrdfVeg, ap, i)
         -- Scale the Rahman and Breon BRDF factors
         ap:set(0, ap(0) * scaling)
-        ap:set(4, ap(4) * scaling)
+        ap:set(5, ap(5) * scaling)
         return ap
     end
 end
@@ -2103,7 +2103,7 @@ function ConfigCommon.brdf_soil_apriori(field)
         local scaling = ConfigCommon.brdf_scale_factor(self, GroundBrdfSoil, ap, i)
         -- Scale the Rahman and Breon BRDF factors
         ap:set(0, ap(0) * scaling)
-        ap:set(4, ap(4) * scaling)
+        ap:set(5, ap(5) * scaling)
         return ap
     end
 end
@@ -2117,15 +2117,15 @@ ConfigCommon.brdf_veg_retrieval = CreatorMultiSpec:new {}
 function ConfigCommon.brdf_veg_retrieval:create()
    local num_spec = self.config.number_pixel:rows()
 
-   local ap = Blitz_double_array_2d(num_spec, 5)
-   local flag = Blitz_bool_array_2d(num_spec, 5)
+   local ap = Blitz_double_array_2d(num_spec, 6)
+   local flag = Blitz_bool_array_2d(num_spec, 6)
 
    for i = 1, num_spec do
        ap:set(i-1, Range.all(), self:apriori_v(i - 1))
        flag:set(i-1, Range.all(), self:retrieval_flag(i))
    end
 
-   return GroundBrdfVeg(ap, flag, self.config.common.desc_band_name)
+   return GroundBrdfVeg(ap, flag, self.config.common.band_reference, self.config.common.desc_band_name)
 end
 
 ------------------------------------------------------------
@@ -2155,15 +2155,15 @@ ConfigCommon.brdf_soil_retrieval = CreatorMultiSpec:new {}
 function ConfigCommon.brdf_soil_retrieval:create()
    local num_spec = self.config.number_pixel:rows()
 
-   local ap = Blitz_double_array_2d(num_spec, 5)
-   local flag = Blitz_bool_array_2d(num_spec, 5)
+   local ap = Blitz_double_array_2d(num_spec, 6)
+   local flag = Blitz_bool_array_2d(num_spec, 6)
 
    for i = 1, num_spec do
        ap:set(i-1, Range.all(), self:apriori_v(i - 1))
        flag:set(i-1, Range.all(), self:retrieval_flag(i))
    end
 
-   return GroundBrdfSoil(ap, flag, self.config.common.desc_band_name)
+   return GroundBrdfSoil(ap, flag, self.config.common.band_reference, self.config.common.desc_band_name)
 end
 
 ------------------------------------------------------------
