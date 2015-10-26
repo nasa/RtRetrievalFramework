@@ -57,8 +57,11 @@ REGISTER_LUA_DERIVED_CLASS(GroundBrdfSoil, Ground)
 REGISTER_LUA_END()
 #endif
 
-// Number of coefficients per band
+// Number of coefficients per band in the state vector
 #define NUM_COEFF 6
+
+// Number of parameters in spars for the RT
+#define NUM_PARAMS 5
 
 /****************************************************************//**
   Constructor that defines coefficients in a 2d array:
@@ -131,7 +134,7 @@ GroundBrdf::GroundBrdf(const blitz::Array<double, 1>& Spec_coeffs,
 ArrayAd<double, 1> GroundBrdf::surface_parameter(const double wn, const int spec_index) const
 {
     ArrayAd<double, 1> spars;
-    spars.resize(NUM_COEFF, coefficient().number_variable());
+    spars.resize(NUM_PARAMS, coefficient().number_variable());
     spars(0) = rahman_factor(spec_index);
     spars(1) = overall_amplitude(wn, spec_index);
     spars(2) = asymmetry_parameter(spec_index);
@@ -238,7 +241,7 @@ void GroundBrdf::breon_factor(const int spec_index, const AutoDerivative<double>
 // Helper function 
 blitz::Array<double, 1> GroundBrdf::albedo_calc_params(const int Spec_index)
 {
-    blitz::Array<double, 1> params(NUM_COEFF, blitz::ColumnMajorArray<1>());
+    blitz::Array<double, 1> params(NUM_PARAMS, blitz::ColumnMajorArray<1>());
     params(0) = rahman_factor(Spec_index).value();
     double ref_wn = reference_points(Spec_index).convert_wave(units::inv_cm).value;
     params(1) = overall_amplitude(ref_wn, Spec_index).value();
