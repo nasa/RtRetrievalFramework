@@ -2071,7 +2071,7 @@ end
 --- sky albedo
 ------------------------------------------------------------
 
-function ConfigCommon.brdf_scale_factor(self, brdf_class, params, i)
+function ConfigCommon.brdf_scale_factor(self, brdf_class, ap, i)
    local signal = self.config:meas_cont_signal(i).value
    local solar_strength = self.config.fm.atmosphere.ground.solar_strength[i+1]
    local sza_d = self.config.l1b:sza()(i) 
@@ -2080,6 +2080,13 @@ function ConfigCommon.brdf_scale_factor(self, brdf_class, params, i)
    local sza_r = sza_d * math.pi / 180.0
    local stokes_coef = self.config.l1b:stokes_coef()(i, Range.all())
    local alb_cont = math.pi * signal / (math.cos(sza_r) * solar_strength)
+
+   -- Extract all but the slope portion of the apriori to feed into the
+   -- albedo calculation function
+   local params = Blitz_double_array_1d(5)
+   params:set(Range(0, 1), ap(Range(0, 1)))
+   params:set(Range(2, 4), ap(Range(3, 5)))
+
    local alb_calc = brdf_class.albedo(params, sza_d, vza_d, azm_d, stokes_coef)
    local scaling = alb_cont / alb_calc
 
