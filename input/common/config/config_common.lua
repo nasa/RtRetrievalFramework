@@ -2116,10 +2116,34 @@ function ConfigCommon.brdf_soil_apriori(field)
 end
 
 ------------------------------------------------------------
+--- Common behavior of both BRDF retrieval methods       ---
+------------------------------------------------------------
+
+ConfigCommon.brdf_retrieval = CreatorMultiSpec:new {}
+
+function ConfigCommon.brdf_retrieval:retrieval_flag(i)
+   local flag = Blitz_bool_array_1d(self:apriori_v(i - 1):rows())
+
+   if self.retrieve_bands ~= nil and self.retrieve_bands[i] then
+        flag:set(Range.all(), false)
+        -- Overall amplitude intercept
+        flag:set(1, true)
+        -- Overall amplitude slope
+        flag:set(2, true)
+        -- Geometric factor
+        flag:set(4, true)
+   else
+        flag:set(Range.all(), false)
+   end
+
+   return flag
+end
+
+------------------------------------------------------------
 --- Breon veg ground state vector component and initial guess
 ------------------------------------------------------------
 
-ConfigCommon.brdf_veg_retrieval = CreatorMultiSpec:new {}
+ConfigCommon.brdf_veg_retrieval = ConfigCommon.brdf_retrieval:new {}
 
 function ConfigCommon.brdf_veg_retrieval:create()
    local num_spec = self.config.number_pixel:rows()
@@ -2157,7 +2181,7 @@ end
 --- Breon soil ground state vector component and initial guess
 ------------------------------------------------------------
 
-ConfigCommon.brdf_soil_retrieval = CreatorMultiSpec:new {}
+ConfigCommon.brdf_soil_retrieval = ConfigCommon.brdf_retrieval:new {}
 
 function ConfigCommon.brdf_soil_retrieval:create()
    local num_spec = self.config.number_pixel:rows()
