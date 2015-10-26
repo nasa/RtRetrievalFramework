@@ -322,7 +322,7 @@ function CreatorMultiSpec:initial_guess(i)
       ig = InitialGuessValue()
       ig:apriori_subset(flag, self:apriori_v(i - 1))
       ig:apriori_covariance_subset(flag, self:covariance_v(i - 1))
-      ig.initial_guess = self:iguess_v(i - 1)
+      ig:initial_guess_subset(flag, self:iguess_v(i - 1))
    end
 
    return ig 
