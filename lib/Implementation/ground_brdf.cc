@@ -158,7 +158,8 @@ const AutoDerivative<double> GroundBrdf::overall_amplitude(const double wn, cons
     amplitude_params(0) = overall_amplitude_slope(spec_index);
     amplitude_params(1) = overall_amplitude_intercept(spec_index);
     Poly1d amplitude_poly(amplitude_params, true);
-    return amplitude_poly(wn - ref_wn);
+    AutoDerivative<double> wn_ad(wn); // Make sure we use the AutoDerivative interface to Poly1d
+    return amplitude_poly(wn_ad - ref_wn);
 }
 
 const AutoDerivative<double> GroundBrdf::overall_amplitude_intercept(const int spec_index) const
