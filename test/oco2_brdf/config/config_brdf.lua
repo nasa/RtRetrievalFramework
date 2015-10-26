@@ -48,19 +48,4 @@ end
 
 config.fm.atmosphere.ground.creator = use_brdf
 
--- Effectively disable Rahman Factor, Asymmetry Factor, Breon Factor
-function cov_ampl_geom(orig_cov_func)
-    return function(self, i)
-        local cov = orig_cov_func(self, i)
-        cov:set(0,0, 1e-20)
-        cov:set(2,2, 1e-20)
-        cov:set(3,3, 1e-20)
-        cov:set(5,5, 1e-20)
-        return cov
-    end
-end
-
-config.fm.atmosphere.ground.brdf_soil.covariance = cov_ampl_geom(config.fm.atmosphere.ground.brdf_soil.covariance)
-config.fm.atmosphere.ground.brdf_veg.covariance = cov_ampl_geom(config.fm.atmosphere.ground.brdf_veg.covariance)
-
 config:do_config()
