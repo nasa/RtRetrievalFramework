@@ -129,11 +129,48 @@ double level_1b_relative_velocity(const Level1b& Lev1, int i)
   return Lev1.relative_velocity(i).value;
 }
 
+int level_1b_year(const Level1b& Lev1, int i)
+{
+  boost::posix_time::ptime t = Lev1.time(i);
+  // +1900 since value is years since 1900
+  return 1900 + to_tm(t).tm_year;
+}
+
 int level_1b_month(const Level1b& Lev1, int i)
 {
   boost::posix_time::ptime t = Lev1.time(i);
   // +1 because tm_mon goes from 0 to 11. We want 1 to 12.
   return to_tm(t).tm_mon + 1;
+}
+
+int level_1b_day(const Level1b& Lev1, int i)
+{
+  boost::posix_time::ptime t = Lev1.time(i);
+  return to_tm(t).tm_mday;
+}
+
+int level_1b_hour(const Level1b& Lev1, int i)
+{
+  boost::posix_time::ptime t = Lev1.time(i);
+  return to_tm(t).tm_hour;
+}
+
+int level_1b_minute(const Level1b& Lev1, int i)
+{
+  boost::posix_time::ptime t = Lev1.time(i);
+  return to_tm(t).tm_min;
+}
+
+int level_1b_second(const Level1b& Lev1, int i)
+{
+  boost::posix_time::ptime t = Lev1.time(i);
+  return to_tm(t).tm_sec;
+}
+
+int level_1b_dayofyear(const Level1b& Lev1, int i)
+{
+  boost::posix_time::ptime t = Lev1.time(i);
+  return to_tm(t).tm_yday;
 }
 
 DoubleWithUnit l1b_signal_no_indexes(const boost::shared_ptr<Level1b>& l1b, int Spec_index)
@@ -160,7 +197,13 @@ REGISTER_LUA_CLASS(Level1b)
 .def("spectral_coefficient", &level_1b_s_coeffs)
 .def("spectral_coefficient_with_unit", &Level1b::spectral_coefficient)
 .def("spectral_coefficient_with_unit", &level_1b_s_coeffs_with_unit)
+.def("year", &level_1b_year)
 .def("month", &level_1b_month)
+.def("day", &level_1b_day)
+.def("hour", &level_1b_hour)
+.def("minute", &level_1b_minute)
+.def("second", &level_1b_second)
+.def("dayofyear", &level_1b_dayofyear)
 .def("radiance", &level_1b_radiance)
 .def("radiance_with_unit", &level_1b_radiance_with_unit)
 .def("radiance_spectral_range", &level_1b_radiance_spectral_range)
