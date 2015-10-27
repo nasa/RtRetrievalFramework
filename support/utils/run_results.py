@@ -49,7 +49,7 @@ SV_CONFIG_TYPE_STRINGS = { "lambertian": "Ground Lambertian",
 LOG_EXCEPTION_SRCH_LIMIT = 35
 
 class results_count:
-    def __init__(self, base_dir=None, verbose=False):
+    def __init__(self, verbose=False):
         self.completed_counts = { 
                                   "outcome_1"   : {"num": 0, "prefix": "with", "order": 3, "indent": 4, "add_to_total": False},
                                   "outcome_2"    : {"num": 0, "prefix": "with", "order": 4, "indent": 4, "add_to_total": False},
@@ -76,7 +76,6 @@ class results_count:
         # For the special case of producing an all list
         self.all_run_dirs = []
 
-        self.base_dir = base_dir
         self.type_output_files = {}
 
         self.count_dicts = (self.completed_counts, self.cfg_type_counts, self.error_counts, self.other_counts)
@@ -212,16 +211,20 @@ class results_count:
 
 class run_id_result:
     
-    def __init__(self, base_path, run_id, verbose=False):
+    def __init__(self, base_path, run_id, aggregate_file=None, verbose=False):
         self.result_types  = []
         self.iterations    = 0
 
         self.base_path = base_path
         self.run_id = run_id
+        self.aggregate_file = aggregate_file
         self.verbose = verbose
 
         class_members = inspect.getmembers(self, inspect.ismethod)
         class_members.sort()
+
+        if self.verbose:
+            print "run_id: ", run_id
 
         for member in class_members:
             if member[0].find("check_") == 0:
@@ -242,7 +245,56 @@ class run_id_result:
         else:
             return None
 
-    def check_1_if_running(self):
+    def check_hdf_results(self, hdf_obj, run_index):
+        # Try and detect brdf type
+        try:
+            sv_names = hdf_obj[STATEVECTOR_NAMES_DATASET][run_index, :]
+                
+            for cfg_type_name, cfg_type_srch in SV_CONFIG_TYPE_STRINGS.iteritems():
+                fnd_of_type = filter(lambda sv_elem: str(sv_elem).find(cfg_type_srch) >= 0, sv_names)
+                if len(fnd_of_type) > 0:
+                    self.result_types.append(cfg_type_name)
+                    break
+        except KeyError:
+            pass
+
+        try:
+            outcome = hdf_obj[OUTCOME_FLAG_DATASET][run_index]
+        except KeyError:
+            outcome = None
+
+        # Check outcome and use master qual value if available.
+        # Do not use master qual for max iter/div types or else
+        # total count would come out wrong
+        if outcome == 1:
+            self.result_types.append( "converged" )
+            return True
+        elif outcome == 2:
+            self.result_types.append( "converged" )
+            return True
+        elif outcome == 3:
+            self.result_types.append( "max_iter" )
+            return True
+        elif outcome == 4:
+            self.result_types.append( "max_div" )
+            return True
+        else:
+            return False
+
+    def check_01_aggregate(self):
+        if self.verbose: print "Checking aggregate file"
+
+        if self.aggregate_file != None:
+            try:
+                index = self.aggregate_file.get_sounding_indexes(self.run_id)
+            except KeyError:
+                return False
+
+            return self.check_hdf_results(self.aggregate_file, index)
+        else:
+            return False
+
+    def check_02_if_running(self):
         if self.verbose: print "Checking if running"
         running_find = self.find_check_file(LOG_RUNNING_FILENAME_SRCH)
 
@@ -254,7 +306,7 @@ class run_id_result:
 
         return False
 
-    def check_2_if_ran(self):
+    def check_03_if_ran(self):
         if self.verbose: print "Checking if ran"
         self.hdf_find = self.find_check_file(HDF_OUTPUT_FILENAME_SRCH)
         self.log_find = self.find_check_file(LOG_OUTPUT_FILENAME_SRCH)
@@ -267,50 +319,17 @@ class run_id_result:
 
         return False
 
-    def check_3_hdf_outcome(self):
+    def check_04_hdf_outcome(self):
         if self.verbose: print "Checking hdf outcome"
 
         if self.hdf_find != None:
             with h5py.File(self.hdf_find, "r") as hdf_obj:
-                # Try and detect brdf type
-                try:
-                    sv_names = hdf_obj[STATEVECTOR_NAMES_DATASET]
-                        
-                    for cfg_type_name, cfg_type_srch in SV_CONFIG_TYPE_STRINGS.iteritems():
-                        fnd_of_type = filter(lambda sv_elem: str(sv_elem).find(cfg_type_srch) >= 0, sv_names)
-                        if len(fnd_of_type) > 0:
-                            self.result_types.append(cfg_type_name)
-                            break
-                except KeyError:
-                    pass
-
-                try:
-                    outcome = hdf_obj[OUTCOME_FLAG_DATASET][0]
-                except KeyError:
-                    outcome = None
-
-                # Check outcome and use master qual value if available.
-                # Do not use master qual for max iter/div types or else
-                # total count would come out wrong
-                if outcome == 1:
-                    self.result_types.append( "converged" )
-                    return True
-                elif outcome == 2:
-                    self.result_types.append( "converged" )
-                    return True
-                elif outcome == 3:
-                    self.result_types.append( "max_iter" )
-                    return True
-                elif outcome == 4:
-                    self.result_types.append( "max_div" )
-                    return True
-                else:
-                    return False
+                return self.check_hdf_results(hdf_obj, 0)
 
         # Could not determine anything 
         return False
 
-    def check_4_error_check(self):
+    def check_05_error_check(self):
         if self.verbose: print "Checking for an error"
         err_find = self.find_check_file(HDF_ERROR_FILENAME_SRCH)
 
