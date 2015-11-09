@@ -38,8 +38,11 @@ public:
   double surface_pressure() const
   { return read("ecmwf/surface_pressure"); }
 
-  double windspeed() const
-  { return sqrt( sqr(read("ecmwf/windspeed_u")) + sqr(read("ecmwf/windspeed_v")) ); }
+  double windspeed_u() const
+  { return read("ecmwf/windspeed_u"); }
+
+  double windspeed_v() const
+  { return read("ecmwf/windspeed_v"); }
   
   blitz::Array<double, 1> temperature(const blitz::Array<double, 1>& Pressure_level) const
   { return read_and_interpolate("ecmwf/temperature", Pressure_level); }

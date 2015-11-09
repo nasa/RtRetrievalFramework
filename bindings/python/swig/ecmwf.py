@@ -178,14 +178,36 @@ class Ecmwf(full_physics_swig.generic_object.GenericObject):
 
     def _v_windspeed(self):
         """
-        virtual double FullPhysics::Ecmwf::windspeed() const =0
-        Get the windspeed from the Ecmwf file. 
+        virtual double FullPhysics::Ecmwf::windspeed() const
+        Calculate windspeed magnitude from windspeed components. 
         """
         return _ecmwf.Ecmwf__v_windspeed(self)
 
     @property
     def windspeed(self):
         return self._v_windspeed()
+
+    def _v_windspeed_u(self):
+        """
+        virtual double FullPhysics::Ecmwf::windspeed_u() const =0
+        The U component windspeed from the Ecmwf file. 
+        """
+        return _ecmwf.Ecmwf__v_windspeed_u(self)
+
+    @property
+    def windspeed_u(self):
+        return self._v_windspeed_u()
+
+    def _v_windspeed_v(self):
+        """
+        virtual double FullPhysics::Ecmwf::windspeed_v() const =0
+        The V component windspeed from the Ecmwf file. 
+        """
+        return _ecmwf.Ecmwf__v_windspeed_v(self)
+
+    @property
+    def windspeed_v(self):
+        return self._v_windspeed_v()
 
 Ecmwf.specific_humidity = new_instancemethod(_ecmwf.Ecmwf_specific_humidity,None,Ecmwf)
 Ecmwf.h2o_vmr = new_instancemethod(_ecmwf.Ecmwf_h2o_vmr,None,Ecmwf)
@@ -194,6 +216,8 @@ Ecmwf.specific_humidity_grid = new_instancemethod(_ecmwf.Ecmwf_specific_humidity
 Ecmwf.temperature = new_instancemethod(_ecmwf.Ecmwf_temperature,None,Ecmwf)
 Ecmwf._v_surface_pressure = new_instancemethod(_ecmwf.Ecmwf__v_surface_pressure,None,Ecmwf)
 Ecmwf._v_windspeed = new_instancemethod(_ecmwf.Ecmwf__v_windspeed,None,Ecmwf)
+Ecmwf._v_windspeed_u = new_instancemethod(_ecmwf.Ecmwf__v_windspeed_u,None,Ecmwf)
+Ecmwf._v_windspeed_v = new_instancemethod(_ecmwf.Ecmwf__v_windspeed_v,None,Ecmwf)
 Ecmwf.__str__ = new_instancemethod(_ecmwf.Ecmwf___str__,None,Ecmwf)
 Ecmwf_swigregister = _ecmwf.Ecmwf_swigregister
 Ecmwf_swigregister(Ecmwf)
