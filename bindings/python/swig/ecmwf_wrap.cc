@@ -5699,6 +5699,92 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Ecmwf__v_windspeed_u(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Ecmwf *arg1 = (FullPhysics::Ecmwf *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ecmwf_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Ecmwf__v_windspeed_u" "', argument " "1"" of type '" "FullPhysics::Ecmwf const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((FullPhysics::Ecmwf const *)arg1)->windspeed_u();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Ecmwf__v_windspeed_v(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Ecmwf *arg1 = (FullPhysics::Ecmwf *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ecmwf_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Ecmwf__v_windspeed_v" "', argument " "1"" of type '" "FullPhysics::Ecmwf const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((FullPhysics::Ecmwf const *)arg1)->windspeed_v();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Ecmwf___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Ecmwf *arg1 = (FullPhysics::Ecmwf *) 0 ;
@@ -5786,8 +5872,16 @@ static PyMethodDef SwigMethods[] = {
 		"Get the surface pressure from the Ecmwf file. \n"
 		""},
 	 { (char *)"Ecmwf__v_windspeed", (PyCFunction)_wrap_Ecmwf__v_windspeed, METH_O, (char *)"\n"
-		"virtual double FullPhysics::Ecmwf::windspeed() const =0\n"
-		"Get the windspeed from the Ecmwf file. \n"
+		"virtual double FullPhysics::Ecmwf::windspeed() const\n"
+		"Calculate windspeed magnitude from windspeed components. \n"
+		""},
+	 { (char *)"Ecmwf__v_windspeed_u", (PyCFunction)_wrap_Ecmwf__v_windspeed_u, METH_O, (char *)"\n"
+		"virtual double FullPhysics::Ecmwf::windspeed_u() const =0\n"
+		"The U component windspeed from the Ecmwf file. \n"
+		""},
+	 { (char *)"Ecmwf__v_windspeed_v", (PyCFunction)_wrap_Ecmwf__v_windspeed_v, METH_O, (char *)"\n"
+		"virtual double FullPhysics::Ecmwf::windspeed_v() const =0\n"
+		"The V component windspeed from the Ecmwf file. \n"
 		""},
 	 { (char *)"Ecmwf___str__", (PyCFunction)_wrap_Ecmwf___str__, METH_O, NULL},
 	 { (char *)"Ecmwf_swigregister", Ecmwf_swigregister, METH_VARARGS, NULL},

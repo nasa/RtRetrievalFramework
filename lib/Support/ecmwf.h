@@ -52,10 +52,23 @@ public:
   virtual double surface_pressure() const = 0;
 
 //-----------------------------------------------------------------------
-/// Get the windspeed from the Ecmwf file.
+/// Calculate windspeed magnitude from windspeed components
 //-----------------------------------------------------------------------
 
-  virtual double windspeed() const = 0;
+  virtual double windspeed() const 
+    { return sqrt( sqr(windspeed_u()) + sqr(windspeed_v()) ); }
+
+//-----------------------------------------------------------------------
+/// The U component windspeed from the Ecmwf file.
+//-----------------------------------------------------------------------
+
+  virtual double windspeed_u() const = 0;
+
+//-----------------------------------------------------------------------
+/// The V component windspeed from the Ecmwf file.
+//-----------------------------------------------------------------------
+
+  virtual double windspeed_v() const = 0;
 
 //-----------------------------------------------------------------------
 /// Get the temperature at the given pressure levels. The ECMWF data
