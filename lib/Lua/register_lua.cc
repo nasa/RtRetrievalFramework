@@ -316,6 +316,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(DispersionFitOutput);
   REGISTER_LUA_LIST(SolverIterationLog);
   REGISTER_LUA_LIST(SourceFilesOutput);
+  REGISTER_LUA_LIST(EcmwfPassThroughOutput);
   REGISTER_LUA_LIST(HighResSpectrumOutput);
   REGISTER_LUA_LIST(MaxAPosteriori);
   REGISTER_LUA_LIST(MaxLikelihood);

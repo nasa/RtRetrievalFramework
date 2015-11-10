@@ -11,8 +11,18 @@ config.spectrum_file = "20100207003330_data/l1_20100207003330.h5"
 config.sid_string = "20100207003330"
 
 --- Use HDF Level 1 file rather than ASCII
-config.fm.l1b.creator = AcosConfig.level1b_hdf
-config.fm.l1b.noise.creator = AcosConfig.gosat_noise
+config.fm.input = {
+    creator = ConfigCommon.l1b_ecmwf_input,
+    l1b = {
+        creator = AcosConfig.level1b_hdf,
+        noise = {
+            creator = AcosConfig.gosat_noise,
+        },
+    },
+    ecmwf = {
+        creator = AcosConfig.acos_ecmwf,
+    },
+}
 
 --- Cloud file to go with this.
 config.cloud_file = "20100207003330_data/cld_20100207003330.h5"

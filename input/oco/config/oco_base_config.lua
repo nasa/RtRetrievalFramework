@@ -134,31 +134,37 @@ OcoBaseConfig = OcoConfig:new {
          longitude_max = 10,
          saa_tolerance = 6,
       },
-      l1b = {
-         creator = OcoConfig.level1b_hdf,
-         noise = {
-            creator = OcoConfig.oco_noise,
-            max_ms = { 7.00e20, 2.45e20, 1.25e20 },
+      input = {
+         creator = ConfigCommon.l1b_ecmwf_input,
+         l1b = {
+            creator = OcoConfig.level1b_hdf,
+            noise = {
+               creator = OcoConfig.oco_noise,
+               max_ms = { 7.00e20, 2.45e20, 1.25e20 },
+            },
+            --- Can select this to include bad samples in residual, with a
+            --- really high uncertainty. Should also remove bad_sample from
+            --- the spectral window if you use this (so 
+            --- config.fm.spec_win.bad_sample_mask = nil. Should also set
+            --- spectral window to be the full range.
+            -- noise = {
+            --    bad_sample_mask = OcoConfig.bad_sample_mask_outside_window,
+            --    bad_sample_mask_before_window = OcoConfig.bad_sample_mask_with_saa,
+            --    bad_sample_mask_before_saa = OcoConfig.snr_coef_bad_sample_mask,
+            --    latitude_min = -50,
+            --    latitude_max = 0,
+            --    longitude_min = -90,
+            --    longitude_max = 10,
+            --    saa_tolerance = 6,
+            --    bad_sample_uncertainty = 1e24,
+            --    creator = OcoConfig.bad_sample_noise_model,
+            --    creator_before_bad_sample = OcoConfig.oco_noise,
+            --    max_ms = { 7.00e20, 2.45e20, 1.25e20 },
+            -- },
          },
-         --- Can select this to include bad samples in residual, with a
-         --- really high uncertainty. Should also remove bad_sample from
-         --- the spectral window if you use this (so 
-         --- config.fm.spec_win.bad_sample_mask = nil. Should also set
-         --- spectral window to be the full range.
-         -- noise = {
-         --    bad_sample_mask = OcoConfig.bad_sample_mask_outside_window,
-         --    bad_sample_mask_before_window = OcoConfig.bad_sample_mask_with_saa,
-         --    bad_sample_mask_before_saa = OcoConfig.snr_coef_bad_sample_mask,
-         --    latitude_min = -50,
-         --    latitude_max = 0,
-         --    longitude_min = -90,
-         --    longitude_max = 10,
-         --    saa_tolerance = 6,
-         --    bad_sample_uncertainty = 1e24,
-         --    creator = OcoConfig.bad_sample_noise_model,
-         --    creator_before_bad_sample = OcoConfig.oco_noise,
-         --    max_ms = { 7.00e20, 2.45e20, 1.25e20 },
-         -- },
+         ecmwf = {
+            creator = OcoConfig.oco_ecmwf,
+         },
       },
       stokes_coefficient = {
          creator = ConfigCommon.stokes_coefficient_constant,

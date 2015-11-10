@@ -117,8 +117,11 @@ FtsTestBaseConfig = FtsUnitTestConfig:new {
 	 creator = FtsUnitTestConfig.fts_spectral_window,
 	 spec_win_file = "in/oco_l2.win",
       },
-      l1b = {
-	 creator = FtsUnitTestConfig.level1b_fts,
+      input = {
+         creator = ConfigCommon.l1b_input,
+         l1b = {
+   	 creator = FtsUnitTestConfig.level1b_fts,
+         },
       },
       stokes_coefficient = {
 	 creator = ConfigCommon.stokes_coefficient_constant,

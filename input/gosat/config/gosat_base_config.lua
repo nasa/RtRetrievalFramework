@@ -120,11 +120,17 @@ GosatBaseConfig = AcosConfig:new {
       spec_win = {
          creator = ConfigCommon.spectral_window_hdf,
       },
-      l1b = {
-         creator = AcosConfig.level1b_hdf,
-         noise = {
-            creator = AcosConfig.gosat_noise_l1b,
-         },
+      input = {
+          creator = ConfigCommon.l1b_ecmwf_input,
+          l1b = {
+             creator = AcosConfig.level1b_hdf,
+             noise = {
+                creator = AcosConfig.gosat_noise_l1b,
+             },
+          },
+          ecmwf = {
+              creator = AcosConfig.acos_ecmwf,
+          },
       },
       stokes_coefficient = {
 	 creator = ConfigCommon.stokes_coefficient_constant,

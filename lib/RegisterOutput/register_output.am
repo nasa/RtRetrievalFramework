@@ -67,6 +67,8 @@ fullphysicsinc_HEADERS += @outsrc@/fluorescence_effect_output.h
 libfp_la_SOURCES += @outsrc@/fluorescence_effect_output.cc
 fullphysicsinc_HEADERS += @outsrc@/radiance_scaling_output.h
 libfp_la_SOURCES += @outsrc@/radiance_scaling_output.cc
+fullphysicsinc_HEADERS += @outsrc@/ecmwf_pass_through_output.h
+libfp_la_SOURCES += @outsrc@/ecmwf_pass_through_output.cc
 
 # Files that contain SWIG wrapper information
 

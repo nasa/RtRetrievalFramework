@@ -21,8 +21,8 @@ lua_config.spectrum_file = "20100207003330_data/l1_20100207003330.h5"
 lua_config.sid_string = "20100207003330"
 
 # Use HDF Level 1 file rather than ASCII
-lua_config.fm.l1b.creator = lg.ConfigCommon.level1b_hdf
-lua_config.fm.l1b.noise.creator = lg.ConfigCommon.gosat_noise
+lua_config.fm.input.l1b.creator = lg.ConfigCommon.level1b_hdf
+lua_config.fm.input.l1b.noise.creator = lg.ConfigCommon.gosat_noise
 
 # Cloud file to go with this.
 lua_config.cloud_file = "20100207003330_data/cld_20100207003330.h5"

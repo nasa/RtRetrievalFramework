@@ -140,10 +140,13 @@ FixedLevelBaseConfig = AcosConfig:new {
             },
          },
       },
-      l1b = {
-         creator = ConfigCommon.level1b_ascii,
-         noise = {
-            creator = ConfigCommon.noise_ascii,
+      input = {
+         creator = ConfigCommon.l1b_input,
+         l1b = {
+            creator = ConfigCommon.level1b_ascii,
+            noise = {
+               creator = ConfigCommon.noise_ascii,
+            },
          },
       },
       stokes_coefficient = {
