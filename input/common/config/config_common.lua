@@ -833,22 +833,22 @@ end
 
 function ConfigCommon:ecmwf_pressure()
    local r = Blitz_double_array_1d(1)
-   r:set(0,self.config:ecmwf():surface_pressure())
+   r:set(0,self.config.ecmwf:surface_pressure())
    return r
 end
 
 function ConfigCommon:ecmwf_windspeed()
    local r = Blitz_double_array_1d(1)
-   r:set(0,self.config:ecmwf():windspeed())
+   r:set(0,self.config.ecmwf:windspeed())
    return r
 end
 
 function ConfigCommon:ecmwf_temperature()
-   return self.config:ecmwf():temperature(self.config.pinp:pressure_level())
+   return self.config.ecmwf:temperature(self.config.pinp:pressure_level())
 end
 
 function ConfigCommon:ecmwf_h2o_vmr()
-   return self.config:ecmwf():h2o_vmr(self.config.pinp:pressure_level())
+   return self.config.ecmwf:h2o_vmr(self.config.pinp:pressure_level())
 end
 
 ------------------------------------------------------------
@@ -856,7 +856,7 @@ end
 ------------------------------------------------------------
 
 function ConfigCommon:tccon_co2_apriori_ecmwf()
-   local t = TcconApriori(self.config:ecmwf(), self.config.l1b)
+   local t = TcconApriori(self.config.ecmwf, self.config.l1b)
    return t:co2_vmr_grid(self.config.pressure)
 end
 
@@ -1577,7 +1577,31 @@ function ConfigCommon.noise_ascii_array:create()
    end
    return res
 end
-   
+
+------------------------------------------------------------
+--- Creator for input objects, almost every mode has a
+--- L1B file
+------------------------------------------------------------
+
+CreatorInput = CompositeCreator:new()
+
+function CreatorInput:create_parent_object(sub_object)
+    -- Noop
+    return sub_object
+end
+
+function CreatorInput:sub_object_key()
+   return {"l1b"}
+end
+
+ConfigCommon.l1b_input = CreatorInput:new()
+
+ConfigCommon.l1b_ecmwf_input = CreatorInput:new()
+
+function ConfigCommon.l1b_ecmwf_input:sub_object_key()
+   return {"l1b", "ecmwf"}
+end
+
 ------------------------------------------------------------
 --- Common stuff in creating a L1b object
 ------------------------------------------------------------
@@ -1923,7 +1947,7 @@ end
 ConfigCommon.temperature_ecmwf = CreatorApriori:new {}
 
 function ConfigCommon.temperature_ecmwf:create()
-   return TemperatureEcmwf(self.config:ecmwf(), self.config.pressure,
+   return TemperatureEcmwf(self.config.ecmwf, self.config.pressure,
                            self:apriori()(0), self:retrieval_flag()(0))
 end
 
@@ -2773,7 +2797,7 @@ function ConfigCommon.vmr_ecmwf:covariance_v()
 end
 
 function ConfigCommon.vmr_ecmwf:create_vmr()
-   self.vmr = AbsorberVmrEcmwf(self.config:ecmwf(),
+   self.vmr = AbsorberVmrEcmwf(self.config.ecmwf,
                                self.config.pressure,
                                function_or_simple_value(self.scale_apriori, self), 
                                self:retrieval_flag()(0),
@@ -3228,7 +3252,7 @@ end
 ConfigCommon.oco_forward_model = CompositeCreator:new()
 
 function ConfigCommon.oco_forward_model:sub_object_key()
-   return {"common", "spec_win", "l1b", "stokes_coefficient", 
+   return {"common", "spec_win", "input", "stokes_coefficient", 
 	   "instrument", "atmosphere",
            "spec_samp", "spectrum_effect", "rt", "state_vector"}
 end
@@ -3240,7 +3264,7 @@ function ConfigCommon.oco_forward_model:sub_initial_guess_key()
    -- is the "expected" order in the state vector (i.e., what a scientist
    -- looking at the state vector expects, the L2 code doesn't care at
    -- all)
-   return {"l1b", "atmosphere", "instrument", "spec_win", 
+   return {"input", "atmosphere", "instrument", "spec_win", 
            "spec_samp", "rt", "spectrum_effect", "state_vector",
 	   "stokes_coefficient"}
 end

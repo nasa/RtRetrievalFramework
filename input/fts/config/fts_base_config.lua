@@ -123,8 +123,11 @@ FtsBaseConfig = FtsConfig:new {
       spec_win = {
          creator = ConfigCommon.spectral_window_hdf,
       },
-      l1b = {
-         creator = FtsConfig.level1b_fts_tccon,
+      input = {
+          creator = ConfigCommon.l1b_input,
+          l1b = {
+             creator = FtsConfig.level1b_fts_tccon,
+          },
       },
       stokes_coefficient = {
 	 creator = ConfigCommon.stokes_coefficient_constant,

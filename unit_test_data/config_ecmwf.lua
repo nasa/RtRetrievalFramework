@@ -18,8 +18,18 @@ config = FixedLevelBaseConfig:new {
 config.ecmwf_file = "in/ecmwf.h5"
 
 --- Use HDF Level 1 file rather than ASCII
-config.fm.l1b.creator = AcosConfig.level1b_hdf
-config.fm.l1b.noise.creator = ConfigCommon.noise_ascii_array
+config.fm.input = {
+    creator = ConfigCommon.l1b_ecmwf_input,
+    l1b = {
+        creator = AcosConfig.level1b_hdf,
+        noise = {
+            creator = ConfigCommon.noise_ascii_array
+        },
+    },
+    ecmwf = {
+        creator = AcosConfig.acos_ecmwf,
+    },
+}
 
 config.fm.atmosphere.pressure.apriori = ConfigCommon.ecmwf_pressure
 config.fm.atmosphere.temperature.levels.apriori = ConfigCommon.ecmwf_temperature

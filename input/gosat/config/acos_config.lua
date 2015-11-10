@@ -26,18 +26,26 @@ function AcosConfig:l1b_sid_list()
 end
 
 ------------------------------------------------------------
---- Open ECMWF if we have one
+--- Create ECMWF if we have one
 ------------------------------------------------------------
 
-function AcosConfig:ecmwf()
-   local sid = self:l1b_sid_list()
-   if(self.ecmwf_file and not self.ecmwf_v) then 
-      self.ecmwf_v = AcosEcmwf(self.ecmwf_file, self:l1b_sid_list():value(0), 
-                               self:l1b_sid_list():size() > 1)
-      self.input_file_description = self.input_file_description .. 
-	 "ECMWF input file:    " .. self.ecmwf_file .. "\n"
+AcosConfig.acos_ecmwf = Creator:new()
+
+function AcosConfig.acos_ecmwf:create()
+   local sid = self.config:l1b_sid_list()
+   if (self.config.ecmwf_file) then
+       local ecmwf = AcosEcmwf(self.config.ecmwf_file, self.config:l1b_sid_list():value(0),
+                               self.config:l1b_sid_list():size() > 1)
+       self.config.input_file_description = self.config.input_file_description .. 
+          "ECMWF input file:    " .. self.config.ecmwf_file .. "\n"
+       return ecmwf
    end
-   return self.ecmwf_v
+end
+
+function AcosConfig.acos_ecmwf:register_output(ro)
+    if (self.config.ecmwf) then
+        --ro:push_back(EcmwfPassThroughOutput(self.config.ecmwf))
+    end
 end
 
 ------------------------------------------------------------

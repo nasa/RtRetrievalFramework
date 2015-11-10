@@ -114,7 +114,7 @@ function init_rrv(config)
            return TemperatureLevelOffset(self.config.pressure, self:temperature_levels(),
                                          self:apriori()(0), self:retrieval_flag()(0))
         else
-           return TemperatureEcmwf(self.config:ecmwf(), self.config.pressure,
+           return TemperatureEcmwf(self.config.ecmwf, self.config.pressure,
                                    self:apriori()(0), self:retrieval_flag()(0))
         end
     end
@@ -168,7 +168,7 @@ function init_rrv(config)
                                              self:retrieval_flag()(0),
                                              self.name)
         else
-            self.vmr = AbsorberVmrEcmwf(self.config:ecmwf(),
+            self.vmr = AbsorberVmrEcmwf(self.config.ecmwf,
                                         self.config.pressure,
                                         self.scale_apriori, 
                                         self:retrieval_flag()(0),

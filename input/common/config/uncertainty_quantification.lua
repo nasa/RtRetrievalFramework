@@ -99,7 +99,7 @@ function init_uq(config)
         return UqNoiseModel(hv, sid, max_ms)
     end
 
-    config.fm.l1b.noise.creator = uq_noise
+    config.fm.input.l1b.noise.creator = uq_noise
 
     ---------
     -- L1B --
@@ -132,7 +132,7 @@ function init_uq(config)
        return l1b_uq
     end
  
-    config.fm.l1b.creator = level1b_uq
+    config.fm.input.l1b.creator = level1b_uq
 
     -----------
     -- ECMWF --

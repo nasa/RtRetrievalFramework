@@ -32,7 +32,7 @@ config.spectrum_3_file = ""
 config.runlog_file = ""
 config.atmosphere_file = "input/atmosphere_fts.dat"
 
-config.fm.l1b.creator = FtsConfig.level1b_fts_hdf
+config.fm.input.l1b.creator = FtsConfig.level1b_fts_hdf
 
 config:do_config()
  
