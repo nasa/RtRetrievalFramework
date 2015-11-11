@@ -393,12 +393,22 @@ end
 --- file. 
 ------------------------------------------------------------
 
-function OcoConfig:ecwmf_meteorology_file()
-   local sid = self:l1b_sid_list()
-   if(self.ecmwf_file and not self.ecmwf_v) then 
-      self.ecmwf_v = OcoSimMetEcmwf(self.ecmwf_file, self:l1b_sid_list())
+OcoConfig.oco_ecmwf_meteorology = Creator:new()
+
+function OcoConfig.oco_ecmwf_meteorology:create()
+   local sid = self.config:l1b_sid_list()
+   if (self.config.ecmwf_file) then
+       local ecmwf = OcoSimMetEcmwf(self.config.ecmwf_file, self.config:l1b_sid_list())
+       self.config.input_file_description = self.config.input_file_description .. 
+          "ECMWF input file:    " .. self.config.ecmwf_file .. "\n"
+       return ecmwf
    end
-   return self.ecmwf_v
+end
+
+function OcoConfig.oco_ecmwf_meteorology:register_output(ro)
+    if (self.config.ecmwf) then
+        ro:push_back(EcmwfPassThroughOutput(self.config.ecmwf))
+    end
 end
 
 ------------------------------------------------------------
