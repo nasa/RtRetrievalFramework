@@ -143,7 +143,8 @@ contains
         sxi = dsqrt(1.d0-xi*xi)
         sxj = dsqrt(1.d0-xj*xj)
         ckphi_ref = dcos(phi*deg_to_rad)
-        skphi_ref = dsqrt(1.d0-ckphi_ref*ckphi_ref)
+        skphi_ref = dsin(phi*deg_to_rad) ! sin can be + or -
+!        skphi_ref = dsqrt(1.d0-ckphi_ref*ckphi_ref)
 
 !  R1 and Linearized R1
 

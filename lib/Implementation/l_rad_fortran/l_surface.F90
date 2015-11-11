@@ -41,7 +41,8 @@ contains
       sxi = DSQRT(1.d0-xi*xi)
       sxj = DSQRT(1.d0-xj*xj)
       ckphi_ref = DCOS(phi*deg_to_rad)
-      skphi_ref = DSQRT(1.d0-ckphi_ref*ckphi_ref)
+      skphi_ref = DSIN(phi*deg_to_rad) ! sin(phi) could be + or -
+!      skphi_ref = DSQRT(1.d0-ckphi_ref*ckphi_ref)
 
 !  Initialise Ls_R1
 
@@ -103,7 +104,8 @@ contains
       sxi = DSQRT(1.d0-xi*xi)
       sxj = DSQRT(1.d0-xj*xj)
       ckphi_ref = DCOS(phi*deg_to_rad)
-      skphi_ref = DSQRT(1.d0-ckphi_ref*ckphi_ref)
+      skphi_ref = DSIN(phi*deg_to_rad) ! sin(phi) could be + or -
+!      skphi_ref = DSQRT(1.d0-ckphi_ref*ckphi_ref)
 
 !  slopes square
 
@@ -317,7 +319,9 @@ contains
       IF (NSTOKES .EQ. 3) THEN
         CTTPT = CF11*CF21
         CTPPP = CF12*CF22
-        R1(NSTOKES) = (-CTTPT-CTPPP)*DCOEFF
+!        R1(NSTOKES) = (-CTTPT-CTPPP)*DCOEFF
+        R1(NSTOKES) = (CTTPT+CTPPP)*DCOEFF ! Change sign of U since this code uses the opposite sign convention as we do 
+                                           ! in 2OS and LIDORT
       ENDIF
 
 !  No Shadow code if not flagged
@@ -591,15 +595,19 @@ contains
       IF (NSTOKES .EQ. 3) THEN
         CTTPT = CF11*CF21             ! CN2
         CTPPP = CF12*CF22             ! CN2
-        R1(NSTOKES) = (-CTTPT-CTPPP)*DCOEFF   ! CN2
+!        R1(NSTOKES) = (-CTTPT-CTPPP)*DCOEFF   ! CN2
+        R1(NSTOKES) = (CTTPT+CTPPP)*DCOEFF ! Change sign of U since this code uses the opposite sign convention as we do 
+                                           ! in 2OS and LIDORT
       ENDIF
       
       !derivs wrt ri
       Ls_R1(1,2) = (L_AF11+L_AF12+L_AF21+L_AF22)*AF
       Ls_R1(2,2) = (L_AF11-L_AF22+L_AF12-L_AF21)*AF
       IF (NSTOKES .EQ. 3) &
-      Ls_R1(3,2) = -(L_CF11*CF21+CF11*L_CF21+&
-                     L_CF12*CF22+CF12*L_CF22)*AF
+!      Ls_R1(3,2) = -(L_CF11*CF21+CF11*L_CF21+&
+!                     L_CF12*CF22+CF12*L_CF22)*AF
+      Ls_R1(3,2) = (L_CF11*CF21+CF11*L_CF21+&   ! Change sign of U since this code uses the opposite sign convention as we 
+                    L_CF12*CF22+CF12*L_CF22)*AF ! do in 2OS and LIDORT
 
 !  Derivative before shadow effect
 
@@ -881,7 +889,8 @@ contains
         CTTPT=CF11*CF21
         CTPPP=CF12*CF22
         FACTOR = 1.d0/DMOD
-        R1(3)  = (-CTTPT-CTPPP) * FACTOR
+!        R1(3)  = (-CTTPT-CTPPP) * FACTOR
+        R1(3)  = (CTTPT+CTPPP) * FACTOR ! Change sign for U just as in Cox-Munk
       ENDIF
 
 !  Set the H-function
@@ -1254,7 +1263,8 @@ contains
         CTTPT=CF11*CF21
         CTPPP=CF12*CF22
         FACTOR = 1.d0/DMOD
-        R1(3)  = (-CTTPT-CTPPP) * FACTOR
+!        R1(3)  = (-CTTPT-CTPPP) * FACTOR
+        R1(3)  = (CTTPT+CTPPP) * FACTOR ! Change sign for U just as in Cox-Munk
       ENDIF
 
 !  Set the H-function

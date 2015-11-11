@@ -10,7 +10,7 @@ contains
 ! set nspars to 3, spars(1) to ws, spars(2) to ri and spars(3) to shadow &
 ! fac or (set to 1.d0 for including shadowing).
 
-      subroutine gisscoxmunk_fourier &
+      SUBROUTINE GISSCOXMUNK_FOURIER &
         (NPARS, PARS, & !I
          XJ, SXJ, XI, SXI, & !I
          CKPHI_REF, SKPHI_REF, & !I
@@ -198,19 +198,27 @@ contains
       CTPPP=CF12*CF22
       CPTPP=CF21*CF22
 
-      R1M(1,3)= (-CTTTP-CPTPP)*DCOEFF
-      R1M(2,3)= (-CTTTP+CPTPP)*DCOEFF
-      R1M(3,1)= (-CTTPT-CTPPP)*DCOEFF
-      R1M(3,2)= (-CTTPT+CTPPP)*DCOEFF
+!      R1M(1,3)= (-CTTTP-CPTPP)*DCOEFF
+!      R1M(2,3)= (-CTTTP+CPTPP)*DCOEFF
+!      R1M(3,1)= (-CTTPT-CTPPP)*DCOEFF
+!      R1M(3,2)= (-CTTPT+CTPPP)*DCOEFF
+
+! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
+
+      R1M(1,3)= (CTTTP+CPTPP)*DCOEFF
+      R1M(2,3)= (CTTTP-CPTPP)*DCOEFF
+      R1M(3,1)= (CTTPT+CTPPP)*DCOEFF
+      R1M(3,2)= (CTTPT-CTPPP)*DCOEFF
+
       R1M(3,3)= (CTTPP+CTPPT)*DCOEFF
       R1M(4,4)= (CTTPP-CTPPT)*DCOEFF
 
 !  Finish
 
       RETURN
-      end subroutine gisscoxmunk_fourier
+      END SUBROUTINE GISSCOXMUNK_FOURIER
 
-      subroutine gisscoxmunk_fourier_plus &
+      SUBROUTINE GISSCOXMUNK_FOURIER_PLUS &
         (NPARS, PARS, & !I
          XJ, SXJ, XI, SXI, & !I
          CKPHI_REF, SKPHI_REF, & !I
@@ -442,19 +450,18 @@ contains
       CTPPP=CF12*CF22
       CPTPP=CF21*CF22
 
-!  Derivatives wrt ri, V. Natraj, 8/17/2010
-      
-      L_CTTTP = L_CF11 * CF12 + CF11 * L_CF12
-      L_CTTPT = L_CF11 * CF21 + CF11 * L_CF21
-      L_CTTPP = L_CF11 * CF22 + CF11 * L_CF22
-      L_CTPPT = L_CF12 * CF21 + CF12 * L_CF21
-      L_CTPPP = L_CF12 * CF22 + CF12 * L_CF22
-      L_CPTPP = L_CF21 * CF22 + CF21 * L_CF22
+!      R1M(1,3)= (-CTTTP-CPTPP)*DCOEFF
+!      R1M(2,3)= (-CTTTP+CPTPP)*DCOEFF
+!      R1M(3,1)= (-CTTPT-CTPPP)*DCOEFF
+!      R1M(3,2)= (-CTTPT+CTPPP)*DCOEFF
 
-      R1M(1,3)= (-CTTTP-CPTPP)*DCOEFF
-      R1M(2,3)= (-CTTTP+CPTPP)*DCOEFF
-      R1M(3,1)= (-CTTPT-CTPPP)*DCOEFF
-      R1M(3,2)= (-CTTPT+CTPPP)*DCOEFF
+! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
+
+      R1M(1,3)= (CTTTP+CPTPP)*DCOEFF
+      R1M(2,3)= (CTTTP-CPTPP)*DCOEFF
+      R1M(3,1)= (CTTPT+CTPPP)*DCOEFF
+      R1M(3,2)= (CTTPT-CTPPP)*DCOEFF
+
       R1M(3,3)= (CTTPP+CTPPT)*DCOEFF
       R1M(4,4)= (CTTPP-CTPPT)*DCOEFF
 
@@ -490,9 +497,9 @@ contains
 !  Finish
 
       RETURN
-      end subroutine gisscoxmunk_fourier_plus
+      END SUBROUTINE GISSCOXMUNK_FOURIER_PLUS
 
-      subroutine ls_shad &
+      subroutine Ls_shad &
         (nmug,nspars,xmu,ws, & !I
          shadow,Ls_shadow)
 
@@ -546,7 +553,7 @@ contains
       enddo
 
       return
-      end subroutine ls_shad
+      end subroutine Ls_shad
 
       subroutine shad &
         (nmug,xmu,ws, & !I
@@ -794,7 +801,7 @@ contains
       return
       end subroutine brdf_fourier
 
-      subroutine ls_brdf_fourier &
+      subroutine Ls_brdf_fourier &
         (m,nmug,nphibrdf, & !I
          surftype,nspars,pars,hfunction_index, & !I
          xmu,w_brdf, & !I
@@ -1229,10 +1236,18 @@ contains
       CPTPP=CF21*CF22
 
       FACTOR = 1.d0/DMOD
-      R1M(1,3)= (-CTTTP-CPTPP)*FACTOR
-      R1M(2,3)= (-CTTTP+CPTPP)*FACTOR
-      R1M(3,1)= (-CTTPT-CTPPP)*FACTOR
-      R1M(3,2)= (-CTTPT+CTPPP)*FACTOR
+!      R1M(1,3)= (-CTTTP-CPTPP)*FACTOR
+!      R1M(2,3)= (-CTTTP+CPTPP)*FACTOR
+!      R1M(3,1)= (-CTTPT-CTPPP)*FACTOR
+!      R1M(3,2)= (-CTTPT+CTPPP)*FACTOR
+
+! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
+
+      R1M(1,3)= (CTTTP+CPTPP)*FACTOR
+      R1M(2,3)= (CTTTP-CPTPP)*FACTOR
+      R1M(3,1)= (CTTPT+CTPPP)*FACTOR
+      R1M(3,2)= (CTTPT-CTPPP)*FACTOR
+
       R1M(3,3)= (CTTPP+CTPPT)*FACTOR
       R1M(4,4)= (CTTPP-CTPPT)*FACTOR
 
@@ -1486,10 +1501,18 @@ contains
       CPTPP=CF21*CF22
 
       FACTOR = 1.d0/DMOD
-      R1M(1,3)= (-CTTTP-CPTPP)*FACTOR
-      R1M(2,3)= (-CTTTP+CPTPP)*FACTOR
-      R1M(3,1)= (-CTTPT-CTPPP)*FACTOR
-      R1M(3,2)= (-CTTPT+CTPPP)*FACTOR
+!      R1M(1,3)= (-CTTTP-CPTPP)*FACTOR
+!      R1M(2,3)= (-CTTTP+CPTPP)*FACTOR
+!      R1M(3,1)= (-CTTPT-CTPPP)*FACTOR
+!      R1M(3,2)= (-CTTPT+CTPPP)*FACTOR
+
+! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
+
+      R1M(1,3)= (CTTTP+CPTPP)*FACTOR
+      R1M(2,3)= (CTTTP-CPTPP)*FACTOR
+      R1M(3,1)= (CTTPT+CTPPP)*FACTOR
+      R1M(3,2)= (CTTPT-CTPPP)*FACTOR
+
       R1M(3,3)= (CTTPP+CTPPT)*FACTOR
       R1M(4,4)= (CTTPP-CTPPT)*FACTOR
 

@@ -12,7 +12,7 @@ contains
 ! factor (set to 1.d0 for including shadowing).
 
       subroutine L_rad_first_enh &
-       (nlay,nstokes,maxfine,nfinedivs,surftype, & !inputs
+       (nlay,nstokes,nfine,nfinedivs,surftype, & !inputs
         npar,nspars,spars, & !inputs
         linearize,s_linearize, & !inputs
         doNadir, & !I
@@ -32,10 +32,10 @@ contains
 
 !  inputs
 
-      integer nlay,nstokes,maxfine,nfinedivs(nlay)
+      integer nlay,nstokes,nfine,nfinedivs(nlay)
       integer surftype,npar,nspars,Ncrit
       integer ntraverse(0:nlay)
-      integer ntraverse_fine(nlay,maxfine)
+      integer ntraverse_fine(nlay,nfine)
       logical linearize,s_linearize
       logical doNadir
       double precision spars(nspars)
@@ -47,14 +47,14 @@ contains
       double precision L_zmat(nlay,nstokes,npar)
       double precision emu0, theta, phi
       double precision heights(0:nlay)
-      double precision xfine(nlay,maxfine)
-      double precision wfine(nlay,maxfine)
-      double precision csqfine(nlay,maxfine)
-      double precision cotfine(nlay,maxfine)
+      double precision xfine(nlay,nfine)
+      double precision wfine(nlay,nfine)
+      double precision csqfine(nlay,nfine)
+      double precision cotfine(nlay,nfine)
       double precision Raycon
       double precision cota(0:nlay)
       double precision sunpaths(0:nlay,nlay)
-      double precision sunpaths_fine (nlay,nlay,maxfine)
+      double precision sunpaths_fine (nlay,nlay,nfine)
 
 !  outputs
 
@@ -153,7 +153,8 @@ contains
         sxi = dsqrt(1.d0-xi*xi)
         sxj = dsqrt(1.d0-xj*xj)
         ckphi_ref = dcos(phi*deg_to_rad)
-        skphi_ref = dsqrt(1.d0-ckphi_ref*ckphi_ref)
+        skphi_ref = dsin(phi*deg_to_rad) ! sin can be + or -
+!        skphi_ref = dsqrt(1.d0-ckphi_ref*ckphi_ref)
 
 !  R1 and Linearized R1
 
@@ -224,7 +225,7 @@ contains
 !  Get the exact first-order calculation
 
       call L_SSCORR_OUTGOING &
-           (nlay,maxfine,nfinedivs,nstokes, & !I
+           (nlay,nfine,nfinedivs,nstokes, & !I
             linearize,s_linearize, & !I
             npar,nspars, & !I
             do_lambertian, doNadir, & !I
