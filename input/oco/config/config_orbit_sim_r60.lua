@@ -8,7 +8,7 @@ require "oco_base_config"
 config = OcoBaseConfig:new()
 
 -- Use ECMWF files provided by CSU
---OcoConfig.ecmwf = OcoConfig.ecwmf_meteorology_file
+--config.fm.input.ecmwf.creator = OcoConfig.oco_ecmwf_meteorology
 
 -- ABSCO paths and filenames to match those used by the sim
 config.fm.atmosphere.absorber.CO2.absco = "v4.0.2/lowres/co2_v4.0.2-lowres.hdf"
