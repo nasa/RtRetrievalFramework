@@ -75,7 +75,7 @@ if [[ -e "/opt/local" ]]; then
 
     # Intel compiler has its own environmental variable script
     # Search first at scf-srv2 location then for scf-srv3 location
-    ifort_base_dirs="/opt/local/depot/intel/Compiler/2013 /opt/local/depot/intel/11.1/064"
+    ifort_base_dirs="/opt/local/depot/intel/Compiler/2015 /opt/local/depot/intel/Compiler/2013"
     for ifort_base in $ifort_base_dirs; do
         if [ -e "$ifort_base" ]; then
             # Set up first ifort compiler found
