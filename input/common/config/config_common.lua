@@ -465,11 +465,26 @@ function ConfigCommon:l1b_sid_list()
 end
 
 ------------------------------------------------------------
---- Open ECMWF if we have one
+--- Load the TCCON apriori object using ECMWF data
 ------------------------------------------------------------
 
-function ConfigCommon:ecmwf()
-   error("ecmwf definition is instrument specific and not defined in ConfigCommon.")
+function ConfigCommon:tccon_apriori_ecmwf()
+    if(not self.tccon_ap_ecmwf_obj) then
+        self.tccon_ap_ecmwf_obj = TcconApriori(self.ecmwf, self.l1b)
+    end
+    return self.tccon_ap_ecmwf_obj
+end
+
+------------------------------------------------------------
+--- Load the TCCON apriori object using pressure/temp
+--- objects.
+------------------------------------------------------------
+
+function ConfigCommon:tccon_apriori_pressure()
+    if(not self.tccon_ap_ecmwf_obj) then
+        self.tccon_ap_ecmwf_obj = TcconApriori(self.l1b, self.pressure, self.temperature)
+    end
+    return self.tccon_ap_ecmwf_obj
 end
 
 ------------------------------------------------------------
@@ -856,7 +871,7 @@ end
 ------------------------------------------------------------
 
 function ConfigCommon:tccon_co2_apriori_ecmwf()
-   local t = TcconApriori(self.config.ecmwf, self.config.l1b)
+   local t = self.config:tccon_apriori_ecmwf()
    return t:co2_vmr_grid(self.config.pressure)
 end
 
@@ -865,7 +880,7 @@ end
 ------------------------------------------------------------
 
 function ConfigCommon:tccon_co2_apriori()
-   local t = TcconApriori(self.config.l1b, self.config.pressure, self.config.temperature)
+   local t = self.config:tccon_apriori_pressure()
    return t:co2_vmr_grid(self.config.pressure)
 end
 

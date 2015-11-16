@@ -51,6 +51,10 @@ public:
 	       DoubleWithUnit Age_air_upper_stratosphere);
   double co2_vmr(double P) const;
   blitz::Array<double, 1> co2_vmr_grid(const Pressure& P) const;
+  double tropopause_pressure() const;
+  double planetary_boundary_layer_pressure() const;
+  double fractional_amplitude_seasonal_cycle() const;
+  DoubleWithUnit age_air(double P) const;
   std::string print_to_string() const;
 };
 }

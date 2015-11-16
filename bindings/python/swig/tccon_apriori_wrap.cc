@@ -6160,6 +6160,188 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_TcconApriori_tropopause_pressure(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::TcconApriori *arg1 = (FullPhysics::TcconApriori *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::TcconApriori const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TcconApriori const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TcconApriori_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TcconApriori_tropopause_pressure" "', argument " "1"" of type '" "FullPhysics::TcconApriori const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TcconApriori > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TcconApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::TcconApriori * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TcconApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::TcconApriori * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((FullPhysics::TcconApriori const *)arg1)->tropopause_pressure();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TcconApriori_planetary_boundary_layer_pressure(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::TcconApriori *arg1 = (FullPhysics::TcconApriori *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::TcconApriori const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TcconApriori const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TcconApriori_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TcconApriori_planetary_boundary_layer_pressure" "', argument " "1"" of type '" "FullPhysics::TcconApriori const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TcconApriori > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TcconApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::TcconApriori * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TcconApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::TcconApriori * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((FullPhysics::TcconApriori const *)arg1)->planetary_boundary_layer_pressure();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TcconApriori_fractional_amplitude_seasonal_cycle(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::TcconApriori *arg1 = (FullPhysics::TcconApriori *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::TcconApriori const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TcconApriori const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TcconApriori_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TcconApriori_fractional_amplitude_seasonal_cycle" "', argument " "1"" of type '" "FullPhysics::TcconApriori const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TcconApriori > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TcconApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::TcconApriori * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TcconApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::TcconApriori * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((FullPhysics::TcconApriori const *)arg1)->fractional_amplitude_seasonal_cycle();
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TcconApriori_age_air(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::TcconApriori *arg1 = (FullPhysics::TcconApriori *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::TcconApriori const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TcconApriori const > *smartarg1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  FullPhysics::DoubleWithUnit result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"TcconApriori_age_air",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TcconApriori_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TcconApriori_age_air" "', argument " "1"" of type '" "FullPhysics::TcconApriori const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TcconApriori > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TcconApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::TcconApriori * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TcconApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::TcconApriori * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TcconApriori_age_air" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      result = ((FullPhysics::TcconApriori const *)arg1)->age_air(arg2);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::DoubleWithUnit > *smartresult = new boost::shared_ptr<  FullPhysics::DoubleWithUnit >(new FullPhysics::DoubleWithUnit((FullPhysics::DoubleWithUnit &)result));
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_TcconApriori___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::TcconApriori *arg1 = (FullPhysics::TcconApriori *) 0 ;
@@ -6278,6 +6460,26 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"TcconApriori_co2_vmr_grid", _wrap_TcconApriori_co2_vmr_grid, METH_VARARGS, (char *)"\n"
 		"blitz::Array< double, 1 > TcconApriori::co2_vmr_grid(const Pressure &P) const\n"
 		"Return CO2 VMR for each pressure in the given pressure grid. \n"
+		""},
+	 { (char *)"TcconApriori_tropopause_pressure", (PyCFunction)_wrap_TcconApriori_tropopause_pressure, METH_O, (char *)"\n"
+		"double TcconApriori::tropopause_pressure() const\n"
+		"Calculate the Tropopause pressure. \n"
+		""},
+	 { (char *)"TcconApriori_planetary_boundary_layer_pressure", (PyCFunction)_wrap_TcconApriori_planetary_boundary_layer_pressure, METH_O, (char *)"\n"
+		"double TcconApriori::planetary_boundary_layer_pressure() const\n"
+		"Calculate planetary boundary layer pressure.\n"
+		"\n"
+		"This assume that the daytime high-latitude PBL varies from 90 mb in\n"
+		"the tropics to 280 mb at high latitudes \n"
+		""},
+	 { (char *)"TcconApriori_fractional_amplitude_seasonal_cycle", (PyCFunction)_wrap_TcconApriori_fractional_amplitude_seasonal_cycle, METH_O, (char *)"\n"
+		"double TcconApriori::fractional_amplitude_seasonal_cycle() const\n"
+		"Calculate fractional amplitude of seasonal cycle at surface. \n"
+		""},
+	 { (char *)"TcconApriori_age_air", _wrap_TcconApriori_age_air, METH_VARARGS, (char *)"\n"
+		"DoubleWithUnit TcconApriori::age_air(double P) const\n"
+		"Calculate the age of air for the given pressure level (pressure is in\n"
+		"pascals). \n"
 		""},
 	 { (char *)"TcconApriori___str__", (PyCFunction)_wrap_TcconApriori___str__, METH_O, NULL},
 	 { (char *)"delete_TcconApriori", (PyCFunction)_wrap_delete_TcconApriori, METH_O, (char *)"\n"
