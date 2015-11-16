@@ -43,6 +43,10 @@ REGISTER_LUA_CLASS(TcconApriori)
 			  const boost::shared_ptr<Pressure>&,
 			  const boost::shared_ptr<Temperature>&>())
 .def("co2_vmr_grid", &TcconApriori::co2_vmr_grid)
+.def("tropopause_pressure", &TcconApriori::tropopause_pressure)
+.def("planetary_boundary_layer_pressure", &TcconApriori::planetary_boundary_layer_pressure)
+.def("fractional_amplitude_seasonal_cycle", &TcconApriori::fractional_amplitude_seasonal_cycle)
+.def("age_air", &TcconApriori::age_air)
 REGISTER_LUA_END()
 #endif
 

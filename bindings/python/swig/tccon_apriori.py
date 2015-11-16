@@ -148,9 +148,45 @@ class TcconApriori(full_physics_swig.generic_object.GenericObject):
         """
         return _tccon_apriori.TcconApriori_co2_vmr_grid(self, *args)
 
+    def tropopause_pressure(self):
+        """
+        double TcconApriori::tropopause_pressure() const
+        Calculate the Tropopause pressure. 
+        """
+        return _tccon_apriori.TcconApriori_tropopause_pressure(self)
+
+    def planetary_boundary_layer_pressure(self):
+        """
+        double TcconApriori::planetary_boundary_layer_pressure() const
+        Calculate planetary boundary layer pressure.
+
+        This assume that the daytime high-latitude PBL varies from 90 mb in
+        the tropics to 280 mb at high latitudes 
+        """
+        return _tccon_apriori.TcconApriori_planetary_boundary_layer_pressure(self)
+
+    def fractional_amplitude_seasonal_cycle(self):
+        """
+        double TcconApriori::fractional_amplitude_seasonal_cycle() const
+        Calculate fractional amplitude of seasonal cycle at surface. 
+        """
+        return _tccon_apriori.TcconApriori_fractional_amplitude_seasonal_cycle(self)
+
+    def age_air(self, *args):
+        """
+        DoubleWithUnit TcconApriori::age_air(double P) const
+        Calculate the age of air for the given pressure level (pressure is in
+        pascals). 
+        """
+        return _tccon_apriori.TcconApriori_age_air(self, *args)
+
     __swig_destroy__ = _tccon_apriori.delete_TcconApriori
 TcconApriori.co2_vmr = new_instancemethod(_tccon_apriori.TcconApriori_co2_vmr,None,TcconApriori)
 TcconApriori.co2_vmr_grid = new_instancemethod(_tccon_apriori.TcconApriori_co2_vmr_grid,None,TcconApriori)
+TcconApriori.tropopause_pressure = new_instancemethod(_tccon_apriori.TcconApriori_tropopause_pressure,None,TcconApriori)
+TcconApriori.planetary_boundary_layer_pressure = new_instancemethod(_tccon_apriori.TcconApriori_planetary_boundary_layer_pressure,None,TcconApriori)
+TcconApriori.fractional_amplitude_seasonal_cycle = new_instancemethod(_tccon_apriori.TcconApriori_fractional_amplitude_seasonal_cycle,None,TcconApriori)
+TcconApriori.age_air = new_instancemethod(_tccon_apriori.TcconApriori_age_air,None,TcconApriori)
 TcconApriori.__str__ = new_instancemethod(_tccon_apriori.TcconApriori___str__,None,TcconApriori)
 TcconApriori_swigregister = _tccon_apriori.TcconApriori_swigregister
 TcconApriori_swigregister(TcconApriori)
