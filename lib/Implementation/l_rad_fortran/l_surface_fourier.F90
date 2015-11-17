@@ -255,11 +255,6 @@ contains
       DOUBLE PRECISION DCOEFF_0, ARGUMENT
       DOUBLE PRECISION DERFAC
       DOUBLE PRECISION D_DCOEFF_0, D_DCOEFF, D_DEX, D_ARGUMENT
-      DOUBLE PRECISION L_CXI2, L_CRPER, L_CRPAR ! V. Natraj, 8/17/2010
-      DOUBLE PRECISION L_CF11, L_CF12, L_CF21, L_CF22 ! V. Natraj, 8/17/2010
-      DOUBLE PRECISION L_AF11, L_AF12, L_AF21, L_AF22 ! V. Natraj, 8/17/2010
-      DOUBLE PRECISION L_CTTTP, L_CTTPT, L_CTTPP ! V. Natraj, 8/17/2010
-      DOUBLE PRECISION L_CTPPT, L_CTPPP, L_CPTPP ! V. Natraj, 8/17/2010
 
 !   Transcription of the RMATR subroutine from Mishchenko/Travis code.
 
@@ -318,17 +313,13 @@ contains
 
       XI1 =  FACTOR*(UNIT1*VI1+UNIT2*VI2+UNIT3*VI3)
       CXI2 = 1.d0 - (1.d0-XI1*XI1)*CN1*CN1/(CN2*CN2)
-      L_CXI2 = 2.0d0*(1.d0-CXI2)/CN2 ! V. Natraj, 8/17/2010
       CXI2 = DSQRT(CXI2)
-      L_CXI2 = 0.5d0/CXI2*L_CXI2
       C1 = CN1*XI1
       C2 = CN2*CXI2
       CRPER = (C1-C2)/(C1+C2)
-      L_CRPER = -2.d0*C1*(CXI2 + CN2 * L_CXI2)/(C1+C2)**2 ! V. Natraj, 8/17/2010
       C1 = CN2*XI1
       C2 = CN1*CXI2
       CRPAR = (C1-C2)/(C1+C2)
-      L_CRPAR = ((C1+C2)*(XI1-CN1*L_CXI2) - (C1-C2)*(XI1+CN1*L_CXI2))/(C1+C2)**2 ! V. Natraj, 8/17/2010
 
 !  CALCULATION OF THE AMPLITUDE SCATTERING MATRIX
 !  ----------------------------------------------
@@ -364,13 +355,6 @@ contains
       CF21 = -E4*CRPER+E3*CRPAR
       CF22 =  E2*CRPER+E1*CRPAR
 
-!  Derivatives wrt ri, V. Natraj, 8/17/2010
-
-      L_CF11 =  E1*L_CRPER + E2*L_CRPAR
-      L_CF12 = -E3*L_CRPER + E4*L_CRPAR
-      L_CF21 = -E4*L_CRPER + E3*L_CRPAR
-      L_CF22 =  E2*L_CRPER + E1*L_CRPAR
-
 !  CALCULATION OF THE STOKES REFLECTION MATRIX
 !  -------------------------------------------
 
@@ -386,8 +370,6 @@ contains
       IF (DABS(DMOD) .LT. 1.d-8) THEN
         CF11 = CRPAR
         CF22 = CRPER
-        L_CF11 = L_CRPAR ! V. Natraj, 8/17/2010
-        L_CF22 = L_CRPER ! V. Natraj, 8/17/2010
         DMOD = 1.d0
       ENDIF
 
@@ -424,24 +406,10 @@ contains
       AF21 = AF21*AF21
       AF22 = AF22*AF22
 
-!  Derivatives wrt ri, V. Natraj, 8/17/2010
-
-      L_AF11 = 2.0d0 * CF11 * L_CF11
-      L_AF12 = 2.0d0 * CF12 * L_CF12
-      L_AF21 = 2.0d0 * CF21 * L_CF21
-      L_AF22 = 2.0d0 * CF22 * L_CF22
-
       R1M(1,1)=(AF11+AF12+AF21+AF22)*AF
       R1M(1,2)=(AF11-AF12+AF21-AF22)*AF
       R1M(2,1)=(AF11-AF22+AF12-AF21)*AF
       R1M(2,2)=(AF11-AF12-AF21+AF22)*AF
-
-!  Derivatives wrt ri, V. Natraj, 8/17/2010
-
-      LS_R1M(1,1,2) = (L_AF11+L_AF12+L_AF21+L_AF22)*AF
-      LS_R1M(1,2,2) = (L_AF11-L_AF12+L_AF21-L_AF22)*AF
-      LS_R1M(2,1,2) = (L_AF11-L_AF22+L_AF12-L_AF21)*AF
-      LS_R1M(2,2,2) = (L_AF11-L_AF12-L_AF21+L_AF22)*AF
 
       CTTTP=CF11*CF12
       CTTPT=CF11*CF21
@@ -464,15 +432,6 @@ contains
 
       R1M(3,3)= (CTTPP+CTPPT)*DCOEFF
       R1M(4,4)= (CTTPP-CTPPT)*DCOEFF
-
-!  Derivatives wrt ri, V. Natraj, 8/17/2010
-
-      LS_R1M(1,3,2)= (-L_CTTTP-L_CPTPP)*DCOEFF
-      LS_R1M(2,3,2)= (-L_CTTTP+L_CPTPP)*DCOEFF
-      LS_R1M(3,1,2)= (-L_CTTPT-L_CTPPP)*DCOEFF
-      LS_R1M(3,2,2)= (-L_CTTPT+L_CTPPP)*DCOEFF
-      LS_R1M(3,3,2)= (L_CTTPP+L_CTPPT)*DCOEFF
-      LS_R1M(4,4,2)= (L_CTTPP-L_CTPPT)*DCOEFF
 
 !  Derivative before shadow effect
 
