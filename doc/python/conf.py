@@ -28,24 +28,13 @@ sys.path.append(os.path.abspath('sphinxext'))
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 
-if(IPython.__version__ == "0.10"):
-    # For ipython 0.10
-    extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest',
-                  'sphinx.ext.intersphinx', 'sphinx.ext.pngmath',
-                  'sphinx.ext.ifconfig',
-                  'ipython_directive_0_10',
-                  'ipython_console_highlighting',
-                  'inheritance_diagram',
-                  'numpydoc']
-else:
-    # For ipython 0.11 and later
-    extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest',
-                  'sphinx.ext.intersphinx', 'sphinx.ext.pngmath',
-                  'sphinx.ext.ifconfig', 'ipython_directive',
-                  'ipython_console_highlighting',
-                  'inheritance_diagram',
-                  'numpydoc']
-
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest',
+              'sphinx.ext.intersphinx', 'sphinx.ext.pngmath',
+              'sphinx.ext.ifconfig',
+              'sphinx.ext.inheritance_diagram',
+              'IPython.sphinxext.ipython_directive', 
+              'IPython.sphinxext.ipython_console_highlighting',
+              'numpydoc']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -61,7 +50,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Level 2 Full Physics'
-copyright = u'2014, James McDuffie, Mike Smyth'
+copyright = u'2015, Jet Propulsion Laboratory'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
