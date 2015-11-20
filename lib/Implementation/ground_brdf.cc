@@ -5,6 +5,20 @@
 using namespace FullPhysics;
 using namespace blitz;
 
+#define BRDF_WEIGHT_INTERCEPT_INDEX    0
+#define BRDF_WEIGHT_SLOPE_INDEX        1
+#define RAHMAN_KERNEL_FACTOR_INDEX     2
+#define RAHMAN_OVERALL_AMPLITUDE_INDEX 3
+#define RAHMAN_ASYMMETRY_FACTOR_INDEX  4
+#define RAHMAN_GEOMETRIC_FACTOR_INDEX  5
+#define BREON_KERNEL_FACTOR_INDEX      6
+
+// Number of coefficients per band in the state vector
+#define NUM_COEFF 7
+
+// Number of parameters in spars for the RT
+#define NUM_PARAMS 5
+
 extern "C" {
     double black_sky_albedo_veg_f(const double* params, const double* sza);
     double black_sky_albedo_soil_f(const double* params, const double* sza);
@@ -57,29 +71,24 @@ REGISTER_LUA_DERIVED_CLASS(GroundBrdfSoil, Ground)
 REGISTER_LUA_END()
 #endif
 
-// Number of coefficients per band in the state vector
-#define NUM_COEFF 6
-
-// Number of parameters in spars for the RT
-#define NUM_PARAMS 5
-
 /****************************************************************//**
   Constructor that defines coefficients in a 2d array:
   Num_spectrometer * NUM_COEFF
-  Each row has the NUM_COEFF Rahman parameters for a spectrometer.
+  Each row has the NUM_COEFF BRDF parameters for a spectrometer.
   Coefficients are ordered:
-  0: Rahman kernel factor
-  1: Rahman overall amplitude intercept
-  2: Rahman overall amplitude slope
-  3: Rahman asymmetry factor
-  4: Rahman geometric factor
-  5: Breon kernel factor
+  0: BRDF overall weight intercept
+  1: BRDF overall weight slope
+  2: Rahman kernel factor
+  3: Rahman overall amplitude 
+  4: Rahman asymmetry factor
+  5: Rahman geometric factor
+  6: Breon kernel factor
  *******************************************************************/
 
 GroundBrdf::GroundBrdf(const blitz::Array<double, 2>& Coeffs,
-                         const blitz::Array<bool, 2>& Flag,
-                         const ArrayWithUnit<double, 1>& Ref_points,
-                         const std::vector<std::string>& Desc_band_names) 
+                       const blitz::Array<bool, 2>& Flag,
+                       const ArrayWithUnit<double, 1>& Ref_points,
+                       const std::vector<std::string>& Desc_band_names) 
 : reference_points(Ref_points), desc_band_names(Desc_band_names)
 {
     if(Coeffs.cols() != NUM_COEFF) {
@@ -133,122 +142,140 @@ GroundBrdf::GroundBrdf(const blitz::Array<double, 1>& Spec_coeffs,
 
 ArrayAd<double, 1> GroundBrdf::surface_parameter(const double wn, const int spec_index) const
 {
+    AutoDerivative<double> w = weight(wn, spec_index);
     ArrayAd<double, 1> spars;
     spars.resize(NUM_PARAMS, coefficient().number_variable());
-    spars(0) = rahman_factor(spec_index);
-    spars(1) = overall_amplitude(wn, spec_index);
+    spars(0) = w * rahman_factor(spec_index);
+    spars(1) = overall_amplitude(spec_index);
     spars(2) = asymmetry_parameter(spec_index);
     spars(3) = geometric_factor(spec_index);
-    spars(4) = breon_factor(spec_index);
+    spars(4) = w * breon_factor(spec_index);
     return spars;
+}
+
+const AutoDerivative<double> GroundBrdf::weight(const double wn, const int spec_index) const
+{
+    double ref_wn = reference_points(spec_index).convert_wave(units::inv_cm).value;
+    ArrayAd<double, 1> weight_params(2, weight_intercept(spec_index).number_variable());
+    weight_params(0) = weight_slope(spec_index);
+    weight_params(1) = weight_intercept(spec_index);
+    Poly1d weight_poly(weight_params, true);
+    AutoDerivative<double> wn_ad(wn); // Make sure we use the AutoDerivative interface to Poly1d
+    return weight_poly(wn_ad - ref_wn);
+}
+
+const AutoDerivative<double> GroundBrdf::weight_intercept(const int spec_index) const
+{
+    range_check(spec_index, 0, number_spectrometer());
+
+    return coefficient()(NUM_COEFF * spec_index + BRDF_WEIGHT_INTERCEPT_INDEX);
+}
+
+const AutoDerivative<double> GroundBrdf::weight_slope(const int spec_index) const
+{
+    range_check(spec_index, 0, number_spectrometer());
+
+    return coefficient()(NUM_COEFF * spec_index + BRDF_WEIGHT_SLOPE_INDEX);
 }
 
 const AutoDerivative<double> GroundBrdf::rahman_factor(const int spec_index) const
 {
     range_check(spec_index, 0, number_spectrometer());
 
-    return coefficient()(NUM_COEFF * spec_index + 0);
+    return coefficient()(NUM_COEFF * spec_index + RAHMAN_KERNEL_FACTOR_INDEX);
 }
 
-const AutoDerivative<double> GroundBrdf::overall_amplitude(const double wn, const int spec_index) const
-{
-    double ref_wn = reference_points(spec_index).convert_wave(units::inv_cm).value;
-    // Calculation of albedo from state vector value
-    ArrayAd<double, 1> amplitude_params(2, overall_amplitude_intercept(spec_index).number_variable());
-    amplitude_params(0) = overall_amplitude_slope(spec_index);
-    amplitude_params(1) = overall_amplitude_intercept(spec_index);
-    Poly1d amplitude_poly(amplitude_params, true);
-    AutoDerivative<double> wn_ad(wn); // Make sure we use the AutoDerivative interface to Poly1d
-    return amplitude_poly(wn_ad - ref_wn);
-}
-
-const AutoDerivative<double> GroundBrdf::overall_amplitude_intercept(const int spec_index) const
+const AutoDerivative<double> GroundBrdf::overall_amplitude(const int spec_index) const
 {
     range_check(spec_index, 0, number_spectrometer());
 
-    return coefficient()(NUM_COEFF * spec_index + 1);
-}
-
-const AutoDerivative<double> GroundBrdf::overall_amplitude_slope(const int spec_index) const
-{
-    range_check(spec_index, 0, number_spectrometer());
-
-    return coefficient()(NUM_COEFF * spec_index + 2);
+    return coefficient()(NUM_COEFF * spec_index + RAHMAN_OVERALL_AMPLITUDE_INDEX);
 }
 
 const AutoDerivative<double> GroundBrdf::asymmetry_parameter(const int spec_index) const
 {
     range_check(spec_index, 0, number_spectrometer());
 
-    return coefficient()(NUM_COEFF * spec_index + 3);
+    return coefficient()(NUM_COEFF * spec_index + RAHMAN_ASYMMETRY_FACTOR_INDEX);
 }
 
 const AutoDerivative<double> GroundBrdf::geometric_factor(const int spec_index) const
 {
     range_check(spec_index, 0, number_spectrometer());
 
-    return coefficient()(NUM_COEFF * spec_index + 4);
+    return coefficient()(NUM_COEFF * spec_index + RAHMAN_GEOMETRIC_FACTOR_INDEX);
 }
 
 const AutoDerivative<double> GroundBrdf::breon_factor(const int spec_index) const
 {
     range_check(spec_index, 0, number_spectrometer());
 
-    return coefficient()(NUM_COEFF * spec_index + 5);
+    return coefficient()(NUM_COEFF * spec_index + BREON_KERNEL_FACTOR_INDEX);
+}
+
+//----
+
+void GroundBrdf::weight_intercept(const int spec_index, const AutoDerivative<double>& val)
+{
+    range_check(spec_index, 0, number_spectrometer());
+
+    coeff(NUM_COEFF * spec_index + BRDF_WEIGHT_INTERCEPT_INDEX) = val;
+}
+
+void GroundBrdf::weight_slope(const int spec_index, const AutoDerivative<double>& val)
+{
+    range_check(spec_index, 0, number_spectrometer());
+
+    coeff(NUM_COEFF * spec_index + BRDF_WEIGHT_SLOPE_INDEX) = val;
 }
 
 void GroundBrdf::rahman_factor(const int spec_index, const AutoDerivative<double>& val)
 {
     range_check(spec_index, 0, number_spectrometer());
 
-    coeff(NUM_COEFF * spec_index + 0) = val;
+    coeff(NUM_COEFF * spec_index + RAHMAN_KERNEL_FACTOR_INDEX) = val;
 }
 
-void GroundBrdf::overall_amplitude_intercept(const int spec_index, const AutoDerivative<double>& val)
+void GroundBrdf::overall_amplitude(const int spec_index, const AutoDerivative<double>& val)
 {
     range_check(spec_index, 0, number_spectrometer());
 
-    coeff(NUM_COEFF * spec_index + 1) = val;
-}
-
-void GroundBrdf::overall_amplitude_slope(const int spec_index, const AutoDerivative<double>& val)
-{
-    range_check(spec_index, 0, number_spectrometer());
-
-    coeff(NUM_COEFF * spec_index + 2) = val;
+    coeff(NUM_COEFF * spec_index + RAHMAN_OVERALL_AMPLITUDE_INDEX) = val;
 }
 
 void GroundBrdf::asymmetry_parameter(const int spec_index, const AutoDerivative<double>& val)
 {
     range_check(spec_index, 0, number_spectrometer());
 
-    coeff(NUM_COEFF * spec_index + 3) = val;
+    coeff(NUM_COEFF * spec_index + RAHMAN_ASYMMETRY_FACTOR_INDEX) = val;
 }
 
 void GroundBrdf::geometric_factor(const int spec_index, const AutoDerivative<double>& val)
 {
     range_check(spec_index, 0, number_spectrometer());
 
-    coeff(NUM_COEFF * spec_index + 4) = val;
+    coeff(NUM_COEFF * spec_index + RAHMAN_GEOMETRIC_FACTOR_INDEX) = val;
 }
 
 void GroundBrdf::breon_factor(const int spec_index, const AutoDerivative<double>& val)
 {
     range_check(spec_index, 0, number_spectrometer());
 
-    coeff(NUM_COEFF * spec_index + 5) = val;
+    coeff(NUM_COEFF * spec_index + BREON_KERNEL_FACTOR_INDEX) = val;
 }
 
 // Helper function 
 blitz::Array<double, 1> GroundBrdf::albedo_calc_params(const int Spec_index)
 {
-    blitz::Array<double, 1> params(NUM_PARAMS, blitz::ColumnMajorArray<1>());
-    params(0) = rahman_factor(Spec_index).value();
     double ref_wn = reference_points(Spec_index).convert_wave(units::inv_cm).value;
-    params(1) = overall_amplitude(ref_wn, Spec_index).value();
+    double w = weight(ref_wn, Spec_index).value();
+
+    blitz::Array<double, 1> params(NUM_PARAMS, blitz::ColumnMajorArray<1>());
+    params(0) = w * rahman_factor(Spec_index).value();
+    params(1) = overall_amplitude(Spec_index).value();
     params(2) = asymmetry_parameter(Spec_index).value();
     params(3) = geometric_factor(Spec_index).value();
-    params(4) = breon_factor(Spec_index).value();
+    params(4) = w * breon_factor(Spec_index).value();
     return params;
 }
 
@@ -285,22 +312,25 @@ std::string GroundBrdf::state_vector_name_i(int i) const {
     std::stringstream name;
     name << "Ground BRDF " << breon_type() << " " << desc_band_names[b_idx] << " ";
     switch (c_idx) {
-    case 0:
+    case BRDF_WEIGHT_INTERCEPT_INDEX:
+        name << "BRDF Weight Intercept";
+        break;
+    case BRDF_WEIGHT_SLOPE_INDEX:
+        name << "BRDF Weight Slope";
+        break;
+    case RAHMAN_KERNEL_FACTOR_INDEX:
         name << "Rahman Factor";
         break;
-    case 1:
-        name << "Overall Amplitude Intercept";
+    case RAHMAN_OVERALL_AMPLITUDE_INDEX:
+        name << "Overall Amplitude";
         break;
-    case 2:
-        name << "Overall Amplitude Slope";
-        break;
-    case 3:
+    case RAHMAN_ASYMMETRY_FACTOR_INDEX:
         name << "Asymmetry Parameter";
         break;
-    case 4:
+    case RAHMAN_GEOMETRIC_FACTOR_INDEX:
         name << "Geometric Factor";
         break;
-    case 5:
+    case BREON_KERNEL_FACTOR_INDEX:
         name << "Breon Factor";
         break;
     default:
@@ -316,9 +346,10 @@ void GroundBrdf::print(std::ostream& Os) const
     for(int spec_idx = 0; spec_idx < number_spectrometer(); spec_idx++) {
         Os << "    " << desc_band_names[spec_idx] << ":" << std::endl;
         OstreamPad opad(Os, "        ");
-        opad << "Rahman Factor: " << rahman_factor(spec_idx).value() << std::endl
-             << "Overall Amplitude Intercept: " << overall_amplitude_intercept(spec_idx).value() << std::endl
-             << "Overall Amplitude Slope: " << overall_amplitude_slope(spec_idx).value() << std::endl
+        opad << "BRDF Weight Intercept: " << weight_intercept(spec_idx).value() << std::endl
+             << "BRDF Weight Slope: " << weight_slope(spec_idx).value() << std::endl
+             << "Rahman Factor: " << rahman_factor(spec_idx).value() << std::endl
+             << "Overall Amplitude: " << overall_amplitude(spec_idx).value() << std::endl
              << "Asymmetry Parameter: " << asymmetry_parameter(spec_idx).value() << std::endl
              << "Geometric Factor: " << geometric_factor(spec_idx).value() << std::endl
              << "Breon Factor: " << breon_factor(spec_idx).value() << std::endl;

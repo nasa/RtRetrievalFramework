@@ -2110,7 +2110,7 @@ end
 --- sky albedo
 ------------------------------------------------------------
 
-function ConfigCommon.brdf_scale_factor(self, brdf_class, ap, i)
+function ConfigCommon.brdf_weight(self, brdf_class, ap, i)
    local signal = self.config:meas_cont_signal(i).value
    local solar_strength = self.config.fm.atmosphere.ground.solar_strength[i+1]
    local sza_d = self.config.l1b:sza()(i) 
@@ -2123,22 +2123,19 @@ function ConfigCommon.brdf_scale_factor(self, brdf_class, ap, i)
    -- Extract all but the slope portion of the apriori to feed into the
    -- albedo calculation function
    local params = Blitz_double_array_1d(5)
-   params:set(Range(0, 1), ap(Range(0, 1)))
-   params:set(Range(2, 4), ap(Range(3, 5)))
+   params:set(Range.all(), ap(Range(2, 6)))
 
    local alb_calc = brdf_class.albedo(params, sza_d, vza_d, azm_d, stokes_coef)
-   local scaling = alb_cont / alb_calc
+   local weight = alb_cont / alb_calc
 
-   return scaling
+   return weight
 end
 
 function ConfigCommon.brdf_veg_apriori(field)
     return function(self, i)
         local ap = self.config:h():apriori(field, i) 
-        local scaling = ConfigCommon.brdf_scale_factor(self, GroundBrdfVeg, ap, i)
-        -- Scale the Rahman and Breon BRDF factors
-        ap:set(0, ap(0) * scaling)
-        ap:set(5, ap(5) * scaling)
+        local weight = ConfigCommon.brdf_weight(self, GroundBrdfVeg, ap, i)
+        ap:set(0, ap(0) * weight)
         return ap
     end
 end
@@ -2146,10 +2143,8 @@ end
 function ConfigCommon.brdf_soil_apriori(field)
     return function(self, i)
         local ap = self.config:h():apriori(field, i) 
-        local scaling = ConfigCommon.brdf_scale_factor(self, GroundBrdfSoil, ap, i)
-        -- Scale the Rahman and Breon BRDF factors
-        ap:set(0, ap(0) * scaling)
-        ap:set(5, ap(5) * scaling)
+        local weight = ConfigCommon.brdf_weight(self, GroundBrdfSoil, ap, i)
+        ap:set(0, ap(0) * weight)
         return ap
     end
 end
@@ -2165,12 +2160,14 @@ function ConfigCommon.brdf_retrieval:retrieval_flag(i)
 
    if self.retrieve_bands ~= nil and self.retrieve_bands[i] then
         flag:set(Range.all(), false)
-        -- Overall amplitude intercept
+        -- BRDF weight intercept
+        flag:set(0, true)
+        -- BRDF weight slope
         flag:set(1, true)
-        -- Overall amplitude slope
+        -- Overall amplitude
         flag:set(2, true)
-        -- Geometric factor
-        flag:set(4, true)
+         -- Geometric factor
+        flag:set(5, true)
    else
         flag:set(Range.all(), false)
    end
@@ -2187,8 +2184,8 @@ ConfigCommon.brdf_veg_retrieval = ConfigCommon.brdf_retrieval:new {}
 function ConfigCommon.brdf_veg_retrieval:create()
    local num_spec = self.config.number_pixel:rows()
 
-   local ap = Blitz_double_array_2d(num_spec, 6)
-   local flag = Blitz_bool_array_2d(num_spec, 6)
+   local ap = Blitz_double_array_2d(num_spec, 7)
+   local flag = Blitz_bool_array_2d(num_spec, 7)
 
    for i = 1, num_spec do
        ap:set(i-1, Range.all(), self:apriori_v(i - 1))
@@ -2225,8 +2222,8 @@ ConfigCommon.brdf_soil_retrieval = ConfigCommon.brdf_retrieval:new {}
 function ConfigCommon.brdf_soil_retrieval:create()
    local num_spec = self.config.number_pixel:rows()
 
-   local ap = Blitz_double_array_2d(num_spec, 6)
-   local flag = Blitz_bool_array_2d(num_spec, 6)
+   local ap = Blitz_double_array_2d(num_spec, 7)
+   local flag = Blitz_bool_array_2d(num_spec, 7)
 
    for i = 1, num_spec do
        ap:set(i-1, Range.all(), self:apriori_v(i - 1))

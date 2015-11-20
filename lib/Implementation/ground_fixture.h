@@ -51,13 +51,13 @@ public:
         coxmunk.reset(new GroundCoxmunk(7.1, false, refr_index));
 
         // BRDF (Rahman + Breon)
-        Array<double, 2> brdf_coeffs(3, 6);
+        Array<double, 2> brdf_coeffs(3, 7);
         brdf_coeffs = 
-            // rahman_factor, amplitude, asymmetry, geometric, breon_factor
-            1.0, 0.1, 0.1, 0.3, 1.5, 2.0,
-            1.1, 0.2, 0.1, 0.4, 1.6, 2.1,
-            1.2, 0.3, 0.1, 0.5, 1.7, 2.2;
-        Array<bool, 2> flag(3, 6);
+            // weight_intercept, weight_slope, rahman_factor, amplitude, asymmetry, geometric, breon_factor
+            0.1, 0.4, 0.7, 1.0, 1.3, 1.6, 1.9,
+            0.2, 0.5, 0.8, 1.1, 1.4, 1.7, 2.0,
+            0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1;
+        Array<bool, 2> flag(brdf_coeffs.shape());
         flag = true;
             
         brdf_veg.reset(new GroundBrdfVeg(brdf_coeffs, flag, ref_points_w_unit, band_name));
