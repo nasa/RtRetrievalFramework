@@ -7,20 +7,6 @@ require "oco_base_config"
 
 config = OcoBaseConfig:new()
 
-config.sid_string = "2014101812360378"
-
-config.spectrum_file = "../input/oco2_L1bScTG_01576a_141018_B5000x4_150210000451s_spliced.h5"
-config.imap_file = "../input/oco2_L2IDPTG_01576a_141018_B5000x4_150210002838s_spliced.h5"
-config.ecmwf_file = "../input/oco2_ECMWFTG_01576a_141018_B5000x4_150210001017s_spliced.h5"
-
--- Additional functions used by rmgr snippets
-require "helper_functions"
-
--- Change convergence values
-config.solver.max_iteration=10
-config.solver.max_divergence=5
-config.solver.gamma_initial=100.0
-
 -- Use BRDF Soil Ground
 use_brdf = DispatchCreator:new()
 
