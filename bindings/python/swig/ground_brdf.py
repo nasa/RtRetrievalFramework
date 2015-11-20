@@ -136,12 +136,26 @@ class GroundBrdfVeg(full_physics_swig.ground.Ground):
         """
         return _ground_brdf.GroundBrdfVeg_number_spectrometer(self)
 
-    def overall_amplitude(self, *args):
+    def weight(self, *args):
         """
-        const AutoDerivative< double > GroundBrdf::overall_amplitude(const double wn, const int spec_index) const
+        const AutoDerivative< double > GroundBrdf::weight(const double wn, const int spec_index) const
 
         """
-        return _ground_brdf.GroundBrdfVeg_overall_amplitude(self, *args)
+        return _ground_brdf.GroundBrdfVeg_weight(self, *args)
+
+    def weight_intercept(self, *args):
+        """
+        void GroundBrdf::weight_intercept(const int spec_index, const AutoDerivative< double > &val)
+
+        """
+        return _ground_brdf.GroundBrdfVeg_weight_intercept(self, *args)
+
+    def weight_slope(self, *args):
+        """
+        void GroundBrdf::weight_slope(const int spec_index, const AutoDerivative< double > &val)
+
+        """
+        return _ground_brdf.GroundBrdfVeg_weight_slope(self, *args)
 
     def rahman_factor(self, *args):
         """
@@ -150,19 +164,12 @@ class GroundBrdfVeg(full_physics_swig.ground.Ground):
         """
         return _ground_brdf.GroundBrdfVeg_rahman_factor(self, *args)
 
-    def overall_amplitude_intercept(self, *args):
+    def overall_amplitude(self, *args):
         """
-        void GroundBrdf::overall_amplitude_intercept(const int spec_index, const AutoDerivative< double > &val)
+        void GroundBrdf::overall_amplitude(const int spec_index, const AutoDerivative< double > &val)
 
         """
-        return _ground_brdf.GroundBrdfVeg_overall_amplitude_intercept(self, *args)
-
-    def overall_amplitude_slope(self, *args):
-        """
-        void GroundBrdf::overall_amplitude_slope(const int spec_index, const AutoDerivative< double > &val)
-
-        """
-        return _ground_brdf.GroundBrdfVeg_overall_amplitude_slope(self, *args)
+        return _ground_brdf.GroundBrdfVeg_overall_amplitude(self, *args)
 
     def asymmetry_parameter(self, *args):
         """
@@ -240,10 +247,11 @@ class GroundBrdfVeg(full_physics_swig.ground.Ground):
 
     __swig_destroy__ = _ground_brdf.delete_GroundBrdfVeg
 GroundBrdfVeg.number_spectrometer = new_instancemethod(_ground_brdf.GroundBrdfVeg_number_spectrometer,None,GroundBrdfVeg)
-GroundBrdfVeg.overall_amplitude = new_instancemethod(_ground_brdf.GroundBrdfVeg_overall_amplitude,None,GroundBrdfVeg)
+GroundBrdfVeg.weight = new_instancemethod(_ground_brdf.GroundBrdfVeg_weight,None,GroundBrdfVeg)
+GroundBrdfVeg.weight_intercept = new_instancemethod(_ground_brdf.GroundBrdfVeg_weight_intercept,None,GroundBrdfVeg)
+GroundBrdfVeg.weight_slope = new_instancemethod(_ground_brdf.GroundBrdfVeg_weight_slope,None,GroundBrdfVeg)
 GroundBrdfVeg.rahman_factor = new_instancemethod(_ground_brdf.GroundBrdfVeg_rahman_factor,None,GroundBrdfVeg)
-GroundBrdfVeg.overall_amplitude_intercept = new_instancemethod(_ground_brdf.GroundBrdfVeg_overall_amplitude_intercept,None,GroundBrdfVeg)
-GroundBrdfVeg.overall_amplitude_slope = new_instancemethod(_ground_brdf.GroundBrdfVeg_overall_amplitude_slope,None,GroundBrdfVeg)
+GroundBrdfVeg.overall_amplitude = new_instancemethod(_ground_brdf.GroundBrdfVeg_overall_amplitude,None,GroundBrdfVeg)
 GroundBrdfVeg.asymmetry_parameter = new_instancemethod(_ground_brdf.GroundBrdfVeg_asymmetry_parameter,None,GroundBrdfVeg)
 GroundBrdfVeg.geometric_factor = new_instancemethod(_ground_brdf.GroundBrdfVeg_geometric_factor,None,GroundBrdfVeg)
 GroundBrdfVeg.breon_factor = new_instancemethod(_ground_brdf.GroundBrdfVeg_breon_factor,None,GroundBrdfVeg)
@@ -279,12 +287,26 @@ class GroundBrdfSoil(full_physics_swig.ground.Ground):
         """
         return _ground_brdf.GroundBrdfSoil_number_spectrometer(self)
 
-    def overall_amplitude(self, *args):
+    def weight(self, *args):
         """
-        const AutoDerivative< double > GroundBrdf::overall_amplitude(const double wn, const int spec_index) const
+        const AutoDerivative< double > GroundBrdf::weight(const double wn, const int spec_index) const
 
         """
-        return _ground_brdf.GroundBrdfSoil_overall_amplitude(self, *args)
+        return _ground_brdf.GroundBrdfSoil_weight(self, *args)
+
+    def weight_intercept(self, *args):
+        """
+        void GroundBrdf::weight_intercept(const int spec_index, const AutoDerivative< double > &val)
+
+        """
+        return _ground_brdf.GroundBrdfSoil_weight_intercept(self, *args)
+
+    def weight_slope(self, *args):
+        """
+        void GroundBrdf::weight_slope(const int spec_index, const AutoDerivative< double > &val)
+
+        """
+        return _ground_brdf.GroundBrdfSoil_weight_slope(self, *args)
 
     def rahman_factor(self, *args):
         """
@@ -293,19 +315,12 @@ class GroundBrdfSoil(full_physics_swig.ground.Ground):
         """
         return _ground_brdf.GroundBrdfSoil_rahman_factor(self, *args)
 
-    def overall_amplitude_intercept(self, *args):
+    def overall_amplitude(self, *args):
         """
-        void GroundBrdf::overall_amplitude_intercept(const int spec_index, const AutoDerivative< double > &val)
+        void GroundBrdf::overall_amplitude(const int spec_index, const AutoDerivative< double > &val)
 
         """
-        return _ground_brdf.GroundBrdfSoil_overall_amplitude_intercept(self, *args)
-
-    def overall_amplitude_slope(self, *args):
-        """
-        void GroundBrdf::overall_amplitude_slope(const int spec_index, const AutoDerivative< double > &val)
-
-        """
-        return _ground_brdf.GroundBrdfSoil_overall_amplitude_slope(self, *args)
+        return _ground_brdf.GroundBrdfSoil_overall_amplitude(self, *args)
 
     def asymmetry_parameter(self, *args):
         """
@@ -383,10 +398,11 @@ class GroundBrdfSoil(full_physics_swig.ground.Ground):
 
     __swig_destroy__ = _ground_brdf.delete_GroundBrdfSoil
 GroundBrdfSoil.number_spectrometer = new_instancemethod(_ground_brdf.GroundBrdfSoil_number_spectrometer,None,GroundBrdfSoil)
-GroundBrdfSoil.overall_amplitude = new_instancemethod(_ground_brdf.GroundBrdfSoil_overall_amplitude,None,GroundBrdfSoil)
+GroundBrdfSoil.weight = new_instancemethod(_ground_brdf.GroundBrdfSoil_weight,None,GroundBrdfSoil)
+GroundBrdfSoil.weight_intercept = new_instancemethod(_ground_brdf.GroundBrdfSoil_weight_intercept,None,GroundBrdfSoil)
+GroundBrdfSoil.weight_slope = new_instancemethod(_ground_brdf.GroundBrdfSoil_weight_slope,None,GroundBrdfSoil)
 GroundBrdfSoil.rahman_factor = new_instancemethod(_ground_brdf.GroundBrdfSoil_rahman_factor,None,GroundBrdfSoil)
-GroundBrdfSoil.overall_amplitude_intercept = new_instancemethod(_ground_brdf.GroundBrdfSoil_overall_amplitude_intercept,None,GroundBrdfSoil)
-GroundBrdfSoil.overall_amplitude_slope = new_instancemethod(_ground_brdf.GroundBrdfSoil_overall_amplitude_slope,None,GroundBrdfSoil)
+GroundBrdfSoil.overall_amplitude = new_instancemethod(_ground_brdf.GroundBrdfSoil_overall_amplitude,None,GroundBrdfSoil)
 GroundBrdfSoil.asymmetry_parameter = new_instancemethod(_ground_brdf.GroundBrdfSoil_asymmetry_parameter,None,GroundBrdfSoil)
 GroundBrdfSoil.geometric_factor = new_instancemethod(_ground_brdf.GroundBrdfSoil_geometric_factor,None,GroundBrdfSoil)
 GroundBrdfSoil.breon_factor = new_instancemethod(_ground_brdf.GroundBrdfSoil_breon_factor,None,GroundBrdfSoil)

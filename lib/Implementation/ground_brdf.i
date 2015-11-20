@@ -28,16 +28,18 @@ public:
                 const std::vector<std::string>& Desc_band_names);
     virtual ArrayAd<double, 1> surface_parameter(const double wn, const int spec_index) const;
     virtual const int number_spectrometer() const { return desc_band_names.size(); }
+    virtual const AutoDerivative<double> weight(const double wn, const int spec_index) const;
+    virtual const AutoDerivative<double> weight_intercept(const int spec_index) const;
+    virtual const AutoDerivative<double> weight_slope(const int spec_index) const;
     virtual const AutoDerivative<double> rahman_factor(const int spec_index) const;
-    virtual const AutoDerivative<double> overall_amplitude(const double wn, const int spec_index) const;
-    virtual const AutoDerivative<double> overall_amplitude_intercept(const int spec_index) const;
-    virtual const AutoDerivative<double> overall_amplitude_slope(const int spec_index) const;
+    virtual const AutoDerivative<double> overall_amplitude(const int spec_index) const;
     virtual const AutoDerivative<double> asymmetry_parameter(const int spec_index) const;
     virtual const AutoDerivative<double> geometric_factor(const int spec_index) const;
     virtual const AutoDerivative<double> breon_factor(const int spec_index) const;
+    virtual void weight_intercept(const int spec_index, const AutoDerivative<double>& val);
+    virtual void weight_slope(const int spec_index, const AutoDerivative<double>& val);
     virtual void rahman_factor(const int spec_index, const AutoDerivative<double>& val);
-    virtual void overall_amplitude_intercept(const int spec_index, const AutoDerivative<double>& val);
-    virtual void overall_amplitude_slope(const int spec_index, const AutoDerivative<double>& val);
+    virtual void overall_amplitude(const int spec_index, const AutoDerivative<double>& val);
     virtual void asymmetry_parameter(const int spec_index, const AutoDerivative<double>& val);
     virtual void geometric_factor(const int spec_index, const AutoDerivative<double>& val);
     virtual void breon_factor(const int spec_index, const AutoDerivative<double>& val);
@@ -60,16 +62,18 @@ public:
                 const std::vector<std::string>& Desc_band_names);
     virtual ArrayAd<double, 1> surface_parameter(const double wn, const int spec_index) const;
     virtual const int number_spectrometer() const { return desc_band_names.size(); }
+    virtual const AutoDerivative<double> weight(const double wn, const int spec_index) const;
+    virtual const AutoDerivative<double> weight_intercept(const int spec_index) const;
+    virtual const AutoDerivative<double> weight_slope(const int spec_index) const;
     virtual const AutoDerivative<double> rahman_factor(const int spec_index) const;
-    virtual const AutoDerivative<double> overall_amplitude(const double wn, const int spec_index) const;
-    virtual const AutoDerivative<double> overall_amplitude_intercept(const int spec_index) const;
-    virtual const AutoDerivative<double> overall_amplitude_slope(const int spec_index) const;
+    virtual const AutoDerivative<double> overall_amplitude(const int spec_index) const;
     virtual const AutoDerivative<double> asymmetry_parameter(const int spec_index) const;
     virtual const AutoDerivative<double> geometric_factor(const int spec_index) const;
     virtual const AutoDerivative<double> breon_factor(const int spec_index) const;
+    virtual void weight_intercept(const int spec_index, const AutoDerivative<double>& val);
+    virtual void weight_slope(const int spec_index, const AutoDerivative<double>& val);
     virtual void rahman_factor(const int spec_index, const AutoDerivative<double>& val);
-    virtual void overall_amplitude_intercept(const int spec_index, const AutoDerivative<double>& val);
-    virtual void overall_amplitude_slope(const int spec_index, const AutoDerivative<double>& val);
+    virtual void overall_amplitude(const int spec_index, const AutoDerivative<double>& val);
     virtual void asymmetry_parameter(const int spec_index, const AutoDerivative<double>& val);
     virtual void geometric_factor(const int spec_index, const AutoDerivative<double>& val);
     virtual void breon_factor(const int spec_index, const AutoDerivative<double>& val);
