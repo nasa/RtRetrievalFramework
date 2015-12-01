@@ -205,10 +205,11 @@ DIST_COMMON = $(srcdir)/config/am/doxygen.am $(srcdir)/lib/lib.am \
 	$(top_srcdir)/config/depcomp $(pkgl2analysis_PYTHON) \
 	$(pkgpython_PYTHON) $(am__pkgpythonswig_PYTHON_DIST) \
 	$(top_srcdir)/config/py-compile \
-	$(am__fullphysicsinc_HEADERS_DIST) COPYING config/compile \
-	config/config.guess config/config.sub config/depcomp \
-	config/install-sh config/missing config/py-compile \
-	config/ltmain.sh $(top_srcdir)/config/config.guess \
+	$(am__fullphysicsinc_HEADERS_DIST) $(ourboostinc_HEADERS) \
+	COPYING config/compile config/config.guess config/config.sub \
+	config/depcomp config/install-sh config/missing \
+	config/py-compile config/ltmain.sh \
+	$(top_srcdir)/config/config.guess \
 	$(top_srcdir)/config/config.sub \
 	$(top_srcdir)/config/install-sh $(top_srcdir)/config/ltmain.sh \
 	$(top_srcdir)/config/missing
@@ -371,7 +372,7 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pkgpythondir)" \
 	"$(DESTDIR)$(ftsconfigdir)" "$(DESTDIR)$(gosatconfigdir)" \
 	"$(DESTDIR)$(inputdir)" "$(DESTDIR)$(ococonfigdir)" \
 	"$(DESTDIR)$(pkgpythontemplatedir)" \
-	"$(DESTDIR)$(fullphysicsincdir)"
+	"$(DESTDIR)$(fullphysicsincdir)" "$(DESTDIR)$(ourboostincdir)"
 LTLIBRARIES = $(lib_LTLIBRARIES) $(noinst_LTLIBRARIES) \
 	$(pkgpython_LTLIBRARIES) $(pkgpythonswig_LTLIBRARIES)
 @BUILD_PYTHON_SWIG_TRUE@_swig_wrap_la_DEPENDENCIES =  \
@@ -1863,8 +1864,8 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@supportsrc@/default_constant.h @supportsrc@/spectral_domain.h \
 	@supportsrc@/spectral_range.h @supportsrc@/ostream_pad.h \
 	@supportsrc@/null_deleter.h @supportsrc@/wgs84_constant.h \
-	@supportsrc@/boost/backtrace.hpp @supportsrc@/fp_exception.h \
-	@supportsrc@/fp_time.h @supportsrc@/environment_substitute.h \
+	@supportsrc@/fp_exception.h @supportsrc@/fp_time.h \
+	@supportsrc@/environment_substitute.h \
 	@supportsrc@/ifstream_cs.h @supportsrc@/printable.h \
 	@supportsrc@/heritage_file.h @supportsrc@/logger.h \
 	@supportsrc@/fp_gsl_matrix.h @supportsrc@/fp_gsl_integrate.h \
@@ -2061,7 +2062,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@outsrc@/ecmwf_pass_through_output.h @luasrc@/dir_change.h \
 	@luasrc@/register_lua.h @luasrc@/lua_state.h \
 	@luasrc@/lua_callback.h @luasrc@/luabind_object.h
-HEADERS = $(fullphysicsinc_HEADERS)
+HEADERS = $(fullphysicsinc_HEADERS) $(ourboostinc_HEADERS)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
 # and print each of them once, without duplicates.  Input order is
@@ -2483,6 +2484,7 @@ BUILT_SOURCES = $(am__append_13) $(am__append_14) $(am__append_15) \
 	l2_fp_profile l2_fp_valgrind lua_version.stamp \
 	$(am__append_25)
 fullphysicsincdir = @includedir@/full_physics
+ourboostincdir = @includedir@/boost
 
 # Source files for library
 
@@ -2499,8 +2501,8 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@supportsrc@/default_constant.h @supportsrc@/spectral_domain.h \
 	@supportsrc@/spectral_range.h @supportsrc@/ostream_pad.h \
 	@supportsrc@/null_deleter.h @supportsrc@/wgs84_constant.h \
-	@supportsrc@/boost/backtrace.hpp @supportsrc@/fp_exception.h \
-	@supportsrc@/fp_time.h @supportsrc@/environment_substitute.h \
+	@supportsrc@/fp_exception.h @supportsrc@/fp_time.h \
+	@supportsrc@/environment_substitute.h \
 	@supportsrc@/ifstream_cs.h @supportsrc@/printable.h \
 	@supportsrc@/heritage_file.h @supportsrc@/logger.h \
 	@supportsrc@/fp_gsl_matrix.h @supportsrc@/fp_gsl_integrate.h \
@@ -2695,6 +2697,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@outsrc@/fluorescence_effect_output.h \
 	@outsrc@/radiance_scaling_output.h \
 	@outsrc@/ecmwf_pass_through_output.h $(am__append_5)
+ourboostinc_HEADERS = @supportsrc@/boost/backtrace.hpp
 
 # Test files
 
@@ -10744,6 +10747,27 @@ uninstall-fullphysicsincHEADERS:
 	@list='$(fullphysicsinc_HEADERS)'; test -n "$(fullphysicsincdir)" || list=; \
 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
 	dir='$(DESTDIR)$(fullphysicsincdir)'; $(am__uninstall_files_from_dir)
+install-ourboostincHEADERS: $(ourboostinc_HEADERS)
+	@$(NORMAL_INSTALL)
+	@list='$(ourboostinc_HEADERS)'; test -n "$(ourboostincdir)" || list=; \
+	if test -n "$$list"; then \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(ourboostincdir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(ourboostincdir)" || exit 1; \
+	fi; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(ourboostincdir)'"; \
+	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(ourboostincdir)" || exit $$?; \
+	done
+
+uninstall-ourboostincHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@list='$(ourboostinc_HEADERS)'; test -n "$(ourboostincdir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	dir='$(DESTDIR)$(ourboostincdir)'; $(am__uninstall_files_from_dir)
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -11066,7 +11090,7 @@ all-am: Makefile $(LTLIBRARIES) $(PROGRAMS) $(SCRIPTS) $(DATA) \
 install-binPROGRAMS: install-libLTLIBRARIES
 
 installdirs:
-	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pkgpythondir)" "$(DESTDIR)$(pkgpythonswigdir)" "$(DESTDIR)$(bindir)" "$(DESTDIR)$(bindir)" "$(DESTDIR)$(pkgl2analysisdir)" "$(DESTDIR)$(pkgpythondir)" "$(DESTDIR)$(pkgpythonswigdir)" "$(DESTDIR)$(configdir)" "$(DESTDIR)$(fpscriptdir)" "$(DESTDIR)$(ftsconfigdir)" "$(DESTDIR)$(gosatconfigdir)" "$(DESTDIR)$(inputdir)" "$(DESTDIR)$(ococonfigdir)" "$(DESTDIR)$(pkgpythontemplatedir)" "$(DESTDIR)$(fullphysicsincdir)"; do \
+	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pkgpythondir)" "$(DESTDIR)$(pkgpythonswigdir)" "$(DESTDIR)$(bindir)" "$(DESTDIR)$(bindir)" "$(DESTDIR)$(pkgl2analysisdir)" "$(DESTDIR)$(pkgpythondir)" "$(DESTDIR)$(pkgpythonswigdir)" "$(DESTDIR)$(configdir)" "$(DESTDIR)$(fpscriptdir)" "$(DESTDIR)$(ftsconfigdir)" "$(DESTDIR)$(gosatconfigdir)" "$(DESTDIR)$(inputdir)" "$(DESTDIR)$(ococonfigdir)" "$(DESTDIR)$(pkgpythontemplatedir)" "$(DESTDIR)$(fullphysicsincdir)" "$(DESTDIR)$(ourboostincdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: $(BUILT_SOURCES)
@@ -11168,10 +11192,10 @@ info-am:
 install-data-am: install-configDATA install-fpscriptDATA \
 	install-ftsconfigDATA install-fullphysicsincHEADERS \
 	install-gosatconfigDATA install-inputDATA \
-	install-ococonfigDATA install-pkgl2analysisPYTHON \
-	install-pkgpythonLTLIBRARIES install-pkgpythonPYTHON \
-	install-pkgpythonswigLTLIBRARIES install-pkgpythonswigPYTHON \
-	install-pkgpythontemplateDATA
+	install-ococonfigDATA install-ourboostincHEADERS \
+	install-pkgl2analysisPYTHON install-pkgpythonLTLIBRARIES \
+	install-pkgpythonPYTHON install-pkgpythonswigLTLIBRARIES \
+	install-pkgpythonswigPYTHON install-pkgpythontemplateDATA
 	@$(NORMAL_INSTALL)
 	$(MAKE) $(AM_MAKEFLAGS) install-data-hook
 install-dvi: install-dvi-am
@@ -11226,8 +11250,9 @@ uninstall-am: uninstall-binPROGRAMS uninstall-binSCRIPTS \
 	uninstall-ftsconfigDATA uninstall-fullphysicsincHEADERS \
 	uninstall-gosatconfigDATA uninstall-inputDATA \
 	uninstall-libLTLIBRARIES uninstall-ococonfigDATA \
-	uninstall-pkgl2analysisPYTHON uninstall-pkgpythonLTLIBRARIES \
-	uninstall-pkgpythonPYTHON uninstall-pkgpythonswigLTLIBRARIES \
+	uninstall-ourboostincHEADERS uninstall-pkgl2analysisPYTHON \
+	uninstall-pkgpythonLTLIBRARIES uninstall-pkgpythonPYTHON \
+	uninstall-pkgpythonswigLTLIBRARIES \
 	uninstall-pkgpythonswigPYTHON uninstall-pkgpythontemplateDATA
 
 .MAKE: all check check-am install install-am install-data-am \
@@ -11250,20 +11275,21 @@ uninstall-am: uninstall-binPROGRAMS uninstall-binSCRIPTS \
 	install-fullphysicsincHEADERS install-gosatconfigDATA \
 	install-html install-html-am install-info install-info-am \
 	install-inputDATA install-libLTLIBRARIES install-man \
-	install-ococonfigDATA install-pdf install-pdf-am \
-	install-pkgl2analysisPYTHON install-pkgpythonLTLIBRARIES \
-	install-pkgpythonPYTHON install-pkgpythonswigLTLIBRARIES \
-	install-pkgpythonswigPYTHON install-pkgpythontemplateDATA \
-	install-ps install-ps-am install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-am uninstall uninstall-am uninstall-binPROGRAMS \
-	uninstall-binSCRIPTS uninstall-configDATA \
-	uninstall-fpscriptDATA uninstall-ftsconfigDATA \
-	uninstall-fullphysicsincHEADERS uninstall-gosatconfigDATA \
-	uninstall-inputDATA uninstall-libLTLIBRARIES \
-	uninstall-ococonfigDATA uninstall-pkgl2analysisPYTHON \
+	install-ococonfigDATA install-ourboostincHEADERS install-pdf \
+	install-pdf-am install-pkgl2analysisPYTHON \
+	install-pkgpythonLTLIBRARIES install-pkgpythonPYTHON \
+	install-pkgpythonswigLTLIBRARIES install-pkgpythonswigPYTHON \
+	install-pkgpythontemplateDATA install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+	pdf pdf-am ps ps-am tags tags-am uninstall uninstall-am \
+	uninstall-binPROGRAMS uninstall-binSCRIPTS \
+	uninstall-configDATA uninstall-fpscriptDATA \
+	uninstall-ftsconfigDATA uninstall-fullphysicsincHEADERS \
+	uninstall-gosatconfigDATA uninstall-inputDATA \
+	uninstall-libLTLIBRARIES uninstall-ococonfigDATA \
+	uninstall-ourboostincHEADERS uninstall-pkgl2analysisPYTHON \
 	uninstall-pkgpythonLTLIBRARIES uninstall-pkgpythonPYTHON \
 	uninstall-pkgpythonswigLTLIBRARIES \
 	uninstall-pkgpythonswigPYTHON uninstall-pkgpythontemplateDATA
