@@ -160,6 +160,7 @@ extern "C" {
   void init_merra_aerosol(void);
   void init_rayleigh(void);
   void init_atmosphere_oco(void);
+  void init_relative_humidity(void);
   void init_connor_solver(void);
   void init_log_timing(void);
   void init_chisq_convergence(void);
@@ -453,6 +454,7 @@ void init_swig_wrap(void)
   init_extension_module(package, "_merra_aerosol", init_merra_aerosol);
   init_extension_module(package, "_rayleigh", init_rayleigh);
   init_extension_module(package, "_atmosphere_oco", init_atmosphere_oco);
+  init_extension_module(package, "_relative_humidity", init_relative_humidity);
   init_extension_module(package, "_connor_solver", init_connor_solver);
   init_extension_module(package, "_log_timing", init_log_timing);
   init_extension_module(package, "_chisq_convergence", init_chisq_convergence);
