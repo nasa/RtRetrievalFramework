@@ -35,10 +35,10 @@ location using NOSETESTS variable if configure couldn't find the
 package. 
 ])
 fi
-# Latest swig as of 3/13 is 2.09. Go ahead and require this, just so we
+# Latest swig as of 11/15 is 3.0.7. Go ahead and require this, just so we
 # aren't dealing with any backward bugs etc. Since this is easy enough to
 # install, no reason not to require the latest
-AC_PROG_SWIG(2.0.9)
+AC_PROG_SWIG(3.0.7)
 SWIG_ENABLE_CXX
 # 2.6 is required for SWIG. Note that we check again for any version of
 # python below, we can build the rest of the system with an older version
