@@ -10,10 +10,10 @@
 %exception {
   try {
     $action
-  } catch (const std::exception& e) {
-    SWIG_exception(SWIG_RuntimeError, e.what());
   } catch (Swig::DirectorException &e) { 
     SWIG_fail; 
+  } catch (const std::exception& e) {
+    SWIG_exception(SWIG_RuntimeError, e.what());
   }
 }
 
