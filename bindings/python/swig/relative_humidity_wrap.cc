@@ -5163,6 +5163,8 @@ template<class T, int D> inline blitz::Array<T, D>
 
 
 #include "relative_humidity.h"
+#include "sub_state_vector_array.h"
+#include "altitude.h"
 
 
 struct SWIG_null_deleter {

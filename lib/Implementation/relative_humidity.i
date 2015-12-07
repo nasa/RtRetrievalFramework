@@ -4,11 +4,14 @@
 %include "common.i"
 %{
 #include "relative_humidity.h"
+#include "sub_state_vector_array.h"
+#include "altitude.h"
 %}
 %base_import(generic_object)
 %import "absorber.i"
 %import "temperature.i"
 %import "pressure.i"
+%import "array_ad.i"
 %fp_shared_ptr(FullPhysics::RelativeHumidity);
 namespace FullPhysics {
 class RelativeHumidity {
