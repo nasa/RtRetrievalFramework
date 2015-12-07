@@ -48,10 +48,9 @@ ArrayAd<double, 1> RelativeHumidity::relative_humidity_grid() const
     absorber->absorber_vmr("H2O")->vmr_grid(*press).to_array();
   blitz::Array<AutoDerivative<double>, 1> shgrid(vgrid.rows());
   shgrid = vgrid / (c + vgrid);
-  // tempK = self.temperature_grid();
-  // return
-  // 0.263*press*specH*np.exp(-17.67*(tempK-273.16)/(tempK-29.65));
+  blitz::Array<AutoDerivative<double>, 1> tgrid =
+    temp->temperature_grid(*press).convert(Unit("K")).value.to_array();
   blitz::Array<AutoDerivative<double>, 1> res(pgrid.rows());
-  res = 0.263 * pgrid * shgrid;
+  res = 0.263 * pgrid * shgrid * exp(-17.67*(tgrid-273.16)/(tgrid-29.65));
   return ArrayAd<double, 1>(res);
 }

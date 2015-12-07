@@ -3417,84 +3417,85 @@ namespace Swig {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t swig_types[0]
-#define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_1_t swig_types[1]
-#define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_2_t swig_types[2]
-#define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_3_t swig_types[3]
-#define SWIGTYPE_p_FullPhysics__AutoDerivativeRefT_double_t swig_types[4]
-#define SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t swig_types[5]
-#define SWIGTYPE_p_FullPhysics__AutoDerivativeWithUnitT_double_t swig_types[6]
-#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[7]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[8]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[9]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Temperature_t swig_types[10]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[11]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[12]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Temperature_t swig_types[13]
-#define SWIGTYPE_p_FullPhysics__Pressure swig_types[14]
-#define SWIGTYPE_p_FullPhysics__StateVector swig_types[15]
-#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[16]
-#define SWIGTYPE_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t swig_types[17]
-#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[18]
-#define SWIGTYPE_p_FullPhysics__Temperature swig_types[19]
-#define SWIGTYPE_p_FullPhysics__TemperatureImpBase swig_types[20]
-#define SWIGTYPE_p_FullPhysics__Unit swig_types[21]
-#define SWIGTYPE_p_allocator_type swig_types[22]
-#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[23]
-#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[24]
-#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[25]
-#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[26]
-#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[27]
-#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[28]
-#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[29]
-#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[30]
-#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[31]
-#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[32]
-#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[33]
-#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[34]
-#define SWIGTYPE_p_blitz__ArrayT_std__string_1_t swig_types[35]
-#define SWIGTYPE_p_boost__functionT_FullPhysics__AutoDerivativeT_double_t_fFullPhysics__AutoDerivativeT_double_t_const_RF_t swig_types[36]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t swig_types[37]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t swig_types[38]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t swig_types[39]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[40]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[41]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[42]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[43]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[44]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[45]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t swig_types[46]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[47]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[48]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t swig_types[49]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[50]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[51]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[52]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t swig_types[53]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[54]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t swig_types[55]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Temperature_t swig_types[56]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[57]
-#define SWIGTYPE_p_char swig_types[58]
-#define SWIGTYPE_p_char_type swig_types[59]
-#define SWIGTYPE_p_difference_type swig_types[60]
-#define SWIGTYPE_p_fmtflags swig_types[61]
-#define SWIGTYPE_p_int_type swig_types[62]
-#define SWIGTYPE_p_iostate swig_types[63]
-#define SWIGTYPE_p_off_type swig_types[64]
-#define SWIGTYPE_p_openmode swig_types[65]
-#define SWIGTYPE_p_pos_type swig_types[66]
-#define SWIGTYPE_p_seekdir swig_types[67]
-#define SWIGTYPE_p_size_t swig_types[68]
-#define SWIGTYPE_p_size_type swig_types[69]
-#define SWIGTYPE_p_state_type swig_types[70]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[71]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[72]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[73]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[74]
-#define SWIGTYPE_p_traits_type swig_types[75]
-#define SWIGTYPE_p_value_type swig_types[76]
-static swig_type_info *swig_types[78];
-static swig_module_info swig_module = {swig_types, 77, 0, 0, 0, 0};
+#define SWIGTYPE_p_FullPhysics__ArrayAdWithUnitT_double_1_t swig_types[1]
+#define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_1_t swig_types[2]
+#define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_2_t swig_types[3]
+#define SWIGTYPE_p_FullPhysics__ArrayWithUnitT_double_3_t swig_types[4]
+#define SWIGTYPE_p_FullPhysics__AutoDerivativeRefT_double_t swig_types[5]
+#define SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t swig_types[6]
+#define SWIGTYPE_p_FullPhysics__AutoDerivativeWithUnitT_double_t swig_types[7]
+#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[8]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[9]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[10]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Temperature_t swig_types[11]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[12]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[13]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Temperature_t swig_types[14]
+#define SWIGTYPE_p_FullPhysics__Pressure swig_types[15]
+#define SWIGTYPE_p_FullPhysics__StateVector swig_types[16]
+#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[17]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t swig_types[18]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[19]
+#define SWIGTYPE_p_FullPhysics__Temperature swig_types[20]
+#define SWIGTYPE_p_FullPhysics__TemperatureImpBase swig_types[21]
+#define SWIGTYPE_p_FullPhysics__Unit swig_types[22]
+#define SWIGTYPE_p_allocator_type swig_types[23]
+#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[24]
+#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[25]
+#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[26]
+#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[27]
+#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[28]
+#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[29]
+#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[30]
+#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[31]
+#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[32]
+#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[33]
+#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[34]
+#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[35]
+#define SWIGTYPE_p_blitz__ArrayT_std__string_1_t swig_types[36]
+#define SWIGTYPE_p_boost__functionT_FullPhysics__AutoDerivativeT_double_t_fFullPhysics__AutoDerivativeT_double_t_const_RF_t swig_types[37]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t swig_types[38]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t swig_types[39]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t swig_types[40]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[41]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[42]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[43]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[44]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[45]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[46]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t swig_types[47]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[48]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[49]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t swig_types[50]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[51]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[52]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[53]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t swig_types[54]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[55]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t swig_types[56]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Temperature_t swig_types[57]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[58]
+#define SWIGTYPE_p_char swig_types[59]
+#define SWIGTYPE_p_char_type swig_types[60]
+#define SWIGTYPE_p_difference_type swig_types[61]
+#define SWIGTYPE_p_fmtflags swig_types[62]
+#define SWIGTYPE_p_int_type swig_types[63]
+#define SWIGTYPE_p_iostate swig_types[64]
+#define SWIGTYPE_p_off_type swig_types[65]
+#define SWIGTYPE_p_openmode swig_types[66]
+#define SWIGTYPE_p_pos_type swig_types[67]
+#define SWIGTYPE_p_seekdir swig_types[68]
+#define SWIGTYPE_p_size_t swig_types[69]
+#define SWIGTYPE_p_size_type swig_types[70]
+#define SWIGTYPE_p_state_type swig_types[71]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[72]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[73]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[74]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[75]
+#define SWIGTYPE_p_traits_type swig_types[76]
+#define SWIGTYPE_p_value_type swig_types[77]
+static swig_type_info *swig_types[79];
+static swig_module_info swig_module = {swig_types, 78, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5570,6 +5571,49 @@ FullPhysics::AutoDerivativeWithUnit< double > SwigDirector_TemperatureImpBase::t
 }
 
 
+FullPhysics::ArrayAdWithUnit< double,1 > SwigDirector_TemperatureImpBase::temperature_grid(FullPhysics::Pressure const &P) const {
+  void *swig_argp ;
+  int swig_res = 0 ;
+  
+  FullPhysics::ArrayAdWithUnit< double,1 > c_result;
+  swig::SwigVar_PyObject obj0;
+  {
+    boost::shared_ptr< const FullPhysics::Pressure > *smartresult = new boost::shared_ptr< const FullPhysics::Pressure >((FullPhysics::Pressure *)&P, SWIG_null_deleter());
+    obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t, SWIG_POINTER_OWN);
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TemperatureImpBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 9;
+  const char * const swig_method_name = "temperature_grid";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar((char *)"temperature_grid");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        FullPhysics::Exception e;
+        e << "Python error occured:\n"
+        << parse_python_exception();
+        throw e;
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtr(result,&swig_argp,SWIGTYPE_p_FullPhysics__ArrayAdWithUnitT_double_1_t,  0  | 0);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""FullPhysics::ArrayAdWithUnit< double,1 >""'");
+  }
+  c_result = *(reinterpret_cast< FullPhysics::ArrayAdWithUnit< double,1 > * >(swig_argp));
+  if (SWIG_IsNewObj(swig_res)) delete reinterpret_cast< FullPhysics::ArrayAdWithUnit< double,1 > * >(swig_argp);
+  return (FullPhysics::ArrayAdWithUnit< double,1 >) c_result;
+}
+
+
 boost::shared_ptr< FullPhysics::Temperature > SwigDirector_TemperatureImpBase::clone() const {
   void *swig_argp ;
   int swig_res = 0 ;
@@ -5579,7 +5623,7 @@ boost::shared_ptr< FullPhysics::Temperature > SwigDirector_TemperatureImpBase::c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TemperatureImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject args = PyTuple_New(0);
@@ -5631,7 +5675,7 @@ boost::shared_ptr< FullPhysics::Temperature > SwigDirector_TemperatureImpBase::c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TemperatureImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char * const swig_method_name = "clone";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -5697,7 +5741,7 @@ void SwigDirector_TemperatureImpBase::update_sub_state(FullPhysics::ArrayAd< dou
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TemperatureImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "update_sub_state";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -5731,7 +5775,7 @@ void SwigDirector_TemperatureImpBase::state_vector_name_sub(blitz::Array< std::s
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TemperatureImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "state_vector_name_sub";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -5760,7 +5804,7 @@ void SwigDirector_TemperatureImpBase::print(std::ostream &Os) const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TemperatureImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "print_desc";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -5790,7 +5834,7 @@ std::string SwigDirector_TemperatureImpBase::state_vector_name_i(int i) const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TemperatureImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "state_vector_name_i";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -5825,7 +5869,7 @@ void SwigDirector_TemperatureImpBase::update_sub_state_hook() {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TemperatureImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "update_sub_state_hook";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject args = PyTuple_New(0);
@@ -5854,7 +5898,7 @@ void SwigDirector_TemperatureImpBase::calc_temperature_grid() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TemperatureImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "calc_temperature_grid";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject args = PyTuple_New(0);
@@ -8860,6 +8904,7 @@ static void *_p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver(void 
     return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::Pressure *) x));
 }
 static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_1_t = {"_p_FullPhysics__ArrayAdT_double_1_t", "FullPhysics::ArrayAd< double,1 > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__ArrayAdWithUnitT_double_1_t = {"_p_FullPhysics__ArrayAdWithUnitT_double_1_t", "FullPhysics::ArrayAdWithUnit< double,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_1_t = {"_p_FullPhysics__ArrayWithUnitT_double_1_t", "FullPhysics::ArrayWithUnit< double,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_2_t = {"_p_FullPhysics__ArrayWithUnitT_double_2_t", "FullPhysics::ArrayWithUnit< double,2 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_3_t = {"_p_FullPhysics__ArrayWithUnitT_double_3_t", "FullPhysics::ArrayWithUnit< double,3 > *", 0, 0, (void*)0, 0};
@@ -8939,6 +8984,7 @@ static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__ArrayAdT_double_1_t,
+  &_swigt__p_FullPhysics__ArrayAdWithUnitT_double_1_t,
   &_swigt__p_FullPhysics__ArrayWithUnitT_double_1_t,
   &_swigt__p_FullPhysics__ArrayWithUnitT_double_2_t,
   &_swigt__p_FullPhysics__ArrayWithUnitT_double_3_t,
@@ -9018,6 +9064,7 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_FullPhysics__ArrayAdT_double_1_t[] = {  {&_swigt__p_FullPhysics__ArrayAdT_double_1_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ArrayAdWithUnitT_double_1_t[] = {  {&_swigt__p_FullPhysics__ArrayAdWithUnitT_double_1_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ArrayWithUnitT_double_1_t[] = {  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_1_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ArrayWithUnitT_double_2_t[] = {  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ArrayWithUnitT_double_3_t[] = {  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_3_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -9097,6 +9144,7 @@ static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__ArrayAdT_double_1_t,
+  _swigc__p_FullPhysics__ArrayAdWithUnitT_double_1_t,
   _swigc__p_FullPhysics__ArrayWithUnitT_double_1_t,
   _swigc__p_FullPhysics__ArrayWithUnitT_double_2_t,
   _swigc__p_FullPhysics__ArrayWithUnitT_double_3_t,

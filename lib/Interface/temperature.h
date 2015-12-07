@@ -58,6 +58,8 @@ public:
   virtual AutoDerivativeWithUnit<double> 
   temperature(const AutoDerivativeWithUnit<double>& Press) const = 0;
 
+  virtual ArrayAdWithUnit<double, 1> temperature_grid(const Pressure& P) const;
+
 //-----------------------------------------------------------------------
 /// Clone a Temperature object. Note that the cloned version will *not*
 /// be attached to a StateVector or Observer<Temperature>, although you
