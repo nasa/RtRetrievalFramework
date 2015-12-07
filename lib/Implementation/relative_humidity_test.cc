@@ -10,6 +10,7 @@ BOOST_AUTO_TEST_CASE(basic)
 {
   RelativeHumidity h(atm->absorber_ptr(), atm->temperature_ptr(),
 		     atm->pressure_ptr());
+  std::cerr << h.relative_humidity_grid().value() << "\n";
 }
 
 BOOST_AUTO_TEST_SUITE_END()

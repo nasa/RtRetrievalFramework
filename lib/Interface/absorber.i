@@ -128,7 +128,6 @@ public:
 	    const blitz::Array<bool, 1>& Used_flag,
 	    const boost::shared_ptr<Pressure>& Press =
 	    boost::shared_ptr<Pressure>());
-  virtual ~SubStateVectorArray();
   void mark_used_sub(blitz::Array<bool, 1>& Used) const;
   virtual std::string state_vector_name_i(int i) const;
   virtual void state_vector_name_sub(blitz::Array<std::string, 1>& Sv_name) 

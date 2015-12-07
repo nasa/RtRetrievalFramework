@@ -60,6 +60,8 @@ public:
   virtual AutoDerivative<double> 
   volume_mixing_ratio(const AutoDerivative<double>& P) const = 0;
 
+  virtual ArrayAd<double, 1> vmr_grid(const Pressure& P) const;
+
 //-----------------------------------------------------------------------
 /// Indicate what portion of the state vector is used to calculate the
 /// VMR. 

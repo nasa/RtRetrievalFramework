@@ -10780,6 +10780,48 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_delete_SubStateVectorAbsorber(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SubStateVectorArray< FullPhysics::Absorber > *arg1 = (FullPhysics::SubStateVectorArray< FullPhysics::Absorber > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Absorber > > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Absorber > > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Absorber_t_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SubStateVectorAbsorber" "', argument " "1"" of type '" "FullPhysics::SubStateVectorArray< FullPhysics::Absorber > *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::SubStateVectorArray<FullPhysics::Absorber> > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::SubStateVectorArray<FullPhysics::Absorber> > * >(argp1);
+      arg1 = const_cast< FullPhysics::SubStateVectorArray< FullPhysics::Absorber > * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::SubStateVectorArray<FullPhysics::Absorber> > * >(argp1);
+      arg1 = const_cast< FullPhysics::SubStateVectorArray< FullPhysics::Absorber > * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (void)arg1; delete smartarg1;
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_disown_SubStateVectorAbsorber(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::SubStateVectorArray< FullPhysics::Absorber > *arg1 = (FullPhysics::SubStateVectorArray< FullPhysics::Absorber > *) 0 ;
@@ -11003,6 +11045,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SubStateVectorAbsorber__v_coefficient", (PyCFunction)_wrap_SubStateVectorAbsorber__v_coefficient, METH_O, NULL},
 	 { (char *)"SubStateVectorAbsorber__v_used_flag_value", (PyCFunction)_wrap_SubStateVectorAbsorber__v_used_flag_value, METH_O, NULL},
 	 { (char *)"SubStateVectorAbsorber__v_pressure", (PyCFunction)_wrap_SubStateVectorAbsorber__v_pressure, METH_O, NULL},
+	 { (char *)"delete_SubStateVectorAbsorber", (PyCFunction)_wrap_delete_SubStateVectorAbsorber, METH_O, NULL},
 	 { (char *)"disown_SubStateVectorAbsorber", (PyCFunction)_wrap_disown_SubStateVectorAbsorber, METH_O, NULL},
 	 { (char *)"SubStateVectorAbsorber_swigregister", SubStateVectorAbsorber_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SubStateVectorAbsorber_swiginit", SubStateVectorAbsorber_swiginit, METH_VARARGS, NULL},
