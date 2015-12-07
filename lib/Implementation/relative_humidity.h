@@ -13,15 +13,9 @@ namespace FullPhysics {
 *******************************************************************/
 class RelativeHumidity : public Printable<RelativeHumidity> {
 public:
-//-----------------------------------------------------------------------
-/// Constructor.
-//-----------------------------------------------------------------------
-
   RelativeHumidity(const boost::shared_ptr<Absorber>& Abs, 
 		   const boost::shared_ptr<Temperature>& Temp,
-		   const boost::shared_ptr<Pressure>& Press)
-    : absorber(Abs), temp(Temp), press(Press)
-  { }
+		   const boost::shared_ptr<Pressure>& Press);
   virtual ~RelativeHumidity() {}
   void print(std::ostream& Os);
   ArrayAd<double, 1> relative_humidity_grid() const;
@@ -29,6 +23,7 @@ private:
   boost::shared_ptr<Absorber> absorber;
   boost::shared_ptr<Temperature> temp;
   boost::shared_ptr<Pressure> press;
+  double c;
 };
 }
 #endif

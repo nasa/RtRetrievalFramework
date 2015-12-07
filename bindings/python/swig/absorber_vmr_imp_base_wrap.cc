@@ -5663,6 +5663,49 @@ FullPhysics::AutoDerivative< double > SwigDirector_AbsorberVmrImpBase::volume_mi
 }
 
 
+FullPhysics::ArrayAd< double,1 > SwigDirector_AbsorberVmrImpBase::vmr_grid(FullPhysics::Pressure const &P) const {
+  void *swig_argp ;
+  int swig_res = 0 ;
+  
+  FullPhysics::ArrayAd< double,1 > c_result;
+  swig::SwigVar_PyObject obj0;
+  {
+    boost::shared_ptr< const FullPhysics::Pressure > *smartresult = new boost::shared_ptr< const FullPhysics::Pressure >((FullPhysics::Pressure *)&P, SWIG_null_deleter());
+    obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t, SWIG_POINTER_OWN);
+  }
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call AbsorberVmrImpBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 11;
+  const char * const swig_method_name = "vmr_grid";
+  PyObject* method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar((char *)"vmr_grid");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        FullPhysics::Exception e;
+        e << "Python error occured:\n"
+        << parse_python_exception();
+        throw e;
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtr(result,&swig_argp,SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0  | 0);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""FullPhysics::ArrayAd< double,1 >""'");
+  }
+  c_result = *(reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(swig_argp));
+  if (SWIG_IsNewObj(swig_res)) delete reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(swig_argp);
+  return (FullPhysics::ArrayAd< double,1 >) c_result;
+}
+
+
 blitz::Array< bool,1 > SwigDirector_AbsorberVmrImpBase::state_used() const {
   PythonObject numpy ;
   
@@ -5671,7 +5714,7 @@ blitz::Array< bool,1 > SwigDirector_AbsorberVmrImpBase::state_used() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call AbsorberVmrImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char * const swig_method_name = "_v_state_used";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject args = PyTuple_New(0);
@@ -5725,7 +5768,7 @@ void SwigDirector_AbsorberVmrImpBase::update_sub_state(FullPhysics::ArrayAd< dou
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call AbsorberVmrImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char * const swig_method_name = "update_sub_state";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -5759,7 +5802,7 @@ void SwigDirector_AbsorberVmrImpBase::state_vector_name_sub(blitz::Array< std::s
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call AbsorberVmrImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char * const swig_method_name = "state_vector_name_sub";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -5788,7 +5831,7 @@ void SwigDirector_AbsorberVmrImpBase::print(std::ostream &Os) const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call AbsorberVmrImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char * const swig_method_name = "print_desc";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -5818,7 +5861,7 @@ std::string SwigDirector_AbsorberVmrImpBase::state_vector_name_i(int i) const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call AbsorberVmrImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char * const swig_method_name = "state_vector_name_i";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -5853,7 +5896,7 @@ void SwigDirector_AbsorberVmrImpBase::update_sub_state_hook() {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call AbsorberVmrImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char * const swig_method_name = "update_sub_state_hook";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject args = PyTuple_New(0);
@@ -5882,7 +5925,7 @@ void SwigDirector_AbsorberVmrImpBase::calc_vmr() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call AbsorberVmrImpBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char * const swig_method_name = "calc_vmr";
   PyObject* method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject args = PyTuple_New(0);
