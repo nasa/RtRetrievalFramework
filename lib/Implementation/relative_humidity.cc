@@ -36,6 +36,19 @@ void RelativeHumidity::print(std::ostream& Os)
 }
 
 //-----------------------------------------------------------------------
+/// Calculate specific humidity.
+//-----------------------------------------------------------------------
+
+ArrayAd<double, 1> RelativeHumidity::specific_humidity_grid() const
+{
+  blitz::Array<AutoDerivative<double>, 1> vgrid =
+    absorber->absorber_vmr("H2O")->vmr_grid(*press).to_array();
+  blitz::Array<AutoDerivative<double>, 1> shgrid(vgrid.rows());
+  shgrid = vgrid / (c + vgrid);
+  return ArrayAd<double, 1>(shgrid);
+}
+
+//-----------------------------------------------------------------------
 /// Calculate relative humidity.
 //-----------------------------------------------------------------------
 
@@ -44,10 +57,8 @@ ArrayAd<double, 1> RelativeHumidity::relative_humidity_grid() const
   // This comes Suniti. Not sure of a reference for this.
   blitz::Array<AutoDerivative<double>, 1> pgrid = 
     press->pressure_grid().convert(Unit("Pa")).value.to_array();
-  blitz::Array<AutoDerivative<double>, 1> vgrid =
-    absorber->absorber_vmr("H2O")->vmr_grid(*press).to_array();
-  blitz::Array<AutoDerivative<double>, 1> shgrid(vgrid.rows());
-  shgrid = vgrid / (c + vgrid);
+  blitz::Array<AutoDerivative<double>, 1> shgrid =
+    specific_humidity_grid().to_array();
   blitz::Array<AutoDerivative<double>, 1> tgrid =
     temp->temperature_grid(*press).convert(Unit("K")).value.to_array();
   blitz::Array<AutoDerivative<double>, 1> res(pgrid.rows());

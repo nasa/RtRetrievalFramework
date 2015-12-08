@@ -194,8 +194,18 @@ class RelativeHumidity(object):
         """
         return _relative_humidity.RelativeHumidity_relative_humidity_grid(self)
 
+
+    def specific_humidity_grid(self):
+        """
+
+        ArrayAd< double, 1 > RelativeHumidity::specific_humidity_grid() const
+        Calculate specific humidity. 
+        """
+        return _relative_humidity.RelativeHumidity_specific_humidity_grid(self)
+
     __swig_destroy__ = _relative_humidity.delete_RelativeHumidity
 RelativeHumidity.relative_humidity_grid = new_instancemethod(_relative_humidity.RelativeHumidity_relative_humidity_grid, None, RelativeHumidity)
+RelativeHumidity.specific_humidity_grid = new_instancemethod(_relative_humidity.RelativeHumidity_specific_humidity_grid, None, RelativeHumidity)
 RelativeHumidity.__str__ = new_instancemethod(_relative_humidity.RelativeHumidity___str__, None, RelativeHumidity)
 RelativeHumidity_swigregister = _relative_humidity.RelativeHumidity_swigregister
 RelativeHumidity_swigregister(RelativeHumidity)
