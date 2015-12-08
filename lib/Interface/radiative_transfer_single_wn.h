@@ -53,12 +53,8 @@ public:
 ///      number_stokes() in size.
 //-----------------------------------------------------------------------
 
-  // Gcc 4.2 on Mac doesn't like passing Array<double, 2>() as default
-  // argument (although this is legal C++). Use dummy variable as a
-  // workaround. 
-  static ArrayAd<double, 2> dummy;
   virtual blitz::Array<double, 1> stokes_single_wn
-  (double Wn, int Spec_index, const ArrayAd<double, 2>& Iv = dummy) const = 0;
+  (double Wn, int Spec_index, const ArrayAd<double, 2>& Iv = ArrayAd<double, 2>()) const = 0;
 
 //-----------------------------------------------------------------------
 /// Calculate stokes vector and Jacobian for the given wavenumber. You can
@@ -75,7 +71,7 @@ public:
 //-----------------------------------------------------------------------
 
   virtual ArrayAd<double, 1> stokes_and_jacobian_single_wn
-  (double Wn, int Spec_index, const ArrayAd<double, 2>& Iv = dummy) const = 0;
+  (double Wn, int Spec_index, const ArrayAd<double, 2>& Iv = ArrayAd<double, 2>()) const = 0;
   virtual void print(std::ostream& Os, bool Short_form = false) const;
 
   const boost::shared_ptr<RtAtmosphere>& atmosphere() const
