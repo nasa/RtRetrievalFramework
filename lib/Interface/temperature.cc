@@ -19,6 +19,6 @@ const
   blitz::Array<AutoDerivative<double>, 1> res(pgrid.rows());
   Unit u = temperature(pgrid(0)).units;
   for(int i = 0; i < res.rows(); ++i)
-    res(i) = temperature(pgrid(0)).convert(u).value;
+    res(i) = temperature(pgrid(i)).convert(u).value;
   return ArrayAdWithUnit<double, 1>(ArrayAd<double, 1>(res), u);
 }
