@@ -213,6 +213,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(HeritageFile);
   REGISTER_LUA_LIST(AcosSoundingId);
   REGISTER_LUA_LIST(OcoSoundingId);
+  REGISTER_LUA_LIST(UqSoundingId);
   REGISTER_LUA_LIST(VectorHdfSoundingId);
   REGISTER_LUA_LIST(AerosolAodOutput);
   REGISTER_LUA_LIST(AerosolParamOutput);
@@ -226,9 +227,11 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(FtsRunLogOutput);
   REGISTER_LUA_LIST(Level1bFts);
   REGISTER_LUA_LIST(Level1bOco);
+  REGISTER_LUA_LIST(Level1bUq);
   REGISTER_LUA_LIST(Ecmwf);
   REGISTER_LUA_LIST(AcosEcmwf);
   REGISTER_LUA_LIST(OcoEcmwf);
+  REGISTER_LUA_LIST(UqEcmwf);
   REGISTER_LUA_LIST(OcoSimMetEcmwf);
   REGISTER_LUA_LIST(HdfFile);
   REGISTER_LUA_LIST(HdfConstant);
@@ -287,6 +290,8 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(PrecomputedNoiseModel);
   REGISTER_LUA_LIST(GosatNoiseModel);
   REGISTER_LUA_LIST(OcoNoiseModel);
+  REGISTER_LUA_LIST(UqNoiseModel);
+  REGISTER_LUA_LIST(BadSampleNoiseModel);
   REGISTER_LUA_LIST(SpectrumSamplingFixedSpacing);
   REGISTER_LUA_LIST(StateVector);
   REGISTER_LUA_LIST(OcoForwardModel);
