@@ -1,0 +1,48 @@
+pkgpython_PYTHON += @pythonlibsrc@/__init__.py
+pkgpython_PYTHON += @pythonlibsrc@/atmosphere_oco_extension.py
+pkgpython_PYTHON += @pythonlibsrc@/l2_run.py
+pkgpython_PYTHON += @pythonlibsrc@/cached_prop.py
+pkgpython_PYTHON += @pythonlibsrc@/safe_matplotlib_import.py
+pkgpython_PYTHON += @pythonlibsrc@/try_swig_load.py
+pkgpython_PYTHON += @pythonlibsrc@/xco2_bias.py
+pkgpython_PYTHON += @pythonlibsrc@/xco2_bias_from_l2_run.py
+pkgpython_PYTHON += @pythonlibsrc@/xco2_bias_match_matlab_example.py
+pkgpython_PYTHON += @pythonlibsrc@/l2_input.py
+pkgpython_PYTHON += @pythonlibsrc@/ply_parser.py
+pkgpython_PYTHON += @pythonlibsrc@/docopt.py
+pkgpython_PYTHON += @pythonlibsrc@/docopt_simple_m.py
+pkgpython_PYTHON += @pythonlibsrc@/acos_file.py
+pkgpython_PYTHON += @pythonlibsrc@/tai64n.py
+pkgpython_PYTHON += @pythonlibsrc@/surface_prop.py
+pkgpython_PYTHON += @pythonlibsrc@/log_util.py
+pkgpython_PYTHON += @pythonlibsrc@/version_util.py
+pkgpython_PYTHON += @pythonlibsrc@/text_util.py
+pkgpython_PYTHON += @pythonlibsrc@/math_util.py
+pkgpython_PYTHON += @pythonlibsrc@/orbit_sim.py
+pkgpython_PYTHON += @pythonlibsrc@/oco_matrix.py
+pkgpython_PYTHON+= @pythonlibsrc@/populator_base.py
+pkgpython_PYTHON+= @pythonlibsrc@/acos_populator.py
+pkgpython_PYTHON+= @pythonlibsrc@/fts_populator.py
+pkgpython_PYTHON+= @pythonlibsrc@/gosat_populator.py
+pkgpython_PYTHON+= @pythonlibsrc@/oco_populator.py
+pkgpython_PYTHON+= @pythonlibsrc@/oco_uplooking_populator.py
+pkgpython_PYTHON+= @pythonlibsrc@/progress.py
+pkgpython_PYTHON+= @pythonlibsrc@/plot_util.py
+pkgpython_PYTHON+= @pythonlibsrc@/l2_lua.py
+pkgpython_PYTHON+= @pythonlibsrc@/splice_tool_mapping.py
+pkgpythontemplate_DATA = @pythontemplatesrc@/aggregate.tmpl
+pkgpythontemplate_DATA+= @pythontemplatesrc@/aggregate_nol1b1.tmpl
+pkgpythontemplate_DATA+= @pythontemplatesrc@/empty_launch_jobs.tmpl
+pkgpythontemplate_DATA+= @pythontemplatesrc@/job.tmpl
+pkgpythontemplate_DATA+= @pythontemplatesrc@/pleiades_job.tmpl
+pkgpythontemplate_DATA+= @pythontemplatesrc@/launch_jobs.tmpl
+pkgpythontemplate_DATA+= @pythontemplatesrc@/oco_config.tmpl
+pkgpythontemplate_DATA+= @pythontemplatesrc@/oco_uplooking_config.tmpl
+pkgpythontemplate_DATA+= @pythontemplatesrc@/fts_config.tmpl
+pkgpythontemplate_DATA+= @pythontemplatesrc@/gosat_config.tmpl
+
+EXTRA_DIST+= @pythonlibsrc@/*_test.py
+
+include lib/Python/l2_analysis/l2_analysis.am
+
+

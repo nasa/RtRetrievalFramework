@@ -1,0 +1,17 @@
+include = <type_constants_filename>
+
+begin SET
+   source_dir    = <l2_input_dir>/<instrument>/input/static
+   dest_base_dir = <static_input_dir>
+
+   only_if_exists = <config_filename>
+
+   # Record source of input files
+   begin FILE
+       source_filename = <sdos_inputs_filename>
+
+       begin PICK
+          template = <source_dir>
+       end PICK
+   end FILE
+end SET

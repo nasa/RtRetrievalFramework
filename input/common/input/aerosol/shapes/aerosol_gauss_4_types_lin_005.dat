@@ -1,0 +1,15 @@
+begin HEADER
+  File_ID = "Aerosol Gaussian Shape Parameters"
+  File_Creation = "Fri Feb  5 14:45:00 PST 2010"
+  File_Type = "Matrix"
+  Num_Rows = 3
+  Num_Columns = 4
+  Retrieval_Mode = linear
+  AEROSOL_SHAPE = gauss
+  Labels = "AERO1" "AERO2" "WC" "IC"
+end HEADER
+
+# AERO1   AERO2      WC     IC
+  0.017   0.017   0.008  0.008
+      2       2       5     10
+      2       2       2      2

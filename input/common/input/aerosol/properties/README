@@ -1,0 +1,10 @@
+This data was imported to HDF using the short script "aerosol_to_hdf.rb".
+
+Note that the ASCII data is in wavelength, but the HDF is in terms of 
+wavenumber (the script converts this).
+
+The phasefunction in the ASCII file used the Siewert convention (used by
+VLIDORT), but for the HDF we convert this to de Rooij convention.
+
+The ice_MODIS6.h5 file was supplied directly by Hannakaisa Lindqvist, no
+ASCII files were used.

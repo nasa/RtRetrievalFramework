@@ -1,0 +1,193 @@
+# This gets included in the top makefile. This list files here that are
+# used to make up libfullphysics.la.
+
+# The various xxxsrc are set in configure.in in the top directory, in case
+# you need to modify these.
+
+# Source files for library
+fullphysicsinc_HEADERS+= @supportsrc@/generic_object.h
+fullphysicsinc_HEADERS+= @supportsrc@/fp_type_index.h
+fullphysicsinc_HEADERS+= @supportsrc@/fe_disable_exception.h
+fullphysicsinc_HEADERS+= @supportsrc@/unit.h
+libfp_la_SOURCES += @supportsrc@/unit.cc
+fullphysicsinc_HEADERS+= @supportsrc@/array_with_unit.h
+libfp_la_SOURCES += @supportsrc@/array_with_unit.cc
+fullphysicsinc_HEADERS+= @supportsrc@/double_with_unit.h
+libfp_la_SOURCES += @supportsrc@/double_with_unit.cc
+fullphysicsinc_HEADERS+= @supportsrc@/old_constant.h
+libfp_la_SOURCES += @supportsrc@/old_constant.cc
+fullphysicsinc_HEADERS+= @supportsrc@/constant.h
+libfp_la_SOURCES += @supportsrc@/constant.cc
+fullphysicsinc_HEADERS+= @supportsrc@/default_constant.h
+libfp_la_SOURCES += @supportsrc@/default_constant.cc
+fullphysicsinc_HEADERS+= @supportsrc@/spectral_domain.h
+libfp_la_SOURCES += @supportsrc@/spectral_domain.cc
+fullphysicsinc_HEADERS+= @supportsrc@/spectral_range.h
+libfp_la_SOURCES += @supportsrc@/spectral_range.cc
+libfp_la_SOURCES += @supportsrc@/spectral_bound.h
+libfp_la_SOURCES += @supportsrc@/spectral_bound.cc
+fullphysicsinc_HEADERS+= @supportsrc@/ostream_pad.h
+libfp_la_SOURCES += @supportsrc@/constants.F90
+fullphysicsinc_HEADERS+= @supportsrc@/null_deleter.h
+fullphysicsinc_HEADERS+= @supportsrc@/wgs84_constant.h
+fullphysicsinc_HEADERS+= @supportsrc@/boost/backtrace.hpp
+libfp_la_SOURCES += @supportsrc@/boost/backtrace.cpp
+fullphysicsinc_HEADERS+= @supportsrc@/fp_exception.h
+fullphysicsinc_HEADERS+= @supportsrc@/fp_time.h
+libfp_la_SOURCES += @supportsrc@/fp_time.cc
+fullphysicsinc_HEADERS+= @supportsrc@/environment_substitute.h
+libfp_la_SOURCES += @supportsrc@/environment_substitute.cc
+fullphysicsinc_HEADERS+= @supportsrc@/ifstream_cs.h
+libfp_la_SOURCES += @supportsrc@/ifstream_cs.cc
+fullphysicsinc_HEADERS+= @supportsrc@/printable.h
+fullphysicsinc_HEADERS+= @supportsrc@/heritage_file.h
+libfp_la_SOURCES += @supportsrc@/heritage_file.cc
+fullphysicsinc_HEADERS+= @supportsrc@/logger.h
+libfp_la_SOURCES += @supportsrc@/logger.cc
+libfp_la_SOURCES += @supportsrc@/logger_f.F90
+fullphysicsinc_HEADERS+= @supportsrc@/fp_gsl_matrix.h
+libfp_la_SOURCES += @supportsrc@/fp_gsl_matrix.cc
+fullphysicsinc_HEADERS+= @supportsrc@/fp_gsl_integrate.h
+libfp_la_SOURCES += @supportsrc@/fp_gsl_integrate.cc
+fullphysicsinc_HEADERS+= @supportsrc@/linear_algebra.h
+libfp_la_SOURCES += @supportsrc@/linear_algebra.cc
+fullphysicsinc_HEADERS += @supportsrc@/rayleigh_greek_moment.h
+libfp_la_SOURCES += @supportsrc@/rayleigh_greek_moment.cc
+fullphysicsinc_HEADERS += @supportsrc@/observer.h
+fullphysicsinc_HEADERS += @supportsrc@/accumulated_timer.h
+fullphysicsinc_HEADERS += @supportsrc@/filtering_fstream.h
+fullphysicsinc_HEADERS += @supportsrc@/fstream_compress.h
+libfp_la_SOURCES += @supportsrc@/fstream_compress.cc
+fullphysicsinc_HEADERS += @supportsrc@/heritage_matrix_write.h
+libfp_la_SOURCES += @supportsrc@/heritage_matrix_write.cc
+fullphysicsinc_HEADERS += @supportsrc@/hdf_file.h
+libfp_la_SOURCES += @supportsrc@/hdf_file.cc
+fullphysicsinc_HEADERS += @supportsrc@/hdf_file_generating.h
+libfp_la_SOURCES += @supportsrc@/hdf_file_generating.cc
+fullphysicsinc_HEADERS+= @supportsrc@/hdf_sounding_id.h
+libfp_la_SOURCES += @supportsrc@/hdf_sounding_id.cc
+fullphysicsinc_HEADERS += @supportsrc@/acos_sounding_id.h
+libfp_la_SOURCES += @supportsrc@/acos_sounding_id.cc
+fullphysicsinc_HEADERS += @supportsrc@/oco_sounding_id.h
+libfp_la_SOURCES += @supportsrc@/oco_sounding_id.cc
+fullphysicsinc_HEADERS += @supportsrc@/ecmwf.h
+libfp_la_SOURCES += @supportsrc@/ecmwf.cc
+fullphysicsinc_HEADERS += @supportsrc@/acos_ecmwf.h
+libfp_la_SOURCES += @supportsrc@/acos_ecmwf.cc
+fullphysicsinc_HEADERS += @supportsrc@/oco_ecmwf.h
+libfp_la_SOURCES += @supportsrc@/oco_ecmwf.cc
+fullphysicsinc_HEADERS += @supportsrc@/oco_sim_met_ecmwf.h
+libfp_la_SOURCES += @supportsrc@/oco_sim_met_ecmwf.cc
+fullphysicsinc_HEADERS += @supportsrc@/linear_interpolate.h
+fullphysicsinc_HEADERS += @supportsrc@/linear_interpolate_ad.h
+fullphysicsinc_HEADERS += @supportsrc@/bin_map.h
+fullphysicsinc_HEADERS += @supportsrc@/log_interpolate.h
+fullphysicsinc_HEADERS += @supportsrc@/fts_run_log.h
+libfp_la_SOURCES += @supportsrc@/fts_run_log.cc
+fullphysicsinc_HEADERS += @supportsrc@/auto_derivative.h
+fullphysicsinc_HEADERS += @supportsrc@/auto_derivative_with_unit.h
+fullphysicsinc_HEADERS += @supportsrc@/array_ad.h
+fullphysicsinc_HEADERS += @supportsrc@/array_ad_with_unit.h
+fullphysicsinc_HEADERS += @supportsrc@/array_ad_cache.h
+fullphysicsinc_HEADERS += @supportsrc@/spectrum.h
+libfp_la_SOURCES += @supportsrc@/spectrum.cc
+fullphysicsinc_HEADERS += @supportsrc@/named_spectrum.h
+fullphysicsinc_HEADERS += @supportsrc@/state_vector.h
+libfp_la_SOURCES += @supportsrc@/state_vector.cc
+fullphysicsinc_HEADERS += @supportsrc@/sub_state_vector_array.h
+libfp_la_SOURCES += @supportsrc@/sub_state_vector_proxy.cc
+fullphysicsinc_HEADERS += @supportsrc@/sub_state_vector_proxy.h
+fullphysicsinc_HEADERS += @supportsrc@/rf_gauleg.h
+libfp_la_SOURCES += @supportsrc@/rf_gauleg.cc
+fullphysicsinc_HEADERS += @supportsrc@/closest_point.h
+fullphysicsinc_HEADERS += @supportsrc@/polynomial_eval.h
+libfp_la_SOURCES += @supportsrc@/polynomial_eval.cc
+
+
+# Files that contain SWIG wrapper information
+
+SWIG_SRC += @swigsrc@/fp_exception_wrap.cc
+SWIG_SRC += @swigsrc@/generic_object_wrap.cc
+SWIG_SRC += @swigsrc@/unit_wrap.cc
+SWIG_SRC += @swigsrc@/double_with_unit_wrap.cc
+SWIG_SRC += @swigsrc@/constant_wrap.cc
+SWIG_SRC += @swigsrc@/default_constant_wrap.cc
+SWIG_SRC += @swigsrc@/array_with_unit_wrap.cc
+SWIG_SRC += @swigsrc@/auto_derivative_wrap.cc
+SWIG_SRC += @swigsrc@/auto_derivative_with_unit_wrap.cc
+SWIG_SRC += @swigsrc@/array_ad_wrap.cc
+SWIG_SRC += @swigsrc@/array_ad_with_unit_wrap.cc
+SWIG_SRC += @swigsrc@/spectral_domain_wrap.cc
+SWIG_SRC += @swigsrc@/logger_wrap.cc
+SWIG_SRC += @swigsrc@/fp_time_wrap.cc
+SWIG_SRC += @swigsrc@/heritage_file_wrap.cc
+SWIG_SRC += @swigsrc@/linear_algebra_wrap.cc
+SWIG_SRC += @swigsrc@/rayleigh_greek_moment_wrap.cc
+SWIG_SRC += @swigsrc@/hdf_file_wrap.cc
+SWIG_SRC += @swigsrc@/hdf_sounding_id_wrap.cc
+SWIG_SRC += @swigsrc@/acos_sounding_id_wrap.cc
+SWIG_SRC += @swigsrc@/oco_sounding_id_wrap.cc
+SWIG_SRC += @swigsrc@/ecmwf_wrap.cc
+SWIG_SRC += @swigsrc@/acos_ecmwf_wrap.cc
+SWIG_SRC += @swigsrc@/oco_ecmwf_wrap.cc
+SWIG_SRC += @swigsrc@/oco_sim_met_ecmwf_wrap.cc
+SWIG_SRC += @swigsrc@/observer_wrap.cc
+SWIG_SRC += @swigsrc@/fts_run_log_wrap.cc
+SWIG_SRC += @swigsrc@/spectral_range_wrap.cc
+SWIG_SRC += @swigsrc@/spectral_bound_wrap.cc
+SWIG_SRC += @swigsrc@/spectrum_wrap.cc
+SWIG_SRC += @swigsrc@/named_spectrum_wrap.cc
+SWIG_SRC += @swigsrc@/state_vector_wrap.cc
+SWIG_SRC += @swigsrc@/sub_state_vector_array_wrap.cc
+SWIG_SRC += @swigsrc@/sub_state_vector_proxy_wrap.cc
+SWIG_SRC += @swigsrc@/hdf_file_generating_wrap.cc
+SWIG_SRC += @swigsrc@/closest_point_wrap.cc
+SWIG_SRC += @swigsrc@/polynomial_eval_wrap.cc
+SWIG_SRC += @swigsrc@/linear_interpolate_wrap.cc
+EXTRA_DIST += @supportsrc@/*.i
+# Test files
+EXTRA_DIST += @supportsrc@/unit_test_support.h
+EXTRA_DIST += @supportsrc@/global_fixture.h
+lib_test_all_SOURCES += @supportsrc@/global_fixture.cc
+lib_test_all_SOURCES += @supportsrc@/global_fixture_default.cc
+lib_test_all_SOURCES+= @supportsrc@/fp_exception_test.cc
+lib_test_all_SOURCES+= @supportsrc@/unit_test.cc
+lib_test_all_SOURCES+= @supportsrc@/spectral_domain_test.cc
+lib_test_all_SOURCES+= @supportsrc@/spectral_bound_test.cc
+lib_test_all_SOURCES+= @supportsrc@/environment_substitute_test.cc
+lib_test_all_SOURCES+= @supportsrc@/ifstream_cs_test.cc
+lib_test_all_SOURCES+= @supportsrc@/fp_time_test.cc
+lib_test_all_SOURCES+= @supportsrc@/state_vector_test.cc
+lib_test_all_SOURCES+= @supportsrc@/heritage_file_test.cc
+lib_test_all_SOURCES+= @supportsrc@/printable_test.cc
+lib_test_all_SOURCES+= @supportsrc@/logger_test.cc
+lib_test_all_SOURCES+= @supportsrc@/fp_gsl_matrix_test.cc
+lib_test_all_SOURCES+= @supportsrc@/fp_gsl_integrate_test.cc
+lib_test_all_SOURCES+= @supportsrc@/linear_algebra_test.cc
+lib_test_all_SOURCES+= @supportsrc@/rayleigh_greek_moment_test.cc
+lib_test_all_SOURCES+= @supportsrc@/observer_test.cc
+lib_test_all_SOURCES+= @supportsrc@/fstream_compress_test.cc
+lib_test_all_SOURCES+= @supportsrc@/heritage_matrix_write_test.cc
+lib_test_all_SOURCES+= @supportsrc@/hdf_file_test.cc
+lib_test_all_SOURCES+= @supportsrc@/acos_sounding_id_test.cc
+lib_test_all_SOURCES+= @supportsrc@/oco_sounding_id_test.cc
+lib_test_all_SOURCES+= @supportsrc@/ecmwf_test.cc
+lib_test_all_SOURCES+= @supportsrc@/oco_sim_met_ecmwf_test.cc
+lib_test_all_SOURCES+= @supportsrc@/linear_interpolate_test.cc
+lib_test_all_SOURCES+= @supportsrc@/bin_map_test.cc
+lib_test_all_SOURCES+= @supportsrc@/log_interpolate_test.cc
+lib_test_all_SOURCES+= @supportsrc@/fts_run_log_test.cc
+lib_test_all_SOURCES+= @supportsrc@/auto_derivative_test.cc
+lib_test_all_SOURCES+= @supportsrc@/array_ad_test.cc
+lib_test_all_SOURCES+= @supportsrc@/array_ad_cache_test.cc
+lib_test_all_SOURCES+= @supportsrc@/ostream_pad_test.cc
+lib_test_all_SOURCES+= @supportsrc@/closest_point_test.cc
+lib_test_all_SOURCES+= @supportsrc@/polynomial_eval_test.cc
+
+# Allow files to be included in other directories.
+AM_CPPFLAGS+= -I$(srcdir)/@supportsrc@
+
+# Allow searchs for .i, .h. and .cc files in this directory
+vpath %.cc $(srcdir)/@supportsrc@
+vpath %.h $(srcdir)/@supportsrc@
+vpath %.i $(srcdir)/@supportsrc@

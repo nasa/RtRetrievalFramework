@@ -1,0 +1,13 @@
+begin HEADER
+  File_ID = "Solar Parameters Covariance Matrix"
+  File_Creation = "Tue Apr 25 12:15:16 PDT 2006"
+  File_Type = "Matrix"
+  Num_Rows = 4
+  Num_Columns = 4
+end HEADER
+
+336400.d0 0. 0. 0.
+0. 32400.d0 0. 0.
+0. 0. 27225.d0 0.
+0. 0. 0. 900.d0
+

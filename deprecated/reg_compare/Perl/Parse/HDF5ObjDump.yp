@@ -1,0 +1,296 @@
+#  -------------------------------------------------------------------------
+#   Name:        Partial HDF5 DDL Parser Yapp File
+#   File:        HDF5ObjDump.yp
+#   Created:     04/16/2004
+#   Comment:
+#
+#   Grammar to parse part of the HDF5 Data Description Language into a Perl
+#   data structure. This grammar only parses a single dataset output from
+#   h5dump with the -d option. And it does not implement all optional parts
+#   of the grammar. Only portions of the grammar used in L1B files are used.
+#   Namely these are the string and compound data types
+#
+#   To the create module run from the command line:
+#   yapp -m Parse::HDF5ObjDump -s -v HDF5ObjDump.yp
+#
+#   Version: See ClearCase History
+#
+#  -------------------------------------------------------------------------
+
+%%
+
+# Top level stuctures
+
+file:              'HDF5' file_name '{' dataset '}'
+		      { $_[4] }
+;
+
+file_name:         STRING
+;
+
+dataset:           'DATASET' dataset_name '{' dataset_info '}'
+		      { { "$_[2]" => $_[4] } }
+;
+
+dataset_name:      STRING
+;
+
+dataset_info:      dataset_type dataset_space data
+		      { { "TYPE"  => $_[1],
+		          "SPACE" => $_[2],
+			  "DATA"  => $_[3] } }
+;
+
+# Datatype set
+
+dataset_type:      'DATATYPE' datatype
+		      { $_[2] }
+;
+
+datatype:          atomic_type
+        |          compound_type
+;
+
+atomic_type:       integer
+           |       float
+           |       string
+;
+
+integer:           'H5T_STD_I8BE'     | 'H5T_STD_I8LE'
+       |           'H5T_STD_I16BE'    | 'H5T_STD_I16LE'
+       |           'H5T_STD_I32BE'    | 'H5T_STD_I32LE'
+       |           'H5T_STD_I64BE'    | 'H5T_STD_I64LE'
+       |           'H5T_STD_U8BE'     | 'H5T_STD_U8LE'
+       |           'H5T_STD_U16BE'    | 'H5T_STD_U16LE'
+       |           'H5T_STD_U32BE'    | 'H5T_STD_U32LE'
+       |           'H5T_STD_U64BE'    | 'H5T_STD_U64LE'
+       |           'H5T_NATIVE_CHAR'  | 'H5T_NATIVE_UCHAR'
+       |           'H5T_NATIVE_SHORT' | 'H5T_NATIVE_USHORT'
+       |           'H5T_NATIVE_INT'   | 'H5T_NATIVE_UINT'
+       |           'H5T_NATIVE_LONG'  | 'H5T_NATIVE_ULONG'
+       |           'H5T_NATIVE_LLONG' | 'H5T_NATIVE_ULLONG'
+;
+
+float:             'H5T_IEEE_F32BE'   | 'H5T_IEEE_F32LE'
+     |             'H5T_IEEE_F64BE'   | 'H5T_IEEE_F64LE'
+     |             'H5T_NATIVE_FLOAT' | 'H5T_NATIVE_DOUBLE'
+     |             'H5T_NATIVE_LDOUBLE'
+;
+
+string:            'H5T_STRING' '{' 'STRSIZE' strsize ';'
+                   'STRPAD' strpad ';'
+                   'CSET' cset ';'
+                   'CTYPE' ctype ';' '}'
+		      { { "STRING" => { 
+		                        "STRSIZE" => $_[4],
+					"STRPAD"  => $_[7],
+					"CSET"    => $_[10],
+					"CTYPE"   => $_[13] 
+			              }
+                        } 
+                      }
+;
+
+strsize:           REAL;
+
+strpad:            'H5T_STR_NULLTERM'
+      |            'H5T_STR_NULLPAD'
+      |            'H5T_STR_SPACEPAD'
+;
+
+cset:              'H5T_CSET_ASCII'
+;
+
+ctype:             'H5T_C_S1'
+     |             'H5T_FORTRAN_S1'
+;
+
+
+# Compound type
+
+compound_type:     'H5T_COMPOUND' '{' member_type_def '}'
+		      { { "$_[1]" => $_[3] } }
+;
+
+member_type_def:   datatype field_name ';' member_type_def
+		      { $_[4]->{$_[2]} = $_[1] ; $_[4] }
+	       |   #empty
+		      { {} }
+;
+
+field_name:        STRING
+;
+
+
+# Dataspace region
+
+dataset_space:     'DATASPACE' dataspace
+		      { $_[2] }
+;
+
+dataspace:         scalar_space 
+         |         simple_space
+;
+
+scalar_space:      'SCALAR'
+;
+
+simple_space:      'SIMPLE' '{' dims '/' dims '}'
+		      { { "$_[1]" => { CURRENT_DIMS => $_[3],
+				       MAX_DIMS     => $_[5] 
+                                     } 
+                        }
+                      }
+;
+
+dims:              '(' dims_values ')'
+		      { $_[2] }
+;
+
+dims_values:       dimension
+		      { [$_[1]] }
+           |       dimension ',' dims_values
+		      { push(@{$_[3]}, $_[1]); $_[3] }
+;
+
+dimension:         REAL  
+         |         'H5S_UNLIMITED'
+;
+
+# Data region
+
+data:              'DATA' '{' string_data '}'
+		      { $_[3] }
+    |              'DATA' '{' simple_space_data '}'
+		      { $_[3] }
+    |              'DATA' '{' complex_space_data '}'
+		      { $_[3] }
+;
+
+simple_space_data: any_data_seq
+;
+
+complex_space_data: complex_element
+		      { [$_[1]] }
+            |       complex_element ',' complex_space_data
+		      { push(@{$_[3]}, $_[1]); $_[3] }
+;
+
+complex_element: '(' atomic_element ')' ':' any_element
+                      { { $_[2] => $_[5] } }
+;
+
+any_data_seq:      any_element
+		      { [$_[1]] }
+            |      any_element ',' any_data_seq
+		      { push(@{$_[3]}, $_[1]); $_[3] }
+;
+
+any_element:       atomic_element
+           |       compound_element
+;
+
+atomic_element:    REAL
+              |    STRING
+;
+
+compound_element:  '{' any_data_seq '}'
+		      { $_[2] }
+;
+
+
+%%
+
+sub _Error {
+    my($parser) = shift;
+
+    $parser->{HAS_ERRORS} = 1;
+
+    if(exists $parser->YYData->{ERRMSG}) {
+	$parser->{ERR_PRINT} = $parser->YYData->{ERRMSG};
+        delete $parser->YYData->{ERRMSG};
+    } else {
+	$parser->{ERR_PRINT} = "Syntax error at token: " . $parser->YYCurtok . " with value: " . $parser->YYCurval . "\n";
+
+	my @expect = $parser->YYExpect;
+	$parser->{ERR_PRINT} .= "Expected: @expect\n";
+	
+	my ($parse_location) = ($parser->YYData->{INPUT} =~ /((.|\n){1,80})/);
+	$parser->{ERR_PRINT} .= "Parser halted at text:\n$parse_location\n";
+    }
+
+    ##print $parser->{ERR_PRINT}; # DEBUGGING
+}
+
+sub _Lexer {
+    my($parser)=shift;
+
+    $parser->YYData->{INPUT}
+    or  $parser->YYData->{INPUT} = <STDIN>
+    or  return('',undef);
+
+    #print "------>" . $parser->YYData->{INPUT} . "<------\n"; # DEBUGGING
+
+    # Get rid of spaces at the beginning of the current parsing location
+    $parser->YYData->{INPUT} =~ s/^\n//;
+    $parser->YYData->{INPUT} =~ s/^[ \t]+//;
+
+    for ($parser->YYData->{INPUT}) {
+
+	s/^{//
+	    and return('{', '{');
+	s/^}//
+	    and return('}', '}');
+	s/^;//
+	    and return(';', ';');
+
+        s/^([-+]?([0-9]*\.)?[0-9]+([eE][-+]?[0-9]+)?)//
+	    and return('REAL',$1);
+	s/^\"(((\\\")|[^\"])*)\"//
+	    and return('STRING',$1);
+
+        s/^([A-Za-z][A-Za-z0-9_]*)//
+	    and return($1,$1);
+
+        s/^(.)//s
+	    and return($1,$1);
+    }
+}
+
+sub has_error {
+  my $self = shift;
+  return exists($self->{HAS_ERRORS}) && $self->{HAS_ERRORS};
+}
+
+sub get_error_msg {
+  my $self = shift;
+  return $self->{ERR_PRINT};
+}
+
+sub parse {
+    my($self, $object_text) = @_;
+
+    $self->YYData->{INPUT} = $object_text;
+    my $result = $self->YYParse( yylex => \&_Lexer, yyerror => \&_Error );
+}
+
+# Debugging method used only for testing purposes
+
+sub _test {
+  use Data::Dumper;
+
+  die "No file" unless -e $ARGV[0];
+  open(FILE, $ARGV[0]);
+  my @contents = <FILE>;
+  close(FILE);
+
+  my $j_contents = join("", @contents);
+
+  my $hdf5_parse = Parse::HDF5ObjDump->new();
+  my $result = $hdf5_parse->parse($j_contents);
+
+  print Dumper($result);
+  my @a = keys(%{$result});
+}
+
+#_test();

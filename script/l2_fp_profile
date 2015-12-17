@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Exit if any part fails
+set -e
+
+basedir=`dirname $0`
+valgrind --tool=callgrind $basedir/l2_fp $*

@@ -1,0 +1,6 @@
+The inputs were spliced into a smaller set from a set of sample files
+made by repacking the meteorology from the CSU sim rather than
+resampling the raw ECMWF from the geolocation.
+
+This original files at one point were in :
+/scratch2/sdos/aychang/simB3.02/sample_20120516

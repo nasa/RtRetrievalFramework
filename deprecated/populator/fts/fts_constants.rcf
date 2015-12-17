@@ -1,0 +1,30 @@
+include = <CONTROL_FILE_PARENT_DIR>/common/common_constants.rcf
+include = <CONTROL_FILE_PARENT_DIR>/common/aggregate_constants.rcf
+
+begin CONSTANTS 
+
+   instrument = fts
+
+   config_type_names = 'default'
+
+   static_input_dir   = <aggregate_base_dir>/input/static
+   snd_id_config_map_file    = <setup_dir>/sounding_id_config.map
+
+   begin EXTRACT
+      filename = <config_filename>
+
+      # Allow could file to be missing
+      allow_missing = True
+      begin KEYWORDS
+         runlog_real_filename   = input->InputProductFiles->RunlogFile
+         atmosphere_real_filename   = input->InputProductFiles->AtmosphereFile
+      end KEYWORDS
+   end EXTRACT
+
+   runlog_real_filename   = 'eval( os.path.realpath("<runlog_real_filename>") )'
+   atmosphere_real_filename   = 'eval( os.path.realpath("<atmosphere_real_filename>") )'
+
+   fts_spec_a_list_file   = <setup_dir>/spec_a_filename.list
+   fts_spec_b_list_file   = <setup_dir>/spec_b_filename.list
+
+end CONSTANTS

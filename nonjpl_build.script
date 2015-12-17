@@ -1,0 +1,6 @@
+#! /bin/sh
+# Build for nonJPL. This should be treated as a template, you may need to
+# change things about this build.
+
+./configure THIRDPARTY=build && \
+make all

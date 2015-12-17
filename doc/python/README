@@ -1,0 +1,12 @@
+This directory contains the input files used by the python Sphinx documentation
+tool (see http://sphinx.pocoo.org).
+
+This directory does not contain the actual documentation, but rather contains
+the input files used to generate that documentation. The documentation can be 
+found in the install directory at share/doc/full_physics/python/index.html.
+
+This is installed as part of the normal "make install" process. See the User's
+Guide 
+(at https://svn.jpl.nasa.gov/xwiki/bin/view/L2+Full+Physics+Code/User%27s+Guide,
+also have a copy in doc source directory)
+for how to build and install this.

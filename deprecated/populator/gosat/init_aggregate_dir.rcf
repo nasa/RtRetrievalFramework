@@ -1,0 +1,25 @@
+include = <type_constants_filename>
+
+begin SET
+   dest_base_dir = <aggregate_base_dir>
+
+   # Append names of L1B and HDF files used to input config list
+   begin FILE
+       source_filename = <sdos_inputs_filename>
+
+       begin PICK
+          template = <l1b_real_filename>
+       end PICK
+
+       begin PICK
+          template = <ecmwf_real_filename>
+       end PICK
+
+       begin PICK
+          template = <cloud_real_filename>
+          only_if  = 'eval( len("<cloud_real_filename>") > 0 )'
+       end PICK
+
+   end FILE
+
+end SET

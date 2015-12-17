@@ -1,0 +1,31 @@
+begin input
+   begin PGENameGroup
+      PGEName = OCOUplookingFullPhysics 
+   end PGENameGroup
+
+   begin InputProductFiles
+      L1BFile = /path_to_/l1b.hdf
+      AtmosphereFile = /path_to_/atmoshere.dat
+   end InputProductFiles
+
+   begin AlternativeSettings
+   end AlternativeSettings
+
+   begin OCOFullPhysics
+      AggregateCounter = 1
+      begin LIST
+         name = SoundingIds
+         begin VALUES
+            2006091412195805
+            2006091412200003
+            2006091412200005
+            2006091412200203
+            2006091412200205
+         end VALUES
+
+      end LIST
+
+   end OCOFullPhysics
+
+end input
+
