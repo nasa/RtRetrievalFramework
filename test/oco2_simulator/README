@@ -1,0 +1,27 @@
+This test is based on OCO-2 simulator data. This is a single sounding which
+was run in with a bunch of diagnostic information printed out. The data
+is based on r60 data, and the run is b7. The original data was found
+at /ingest/oco2-sim/OCO2_orbit_simulations/r60/01a/nadir/20100909_252,
+with a scene file of OCO2_scene_NDa_20100909_252_r60CSUSim01a_012.hdf
+and metereology input of 
+OCO2_meteorology_NDa_20100909_252_r60CSUSim01a_012.hdf.  The meteorology
+has similar content to our OCO-2 ECMWF files, but is in a different format.
+We can read this in Level 2 by using a special version of the ECMWF class
+(handled by the lua config).
+
+The result of the simulator run provides us with Level 1b data. This was
+originally at /scratch2/algorithm/OCO2_orbit_simulations/r60/01b7.
+
+The files for for a full orbit. To reduce the file size that we need to
+check into subversion, we have subsetted the data. The subsetted data along
+with the script to use to subset it can be found in the input directory.
+
+We try to set up Level 2 to exactly match the configuration used in the
+simulator. We then use python to calculate the forward model and compare 
+the high resolution spectra, solar spectrum, and low resolution spectra.
+
+If we had everything perfectly matched between the Level 2 forward model
+and OCO-2 simulator this would exactly match.
+
+The diagnostic output from the simulator is in the directory 
+simulator_result.

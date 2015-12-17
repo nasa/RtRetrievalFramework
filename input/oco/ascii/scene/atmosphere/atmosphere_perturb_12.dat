@@ -1,0 +1,24 @@
+begin HEADER
+  File_Creation = 2007-10-30T17:31:47 UTC
+  File_ID = "Atmospheric State Perturbations"
+  File_Type     = "Matrix"
+  Labels =  "Pressure"  "T"  "H2O"  "CO2"  "O2 " 
+  Num_Columns = 5
+  Num_Rows = 12
+  Units =  "Pa      "  "K"  "VMR"  "VMR"  "VMR" 
+end HEADER
+
+#   Pressure   T      H2O      CO2      O2 
+#   Pa         K      VMR      VMR      VMR
+         100   2    1e-04    5e-06    5e-02
+        7000   2    1e-04    5e-06    5e-02
+       10000   2    1e-04    5e-06    5e-02
+       20000   2    1e-04    5e-06    5e-02
+       35000   2    1e-04    5e-06    5e-02
+       45000   2    1e-04    5e-06    5e-02
+       55000   2    1e-04    5e-06    5e-02
+       65000   2    1e-04    5e-06    5e-02
+       75000   2    1e-04    5e-06    5e-02
+       85000   2    1e-04    5e-06    5e-02
+       95000   2    1e-04    5e-06    5e-02
+      105000   2    1e-04    5e-06    5e-02

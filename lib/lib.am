@@ -1,0 +1,116 @@
+# This gets included in the top makefile. This list files here that are
+# used to make up libfull_physics.la.
+
+# The various xxxsrc are set in configure.in in the top directory, in case
+# you need to modify these.
+
+#==========================================================================
+# We have a complicated dependency on BOOST. See Ticket #695 for a 
+# discussion of this.
+#
+# A brief summary - 
+#    When we build a static version of l2_fp executable, we want to
+#    use the static version of BOOST, so we don't depend on libraries
+#    that might be in unofficial locations (e.g.,
+#    /groups/algorith/commonlib). But for the installed version of the
+#    installed library we do depend on this.
+#
+#    Unfortunately, there is no way to tell libtool to do this. As a
+#    workaround, we build *2* libraries, one that is never installed
+#    and doesn't link to BOOST at all, and one that points to boost in
+#    a normal way. We use the no BOOST version to build our
+#    executables, and the other version gets installed with all the
+#    right dependencies.
+#==========================================================================
+
+lib_LTLIBRARIES+= libfull_physics.la
+noinst_LTLIBRARIES += libfp.la
+libfull_physics_la_SOURCES =
+libfp_la_SOURCES =
+libfull_physics_la_LIBADD = libfp.la
+libfull_physics_la_LDFLAGS = $(AM_LDFLAGS) $(BOOST_LDFLAGS)
+libfull_physics_la_LDFLAGS+= $(HDF5_LDFLAGS) $(FCLIBS) 
+
+libfp_la_CPPFLAGS = $(AM_CPPFLAGS) 
+libfp_la_CPPFLAGS+= $(LIDORT_3_6_CPPFLAGS) $(TWOSTREAM_CPPFLAGS) 
+libfp_la_CPPFLAGS+= $(HDF5_CPPFLAGS)
+libfp_la_LIBADD = $(LIDORT_3_6_LDFLAGS) $(TWOSTREAM_LDFLAGS)
+libfp_la_LDFLAGS = $(BLITZ_LDFLAGS) $(GSL_LDFLAGS)
+libfp_la_LDFLAGS+= $(HDF5_LDFLAGS) $(AM_LDFLAGS) 
+
+if HAVE_HDF5
+libfp_la_CPPFLAGS += -DUSE_HDF
+endif
+
+#=================================================================
+# Include all the subdirectories.
+
+include lib/Support/support.am
+include lib/Interface/interface.am
+include lib/Implementation/implementation.am
+include lib/FixedLevel/fixed_level.am
+include lib/Deprecated/deprecated.am
+include lib/RegisterOutput/register_output.am
+if HAVE_LUA
+include lib/Lua/lua.am
+endif
+include lib/Python/python.am
+
+#=================================================================
+# Right now, we calculate dependencies all at once. This runs very fast,
+# so it shouldn't be a big deal that we look through all the files.
+# However, we might want to refine this in the future. This gets the module
+# dependencies
+#
+# Because this runs before anything else, we also tack on the creation of
+# the modules/ directory. There might be a better place for this, but this
+# will work for now.
+#
+# We rerun this whenever the makefile changes to catch differences in the
+# input files.
+
+lib/full_physics.deps : $(libfp_fortran) $(FLIB_FILES) Makefile
+	@$(MKDIR_P) lib/
+	@$(MKDIR_P) lib/modules/
+	@$(RUBY) $(srcdir)/config/depf90 "$(srcdir)" "l2_fp-" $(l2_fp_SOURCES) libfp_la- "$(libfp_la_SOURCES) $(FLIB_FILES)" > $@.tmp && mv $@.tmp $@
+-include lib/full_physics.deps
+
+CLEANFILES += lib/full_physics.deps
+
+#=================================================================
+# Set up to put modules in modules directory.
+
+clean-local: full_physics_clean
+
+full_physics_clean:
+	-rm lib/modules/*.mod
+
+FULL_PHYSICS_MOD_FLAGS := $(call fortran_module_path,lib/modules)
+libfp_la_FCFLAGS = $(FULL_PHYSICS_MOD_FLAGS)
+
+#=================================================================
+# Documentation needs to be rebuilt when these source files change
+
+libfp_fortran = $(filter %.f90 %.F90, $(libfp_la_SOURCES))
+doxygen_fortran_deps += $(libfp_fortran)
+
+doxygen_deps += $(filter-out %.f90 %.F90, $(libfp_la_SOURCES))
+doxygen_deps += $(fullphysicsinc_HEADERS) @fpsrc@/doxygen.h
+
+EXTRA_DIST+= @fpsrc@/doxygen.h @fpsrc@/README
+EXTRA_DIST+= @fpsrc@/*.i 
+EXTRA_DIST+= @fpsrc@/swig_type_mapper_base.h
+EXTRA_DIST+= @fpsrc@/swig_type_mapper.h
+EXTRA_DIST+= @fpsrc@/swig_to_python.h
+
+SWIG_FLAG+= -I$(abs_srcdir)/@fpsrc@
+
+SWIG_SRC += @swigsrc@/swig_std_wrap.cc
+SWIG_SRC += @swigsrc@/swig_array_wrap.cc
+SWIG_SRC += @swigsrc@/swig_rational_wrap.cc
+
+# Allow files to be included in other directories.
+AM_CPPFLAGS+= -I$(srcdir)/@fpsrc@
+
+# Allow searchs for .i in this directory
+vpath %.i $(srcdir)/@fpsrc@

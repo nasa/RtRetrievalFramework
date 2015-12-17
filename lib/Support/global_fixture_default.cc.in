@@ -1,0 +1,21 @@
+#include "global_fixture.h"
+#include <cstdlib>
+
+using namespace FullPhysics;
+//-----------------------------------------------------------------------
+/// Default locations for data, if environment variables not
+/// set. These are normally set by the Makefile before running, but it
+/// is useful to have default values set if we are running in debug
+/// mode or something like that.
+//-----------------------------------------------------------------------
+
+void GlobalFixture::set_default_value() 
+{
+  // Note that we set the "overwrite" flag to 0 so that we do *not*
+  // overwrite existing variable. This means we don't need to bother
+  // checking if this is set before we assign a value to it.
+  setenv("abs_top_srcdir", "@abs_top_srcdir@", 0);
+  setenv("abscodir", "@abscodir@", 0);
+  setenv("LUA_PATH", "@abs_top_srcdir@/input/common/config/?.lua;@abs_top_srcdir@/input/gosat/config/?.lua;@abs_top_srcdir@/input/oco/config/?.lua;@abs_top_srcdir@/input/fts/config/?.lua;@abs_top_srcdir@/unit_test_data/?.lua;", 0);
+}
+

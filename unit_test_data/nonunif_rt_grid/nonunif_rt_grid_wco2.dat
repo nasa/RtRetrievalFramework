@@ -1,0 +1,18 @@
+begin HEADER
+  File_ID = "Nonuniform RT Grid WCO2"
+  File_Creation = "Thu Mar 31 08:35:00 PDT 2011"
+  File_Type = "Matrix"
+  Num_Rows = 10
+  Num_Columns = 1
+  Labels = "grid_points_wn"
+end HEADER
+ 1.5
+ 2.5
+ 3.5
+ 6.9
+ 7.5
+ 8.1
+ 9.9
+10.2
+10.3
+10.5

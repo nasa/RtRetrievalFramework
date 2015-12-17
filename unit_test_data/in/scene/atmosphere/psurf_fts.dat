@@ -1,0 +1,10 @@
+begin HEADER
+  File_Creation = "2010-03-23T23:40:30"
+  File_ID       = "psurf value extracted for spectrum named: pa20091103saaaaa_100223160344.008 from runlog file: //StringIO(0x847e170): "/scratch/algorithm/l2_fp/runs/absco_tccon/20100323_pa20091103_absco3.2.0/pa20091103_100223163011.grl"//"
+  Labels        = "PSURF"
+  Num_Columns   = 1
+  Num_Rows      = 1
+end HEADER
+
+#           PSURF
+   9.69100000e+04

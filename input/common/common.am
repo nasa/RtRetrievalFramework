@@ -1,0 +1,8 @@
+config_DATA += @commonconfigsrc@/config_common.lua
+config_DATA += @commonconfigsrc@/single_band_support.lua
+config_DATA += @commonconfigsrc@/aerosol_interference.lua
+config_DATA += @commonconfigsrc@/helper_functions.lua
+config_DATA += @commonconfigsrc@/rail_road_valley.lua
+input_DATA += @commoninputsrc@/l2_solar_model.h5
+input_DATA += @commoninputsrc@/l2_aerosol_combined.h5
+input_DATA += @commoninputsrc@/old_orbit_sim_solar_model.h5

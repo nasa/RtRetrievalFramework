@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+l2_agg_fn={0.processing_dir}/l2_aggregate.h5
+
+export PYTHONPATH={0.python_path}
+export PATH={0.bin_path}
+export LD_LIBRARY_PATH={0.lib_path}
+export LUA_PATH="{0.l2_lua_path}"
+
+# Aggregate all single sounding output hdf files into a single hdf file
+echo "Aggregating L2 output files"
+{0.l2_support_path}/utils/splice_acos_hdf_files.py -o $l2_agg_fn {0.output_directory}/*.h5 $*
+

@@ -1,0 +1,13 @@
+begin HEADER
+  File_ID = "Windspeed"
+  File_Creation = "Tue Apr 25 12:15:16 PDT 2006"
+  File_Type = "Matrix"
+  Num_Rows = 1
+  Num_Columns = 2
+  Labels = "PARAMETER" "WINDSPEED"
+  Units = "None" "m/s"
+  Windspeed_F = true
+end HEADER
+
+#parameter	WINDSPEED
+ 1		1.0D-2

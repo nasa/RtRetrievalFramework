@@ -1,0 +1,37 @@
+# Sphinx python documentation
+if HAVE_SPHINX
+if BUILD_PYTHON_SWIG
+install_python_doc: 
+	export PYTHONPATH=$(pythondir):$(pyexecdir):$(PYTHONPATH) &&\
+        export L2_TCCON_SMALL_SET_PATH=$(abs_srcdir)/test/tccon_small_set &&\
+        export L2_TEST_PATH=$(abs_srcdir)/test &&\
+        export L2_INPUT_PATH=$(abs_srcdir)/input &&\
+        $(SPHINXBUILD) -b html $(srcdir)/$(docpythonsrc) $(docdir)/python
+else
+install_python_doc: 
+	@echo "====================================================="
+	@echo "Can only build sphinx documentation if we are also"
+	@echo "building the python swig code"
+	@echo "====================================================="
+endif
+
+if WITH_DOCUMENTATION
+INSTALL_DATA_HOOK += install_python_doc
+endif
+
+if BUILD_PYTHON_SWIG
+pythondoctest:
+	export PYTHONPATH=$(pythondir):$(pyexecdir):$(PYTHONPATH) &&\
+        $(SPHINXBUILD) -b doctest $(srcdir)/$(docpythonsrc) doctest
+	@echo "Testing of doctests in the sources finished, look at the " \
+	      "results in doctest/output.txt."
+else
+pythondoctest:
+	@echo "Can only run pythondoctest if we are building python"
+	@echo "swig code."
+endif
+else # HAVE_SPHINX
+pythondoctest:
+	@echo "Don't have Sphinx, so can't run pythondoctest"
+endif
+

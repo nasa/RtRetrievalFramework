@@ -1,0 +1,3 @@
+{% macro includes(incl_list) %}{% for incl in incl_list -%}
+#include {% if incl[0] == "<" %}{{ incl }}{% else %}"{{incl}}"{% endif %}
+{%- endfor %}{% endmacro %}

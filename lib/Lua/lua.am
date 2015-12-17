@@ -1,0 +1,42 @@
+# This gets included in the top makefile. This list files here that are
+# used to make up libfullphysics.la.
+
+# The various xxxsrc are set in configure.in in the top directory, in case
+# you need to modify these.
+
+# Source files for library
+fullphysicsinc_HEADERS += @luasrc@/dir_change.h
+fullphysicsinc_HEADERS += @luasrc@/register_lua.h
+libfp_la_SOURCES += @luasrc@/register_lua.cc
+fullphysicsinc_HEADERS += @luasrc@/lua_state.h
+libfp_la_SOURCES += @luasrc@/lua_state.cc
+fullphysicsinc_HEADERS += @luasrc@/lua_callback.h
+libfp_la_SOURCES += @luasrc@/lua_callback.cc
+libfp_la_SOURCES += @luasrc@/lua_blitz.cc
+fullphysicsinc_HEADERS += @luasrc@/luabind_object.h
+libfp_la_SOURCES += @luasrc@/luabind_object.cc
+
+# Files that contain SWIG wrapper information
+
+SWIG_SRC += @swigsrc@/lua_state_wrap.cc
+# This is included in luabind_object below.
+#SWIG_SRC += @swigsrc@/lua_callback_wrap.cc
+SWIG_SRC += @swigsrc@/luabind_object_wrap.cc
+
+EXTRA_DIST += @luasrc@/*.i
+
+# Test files
+
+lib_test_all_SOURCES+= @luasrc@/lua_test.cc
+lib_test_all_SOURCES+= @luasrc@/lua_state_test.cc
+
+# Allow files to be included in other directories.
+AM_CPPFLAGS+= -I$(srcdir)/@luasrc@
+
+AM_CPPFLAGS+= $(LUA_CPPFLAGS)
+libfp_la_LDFLAGS+= $(LUA_LDFLAGS)
+
+# Allow searchs for .i, .h. and .cc files in this directory
+vpath %.cc $(srcdir)/@luasrc@
+vpath %.h $(srcdir)/@luasrc@
+vpath %.i $(srcdir)/@luasrc@

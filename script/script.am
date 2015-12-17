@@ -1,0 +1,15 @@
+fpscriptdir = $(prefix)
+fpscript_DATA = @srcscript@/setup_fp_env.sh
+
+l2_fp_profile: script/l2_fp_profile
+	cp $< $@
+	chmod +x $@
+
+l2_fp_valgrind: script/l2_fp_valgrind
+	cp $< $@
+	chmod +x $@
+
+BUILT_SOURCES += l2_fp_profile l2_fp_valgrind
+
+
+

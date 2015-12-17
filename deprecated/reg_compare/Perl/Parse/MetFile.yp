@@ -1,0 +1,207 @@
+#  -------------------------------------------------------------------------
+#   Name:        MET File Parser
+#   File:        MetFile.yp
+#   Created:     04/16/2004
+#   Comment:
+#
+#   Grammar to parse HDF5 .met files. These files are text files with
+#   the Metadata for a hdf5 file.
+#
+#   To the create module run from the command line:
+#   yapp -m Parse::MetFile -s -v MetFile.yp
+#
+#   Version: See ClearCase History
+#
+#  -------------------------------------------------------------------------
+
+%%
+
+# Top level stuctures
+
+top_level:         group END
+;
+
+group:             group_start group_contents group_end
+		      { { "$_[1]" => $_[2] } }
+;
+
+group_start:       GROUP '=' IDENT group_type class_opt
+		      { $_[3] }
+;
+
+group_type:        GROUPTYPE '=' IDENT
+          |        #empty
+;
+
+group_contents:    group group_contents
+		      { my %a = (%{$_[1]}, %{$_[2]}); \%a }
+              |    object group_contents
+		      { my %a = (%{$_[1]}, %{$_[2]}); \%a }
+              |    #empty
+                      { {} }
+;
+
+group_end:         END_GROUP '=' IDENT
+;
+
+object:            object_start object_contents object_end
+		      { { "$_[1]" => $_[2] } }
+;
+
+object_start:      OBJECT '=' IDENT
+                       { $_[3] }
+;
+
+object_contents:   num_val value
+                      { $_[2] }
+               |   num_val value class
+                      { $_[2] }
+	       |   num_val class value
+                      { $_[3] }
+	       |   class num_val value
+                      { $_[3] }
+               |   class group_contents
+                      { $_[2] }
+;
+
+object_end:        END_OBJECT '=' IDENT
+;
+
+num_val:           NUM_VAL '=' NUMBER
+;
+
+value:             VALUE '=' STRING
+                      { $_[3] }
+     |             VALUE '=' PAREN_STRING
+                      { $_[3] }
+     |             VALUE '=' NUMBER
+                      { $_[3] }
+;
+
+class_opt:         class
+         |         #empty
+;
+
+class:             CLASS '=' STRING
+;
+
+%%
+
+sub _Error {
+    my($parser) = shift;
+
+    $parser->{HAS_ERRORS} = 1;
+
+    if(exists $parser->YYData->{ERRMSG}) {
+	$parser->{ERR_PRINT} = $parser->YYData->{ERRMSG};
+        delete $parser->YYData->{ERRMSG};
+    } else {
+	$parser->{ERR_PRINT} = "Syntax error at token: " . $parser->YYCurtok . " with value: " . $parser->YYCurval . "\n";
+
+	my @expect = $parser->YYExpect;
+	$parser->{ERR_PRINT} .= "Expected: @expect\n";
+	
+	my ($parse_location) = ($parser->YYData->{INPUT} =~ /((.|\n){1,80})/);
+	$parser->{ERR_PRINT} .= "Parser halted at text:\n$parse_location\n";
+    }
+
+    #print $parser->{ERR_PRINT};
+}
+
+sub _Lexer {
+    my($parser)=shift;
+
+    $parser->YYData->{INPUT}
+    or  $parser->YYData->{INPUT} = <STDIN>
+    or  return('',undef);
+
+    #print "------>" . $parser->YYData->{INPUT} . "<------\n"; # DEBUGGING
+
+    # Get rid of spaces at the beginning of the current parsing location
+    $parser->YYData->{INPUT} =~ s/^\n\s*//;
+    $parser->YYData->{INPUT} =~ s/^[ \t]+//;
+
+    for ($parser->YYData->{INPUT}) {
+
+      s/^GROUPTYPE//
+	and return('GROUPTYPE', 'GROUPTYPE');
+
+      s/^GROUP//
+	and return('GROUP', 'GROUP');
+
+      s/^OBJECT//
+	and return('OBJECT', 'OBJECT');
+
+      s/^NUM_VAL//
+	and return('NUM_VAL', 'NUM_VAL');
+
+      s/^VALUE//
+	and return('VALUE', 'VALUE');
+
+      s/^CLASS//
+	and return('CLASS', 'CLASS');
+
+      s/^END_GROUP//
+	and return('END_GROUP', 'END_GROUP');
+
+      s/^END_OBJECT//
+	and return('END_OBJECT', 'END_OBJECT');
+
+      s/^END//
+	and return('END', 'END');
+
+      s/^\=//
+	and return('=', '=');
+
+      s/^([-+]?([0-9]*\.)?[0-9]+([eE][-+]?[0-9]+)?)//
+	and return('NUMBER',$1);
+
+      s/^\(\"(((\\\")|[^\"])*)\"\)//
+	and return('PAREN_STRING',$1);
+
+      s/^\"(((\\\")|[^\"])*)\"//
+	and return('STRING',$1);
+
+      s/^([A-Za-z][A-Za-z0-9_]*)//
+	and return('IDENT',$1);
+
+    }
+}
+
+sub has_error {
+  my $self = shift;
+  return exists($self->{HAS_ERRORS}) && $self->{HAS_ERRORS};
+}
+
+sub get_error_msg {
+  my $self = shift;
+  return $self->{ERR_PRINT};
+}
+
+sub parse {
+    my($self, $object_text) = @_;
+
+    $self->YYData->{INPUT} = $object_text;
+    my $result = $self->YYParse( yylex => \&_Lexer, yyerror => \&_Error );
+}
+
+# Debugging method used only for testing purposes
+
+sub _test {
+  use Data::Dumper;
+  use strict;
+
+  die "No file" unless -e $ARGV[0];
+  open(FILE, $ARGV[0]);
+  my @contents = <FILE>;
+  close(FILE);
+
+  my $j_contents = join("", @contents);
+
+  my $met_parse = Parse::MetFile->new();
+  my $result = $met_parse->parse($j_contents);
+
+  print Dumper($result);
+}
+
+#_test();

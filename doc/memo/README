@@ -1,0 +1,6 @@
+Because most people will want to access memos through the subversion system, we
+have the memos put into a separate directory. That way you don't get a copy
+of the memos everytime you check out the source code.
+
+You can access the memos through subversion as 
+https://svn/oco/alg/level_2/memo/memo.html.

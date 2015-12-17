@@ -1,0 +1,17 @@
+begin HEADER
+  File_ID = "Nonuniform RT Grid SCO2"
+  File_Creation = "Thu Mar 31 08:35:00 PDT 2011"
+  File_Type = "Matrix"
+  Num_Rows = 9
+  Num_Columns = 1
+  Labels = "grid_points_wn"
+end HEADER
+21.7
+22.4
+23.9
+24.6
+24.8
+25.1
+25.5
+26.2
+26.3
