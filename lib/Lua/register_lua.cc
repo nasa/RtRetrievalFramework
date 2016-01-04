@@ -221,6 +221,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(Level1bHeritage);
   REGISTER_LUA_LIST(Level1bAcos);
   REGISTER_LUA_LIST(Level1bAverage);
+  REGISTER_LUA_LIST(Level1bScaleRadiance);
   REGISTER_LUA_LIST(FtsRunLog);
   REGISTER_LUA_LIST(FtsRunLogRecord);
   REGISTER_LUA_LIST(FtsRunLogVector);

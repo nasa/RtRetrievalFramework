@@ -141,6 +141,7 @@ extern "C" {
   void init_level_1b_heritage(void);
   void init_level_1b_acos(void);
   void init_level_1b_average(void);
+  void init_level_1b_scale_radiance(void);
   void init_level_1b_oco(void);
   void init_level_1b_uq(void);
   void init_level_1b_cache(void);
@@ -433,6 +434,7 @@ void init_swig_wrap(void)
   init_extension_module(package, "_level_1b_heritage", init_level_1b_heritage);
   init_extension_module(package, "_level_1b_acos", init_level_1b_acos);
   init_extension_module(package, "_level_1b_average", init_level_1b_average);
+  init_extension_module(package, "_level_1b_scale_radiance", init_level_1b_scale_radiance);
   init_extension_module(package, "_level_1b_oco", init_level_1b_oco);
   init_extension_module(package, "_level_1b_uq", init_level_1b_uq);
   init_extension_module(package, "_level_1b_cache", init_level_1b_cache);
