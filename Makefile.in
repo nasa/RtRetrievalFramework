@@ -483,6 +483,7 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/level_1b_heritage_wrap.cc \
 	@swigsrc@/level_1b_acos_wrap.cc \
 	@swigsrc@/level_1b_average_wrap.cc \
+	@swigsrc@/level_1b_scale_radiance_wrap.cc \
 	@swigsrc@/level_1b_oco_wrap.cc @swigsrc@/level_1b_uq_wrap.cc \
 	@swigsrc@/level_1b_cache_wrap.cc \
 	@swigsrc@/gosat_noise_model_wrap.cc \
@@ -709,6 +710,7 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-level_1b_heritage_wrap.lo \
 	@swigsrc@/_swig_wrap_la-level_1b_acos_wrap.lo \
 	@swigsrc@/_swig_wrap_la-level_1b_average_wrap.lo \
+	@swigsrc@/_swig_wrap_la-level_1b_scale_radiance_wrap.lo \
 	@swigsrc@/_swig_wrap_la-level_1b_oco_wrap.lo \
 	@swigsrc@/_swig_wrap_la-level_1b_uq_wrap.lo \
 	@swigsrc@/_swig_wrap_la-level_1b_cache_wrap.lo \
@@ -910,7 +912,8 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@implsrc@/chisq_convergence.cc @implsrc@/connor_convergence.cc \
 	@implsrc@/solver_iteration_log.cc \
 	@implsrc@/level_1b_heritage.cc @implsrc@/level_1b_acos.cc \
-	@implsrc@/level_1b_average.cc @implsrc@/level_1b_oco.cc \
+	@implsrc@/level_1b_average.cc \
+	@implsrc@/level_1b_scale_radiance.cc @implsrc@/level_1b_oco.cc \
 	@implsrc@/level_1b_uq.cc @implsrc@/level_1b_cache.cc \
 	@implsrc@/absorber_absco.cc @implsrc@/ground_lambertian.cc \
 	@implsrc@/ground_coxmunk.cc \
@@ -1165,6 +1168,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@implsrc@/libfp_la-level_1b_heritage.lo \
 	@implsrc@/libfp_la-level_1b_acos.lo \
 	@implsrc@/libfp_la-level_1b_average.lo \
+	@implsrc@/libfp_la-level_1b_scale_radiance.lo \
 	@implsrc@/libfp_la-level_1b_oco.lo \
 	@implsrc@/libfp_la-level_1b_uq.lo \
 	@implsrc@/libfp_la-level_1b_cache.lo \
@@ -1500,6 +1504,7 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@implsrc@/level_1b_heritage_test.cc \
 	@implsrc@/level_1b_acos_test.cc \
 	@implsrc@/level_1b_average_test.cc \
+	@implsrc@/level_1b_scale_radiance_test.cc \
 	@implsrc@/level_1b_oco_test.cc \
 	@implsrc@/level_1b_cache_test.cc \
 	@implsrc@/gosat_noise_model_test.cc \
@@ -1663,6 +1668,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@implsrc@/level_1b_heritage_test.$(OBJEXT) \
 	@implsrc@/level_1b_acos_test.$(OBJEXT) \
 	@implsrc@/level_1b_average_test.$(OBJEXT) \
+	@implsrc@/level_1b_scale_radiance_test.$(OBJEXT) \
 	@implsrc@/level_1b_oco_test.$(OBJEXT) \
 	@implsrc@/level_1b_cache_test.$(OBJEXT) \
 	@implsrc@/gosat_noise_model_test.$(OBJEXT) \
@@ -1961,9 +1967,10 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@implsrc@/chisq_convergence.h @implsrc@/connor_convergence.h \
 	@implsrc@/solver_iteration_log.h @implsrc@/level_1b_heritage.h \
 	@implsrc@/level_1b_acos.h @implsrc@/level_1b_average.h \
-	@implsrc@/level_1b_oco.h @implsrc@/level_1b_uq.h \
-	@implsrc@/level_1b_cache.h @implsrc@/absorber_absco.h \
-	@implsrc@/ground_lambertian.h @implsrc@/ground_coxmunk.h \
+	@implsrc@/level_1b_scale_radiance.h @implsrc@/level_1b_oco.h \
+	@implsrc@/level_1b_uq.h @implsrc@/level_1b_cache.h \
+	@implsrc@/absorber_absco.h @implsrc@/ground_lambertian.h \
+	@implsrc@/ground_coxmunk.h \
 	@implsrc@/ground_coxmunk_plus_lambertian.h \
 	@implsrc@/ground_brdf.h @implsrc@/aerosol_optical.h \
 	@implsrc@/atmosphere_oco.h @implsrc@/altitude_hydrostatic.h \
@@ -2598,9 +2605,10 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@implsrc@/chisq_convergence.h @implsrc@/connor_convergence.h \
 	@implsrc@/solver_iteration_log.h @implsrc@/level_1b_heritage.h \
 	@implsrc@/level_1b_acos.h @implsrc@/level_1b_average.h \
-	@implsrc@/level_1b_oco.h @implsrc@/level_1b_uq.h \
-	@implsrc@/level_1b_cache.h @implsrc@/absorber_absco.h \
-	@implsrc@/ground_lambertian.h @implsrc@/ground_coxmunk.h \
+	@implsrc@/level_1b_scale_radiance.h @implsrc@/level_1b_oco.h \
+	@implsrc@/level_1b_uq.h @implsrc@/level_1b_cache.h \
+	@implsrc@/absorber_absco.h @implsrc@/ground_lambertian.h \
+	@implsrc@/ground_coxmunk.h \
 	@implsrc@/ground_coxmunk_plus_lambertian.h \
 	@implsrc@/ground_brdf.h @implsrc@/aerosol_optical.h \
 	@implsrc@/atmosphere_oco.h @implsrc@/altitude_hydrostatic.h \
@@ -2765,6 +2773,7 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@implsrc@/level_1b_heritage_test.cc \
 	@implsrc@/level_1b_acos_test.cc \
 	@implsrc@/level_1b_average_test.cc \
+	@implsrc@/level_1b_scale_radiance_test.cc \
 	@implsrc@/level_1b_oco_test.cc \
 	@implsrc@/level_1b_cache_test.cc \
 	@implsrc@/gosat_noise_model_test.cc \
@@ -3050,6 +3059,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/level_1b_heritage_wrap.cc \
 	@swigsrc@/level_1b_acos_wrap.cc \
 	@swigsrc@/level_1b_average_wrap.cc \
+	@swigsrc@/level_1b_scale_radiance_wrap.cc \
 	@swigsrc@/level_1b_oco_wrap.cc @swigsrc@/level_1b_uq_wrap.cc \
 	@swigsrc@/level_1b_cache_wrap.cc \
 	@swigsrc@/gosat_noise_model_wrap.cc \
@@ -3300,7 +3310,8 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@implsrc@/chisq_convergence.cc @implsrc@/connor_convergence.cc \
 	@implsrc@/solver_iteration_log.cc \
 	@implsrc@/level_1b_heritage.cc @implsrc@/level_1b_acos.cc \
-	@implsrc@/level_1b_average.cc @implsrc@/level_1b_oco.cc \
+	@implsrc@/level_1b_average.cc \
+	@implsrc@/level_1b_scale_radiance.cc @implsrc@/level_1b_oco.cc \
 	@implsrc@/level_1b_uq.cc @implsrc@/level_1b_cache.cc \
 	@implsrc@/absorber_absco.cc @implsrc@/ground_lambertian.cc \
 	@implsrc@/ground_coxmunk.cc \
@@ -4179,6 +4190,8 @@ clean-pkgpythonswigLTLIBRARIES:
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-level_1b_average_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
+@swigsrc@/_swig_wrap_la-level_1b_scale_radiance_wrap.lo:  \
+	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-level_1b_oco_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-level_1b_uq_wrap.lo:  \
@@ -4724,6 +4737,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-level_1b_average.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-level_1b_scale_radiance.lo:  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-level_1b_oco.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-level_1b_uq.lo: @implsrc@/$(am__dirstamp) \
@@ -5622,6 +5637,8 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/level_1b_average_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/level_1b_scale_radiance_test.$(OBJEXT):  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/level_1b_oco_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/level_1b_cache_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
@@ -5974,6 +5991,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/level_1b_fts_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/level_1b_heritage_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/level_1b_oco_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/level_1b_scale_radiance_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absco.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absco_hdf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absorber_absco.Plo@am__quote@
@@ -6036,6 +6054,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-level_1b_fts.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-level_1b_heritage.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-level_1b_oco.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-level_1b_scale_radiance.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-level_1b_uq.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-lidort_driver.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-lidort_rt.Plo@am__quote@
@@ -6444,6 +6463,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_heritage_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_oco_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_output_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_scale_radiance_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_uq_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-lidort_driver_wrap.Plo@am__quote@
@@ -7851,6 +7871,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/level_1b_average_wrap.cc' object='@swigsrc@/_swig_wrap_la-level_1b_average_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-level_1b_average_wrap.lo `test -f '@swigsrc@/level_1b_average_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/level_1b_average_wrap.cc
+
+@swigsrc@/_swig_wrap_la-level_1b_scale_radiance_wrap.lo: @swigsrc@/level_1b_scale_radiance_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-level_1b_scale_radiance_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_scale_radiance_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-level_1b_scale_radiance_wrap.lo `test -f '@swigsrc@/level_1b_scale_radiance_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/level_1b_scale_radiance_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_scale_radiance_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_scale_radiance_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/level_1b_scale_radiance_wrap.cc' object='@swigsrc@/_swig_wrap_la-level_1b_scale_radiance_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-level_1b_scale_radiance_wrap.lo `test -f '@swigsrc@/level_1b_scale_radiance_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/level_1b_scale_radiance_wrap.cc
 
 @swigsrc@/_swig_wrap_la-level_1b_oco_wrap.lo: @swigsrc@/level_1b_oco_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-level_1b_oco_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-level_1b_oco_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-level_1b_oco_wrap.lo `test -f '@swigsrc@/level_1b_oco_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/level_1b_oco_wrap.cc
@@ -9426,6 +9453,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/level_1b_average.cc' object='@implsrc@/libfp_la-level_1b_average.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-level_1b_average.lo `test -f '@implsrc@/level_1b_average.cc' || echo '$(srcdir)/'`@implsrc@/level_1b_average.cc
+
+@implsrc@/libfp_la-level_1b_scale_radiance.lo: @implsrc@/level_1b_scale_radiance.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-level_1b_scale_radiance.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-level_1b_scale_radiance.Tpo -c -o @implsrc@/libfp_la-level_1b_scale_radiance.lo `test -f '@implsrc@/level_1b_scale_radiance.cc' || echo '$(srcdir)/'`@implsrc@/level_1b_scale_radiance.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-level_1b_scale_radiance.Tpo @implsrc@/$(DEPDIR)/libfp_la-level_1b_scale_radiance.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/level_1b_scale_radiance.cc' object='@implsrc@/libfp_la-level_1b_scale_radiance.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-level_1b_scale_radiance.lo `test -f '@implsrc@/level_1b_scale_radiance.cc' || echo '$(srcdir)/'`@implsrc@/level_1b_scale_radiance.cc
 
 @implsrc@/libfp_la-level_1b_oco.lo: @implsrc@/level_1b_oco.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-level_1b_oco.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-level_1b_oco.Tpo -c -o @implsrc@/libfp_la-level_1b_oco.lo `test -f '@implsrc@/level_1b_oco.cc' || echo '$(srcdir)/'`@implsrc@/level_1b_oco.cc
