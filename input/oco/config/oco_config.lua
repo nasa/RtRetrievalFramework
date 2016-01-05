@@ -20,21 +20,28 @@ OcoConfig.instrument_correction_list_acquisition_mode = ConfigCommon.instrument_
 
 
 function OcoConfig.instrument_correction_list_acquisition_mode:sub_object_key()
+
+   local acq_mode 
+   if (self.config.unscaled_l1b ~= nil) then
+      acq_mode = self.config.unscaled_l1b:acquisition_mode()
+   else
+      acq_mode = self.config.l1b:acquisition_mode()
+   end
+
    local res
-   if self.config.l1b:acquisition_mode() == "Glint" then 
+   if acq_mode == "Glint" then 
       res = self.ic_glint
-   elseif self.config.l1b:acquisition_mode() == "Target" then 
+   elseif acq_mode == "Target" then 
       res = self.ic_target
-   elseif self.config.l1b:acquisition_mode() == "Transition" then 
+   elseif acq_mode == "Transition" then 
       --- We treat this the same as target. We can make a separate ic_transition
       --- if needed in the future, but for now just do what we do with target
       --- mode
       res = self.ic_target
-   elseif self.config.l1b:acquisition_mode() == "Nadir" then 
+   elseif acq_mode == "Nadir" then 
       res = self.ic_nadir
    else
-      error("Unrecognized acquistion mode " .. 
-	    self.config.l1b:acquisition_mode())
+      error("Unrecognized acquistion mode " .. acq_mode)
    end
    return res
 end
@@ -249,7 +256,12 @@ end
 ------------------------------------------------------------
 
 function OcoConfig:ground_type_name()
-   local lf = self.l1b:land_fraction()
+   local lf
+   if (self.unscaled_l1b ~= nil) then
+      lf = self.unscaled_l1b:land_fraction()
+   else
+      lf = self.l1b:land_fraction()
+   end
 
    if(lf > 80.0) then
       return "lambertian"

@@ -1645,6 +1645,36 @@ function ConfigCommon.level1b_ascii:create_parent_object()
 end
 
 ------------------------------------------------------------
+--- Creates a L1B object that scales another L1B objects'
+--- radiance per spectral band
+------------------------------------------------------------
+
+ConfigCommon.level1b_scale_radiance = CreatorL1b:new()
+
+function ConfigCommon.level1b_scale_radiance:create()
+    -- Unset the register output of the unscaled L1B creator so it can
+    -- be set by this one
+    if (self.unscaled_l1b == nil) then
+        error("unscaled_l1b block undefined for level1b_scale_radiance")
+    end
+    self.unscaled_l1b.creator.register_output = nil
+    return CompositeCreator.create(self)
+end
+
+function ConfigCommon.level1b_scale_radiance:sub_object_key()
+   return {"unscaled_l1b"}
+end
+
+function ConfigCommon.level1b_scale_radiance:create_parent_object()
+    local nspec = self.config.spec_win:number_spectrometer()
+    local scaling = Blitz_double_array_1d(nspec)
+    for i, v in ipairs(self.scaling) do
+        scaling:set(i-1, v)
+    end
+    return Level1bScaleRadiance(self.config.unscaled_l1b, scaling)
+end
+
+------------------------------------------------------------
 --- Create a SolarAbsorptionAndContinuum solar model
 ------------------------------------------------------------
 
