@@ -24,7 +24,8 @@ const blitz::Array<double, 1>& val)
     (new MerraAerosol(Merra_climatology, Aerosol_property,
 		      Latitude, Longitude, Press, Aerosol_cov,
 		      val(0), val(1), static_cast<int>(val(2)),
-		      static_cast<int>(val(3)), val(4)));
+		      static_cast<int>(val(3)), val(4),
+		      static_cast<int>(val(5)) == 1));
 }
 REGISTER_LUA_CLASS(MerraAerosol)
 .def("aerosol", &MerraAerosol::aerosol)
@@ -50,6 +51,8 @@ REGISTER_LUA_END()
 /// \param Exp_aod Threshold for explained fraction of AOD
 /// \param Min_types Minimum number of types to be selected
 /// \param Max_types Maximum number of types to be selected
+/// \param Linear_aod If true, then use linear aod rather than
+///        logarithmic aod.
 /// \param Max_residual Maximum resdidual in total AOD (either >
 ///    threshold of fraction or < max residual will suffice 
 /// \param Reference_wn The wavenumber that Aext is given for. This
@@ -67,9 +70,11 @@ MerraAerosol::MerraAerosol
  double Exp_aod,
  int Min_types,
  int Max_types,
+ bool Linear_aod,
  double Max_residual,
  double Reference_wn)
-: press(Press),
+: linear_aod(Linear_aod),
+  press(Press),
   ref_wn(Reference_wn),
   merra_fname(Merra_climatology.file_name()),
   prop_fname(Aerosol_property.file_name()),
@@ -122,10 +127,13 @@ MerraAerosol::MerraAerosol
       Array<bool, 1> flag(3);
       Array<double, 1> coeff(3);
       flag = true, true, true;
-      coeff = log(aod), peak_height, peak_width;
+      if(linear_aod)
+	coeff = aod, peak_height, peak_width;
+      else
+	coeff = log(aod), peak_height, peak_width;
       aext.push_back
 	(boost::shared_ptr<AerosolExtinction>
-	 (new AerosolShapeGaussian(press, flag, coeff, aname, false)));
+	 (new AerosolShapeGaussian(press, flag, coeff, aname, linear_aod)));
       aprop.push_back
 	(boost::shared_ptr<AerosolProperty>
 	 (new AerosolPropertyHdf(Aerosol_property, aname + "/Properties", 
@@ -219,7 +227,10 @@ int MerraAerosol::file_index(const HdfFile& Merra_climatology,
 
 void MerraAerosol::print(std::ostream& Os) const
 {
-  Os << "MerraAerosol:\n"
+  Os << "MerraAerosol: ("
+     << (linear_aod ? "Linear" : "Logarithmic")
+     << ")\n"
+     << "  Coefficient:\n"
      << "  Merra file name:            " << merra_fname << "\n"
      << "  Aerosol property file name: " << prop_fname << "\n"
      << "  Latitude:                   " << lat << "\n"

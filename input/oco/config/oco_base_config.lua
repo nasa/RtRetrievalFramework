@@ -414,6 +414,7 @@ OcoBaseConfig = OcoConfig:new {
             exp_aod = 0.8,
             min_types = 2,
             max_types = 2,
+	    linear_aod = false,
             max_residual = 0.005,
             apriori = ConfigCommon.hdf_apriori("/Aerosol/Merra/Gaussian/Log"),
             covariance = ConfigCommon.hdf_covariance("/Aerosol/Merra/Gaussian/Log"),
