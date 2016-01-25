@@ -198,9 +198,24 @@ class RadiativeTransferSingleWn(full_physics_swig.radiative_transfer_fixed_stoke
     def stokes_single_wn(self, Wn, Spec_index, Iv):
         """
 
-        virtual blitz::Array<double, 1> FullPhysics::RadiativeTransferSingleWn::stokes_single_wn(double Wn, int Spec_index, const ArrayAd< double, 2 > &Iv=dummy)
-        const =0
+        virtual blitz::Array<double, 1> FullPhysics::RadiativeTransferSingleWn::stokes_single_wn(double Wn, int Spec_index, const ArrayAd< double, 2 > &Iv=ArrayAd<
+        double, 2 >()) const =0
+        Calculate stokes vector for the given wavenumber.
 
+        You can optionally supply a set of intermediate atmosphere variables
+        (e.g., taug, taur, taua_i) to use instead of with atmosphere_ptr() to
+        calculate this.
+
+        Parameters:
+        -----------
+
+        Wn:  Wavenumber to calculate for. This should be in cm^-1
+
+        Spec_index:  The Spectral index
+
+        Iv:  Optional intermediate variables to use, rather than calculating.
+
+        The set of stokes coefficients. This is number_stokes() in size. 
         """
         return _radiative_transfer_single_wn.RadiativeTransferSingleWn_stokes_single_wn(self, Wn, Spec_index, Iv)
 
@@ -208,8 +223,8 @@ class RadiativeTransferSingleWn(full_physics_swig.radiative_transfer_fixed_stoke
     def stokes_and_jacobian_single_wn(self, Wn, Spec_index, Iv):
         """
 
-        virtual ArrayAd<double, 1> FullPhysics::RadiativeTransferSingleWn::stokes_and_jacobian_single_wn(double Wn, int Spec_index, const ArrayAd< double, 2 > &Iv=dummy)
-        const =0
+        virtual ArrayAd<double, 1> FullPhysics::RadiativeTransferSingleWn::stokes_and_jacobian_single_wn(double Wn, int Spec_index, const ArrayAd< double, 2 > &Iv=ArrayAd<
+        double, 2 >()) const =0
         Calculate stokes vector and Jacobian for the given wavenumber.
 
         You can optionally supply a set of intermediate atmosphere variables
