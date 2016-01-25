@@ -151,9 +151,11 @@ public:
   $result = PyArray_New(&PyArray_Type, DIM, dims, type_to_npy<TYPE>(), 
 			stride, $1.data(), 0, 0, 0);
   blitz::Array<TYPE, DIM>* t = new blitz::Array<TYPE, DIM>($1);
-  PyArray_BASE($result) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-		     $descriptor(blitz::Array<TYPE, DIM>*), 
-	             SWIG_POINTER_NEW | 0 );
+  PyArray_SetBaseObject
+    ((PyArrayObject *)$result,
+     SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+			$descriptor(blitz::Array<TYPE, DIM>*), 
+			SWIG_POINTER_NEW | 0 ));
 }
 
 //--------------------------------------------------------------
@@ -171,9 +173,11 @@ public:
   $result = PyArray_New(&PyArray_Type, DIM, dims, type_to_npy<TYPE>(), 
 			stride, $1->data(), 0, 0, 0);
   blitz::Array<TYPE, DIM>* t = new blitz::Array<TYPE, DIM>(*$1);
-  PyArray_BASE($result) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-			     $descriptor(blitz::Array<TYPE, DIM>*), 
-			     SWIG_POINTER_NEW | 0 );
+  PyArray_SetBaseObject
+    ((PyArrayObject *)$result,
+     SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+			$descriptor(blitz::Array<TYPE, DIM>*), 
+			SWIG_POINTER_NEW | 0 ));
 }
 
 %typemap(out) blitz::Array<TYPE, DIM>& {
@@ -185,11 +189,13 @@ public:
     stride[i] = $1->stride(i) * sizeof(TYPE);
   }
   $result = PyArray_New(&PyArray_Type, DIM, dims, type_to_npy<TYPE>(), 
-			stride, $1->data(), 0, NPY_WRITEABLE, 0);
+			stride, $1->data(), 0, 0, 0);
   blitz::Array<TYPE, DIM>* t = new blitz::Array<TYPE, DIM>(*$1);
-  PyArray_BASE($result) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-			     $descriptor(blitz::Array<TYPE, DIM>*), 
-			     SWIG_POINTER_NEW | 0 );
+  PyArray_SetBaseObject
+    ((PyArrayObject *)$result,
+     SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+			$descriptor(blitz::Array<TYPE, DIM>*), 
+			SWIG_POINTER_NEW | 0 ));
 }
 
 //--------------------------------------------------------------
@@ -211,9 +217,11 @@ public:
   PyObject *res = PyArray_New(&PyArray_Type, DIM, dims, type_to_npy<TYPE>(), 
 			stride, $1->data(), 0, 0, 0);
   blitz::Array<TYPE, DIM>* t = new blitz::Array<TYPE, DIM>(*$1);
-  PyArray_BASE(res) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-			     $descriptor(blitz::Array<TYPE, DIM>*), 
-			     SWIG_POINTER_NEW | 0 );
+  PyArray_SetBaseObject
+    ((PyArrayObject *)res,
+     SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+			$descriptor(blitz::Array<TYPE, DIM>*), 
+			SWIG_POINTER_NEW | 0 ));
   $result = SWIG_AppendOutput($result, res);
 }
 
@@ -289,9 +297,11 @@ public:
   PyObject* res = PyArray_New(&PyArray_Type, DIM, dims, type_to_npy<TYPE>(), 
 			      stride, const_cast<TYPE*>($1.data()), 0, 0, 0);
   blitz::Array<TYPE, DIM>* t = new blitz::Array<TYPE, DIM>($1);
-  PyArray_BASE(res) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-		     $descriptor(blitz::Array<TYPE, DIM>*), 
-	             SWIG_POINTER_NEW | 0 );
+  PyArray_SetBaseObject
+    ((PyArrayObject *)res,
+     SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+			$descriptor(blitz::Array<TYPE, DIM>*), 
+			SWIG_POINTER_NEW | 0 ));
   $input = res;
 }
 
@@ -301,7 +311,7 @@ public:
 
 %typemap(typecheck,precedence=SWIG_TYPECHECK_INTEGER) blitz::Array<TYPE, DIM>, const blitz::Array<TYPE, DIM>& {
   PythonObject t(to_numpy<TYPE>($input));
-  $1 = (t.obj && PyArray_NDIM(t.obj) ==DIM ? 1 : 0);
+  $1 = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==DIM ? 1 : 0);
 }
 
 %template(NAME) blitz::Array<TYPE, DIM>;
