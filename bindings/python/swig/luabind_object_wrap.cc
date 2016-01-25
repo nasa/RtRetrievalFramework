@@ -4815,6 +4815,10 @@ namespace swig
 #ifndef DO_IMPORT_ARRAY
 #define NO_IMPORT_ARRAY
 #endif
+// See https://github.com/numpy/numpy/issues/3008 for explanation of
+// this.
+// We'll have to update this as the numpy API increases
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include <numpy/arrayobject.h>
 #include "linear_algebra.h"
 #include "fp_exception.h"
@@ -4882,8 +4886,9 @@ template<> inline PyObject* to_numpy<int>(PyObject* obj)
 //--------------------------------------------------------------
 
 template<class T, int D> inline blitz::Array<T, D> 
-  to_blitz_array(PyObject* numpy)
+  to_blitz_array(PyObject* numpy_obj)
 {
+  PyArrayObject* numpy = (PyArrayObject*) numpy_obj;
   if(PyArray_NDIM(numpy) != D) {
     std::cerr << PyArray_NDIM(numpy) << "\n"
 	      << D << "\n";
@@ -8097,9 +8102,11 @@ SWIGINTERN PyObject *_wrap_LuabindObject_getblitzarray1d_double(PyObject *SWIGUN
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, (&result)->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -8197,9 +8204,11 @@ SWIGINTERN PyObject *_wrap_LuabindObject_getblitzarray2d_double(PyObject *SWIGUN
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
       stride, (&result)->data(), 0, 0, 0);
     blitz::Array<double, 2>* t = new blitz::Array<double, 2>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -8297,9 +8306,11 @@ SWIGINTERN PyObject *_wrap_LuabindObject_getblitzarray1d_bool(PyObject *SWIGUNUS
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<bool>(), 
       stride, (&result)->data(), 0, 0, 0);
     blitz::Array<bool, 1>* t = new blitz::Array<bool, 1>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_bool_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_bool_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -9430,7 +9441,7 @@ check_4:
     {
       {
         PythonObject t(to_numpy<double>(argv[2]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==1 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==1 ? 1 : 0);
       }
     }
     if (!_v) goto check_5;
@@ -9443,7 +9454,7 @@ check_5:
     {
       {
         PythonObject t(to_numpy<double>(argv[2]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==2 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==2 ? 1 : 0);
       }
     }
     if (!_v) goto check_6;
@@ -9456,7 +9467,7 @@ check_6:
     {
       {
         PythonObject t(to_numpy<double>(argv[2]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==3 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==3 ? 1 : 0);
       }
     }
     if (!_v) goto check_7;
@@ -9469,7 +9480,7 @@ check_7:
     {
       {
         PythonObject t(to_numpy<bool>(argv[2]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==1 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==1 ? 1 : 0);
       }
     }
     if (!_v) goto check_8;
@@ -9482,7 +9493,7 @@ check_8:
     {
       {
         PythonObject t(to_numpy<bool>(argv[2]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==2 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==2 ? 1 : 0);
       }
     }
     if (!_v) goto check_9;
@@ -9495,7 +9506,7 @@ check_9:
     {
       {
         PythonObject t(to_numpy<bool>(argv[2]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==3 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==3 ? 1 : 0);
       }
     }
     if (!_v) goto check_10;
@@ -9508,7 +9519,7 @@ check_10:
     {
       {
         PythonObject t(to_numpy<int>(argv[2]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==1 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==1 ? 1 : 0);
       }
     }
     if (!_v) goto check_11;
@@ -9521,7 +9532,7 @@ check_11:
     {
       {
         PythonObject t(to_numpy<int>(argv[2]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==2 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==2 ? 1 : 0);
       }
     }
     if (!_v) goto check_12;
@@ -9534,7 +9545,7 @@ check_12:
     {
       {
         PythonObject t(to_numpy<int>(argv[2]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==3 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==3 ? 1 : 0);
       }
     }
     if (!_v) goto check_13;
@@ -10937,7 +10948,7 @@ check_3:
     {
       {
         PythonObject t(to_numpy<double>(argv[1]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==2 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==2 ? 1 : 0);
       }
     }
     if (!_v) goto check_4;
@@ -10950,7 +10961,7 @@ check_4:
     {
       {
         PythonObject t(to_numpy<double>(argv[1]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==3 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==3 ? 1 : 0);
       }
     }
     if (!_v) goto check_5;
@@ -10963,7 +10974,7 @@ check_5:
     {
       {
         PythonObject t(to_numpy<bool>(argv[1]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==1 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==1 ? 1 : 0);
       }
     }
     if (!_v) goto check_6;
@@ -10976,7 +10987,7 @@ check_6:
     {
       {
         PythonObject t(to_numpy<bool>(argv[1]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==2 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==2 ? 1 : 0);
       }
     }
     if (!_v) goto check_7;
@@ -10989,7 +11000,7 @@ check_7:
     {
       {
         PythonObject t(to_numpy<bool>(argv[1]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==3 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==3 ? 1 : 0);
       }
     }
     if (!_v) goto check_8;
@@ -11002,7 +11013,7 @@ check_8:
     {
       {
         PythonObject t(to_numpy<int>(argv[1]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==1 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==1 ? 1 : 0);
       }
     }
     if (!_v) goto check_9;
@@ -11015,7 +11026,7 @@ check_9:
     {
       {
         PythonObject t(to_numpy<int>(argv[1]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==2 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==2 ? 1 : 0);
       }
     }
     if (!_v) goto check_10;
@@ -11028,7 +11039,7 @@ check_10:
     {
       {
         PythonObject t(to_numpy<int>(argv[1]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==3 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==3 ? 1 : 0);
       }
     }
     if (!_v) goto check_11;
@@ -11041,7 +11052,7 @@ check_11:
     {
       {
         PythonObject t(to_numpy<double>(argv[1]));
-        _v = (t.obj && PyArray_NDIM(t.obj) ==1 ? 1 : 0);
+        _v = (t.obj && PyArray_NDIM((PyArrayObject*)t.obj) ==1 ? 1 : 0);
       }
     }
     if (!_v) goto check_12;
