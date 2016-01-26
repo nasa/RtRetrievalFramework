@@ -5211,13 +5211,18 @@ SWIGINTERN PyObject *_wrap_NLLSProblem_residual_jacobian(PyObject *SWIGUNUSEDPAR
   int res1 = 0 ;
   boost::shared_ptr< FullPhysics::NLLSProblem > tempshared1 ;
   boost::shared_ptr< FullPhysics::NLLSProblem > *smartarg1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  blitz::Array< double,1 > temp2 ;
+  blitz::Array< double,2 > temp3 ;
+  PyObject *swig_obj[1] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"NLLSProblem_residual_jacobian",3,3,swig_obj)) SWIG_fail;
+  {
+    arg2 = &temp2;
+  }
+  {
+    arg3 = &temp3;
+  }
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__NLLSProblem_t, 0 |  0 , &newmem);
@@ -5233,22 +5238,6 @@ SWIGINTERN PyObject *_wrap_NLLSProblem_residual_jacobian(PyObject *SWIGUNUSEDPAR
       arg1 = const_cast< FullPhysics::NLLSProblem * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_blitz__ArrayT_double_1_t,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NLLSProblem_residual_jacobian" "', argument " "2"" of type '" "blitz::Array< double,1 > &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NLLSProblem_residual_jacobian" "', argument " "2"" of type '" "blitz::Array< double,1 > &""'"); 
-  }
-  arg2 = reinterpret_cast< blitz::Array< double,1 > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_blitz__ArrayT_double_2_t,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NLLSProblem_residual_jacobian" "', argument " "3"" of type '" "blitz::Array< double,2 > &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NLLSProblem_residual_jacobian" "', argument " "3"" of type '" "blitz::Array< double,2 > &""'"); 
-  }
-  arg3 = reinterpret_cast< blitz::Array< double,2 > * >(argp3);
   {
     try {
       (arg1)->residual_jacobian(*arg2,*arg3);
@@ -5259,6 +5248,42 @@ SWIGINTERN PyObject *_wrap_NLLSProblem_residual_jacobian(PyObject *SWIGUNUSEDPAR
     }
   }
   resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1], stride[1];
+    for(int i = 0; i < 1; ++i) {
+      dims[i] = arg2->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = arg2->stride(i) * sizeof(double);
+    }
+    PyObject *res = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
+      stride, arg2->data(), 0, 0, 0);
+    blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*arg2);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)res,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
+    resultobj = SWIG_Python_AppendOutput(resultobj, res);
+  }
+  {
+    npy_intp dims[2], stride[2];
+    for(int i = 0; i < 2; ++i) {
+      dims[i] = arg3->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = arg3->stride(i) * sizeof(double);
+    }
+    PyObject *res = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
+      stride, arg3->data(), 0, 0, 0);
+    blitz::Array<double, 2>* t = new blitz::Array<double, 2>(*arg3);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)res,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
+    resultobj = SWIG_Python_AppendOutput(resultobj, res);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -5277,13 +5302,17 @@ SWIGINTERN PyObject *_wrap_NLLSProblem_residual_jacobian_x(PyObject *SWIGUNUSEDP
   boost::shared_ptr< FullPhysics::NLLSProblem > *smartarg1 = 0 ;
   blitz::Array< double,1 > a2 ;
   PythonObject numpy2 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  blitz::Array< double,1 > temp3 ;
+  blitz::Array< double,2 > temp4 ;
+  PyObject *swig_obj[2] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"NLLSProblem_residual_jacobian_x",4,4,swig_obj)) SWIG_fail;
+  {
+    arg3 = &temp3;
+  }
+  {
+    arg4 = &temp4;
+  }
+  if (!SWIG_Python_UnpackTuple(args,"NLLSProblem_residual_jacobian_x",2,2,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__NLLSProblem_t, 0 |  0 , &newmem);
@@ -5310,22 +5339,6 @@ SWIGINTERN PyObject *_wrap_NLLSProblem_residual_jacobian_x(PyObject *SWIGUNUSEDP
       arg2 = &a2;
     }
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_blitz__ArrayT_double_1_t,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NLLSProblem_residual_jacobian_x" "', argument " "3"" of type '" "blitz::Array< double,1 > &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NLLSProblem_residual_jacobian_x" "', argument " "3"" of type '" "blitz::Array< double,1 > &""'"); 
-  }
-  arg3 = reinterpret_cast< blitz::Array< double,1 > * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_blitz__ArrayT_double_2_t,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "NLLSProblem_residual_jacobian_x" "', argument " "4"" of type '" "blitz::Array< double,2 > &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NLLSProblem_residual_jacobian_x" "', argument " "4"" of type '" "blitz::Array< double,2 > &""'"); 
-  }
-  arg4 = reinterpret_cast< blitz::Array< double,2 > * >(argp4);
   {
     try {
       (arg1)->residual_jacobian_x((blitz::Array< double,1 > const &)*arg2,*arg3,*arg4);
@@ -5336,6 +5349,42 @@ SWIGINTERN PyObject *_wrap_NLLSProblem_residual_jacobian_x(PyObject *SWIGUNUSEDP
     }
   }
   resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1], stride[1];
+    for(int i = 0; i < 1; ++i) {
+      dims[i] = arg3->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = arg3->stride(i) * sizeof(double);
+    }
+    PyObject *res = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
+      stride, arg3->data(), 0, 0, 0);
+    blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*arg3);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)res,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
+    resultobj = SWIG_Python_AppendOutput(resultobj, res);
+  }
+  {
+    npy_intp dims[2], stride[2];
+    for(int i = 0; i < 2; ++i) {
+      dims[i] = arg4->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = arg4->stride(i) * sizeof(double);
+    }
+    PyObject *res = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
+      stride, arg4->data(), 0, 0, 0);
+    blitz::Array<double, 2>* t = new blitz::Array<double, 2>(*arg4);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)res,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
+    resultobj = SWIG_Python_AppendOutput(resultobj, res);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -5594,7 +5643,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"The Jacobian of the residual of the NLLS problem \n"
 		""},
-	 { (char *)"NLLSProblem_residual_jacobian", _wrap_NLLSProblem_residual_jacobian, METH_VARARGS, (char *)"\n"
+	 { (char *)"NLLSProblem_residual_jacobian", (PyCFunction)_wrap_NLLSProblem_residual_jacobian, METH_O, (char *)"\n"
 		"\n"
 		"void NLLSProblem::residual_jacobian(blitz::Array< double, 1 > &r, blitz::Array< double, 2 > &j)\n"
 		"The residual function and its Jacobian together.\n"
