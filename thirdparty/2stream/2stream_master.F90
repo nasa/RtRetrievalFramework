@@ -517,8 +517,8 @@ SUBROUTINE TWOSTREAM_MASTER ( THREAD,                                     & ! In
       IF ( (NBEAMS == 1) .AND. (BEAM_SZAS(1) < 1.0D-8) ) &
         N_FOURIERS = 0
 
-! Set Fourier number when we have a purely nadir viewing angle
-      IF ( PURE_NADIR ) N_FOURIERS = 0
+! Set Fourier number when we have a purely nadir viewing angle and a Lambertian surface
+      IF ( PURE_NADIR .AND. .NOT. DO_BRDF_SURFACE ) N_FOURIERS = 0
 
 !  Albedo
 
