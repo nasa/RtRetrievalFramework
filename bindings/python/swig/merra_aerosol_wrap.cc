@@ -4813,6 +4813,10 @@ namespace swig
 #ifndef DO_IMPORT_ARRAY
 #define NO_IMPORT_ARRAY
 #endif
+// See https://github.com/numpy/numpy/issues/3008 for explanation of
+// this.
+// We'll have to update this as the numpy API increases
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include <numpy/arrayobject.h>
 #include "linear_algebra.h"
 #include "fp_exception.h"
@@ -4880,8 +4884,9 @@ template<> inline PyObject* to_numpy<int>(PyObject* obj)
 //--------------------------------------------------------------
 
 template<class T, int D> inline blitz::Array<T, D> 
-  to_blitz_array(PyObject* numpy)
+  to_blitz_array(PyObject* numpy_obj)
 {
+  PyArrayObject* numpy = (PyArrayObject*) numpy_obj;
   if(PyArray_NDIM(numpy) != D) {
     std::cerr << PyArray_NDIM(numpy) << "\n"
 	      << D << "\n";
@@ -5057,6 +5062,20 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 }
 
 
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
+
 struct SWIG_null_deleter {
   void operator() (void const *) const {
   }
@@ -5103,7 +5122,221 @@ SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   double arg8 ;
   int arg9 ;
   int arg10 ;
-  double arg11 ;
+  bool arg11 ;
+  double arg12 ;
+  double arg13 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::HdfFile const > tempshared1 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::HdfFile const > tempshared2 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  void *argp4 ;
+  int res4 = 0 ;
+  void *argp5 ;
+  int res5 = 0 ;
+  boost::shared_ptr< FullPhysics::Pressure > tempshared5 ;
+  boost::shared_ptr< FullPhysics::Pressure > temp2shared5 ;
+  blitz::Array< double,2 > a6 ;
+  PythonObject numpy6 ;
+  double val7 ;
+  int ecode7 = 0 ;
+  double val8 ;
+  int ecode8 = 0 ;
+  int val9 ;
+  int ecode9 = 0 ;
+  int val10 ;
+  int ecode10 = 0 ;
+  bool val11 ;
+  int ecode11 = 0 ;
+  double val12 ;
+  int ecode12 = 0 ;
+  double val13 ;
+  int ecode13 = 0 ;
+  FullPhysics::MerraAerosol *result = 0 ;
+  
+  if ((nobjs < 13) || (nobjs > 13)) SWIG_fail;
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::HdfFile *ptr;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], (void**)(&ptr), SWIGTYPE_p_FullPhysics__HdfFile,  0 , &newmem);
+    if (SWIG_IsOK(res1)) {
+      arg1 = ptr;
+    } else {
+      res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfFile_t,  0 , &newmem);
+      if (!SWIG_IsOK(res1)) {
+        SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MerraAerosol" "', argument " "1"" of type '" "FullPhysics::HdfFile const &""'"); 
+      }
+      if (!argp1) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MerraAerosol" "', argument " "1"" of type '" "FullPhysics::HdfFile const &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp1);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp1);
+        arg1 = const_cast< FullPhysics::HdfFile * >(tempshared1.get());
+      } else {
+        arg1 = const_cast< FullPhysics::HdfFile * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp1)->get());
+      }
+    }
+  }
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::HdfFile *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__HdfFile,  0 , &newmem);
+    if (SWIG_IsOK(res2)) {
+      arg2 = ptr;
+    } else {
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfFile_t,  0 , &newmem);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MerraAerosol" "', argument " "2"" of type '" "FullPhysics::HdfFile const &""'"); 
+      }
+      if (!argp2) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MerraAerosol" "', argument " "2"" of type '" "FullPhysics::HdfFile const &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp2);
+        arg2 = const_cast< FullPhysics::HdfFile * >(tempshared2.get());
+      } else {
+        arg2 = const_cast< FullPhysics::HdfFile * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp2)->get());
+      }
+    }
+  }
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_MerraAerosol" "', argument " "3"" of type '" "FullPhysics::DoubleWithUnit""'"); 
+    }
+    if (!argp3) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MerraAerosol" "', argument " "3"" of type '" "FullPhysics::DoubleWithUnit""'");
+    } else {
+      arg3 = *(reinterpret_cast< boost::shared_ptr<  FullPhysics::DoubleWithUnit > * >(argp3)->get());
+      if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< boost::shared_ptr<  FullPhysics::DoubleWithUnit > * >(argp3);
+    }
+  }
+  {
+    int newmem = 0;
+    res4 = SWIG_ConvertPtrAndOwn(swig_obj[3], &argp4, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t,  0 , &newmem);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_MerraAerosol" "', argument " "4"" of type '" "FullPhysics::DoubleWithUnit""'"); 
+    }
+    if (!argp4) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MerraAerosol" "', argument " "4"" of type '" "FullPhysics::DoubleWithUnit""'");
+    } else {
+      arg4 = *(reinterpret_cast< boost::shared_ptr<  FullPhysics::DoubleWithUnit > * >(argp4)->get());
+      if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< boost::shared_ptr<  FullPhysics::DoubleWithUnit > * >(argp4);
+    }
+  }
+  {
+    int newmem = 0;
+    res5 = SWIG_ConvertPtrAndOwn(swig_obj[4], &argp5, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 , &newmem);
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "new_MerraAerosol" "', argument " "5"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp5) tempshared5 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp5);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp5);
+      arg5 = &tempshared5;
+    } else {
+      arg5 = (argp5) ? reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp5) : &tempshared5;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg5->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared5.reset(arg5->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg5 = &temp2shared5;
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[5], (void**)(&arg6), SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy6.obj = to_numpy<double>(swig_obj[5]);
+      if(!numpy6.obj)
+      return NULL;
+      a6.reference(to_blitz_array<double, 2>(numpy6));
+      arg6 = &a6;
+    }
+  }
+  ecode7 = SWIG_AsVal_double(swig_obj[6], &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_MerraAerosol" "', argument " "7"" of type '" "double""'");
+  } 
+  arg7 = static_cast< double >(val7);
+  ecode8 = SWIG_AsVal_double(swig_obj[7], &val8);
+  if (!SWIG_IsOK(ecode8)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_MerraAerosol" "', argument " "8"" of type '" "double""'");
+  } 
+  arg8 = static_cast< double >(val8);
+  ecode9 = SWIG_AsVal_int(swig_obj[8], &val9);
+  if (!SWIG_IsOK(ecode9)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "new_MerraAerosol" "', argument " "9"" of type '" "int""'");
+  } 
+  arg9 = static_cast< int >(val9);
+  ecode10 = SWIG_AsVal_int(swig_obj[9], &val10);
+  if (!SWIG_IsOK(ecode10)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "new_MerraAerosol" "', argument " "10"" of type '" "int""'");
+  } 
+  arg10 = static_cast< int >(val10);
+  ecode11 = SWIG_AsVal_bool(swig_obj[10], &val11);
+  if (!SWIG_IsOK(ecode11)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "new_MerraAerosol" "', argument " "11"" of type '" "bool""'");
+  } 
+  arg11 = static_cast< bool >(val11);
+  ecode12 = SWIG_AsVal_double(swig_obj[11], &val12);
+  if (!SWIG_IsOK(ecode12)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode12), "in method '" "new_MerraAerosol" "', argument " "12"" of type '" "double""'");
+  } 
+  arg12 = static_cast< double >(val12);
+  ecode13 = SWIG_AsVal_double(swig_obj[12], &val13);
+  if (!SWIG_IsOK(ecode13)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode13), "in method '" "new_MerraAerosol" "', argument " "13"" of type '" "double""'");
+  } 
+  arg13 = static_cast< double >(val13);
+  {
+    try {
+      result = (FullPhysics::MerraAerosol *)new FullPhysics::MerraAerosol((FullPhysics::HdfFile const &)*arg1,(FullPhysics::HdfFile const &)*arg2,arg3,arg4,(boost::shared_ptr< FullPhysics::Pressure > const &)*arg5,(blitz::Array< double,2 > const &)*arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::MerraAerosol > *smartresult = result ? new boost::shared_ptr<  FullPhysics::MerraAerosol >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__MerraAerosol_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::HdfFile *arg1 = 0 ;
+  FullPhysics::HdfFile *arg2 = 0 ;
+  FullPhysics::DoubleWithUnit arg3 ;
+  FullPhysics::DoubleWithUnit arg4 ;
+  boost::shared_ptr< FullPhysics::Pressure > *arg5 = 0 ;
+  blitz::Array< double,2 > *arg6 = 0 ;
+  double arg7 ;
+  double arg8 ;
+  int arg9 ;
+  int arg10 ;
+  bool arg11 ;
   double arg12 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -5129,7 +5362,7 @@ SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   int ecode9 = 0 ;
   int val10 ;
   int ecode10 = 0 ;
-  double val11 ;
+  bool val11 ;
   int ecode11 = 0 ;
   double val12 ;
   int ecode12 = 0 ;
@@ -5268,11 +5501,11 @@ SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "new_MerraAerosol" "', argument " "10"" of type '" "int""'");
   } 
   arg10 = static_cast< int >(val10);
-  ecode11 = SWIG_AsVal_double(swig_obj[10], &val11);
+  ecode11 = SWIG_AsVal_bool(swig_obj[10], &val11);
   if (!SWIG_IsOK(ecode11)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "new_MerraAerosol" "', argument " "11"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "new_MerraAerosol" "', argument " "11"" of type '" "bool""'");
   } 
-  arg11 = static_cast< double >(val11);
+  arg11 = static_cast< bool >(val11);
   ecode12 = SWIG_AsVal_double(swig_obj[11], &val12);
   if (!SWIG_IsOK(ecode12)) {
     SWIG_exception_fail(SWIG_ArgError(ecode12), "in method '" "new_MerraAerosol" "', argument " "12"" of type '" "double""'");
@@ -5297,7 +5530,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::HdfFile *arg1 = 0 ;
   FullPhysics::HdfFile *arg2 = 0 ;
@@ -5309,7 +5542,7 @@ SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   double arg8 ;
   int arg9 ;
   int arg10 ;
-  double arg11 ;
+  bool arg11 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   boost::shared_ptr< FullPhysics::HdfFile const > tempshared1 ;
@@ -5334,7 +5567,7 @@ SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   int ecode9 = 0 ;
   int val10 ;
   int ecode10 = 0 ;
-  double val11 ;
+  bool val11 ;
   int ecode11 = 0 ;
   FullPhysics::MerraAerosol *result = 0 ;
   
@@ -5471,11 +5704,11 @@ SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "new_MerraAerosol" "', argument " "10"" of type '" "int""'");
   } 
   arg10 = static_cast< int >(val10);
-  ecode11 = SWIG_AsVal_double(swig_obj[10], &val11);
+  ecode11 = SWIG_AsVal_bool(swig_obj[10], &val11);
   if (!SWIG_IsOK(ecode11)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "new_MerraAerosol" "', argument " "11"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "new_MerraAerosol" "', argument " "11"" of type '" "bool""'");
   } 
-  arg11 = static_cast< double >(val11);
+  arg11 = static_cast< bool >(val11);
   {
     try {
       result = (FullPhysics::MerraAerosol *)new FullPhysics::MerraAerosol((FullPhysics::HdfFile const &)*arg1,(FullPhysics::HdfFile const &)*arg2,arg3,arg4,(boost::shared_ptr< FullPhysics::Pressure > const &)*arg5,(blitz::Array< double,2 > const &)*arg6,arg7,arg8,arg9,arg10,arg11);
@@ -5495,7 +5728,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::HdfFile *arg1 = 0 ;
   FullPhysics::HdfFile *arg2 = 0 ;
@@ -5685,7 +5918,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_4(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::HdfFile *arg1 = 0 ;
   FullPhysics::HdfFile *arg2 = 0 ;
@@ -5867,7 +6100,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_4(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_5(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::HdfFile *arg1 = 0 ;
   FullPhysics::HdfFile *arg2 = 0 ;
@@ -6041,7 +6274,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_5(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_6(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::HdfFile *arg1 = 0 ;
   FullPhysics::HdfFile *arg2 = 0 ;
@@ -6207,7 +6440,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_6(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_MerraAerosol__SWIG_7(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::HdfFile *arg1 = 0 ;
   FullPhysics::HdfFile *arg2 = 0 ;
@@ -6367,39 +6600,43 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_MerraAerosol(PyObject *self, PyObject *args) {
   int argc;
-  PyObject *argv[13] = {
+  PyObject *argv[14] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"new_MerraAerosol",0,12,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_MerraAerosol",0,13,argv))) SWIG_fail;
   --argc;
   if (argc == 6) {
-    return _wrap_new_MerraAerosol__SWIG_6(self, argc, argv);
+    return _wrap_new_MerraAerosol__SWIG_7(self, argc, argv);
   }
   if (argc == 7) {
-    return _wrap_new_MerraAerosol__SWIG_5(self, argc, argv);
+    return _wrap_new_MerraAerosol__SWIG_6(self, argc, argv);
   }
   if (argc == 8) {
-    return _wrap_new_MerraAerosol__SWIG_4(self, argc, argv);
+    return _wrap_new_MerraAerosol__SWIG_5(self, argc, argv);
   }
   if (argc == 9) {
-    return _wrap_new_MerraAerosol__SWIG_3(self, argc, argv);
+    return _wrap_new_MerraAerosol__SWIG_4(self, argc, argv);
   }
   if (argc == 10) {
-    return _wrap_new_MerraAerosol__SWIG_2(self, argc, argv);
+    return _wrap_new_MerraAerosol__SWIG_3(self, argc, argv);
   }
   if (argc == 11) {
-    return _wrap_new_MerraAerosol__SWIG_1(self, argc, argv);
+    return _wrap_new_MerraAerosol__SWIG_2(self, argc, argv);
   }
   if (argc == 12) {
+    return _wrap_new_MerraAerosol__SWIG_1(self, argc, argv);
+  }
+  if (argc == 13) {
     return _wrap_new_MerraAerosol__SWIG_0(self, argc, argv);
   }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_MerraAerosol'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::MerraAerosol::MerraAerosol(FullPhysics::HdfFile const &,FullPhysics::HdfFile const &,FullPhysics::DoubleWithUnit,FullPhysics::DoubleWithUnit,boost::shared_ptr< FullPhysics::Pressure > const &,blitz::Array< double,2 > const &,double,double,int,int,double,double)\n"
-    "    FullPhysics::MerraAerosol::MerraAerosol(FullPhysics::HdfFile const &,FullPhysics::HdfFile const &,FullPhysics::DoubleWithUnit,FullPhysics::DoubleWithUnit,boost::shared_ptr< FullPhysics::Pressure > const &,blitz::Array< double,2 > const &,double,double,int,int,double)\n"
+    "    FullPhysics::MerraAerosol::MerraAerosol(FullPhysics::HdfFile const &,FullPhysics::HdfFile const &,FullPhysics::DoubleWithUnit,FullPhysics::DoubleWithUnit,boost::shared_ptr< FullPhysics::Pressure > const &,blitz::Array< double,2 > const &,double,double,int,int,bool,double,double)\n"
+    "    FullPhysics::MerraAerosol::MerraAerosol(FullPhysics::HdfFile const &,FullPhysics::HdfFile const &,FullPhysics::DoubleWithUnit,FullPhysics::DoubleWithUnit,boost::shared_ptr< FullPhysics::Pressure > const &,blitz::Array< double,2 > const &,double,double,int,int,bool,double)\n"
+    "    FullPhysics::MerraAerosol::MerraAerosol(FullPhysics::HdfFile const &,FullPhysics::HdfFile const &,FullPhysics::DoubleWithUnit,FullPhysics::DoubleWithUnit,boost::shared_ptr< FullPhysics::Pressure > const &,blitz::Array< double,2 > const &,double,double,int,int,bool)\n"
     "    FullPhysics::MerraAerosol::MerraAerosol(FullPhysics::HdfFile const &,FullPhysics::HdfFile const &,FullPhysics::DoubleWithUnit,FullPhysics::DoubleWithUnit,boost::shared_ptr< FullPhysics::Pressure > const &,blitz::Array< double,2 > const &,double,double,int,int)\n"
     "    FullPhysics::MerraAerosol::MerraAerosol(FullPhysics::HdfFile const &,FullPhysics::HdfFile const &,FullPhysics::DoubleWithUnit,FullPhysics::DoubleWithUnit,boost::shared_ptr< FullPhysics::Pressure > const &,blitz::Array< double,2 > const &,double,double,int)\n"
     "    FullPhysics::MerraAerosol::MerraAerosol(FullPhysics::HdfFile const &,FullPhysics::HdfFile const &,FullPhysics::DoubleWithUnit,FullPhysics::DoubleWithUnit,boost::shared_ptr< FullPhysics::Pressure > const &,blitz::Array< double,2 > const &,double,double)\n"
@@ -6604,8 +6841,8 @@ static PyMethodDef SwigMethods[] = {
 		"DoubleWithUnit Latitude, DoubleWithUnit Longitude, const\n"
 		"boost::shared_ptr< Pressure > &Press, const blitz::Array< double, 2 >\n"
 		"&Aerosol_cov, double Max_aod=0.2, double Exp_aod=0.8, int Min_types=2,\n"
-		"int Max_types=4, double Max_residual=0.005, double\n"
-		"Reference_wn=1e4/0.755)\n"
+		"int Max_types=4, bool Linear_aod=false, double Max_residual=0.005,\n"
+		"double Reference_wn=1e4/0.755)\n"
 		"Constructor.\n"
 		"\n"
 		"Parameters:\n"
@@ -6630,6 +6867,8 @@ static PyMethodDef SwigMethods[] = {
 		"Min_types:  Minimum number of types to be selected\n"
 		"\n"
 		"Max_types:  Maximum number of types to be selected\n"
+		"\n"
+		"Linear_aod:  If true, then use linear aod rather than logarithmic aod.\n"
 		"\n"
 		"Max_residual:  Maximum resdidual in total AOD (either > threshold of\n"
 		"fraction or < max residual will suffice\n"

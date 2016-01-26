@@ -2550,6 +2550,12 @@ function ConfigCommon.merra_aerosol_creator:create_parent_object(sub_object)
    mq:set(1, self.exp_aod)
    mq:set(2, self.min_types)
    mq:set(3, self.max_types)
+   if(self.linear_aod) then
+      mq:set(4, 1)
+   else
+      mq:set(4, 0)
+   end
+   mq:set(5, self.max_residual)
 
    self.merra_aerosol = MerraAerosol.create(
      self.config:merra_file(), self.config:h_aerosol(),
