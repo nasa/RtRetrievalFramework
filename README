@@ -37,7 +37,8 @@ Documentation
 -------------
 
 Documentation on setup and compiling of the software can be found in the
-doc/users_guide.pdf PDF file. 
+doc/users_guide.pdf PDF file, or online in HTML form at:
+http://nasa.github.io/RtRetrievalFrameworkDoc/ 
 
 For information on the algorithms used by the software the OCO2 L2 Algorithm
 Theoretical Basis Document can be found at the Goddard DAAC: 
