@@ -4841,6 +4841,10 @@ namespace swig
 #ifndef DO_IMPORT_ARRAY
 #define NO_IMPORT_ARRAY
 #endif
+// See https://github.com/numpy/numpy/issues/3008 for explanation of
+// this.
+// We'll have to update this as the numpy API increases
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include <numpy/arrayobject.h>
 #include "linear_algebra.h"
 #include "fp_exception.h"
@@ -4908,8 +4912,9 @@ template<> inline PyObject* to_numpy<int>(PyObject* obj)
 //--------------------------------------------------------------
 
 template<class T, int D> inline blitz::Array<T, D> 
-  to_blitz_array(PyObject* numpy)
+  to_blitz_array(PyObject* numpy_obj)
 {
+  PyArrayObject* numpy = (PyArrayObject*) numpy_obj;
   if(PyArray_NDIM(numpy) != D) {
     std::cerr << PyArray_NDIM(numpy) << "\n"
 	      << D << "\n";
@@ -5269,9 +5274,11 @@ SWIGINTERN PyObject *_wrap_RadiativeTransferSingleWn_stokes_single_wn(PyObject *
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, (&result)->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -5417,14 +5424,29 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"RadiativeTransferSingleWn_stokes_single_wn", _wrap_RadiativeTransferSingleWn_stokes_single_wn, METH_VARARGS, (char *)"\n"
 		"\n"
-		"virtual blitz::Array<double, 1> FullPhysics::RadiativeTransferSingleWn::stokes_single_wn(double Wn, int Spec_index, const ArrayAd< double, 2 > &Iv=dummy)\n"
-		"const =0\n"
+		"virtual blitz::Array<double, 1> FullPhysics::RadiativeTransferSingleWn::stokes_single_wn(double Wn, int Spec_index, const ArrayAd< double, 2 > &Iv=ArrayAd<\n"
+		"double, 2 >()) const =0\n"
+		"Calculate stokes vector for the given wavenumber.\n"
 		"\n"
+		"You can optionally supply a set of intermediate atmosphere variables\n"
+		"(e.g., taug, taur, taua_i) to use instead of with atmosphere_ptr() to\n"
+		"calculate this.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"Wn:  Wavenumber to calculate for. This should be in cm^-1\n"
+		"\n"
+		"Spec_index:  The Spectral index\n"
+		"\n"
+		"Iv:  Optional intermediate variables to use, rather than calculating.\n"
+		"\n"
+		"The set of stokes coefficients. This is number_stokes() in size. \n"
 		""},
 	 { (char *)"RadiativeTransferSingleWn_stokes_and_jacobian_single_wn", _wrap_RadiativeTransferSingleWn_stokes_and_jacobian_single_wn, METH_VARARGS, (char *)"\n"
 		"\n"
-		"virtual ArrayAd<double, 1> FullPhysics::RadiativeTransferSingleWn::stokes_and_jacobian_single_wn(double Wn, int Spec_index, const ArrayAd< double, 2 > &Iv=dummy)\n"
-		"const =0\n"
+		"virtual ArrayAd<double, 1> FullPhysics::RadiativeTransferSingleWn::stokes_and_jacobian_single_wn(double Wn, int Spec_index, const ArrayAd< double, 2 > &Iv=ArrayAd<\n"
+		"double, 2 >()) const =0\n"
 		"Calculate stokes vector and Jacobian for the given wavenumber.\n"
 		"\n"
 		"You can optionally supply a set of intermediate atmosphere variables\n"

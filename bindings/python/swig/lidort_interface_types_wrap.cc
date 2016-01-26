@@ -4809,6 +4809,10 @@ namespace swig
 #ifndef DO_IMPORT_ARRAY
 #define NO_IMPORT_ARRAY
 #endif
+// See https://github.com/numpy/numpy/issues/3008 for explanation of
+// this.
+// We'll have to update this as the numpy API increases
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include <numpy/arrayobject.h>
 #include "linear_algebra.h"
 #include "fp_exception.h"
@@ -4876,8 +4880,9 @@ template<> inline PyObject* to_numpy<int>(PyObject* obj)
 //--------------------------------------------------------------
 
 template<class T, int D> inline blitz::Array<T, D> 
-  to_blitz_array(PyObject* numpy)
+  to_blitz_array(PyObject* numpy_obj)
 {
+  PyArrayObject* numpy = (PyArrayObject*) numpy_obj;
   if(PyArray_NDIM(numpy) != D) {
     std::cerr << PyArray_NDIM(numpy) << "\n"
 	      << D << "\n";
@@ -8642,9 +8647,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Linsup_Inputs_bs_do_kernel_factor_wfs__SWIG_0(Py
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<bool>(), 
       stride, (&result)->data(), 0, 0, 0);
     blitz::Array<bool, 1>* t = new blitz::Array<bool, 1>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_bool_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_bool_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -8751,9 +8758,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Linsup_Inputs_bs_do_kernel_params_wfs__SWIG_0(Py
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<bool>(), 
       stride, (&result)->data(), 0, 0, 0);
     blitz::Array<bool, 2>* t = new blitz::Array<bool, 2>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_bool_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_bool_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -8860,9 +8869,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Linsup_Inputs_bs_do_kparams_derivs__SWIG_0(PyObj
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<bool>(), 
       stride, (&result)->data(), 0, 0, 0);
     blitz::Array<bool, 1>* t = new blitz::Array<bool, 1>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_bool_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_bool_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -9400,9 +9411,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Linsup_Outputs_bs_ls_exactdb_brdfunc__SWIG_0(PyO
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -9509,9 +9522,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Linsup_Outputs_bs_ls_brdf_f_0__SWIG_0(PyObject *
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -9618,9 +9633,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Linsup_Outputs_bs_ls_brdf_f__SWIG_0(PyObject *SW
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -9727,9 +9744,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Linsup_Outputs_bs_ls_user_brdf_f_0__SWIG_0(PyObj
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -9836,9 +9855,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Linsup_Outputs_bs_ls_user_brdf_f__SWIG_0(PyObjec
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -9945,9 +9966,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Linsup_Outputs_bs_ls_emissivity__SWIG_0(PyObject
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -10054,9 +10077,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Linsup_Outputs_bs_ls_user_emissivity__SWIG_0(PyO
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -10776,9 +10801,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Inputs_bs_beam_szas__SWIG_0(PyObject *SWIGUN
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -10976,9 +11003,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Inputs_bs_user_relazms__SWIG_0(PyObject *SWI
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -11176,9 +11205,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Inputs_bs_user_angles_input__SWIG_0(PyObject
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -11407,9 +11438,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Inputs_bs_which_brdf__SWIG_0(PyObject *SWIGU
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<int>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<int, 1>* t = new blitz::Array<int, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_int_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_int_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -11516,9 +11549,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Inputs_bs_n_brdf_parameters__SWIG_0(PyObject
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<int>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<int, 1>* t = new blitz::Array<int, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_int_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_int_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -11625,9 +11660,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Inputs_bs_brdf_parameters__SWIG_0(PyObject *
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 2>* t = new blitz::Array<double, 2>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -11734,9 +11771,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Inputs_bs_lambertian_kernel_flag__SWIG_0(PyO
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<bool>(), 
       stride, (&result)->data(), 0, 0, 0);
     blitz::Array<bool, 1>* t = new blitz::Array<bool, 1>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_bool_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_bool_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -11843,9 +11882,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Inputs_bs_brdf_factors__SWIG_0(PyObject *SWI
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -12838,9 +12879,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Outputs_bs_exactdb_brdfunc__SWIG_0(PyObject 
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -12947,9 +12990,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Outputs_bs_brdf_f_0__SWIG_0(PyObject *SWIGUN
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -13056,9 +13101,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Outputs_bs_brdf_f__SWIG_0(PyObject *SWIGUNUS
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -13165,9 +13212,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Outputs_bs_user_brdf_f_0__SWIG_0(PyObject *S
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -13274,9 +13323,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Outputs_bs_user_brdf_f__SWIG_0(PyObject *SWI
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -13383,9 +13434,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Outputs_bs_emissivity__SWIG_0(PyObject *SWIG
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 2>* t = new blitz::Array<double, 2>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -13492,9 +13545,11 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Outputs_bs_user_emissivity__SWIG_0(PyObject 
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 2>* t = new blitz::Array<double, 2>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -14525,9 +14580,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Lincontrol_ts_layer_vary_flag__SWIG_0(Py
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<bool>(), 
       stride, (&result)->data(), 0, 0, 0);
     blitz::Array<bool, 1>* t = new blitz::Array<bool, 1>(result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_bool_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_bool_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -14634,9 +14691,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Lincontrol_ts_layer_vary_number__SWIG_0(
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<int>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<int, 1>* t = new blitz::Array<int, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_int_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_int_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -15174,9 +15233,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Linoptical_ts_l_deltau_vert_input__SWIG_
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -15283,9 +15344,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Linoptical_ts_l_omega_total_input__SWIG_
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -15392,9 +15455,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Linoptical_ts_l_phasmoms_total_input__SW
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -17736,9 +17801,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Brdf_ts_ls_exactdb_brdfunc__SWIG_0(PyOb
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -17845,9 +17912,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Brdf_ts_ls_brdf_f_0__SWIG_0(PyObject *S
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -17954,9 +18023,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Brdf_ts_ls_brdf_f__SWIG_0(PyObject *SWI
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -18063,9 +18134,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Brdf_ts_ls_user_brdf_f_0__SWIG_0(PyObje
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -18172,9 +18245,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Brdf_ts_ls_user_brdf_f__SWIG_0(PyObject
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -18281,9 +18356,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Brdf_ts_ls_emissivity__SWIG_0(PyObject 
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -18390,9 +18467,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Brdf_ts_ls_user_emissivity__SWIG_0(PyOb
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -18657,9 +18736,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Ss_Atmos_ts_columnwf_ss__SWIG_0(PyObjec
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -18766,9 +18847,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Ss_Atmos_ts_columnwf_db__SWIG_0(PyObjec
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -18967,9 +19050,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Ss_Atmos_ts_profilewf_db__SWIG_0(PyObje
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -19234,9 +19319,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Ss_Surf_ts_surfacewf_db__SWIG_0(PyObjec
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -19843,9 +19930,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Sleave_ts_lssl_slterm_isotropic__SWIG_0
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 2>* t = new blitz::Array<double, 2>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -19952,9 +20041,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Sleave_ts_lssl_slterm_userangles__SWIG_
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -20061,9 +20152,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Sleave_ts_lssl_slterm_f_0__SWIG_0(PyObj
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -20170,9 +20263,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Linsup_Sleave_ts_lssl_user_slterm_f_0__SWIG_0(
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -20871,9 +20966,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Main_Outputs_ts_intensity__SWIG_0(PyObject *SW
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -20980,9 +21077,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Main_Outputs_ts_mean_intensity__SWIG_0(PyObjec
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -21089,9 +21188,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Main_Outputs_ts_flux_integral__SWIG_0(PyObject
     resultobj = PyArray_New(&PyArray_Type, 4, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 4>* t = new blitz::Array<double, 4>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_4_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_4_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -21198,9 +21299,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Main_Outputs_ts_dnflux_direct__SWIG_0(PyObject
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -21307,9 +21410,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Main_Outputs_ts_dnmean_direct__SWIG_0(PyObject
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -21416,9 +21521,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Main_Outputs_ts_fourier_saved__SWIG_0(PyObject
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<int>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<int, 2>* t = new blitz::Array<int, 2>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_int_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_int_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -23135,9 +23242,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Brdf_ts_exactdb_brdfunc__SWIG_0(PyObject *
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -23244,9 +23353,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Brdf_ts_brdf_f_0__SWIG_0(PyObject *SWIGUNU
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -23353,9 +23464,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Brdf_ts_brdf_f__SWIG_0(PyObject *SWIGUNUSE
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -23462,9 +23575,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Brdf_ts_user_brdf_f_0__SWIG_0(PyObject *SW
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -23571,9 +23686,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Brdf_ts_user_brdf_f__SWIG_0(PyObject *SWIG
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -23680,9 +23797,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Brdf_ts_emissivity__SWIG_0(PyObject *SWIGU
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 2>* t = new blitz::Array<double, 2>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -23789,9 +23908,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Brdf_ts_user_emissivity__SWIG_0(PyObject *
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 2>* t = new blitz::Array<double, 2>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -24056,9 +24177,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Sleave_ts_slterm_isotropic__SWIG_0(PyObjec
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -24165,9 +24288,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Sleave_ts_slterm_userangles__SWIG_0(PyObje
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -24274,9 +24399,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Sleave_ts_slterm_f_0__SWIG_0(PyObject *SWI
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -24383,9 +24510,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Sleave_ts_user_slterm_f_0__SWIG_0(PyObject
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -24650,9 +24779,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Ss_ts_intensity_ss__SWIG_0(PyObject *SWIGU
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -24759,9 +24890,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Sup_Ss_ts_intensity_db__SWIG_0(PyObject *SWIGU
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 2>* t = new blitz::Array<double, 2>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -27912,9 +28045,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Chapman_ts_height_grid__SWIG_0(PyObject 
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -28021,9 +28156,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Chapman_ts_pressure_grid__SWIG_0(PyObjec
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -28130,9 +28267,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Chapman_ts_temperature_grid__SWIG_0(PyOb
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -28239,9 +28378,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Chapman_ts_finegrid__SWIG_0(PyObject *SW
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<int>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<int, 1>* t = new blitz::Array<int, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_int_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_int_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -28597,9 +28738,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Optical_ts_deltau_vert_input__SWIG_0(PyO
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 2>* t = new blitz::Array<double, 2>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -28706,9 +28849,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Optical_ts_phasmoms_total_input__SWIG_0(
     resultobj = PyArray_New(&PyArray_Type, 3, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 3>* t = new blitz::Array<double, 3>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_3_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_3_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -28815,9 +28960,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Optical_ts_thermal_bb_input__SWIG_0(PyOb
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 2>* t = new blitz::Array<double, 2>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -28924,9 +29071,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Optical_ts_lambertian_albedo__SWIG_0(PyO
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -29033,9 +29182,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Fixed_Optical_ts_surface_bb_input__SWIG_0(PyOb
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -32055,9 +32206,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Modified_Sunrays_ts_beam_szas__SWIG_0(PyObject
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -32413,9 +32566,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Modified_Uservalues_ts_user_relazms__SWIG_0(Py
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -32522,9 +32677,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Modified_Uservalues_ts_user_angles_input__SWIG
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -32631,9 +32788,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Modified_Uservalues_ts_user_levels__SWIG_0(PyO
     resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:
@@ -33238,9 +33397,11 @@ SWIGINTERN PyObject *_wrap_Lidort_Modified_Optical_ts_omega_total_input__SWIG_0(
     resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
       stride, result->data(), 0, 0, 0);
     blitz::Array<double, 2>* t = new blitz::Array<double, 2>(*result);
-    PyArray_BASE(resultobj) = SWIG_NewPointerObj(SWIG_as_voidptr(t), 
-      SWIGTYPE_p_blitz__ArrayT_double_2_t, 
-      SWIG_POINTER_NEW | 0 );
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
   }
   return resultobj;
 fail:

@@ -5,7 +5,7 @@ numpy
 scipy
 matplotlib
 h5py
-nosetests
+nose
 pyproj
 pyephem
 blessings
