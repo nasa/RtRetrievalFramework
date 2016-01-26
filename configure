@@ -23891,7 +23891,11 @@ $as_echo_n "checking for HDF5 library... " >&6; }
         succeeded=no
         if test "$ac_hdf5_path" != ""; then
             HDF5HOME=$ac_hdf5_path
-            HDF5_LDFLAGS="$ac_hdf5_path/lib/libhdf5_cpp.la $ac_hdf5_path/lib/libhdf5.la $ac_hdf5_path/lib/libhdf5_hl.la $ac_hdf5_path/lib/libhdf5_hl_cpp.la -L$ac_hdf5_path/lib -lz"
+	    if test -e "$ac_hdf5_path/lib/libhdf5_cpp.la" && test -r "$ac_hdf5_path/lib/libhdf5_cpp.la"; then
+	         HDF5_LDFLAGS="$ac_hdf5_path/lib/libhdf5_cpp.la $ac_hdf5_path/lib/libhdf5.la $ac_hdf5_path/lib/libhdf5_hl.la $ac_hdf5_path/lib/libhdf5_hl_cpp.la -L$ac_hdf5_path/lib -lz"
+	    else
+	        HDF5_LDFLAGS="-L$ac_hdf5_path/lib/lib -lhdf5_cpp -lhdf5 -lhdf5_hl -lhdf5_hl_cpp -lz"
+            fi
             HDF5_CPPFLAGS="-I$ac_hdf5_path/include"
             succeeded=yes
         else
