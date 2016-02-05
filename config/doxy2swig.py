@@ -14,6 +14,8 @@ input.xml is your doxygen generated XML file and output.i is where the
 output will be written (the file will be clobbered).
 
 """
+from __future__ import absolute_import
+from __future__ import print_function
 
 # This code is implemented using Mark Pilgrim's code as a guideline:
 #   http://www.faqs.org/docs/diveintopython/kgp_divein.html
@@ -128,7 +130,7 @@ class Doxy2SWIG:
 
     def add_text(self, value):
         """Adds text corresponding to `value` into `self.pieces`."""
-        if type(value) in (types.ListType, types.TupleType):
+        if type(value) in (list, tuple):
             self.pieces.extend(value)
         else:
             self.pieces.append(value)
@@ -188,17 +190,17 @@ class Doxy2SWIG:
         kind = node.attributes['kind'].value
         if kind in ('class', 'struct'):
             prot = node.attributes['prot'].value
-            if prot <> 'public':
+            if prot != 'public':
                 return
             names = ('compoundname', 'briefdescription',
                      'detaileddescription', 'includes')
             first = self.get_specific_nodes(node, names)
             for n in names:
-                if first.has_key(n):
+                if n in first:
                     self.parse(first[n])
             self.add_text(['";','\n'])
             for n in node.childNodes:
-                if n not in first.values():
+                if n not in list(first.values()):
                     self.parse(n)
         elif kind in ('file', 'namespace'):
             nodes = node.getElementsByTagName('sectiondef')
@@ -265,7 +267,7 @@ class Doxy2SWIG:
                 self.add_text(' %s::%s "\n%s'%(cname, name, defn))
 
             for n in node.childNodes:
-                if n not in first.values():
+                if n not in list(first.values()):
                     self.parse(n)
             self.add_text(['";', '\n'])
         
@@ -309,7 +311,7 @@ class Doxy2SWIG:
             fname = refid + '.xml'
             if not os.path.exists(fname):
                 fname = os.path.join(self.my_dir,  fname)
-            # print "parsing file: %s"%fname
+            print("parsing file: %s"%fname)
             p = Doxy2SWIG(fname)
             p.generate()
             self.pieces.extend(self.clean_pieces(p.pieces))
@@ -368,6 +370,6 @@ def main(input, output):
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print __doc__
+        print(__doc__)
         sys.exit(1)
     main(sys.argv[1], sys.argv[2])
