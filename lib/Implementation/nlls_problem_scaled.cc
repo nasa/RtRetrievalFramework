@@ -10,10 +10,23 @@ using namespace boost;
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
+
+boost::shared_ptr<CostFunc> create_nlls_problem_scaled
+(const Array<double, 1>& S,
+ const boost::shared_ptr<CostFunc>& Cf)
+{
+  boost::shared_ptr<NLLSProblem> p = boost::dynamic_pointer_cast<NLLSProblem>(Cf);
+  return boost::shared_ptr<CostFunc>(new NLLSProblemScaled(S, p));
+}
+			   
 REGISTER_LUA_DERIVED_CLASS(NLLSProblemScaled, CostFunc)
 .def(luabind::constructor< const Array<double, 1>&, const shared_ptr<NLLSProblem>& >())
 .def("parameters", (void( NLLSProblemScaled::*)(const blitz::Array<double, 1>&))&NLLSProblemScaled::parameters)
 .def("scale_parameters", &NLLSProblemScaled::scale_parameters)
+.scope
+[
+ luabind::def("create", &create_nlls_problem_scaled)
+]
 REGISTER_LUA_END()
 #endif
 
