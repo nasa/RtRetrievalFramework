@@ -187,6 +187,26 @@ class MaxAPosteriori(full_physics_swig.model_measure.ModelMeasure):
         return self._v_a_priori_cov()
 
 
+    def _v_param_a_priori_uncertainty(self):
+        """
+
+        Array< double, 1 > MaxAPosteriori::param_a_priori_uncertainty() const
+        Returns the square root of the diagonal of the a-priori covariance
+        matrix.
+
+        A-priori covariance matrix is returned by a_priori_cov() method, and
+        this method returns the square root of the diagonal of the matrix.
+
+        The square root of the diagonal of the a-priori covariance matrix 
+        """
+        return _max_a_posteriori.MaxAPosteriori__v_param_a_priori_uncertainty(self)
+
+
+    @property
+    def param_a_priori_uncertainty(self):
+        return self._v_param_a_priori_uncertainty()
+
+
     def _v_parameter_a_priori_diff(self):
         """
 
@@ -425,6 +445,7 @@ class MaxAPosteriori(full_physics_swig.model_measure.ModelMeasure):
 
 MaxAPosteriori._v_a_priori_params = new_instancemethod(_max_a_posteriori.MaxAPosteriori__v_a_priori_params, None, MaxAPosteriori)
 MaxAPosteriori._v_a_priori_cov = new_instancemethod(_max_a_posteriori.MaxAPosteriori__v_a_priori_cov, None, MaxAPosteriori)
+MaxAPosteriori._v_param_a_priori_uncertainty = new_instancemethod(_max_a_posteriori.MaxAPosteriori__v_param_a_priori_uncertainty, None, MaxAPosteriori)
 MaxAPosteriori._v_parameter_a_priori_diff = new_instancemethod(_max_a_posteriori.MaxAPosteriori__v_parameter_a_priori_diff, None, MaxAPosteriori)
 MaxAPosteriori._v_cov_weighted_parameter_a_priori_diff = new_instancemethod(_max_a_posteriori.MaxAPosteriori__v_cov_weighted_parameter_a_priori_diff, None, MaxAPosteriori)
 MaxAPosteriori._v_a_priori_cov_chol_inv = new_instancemethod(_max_a_posteriori.MaxAPosteriori__v_a_priori_cov_chol_inv, None, MaxAPosteriori)
