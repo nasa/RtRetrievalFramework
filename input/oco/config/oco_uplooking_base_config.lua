@@ -44,9 +44,8 @@ OcoUplookingBaseConfig = OcoConfig:new {
 ------------------------------------------------------------
 
    solver = { max_iteration=10, max_divergence=2,
-	      max_chisq=1.4, threshold=0.1, gamma_initial=5.0,
-	      create = ConfigCommon.connor_solver,
-	   },
+              max_chisq=1.4, threshold=0.1, gamma_initial=5.0,
+              create = ConfigCommon.connor_solver, },
 
 ------------------------------------------------------------
 -- Iterative solver
@@ -64,12 +63,12 @@ OcoUplookingBaseConfig = OcoConfig:new {
    -- solver = 
    not_used_solver = 
       { max_cost_function_calls=20,
-	dx_tol_abs=1e-5, dx_tol_rel=1e-5, 
-	g_tol_abs=1e-5,
-	minimizer_size_tol=1e-5,
-	opt_problem = ConfigCommon.nlls_max_a_posteriori,
-	iter_solver = ConfigCommon.nlls_solver_gsl_lmsder,
-	create = ConfigCommon.iterative_solver,
+        dx_tol_abs=1e-5, dx_tol_rel=1e-5, 
+        g_tol_abs=1e-5,
+        minimizer_size_tol=1e-5,
+        opt_problem = ConfigCommon.nlls_max_a_posteriori,
+        iter_solver = ConfigCommon.nlls_solver_gsl_lmsder,
+        create = ConfigCommon.iterative_solver,
      },
 
 ------------------------------------------------------------
@@ -120,22 +119,25 @@ OcoUplookingBaseConfig = OcoConfig:new {
       spec_win = {
          creator = ConfigCommon.spectral_window_hdf,
       },
-      l1b = {
-         creator = OcoConfig.level1b_hdf,
-         noise = {
-            creator = OcoConfig.oco_noise,
-            max_ms = { 7.00e20, 2.45e20, 1.25e20 },
-         },
+      input = {
+          creator = ConfigCommon.l1b_input,
+          l1b = {
+             creator = OcoConfig.level1b_hdf,
+             noise = {
+                creator = OcoConfig.oco_noise,
+                max_ms = { 7.00e20, 2.45e20, 1.25e20 },
+             },
+          },
       },
       stokes_coefficient = {
-	 creator = ConfigCommon.stokes_coefficient_constant,
-	 value = ConfigCommon.stokes_coefficient_l1b,
+         creator = ConfigCommon.stokes_coefficient_constant,
+         value = ConfigCommon.stokes_coefficient_l1b,
       },
       instrument = {
          creator = ConfigCommon.ils_instrument,
-         ils_half_width = { DoubleWithUnit(1.2e-3, "um"), 
-                            DoubleWithUnit(5.1e-3, "um"),
-                            DoubleWithUnit(8.4e-3, "um") },
+         ils_half_width = { DoubleWithUnit(4.09e-04, "um"), 
+                            DoubleWithUnit(1.08e-03, "um"),
+                            DoubleWithUnit(1.40e-03, "um") },
          dispersion = {
             creator = ConfigCommon.dispersion_polynomial,
             apriori = ConfigCommon.l1b_spectral_coefficient_i,
@@ -203,7 +205,7 @@ OcoUplookingBaseConfig = OcoConfig:new {
             creator = ConfigCommon.pressure_sigma_profile,
          },
          temperature = {
-            temperature_levels = ConfigCommon.read_atmosphere_file("Temperature"),
+            temperature_levels = ConfigCommon.read_atmosphere_file("T"),
             apriori = ConfigCommon.hdf_apriori("Temperature/Offset"),
             covariance = ConfigCommon.hdf_covariance("Temperature/Offset"),
             creator = ConfigCommon.temperature_level_offset,
@@ -212,7 +214,7 @@ OcoUplookingBaseConfig = OcoConfig:new {
             creator = ConfigCommon.no_ground,
          },
          aerosol = {
-            -- No aerosols for FTS mode
+            -- No aerosols for uplooking mode
             creator = ConfigCommon.rayleigh_only,
          },
          absorber = {

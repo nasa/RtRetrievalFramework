@@ -26,18 +26,11 @@ DEFAULT_L1B_FILE = "/oco2/product/Ops_B4300_r01/2014/09/14/L1bSc/oco2_L1bScND_01
 
 DEFAULT_SOUNDING = 3
 
-def convolve_data(l1b_file, rad_file, band_idx, sounding_pos=DEFAULT_SOUNDING, in_wavenumber=False):
-    l1b_obj = h5py.File(l1b_file, 'r')
-    rad_data = np.loadtxt(rad_file)
-
+def convolve_data(l1b_obj, high_res_wl, high_res_rad, band_idx, sounding_pos=DEFAULT_SOUNDING, in_wavenumber=False):
     # Load ILS table, make sure we are passing double sized arrays
     delta_lambda = np.array(l1b_obj['/InstrumentHeader/ils_delta_lambda'][:][band_idx, sounding_pos, :, :], dtype=np.float64)
     response = np.array(l1b_obj['/InstrumentHeader/ils_relative_response'][:][band_idx, sounding_pos, :, :], dtype=np.float64)
     disp_coeff = np.array(l1b_obj['/InstrumentHeader/dispersion_coef_samp'][:][band_idx, sounding_pos, :], dtype=np.float64)
-
-    # Load high resolution radiance, make sure we use double sized data
-    high_res_wl = np.array(rad_data[:, 0], dtype=np.float64)
-    high_res_rad = np.array(rad_data[:, 1], dtype=np.float64)
 
     # Divide out and flip the order if input file defined in wavenumbers 
     if in_wavenumber:
@@ -60,7 +53,16 @@ def convolve_data(l1b_file, rad_file, band_idx, sounding_pos=DEFAULT_SOUNDING, i
     ils_conv = IlsConvolution(disp_l2, ils_table, ILS_HALF_WIDTH[band_idx])
     conv_rad = ils_conv.apply_ils(high_res_wl, high_res_rad, range(0,NUM_PIXEL))
 
-    return high_res_wl, conv_rad
+    return wavelength, conv_rad
+
+def convolve_data_from_file(l1b_file, rad_file, band_idx, sounding_pos=DEFAULT_SOUNDING, in_wavenumber=False):
+    rad_data = np.loadtxt(rad_file)
+       
+    # Load high resolution radiance, make sure we use double sized data
+    high_res_wl = np.array(rad_data[:, 0], dtype=np.float64)
+    high_res_rad = np.array(rad_data[:, 1], dtype=np.float64) 
+
+    return convolve_data(l1b_file, high_res_wl, high_res_rad, sounding_pos, in_wavenumber)
 
 def display_result(conv_wl, conv_rad):
     for wl, rad in zip(conv_wl, conv_rad):
@@ -92,5 +94,7 @@ if __name__ == "__main__":
     # Debugging to let us make sure we are using the correct L2 library
     logging.debug("L2 Library in use: %s" % full_physics.__file__)
 
-    conv_wl, conv_rad = convolve_data(args.l1b_file, args.rad_file, args.band_index, args.sounding_pos, in_wavenumber=args.wavenumbers)
+    l1b_obj = h5py.File(args.l1b_file, 'r')
+
+    conv_wl, conv_rad = convolve_data(l1b_obj, args.rad_file, args.band_index, args.sounding_pos, in_wavenumber=args.wavenumbers)
     display_result(conv_wl, conv_rad)

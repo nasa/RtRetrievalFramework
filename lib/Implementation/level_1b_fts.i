@@ -24,16 +24,17 @@ public:
   Level1bFts(const HdfFile& Hfile,
              const std::vector<std::string>& Band_names,
              const std::string& Radiance_dataset = "/SpectralParameters/modeled_radiance");
-  virtual SpectralRange radiance(int Spec_index) const;
   virtual DoubleWithUnit latitude(int i) const;
   virtual DoubleWithUnit longitude(int i) const;
-  virtual DoubleWithUnit solar_zenith(int i) const;
   virtual DoubleWithUnit sounding_zenith(int i) const;
   virtual DoubleWithUnit sounding_azimuth(int i) const;
   virtual blitz::Array<double, 1> stokes_coefficient(int i) const;
+  virtual DoubleWithUnit solar_zenith(int i) const;
   virtual DoubleWithUnit solar_azimuth(int i) const;
   virtual DoubleWithUnit altitude(int i) const;
   virtual DoubleWithUnit relative_velocity(int i) const;
+  virtual ArrayWithUnit<double, 1> spectral_coefficient(int Spec_index) const;
   virtual Time time(int Spec_index) const;
+  virtual SpectralRange radiance(int Spec_index) const;
 };
 }
