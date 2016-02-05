@@ -143,11 +143,29 @@ class Level1bFts(full_physics_swig.level_1b.Level1b):
     C++ includes: level_1b_fts.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        """
+
+        Level1bFts::Level1bFts(const HdfFile &Hfile, const std::vector< std::string > &Band_names,
+        const std::string
+        &Radiance_dataset="/SpectralParameters/modeled_radiance")
+        Creates a L1B FTS object from an HDF file in the format of a L2 output
+        file. 
+        """
+        _level_1b_fts.Level1bFts_swiginit(self, _level_1b_fts.new_Level1bFts(*args))
+
+    def spectral_coefficient(self, Spec_index):
+        """
+
+        virtual ArrayWithUnit<double, 1> FullPhysics::Level1bFts::spectral_coefficient(int Spec_index) const
+
+        """
+        return _level_1b_fts.Level1bFts_spectral_coefficient(self, Spec_index)
+
     __swig_destroy__ = _level_1b_fts.delete_Level1bFts
+Level1bFts.spectral_coefficient = new_instancemethod(_level_1b_fts.Level1bFts_spectral_coefficient, None, Level1bFts)
 Level1bFts_swigregister = _level_1b_fts.Level1bFts_swigregister
 Level1bFts_swigregister(Level1bFts)
 

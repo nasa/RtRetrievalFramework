@@ -42,7 +42,7 @@ def insert_alternative_settings(template_obj, alt_settings_hash):
             alt_sect[0].set_keyword_value(alt_key, alt_val)
 
 def check_file_type(filename):
-    (file_prefix, file_ext) = os.path.splitext(curr_file)
+    (file_prefix, file_ext) = os.path.splitext(filename)
     if file_ext in HDF_VALID_EXTENSIONS:
         with h5py.File(filename, 'r') as hdf_obj:
             for keyword_name, groups in FILE_SEARCH_GROUPS.items():
@@ -100,7 +100,7 @@ def handle_oco_uplooking_config(template_obj, out_config_filename, used_files, s
         if extension == 'dat':
             inp_prod_section.set_keyword_value('AtmosphereFile', curr_file)
 
-    handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, run_type)
+    handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, run_type, id_list_sect='input->OCOFullPhysics')
 
 def handle_gosat_config(template_obj, out_config_filename, used_files, sounding_ids, run_type):
 
