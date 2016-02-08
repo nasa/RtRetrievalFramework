@@ -2,13 +2,18 @@
 // (Not really c++, but closest emacs mode)
 %include "common.i"
 %{
+#include "sub_state_vector_array.h"
 #include "aerosol_optical.h"
+#include "absorber.h"
+#include "temperature.h"
+#include "altitude.h"
 %}
 %base_import(state_vector)
 %base_import(pressure)
 %base_import(aerosol_extinction)
 %base_import(aerosol_property)
 %base_import(aerosol)
+%import "relative_humidity.i"
 %fp_shared_ptr(FullPhysics::AerosolOptical);
 
 namespace FullPhysics {

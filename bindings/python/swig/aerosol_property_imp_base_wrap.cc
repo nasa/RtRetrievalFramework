@@ -4939,6 +4939,9 @@ template<class T, int D> inline blitz::Array<T, D>
 
 #include "aerosol_property_imp_base.h"
 #include "sub_state_vector_array.h"
+#include "absorber.h"
+#include "temperature.h"
+#include "altitude.h"
 
 
 SWIGINTERN int

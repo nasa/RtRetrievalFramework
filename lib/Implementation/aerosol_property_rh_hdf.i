@@ -3,9 +3,13 @@
 %include "common.i"
 %{
 #include "aerosol_property_rh_hdf.h"
+#include "absorber.h"
+#include "temperature.h"
+#include "altitude.h"
 %}
 %base_import(aerosol_property_imp_base)
 %import "hdf_file.i"
+%import "relative_humidity.i"
 %fp_shared_ptr(FullPhysics::AerosolPropertyRhHdf)
 namespace FullPhysics {
 class AerosolPropertyRhHdf : public AerosolPropertyImpBase {
