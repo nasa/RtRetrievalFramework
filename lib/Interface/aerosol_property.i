@@ -9,6 +9,7 @@
 %base_import(state_vector)
 %base_import(generic_object)
 %import "pressure.i"
+%import "relative_humidity.i"
 
 %fp_shared_ptr(FullPhysics::AerosolProperty)
 namespace FullPhysics {
@@ -30,7 +31,8 @@ public:
   virtual void remove_observer(Observer<AerosolProperty>& Obs);
   virtual boost::shared_ptr<AerosolProperty> clone() const = 0;
   virtual boost::shared_ptr<AerosolProperty> 
-  clone(const boost::shared_ptr<Pressure>& Press) const = 0;
+  clone(const boost::shared_ptr<Pressure>& Press,
+	const boost::shared_ptr<RelativeHumidity>& Rh) const = 0;
   virtual ArrayAd<double, 1> extinction_coefficient_each_layer(double wn) 
     const = 0;
   virtual ArrayAd<double, 1> scattering_coefficient_each_layer(double wn) 

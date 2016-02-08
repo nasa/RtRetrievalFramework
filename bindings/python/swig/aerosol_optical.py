@@ -152,12 +152,13 @@ class AerosolOptical(full_physics_swig.aerosol.Aerosol, full_physics_swig.pressu
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, Aext, Aerosol_prop, Press, Reference_wn=1):
+    def __init__(self, Aext, Aerosol_prop, Press, Rh, Reference_wn=1):
         """
 
         AerosolOptical::AerosolOptical(const std::vector< boost::shared_ptr< AerosolExtinction > > &Aext,
         const std::vector< boost::shared_ptr< AerosolProperty > >
-        &Aerosol_prop, const boost::shared_ptr< Pressure > &Press, double
+        &Aerosol_prop, const boost::shared_ptr< Pressure > &Press, const
+        boost::shared_ptr< RelativeHumidity > &Rh, double
         Reference_wn=1e4/0.755)
         Create an aerosol.
 
@@ -170,11 +171,13 @@ class AerosolOptical(full_physics_swig.aerosol.Aerosol, full_physics_swig.pressu
 
         Press:  The Pressure object that gives the pressure grid.
 
+        Rh:  The RelativeHumidity object that gives the relative humidity.
+
         Reference_wn:  The wavenumber that Aext is given for. This is
         optional, the default value matches the reference band given in the
         ATB. 
         """
-        _aerosol_optical.AerosolOptical_swiginit(self, _aerosol_optical.new_AerosolOptical(Aext, Aerosol_prop, Press, Reference_wn))
+        _aerosol_optical.AerosolOptical_swiginit(self, _aerosol_optical.new_AerosolOptical(Aext, Aerosol_prop, Press, Rh, Reference_wn))
 
     def ssa_each_layer(self, *args):
         """
@@ -261,7 +264,8 @@ class AerosolOptical(full_physics_swig.aerosol.Aerosol, full_physics_swig.pressu
     def clone(self, *args):
         """
 
-        boost::shared_ptr< Aerosol > AerosolOptical::clone(const boost::shared_ptr< Pressure > &Press) const
+        boost::shared_ptr< Aerosol > AerosolOptical::clone(const boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<
+        RelativeHumidity > &Rh) const
         This version of clone takes a pressure to use.
 
         The intent is that the pressure has been cloned from the original

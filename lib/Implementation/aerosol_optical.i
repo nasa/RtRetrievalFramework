@@ -20,6 +20,7 @@ public:
   AerosolOptical(const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
 	  const std::vector<boost::shared_ptr<AerosolProperty> >& Aerosol_prop,
 	  const boost::shared_ptr<Pressure>& Press,
+	  const boost::shared_ptr<RelativeHumidity>& Rh,
 	  double Reference_wn = 1e4/0.755);
   virtual ArrayAd<double, 2> optical_depth_each_layer(double wn) 
     const;
@@ -47,7 +48,8 @@ public:
    double pmax = std::numeric_limits<double>::max()) const;
   virtual boost::shared_ptr<Aerosol> clone() const;
   virtual boost::shared_ptr<Aerosol> 
-  clone(const boost::shared_ptr<Pressure>& Press) const;
+  clone(const boost::shared_ptr<Pressure>& Press,
+	const boost::shared_ptr<RelativeHumidity>& Rh) const;
   %python_attribute(aerosol_name, std::vector<std::string>);
   %python_attribute(aerosol_name_arr, blitz::Array<std::string, 1>);
   %python_attribute(pressure, boost::shared_ptr<Pressure>);

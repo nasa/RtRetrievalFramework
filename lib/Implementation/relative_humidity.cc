@@ -3,6 +3,15 @@
 #include "default_constant.h"
 using namespace FullPhysics;
 
+#ifdef HAVE_LUA
+#include "register_lua.h"
+REGISTER_LUA_CLASS(RelativeHumidity)
+.def(luabind::constructor<const boost::shared_ptr<Absorber>&, 
+     const boost::shared_ptr<Temperature>&,
+     const boost::shared_ptr<Pressure>&>())
+REGISTER_LUA_END()
+#endif
+
 //-----------------------------------------------------------------------
 /// Constructor.
 //-----------------------------------------------------------------------
@@ -15,6 +24,20 @@ RelativeHumidity::RelativeHumidity
 { 
   DefaultConstant cs;
   c = (cs.molar_weight_dry_air() / cs.molar_weight_water()).value;
+}
+
+boost::shared_ptr<RelativeHumidity> RelativeHumidity::clone() const
+{
+  return boost::shared_ptr<RelativeHumidity>(new RelativeHumidity(absorber, temp, press));
+}
+
+
+boost::shared_ptr<RelativeHumidity> 
+RelativeHumidity::clone(const boost::shared_ptr<Absorber>& Abs, 
+			const boost::shared_ptr<Temperature>& Temp,
+			const boost::shared_ptr<Pressure>& Press) const
+{
+  return boost::shared_ptr<RelativeHumidity>(new RelativeHumidity(Abs, Temp, Press));
 }
 
 //-----------------------------------------------------------------------

@@ -10,7 +10,7 @@
 
 from sys import version_info
 if version_info >= (3, 0, 0):
-    new_instancemethod = lambda func, inst, cls: _aerosol_property_hdf.SWIG_PyInstanceMethod_New(func)
+    new_instancemethod = lambda func, inst, cls: _aerosol_property_rh_hdf.SWIG_PyInstanceMethod_New(func)
 else:
     from new import instancemethod as new_instancemethod
 if version_info >= (2, 6, 0):
@@ -19,20 +19,20 @@ if version_info >= (2, 6, 0):
         import imp
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_aerosol_property_hdf', [dirname(__file__)])
+            fp, pathname, description = imp.find_module('_aerosol_property_rh_hdf', [dirname(__file__)])
         except ImportError:
-            import _aerosol_property_hdf
-            return _aerosol_property_hdf
+            import _aerosol_property_rh_hdf
+            return _aerosol_property_rh_hdf
         if fp is not None:
             try:
-                _mod = imp.load_module('_aerosol_property_hdf', fp, pathname, description)
+                _mod = imp.load_module('_aerosol_property_rh_hdf', fp, pathname, description)
             finally:
                 fp.close()
             return _mod
-    _aerosol_property_hdf = swig_import_helper()
+    _aerosol_property_rh_hdf = swig_import_helper()
     del swig_import_helper
 else:
-    import _aerosol_property_hdf
+    import _aerosol_property_rh_hdf
 del version_info
 try:
     _swig_property = property
@@ -111,8 +111,8 @@ except:
 
 
 
-_aerosol_property_hdf.SHARED_PTR_DISOWN_swigconstant(_aerosol_property_hdf)
-SHARED_PTR_DISOWN = _aerosol_property_hdf.SHARED_PTR_DISOWN
+_aerosol_property_rh_hdf.SHARED_PTR_DISOWN_swigconstant(_aerosol_property_rh_hdf)
+SHARED_PTR_DISOWN = _aerosol_property_rh_hdf.SHARED_PTR_DISOWN
 
 def _new_from_init(cls, version, *args):
     '''For use with pickle, covers common case where we just store the
@@ -138,7 +138,7 @@ import full_physics_swig.aerosol_property
 import full_physics_swig.observer
 import full_physics_swig.generic_object
 import full_physics_swig.state_vector
-class AerosolPropertyHdf(full_physics_swig.aerosol_property_imp_base.AerosolPropertyImpBase):
+class AerosolPropertyRhHdf(full_physics_swig.aerosol_property_imp_base.AerosolPropertyImpBase):
     """
 
     This gives the Aerosol properties for an Aerosol.
@@ -153,43 +153,47 @@ class AerosolPropertyHdf(full_physics_swig.aerosol_property_imp_base.AerosolProp
     wavenumbers between these value. If a wavenumber outside the range of
     the file is requested, then we extrapolate to get the value.
 
-    C++ includes: aerosol_property_hdf.h 
+    This variation of AerosolProperty interpolates the aerosol properties
+    by the relative humidity.
+
+    C++ includes: aerosol_property_rh_hdf.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, F, Group_name, Press):
+    def __init__(self, F, Group_name, Press, Rh):
         """
 
-        AerosolPropertyHdf::AerosolPropertyHdf(const HdfFile &F, const std::string &Group_name, const
-        boost::shared_ptr< Pressure > &Press)
+        AerosolPropertyRhHdf::AerosolPropertyRhHdf(const HdfFile &F, const std::string &Group_name, const
+        boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<
+        RelativeHumidity > &Rh)
         Read the given group in the given file for the aerosol properties. 
         """
-        _aerosol_property_hdf.AerosolPropertyHdf_swiginit(self, _aerosol_property_hdf.new_AerosolPropertyHdf(F, Group_name, Press))
+        _aerosol_property_rh_hdf.AerosolPropertyRhHdf_swiginit(self, _aerosol_property_rh_hdf.new_AerosolPropertyRhHdf(F, Group_name, Press, Rh))
 
     def clone(self, *args):
         """
 
-        boost::shared_ptr< AerosolProperty > AerosolPropertyHdf::clone(const boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<
+        boost::shared_ptr< AerosolProperty > AerosolPropertyRhHdf::clone(const boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<
         RelativeHumidity > &Rh) const
 
         """
-        return _aerosol_property_hdf.AerosolPropertyHdf_clone(self, *args)
+        return _aerosol_property_rh_hdf.AerosolPropertyRhHdf_clone(self, *args)
 
 
     def phase_function_moment_each_layer(self, wn, nmom=-1, nscatt=-1):
         """
 
-        ArrayAd< double, 3 > AerosolPropertyHdf::phase_function_moment_each_layer(double wn, int nmom=-1, int nscatt=-1) const
+        ArrayAd< double, 3 > AerosolPropertyRhHdf::phase_function_moment_each_layer(double wn, int nmom=-1, int nscatt=-1) const
 
         """
-        return _aerosol_property_hdf.AerosolPropertyHdf_phase_function_moment_each_layer(self, wn, nmom, nscatt)
+        return _aerosol_property_rh_hdf.AerosolPropertyRhHdf_phase_function_moment_each_layer(self, wn, nmom, nscatt)
 
-    __swig_destroy__ = _aerosol_property_hdf.delete_AerosolPropertyHdf
-AerosolPropertyHdf.clone = new_instancemethod(_aerosol_property_hdf.AerosolPropertyHdf_clone, None, AerosolPropertyHdf)
-AerosolPropertyHdf.phase_function_moment_each_layer = new_instancemethod(_aerosol_property_hdf.AerosolPropertyHdf_phase_function_moment_each_layer, None, AerosolPropertyHdf)
-AerosolPropertyHdf_swigregister = _aerosol_property_hdf.AerosolPropertyHdf_swigregister
-AerosolPropertyHdf_swigregister(AerosolPropertyHdf)
+    __swig_destroy__ = _aerosol_property_rh_hdf.delete_AerosolPropertyRhHdf
+AerosolPropertyRhHdf.clone = new_instancemethod(_aerosol_property_rh_hdf.AerosolPropertyRhHdf_clone, None, AerosolPropertyRhHdf)
+AerosolPropertyRhHdf.phase_function_moment_each_layer = new_instancemethod(_aerosol_property_rh_hdf.AerosolPropertyRhHdf_phase_function_moment_each_layer, None, AerosolPropertyRhHdf)
+AerosolPropertyRhHdf_swigregister = _aerosol_property_rh_hdf.AerosolPropertyRhHdf_swigregister
+AerosolPropertyRhHdf_swigregister(AerosolPropertyRhHdf)
 
 
 

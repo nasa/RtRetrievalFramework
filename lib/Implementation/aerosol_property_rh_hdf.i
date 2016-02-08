@@ -2,16 +2,17 @@
 // (Not really c++, but closest emacs mode)
 %include "common.i"
 %{
-#include "aerosol_property_hdf.h"
+#include "aerosol_property_rh_hdf.h"
 %}
 %base_import(aerosol_property_imp_base)
 %import "hdf_file.i"
-%fp_shared_ptr(FullPhysics::AerosolPropertyHdf)
+%fp_shared_ptr(FullPhysics::AerosolPropertyRhHdf)
 namespace FullPhysics {
-class AerosolPropertyHdf : public AerosolPropertyImpBase {
+class AerosolPropertyRhHdf : public AerosolPropertyImpBase {
 public:
-  AerosolPropertyHdf(const HdfFile& F, const std::string& Group_name,
-		     const boost::shared_ptr<Pressure>& Press);
+  AerosolPropertyRhHdf(const HdfFile& F, const std::string& Group_name,
+		       const boost::shared_ptr<Pressure>& Press,
+		       const boost::shared_ptr<RelativeHumidity>& Rh);
   virtual boost::shared_ptr<AerosolProperty> clone() const;
   virtual boost::shared_ptr<AerosolProperty> 
   clone(const boost::shared_ptr<Pressure>& Press,

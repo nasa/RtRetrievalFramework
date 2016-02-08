@@ -253,6 +253,9 @@ AsciiAtmBaseConfig = OcoConfig:new {
          altitude = {
             creator = ConfigCommon.hydrostatic_altitude,
          },
+	 relative_humidity = {
+	    creator = ConfigCommon.calc_relative_humidity,
+	 },
       },
    },
 }

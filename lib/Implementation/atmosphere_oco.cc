@@ -17,12 +17,14 @@ REGISTER_LUA_DERIVED_CLASS(AtmosphereOco, RtAtmosphere)
 	     const boost::shared_ptr<Pressure>&,
 	     const boost::shared_ptr<Temperature>&,
 	     const boost::shared_ptr<Aerosol>&,
+	     const boost::shared_ptr<RelativeHumidity>&,
 	     const boost::shared_ptr<Ground>&,
 	     const std::vector<boost::shared_ptr<Altitude> >&,
 	     const boost::shared_ptr<Constant>&>())
 .def(luabind::constructor<const boost::shared_ptr<Absorber>&,
 	     const boost::shared_ptr<Pressure>&,
 	     const boost::shared_ptr<Temperature>&,
+	     const boost::shared_ptr<RelativeHumidity>&,
 	     const boost::shared_ptr<Ground>&,
 	     const std::vector<boost::shared_ptr<Altitude> >&,
 	     const boost::shared_ptr<Constant>&>())
@@ -30,11 +32,13 @@ REGISTER_LUA_DERIVED_CLASS(AtmosphereOco, RtAtmosphere)
 	     const boost::shared_ptr<Pressure>&,
 	     const boost::shared_ptr<Temperature>&,
 	     const boost::shared_ptr<Aerosol>&,
+	     const boost::shared_ptr<RelativeHumidity>&,
 	     const std::vector<boost::shared_ptr<Altitude> >&,
 	     const boost::shared_ptr<Constant>&>())
 .def(luabind::constructor<const boost::shared_ptr<Absorber>&,
 	     const boost::shared_ptr<Pressure>&,
 	     const boost::shared_ptr<Temperature>&,
+	     const boost::shared_ptr<RelativeHumidity>&,
 	     const std::vector<boost::shared_ptr<Altitude> >&,
 	     const boost::shared_ptr<Constant>&>())
 REGISTER_LUA_END()
@@ -61,11 +65,12 @@ AtmosphereOco::AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 	     const boost::shared_ptr<Pressure>& pressurev,
 	     const boost::shared_ptr<Temperature>& temperaturev,
 	     const boost::shared_ptr<Aerosol>& aerosolv,
+	     const boost::shared_ptr<RelativeHumidity>& rhv,
              const boost::shared_ptr<Ground>& groundv,
 	     const std::vector<boost::shared_ptr<Altitude> >& altv,
 	     const boost::shared_ptr<Constant>& C)
   : absorber(absorberv), pressure(pressurev), temperature(temperaturev),
-    aerosol(aerosolv), ground_ptr(groundv), constant(C), alt(altv), 
+    aerosol(aerosolv), rh(rhv), ground_ptr(groundv), constant(C), alt(altv), 
     sv_size(0),
     wn_tau_cache(-1),
     spec_index_tau_cache(-1),
@@ -97,10 +102,11 @@ AtmosphereOco::AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 	     const boost::shared_ptr<Pressure>& pressurev,
 	     const boost::shared_ptr<Temperature>& temperaturev,
 	     const boost::shared_ptr<Aerosol>& aerosolv,
+	     const boost::shared_ptr<RelativeHumidity>& rhv,
 	     const std::vector<boost::shared_ptr<Altitude> >& altv,
 	     const boost::shared_ptr<Constant>& C)
   : absorber(absorberv), pressure(pressurev), temperature(temperaturev),
-    aerosol(aerosolv), constant(C), alt(altv), 
+    aerosol(aerosolv), rh(rhv), constant(C), alt(altv), 
     sv_size(0),
     wn_tau_cache(-1),
     spec_index_tau_cache(-1),
@@ -123,11 +129,12 @@ AtmosphereOco::AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 AtmosphereOco::AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 	     const boost::shared_ptr<Pressure>& pressurev,
 	     const boost::shared_ptr<Temperature>& temperaturev,
+	     const boost::shared_ptr<RelativeHumidity>& rhv,
 	     const boost::shared_ptr<Ground>& groundv,
              const std::vector<boost::shared_ptr<Altitude> >& altv,
 	     const boost::shared_ptr<Constant>& C)
   : absorber(absorberv), pressure(pressurev), temperature(temperaturev),
-    ground_ptr(groundv), constant(C), alt(altv), 
+    rh(rhv), ground_ptr(groundv), constant(C), alt(altv), 
     sv_size(0),
     wn_tau_cache(-1),
     spec_index_tau_cache(-1),
@@ -150,10 +157,11 @@ AtmosphereOco::AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 AtmosphereOco::AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 	     const boost::shared_ptr<Pressure>& pressurev,
 	     const boost::shared_ptr<Temperature>& temperaturev,
+	     const boost::shared_ptr<RelativeHumidity>& rhv,
 	     const std::vector<boost::shared_ptr<Altitude> >& altv,
 	     const boost::shared_ptr<Constant>& C)
   : absorber(absorberv), pressure(pressurev), temperature(temperaturev),
-    constant(C), alt(altv), sv_size(0), wn_tau_cache(-1), 
+    constant(C), rh(rhv), alt(altv), sv_size(0), wn_tau_cache(-1), 
     spec_index_tau_cache(-1),
     nlay(-1)
 {
@@ -517,9 +525,6 @@ boost::shared_ptr<AtmosphereOco> AtmosphereOco::clone() const
   boost::shared_ptr<Pressure> pressure_clone = pressure->clone();
   boost::shared_ptr<Temperature> temperature_clone = 
     temperature->clone(pressure_clone);
-  boost::shared_ptr<Aerosol> aerosol_clone;
-  if(aerosol)
-    aerosol_clone = aerosol->clone(pressure_clone);
   boost::shared_ptr<Ground> ground_clone;
   if(ground_ptr)
     ground_clone = ground_ptr->clone();
@@ -528,10 +533,17 @@ boost::shared_ptr<AtmosphereOco> AtmosphereOco::clone() const
     alt_clone.push_back(a->clone(pressure_clone, temperature_clone));
   boost::shared_ptr<Absorber> absorber_clone =
     absorber->clone(pressure_clone, temperature_clone, alt_clone);
+  boost::shared_ptr<RelativeHumidity> rh_clone =
+    rh->clone(absorber_clone, temperature_clone, pressure_clone);
+  boost::shared_ptr<Aerosol> aerosol_clone;
+  if(aerosol)
+    aerosol_clone = aerosol->clone(pressure_clone, rh_clone);
 
-  return boost::shared_ptr<AtmosphereOco>
+  boost::shared_ptr<AtmosphereOco> res
     (new AtmosphereOco(absorber_clone, pressure_clone, temperature_clone,
-		       aerosol_clone, ground_clone, alt_clone, constant));
+		       aerosol_clone, rh_clone, ground_clone, alt_clone, 
+		       constant));
+  return res;
 }
 
 //-----------------------------------------------------------------------
