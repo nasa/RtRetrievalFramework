@@ -16,6 +16,11 @@ public:
   RelativeHumidity(const boost::shared_ptr<Absorber>& Abs, 
 		   const boost::shared_ptr<Temperature>& Temp,
 		   const boost::shared_ptr<Pressure>& Press);
+  virtual boost::shared_ptr<RelativeHumidity> clone() const;
+  virtual boost::shared_ptr<RelativeHumidity> 
+  clone(const boost::shared_ptr<Absorber>& Abs, 
+	const boost::shared_ptr<Temperature>& Temp,
+	const boost::shared_ptr<Pressure>& Press) const;
   virtual ~RelativeHumidity() {}
   void print(std::ostream& Os);
   ArrayAd<double, 1> relative_humidity_grid() const;

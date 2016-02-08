@@ -6,6 +6,7 @@
 #include "temperature.h"
 #include "aerosol.h"
 #include "ground.h"
+#include "relative_humidity.h"
 #include "rayleigh.h"
 #include "rayleigh_greek_moment.h"
 #include "array_ad_cache.h"
@@ -34,6 +35,7 @@ public:
 		const boost::shared_ptr<Pressure>& pressurev,
 		const boost::shared_ptr<Temperature>& temperaturev,
 		const boost::shared_ptr<Aerosol>& aerosolv,
+		const boost::shared_ptr<RelativeHumidity>& rhv,
 		const boost::shared_ptr<Ground>& groundv,
 		const std::vector<boost::shared_ptr<Altitude> >& altv,
 		const boost::shared_ptr<Constant>& C);
@@ -41,17 +43,20 @@ public:
 		const boost::shared_ptr<Pressure>& pressurev,
 		const boost::shared_ptr<Temperature>& temperaturev,
 		const boost::shared_ptr<Aerosol>& aerosolv,
+		const boost::shared_ptr<RelativeHumidity>& rhv,
 		const std::vector<boost::shared_ptr<Altitude> >& altv,
 		const boost::shared_ptr<Constant>& C);
   AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 		const boost::shared_ptr<Pressure>& pressurev,
 		const boost::shared_ptr<Temperature>& temperaturev,
+		const boost::shared_ptr<RelativeHumidity>& rhv,
 		const boost::shared_ptr<Ground>& groundv,
 		const std::vector<boost::shared_ptr<Altitude> >& altv,
 		const boost::shared_ptr<Constant>& C);
   AtmosphereOco(const boost::shared_ptr<Absorber>& absorberv,
 		const boost::shared_ptr<Pressure>& pressurev,
 		const boost::shared_ptr<Temperature>& temperaturev,
+		const boost::shared_ptr<RelativeHumidity>& Rh,
 		const std::vector<boost::shared_ptr<Altitude> >& altv,
 		const boost::shared_ptr<Constant>& C);
   virtual ~AtmosphereOco() {}
@@ -158,6 +163,8 @@ public:
   const boost::shared_ptr<Temperature>& temperature_ptr() const 
   {return temperature;}
   const boost::shared_ptr<Aerosol>& aerosol_ptr() const {return aerosol;}
+  const boost::shared_ptr<RelativeHumidity>& relative_humidity_ptr() const
+  { return rh; }
   const boost::shared_ptr<Constant>& constant_ptr() const {return constant;}
   const boost::shared_ptr<Rayleigh>& rayleigh_ptr() const {return rayleigh;}
   const std::vector<boost::shared_ptr<Altitude> >& altitude_ptr() const
@@ -180,6 +187,7 @@ private:
   boost::shared_ptr<Pressure> pressure;
   boost::shared_ptr<Temperature> temperature;
   boost::shared_ptr<Aerosol> aerosol;
+  boost::shared_ptr<RelativeHumidity> rh;
   boost::shared_ptr<Ground> ground_ptr;
   boost::shared_ptr<Rayleigh> rayleigh;
   boost::shared_ptr<Constant> constant;

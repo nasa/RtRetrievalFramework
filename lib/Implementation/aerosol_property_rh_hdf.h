@@ -1,5 +1,5 @@
-#ifndef AEROSOL_PROPERTY_HDF_H
-#define AEROSOL_PROPERTY_HDF_H
+#ifndef AEROSOL_PROPERTY_RH_HDF_H
+#define AEROSOL_PROPERTY_RH_HDF_H
 #include "aerosol_property_imp_base.h"
 #include "hdf_file.h"
 #include "linear_interpolate.h"
@@ -18,12 +18,16 @@ namespace FullPhysics {
   properties for wavenumbers between these value.  If a wavenumber
   outside the range of the file is requested, then we extrapolate to
   get the value.
+
+  This variation of AerosolProperty interpolates the aerosol
+  properties by the relative humidity.
 *******************************************************************/
-class AerosolPropertyHdf : public AerosolPropertyImpBase {
+class AerosolPropertyRhHdf : public AerosolPropertyImpBase {
 public:
-  AerosolPropertyHdf(const HdfFile& F, const std::string& Group_name,
-		     const boost::shared_ptr<Pressure>& Press);
-  virtual ~AerosolPropertyHdf() {}
+  AerosolPropertyRhHdf(const HdfFile& F, const std::string& Group_name,
+		       const boost::shared_ptr<Pressure>& Press,
+		       const boost::shared_ptr<RelativeHumidity>& Rh);
+  virtual ~AerosolPropertyRhHdf() {}
   virtual boost::shared_ptr<AerosolProperty> clone() const;
   virtual boost::shared_ptr<AerosolProperty> 
   clone(const boost::shared_ptr<Pressure>& Press,
@@ -37,6 +41,7 @@ public:
 				   int nscatt = -1) const;
   virtual void print(std::ostream& Os) const;
 private:
+  boost::shared_ptr<RelativeHumidity> rh;
   boost::shared_ptr<LinearInterpolate<double, double> > qext;
   boost::shared_ptr<LinearInterpolate<double, double> > qscat;
   boost::shared_ptr<ScatteringMomentInterpolate> pf;

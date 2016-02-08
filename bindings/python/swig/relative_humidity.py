@@ -186,6 +186,16 @@ class RelativeHumidity(object):
         """
         _relative_humidity.RelativeHumidity_swiginit(self, _relative_humidity.new_RelativeHumidity(Abs, Temp, Press))
 
+    def clone(self, *args):
+        """
+
+        boost::shared_ptr< RelativeHumidity > RelativeHumidity::clone(const boost::shared_ptr< Absorber > &Abs, const boost::shared_ptr<
+        Temperature > &Temp, const boost::shared_ptr< Pressure > &Press) const
+
+        """
+        return _relative_humidity.RelativeHumidity_clone(self, *args)
+
+
     def relative_humidity_grid(self):
         """
 
@@ -204,6 +214,7 @@ class RelativeHumidity(object):
         return _relative_humidity.RelativeHumidity_specific_humidity_grid(self)
 
     __swig_destroy__ = _relative_humidity.delete_RelativeHumidity
+RelativeHumidity.clone = new_instancemethod(_relative_humidity.RelativeHumidity_clone, None, RelativeHumidity)
 RelativeHumidity.relative_humidity_grid = new_instancemethod(_relative_humidity.RelativeHumidity_relative_humidity_grid, None, RelativeHumidity)
 RelativeHumidity.specific_humidity_grid = new_instancemethod(_relative_humidity.RelativeHumidity_specific_humidity_grid, None, RelativeHumidity)
 RelativeHumidity.__str__ = new_instancemethod(_relative_humidity.RelativeHumidity___str__, None, RelativeHumidity)

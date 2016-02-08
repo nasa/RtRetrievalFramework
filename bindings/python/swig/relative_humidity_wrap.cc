@@ -6142,6 +6142,206 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_RelativeHumidity_clone__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::RelativeHumidity *arg1 = (FullPhysics::RelativeHumidity *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::RelativeHumidity const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::RelativeHumidity const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::RelativeHumidity > result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RelativeHumidity_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RelativeHumidity_clone" "', argument " "1"" of type '" "FullPhysics::RelativeHumidity const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::RelativeHumidity > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::RelativeHumidity > * >(argp1);
+      arg1 = const_cast< FullPhysics::RelativeHumidity * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::RelativeHumidity > * >(argp1);
+      arg1 = const_cast< FullPhysics::RelativeHumidity * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::RelativeHumidity const *)arg1)->clone();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RelativeHumidity_clone__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::RelativeHumidity *arg1 = (FullPhysics::RelativeHumidity *) 0 ;
+  boost::shared_ptr< FullPhysics::Absorber > *arg2 = 0 ;
+  boost::shared_ptr< FullPhysics::Temperature > *arg3 = 0 ;
+  boost::shared_ptr< FullPhysics::Pressure > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::RelativeHumidity const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::RelativeHumidity const > *smartarg1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::Absorber > tempshared2 ;
+  boost::shared_ptr< FullPhysics::Absorber > temp2shared2 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  boost::shared_ptr< FullPhysics::Temperature > tempshared3 ;
+  boost::shared_ptr< FullPhysics::Temperature > temp2shared3 ;
+  void *argp4 ;
+  int res4 = 0 ;
+  boost::shared_ptr< FullPhysics::Pressure > tempshared4 ;
+  boost::shared_ptr< FullPhysics::Pressure > temp2shared4 ;
+  boost::shared_ptr< FullPhysics::RelativeHumidity > result;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RelativeHumidity_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RelativeHumidity_clone" "', argument " "1"" of type '" "FullPhysics::RelativeHumidity const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::RelativeHumidity > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::RelativeHumidity > * >(argp1);
+      arg1 = const_cast< FullPhysics::RelativeHumidity * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::RelativeHumidity > * >(argp1);
+      arg1 = const_cast< FullPhysics::RelativeHumidity * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Absorber_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RelativeHumidity_clone" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Absorber > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Absorber > * >(argp2);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::Absorber > * >(argp2);
+      arg2 = &tempshared2;
+    } else {
+      arg2 = (argp2) ? reinterpret_cast< boost::shared_ptr< FullPhysics::Absorber > * >(argp2) : &tempshared2;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg2->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared2.reset(arg2->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg2 = &temp2shared2;
+    }
+  }
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Temperature_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RelativeHumidity_clone" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::Temperature > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp3) tempshared3 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Temperature > * >(argp3);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::Temperature > * >(argp3);
+      arg3 = &tempshared3;
+    } else {
+      arg3 = (argp3) ? reinterpret_cast< boost::shared_ptr< FullPhysics::Temperature > * >(argp3) : &tempshared3;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg3->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared3.reset(arg3->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg3 = &temp2shared3;
+    }
+  }
+  {
+    int newmem = 0;
+    res4 = SWIG_ConvertPtrAndOwn(swig_obj[3], &argp4, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 , &newmem);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RelativeHumidity_clone" "', argument " "4"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp4) tempshared4 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp4);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp4);
+      arg4 = &tempshared4;
+    } else {
+      arg4 = (argp4) ? reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp4) : &tempshared4;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg4->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared4.reset(arg4->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg4 = &temp2shared4;
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::RelativeHumidity const *)arg1)->clone((boost::shared_ptr< FullPhysics::Absorber > const &)*arg2,(boost::shared_ptr< FullPhysics::Temperature > const &)*arg3,(boost::shared_ptr< FullPhysics::Pressure > const &)*arg4);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RelativeHumidity_clone(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"RelativeHumidity_clone",0,4,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_RelativeHumidity_clone__SWIG_0(self, argc, argv);
+  }
+  if (argc == 4) {
+    return _wrap_RelativeHumidity_clone__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'RelativeHumidity_clone'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::RelativeHumidity::clone() const\n"
+    "    FullPhysics::RelativeHumidity::clone(boost::shared_ptr< FullPhysics::Absorber > const &,boost::shared_ptr< FullPhysics::Temperature > const &,boost::shared_ptr< FullPhysics::Pressure > const &) const\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_RelativeHumidity_relative_humidity_grid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::RelativeHumidity *arg1 = (FullPhysics::RelativeHumidity *) 0 ;
@@ -6350,6 +6550,12 @@ static PyMethodDef SwigMethods[] = {
 		"RelativeHumidity::RelativeHumidity(const boost::shared_ptr< Absorber > &Abs, const boost::shared_ptr<\n"
 		"Temperature > &Temp, const boost::shared_ptr< Pressure > &Press)\n"
 		"Constructor. \n"
+		""},
+	 { (char *)"RelativeHumidity_clone", _wrap_RelativeHumidity_clone, METH_VARARGS, (char *)"\n"
+		"\n"
+		"boost::shared_ptr< RelativeHumidity > RelativeHumidity::clone(const boost::shared_ptr< Absorber > &Abs, const boost::shared_ptr<\n"
+		"Temperature > &Temp, const boost::shared_ptr< Pressure > &Press) const\n"
+		"\n"
 		""},
 	 { (char *)"RelativeHumidity_relative_humidity_grid", (PyCFunction)_wrap_RelativeHumidity_relative_humidity_grid, METH_O, (char *)"\n"
 		"\n"

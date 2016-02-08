@@ -17,7 +17,8 @@ public:
   MerraAerosol(const HdfFile& Merra_climatology,
 	       const HdfFile& Aerosol_property,
 	       DoubleWithUnit Latitude, DoubleWithUnit Longitude,
-	       const boost::shared_ptr< Pressure > &Press,
+	       const boost::shared_ptr<Pressure> &Press,
+	       const boost::shared_ptr<RelativeHumidity> &Rh,
 	       const blitz::Array<double, 2>& Aerosol_cov,
 	       double Max_aod = 0.2,
 	       double Exp_aod = 0.8,
@@ -53,6 +54,7 @@ private:
   std::vector<boost::shared_ptr<AerosolProperty> > aprop;
   boost::shared_ptr<CompositeInitialGuess> ig;
   boost::shared_ptr<Pressure> press;
+  boost::shared_ptr<RelativeHumidity> rh;
   double ref_wn;
   std::string merra_fname, prop_fname;
   DoubleWithUnit lat, lon;

@@ -3464,27 +3464,28 @@ namespace Swig {
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[45]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[46]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[47]
-#define SWIGTYPE_p_char swig_types[48]
-#define SWIGTYPE_p_char_type swig_types[49]
-#define SWIGTYPE_p_difference_type swig_types[50]
-#define SWIGTYPE_p_fmtflags swig_types[51]
-#define SWIGTYPE_p_int_type swig_types[52]
-#define SWIGTYPE_p_iostate swig_types[53]
-#define SWIGTYPE_p_off_type swig_types[54]
-#define SWIGTYPE_p_openmode swig_types[55]
-#define SWIGTYPE_p_pos_type swig_types[56]
-#define SWIGTYPE_p_seekdir swig_types[57]
-#define SWIGTYPE_p_size_t swig_types[58]
-#define SWIGTYPE_p_size_type swig_types[59]
-#define SWIGTYPE_p_state_type swig_types[60]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[61]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[62]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[63]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[64]
-#define SWIGTYPE_p_traits_type swig_types[65]
-#define SWIGTYPE_p_value_type swig_types[66]
-static swig_type_info *swig_types[68];
-static swig_module_info swig_module = {swig_types, 67, 0, 0, 0, 0};
+#define SWIGTYPE_p_boost__shared_ptrT_RelativeHumidity_t swig_types[48]
+#define SWIGTYPE_p_char swig_types[49]
+#define SWIGTYPE_p_char_type swig_types[50]
+#define SWIGTYPE_p_difference_type swig_types[51]
+#define SWIGTYPE_p_fmtflags swig_types[52]
+#define SWIGTYPE_p_int_type swig_types[53]
+#define SWIGTYPE_p_iostate swig_types[54]
+#define SWIGTYPE_p_off_type swig_types[55]
+#define SWIGTYPE_p_openmode swig_types[56]
+#define SWIGTYPE_p_pos_type swig_types[57]
+#define SWIGTYPE_p_seekdir swig_types[58]
+#define SWIGTYPE_p_size_t swig_types[59]
+#define SWIGTYPE_p_size_type swig_types[60]
+#define SWIGTYPE_p_state_type swig_types[61]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[62]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[63]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[64]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[65]
+#define SWIGTYPE_p_traits_type swig_types[66]
+#define SWIGTYPE_p_value_type swig_types[67]
+static swig_type_info *swig_types[69];
+static swig_module_info swig_module = {swig_types, 68, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -6157,6 +6158,7 @@ SWIGINTERN PyObject *_wrap_Aerosol_clone__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   PyObject *resultobj = 0;
   FullPhysics::Aerosol *arg1 = (FullPhysics::Aerosol *) 0 ;
   boost::shared_ptr< FullPhysics::Pressure > *arg2 = 0 ;
+  boost::shared_ptr< RelativeHumidity > *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   boost::shared_ptr< FullPhysics::Aerosol const > tempshared1 ;
@@ -6165,9 +6167,11 @@ SWIGINTERN PyObject *_wrap_Aerosol_clone__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   int res2 = 0 ;
   boost::shared_ptr< FullPhysics::Pressure > tempshared2 ;
   boost::shared_ptr< FullPhysics::Pressure > temp2shared2 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
   boost::shared_ptr< FullPhysics::Aerosol > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t, 0 |  0 , &newmem);
@@ -6208,9 +6212,17 @@ SWIGINTERN PyObject *_wrap_Aerosol_clone__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
       arg2 = &temp2shared2;
     }
   }
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_RelativeHumidity_t,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Aerosol_clone" "', argument " "3"" of type '" "boost::shared_ptr< RelativeHumidity > const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Aerosol_clone" "', argument " "3"" of type '" "boost::shared_ptr< RelativeHumidity > const &""'"); 
+  }
+  arg3 = reinterpret_cast< boost::shared_ptr< RelativeHumidity > * >(argp3);
   {
     try {
-      result = ((FullPhysics::Aerosol const *)arg1)->clone((boost::shared_ptr< FullPhysics::Pressure > const &)*arg2);
+      result = ((FullPhysics::Aerosol const *)arg1)->clone((boost::shared_ptr< FullPhysics::Pressure > const &)*arg2,(boost::shared_ptr< RelativeHumidity > const &)*arg3);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -6228,16 +6240,16 @@ fail:
 
 SWIGINTERN PyObject *_wrap_Aerosol_clone(PyObject *self, PyObject *args) {
   int argc;
-  PyObject *argv[3] = {
+  PyObject *argv[4] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"Aerosol_clone",0,2,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"Aerosol_clone",0,3,argv))) SWIG_fail;
   --argc;
   if (argc == 1) {
     return _wrap_Aerosol_clone__SWIG_0(self, argc, argv);
   }
-  if (argc == 2) {
+  if (argc == 3) {
     return _wrap_Aerosol_clone__SWIG_1(self, argc, argv);
   }
   
@@ -6245,7 +6257,7 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Aerosol_clone'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    FullPhysics::Aerosol::clone() const\n"
-    "    FullPhysics::Aerosol::clone(boost::shared_ptr< FullPhysics::Pressure > const &) const\n");
+    "    FullPhysics::Aerosol::clone(boost::shared_ptr< FullPhysics::Pressure > const &,boost::shared_ptr< RelativeHumidity > const &) const\n");
   return 0;
 }
 
@@ -6373,7 +6385,8 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"Aerosol_clone", _wrap_Aerosol_clone, METH_VARARGS, (char *)"\n"
 		"\n"
-		"virtual boost::shared_ptr<Aerosol> FullPhysics::Aerosol::clone(const boost::shared_ptr< Pressure > &Press) const =0\n"
+		"virtual boost::shared_ptr<Aerosol> FullPhysics::Aerosol::clone(const boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<\n"
+		"RelativeHumidity > &Rh) const =0\n"
 		"\n"
 		""},
 	 { (char *)"delete_Aerosol", (PyCFunction)_wrap_delete_Aerosol, METH_O, (char *)"\n"
@@ -6605,6 +6618,7 @@ static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObser
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t = {"_p_boost__shared_ptrT_FullPhysics__StateVector_t", "boost::shared_ptr< FullPhysics::StateVector > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t = {"_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t", "boost::shared_ptr< FullPhysics::SubStateVectorObserver > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Unit_t = {"_p_boost__shared_ptrT_FullPhysics__Unit_t", "boost::shared_ptr< FullPhysics::Unit > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_RelativeHumidity_t = {"_p_boost__shared_ptrT_RelativeHumidity_t", "boost::shared_ptr< RelativeHumidity > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char_type = {"_p_char_type", "char_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
@@ -6674,6 +6688,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t,
+  &_swigt__p_boost__shared_ptrT_RelativeHumidity_t,
   &_swigt__p_char,
   &_swigt__p_char_type,
   &_swigt__p_difference_type,
@@ -6743,6 +6758,7 @@ static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVectorObser
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVector_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_RelativeHumidity_t[] = {  {&_swigt__p_boost__shared_ptrT_RelativeHumidity_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char_type[] = {  {&_swigt__p_char_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -6812,6 +6828,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__StateVector_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t,
+  _swigc__p_boost__shared_ptrT_RelativeHumidity_t,
   _swigc__p_char,
   _swigc__p_char_type,
   _swigc__p_difference_type,

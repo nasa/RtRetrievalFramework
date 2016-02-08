@@ -29,7 +29,7 @@ public:
     virtual void add_observer(FullPhysics::Observer< FullPhysics::AerosolProperty > &Obs);
     virtual void remove_observer(FullPhysics::Observer< FullPhysics::AerosolProperty > &Obs);
     virtual boost::shared_ptr< FullPhysics::AerosolProperty > clone() const;
-    virtual boost::shared_ptr< FullPhysics::AerosolProperty > clone(boost::shared_ptr< FullPhysics::Pressure > const &Press) const;
+    virtual boost::shared_ptr< FullPhysics::AerosolProperty > clone(boost::shared_ptr< FullPhysics::Pressure > const &Press, boost::shared_ptr< FullPhysics::RelativeHumidity > const &Rh) const;
     virtual FullPhysics::ArrayAd< double,1 > extinction_coefficient_each_layer(double wn) const;
     virtual FullPhysics::ArrayAd< double,1 > scattering_coefficient_each_layer(double wn) const;
     virtual FullPhysics::ArrayAd< double,3 > phase_function_moment_each_layer(double wn, int nmom = -1, int nscatt = -1) const;

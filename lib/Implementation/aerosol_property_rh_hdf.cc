@@ -1,13 +1,14 @@
-#include "aerosol_property_hdf.h"
+#include "aerosol_property_rh_hdf.h"
 #include "ostream_pad.h"
 using namespace FullPhysics;
 using namespace blitz;
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
-REGISTER_LUA_DERIVED_CLASS(AerosolPropertyHdf, AerosolProperty)
+REGISTER_LUA_DERIVED_CLASS(AerosolPropertyRhHdf, AerosolProperty)
 .def(luabind::constructor<const HdfFile&, const std::string&, 
-     const boost::shared_ptr<Pressure>&>())
+     const boost::shared_ptr<Pressure>&, 
+     const boost::shared_ptr<RelativeHumidity>&>())
 REGISTER_LUA_END()
 #endif
 
@@ -15,12 +16,13 @@ REGISTER_LUA_END()
 /// Read the given group in the given file for the aerosol properties.
 //-----------------------------------------------------------------------
 
-AerosolPropertyHdf::AerosolPropertyHdf
+AerosolPropertyRhHdf::AerosolPropertyRhHdf
 (const HdfFile& F, 
  const std::string& Group_name,
- const boost::shared_ptr<Pressure>& Press
+ const boost::shared_ptr<Pressure>& Press,
+ const boost::shared_ptr<RelativeHumidity>& Rh
 )
-: hdf_file(F.file_name()), hdf_group(Group_name)
+: rh(Rh), hdf_file(F.file_name()), hdf_group(Group_name)
 {
   press = Press;
   Array<double, 1> wn(F.read_field<double, 1>(Group_name + "/wave_number"));
@@ -41,22 +43,21 @@ AerosolPropertyHdf::AerosolPropertyHdf
 					   pf_vec.begin()));
 }
 
-boost::shared_ptr<AerosolProperty> AerosolPropertyHdf::clone() const
+boost::shared_ptr<AerosolProperty> AerosolPropertyRhHdf::clone() const
 {
-  boost::shared_ptr<RelativeHumidity> rh_dummy;
-  return clone(press->clone(), rh_dummy);
+  return clone(press->clone(), rh->clone());
 }
 
-boost::shared_ptr<AerosolProperty> AerosolPropertyHdf::clone
+boost::shared_ptr<AerosolProperty> AerosolPropertyRhHdf::clone
 (const boost::shared_ptr<Pressure>& Press,
  const boost::shared_ptr<RelativeHumidity>& Rh) const
 {
   HdfFile f(hdf_file);
   return boost::shared_ptr<AerosolProperty>
-    (new AerosolPropertyHdf(f, hdf_group, Press));
+    (new AerosolPropertyRhHdf(f, hdf_group, Press, Rh));
 }
 
-ArrayAd<double, 1> AerosolPropertyHdf::extinction_coefficient_each_layer
+ArrayAd<double, 1> AerosolPropertyRhHdf::extinction_coefficient_each_layer
 (double wn) const
 {
   firstIndex i1; secondIndex i2;
@@ -68,7 +69,7 @@ ArrayAd<double, 1> AerosolPropertyHdf::extinction_coefficient_each_layer
   return res;
 }
 
-ArrayAd<double, 1> AerosolPropertyHdf::scattering_coefficient_each_layer
+ArrayAd<double, 1> AerosolPropertyRhHdf::scattering_coefficient_each_layer
 (double wn) const
 {
   firstIndex i1; secondIndex i2;
@@ -80,7 +81,7 @@ ArrayAd<double, 1> AerosolPropertyHdf::scattering_coefficient_each_layer
   return res;
 }
 
-ArrayAd<double, 3> AerosolPropertyHdf::phase_function_moment_each_layer
+ArrayAd<double, 3> AerosolPropertyRhHdf::phase_function_moment_each_layer
 (double wn, int nmom, int nscatt) const
 { 
   firstIndex i1; secondIndex i2; thirdIndex i3; fourthIndex i4;
@@ -93,9 +94,9 @@ ArrayAd<double, 3> AerosolPropertyHdf::phase_function_moment_each_layer
   return res; 
 }
 
-void AerosolPropertyHdf::print(std::ostream& Os) const 
+void AerosolPropertyRhHdf::print(std::ostream& Os) const 
 { 
-  Os << "AerosolPropertyHdf:\n"
+  Os << "AerosolPropertyRhHdf:\n"
      << "  Hdf file:  " << hdf_file << "\n"
      << "  Hdf group: " << hdf_group << "\n";
 }
