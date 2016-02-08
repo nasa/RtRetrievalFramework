@@ -4948,7 +4948,11 @@ template<class T, int D> inline blitz::Array<T, D>
 
 
 
+#include "sub_state_vector_array.h"
 #include "aerosol_optical.h"
+#include "absorber.h"
+#include "temperature.h"
+#include "altitude.h"
 
 
   namespace swig {

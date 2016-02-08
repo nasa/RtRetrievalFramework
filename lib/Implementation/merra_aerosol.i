@@ -2,7 +2,11 @@
 // (Not really c++, but closest emacs mode)
 %include "common.i"
 %{
+#include "sub_state_vector_array.h"
 #include "merra_aerosol.h"
+#include "absorber.h"
+#include "temperature.h"
+#include "altitude.h"
 %}
 %base_import(generic_object)
 %import "hdf_file.i"

@@ -3,12 +3,18 @@
 %include <std_vector.i>
 %include "common.i"
 %{
+#include "sub_state_vector_array.h"
 #include "aerosol_property.h"
+#include "absorber.h"
+#include "temperature.h"
+#include "altitude.h"
 %}
 %base_import(observer)
 %base_import(state_vector)
 %base_import(generic_object)
 %import "pressure.i"
+%import "sub_state_vector_array.i"
+%import "absorber.i"
 %import "relative_humidity.i"
 
 %fp_shared_ptr(FullPhysics::AerosolProperty)

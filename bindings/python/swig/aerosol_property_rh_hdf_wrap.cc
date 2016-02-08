@@ -4940,6 +4940,9 @@ template<class T, int D> inline blitz::Array<T, D>
 
 
 #include "aerosol_property_rh_hdf.h"
+#include "absorber.h"
+#include "temperature.h"
+#include "altitude.h"
 
 
 SWIGINTERN swig_type_info*
