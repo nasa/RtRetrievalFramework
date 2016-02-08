@@ -15,6 +15,7 @@ REGISTER_LUA_DERIVED_CLASS(AerosolShapeGaussian, AerosolExtinction)
 REGISTER_LUA_END()
 #endif
 
+const double AerosolShapeGaussian::min_aod = 1e-9;
 // See base class for description
 boost::shared_ptr<AerosolExtinction> AerosolShapeGaussian::clone
 (const boost::shared_ptr<Pressure>& Pres) const
@@ -28,9 +29,14 @@ void AerosolShapeGaussian::calc_aerosol_extinction() const
 {
   // Input parameters
   AutoDerivative<double> desired_aod;
-  if (linear_aod) 
+  if (linear_aod) {
     desired_aod = coefficient()(0);
-  else
+    // Don't let aod go lower than a minimum value. Not clear if this
+    // is actually what we want to do, see ticket #2252 for this
+    // suggestion. We might instead want to use a constrained solver.
+    if(desired_aod < min_aod)
+      desired_aod = min_aod;
+  } else
     desired_aod = exp(coefficient()(0));
 
   int ngaussians = int((coefficient().rows() - 1) / 2);
@@ -57,12 +63,7 @@ void AerosolShapeGaussian::calc_aerosol_extinction() const
     }
   }
 
-  AutoDerivative<double> scaling_N;
-  // Set extinction to 0 if total AOD goes below 0
-  if((linear_aod and total_aod().value() < 0) or total_aod().value() == 0)
-    scaling_N = 0;
-  else
-    scaling_N = desired_aod / total_aod();
+  AutoDerivative<double> scaling_N = desired_aod / total_aod();
 
   for(int lev = 0; lev < aext.rows(); lev++)
     aext(lev) = aext(lev) * scaling_N;
