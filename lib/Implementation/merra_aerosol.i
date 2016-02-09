@@ -30,6 +30,7 @@ public:
 	       int Min_types = 2,
 	       int Max_types = 4,
 	       bool Linear_aod = false,
+	       bool Relative_humidity_aerosol = false,
 	       double Max_residual = 0.005,
 	       double Reference_wn=1e4/0.755);
   %python_attribute(aerosol, boost::shared_ptr<Aerosol>); 

@@ -28,6 +28,9 @@ OcoBaseConfig = OcoConfig:new {
    static_eof_file = oco_base_config_dir .. "/../input/l2_oco_eof.h5",
    static_solar_file = config_common_dir .. "/../input/l2_solar_model.h5",
    static_aerosol_file = config_common_dir .. "/../input/l2_aerosol_combined.h5",
+   -- Can have a different aerosol file for Merra aerosols
+   -- static_merra_aerosol_file = config_common_dir .. "/../input/l2_aerosol_combined_RH.h5",
+
    merra_dir = "/groups/algorithm/l2_fp/merra_composite",
 
 ------------------------------------------------------------
@@ -415,6 +418,8 @@ OcoBaseConfig = OcoConfig:new {
             min_types = 2,
             max_types = 2,
 	    linear_aod = false,
+--	    relative_humidity_aerosol = false,
+	    relative_humidity_aerosol = true,
             max_residual = 0.005,
             apriori = ConfigCommon.hdf_apriori("/Aerosol/Merra/Gaussian/Log"),
             covariance = ConfigCommon.hdf_covariance("/Aerosol/Merra/Gaussian/Log"),

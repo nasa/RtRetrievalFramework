@@ -1,6 +1,7 @@
 #include "merra_aerosol.h"
 #include "aerosol_optical.h"
 #include "aerosol_property_hdf.h"
+#include "aerosol_property_rh_hdf.h"
 #include "aerosol_shape_gaussian.h"
 #include "initial_guess_value.h"
 
@@ -26,7 +27,8 @@ const blitz::Array<double, 1>& val)
 		      Latitude, Longitude, Press, Rh, Aerosol_cov,
 		      val(0), val(1), static_cast<int>(val(2)),
 		      static_cast<int>(val(3)), val(4),
-		      static_cast<int>(val(5)) == 1));
+		      static_cast<int>(val(5)) == 1,
+		      static_cast<int>(val(6)) == 1));
 }
 REGISTER_LUA_CLASS(MerraAerosol)
 .def("aerosol", &MerraAerosol::aerosol)
@@ -54,7 +56,10 @@ REGISTER_LUA_END()
 /// \param Min_types Minimum number of types to be selected
 /// \param Max_types Maximum number of types to be selected
 /// \param Linear_aod If true, then use linear aod rather than
-///        logarithmic aod.
+///    logarithmic aod.
+/// \param Relative_humidity_aerosol If true, then use AerosolPropertyRhHdf
+///   instead of AerosolPropertyHdf which includes interpolation
+///    by relative humidity.
 /// \param Max_residual Maximum resdidual in total AOD (either >
 ///    threshold of fraction or < max residual will suffice 
 /// \param Reference_wn The wavenumber that Aext is given for. This
@@ -74,9 +79,11 @@ MerraAerosol::MerraAerosol
  int Min_types,
  int Max_types,
  bool Linear_aod,
+ bool Relative_humidity_aerosol,
  double Max_residual,
  double Reference_wn)
 : linear_aod(Linear_aod),
+  rh_aerosol(Relative_humidity_aerosol),
   press(Press),
   rh(Rh),
   ref_wn(Reference_wn),
@@ -138,10 +145,16 @@ MerraAerosol::MerraAerosol
       aext.push_back
 	(boost::shared_ptr<AerosolExtinction>
 	 (new AerosolShapeGaussian(press, flag, coeff, aname, linear_aod)));
-      aprop.push_back
-	(boost::shared_ptr<AerosolProperty>
-	 (new AerosolPropertyHdf(Aerosol_property, aname + "/Properties", 
-				 press)));
+      if(rh_aerosol) 
+	aprop.push_back
+	  (boost::shared_ptr<AerosolProperty>
+	   (new AerosolPropertyRhHdf(Aerosol_property, aname + "/Properties", 
+				     press, rh)));
+      else
+	aprop.push_back
+	  (boost::shared_ptr<AerosolProperty>
+	   (new AerosolPropertyHdf(Aerosol_property, aname + "/Properties", 
+				   press)));
       boost::shared_ptr<InitialGuessValue> nig(new InitialGuessValue);
       nig->apriori(coeff);
       nig->apriori_covariance(Aerosol_cov);
@@ -232,7 +245,8 @@ int MerraAerosol::file_index(const HdfFile& Merra_climatology,
 void MerraAerosol::print(std::ostream& Os) const
 {
   Os << "MerraAerosol: ("
-     << (linear_aod ? "Linear" : "Logarithmic")
+     << (linear_aod ? "Linear, " : "Logarithmic, ")
+     << (rh_aerosol ? "RH aerosol" : "Not RH aerosol")
      << ")\n"
      << "  Coefficient:\n"
      << "  Merra file name:            " << merra_fname << "\n"

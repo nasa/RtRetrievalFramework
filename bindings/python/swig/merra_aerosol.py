@@ -147,7 +147,7 @@ class MerraAerosol(full_physics_swig.generic_object.GenericObject):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, Merra_climatology, Aerosol_property, Latitude, Longitude, Press, Rh, Aerosol_cov, Max_aod=0.2, Exp_aod=0.8, Min_types=2, Max_types=4, Linear_aod=False, Max_residual=0.005, Reference_wn=1):
+    def __init__(self, Merra_climatology, Aerosol_property, Latitude, Longitude, Press, Rh, Aerosol_cov, Max_aod=0.2, Exp_aod=0.8, Min_types=2, Max_types=4, Linear_aod=False, Relative_humidity_aerosol=False, Max_residual=0.005, Reference_wn=1):
         """
 
         MerraAerosol::MerraAerosol(const HdfFile &Merra_climatology, const HdfFile &Aerosol_property,
@@ -155,7 +155,8 @@ class MerraAerosol(full_physics_swig.generic_object.GenericObject):
         boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<
         RelativeHumidity > &Rh, const blitz::Array< double, 2 > &Aerosol_cov,
         double Max_aod=0.2, double Exp_aod=0.8, int Min_types=2, int
-        Max_types=4, bool Linear_aod=false, double Max_residual=0.005, double
+        Max_types=4, bool Linear_aod=false, bool
+        Relative_humidity_aerosol=false, double Max_residual=0.005, double
         Reference_wn=1e4/0.755)
         Constructor.
 
@@ -186,6 +187,10 @@ class MerraAerosol(full_physics_swig.generic_object.GenericObject):
 
         Linear_aod:  If true, then use linear aod rather than logarithmic aod.
 
+        Relative_humidity_aerosol:  If true, then use AerosolPropertyRhHdf
+        instead of AerosolPropertyHdf which includes interpolation by relative
+        humidity.
+
         Max_residual:  Maximum resdidual in total AOD (either > threshold of
         fraction or < max residual will suffice
 
@@ -193,7 +198,7 @@ class MerraAerosol(full_physics_swig.generic_object.GenericObject):
         optional, the default value matches the reference band given in the
         ATB. 
         """
-        _merra_aerosol.MerraAerosol_swiginit(self, _merra_aerosol.new_MerraAerosol(Merra_climatology, Aerosol_property, Latitude, Longitude, Press, Rh, Aerosol_cov, Max_aod, Exp_aod, Min_types, Max_types, Linear_aod, Max_residual, Reference_wn))
+        _merra_aerosol.MerraAerosol_swiginit(self, _merra_aerosol.new_MerraAerosol(Merra_climatology, Aerosol_property, Latitude, Longitude, Press, Rh, Aerosol_cov, Max_aod, Exp_aod, Min_types, Max_types, Linear_aod, Relative_humidity_aerosol, Max_residual, Reference_wn))
 
     def _v_aerosol(self):
         """

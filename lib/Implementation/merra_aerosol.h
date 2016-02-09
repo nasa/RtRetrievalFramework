@@ -25,6 +25,7 @@ public:
 	       int Min_types = 2,
 	       int Max_types = 4,
 	       bool Linear_aod = false,
+	       bool Relative_humidity_aerosol = false,
 	       double Max_residual = 0.005,
 	       double Reference_wn=1e4/0.755);
   virtual ~MerraAerosol() {}
@@ -48,7 +49,7 @@ public:
   virtual void print(std::ostream& Os) const;
 private:
   mutable boost::shared_ptr<Aerosol> aerosol_;
-  bool linear_aod;
+  bool linear_aod, rh_aerosol;
   int number_merra_particle_;
   std::vector<boost::shared_ptr<AerosolExtinction> > aext;
   std::vector<boost::shared_ptr<AerosolProperty> > aprop;
