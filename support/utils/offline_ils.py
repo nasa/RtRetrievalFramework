@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from __future__ import division
+from builtins import zip
+from builtins import range
+from past.utils import old_div
 import os
 import sys
 import logging
@@ -34,7 +39,7 @@ def convolve_data(l1b_obj, high_res_wl, high_res_rad, band_idx, sounding_pos=DEF
 
     # Divide out and flip the order if input file defined in wavenumbers 
     if in_wavenumber:
-        high_res_wl = 1e4/high_res_wl[::-1]
+        high_res_wl = old_div(1e4,high_res_wl[::-1])
         high_res_rad = high_res_rad[::-1]
 
     # Create dispersion object
@@ -51,7 +56,7 @@ def convolve_data(l1b_obj, high_res_wl, high_res_rad, band_idx, sounding_pos=DEF
     # Perform convolution
     ils_table = IlsTableLog(wavelength, delta_lambda, response, DESC_BAND_NAMES[band_idx], HDF_BAND_NAMES[band_idx], ILS_INTERPOLATE)
     ils_conv = IlsConvolution(disp_l2, ils_table, ILS_HALF_WIDTH[band_idx])
-    conv_rad = ils_conv.apply_ils(high_res_wl, high_res_rad, range(0,NUM_PIXEL))
+    conv_rad = ils_conv.apply_ils(high_res_wl, high_res_rad, list(range(0,NUM_PIXEL)))
 
     return wavelength, conv_rad
 
@@ -66,7 +71,7 @@ def convolve_data_from_file(l1b_file, rad_file, band_idx, sounding_pos=DEFAULT_S
 
 def display_result(conv_wl, conv_rad):
     for wl, rad in zip(conv_wl, conv_rad):
-        print "%.06e %.06e" % (wl, rad)
+        print("%.06e %.06e" % (wl, rad))
 
 if __name__ == "__main__":
     parser = ArgumentParser(description='Convolves a simple text file with the L2 ils table')

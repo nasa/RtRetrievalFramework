@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from past.builtins import cmp
+from builtins import str
+from builtins import object
 import sys
 import os
 import re
@@ -48,7 +52,7 @@ SV_CONFIG_TYPE_STRINGS = { "lambertian": "Ground Lambertian",
 # Only look at most 20 lines from end, do not search whole file
 LOG_EXCEPTION_SRCH_LIMIT = 35
 
-class results_count:
+class results_count(object):
     def __init__(self, verbose=False):
         self.completed_counts = { 
                                   "outcome_1"   : {"num": 0, "prefix": "with", "order": 3, "indent": 4, "add_to_total": False},
@@ -83,7 +87,7 @@ class results_count:
         self.verbose = verbose
 
     def __del__(self):
-        for output in self.type_output_files.values():
+        for output in list(self.type_output_files.values()):
             output["object"].close()
 
     def register_output(self, type_name, output):
@@ -92,7 +96,7 @@ class results_count:
 
         if type(output) is StringType:
             found_existing_file = False
-            for out_file in self.type_output_files.values():
+            for out_file in list(self.type_output_files.values()):
                 if out_file["filename"] == output:
                     self.type_output_files[type_name] = out_file
                     found_existing_file = True
@@ -106,8 +110,8 @@ class results_count:
     def type_names(self, unique=True):
         names = []
         for count_dict in self.count_dicts:
-            for count_name, count_desc in count_dict.items():
-                if unique == False or type(count_desc) is not DictType or not count_desc.has_key("add_to_total") or count_desc["add_to_total"] == True:                    
+            for count_name, count_desc in list(count_dict.items()):
+                if unique == False or type(count_desc) is not DictType or "add_to_total" not in count_desc or count_desc["add_to_total"] == True:                    
                     names.append(count_name)
         if unique == False:
             names.append("all")
@@ -118,7 +122,7 @@ class results_count:
         for result_type in result_obj.result_types:
             was_counted = False
             for count_dict in self.count_dicts:
-                if count_dict.has_key(result_type):
+                if result_type in count_dict:
                     if type(count_dict[result_type]) is DictType:
                         count_dict[result_type]["num"] += 1
                     else:
@@ -128,16 +132,16 @@ class results_count:
             if not was_counted:
                 raise ValueError('Unknown result type "%s" for run id "%s"' % (result_type, result_obj.run_id))
 
-            if self.type_output_files.has_key(result_type):
-                print >>self.type_output_files[result_type]["object"], result_obj.run_id
+            if result_type in self.type_output_files:
+                print(result_obj.run_id, file=self.type_output_files[result_type]["object"])
 
         if result_obj.run_id in self.all_run_dirs and self.verbose:
-            print "Duplicate sounding id: %s" % result_obj.run_id                
+            print("Duplicate sounding id: %s" % result_obj.run_id)                
 
         if count_duplicates or (not result_obj.run_id in self.all_run_dirs):
             self.all_run_dirs.append(result_obj.run_id)
-            if self.type_output_files.has_key("all"):
-                print >>self.type_output_files["all"]["object"], result_obj.run_id
+            if "all" in self.type_output_files:
+                print(result_obj.run_id, file=self.type_output_files["all"]["object"])
                     
     def print_overall_stats(self, out_obj=sys.stdout):
         stats_format = "%4s %s\n"
@@ -146,19 +150,19 @@ class results_count:
 
         count_sect_strs = []
         for count_dict in self.count_dicts:
-            count_items = count_dict.items()
+            count_items = list(count_dict.items())
             count_items.reverse()
 
             def count_compare(x, y):
                 (x_id, x_desc) = x
                 (y_id, y_desc) = y
 
-                if type(x_desc) is DictType and x_desc.has_key("order"):
+                if type(x_desc) is DictType and "order" in x_desc:
                     x_order = x_desc["order"]
                 else:
                     x_order = -1
 
-                if type(y_desc) is DictType and y_desc.has_key("order"):
+                if type(y_desc) is DictType and "order" in y_desc:
                     y_order = y_desc["order"]
                 else:
                     y_order = -1
@@ -178,21 +182,21 @@ class results_count:
                     count_num = count_desc
 
                 if count_num > 0:
-                    if type(count_desc) is DictType and count_desc.has_key("add_to_total"):
+                    if type(count_desc) is DictType and "add_to_total" in count_desc:
                         if count_desc["add_to_total"]:
                             total_count += count_num
                     else:
                         total_count += count_num
                 
-                    if type(count_desc) is DictType and count_desc.has_key("alt"):
+                    if type(count_desc) is DictType and "alt" in count_desc:
                         count_name = count_desc["alt"]
                     else:
                         count_name = count_id.replace("_", " ")
 
-                    if type(count_desc) is DictType and count_desc.has_key("prefix"):
+                    if type(count_desc) is DictType and "prefix" in count_desc:
                         count_name = "%s %s" % (count_desc["prefix"], count_name)
 
-                    if type(count_desc) is DictType and count_desc.has_key("indent"):
+                    if type(count_desc) is DictType and "indent" in count_desc:
                         indent = " " * count_desc["indent"]
                     else:
                         indent = ""
@@ -205,11 +209,11 @@ class results_count:
 
         if total_count != len(self.all_run_dirs):
             raise Exception("Length of all run ids processed: %d does not match count from all count types: %d. Possibly because counting of duplicates was disabled." % (len(self.all_run_dirs), total_count))
-        print >>out_obj, "----\n".join(count_sect_strs),
-        print >>out_obj, "===="
-        print >>out_obj, stats_format % (total_count, "total runs")
+        print("----\n".join(count_sect_strs), end=' ', file=out_obj)
+        print("====", file=out_obj)
+        print(stats_format % (total_count, "total runs"), file=out_obj)
 
-class run_id_result:
+class run_id_result(object):
     
     def __init__(self, base_path, run_id, aggregate_file=None, verbose=False):
         self.result_types  = []
@@ -224,23 +228,23 @@ class run_id_result:
         class_members.sort()
 
         if self.verbose:
-            print "run_id: ", run_id
+            print("run_id: ", run_id)
 
         for member in class_members:
             if member[0].find("check_") == 0:
                 check_result = member[1]()
                 if check_result != None and check_result != False:
                     if self.verbose:
-                        print "Result types: %s" % (", ".join(self.result_types))
+                        print("Result types: %s" % (", ".join(self.result_types)))
                     break
                 
     def find_check_file(self, file_glob):
         file_search = (self.base_path + "/" + file_glob).format(base_path=self.base_path, run_id=self.run_id)
         file_result = glob.glob( file_search )
 
-        if self.verbose: print "Checking for file %s" % file_search
+        if self.verbose: print("Checking for file %s" % file_search)
         if len(file_result) > 0 and file_result[0] != "":
-            if self.verbose: print "Found file %s" % file_result[0]
+            if self.verbose: print("Found file %s" % file_result[0])
             return file_result[0]
         else:
             return None
@@ -250,8 +254,8 @@ class run_id_result:
         try:
             sv_names = hdf_obj[STATEVECTOR_NAMES_DATASET][run_index, :]
                 
-            for cfg_type_name, cfg_type_srch in SV_CONFIG_TYPE_STRINGS.iteritems():
-                fnd_of_type = filter(lambda sv_elem: str(sv_elem).find(cfg_type_srch) >= 0, sv_names)
+            for cfg_type_name, cfg_type_srch in SV_CONFIG_TYPE_STRINGS.items():
+                fnd_of_type = [sv_elem for sv_elem in sv_names if str(sv_elem).find(cfg_type_srch) >= 0]
                 if len(fnd_of_type) > 0:
                     self.result_types.append(cfg_type_name)
                     break
@@ -282,7 +286,7 @@ class run_id_result:
             return False
 
     def check_01_aggregate(self):
-        if self.verbose: print "Checking aggregate file"
+        if self.verbose: print("Checking aggregate file")
 
         if self.aggregate_file != None:
             try:
@@ -295,7 +299,7 @@ class run_id_result:
             return False
 
     def check_02_if_running(self):
-        if self.verbose: print "Checking if running"
+        if self.verbose: print("Checking if running")
         running_find = self.find_check_file(LOG_RUNNING_FILENAME_SRCH)
 
         if running_find != None:
@@ -307,7 +311,7 @@ class run_id_result:
         return False
 
     def check_03_if_ran(self):
-        if self.verbose: print "Checking if ran"
+        if self.verbose: print("Checking if ran")
         self.hdf_find = self.find_check_file(HDF_OUTPUT_FILENAME_SRCH)
         self.log_find = self.find_check_file(LOG_OUTPUT_FILENAME_SRCH)
 
@@ -320,7 +324,7 @@ class run_id_result:
         return False
 
     def check_04_hdf_outcome(self):
-        if self.verbose: print "Checking hdf outcome"
+        if self.verbose: print("Checking hdf outcome")
 
         if self.hdf_find != None:
             with h5py.File(self.hdf_find, "r") as hdf_obj:
@@ -330,7 +334,7 @@ class run_id_result:
         return False
 
     def check_05_error_check(self):
-        if self.verbose: print "Checking for an error"
+        if self.verbose: print("Checking for an error")
         err_find = self.find_check_file(HDF_ERROR_FILENAME_SRCH)
 
         if err_find != None:
@@ -342,7 +346,7 @@ class run_id_result:
         # Now check the log, maybe exception was caught, but
         # output files not named appropriately
         if self.log_find != None:
-            if self.verbose: print "Searching %s for errors" % self.log_find
+            if self.verbose: print("Searching %s for errors" % self.log_find)
             # Search backwards from end of file (for speed)
             # to find exception handling message
             with open(self.log_find) as log_fo:
@@ -371,7 +375,7 @@ class run_id_result:
         return False
 
     def check_99_unknown_fall_through(self):
-        if self.verbose: print "No other sufficient result recorded. Marking run unknown"
+        if self.verbose: print("No other sufficient result recorded. Marking run unknown")
         self.result_types.append( "unknown" )
         return True
 
@@ -401,7 +405,7 @@ def read_run_id_file(run_id_file):
     # used to drive the populator
     if len(section_names) > 0:
         # Try to find section where run ids live
-        list_sections = filter(lambda sec_name: re.search(CONFIG_RUN_ID_SEC_RE, sec_name), section_names)
+        list_sections = [sec_name for sec_name in section_names if re.search(CONFIG_RUN_ID_SEC_RE, sec_name)]
 
         id_lines = []
         for sec_name in list_sections:
@@ -497,7 +501,7 @@ def standalone_main():
     
     if options.list_all_types:
         for type_name in r_count.type_names(unique=False):
-            print type_name
+            print(type_name)
         sys.exit(0)
 
     if options.output_file != None and len(options.output_file) > 0:
@@ -522,7 +526,7 @@ def standalone_main():
         if not os.path.exists(options.run_id_file):
             parser.error("Run id file '%s' does not exist" % options.run_id_file)
         if options.verbose:
-            print "Reading run ids from %s" % options.run_id_file
+            print("Reading run ids from %s" % options.run_id_file)
         curr_dir = os.curdir
         for run_id in read_run_id_file(options.run_id_file):
             run_dir_ids.append( (curr_dir, run_id) )
@@ -531,7 +535,7 @@ def standalone_main():
 
     for curr_base_dir in search_base_dirs:
         if options.verbose:
-            print "Finding run id starting at %s with depth %d" % (curr_base_dir, options.max_search_depth)
+            print("Finding run id starting at %s with depth %d" % (curr_base_dir, options.max_search_depth))
 
         find_run_ids(curr_base_dir, run_dir_ids, options.max_search_depth, options.filter, options.verbose)
 
@@ -539,14 +543,14 @@ def standalone_main():
     count = 1
     for id_dir, run_id in run_dir_ids:
         if options.verbose:
-            print 'Processing run id #%04d %s located under directory: "%s"' % (count, run_id, id_dir)
+            print('Processing run id #%04d %s located under directory: "%s"' % (count, run_id, id_dir))
             count += 1
 
         d_result = run_id_result(id_dir, run_id, verbose=options.verbose)
         r_count.add_count( d_result, count_duplicates=options.allow_duplicates )
 
     if options.verbose:
-        print ""
+        print("")
 
     if options.type_names == None or len(options.type_names) <= 0 or options.stats_file != None:
         stats_out_obj = sys.stdout

@@ -24,14 +24,14 @@ args = docopt_simple(usage, version=version)
 res = {}
 for f in args.input_file:
     d = scipy.io.loadmat(f)
-    for k in d.keys():
+    for k in list(d.keys()):
         # Skip keys starting with "__"
         if(not k[0:2] == "__"):
             # Reshape data to have a extra dimension of size 1 in front
             s = [1]
             s.extend(d[k].shape)
             t = d[k].reshape(s)
-            if(res.has_key(k)):
+            if(k in res):
                 res[k] = np.append(res[k], t, axis = 0)
             else:
                 res[k] = t

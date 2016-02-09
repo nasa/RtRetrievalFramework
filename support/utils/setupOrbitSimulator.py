@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from builtins import str
 import h5py
 import sys
 import numpy as np
@@ -53,7 +55,7 @@ def setupRuns(options):
             conf = 'gosat_orbit_' + orbit + '_' + version + '.config'
             # check whether files exits and exit if not
             if not os.path.isfile(l1b) or not os.path.isfile(met):
-                print 'Matching l1b and/or met file not found: ' + l1b + met
+                print('Matching l1b and/or met file not found: ' + l1b + met)
                 break 
                 #sys.exit(0)
            
@@ -64,25 +66,25 @@ def setupRuns(options):
             
             # run create_config.py to generate input file
             if not os.path.isfile(outputDirectory + '/' + conf) and not options.scriptOnly:
-                print 'Creating config file in ' + outputDirectory
+                print('Creating config file in ' + outputDirectory)
                 if not options.ocean:
                     os.system('cd ' + outputDirectory + '; create_config.py -t gosat -g land -o ' + conf + ' ' + l1b + ' ' + met)
                 else:
                     os.system('cd ' + outputDirectory + '; create_config.py -t gosat -g ocean -o ' + conf + ' ' + l1b + ' ' + met)
             else:
                 if not options.scriptOnly:
-                    print 'Config file in ' + outputDirectory + ' already exists, doing nothing...'
+                    print('Config file in ' + outputDirectory + ' already exists, doing nothing...')
 
             # run the populate tool to generate all necessary run directories, input files, etc.
             if not options.scriptOnly:
-                print 'Running the populate tool in ' + outputDirectory
+                print('Running the populate tool in ' + outputDirectory)
                 os.system('cd ' + outputDirectory + '; populate.py -b ' + options.binary + '-q -o ' + conf)
         
             # for the time being: always rescale the co2 prior:
             if not options.scriptOnly:
                 scale_CO2_prior(outputDirectory, 0.9873)
             if options.rayleighOnly:
-                print "Scaling prior aerosol concentrations to ridicul. low values"
+                print("Scaling prior aerosol concentrations to ridicul. low values")
                 os.system('sed -i \'s/-/-2/g\' input/static/scene/aerosol/profiles/aerosol_015_log_20.dat')
             
             # load constant ILS files
@@ -112,7 +114,7 @@ def setupRuns(options):
 
 # Scales the CO2 prior profile
 def scale_CO2_prior(dir, scaleFactor):
-    print 'Rescaling CO2 a priori profiles...'
+    print('Rescaling CO2 a priori profiles...')
     # find all matching CO2 a priori profiles:
     co2_files = glob.glob(dir+'/input/apriori/co2_apriori*.dat')
     for co2_file in co2_files:
@@ -123,15 +125,15 @@ def scale_CO2_prior(dir, scaleFactor):
 
 # Adapt this to your specific needs (where files are located...)
 def copyILS_files(dir):
-    print 'Copying constant ILS files...'
+    print('Copying constant ILS files...')
     cmd = 'cp /home/cfranken/scratch/benchmark/7/ILS/band_1_v2.dat ' + dir+'/input/static/instrument/TFTSILSF_A006P006_B1S.dat'
-    print cmd
+    print(cmd)
     os.system(cmd)
     cmd = 'cp /home/cfranken/scratch/benchmark/7/ILS/band_2_v2.dat ' + dir+'/input/static/instrument/TFTSILSF_A006P006_B2.dat'
-    print cmd
+    print(cmd)
     os.system(cmd)
     cmd = 'cp /home/cfranken/scratch/benchmark/7/ILS/band_3_v2.dat ' + dir+'/input/static/instrument/TFTSILSF_A006P006_B3.dat'
-    print cmd
+    print(cmd)
     os.system(cmd)
    
 
@@ -172,7 +174,7 @@ def standalone_main():
     # Parse command line arguments
     (options, args) = parser.parse_args()
     if options.scriptOnly:
-        print "Just generating shell scripts for pre and postprocessing..." 
+        print("Just generating shell scripts for pre and postprocessing...") 
     setupRuns(options)
         
 if __name__ == "__main__":
