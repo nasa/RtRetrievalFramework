@@ -1,10 +1,18 @@
+from builtins import range
 import os
 import re
 import sys
 import copy
 import datetime
 
-from types import ListType
+my_list_type = None
+try:
+    # This is for python 2
+    from types import ListType
+    my_list_type = ListType
+except ImportError:
+    # This is for python 3
+    my_list_type = list
 
 ASCII_TIMESTAMP_FORMAT  = '%Y-%m-%dT%H:%M:%S.%fZ' # ie 2006-09-14T11:45:56.001Z
 
@@ -57,22 +65,22 @@ def relpath(target, base=os.curdir):
     """
 
     if not os.path.exists(target):
-        raise OSError, 'Target does not exist: '+target
+        raise OSError('Target does not exist: '+target)
 
     if not os.path.isdir(base):
-        raise OSError, 'Base is not a directory or does not exist: '+base
+        raise OSError('Base is not a directory or does not exist: '+base)
 
     base_list = (os.path.abspath(base)).split(os.sep)
     target_list = (os.path.abspath(target)).split(os.sep)
 
     # On the windows platform the target may be on a completely different drive from the base.
-    if os.name in ['nt','dos','os2'] and base_list[0] <> target_list[0]:
-        raise OSError, 'Target is on a different drive to base. Target: '+target_list[0].upper()+', base: '+base_list[0].upper()
+    if os.name in ['nt','dos','os2'] and base_list[0] != target_list[0]:
+        raise OSError('Target is on a different drive to base. Target: '+target_list[0].upper()+', base: '+base_list[0].upper())
 
     # Starting from the filepath root, work out how much of the filepath is
     # shared by base and target.
     for i in range(min(len(base_list), len(target_list))):
-        if base_list[i] <> target_list[i]: break
+        if base_list[i] != target_list[i]: break
     else:
         # If we broke out of the loop, i is pointing to the first differing path elements.
         # If we didn't break out of the loop, i is pointing to identical path elements.
@@ -109,7 +117,7 @@ def extract_run_names(run_dirs, name_join_str='-', return_common=False):
 
 def index_range_list(range_spec, max_value=None):
 
-    if type(range_spec) is ListType:
+    if type(range_spec) is my_list_type:
         range_list = [ int(item) for item in range_spec ]
     elif range_spec.isdigit():
         range_list = [ int(range_spec) ]

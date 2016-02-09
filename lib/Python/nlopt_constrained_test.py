@@ -1,3 +1,6 @@
+from __future__ import print_function
+from __future__ import division
+from past.utils import old_div
 from nose.tools import *
 from full_physics import *
 import math
@@ -81,7 +84,7 @@ def nlopt_test():
     def myfunc(x, grad):
         if grad.size > 0:
             grad[0] = 0.0
-            grad[1] = 0.5 / math.sqrt(x[1])
+            grad[1] = old_div(0.5, math.sqrt(x[1]))
         return math.sqrt(x[1])
 
     def myconstraint(x, grad, a, b):
@@ -98,6 +101,6 @@ def nlopt_test():
     opt.set_xtol_rel(1e-4)
     x = opt.optimize([1.234, 5.678])
     minf = opt.last_optimum_value()
-    print "optimum at ", x[0],x[1]
-    print "minimum value = ", minf
-    print "result code = ", opt.last_optimize_result()
+    print("optimum at ", x[0],x[1])
+    print("minimum value = ", minf)
+    print("result code = ", opt.last_optimize_result())

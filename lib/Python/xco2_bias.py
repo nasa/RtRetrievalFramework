@@ -1,7 +1,12 @@
+from __future__ import absolute_import
+from __future__ import division
+from builtins import range
+from builtins import object
+from past.utils import old_div
 import numpy as np
 from numpy.linalg import inv
 from abc import *
-from cached_prop import *
+from .cached_prop import *
 
 class XCO2Bias(object):
     '''This class calculates an estimate of the XCO2 bias for the Level 2
@@ -73,8 +78,8 @@ class XCO2Bias(object):
         sa = self.apriori_covariance
         k = self.jacobian
         se = self.se
-        return np.dot(inv(inv(sa) + np.dot(np.transpose(k) / se, k)), 
-                      np.transpose(k) / se)
+        return np.dot(inv(inv(sa) + np.dot(old_div(np.transpose(k), se), k)), 
+                      old_div(np.transpose(k), se))
 
     @cached_property
     def avg_kernel(self):
@@ -103,8 +108,8 @@ class XCO2Bias(object):
         calculations we use np.matrix'''
         r = np.empty_like(self.apriori_covariance)
         for i in range(r.shape[0]):
-            r[i,:] = (self.apriori_covariance[i,:] / 
-                      (self.sigma_alpha[i] * self.sigma_alpha))
+            r[i,:] = (old_div(self.apriori_covariance[i,:], 
+                      (self.sigma_alpha[i] * self.sigma_alpha)))
         return np.mat(r)
 
     @cached_property
@@ -143,12 +148,12 @@ class XCO2Bias(object):
         for j in range(res.shape[1]):
             for k in range(res.shape[2]):
                 res[:,j,k] = (((self.phi_k[k, :, j] - self.phi0[:,j]) /
-                               (delta[k] / self.sigma_alpha[k]) *
-                               (delta[k] / (delta[j] + delta[k]))
+                               (old_div(delta[k], self.sigma_alpha[k])) *
+                               (old_div(delta[k], (delta[j] + delta[k])))
                             ) +
                             ((self.phi_k[j, :, k] - self.phi0[:,k]) /
-                             (delta[j] / self.sigma_alpha[j]) *
-                             (delta[j] / (delta[j] + delta[k]))
+                             (old_div(delta[j], self.sigma_alpha[j])) *
+                             (old_div(delta[j], (delta[j] + delta[k])))
                              ))
         return res
 

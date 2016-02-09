@@ -1,8 +1,10 @@
+from __future__ import print_function
+from __future__ import absolute_import
 from nose.tools import *
 import os
 import shutil
 import filecmp
-from populator_base import *
+from .populator_base import *
 import logging
 
 test_data = os.path.dirname(__file__) + "/../../unit_test_data/"
@@ -61,10 +63,10 @@ def test_create_run_scripts():
         os.environ.update(original_env)
     for f in ["sounding_id.list", "aggregate.sh",
               "launch_jobs.sh", "l2_fp_job.sh", "pleiades_job.sh"]:
-        print "Comparing file " + f
+        print("Comparing file " + f)
         res = filecmp.cmp("create_run_scripts_test/" + f, expected_dir + f)
         if(not res):
-            print "The comparison failed. You can run 'diff create_run_scripts_test/" + f + " " + expected_dir + f + "' for more info if needed"
+            print("The comparison failed. You can run 'diff create_run_scripts_test/" + f + " " + expected_dir + f + "' for more info if needed")
         assert res
     
 

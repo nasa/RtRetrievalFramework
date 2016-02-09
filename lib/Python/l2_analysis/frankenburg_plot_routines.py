@@ -1,9 +1,15 @@
+from __future__ import absolute_import
+from __future__ import division
+from builtins import str
+from builtins import zip
+from builtins import range
+from past.utils import old_div
 import numpy
 from matplotlib.pyplot import *
 
 import scipy.stats as stats
 
-from routines_base import PlotRoutinesBase
+from .routines_base import PlotRoutinesBase
 
 BAND_NAMES = ("ABO2", "WCO2", "SCO2")
 BAND_COLORS = ("b", "g", "r")
@@ -72,7 +78,7 @@ class FrankenburgPlotRoutinesReal(PlotRoutinesBase):
         for label in axis.get_xticklabels():
             label.set_visible(False)
 
-        stats_txt = '$\chi^2$=%.2f, SNR=%d' % (chi2, int(numpy.max(y_meas)/numpy.mean(meas_sigma)))
+        stats_txt = '$\chi^2$=%.2f, SNR=%d' % (chi2, int(old_div(numpy.max(y_meas),numpy.mean(meas_sigma))))
         axis.set_xlabel(stats_txt)
 
     def _plot_histogram(self, y_meas, y_mod, meas_sigma, axis):
@@ -88,7 +94,7 @@ class FrankenburgPlotRoutinesReal(PlotRoutinesBase):
         axis.xaxis.set_major_formatter(NullFormatter())
         axis.yaxis.set_major_formatter(NullFormatter())
 
-        (osm, osr), (m, b, r) = stats.probplot((y_meas - y_mod)/ meas_sigma,  dist='norm')
+        (osm, osr), (m, b, r) = stats.probplot(old_div((y_meas - y_mod), meas_sigma),  dist='norm')
 
         osmf = osm.take([0, -1])  # endpoints
         osrf = m * osmf + b       # fit line

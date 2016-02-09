@@ -1,8 +1,11 @@
+from __future__ import absolute_import
+from builtins import zip
+from builtins import range
 import numpy
 from matplotlib.pyplot import *
 
-from routines_base import PlotMaker
-from time_diff_plot_routines import TimeDiffPlotRoutines
+from .routines_base import PlotMaker
+from .time_diff_plot_routines import TimeDiffPlotRoutines
 
 class RadiancePlotRoutines(PlotMaker, TimeDiffPlotRoutines):
     def __init__(self, **kwargs):

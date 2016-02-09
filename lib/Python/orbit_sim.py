@@ -1,18 +1,33 @@
+from __future__ import absolute_import
+from __future__ import division
+from builtins import zip
+from builtins import str
+from builtins import range
+from builtins import object
+from past.utils import old_div
 import os
 import re
 import sys
 import math
 import struct
 import logging
-from types import ListType, DictType
-import logging 
+
+my_list_type = None
+try:
+    # This is for python 2
+    from types import ListType
+    my_list_type = ListType
+except ImportError:
+    # This is for python 3
+    my_list_type = list
+
 from itertools import chain
 
 import h5py
 import numpy
 
-import acos_file
-from math_util import *
+from . import acos_file
+from .math_util import *
 
 SOUNDING_ID_COL_NAME = 'Sounding ID'
 
@@ -20,9 +35,9 @@ SOUNDING_ID_COL_NAME = 'Sounding ID'
 OS_ALBEDO_REF_POINTS = ( (0.755, 0.785),
                          (1.58, 1.65),
                          (2.03, 2.09), )
-OS_ALBEDO_REF_POINTS = [ [ 1e4 / wl for wl in band_wl ] for band_wl in OS_ALBEDO_REF_POINTS ]
+OS_ALBEDO_REF_POINTS = [ [ old_div(1e4, wl) for wl in band_wl ] for band_wl in OS_ALBEDO_REF_POINTS ]
 
-L2_CENTER_WN = [ 1e4 / wvl for wvl in ( 0.77, 1.615, 2.06 ) ]
+L2_CENTER_WN = [ old_div(1e4, wvl) for wvl in ( 0.77, 1.615, 2.06 ) ]
 
 EFF_ALBEDO_LOG_COLS = ( ('EffAlbedo_1A','EffAlbedo_1B',),
                         ('EffAlbedo_2A','EffAlbedo_2B',),
@@ -36,7 +51,7 @@ AER_FILTER_MAX = 0.3
 
 logger = logging.getLogger()
       
-class OrbitSimLogFile:
+class OrbitSimLogFile(object):
     def __init__(self, filename=None, l1b_file=None):
 
         self.filename = filename
@@ -66,7 +81,7 @@ class OrbitSimLogFile:
 
     def get_column_index(self, desired_col):
 
-        if type(desired_col) is ListType:
+        if type(desired_col) is my_list_type:
             found_idx = []
             for curr_col_name in desired_col:
                 found_idx.append( self.get_column_index(curr_col_name) )
@@ -136,7 +151,7 @@ class OrbitSimLogFile:
         snd_alb_coeffs = numpy.zeros((eff_alb.shape[0], 2), dtype=float)
 
         for band_idx, (x_wn, c_wn) in enumerate(zip(OS_ALBEDO_REF_POINTS, L2_CENTER_WN)):
-            coeff1 = (eff_alb[band_idx, 1] - eff_alb[band_idx, 0]) / (x_wn[1] - x_wn[0])
+            coeff1 = old_div((eff_alb[band_idx, 1] - eff_alb[band_idx, 0]), (x_wn[1] - x_wn[0]))
             coeff0 = eff_alb[band_idx, 0] + (c_wn - x_wn[0]) * coeff1
 
             logger.debug("[%d] x0 = %e; x1 = %e" % (band_idx, x_wn[0], x_wn[1]))
@@ -235,7 +250,7 @@ class OrbitSimLogFile:
                 if col_idx == sound_id_col:
                     snd_id_val = int( self.data[row_idx, col_idx] )
 
-                    if sounding_spec.has_key(snd_id_val):
+                    if snd_id_val in sounding_spec:
                         sounding_spec[snd_id_val] += 1
                     else:
                         soundings.append(snd_id_val)
@@ -254,7 +269,7 @@ class OrbitSimLogFile:
 H2O_CONVERT_EPSILON = 0.621461
 DRY_AIR_NAME = 'AIR_dry'
 
-class SimulationSounding:
+class SimulationSounding(object):
 
     def __init__(self, h5_obj, exposure_index):
         self.h5_obj = h5_obj
@@ -306,7 +321,7 @@ class SimulationSounding:
         for gas_idx, gas_name in enumerate(gas_names):
             gas_val = gas_data[gas_idx, :]
             if gas_name.find("AIR") < 0:
-                gas_val = gas_val / gas_data[dry_air_idx, :]
+                gas_val = old_div(gas_val, gas_data[dry_air_idx, :])
 
             gas_dict[gas_name] = gas_val
         return gas_dict

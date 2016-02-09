@@ -1,3 +1,4 @@
+from builtins import object
 # Test that we do casting correctly, where we take a function returning a
 # boost::shared_ptr<Base> and return the exact derived type to python
 # (e.g., a function returning a boost::shared_ptr<Pressure>, which is actually
@@ -9,7 +10,7 @@ from numpy.testing import *
 from nose.plugins.skip import Skip, SkipTest
 
 if(not have_full_physics_swig):
-    class PressureImpBase:
+    class PressureImpBase(object):
         pass
 
 # A simple python based class, to 

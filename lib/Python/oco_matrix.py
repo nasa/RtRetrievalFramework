@@ -1,25 +1,39 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from __future__ import absolute_import
+from builtins import zip
+from builtins import str
+from builtins import range
+from builtins import object
 import bisect
 import datetime
 import inspect
 import math
 import sys
 import re
-from types import ListType, StringType, IntType
+import six
+my_list_type = None
+try:
+    # This is for python 2
+    from types import ListType
+    my_list_type = ListType
+except ImportError:
+    # This is for python 3
+    my_list_type = list
 
 import numpy
 
 import copy as copy_module
 
-from text_util import TeX_string
+from .text_util import TeX_string
 
 # IEEE 754 double-precision
 EPS = 1.11022302463e-16
 
 FILL_VALUE = 'N/A'
 
-class OcoMatrix:
+class OcoMatrix(object):
     """Read a matrix file output by the L2 code
     """
 
@@ -58,7 +72,7 @@ class OcoMatrix:
         beg_idxs = self.pixels
         end_idxs = self.pixels[1:] + [self.dims[0]]
 
-        return zip(beg_idxs, end_idxs)
+        return list(zip(beg_idxs, end_idxs))
 
     @property
     def labels_lower(self):
@@ -67,7 +81,7 @@ class OcoMatrix:
     def get_header_value(self, keyword_name):
 
         matched_values = []
-        for curr_name in self.header.keys():
+        for curr_name in list(self.header.keys()):
             if curr_name.lower().strip() == keyword_name.lower().strip():
                 matched_values.append(self.header[curr_name])
 
@@ -80,7 +94,7 @@ class OcoMatrix:
 
     def __getitem__(self, column_ident):
 
-        if type(column_ident) == IntType or column_ident.isdigit():
+        if isinstance(column_ident, six.integer_types) or column_ident.isdigit():
             column_indexes = int(column_ident)
         else:
             column_indexes = self.find_labels(column_ident, match_case=True, indexes=True)
@@ -114,7 +128,7 @@ class OcoMatrix:
         if existing_dict == None:
             existing_dict = {}
 
-        if type(key_label) == IntType or key_label.isdigit():
+        if isinstance(key_label, six.integer_types) or key_label.isdigit():
             key_index = int(key_label)
         else:
             key_index = self.find_labels(key_label, match_case=False, indexes=True)
@@ -135,7 +149,7 @@ class OcoMatrix:
         for row_idx in range(self.data.shape[0]):
             row_key_value = self.data[row_idx, key_index]
 
-            if not existing_dict.has_key(row_key_value):
+            if row_key_value not in existing_dict:
                 existing_dict[row_key_value] = {}
             
             for col_idx in range(self.data.shape[1]):
@@ -287,7 +301,7 @@ class OcoMatrix:
                             new_value = None
                     else:
                         if not ignore_conv_err:
-                            print >>sys.stderr, 'invalid literal for float(): "%s" at row: %d, column: %d' % (line[src_col], dst_row, src_col)
+                            print('invalid literal for float(): "%s" at row: %d, column: %d' % (line[src_col], dst_row, src_col), file=sys.stderr)
                         new_value = None
 
                 if header_less:
@@ -319,7 +333,7 @@ class OcoMatrix:
 
     def get_column_format_info(self, column_index):
 
-        if type(self.data) is ListType:
+        if type(self.data) is my_list_type:
             column_data = self.data
         else:
             column_data = self.data[:, column_index]
@@ -352,7 +366,7 @@ class OcoMatrix:
             value_small = [ elem < EPS for elem in float_data ].count(True) == len(float_data)
             
             holds_precision = True
-            best_precision = 10L
+            best_precision = 10
             curr_precision = best_precision
             while not value_small and holds_precision and curr_precision >= 0:
                # Convert column to string w/ current precision then back to
@@ -423,7 +437,7 @@ class OcoMatrix:
                 self._dims[:] = self.data.shape[:]
 
         if verbose:
-            print self.verbose_pre, 'Dims: ', self._dims
+            print(self.verbose_pre, 'Dims: ', self._dims)
 
         header_wrt = copy_module.copy(self.header)
         header_wrt['File_ID']       = '"%s"'   % (self.file_id)
@@ -444,7 +458,7 @@ class OcoMatrix:
         if (len(self.pixels) > 0):
             header_wrt['Start_Pixels'] = ' '.join([ '%d' % (pix+1) for pix in self.pixels ])
 
-        header_names = header_wrt.keys()
+        header_names = list(header_wrt.keys())
         header_names.sort()
 
         max_name_len = max([ len(name) for name in header_names ])
@@ -470,7 +484,7 @@ class OcoMatrix:
             if auto_size_cols:
 
                 if verbose:
-                    print self.verbose_pre, 'Auto sizing columns'
+                    print(self.verbose_pre, 'Auto sizing columns')
 
                 for j in range(self._dims[1]):
                     (col_width, prec, prec_type) = self.get_column_format_info(j)
@@ -499,7 +513,7 @@ class OcoMatrix:
 
             else:
                 if verbose:
-                    print self.verbose_pre, 'Using standard column sizes'
+                    print(self.verbose_pre, 'Using standard column sizes')
 
                 if type(self.data) is ListType:
                     data_col_formats   = [ '%s' ]
@@ -541,7 +555,7 @@ class OcoMatrix:
 
             # Write data values
             if verbose:
-                print self.verbose_pre, 'Writing data values'
+                print(self.verbose_pre, 'Writing data values')
 
             for i in range(self._dims[0]):
                 for j in range(self._dims[1]):
@@ -550,7 +564,7 @@ class OcoMatrix:
                     else:
                         data_value = self.data[i,j]
 
-                    if data_value == None or (type(data_value) == StringType and len(data_value) == 0):
+                    if data_value == None or (isinstance(data_value, six.string_types) and len(data_value) == 0):
                         file_obj.write(lbl_col_formats[j] % FILL_VALUE)
                     elif data_col_types[j] == 'e' or data_col_types[j] == 'd':
                         file_obj.write(data_col_formats[j] % float(data_value))

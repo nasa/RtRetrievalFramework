@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Useful routines for dealing with L2 Lua configurations
 
 import os
@@ -69,7 +70,7 @@ def run_retrieval(lua_state, output_file):
     c = fp.L2FpConfigurationLua(lua_state, output_file)
 
     log_timing = fp.LogTiming()
-    print c.forward_model
+    print(c.forward_model)
     out, out_err = c.output()
     solver = c.solver
     ig = c.initial_guess
@@ -85,16 +86,16 @@ def run_retrieval(lua_state, output_file):
         out.write()
         log_timing.write_to_log("Final");
         if(res):
-            print "Found Solution"
+            print("Found Solution")
         else:
-            print "Failed to find solution"
-        print "Bye bye"
+            print("Failed to find solution")
+        print("Bye bye")
     except:
-        print >>sys.stderr, "Caught error"
+        print("Caught error", file=sys.stderr)
         import traceback
-        print >>sys.stderr, "-" * 25
+        print("-" * 25, file=sys.stderr)
         traceback.print_exc()
-        print >>sys.stderr, "-" * 25
+        print("-" * 25, file=sys.stderr)
         out_err.write_best_attempt()
 
     return c

@@ -1,9 +1,10 @@
+from builtins import object
 import os
 
 import ply.lex as lex
 import ply.yacc as yacc
 
-class PlyParser:
+class PlyParser(object):
     """
     Base class for a lexer/parser that has the rules defined as methods
     """

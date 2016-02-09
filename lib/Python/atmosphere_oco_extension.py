@@ -1,9 +1,10 @@
+from __future__ import absolute_import
 # The AtmosphereOco class is structured in a way that makes sense for the
 # C++ code. However things tend to be deeply nested and fairly complicated
 # structures (e.g., ArrayAdWithUnit). We provide a simpler interface here, 
 # more suitable for use with python.
 
-from try_swig_load import *
+from .try_swig_load import *
 
 def pressure_grid(self):
     '''Pressure grid, as an array of numbers in Pascals.'''
