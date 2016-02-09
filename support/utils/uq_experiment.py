@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from builtins import str
+from builtins import range
+from builtins import object
 import os
 import sys
 import itertools
@@ -108,7 +112,7 @@ class UqExperiment(object):
 
     def compare_svs(self, err_message=None):
         if err_message != None:
-            print >>sys.stderr, err_message
+            print(err_message, file=sys.stderr)
 
         file_sv_names = []
         with closing(h5py.File(self.lua_config.spectrum_file, "r")) as uq_obj:
@@ -122,10 +126,10 @@ class UqExperiment(object):
         hdr_format = "    %"+str(name_len)+"s %"+str(name_len)+"s"
         line_format = "% 3d %"+str(name_len)+"s %"+str(name_len)+"s"
 
-        print >>sys.stderr, hdr_format % ("Scence File SV Name", "Config SV Name")
-        print >>sys.stderr, "-" * (name_len*2+6)
-        for idx, (file_name, config_name) in enumerate(itertools.izip_longest(file_sv_names, config_sv_names)):
-            print >>sys.stderr, line_format % (idx, file_name, config_name)
+        print(hdr_format % ("Scence File SV Name", "Config SV Name"), file=sys.stderr)
+        print("-" * (name_len*2+6), file=sys.stderr)
+        for idx, (file_name, config_name) in enumerate(itertools.zip_longest(file_sv_names, config_sv_names)):
+            print(line_format % (idx, file_name, config_name), file=sys.stderr)
 
     def run(self):
         # Calculate the radiances need for the retrieval

@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from __future__ import division
+from builtins import range
+from past.utils import old_div
 import datetime
 import time
 import math
@@ -14,7 +18,7 @@ import ephem
 
 def computeSZA(sun, location):
     sun.compute(location)
-    return (math.pi/2 - sun.alt)
+    return (old_div(math.pi,2) - sun.alt)
 
 def bisect(sun, location, start, end, sza):
     x0 = start
@@ -34,7 +38,7 @@ def bisect(sun, location, start, end, sza):
         x1 = tmp
 
     while (math.fabs(x1 - x0) > 1e-6):
-        mid = (x0+x1) / 2
+        mid = old_div((x0+x1), 2)
         location.date = mid
 
         curr_sza = computeSZA(sun, location)
@@ -47,7 +51,7 @@ def bisect(sun, location, start, end, sza):
     return mid
 
 def getTimeOfSZA(lat, lon, date, desired_sza=None):
-    r2d = 180/math.pi
+    r2d = old_div(180,math.pi)
     tolerance = 0.5 # if min or max sza is within this range of sza, accept it
 
     success = True
@@ -64,7 +68,7 @@ def getTimeOfSZA(lat, lon, date, desired_sza=None):
         noon = sun.transit_time
 
         if (noon == None):
-            print "No transit at latitude %s, longitude %s at %s" % (lat,lon,date)
+            print("No transit at latitude %s, longitude %s at %s" % (lat,lon,date))
             return (location.date, 999, False)
 
         midnight = noon + ephem.hour * 12
@@ -76,15 +80,15 @@ def getTimeOfSZA(lat, lon, date, desired_sza=None):
             min_sza = r2d*computeSZA(sun, location)
 
             if (desired_sza - min_sza > -tolerance):
-                location.date = bisect(sun, location, date - ephem.hour * 12, date + ephem.hour * 12, desired_sza/r2d)
+                location.date = bisect(sun, location, date - ephem.hour * 12, date + ephem.hour * 12, old_div(desired_sza,r2d))
                 success = True
             else:
                 # The sun never gets high enough to reach desired sza
-                print "Minimum sza at %s is %f, desired is %f, difference is %f" % (dateToString(location.date), min_sza, desired_sza, desired_sza - min_sza)
+                print("Minimum sza at %s is %f, desired is %f, difference is %f" % (dateToString(location.date), min_sza, desired_sza, desired_sza - min_sza))
                 success = False
         else:
             # The sun never gets low enough to reach sza (polar day)
-            print "Maximum sza at %s is %f, desired is %f, difference is %f" % (dateToString(location.date), max_sza, desired_sza, max_sza - desired_sza)
+            print("Maximum sza at %s is %f, desired is %f, difference is %f" % (dateToString(location.date), max_sza, desired_sza, max_sza - desired_sza))
             success = False
 
     return (location.date, r2d*computeSZA(sun, location), success)
@@ -115,7 +119,7 @@ def readFile(filename, keywords):
             
         file.close()
     except IOError:
-        print "%s does not exist" % filename
+        print("%s does not exist" % filename)
         sys.exit()
 
     return returnval
@@ -143,7 +147,7 @@ def replaceEntry(filename, keywords, values):
         file.close()
         newfile.close()
     except IOError:
-        print "%s does not exist" % filename
+        print("%s does not exist" % filename)
         sys.exit()
 
     return
@@ -158,7 +162,7 @@ def dateToFTS(date):
 
     doy = time.strftime('%j', datetime.datetime(int(year), int(month), int(day), int(hour), int(minute), int(second)).timetuple())
 
-    frac_hour = hour + (minute / 60.0) + (second / 3600.0)
+    frac_hour = hour + (old_div(minute, 60.0)) + (old_div(second, 3600.0))
 
     string = "%4.4d %03.3d %6.3f" % (int(year), int(doy), float(frac_hour))
     return string
@@ -240,8 +244,8 @@ if __name__ == "__main__":
 
     if returnval[2]:
         if options.fts_time:
-            print "sza at %s is %f" % (dateToFTS(returnval[0]), returnval[1])
+            print("sza at %s is %f" % (dateToFTS(returnval[0]), returnval[1]))
         else:
-            print "sza at %s is %f" % (dateToString(returnval[0]), returnval[1])
+            print("sza at %s is %f" % (dateToString(returnval[0]), returnval[1]))
     else:
         raise ValueError("error calculating sza")

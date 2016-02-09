@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from builtins import range
 import sys
 import h5py
 from numpy import *
@@ -7,7 +9,7 @@ import numpy
 from optparse import OptionParser
 
 def correct_zero_level(curr_l1b, H_corr, M_corr, options):
-    print curr_l1b
+    print(curr_l1b)
     f = h5py.File(curr_l1b,'r+')
     o2_spec = f["SoundingSpectra/radiance_o2"]
     gain = f["SoundingHeader/gain_swir"]
@@ -18,7 +20,7 @@ def correct_zero_level(curr_l1b, H_corr, M_corr, options):
         f["ZeroLevelOffset/GainMData"] = M_corr
         f["ZeroLevelOffset/GainHData"] = H_corr
     except:
-        print "Datafile already corrected for zero level offset"
+        print("Datafile already corrected for zero level offset")
         sys.exit(0)
     
     for i in range(len(o2_spec[:,1,1])):

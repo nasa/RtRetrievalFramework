@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 import sys
 import os
 
@@ -43,7 +44,7 @@ spec_wins.data = spec_win_ds[:]
 spec_wins.units = Unit(spec_win_ds.attrs['Units'][0])
 
 spec_win_range = SpectralWindowRange(spec_wins)
-print spec_win_range
+print(spec_win_range)
 
 sounding_ids = l2_obj["/RetrievalHeader/sounding_id_reference"][:]
 
@@ -70,16 +71,16 @@ for idx, sounding_id in enumerate(sounding_ids):
         if(uniq_indexes[band_idx, 0] != sounding_rad_indexes[idx, band_idx, 0] or
             uniq_indexes[band_idx, 1] != sounding_rad_indexes[idx, band_idx, 1]):
             if(band_idx == 0 or not shown_sounding_id):
-                print sounding_id
+                print(sounding_id)
                 shown_sounding_id = True
-            print "  %d: (%d, %d)" % tuple([band_idx] + list(sounding_rad_indexes[idx, band_idx, :]))
+            print("  %d: (%d, %d)" % tuple([band_idx] + list(sounding_rad_indexes[idx, band_idx, :])))
             uniq_indexes[band_idx, :] = sounding_rad_indexes[idx, band_idx, :]
 
 output_file = "l2_l1b_pixels_used.h5"
 if len(sys.argv) >= 4:
     output_file = sys.argv[3]
 
-print "Writing: %s" % output_file
+print("Writing: %s" % output_file)
 out_obj = h5py.File(output_file, "w")
 out_obj.create_dataset("source_l1b_file", data=os.path.realpath(l1b_fn))
 out_obj.create_dataset("source_l2_file", data=os.path.realpath(l2_fn))

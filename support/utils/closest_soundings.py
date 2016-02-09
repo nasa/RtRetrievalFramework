@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from __future__ import division
+from builtins import zip
+from past.utils import old_div
 import os
 import sys
 from optparse import OptionParser
@@ -34,16 +38,16 @@ def find_closest_soundings(l1b_file, tgt_latitude, tgt_longitude, max_distance, 
         az12, az21, dist = g.inv(tgt_longitude,tgt_latitude,curr_lon,curr_lat)
         
         # Convert to km
-        distances[dist_idx] = dist/1000.
+        distances[dist_idx] = old_div(dist,1000.)
 
     closest = numpy.where(distances <= max_distance)
     if len(closest[0]) > 0:
-        print >>log_output, "%s" % l1b_file
+        print("%s" % l1b_file, file=log_output)
         for close_idx in closest[0]:
-            print >>log_output, '%d %f' % (sounding_ids[close_idx], distances[close_idx])
-        print >>log_output, ""
+            print('%d %f' % (sounding_ids[close_idx], distances[close_idx]), file=log_output)
+        print("", file=log_output)
     else:
-        print >>sys.stderr, "No soundings found in %s closer than %f km" % (l1b_file, max_distance)
+        print("No soundings found in %s closer than %f km" % (l1b_file, max_distance), file=sys.stderr)
         
 def standalone_main():
     parser = OptionParser(usage="usage: %prog [options] --lat <latitude> --lon <longitude> <l1b_file>")
@@ -77,7 +81,7 @@ def standalone_main():
     if options.longitude == None:
         parser.error('Target longitude must be specified')
 
-    print >>sys.stderr, "Soundings less than %f km to latitude/longitude: %f, %f" % (options.max_distance, options.latitude, options.longitude)
+    print("Soundings less than %f km to latitude/longitude: %f, %f" % (options.max_distance, options.latitude, options.longitude), file=sys.stderr)
 
     for curr_l1b in l1b_files:
         find_closest_soundings(curr_l1b, options.latitude, options.longitude, options.max_distance)

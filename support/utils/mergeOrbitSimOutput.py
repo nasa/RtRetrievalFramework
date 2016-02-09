@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from __future__ import division
+from builtins import range
+from past.utils import old_div
 import h5py
 import sys
 from numpy import *
@@ -10,7 +14,7 @@ from optparse import OptionParser
 
 def mergeFiles(options):
     l1b_file = options.l1b_file 
-    print 'Using '+  l1b_file + ' to extract header information'
+    print('Using '+  l1b_file + ' to extract header information')
     l1b_obj = acos_file.L1B(l1b_file)
     l2_obj = h5py.File(options.l2_file, "r+")
     try:
@@ -18,7 +22,7 @@ def mergeFiles(options):
         l2_obj.create_group("SoundingHeader")
         l2_obj.create_group("SoundingGeometry")
     except:
-        print "Sounding header already exists in the L2 file!"
+        print("Sounding header already exists in the L2 file!")
         sys.exit(0)
     exposure_index = l2_obj["RetrievalResults/exposure_index"][:]-1
     sounding_id_reference = l2_obj["/RetrievalResults/sounding_id_reference"][:]
@@ -26,14 +30,14 @@ def mergeFiles(options):
     try:    
         start_time = l1b_obj["SoundingHeader/exposure_start_time_tai93"][:][exposure_index]
     except:
-        print "exposure_start_time not found (probably simulator file?), skipping this..."
+        print("exposure_start_time not found (probably simulator file?), skipping this...")
    
     # write few entries into L2 files...
     l2_obj["SoundingHeader/exposure_start_time_string"] = time_string
     try:    
         l2_obj["SoundingHeader/exposure_start_time_tai93"] = start_time
     except:
-        print "time missing"
+        print("time missing")
     l2_obj["SoundingHeader/sounding_id"] = l1b_obj["SoundingHeader/sounding_id"][:][exposure_index]
     l2_obj["SoundingGeometry/sounding_longitude"] = l1b_obj["SoundingGeometry/sounding_longitude"][:][exposure_index]
     l2_obj["SoundingGeometry/sounding_latitude"] = l1b_obj["SoundingGeometry/sounding_latitude"][:][exposure_index]
@@ -152,7 +156,7 @@ def mergeFiles(options):
     # loop over all entries
     for i in range(len(exposure_index)):
        # print  p[i,:n_fine[i]],gases[i,3,:n_fine[i]]/gases[i,1,:n_fine[i]]
-        co2_interp[i,:n_coarse[i]] = interp(p_coarse[i,:n_coarse[i]],p[i,:n_fine[i]],gases[i,3,:n_fine[i]]/gases[i,1,:n_fine[i]])
+        co2_interp[i,:n_coarse[i]] = interp(p_coarse[i,:n_coarse[i]],p[i,:n_fine[i]],old_div(gases[i,3,:n_fine[i]],gases[i,1,:n_fine[i]]))
         AK_co2 = AK_all[i,:n_coarse[i],:n_coarse[i]]
         co2_ak_corrected[i,:n_coarse[i]] = co2_prior[i,:n_coarse[i]]+inner(AK_co2,co2_interp[i,:n_coarse[i]]-co2_prior[i,:n_coarse[i]])
         xCO2_true[i] = dot(h[i,:n_coarse[i]].transpose(),co2_interp[i,:n_coarse[i]])*1e6
@@ -183,7 +187,7 @@ def mergeFiles(options):
     od_water_lr =  zeros((a[0],a[2],19) , dtype='f' )
     od_aerosol_lr =  zeros((a[0],a[2],19) , dtype='f' )
 
-    p_hr2 = (p_hr[:,1:]+p_hr[:,0:-1])/2
+    p_hr2 = old_div((p_hr[:,1:]+p_hr[:,0:-1]),2)
     
     for i in range(a[0]):
         od_total[i,:,:] = aod[i,:,:,:].sum(axis=0)
@@ -237,12 +241,12 @@ def mergeFiles(options):
     ###################################################################################
     # Do the cloud screen stuff.
     if options.cloud_file == None:
-        print "will skip the A-band cloud screen results"
+        print("will skip the A-band cloud screen results")
     else:
         l2_obj.create_group("ABandCloudScreen")
         cld = h5py.File(options.cloud_file, "r")
         aband = cld["ABandCloudScreen"]
-        for data in aband.items():
+        for data in list(aband.items()):
             if len(data[1].shape)==1:
                 l2_obj['ABandCloudScreen/'+data[0]]=data[1][:][exposure_index]
             elif len(data[1].shape)==2:
@@ -253,7 +257,7 @@ def mergeFiles(options):
     sim.close()
     l2_obj.close()
     l1b_obj.close()
-    print 'done...'
+    print('done...')
 
 def standalone_main():
     parser = OptionParser(usage="usage: %prog --l2 l2_spliced.h5 --l1b l1b.h5 --logFile l1b.log --sceneFile scene_xxx.log --detailedLog scene_xxx.hdf ")
@@ -296,7 +300,7 @@ def standalone_main():
     if options.opt_file == None:
         parser.error('opt HDF file has to be specified')
     if options.cloud_file == None:
-        print "Cloud file not provided, ignoring for the moment..."
+        print("Cloud file not provided, ignoring for the moment...")
         
         
     mergeFiles(options)

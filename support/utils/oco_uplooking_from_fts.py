@@ -1,3 +1,6 @@
+from builtins import str
+from builtins import zip
+from builtins import range
 #!/usr/bin/env python
 
 import os
@@ -115,8 +118,8 @@ def convert_fts_data(fts_run_dir, output_filename, l1b_filename=REFERENCE_L1B_FI
     # Get per sounding information from files in the populated FTS run directory
     obs_ids = [ int(sid) for sid in np.loadtxt(os.path.join(fts_run_dir, 'sounding_id.list')) ]
     
-    spec_a_files = map(lambda l: l.strip(), open(os.path.join(fts_run_dir, 'spectrum_a.list'), 'r').readlines())
-    spec_b_files = map(lambda l: l.strip(), open(os.path.join(fts_run_dir, 'spectrum_b.list'), 'r').readlines())
+    spec_a_files = [l.strip() for l in open(os.path.join(fts_run_dir, 'spectrum_a.list'), 'r').readlines()]
+    spec_b_files = [l.strip() for l in open(os.path.join(fts_run_dir, 'spectrum_b.list'), 'r').readlines()]
     # Initialize output file datasets
     create_datasets(obs_ids, output_file, l1b_file)
 

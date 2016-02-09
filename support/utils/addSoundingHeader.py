@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 import h5py
 import sys
 from numpy import *
@@ -14,7 +15,7 @@ def addHeader(options):
     inp_config = L2InputFile(options.config_file)
 
     l1b_file = inp_config.get_section("input->InputProductFiles")[0].Get_Keyword_Value("L1BFile")
-    print 'Using '+  l1b_file + ' to extract header information'
+    print('Using '+  l1b_file + ' to extract header information')
     l1b_obj = acos_file.L1B(l1b_file)
     l2_obj = h5py.File(options.l2_file, "r+")
     try:
@@ -22,7 +23,7 @@ def addHeader(options):
         l2_obj.create_group("SoundingHeader")
         l2_obj.create_group("SoundingGeometry")
     except:
-        print "Sounding header already exists in the L2 file!"
+        print("Sounding header already exists in the L2 file!")
         sys.exit(0)
     exposure_index = l2_obj["RetrievalResults/exposure_index"][:]-1
     sounding_id_reference = l2_obj["/RetrievalResults/sounding_id_reference"][:]
@@ -47,7 +48,7 @@ def addHeader(options):
     # print sounding_id_reference[0], sounding_id[0]
     l2_obj.close()
     l1b_obj.close()
-    print 'done...'
+    print('done...')
 
 def standalone_main():
     parser = OptionParser(usage="usage: %prog --l2 l2_spliced.h5 --configFile configFile.config")
