@@ -1,6 +1,7 @@
-from populator_base import PopulatorBase
+from __future__ import absolute_import
+from .populator_base import PopulatorBase
 from full_physics.version_util import source_version, binary_version
-from types import StringType
+import six
 from full_physics.oco_matrix import OcoMatrix
 import os
 
@@ -52,7 +53,7 @@ class AcosPopulator(PopulatorBase):
         # Try getting versions from the binary file itself first
         exe_version = None
         data_version = None
-        if file_keywords.has_key('exe_path') and file_keywords['exe_path'] != None:
+        if 'exe_path' in file_keywords and file_keywords['exe_path'] != None:
             try:
                 ver_ret = binary_version(file_keywords['exe_path'])
             except OSError as exc:
@@ -78,7 +79,7 @@ class AcosPopulator(PopulatorBase):
 
         # If the binary is not in a source controlled directory try the src_path, which probably
         # came from an enviromental variable
-        if exe_version == None and file_keywords.has_key('src_path') and file_keywords['src_path'] != None:
+        if exe_version == None and 'src_path' in file_keywords and file_keywords['src_path'] != None:
             exe_version = source_version(file_keywords['src_path'])
             if exe_version != None:
                 self.logger.debug('Retrieved exe_version "%s" from source directory %s' % (exe_version, file_keywords['src_path']))
@@ -92,7 +93,7 @@ class AcosPopulator(PopulatorBase):
         # the data_path variable
         if data_version != None:
             file_keywords['data_version'] = data_version
-        elif file_keywords.has_key('data_path') and file_keywords['data_path'] != None:
+        elif 'data_path' in file_keywords and file_keywords['data_path'] != None:
             data_version = source_version(file_keywords['data_path'])
             self.logger.debug('Retrieved data_version "%s" from %s' % (file_keywords['data_version'], file_keywords['data_path']))
 
@@ -108,7 +109,7 @@ class AcosPopulator(PopulatorBase):
         out_mat_obj = OcoMatrix()
 
         # Set items into input config file from values specified in configuraiton file
-        for head_key_name, head_key_value in file_keywords.iteritems():
+        for head_key_name, head_key_value in file_keywords.items():
             if hasattr(out_mat_obj, head_key_name):
                 self.logger.debug('Set %s as an attribute' % head_key_name)
 
@@ -117,14 +118,14 @@ class AcosPopulator(PopulatorBase):
             else:
                 self.logger.debug('Set %s into header' % head_key_name)
 
-                if type(head_key_value) is StringType and head_key_value.find(' ') >= 0:
+                if isinstance(head_key_value, six.string_types) and head_key_value.find(' ') >= 0:
                     out_mat_obj.header[head_key_name] = '"%s"' % head_key_value
                 elif head_key_value == None:
                     out_mat_obj.header[head_key_name] = 'VALUE NOT SET'
                 else:
                     out_mat_obj.header[head_key_name] = '%s' % head_key_value
 
-        out_mat_obj.data = filter(lambda fn: fn != None and len(fn) > 0, input_file_list)
+        out_mat_obj.data = [fn for fn in input_file_list if fn != None and len(fn) > 0]
         out_mat_obj.write(input_config_filename, auto_size_cols=False)
 
     def populate(self, config_filename):
@@ -145,7 +146,7 @@ class AcosPopulator(PopulatorBase):
         # Get filenames for files used in processing from config file
         # Use Python 2.6 safe comprehension
         self.input_filenames = {}
-        for inp_file_k,inp_file_v in self.config_input_keywords.items():
+        for inp_file_k,inp_file_v in list(self.config_input_keywords.items()):
             # If the section isn't in the input file (e.g., AlternativeSettings),
             # then treat this as just not finding the keyword.
             try:
@@ -176,7 +177,7 @@ class AcosPopulator(PopulatorBase):
         self.set_input_config_values(config_filename,
                                      self.config_sounding_id_section,
                                      self.input_config_filename,
-                                     self.input_filenames.values(), **sdos_values)
+                                     list(self.input_filenames.values()), **sdos_values)
 
         if self.l2_binary_filename:
             self.logger.info("Creating run scripts")

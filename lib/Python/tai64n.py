@@ -7,6 +7,8 @@
         returns a datetime.datetime object representing TAI from a datetime.datetime
         object at UTC. 
 """
+from __future__ import division
+from past.utils import old_div
 
 
 from datetime import datetime, timedelta
@@ -29,31 +31,31 @@ def __conversion_table():
     """
     # update this table as new values become known
     # source: ftp://maia.usno.navy.mil/ser7/tai-utc.dat
-    conversion_table = [(datetime(1972, 01,  1), 10.0),
-                        (datetime(1972, 07,  1), 11.0),
-                        (datetime(1973, 01,  1), 12.0),
-                        (datetime(1974, 01,  1), 13.0),
-                        (datetime(1975, 01,  1), 14.0),
-                        (datetime(1976, 01,  1), 15.0),
-                        (datetime(1977, 01,  1), 16.0),
-                        (datetime(1978, 01,  1), 17.0),
-                        (datetime(1979, 01,  1), 18.0),
-                        (datetime(1980, 01,  1), 19.0),
-                        (datetime(1981, 07,  1), 20.0),
-                        (datetime(1982, 07,  1), 21.0),
-                        (datetime(1983, 07,  1), 22.0),
-                        (datetime(1985, 07,  1), 23.0),
-                        (datetime(1988, 01,  1), 24.0),
-                        (datetime(1990, 01,  1), 25.0),
-                        (datetime(1991, 01,  1), 26.0),
-                        (datetime(1992, 07,  1), 27.0),
-                        (datetime(1993, 07,  1), 28.0),
-                        (datetime(1994, 07,  1), 29.0),
-                        (datetime(1996, 01,  1), 30.0),
-                        (datetime(1997, 07,  1), 31.0),
-                        (datetime(1999, 01,  1), 32.0),
-                        (datetime(2006, 01,  1), 33.0),
-                        (datetime(2009, 01,  1), 34.0),
+    conversion_table = [(datetime(1972, 0o1,  1), 10.0),
+                        (datetime(1972, 0o7,  1), 11.0),
+                        (datetime(1973, 0o1,  1), 12.0),
+                        (datetime(1974, 0o1,  1), 13.0),
+                        (datetime(1975, 0o1,  1), 14.0),
+                        (datetime(1976, 0o1,  1), 15.0),
+                        (datetime(1977, 0o1,  1), 16.0),
+                        (datetime(1978, 0o1,  1), 17.0),
+                        (datetime(1979, 0o1,  1), 18.0),
+                        (datetime(1980, 0o1,  1), 19.0),
+                        (datetime(1981, 0o7,  1), 20.0),
+                        (datetime(1982, 0o7,  1), 21.0),
+                        (datetime(1983, 0o7,  1), 22.0),
+                        (datetime(1985, 0o7,  1), 23.0),
+                        (datetime(1988, 0o1,  1), 24.0),
+                        (datetime(1990, 0o1,  1), 25.0),
+                        (datetime(1991, 0o1,  1), 26.0),
+                        (datetime(1992, 0o7,  1), 27.0),
+                        (datetime(1993, 0o7,  1), 28.0),
+                        (datetime(1994, 0o7,  1), 29.0),
+                        (datetime(1996, 0o1,  1), 30.0),
+                        (datetime(1997, 0o7,  1), 31.0),
+                        (datetime(1999, 0o1,  1), 32.0),
+                        (datetime(2006, 0o1,  1), 33.0),
+                        (datetime(2009, 0o1,  1), 34.0),
                         # add new values here
                        ]
     conversion_table.sort(key=itemgetter(0), reverse=True)
@@ -127,11 +129,11 @@ def decode_tai64n(hexstring, basedate=datetime(1970, 1, 1)):
     except:
         raise TAI64DecodeError("'%s' not a valid hex value." % hexstring)
     # we decode only dates later than 01.01.1972
-    seconds = tai_int - 4611686018427387904L
+    seconds = tai_int - 4611686018427387904
     if seconds < 0:
         raise TAI64DecodeError("I won't decode gone millenia "
                                "(i.e. nothing prior to 01.01.1972).")
-    return tai2utc(basedate + timedelta(0, seconds, nano_int/1000))
+    return tai2utc(basedate + timedelta(0, seconds, old_div(nano_int,1000)))
 
 
 

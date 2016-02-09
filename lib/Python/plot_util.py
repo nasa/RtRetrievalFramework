@@ -1,3 +1,10 @@
+from __future__ import print_function
+from __future__ import absolute_import
+from __future__ import division
+from builtins import str
+from builtins import zip
+from builtins import range
+from past.utils import old_div
 # General
 import os
 import sys
@@ -13,7 +20,7 @@ import numpy
 import matplotlib.pyplot as pyplot
 
 # L2 modules
-from oco_matrix import OcoMatrix
+from .oco_matrix import OcoMatrix
 
 # General
 OUTPUT_FORMAT = 'pdf'
@@ -43,7 +50,7 @@ def combine_pdfs(source_pdf_files, output_pdf_filename, remove_source_files=Fals
         gs_process.wait()
     except OSError:
         if gs_process == None:
-            print >>sys.stderr, '%s exited before subprocess could even do its work!' % GHOST_SCRIPT_BIN
+            print('%s exited before subprocess could even do its work!' % GHOST_SCRIPT_BIN, file=sys.stderr)
         elif gs_process.returncode == None:
             # Premature exit due to error of inputs to gs
             # possibly just truncated file
@@ -53,7 +60,7 @@ def combine_pdfs(source_pdf_files, output_pdf_filename, remove_source_files=Fals
                 stdout_lines = []
             
             if len(stdout_lines) > 0:
-                print >>sys.stderr, stdout_lines
+                print(stdout_lines, file=sys.stderr)
                 raise IOError('Unexpected exit of %s' % GHOST_SCRIPT_BIN)
         elif gs_process.returncode != 0:
             raise OSError('Unexpected return of %s with return code: %d' % (GHOST_SCRIPT_BIN, gs_process.returncode))
@@ -79,7 +86,7 @@ def plot_jacobians(jacobian_files, group_name=None, label_names=None, figure_idx
 
     common_pixels = jacobian_objs[0].pixels
     common_dims   = jacobian_objs[0].dims
-    pixel_ranges = zip(common_pixels, common_pixels[1:] + [common_dims[0]])
+    pixel_ranges = list(zip(common_pixels, common_pixels[1:] + [common_dims[0]]))
 
     logger.debug('common pixels: %s' % str(common_pixels))
     logger.debug('common dimensions: %s' % str(common_dims))
@@ -87,7 +94,7 @@ def plot_jacobians(jacobian_files, group_name=None, label_names=None, figure_idx
     for curr_obj in copy.copy(jacobian_objs):
         if list(curr_obj.pixels) != list(common_pixels) or list(curr_obj.dims) != list(common_dims):
             jacobian_objs.remove(curr_obj)
-            print 'Ignoring %s with inconsistent dimensions' % curr_obj.filename
+            print('Ignoring %s with inconsistent dimensions' % curr_obj.filename)
 
     if len(jacobian_objs) > 1:
         residual_combs = list(itertools.combinations(enumerate(jacobian_objs), 2))
@@ -97,7 +104,7 @@ def plot_jacobians(jacobian_files, group_name=None, label_names=None, figure_idx
         num_sep_subplots = 1
 
     if page_indexes == None:
-        level_indexes = range(common_dims[1])
+        level_indexes = list(range(common_dims[1]))
     else:
         level_indexes = page_indexes
 
@@ -129,7 +136,7 @@ def plot_jacobians(jacobian_files, group_name=None, label_names=None, figure_idx
             
             plot_objs = []
             for file_idx, file_obj in enumerate(jacobian_objs):
-                curr_plot = curr_subplot.plot(range(curr_range[0], curr_range[1]), file_obj.data[curr_range[0]:curr_range[1], level])
+                curr_plot = curr_subplot.plot(list(range(curr_range[0], curr_range[1])), file_obj.data[curr_range[0]:curr_range[1], level])
                 plot_objs.append(curr_plot)
 
             # Build legend from first window
@@ -153,7 +160,7 @@ def plot_jacobians(jacobian_files, group_name=None, label_names=None, figure_idx
                     res_labels.append( '%s -\n %s' % (label_names[ curr_comb[0][0] ], label_names[ curr_comb[1][0] ]))
                     residual = curr_comb[0][1].data[curr_range[0]:curr_range[1], level] - curr_comb[1][1].data[curr_range[0]:curr_range[1], level]
 
-                    curr_plot = curr_subplot.plot(range(curr_range[0], curr_range[1]), residual)
+                    curr_plot = curr_subplot.plot(list(range(curr_range[0], curr_range[1])), residual)
                     plot_objs.append(curr_plot)
 
                 if range_idx == 1:
@@ -216,8 +223,8 @@ def plot_spec_figure(plot_title, meas_grid, sim_grid, grid_name, meas_data, meas
 
     # Calculate spectral residual data
     if meas_noise != None:
-        residual = (meas_for_resid - sim_for_resid) / noise_for_resid
-        chi2     = numpy.sum( numpy.power( (meas_for_resid - sim_for_resid) / noise_for_resid, 2 ) ) / len(meas_for_resid)
+        residual = old_div((meas_for_resid - sim_for_resid), noise_for_resid)
+        chi2     = old_div(numpy.sum( numpy.power( old_div((meas_for_resid - sim_for_resid), noise_for_resid), 2 ) ), len(meas_for_resid))
     else:
         residual = 100.0 * (meas_for_resid - sim_for_resid) / max(meas_for_resid)
         chi2     = None
@@ -250,7 +257,7 @@ def plot_spec_figure(plot_title, meas_grid, sim_grid, grid_name, meas_data, meas
 
     if resid_ylims != None:
         interval = (resid_ylims[0], resid_ylims[1])
-        print "setting residual limits to[ [%f, %f]" % interval
+        print("setting residual limits to[ [%f, %f]" % interval)
         pyplot.ylim(interval)
         axis_top.set_ylabel('Residual (%)')
     elif meas_noise != None:
@@ -352,7 +359,7 @@ def plot_spec_residuals(spectra_files, plot_title=None, spectra_labels=None, bot
     sim_end_indexes   = [ pix for pix in sim_obj.pixels[1:] ]
     sim_end_indexes.append(sim_obj.dims[0])
 
-    win_indexes = zip(meas_start_indexes, meas_end_indexes, sim_start_indexes, sim_end_indexes)
+    win_indexes = list(zip(meas_start_indexes, meas_end_indexes, sim_start_indexes, sim_end_indexes))
 
     if len(win_indexes) == 0:
         #raise Exception('Could not find any window indexes')
@@ -422,10 +429,10 @@ def plot_spec_residuals(spectra_files, plot_title=None, spectra_labels=None, bot
             if detail_size > win_size:
                 raise Exception('detail size: %f greater than window %d size: %f' % (detail_size, window_idx+1, win_size))
 
-            num_detail = int(win_size / detail_size)
-            num_win_points = int(len(meas_grid) / num_detail)
+            num_detail = int(old_div(win_size, detail_size))
+            num_win_points = int(old_div(len(meas_grid), num_detail))
 
-            if num_detail < round(win_size / detail_size):
+            if num_detail < round(old_div(win_size, detail_size)):
                 num_detail += 1
 
             beg_idx = 0

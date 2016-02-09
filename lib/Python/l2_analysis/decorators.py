@@ -1,3 +1,4 @@
+from builtins import range
 import itertools
 from functools import wraps, update_wrapper
 import inspect
@@ -8,7 +9,7 @@ import numpy
 def call_data_combinations(call_method, pair_arg_idxs, *varargs, **kwargs):
 
     def pair_combinations(arg):
-        return filter(lambda v: id(v[0]) == id(arg[0]), list(itertools.combinations(arg, 2)))
+        return [v for v in list(itertools.combinations(arg, 2)) if id(v[0]) == id(arg[0])]
 
     num_pairs = len(pair_combinations(varargs[pair_arg_idxs[0]]))
 
@@ -20,7 +21,7 @@ def call_data_combinations(call_method, pair_arg_idxs, *varargs, **kwargs):
             call_args.append( [ arg_val for x in range(num_pairs) ] )
 
     res = []
-    for curr_args in itertools.izip(*call_args):
+    for curr_args in zip(*call_args):
         res.append( call_method(*curr_args, **kwargs) )
     return res
 

@@ -1,4 +1,5 @@
-from acos_populator import AcosPopulator, PopulatorBase
+from __future__ import absolute_import
+from .acos_populator import AcosPopulator, PopulatorBase
 import os
 
 class OcoPopulator(AcosPopulator):

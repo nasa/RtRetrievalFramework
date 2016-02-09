@@ -1,3 +1,10 @@
+from __future__ import absolute_import
+from __future__ import division
+from builtins import zip
+from builtins import map
+from builtins import str
+from builtins import range
+from past.utils import old_div
 # Read ACOS,OCO L1B file and add a programatic wrapper interface
 
 import os
@@ -11,12 +18,11 @@ import datetime
 import traceback
 from operator import itemgetter
 from collections import namedtuple, Counter
-from types import SliceType
 import logging
 
 import numpy
 import h5py
-import tai64n
+from . import tai64n
 
 logger = logging.getLogger()
 
@@ -25,7 +31,7 @@ if h5py.version.version_tuple < (1,2,0):
     raise ImportError('At least version 1.2.0 of h5py is required, you have: %s' % h5py.version.version)
 
 
-from surface_prop import ModisEcoMap
+from .surface_prop import ModisEcoMap
 
 GOSAT_INST_NAME = 'gosat'
 OCO_INST_NAME   = 'oco'
@@ -110,7 +116,7 @@ ADDL_INFO_DATASETS    = { 'gain':       { OCO_INST_NAME:    None,
                           }
 
 # Set up alternative names for quicker access
-for snd_name, dataset in SOUNDING_INFO_DATASETS.items():
+for snd_name, dataset in list(SOUNDING_INFO_DATASETS.items()):
     if snd_name.find('sounding_') == 0:
         ADDL_INFO_DATASETS[snd_name.replace('sounding_', '')] = SOUNDING_INFO_DATASETS[snd_name]
 
@@ -140,11 +146,11 @@ for band_name in BAND_DATA_NAMES:
     SPECIFIC_L1B_INFO_SHAPE_NAMES['/%s/noise_%s' % (RADIANCE_GROUP[GOSAT_INST_NAME], band_name)] = ('Exposure', 'Polarization')
     SPECIFIC_L1B_INFO_SHAPE_NAMES['/%s/radiance_%s' % (RADIANCE_GROUP[GOSAT_INST_NAME], band_name)] = ('Exposure', 'Polarization', 'Color')
     
-    for gain_code, conv_ds_tmpl in GOSAT_CNV_COEF_DATASET.items():
+    for gain_code, conv_ds_tmpl in list(GOSAT_CNV_COEF_DATASET.items()):
         SPECIFIC_L1B_INFO_SHAPE_NAMES[GOSAT_CNV_COEF_DATASET[gain_code] % band_name] = SPECIFIC_L1B_INFO_SHAPE_NAMES['/SoundingSpectra/radiance_%s' % band_name]
 
 # Set shapes for spacecraft datasets
-for shape_name, ds_desc in SOUNDING_INFO_DATASETS.items():
+for shape_name, ds_desc in list(SOUNDING_INFO_DATASETS.items()):
     if shape_name.find('spacecraft_') == 0:
         SPECIFIC_L1B_INFO_SHAPE_NAMES[SOUNDING_INFO_DATASETS[shape_name][GOSAT_INST_NAME]] = ('Exposure',)
         SPECIFIC_L1B_INFO_SHAPE_NAMES[SOUNDING_INFO_DATASETS[shape_name][OCO_INST_NAME]] = ('Frame',)
@@ -358,12 +364,12 @@ class SoundingDataFile(h5py.File):
             if len(dataset_shape) > 0:
                 shape_names.append(dataset_shape)
 
-        elif len(self._data_shape_name_dict) > 0 and self._data_shape_name_dict.has_key(dataset_obj.name):
+        elif len(self._data_shape_name_dict) > 0 and dataset_obj.name in self._data_shape_name_dict:
             shape_names = self._data_shape_name_dict[dataset_obj.name]
         elif len(self._default_shape_names) == len(dataset_obj.shape):
             # Use only if shapes match
             shape_names = self._default_shape_names
-        elif dflt_dims_map != None and dflt_dims_map.has_key(dataset_obj.name.strip('/')):
+        elif dflt_dims_map != None and dataset_obj.name.strip('/') in dflt_dims_map:
             shape_names = dflt_dims_map[dataset_obj.name.strip('/')]
         elif hasattr(dataset_obj, "shape"):
             # Create generic names and try and assign the id names where we can
@@ -415,8 +421,8 @@ class SoundingDataFile(h5py.File):
         # Match data_name against data sets, may match multiple
         if dataset_obj == None:
             dataset_obj = []
-            for group_name, group_obj in self.iteritems():
-                for ds_name, ds_obj in group_obj.iteritems():
+            for group_name, group_obj in self.items():
+                for ds_name, ds_obj in group_obj.items():
                     dataset_name = "%s/%s" % (group_name, ds_name)
                     if re.search(data_name, dataset_name):
                         dataset_obj.append( ds_obj )
@@ -474,7 +480,7 @@ class SoundingDataFile(h5py.File):
                 data_dim_indexes.append( slice(dataset_obj.shape[dim_idx]) )
 
         # Eliminate duplicate shape names
-        for name, num_occurance in Counter(shape_names).items():
+        for name, num_occurance in list(Counter(shape_names).items()):
             if num_occurance > 1:
                 for name_count in range(1, num_occurance+1):
                     shape_names[shape_names.index(name)] = "%s_%d" % (name, name_count)
@@ -571,7 +577,7 @@ class L1B(SoundingDataFile):
         return index_tuple
 
     def determine_instrument_name(self):
-        for instrument_name, dataset_name in SOUNDING_ID_DATASET.items():
+        for instrument_name, dataset_name in list(SOUNDING_ID_DATASET.items()):
             if self.get(dataset_name, None) != None:
                 return instrument_name
         return None
@@ -627,7 +633,7 @@ class L1B(SoundingDataFile):
 
     def get_sounding_info_dict(self, sounding_id, ignore_missing=False, as_strings=False, **kwargs):
         info_dict = {}
-        for info_name in SOUNDING_INFO_DATASETS.keys():
+        for info_name in list(SOUNDING_INFO_DATASETS.keys()):
             try:
 
                 # If problems averaging, try without it
@@ -714,13 +720,13 @@ class L1B(SoundingDataFile):
         if self.instrument_name == GOSAT_INST_NAME:
             return self.evaluate_dispersion(sounding_id, **kwargs)
         else:
-            return tuple([ 1e4/band_wvl for band_wvl in self.get_wavelengths(sounding_id, **kwargs) ])
+            return tuple([ old_div(1e4,band_wvl) for band_wvl in self.get_wavelengths(sounding_id, **kwargs) ])
 
     def get_wavelengths(self, sounding_id, **kwargs):
         if self.instrument_name == OCO_INST_NAME:
             return self.evaluate_dispersion(sounding_id, **kwargs)
         else:
-            return tuple([ 1e4/band_wn for band_wn in self.get_wavenumbers(sounding_id, **kwargs) ])
+            return tuple([ old_div(1e4,band_wn) for band_wn in self.get_wavenumbers(sounding_id, **kwargs) ])
 
     def get_error_data(self, sounding_id, calculate_noise=True, gain_code=None, **kwargs):
 
@@ -741,7 +747,7 @@ class L1B(SoundingDataFile):
                 if calculate_noise:
                     tmp = (100.0e0 * band_radiance[:] / MAX_MEAS_SIGNAL[self.instrument_name][band_idx]) * photon_col[:]**2
                     tmp = numpy.sqrt(tmp + bkgrnd_col[:]**2)
-                    band_error = (MAX_MEAS_SIGNAL[self.instrument_name][band_idx]/100.0) * tmp
+                    band_error = (old_div(MAX_MEAS_SIGNAL[self.instrument_name][band_idx],100.0)) * tmp
                 else:
                     band_error = (photon_col, bkgrnd_col)
 
@@ -801,7 +807,7 @@ class L1B(SoundingDataFile):
             else:
                 raise MissingDataset("Unknown instrument.")
 
-            for type_name, land_check in land_values_check_dict.items():
+            for type_name, land_check in list(land_values_check_dict.items()):
                 if land_check(land_value):
                     surface_type = type_name
                     break
@@ -881,7 +887,7 @@ class IdDatasetFinder(SoundingDataFile):
                 self._id_dim_names = ('Frame', 'Sounding')
 
         else:
-            for ds_name in srch_dim_ids.keys():
+            for ds_name in list(srch_dim_ids.keys()):
                 if self.get(ds_name) != None:
                     self._sounding_id_dataset = ds_name
                     self._id_dim_names = self.get_data_shape(ds_name, srch_dim_ids)
@@ -915,9 +921,9 @@ class SoundingFirstFile(SoundingDataFile):
             self._id_dim_names = ('Exposure',) 
 
     def get_sounding_ids(self):
-        if len(self.values()) > 0 and len(self.values()[0].values()) > 0:
-            indexes = numpy.zeros(self.values()[0].values()[0].shape, dtype=int)
-            indexes.ravel()[:] = range(numpy.product(indexes.shape)) 
+        if len(list(self.values())) > 0 and len(list(self.values())[0].values()) > 0:
+            indexes = numpy.zeros(list(self.values())[0].values()[0].shape, dtype=int)
+            indexes.ravel()[:] = list(range(numpy.product(indexes.shape))) 
         else:
             indexes = []
         return indexes 

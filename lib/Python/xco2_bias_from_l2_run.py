@@ -1,15 +1,21 @@
-from xco2_bias import *
-from l2_run import *
-from orbit_sim import *
-import cPickle
+from __future__ import print_function
+from __future__ import absolute_import
+from future import standard_library
+standard_library.install_aliases()
+from builtins import map
+from builtins import range
+from .xco2_bias import *
+from .l2_run import *
+from .orbit_sim import *
+import pickle
 import re
 from functools import partial
 
 def jacobian_calc(self, num, i):
-    print "==============================================="
-    print "Calculation %d of %d:" % (i + 1, num)
-    print "==============================================="
-    print ""
+    print("===============================================")
+    print("Calculation %d of %d:" % (i + 1, num))
+    print("===============================================")
+    print("")
     return self.jacobian_perturbed_i(i)
 
 class XCO2BiasFromL2Run(XCO2Bias):
@@ -78,9 +84,9 @@ class XCO2BiasFromL2Run(XCO2Bias):
         try:
             proc = partial(jacobian_calc, self, res.shape[0])
             if(pool_save is None):
-                t = map(proc, range(res.shape[0]))
+                t = list(map(proc, list(range(res.shape[0]))))
             else:
-                t = pool_save.map(proc, range(res.shape[0]))
+                t = pool_save.map(proc, list(range(res.shape[0])))
             for i in range(res.shape[0]):
                 res[i, :, :] = t[i]
         finally:
@@ -97,7 +103,7 @@ class XCO2BiasFromL2Run(XCO2Bias):
             residual, se, jac = cf.cost_function(x)
             return jac
         except RuntimeError:
-            print "Jacobian_perturbed_id Failed for i = %d" % i
+            print("Jacobian_perturbed_id Failed for i = %d" % i)
             raise
 
 
@@ -154,7 +160,7 @@ class XCO2BiasFromL2Run(XCO2Bias):
         '''Return the a priori covariance matrix.'''
         if(self.dist_cov_file):
             with open(self.dist_cov_file) as f:
-                return cPickle.load(f)
+                return pickle.load(f)
         else:
             return self.r.output_file.read_double_3d("/RetrievalResults/apriori_covariance_matrix")[0,:,:]
 

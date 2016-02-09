@@ -1,3 +1,7 @@
+from __future__ import division
+from builtins import range
+from builtins import object
+from past.utils import old_div
 
 # Reads CERES/SARB surface properties maps from:
 # http://www-surf.larc.nasa.gov/surf/pages/data-page.html
@@ -29,7 +33,7 @@ LONGITUDE_CENTER = 0
 
 HDF_MAP_TYPE = 'modis'
 
-class SurfaceBinMap:
+class SurfaceBinMap(object):
     """Base class for handling common read/write operations from
     CERES/SARB surface property maps"""
 
@@ -69,7 +73,7 @@ class SurfaceBinMap:
         stat_info = os.stat(self.filename)
 
         self.map_type = None
-        for map_type, resolution in self.map_resolution.items():
+        for map_type, resolution in list(self.map_resolution.items()):
             self._NUM_LONGITUDE = (LONGITUDE_RANGE[1] - LONGITUDE_RANGE[0]) * resolution
             self._NUM_LATITUDE  = (LATITUDE_RANGE[1]  - LATITUDE_RANGE[0])  * resolution
             self._DELTA_ANGLE   = resolution
@@ -132,8 +136,8 @@ class SurfaceBinMap:
             i_lat = int( ((LATITUDE_RANGE[1] - LATITUDE_RANGE[0]) - (latitude  - LATITUDE_RANGE[0])) * self._DELTA_ANGLE )
         elif self.map_type == 'modis':
             # Map left is -180
-            i_lon = round( (longitude - (2.0/self._DELTA_ANGLE + LONGITUDE_RANGE[0])) * self._DELTA_ANGLE )
-            i_lat = round( (latitude  - (2.0/self._DELTA_ANGLE + LATITUDE_RANGE[0])) * self._DELTA_ANGLE )
+            i_lon = round( (longitude - (old_div(2.0,self._DELTA_ANGLE) + LONGITUDE_RANGE[0])) * self._DELTA_ANGLE )
+            i_lat = round( (latitude  - (old_div(2.0,self._DELTA_ANGLE) + LATITUDE_RANGE[0])) * self._DELTA_ANGLE )
             
         else:
             raise ValueError('%s is an unknown map type' % self.map_type)
@@ -141,7 +145,7 @@ class SurfaceBinMap:
         self._check_indexes(i_lat, i_lon, latitude, longitude)
 
         if surrounding != None:
-            delta_range = range(-surrounding,surrounding+1)
+            delta_range = list(range(-surrounding,surrounding+1))
 
             values = numpy.zeros((len(delta_range),len(delta_range)), dtype=int)
             for lon_delta in delta_range:
@@ -151,7 +155,7 @@ class SurfaceBinMap:
         else:
             return self._read_value(i_lon, i_lat, *kwds)
 
-class IgbpTypeMap():
+class IgbpTypeMap(object):
     """Handles IGBP+1 CERES scene type maps"""
 
     type_to_name = {
@@ -180,7 +184,7 @@ class IgbpTypeMap():
     def __init__(self, filename):
         # Create map of the types and names in reverse fashion
         self.name_to_type = {}
-        for type_num, name_str in self.type_to_name.items():
+        for type_num, name_str in list(self.type_to_name.items()):
             self.name_to_type[name_str] = type_num
 
 
@@ -227,13 +231,13 @@ class ModisEcoMap(IgbpTypeMap):
 
         # Create reverse of mask_to_name to map name to a mask
         self.name_to_mask = {}
-        for type_num, name_str in self.mask_to_name.items():
+        for type_num, name_str in list(self.mask_to_name.items()):
             self.name_to_mask[name_str] = type_num
 
         # Create mapping of mask to grouping name
         self.mask_to_grouping = {}
-        for grouping_name, grouping_types in self.surface_groupings.items():
-            for mask_id, mask_name in self.mask_to_name.items():
+        for grouping_name, grouping_types in list(self.surface_groupings.items()):
+            for mask_id, mask_name in list(self.mask_to_name.items()):
                 if mask_name in grouping_types:
                     self.mask_to_grouping[mask_id] = grouping_name
 
@@ -327,7 +331,7 @@ class ModisEcoMap(IgbpTypeMap):
     # Routines as implemented by Eric Moody and Steve Platnick.  See original
     # code for details
 
-class AlbedoTable:
+class AlbedoTable(object):
     
     table_wavelengths = (0.659, 0.858, 1.24, 1.64, 2.13, 3.74)
 
@@ -439,8 +443,8 @@ class AlbedoTable:
                 # slope and intercept, and store the computed albedo value.
 
                 # Define the Amplitude:
-                amplitude = (self.albedo_summer[scene_type,:] -
-                             self.albedo_winter[scene_type,:]) / 2.0
+                amplitude = old_div((self.albedo_summer[scene_type,:] -
+                             self.albedo_winter[scene_type,:]), 2.0)
 
                 # Define the y_offset:
                 y_offset = self.albedo_summer[scene_type,:] - amplitude[:]
@@ -451,7 +455,7 @@ class AlbedoTable:
                             y_offset[:]
 
                 # Compute the slope:
-                slope = (alb_hem[:] - self.albedo_tropical[scene_type,:]) / 10.0
+                slope = old_div((alb_hem[:] - self.albedo_tropical[scene_type,:]), 10.0)
 
                 # Compute the intercept:
                 intercept = 3.0 * self.albedo_tropical[scene_type,:] - 2.0 * alb_hem[:]
@@ -473,8 +477,8 @@ class AlbedoTable:
                 # slope and intercept, and store the computed albedo value.
 
                 # Define the Amplitude:
-                amplitude = (self.albedo_summer[scene_type,:] - \
-                             self.albedo_winter[scene_type,:]) / 2.0
+                amplitude = old_div((self.albedo_summer[scene_type,:] - \
+                             self.albedo_winter[scene_type,:]), 2.0)
 
                 # Define the y_offset:
                 y_offset = self.albedo_summber[scene_type,:] - amplitude[:]
@@ -485,7 +489,7 @@ class AlbedoTable:
                           y_offset[:]
 
                 # Compute the slope:
-                slope = (self.albedo_tropical[scene_type,:] - alb_hem[:]) / 10.0
+                slope = old_div((self.albedo_tropical[scene_type,:] - alb_hem[:]), 10.0)
 
                 # Compute the intercept:
                 intercept = 3.0*self.albedo_tropical[scene_type,:] - 2.0*alb_hem[:]
@@ -524,8 +528,8 @@ class AlbedoTable:
                 # computed albedo value.
 
                 # Define the Amplitude:
-                amplitude = (self.albedo_summer[scene_type,:] - \
-                             self.albedo_winter[scene_type,:]) / 2.0
+                amplitude = old_div((self.albedo_summer[scene_type,:] - \
+                             self.albedo_winter[scene_type,:]), 2.0)
                 # Define the y_offset:
                 y_offset = self.albedo_summer[scene_type,:] - \
                            amplitude[:]
@@ -582,7 +586,7 @@ class AlbedoTable:
             if abs(denom) < 1e-5:
                 frac = 0.0
             else:
-                frac = (curr_wl - self.table_wavelengths[wl_table_idx]) / denom
+                frac = old_div((curr_wl - self.table_wavelengths[wl_table_idx]), denom)
 
             albedo_out.append( (1.0-frac)*albedos[wl_table_idx]+frac*albedos[wl_table_idx+1] )
 

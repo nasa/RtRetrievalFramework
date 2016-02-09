@@ -1,6 +1,7 @@
+from __future__ import absolute_import
 from nose.tools import *
 import os
-from l2_input import *
+from .l2_input import *
 test_data = os.path.dirname(__file__) + "/../../unit_test_data/"
 
 def test_get_all_section_names():

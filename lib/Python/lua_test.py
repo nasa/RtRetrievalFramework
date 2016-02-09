@@ -1,3 +1,4 @@
+from builtins import object
 from nose.tools import *
 from full_physics import *
 from nose.plugins.skip import Skip, SkipTest
@@ -6,7 +7,7 @@ import os
 test_data = os.path.dirname(__file__) + "/../../unit_test_data/"
 
 if(not have_full_physics_swig):
-    class LuaCallback:
+    class LuaCallback(object):
         pass
 
 # A callback that takes no arguments
@@ -28,7 +29,7 @@ class MyCallback1(LuaCallback):
         obj1.v3 = "hi there"
         return LuabindObject(self.ls, 2)
 
-class TestLua:
+class TestLua(object):
     def setUp(self):
         if(not have_full_physics_swig):
             raise SkipTest
@@ -56,7 +57,7 @@ class TestLua:
 
         test_dict = {"k1": "abc", "k2": "cde", 1: "blah"}
         test_var.test_dict = test_dict
-        for l_key, l_val in test_dict.items():
+        for l_key, l_val in list(test_dict.items()):
             assert self.ls.globals.test_var.test_dict[l_key] == test_dict[l_key]
 
     # Test reading a config file

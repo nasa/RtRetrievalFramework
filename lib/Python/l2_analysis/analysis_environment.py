@@ -1,5 +1,11 @@
+from builtins import zip
+from builtins import map
+from builtins import str
+from builtins import range
+from builtins import object
 import os
 import re
+import sys
 import inspect
 import textwrap
 import subprocess
@@ -14,6 +20,7 @@ from matplotlib.pyplot import *
 from matplotlib import pylab
 
 import full_physics.acos_file as acos_file
+from functools import reduce
 
 def get_term_size():
     try:
@@ -91,7 +98,7 @@ class AnalysisEnvironment(object):
                     part_occur[file_part] = part_occur.get(file_part, 0) + 1
 
             common_parts = []
-            for part, count in part_occur.items():
+            for part, count in list(part_occur.items()):
                 if count == len(filenames):
                     common_parts.append(part)
 
@@ -165,7 +172,7 @@ class AnalysisEnvironment(object):
             in_sounding_lists = [in_sounding_lists]
        
         # Get a list of the ids common to all sets
-        comparison_ids = list(reduce(set.intersection, map(set, in_sounding_lists)))
+        comparison_ids = list(reduce(set.intersection, list(map(set, in_sounding_lists))))
 
         # Sort this list since we used a set and bad things can happen when this list is not sorted
         comparison_ids.sort()
@@ -189,7 +196,7 @@ class AnalysisEnvironment(object):
                 }
 
     def routine_names(self):
-        return self.routines.keys()
+        return list(self.routines.keys())
 
     def formatted_routine_names(self, group_len=2, part_sep="_", name_indent="  "):
         # Wrap routine names at the screen width if we can obtain it
@@ -231,7 +238,7 @@ class AnalysisEnvironment(object):
         # Get the data to be passed to a routine for each object given a specific 
         # data name
         obj_vals = []
-        for d_idx, d_obj, d_indexes in zip(range(len(self.data_objs)), self.data_objs, use_data_indexes):
+        for d_idx, d_obj, d_indexes in zip(list(range(len(self.data_objs))), self.data_objs, use_data_indexes):
             if len(d_indexes) == 0:
                 raise ValueError("No sounding ids avaliable from file: %s for data name: %s" % (d_obj.filename, data_name))
 
@@ -271,7 +278,7 @@ class AnalysisEnvironment(object):
         # Remove arguments that have default values but not a value in kwargs
         while(defaults != None and len(defaults) > 0):
             defaults.pop()
-            if not routine_args[-1] in kwargs.keys():
+            if not routine_args[-1] in list(kwargs.keys()):
                 routine_args.pop()
 
         # For each argument not called self, search for data
@@ -282,7 +289,7 @@ class AnalysisEnvironment(object):
             if hasattr(self, arg_name):
                 # Take argument from analyis environment argument
                 arg_list.append(getattr(self, arg_name))
-            elif arg_name in kwargs.keys():
+            elif arg_name in list(kwargs.keys()):
                 # Take argument from kwargs, remove so we do not
                 # get duplicates should we pass it as **kwargs
                 # below
@@ -315,7 +322,11 @@ class AnalysisEnvironment(object):
             # Raise error preserving traceback
             type, value, traceback = sys.exc_info()
             err_msg = "%s when calling %s with arguments named: %s with value list of size: %d" % (e, routine_name, routine_args, len(arg_list))
-            raise TypeError, err_msg, traceback
+            # Done differently in python 2 and 3.
+            if sys.version_info > (3,):
+                raise TypeError(err_msg)
+            else:
+                raise TypeError, err_msg, traceback
 
     def _add_helper_function(self, routine_name, routine_obj):
         @wraps(routine_obj)

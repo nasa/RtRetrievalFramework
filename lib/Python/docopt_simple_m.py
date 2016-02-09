@@ -1,4 +1,6 @@
-from docopt import docopt
+from __future__ import absolute_import
+from builtins import object
+from full_physics.docopt import docopt
 import re
 
 class DocOptSimple(object):

@@ -1,7 +1,9 @@
+from __future__ import absolute_import
+from builtins import str
 from nose.tools import *
 import os
-from try_swig_load import *
-from acos_file import *
+from .try_swig_load import *
+from .acos_file import *
 from nose.plugins.skip import Skip, SkipTest
 import numpy as np
 

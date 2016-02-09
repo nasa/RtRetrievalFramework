@@ -1,9 +1,10 @@
+from __future__ import absolute_import
 import numpy
 from matplotlib.pyplot import *
 
-from routines_base import PlotMaker
-from time_diff_plot_routines import TimeDiffPlotRoutines
-from sza_diff_plot_routines import SzaDiffPlotRoutines
+from .routines_base import PlotMaker
+from .time_diff_plot_routines import TimeDiffPlotRoutines
+from .sza_diff_plot_routines import SzaDiffPlotRoutines
 
 BAD_VALUE =-9.99999000e+05
 
@@ -88,7 +89,7 @@ class DatasetPlotRoutines(PlotMaker, TimeDiffPlotRoutines, SzaDiffPlotRoutines):
         if self.analysis_env != None and self.analysis_env.data_objs[0].get(aer_types_ds, False):
             aer_types = self.analysis_env.data_objs[0].get_sounding_data(aer_types_ds)[0, :]
             for aer_idx, aer_name in enumerate(aer_types):
-                if "retrieved_aerosol_aod_by_type" in self.analysis_env.data_objs[0]["/RetrievalResults"].keys():
+                if "retrieved_aerosol_aod_by_type" in list(self.analysis_env.data_objs[0]["/RetrievalResults"].keys()):
                     # So that scoping works out right we have to have a
                     # function return a function so aer_idx binds to the
                     # value for the current index, not the last one
