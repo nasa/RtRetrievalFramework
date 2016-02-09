@@ -431,7 +431,7 @@ class OcoMatrix(object):
             raise IOError('Unknown object passed for writing: %s' % file_output)
 
         if not use_set_dims and hasattr(self, 'data'):
-            if type(self.data) is ListType:
+            if type(self.data) is my_list_type:
                 self._dims = [len(self.data), 1]
             else:
                 self._dims[:] = self.data.shape[:]
@@ -515,7 +515,7 @@ class OcoMatrix(object):
                 if verbose:
                     print(self.verbose_pre, 'Using standard column sizes')
 
-                if type(self.data) is ListType:
+                if type(self.data) is my_list_type:
                     data_col_formats   = [ '%s' ]
                     data_col_types     = [ 's' ]
                     lbl_col_formats    = [ '%s' ]
@@ -559,7 +559,7 @@ class OcoMatrix(object):
 
             for i in range(self._dims[0]):
                 for j in range(self._dims[1]):
-                    if type(self.data) is ListType:
+                    if type(self.data) is my_list_type:
                         data_value = self.data[i]
                     else:
                         data_value = self.data[i,j]

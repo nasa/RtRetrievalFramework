@@ -154,14 +154,14 @@ def binary_version(binary_filename):
         # L2 spits out several lines of version information when called with -v
         # If the first line is not as expected then this is not a l2 binary
         first_line = process.stdout.readline()
-        if not first_line.find("Major version:") == 0:
+        if not first_line.find(b"Major version:") == 0:
             return None
 
-        major_version = first_line.split(":")[1].strip()
-        cm_version = process.stdout.readline().split(":")[1].strip()
+        major_version = first_line.split(b":")[1].strip()
+        cm_version = process.stdout.readline().split(b":")[1].strip()
         lua_version = process.stdout.readline()
         if len(lua_version) > 0:
-            lua_version = lua_version.split(":")[1].strip()
+            lua_version = lua_version.split(b":")[1].strip()
         else:
             lua_version = None
 
