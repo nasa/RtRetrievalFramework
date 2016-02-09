@@ -345,10 +345,10 @@ class SoundingDataFile(h5py.File):
             # Intelligently split up the shape name so that something like Dim_1 does
             # not get split incorrectly 
             shape_names = []
-            dataset_shape = dataset_shape[0].replace("_Array", '')
+            dataset_shape = dataset_shape[0].replace(b"_Array", b'')
             # Search for next location of _
-            while dataset_shape.find("_") >= 0:
-                split_loc = dataset_shape.find("_")
+            while dataset_shape.find(b"_") >= 0:
+                split_loc = dataset_shape.find(b"_")
                 end_loc = split_loc
                 check_num_idx = split_loc + 2 
                 # While the portion after _ is still a number keep increasing the end location
@@ -912,7 +912,7 @@ class SoundingFirstFile(SoundingDataFile):
         self._sounding_id_dataset = None
 
         # Specifically return frame only for OCO2 files
-        if(self.filename.find("OCO2_") >= 0):
+        if(self.filename.find(b"OCO2_") >= 0):
             if single_id_dim:
                 self._id_dim_names = ('Frame',)
             else:

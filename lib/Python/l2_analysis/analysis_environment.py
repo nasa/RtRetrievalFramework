@@ -21,6 +21,7 @@ from matplotlib import pylab
 
 import full_physics.acos_file as acos_file
 from functools import reduce
+import six
 
 def get_term_size():
     try:
@@ -322,11 +323,7 @@ class AnalysisEnvironment(object):
             # Raise error preserving traceback
             type, value, traceback = sys.exc_info()
             err_msg = "%s when calling %s with arguments named: %s with value list of size: %d" % (e, routine_name, routine_args, len(arg_list))
-            # Done differently in python 2 and 3.
-            if sys.version_info > (3,):
-                raise TypeError(err_msg)
-            else:
-                raise TypeError, err_msg, traceback
+            six.reraise(TypeError, err_msg, traceback)
 
     def _add_helper_function(self, routine_name, routine_obj):
         @wraps(routine_obj)
