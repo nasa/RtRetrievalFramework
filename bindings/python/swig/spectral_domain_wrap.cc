@@ -6658,6 +6658,52 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SpectralDomain_photon_to_radiance_factor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::SpectralDomain *arg1 = (FullPhysics::SpectralDomain *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::SpectralDomain const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::SpectralDomain const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::ArrayWithUnit< double,1 > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralDomain_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpectralDomain_photon_to_radiance_factor" "', argument " "1"" of type '" "FullPhysics::SpectralDomain const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::SpectralDomain > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::SpectralDomain > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpectralDomain * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::SpectralDomain > * >(argp1);
+      arg1 = const_cast< FullPhysics::SpectralDomain * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::SpectralDomain const *)arg1)->photon_to_radiance_factor();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::ArrayWithUnit<double,1> > *smartresult = new boost::shared_ptr<  FullPhysics::ArrayWithUnit<double,1> >(new FullPhysics::ArrayWithUnit< double,1 >((FullPhysics::ArrayWithUnit< double,1 > &)result));
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SpectralDomain___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::SpectralDomain *arg1 = (FullPhysics::SpectralDomain *) 0 ;
@@ -6818,6 +6864,14 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Throws an error if the the optionally supplied units are not\n"
 		"commensurate with microns \n"
+		""},
+	 { (char *)"SpectralDomain_photon_to_radiance_factor", (PyCFunction)_wrap_SpectralDomain_photon_to_radiance_factor, METH_O, (char *)"\n"
+		"\n"
+		"ArrayWithUnit< double, 1 > SpectralDomain::photon_to_radiance_factor() const\n"
+		"We may want to convert from photon number per second to radiance\n"
+		"units.\n"
+		"\n"
+		"This gives the factor to use in converting. \n"
 		""},
 	 { (char *)"SpectralDomain___str__", (PyCFunction)_wrap_SpectralDomain___str__, METH_O, NULL},
 	 { (char *)"delete_SpectralDomain", (PyCFunction)_wrap_delete_SpectralDomain, METH_O, NULL},

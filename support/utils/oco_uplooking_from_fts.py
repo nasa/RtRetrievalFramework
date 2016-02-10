@@ -1,7 +1,8 @@
+#!/usr/bin/env python
+
 from builtins import str
 from builtins import zip
 from builtins import range
-#!/usr/bin/env python
 
 import os
 import sys
@@ -108,7 +109,7 @@ def store_l1b_data(sounding_id, snd_idx, l1b_fts, output_file, l1b_file):
         output_file['/SoundingMeasurements/radiance_%s' % BAND_NAMES[band_idx]][snd_idx, 0, :] = conv_rad
 
     output_file['/FrameHeader/frame_time'][snd_idx] = fp_time.pgs_time
-    output_file['/FrameHeader/frame_time_stamp'][snd_idx] = str(fp_time)
+    output_file['/FrameHeader/frame_time_stamp'][snd_idx] = bytes(fp_time)
 
 def convert_fts_data(fts_run_dir, output_filename, l1b_filename=REFERENCE_L1B_FILE, config_filename=DEFAULT_FTS_CONFIG_FILE):
     # Open files needed for processing

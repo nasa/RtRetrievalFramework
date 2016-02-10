@@ -277,6 +277,18 @@ class SpectralDomain(full_physics_swig.generic_object.GenericObject):
         """
         return _spectral_domain.SpectralDomain_wavelength(self, *args)
 
+
+    def photon_to_radiance_factor(self):
+        """
+
+        ArrayWithUnit< double, 1 > SpectralDomain::photon_to_radiance_factor() const
+        We may want to convert from photon number per second to radiance
+        units.
+
+        This gives the factor to use in converting. 
+        """
+        return _spectral_domain.SpectralDomain_photon_to_radiance_factor(self)
+
     __swig_destroy__ = _spectral_domain.delete_SpectralDomain
 SpectralDomain._v_data = new_instancemethod(_spectral_domain.SpectralDomain__v_data, None, SpectralDomain)
 SpectralDomain._v_sample_index = new_instancemethod(_spectral_domain.SpectralDomain__v_sample_index, None, SpectralDomain)
@@ -285,6 +297,7 @@ SpectralDomain._v_type_preference = new_instancemethod(_spectral_domain.Spectral
 SpectralDomain.convert_wave = new_instancemethod(_spectral_domain.SpectralDomain_convert_wave, None, SpectralDomain)
 SpectralDomain.wavenumber = new_instancemethod(_spectral_domain.SpectralDomain_wavenumber, None, SpectralDomain)
 SpectralDomain.wavelength = new_instancemethod(_spectral_domain.SpectralDomain_wavelength, None, SpectralDomain)
+SpectralDomain.photon_to_radiance_factor = new_instancemethod(_spectral_domain.SpectralDomain_photon_to_radiance_factor, None, SpectralDomain)
 SpectralDomain.__str__ = new_instancemethod(_spectral_domain.SpectralDomain___str__, None, SpectralDomain)
 SpectralDomain_swigregister = _spectral_domain.SpectralDomain_swigregister
 SpectralDomain_swigregister(SpectralDomain)
