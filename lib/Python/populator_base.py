@@ -8,6 +8,7 @@ import logging
 import glob
 import sys
 import re
+import six
 from full_physics.l2_input import L2InputFile
 from abc import ABCMeta, abstractmethod, abstractproperty
 
@@ -295,7 +296,7 @@ class PopulatorBase(object):
 
     def __get_list_file_values(self, listLocation, listName, sectionName=None, directoryLevels=None):
         # Expand any globs
-        if type(listLocation) is str:
+        if isinstance(listLocation, six.string_types):
             listLocation = self.__expand_filename(listLocation)
     
         # Make sure we have something to iterate over
@@ -313,7 +314,7 @@ class PopulatorBase(object):
         fileValues = []
         for listFile in listLocation:
            
-            if type(listFile) is str and os.path.isdir(listFile):
+            if isinstance(listFile, six.string_types) and os.path.isdir(listFile):
                 self.logger.debug('Loading LIST %s contents from directory: %s' % (listName, listFile))
     
                 # Use directoryLevels - 1 parts of the end of the path
@@ -330,7 +331,7 @@ class PopulatorBase(object):
             elif sectionName == None:
                 self.logger.debug('Loading LIST %s contents from file: %s' % (listName, listFile))
 
-                if type(listFile) is str:
+                if isinstance(listFile, six.string_types):
                     listFileObj = open(listFile, 'r')
                 elif hasattr(listFile, 'read'):
                     listFileObj = listFile
@@ -341,7 +342,7 @@ class PopulatorBase(object):
                     if len(listLine.strip()) > 0 and listLine.strip()[0] != '#':
                         fileValues.append(listLine.strip())
 
-                if type(listFile) is str:
+                if isinstance(listFile, six.string_types):
                     listFileObj.close()
             else:
                 self.logger.debug('Loading LIST %s section as %s contents from file: %s' % (sectionName, listName, listFile))

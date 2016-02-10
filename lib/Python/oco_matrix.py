@@ -167,7 +167,7 @@ class OcoMatrix(object):
 
     def read(self, file_input, read_data=True, ignore_conv_err=False, as_strings=False, strip_nonnumbers=False):
 
-        if type(file_input) is str:
+        if isinstance(file_input, six.string_types):
             # Given a filename so try to open it
             self.filename = file_input
             try:
@@ -240,7 +240,7 @@ class OcoMatrix(object):
             file_lines.append( this_line )
 
         # Only close if we were given a filename we opened ourselves
-        if type(file_input) is str:
+        if isinstance(file_input, six.string_types):
             file_obj.close()
 
         # Get dimensions from read data if not found in header
@@ -340,7 +340,7 @@ class OcoMatrix(object):
 
         is_num = []
         for item in column_data:
-            if type(item) is str:
+            if isinstance(item, six.string_types):
                 cast_failed = False
                 try:
                     float(item)
@@ -422,7 +422,7 @@ class OcoMatrix(object):
 
     def write(self, file_output, use_set_dims=False, auto_size_cols=False, default_precision=8, verbose=False):
 
-        if type(file_output) is str:
+        if isinstance(file_output, six.string_types):
             self.filename = file_output
             file_obj = open(file_output, "w")
         elif hasattr(file_output, 'write'):
@@ -526,7 +526,7 @@ class OcoMatrix(object):
                     for x in range(self._dims[1]-len(self.labels)):
                         col_lens.append(default_col_len)
 
-                    if ( len(self.data.shape) == 2 and self.data.shape[1] != 0 and self.data[0,0] is str ) or ( len(self.data.shape) == 1 and self.data[0] is str ):
+                    if ( len(self.data.shape) == 2 and self.data.shape[1] != 0 and isinstance(self.data[0,0], six.string_types)) or ( len(self.data.shape) == 1 and isinstance(self.data[0], six.string_types)):
                         data_col_formats   = [ '%' + '%s' % (col_lens[col_count]) + 's' for col_count in range(self._dims[1]) ]
                         data_col_types     = [ 's' for col_count in range(self._dims[1]) ]
                     else:
@@ -573,5 +573,5 @@ class OcoMatrix(object):
                 file_obj.write("\n")
 
         # Close file only if we opened it
-        if type(file_output) is str:
+        if isinstance(file_output, six.string_types):
             file_obj.close()

@@ -23,6 +23,7 @@ import logging
 import numpy
 import h5py
 from . import tai64n
+import six
 
 logger = logging.getLogger()
 
@@ -674,7 +675,7 @@ class L1B(SoundingDataFile):
 
         time_structs = []
         for curr_l1b_time in numpy.ravel(sounding_times):
-            if type(curr_l1b_time) is str or type(curr_l1b_time) is numpy.str_:
+            if isinstance(curr_l1b_time, six.string_types) or type(curr_l1b_time) is numpy.str_:
 
                 if len(curr_l1b_time) < TIME_STRING_EXPECT_LEN:
                     raise Exception('Time string: "%s" from file: "%s" does not have the expected format length: %d' % (curr_l1b_time, self.filename, TIME_STRING_EXPECT_LEN))
