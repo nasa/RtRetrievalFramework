@@ -58,6 +58,9 @@ def convolve_data(l1b_obj, high_res_wl, high_res_rad, band_idx, sounding_pos=DEF
     ils_conv = IlsConvolution(disp_l2, ils_table, ILS_HALF_WIDTH[band_idx])
     conv_rad = ils_conv.apply_ils(high_res_wl, high_res_rad, list(range(0,NUM_PIXEL)))
 
+    # Convert to ph / s / micron
+    conv_rad = conv_rad / disp_l2.pixel_grid.photon_to_radiance_factor().value
+
     return wavelength, conv_rad
 
 def convolve_data_from_file(l1b_file, rad_file, band_idx, sounding_pos=DEFAULT_SOUNDING, in_wavenumber=False):
