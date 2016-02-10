@@ -2900,6 +2900,7 @@ config_DATA = @commonconfigsrc@/config_common.lua \
 	$(top_builddir)/version.lua
 input_DATA = @commoninputsrc@/l2_solar_model.h5 \
 	@commoninputsrc@/l2_aerosol_combined.h5 \
+	@commoninputsrc@/l2_aerosol_combined_RH.h5 \
 	@commoninputsrc@/old_orbit_sim_solar_model.h5 \
 	@ftsinputsrc@/l2_fts_static_input.h5 \
 	@gosatinputsrc@/l2_gosat_static_input.h5 \
