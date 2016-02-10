@@ -42,6 +42,10 @@ if HAVE_HDF5
 libfp_la_CPPFLAGS += -DUSE_HDF
 endif
 
+# Not sure why, but make seems to clean this up when we do an 
+# build all. Tell it not to
+.PRECIOUS: libfp.la
+
 #=================================================================
 # Include all the subdirectories.
 

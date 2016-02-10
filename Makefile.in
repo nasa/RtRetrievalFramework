@@ -3801,7 +3801,6 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/co
 	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu Makefile'; \
 	$(am__cd) $(top_srcdir) && \
 	  $(AUTOMAKE) --gnu Makefile
-.PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -11575,6 +11574,10 @@ timing_check:
 @HAVE_NOSETESTS_FALSE@	@echo "Skipping nosetests because it wasn't found on the"
 @HAVE_NOSETESTS_FALSE@	@echo "system during configuration"
 @HAVE_NOSETESTS_FALSE@	@echo "====================================================="
+
+# Not sure why, but make seems to clean this up when we do an 
+# build all. Tell it not to
+.PRECIOUS: libfp.la
 
 # Allow searchs for .i, .h. and .cc files in this directory
 vpath %.cc $(srcdir)/@supportsrc@

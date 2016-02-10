@@ -4,6 +4,7 @@ from builtins import zip
 from builtins import str
 from builtins import range
 from builtins import object
+import six
 # -----------------------------------------------------------------------------
 # Parser for OCO L2 Input Files
 # -----------------------------------------------------------------------------
@@ -768,7 +769,7 @@ class L2InputFile(object):
         elif hasattr(file_input, 'read'):
             fileContents = file_input.read()
         else:
-            raise IOException('Passed unknown object for reading: %s' % file_input)
+            raise IOError('Passed unknown object for reading: %s' % file_input)
 
         if len(fileContents.strip()) == 0:
             self.rootNode = _Section(leaf=['root','root'], children=[])
@@ -793,17 +794,17 @@ class L2InputFile(object):
         if file_output == None:
             file_output = self.filename
 
-        if type(file_output) is str:
+        if isinstance(file_output, six.string_types):
             file_obj = open(file_output, "w")
             self.filename = file_output
         elif hasattr(file_output, 'write'):
             file_obj = file_output
         else:
-            raise IOException('Passed unknown object type for writing: %s' % file_output)
+            raise IOError('Passed unknown object type for writing: %s' % file_output)
         
         self.write_node(self.rootNode, file_obj, doIndent=doIndent)
 
-        if type(file_output) is str:        
+        if isinstance(file_output, six.string_types):
             file_obj.close()
                 
     def write_node(self, node, fileObj, level=0, doIndent=False, nextNode=None, lastNode=None):
