@@ -12,7 +12,7 @@ import sys
 import re
 from types import GeneratorType, StringType
 from collections import namedtuple
-from itertools import zip_longest
+from six.moves import zip_longest
 
 import h5py
 import numpy
