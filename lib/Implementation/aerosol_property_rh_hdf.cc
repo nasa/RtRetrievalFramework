@@ -26,19 +26,24 @@ AerosolPropertyRhHdf::AerosolPropertyRhHdf
 {
   press = Press;
   Array<double, 1> wn(F.read_field<double, 1>(Group_name + "/wave_number"));
-  Array<double, 1> 
-    qscatv(F.read_field<double, 1>(Group_name + "/scattering_coefficient"));
-  Array<double, 1> 
-    qextv(F.read_field<double, 1>(Group_name + "/extinction_coefficient"));
-  Array<double, 3>
-    pfv(F.read_field<double, 3>(Group_name + "/phase_function_moment"));
+  Array<double, 1> rh(F.read_field<double, 1>(Group_name + "/relative_humidity"));
+  Array<double, 2> 
+    qscatv(F.read_field<double, 2>(Group_name + "/scattering_coefficient"));
+  Array<double, 2> 
+    qextv(F.read_field<double, 2>(Group_name + "/extinction_coefficient"));
+  Array<double, 4>
+    pfv(F.read_field<double, 4>(Group_name + "/phase_function_moment"));
+  Array<double, 1> qscatvt(qscatv.rows());
+  Array<double, 1> qextvt(qextv.rows());
+  qscatvt = qscatv(Range::all(), 0);
+  qextvt = qextv(Range::all(), 0);
   qext.reset(new LinearInterpolate<double, double>(wn.begin(), wn.end(), 
-					   qextv.begin()));
+					   qextvt.begin()));
   qscat.reset(new LinearInterpolate<double, double>(wn.begin(), wn.end(), 
-					    qscatv.begin()));
+					    qscatvt.begin()));
   std::vector<Array<double, 2> > pf_vec;
   for(int i = 0; i < pfv.rows(); ++i)
-    pf_vec.push_back(Array<double, 2>(pfv(i, Range::all(), Range::all())));
+    pf_vec.push_back(Array<double, 2>(pfv(i, 0, Range::all(), Range::all())));
   pf.reset(new ScatteringMomentInterpolate(wn.begin(), wn.end(),
 					   pf_vec.begin()));
 }

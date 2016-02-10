@@ -6,4 +6,5 @@ config_DATA += @commonconfigsrc@/rail_road_valley.lua
 config_DATA += @commonconfigsrc@/uncertainty_quantification.lua
 input_DATA += @commoninputsrc@/l2_solar_model.h5
 input_DATA += @commoninputsrc@/l2_aerosol_combined.h5
+input_DATA += @commoninputsrc@/l2_aerosol_combined_RH.h5
 input_DATA += @commoninputsrc@/old_orbit_sim_solar_model.h5
