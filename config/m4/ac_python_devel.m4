@@ -118,8 +118,8 @@ if test "x$want_python" = "xyes"; then
         # If default python isn't new enough, then try again for python2.6
 	  if test -n "$1"; then
 		AC_MSG_CHECKING([for a version of Python $1])
-		ac_supports_python_ver=`$PYTHON -c "import sys, string; \
-			ver = string.split(sys.version)[[0]]; \
+		ac_supports_python_ver=`$PYTHON -c "import sys; \
+			ver = sys.version.split()[[0]]; \
 			print (ver $1)"`
 		if test "$ac_supports_python_ver" = "False"; then
 	           AC_PATH_PROG([PYTHON26],[python2.6])
@@ -134,8 +134,8 @@ if test "x$want_python" = "xyes"; then
 	# Check for a version of Python >= 2.1.0
 	#
   	  AC_MSG_CHECKING([for a version of Python >= '2.1.0'])
-  	  ac_supports_python_ver=`$PYTHON -c "import sys, string; \
-		ver = string.split(sys.version)[[0]]; \
+  	  ac_supports_python_ver=`$PYTHON -c "import sys; \
+		ver = sys.version.split()[[0]]; \
 		print (ver >= '2.1.0')"`
 	  if test "$ac_supports_python_ver" != "True"; then
 		if test -z "$PYTHON_NOVERSIONCHECK"; then
@@ -162,8 +162,8 @@ to something else than an empty string.
 	#
 	  if test -n "$1"; then
 		AC_MSG_CHECKING([for a version of Python $1])
-		ac_supports_python_ver=`$PYTHON -c "import sys, string; \
-			ver = string.split(sys.version)[[0]]; \
+		ac_supports_python_ver=`$PYTHON -c "import sys; \
+			ver = sys.version.split()[[0]]; \
 			print (ver $1)"`
 		if test "$ac_supports_python_ver" = "True"; then
 	   	   AC_MSG_RESULT([yes])
@@ -234,8 +234,7 @@ $ac_numpy_result])
 		# (makes two attempts to ensure we've got a version number
 		# from the interpreter)
 		py_version=`$PYTHON -c "from distutils.sysconfig import *; \
-			from string import join; \
-			print(join(get_config_vars('VERSION')))"`
+			print(' '.join(get_config_vars('VERSION')))"`
 		if test "$py_version" == "[None]"; then
 			if test -n "$PYTHON_VERSION"; then
 				py_version=$PYTHON_VERSION
@@ -246,7 +245,6 @@ $ac_numpy_result])
 		fi
 
 		PYTHON_LDFLAGS=`$PYTHON -c "from distutils.sysconfig import *; \
-			from string import join; \
 			print ('-L/usr/lib -L/usr/lib64 -L' + get_python_lib(0,1) + ' -L' + get_python_lib(0,1) + '/config', \
 		      	'-lpython');"`$py_version
 	fi
