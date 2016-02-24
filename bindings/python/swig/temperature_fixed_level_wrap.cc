@@ -4918,6 +4918,155 @@ template<class T, int D> inline blitz::Array<T, D>
 #include "temperature_fixed_level.h"
 
 
+SWIGINTERN int
+SWIG_AsVal_double (PyObject *obj, double *val)
+{
+  int res = SWIG_TypeError;
+  if (PyFloat_Check(obj)) {
+    if (val) *val = PyFloat_AsDouble(obj);
+    return SWIG_OK;
+  } else if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else if (PyLong_Check(obj)) {
+    double v = PyLong_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    double d = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = d;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      long v = PyLong_AsLong(obj);
+      if (!PyErr_Occurred()) {
+	if (val) *val = v;
+	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
+      } else {
+	PyErr_Clear();
+      }
+    }
+  }
+#endif
+  return res;
+}
+
+
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx = floor(x);
+   double cx = ceil(x);
+   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
+
+struct SWIG_null_deleter {
+  void operator() (void const *) const {
+  }
+};
+#define SWIG_NO_NULL_DELETER_0 , SWIG_null_deleter()
+#define SWIG_NO_NULL_DELETER_1
+#define SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW
+#define SWIG_NO_NULL_DELETER_SWIG_POINTER_OWN
+
+
+#define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
+
+
+  #define SWIG_From_double   PyFloat_FromDouble 
+
+
 
 /* ---------------------------------------------------
  * C++ director class methods
@@ -4936,6 +5085,177 @@ SWIGINTERN PyObject *SHARED_PTR_DISOWN_swigconstant(PyObject *SWIGUNUSEDPARM(sel
   if (!d) return NULL;
   SWIG_Python_SetConstant(d, "SHARED_PTR_DISOWN",SWIG_From_int(static_cast< int >(0)));
   return SWIG_Py_Void();
+}
+
+
+SWIGINTERN PyObject *_wrap_new_TemperatureFixedLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  blitz::Array< bool,1 > *arg1 = 0 ;
+  bool arg2 ;
+  blitz::Array< double,1 > *arg3 = 0 ;
+  double arg4 ;
+  boost::shared_ptr< FullPhysics::Pressure > *arg5 = 0 ;
+  boost::shared_ptr< FullPhysics::PressureLevelInput > *arg6 = 0 ;
+  blitz::Array< bool,1 > a1 ;
+  PythonObject numpy1 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  blitz::Array< double,1 > a3 ;
+  PythonObject numpy3 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  void *argp5 ;
+  int res5 = 0 ;
+  boost::shared_ptr< FullPhysics::Pressure > tempshared5 ;
+  boost::shared_ptr< FullPhysics::Pressure > temp2shared5 ;
+  void *argp6 ;
+  int res6 = 0 ;
+  boost::shared_ptr< FullPhysics::PressureLevelInput > tempshared6 ;
+  boost::shared_ptr< FullPhysics::PressureLevelInput > temp2shared6 ;
+  PyObject *swig_obj[6] ;
+  FullPhysics::TemperatureFixedLevel *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"new_TemperatureFixedLevel",6,6,swig_obj)) SWIG_fail;
+  {
+    int res = SWIG_ConvertPtr(swig_obj[0], (void**)(&arg1), SWIGTYPE_p_blitz__ArrayT_bool_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy1.obj = to_numpy<bool>(swig_obj[0]);
+      if(!numpy1.obj)
+      return NULL;
+      a1.reference(to_blitz_array<bool, 1>(numpy1));
+      arg1 = &a1;
+    }
+  }
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_TemperatureFixedLevel" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  {
+    int res = SWIG_ConvertPtr(swig_obj[2], (void**)(&arg3), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy3.obj = to_numpy<double>(swig_obj[2]);
+      if(!numpy3.obj)
+      return NULL;
+      a3.reference(to_blitz_array<double, 1>(numpy3));
+      arg3 = &a3;
+    }
+  }
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_TemperatureFixedLevel" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  {
+    int newmem = 0;
+    res5 = SWIG_ConvertPtrAndOwn(swig_obj[4], &argp5, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 , &newmem);
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "new_TemperatureFixedLevel" "', argument " "5"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp5) tempshared5 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp5);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp5);
+      arg5 = &tempshared5;
+    } else {
+      arg5 = (argp5) ? reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp5) : &tempshared5;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg5->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared5.reset(arg5->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg5 = &temp2shared5;
+    }
+  }
+  {
+    int newmem = 0;
+    res6 = SWIG_ConvertPtrAndOwn(swig_obj[5], &argp6, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__PressureLevelInput_t,  0 , &newmem);
+    if (!SWIG_IsOK(res6)) {
+      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "new_TemperatureFixedLevel" "', argument " "6"" of type '" "boost::shared_ptr< FullPhysics::PressureLevelInput > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp6) tempshared6 = *reinterpret_cast< boost::shared_ptr< FullPhysics::PressureLevelInput > * >(argp6);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::PressureLevelInput > * >(argp6);
+      arg6 = &tempshared6;
+    } else {
+      arg6 = (argp6) ? reinterpret_cast< boost::shared_ptr< FullPhysics::PressureLevelInput > * >(argp6) : &tempshared6;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg6->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared6.reset(arg6->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg6 = &temp2shared6;
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::TemperatureFixedLevel *)new FullPhysics::TemperatureFixedLevel((blitz::Array< bool,1 > const &)*arg1,arg2,(blitz::Array< double,1 > const &)*arg3,arg4,(boost::shared_ptr< FullPhysics::Pressure > const &)*arg5,(boost::shared_ptr< FullPhysics::PressureLevelInput > const &)*arg6);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::TemperatureFixedLevel > *smartresult = result ? new boost::shared_ptr<  FullPhysics::TemperatureFixedLevel >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureFixedLevel_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_TemperatureFixedLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::TemperatureFixedLevel *arg1 = (FullPhysics::TemperatureFixedLevel *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::TemperatureFixedLevel > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TemperatureFixedLevel > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureFixedLevel_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_TemperatureFixedLevel" "', argument " "1"" of type '" "FullPhysics::TemperatureFixedLevel *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::TemperatureFixedLevel > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::TemperatureFixedLevel > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureFixedLevel * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::TemperatureFixedLevel > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureFixedLevel * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (void)arg1; delete smartarg1;
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -5122,14 +5442,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_TemperatureFixedLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TemperatureFixedLevel__v_temperature_offset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::TemperatureFixedLevel *arg1 = (FullPhysics::TemperatureFixedLevel *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::TemperatureFixedLevel > tempshared1 ;
-  boost::shared_ptr< FullPhysics::TemperatureFixedLevel > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::TemperatureFixedLevel const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TemperatureFixedLevel const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
+  double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -5137,27 +5458,70 @@ SWIGINTERN PyObject *_wrap_delete_TemperatureFixedLevel(PyObject *SWIGUNUSEDPARM
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureFixedLevel_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_TemperatureFixedLevel" "', argument " "1"" of type '" "FullPhysics::TemperatureFixedLevel *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureFixedLevel__v_temperature_offset" "', argument " "1"" of type '" "FullPhysics::TemperatureFixedLevel const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::TemperatureFixedLevel > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::TemperatureFixedLevel > * >(argp1);
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureFixedLevel > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureFixedLevel > * >(argp1);
       arg1 = const_cast< FullPhysics::TemperatureFixedLevel * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::TemperatureFixedLevel > * >(argp1);
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureFixedLevel > * >(argp1);
       arg1 = const_cast< FullPhysics::TemperatureFixedLevel * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      (void)arg1; delete smartarg1;
+      result = (double)((FullPhysics::TemperatureFixedLevel const *)arg1)->temperature_offset();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_Py_Void();
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TemperatureFixedLevel__v_temperature_offset_uncertainty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::TemperatureFixedLevel *arg1 = (FullPhysics::TemperatureFixedLevel *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::TemperatureFixedLevel const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TemperatureFixedLevel const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureFixedLevel_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureFixedLevel__v_temperature_offset_uncertainty" "', argument " "1"" of type '" "FullPhysics::TemperatureFixedLevel const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureFixedLevel > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureFixedLevel > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureFixedLevel * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureFixedLevel > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureFixedLevel * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((FullPhysics::TemperatureFixedLevel const *)arg1)->temperature_offset_uncertainty();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
   return NULL;
@@ -5171,9 +5535,26 @@ SWIGINTERN PyObject *TemperatureFixedLevel_swigregister(PyObject *SWIGUNUSEDPARM
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *TemperatureFixedLevel_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"SHARED_PTR_DISOWN_swigconstant", SHARED_PTR_DISOWN_swigconstant, METH_VARARGS, NULL},
+	 { (char *)"new_TemperatureFixedLevel", _wrap_new_TemperatureFixedLevel, METH_VARARGS, (char *)"\n"
+		"\n"
+		"TemperatureFixedLevel::TemperatureFixedLevel(const blitz::Array< bool, 1 > &Flag_temp, bool Flag_offset, const\n"
+		"blitz::Array< double, 1 > &Temp, double T_offset, const\n"
+		"boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<\n"
+		"PressureLevelInput > &Press_level)\n"
+		"Create an Temperature. \n"
+		""},
+	 { (char *)"delete_TemperatureFixedLevel", (PyCFunction)_wrap_delete_TemperatureFixedLevel, METH_O, (char *)"\n"
+		"\n"
+		"virtual FullPhysics::TemperatureFixedLevel::~TemperatureFixedLevel()\n"
+		"\n"
+		""},
 	 { (char *)"TemperatureFixedLevel__v_temperature_levels", (PyCFunction)_wrap_TemperatureFixedLevel__v_temperature_levels, METH_O, (char *)"\n"
 		"\n"
 		"ArrayAd< double, 1 > TemperatureFixedLevel::temperature_levels() const\n"
@@ -5187,12 +5568,18 @@ static PyMethodDef SwigMethods[] = {
 		"boost::shared_ptr< Temperature > TemperatureFixedLevel::clone(const boost::shared_ptr< Pressure > &Press) const\n"
 		"\n"
 		""},
-	 { (char *)"delete_TemperatureFixedLevel", (PyCFunction)_wrap_delete_TemperatureFixedLevel, METH_O, (char *)"\n"
+	 { (char *)"TemperatureFixedLevel__v_temperature_offset", (PyCFunction)_wrap_TemperatureFixedLevel__v_temperature_offset, METH_O, (char *)"\n"
 		"\n"
-		"virtual FullPhysics::TemperatureFixedLevel::~TemperatureFixedLevel()\n"
+		"double FullPhysics::TemperatureFixedLevel::temperature_offset() const\n"
+		"Temperature offset. \n"
+		""},
+	 { (char *)"TemperatureFixedLevel__v_temperature_offset_uncertainty", (PyCFunction)_wrap_TemperatureFixedLevel__v_temperature_offset_uncertainty, METH_O, (char *)"\n"
 		"\n"
+		"double TemperatureFixedLevel::temperature_offset_uncertainty() const\n"
+		"Uncertainty of temperature offset. \n"
 		""},
 	 { (char *)"TemperatureFixedLevel_swigregister", TemperatureFixedLevel_swigregister, METH_VARARGS, NULL},
+	 { (char *)"TemperatureFixedLevel_swiginit", TemperatureFixedLevel_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
