@@ -24,10 +24,11 @@ public:
 
     ReferenceVmrApriori(const blitz::Array<double, 1>& Model_altitude,
                         const blitz::Array<double, 1>& Model_temperature,
-                        const double Model_latitude,
                         const blitz::Array<double, 1>& Ref_altitude,
                         const double Ref_latitude,
-                        const double Ref_tropopause_altitude);
+                        const double Ref_tropopause_altitude,
+                        const double Obs_latitude);
+    
 
     double model_tropopause_altitude() const;
     const blitz::Array<double, 1> effective_altitude() const;
@@ -44,11 +45,12 @@ private:
 
     blitz::Array<double, 1> model_altitude;
     blitz::Array<double, 1> model_temperature;
-    double model_latitude;
 
     blitz::Array<double, 1> ref_altitude;
     double ref_latitude;
     double ref_tropopause_altitude;
+
+    double obs_latitude;
 
 };
 }

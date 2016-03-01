@@ -27,13 +27,15 @@ public:
         ref_vmr.resize(ref_vmr_data.rows(), ref_vmr_data.cols() - 1);
         ref_vmr(Range::all(), Range::all()) = ref_vmr_data(Range::all(), Range(1,toEnd));
 
-        double model_latitude = 45.945;
         double ref_latitude = 35.0;
         double ref_topo_alt = 15.0;
+
+        double obs_latitude = 45.945;
         //Time reference_time("2005-01-01T00:00:00");
 
-        ref_ap.reset(new ReferenceVmrApriori(model_altitude, model_temperature, model_latitude,
-                                             ref_altitude, ref_latitude, ref_topo_alt));
+        ref_ap.reset(new ReferenceVmrApriori(model_altitude, model_temperature, 
+                                             ref_altitude, ref_latitude, ref_topo_alt,
+                                             obs_latitude));
     }
     virtual ~RefVmrFixture() {}
 

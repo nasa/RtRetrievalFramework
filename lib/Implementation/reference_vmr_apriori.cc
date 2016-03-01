@@ -6,12 +6,13 @@ using namespace blitz;
 
 ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_altitude,
                                          const blitz::Array<double, 1>& Model_temperature,
-                                         const double Model_latitude,
                                          const blitz::Array<double, 1>& Ref_altitude,
                                          const double Ref_latitude,
-                                         const double Ref_tropopause_altitude)
-: model_altitude(Model_altitude), model_temperature(Model_temperature), model_latitude(Model_latitude),
-  ref_altitude(Ref_altitude), ref_latitude(Ref_latitude), ref_tropopause_altitude(Ref_tropopause_altitude)
+                                         const double Ref_tropopause_altitude,
+                                         const double Obs_latitude)
+: model_altitude(Model_altitude), model_temperature(Model_temperature),
+  ref_altitude(Ref_altitude), ref_latitude(Ref_latitude), ref_tropopause_altitude(Ref_tropopause_altitude),
+  obs_latitude(Obs_latitude)
 {
     /*Array<double, 1> mod_grid_vmr = resample_ref_vmrs_to_model_grid(Ref_vmr);
     ap_vmr.reference(mod_grid_vmr);
@@ -77,7 +78,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::effective_altitude() const
             // stratosphere
             zeff = model_altitude(lev_idx) + (ref_tropopause_altitude - mod_tropo_alt) *
                 exp(-(model_altitude(lev_idx) - mod_tropo_alt) / 10.0);
-            zeff = zeff - exp(-std::pow(model_latitude / 25.0, 4))
+            zeff = zeff - exp(-std::pow(obs_latitude / 25.0, 4))
                 * 3.5 * mod_tropo_alt * std::pow(model_altitude(lev_idx) / mod_tropo_alt - 1, 2)  
                 * exp(-(model_altitude(lev_idx) - mod_tropo_alt) / 9.0);
         }
