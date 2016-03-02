@@ -2,245 +2,272 @@
 #include <iostream>
 #include "swig_type_mapper_base.h"
 
+// Python 2 and 3 do strings differently, so we have a simple macro to 
+// keep from having lots of ifdefs spread around. See 
+// https://wiki.python.org/moin/PortingExtensionModulesToPy3k for details on
+// this.
+#if PY_MAJOR_VERSION > 2
+#define Text_FromUTF8(str) PyUnicode_FromString(str)
+#else
+#define Text_FromUTF8(str) PyString_FromString(str)
+#endif
+
+// Python 2 and 3 have different name for their swig init functions
+#if PY_MAJOR_VERSION > 2
+#define SWIG_INIT_FUNC(S) PyInit__ ## S
+#define SWIG_INIT_TYPE PyObject *
+#define SWIG_INIT_MODULE init_extension_module3
+#else
+#define SWIG_INIT_FUNC(S) init_ ## S
+#define SWIG_INIT_TYPE void
+#define SWIG_INIT_MODULE init_extension_module2
+#endif
 using namespace FullPhysics;
 // Map used between type_index and object to map this to python.
 std::map<type_index, boost::shared_ptr<SwigTypeMapperBase> > 
   FullPhysics::swig_type_map;
 
 extern "C" {
+#if PY_MAJOR_VERSION > 2
+  PyObject * PyInit__swig_wrap(void);
+#else
   void init_swig_wrap(void);
-  void init_fp_exception(void);
-  void init_generic_object(void);
-  void init_unit(void);
-  void init_double_with_unit(void);
-  void init_constant(void);
-  void init_default_constant(void);
-  void init_array_with_unit(void);
-  void init_auto_derivative(void);
-  void init_auto_derivative_with_unit(void);
-  void init_array_ad(void);
-  void init_array_ad_with_unit(void);
-  void init_spectral_domain(void);
-  void init_logger(void);
-  void init_fp_time(void);
-  void init_heritage_file(void);
-  void init_linear_algebra(void);
-  void init_rayleigh_greek_moment(void);
-  void init_hdf_file(void);
-  void init_hdf_sounding_id(void);
-  void init_acos_sounding_id(void);
-  void init_oco_sounding_id(void);
-  void init_uq_sounding_id(void);
-  void init_ecmwf(void);
-  void init_acos_ecmwf(void);
-  void init_oco_ecmwf(void);
-  void init_uq_ecmwf(void);
-  void init_oco_sim_met_ecmwf(void);
-  void init_observer(void);
-  void init_fts_run_log(void);
-  void init_spectral_range(void);
-  void init_spectral_bound(void);
-  void init_spectrum(void);
-  void init_named_spectrum(void);
-  void init_state_vector(void);
-  void init_sub_state_vector_array(void);
-  void init_sub_state_vector_proxy(void);
-  void init_hdf_file_generating(void);
-  void init_closest_point(void);
-  void init_polynomial_eval(void);
-  void init_linear_interpolate(void);
-  void init_solar_absorption_spectrum(void);
-  void init_solar_continuum_spectrum(void);
-  void init_solar_doppler_shift(void);
-  void init_spectrum_effect(void);
-  void init_solar_model(void);
-  void init_instrument(void);
-  void init_aerosol(void);
-  void init_ils(void);
-  void init_ils_function(void);
-  void init_instrument_correction(void);
-  void init_spectrum_effect_imp_base(void);
-  void init_dispersion(void);
-  void init_initial_guess(void);
-  void init_composite_initial_guess(void);
-  void init_perturbation(void);
-  void init_cost_function(void);
-  void init_convergence_check(void);
-  void init_level_1b(void);
-  void init_noise_model(void);
-  void init_level_1b_hdf(void);
-  void init_spectrum_sampling(void);
-  void init_forward_model(void);
-  void init_forward_model_spectral_grid(void);
-  void init_output(void);
-  void init_spectral_window(void);
-  void init_pressure(void);
-  void init_stokes_coefficient(void);
-  void init_pressure_imp_base(void);
-  void init_stokes_coefficient_imp_base(void);
-  void init_gas_absorption(void);
-  void init_temperature(void);
-  void init_temperature_imp_base(void);
-  void init_temperature_offset(void);
-  void init_altitude(void);
-  void init_absorber_vmr(void);
-  void init_absorber_vmr_imp_base(void);
-  void init_absorber_vmr_scaled(void);
-  void init_absorber(void);
-  void init_ground(void);
-  void init_rt_atmosphere(void);
-  void init_radiative_transfer(void);
-  void init_radiative_transfer_retrievable(void);
-  void init_radiative_transfer_imp_base(void);
-  void init_radiative_transfer_fixed_stokes_coefficient(void);
-  void init_radiative_transfer_single_wn(void);
-  void init_spurr_rt(void);
-  void init_hres_wrapper(void);
-  void init_spurr_driver(void);
-  void init_aerosol_property(void);
-  void init_aerosol_property_imp_base(void);
-  void init_aerosol_extinction(void);
-  void init_aerosol_extinction_imp_base(void);
-  void init_cost_func(void);
-  void init_cost_func_diff(void);
-  void init_nlls_problem(void);
-  void init_problem_state(void);
-  void init_cost_func_state(void);
-  void init_cost_func_diff_state(void);
-  void init_nlls_problem_state(void);
-  void init_model_state(void);
-  void init_iterative_solver(void);
-  void init_iterative_solver_der(void);
-  void init_nlls_solver(void);
-  void init_cost_minimizer(void);
-  void init_model_measure(void);
-  void init_max_likelihood(void);
-  void init_max_a_posteriori(void);
-  void init_pressure_holder(void);
-  void init_aerosol_property_hdf(void);
-  void init_hdf_constant(void);
-  void init_solar_continuum_table(void);
-  void init_solar_absorption_table(void);
-  void init_solar_doppler_shift_polynomial(void);
-  void init_solar_doppler_shift_l1b(void);
-  void init_solar_absorption_and_continuum(void);
-  void init_bad_sample_noise_model(void);
-  void init_composite_perturbation(void);
-  void init_dispersion_polynomial(void);
-  void init_ils_table(void);
-  void init_ils_gaussian(void);
-  void init_ils_convolution(void);
-  void init_ils_instrument(void);
-  void init_zero_offset_waveform(void);
-  void init_empirical_orthogonal_function(void);
-  void init_radiance_scaling(void);
-  void init_radiance_scaling_sv_fit(void);
-  void init_radiance_scaling_linear_fit(void);
-  void init_level_1b_fts(void);
-  void init_ils_fts(void);
-  void init_level_1b_heritage(void);
-  void init_level_1b_acos(void);
-  void init_level_1b_average(void);
-  void init_level_1b_scale_radiance(void);
-  void init_level_1b_oco(void);
-  void init_level_1b_uq(void);
-  void init_level_1b_cache(void);
-  void init_gosat_noise_model(void);
-  void init_precomputed_noise_model(void);
-  void init_absco(void);
-  void init_absco_hdf(void);
-  void init_altitude_hydrostatic(void);
-  void init_absorber_absco(void);
-  void init_ground_lambertian(void);
-  void init_ground_coxmunk(void);
-  void init_ground_coxmunk_plus_lambertian(void);
-  void init_ground_brdf(void);
-  void init_initial_guess_value(void);
-  void init_aerosol_optical(void);
-  void init_merra_aerosol(void);
-  void init_rayleigh(void);
-  void init_atmosphere_oco(void);
-  void init_connor_solver(void);
-  void init_log_timing(void);
-  void init_chisq_convergence(void);
-  void init_connor_convergence(void);
-  void init_solver_iteration_log(void);
-  void init_forward_model_cost_function(void);
-  void init_error_analysis(void);
-  void init_oco_forward_model(void);
-  void init_output_hdf(void);
-  void init_uniform_spectrum_sampling(void);
-  void init_spectrum_sampling_fixed_spacing(void);
-  void init_fp_logger(void);
-  void init_lidort_interface_types(void);
-  void init_lidort_interface_masters(void);
-  void init_lidort_driver(void);
-  void init_lidort_rt(void);
-  void init_twostream_interface(void);
-  void init_twostream_driver(void);
-  void init_twostream_rt(void);
-  void init_l_rad_driver(void);
-  void init_l_rad_rt(void);
-  void init_lsi_rt(void);
-  void init_fm_nlls_problem(void);
-  void init_aerosol_extinction_linear(void);
-  void init_aerosol_extinction_log(void);
-  void init_aerosol_shape_gaussian(void);
-  void init_l2_fp_configuration(void);
-  void init_l2_fp_configuration_lua(void);
-  void init_nonuniform_spectrum_sampling(void);
-  void init_spectral_window_range(void);
-  void init_temperature_ecmwf(void);
-  void init_absorber_vmr_ecmwf(void);
-  void init_absorber_vmr_level(void);
-  void init_absorber_vmr_level_scaled(void);
-  void init_pressure_sigma(void);
-  void init_stokes_coefficient_constant(void);
-  void init_stokes_coefficient_fraction(void);
-  void init_tccon_apriori(void);
-  void init_oco_sim_apriori(void);
-  void init_dispersion_fit(void);
-  void init_fluorescence_effect(void);
-  void init_solar_absorption_gfit_file(void);
-  void init_nlls_solver_gsl(void);
-  void init_nlls_solver_gsl_lmsder(void);
-  void init_nlls_solver_gsl_lmder(void);
-  void init_cost_minimizer_gsl(void);
-  void init_model_measure_oco(void);
-  void init_max_likelihood_oco(void);
-  void init_max_a_posteriori_oco(void);
-  void init_connor_solver_map(void);
-  void init_nlls_max_likelihood(void);
-  void init_nlls_max_a_posteriori(void);
-  void init_nlls_problem_scaled(void);
-  void init_pressure_level_input(void);
-  void init_pressure_fixed_level(void);
-  void init_temperature_fixed_level(void);
-  void init_absorber_vmr_fixed_level(void);
-  void init_absorber_vmr_fixed_level_scaled(void);
-  void init_solar_continuum_polynomial(void);
-  void init_solar_absorption_oco_file(void);
-  void init_register_output_base(void);
-  void init_dispersion_polynomial_output(void);
-  void init_stokes_coefficient_fraction_output(void);
-  void init_zero_offset_waveform_output(void);
-  void init_empirical_orthogonal_function_output(void);
-  void init_level_1b_output(void);
-  void init_state_vector_output(void);
-  void init_forward_model_output(void);
-  void init_oco_forward_model_output(void);
-  void init_connor_convergence_output(void);
-  void init_connor_solver_output(void);
-  void init_error_analysis_output(void);
-  void init_dispersion_fit_output(void);
-  void init_max_a_posteriori_output(void);
-  void init_fluorescence_effect_output(void);
-  void init_radiance_scaling_output(void);
-  void init_lua_state(void);
-  void init_luabind_object(void);
-  void init_swig_std(void);
-  void init_swig_array(void);
-  void init_swig_rational(void);
+#endif
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(fp_exception)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(generic_object)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(unit)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(double_with_unit)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(constant)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(default_constant)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(array_with_unit)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(auto_derivative)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(auto_derivative_with_unit)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(array_ad)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(array_ad_with_unit)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(spectral_domain)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(logger)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(fp_time)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(heritage_file)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(linear_algebra)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(rayleigh_greek_moment)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(hdf_file)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(hdf_sounding_id)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(acos_sounding_id)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_sounding_id)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(uq_sounding_id)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(acos_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(uq_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_sim_met_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(observer)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(fts_run_log)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(spectral_range)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(spectral_bound)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(spectrum)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(named_spectrum)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(state_vector)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(sub_state_vector_array)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(sub_state_vector_proxy)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(hdf_file_generating)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(closest_point)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(polynomial_eval)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(linear_interpolate)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_absorption_spectrum)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_continuum_spectrum)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_doppler_shift)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(spectrum_effect)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_model)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(instrument)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ils)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ils_function)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(instrument_correction)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(spectrum_effect_imp_base)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(dispersion)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(initial_guess)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(composite_initial_guess)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(perturbation)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(cost_function)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(convergence_check)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(noise_model)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_hdf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(spectrum_sampling)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(forward_model)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(forward_model_spectral_grid)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(spectral_window)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(pressure)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(stokes_coefficient)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(pressure_imp_base)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(stokes_coefficient_imp_base)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(gas_absorption)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(temperature)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(temperature_imp_base)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(temperature_offset)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(altitude)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_imp_base)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_scaled)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ground)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(rt_atmosphere)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(radiative_transfer)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(radiative_transfer_retrievable)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(radiative_transfer_imp_base)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(radiative_transfer_fixed_stokes_coefficient)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(radiative_transfer_single_wn)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(spurr_rt)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(hres_wrapper)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(spurr_driver)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_property)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_property_imp_base)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_extinction)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_extinction_imp_base)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(cost_func)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(cost_func_diff)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(nlls_problem)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(problem_state)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(cost_func_state)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(cost_func_diff_state)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(nlls_problem_state)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(model_state)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(iterative_solver)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(iterative_solver_der)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(nlls_solver)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(cost_minimizer)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(model_measure)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(max_likelihood)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(max_a_posteriori)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(pressure_holder)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_property_hdf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_property_rh_hdf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(hdf_constant)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_continuum_table)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_absorption_table)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_doppler_shift_polynomial)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_doppler_shift_l1b)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_absorption_and_continuum)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(bad_sample_noise_model)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(composite_perturbation)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(dispersion_polynomial)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ils_table)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ils_gaussian)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ils_convolution)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ils_instrument)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(zero_offset_waveform)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(empirical_orthogonal_function)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(radiance_scaling)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(radiance_scaling_sv_fit)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(radiance_scaling_linear_fit)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_fts)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ils_fts)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_heritage)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_acos)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_average)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_scale_radiance)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_oco)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_uq)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_cache)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(gosat_noise_model)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(precomputed_noise_model)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absco)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absco_hdf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(altitude_hydrostatic)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_absco)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ground_lambertian)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ground_coxmunk)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ground_coxmunk_plus_lambertian)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(ground_brdf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(initial_guess_value)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_optical)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(merra_aerosol)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(rayleigh)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(atmosphere_oco)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(relative_humidity)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(connor_solver)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(log_timing)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(chisq_convergence)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(connor_convergence)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solver_iteration_log)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(forward_model_cost_function)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(error_analysis)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_forward_model)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(output_hdf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(uniform_spectrum_sampling)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(spectrum_sampling_fixed_spacing)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(fp_logger)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(lidort_interface_types)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(lidort_interface_masters)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(lidort_driver)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(lidort_rt)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(twostream_interface)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(twostream_driver)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(twostream_rt)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(l_rad_driver)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(l_rad_rt)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(lsi_rt)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(fm_nlls_problem)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_extinction_linear)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_extinction_log)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_shape_gaussian)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(l2_fp_configuration)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(l2_fp_configuration_lua)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(nonuniform_spectrum_sampling)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(spectral_window_range)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(temperature_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(temperature_level_offset)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_level)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_level_scaled)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(pressure_sigma)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(stokes_coefficient_constant)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(stokes_coefficient_fraction)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(tccon_apriori)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_sim_apriori)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(dispersion_fit)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(fluorescence_effect)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_absorption_gfit_file)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(nlls_solver_gsl)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(nlls_solver_gsl_lmsder)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(nlls_solver_gsl_lmder)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(cost_minimizer_gsl)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(model_measure_oco)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(max_likelihood_oco)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(max_a_posteriori_oco)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(connor_solver_map)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(nlls_max_likelihood)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(nlls_max_a_posteriori)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(nlls_problem_scaled)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(pressure_level_input)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(pressure_fixed_level)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(temperature_fixed_level)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_fixed_level)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_fixed_level_scaled)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_continuum_polynomial)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_absorption_oco_file)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(register_output_base)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(dispersion_polynomial_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(stokes_coefficient_fraction_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(zero_offset_waveform_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(empirical_orthogonal_function_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(state_vector_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(forward_model_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_forward_model_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(connor_convergence_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(connor_solver_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(error_analysis_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(dispersion_fit_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(max_a_posteriori_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(fluorescence_effect_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(radiance_scaling_output)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(lua_state)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(luabind_object)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(swig_std)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(swig_array)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(swig_rational)(void);
 }
 
 // Used throughout SWIG wrapper, define here because it is convenient.
@@ -248,19 +275,28 @@ std::string parse_python_exception() {
   PyObject *type = NULL, *value = NULL, *tb = NULL;
   PyErr_Fetch(&type, &value, &tb);
   PyObject* mod = PyImport_ImportModule("traceback");
-  PyObject* err_str_list = PyObject_CallMethodObjArgs(mod,
-		 PyString_FromString("format_exception"), type, value, tb, NULL);
+  PyObject* err_str_list = NULL;
+  if(tb)
+    err_str_list = PyObject_CallMethodObjArgs(mod,
+	      Text_FromUTF8("format_exception"), type, value, tb, NULL);
   std::string ret = "Python error that I can't parse";
   if(err_str_list) {
     PyObject* err_str = 
-      PyObject_CallMethodObjArgs(PyString_FromString(""),
-				 PyString_FromString("join"), 
+      PyObject_CallMethodObjArgs(Text_FromUTF8(""),
+				 Text_FromUTF8("join"), 
 				 err_str_list, NULL);
-    if(err_str)
-      ret = PyString_AsString(err_str);
+    if(err_str) {
+        PyObject * temp_bytes = PyUnicode_AsEncodedString(err_str, "ASCII", 
+	"strict");
+        ret = PyBytes_AS_STRING(temp_bytes); // Borrowed pointer
+        Py_DECREF(temp_bytes);
+    }
     Py_XDECREF(err_str);
   } else if(value) {
-    ret = PyString_AsString(value);
+    PyObject * temp_bytes = PyUnicode_AsEncodedString(value, "ASCII", 
+	"strict");
+    ret = PyBytes_AS_STRING(temp_bytes); // Borrowed pointer
+    Py_DECREF(temp_bytes);
   }
   Py_XDECREF(mod);
   Py_XDECREF(err_str_list);
@@ -270,7 +306,23 @@ std::string parse_python_exception() {
   return ret;
 }
 
-static void init_extension_module(PyObject* package, const char *modulename,
+#if PY_MAJOR_VERSION > 2
+// Version for python 3
+static void init_extension_module3(PyObject* package, const char *modulename,
+				  PyObject * (*initfunction)(void)) {
+  PyObject *module = initfunction();
+  PyObject *module_dic = PyImport_GetModuleDict();
+  PyDict_SetItem(module_dic, Text_FromUTF8(modulename), module);
+  if(PyModule_AddObject(package, (char *)modulename, module)) {
+    std::cerr << "Initialisation in PyImport_AddObject failed for module "
+	      << modulename << "\n";
+    return;
+  }
+  Py_INCREF(module);
+}
+#else 
+// Version for python 2
+static void init_extension_module2(PyObject* package, const char *modulename,
 				  void (*initfunction)(void)) {
   PyObject *module = PyImport_AddModule((char *)modulename);
   if(!module) {
@@ -286,252 +338,335 @@ static void init_extension_module(PyObject* package, const char *modulename,
   Py_INCREF(module);
   initfunction();
 }
+#endif
 
-void init_swig_wrap(void) 
+
+// This next blob of code comes from 
+// https://wiki.python.org/moin/PortingExtensionModulesToPy3k
+
+struct module_state {
+    PyObject *error;
+};
+
+#if PY_MAJOR_VERSION >= 3
+#define GETSTATE(m) ((struct module_state*)PyModule_GetState(m))
+#else
+#define GETSTATE(m) (&_state)
+static struct module_state _state;
+#endif
+
+static PyObject *
+error_out(PyObject *m) {
+    struct module_state *st = GETSTATE(m);
+    PyErr_SetString(st->error, "something bad happened");
+    return NULL;
+}
+
+static PyMethodDef swig_wrap_methods[] = {
+    {"error_out", (PyCFunction)error_out, METH_NOARGS, NULL},
+    {NULL, NULL}
+};
+
+#if PY_MAJOR_VERSION >= 3
+
+static int swig_wrap_traverse(PyObject *m, visitproc visit, void *arg) {
+    Py_VISIT(GETSTATE(m)->error);
+    return 0;
+}
+
+static int swig_wrap_clear(PyObject *m) {
+    Py_CLEAR(GETSTATE(m)->error);
+    return 0;
+}
+
+
+static struct PyModuleDef moduledef = {
+        PyModuleDef_HEAD_INIT,
+        "_swig_wrap",
+        NULL,
+        sizeof(struct module_state),
+        swig_wrap_methods,
+        NULL,
+        swig_wrap_traverse,
+        swig_wrap_clear,
+        NULL
+};
+
+#define INITERROR return NULL
+
+PyObject *
+PyInit__swig_wrap(void)
+
+#else
+#define INITERROR return
+
+void
+init_swig_wrap(void)
+#endif
 {
-  // Initialise this module
-  PyObject* module = Py_InitModule("_swig_wrap", NULL); // NULL only
-  if(!module) {
-    std::cerr << "Initialization failed\n";
-    return;
-  }
+#if PY_MAJOR_VERSION >= 3
+    PyObject *module = PyModule_Create(&moduledef);
+#else
+    PyObject *module = Py_InitModule("_swig_wrap", swig_wrap_methods);
+#endif
 
-  PyObject *package = PyImport_AddModule((char *)"new_full_physics");
+    if (module == NULL) {
+        std::cerr << "Initialization failed\n";
+        INITERROR;
+    }
+    struct module_state *st = GETSTATE(module);
+
+    st->error = PyErr_NewException("swig_wrap.Error", NULL, NULL);
+    if (st->error == NULL) {
+        Py_DECREF(module);
+        INITERROR;
+    }
+
+  PyObject *package = PyImport_AddModule((char *)"new_geocal");
   if(!package) {
-    std::cerr << "Initialization failed\n";
-    return;
+      std::cerr << "Initialization failed\n";
+      INITERROR;
   }
   
-  init_extension_module(package, "_fp_exception", init_fp_exception);
-  init_extension_module(package, "_generic_object", init_generic_object);
-  init_extension_module(package, "_unit", init_unit);
-  init_extension_module(package, "_double_with_unit", init_double_with_unit);
-  init_extension_module(package, "_constant", init_constant);
-  init_extension_module(package, "_default_constant", init_default_constant);
-  init_extension_module(package, "_array_with_unit", init_array_with_unit);
-  init_extension_module(package, "_auto_derivative", init_auto_derivative);
-  init_extension_module(package, "_auto_derivative_with_unit", init_auto_derivative_with_unit);
-  init_extension_module(package, "_array_ad", init_array_ad);
-  init_extension_module(package, "_array_ad_with_unit", init_array_ad_with_unit);
-  init_extension_module(package, "_spectral_domain", init_spectral_domain);
-  init_extension_module(package, "_logger", init_logger);
-  init_extension_module(package, "_fp_time", init_fp_time);
-  init_extension_module(package, "_heritage_file", init_heritage_file);
-  init_extension_module(package, "_linear_algebra", init_linear_algebra);
-  init_extension_module(package, "_rayleigh_greek_moment", init_rayleigh_greek_moment);
-  init_extension_module(package, "_hdf_file", init_hdf_file);
-  init_extension_module(package, "_hdf_sounding_id", init_hdf_sounding_id);
-  init_extension_module(package, "_acos_sounding_id", init_acos_sounding_id);
-  init_extension_module(package, "_oco_sounding_id", init_oco_sounding_id);
-  init_extension_module(package, "_uq_sounding_id", init_uq_sounding_id);
-  init_extension_module(package, "_ecmwf", init_ecmwf);
-  init_extension_module(package, "_acos_ecmwf", init_acos_ecmwf);
-  init_extension_module(package, "_oco_ecmwf", init_oco_ecmwf);
-  init_extension_module(package, "_uq_ecmwf", init_uq_ecmwf);
-  init_extension_module(package, "_oco_sim_met_ecmwf", init_oco_sim_met_ecmwf);
-  init_extension_module(package, "_observer", init_observer);
-  init_extension_module(package, "_fts_run_log", init_fts_run_log);
-  init_extension_module(package, "_spectral_range", init_spectral_range);
-  init_extension_module(package, "_spectral_bound", init_spectral_bound);
-  init_extension_module(package, "_spectrum", init_spectrum);
-  init_extension_module(package, "_named_spectrum", init_named_spectrum);
-  init_extension_module(package, "_state_vector", init_state_vector);
-  init_extension_module(package, "_sub_state_vector_array", init_sub_state_vector_array);
-  init_extension_module(package, "_sub_state_vector_proxy", init_sub_state_vector_proxy);
-  init_extension_module(package, "_hdf_file_generating", init_hdf_file_generating);
-  init_extension_module(package, "_closest_point", init_closest_point);
-  init_extension_module(package, "_polynomial_eval", init_polynomial_eval);
-  init_extension_module(package, "_linear_interpolate", init_linear_interpolate);
-  init_extension_module(package, "_solar_absorption_spectrum", init_solar_absorption_spectrum);
-  init_extension_module(package, "_solar_continuum_spectrum", init_solar_continuum_spectrum);
-  init_extension_module(package, "_solar_doppler_shift", init_solar_doppler_shift);
-  init_extension_module(package, "_spectrum_effect", init_spectrum_effect);
-  init_extension_module(package, "_solar_model", init_solar_model);
-  init_extension_module(package, "_instrument", init_instrument);
-  init_extension_module(package, "_aerosol", init_aerosol);
-  init_extension_module(package, "_ils", init_ils);
-  init_extension_module(package, "_ils_function", init_ils_function);
-  init_extension_module(package, "_instrument_correction", init_instrument_correction);
-  init_extension_module(package, "_spectrum_effect_imp_base", init_spectrum_effect_imp_base);
-  init_extension_module(package, "_dispersion", init_dispersion);
-  init_extension_module(package, "_initial_guess", init_initial_guess);
-  init_extension_module(package, "_composite_initial_guess", init_composite_initial_guess);
-  init_extension_module(package, "_perturbation", init_perturbation);
-  init_extension_module(package, "_cost_function", init_cost_function);
-  init_extension_module(package, "_convergence_check", init_convergence_check);
-  init_extension_module(package, "_level_1b", init_level_1b);
-  init_extension_module(package, "_noise_model", init_noise_model);
-  init_extension_module(package, "_level_1b_hdf", init_level_1b_hdf);
-  init_extension_module(package, "_spectrum_sampling", init_spectrum_sampling);
-  init_extension_module(package, "_forward_model", init_forward_model);
-  init_extension_module(package, "_forward_model_spectral_grid", init_forward_model_spectral_grid);
-  init_extension_module(package, "_output", init_output);
-  init_extension_module(package, "_spectral_window", init_spectral_window);
-  init_extension_module(package, "_pressure", init_pressure);
-  init_extension_module(package, "_stokes_coefficient", init_stokes_coefficient);
-  init_extension_module(package, "_pressure_imp_base", init_pressure_imp_base);
-  init_extension_module(package, "_stokes_coefficient_imp_base", init_stokes_coefficient_imp_base);
-  init_extension_module(package, "_gas_absorption", init_gas_absorption);
-  init_extension_module(package, "_temperature", init_temperature);
-  init_extension_module(package, "_temperature_imp_base", init_temperature_imp_base);
-  init_extension_module(package, "_temperature_offset", init_temperature_offset);
-  init_extension_module(package, "_altitude", init_altitude);
-  init_extension_module(package, "_absorber_vmr", init_absorber_vmr);
-  init_extension_module(package, "_absorber_vmr_imp_base", init_absorber_vmr_imp_base);
-  init_extension_module(package, "_absorber_vmr_scaled", init_absorber_vmr_scaled);
-  init_extension_module(package, "_absorber", init_absorber);
-  init_extension_module(package, "_ground", init_ground);
-  init_extension_module(package, "_rt_atmosphere", init_rt_atmosphere);
-  init_extension_module(package, "_radiative_transfer", init_radiative_transfer);
-  init_extension_module(package, "_radiative_transfer_retrievable", init_radiative_transfer_retrievable);
-  init_extension_module(package, "_radiative_transfer_imp_base", init_radiative_transfer_imp_base);
-  init_extension_module(package, "_radiative_transfer_fixed_stokes_coefficient", init_radiative_transfer_fixed_stokes_coefficient);
-  init_extension_module(package, "_radiative_transfer_single_wn", init_radiative_transfer_single_wn);
-  init_extension_module(package, "_spurr_rt", init_spurr_rt);
-  init_extension_module(package, "_hres_wrapper", init_hres_wrapper);
-  init_extension_module(package, "_spurr_driver", init_spurr_driver);
-  init_extension_module(package, "_aerosol_property", init_aerosol_property);
-  init_extension_module(package, "_aerosol_property_imp_base", init_aerosol_property_imp_base);
-  init_extension_module(package, "_aerosol_extinction", init_aerosol_extinction);
-  init_extension_module(package, "_aerosol_extinction_imp_base", init_aerosol_extinction_imp_base);
-  init_extension_module(package, "_cost_func", init_cost_func);
-  init_extension_module(package, "_cost_func_diff", init_cost_func_diff);
-  init_extension_module(package, "_nlls_problem", init_nlls_problem);
-  init_extension_module(package, "_problem_state", init_problem_state);
-  init_extension_module(package, "_cost_func_state", init_cost_func_state);
-  init_extension_module(package, "_cost_func_diff_state", init_cost_func_diff_state);
-  init_extension_module(package, "_nlls_problem_state", init_nlls_problem_state);
-  init_extension_module(package, "_model_state", init_model_state);
-  init_extension_module(package, "_iterative_solver", init_iterative_solver);
-  init_extension_module(package, "_iterative_solver_der", init_iterative_solver_der);
-  init_extension_module(package, "_nlls_solver", init_nlls_solver);
-  init_extension_module(package, "_cost_minimizer", init_cost_minimizer);
-  init_extension_module(package, "_model_measure", init_model_measure);
-  init_extension_module(package, "_max_likelihood", init_max_likelihood);
-  init_extension_module(package, "_max_a_posteriori", init_max_a_posteriori);
-  init_extension_module(package, "_pressure_holder", init_pressure_holder);
-  init_extension_module(package, "_aerosol_property_hdf", init_aerosol_property_hdf);
-  init_extension_module(package, "_hdf_constant", init_hdf_constant);
-  init_extension_module(package, "_solar_continuum_table", init_solar_continuum_table);
-  init_extension_module(package, "_solar_absorption_table", init_solar_absorption_table);
-  init_extension_module(package, "_solar_doppler_shift_polynomial", init_solar_doppler_shift_polynomial);
-  init_extension_module(package, "_solar_doppler_shift_l1b", init_solar_doppler_shift_l1b);
-  init_extension_module(package, "_solar_absorption_and_continuum", init_solar_absorption_and_continuum);
-  init_extension_module(package, "_bad_sample_noise_model", init_bad_sample_noise_model);
-  init_extension_module(package, "_composite_perturbation", init_composite_perturbation);
-  init_extension_module(package, "_dispersion_polynomial", init_dispersion_polynomial);
-  init_extension_module(package, "_ils_table", init_ils_table);
-  init_extension_module(package, "_ils_gaussian", init_ils_gaussian);
-  init_extension_module(package, "_ils_convolution", init_ils_convolution);
-  init_extension_module(package, "_ils_instrument", init_ils_instrument);
-  init_extension_module(package, "_zero_offset_waveform", init_zero_offset_waveform);
-  init_extension_module(package, "_empirical_orthogonal_function", init_empirical_orthogonal_function);
-  init_extension_module(package, "_radiance_scaling", init_radiance_scaling);
-  init_extension_module(package, "_radiance_scaling_sv_fit", init_radiance_scaling_sv_fit);
-  init_extension_module(package, "_radiance_scaling_linear_fit", init_radiance_scaling_linear_fit);
-  init_extension_module(package, "_level_1b_fts", init_level_1b_fts);
-  init_extension_module(package, "_ils_fts", init_ils_fts);
-  init_extension_module(package, "_level_1b_heritage", init_level_1b_heritage);
-  init_extension_module(package, "_level_1b_acos", init_level_1b_acos);
-  init_extension_module(package, "_level_1b_average", init_level_1b_average);
-  init_extension_module(package, "_level_1b_scale_radiance", init_level_1b_scale_radiance);
-  init_extension_module(package, "_level_1b_oco", init_level_1b_oco);
-  init_extension_module(package, "_level_1b_uq", init_level_1b_uq);
-  init_extension_module(package, "_level_1b_cache", init_level_1b_cache);
-  init_extension_module(package, "_gosat_noise_model", init_gosat_noise_model);
-  init_extension_module(package, "_precomputed_noise_model", init_precomputed_noise_model);
-  init_extension_module(package, "_absco", init_absco);
-  init_extension_module(package, "_absco_hdf", init_absco_hdf);
-  init_extension_module(package, "_altitude_hydrostatic", init_altitude_hydrostatic);
-  init_extension_module(package, "_absorber_absco", init_absorber_absco);
-  init_extension_module(package, "_ground_lambertian", init_ground_lambertian);
-  init_extension_module(package, "_ground_coxmunk", init_ground_coxmunk);
-  init_extension_module(package, "_ground_coxmunk_plus_lambertian", init_ground_coxmunk_plus_lambertian);
-  init_extension_module(package, "_ground_brdf", init_ground_brdf);
-  init_extension_module(package, "_initial_guess_value", init_initial_guess_value);
-  init_extension_module(package, "_aerosol_optical", init_aerosol_optical);
-  init_extension_module(package, "_merra_aerosol", init_merra_aerosol);
-  init_extension_module(package, "_rayleigh", init_rayleigh);
-  init_extension_module(package, "_atmosphere_oco", init_atmosphere_oco);
-  init_extension_module(package, "_connor_solver", init_connor_solver);
-  init_extension_module(package, "_log_timing", init_log_timing);
-  init_extension_module(package, "_chisq_convergence", init_chisq_convergence);
-  init_extension_module(package, "_connor_convergence", init_connor_convergence);
-  init_extension_module(package, "_solver_iteration_log", init_solver_iteration_log);
-  init_extension_module(package, "_forward_model_cost_function", init_forward_model_cost_function);
-  init_extension_module(package, "_error_analysis", init_error_analysis);
-  init_extension_module(package, "_oco_forward_model", init_oco_forward_model);
-  init_extension_module(package, "_output_hdf", init_output_hdf);
-  init_extension_module(package, "_uniform_spectrum_sampling", init_uniform_spectrum_sampling);
-  init_extension_module(package, "_spectrum_sampling_fixed_spacing", init_spectrum_sampling_fixed_spacing);
-  init_extension_module(package, "_fp_logger", init_fp_logger);
-  init_extension_module(package, "_lidort_interface_types", init_lidort_interface_types);
-  init_extension_module(package, "_lidort_interface_masters", init_lidort_interface_masters);
-  init_extension_module(package, "_lidort_driver", init_lidort_driver);
-  init_extension_module(package, "_lidort_rt", init_lidort_rt);
-  init_extension_module(package, "_twostream_interface", init_twostream_interface);
-  init_extension_module(package, "_twostream_driver", init_twostream_driver);
-  init_extension_module(package, "_twostream_rt", init_twostream_rt);
-  init_extension_module(package, "_l_rad_driver", init_l_rad_driver);
-  init_extension_module(package, "_l_rad_rt", init_l_rad_rt);
-  init_extension_module(package, "_lsi_rt", init_lsi_rt);
-  init_extension_module(package, "_fm_nlls_problem", init_fm_nlls_problem);
-  init_extension_module(package, "_aerosol_extinction_linear", init_aerosol_extinction_linear);
-  init_extension_module(package, "_aerosol_extinction_log", init_aerosol_extinction_log);
-  init_extension_module(package, "_aerosol_shape_gaussian", init_aerosol_shape_gaussian);
-  init_extension_module(package, "_l2_fp_configuration", init_l2_fp_configuration);
-  init_extension_module(package, "_l2_fp_configuration_lua", init_l2_fp_configuration_lua);
-  init_extension_module(package, "_nonuniform_spectrum_sampling", init_nonuniform_spectrum_sampling);
-  init_extension_module(package, "_spectral_window_range", init_spectral_window_range);
-  init_extension_module(package, "_temperature_ecmwf", init_temperature_ecmwf);
-  init_extension_module(package, "_absorber_vmr_ecmwf", init_absorber_vmr_ecmwf);
-  init_extension_module(package, "_absorber_vmr_level", init_absorber_vmr_level);
-  init_extension_module(package, "_absorber_vmr_level_scaled", init_absorber_vmr_level_scaled);
-  init_extension_module(package, "_pressure_sigma", init_pressure_sigma);
-  init_extension_module(package, "_stokes_coefficient_constant", init_stokes_coefficient_constant);
-  init_extension_module(package, "_stokes_coefficient_fraction", init_stokes_coefficient_fraction);
-  init_extension_module(package, "_tccon_apriori", init_tccon_apriori);
-  init_extension_module(package, "_oco_sim_apriori", init_oco_sim_apriori);
-  init_extension_module(package, "_dispersion_fit", init_dispersion_fit);
-  init_extension_module(package, "_fluorescence_effect", init_fluorescence_effect);
-  init_extension_module(package, "_solar_absorption_gfit_file", init_solar_absorption_gfit_file);
-  init_extension_module(package, "_nlls_solver_gsl", init_nlls_solver_gsl);
-  init_extension_module(package, "_nlls_solver_gsl_lmsder", init_nlls_solver_gsl_lmsder);
-  init_extension_module(package, "_nlls_solver_gsl_lmder", init_nlls_solver_gsl_lmder);
-  init_extension_module(package, "_cost_minimizer_gsl", init_cost_minimizer_gsl);
-  init_extension_module(package, "_model_measure_oco", init_model_measure_oco);
-  init_extension_module(package, "_max_likelihood_oco", init_max_likelihood_oco);
-  init_extension_module(package, "_max_a_posteriori_oco", init_max_a_posteriori_oco);
-  init_extension_module(package, "_connor_solver_map", init_connor_solver_map);
-  init_extension_module(package, "_nlls_max_likelihood", init_nlls_max_likelihood);
-  init_extension_module(package, "_nlls_max_a_posteriori", init_nlls_max_a_posteriori);
-  init_extension_module(package, "_nlls_problem_scaled", init_nlls_problem_scaled);
-  init_extension_module(package, "_pressure_level_input", init_pressure_level_input);
-  init_extension_module(package, "_pressure_fixed_level", init_pressure_fixed_level);
-  init_extension_module(package, "_temperature_fixed_level", init_temperature_fixed_level);
-  init_extension_module(package, "_absorber_vmr_fixed_level", init_absorber_vmr_fixed_level);
-  init_extension_module(package, "_absorber_vmr_fixed_level_scaled", init_absorber_vmr_fixed_level_scaled);
-  init_extension_module(package, "_solar_continuum_polynomial", init_solar_continuum_polynomial);
-  init_extension_module(package, "_solar_absorption_oco_file", init_solar_absorption_oco_file);
-  init_extension_module(package, "_register_output_base", init_register_output_base);
-  init_extension_module(package, "_dispersion_polynomial_output", init_dispersion_polynomial_output);
-  init_extension_module(package, "_stokes_coefficient_fraction_output", init_stokes_coefficient_fraction_output);
-  init_extension_module(package, "_zero_offset_waveform_output", init_zero_offset_waveform_output);
-  init_extension_module(package, "_empirical_orthogonal_function_output", init_empirical_orthogonal_function_output);
-  init_extension_module(package, "_level_1b_output", init_level_1b_output);
-  init_extension_module(package, "_state_vector_output", init_state_vector_output);
-  init_extension_module(package, "_forward_model_output", init_forward_model_output);
-  init_extension_module(package, "_oco_forward_model_output", init_oco_forward_model_output);
-  init_extension_module(package, "_connor_convergence_output", init_connor_convergence_output);
-  init_extension_module(package, "_connor_solver_output", init_connor_solver_output);
-  init_extension_module(package, "_error_analysis_output", init_error_analysis_output);
-  init_extension_module(package, "_dispersion_fit_output", init_dispersion_fit_output);
-  init_extension_module(package, "_max_a_posteriori_output", init_max_a_posteriori_output);
-  init_extension_module(package, "_fluorescence_effect_output", init_fluorescence_effect_output);
-  init_extension_module(package, "_radiance_scaling_output", init_radiance_scaling_output);
-  init_extension_module(package, "_lua_state", init_lua_state);
-  init_extension_module(package, "_luabind_object", init_luabind_object);
-  init_extension_module(package, "_swig_std", init_swig_std);
-  init_extension_module(package, "_swig_array", init_swig_array);
-  init_extension_module(package, "_swig_rational", init_swig_rational);
+  SWIG_INIT_MODULE(package, "_fp_exception", SWIG_INIT_FUNC(fp_exception));
+  SWIG_INIT_MODULE(package, "_generic_object", SWIG_INIT_FUNC(generic_object));
+  SWIG_INIT_MODULE(package, "_unit", SWIG_INIT_FUNC(unit));
+  SWIG_INIT_MODULE(package, "_double_with_unit", SWIG_INIT_FUNC(double_with_unit));
+  SWIG_INIT_MODULE(package, "_constant", SWIG_INIT_FUNC(constant));
+  SWIG_INIT_MODULE(package, "_default_constant", SWIG_INIT_FUNC(default_constant));
+  SWIG_INIT_MODULE(package, "_array_with_unit", SWIG_INIT_FUNC(array_with_unit));
+  SWIG_INIT_MODULE(package, "_auto_derivative", SWIG_INIT_FUNC(auto_derivative));
+  SWIG_INIT_MODULE(package, "_auto_derivative_with_unit", SWIG_INIT_FUNC(auto_derivative_with_unit));
+  SWIG_INIT_MODULE(package, "_array_ad", SWIG_INIT_FUNC(array_ad));
+  SWIG_INIT_MODULE(package, "_array_ad_with_unit", SWIG_INIT_FUNC(array_ad_with_unit));
+  SWIG_INIT_MODULE(package, "_spectral_domain", SWIG_INIT_FUNC(spectral_domain));
+  SWIG_INIT_MODULE(package, "_logger", SWIG_INIT_FUNC(logger));
+  SWIG_INIT_MODULE(package, "_fp_time", SWIG_INIT_FUNC(fp_time));
+  SWIG_INIT_MODULE(package, "_heritage_file", SWIG_INIT_FUNC(heritage_file));
+  SWIG_INIT_MODULE(package, "_linear_algebra", SWIG_INIT_FUNC(linear_algebra));
+  SWIG_INIT_MODULE(package, "_rayleigh_greek_moment", SWIG_INIT_FUNC(rayleigh_greek_moment));
+  SWIG_INIT_MODULE(package, "_hdf_file", SWIG_INIT_FUNC(hdf_file));
+  SWIG_INIT_MODULE(package, "_hdf_sounding_id", SWIG_INIT_FUNC(hdf_sounding_id));
+  SWIG_INIT_MODULE(package, "_acos_sounding_id", SWIG_INIT_FUNC(acos_sounding_id));
+  SWIG_INIT_MODULE(package, "_oco_sounding_id", SWIG_INIT_FUNC(oco_sounding_id));
+  SWIG_INIT_MODULE(package, "_uq_sounding_id", SWIG_INIT_FUNC(uq_sounding_id));
+  SWIG_INIT_MODULE(package, "_ecmwf", SWIG_INIT_FUNC(ecmwf));
+  SWIG_INIT_MODULE(package, "_acos_ecmwf", SWIG_INIT_FUNC(acos_ecmwf));
+  SWIG_INIT_MODULE(package, "_oco_ecmwf", SWIG_INIT_FUNC(oco_ecmwf));
+  SWIG_INIT_MODULE(package, "_uq_ecmwf", SWIG_INIT_FUNC(uq_ecmwf));
+  SWIG_INIT_MODULE(package, "_oco_sim_met_ecmwf", SWIG_INIT_FUNC(oco_sim_met_ecmwf));
+  SWIG_INIT_MODULE(package, "_observer", SWIG_INIT_FUNC(observer));
+  SWIG_INIT_MODULE(package, "_fts_run_log", SWIG_INIT_FUNC(fts_run_log));
+  SWIG_INIT_MODULE(package, "_spectral_range", SWIG_INIT_FUNC(spectral_range));
+  SWIG_INIT_MODULE(package, "_spectral_bound", SWIG_INIT_FUNC(spectral_bound));
+  SWIG_INIT_MODULE(package, "_spectrum", SWIG_INIT_FUNC(spectrum));
+  SWIG_INIT_MODULE(package, "_named_spectrum", SWIG_INIT_FUNC(named_spectrum));
+  SWIG_INIT_MODULE(package, "_state_vector", SWIG_INIT_FUNC(state_vector));
+  SWIG_INIT_MODULE(package, "_sub_state_vector_array", SWIG_INIT_FUNC(sub_state_vector_array));
+  SWIG_INIT_MODULE(package, "_sub_state_vector_proxy", SWIG_INIT_FUNC(sub_state_vector_proxy));
+  SWIG_INIT_MODULE(package, "_hdf_file_generating", SWIG_INIT_FUNC(hdf_file_generating));
+  SWIG_INIT_MODULE(package, "_closest_point", SWIG_INIT_FUNC(closest_point));
+  SWIG_INIT_MODULE(package, "_polynomial_eval", SWIG_INIT_FUNC(polynomial_eval));
+  SWIG_INIT_MODULE(package, "_linear_interpolate", SWIG_INIT_FUNC(linear_interpolate));
+  SWIG_INIT_MODULE(package, "_solar_absorption_spectrum", SWIG_INIT_FUNC(solar_absorption_spectrum));
+  SWIG_INIT_MODULE(package, "_solar_continuum_spectrum", SWIG_INIT_FUNC(solar_continuum_spectrum));
+  SWIG_INIT_MODULE(package, "_solar_doppler_shift", SWIG_INIT_FUNC(solar_doppler_shift));
+  SWIG_INIT_MODULE(package, "_spectrum_effect", SWIG_INIT_FUNC(spectrum_effect));
+  SWIG_INIT_MODULE(package, "_solar_model", SWIG_INIT_FUNC(solar_model));
+  SWIG_INIT_MODULE(package, "_instrument", SWIG_INIT_FUNC(instrument));
+  SWIG_INIT_MODULE(package, "_aerosol", SWIG_INIT_FUNC(aerosol));
+  SWIG_INIT_MODULE(package, "_ils", SWIG_INIT_FUNC(ils));
+  SWIG_INIT_MODULE(package, "_ils_function", SWIG_INIT_FUNC(ils_function));
+  SWIG_INIT_MODULE(package, "_instrument_correction", SWIG_INIT_FUNC(instrument_correction));
+  SWIG_INIT_MODULE(package, "_spectrum_effect_imp_base", SWIG_INIT_FUNC(spectrum_effect_imp_base));
+  SWIG_INIT_MODULE(package, "_dispersion", SWIG_INIT_FUNC(dispersion));
+  SWIG_INIT_MODULE(package, "_initial_guess", SWIG_INIT_FUNC(initial_guess));
+  SWIG_INIT_MODULE(package, "_composite_initial_guess", SWIG_INIT_FUNC(composite_initial_guess));
+  SWIG_INIT_MODULE(package, "_perturbation", SWIG_INIT_FUNC(perturbation));
+  SWIG_INIT_MODULE(package, "_cost_function", SWIG_INIT_FUNC(cost_function));
+  SWIG_INIT_MODULE(package, "_convergence_check", SWIG_INIT_FUNC(convergence_check));
+  SWIG_INIT_MODULE(package, "_level_1b", SWIG_INIT_FUNC(level_1b));
+  SWIG_INIT_MODULE(package, "_noise_model", SWIG_INIT_FUNC(noise_model));
+  SWIG_INIT_MODULE(package, "_level_1b_hdf", SWIG_INIT_FUNC(level_1b_hdf));
+  SWIG_INIT_MODULE(package, "_spectrum_sampling", SWIG_INIT_FUNC(spectrum_sampling));
+  SWIG_INIT_MODULE(package, "_forward_model", SWIG_INIT_FUNC(forward_model));
+  SWIG_INIT_MODULE(package, "_forward_model_spectral_grid", SWIG_INIT_FUNC(forward_model_spectral_grid));
+  SWIG_INIT_MODULE(package, "_output", SWIG_INIT_FUNC(output));
+  SWIG_INIT_MODULE(package, "_spectral_window", SWIG_INIT_FUNC(spectral_window));
+  SWIG_INIT_MODULE(package, "_pressure", SWIG_INIT_FUNC(pressure));
+  SWIG_INIT_MODULE(package, "_stokes_coefficient", SWIG_INIT_FUNC(stokes_coefficient));
+  SWIG_INIT_MODULE(package, "_pressure_imp_base", SWIG_INIT_FUNC(pressure_imp_base));
+  SWIG_INIT_MODULE(package, "_stokes_coefficient_imp_base", SWIG_INIT_FUNC(stokes_coefficient_imp_base));
+  SWIG_INIT_MODULE(package, "_gas_absorption", SWIG_INIT_FUNC(gas_absorption));
+  SWIG_INIT_MODULE(package, "_temperature", SWIG_INIT_FUNC(temperature));
+  SWIG_INIT_MODULE(package, "_temperature_imp_base", SWIG_INIT_FUNC(temperature_imp_base));
+  SWIG_INIT_MODULE(package, "_temperature_offset", SWIG_INIT_FUNC(temperature_offset));
+  SWIG_INIT_MODULE(package, "_altitude", SWIG_INIT_FUNC(altitude));
+  SWIG_INIT_MODULE(package, "_absorber_vmr", SWIG_INIT_FUNC(absorber_vmr));
+  SWIG_INIT_MODULE(package, "_absorber_vmr_imp_base", SWIG_INIT_FUNC(absorber_vmr_imp_base));
+  SWIG_INIT_MODULE(package, "_absorber_vmr_scaled", SWIG_INIT_FUNC(absorber_vmr_scaled));
+  SWIG_INIT_MODULE(package, "_absorber", SWIG_INIT_FUNC(absorber));
+  SWIG_INIT_MODULE(package, "_ground", SWIG_INIT_FUNC(ground));
+  SWIG_INIT_MODULE(package, "_rt_atmosphere", SWIG_INIT_FUNC(rt_atmosphere));
+  SWIG_INIT_MODULE(package, "_radiative_transfer", SWIG_INIT_FUNC(radiative_transfer));
+  SWIG_INIT_MODULE(package, "_radiative_transfer_retrievable", SWIG_INIT_FUNC(radiative_transfer_retrievable));
+  SWIG_INIT_MODULE(package, "_radiative_transfer_imp_base", SWIG_INIT_FUNC(radiative_transfer_imp_base));
+  SWIG_INIT_MODULE(package, "_radiative_transfer_fixed_stokes_coefficient", SWIG_INIT_FUNC(radiative_transfer_fixed_stokes_coefficient));
+  SWIG_INIT_MODULE(package, "_radiative_transfer_single_wn", SWIG_INIT_FUNC(radiative_transfer_single_wn));
+  SWIG_INIT_MODULE(package, "_spurr_rt", SWIG_INIT_FUNC(spurr_rt));
+  SWIG_INIT_MODULE(package, "_hres_wrapper", SWIG_INIT_FUNC(hres_wrapper));
+  SWIG_INIT_MODULE(package, "_spurr_driver", SWIG_INIT_FUNC(spurr_driver));
+  SWIG_INIT_MODULE(package, "_aerosol_property", SWIG_INIT_FUNC(aerosol_property));
+  SWIG_INIT_MODULE(package, "_aerosol_property_imp_base", SWIG_INIT_FUNC(aerosol_property_imp_base));
+  SWIG_INIT_MODULE(package, "_aerosol_extinction", SWIG_INIT_FUNC(aerosol_extinction));
+  SWIG_INIT_MODULE(package, "_aerosol_extinction_imp_base", SWIG_INIT_FUNC(aerosol_extinction_imp_base));
+  SWIG_INIT_MODULE(package, "_cost_func", SWIG_INIT_FUNC(cost_func));
+  SWIG_INIT_MODULE(package, "_cost_func_diff", SWIG_INIT_FUNC(cost_func_diff));
+  SWIG_INIT_MODULE(package, "_nlls_problem", SWIG_INIT_FUNC(nlls_problem));
+  SWIG_INIT_MODULE(package, "_problem_state", SWIG_INIT_FUNC(problem_state));
+  SWIG_INIT_MODULE(package, "_cost_func_state", SWIG_INIT_FUNC(cost_func_state));
+  SWIG_INIT_MODULE(package, "_cost_func_diff_state", SWIG_INIT_FUNC(cost_func_diff_state));
+  SWIG_INIT_MODULE(package, "_nlls_problem_state", SWIG_INIT_FUNC(nlls_problem_state));
+  SWIG_INIT_MODULE(package, "_model_state", SWIG_INIT_FUNC(model_state));
+  SWIG_INIT_MODULE(package, "_iterative_solver", SWIG_INIT_FUNC(iterative_solver));
+  SWIG_INIT_MODULE(package, "_iterative_solver_der", SWIG_INIT_FUNC(iterative_solver_der));
+  SWIG_INIT_MODULE(package, "_nlls_solver", SWIG_INIT_FUNC(nlls_solver));
+  SWIG_INIT_MODULE(package, "_cost_minimizer", SWIG_INIT_FUNC(cost_minimizer));
+  SWIG_INIT_MODULE(package, "_model_measure", SWIG_INIT_FUNC(model_measure));
+  SWIG_INIT_MODULE(package, "_max_likelihood", SWIG_INIT_FUNC(max_likelihood));
+  SWIG_INIT_MODULE(package, "_max_a_posteriori", SWIG_INIT_FUNC(max_a_posteriori));
+  SWIG_INIT_MODULE(package, "_pressure_holder", SWIG_INIT_FUNC(pressure_holder));
+  SWIG_INIT_MODULE(package, "_aerosol_property_hdf", SWIG_INIT_FUNC(aerosol_property_hdf));
+  SWIG_INIT_MODULE(package, "_aerosol_property_rh_hdf", SWIG_INIT_FUNC(aerosol_property_rh_hdf));
+  SWIG_INIT_MODULE(package, "_hdf_constant", SWIG_INIT_FUNC(hdf_constant));
+  SWIG_INIT_MODULE(package, "_solar_continuum_table", SWIG_INIT_FUNC(solar_continuum_table));
+  SWIG_INIT_MODULE(package, "_solar_absorption_table", SWIG_INIT_FUNC(solar_absorption_table));
+  SWIG_INIT_MODULE(package, "_solar_doppler_shift_polynomial", SWIG_INIT_FUNC(solar_doppler_shift_polynomial));
+  SWIG_INIT_MODULE(package, "_solar_doppler_shift_l1b", SWIG_INIT_FUNC(solar_doppler_shift_l1b));
+  SWIG_INIT_MODULE(package, "_solar_absorption_and_continuum", SWIG_INIT_FUNC(solar_absorption_and_continuum));
+  SWIG_INIT_MODULE(package, "_bad_sample_noise_model", SWIG_INIT_FUNC(bad_sample_noise_model));
+  SWIG_INIT_MODULE(package, "_composite_perturbation", SWIG_INIT_FUNC(composite_perturbation));
+  SWIG_INIT_MODULE(package, "_dispersion_polynomial", SWIG_INIT_FUNC(dispersion_polynomial));
+  SWIG_INIT_MODULE(package, "_ils_table", SWIG_INIT_FUNC(ils_table));
+  SWIG_INIT_MODULE(package, "_ils_gaussian", SWIG_INIT_FUNC(ils_gaussian));
+  SWIG_INIT_MODULE(package, "_ils_convolution", SWIG_INIT_FUNC(ils_convolution));
+  SWIG_INIT_MODULE(package, "_ils_instrument", SWIG_INIT_FUNC(ils_instrument));
+  SWIG_INIT_MODULE(package, "_zero_offset_waveform", SWIG_INIT_FUNC(zero_offset_waveform));
+  SWIG_INIT_MODULE(package, "_empirical_orthogonal_function", SWIG_INIT_FUNC(empirical_orthogonal_function));
+  SWIG_INIT_MODULE(package, "_radiance_scaling", SWIG_INIT_FUNC(radiance_scaling));
+  SWIG_INIT_MODULE(package, "_radiance_scaling_sv_fit", SWIG_INIT_FUNC(radiance_scaling_sv_fit));
+  SWIG_INIT_MODULE(package, "_radiance_scaling_linear_fit", SWIG_INIT_FUNC(radiance_scaling_linear_fit));
+  SWIG_INIT_MODULE(package, "_level_1b_fts", SWIG_INIT_FUNC(level_1b_fts));
+  SWIG_INIT_MODULE(package, "_ils_fts", SWIG_INIT_FUNC(ils_fts));
+  SWIG_INIT_MODULE(package, "_level_1b_heritage", SWIG_INIT_FUNC(level_1b_heritage));
+  SWIG_INIT_MODULE(package, "_level_1b_acos", SWIG_INIT_FUNC(level_1b_acos));
+  SWIG_INIT_MODULE(package, "_level_1b_average", SWIG_INIT_FUNC(level_1b_average));
+  SWIG_INIT_MODULE(package, "_level_1b_scale_radiance", SWIG_INIT_FUNC(level_1b_scale_radiance));
+  SWIG_INIT_MODULE(package, "_level_1b_oco", SWIG_INIT_FUNC(level_1b_oco));
+  SWIG_INIT_MODULE(package, "_level_1b_uq", SWIG_INIT_FUNC(level_1b_uq));
+  SWIG_INIT_MODULE(package, "_level_1b_cache", SWIG_INIT_FUNC(level_1b_cache));
+  SWIG_INIT_MODULE(package, "_gosat_noise_model", SWIG_INIT_FUNC(gosat_noise_model));
+  SWIG_INIT_MODULE(package, "_precomputed_noise_model", SWIG_INIT_FUNC(precomputed_noise_model));
+  SWIG_INIT_MODULE(package, "_absco", SWIG_INIT_FUNC(absco));
+  SWIG_INIT_MODULE(package, "_absco_hdf", SWIG_INIT_FUNC(absco_hdf));
+  SWIG_INIT_MODULE(package, "_altitude_hydrostatic", SWIG_INIT_FUNC(altitude_hydrostatic));
+  SWIG_INIT_MODULE(package, "_absorber_absco", SWIG_INIT_FUNC(absorber_absco));
+  SWIG_INIT_MODULE(package, "_ground_lambertian", SWIG_INIT_FUNC(ground_lambertian));
+  SWIG_INIT_MODULE(package, "_ground_coxmunk", SWIG_INIT_FUNC(ground_coxmunk));
+  SWIG_INIT_MODULE(package, "_ground_coxmunk_plus_lambertian", SWIG_INIT_FUNC(ground_coxmunk_plus_lambertian));
+  SWIG_INIT_MODULE(package, "_ground_brdf", SWIG_INIT_FUNC(ground_brdf));
+  SWIG_INIT_MODULE(package, "_initial_guess_value", SWIG_INIT_FUNC(initial_guess_value));
+  SWIG_INIT_MODULE(package, "_aerosol_optical", SWIG_INIT_FUNC(aerosol_optical));
+  SWIG_INIT_MODULE(package, "_merra_aerosol", SWIG_INIT_FUNC(merra_aerosol));
+  SWIG_INIT_MODULE(package, "_rayleigh", SWIG_INIT_FUNC(rayleigh));
+  SWIG_INIT_MODULE(package, "_atmosphere_oco", SWIG_INIT_FUNC(atmosphere_oco));
+  SWIG_INIT_MODULE(package, "_relative_humidity", SWIG_INIT_FUNC(relative_humidity));
+  SWIG_INIT_MODULE(package, "_connor_solver", SWIG_INIT_FUNC(connor_solver));
+  SWIG_INIT_MODULE(package, "_log_timing", SWIG_INIT_FUNC(log_timing));
+  SWIG_INIT_MODULE(package, "_chisq_convergence", SWIG_INIT_FUNC(chisq_convergence));
+  SWIG_INIT_MODULE(package, "_connor_convergence", SWIG_INIT_FUNC(connor_convergence));
+  SWIG_INIT_MODULE(package, "_solver_iteration_log", SWIG_INIT_FUNC(solver_iteration_log));
+  SWIG_INIT_MODULE(package, "_forward_model_cost_function", SWIG_INIT_FUNC(forward_model_cost_function));
+  SWIG_INIT_MODULE(package, "_error_analysis", SWIG_INIT_FUNC(error_analysis));
+  SWIG_INIT_MODULE(package, "_oco_forward_model", SWIG_INIT_FUNC(oco_forward_model));
+  SWIG_INIT_MODULE(package, "_output_hdf", SWIG_INIT_FUNC(output_hdf));
+  SWIG_INIT_MODULE(package, "_uniform_spectrum_sampling", SWIG_INIT_FUNC(uniform_spectrum_sampling));
+  SWIG_INIT_MODULE(package, "_spectrum_sampling_fixed_spacing", SWIG_INIT_FUNC(spectrum_sampling_fixed_spacing));
+  SWIG_INIT_MODULE(package, "_fp_logger", SWIG_INIT_FUNC(fp_logger));
+  SWIG_INIT_MODULE(package, "_lidort_interface_types", SWIG_INIT_FUNC(lidort_interface_types));
+  SWIG_INIT_MODULE(package, "_lidort_interface_masters", SWIG_INIT_FUNC(lidort_interface_masters));
+  SWIG_INIT_MODULE(package, "_lidort_driver", SWIG_INIT_FUNC(lidort_driver));
+  SWIG_INIT_MODULE(package, "_lidort_rt", SWIG_INIT_FUNC(lidort_rt));
+  SWIG_INIT_MODULE(package, "_twostream_interface", SWIG_INIT_FUNC(twostream_interface));
+  SWIG_INIT_MODULE(package, "_twostream_driver", SWIG_INIT_FUNC(twostream_driver));
+  SWIG_INIT_MODULE(package, "_twostream_rt", SWIG_INIT_FUNC(twostream_rt));
+  SWIG_INIT_MODULE(package, "_l_rad_driver", SWIG_INIT_FUNC(l_rad_driver));
+  SWIG_INIT_MODULE(package, "_l_rad_rt", SWIG_INIT_FUNC(l_rad_rt));
+  SWIG_INIT_MODULE(package, "_lsi_rt", SWIG_INIT_FUNC(lsi_rt));
+  SWIG_INIT_MODULE(package, "_fm_nlls_problem", SWIG_INIT_FUNC(fm_nlls_problem));
+  SWIG_INIT_MODULE(package, "_aerosol_extinction_linear", SWIG_INIT_FUNC(aerosol_extinction_linear));
+  SWIG_INIT_MODULE(package, "_aerosol_extinction_log", SWIG_INIT_FUNC(aerosol_extinction_log));
+  SWIG_INIT_MODULE(package, "_aerosol_shape_gaussian", SWIG_INIT_FUNC(aerosol_shape_gaussian));
+  SWIG_INIT_MODULE(package, "_l2_fp_configuration", SWIG_INIT_FUNC(l2_fp_configuration));
+  SWIG_INIT_MODULE(package, "_l2_fp_configuration_lua", SWIG_INIT_FUNC(l2_fp_configuration_lua));
+  SWIG_INIT_MODULE(package, "_nonuniform_spectrum_sampling", SWIG_INIT_FUNC(nonuniform_spectrum_sampling));
+  SWIG_INIT_MODULE(package, "_spectral_window_range", SWIG_INIT_FUNC(spectral_window_range));
+  SWIG_INIT_MODULE(package, "_temperature_ecmwf", SWIG_INIT_FUNC(temperature_ecmwf));
+  SWIG_INIT_MODULE(package, "_temperature_level_offset", SWIG_INIT_FUNC(temperature_level_offset));
+  SWIG_INIT_MODULE(package, "_absorber_vmr_ecmwf", SWIG_INIT_FUNC(absorber_vmr_ecmwf));
+  SWIG_INIT_MODULE(package, "_absorber_vmr_level", SWIG_INIT_FUNC(absorber_vmr_level));
+  SWIG_INIT_MODULE(package, "_absorber_vmr_level_scaled", SWIG_INIT_FUNC(absorber_vmr_level_scaled));
+  SWIG_INIT_MODULE(package, "_pressure_sigma", SWIG_INIT_FUNC(pressure_sigma));
+  SWIG_INIT_MODULE(package, "_stokes_coefficient_constant", SWIG_INIT_FUNC(stokes_coefficient_constant));
+  SWIG_INIT_MODULE(package, "_stokes_coefficient_fraction", SWIG_INIT_FUNC(stokes_coefficient_fraction));
+  SWIG_INIT_MODULE(package, "_tccon_apriori", SWIG_INIT_FUNC(tccon_apriori));
+  SWIG_INIT_MODULE(package, "_oco_sim_apriori", SWIG_INIT_FUNC(oco_sim_apriori));
+  SWIG_INIT_MODULE(package, "_dispersion_fit", SWIG_INIT_FUNC(dispersion_fit));
+  SWIG_INIT_MODULE(package, "_fluorescence_effect", SWIG_INIT_FUNC(fluorescence_effect));
+  SWIG_INIT_MODULE(package, "_solar_absorption_gfit_file", SWIG_INIT_FUNC(solar_absorption_gfit_file));
+  SWIG_INIT_MODULE(package, "_nlls_solver_gsl", SWIG_INIT_FUNC(nlls_solver_gsl));
+  SWIG_INIT_MODULE(package, "_nlls_solver_gsl_lmsder", SWIG_INIT_FUNC(nlls_solver_gsl_lmsder));
+  SWIG_INIT_MODULE(package, "_nlls_solver_gsl_lmder", SWIG_INIT_FUNC(nlls_solver_gsl_lmder));
+  SWIG_INIT_MODULE(package, "_cost_minimizer_gsl", SWIG_INIT_FUNC(cost_minimizer_gsl));
+  SWIG_INIT_MODULE(package, "_model_measure_oco", SWIG_INIT_FUNC(model_measure_oco));
+  SWIG_INIT_MODULE(package, "_max_likelihood_oco", SWIG_INIT_FUNC(max_likelihood_oco));
+  SWIG_INIT_MODULE(package, "_max_a_posteriori_oco", SWIG_INIT_FUNC(max_a_posteriori_oco));
+  SWIG_INIT_MODULE(package, "_connor_solver_map", SWIG_INIT_FUNC(connor_solver_map));
+  SWIG_INIT_MODULE(package, "_nlls_max_likelihood", SWIG_INIT_FUNC(nlls_max_likelihood));
+  SWIG_INIT_MODULE(package, "_nlls_max_a_posteriori", SWIG_INIT_FUNC(nlls_max_a_posteriori));
+  SWIG_INIT_MODULE(package, "_nlls_problem_scaled", SWIG_INIT_FUNC(nlls_problem_scaled));
+  SWIG_INIT_MODULE(package, "_pressure_level_input", SWIG_INIT_FUNC(pressure_level_input));
+  SWIG_INIT_MODULE(package, "_pressure_fixed_level", SWIG_INIT_FUNC(pressure_fixed_level));
+  SWIG_INIT_MODULE(package, "_temperature_fixed_level", SWIG_INIT_FUNC(temperature_fixed_level));
+  SWIG_INIT_MODULE(package, "_absorber_vmr_fixed_level", SWIG_INIT_FUNC(absorber_vmr_fixed_level));
+  SWIG_INIT_MODULE(package, "_absorber_vmr_fixed_level_scaled", SWIG_INIT_FUNC(absorber_vmr_fixed_level_scaled));
+  SWIG_INIT_MODULE(package, "_solar_continuum_polynomial", SWIG_INIT_FUNC(solar_continuum_polynomial));
+  SWIG_INIT_MODULE(package, "_solar_absorption_oco_file", SWIG_INIT_FUNC(solar_absorption_oco_file));
+  SWIG_INIT_MODULE(package, "_register_output_base", SWIG_INIT_FUNC(register_output_base));
+  SWIG_INIT_MODULE(package, "_dispersion_polynomial_output", SWIG_INIT_FUNC(dispersion_polynomial_output));
+  SWIG_INIT_MODULE(package, "_stokes_coefficient_fraction_output", SWIG_INIT_FUNC(stokes_coefficient_fraction_output));
+  SWIG_INIT_MODULE(package, "_zero_offset_waveform_output", SWIG_INIT_FUNC(zero_offset_waveform_output));
+  SWIG_INIT_MODULE(package, "_empirical_orthogonal_function_output", SWIG_INIT_FUNC(empirical_orthogonal_function_output));
+  SWIG_INIT_MODULE(package, "_level_1b_output", SWIG_INIT_FUNC(level_1b_output));
+  SWIG_INIT_MODULE(package, "_state_vector_output", SWIG_INIT_FUNC(state_vector_output));
+  SWIG_INIT_MODULE(package, "_forward_model_output", SWIG_INIT_FUNC(forward_model_output));
+  SWIG_INIT_MODULE(package, "_oco_forward_model_output", SWIG_INIT_FUNC(oco_forward_model_output));
+  SWIG_INIT_MODULE(package, "_connor_convergence_output", SWIG_INIT_FUNC(connor_convergence_output));
+  SWIG_INIT_MODULE(package, "_connor_solver_output", SWIG_INIT_FUNC(connor_solver_output));
+  SWIG_INIT_MODULE(package, "_error_analysis_output", SWIG_INIT_FUNC(error_analysis_output));
+  SWIG_INIT_MODULE(package, "_dispersion_fit_output", SWIG_INIT_FUNC(dispersion_fit_output));
+  SWIG_INIT_MODULE(package, "_max_a_posteriori_output", SWIG_INIT_FUNC(max_a_posteriori_output));
+  SWIG_INIT_MODULE(package, "_fluorescence_effect_output", SWIG_INIT_FUNC(fluorescence_effect_output));
+  SWIG_INIT_MODULE(package, "_radiance_scaling_output", SWIG_INIT_FUNC(radiance_scaling_output));
+  SWIG_INIT_MODULE(package, "_lua_state", SWIG_INIT_FUNC(lua_state));
+  SWIG_INIT_MODULE(package, "_luabind_object", SWIG_INIT_FUNC(luabind_object));
+  SWIG_INIT_MODULE(package, "_swig_std", SWIG_INIT_FUNC(swig_std));
+  SWIG_INIT_MODULE(package, "_swig_array", SWIG_INIT_FUNC(swig_array));
+  SWIG_INIT_MODULE(package, "_swig_rational", SWIG_INIT_FUNC(swig_rational));
+
+#if PY_MAJOR_VERSION >= 3
+    return module;
+#endif
 }
+
+

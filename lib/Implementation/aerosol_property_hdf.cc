@@ -43,11 +43,13 @@ AerosolPropertyHdf::AerosolPropertyHdf
 
 boost::shared_ptr<AerosolProperty> AerosolPropertyHdf::clone() const
 {
-  return clone(press->clone());
+  boost::shared_ptr<RelativeHumidity> rh_dummy;
+  return clone(press->clone(), rh_dummy);
 }
 
 boost::shared_ptr<AerosolProperty> AerosolPropertyHdf::clone
-(const boost::shared_ptr<Pressure>& Press) const
+(const boost::shared_ptr<Pressure>& Press,
+ const boost::shared_ptr<RelativeHumidity>& Rh) const
 {
   HdfFile f(hdf_file);
   return boost::shared_ptr<AerosolProperty>

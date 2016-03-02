@@ -1,7 +1,9 @@
+from __future__ import absolute_import
+from builtins import zip
 import numpy
 import re
 
-from routines_base import RoutinesBase
+from .routines_base import RoutinesBase
 
 class DataAccessRoutines(RoutinesBase):
     def get_data(self, _data_name=None):

@@ -5,6 +5,10 @@
 
 from __future__ import print_function
 from __future__ import division
+from builtins import zip
+from builtins import map
+from builtins import range
+from builtins import object
 
 import os
 import re
@@ -59,7 +63,7 @@ class InputContainerChooser(object):
 
         return obj
 
-class Timer:    
+class Timer(object):    
     def __enter__(self):
         self.start = time.clock()
         return self
@@ -96,7 +100,7 @@ class DatasetInformation(object):
         self.inp_name = dataset_name.strip("/")
 
         base_name = self.inp_name.split("/")[-1]
-        if rename_mapping and aggregator_dataset_mapping.has_key(base_name):
+        if rename_mapping and base_name in aggregator_dataset_mapping:
             self.out_name = aggregator_dataset_mapping[base_name]["name"]
         else:
             self.out_name = self.inp_name
@@ -224,7 +228,7 @@ class DatasetInformation(object):
                 data_dim_indexes.append( slice(dataset_obj.shape[dim_idx]) )
 
         # Eliminate duplicate shape names
-        for name, num_occurance in Counter(self.inp_shape_names).items():
+        for name, num_occurance in list(Counter(self.inp_shape_names).items()):
             if num_occurance > 1:
                 for name_count in range(1, num_occurance+1):
                     self.inp_shape_names[self.inp_shape_names.index(name)] = "%s_%d" % (name, name_count)
@@ -259,7 +263,7 @@ class DatasetInformation(object):
 
         # Make sure any zero sized datasets are indicated as unlimited
         # by identifying them as None in the maxshape argument
-        max_shape = map(lambda s: None if s == 0 else s, dst_shape)
+        max_shape = [None if s == 0 else s for s in dst_shape]
 
         return dst_shape, max_shape, out_shape_names
 
@@ -339,7 +343,7 @@ class SourceInformation(object):
 
             # Search list of datasets based upon the destination dataset name, which is the same as
             # the input name when rename mapping is not used
-            if self.desired_datasets != None and len(filter(lambda ds: re.search(ds_info.out_name, ds), self.desired_datasets)) == 0:
+            if self.desired_datasets != None and len([ds for ds in self.desired_datasets if re.search(ds_info.out_name, ds)]) == 0:
                 self.logger.debug('Ignoring dataset not in list of datasets to consider: "%s"' % ds_name)
                 self._ignored_datasets.append(ds_name)
                 return None
@@ -356,11 +360,11 @@ class SourceInformation(object):
 
     def _sort_file_lists(self):
         # Sort filenames, sounding ids and indexes based on sounding ids
-        sort_lists = zip(self.file_sounding_ids, self.file_indexes, self.src_filenames)
+        sort_lists = list(zip(self.file_sounding_ids, self.file_indexes, self.src_filenames))
         sort_lists.sort(key=itemgetter(0)) # Sort by sounding id
-        self.file_sounding_ids = map(itemgetter(0), sort_lists)
-        self.file_indexes = map(itemgetter(1), sort_lists)
-        self.src_filenames = map(itemgetter(2), sort_lists)
+        self.file_sounding_ids = list(map(itemgetter(0), sort_lists))
+        self.file_indexes = list(map(itemgetter(1), sort_lists))
+        self.src_filenames = list(map(itemgetter(2), sort_lists))
 
         # Make a list if getter found only one item and made it just a single string
         if not hasattr(self.src_filenames, "__iter__"):
@@ -443,7 +447,7 @@ class ProductSplicer(object):
         if dataset_info.out_type != numpy.object and dataset_info.out_type.type != numpy.string_:
             fill_type = dataset_info.out_type.type
 
-            if FILL_VALUE.has_key(fill_type):
+            if fill_type in FILL_VALUE:
                 dataset_fill = FILL_VALUE[fill_type]
             else:
                 self.logger.warning("Could not find specific fill value for dataset: %s of type %s" % (dst_name, fill_type))
@@ -464,11 +468,11 @@ class ProductSplicer(object):
         for curr_file in dataset_info.inp_filenames[0:1]:
             with closing(h5py.File(curr_file, 'r')) as curr_hdf_obj:
                 curr_dataset_obj = curr_hdf_obj[dataset_info.inp_name]
-                for attr_name, attr_value in curr_dataset_obj.attrs.items():
+                for attr_name, attr_value in list(curr_dataset_obj.attrs.items()):
                     # Skip if copied already from a file, assuming all files
                     # have same attributes for now, we just will get
                     # all uniquely named ones
-                    if attr_name in out_dataset_obj.attrs.keys():
+                    if attr_name in list(out_dataset_obj.attrs.keys()):
                         continue
             
                     # If the dtype of the attribute is an object dtype, then assume
@@ -492,7 +496,7 @@ class ProductSplicer(object):
 
         # Loop over dataset names/shapes
         # Create datasets and copy any non id_shape datasets
-        num_datasets = len(self.source_info.datasets_info.keys())
+        num_datasets = len(list(self.source_info.datasets_info.keys()))
         for curr_index, (curr_dataset_name, curr_dataset_info) in enumerate(self.source_info.datasets_info.items()):
             id_dimension = curr_dataset_info.inp_id_dims
 
@@ -587,7 +591,7 @@ class ProductSplicer(object):
 
         with closing(InputContainerChooser(curr_file, single_id_dim=not self.multi_source_types)) as curr_hdf_obj:
             # Copy each dataset for current file
-            for curr_dataset_name, curr_dataset_info in self.source_info.datasets_info.items():
+            for curr_dataset_name, curr_dataset_info in list(self.source_info.datasets_info.items()):
 
                 curr_ds_obj = curr_hdf_obj.get(curr_dataset_name, None)
                 if curr_ds_obj != None:
@@ -675,7 +679,7 @@ def determine_multi_source(check_files, logger):
     # Lets make sure the inputs are either all different types
     # or all the same, otherwise if some are the same,
     # bad things could happen
-    id_match_counts = numpy.array([ len(filter(lambda x: x == idn, file_id_names)) for idn in file_id_names ])
+    id_match_counts = numpy.array([ len([x for x in file_id_names if x == idn]) for idn in file_id_names ])
 
     if(all(id_match_counts == len(id_match_counts))):
         logger.debug("Not using multiple source types")

@@ -16,6 +16,9 @@ BOOST_AUTO_TEST_CASE(basic)
   a = 0; b = 0.3, 0.6, 1.0;
   double psurf = 10;
   boost::shared_ptr<Pressure> p (new PressureSigma(a,b, psurf, true));
+  // Dummy RelativeHumidity, we need to create Aerosol but not
+  // actually used.
+  boost::shared_ptr<RelativeHumidity> rh_dummy;
   HdfFile aprop(test_data_dir() + "l2_merra_aerosol.h5");
   boost::shared_ptr<HdfFile> mclimate;
   mclimate.reset(new HdfFile(merra_data_dir() + "MERRA_Composite_Selection_M02_O2A.hdf5"));
@@ -25,7 +28,7 @@ BOOST_AUTO_TEST_CASE(basic)
     0, 0.16, 0,
     0, 0, 1e-4;
   MerraAerosol ma(*mclimate, aprop, DoubleWithUnit(36.278789520264, "deg"),
-		  DoubleWithUnit(140.2403717041, "deg"), p, cov);
+		  DoubleWithUnit(140.2403717041, "deg"), p, rh_dummy, cov);
   boost::shared_ptr<AerosolOptical> aop = boost::dynamic_pointer_cast<AerosolOptical>(ma.aerosol());
   BOOST_CHECK(aop->number_particle() == 2);
   BOOST_CHECK(aop->aerosol_name()[0] == "DU");
@@ -54,6 +57,7 @@ BOOST_AUTO_TEST_CASE(dateline)
   a = 0; b = 0.3, 0.6, 1.0;
   double psurf = 10;
   boost::shared_ptr<Pressure> p (new PressureSigma(a,b, psurf, true));
+  boost::shared_ptr<RelativeHumidity> rh_dummy;
   HdfFile aprop(test_data_dir() + "l2_merra_aerosol.h5");
   boost::shared_ptr<HdfFile> mclimate;
   mclimate.reset(new HdfFile(merra_data_dir() + "MERRA_Composite_Selection_M02_O2A.hdf5"));
@@ -63,7 +67,7 @@ BOOST_AUTO_TEST_CASE(dateline)
     0, 0.16, 0,
     0, 0, 1e-4;
   MerraAerosol ma(*mclimate, aprop, DoubleWithUnit(36.278789520264, "deg"),
-		  DoubleWithUnit(179.4, "deg"), p, cov);
+		  DoubleWithUnit(179.4, "deg"), p, rh_dummy, cov);
   boost::shared_ptr<AerosolOptical> aop = boost::dynamic_pointer_cast<AerosolOptical>(ma.aerosol());
   BOOST_CHECK(aop->number_particle() == 2);
   BOOST_CHECK(aop->aerosol_name()[0] == "SS");
@@ -78,6 +82,7 @@ BOOST_AUTO_TEST_CASE(dateline2)
   a = 0; b = 0.3, 0.6, 1.0;
   double psurf = 10;
   boost::shared_ptr<Pressure> p (new PressureSigma(a,b, psurf, true));
+  boost::shared_ptr<RelativeHumidity> rh_dummy;
   HdfFile aprop(test_data_dir() + "l2_merra_aerosol.h5");
   boost::shared_ptr<HdfFile> mclimate;
   mclimate.reset(new HdfFile(merra_data_dir() + "MERRA_Composite_Selection_M02_O2A.hdf5"));
@@ -87,7 +92,7 @@ BOOST_AUTO_TEST_CASE(dateline2)
     0, 0.16, 0,
     0, 0, 1e-4;
   MerraAerosol ma(*mclimate, aprop, DoubleWithUnit(36.278789520264, "deg"),
-		  DoubleWithUnit(-180.001, "deg"), p, cov);
+		  DoubleWithUnit(-180.001, "deg"), p, rh_dummy, cov);
   boost::shared_ptr<AerosolOptical> aop = boost::dynamic_pointer_cast<AerosolOptical>(ma.aerosol());
   BOOST_CHECK(aop->number_particle() == 2);
   BOOST_CHECK(aop->aerosol_name()[0] == "SS");
@@ -105,6 +110,7 @@ BOOST_AUTO_TEST_CASE(dejian_example)
   a = 0; b = 0.3, 0.6, 1.0;
   double psurf = 10;
   boost::shared_ptr<Pressure> p (new PressureSigma(a,b, psurf, true));
+  boost::shared_ptr<RelativeHumidity> rh_dummy;
   HdfFile aprop(test_data_dir() + "l2_merra_aerosol.h5");
   boost::shared_ptr<HdfFile> mclimate;
   mclimate.reset(new HdfFile(merra_data_dir() + "MERRA_Composite_Selection_M01_O2A.hdf5"));
@@ -114,13 +120,13 @@ BOOST_AUTO_TEST_CASE(dejian_example)
     0, 0.16, 0,
     0, 0, 1e-4;
   MerraAerosol ma1(*mclimate, aprop, DoubleWithUnit(17.000, "deg"),
-		   DoubleWithUnit(8, "deg"), p, cov);
+		   DoubleWithUnit(8, "deg"), p, rh_dummy, cov);
   MerraAerosol ma2(*mclimate, aprop, DoubleWithUnit(36.6040, "deg"),
-		   DoubleWithUnit(-97.4860, "deg"), p, cov);
+		   DoubleWithUnit(-97.4860, "deg"), p, rh_dummy, cov);
   MerraAerosol ma3(*mclimate, aprop, DoubleWithUnit(39.9060, "deg"),
-		   DoubleWithUnit(116.4060, "deg"), p, cov);
+		   DoubleWithUnit(116.4060, "deg"), p, rh_dummy, cov);
   MerraAerosol ma4(*mclimate, aprop, DoubleWithUnit(-7.9165, "deg"),
-		   DoubleWithUnit(-14.3325, "deg"), p, cov);
+		   DoubleWithUnit(-14.3325, "deg"), p, rh_dummy, cov);
   boost::shared_ptr<AerosolOptical> aop1 = boost::dynamic_pointer_cast<AerosolOptical>(ma1.aerosol());
   boost::shared_ptr<AerosolOptical> aop2 = boost::dynamic_pointer_cast<AerosolOptical>(ma2.aerosol());
   boost::shared_ptr<AerosolOptical> aop3 = boost::dynamic_pointer_cast<AerosolOptical>(ma3.aerosol());

@@ -1,13 +1,16 @@
+from __future__ import absolute_import
+from builtins import zip
+from builtins import range
 from copy import copy
 
 from matplotlib import pyplot as plt
 import numpy
 
-from decorators import call_data_pairs
-from ref_bar_plot_routines import RefBarPlotRoutines, ids2times
-from time_diff_plot_routines import TimeDiffPlotRoutines
-from filter_routines import FilterBase
-from status_routines import StatusBase
+from .decorators import call_data_pairs
+from .ref_bar_plot_routines import RefBarPlotRoutines, ids2times
+from .time_diff_plot_routines import TimeDiffPlotRoutines
+from .filter_routines import FilterBase
+from .status_routines import StatusBase
 
 from scipy import stats
     
@@ -169,7 +172,7 @@ class TCCONPlotRoutinesGuard(TCCONPlotRoutinesReal):
 
         # Only allow the object to be returned if the analysis envirionment contains
         # additional objects where the TCCON group is defined in the datasets
-        if analysis_env != None and len(analysis_env.addl_objs) > 0 and 'TCCON' in analysis_env.addl_objs[0].keys():
+        if analysis_env != None and len(analysis_env.addl_objs) > 0 and 'TCCON' in list(analysis_env.addl_objs[0].keys()):
             return super(TCCONPlotRoutinesGuard, cls).__new__(cls)
         else:
             return None

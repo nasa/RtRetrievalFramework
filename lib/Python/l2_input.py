@@ -1,8 +1,23 @@
+from __future__ import print_function
+from __future__ import absolute_import
+from builtins import zip
+from builtins import str
+from builtins import range
+from builtins import object
+import six
 # -----------------------------------------------------------------------------
 # Parser for OCO L2 Input Files
 # -----------------------------------------------------------------------------
 
-from types import ListType
+my_list_type = None
+try:
+    # This is for python 2
+    from types import ListType
+    my_list_type = ListType
+except ImportError:
+    # This is for python 3
+    my_list_type = list
+
 import os
 import re
 import sys
@@ -11,14 +26,14 @@ import copy
 import warnings
 import platform
 
-from types import StringType, UnicodeType
+import six
 
-from ply_parser import PlyParser
+from .ply_parser import PlyParser
 
 import string
 from xml.parsers import expat
 
-class _Node:
+class _Node(object):
     def extract_whitespace(self, value):
         frontSearch = re.findall('^[\s\t\n]+', value)
         if len(frontSearch) > 0:
@@ -45,7 +60,7 @@ class _Node:
               self.children = [ ]
 
          if leaf != None:
-             if type(leaf) is ListType:
+             if type(leaf) is my_list_type:
                  self.leaf = []
                  self.frontspace = []
                  self.endspace = []
@@ -66,7 +81,7 @@ class _Node:
 
 class _Section(_Node):
     def __init__(self, leaf=None, children=None):
-        if not type(leaf) is ListType:
+        if not type(leaf) is my_list_type:
             leaf = [leaf, leaf]
 
         _Node.__init__(self, 'section', leaf, children)
@@ -102,7 +117,7 @@ class _Section(_Node):
                 child_key_list = child.get_keyword_value(keyword, addWhiteSpace, descend)
 
                 if child_key_list != None:
-                    if not type(child_key_list) is ListType:
+                    if not type(child_key_list) is my_list_type:
                         child_key_list = [child_key_list]
 
                     for child_key in child_key_list:
@@ -126,7 +141,7 @@ class _Section(_Node):
 
         if values == None:
             values = [ "" ]
-        elif type(values) != ListType:
+        elif type(values) != my_list_type:
             values = [ values ]
 
         assignmentNodes = []
@@ -320,13 +335,13 @@ class _Section(_Node):
     def set_matrix_data(self, newData):
         'Sets the matrix data into the section'
 
-        if not type(newData) is ListType:
+        if not type(newData) is my_list_type:
             newData = [newData]
 
         # Create children nodes for new data
         newNodeChildren = []
         for rowData in newData:
-            if not type(rowData) is ListType:
+            if not type(rowData) is my_list_type:
                 rowData = [rowData]
                 
             newRow = []
@@ -351,7 +366,7 @@ class _Section(_Node):
             self.children.append( _Node('matrix', children=newNodeChildren) )
 
     def add_child(self, newChild):
-        if not type(newChild) is ListType:
+        if not type(newChild) is my_list_type:
             newChild = [newChild]
 
         for childObj in newChild:
@@ -359,7 +374,7 @@ class _Section(_Node):
 
     # FAO
     def del_child(self, deadChild):
-        if not type(deadChild) is ListType:
+        if not type(deadChild) is my_list_type:
             deadChild = [deadChild]
 
         for childObj in deadChild:
@@ -497,7 +512,7 @@ class _AsciiParser(PlyParser):
     def p_section_contents_comments(self, p):
         'section_contents : COMMENT section_contents'
         newNode = _Node('comment', leaf=p[1])
-        if type(p[2]) is ListType:
+        if type(p[2]) is my_list_type:
             p[0] = [ newNode ] + p[2]
         else:
             p[0] = [ newNode, p[2] ]
@@ -507,7 +522,7 @@ class _AsciiParser(PlyParser):
         section_contents : assignment section_contents
                          | section_block section_contents
         """
-        if type(p[2]) is ListType:
+        if type(p[2]) is my_list_type:
             p[0] = [ p[1] ] + p[2]
         else:
             p[0] = [ p[1], p[2] ]
@@ -537,7 +552,7 @@ class _AsciiParser(PlyParser):
     def p_section_block(self, p):
         'section_block : begin TEXT section_contents end TEXT'
 
-        if not type(p[3]) is ListType:
+        if not type(p[3]) is my_list_type:
             p[0] = _Section(leaf=[p[2], p[5]], children=[p[3]])
         else:
             p[0] = _Section(leaf=[p[2], p[5]], children=p[3])
@@ -598,12 +613,12 @@ class _AsciiParser(PlyParser):
         if p == None:
             raise ValueError("Syntax error with no info!")
         else:
-            print dir(p)
+            print(dir(p))
             raise ValueError("Syntax error at token '%s' with value '%s' at line number %d of file %s" % (p.type, p.value, p.lineno, self.filename))
 
 ########
 
-class _XmlParser:
+class _XmlParser(object):
     "Parse XML L2 Input into Sections and Nodes"
 
     def __init__(self, contents='', **kw):
@@ -613,15 +628,15 @@ class _XmlParser:
     def start_element(self,name,attributes):
         "Sets the node stack based on elements encountered in the XML file"
 
-        if str(name).lower() == 'group' and 'name' in attributes.keys():
+        if str(name).lower() == 'group' and 'name' in list(attributes.keys()):
             # Turn group elements into Sections
             group_name = attributes.pop('name')
             element = _Section(leaf=[str(group_name), str(group_name)])
-        elif str(name).lower() == 'scalar' and 'name' in attributes.keys():
+        elif str(name).lower() == 'scalar' and 'name' in list(attributes.keys()):
             # Turn scalars into Assigments
             key_name = attributes.pop('name')
             element = _Node('assignment', leaf=key_name)
-        elif str(name).lower() == 'vector' and 'name' in attributes.keys():
+        elif str(name).lower() == 'vector' and 'name' in list(attributes.keys()):
             # For vector elements:
             # Create a Section(LIST) -> Section(VALUES)
             # like would be done in ASCII config
@@ -655,9 +670,9 @@ class _XmlParser:
         # If the current terminal element is a section and there are attributes
         # to the XML node, then add these attributes to the section
         if hasattr(element, 'type') and element.type == 'section':
-            for attr_key in attributes.keys():
+            for attr_key in list(attributes.keys()):
                 element.set_keyword_value(attr_key, attributes[attr_key])
-        elif len(attributes.keys()) > 0:
+        elif len(list(attributes.keys())) > 0:
                 raise ValueError('Element type %s can not support additional attributes' % element.type)
         
         # If the current terminal element is not a list (for vector parsing) then 
@@ -684,11 +699,11 @@ class _XmlParser:
 
     def character_data(self,data):
 
-        if string.strip(data):
+        if data.strip():
             data = data.encode()
 
             element = self.nodeStack[-1]
-            if type(element) is ListType: 
+            if type(element) is my_list_type: 
                 element.append(data)
             elif element.type == 'assignment':
                 element.children.append( _Node('value', leaf=str(data)) )
@@ -715,7 +730,7 @@ class _XmlParser:
 ######################
 # Main Interface Class
 
-class L2InputFile:
+class L2InputFile(object):
 
     def __init__(self, file_input=None, **kw):
         'Initialize the class'
@@ -730,16 +745,19 @@ class L2InputFile:
         if file_input != None:
             self.read(file_input)
 
+    def __getitem__(self, key):
+        return self.rootNode[key]
+
     def __getattr__(self, name):
         if name in dir(self.rootNode):
             return eval("self.rootNode.%s" % name)
         else:
-            raise AttributeError, 'Attribute %s not found in rootNode or in class %s' % (name, __name__)
+            raise AttributeError('Attribute %s not found in rootNode or in class %s' % (name, __name__))
 
     def read(self, file_input):
         'Read data from disk optionally specifying an alternative filename'
 
-        if type(file_input) is StringType or type(file_input) is UnicodeType:
+        if isinstance(file_input, six.string_types):
             self.filename = file_input
 
             if not os.path.exists(self.filename):
@@ -751,7 +769,7 @@ class L2InputFile:
         elif hasattr(file_input, 'read'):
             fileContents = file_input.read()
         else:
-            raise IOException('Passed unknown object for reading: %s' % file_input)
+            raise IOError('Passed unknown object for reading: %s' % file_input)
 
         if len(fileContents.strip()) == 0:
             self.rootNode = _Section(leaf=['root','root'], children=[])
@@ -776,17 +794,17 @@ class L2InputFile:
         if file_output == None:
             file_output = self.filename
 
-        if type(file_output) is str:
+        if isinstance(file_output, six.string_types):
             file_obj = open(file_output, "w")
             self.filename = file_output
         elif hasattr(file_output, 'write'):
             file_obj = file_output
         else:
-            raise IOException('Passed unknown object type for writing: %s' % file_output)
+            raise IOError('Passed unknown object type for writing: %s' % file_output)
         
         self.write_node(self.rootNode, file_obj, doIndent=doIndent)
 
-        if type(file_output) is str:        
+        if isinstance(file_output, six.string_types):
             file_obj.close()
                 
     def write_node(self, node, fileObj, level=0, doIndent=False, nextNode=None, lastNode=None):
@@ -795,7 +813,7 @@ class L2InputFile:
         indent = '   ' * level
 
         if node == None:
-            raise Exception, 'Can not write non-existant node!'
+            raise Exception('Can not write non-existant node!')
 
         if node.type == 'comment':
 
@@ -917,5 +935,5 @@ class L2InputFile:
                 
         else:
             errMsg = 'Unknown node type: %s' % node.type
-            raise Exception, errMsg
+            raise Exception(errMsg)
 

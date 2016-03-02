@@ -1,4 +1,6 @@
-from try_swig_load import *
+from __future__ import absolute_import
+from builtins import object
+from .try_swig_load import *
 from full_physics.l2_input import L2InputFile
 import os
 

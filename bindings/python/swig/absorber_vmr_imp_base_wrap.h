@@ -31,6 +31,7 @@ public:
     virtual boost::shared_ptr< FullPhysics::AbsorberVmr > clone(boost::shared_ptr< FullPhysics::Pressure > const &Press) const;
     virtual std::string gas_name() const;
     virtual FullPhysics::AutoDerivative< double > volume_mixing_ratio(FullPhysics::AutoDerivative< double > const &P) const;
+    virtual FullPhysics::ArrayAd< double,1 > vmr_grid(FullPhysics::Pressure const &P) const;
     virtual blitz::Array< bool,1 > state_used() const;
     virtual void update_sub_state(FullPhysics::ArrayAd< double,1 > const &Sv_sub, blitz::Array< double,2 > const &Cov_sub);
     virtual void mark_used_sub(blitz::Array< bool,1 > &Used) const;
@@ -71,7 +72,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[18];
+    mutable swig::SwigVar_PyObject vtable[19];
 #endif
 
 };

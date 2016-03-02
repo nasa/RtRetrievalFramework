@@ -150,7 +150,7 @@ class PressureSigma(full_physics_swig.pressure_imp_base.PressureImpBase):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, A, B, Surface_pressure, Pressure_flag):
+    def __init__(self, *args):
         """
 
         PressureSigma::PressureSigma(const blitz::Array< double, 1 > &Pressure_grid, double
@@ -161,7 +161,7 @@ class PressureSigma(full_physics_swig.pressure_imp_base.PressureImpBase):
         all 0 of the same size as Pressure_grid B becomes Pressure_grid /
         Pressure_grid[-1] 
         """
-        _pressure_sigma.PressureSigma_swiginit(self, _pressure_sigma.new_PressureSigma(A, B, Surface_pressure, Pressure_flag))
+        _pressure_sigma.PressureSigma_swiginit(self, _pressure_sigma.new_PressureSigma(*args))
 
     def _v_surface_pressure_uncertainty(self):
         """

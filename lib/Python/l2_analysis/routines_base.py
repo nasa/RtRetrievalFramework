@@ -1,3 +1,4 @@
+from builtins import object
 # Base class which defines some common behaviour for plot routines
 
 import re

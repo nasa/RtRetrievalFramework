@@ -29,6 +29,7 @@ public:
     virtual void remove_observer(FullPhysics::Observer< FullPhysics::Temperature > &Obs);
     virtual FullPhysics::ArrayWithUnit< double,1 > important_pressure_level() const;
     virtual FullPhysics::AutoDerivativeWithUnit< double > temperature(FullPhysics::AutoDerivativeWithUnit< double > const &Press) const;
+    virtual FullPhysics::ArrayAdWithUnit< double,1 > temperature_grid(FullPhysics::Pressure const &P) const;
     virtual boost::shared_ptr< FullPhysics::Temperature > clone() const;
     virtual boost::shared_ptr< FullPhysics::Temperature > clone(boost::shared_ptr< FullPhysics::Pressure > const &Press) const;
     virtual void update_sub_state(FullPhysics::ArrayAd< double,1 > const &Sv_sub, blitz::Array< double,2 > const &Cov_sub);
@@ -70,7 +71,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[17];
+    mutable swig::SwigVar_PyObject vtable[18];
 #endif
 
 };

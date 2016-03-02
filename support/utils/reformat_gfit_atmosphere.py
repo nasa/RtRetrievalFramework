@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from __future__ import print_function
 from full_physics.oco_matrix import OcoMatrix
 
 from types import ListType
@@ -22,7 +23,7 @@ all_unit_names = ['Pa', 'km', 'K', 'VMR', 'VMR', 'VMR', 'VMR']
 
 def reformat_gfit_atmosphere(mav_file, out_file, next_spec_srch=None):
 
-    print 'Reading mav data from %s' % mav_file
+    print('Reading mav data from %s' % mav_file)
 
     spec_line_start = 1
 
@@ -48,7 +49,7 @@ def reformat_gfit_atmosphere(mav_file, out_file, next_spec_srch=None):
     if not found_spec:
         raise ValueError('Could not find next spectrum search string: %s in mav file: %s' % (next_spec_srch, mav_file))
 
-    print 'Processing for', ' '.join(mav_data[spec_line_start])
+    print('Processing for', ' '.join(mav_data[spec_line_start]))
 
     mav_size_row   = spec_line_start + 1
     mav_header_row = mav_size_row + 2
@@ -61,22 +62,22 @@ def reformat_gfit_atmosphere(mav_file, out_file, next_spec_srch=None):
         num_cols = len(mav_data[0])
         num_rows = len(mav_data)
 
-    print 
+    print() 
 
-    print "Skip: %d, Cols %d, Rows: %d" % (num_skip, num_cols, num_rows)
+    print("Skip: %d, Cols %d, Rows: %d" % (num_skip, num_cols, num_rows))
 
     mav_beg_row = mav_size_row + num_skip + 2
     mav_end_row = mav_beg_row + num_rows - 3
 
     mav_all_cols = mav_data[mav_header_row]
 
-    print "Column names:", mav_all_cols
+    print("Column names:", mav_all_cols)
 
     out_col_idx = 0
     output_data_matrix = numpy.zeros((mav_end_row-mav_beg_row+1, len(all_col_names)), dtype=float)
 
     for (curr_mav_col, scale) in mav_col_extract:
-        print 'Processing column:', curr_mav_col
+        print('Processing column:', curr_mav_col)
         mav_col_idx = mav_all_cols.index(curr_mav_col)
         row_idx = mav_end_row-mav_beg_row
 
@@ -87,7 +88,7 @@ def reformat_gfit_atmosphere(mav_file, out_file, next_spec_srch=None):
 
         out_col_idx += 1
 
-    print 'Writing output file %s' % out_file
+    print('Writing output file %s' % out_file)
     out_mat_obj = OcoMatrix()
     out_mat_obj.file_id = 'GFIT Atmospheric State modified from: %s' % (mav_file)
     out_mat_obj.dims = [len(output_data_matrix), len(all_col_names)]
@@ -106,7 +107,7 @@ def Process_File(fileObj, scriptOptions, valuesDict, mapDict):
     else:
         opt_mav_filename = scriptOptions
 
-    print opt_mav_filename
+    print(opt_mav_filename)
 
     try:
         input_mav_file = (glob.glob( os.path.expanduser(opt_mav_filename) ))[0]
@@ -117,8 +118,8 @@ def Process_File(fileObj, scriptOptions, valuesDict, mapDict):
 
 def standalone_main():
     if len(sys.argv) < 3:
-        print "usage:\n\t", os.path.basename(sys.argv[0]), "<gfit .mav file> <output_filename> [next_spec_search_re]\n"
-        print "Creates a L2 atmosphere.dat file from a GFIT input files"
+        print("usage:\n\t", os.path.basename(sys.argv[0]), "<gfit .mav file> <output_filename> [next_spec_search_re]\n")
+        print("Creates a L2 atmosphere.dat file from a GFIT input files")
         sys.exit(1)
 
     mav_file = sys.argv[1]

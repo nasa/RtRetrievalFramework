@@ -1,11 +1,18 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from __future__ import division
+from builtins import filter
+from builtins import next
+from builtins import range
+from builtins import object
+from past.utils import old_div
 import os
 import sys
 import re
 from types import GeneratorType, StringType
 from collections import namedtuple
-from itertools import izip_longest
+from six.moves import zip_longest
 
 import h5py
 import numpy
@@ -104,7 +111,7 @@ def filter_error_funcs(func_dict, filters):
     filtered = {}
     for regex in filters:
         r = re.compile(regex)
-        mkeys = filter(r.search, func_dict.keys())
+        mkeys = list(filter(r.search, list(func_dict.keys())))
         for k in mkeys:
             filtered[k] = func_dict[k]
     return filtered
@@ -116,9 +123,9 @@ def filter_init_funcs(init_dict, case_names):
         return init_dict
 
     filtered = {}
-    for key in init_dict.keys():
+    for key in list(init_dict.keys()):
         r = re.compile(key)
-        mkeys = filter(r.search, case_names)
+        mkeys = list(filter(r.search, case_names))
         if len(mkeys) > 0 and not key in filtered: 
             filtered[key] = init_dict[key]
     return filtered
@@ -138,7 +145,7 @@ def create_sounding_dataset(parent_group, dataset_name, in_data, shape_names=(),
         shape_names = [shape_names]
 
     all_shape_names = []
-    for idx, s_name in izip_longest(range(len(new_ds.shape)), ["Retrieval"] + list(shape_names)):
+    for idx, s_name in zip_longest(list(range(len(new_ds.shape))), ["Retrieval"] + list(shape_names)):
         if s_name:
             all_shape_names.append(s_name)
         else:
@@ -161,7 +168,7 @@ class ErrorTypeDesc(namedtuple('ErrorType', 'name description perturb_amount')):
         if self.description:
             create_sounding_dataset(curr_err_grp, "description", self.description)
 
-        create_sounding_dataset(curr_err_grp, "derivative", perturb_rad_diff / self.perturb_amount, "SciColor", units)
+        create_sounding_dataset(curr_err_grp, "derivative", old_div(perturb_rad_diff, self.perturb_amount), "SciColor", units)
         create_sounding_dataset(curr_err_grp, "perturbation_amount", self.perturb_amount)
 
         return curr_err_grp
@@ -258,7 +265,7 @@ def spectroscopy_init(ls, lua_config):
 def register_spectroscopy_errors():
     "Loops over all gas types and perturbed tables, calculating using the table, then resetting filenames to base"
 
-    for pert_gas in PERT_ABSCO_FILES.keys():
+    for pert_gas in list(PERT_ABSCO_FILES.keys()):
         for pert_table, pert_amount in PERT_ABSCO_FILES[pert_gas]:
             # Must use double functions so that we can bind the three loop           
             # variables properly, else we end up always passing last vaules
@@ -271,7 +278,7 @@ def register_spectroscopy_errors():
 
 def spectroscopy_error_case(lua_config, pert_gas, pert_table, pert_amount):
     # Use perturbed table
-    if(os.environ.has_key("abscodir")):
+    if("abscodir" in os.environ):
         absco_dir = os.environ["abscodir"]
     else:
         absco_dir = lua_config.absco_path
@@ -338,7 +345,7 @@ class FmErrors(object):
     def _init_error_funcs(self):
         # Perform initialization routines that need to be done
         # before all error type functions
-        for init_name, init_func in filter_init_funcs(_fm_init_funcs, self.filtered_error_funcs.keys()).items():
+        for init_name, init_func in list(filter_init_funcs(_fm_init_funcs, list(self.filtered_error_funcs.keys())).items()):
             log_info("Calling init for: %s" % init_name) 
             if not init_func(self.ls, self.lua_config):
                 raise RuntimeError("Initialization function %s did not return as succesful" % init_name)
@@ -424,7 +431,7 @@ class FmErrors(object):
 
         # Loop over forward model perturbations
         log_info("Running forward model perturbation cases.\n")
-        for filter_name, err_func in self.filtered_error_funcs.items(): 
+        for filter_name, err_func in list(self.filtered_error_funcs.items()): 
             err_generator = err_func(self.ls, self.lua_config)
 
             if type(err_generator) != GeneratorType:
@@ -452,7 +459,7 @@ class FmErrors(object):
                 # Call generator to reset state, it will return True if there are more
                 # tests, otherwise a StopIteration exception should have been thrown
                 try:
-                    more_tests = err_generator.next()
+                    more_tests = next(err_generator)
                     if not more_tests:
                         raise RuntimeError("Error function generator for: %s (%s) did not end as expected" % (err_desc.name, err_func))
                     else:
@@ -572,9 +579,9 @@ if __name__ == "__main__":
     (options, args) = parser.parse_args()
     
     if options.list_error_types:
-        print "Will process the following error types:"
+        print("Will process the following error types:")
         for name in sorted(filter_error_funcs(_fm_error_funcs, options.error_type_filters).keys()):
-            print name
+            print(name)
         sys.exit(1)
 
     if len(args) == 2:

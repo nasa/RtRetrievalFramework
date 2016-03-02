@@ -149,10 +149,19 @@ class TemperatureFixedLevel(full_physics_swig.temperature_imp_base.TemperatureIm
     C++ includes: temperature_fixed_level.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def __init__(self, Flag_temp, Flag_offset, Temp, T_offset, Press, Press_level):
+        """
+
+        TemperatureFixedLevel::TemperatureFixedLevel(const blitz::Array< bool, 1 > &Flag_temp, bool Flag_offset, const
+        blitz::Array< double, 1 > &Temp, double T_offset, const
+        boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<
+        PressureLevelInput > &Press_level)
+        Create an Temperature. 
+        """
+        _temperature_fixed_level.TemperatureFixedLevel_swiginit(self, _temperature_fixed_level.new_TemperatureFixedLevel(Flag_temp, Flag_offset, Temp, T_offset, Press, Press_level))
+    __swig_destroy__ = _temperature_fixed_level.delete_TemperatureFixedLevel
 
     def _v_temperature_levels(self):
         """
@@ -179,9 +188,38 @@ class TemperatureFixedLevel(full_physics_swig.temperature_imp_base.TemperatureIm
         """
         return _temperature_fixed_level.TemperatureFixedLevel_clone(self, *args)
 
-    __swig_destroy__ = _temperature_fixed_level.delete_TemperatureFixedLevel
+
+    def _v_temperature_offset(self):
+        """
+
+        double FullPhysics::TemperatureFixedLevel::temperature_offset() const
+        Temperature offset. 
+        """
+        return _temperature_fixed_level.TemperatureFixedLevel__v_temperature_offset(self)
+
+
+    @property
+    def temperature_offset(self):
+        return self._v_temperature_offset()
+
+
+    def _v_temperature_offset_uncertainty(self):
+        """
+
+        double TemperatureFixedLevel::temperature_offset_uncertainty() const
+        Uncertainty of temperature offset. 
+        """
+        return _temperature_fixed_level.TemperatureFixedLevel__v_temperature_offset_uncertainty(self)
+
+
+    @property
+    def temperature_offset_uncertainty(self):
+        return self._v_temperature_offset_uncertainty()
+
 TemperatureFixedLevel._v_temperature_levels = new_instancemethod(_temperature_fixed_level.TemperatureFixedLevel__v_temperature_levels, None, TemperatureFixedLevel)
 TemperatureFixedLevel.clone = new_instancemethod(_temperature_fixed_level.TemperatureFixedLevel_clone, None, TemperatureFixedLevel)
+TemperatureFixedLevel._v_temperature_offset = new_instancemethod(_temperature_fixed_level.TemperatureFixedLevel__v_temperature_offset, None, TemperatureFixedLevel)
+TemperatureFixedLevel._v_temperature_offset_uncertainty = new_instancemethod(_temperature_fixed_level.TemperatureFixedLevel__v_temperature_offset_uncertainty, None, TemperatureFixedLevel)
 TemperatureFixedLevel_swigregister = _temperature_fixed_level.TemperatureFixedLevel_swigregister
 TemperatureFixedLevel_swigregister(TemperatureFixedLevel)
 

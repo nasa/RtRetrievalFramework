@@ -4,6 +4,9 @@
 %{
 #include "aerosol_property_imp_base.h"
 #include "sub_state_vector_array.h"
+#include "absorber.h"
+#include "temperature.h"
+#include "altitude.h"
 %}
 
 %base_import(aerosol_property)
@@ -40,7 +43,8 @@ public:
   virtual ~AerosolPropertyImpBase();
   virtual boost::shared_ptr<AerosolProperty> clone() const = 0;
   virtual boost::shared_ptr<AerosolProperty> 
-  clone(const boost::shared_ptr<Pressure>& Press) const = 0;
+  clone(const boost::shared_ptr<Pressure>& Press,
+	const boost::shared_ptr<RelativeHumidity>& Rh) const = 0;
   virtual ArrayAd<double, 1> extinction_coefficient_each_layer(double wn) 
     const = 0;
   virtual ArrayAd<double, 1> scattering_coefficient_each_layer(double wn) 

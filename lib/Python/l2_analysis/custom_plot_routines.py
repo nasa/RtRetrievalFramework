@@ -1,10 +1,16 @@
-from decorators import call_data_pairs
+from __future__ import absolute_import
+from __future__ import division
+from builtins import zip
+from builtins import str
+from builtins import range
+from past.utils import old_div
+from .decorators import call_data_pairs
 
 import numpy
 from matplotlib.pyplot import *
 
-from routines_base import PlotRoutinesBase
-from status_routines import StatusRoutines
+from .routines_base import PlotRoutinesBase
+from .status_routines import StatusRoutines
 
 class CustomPlotRoutines(PlotRoutinesBase):
     def _plot_counts_histogram(self, count_name, obj_names, data_values, **kwargs):
@@ -44,7 +50,7 @@ class CustomPlotRoutines(PlotRoutinesBase):
         # Call helper where we can use call_data_pairs and not loose inspection of analysis routine into our behavior
         return self._plot_statevector_diff_trend_helper(obj_names, sounding_id, RetrievedStateVector__state_vector_names, RetrievedStateVector__state_vector_result, RetrievedStateVector__state_vector_aposteriori_uncert, **kwargs)
 
-    @call_data_pairs(range(1,6))
+    @call_data_pairs(list(range(1,6)))
     def _plot_statevector_diff_trend_helper(self, obj_names, sounding_id, state_vector_names, state_vector_result, state_vector_aposteriori_uncert, **kwargs):
         rtol = kwargs.get("rtol", 1e-5)
         atol = kwargs.get("atol", 1e-8)
@@ -75,7 +81,7 @@ class CustomPlotRoutines(PlotRoutinesBase):
                                        state_vector_aposteriori_uncert[1][snd_idx,sv_idx]])
                 vals_tol = atol + rtol * numpy.abs(cmp_mag)
 
-                if not seen_sv.has_key(sv_name):
+                if sv_name not in seen_sv:
                     seen_sv[sv_name] = 1
                     all_sv_names.append(sv_name)
 
@@ -101,10 +107,10 @@ class CustomPlotRoutines(PlotRoutinesBase):
             exceed_neg[sv_idx] = exceed_neg_dict.get(sv_name, 0)
 
             if exceed_pos[sv_idx] > 0:
-                mean_pos[sv_idx] = mean_pos_dict.get(sv_name,0) / exceed_pos[sv_idx]
+                mean_pos[sv_idx] = old_div(mean_pos_dict.get(sv_name,0), exceed_pos[sv_idx])
 
             if exceed_neg[sv_idx] > 0:
-                mean_neg[sv_idx] = mean_neg_dict.get(sv_name,0) / exceed_neg[sv_idx]
+                mean_neg[sv_idx] = old_div(mean_neg_dict.get(sv_name,0), exceed_neg[sv_idx])
 
             # Make names shorter
             curr_nm = sv_name

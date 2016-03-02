@@ -173,16 +173,17 @@ class AtmosphereOco(full_physics_swig.rt_atmosphere.RtAtmosphere, full_physics_s
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, absorberv, pressurev, temperaturev, aerosolv, groundv, altv, C):
+    def __init__(self, absorberv, pressurev, temperaturev, aerosolv, rhv, groundv, altv, C):
         """
 
         AtmosphereOco::AtmosphereOco(const boost::shared_ptr< Absorber > &absorberv, const
         boost::shared_ptr< Pressure > &pressurev, const boost::shared_ptr<
-        Temperature > &temperaturev, const std::vector< boost::shared_ptr<
-        Altitude > > &altv, const boost::shared_ptr< Constant > &C)
+        Temperature > &temperaturev, const boost::shared_ptr< RelativeHumidity
+        > &Rh, const std::vector< boost::shared_ptr< Altitude > > &altv, const
+        boost::shared_ptr< Constant > &C)
 
         """
-        _atmosphere_oco.AtmosphereOco_swiginit(self, _atmosphere_oco.new_AtmosphereOco(absorberv, pressurev, temperaturev, aerosolv, groundv, altv, C))
+        _atmosphere_oco.AtmosphereOco_swiginit(self, _atmosphere_oco.new_AtmosphereOco(absorberv, pressurev, temperaturev, aerosolv, rhv, groundv, altv, C))
 
     def optical_depth_wrt_iv(self, *args):
         """
@@ -284,6 +285,20 @@ class AtmosphereOco(full_physics_swig.rt_atmosphere.RtAtmosphere, full_physics_s
     @property
     def temperature(self):
         return self._v_temperature()
+
+
+    def _v_relative_humidity(self):
+        """
+
+        const boost::shared_ptr<RelativeHumidity>& FullPhysics::AtmosphereOco::relative_humidity_ptr() const
+
+        """
+        return _atmosphere_oco.AtmosphereOco__v_relative_humidity(self)
+
+
+    @property
+    def relative_humidity(self):
+        return self._v_relative_humidity()
 
 
     def _v_constant(self):
@@ -388,6 +403,7 @@ AtmosphereOco._v_pressure = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_
 AtmosphereOco._v_absorber = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_absorber, None, AtmosphereOco)
 AtmosphereOco._v_aerosol = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_aerosol, None, AtmosphereOco)
 AtmosphereOco._v_temperature = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_temperature, None, AtmosphereOco)
+AtmosphereOco._v_relative_humidity = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_relative_humidity, None, AtmosphereOco)
 AtmosphereOco._v_constant = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_constant, None, AtmosphereOco)
 AtmosphereOco._v_rayleigh = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_rayleigh, None, AtmosphereOco)
 AtmosphereOco._v_altitude_obj = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_altitude_obj, None, AtmosphereOco)

@@ -2,10 +2,17 @@
 // (Not really c++, but closest emacs mode)
 %include "common.i"
 %{
+#include "sub_state_vector_array.h"
 #include "aerosol.h"
+#include "absorber.h"
+#include "temperature.h"
+#include "altitude.h"
 %}
 %base_import(state_vector)
 %base_import(pressure)
+%import "sub_state_vector_array.i"
+%import "absorber.i"
+%import "relative_humidity.i"
 %fp_shared_ptr(FullPhysics::Aerosol);
 %fp_shared_ptr(FullPhysics::Observer<FullPhysics::Aerosol>)
 %fp_shared_ptr(FullPhysics::Observable<FullPhysics::Aerosol>)
@@ -36,6 +43,7 @@ public:
   %python_attribute(number_particle, int)
   boost::shared_ptr<Aerosol> clone() const;
   boost::shared_ptr<Aerosol> 
-  clone(const boost::shared_ptr<Pressure>& Press) const;
+  clone(const boost::shared_ptr<Pressure>& Press,
+	const boost::shared_ptr<RelativeHumidity>& Rh) const;
 };
 }

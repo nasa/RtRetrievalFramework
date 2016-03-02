@@ -242,6 +242,15 @@ class Altitude(ObservableAltitude):
         return _altitude.Altitude_altitude(self, P)
 
 
+    def gravity(self, P):
+        """
+
+        virtual AutoDerivativeWithUnit<double> FullPhysics::Altitude::gravity(const AutoDerivativeWithUnit< double > &P) const =0
+        Return gravity constant for the given pressure. 
+        """
+        return _altitude.Altitude_gravity(self, P)
+
+
     def clone(self, *args):
         """
 

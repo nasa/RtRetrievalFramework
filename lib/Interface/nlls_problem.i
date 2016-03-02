@@ -19,9 +19,9 @@ public:
   %python_attribute_nonconst(jacobian, blitz::Array<double, 2>);
   virtual blitz::Array<double, 2> jacobian_x(const blitz::Array<double, 1>& x);
   virtual void residual_jacobian(
-    blitz::Array<double, 1>& r, blitz::Array<double, 2>& j);
+    blitz::Array<double, 1>& OUTPUT, blitz::Array<double, 2>& OUTPUT);
   virtual void residual_jacobian_x(const blitz::Array<double, 1>& x,
-    blitz::Array<double, 1>& r, blitz::Array<double, 2>& j);
+    blitz::Array<double, 1>& OUTPUT, blitz::Array<double, 2>& OUTPUT);
   %python_attribute(num_residual_evaluations, int);
   %python_attribute(num_jacobian_evaluations, int);
   %python_attribute_abstract(residual_size, int);

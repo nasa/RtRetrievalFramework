@@ -137,7 +137,6 @@ import full_physics_swig.aerosol_property
 import full_physics_swig.observer
 import full_physics_swig.generic_object
 import full_physics_swig.state_vector
-import full_physics_swig.sub_state_vector_array
 class SubStateVectorArrayAerosolProperty(full_physics_swig.aerosol_property.AerosolProperty, full_physics_swig.state_vector.SubStateVectorObserver):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
 
@@ -196,7 +195,8 @@ class AerosolPropertyImpBase(SubStateVectorArrayAerosolProperty):
     def clone(self, *args):
         """
 
-        virtual boost::shared_ptr<AerosolProperty> FullPhysics::AerosolPropertyImpBase::clone(const boost::shared_ptr< Pressure > &Press) const =0
+        virtual boost::shared_ptr<AerosolProperty> FullPhysics::AerosolPropertyImpBase::clone(const boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<
+        RelativeHumidity > &Rh) const =0
 
         """
         return _aerosol_property_imp_base.AerosolPropertyImpBase_clone(self, *args)

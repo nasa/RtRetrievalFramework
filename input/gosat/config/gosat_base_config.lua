@@ -324,6 +324,7 @@ GosatBaseConfig = AcosConfig:new {
 	    min_types = 2,
 	    max_types = 2,
 	    linear_aod = false,
+	    relative_humidity_aerosol = false,
 	    max_residual = 0.005,
 	    apriori = ConfigCommon.hdf_apriori("/Aerosol/Merra/Gaussian/Log"),
 	    covariance = ConfigCommon.hdf_covariance("/Aerosol/Merra/Gaussian/Log"),
@@ -369,6 +370,9 @@ GosatBaseConfig = AcosConfig:new {
          altitude = {
             creator = ConfigCommon.hydrostatic_altitude,
          },
+	 relative_humidity = {
+	    creator = ConfigCommon.calc_relative_humidity,
+	 },
       },
    },
 }

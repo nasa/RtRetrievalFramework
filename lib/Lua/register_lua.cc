@@ -249,11 +249,13 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(TemperatureLevelOffset);
   REGISTER_LUA_LIST(TemperatureLevelOffsetOutput);
   REGISTER_LUA_LIST(TemperatureFixedLevelOutput);
+  REGISTER_LUA_LIST(RelativeHumidity);
   REGISTER_LUA_LIST(InitialGuess);
   REGISTER_LUA_LIST(InitialGuessBuilder);
   REGISTER_LUA_LIST(CompositeInitialGuess);
   REGISTER_LUA_LIST(InitialGuessValue);
   REGISTER_LUA_LIST(AerosolPropertyHdf);
+  REGISTER_LUA_LIST(AerosolPropertyRhHdf);
   REGISTER_LUA_LIST(AerosolExtinctionLinear);
   REGISTER_LUA_LIST(AerosolExtinctionLog);
   REGISTER_LUA_LIST(AerosolShapeGaussian);

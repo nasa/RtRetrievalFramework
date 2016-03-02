@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 import os
 import re
 
@@ -38,16 +39,16 @@ def insert_alternative_settings(template_obj, alt_settings_hash):
     if len(alt_sect) == 0:
         raise IOError('Could not section %s inside of template file %s' % (ALT_SETTINGS_SECTION_NAME, template_obj.filename))
     else:
-        for (alt_key, alt_val) in alt_settings_hash.items():
+        for (alt_key, alt_val) in list(alt_settings_hash.items()):
             alt_sect[0].set_keyword_value(alt_key, alt_val)
 
 def check_file_type(filename):
     (file_prefix, file_ext) = os.path.splitext(filename)
     if file_ext in HDF_VALID_EXTENSIONS:
         with h5py.File(filename, 'r') as hdf_obj:
-            for keyword_name, groups in FILE_SEARCH_GROUPS.items():
+            for keyword_name, groups in list(FILE_SEARCH_GROUPS.items()):
                 for curr_group in groups:
-                    if curr_group in hdf_obj.keys():
+                    if curr_group in list(hdf_obj.keys()):
                         return keyword_name
     elif file_ext == INPUT_FILE_MAP_EXT:
         return INPUT_FILE_MAP_KEYWORD
@@ -58,7 +59,7 @@ def handle_common_config(template_obj, out_config_filename, used_files, sounding
     inp_prod_section = template_obj.get_section(INP_PROD_SECTION_NAME)
 
     if len(inp_prod_section) == 0:
-        print template_obj.get_all_section_names()
+        print(template_obj.get_all_section_names())
         raise IOError('Could not find input product file section of %s' % template_obj.filename)
 
     for curr_file in used_files:
@@ -151,7 +152,7 @@ if __name__ == "__main__":
 
     parser.add_option( "-t", "--run_type", dest="run_type",
                        metavar='STRING', 
-                       help="type of run being set up, valid values are: [%s]" % (', '.join(PopulatorBase.populator_list.keys())),
+                       help="type of run being set up, valid values are: [%s]" % (', '.join(list(PopulatorBase.populator_list.keys()))),
                        )
 
     parser.add_option( "-l", "--sounding_list", dest="sounding_list_file",
@@ -186,8 +187,8 @@ if __name__ == "__main__":
     if cmd_options.run_type == None:
         parser.error('run type not set with -t argument')
 
-    if not PopulatorBase.populator_list.has_key(cmd_options.run_type):
-        parser.error('%s is not a valid run type, valid values are: [%s]' % (cmd_options.run_type, ', '.join(PopulatorBase.populator_list.keys())))
+    if cmd_options.run_type not in PopulatorBase.populator_list:
+        parser.error('%s is not a valid run type, valid values are: [%s]' % (cmd_options.run_type, ', '.join(list(PopulatorBase.populator_list.keys()))))
 
     if cmd_options.config_filename == None:
         out_config_filename = '%s/%s_%s.config' % (os.getcwd(), cmd_options.run_type, os.path.basename(os.getcwd()))

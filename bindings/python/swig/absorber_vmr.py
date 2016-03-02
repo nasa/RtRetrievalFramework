@@ -251,6 +251,15 @@ class AbsorberVmr(full_physics_swig.state_vector.StateVectorObserver, Observable
         return _absorber_vmr.AbsorberVmr_volume_mixing_ratio(self, P)
 
 
+    def vmr_grid(self, P):
+        """
+
+        ArrayAd< double, 1 > AbsorberVmr::vmr_grid(const Pressure &P) const
+        Return the vmr on the pressure grid. 
+        """
+        return _absorber_vmr.AbsorberVmr_vmr_grid(self, P)
+
+
     def _v_state_used(self):
         """
 
@@ -268,6 +277,7 @@ class AbsorberVmr(full_physics_swig.state_vector.StateVectorObserver, Observable
 AbsorberVmr.clone = new_instancemethod(_absorber_vmr.AbsorberVmr_clone, None, AbsorberVmr)
 AbsorberVmr._v_gas_name = new_instancemethod(_absorber_vmr.AbsorberVmr__v_gas_name, None, AbsorberVmr)
 AbsorberVmr.volume_mixing_ratio = new_instancemethod(_absorber_vmr.AbsorberVmr_volume_mixing_ratio, None, AbsorberVmr)
+AbsorberVmr.vmr_grid = new_instancemethod(_absorber_vmr.AbsorberVmr_vmr_grid, None, AbsorberVmr)
 AbsorberVmr._v_state_used = new_instancemethod(_absorber_vmr.AbsorberVmr__v_state_used, None, AbsorberVmr)
 AbsorberVmr.__str__ = new_instancemethod(_absorber_vmr.AbsorberVmr___str__, None, AbsorberVmr)
 AbsorberVmr_swigregister = _absorber_vmr.AbsorberVmr_swigregister

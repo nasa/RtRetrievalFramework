@@ -330,7 +330,7 @@ class NLLSProblem(full_physics_swig.cost_func_diff.CostFuncDiff):
         return _nlls_problem.NLLSProblem_jacobian_x(self, x)
 
 
-    def residual_jacobian(self, r, j):
+    def residual_jacobian(self):
         """
 
         void NLLSProblem::residual_jacobian(blitz::Array< double, 1 > &r, blitz::Array< double, 2 > &j)
@@ -363,10 +363,10 @@ class NLLSProblem(full_physics_swig.cost_func_diff.CostFuncDiff):
 
         j:  The Jacobian matrix 
         """
-        return _nlls_problem.NLLSProblem_residual_jacobian(self, r, j)
+        return _nlls_problem.NLLSProblem_residual_jacobian(self)
 
 
-    def residual_jacobian_x(self, x, r, j):
+    def residual_jacobian_x(self, x):
         """
 
         virtual void FullPhysics::NLLSProblem::residual_jacobian_x(const blitz::Array< double, 1 > &x, blitz::Array< double, 1 > &r,
@@ -385,7 +385,7 @@ class NLLSProblem(full_physics_swig.cost_func_diff.CostFuncDiff):
 
         j:  The Jacobian matrix 
         """
-        return _nlls_problem.NLLSProblem_residual_jacobian_x(self, x, r, j)
+        return _nlls_problem.NLLSProblem_residual_jacobian_x(self, x)
 
 
     def _v_num_residual_evaluations(self):

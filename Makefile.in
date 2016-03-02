@@ -462,6 +462,7 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/max_a_posteriori_wrap.cc \
 	@swigsrc@/pressure_holder_wrap.cc \
 	@swigsrc@/aerosol_property_hdf_wrap.cc \
+	@swigsrc@/aerosol_property_rh_hdf_wrap.cc \
 	@swigsrc@/hdf_constant_wrap.cc \
 	@swigsrc@/solar_continuum_table_wrap.cc \
 	@swigsrc@/solar_absorption_table_wrap.cc \
@@ -499,6 +500,7 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/aerosol_optical_wrap.cc \
 	@swigsrc@/merra_aerosol_wrap.cc @swigsrc@/rayleigh_wrap.cc \
 	@swigsrc@/atmosphere_oco_wrap.cc \
+	@swigsrc@/relative_humidity_wrap.cc \
 	@swigsrc@/connor_solver_wrap.cc @swigsrc@/log_timing_wrap.cc \
 	@swigsrc@/chisq_convergence_wrap.cc \
 	@swigsrc@/connor_convergence_wrap.cc \
@@ -526,6 +528,7 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/nonuniform_spectrum_sampling_wrap.cc \
 	@swigsrc@/spectral_window_range_wrap.cc \
 	@swigsrc@/temperature_ecmwf_wrap.cc \
+	@swigsrc@/temperature_level_offset_wrap.cc \
 	@swigsrc@/absorber_vmr_ecmwf_wrap.cc \
 	@swigsrc@/absorber_vmr_level_wrap.cc \
 	@swigsrc@/absorber_vmr_level_scaled_wrap.cc \
@@ -687,6 +690,7 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-max_a_posteriori_wrap.lo \
 	@swigsrc@/_swig_wrap_la-pressure_holder_wrap.lo \
 	@swigsrc@/_swig_wrap_la-aerosol_property_hdf_wrap.lo \
+	@swigsrc@/_swig_wrap_la-aerosol_property_rh_hdf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-hdf_constant_wrap.lo \
 	@swigsrc@/_swig_wrap_la-solar_continuum_table_wrap.lo \
 	@swigsrc@/_swig_wrap_la-solar_absorption_table_wrap.lo \
@@ -729,6 +733,7 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-merra_aerosol_wrap.lo \
 	@swigsrc@/_swig_wrap_la-rayleigh_wrap.lo \
 	@swigsrc@/_swig_wrap_la-atmosphere_oco_wrap.lo \
+	@swigsrc@/_swig_wrap_la-relative_humidity_wrap.lo \
 	@swigsrc@/_swig_wrap_la-connor_solver_wrap.lo \
 	@swigsrc@/_swig_wrap_la-log_timing_wrap.lo \
 	@swigsrc@/_swig_wrap_la-chisq_convergence_wrap.lo \
@@ -760,6 +765,7 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-nonuniform_spectrum_sampling_wrap.lo \
 	@swigsrc@/_swig_wrap_la-spectral_window_range_wrap.lo \
 	@swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo \
+	@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_level_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_level_scaled_wrap.lo \
@@ -894,6 +900,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@interfacesrc@/max_a_posteriori.cc \
 	@implsrc@/forward_model_cost_function.cc \
 	@implsrc@/hdf_constant.cc @implsrc@/aerosol_property_hdf.cc \
+	@implsrc@/aerosol_property_rh_hdf.cc \
 	@implsrc@/solar_continuum_table.cc \
 	@implsrc@/solar_absorption_table.cc \
 	@implsrc@/solar_doppler_shift_polynomial.cc \
@@ -920,6 +927,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian.cc \
 	@implsrc@/ground_brdf.cc @implsrc@/brdf_functions.F90 \
 	@implsrc@/aerosol_optical.cc @implsrc@/atmosphere_oco.cc \
+	@implsrc@/relative_humidity.cc \
 	@implsrc@/altitude_hydrostatic.cc @implsrc@/rayleigh.cc \
 	@implsrc@/rayleigh_f.F90 @implsrc@/absco.cc \
 	@implsrc@/absco_hdf.cc @implsrc@/uniform_spectrum_sampling.cc \
@@ -1142,6 +1150,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@implsrc@/libfp_la-forward_model_cost_function.lo \
 	@implsrc@/libfp_la-hdf_constant.lo \
 	@implsrc@/libfp_la-aerosol_property_hdf.lo \
+	@implsrc@/libfp_la-aerosol_property_rh_hdf.lo \
 	@implsrc@/libfp_la-solar_continuum_table.lo \
 	@implsrc@/libfp_la-solar_absorption_table.lo \
 	@implsrc@/libfp_la-solar_doppler_shift_polynomial.lo \
@@ -1180,6 +1189,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@implsrc@/libfp_la-brdf_functions.lo \
 	@implsrc@/libfp_la-aerosol_optical.lo \
 	@implsrc@/libfp_la-atmosphere_oco.lo \
+	@implsrc@/libfp_la-relative_humidity.lo \
 	@implsrc@/libfp_la-altitude_hydrostatic.lo \
 	@implsrc@/libfp_la-rayleigh.lo \
 	@implsrc@/libfp_la-rayleigh_f.lo @implsrc@/libfp_la-absco.lo \
@@ -1482,6 +1492,7 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@implsrc@/forward_model_cost_function_test.cc \
 	@implsrc@/full_output_test.cc @implsrc@/hdf_constant_test.cc \
 	@implsrc@/aerosol_property_hdf_test.cc \
+	@implsrc@/aerosol_property_rh_hdf_test.cc \
 	@implsrc@/solar_absorption_table_test.cc \
 	@implsrc@/solar_absorption_gfit_file_test.cc \
 	@implsrc@/solar_continuum_table_test.cc \
@@ -1518,6 +1529,7 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@implsrc@/ground_brdf_test.cc \
 	@implsrc@/aerosol_optical_test.cc \
 	@implsrc@/atmosphere_oco_test.cc \
+	@implsrc@/relative_humidity_test.cc \
 	@implsrc@/altitude_hydrostatic_test.cc \
 	@implsrc@/rayleigh_test.cc @implsrc@/absco_hdf_test.cc \
 	@implsrc@/uniform_spectrum_sampling_test.cc \
@@ -1644,6 +1656,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@implsrc@/full_output_test.$(OBJEXT) \
 	@implsrc@/hdf_constant_test.$(OBJEXT) \
 	@implsrc@/aerosol_property_hdf_test.$(OBJEXT) \
+	@implsrc@/aerosol_property_rh_hdf_test.$(OBJEXT) \
 	@implsrc@/solar_absorption_table_test.$(OBJEXT) \
 	@implsrc@/solar_absorption_gfit_file_test.$(OBJEXT) \
 	@implsrc@/solar_continuum_table_test.$(OBJEXT) \
@@ -1682,6 +1695,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@implsrc@/ground_brdf_test.$(OBJEXT) \
 	@implsrc@/aerosol_optical_test.$(OBJEXT) \
 	@implsrc@/atmosphere_oco_test.$(OBJEXT) \
+	@implsrc@/relative_humidity_test.$(OBJEXT) \
 	@implsrc@/altitude_hydrostatic_test.$(OBJEXT) \
 	@implsrc@/rayleigh_test.$(OBJEXT) \
 	@implsrc@/absco_hdf_test.$(OBJEXT) \
@@ -1950,6 +1964,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@interfacesrc@/max_a_posteriori.h \
 	@implsrc@/forward_model_cost_function.h \
 	@implsrc@/hdf_constant.h @implsrc@/aerosol_property_hdf.h \
+	@implsrc@/aerosol_property_rh_hdf.h \
 	@implsrc@/solar_continuum_table.h \
 	@implsrc@/solar_absorption_table.h \
 	@implsrc@/solar_doppler_shift_polynomial.h \
@@ -1973,8 +1988,9 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@implsrc@/ground_coxmunk.h \
 	@implsrc@/ground_coxmunk_plus_lambertian.h \
 	@implsrc@/ground_brdf.h @implsrc@/aerosol_optical.h \
-	@implsrc@/atmosphere_oco.h @implsrc@/altitude_hydrostatic.h \
-	@implsrc@/rayleigh.h @implsrc@/absco.h @implsrc@/absco_hdf.h \
+	@implsrc@/atmosphere_oco.h @implsrc@/relative_humidity.h \
+	@implsrc@/altitude_hydrostatic.h @implsrc@/rayleigh.h \
+	@implsrc@/absco.h @implsrc@/absco_hdf.h \
 	@implsrc@/scattering_moment_interpolator.h \
 	@implsrc@/uniform_spectrum_sampling.h \
 	@implsrc@/spectrum_sampling_fixed_spacing.h \
@@ -2588,6 +2604,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@interfacesrc@/max_a_posteriori.h \
 	@implsrc@/forward_model_cost_function.h \
 	@implsrc@/hdf_constant.h @implsrc@/aerosol_property_hdf.h \
+	@implsrc@/aerosol_property_rh_hdf.h \
 	@implsrc@/solar_continuum_table.h \
 	@implsrc@/solar_absorption_table.h \
 	@implsrc@/solar_doppler_shift_polynomial.h \
@@ -2611,8 +2628,9 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@implsrc@/ground_coxmunk.h \
 	@implsrc@/ground_coxmunk_plus_lambertian.h \
 	@implsrc@/ground_brdf.h @implsrc@/aerosol_optical.h \
-	@implsrc@/atmosphere_oco.h @implsrc@/altitude_hydrostatic.h \
-	@implsrc@/rayleigh.h @implsrc@/absco.h @implsrc@/absco_hdf.h \
+	@implsrc@/atmosphere_oco.h @implsrc@/relative_humidity.h \
+	@implsrc@/altitude_hydrostatic.h @implsrc@/rayleigh.h \
+	@implsrc@/absco.h @implsrc@/absco_hdf.h \
 	@implsrc@/scattering_moment_interpolator.h \
 	@implsrc@/uniform_spectrum_sampling.h \
 	@implsrc@/spectrum_sampling_fixed_spacing.h \
@@ -2751,6 +2769,7 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@implsrc@/forward_model_cost_function_test.cc \
 	@implsrc@/full_output_test.cc @implsrc@/hdf_constant_test.cc \
 	@implsrc@/aerosol_property_hdf_test.cc \
+	@implsrc@/aerosol_property_rh_hdf_test.cc \
 	@implsrc@/solar_absorption_table_test.cc \
 	@implsrc@/solar_absorption_gfit_file_test.cc \
 	@implsrc@/solar_continuum_table_test.cc \
@@ -2787,6 +2806,7 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@implsrc@/ground_brdf_test.cc \
 	@implsrc@/aerosol_optical_test.cc \
 	@implsrc@/atmosphere_oco_test.cc \
+	@implsrc@/relative_humidity_test.cc \
 	@implsrc@/altitude_hydrostatic_test.cc \
 	@implsrc@/rayleigh_test.cc @implsrc@/absco_hdf_test.cc \
 	@implsrc@/uniform_spectrum_sampling_test.cc \
@@ -2882,6 +2902,7 @@ config_DATA = @commonconfigsrc@/config_common.lua \
 	$(top_builddir)/version.lua
 input_DATA = @commoninputsrc@/l2_solar_model.h5 \
 	@commoninputsrc@/l2_aerosol_combined.h5 \
+	@commoninputsrc@/l2_aerosol_combined_RH.h5 \
 	@commoninputsrc@/old_orbit_sim_solar_model.h5 \
 	@ftsinputsrc@/l2_fts_static_input.h5 \
 	@gosatinputsrc@/l2_gosat_static_input.h5 \
@@ -3038,6 +3059,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/max_a_posteriori_wrap.cc \
 	@swigsrc@/pressure_holder_wrap.cc \
 	@swigsrc@/aerosol_property_hdf_wrap.cc \
+	@swigsrc@/aerosol_property_rh_hdf_wrap.cc \
 	@swigsrc@/hdf_constant_wrap.cc \
 	@swigsrc@/solar_continuum_table_wrap.cc \
 	@swigsrc@/solar_absorption_table_wrap.cc \
@@ -3075,6 +3097,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/aerosol_optical_wrap.cc \
 	@swigsrc@/merra_aerosol_wrap.cc @swigsrc@/rayleigh_wrap.cc \
 	@swigsrc@/atmosphere_oco_wrap.cc \
+	@swigsrc@/relative_humidity_wrap.cc \
 	@swigsrc@/connor_solver_wrap.cc @swigsrc@/log_timing_wrap.cc \
 	@swigsrc@/chisq_convergence_wrap.cc \
 	@swigsrc@/connor_convergence_wrap.cc \
@@ -3102,6 +3125,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/nonuniform_spectrum_sampling_wrap.cc \
 	@swigsrc@/spectral_window_range_wrap.cc \
 	@swigsrc@/temperature_ecmwf_wrap.cc \
+	@swigsrc@/temperature_level_offset_wrap.cc \
 	@swigsrc@/absorber_vmr_ecmwf_wrap.cc \
 	@swigsrc@/absorber_vmr_level_wrap.cc \
 	@swigsrc@/absorber_vmr_level_scaled_wrap.cc \
@@ -3292,6 +3316,7 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@interfacesrc@/max_a_posteriori.cc \
 	@implsrc@/forward_model_cost_function.cc \
 	@implsrc@/hdf_constant.cc @implsrc@/aerosol_property_hdf.cc \
+	@implsrc@/aerosol_property_rh_hdf.cc \
 	@implsrc@/solar_continuum_table.cc \
 	@implsrc@/solar_absorption_table.cc \
 	@implsrc@/solar_doppler_shift_polynomial.cc \
@@ -3318,6 +3343,7 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian.cc \
 	@implsrc@/ground_brdf.cc @implsrc@/brdf_functions.F90 \
 	@implsrc@/aerosol_optical.cc @implsrc@/atmosphere_oco.cc \
+	@implsrc@/relative_humidity.cc \
 	@implsrc@/altitude_hydrostatic.cc @implsrc@/rayleigh.cc \
 	@implsrc@/rayleigh_f.F90 @implsrc@/absco.cc \
 	@implsrc@/absco_hdf.cc @implsrc@/uniform_spectrum_sampling.cc \
@@ -3778,7 +3804,6 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/co
 	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu Makefile'; \
 	$(am__cd) $(top_srcdir) && \
 	  $(AUTOMAKE) --gnu Makefile
-.PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -4144,6 +4169,8 @@ clean-pkgpythonswigLTLIBRARIES:
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-aerosol_property_hdf_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
+@swigsrc@/_swig_wrap_la-aerosol_property_rh_hdf_wrap.lo:  \
+	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-hdf_constant_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-solar_continuum_table_wrap.lo:  \
@@ -4228,6 +4255,8 @@ clean-pkgpythonswigLTLIBRARIES:
 	@swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-atmosphere_oco_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
+@swigsrc@/_swig_wrap_la-relative_humidity_wrap.lo:  \
+	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-connor_solver_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-log_timing_wrap.lo: @swigsrc@/$(am__dirstamp) \
@@ -4289,6 +4318,8 @@ clean-pkgpythonswigLTLIBRARIES:
 @swigsrc@/_swig_wrap_la-spectral_window_range_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo:  \
+	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
+@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -4683,6 +4714,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-aerosol_property_hdf.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-aerosol_property_rh_hdf.lo:  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-solar_continuum_table.lo:  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-solar_absorption_table.lo:  \
@@ -4760,6 +4793,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 @implsrc@/libfp_la-aerosol_optical.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-atmosphere_oco.lo: @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-relative_humidity.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-altitude_hydrostatic.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -5589,6 +5624,8 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/aerosol_property_hdf_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/aerosol_property_rh_hdf_test.$(OBJEXT):  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/solar_absorption_table_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/solar_absorption_gfit_file_test.$(OBJEXT):  \
@@ -5664,6 +5701,8 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 @implsrc@/aerosol_optical_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/atmosphere_oco_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/relative_humidity_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/altitude_hydrostatic_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -5947,6 +5986,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/absorber_vmr_level_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/aerosol_optical_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/aerosol_property_hdf_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/aerosol_property_rh_hdf_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/aerosol_shape_gaussian_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/altitude_hydrostatic_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/atmosphere_fixture.Po@am__quote@
@@ -6002,6 +6042,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-aerosol_extinction_log.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-aerosol_optical.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-aerosol_property_hdf.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-aerosol_property_rh_hdf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-aerosol_shape_gaussian.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-altitude_hydrostatic.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-atmosphere_oco.Plo@am__quote@
@@ -6090,6 +6131,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-radiant_driver.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-rayleigh.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-refractive_index.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-relative_humidity.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-rosenbrock2_nlls_problem.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-solar_absorption_and_continuum.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-solar_absorption_gfit_file.Plo@am__quote@
@@ -6135,6 +6177,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/rayleigh_only_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/rayleigh_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/refractive_index_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/relative_humidity_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/solar_absorption_and_continuum_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/solar_absorption_gfit_file_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/solar_absorption_table_test.Po@am__quote@
@@ -6371,6 +6414,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-aerosol_optical_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-aerosol_property_hdf_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-aerosol_property_imp_base_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-aerosol_property_rh_hdf_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-aerosol_property_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-aerosol_shape_gaussian_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-aerosol_wrap.Plo@am__quote@
@@ -6529,6 +6573,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-rayleigh_greek_moment_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-rayleigh_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-register_output_base_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-relative_humidity_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-rt_atmosphere_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-solar_absorption_and_continuum_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-solar_absorption_gfit_file_wrap.Plo@am__quote@
@@ -6572,6 +6617,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_ecmwf_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_fixed_level_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_imp_base_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_offset_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-twostream_driver_wrap.Plo@am__quote@
@@ -7711,6 +7757,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-aerosol_property_hdf_wrap.lo `test -f '@swigsrc@/aerosol_property_hdf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/aerosol_property_hdf_wrap.cc
 
+@swigsrc@/_swig_wrap_la-aerosol_property_rh_hdf_wrap.lo: @swigsrc@/aerosol_property_rh_hdf_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-aerosol_property_rh_hdf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-aerosol_property_rh_hdf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-aerosol_property_rh_hdf_wrap.lo `test -f '@swigsrc@/aerosol_property_rh_hdf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/aerosol_property_rh_hdf_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-aerosol_property_rh_hdf_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-aerosol_property_rh_hdf_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/aerosol_property_rh_hdf_wrap.cc' object='@swigsrc@/_swig_wrap_la-aerosol_property_rh_hdf_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-aerosol_property_rh_hdf_wrap.lo `test -f '@swigsrc@/aerosol_property_rh_hdf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/aerosol_property_rh_hdf_wrap.cc
+
 @swigsrc@/_swig_wrap_la-hdf_constant_wrap.lo: @swigsrc@/hdf_constant_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-hdf_constant_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-hdf_constant_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-hdf_constant_wrap.lo `test -f '@swigsrc@/hdf_constant_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/hdf_constant_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-hdf_constant_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-hdf_constant_wrap.Plo
@@ -8005,6 +8058,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-atmosphere_oco_wrap.lo `test -f '@swigsrc@/atmosphere_oco_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/atmosphere_oco_wrap.cc
 
+@swigsrc@/_swig_wrap_la-relative_humidity_wrap.lo: @swigsrc@/relative_humidity_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-relative_humidity_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-relative_humidity_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-relative_humidity_wrap.lo `test -f '@swigsrc@/relative_humidity_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/relative_humidity_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-relative_humidity_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-relative_humidity_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/relative_humidity_wrap.cc' object='@swigsrc@/_swig_wrap_la-relative_humidity_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-relative_humidity_wrap.lo `test -f '@swigsrc@/relative_humidity_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/relative_humidity_wrap.cc
+
 @swigsrc@/_swig_wrap_la-connor_solver_wrap.lo: @swigsrc@/connor_solver_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-connor_solver_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-connor_solver_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-connor_solver_wrap.lo `test -f '@swigsrc@/connor_solver_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/connor_solver_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-connor_solver_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-connor_solver_wrap.Plo
@@ -8221,6 +8281,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/temperature_ecmwf_wrap.cc' object='@swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo `test -f '@swigsrc@/temperature_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_ecmwf_wrap.cc
+
+@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo: @swigsrc@/temperature_level_offset_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo `test -f '@swigsrc@/temperature_level_offset_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_level_offset_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/temperature_level_offset_wrap.cc' object='@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo `test -f '@swigsrc@/temperature_level_offset_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_level_offset_wrap.cc
 
 @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo: @swigsrc@/absorber_vmr_ecmwf_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_ecmwf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo `test -f '@swigsrc@/absorber_vmr_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/absorber_vmr_ecmwf_wrap.cc
@@ -9272,6 +9339,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-aerosol_property_hdf.lo `test -f '@implsrc@/aerosol_property_hdf.cc' || echo '$(srcdir)/'`@implsrc@/aerosol_property_hdf.cc
 
+@implsrc@/libfp_la-aerosol_property_rh_hdf.lo: @implsrc@/aerosol_property_rh_hdf.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-aerosol_property_rh_hdf.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-aerosol_property_rh_hdf.Tpo -c -o @implsrc@/libfp_la-aerosol_property_rh_hdf.lo `test -f '@implsrc@/aerosol_property_rh_hdf.cc' || echo '$(srcdir)/'`@implsrc@/aerosol_property_rh_hdf.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-aerosol_property_rh_hdf.Tpo @implsrc@/$(DEPDIR)/libfp_la-aerosol_property_rh_hdf.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/aerosol_property_rh_hdf.cc' object='@implsrc@/libfp_la-aerosol_property_rh_hdf.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-aerosol_property_rh_hdf.lo `test -f '@implsrc@/aerosol_property_rh_hdf.cc' || echo '$(srcdir)/'`@implsrc@/aerosol_property_rh_hdf.cc
+
 @implsrc@/libfp_la-solar_continuum_table.lo: @implsrc@/solar_continuum_table.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-solar_continuum_table.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-solar_continuum_table.Tpo -c -o @implsrc@/libfp_la-solar_continuum_table.lo `test -f '@implsrc@/solar_continuum_table.cc' || echo '$(srcdir)/'`@implsrc@/solar_continuum_table.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-solar_continuum_table.Tpo @implsrc@/$(DEPDIR)/libfp_la-solar_continuum_table.Plo
@@ -9530,6 +9604,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/atmosphere_oco.cc' object='@implsrc@/libfp_la-atmosphere_oco.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-atmosphere_oco.lo `test -f '@implsrc@/atmosphere_oco.cc' || echo '$(srcdir)/'`@implsrc@/atmosphere_oco.cc
+
+@implsrc@/libfp_la-relative_humidity.lo: @implsrc@/relative_humidity.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-relative_humidity.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-relative_humidity.Tpo -c -o @implsrc@/libfp_la-relative_humidity.lo `test -f '@implsrc@/relative_humidity.cc' || echo '$(srcdir)/'`@implsrc@/relative_humidity.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-relative_humidity.Tpo @implsrc@/$(DEPDIR)/libfp_la-relative_humidity.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/relative_humidity.cc' object='@implsrc@/libfp_la-relative_humidity.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-relative_humidity.lo `test -f '@implsrc@/relative_humidity.cc' || echo '$(srcdir)/'`@implsrc@/relative_humidity.cc
 
 @implsrc@/libfp_la-altitude_hydrostatic.lo: @implsrc@/altitude_hydrostatic.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-altitude_hydrostatic.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-altitude_hydrostatic.Tpo -c -o @implsrc@/libfp_la-altitude_hydrostatic.lo `test -f '@implsrc@/altitude_hydrostatic.cc' || echo '$(srcdir)/'`@implsrc@/altitude_hydrostatic.cc
@@ -11506,6 +11587,10 @@ timing_check:
 @HAVE_NOSETESTS_FALSE@	@echo "Skipping nosetests because it wasn't found on the"
 @HAVE_NOSETESTS_FALSE@	@echo "system during configuration"
 @HAVE_NOSETESTS_FALSE@	@echo "====================================================="
+
+# Not sure why, but make seems to clean this up when we do an 
+# build all. Tell it not to
+.PRECIOUS: libfp.la
 
 # Allow searchs for .i, .h. and .cc files in this directory
 vpath %.cc $(srcdir)/@supportsrc@

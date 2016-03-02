@@ -1,7 +1,9 @@
+from __future__ import absolute_import
+from builtins import str
 from nose.tools import *
 import os
-from try_swig_load import *
-from acos_file import *
+from .try_swig_load import *
+from .acos_file import *
 from nose.plugins.skip import Skip, SkipTest
 import numpy as np
 
@@ -25,8 +27,8 @@ def test_gosat_file():
     # Set these so we are guaranteed to read from file
     gosat_obj._data_shape_name_dict = {}
     gosat_obj._default_shape_names = None
-
-    assert gosat_obj.get_data_shape('/FootprintGeometry/footprint_stokes_coefficients') == ['Exposure', 'Band', 'Polarization', 'StokesCoefficient']
+    
+    assert gosat_obj.get_data_shape('/FootprintGeometry/footprint_stokes_coefficients') == [b'Exposure', b'Band', b'Polarization', b'StokesCoefficient']
 
     sounding_id = 20090725015225
     read_latitude = gosat_obj.get_sounding_info('sounding_latitude', sounding_id)

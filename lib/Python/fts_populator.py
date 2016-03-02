@@ -1,5 +1,8 @@
-from populator_base import PopulatorBase
-from l2_input import L2InputFile
+from __future__ import print_function
+from __future__ import absolute_import
+from builtins import str
+from .populator_base import PopulatorBase
+from .l2_input import L2InputFile
 import os
 import numpy
 from full_physics.oco_matrix import OcoMatrix
@@ -131,8 +134,8 @@ class FtsPopulator(PopulatorBase):
         spec_a_out = open(self.spectrum_a_list_filename, "w")
         spec_b_out = open(self.spectrum_b_list_filename, "w")
         for curr_id in obs_ids:
-            print >>spec_a_out, spectrum_files_map[curr_id + "1"]
-            print >>spec_b_out, spectrum_files_map[curr_id + "2"]
+            print(spectrum_files_map[curr_id + "1"], file=spec_a_out)
+            print(spectrum_files_map[curr_id + "2"], file=spec_b_out)
         spec_a_out.close()
         spec_b_out.close()
 

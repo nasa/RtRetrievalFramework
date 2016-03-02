@@ -1,8 +1,11 @@
+from __future__ import absolute_import
+from future import standard_library
+standard_library.install_aliases()
 from nose.tools import *
-from l2_run import *
+from .l2_run import *
 from nose.plugins.skip import Skip, SkipTest
 import os
-import cPickle
+import pickle
 
 gosat_config = os.path.dirname(__file__) + "/../../input/gosat/config/config.lua"
 tccon_small_set = os.path.dirname(__file__) + "/../../test/tccon_small_set/"
@@ -20,7 +23,7 @@ def test_l2_run_pickle():
     if(not have_full_physics_swig):
         raise SkipTest
     r = L2Run(gosat_config, sounding_id, ecmwf_file, spectrum_file)
-    t = cPickle.dumps(r, cPickle.HIGHEST_PROTOCOL)
-    r2 = cPickle.loads(t)
+    t = pickle.dumps(r, pickle.HIGHEST_PROTOCOL)
+    r2 = pickle.loads(t)
 
 
