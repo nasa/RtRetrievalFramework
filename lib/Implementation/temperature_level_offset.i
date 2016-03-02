@@ -1,5 +1,6 @@
 // -*- mode: c++; -*-
 // (Not really c++, but closest emacs mode)
+%include "common.i"
 %{
 #include "temperature_level_offset.h"
 %}

@@ -276,12 +276,11 @@ class RtAtmosphere(full_physics_swig.state_vector.StateVectorObserver, Observabl
     def optical_depth_wrt_iv(self, *args):
         """
 
-        virtual ArrayAd<double, 1> FullPhysics::RtAtmosphere::optical_depth_wrt_iv(double wn, int spec_index) const =0
-        The optical depth for each layer, for the given wave number.
+        virtual ArrayAd<double, 1> FullPhysics::RtAtmosphere::optical_depth_wrt_iv(double wn, int spec_index, const ArrayAd< double, 2 > &iv) const =0
+        This is a variation of optical_depth that takes the supplied value for
+        the intermediate variables rather than calculating it own value.
 
-        The derivatives of the optical depth are with respect to the
-        intermediate variables, rather than the state vector variables (see
-        description of RtAtmosphere class for discussion of this).
+        This is used by the LSI to get "average optical properties".
 
         Parameters:
         -----------
@@ -289,6 +288,8 @@ class RtAtmosphere(full_physics_swig.state_vector.StateVectorObserver, Observabl
         wn:  The wave number to calculate parameters for.
 
         spec_index:  The spectrometer index
+
+        iv:  Intermediate variable values to use.
 
         Optical depth for each layer. This is number_layer() in size 
         """
