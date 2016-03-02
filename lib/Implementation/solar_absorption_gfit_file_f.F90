@@ -179,15 +179,21 @@ subroutine solar_pts(lunr,filename,filename_len,fzero,grid,frac,spts,ncp) bind(C
       character(kind=c_char, len=filename_len) :: solarll
       integer fn_index
 
-      integer*4 mw,iline,kline1,kline2,kv1,kv2,iv,i,lr, &
+      integer*4 mw,iline,kline1,kline2,kv1,kv2,iv,i,lr,mflag, &
         nlines,reclen,fsib
-      real*4 zero
+      real*4 zero,aa,rspf,stmin,sct,dd
       real*8 flinwid,srot,xx,x2,d4,y2,margin, &
         sdc,sdi,wdc,wdi,ddc,ddi, &
         fzmf,rr,ff,acc,freq,w_wid,stren,d_wid
       character llformat*16
-      parameter (acc=0.00001d0,margin=90.)
+      parameter (acc=0.00001d0,margin=90.,stmin=4000.0)
       llformat='(i3,f13.6,6f9.5)'
+
+      if(index(solarll,'minnaert').eq.0) then
+         mflag=0
+      else
+         mflag=1
+      endif
 
       ! Convert filename from an array into something
       ! that can be passed open
@@ -237,17 +243,19 @@ subroutine solar_pts(lunr,filename,filename_len,fzero,grid,frac,spts,ncp) bind(C
          stren=(1-ff)*sdc+ff*sdi
          w_wid=(1-ff)*wdc+ff*wdi
          d_wid=(1-ff)*ddc+ff*ddi
-         srot=5.E-06*freq*sqrt(frac)    ! broadening due to solar rotation
+         aa=0.538
+         srot=3.95E-06*freq*frac/sqrt(aa+(1-aa)*frac**2.5)    ! broadening due to solar rotation
          d4=(d_wid**2+srot**2)**2  ! Total Gaussian width
-         flinwid=sqrt(abs(2*stren*(d_wid+w_wid)/acc))
+         flinwid=sqrt(abs(2*stren*(d_wid+w_wid)/acc)) !  Effective line width
          kv1=max0(1,int((freq-fzero-flinwid)/grid))
          kv2=min0(ncp,int((freq-fzero+flinwid)/grid))
          y2=(w_wid)**2
          fzmf=fzero-freq
+         dd=w_wid+4*mflag*d_wid+0.07*(1-mflag) !  GCT 20130207
          do iv=kv1,kv2
             xx=fzmf+iv*grid
             x2=xx**2
-            rr=x2/sqrt(d4+y2*x2*(1+abs(xx/(w_wid+0.07))))
+            rr=x2/sqrt(d4+y2*x2*(1+abs(xx/dd))) ! GCT 20130207
             spts(iv)=spts(iv)+stren*exp(-rr)
          end do
       end do
@@ -256,10 +264,20 @@ subroutine solar_pts(lunr,filename,filename_len,fzero,grid,frac,spts,ncp) bind(C
 !  Convert optical thickness into an apparent transmittance
 !  and then apply Minnaert correction (not currently enabled).
       freq=fzero
-      do i=1,ncp
-        freq=freq+grid
-        spts(i)=exp(-spts(i))
-      end do 
+      if(index(solarll,'minnaert').eq.0) then
+         do i=1,ncp
+            freq=freq+grid
+            spts(i)=exp(-spts(i))
+         end do
+      else
+!  Apply Minnaert correction using Ratio of Solar Planck Functions (RSPF).
+         do i=1,ncp
+            freq=freq+grid
+            sct=2200+1000*log10(freq)  ! Solar Continuum Temperature
+            rspf=(exp(1.4388*freq/sct)-1)/(exp(1.4388*freq/stmin)-1)
+            spts(i)=rspf+(1.-rspf)*exp(-spts(i))
+         end do 
+      endif
       return
 end subroutine solar_pts
 
