@@ -528,6 +528,7 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/nonuniform_spectrum_sampling_wrap.cc \
 	@swigsrc@/spectral_window_range_wrap.cc \
 	@swigsrc@/temperature_ecmwf_wrap.cc \
+	@swigsrc@/temperature_level_offset_wrap.cc \
 	@swigsrc@/absorber_vmr_ecmwf_wrap.cc \
 	@swigsrc@/absorber_vmr_level_wrap.cc \
 	@swigsrc@/absorber_vmr_level_scaled_wrap.cc \
@@ -764,6 +765,7 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-nonuniform_spectrum_sampling_wrap.lo \
 	@swigsrc@/_swig_wrap_la-spectral_window_range_wrap.lo \
 	@swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo \
+	@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_level_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_level_scaled_wrap.lo \
@@ -3123,6 +3125,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/nonuniform_spectrum_sampling_wrap.cc \
 	@swigsrc@/spectral_window_range_wrap.cc \
 	@swigsrc@/temperature_ecmwf_wrap.cc \
+	@swigsrc@/temperature_level_offset_wrap.cc \
 	@swigsrc@/absorber_vmr_ecmwf_wrap.cc \
 	@swigsrc@/absorber_vmr_level_wrap.cc \
 	@swigsrc@/absorber_vmr_level_scaled_wrap.cc \
@@ -4315,6 +4318,8 @@ clean-pkgpythonswigLTLIBRARIES:
 @swigsrc@/_swig_wrap_la-spectral_window_range_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo:  \
+	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
+@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -6612,6 +6617,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_ecmwf_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_fixed_level_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_imp_base_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_offset_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-twostream_driver_wrap.Plo@am__quote@
@@ -8275,6 +8281,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/temperature_ecmwf_wrap.cc' object='@swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo `test -f '@swigsrc@/temperature_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_ecmwf_wrap.cc
+
+@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo: @swigsrc@/temperature_level_offset_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo `test -f '@swigsrc@/temperature_level_offset_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_level_offset_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/temperature_level_offset_wrap.cc' object='@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo `test -f '@swigsrc@/temperature_level_offset_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_level_offset_wrap.cc
 
 @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo: @swigsrc@/absorber_vmr_ecmwf_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_ecmwf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo `test -f '@swigsrc@/absorber_vmr_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/absorber_vmr_ecmwf_wrap.cc
