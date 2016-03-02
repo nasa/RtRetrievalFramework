@@ -1,8 +1,14 @@
+from __future__ import division
+from builtins import str
+from builtins import range
+from builtins import object
+from past.utils import old_div
 import os
 import logging
 import glob
 import sys
 import re
+import six
 from full_physics.l2_input import L2InputFile
 from abc import ABCMeta, abstractmethod, abstractproperty
 
@@ -45,15 +51,15 @@ class PopulatorBase(object):
         self.parallel_size = 1
 
         # Add cluster specific template substition values
-        if user_settings.has_key('target_cluster'):
+        if 'target_cluster' in user_settings:
             cluster_settings = CLUSTER_OPTIONS.get(user_settings['target_cluster'], None)
             if cluster_settings == None:
-                raise ValueError('Target cluster name: "%s" is unrecognized, use on of the following: %s' % (user_settings['target_cluster'], CLUSTER_OPTIONS.keys()))
+                raise ValueError('Target cluster name: "%s" is unrecognized, use on of the following: %s' % (user_settings['target_cluster'], list(CLUSTER_OPTIONS.keys())))
             user_settings.update(cluster_settings)
 
         # Add dictionary of external settings and substitutions as 
         # attributes of the class
-        for k, v in user_settings.items():
+        for k, v in list(user_settings.items()):
             setattr(self, k, v)
 
         # A derived class can make this false in order to suppress trying
@@ -161,17 +167,17 @@ class PopulatorBase(object):
     def addl_var_list_def(self):
         return "\n".join(
             ['%s_list=( `cat %s` )\n' % (k, v) 
-             for k, v in self.additional_var_list.items()])
+             for k, v in list(self.additional_var_list.items())])
     @property
     def addl_var_run_export(self):
         return "\n".join(
             ['export %s="${%s_list[${job_index}]}"\n' % (i, i)
-             for i in self.additional_var_list.keys()])
+             for i in list(self.additional_var_list.keys())])
     @property
     def variable_exports(self):
         return "\n".join(
             ['export %s="%s"\n' % (var_name, var_value) 
-             for var_name, var_value in self.variable_exports_list.items()])
+             for var_name, var_value in list(self.variable_exports_list.items())])
     @property
     def spectrum_file(self):
         return self.variable_exports_list["spectrum_file"]
@@ -181,7 +187,7 @@ class PopulatorBase(object):
         '''This searches the populator_list for the given config type, and
         if found returns an populator object for that config type. If we
         don't find anything, we return None.'''
-        if PopulatorBase.populator_list.has_key(config_type):
+        if config_type in PopulatorBase.populator_list:
             return PopulatorBase.populator_list[config_type](**user_settings)
         else:
             return None
@@ -196,14 +202,14 @@ class PopulatorBase(object):
         if len(t) > 0:
             pge = t[0].get_keyword_value("PGEName")
             if(pge is not None and len(pge) > 0):
-                for k, v in PopulatorBase.populator_list.items():
+                for k, v in list(PopulatorBase.populator_list.items()):
                     t = v(**user_settings)
                     if(re.search(pge, t.config_file_obj_re)):
                         return t
         
         # Some older config files don't have the PGE in it, so try working
         # off of the file name
-        for k, v in PopulatorBase.populator_list.items():
+        for k, v in list(PopulatorBase.populator_list.items()):
             if(re.search(config_file, r'^%s_' % k)):
                 return v(**user_settings)
         return None
@@ -214,7 +220,7 @@ class PopulatorBase(object):
         id_list = self.read_id_list_file(sounding_id_file, sounding_id_sect)
     
         if len(id_list) > self.group_size:
-            self.max_array_index = len(id_list) / self.group_size
+            self.max_array_index = old_div(len(id_list), self.group_size)
         else:
             # There is really only 1 index to be run, but without specficially setting this to 1
             # the range would be 0-0. But qsub does not like that range and will complain. So
@@ -242,18 +248,18 @@ class PopulatorBase(object):
         
         with open(self.aggregate_script_filename, 'w') as agg_fo:
             agg_fo.write( agg_template.format(self) )
-        os.chmod(self.aggregate_script_filename, 0755)
+        os.chmod(self.aggregate_script_filename, 0o755)
         
         job_template = open(tmpl_dir + "job.tmpl").read()
         with open(self.job_script_filename, 'w') as job_fo:
             job_fo.write( job_template.format(self) )
-        os.chmod(self.job_script_filename, 0755)
+        os.chmod(self.job_script_filename, 0o755)
             
         if self.target_cluster == 'pleiades':
             pleiades_template = open(tmpl_dir + "pleiades_job.tmpl").read()
             with open(self.pleiades_job_script_filename, 'w') as pjob_fo:
                 pjob_fo.write( pleiades_template.format(self) )
-            os.chmod(self.pleiades_job_script_filename, 0755)
+            os.chmod(self.pleiades_job_script_filename, 0o755)
         else:
             launch_template = open(tmpl_dir + "launch_jobs.tmpl").read()
             empty_launch_template = open(tmpl_dir + "empty_launch_jobs.tmpl").read()
@@ -262,7 +268,7 @@ class PopulatorBase(object):
                     launch_fo.write( empty_launch_template.format(self) )
                 else:
                     launch_fo.write( launch_template.format(self) )
-            os.chmod(self.launch_script_filename, 0755)
+            os.chmod(self.launch_script_filename, 0o755)
 
     def __expand_filename(self, filename, basePath=None):
         '''Expand a filename, used internally. This expands ~, and any
@@ -290,7 +296,7 @@ class PopulatorBase(object):
 
     def __get_list_file_values(self, listLocation, listName, sectionName=None, directoryLevels=None):
         # Expand any globs
-        if type(listLocation) is str:
+        if isinstance(listLocation, six.string_types):
             listLocation = self.__expand_filename(listLocation)
     
         # Make sure we have something to iterate over
@@ -308,7 +314,7 @@ class PopulatorBase(object):
         fileValues = []
         for listFile in listLocation:
            
-            if type(listFile) is str and os.path.isdir(listFile):
+            if isinstance(listFile, six.string_types) and os.path.isdir(listFile):
                 self.logger.debug('Loading LIST %s contents from directory: %s' % (listName, listFile))
     
                 # Use directoryLevels - 1 parts of the end of the path
@@ -325,7 +331,7 @@ class PopulatorBase(object):
             elif sectionName == None:
                 self.logger.debug('Loading LIST %s contents from file: %s' % (listName, listFile))
 
-                if type(listFile) is str:
+                if isinstance(listFile, six.string_types):
                     listFileObj = open(listFile, 'r')
                 elif hasattr(listFile, 'read'):
                     listFileObj = listFile
@@ -336,7 +342,7 @@ class PopulatorBase(object):
                     if len(listLine.strip()) > 0 and listLine.strip()[0] != '#':
                         fileValues.append(listLine.strip())
 
-                if type(listFile) is str:
+                if isinstance(listFile, six.string_types):
                     listFileObj.close()
             else:
                 self.logger.debug('Loading LIST %s section as %s contents from file: %s' % (sectionName, listName, listFile))

@@ -3,6 +3,7 @@
 #include "state_vector.h"
 #include "accumulated_timer.h"
 #include "pressure.h"
+#include "relative_humidity.h"
 
 namespace FullPhysics {
 /****************************************************************//**
@@ -34,7 +35,8 @@ public:
 
   virtual boost::shared_ptr<Aerosol> clone() const = 0;
   virtual boost::shared_ptr<Aerosol> 
-  clone(const boost::shared_ptr<Pressure>& Press) const = 0;
+  clone(const boost::shared_ptr<Pressure>& Press,
+	const boost::shared_ptr<RelativeHumidity>& Rh) const = 0;
 
 //-----------------------------------------------------------------------
 /// This calculates the portion of the phase function moments that

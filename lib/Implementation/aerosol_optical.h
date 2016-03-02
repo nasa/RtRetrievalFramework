@@ -19,6 +19,7 @@ public:
   AerosolOptical(const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
 	  const std::vector<boost::shared_ptr<AerosolProperty> >& Aerosol_prop,
 	  const boost::shared_ptr<Pressure>& Press,
+	  const boost::shared_ptr<RelativeHumidity>& Rh,
 	  double Reference_wn = 1e4/0.755);
   virtual ~AerosolOptical() {}
   virtual void notify_add(StateVector& Sv);
@@ -87,9 +88,10 @@ public:
 //-----------------------------------------------------------------------
 
   virtual boost::shared_ptr<Aerosol> clone() const 
-  { return clone(press->clone()); }
+  { return clone(press->clone(), rh->clone()); }
   virtual boost::shared_ptr<Aerosol> 
-  clone(const boost::shared_ptr<Pressure>& Press) const;
+  clone(const boost::shared_ptr<Pressure>& Press,
+	const boost::shared_ptr<RelativeHumidity>& Rh) const;
   std::vector<std::string> aerosol_name() const;
 
   blitz::Array<std::string, 1> aerosol_name_arr() const;
@@ -133,6 +135,7 @@ private:
   std::vector<boost::shared_ptr<AerosolExtinction> > aext;
   std::vector<boost::shared_ptr<AerosolProperty> > aprop;
   boost::shared_ptr<Pressure> press;
+  boost::shared_ptr<RelativeHumidity> rh;
   double reference_wn_;
   // We cache to part of optical_depth_each_layer calculation that
   // independent of wn.

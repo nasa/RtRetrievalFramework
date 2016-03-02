@@ -1,5 +1,7 @@
+from __future__ import absolute_import
+from builtins import object
 from nose.tools import *
-from xco2_bias_match_matlab_example import *
+from .xco2_bias_match_matlab_example import *
 try:
     import scipy.io as sio
 except ImportError:

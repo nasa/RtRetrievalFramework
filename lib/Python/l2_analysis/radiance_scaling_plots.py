@@ -1,9 +1,14 @@
+from __future__ import absolute_import
+from __future__ import division
+from builtins import zip
+from builtins import range
+from past.utils import old_div
 from matplotlib import pyplot as plt
 import numpy
 
-from time_diff_plot_routines import TimeDiffPlotRoutines
-from data_access_routines import DataAccessRoutines
-from filter_routines import FilterRoutines
+from .time_diff_plot_routines import TimeDiffPlotRoutines
+from .data_access_routines import DataAccessRoutines
+from .filter_routines import FilterRoutines
 
 class RadianceScalingRoutines(DataAccessRoutines, TimeDiffPlotRoutines):
 
@@ -23,14 +28,14 @@ class RadianceScalingRoutines(DataAccessRoutines, TimeDiffPlotRoutines):
     def plot_radiance_scaling_by_pos(self, obj_names, sounding_id, **kwargs):
         fig = plt.figure()
         filt = FilterRoutines()
-        positions = kwargs.get("positions", range(1, 9)) 
+        positions = kwargs.get("positions", list(range(1, 9))) 
         res = []
         # Remove the ids argument if passed, sounding_id would already be filtered
         _ = kwargs.pop("ids", None)
         subplot_idx = 1
         for pos in positions:
             pos_ids = filt.filter_snd_pos(sounding_id, by=pos)
-            axis = fig.add_subplot(2, len(positions)/2, subplot_idx)
+            axis = fig.add_subplot(2, old_div(len(positions),2), subplot_idx)
             subplot_idx += 1
             self.plot_radiance_scaling(obj_names, [pos_ids], axis=axis, **kwargs)
             axis.set_title("Radiance Scaling Pos: %d" % pos)

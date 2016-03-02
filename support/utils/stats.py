@@ -1,9 +1,11 @@
+from future import standard_library
+standard_library.install_aliases()
 #!/usr/bin/env python
 
 import os
 from glob import glob
 from optparse import OptionParser
-from StringIO import StringIO
+from io import StringIO
 
 from full_physics import acos_file
 
@@ -63,9 +65,9 @@ def gather_status(base_dir, output_dir, run_id_file=None, aggregate_file=None, v
     # Output non-empty files
     run_lists = {}
     aggregated_dirs = {}
-    for key in aggregate_types.keys(): aggregated_dirs[key] = ''
+    for key in list(aggregate_types.keys()): aggregated_dirs[key] = ''
     
-    for type_name, filename in out_filenames.items():
+    for type_name, filename in list(out_filenames.items()):
         out_str_obj = out_objects[type_name]
         out_strings = out_str_obj.getvalue()
 
@@ -76,14 +78,14 @@ def gather_status(base_dir, output_dir, run_id_file=None, aggregate_file=None, v
             out_file_obj.write(out_strings)
             out_file_obj.close()
 
-            for agg_name, agg_types in aggregate_types.items():
+            for agg_name, agg_types in list(aggregate_types.items()):
                 if type_name in agg_types:
                     aggregated_dirs[agg_name] += out_strings
         elif os.path.exists(filename):
             os.remove(filename)
             
     # Output non empty aggregated files
-    for agg_name, agg_strings in aggregated_dirs.items():
+    for agg_name, agg_strings in list(aggregated_dirs.items()):
         agg_filename = '%s/%s.list' % (output_dir, agg_name)
 
         if len(agg_strings) > 0:

@@ -138,7 +138,6 @@ import full_physics_swig.aerosol_property
 import full_physics_swig.observer
 import full_physics_swig.generic_object
 import full_physics_swig.state_vector
-import full_physics_swig.sub_state_vector_array
 class AerosolPropertyHdf(full_physics_swig.aerosol_property_imp_base.AerosolPropertyImpBase):
     """
 
@@ -171,7 +170,8 @@ class AerosolPropertyHdf(full_physics_swig.aerosol_property_imp_base.AerosolProp
     def clone(self, *args):
         """
 
-        boost::shared_ptr< AerosolProperty > AerosolPropertyHdf::clone(const boost::shared_ptr< Pressure > &Press) const
+        boost::shared_ptr< AerosolProperty > AerosolPropertyHdf::clone(const boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<
+        RelativeHumidity > &Rh) const
 
         """
         return _aerosol_property_hdf.AerosolPropertyHdf_clone(self, *args)

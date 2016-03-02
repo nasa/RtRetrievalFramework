@@ -1,14 +1,20 @@
+from __future__ import print_function
+from __future__ import absolute_import
+from builtins import zip
+from builtins import map
+from builtins import filter
+from builtins import str
 import sys
 import re
 import types
 
-from routines_base import RoutinesBase
-from status_routines import OUTCOME_MAPPING_DICT 
+from .routines_base import RoutinesBase
+from .status_routines import OUTCOME_MAPPING_DICT 
 
 class FilterBase(RoutinesBase):
     def _filter_on_value(self, sounding_ids, data_values, filter_comparison=None, mapping_func=lambda x: x):
         if filter_comparison == None:
-            print >>sys.stderr, "Filter value not supplied returning all ids"
+            print("Filter value not supplied returning all ids", file=sys.stderr)
             return sounding_ids
 
         if not isinstance(filter_comparison, types.FunctionType):
@@ -21,7 +27,7 @@ class FilterBase(RoutinesBase):
         ret_ids = []
         for obj_snd_ids, obj_values in zip(sounding_ids, data_values):
             obj_filtered_ids = []
-            mapped_values = map(mapping_func, obj_values)
+            mapped_values = list(map(mapping_func, obj_values))
             for curr_id, curr_value in zip(obj_snd_ids, mapped_values):
                 if hasattr(curr_value, "strip"):
                     curr_value = curr_value.strip()
@@ -40,7 +46,7 @@ class FilterRoutines(FilterBase):
         comparison_str = None
         # Make this filter easier to use as Lambertian is in both modes, add searching beginning
         # of string to make matching easier without user having to know regexp
-        if kwargs.has_key('by') != None:
+        if ('by' in kwargs) != None:
             comparison_str = "^" + kwargs['by']
         return self._filter_on_value(sounding_id, RetrievalResults__surface_type, comparison_str)
 
@@ -72,5 +78,5 @@ class FilterRoutines(FilterBase):
 
         ret_ids = []
         for obj_ids in sounding_id:
-            ret_ids += filter(is_snd_pos(pos_index), obj_ids)
+            ret_ids += list(filter(is_snd_pos(pos_index), obj_ids))
         return ret_ids

@@ -1,4 +1,5 @@
-from xco2_bias import *
+from __future__ import absolute_import
+from .xco2_bias import *
 from full_physics import *
 
 class XCO2BiasMatchMatlabExample(XCO2Bias):

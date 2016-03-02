@@ -1,7 +1,11 @@
+from __future__ import print_function
+from __future__ import division
+from builtins import range
+from past.utils import old_div
 import math
 import bisect
 import copy
-from types import IntType
+import six
 
 import numpy
 
@@ -39,10 +43,10 @@ def smooth(x,window_len=10,window='hanning'):
     """
 
     if x.ndim != 1:
-        raise ValueError, "smooth only accepts 1 dimension arrays."
+        raise ValueError("smooth only accepts 1 dimension arrays.")
 
     if x.size < window_len:
-        raise ValueError, "Input vector needs to be bigger than window size."
+        raise ValueError("Input vector needs to be bigger than window size.")
 
 
     if window_len<3:
@@ -50,7 +54,7 @@ def smooth(x,window_len=10,window='hanning'):
 
 
     if not window in ['flat', 'hanning', 'hamming', 'bartlett', 'blackman']:
-        raise ValueError, "Window is on of 'flat', 'hanning', 'hamming', 'bartlett', 'blackman'"
+        raise ValueError("Window is on of 'flat', 'hanning', 'hamming', 'bartlett', 'blackman'")
 
 
     s=r_[2*x[0]-x[window_len:1:-1],x,2*x[-1]-x[-1:-window_len:-1]]
@@ -60,23 +64,23 @@ def smooth(x,window_len=10,window='hanning'):
     else:
         w=eval(window+'(window_len)')
 
-    y=convolve(w/w.sum(),s,mode='same')
+    y=convolve(old_div(w,w.sum()),s,mode='same')
     return y[window_len-1:-window_len+1]
 
 def linear_interpol(data_in, grid_in, grid_out, extrapolate=False, extrap_err=True):
     'Perform a linear interpolation from one grid to another'
 
     if len(grid_in) == 0:
-        raise ValueError, 'grid_in can not be empty'
+        raise ValueError('grid_in can not be empty')
 
     if len(grid_out) == 0:
-        raise ValueError, 'grid_out can not be empty'
+        raise ValueError('grid_out can not be empty')
 
     new_data = numpy.zeros(len(grid_out), dtype=float)
 
     # We don't want to extrapolate
     if (grid_in[0] > grid_out[0]) and not extrapolate and extrap_err:
-        raise ValueError, "Can not interpolate since lowest input grid point: %f is larger than lowest output grid point: %f" % (grid_in[0], grid_out[0])
+        raise ValueError("Can not interpolate since lowest input grid point: %f is larger than lowest output grid point: %f" % (grid_in[0], grid_out[0]))
 
     # Look for possible precision problem when bottom levels are near each other
     if (grid_in[len(grid_in) - 1] < grid_out[len(grid_out) - 1]):
@@ -85,8 +89,8 @@ def linear_interpol(data_in, grid_in, grid_out, extrapolate=False, extrap_err=Tr
             # since it seems that they are essentially equal
             grid_out[len(grid_out) - 1] = grid_in[len(grid_in) - 1]
         elif not extrapolate and extrap_err:
-            raise ValueError, "highest input grid point %f is less than highest output grid grid point %f" % \
-                  (grid_in[len(grid_in) - 1], grid_out[len(grid_out) - 1])
+            raise ValueError("highest input grid point %f is less than highest output grid grid point %f" % \
+                  (grid_in[len(grid_in) - 1], grid_out[len(grid_out) - 1]))
 
     for out_g_row in range(len(grid_out)):
         y = grid_out[out_g_row]
@@ -97,7 +101,7 @@ def linear_interpol(data_in, grid_in, grid_out, extrapolate=False, extrap_err=Tr
 
         if (row == 0):
             if extrapolate:
-                frac = (y - grid_in[row])/(grid_in[row+1] - grid_in[row])
+                frac = old_div((y - grid_in[row]),(grid_in[row+1] - grid_in[row]))
                 new_data[out_g_row] = data_in[row] + frac * \
                                       (data_in[row+1] - data_in[row])
             else:
@@ -105,7 +109,7 @@ def linear_interpol(data_in, grid_in, grid_out, extrapolate=False, extrap_err=Tr
         elif (data_in[row] == data_in[row - 1]):
             new_data[out_g_row] = data_in[row]
         else:
-            frac = (y - grid_in[row-1])/(grid_in[row] - grid_in[row-1])
+            frac = old_div((y - grid_in[row-1]),(grid_in[row] - grid_in[row-1]))
             new_data[out_g_row] = data_in[row - 1] + frac * \
                                   (data_in[row] - data_in[row - 1])
 
@@ -159,14 +163,14 @@ def linear_interpol_idl(v, x, u = None):
     regular = u is None
     
     if regular:              # Simple regular case?
-        r = arange(x, dtype=float)*((m-1.0)/((x-1.0) > 1.0)) #Grid points in V
-        rl = long(r)	      # Cvt to integer
+        r = arange(x, dtype=float)*(old_div((m-1.0),((x-1.0) > 1.0))) #Grid points in V
+        rl = int(r)	      # Cvt to integer
         dif = v[1:]-v        # Other types are already signed
             
         return V[rl] + (r-rl)*dif[rl] # interpolate
 
     if len(x) != m:
-        raise ValueError, 'V and X arrays must have same # of elements'
+        raise ValueError('V and X arrays must have same # of elements')
 
     p = numpy.zeros(len(u), dtype=float)
     for out_row in range(len(u)):
@@ -206,7 +210,7 @@ def resample_profile(in_pres, in_data, resample_to, extrapolate=False, log_data=
         src_grid_log[i] = math.log10(in_pres[i])
         
     # Create log of destination pressure grid
-    if type(resample_to) is IntType:
+    if isinstance(resample_to, six.integer_types):
         dst_grid_log = numpy.zeros(resample_to, dtype=float)
         dst_data = numpy.zeros(resample_to, dtype=float)
         for i in range (resample_to):
@@ -257,8 +261,8 @@ def resample_aerosol_old(pressures_in, aerosol_data, pressures_out, debug=False)
     aer_matrix = abs(aer_matrix)
 
     if debug:
-        print 'input aod = %f, %d levels' % (total_aod(pressures_in, aer_matrix), aer_matrix.shape[0])
-        print ''
+        print('input aod = %f, %d levels' % (total_aod(pressures_in, aer_matrix), aer_matrix.shape[0]))
+        print('')
 
     num_in_levels = len(pressures_in)
     num_out_levels = len(pressures_out)
@@ -268,7 +272,7 @@ def resample_aerosol_old(pressures_in, aerosol_data, pressures_out, debug=False)
     width = num_in_levels * 10
 
     # create regular press-levels
-    num_regular_levels = long(pressures_in[num_in_levels-1]-pressures_in[0])/10+2
+    num_regular_levels = old_div(int(pressures_in[num_in_levels-1]-pressures_in[0]),10)+2
     pressures_regular = arange(1, num_regular_levels*10, 10, dtype=float)
 
     # Create output data matrix
@@ -285,8 +289,8 @@ def resample_aerosol_old(pressures_in, aerosol_data, pressures_out, debug=False)
         #aero_smooth = aero_interp
 
         if debug:
-            print '  type input aod [%d] = %f' % (aero_idx, desired_aod)
-            print ' type smooth aod [%d] = %f' % (aero_idx, total_aod(pressures_regular, aero_smooth))
+            print('  type input aod [%d] = %f' % (aero_idx, desired_aod))
+            print(' type smooth aod [%d] = %f' % (aero_idx, total_aod(pressures_regular, aero_smooth)))
 
         btm_level = 0
         while pressures_out[btm_level] < pressures_in[num_in_levels-1] and btm_level < num_out_levels-1:
@@ -309,14 +313,14 @@ def resample_aerosol_old(pressures_in, aerosol_data, pressures_out, debug=False)
             del_p = p1[out_lev_idx] - p1[out_lev_idx-1]
             
             for k in range(100+1):
-                pressures_fine[k] = p1[out_lev_idx - 1] + (del_p / 100.0E0) * float(k)
+                pressures_fine[k] = p1[out_lev_idx - 1] + (old_div(del_p, 100.0E0)) * float(k)
                 
             aero_interp = linear_interpol_idl(aero_smooth, pressures_regular, pressures_fine)
             tot_od = 0.0E0
             
             # integrate optical depth for on layer
             for k in range(100):
-                del_od = (del_p / 100.0E0) * (aero_interp[k] + aero_interp[k+1]) / 2.0
+                del_od = (old_div(del_p, 100.0E0)) * (aero_interp[k] + aero_interp[k+1]) / 2.0
                 tot_od += del_od
 
             aer_tot_aod += tot_od
@@ -331,10 +335,10 @@ def resample_aerosol_old(pressures_in, aerosol_data, pressures_out, debug=False)
         ext_out[aero_idx,:] = linear_interpol_idl(ext, p1, pressures_out)
 
         new_aod = total_aod(pressures_out, ext_out[aero_idx,:])       
-        ext_scale = desired_aod/new_aod
+        ext_scale = old_div(desired_aod,new_aod)
 
         if debug:
-            print ' type interp aod [%d] = %f * %f scaling' % (aero_idx, new_aod, ext_scale)
+            print(' type interp aod [%d] = %f * %f scaling' % (aero_idx, new_aod, ext_scale))
         
         ext_out[aero_idx,:] = ext_out[aero_idx,:] * ext_scale
 
@@ -343,11 +347,11 @@ def resample_aerosol_old(pressures_in, aerosol_data, pressures_out, debug=False)
                 ext_out[aero_idx, lev_idx] = ext_0
 
         if debug:
-            print ' type scaled aod [%d] = %f' % (aero_idx, total_aod(pressures_out, ext_out[aero_idx,:]))
-            print ''
+            print(' type scaled aod [%d] = %f' % (aero_idx, total_aod(pressures_out, ext_out[aero_idx,:])))
+            print('')
 
     if debug:
-        print ' destination aod = %f, %d levels' % (total_aod(pressures_out, ext_out.transpose()), ext_out.shape[1])
+        print(' destination aod = %f, %d levels' % (total_aod(pressures_out, ext_out.transpose()), ext_out.shape[1]))
 
     return ext_out
 
@@ -414,7 +418,7 @@ def resample_aerosol(plev1, alev1_in, plev2, log_data=False, tau1=None, tau2=Non
     # STEP3 : Determine new aerosol concentration on Layers
     dp2 = plev2[1:] - plev2[0:n2-1]
     for a in range(0, ntypes):
-        alay2[:,a] = tau2[:,a] / dp2
+        alay2[:,a] = old_div(tau2[:,a], dp2)
 
     # STEP4 : Interpolate layers -> levels
     # make boundary values the same, average in between
@@ -449,7 +453,7 @@ def total_aod(pressure, aerosol, return_layers=False, in_log=False):
       aer_matrix = numpy.exp(aer_matrix)
 
   if aer_matrix.shape[0] != num_levels:
-      raise ValueError, 'Number of pressure levels does not match number of aerosol levels'
+      raise ValueError('Number of pressure levels does not match number of aerosol levels')
 
   num_aer_types = aer_matrix.shape[1]
       
@@ -457,7 +461,7 @@ def total_aod(pressure, aerosol, return_layers=False, in_log=False):
   layer_aod   = numpy.zeros(num_levels-1, dtype=float)
   layer_press = numpy.zeros(num_levels-1, dtype=float)
   for layer_idx in range(num_levels-1):
-      delta_press = (pressure[layer_idx + 1] - pressure[layer_idx]) / 2.0
+      delta_press = old_div((pressure[layer_idx + 1] - pressure[layer_idx]), 2.0)
       layer_press[layer_idx] = pressure[layer_idx + 1] - delta_press
       for aer_idx in range(num_aer_types):
           layer_aod[layer_idx] = layer_aod[layer_idx] + \
@@ -496,7 +500,7 @@ def jpl_gravity(gdlat, altit):
     (to .07%) by the simple expression g = 0.99746*GM/radius**2, the latitude
     variation coming entirely from the variation of surface r with latitude.
     """
-    d2r=3.14159265/180.
+    d2r=old_div(3.14159265,180.)
     gm=3.9862216e+14
     omega=7.292116E-05
     con=.006738
@@ -504,14 +508,14 @@ def jpl_gravity(gdlat, altit):
     eqrad=6378178.
 
     # Convert from geodetic latitude (GDLAT) to geocentric latitude (GCLAT).
-    gclat=numpy.arctan(numpy.tan(d2r*gdlat)/(1.0+con))  # radians
+    gclat=numpy.arctan(old_div(numpy.tan(d2r*gdlat),(1.0+con)))  # radians
     # On computers which crash at the poles try the following expression
     # gclat=d2r*gdlat-con*sin(d2r*gdlat)*cos(d2r*gdlat)/(1+con*cos(d2r*gdlat)**2)
-    radius=1000.0*altit+eqrad/numpy.sqrt(1.+con*numpy.sin(gclat)**2)
-    ff=(radius/eqrad)**2
+    radius=1000.0*altit+old_div(eqrad,numpy.sqrt(1.+con*numpy.sin(gclat)**2))
+    ff=(old_div(radius,eqrad))**2
     hh=radius*omega**2
-    ge_=gm/eqrad**2                       # = gravity at Re
-    gravity=(ge_*(1-shc*(3*numpy.sin(gclat)**2-1)/ff)/ff-hh*numpy.cos(gclat)**2) *(1+0.5*(numpy.sin(gclat)*numpy.cos(gclat)*(hh/ge_+2*shc/ff**2))**2)
+    ge_=old_div(gm,eqrad**2)                       # = gravity at Re
+    gravity=(ge_*(1-shc*(3*numpy.sin(gclat)**2-1)/ff)/ff-hh*numpy.cos(gclat)**2) *(1+0.5*(numpy.sin(gclat)*numpy.cos(gclat)*(old_div(hh,ge_)+2*shc/ff**2))**2)
 
     return gravity
 
@@ -537,7 +541,7 @@ def gravity_profile(P, T, q, elevation, lat):
         zlower = z[i+1]
         dP = P[i+1] - P[i]
         Tv = Tbar * (1.0e0 + qbar * efact)
-        logratio = numpy.log(P[i+1] / P[i])
+        logratio = numpy.log(old_div(P[i+1], P[i]))
         grav[i] = jpl_gravity(lat, zlower)
         dz = logratio * Tv * Rd / grav[i] * 1e-3 # km
         grav[i] = jpl_gravity(lat, zlower + 0.5*dz)
@@ -580,14 +584,14 @@ def compute_xco2(co2, p, t=None, h2o=None, ak=None):
         q = epsilon * h2o / (1. + epsilon * h2o)
         qbar = (q[1:] + q[0:-1]) * 0.5
         gbar = gravity_profile(p, t, q, 0., 45.)
-        corr = (1-qbar)/gbar
+        corr = old_div((1-qbar),gbar)
     else:
         corr = numpy.ones(nlev-1)
 
     dp = p[1:] - p[0:-1]
 
     wgt = dp * corr
-    wgt = wgt / numpy.sum(wgt)
+    wgt = old_div(wgt, numpy.sum(wgt))
 
     # Get the pressure weighting function on levels
     wgtlev = numpy.zeros(nlev, dtype=float)

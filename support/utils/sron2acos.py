@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from __future__ import division
+from builtins import str
+from builtins import range
+from past.utils import old_div
 import sys
 import h5py
 from numpy import *
@@ -10,8 +15,8 @@ def parseSpectraFile(spec_file, f, name, ll, offset):
     band = f_band.readlines()
     numberOfSoundings = len(band)-5 # Usually, first 5 lines are comments as to the file structure, be careful here! 
     line10 = band[5].split()       # Quick& dirty, split line 10 to get real spectra size
-    specLength = (len(line10)-1)/4  # One line contains filename + two pairs of wavenumbers and spectra, i.e. (length-1) divided by 4 gives length of a single spectrum
-    print 'Parsing spectra, might take some time...'
+    specLength = old_div((len(line10)-1),4)  # One line contains filename + two pairs of wavenumbers and spectra, i.e. (length-1) divided by 4 gives length of a single spectrum
+    print('Parsing spectra, might take some time...')
     spec = f.create_dataset(name, (numberOfSoundings,2,ll), 'f')
     for i in range(5,len(band)):
         line_band = band[i].split()
@@ -30,7 +35,7 @@ def parseGeolocations(geoFile, f):
     geo = open(geoFile,'r')
     geo_line = geo.readlines()
     numberOfSoundings = len(geo_line)-9 # Usually, first 9 lines are comments as to the file structure, be careful here! 
-    print 'Creating Footprint Geometries for ', numberOfSoundings, ' soundings'
+    print('Creating Footprint Geometries for ', numberOfSoundings, ' soundings')
     # Geometries and Gain settings...
     lat = f.create_dataset('FootprintGeometry/footprint_latitude', (numberOfSoundings,3,2), 'f')
     lon = f.create_dataset('FootprintGeometry/footprint_longitude', (numberOfSoundings,3,2), 'f')
@@ -94,12 +99,12 @@ def parseGeolocations(geoFile, f):
 def parseMetFile(metFile, f, psurf):
     met = open(metFile,'r')
     met_line = met.readlines()
-    print len(met_line)
+    print(len(met_line))
     numberOfSoundings = len(met_line)-4 # Usually, first 4 lines are comments as to the file structure, be careful here! 
-    fieldLength = (len(met_line[4].split())-1)/3 # Field length
-    print 'Reading Met files...'
-    print 'Number of soundings in met file: ', numberOfSoundings
-    print 'Number of atmospheric layers: ', fieldLength
+    fieldLength = old_div((len(met_line[4].split())-1),3) # Field length
+    print('Reading Met files...')
+    print('Number of soundings in met file: ', numberOfSoundings)
+    print('Number of atmospheric layers: ', fieldLength)
     press_level1 = f.create_dataset('ecmwf/specific_humidity_pressures', (numberOfSoundings,3,2, fieldLength), 'f')
     press_level2 = f.create_dataset('ecmwf/temperature_pressures', (numberOfSoundings,3,2, fieldLength), 'f')
     surfacePressure = f.create_dataset('ecmwf/surface_pressure', (numberOfSoundings,3,2), 'f')
@@ -195,16 +200,16 @@ def standalone_main():
     specLength3, numberOfSoundings3 =  parseSpectraFile(options.spec_band3,f,  '/SoundingSpectra/radiance_strong_co2', 2005, 281)
     
     if numberOfSoundings2 == numberOfSoundings and numberOfSoundings3 == numberOfSoundings and numberOfSoundings1 == numberOfSoundings:
-        print "Number of soundings consistent, namely: ", numberOfSoundings
-        print "O2A band spectra length: " , specLength1
-        print "wCO2 band spectra length: " , specLength2
-        print "sCO2 band spectra length: " , specLength3
+        print("Number of soundings consistent, namely: ", numberOfSoundings)
+        print("O2A band spectra length: " , specLength1)
+        print("wCO2 band spectra length: " , specLength2)
+        print("sCO2 band spectra length: " , specLength3)
     else:
-        print "Error: Number of soundings inconsistent, namely: \n"
-        print "Geolocations: ",  numberOfSoundings
-        print "O2A band file: " , numberOfSoundings1
-        print "wCO2 band file: " , numberOfSoundings2
-        print "sCO2 band file: " , numberOfSoundings3
+        print("Error: Number of soundings inconsistent, namely: \n")
+        print("Geolocations: ",  numberOfSoundings)
+        print("O2A band file: " , numberOfSoundings1)
+        print("wCO2 band file: " , numberOfSoundings2)
+        print("sCO2 band file: " , numberOfSoundings3)
         sys.exit(2)
     
    

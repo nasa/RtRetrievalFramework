@@ -1,8 +1,9 @@
+from __future__ import absolute_import
 from matplotlib import pyplot as plt
 import numpy
 
-from routines_base import PlotMaker
-from time_diff_plot_routines import TimeDiffPlotRoutines
+from .routines_base import PlotMaker
+from .time_diff_plot_routines import TimeDiffPlotRoutines
 
 class L1bPlotRoutinesReal(PlotMaker, TimeDiffPlotRoutines):
     def __init__(self, analysis_env=None, **kwargs):
@@ -20,7 +21,7 @@ class L1bPlotRoutinesGuard(L1bPlotRoutinesReal):
 
         # Only allow the object to be returned if the analysis envirionment contains
         # additional objects where the L1B group is defined in the datasets
-        if analysis_env != None and len(analysis_env.addl_objs) > 0 and 'FootprintGeometry' in analysis_env.addl_objs[0].keys():
+        if analysis_env != None and len(analysis_env.addl_objs) > 0 and 'FootprintGeometry' in list(analysis_env.addl_objs[0].keys()):
             return super(L1bPlotRoutinesGuard, cls).__new__(cls)
         else:
             return None

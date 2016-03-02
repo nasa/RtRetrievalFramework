@@ -13,6 +13,7 @@
 %import "temperature.i"
 %import "rayleigh.i"
 %import "ground.i"
+%import "relative_humidity.i"
 namespace FullPhysics {
 class AtmosphereOco;
 }
@@ -30,6 +31,7 @@ public:
 	     const boost::shared_ptr<Pressure>& pressurev,
 	     const boost::shared_ptr<Temperature>& temperaturev,
 	     const boost::shared_ptr<Aerosol>& aerosolv,
+	     const boost::shared_ptr<RelativeHumidity>& rhv,
 	     const boost::shared_ptr<Ground>& groundv,
 	     const std::vector<boost::shared_ptr<Altitude> >& altv,
 	     const boost::shared_ptr<Constant>& C);
@@ -69,6 +71,7 @@ public:
   %python_attribute2(absorber, absorber_ptr, boost::shared_ptr<Absorber>)
   %python_attribute2(aerosol, aerosol_ptr, boost::shared_ptr<Aerosol>)
   %python_attribute2(temperature, temperature_ptr, boost::shared_ptr<Temperature>)
+  %python_attribute2(relative_humidity, relative_humidity_ptr, boost::shared_ptr<RelativeHumidity>)
   %python_attribute2(constant, constant_ptr, boost::shared_ptr<Constant>)
   %python_attribute2(rayleigh, rayleigh_ptr, boost::shared_ptr<Rayleigh>)
   %python_attribute2(altitude_obj, altitude_ptr, std::vector<boost::shared_ptr<Altitude> >)

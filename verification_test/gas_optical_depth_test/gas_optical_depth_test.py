@@ -1,3 +1,4 @@
+from __future__ import print_function
 from nose.tools import *
 from full_physics import *
 from nose.plugins.skip import Skip, SkipTest
@@ -95,19 +96,19 @@ def test_full_range():
         mx = np.zeros((19, 3))
         mx_ind = np.zeros((19, 3))
         i = 0
-        print "Starting spec_index", spec_index
+        print("Starting spec_index", spec_index)
         for wn in r.forward_model.spectral_domain(spec_index).data:
             if(i % 100 == 0):
-                print "Doing", i
-                print "Current max (species x layer):"
-                print mx
-                print "Index with current max (species x layer):"
-                print mx_ind
+                print("Doing", i)
+                print("Current max (species x layer):")
+                print(mx)
+                print("Index with current max (species x layer):")
+                print(mx_ind)
             t = diff_integrate(spec_index, wn)
             mx_ind = np.where(mx < t, i, mx_ind)
             mx = np.where(mx < t, t, mx)
             i += 1
-        print "Final results spec_index", spec_index, ":", mx, mx_ind
+        print("Final results spec_index", spec_index, ":", mx, mx_ind)
     
 def test_short_range():
     '''This is a small test that just makes sure we can still run the full
@@ -115,7 +116,7 @@ def test_short_range():
     if(not have_full_physics_swig):
         raise SkipTest
     spec_index = 0
-    print "Starting spec_index", spec_index
+    print("Starting spec_index", spec_index)
     i = 3920
     mx = np.zeros((19, 3))
     mx_ind = np.zeros((19, 3))
@@ -124,6 +125,6 @@ def test_short_range():
         mx_ind = np.where(mx < t, i, mx_ind)
         mx = np.where(mx < t, t, mx)
         i += 1
-    print "Final results spec_index", spec_index, ":", mx, mx_ind
+    print("Final results spec_index", spec_index, ":", mx, mx_ind)
     assert mx.max() < 2.5e-1
     

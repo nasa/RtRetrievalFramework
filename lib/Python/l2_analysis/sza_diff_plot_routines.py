@@ -1,9 +1,11 @@
+from __future__ import absolute_import
+from builtins import zip
 import numpy
 from matplotlib.pyplot import *
 
-from routines_base import PlotRoutinesBase, PlotMaker
+from .routines_base import PlotRoutinesBase, PlotMaker
 
-from decorators import call_data_pairs, add_optional_datasets
+from .decorators import call_data_pairs, add_optional_datasets
 
 class SzaDiffPlotRoutines(PlotRoutinesBase):
 

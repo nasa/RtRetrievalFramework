@@ -4,6 +4,9 @@
 # modifies spectral domain (through selection or masking) specified in hdf5 input file
 # by F. Oyafuso
 
+from __future__ import print_function
+from builtins import str
+from builtins import range
 import os, sys, shutil, re
 import numpy, scipy, h5py
 import shlex, subprocess

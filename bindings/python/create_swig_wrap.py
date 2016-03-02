@@ -4,14 +4,34 @@
 
 import os
 import sys
+import re
 
-print sys.argv[0]
 tmpl_dir = os.path.dirname(sys.argv[0]) + "/"
 swig_wrap_template = open(tmpl_dir + "swig_wrap.tmpl").read()
-prototypes = "\n".join(["  void init_%s(void);" % i for i in sys.argv[2:]])
-initcmd = "\n".join(["  init_extension_module(package, \"_%s\", init_%s);" % (i, i) for i in sys.argv[2:]])
+prototypes = []
+initcmd = []
+end_count = 0
+for i in sys.argv[2:]:
+    # Handle stuff we are including conditionally
+    if(re.search('\AHAVE', i)):
+        for c in range(end_count):
+            prototypes.append("#endif")
+            initcmd.append("#endif")
+        end_count = 0
+        for t in i.split():
+            prototypes.append("#ifdef %s" % t)
+            initcmd.append("#ifdef %s" % t)
+            end_count += 1
+    # Handle everything else
+    else:
+        prototypes.append("  SWIG_INIT_TYPE SWIG_INIT_FUNC(%s)(void);" % i)
+        initcmd .append("  SWIG_INIT_MODULE(package, \"_%s\", SWIG_INIT_FUNC(%s));" % (i, i))
+# Make sure we close all the conditions
+for c in range(end_count):
+    prototypes.append("#endif")
+    initcmd.append("#endif")
 with open(sys.argv[1], 'w') as swig_wrap_fo:
-    swig_wrap_fo.write(swig_wrap_template.format(prototypes=prototypes,
-                                                 initcmd=initcmd))
+    swig_wrap_fo.write(swig_wrap_template.format(prototypes="\n".join(prototypes),
+                                                 initcmd="\n".join(initcmd)))
 
 

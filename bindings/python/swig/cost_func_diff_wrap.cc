@@ -4876,6 +4876,9 @@ template<class T, int D> inline blitz::Array<T, D>
 #include "cost_func_diff.h"
 
 
+  #define SWIG_From_double   PyFloat_FromDouble 
+
+
 
 /* ---------------------------------------------------
  * C++ director class methods
@@ -5079,13 +5082,17 @@ SWIGINTERN PyObject *_wrap_CostFuncDiff_cost_gradient(PyObject *SWIGUNUSEDPARM(s
   int res1 = 0 ;
   boost::shared_ptr< FullPhysics::CostFuncDiff > tempshared1 ;
   boost::shared_ptr< FullPhysics::CostFuncDiff > *smartarg1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  double temp2 ;
+  int res2 = SWIG_TMPOBJ ;
+  blitz::Array< double,1 > temp3 ;
+  PyObject *swig_obj[1] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"CostFuncDiff_cost_gradient",3,3,swig_obj)) SWIG_fail;
+  arg2 = &temp2;
+  {
+    arg3 = &temp3;
+  }
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__CostFuncDiff_t, 0 |  0 , &newmem);
@@ -5101,22 +5108,6 @@ SWIGINTERN PyObject *_wrap_CostFuncDiff_cost_gradient(PyObject *SWIGUNUSEDPARM(s
       arg1 = const_cast< FullPhysics::CostFuncDiff * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_double,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CostFuncDiff_cost_gradient" "', argument " "2"" of type '" "double &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CostFuncDiff_cost_gradient" "', argument " "2"" of type '" "double &""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_blitz__ArrayT_double_1_t,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CostFuncDiff_cost_gradient" "', argument " "3"" of type '" "blitz::Array< double,1 > &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CostFuncDiff_cost_gradient" "', argument " "3"" of type '" "blitz::Array< double,1 > &""'"); 
-  }
-  arg3 = reinterpret_cast< blitz::Array< double,1 > * >(argp3);
   {
     try {
       (arg1)->cost_gradient(*arg2,*arg3);
@@ -5127,6 +5118,30 @@ SWIGINTERN PyObject *_wrap_CostFuncDiff_cost_gradient(PyObject *SWIGUNUSEDPARM(s
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsTmpObj(res2)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_double((*arg2)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res2) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg2), SWIGTYPE_p_double, new_flags));
+  }
+  {
+    npy_intp dims[1], stride[1];
+    for(int i = 0; i < 1; ++i) {
+      dims[i] = arg3->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = arg3->stride(i) * sizeof(double);
+    }
+    PyObject *res = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
+      stride, arg3->data(), 0, 0, 0);
+    blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*arg3);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)res,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
+    resultobj = SWIG_Python_AppendOutput(resultobj, res);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -5145,13 +5160,16 @@ SWIGINTERN PyObject *_wrap_CostFuncDiff_cost_gradient_x(PyObject *SWIGUNUSEDPARM
   boost::shared_ptr< FullPhysics::CostFuncDiff > *smartarg1 = 0 ;
   blitz::Array< double,1 > a2 ;
   PythonObject numpy2 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  double temp3 ;
+  int res3 = SWIG_TMPOBJ ;
+  blitz::Array< double,1 > temp4 ;
+  PyObject *swig_obj[2] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"CostFuncDiff_cost_gradient_x",4,4,swig_obj)) SWIG_fail;
+  arg3 = &temp3;
+  {
+    arg4 = &temp4;
+  }
+  if (!SWIG_Python_UnpackTuple(args,"CostFuncDiff_cost_gradient_x",2,2,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__CostFuncDiff_t, 0 |  0 , &newmem);
@@ -5178,22 +5196,6 @@ SWIGINTERN PyObject *_wrap_CostFuncDiff_cost_gradient_x(PyObject *SWIGUNUSEDPARM
       arg2 = &a2;
     }
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_double,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CostFuncDiff_cost_gradient_x" "', argument " "3"" of type '" "double &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CostFuncDiff_cost_gradient_x" "', argument " "3"" of type '" "double &""'"); 
-  }
-  arg3 = reinterpret_cast< double * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_blitz__ArrayT_double_1_t,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CostFuncDiff_cost_gradient_x" "', argument " "4"" of type '" "blitz::Array< double,1 > &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CostFuncDiff_cost_gradient_x" "', argument " "4"" of type '" "blitz::Array< double,1 > &""'"); 
-  }
-  arg4 = reinterpret_cast< blitz::Array< double,1 > * >(argp4);
   {
     try {
       (arg1)->cost_gradient_x((blitz::Array< double,1 > const &)*arg2,*arg3,*arg4);
@@ -5204,6 +5206,30 @@ SWIGINTERN PyObject *_wrap_CostFuncDiff_cost_gradient_x(PyObject *SWIGUNUSEDPARM
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsTmpObj(res3)) {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_From_double((*arg3)));
+  } else {
+    int new_flags = SWIG_IsNewObj(res3) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg3), SWIGTYPE_p_double, new_flags));
+  }
+  {
+    npy_intp dims[1], stride[1];
+    for(int i = 0; i < 1; ++i) {
+      dims[i] = arg4->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = arg4->stride(i) * sizeof(double);
+    }
+    PyObject *res = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
+      stride, arg4->data(), 0, 0, 0);
+    blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*arg4);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)res,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
+    resultobj = SWIG_Python_AppendOutput(resultobj, res);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -5357,7 +5383,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"The gradient of the cost function \n"
 		""},
-	 { (char *)"CostFuncDiff_cost_gradient", _wrap_CostFuncDiff_cost_gradient, METH_VARARGS, (char *)"\n"
+	 { (char *)"CostFuncDiff_cost_gradient", (PyCFunction)_wrap_CostFuncDiff_cost_gradient, METH_O, (char *)"\n"
 		"\n"
 		"void CostFuncDiff::cost_gradient(double &c, blitz::Array< double, 1 > &g)\n"
 		"The cost function and its gradient together.\n"

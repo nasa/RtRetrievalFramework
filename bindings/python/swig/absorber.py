@@ -417,6 +417,7 @@ class SubStateVectorAbsorber(Absorber, full_physics_swig.state_vector.SubStateVe
         """
         return _absorber.SubStateVectorAbsorber_clone(self, *args)
 
+    __swig_destroy__ = _absorber.delete_SubStateVectorAbsorber
     def __disown__(self):
         self.this.disown()
         _absorber.disown_SubStateVectorAbsorber(self)

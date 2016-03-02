@@ -221,7 +221,8 @@ class AerosolProperty(full_physics_swig.state_vector.StateVectorObserver, Observ
     def clone(self, *args):
         """
 
-        virtual boost::shared_ptr<AerosolProperty> FullPhysics::AerosolProperty::clone(const boost::shared_ptr< Pressure > &Press) const =0
+        virtual boost::shared_ptr<AerosolProperty> FullPhysics::AerosolProperty::clone(const boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<
+        RelativeHumidity > &Rh) const =0
         This version of clone takes a pressure to use.
 
         The intent is that the pressure has been cloned from the original

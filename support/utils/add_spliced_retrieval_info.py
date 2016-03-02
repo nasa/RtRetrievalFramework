@@ -3,6 +3,7 @@
 # Add some fields to spliced L2 files which maps the L1B indexes into where they are used in the file
 # Requires two argments, the L1B filename and the spliced file to write into
 
+from __future__ import print_function
 import os
 import sys
 import h5py
@@ -56,7 +57,7 @@ if ret_sounding_ids == None:
     raise Exception("Could not find retrieval sounding ids data set from spliced file: %s" % args.splice_filename)
 
 def copy_attrs(in_ds, out_ds):
-    for k, v in in_ds.attrs.items():
+    for k, v in list(in_ds.attrs.items()):
         out_ds.attrs[k] = numpy.array([v[0]])
 
 # Copy L1B sounding ids into destination file
@@ -64,7 +65,7 @@ if splice_file.get(OUT_L1B_SND_ID_DS, None) == None:
     out_snd_ids_ds = splice_file.create_dataset(OUT_L1B_SND_ID_DS, data=l1b_sounding_ids)
     copy_attrs(l1b_sounding_ids, out_snd_ids_ds)
 else:
-    print >>sys.stderr, "Dataset %s already exists in %s" % (OUT_L1B_SND_ID_DS, args.splice_filename)
+    print("Dataset %s already exists in %s" % (OUT_L1B_SND_ID_DS, args.splice_filename), file=sys.stderr)
 
 # Add index datasets that index from L1B file indexes to L2 file indexes and vice versa
 if splice_file.get(RET_INDEX_DS, None) == None:
@@ -97,7 +98,7 @@ if splice_file.get(RET_INDEX_DS, None) == None:
     out_sounding_index_ds = splice_file.create_dataset(OUT_SOUNDING_INDEX_DS, data=sounding_index)
     copy_attrs(ret_sounding_ids, out_sounding_index_ds)
 else:
-    print >>sys.stderr, "Dataset %s already exists in %s" % (RET_INDEX_DS, args.splice_filename)
+    print("Dataset %s already exists in %s" % (RET_INDEX_DS, args.splice_filename), file=sys.stderr)
 
 # Add datasets that may be missing due to them being specific to, say a ground type, but the aggregator never
 # encountered any soundings that had the dataset

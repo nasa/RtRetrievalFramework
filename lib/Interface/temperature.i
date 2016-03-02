@@ -33,6 +33,7 @@ public:
   %python_attribute(important_pressure_level, virtual ArrayWithUnit<double, 1>);
   virtual AutoDerivativeWithUnit<double> 
   temperature(const AutoDerivativeWithUnit<double>& Press) const = 0;
+  virtual ArrayAdWithUnit<double, 1> temperature_grid(const Pressure& P) const;
   virtual boost::shared_ptr<Temperature> clone() const = 0;
   virtual boost::shared_ptr<Temperature> 
   clone(const boost::shared_ptr<Pressure>& Press) const = 0;

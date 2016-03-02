@@ -220,7 +220,7 @@ class CostFuncDiff(full_physics_swig.cost_func.CostFunc):
         return _cost_func_diff.CostFuncDiff_gradient_x(self, x)
 
 
-    def cost_gradient(self, c, g):
+    def cost_gradient(self):
         """
 
         void CostFuncDiff::cost_gradient(double &c, blitz::Array< double, 1 > &g)
@@ -247,10 +247,10 @@ class CostFuncDiff(full_physics_swig.cost_func.CostFunc):
 
         g:  The gradient vector with size gradient_size() 
         """
-        return _cost_func_diff.CostFuncDiff_cost_gradient(self, c, g)
+        return _cost_func_diff.CostFuncDiff_cost_gradient(self)
 
 
-    def cost_gradient_x(self, x, c, g):
+    def cost_gradient_x(self, x):
         """
 
         virtual void FullPhysics::CostFuncDiff::cost_gradient_x(const blitz::Array< double, 1 > &x, double &c, blitz::Array< double,
@@ -269,7 +269,7 @@ class CostFuncDiff(full_physics_swig.cost_func.CostFunc):
 
         g:  The gradient vector with size gradient_size() 
         """
-        return _cost_func_diff.CostFuncDiff_cost_gradient_x(self, x, c, g)
+        return _cost_func_diff.CostFuncDiff_cost_gradient_x(self, x)
 
 
     def _v_num_der1_evaluations(self):

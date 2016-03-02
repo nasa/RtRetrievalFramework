@@ -265,7 +265,8 @@ class Aerosol(full_physics_swig.state_vector.StateVectorObserver, ObservableAero
     def clone(self, *args):
         """
 
-        virtual boost::shared_ptr<Aerosol> FullPhysics::Aerosol::clone(const boost::shared_ptr< Pressure > &Press) const =0
+        virtual boost::shared_ptr<Aerosol> FullPhysics::Aerosol::clone(const boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<
+        RelativeHumidity > &Rh) const =0
 
         """
         return _aerosol.Aerosol_clone(self, *args)

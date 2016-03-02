@@ -46,6 +46,7 @@ protected:
   virtual void calc_aerosol_extinction() const;
 private:
   bool linear_aod;
+  static const double min_aod;
 };
 }
 #endif

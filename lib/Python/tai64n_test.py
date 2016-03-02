@@ -1,5 +1,6 @@
+from __future__ import absolute_import
 from nose.tools import *
-from tai64n import *
+from .tai64n import *
 from datetime import datetime, timedelta
 
 def test_tai2utc():

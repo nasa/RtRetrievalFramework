@@ -63,7 +63,7 @@ def standalone_main():
 
     num_soundings = len(plot_sounding_ids)
 
-    for idx, (snd_id, figs) in enumerate(itertools.izip(plot_sounding_ids, analysis.call_analysis_routine("plot_spectral_fits", ids=(plot_sounding_ids,), all_soundings=True))):
+    for idx, (snd_id, figs) in enumerate(zip(plot_sounding_ids, analysis.call_analysis_routine("plot_spectral_fits", ids=(plot_sounding_ids,), all_soundings=True))):
         logging.info("[%d / %d] %s" % (idx+1, num_soundings, snd_id))
         for band_fig in figs:
             pdf.savefig(band_fig)

@@ -428,6 +428,21 @@ function ConfigCommon:h_imap()
    return self.h_imap_v
 end
 
+function ConfigCommon:h_merra_aerosol()
+   --- Use static_merra_aerosol_file if found, otherwise use h_aerosol()
+   -- Use static_aerosol_file if found, otherwise use the same static input
+   -- file that we use for everything else (self:h()).
+   if(self.static_merra_aerosol_file and not self.h_merra_aerosol_v) then 
+      self.h_merra_aerosol_v = HdfFile(self.static_merra_aerosol_file) 
+      self.input_file_description = self.input_file_description .. 
+	 "Merra Aerosol input file:  " .. self.static_merra_aerosol_file .. "\n"
+   end
+   if(not self.static_merra_aerosol_file) then
+      self.h_merra_aerosol_v = self:h_aerosol()
+   end
+   return self.h_merra_aerosol_v
+end
+
 function ConfigCommon:h_aerosol()
    -- Use static_aerosol_file if found, otherwise use the same static input
    -- file that we use for everything else (self:h()).
@@ -1850,7 +1865,7 @@ function ConfigCommon.atmosphere_oco:sub_object_key()
 -- Order here is important, because some objects require other objects
 -- be created first (e.g., most everything requires "pressure"
    return {"constants", "pressure", "temperature", "ground", 
-           "aerosol", "altitude", "absorber"}
+           "altitude", "absorber", "relative_humidity", "aerosol"}
 end
 
 function ConfigCommon.atmosphere_oco:sub_initial_guess_key()
@@ -1867,15 +1882,18 @@ function ConfigCommon.atmosphere_oco:create_parent_object(sub_object)
    c.number_pressure_level = c.pressure:max_number_level()
    if(c.aerosol and c.ground) then
       return AtmosphereOco(c.absorber, c.pressure, c.temperature, c.aerosol, 
-                           c.ground, c.altitude, c.constants)
+                           c.relative_humidity, c.ground, c.altitude, 
+			   c.constants)
    elseif(c.aerosol) then
       return AtmosphereOco(c.absorber, c.pressure, c.temperature, c.aerosol, 
-                           c.altitude, c.constants)
+                           c.relative_humidity, c.altitude, c.constants)
    elseif(c.ground) then
       return AtmosphereOco(c.absorber, c.pressure, c.temperature,  
-                           c.ground, c.altitude, c.constants)
+                           c.relative_humidity, c.ground, c.altitude, 
+			   c.constants)
    end
-   return AtmosphereOco(c.absorber, c.pressure, c.temperature, c.altitude,
+   return AtmosphereOco(c.absorber, c.pressure, c.temperature, 
+			c.relative_humidity, c.altitude,
                         c.constants)
 end
 
@@ -2498,7 +2516,8 @@ function ConfigCommon.aerosol_creator:create_parent_object(sub_object)
       self.vex:push_back(t.extinction)
       self.config.number_aerosol = self.config.number_aerosol + 1
    end
-   return AerosolOptical(self.vex, self.vap, self.config.pressure)
+   return AerosolOptical(self.vex, self.vap, self.config.pressure, 
+			 self.config.relative_humidity)
 end
 
 function ConfigCommon.aerosol_creator:register_output(ro)
@@ -2545,7 +2564,7 @@ end
 function ConfigCommon.merra_aerosol_creator:create_parent_object(sub_object)
    -- Luabind can only handle up to 10 arguments per function. As an easy
    -- work around we put the various thresholds into an array.
-   local mq = Blitz_double_array_1d(6)
+   local mq = Blitz_double_array_1d(7)
    mq:set(0, self.max_aod)
    mq:set(1, self.exp_aod)
    mq:set(2, self.min_types)
@@ -2555,13 +2574,19 @@ function ConfigCommon.merra_aerosol_creator:create_parent_object(sub_object)
    else
       mq:set(4, 0)
    end
-   mq:set(5, self.max_residual)
+   if(self.relative_humidity_aerosol) then
+      mq:set(5, 1)
+   else
+      mq:set(5, 0)
+   end
+   mq:set(6, self.max_residual)
 
    self.merra_aerosol = MerraAerosol.create(
-     self.config:merra_file(), self.config:h_aerosol(),
+     self.config:merra_file(), self.config:h_merra_aerosol(),
      self.config.l1b:latitude(0),
      self.config.l1b:longitude(0),
      self.config.pressure,
+     self.config.relative_humidity,
      -- In production, have a single covariance for all merra types,
      -- but allow for using functions that have a different covariance
      -- for different types
@@ -2646,6 +2671,22 @@ function ConfigCommon.hydrostatic_altitude:create()
                c.l1b:latitude(i), c.l1b:altitude(i))
       res:push_back(alts)
    end
+   return res
+end
+
+------------------------------------------------------------
+--- Create relative humidity. Right now only one class that
+--- calculates this, but we have all the infrastructure in 
+--- place to allow a class hierarchy if we need this in the
+--- future
+------------------------------------------------------------
+
+ConfigCommon.calc_relative_humidity = Creator:new()
+
+function ConfigCommon.calc_relative_humidity:create()
+   local res
+   local c = self.config
+   res = RelativeHumidity(c.absorber, c.temperature, c.pressure)
    return res
 end
 

@@ -1,11 +1,16 @@
+from __future__ import absolute_import
+from __future__ import division
+from builtins import zip
+from builtins import range
+from past.utils import old_div
 import numpy
 import scipy
 from matplotlib.pyplot import *
 import time
 
-import utils
+from . import utils
 
-from routines_base import PlotRoutinesBase
+from .routines_base import PlotRoutinesBase
 
 def ids2times(sounding_ids):
     return [ numpy.array([ time.mktime(dt.timetuple()) for dt in utils.id2time(snds) ]) for snds in sounding_ids ]
@@ -37,7 +42,7 @@ class RefBarPlotRoutines(PlotRoutinesBase):
         ax = self.new_axis(**kwargs)
 
         # Calculate where we want to put the xticks
-        width = 1.0/len(obj_names)
+        width = old_div(1.0,len(obj_names))
         xlocations = numpy.arange(len(stat_data))+width
 
         # Cycle colors for bars
@@ -47,7 +52,7 @@ class RefBarPlotRoutines(PlotRoutinesBase):
         ax.bar(xlocations, stat_data, width=width, color=colors)
 
         # Use the object names for the xticks
-        xticklocs = xlocations + width/2
+        xticklocs = xlocations + old_div(width,2)
         xticks(xticklocs, obj_names)
 
         # Set some padding on the xaxis
@@ -58,7 +63,7 @@ class RefBarPlotRoutines(PlotRoutinesBase):
             ax.set_ylim( ylim_func(stat_data) )
 
         for midx, mval in enumerate(stat_data):
-            val_offset = (ax.get_ylim()[1]-ax.get_ylim()[0])/100
+            val_offset = old_div((ax.get_ylim()[1]-ax.get_ylim()[0]),100)
             mloc = ( xticklocs[midx]-0.2, max(mval,0)+val_offset )
             mstr = "%7.3e" % mval
 

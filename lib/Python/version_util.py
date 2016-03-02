@@ -1,3 +1,5 @@
+from __future__ import print_function
+from builtins import str
 import re
 import os
 import sys
@@ -38,9 +40,9 @@ def _get_svn_version(source_path):
 
         for ver_line in info_process.stdout.readlines():
             if ver_line.find('URL:') >= 0:
-                svn_path = ver_line.replace('URL: ','').strip()
+                svn_path = ver_line.replace(b'URL: ',b'').strip()
             if ver_line.find('Revision:') >= 0:
-                svn_revision = ver_line.replace('Revision: ','').strip()
+                svn_revision = ver_line.replace(b'Revision: ',b'').strip()
         info_process.stdout.close()
     except Exception as exc:
         raise VersionError("Error querying svn command: %s" % str(exc))
@@ -72,7 +74,7 @@ def _get_svn_version(source_path):
     else:
         rev_str = svn_revision
 
-    return 'SVN-' + rev_str
+    return b'SVN-' + rev_str
 
 def _get_git_version(source_path):
     "Get version information for a git clone"
@@ -99,26 +101,26 @@ def _get_git_version(source_path):
         git_process.wait()
         
         if git_process.returncode == 0:
-            git_branch = git_process.stdout.readline().strip().replace("refs/heads/", "")
+            git_branch = git_process.stdout.readline().strip().replace(b"refs/heads/", b"")
     except OSError:
         git_branch = None
 
     # See if working directorty has been modified
-    wdir_modified = '?'
+    wdir_modified = b'?'
     try:
         git_process = subprocess.Popen(["git", "status", "--porcelain", "-uno"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, close_fds=True)
         git_process.wait()
 
         status_ret = git_process.stdout.readline().strip()
         if len(status_ret) > 0:
-            wdir_modified = 'M'
+            wdir_modified = b'M'
         else:
-            wdir_modified = ''
+            wdir_modified = b''
     except OSError:
         wdir_modified = None
 
     os.chdir(prev_dir)
-    return "GIT-" + git_branch + '-' + git_ver + wdir_modified
+    return b"GIT-" + git_branch + b'-' + git_ver + wdir_modified
 
 def source_version(source_path):
     "Retrieves version information for a GIT or Subversion directory. The returned string includes branch names as well as a revision number or hash. We first check if the path is a git clone, failing that we try subversion."
@@ -152,14 +154,14 @@ def binary_version(binary_filename):
         # L2 spits out several lines of version information when called with -v
         # If the first line is not as expected then this is not a l2 binary
         first_line = process.stdout.readline()
-        if not first_line.find("Major version:") == 0:
+        if not first_line.find(b"Major version:") == 0:
             return None
 
-        major_version = first_line.split(":")[1].strip()
-        cm_version = process.stdout.readline().split(":")[1].strip()
+        major_version = first_line.split(b":")[1].strip()
+        cm_version = process.stdout.readline().split(b":")[1].strip()
         lua_version = process.stdout.readline()
         if len(lua_version) > 0:
-            lua_version = lua_version.split(":")[1].strip()
+            lua_version = lua_version.split(b":")[1].strip()
         else:
             lua_version = None
 
@@ -169,7 +171,10 @@ def binary_version(binary_filename):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print >>sys.stderr, "Please supply a path to a Git or Subversion repository"
+        print("Please supply a path to a Git or Subversion repository", file=sys.stderr)
         sys.exit(1)
 
-    print source_version(sys.argv[1])
+    if sys.version_info > (3,):
+        print(source_version(sys.argv[1]).decode('utf-8'))
+    else:
+        print(source_version(sys.argv[1]))

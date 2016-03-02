@@ -2,6 +2,7 @@
 #define AEROSOL_PROPERTY_H
 #include "state_vector.h"
 #include "pressure.h"
+#include "relative_humidity.h"
 #include <blitz/array.h>
 
 namespace FullPhysics {
@@ -50,7 +51,8 @@ public:
 //-----------------------------------------------------------------------
 
   virtual boost::shared_ptr<AerosolProperty> 
-  clone(const boost::shared_ptr<Pressure>& Press) const = 0;
+  clone(const boost::shared_ptr<Pressure>& Press,
+	const boost::shared_ptr<RelativeHumidity>& Rh) const = 0;
 
 //-----------------------------------------------------------------------
 /// Return extinction coefficient for the given wave number, for each

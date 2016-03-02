@@ -1,20 +1,24 @@
+from __future__ import absolute_import
+from builtins import zip
+from builtins import map
+from builtins import range
 from collections import defaultdict
 
-from routines_base import RoutinesBase
+from .routines_base import RoutinesBase
 
 OUTCOME_MAPPING_DICT = {0: "error", 1: "converged", 2: "converged", 3: "max_iter", 4: "max_div"}
 
 class StatusBase(RoutinesBase):
     def _count_items(self, data_values, obj_names=None, mapping_func=lambda x: x):
         if obj_names == None:
-            data_names = range(len(data_values))
+            data_names = list(range(len(data_values)))
         else:
             data_names = obj_names
         
         tot_counts = {}
         for o_name, o_values in zip(data_names, data_values):
             tot_counts[o_name] = defaultdict(int)
-            mapped_values = map(mapping_func, o_values)
+            mapped_values = list(map(mapping_func, o_values))
             for count_val in mapped_values:
                 if hasattr(count_val, "strip"):
                     tot_counts[o_name][count_val.strip()] += 1
@@ -24,7 +28,7 @@ class StatusBase(RoutinesBase):
             tot_counts[o_name] = dict(tot_counts[o_name])
 
         if obj_names == None:
-            return tot_counts.values()
+            return list(tot_counts.values())
         else:
             return tot_counts
 

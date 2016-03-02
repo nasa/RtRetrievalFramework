@@ -12,7 +12,8 @@ typedef const boost::shared_ptr<AerosolExtinction>& (AerosolOptical::*a1)(int) c
 REGISTER_LUA_DERIVED_CLASS(AerosolOptical, Aerosol)
 .def(luabind::constructor<const std::vector<boost::shared_ptr<AerosolExtinction> >&,
      const std::vector<boost::shared_ptr<AerosolProperty> >&,
-     const boost::shared_ptr<Pressure>&>())
+     const boost::shared_ptr<Pressure>&,
+     const boost::shared_ptr<RelativeHumidity>&>())
 .def("number_particle", &AerosolOptical::number_particle)
 .def("aerosol_extinction", ((a1) &AerosolOptical::aerosol_extinction))
 REGISTER_LUA_END()
@@ -23,6 +24,7 @@ REGISTER_LUA_END()
 /// \param Aext Aerosol extinction for each aerosol.
 /// \param Aerosol_prop Aerosol properties for each aerosol.
 /// \param Press The Pressure object that gives the pressure grid.
+/// \param Rh The RelativeHumidity object that gives the relative humidity.
 /// \param Reference_wn The wavenumber that Aext is given for. This
 ///    is optional, the default value matches the reference band given
 ///    in the ATB.
@@ -32,10 +34,12 @@ AerosolOptical::AerosolOptical
 (const std::vector<boost::shared_ptr<AerosolExtinction> >& Aext,
  const std::vector<boost::shared_ptr<AerosolProperty> >& Aerosol_prop,
  const boost::shared_ptr<Pressure>& Press,
+ const boost::shared_ptr<RelativeHumidity>& Rh,
  double Reference_wn)
 : aext(Aext),
   aprop(Aerosol_prop),
-  press(Press), 
+  press(Press),
+  rh(Rh),
   reference_wn_(Reference_wn),
   cache_is_stale(true),
   // Need at least 1 jacobian var such as when not running a retrieval
@@ -349,15 +353,16 @@ ArrayAd<double, 3> AerosolOptical::pf_mom(double wn,
 //-----------------------------------------------------------------------
 
 boost::shared_ptr<Aerosol> 
-AerosolOptical::clone(const boost::shared_ptr<Pressure>& Press) const
+AerosolOptical::clone(const boost::shared_ptr<Pressure>& Press,
+		      const boost::shared_ptr<RelativeHumidity>& Rh) const
 {
   std::vector<boost::shared_ptr<AerosolExtinction> > aext_clone;
   BOOST_FOREACH(const boost::shared_ptr<AerosolExtinction>& i, aext)
     aext_clone.push_back(i->clone(Press));
   std::vector<boost::shared_ptr<AerosolProperty> > aprop_clone;
   BOOST_FOREACH(const boost::shared_ptr<AerosolProperty>& i, aprop)
-    aprop_clone.push_back(i->clone());
-  boost::shared_ptr<Aerosol> res(new AerosolOptical(aext_clone, aprop_clone, Press));
+    aprop_clone.push_back(i->clone(Press, Rh));
+  boost::shared_ptr<Aerosol> res(new AerosolOptical(aext_clone, aprop_clone, Press, Rh));
   return res;
 }
 

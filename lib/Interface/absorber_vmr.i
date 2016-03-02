@@ -35,6 +35,7 @@ public:
   %python_attribute(gas_name, virtual std::string);
   virtual AutoDerivative<double> 
   volume_mixing_ratio(const AutoDerivative<double>& P) const = 0;
+  virtual ArrayAd<double, 1> vmr_grid(const Pressure& P) const;
   %python_attribute(state_used, virtual blitz::Array<bool, 1>);
   std::string print_to_string() const;
 };

@@ -44,6 +44,7 @@ public:
   blitz::Array<double, 1> wavenumber(const std::string&) const;
   blitz::Array<double, 1> wavelength(const Unit& Units = units::micron) const;
   blitz::Array<double, 1> wavelength(const std::string& Units) const;
+  ArrayWithUnit<double, 1> photon_to_radiance_factor() const;
   std::string print_to_string() const;
 };
 }

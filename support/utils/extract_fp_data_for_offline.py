@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from builtins import range
 import os
 import sys
 import shutil
@@ -12,7 +14,7 @@ from scipy import *
 try:
     from full_physics import *
 except ImportError:
-    print >>sys.stderr, "You must first import your build of the L2 FP Python wrappers into your envionment"
+    print("You must first import your build of the L2 FP Python wrappers into your envionment", file=sys.stderr)
     exit(1)
 
 # Only show up a progress bar if this package is installed in user's path
@@ -76,7 +78,7 @@ def extract_data_for_lidort(config_file, output_path, ipython_shell=False):
     # Save aerosol names
     with open(os.path.join(output_path, "aerosol_names.txt"), "w") as anfile:
         for nm in aerosol.aerosol_name():
-            print >>anfile, nm
+            print(nm, file=anfile)
 
     # Save independent part
     savetxt(os.path.join(output_path, "ground_ind.dat"), ground.spectrally_independent().value())
@@ -86,7 +88,7 @@ def extract_data_for_lidort(config_file, output_path, ipython_shell=False):
 
     # Gather per spectrometer info and save to disk
     for spec_idx in range(num_spec):
-        print "Processing spectrometer: %d" % (spec_idx+1)
+        print("Processing spectrometer: %d" % (spec_idx+1))
         spec_wn = conf.spectrum_sampling().wave_numbers(spec_idx)
 
         # Save dependent input part

@@ -1,5 +1,5 @@
 from nose.tools import *
-from docopt_simple_m import docopt_simple
+from full_physics.docopt_simple_m import *
 
 def test_docopt_simple():
     '''Test of docopt_simple'''

@@ -44,58 +44,58 @@ class LuaCallbackWrap(LuaCallback):
          raise "We only support up to 10 argument in a function. This limitation comes from luabind"
 
     def call(self,obj1, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9,
-	     obj10):
+             obj10):
        if(self.narg == 0):
-	 t = self.f()
+         t = self.f()
        elif(self.narg == 1):
-	 t = self.f(obj1.cast_type())
+         t = self.f(obj1.cast_type())
        elif(self.narg == 2):
          t = self.f(obj1.cast_type(), obj2.cast_type())
        elif(self.narg == 3):
          t = self.f(obj1.cast_type(), obj2.cast_type(), obj3.cast_type())
        elif(self.narg == 4):
          t = self.f(obj1.cast_type(), obj2.cast_type(), obj3.cast_type(),
-		    obj4.cast_type())
+                    obj4.cast_type())
        elif(self.narg == 5):
          t = self.f(obj1.cast_type(), obj2.cast_type(), obj3.cast_type(),
-		    obj4.cast_type(), obj5.cast_type())
+                    obj4.cast_type(), obj5.cast_type())
        elif(self.narg == 6):
          t = self.f(obj1.cast_type(), obj2.cast_type(), obj3.cast_type(),
-		    obj4.cast_type(), obj5.cast_type(), oj6.cast_type())
+                    obj4.cast_type(), obj5.cast_type(), oj6.cast_type())
        elif(self.narg == 7):
          t = self.f(obj1.cast_type(), obj2.cast_type(), obj3.cast_type(),
-		    obj4.cast_type(), obj5.cast_type(), obj6.cast_type(),
-		    obj7.cast_type())
+                    obj4.cast_type(), obj5.cast_type(), obj6.cast_type(),
+                    obj7.cast_type())
        elif(self.narg == 8):
          t = self.f(obj1.cast_type(), obj2.cast_type(), obj3.cast_type(),
-		    obj4.cast_type(), obj5.cast_type(), obj6.cast_type(),
-		    obj7.cast_type(), obj8.cast_type())
+                    obj4.cast_type(), obj5.cast_type(), obj6.cast_type(),
+                    obj7.cast_type(), obj8.cast_type())
        elif(self.narg == 9):
          t = self.f(obj1.cast_type(), obj2.cast_type(), obj3.cast_type(),
-		    obj4.cast_type(), obj5.cast_type(), obj6.cast_type(),
-		    obj7.cast_type(), obj8.cast_type(), obj9.cast_type())
+                    obj4.cast_type(), obj5.cast_type(), obj6.cast_type(),
+                    obj7.cast_type(), obj8.cast_type(), obj9.cast_type())
        elif(self.narg == 10):
          t = self.f(obj1.cast_type(), obj2.cast_type(), obj3.cast_type(),
-		    obj4.cast_type(), obj5.cast_type(), obj6.cast_type(),
-		    obj7.cast_type(), obj8.cast_type(), obj9.cast_type().
-		    obj10.cast_type())
+                    obj4.cast_type(), obj5.cast_type(), obj6.cast_type(),
+                    obj7.cast_type(), obj8.cast_type(), obj9.cast_type().
+                    obj10.cast_type())
        else:
-	 raise "This shouldn't be able to happen"
+         raise "This shouldn't be able to happen"
 
        if(t == None):
-  	 return LuabindObject.nil(self.ls)
+           return LuabindObject.nil(self.ls)
 
        elif(isinstance(t, dict)):
            new_table = LuabindObject.nil(self.ls).new_table()
            for t_key, t_val in t.items():
               new_table[t_key] = t_val
-	   return LuabindObject(self.ls, new_table)
+           return LuabindObject(self.ls, new_table)
 
        elif(isinstance(t, list) or isinstance(t, tuple)):
            new_table = LuabindObject.nil(self.ls).new_table()
            for t_idx, t_val in enumerate(t):
                new_table[t_idx+1] = t_val
-	   return LuabindObject(self.ls, new_table)
+           return LuabindObject(self.ls, new_table)
 
        else:
          return LuabindObject(self.ls, t)

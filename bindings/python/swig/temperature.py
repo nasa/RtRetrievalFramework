@@ -219,6 +219,15 @@ class Temperature(full_physics_swig.state_vector.StateVectorObserver, Observable
         return _temperature.Temperature_temperature(self, Press)
 
 
+    def temperature_grid(self, P):
+        """
+
+        ArrayAdWithUnit< double, 1 > Temperature::temperature_grid(const Pressure &P) const
+        Return temperature at the pressure grid. 
+        """
+        return _temperature.Temperature_temperature_grid(self, P)
+
+
     def clone(self, *args):
         """
 
@@ -234,6 +243,7 @@ class Temperature(full_physics_swig.state_vector.StateVectorObserver, Observable
 
 Temperature._v_important_pressure_level = new_instancemethod(_temperature.Temperature__v_important_pressure_level, None, Temperature)
 Temperature.temperature = new_instancemethod(_temperature.Temperature_temperature, None, Temperature)
+Temperature.temperature_grid = new_instancemethod(_temperature.Temperature_temperature_grid, None, Temperature)
 Temperature.clone = new_instancemethod(_temperature.Temperature_clone, None, Temperature)
 Temperature.__str__ = new_instancemethod(_temperature.Temperature___str__, None, Temperature)
 Temperature_swigregister = _temperature.Temperature_swigregister

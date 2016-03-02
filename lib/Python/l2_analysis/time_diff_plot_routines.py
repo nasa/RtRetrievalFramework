@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+from builtins import zip
 import time
 from copy import copy
 import matplotlib.dates
@@ -6,10 +8,10 @@ import numpy
 from matplotlib.pyplot import *
 from matplotlib.dates import DateFormatter
 
-from decorators import call_data_pairs, add_optional_datasets
-import utils
+from .decorators import call_data_pairs, add_optional_datasets
+from . import utils
 
-from routines_base import PlotRoutinesBase, PlotMaker
+from .routines_base import PlotRoutinesBase, PlotMaker
 
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S" 
 
