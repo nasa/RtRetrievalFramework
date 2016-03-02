@@ -10,7 +10,7 @@
 
 from sys import version_info
 if version_info >= (3, 0, 0):
-    new_instancemethod = lambda func, inst, cls: _pressure_sigma.SWIG_PyInstanceMethod_New(func)
+    new_instancemethod = lambda func, inst, cls: _temperature_level_offset.SWIG_PyInstanceMethod_New(func)
 else:
     from new import instancemethod as new_instancemethod
 if version_info >= (2, 6, 0):
@@ -19,20 +19,20 @@ if version_info >= (2, 6, 0):
         import imp
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_pressure_sigma', [dirname(__file__)])
+            fp, pathname, description = imp.find_module('_temperature_level_offset', [dirname(__file__)])
         except ImportError:
-            import _pressure_sigma
-            return _pressure_sigma
+            import _temperature_level_offset
+            return _temperature_level_offset
         if fp is not None:
             try:
-                _mod = imp.load_module('_pressure_sigma', fp, pathname, description)
+                _mod = imp.load_module('_temperature_level_offset', fp, pathname, description)
             finally:
                 fp.close()
             return _mod
-    _pressure_sigma = swig_import_helper()
+    _temperature_level_offset = swig_import_helper()
     del swig_import_helper
 else:
-    import _pressure_sigma
+    import _temperature_level_offset
 del version_info
 try:
     _swig_property = property
@@ -111,8 +111,8 @@ except:
 
 
 
-_pressure_sigma.SHARED_PTR_DISOWN_swigconstant(_pressure_sigma)
-SHARED_PTR_DISOWN = _pressure_sigma.SHARED_PTR_DISOWN
+_temperature_level_offset.SHARED_PTR_DISOWN_swigconstant(_temperature_level_offset)
+SHARED_PTR_DISOWN = _temperature_level_offset.SHARED_PTR_DISOWN
 
 def _new_from_init(cls, version, *args):
     '''For use with pickle, covers common case where we just store the
@@ -133,94 +133,58 @@ def _new_from_set(cls, version, *args):
     inst.set(*args)
     return inst
 
-import full_physics_swig.pressure_imp_base
-import full_physics_swig.pressure
+import full_physics_swig.temperature_offset
+import full_physics_swig.temperature_imp_base
+import full_physics_swig.temperature
 import full_physics_swig.state_vector
 import full_physics_swig.generic_object
-class PressureSigma(full_physics_swig.pressure_imp_base.PressureImpBase):
+import full_physics_swig.sub_state_vector_array
+class TemperatureLevelOffset(full_physics_swig.temperature_offset.TemperatureOffset):
     """
 
-    This class maintains the pressure portion of the state.
+    This class maintains the temperature portion of the state.
 
-    This particular implementation use pressure sigma levels to determine
-    the pressure levels as the surface pressure changes.
+    This particular implementation uses the temperature from LEVEL file
+    (interpolated to the current pressure grid), along with an offset.
 
-    C++ includes: pressure_sigma.h 
+    C++ includes: temperature_level_offset.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, Press, Temp_levels, Temp_offset, Temp_flag):
         """
 
-        PressureSigma::PressureSigma(const blitz::Array< double, 1 > &Pressure_grid, double
-        Surface_pressure, bool Pressure_flag)
-        Constructor.
-
-        Creates A and B parameters from the pressure grid passed in. A becomes
-        all 0 of the same size as Pressure_grid B becomes Pressure_grid /
-        Pressure_grid[-1] 
+        TemperatureLevelOffset::TemperatureLevelOffset(const boost::shared_ptr< Pressure > &Press, const blitz::Array<
+        double, 1 > &Temp_levels, double Temp_offset, bool Temp_flag)
+        Create an Temperature. 
         """
-        _pressure_sigma.PressureSigma_swiginit(self, _pressure_sigma.new_PressureSigma(*args))
+        _temperature_level_offset.TemperatureLevelOffset_swiginit(self, _temperature_level_offset.new_TemperatureLevelOffset(Press, Temp_levels, Temp_offset, Temp_flag))
 
-    def _v_surface_pressure_uncertainty(self):
+    def clone(self, *args):
         """
 
-        double FullPhysics::PressureSigma::surface_pressure_uncertainty() const
-        Return the current surface pressure uncertainty. This is in Pascals.
+        boost::shared_ptr< Temperature > TemperatureLevelOffset::clone(const boost::shared_ptr< Pressure > &Press) const
 
         """
-        return _pressure_sigma.PressureSigma__v_surface_pressure_uncertainty(self)
+        return _temperature_level_offset.TemperatureLevelOffset_clone(self, *args)
 
 
     @property
-    def surface_pressure_uncertainty(self):
-        return self._v_surface_pressure_uncertainty()
-
-
-    def set_surface_pressure(self, Surface_pressure):
-        """
-
-        void FullPhysics::PressureSigma::set_surface_pressure(const AutoDerivative< double > &Surface_pressure)
-        Set the surface pressure. This is in Pascals. 
-        """
-        return _pressure_sigma.PressureSigma_set_surface_pressure(self, Surface_pressure)
-
-
-    def _v_a(self):
-        """
-
-        const blitz::Array<double, 1>& FullPhysics::PressureSigma::a() const
-
-        """
-        return _pressure_sigma.PressureSigma__v_a(self)
+    def temperature_offset(self):
+        return self._v_temperature_offset()
 
 
     @property
-    def a(self):
-        return self._v_a()
+    def temperature_offset_uncertainty(self):
+        return self._v_temperature_offset_uncertainty()
 
-
-    def _v_b(self):
-        """
-
-        const blitz::Array<double, 1>& FullPhysics::PressureSigma::b() const
-
-        """
-        return _pressure_sigma.PressureSigma__v_b(self)
-
-
-    @property
-    def b(self):
-        return self._v_b()
-
-    __swig_destroy__ = _pressure_sigma.delete_PressureSigma
-PressureSigma._v_surface_pressure_uncertainty = new_instancemethod(_pressure_sigma.PressureSigma__v_surface_pressure_uncertainty, None, PressureSigma)
-PressureSigma.set_surface_pressure = new_instancemethod(_pressure_sigma.PressureSigma_set_surface_pressure, None, PressureSigma)
-PressureSigma._v_a = new_instancemethod(_pressure_sigma.PressureSigma__v_a, None, PressureSigma)
-PressureSigma._v_b = new_instancemethod(_pressure_sigma.PressureSigma__v_b, None, PressureSigma)
-PressureSigma_swigregister = _pressure_sigma.PressureSigma_swigregister
-PressureSigma_swigregister(PressureSigma)
+    __swig_destroy__ = _temperature_level_offset.delete_TemperatureLevelOffset
+TemperatureLevelOffset.clone = new_instancemethod(_temperature_level_offset.TemperatureLevelOffset_clone, None, TemperatureLevelOffset)
+TemperatureLevelOffset._v_temperature_offset = new_instancemethod(_temperature_level_offset.TemperatureLevelOffset__v_temperature_offset, None, TemperatureLevelOffset)
+TemperatureLevelOffset._v_temperature_offset_uncertainty = new_instancemethod(_temperature_level_offset.TemperatureLevelOffset__v_temperature_offset_uncertainty, None, TemperatureLevelOffset)
+TemperatureLevelOffset_swigregister = _temperature_level_offset.TemperatureLevelOffset_swigregister
+TemperatureLevelOffset_swigregister(TemperatureLevelOffset)
 
 
 

@@ -10070,7 +10070,11 @@ static PyMethodDef SwigMethods[] = {
 		"virtual AutoDerivativeWithUnit<double> FullPhysics::Altitude::altitude(const AutoDerivativeWithUnit< double > &P) const =0\n"
 		"Return altitude grid for the given pressure. \n"
 		""},
-	 { (char *)"Altitude_gravity", _wrap_Altitude_gravity, METH_VARARGS, NULL},
+	 { (char *)"Altitude_gravity", _wrap_Altitude_gravity, METH_VARARGS, (char *)"\n"
+		"\n"
+		"virtual AutoDerivativeWithUnit<double> FullPhysics::Altitude::gravity(const AutoDerivativeWithUnit< double > &P) const =0\n"
+		"Return gravity constant for the given pressure. \n"
+		""},
 	 { (char *)"Altitude_clone", _wrap_Altitude_clone, METH_VARARGS, (char *)"\n"
 		"\n"
 		"virtual boost::shared_ptr<Altitude> FullPhysics::Altitude::clone(const boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<\n"
