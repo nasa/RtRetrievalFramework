@@ -2911,6 +2911,8 @@ input_DATA = @commoninputsrc@/l2_solar_model.h5 \
 
 # Make sure to look in local install directory first, in case we are
 # building our own copy of libraries also found in thirdparty library area.
+# However boost/backtrace is a special case, we want this before include
+# otherwise we get a build loop
 
 # Include boost in builds. We have two flavors, one that uses shared libraries
 # and one that uses static libraries.
@@ -2934,8 +2936,9 @@ input_DATA = @commoninputsrc@/l2_solar_model.h5 \
 # Allow files to be included in other directories.
 
 # Allow files to be included in other directories.
-AM_CPPFLAGS = -I$(prefix)/include $(BOOST_CPPFLAGS) $(BLITZ_CPPFLAGS) \
-	$(CPPAD_CPPFLAGS) $(GSL_CPPFLAGS) -I$(srcdir)/@supportsrc@ \
+AM_CPPFLAGS = -I$(srcdir)/@supportsrc@ -I$(prefix)/include \
+	$(BOOST_CPPFLAGS) $(BLITZ_CPPFLAGS) $(CPPAD_CPPFLAGS) \
+	$(GSL_CPPFLAGS) -I$(srcdir)/@supportsrc@ \
 	-I$(srcdir)/@interfacesrc@ -I$(srcdir)/@implsrc@ \
 	-I$(srcdir)/@fixedlevelsrc@ -I$(srcdir)/@deprecatedsrc@ \
 	-I$(srcdir)/@outsrc@ $(am__append_10) -I$(srcdir)/@fpsrc@
