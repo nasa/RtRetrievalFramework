@@ -2476,7 +2476,6 @@ EXTRA_DIST = config/depf90 lib/test_all.sh \
 	@thirdpartysrc@/$(HDF5_NAME).tar.gz \
 	@thirdpartysrc@/$(BZLIB_NAME).tar.gz \
 	@thirdpartysrc@/$(BOOST_NAME).tar.gz \
-	@thirdpartysrc@/$(BOOST_PATCH) \
 	@thirdpartysrc@/$(BLITZ_NAME).tar.gz \
 	@thirdpartysrc@/$(BLITZ_PATCH) \
 	@thirdpartysrc@/$(NCURSES_NAME).tar.gz \
@@ -3654,17 +3653,12 @@ BZLIB_NAME = bzip2-1.0.6
 # Boost can be built for multithreading. We don't need or use that, so
 # we pass the option threading=single to turn that off. If we ever do
 # need it, we can change this option.
-BOOST_NAME = boost_1_45_0
+BOOST_NAME = boost_1_59_0
 
 # Select one of the files installed. We use the timestamp on this to
 # determine if we already have installed boost, or if we need to. Nothing
 # special about this particular file, it is just one of them installed.
 BOOST_TARGET = $(includedir)/boost/smart_ptr.hpp
-
-# This patch remove the "-no-cpp-precomp" flag from the compiler. This
-# hasn't been used since version 3.3 of the apple compiler, and is now
-# an error with gcc 4.7
-BOOST_PATCH = boost_darwin.patch
 
 # ========================================================================
 # Build blitz++
@@ -11825,15 +11819,14 @@ $(includedir)/bzlib.h: $(thirdpartysrc)/$(BZLIB_NAME).tar.gz
 	touch $(includedir)/bzlib.h
 	@echo "========================== Done building bzlib"
 
-$(BOOST_TARGET): $(thirdpartysrc)/$(BOOST_NAME).tar.gz $(BZLIB_TARGET) $(thirdpartysrc)/$(BOOST_PATCH)
+$(BOOST_TARGET): $(thirdpartysrc)/$(BOOST_NAME).tar.gz $(BZLIB_TARGET)
 	@echo "*************************** Building BOOST"
 	${AMTAR} xzf $<
 	cd $(BOOST_NAME) && \
-        patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(BOOST_PATCH) && \
         ./bootstrap.sh --prefix="$(prefix)" \
            --with-libraries=date_time,regex,iostreams,filesystem && \
-        echo "using gcc : : $(CXX) ;" > tools/build/v2/user-config.jam && \
-        echo "using darwin : : $(CXX) ;" >> tools/build/v2/user-config.jam && \
+        echo "using gcc : : $(CXX) ;" > tools/build/user-config.jam && \
+        echo "using darwin : : $(CXX) ;" >> tools/build/user-config.jam && \
         ./bjam install threading=single link=static,shared cflags="${BZLIB_CPPFLAGS}" linkflags="${BZLIB_LDFLAGS}" && exit 0; exit 1
 # On mac, the full name of the library isn't put into the installed library.
 # This command will fail on linux, which is fine. We just ignore failure.
