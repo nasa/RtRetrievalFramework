@@ -53,6 +53,9 @@ SWIG_FLAG =
 
 # Make sure to look in local install directory first, in case we are
 # building our own copy of libraries also found in thirdparty library area.
+# However boost/backtrace is a special case, we want this before include
+# otherwise we get a build loop
+AM_CPPFLAGS+= -I$(srcdir)/@supportsrc@
 AM_CPPFLAGS+= -I$(prefix)/include
 AM_LDFLAGS+= -L$(prefix)/lib
 AM_LDFLAGS+= $(fortran_extra_ldflags)
