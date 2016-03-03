@@ -1,8 +1,51 @@
 #include "reference_vmr_apriori.h"
 #include "linear_interpolate.h"
+//#include "fp_logger.h"
 
 using namespace FullPhysics;
 using namespace blitz;
+
+/// Inter-hemispheric gradients
+/// Positive values imply more in the NH than the SH than
+/// would be expected based solely on the age of the air.
+std::map<std::string, double> lat_gradient =
+{
+    {"CO2",     0.000 },
+    {"O3",      0.200 },
+    {"CO",      0.280 },
+    {"CH4",     0.033 },
+    {"NO2",     0.250 },
+    {"NH3",     0.200 },
+    {"HNO3",    0.100 },
+    {"H2CO",    0.200 },
+    {"HCN",     0.100 },
+    {"CH3F",    0.200 },
+    {"CH3Cl",   0.200 },
+    {"CF4",     0.200 },
+    {"CCl2F2",  0.200 },
+    {"CCl3F",   0.200 },
+    {"CH3CCl3", 0.200 },
+    {"CCl4",    0.200 },
+    {"C2H6",    0.300 },
+    {"C2H4",    0.300 },
+    {"C2H2",    0.300 },
+    {"CHClF2",  0.200 },
+    {"CH3Br",   0.200 },
+    {"HCOOH",   0.200 },
+    {"CHCl2F",  0.200 },
+    {"SF6",     0.300 },
+    {"F113",    0.300 },
+    {"F142b",   0.200 },
+    {"CH3OH",   0.200 },
+    {"CH3CHO",  0.200 },
+    {"CH3CN",   0.200 },
+    {"NF3",     0.300 },
+    {"CHF3",    0.200 },
+    {"f141b",   0.200 },
+    {"CH3COOH", 0.200 },
+    {"C3H8",    0.500 }
+};
+
 
 ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_altitude,
                                          const blitz::Array<double, 1>& Model_temperature,
@@ -116,8 +159,37 @@ const blitz::Array<double, 1> ReferenceVmrApriori::resample_to_model_grid(const 
     return mod_grid_vmr;
 }
 
-void ReferenceVmrApriori::apply_latitude_gradients()
+//-----------------------------------------------------------------------
+/// Modifies the vmr profiles to account for the difference in 
+/// latitude between the observation latitude and the reference latitude
+///
+/// In the middle stratosphere, gas distributions are assumed symmetrical
+/// about equator. At the surface, gas distributions are assumed 
+/// anti-symmetric about equator. At intermediate altitudes the profiles 
+/// are interpolated between these limiting behaviors.
+//-----------------------------------------------------------------------
+
+const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradients(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
 {
+    double mod_tropo_alt = model_tropopause_altitude();
+    Array<double, 1> eff_altitude(effective_altitude());
+
+    double gas_gradient;
+    try {
+        gas_gradient = lat_gradient.at(gas_name);
+    } catch(const std::out_of_range& exc) {
+        //Logger::warning() << "apply_latitude_gradients: No latitude gradient found for: " << gas_name;
+        gas_gradient = 0.0;
+    }
+    double xref = gas_gradient * (ref_latitude / 15) / sqrt(1 + std::pow(ref_latitude/15, 2));
+    double xobs = gas_gradient * (obs_latitude / 15) / sqrt(1 + std::pow(obs_latitude/15, 2));
+
+    Array<double, 1> grad_vmr(vmr.shape());
+    for(int lev_idx = 0; lev_idx < vmr.rows(); lev_idx++) {
+        double frac = 1.0 / (1.0 + std::pow(eff_altitude(lev_idx) / mod_tropo_alt, 2));
+        grad_vmr(lev_idx) = vmr(lev_idx) * (1 + frac * xobs) / (1 + frac * xref);
+    }
+    return grad_vmr;
 }
 
 void ReferenceVmrApriori::apply_secular_trends()
