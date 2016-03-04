@@ -1,0 +1,20 @@
+diff -Naur luabind-0.9.1/luabind/object.hpp luabind-0.9.1-fixed/luabind/object.hpp
+--- luabind-0.9.1/luabind/object.hpp	2010-08-31 06:24:52.000000000 -0700
++++ luabind-0.9.1-fixed/luabind/object.hpp	2016-03-03 16:41:03.230462875 -0800
+@@ -536,6 +536,7 @@
+       handle m_key;
+   };
+ 
++#if BOOST_VERSION < 105700
+ // Needed because of some strange ADL issues.
+ 
+ #define LUABIND_OPERATOR_ADL_WKND(op) \
+@@ -557,7 +558,7 @@
+   LUABIND_OPERATOR_ADL_WKND(!=)
+ 
+ #undef LUABIND_OPERATOR_ADL_WKND
+- 
++#endif // BOOST_VERSION < 105700 
+ } // namespace detail
+ 
+ namespace adl
