@@ -42,9 +42,10 @@ public:
   virtual void print(std::ostream& Os) const;
 private:
   boost::shared_ptr<RelativeHumidity> rh;
-  boost::shared_ptr<LinearInterpolate<double, double> > qext;
-  boost::shared_ptr<LinearInterpolate<double, double> > qscat;
-  boost::shared_ptr<ScatteringMomentInterpolate> pf;
+  std::vector<AutoDerivative<double> > rh_val;
+  std::vector<boost::shared_ptr<LinearInterpolate<double, double> > > qext;
+  std::vector<boost::shared_ptr<LinearInterpolate<double, double> > > qscat;
+  std::vector<boost::shared_ptr<ScatteringMomentInterpolate> > pf;
   std::string hdf_file, hdf_group;
 };
 }

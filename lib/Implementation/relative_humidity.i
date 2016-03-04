@@ -25,6 +25,7 @@ public:
 	const boost::shared_ptr<Temperature>& Temp,
 	const boost::shared_ptr<Pressure>& Press) const;
   ArrayAd<double, 1> relative_humidity_grid() const;
+  ArrayAd<double, 1> relative_humidity_layer() const;
   ArrayAd<double, 1> specific_humidity_grid() const;
   std::string print_to_string() const;
 };
