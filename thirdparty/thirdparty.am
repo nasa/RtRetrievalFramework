@@ -337,10 +337,18 @@ LUABIND_PATCH = luabind_boost.patch
 # and is described at http://lua.2524044.n2.nabble.com/Luabind-adapted-to-Lua-5-2-td7582662.html
 LUABIND_PATCH2 = luabind_lua5.2.patch
 
+# This patch lets luabind work with boost >= 1.57. 
+# See https://github.com/rpavlik/luabind/pull/23 for details
+
+LUABIND_PATCH3 = luabind_boost_1_57.patch
+
 EXTRA_DIST += @thirdpartysrc@/$(LUA_NAME).tar.gz
 EXTRA_DIST += @thirdpartysrc@/$(LUABIND_NAME).tar.gz
 EXTRA_DIST += @thirdpartysrc@/$(LUA_PATCH)
 EXTRA_DIST += @thirdpartysrc@/$(LUA_PATCH2)
+EXTRA_DIST += @thirdpartysrc@/$(LUABIND_PATCH)
+EXTRA_DIST += @thirdpartysrc@/$(LUABIND_PATCH2)
+EXTRA_DIST += @thirdpartysrc@/$(LUABIND_PATCH3)
 
 $(LUA_TARGET): $(thirdpartysrc)/$(LUA_NAME).tar.gz $(thirdpartysrc)/$(LUA_PATCH) $(thirdpartysrc)/$(LUA_PATCH2) $(READLINE_TARGET) $(NCURSES_TARGET)
 	@echo "*************************** Building Lua"
@@ -360,11 +368,12 @@ $(LUA_TARGET): $(thirdpartysrc)/$(LUA_NAME).tar.gz $(thirdpartysrc)/$(LUA_PATCH)
 	touch $(LUA_TARGET)
 	@echo "========================== Done building Lua"
 
-$(LUABIND_TARGET): $(thirdpartysrc)/$(LUABIND_NAME).tar.gz $(LUA_TARGET) $(BOOST_TARGET) $(thirdpartysrc)/$(LUABIND_PATCH)
+$(LUABIND_TARGET): $(thirdpartysrc)/$(LUABIND_NAME).tar.gz $(LUA_TARGET) $(BOOST_TARGET) $(thirdpartysrc)/$(LUABIND_PATCH) $(thirdpartysrc)/$(LUABIND_PATCH2) $(thirdpartysrc)/$(LUABIND_PATCH3)
 	@echo "*************************** Building Luabind"
 	${AMTAR} xzf $< && cd $(LUABIND_NAME) && \
         patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(LUABIND_PATCH) && \
         patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(LUABIND_PATCH2) && \
+        patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(LUABIND_PATCH3) && \
         $(MKDIR_P) $(includedir)/luabind && \
         $(MKDIR_P) $(includedir)/luabind/detail && \
         $(INSTALL_HEADER) luabind/*.hpp $(includedir)/luabind && \
