@@ -6385,6 +6385,49 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_RelativeHumidity_relative_humidity_layer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::RelativeHumidity *arg1 = (FullPhysics::RelativeHumidity *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::RelativeHumidity const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::RelativeHumidity const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SwigValueWrapper< FullPhysics::ArrayAd< double,1 > > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RelativeHumidity_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RelativeHumidity_relative_humidity_layer" "', argument " "1"" of type '" "FullPhysics::RelativeHumidity const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::RelativeHumidity > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::RelativeHumidity > * >(argp1);
+      arg1 = const_cast< FullPhysics::RelativeHumidity * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::RelativeHumidity > * >(argp1);
+      arg1 = const_cast< FullPhysics::RelativeHumidity * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::RelativeHumidity const *)arg1)->relative_humidity_layer();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,1 >(static_cast< const FullPhysics::ArrayAd< double,1 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_RelativeHumidity_specific_humidity_grid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::RelativeHumidity *arg1 = (FullPhysics::RelativeHumidity *) 0 ;
@@ -6561,6 +6604,13 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"ArrayAd< double, 1 > RelativeHumidity::relative_humidity_grid() const\n"
 		"Calculate relative humidity. \n"
+		""},
+	 { (char *)"RelativeHumidity_relative_humidity_layer", (PyCFunction)_wrap_RelativeHumidity_relative_humidity_layer, METH_O, (char *)"\n"
+		"\n"
+		"ArrayAd< double, 1 > RelativeHumidity::relative_humidity_layer() const\n"
+		"Relative humidity for each layer.\n"
+		"\n"
+		"This is just the average of the 2 levels. \n"
 		""},
 	 { (char *)"RelativeHumidity_specific_humidity_grid", (PyCFunction)_wrap_RelativeHumidity_specific_humidity_grid, METH_O, (char *)"\n"
 		"\n"

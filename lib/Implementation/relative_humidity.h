@@ -24,6 +24,7 @@ public:
   virtual ~RelativeHumidity() {}
   void print(std::ostream& Os);
   ArrayAd<double, 1> relative_humidity_grid() const;
+  ArrayAd<double, 1> relative_humidity_layer() const;
   ArrayAd<double, 1> specific_humidity_grid() const;
 private:
   boost::shared_ptr<Absorber> absorber;
