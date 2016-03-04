@@ -9,8 +9,8 @@ BOOST_FIXTURE_TEST_SUITE(unit, GlobalFixture)
 BOOST_AUTO_TEST_CASE(basic_test)
 {
   BOOST_CHECK_EQUAL(units::m.name(), "m");
-  BOOST_CHECK_CLOSE(conversion(units::m, units::cm), 100.0, 1e-8);
-  BOOST_CHECK_THROW(conversion(units::kg, units::m), Exception);
+  BOOST_CHECK_CLOSE(FullPhysics::conversion(units::m, units::cm), 100.0, 1e-8);
+  BOOST_CHECK_THROW(FullPhysics::conversion(units::kg, units::m), Exception);
 }
 
 BOOST_AUTO_TEST_CASE(parser)

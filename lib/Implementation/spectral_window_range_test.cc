@@ -34,7 +34,7 @@ BOOST_AUTO_TEST_CASE(apply)
 {
     SpectralDomain sdall = config_instrument->pixel_spectral_domain(0);
     SpectralDomain sd = config_spectral_window->apply(sdall, 0);
-    BOOST_CHECK_CLOSE(conversion(sdall.units(), sd.units()), 1.0, 1e-8);
+    BOOST_CHECK_CLOSE(FullPhysics::conversion(sdall.units(), sd.units()), 1.0, 1e-8);
     BOOST_CHECK_MATRIX_CLOSE(sd.data(), sdall.data()(Range(403, 1605)));
 }
 

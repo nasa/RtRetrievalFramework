@@ -157,9 +157,9 @@ SpectralDomain::SpectralDomain(const ArrayWithUnit<double, 1>& Data,
 Array<double, 1> SpectralDomain::convert_wave(const Unit& Units) const
 {
   if(units_.is_commensurate(Units))
-    return Array<double, 1>(conversion(units_, Units) * data_.value());
+    return Array<double, 1>(FullPhysics::conversion(units_, Units) * data_.value());
   else
-    return Array<double, 1>(conversion(1 / units_, Units) / data_.value());
+    return Array<double, 1>(FullPhysics::conversion(1 / units_, Units) / data_.value());
 }
 
 //-----------------------------------------------------------------------
