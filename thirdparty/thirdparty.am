@@ -220,7 +220,7 @@ $(BOOST_TARGET): $(thirdpartysrc)/$(BOOST_NAME).tar.gz $(BZLIB_TARGET)
            --with-libraries=date_time,regex,iostreams,filesystem && \
         echo "using gcc : : $(CXX) ;" > tools/build/user-config.jam && \
         echo "using darwin : : $(CXX) ;" >> tools/build/user-config.jam && \
-        ./bjam install threading=single link=static,shared cflags="${BZLIB_CPPFLAGS}" linkflags="${BZLIB_LDFLAGS}" && exit 0; exit 1
+        ./bjam install threading=single link=static,shared cxxflags="${BZLIB_CPPFLAGS}" linkflags="${BZLIB_LDFLAGS}" && exit 0; exit 1
 # On mac, the full name of the library isn't put into the installed library.
 # This command will fail on linux, which is fine. We just ignore failure.
 	-install_name_tool -id ${prefix}/lib/libboost_regex.dylib ${prefix}/lib/libboost_regex.dylib
