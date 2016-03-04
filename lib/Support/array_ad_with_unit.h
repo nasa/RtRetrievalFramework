@@ -30,7 +30,7 @@ public:
 
   inline ArrayAdWithUnit<T, D> convert(const Unit& R) const
   { ArrayAd<T, D> res(value.copy());
-    double c = conversion(units, R);
+    double c = FullPhysics::conversion(units, R);
     res.value() *= c;
     res.jacobian() *= c;
     return ArrayAdWithUnit<T, D>(res, R);

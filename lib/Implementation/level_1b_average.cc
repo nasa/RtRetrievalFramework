@@ -100,9 +100,9 @@ SpectralRange Level1bAverage::radiance(int Spec_index) const
     sum += sqr(t.uncertainty());
   for(int i = 1; i < (int) l1b.size(); ++i) {
     SpectralRange t2 = l1b[i]->radiance(Spec_index);
-    rad += t2.data() * conversion(t2.units(), t.units());
+    rad += t2.data() * FullPhysics::conversion(t2.units(), t.units());
     if(have_uncertainty)
-      sum += sqr(t2.uncertainty() * conversion(t2.units(), t.units()));
+      sum += sqr(t2.uncertainty() * FullPhysics::conversion(t2.units(), t.units()));
   }
   rad /= ((int) l1b.size());
   Array<double, 1> uncer;

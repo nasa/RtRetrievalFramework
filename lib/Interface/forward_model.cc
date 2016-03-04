@@ -66,13 +66,13 @@ Spectrum ForwardModel::radiance_all(bool Skip_jacobian) const
   Array<double, 1> sd(nrow);
   for(int i = 0; i < (int) sall.size(); ++i) {
     sd(prall[i]) = sall[i].spectral_domain().data() * 
-      conversion(sall[i].spectral_domain().units(), ud);
+      FullPhysics::conversion(sall[i].spectral_domain().units(), ud);
     sr.value()(prall[i]) = sall[i].spectral_range().data() *
-      conversion(sall[i].spectral_range().units(), ur);
+      FullPhysics::conversion(sall[i].spectral_range().units(), ur);
     if(nvar > 0)
       sr.jacobian()(prall[i], Range::all()) =
 	sall[i].spectral_range().data_ad().jacobian() *
-	conversion(sall[i].spectral_range().units(), ur);
+	FullPhysics::conversion(sall[i].spectral_range().units(), ur);
   }
   return Spectrum(SpectralDomain(sd, ud), SpectralRange(sr, ur));
 }
@@ -118,16 +118,16 @@ Spectrum ForwardModel::measured_radiance_all() const
     uncer.resize(nrow);
   for(int i = 0; i < (int) sall.size(); ++i) {
     sd(prall[i]) = sall[i].spectral_domain().data() * 
-      conversion(sall[i].spectral_domain().units(), ud);
+      FullPhysics::conversion(sall[i].spectral_domain().units(), ud);
     sr.value()(prall[i]) = sall[i].spectral_range().data() *
-      conversion(sall[i].spectral_range().units(), ur);
+      FullPhysics::conversion(sall[i].spectral_range().units(), ur);
     if(have_uncertainty)
       uncer(prall[i]) = sall[i].spectral_range().uncertainty() *
-	conversion(sall[i].spectral_range().units(), ur);
+	FullPhysics::conversion(sall[i].spectral_range().units(), ur);
     if(nvar > 0)
       sr.jacobian()(prall[i], Range::all()) =
 	sall[i].spectral_range().data_ad().jacobian() *
-	conversion(sall[i].spectral_range().units(), ur);
+	FullPhysics::conversion(sall[i].spectral_range().units(), ur);
   }
   return Spectrum(SpectralDomain(sd, ud), SpectralRange(sr, ur, uncer));
 }
