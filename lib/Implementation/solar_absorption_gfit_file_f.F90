@@ -189,17 +189,18 @@ subroutine solar_pts(lunr,filename,filename_len,fzero,grid,frac,spts,ncp) bind(C
       parameter (acc=0.00001d0,margin=90.,stmin=4000.0)
       llformat='(i3,f13.6,6f9.5)'
 
+      ! Convert filename from an array into something
+      ! that can be passed open
+      do fn_index = 1, filename_len
+        solarll(fn_index:fn_index) = filename(fn_index)
+      end do
+
       if(index(solarll,'minnaert').eq.0) then
          mflag=0
       else
          mflag=1
       endif
 
-      ! Convert filename from an array into something
-      ! that can be passed open
-      do fn_index = 1, filename_len
-        solarll(fn_index:fn_index) = filename(fn_index)
-      end do
 !
 !      write(*,*)'SOLAR_SPEC',grid,fzero,ncp
       if ( ncp .lt. 1 ) stop ' SOLARSPEC: NCP < 1   '
