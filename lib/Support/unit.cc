@@ -5,7 +5,13 @@ using namespace FullPhysics;
 
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/phoenix_operator.hpp>
-#include <boost/spirit/home/phoenix/bind/bind_function.hpp>
+// Don't think this is needed, but leave this commented out for a
+// short bit in case we find things breaking and need to come back to
+// this. We might need to have a boost version conditional here if
+// older versions of boost break. Believe this is the same as 
+// phoenix_bind.hpp in older versions of boost.
+// #include <boost/spirit/home/phoenix/bind/bind_function.hpp>
+#include <boost/spirit/include/phoenix_bind.hpp>
 
 //-----------------------------------------------------------------------
 /// Create a unit. This takes string giving the name (e.g., "m",
