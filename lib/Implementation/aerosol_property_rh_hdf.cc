@@ -120,7 +120,7 @@ ArrayAd<double, 3> AerosolPropertyRhHdf::phase_function_moment_each_layer
   blitz::Array<AutoDerivative<double>, 3> 
     res(pfv[0].rows(), press->number_layer(), pfv[1].cols());
   for(int i = 0; i < res.cols(); ++i)
-    res(Range::all(), i, Range::all()) = lin(rhl(i))(i1, i3);
+    res(Range::all(), i, Range::all()) = lin(rhl(i));
   return ArrayAd<double, 3>(res); 
 }
 
