@@ -6,10 +6,13 @@ using namespace FullPhysics;
 REGISTER_LUA_CLASS(AbsorberVmr)
 REGISTER_LUA_END()
 
-REGISTER_LUA_CLASS_NAME(std::vector<boost::shared_ptr<AbsorberVmr> >,
-			VectorAbsorberVmr)
+// typedef to distinguish between copying value or moving value (C++11) push_back prototoypes 
+typedef void(std::vector<boost::shared_ptr<AbsorberVmr> >::*pbt1)(
+        const std::vector<boost::shared_ptr<AbsorberVmr> >::value_type&);
+
+REGISTER_LUA_CLASS_NAME(std::vector<boost::shared_ptr<AbsorberVmr> >, VectorAbsorberVmr)
 .def(luabind::constructor<>())
-.def("push_back", &std::vector<boost::shared_ptr<AbsorberVmr> >::push_back)
+.def("push_back", ((pbt1) &std::vector<boost::shared_ptr<AbsorberVmr> >::push_back))
 REGISTER_LUA_END()
 #endif
 

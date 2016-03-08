@@ -4,8 +4,6 @@
 
 using namespace FullPhysics;
 using namespace blitz;
-using namespace boost;
-
 
 class MaxLikelihoodTest : public MaxLikelihood
 {
@@ -72,7 +70,7 @@ BOOST_AUTO_TEST_CASE(residual_jacobian)
     ((1.25-1.5)/2.0)*(2.00/2.0) + ((2.75-2.5)/3.0)*(0.25/3.0) + ((0.25-0.75)/1.0)*(-0.75/1.0) + ((-0.25+0.5)/4.0)*(-3.15/4.0),
     ((1.25-1.5)/2.0)*(3.50/2.0) + ((2.75-2.5)/3.0)*(10.50/3.0) + ((0.25-0.75)/1.0)*(1.25/1.0) + ((-0.25+0.5)/4.0)*(-4.35/4.0);
 
-  shared_ptr<MaxLikelihoodTest> mlt(new MaxLikelihoodTest(Msrmnt, Msrmnt_err_cov, Mdl, Mdl_jac));
+  boost::shared_ptr<MaxLikelihoodTest> mlt(new MaxLikelihoodTest(Msrmnt, Msrmnt_err_cov, Mdl, Mdl_jac));
   NLLSMaxLikelihood nlls_ml(mlt);
   nlls_ml.parameters(Params);
 

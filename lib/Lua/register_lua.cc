@@ -48,10 +48,15 @@ int int_value(const std::vector<int>& Vec, int index) {
   return Vec.at(index);
 }
 
+// typedef to distinguish between copying value or moving value (C++11) push_back prototoypes 
+typedef void(std::vector<std::string>::*pbt1)(const std::vector<std::string>::value_type&);
+typedef void(std::vector<double>::*pbt2)(const std::vector<double>::value_type&);
+typedef void(std::vector<int>::*pbt3)(const std::vector<int>::value_type&);
+
 REGISTER_LUA_CLASS_NAME(std::vector<std::string>, VectorString)
 .def(luabind::constructor<>())
 .def("size", &std::vector<std::string>::size)
-.def("push_back", &std::vector<std::string>::push_back)
+.def("push_back", ((pbt1) &std::vector<std::string>::push_back))
 .def("value", &string_value)
 .def("__tostring", &string_vector_tostring)
 REGISTER_LUA_END()
@@ -59,7 +64,7 @@ REGISTER_LUA_END()
 REGISTER_LUA_CLASS_NAME(std::vector<double>, VectorDouble)
 .def(luabind::constructor<>())
 .def("size", &std::vector<double>::size)
-.def("push_back", &std::vector<double>::push_back)
+.def("push_back", ((pbt2) &std::vector<double>::push_back))
 .def("value", &double_value)
 .def("__tostring", &double_vector_tostring)
 REGISTER_LUA_END()
@@ -67,7 +72,7 @@ REGISTER_LUA_END()
 REGISTER_LUA_CLASS_NAME(std::vector<int>, VectorInt)
 .def(luabind::constructor<>())
 .def("size", &std::vector<int>::size)
-.def("push_back", &std::vector<int>::push_back)
+.def("push_back", ((pbt3) &std::vector<int>::push_back))
 .def("value", &int_value)
 .def("__tostring", &int_vector_tostring)
 REGISTER_LUA_END()

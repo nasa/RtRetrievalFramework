@@ -213,10 +213,14 @@ REGISTER_LUA_CLASS(Level1b)
 .def("time", &Level1b::time)
 REGISTER_LUA_END()
 
+// typedef to distinguish between copying value or moving value (C++11) push_back prototoypes 
+typedef void(std::vector<boost::shared_ptr<Level1b> >::*pbt1)(
+        const std::vector<boost::shared_ptr<Level1b> >::value_type&);
+
 REGISTER_LUA_CLASS_NAME(std::vector<boost::shared_ptr<Level1b> >,
                         VectorLevel1b)
 .def(luabind::constructor<>())
-.def("push_back", &std::vector<boost::shared_ptr<Level1b> >::push_back)
+.def("push_back", ((pbt1) &std::vector<boost::shared_ptr<Level1b> >::push_back))
 REGISTER_LUA_END()
 
 DoubleWithUnit Level1b::signal(int Spec_index, const std::vector<int>& Sample_indexes) const
