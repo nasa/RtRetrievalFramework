@@ -151,7 +151,7 @@ Array<double,1> SpurrRt::stokes_single_wn(double Wn, int Spec_index, const Array
   stokes = 0;
   stokes(0) = rt_driver_->get_intensity();
   // Check for NaN from lidort
-  if(isnan(stokes(0)))
+  if(std::isnan(stokes(0)))
     throw Exception("SpurrRt encountered a NaN in the radiance");
   return stokes;
 }
@@ -251,7 +251,7 @@ ArrayAd<double, 1> SpurrRt::stokes_and_jacobian_single_wn(double Wn, int Spec_in
   rad_jac = 0;
   rad_jac(0) = AutoDerivative<double>(rad, jac);
   // Check for NaN from lidort
-  if(isnan(rad))
+  if(std::isnan(rad))
     throw Exception("SpurrRt encountered a NaN in the radiance");
   if(any(blitz_isnan(jac)))
     throw Exception("SpurrRt encountered a NaN in the jacobian");

@@ -169,7 +169,7 @@ public:
 //-----------------------------------------------------------------------
 
   template<class T> bool is_type() const
-  { return luabind::object_cast_nothrow<T>(obj); }
+  { return luabind::object_cast_nothrow<T>(obj) != boost::none; }
 
 //-----------------------------------------------------------------------
 /// Test if value in a table is the given type. This is a shortcut for

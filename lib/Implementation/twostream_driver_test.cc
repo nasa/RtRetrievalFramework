@@ -345,11 +345,11 @@ BOOST_AUTO_TEST_CASE(valgrind_problem)
   // triggers the unitialized value error
   for(int i = 0; i < od.jacobian().rows(); ++i)
     for(int j = 0; j < od.jacobian().cols(); ++j) {
-      if(isnan(jac_atm(j,i)))
+      if(std::isnan(jac_atm(j,i)))
         std::cerr << "Nan at jac_atm(" << j << ", " << i << ")\n";
     }
   for(int i = 0; i < jac_surf.rows(); ++i)
-    if(isnan(jac_surf(i)))
+    if(std::isnan(jac_surf(i)))
       std::cerr << "Nan at jac_surf(" << i << ")\n";
 }
 BOOST_AUTO_TEST_SUITE_END()
