@@ -528,6 +528,7 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/nonuniform_spectrum_sampling_wrap.cc \
 	@swigsrc@/spectral_window_range_wrap.cc \
 	@swigsrc@/temperature_ecmwf_wrap.cc \
+	@swigsrc@/temperature_level_offset_wrap.cc \
 	@swigsrc@/absorber_vmr_ecmwf_wrap.cc \
 	@swigsrc@/absorber_vmr_level_wrap.cc \
 	@swigsrc@/absorber_vmr_level_scaled_wrap.cc \
@@ -764,6 +765,7 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-nonuniform_spectrum_sampling_wrap.lo \
 	@swigsrc@/_swig_wrap_la-spectral_window_range_wrap.lo \
 	@swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo \
+	@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_level_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_level_scaled_wrap.lo \
@@ -2478,7 +2480,6 @@ EXTRA_DIST = config/depf90 lib/test_all.sh \
 	@thirdpartysrc@/$(HDF5_NAME).tar.gz \
 	@thirdpartysrc@/$(BZLIB_NAME).tar.gz \
 	@thirdpartysrc@/$(BOOST_NAME).tar.gz \
-	@thirdpartysrc@/$(BOOST_PATCH) \
 	@thirdpartysrc@/$(BLITZ_NAME).tar.gz \
 	@thirdpartysrc@/$(BLITZ_PATCH) \
 	@thirdpartysrc@/$(NCURSES_NAME).tar.gz \
@@ -2487,6 +2488,9 @@ EXTRA_DIST = config/depf90 lib/test_all.sh \
 	@thirdpartysrc@/$(LUA_NAME).tar.gz \
 	@thirdpartysrc@/$(LUABIND_NAME).tar.gz \
 	@thirdpartysrc@/$(LUA_PATCH) @thirdpartysrc@/$(LUA_PATCH2) \
+	@thirdpartysrc@/$(LUABIND_PATCH) \
+	@thirdpartysrc@/$(LUABIND_PATCH2) \
+	@thirdpartysrc@/$(LUABIND_PATCH3) \
 	@thirdpartysrc@/$(GSL_NAME).tar.gz \
 	@thirdpartysrc@/$(NOSE_NAME).tar.gz \
 	@thirdpartysrc@/$(RUPORT_NAME).gem \
@@ -2914,6 +2918,8 @@ input_DATA = @commoninputsrc@/l2_solar_model.h5 \
 
 # Make sure to look in local install directory first, in case we are
 # building our own copy of libraries also found in thirdparty library area.
+# However boost/backtrace is a special case, we want this before include
+# otherwise we get a build loop
 
 # Include boost in builds. We have two flavors, one that uses shared libraries
 # and one that uses static libraries.
@@ -2937,8 +2943,9 @@ input_DATA = @commoninputsrc@/l2_solar_model.h5 \
 # Allow files to be included in other directories.
 
 # Allow files to be included in other directories.
-AM_CPPFLAGS = -I$(prefix)/include $(BOOST_CPPFLAGS) $(BLITZ_CPPFLAGS) \
-	$(CPPAD_CPPFLAGS) $(GSL_CPPFLAGS) -I$(srcdir)/@supportsrc@ \
+AM_CPPFLAGS = -I$(srcdir)/@supportsrc@ -I$(prefix)/include \
+	$(BOOST_CPPFLAGS) $(BLITZ_CPPFLAGS) $(CPPAD_CPPFLAGS) \
+	$(GSL_CPPFLAGS) -I$(srcdir)/@supportsrc@ \
 	-I$(srcdir)/@interfacesrc@ -I$(srcdir)/@implsrc@ \
 	-I$(srcdir)/@fixedlevelsrc@ -I$(srcdir)/@deprecatedsrc@ \
 	-I$(srcdir)/@outsrc@ $(am__append_10) -I$(srcdir)/@fpsrc@
@@ -3128,6 +3135,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/nonuniform_spectrum_sampling_wrap.cc \
 	@swigsrc@/spectral_window_range_wrap.cc \
 	@swigsrc@/temperature_ecmwf_wrap.cc \
+	@swigsrc@/temperature_level_offset_wrap.cc \
 	@swigsrc@/absorber_vmr_ecmwf_wrap.cc \
 	@swigsrc@/absorber_vmr_level_wrap.cc \
 	@swigsrc@/absorber_vmr_level_scaled_wrap.cc \
@@ -3654,17 +3662,12 @@ BZLIB_NAME = bzip2-1.0.6
 # Boost can be built for multithreading. We don't need or use that, so
 # we pass the option threading=single to turn that off. If we ever do
 # need it, we can change this option.
-BOOST_NAME = boost_1_45_0
+BOOST_NAME = boost_1_59_0
 
 # Select one of the files installed. We use the timestamp on this to
 # determine if we already have installed boost, or if we need to. Nothing
 # special about this particular file, it is just one of them installed.
 BOOST_TARGET = $(includedir)/boost/smart_ptr.hpp
-
-# This patch remove the "-no-cpp-precomp" flag from the compiler. This
-# hasn't been used since version 3.3 of the apple compiler, and is now
-# an error with gcc 4.7
-BOOST_PATCH = boost_darwin.patch
 
 # ========================================================================
 # Build blitz++
@@ -3718,6 +3721,10 @@ LUABIND_PATCH = luabind_boost.patch
 # for Lua 5.1). This originally comes from git://git.colberg.org/luabind.git,
 # and is described at http://lua.2524044.n2.nabble.com/Luabind-adapted-to-Lua-5-2-td7582662.html
 LUABIND_PATCH2 = luabind_lua5.2.patch
+
+# This patch lets luabind work with boost >= 1.57. 
+# See https://github.com/rpavlik/luabind/pull/23 for details
+LUABIND_PATCH3 = luabind_boost_1_57.patch
 
 # ========================================================================
 # Build gsl++
@@ -4321,6 +4328,8 @@ clean-pkgpythonswigLTLIBRARIES:
 @swigsrc@/_swig_wrap_la-spectral_window_range_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo:  \
+	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
+@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -6624,6 +6633,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_ecmwf_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_fixed_level_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_imp_base_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_offset_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-twostream_driver_wrap.Plo@am__quote@
@@ -8287,6 +8297,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/temperature_ecmwf_wrap.cc' object='@swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo `test -f '@swigsrc@/temperature_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_ecmwf_wrap.cc
+
+@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo: @swigsrc@/temperature_level_offset_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo `test -f '@swigsrc@/temperature_level_offset_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_level_offset_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/temperature_level_offset_wrap.cc' object='@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo `test -f '@swigsrc@/temperature_level_offset_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_level_offset_wrap.cc
 
 @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo: @swigsrc@/absorber_vmr_ecmwf_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_ecmwf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo `test -f '@swigsrc@/absorber_vmr_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/absorber_vmr_ecmwf_wrap.cc
@@ -11828,16 +11845,15 @@ $(includedir)/bzlib.h: $(thirdpartysrc)/$(BZLIB_NAME).tar.gz
 	touch $(includedir)/bzlib.h
 	@echo "========================== Done building bzlib"
 
-$(BOOST_TARGET): $(thirdpartysrc)/$(BOOST_NAME).tar.gz $(BZLIB_TARGET) $(thirdpartysrc)/$(BOOST_PATCH)
+$(BOOST_TARGET): $(thirdpartysrc)/$(BOOST_NAME).tar.gz $(BZLIB_TARGET)
 	@echo "*************************** Building BOOST"
 	${AMTAR} xzf $<
 	cd $(BOOST_NAME) && \
-        patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(BOOST_PATCH) && \
         ./bootstrap.sh --prefix="$(prefix)" \
            --with-libraries=date_time,regex,iostreams,filesystem && \
-        echo "using gcc : : $(CXX) ;" > tools/build/v2/user-config.jam && \
-        echo "using darwin : : $(CXX) ;" >> tools/build/v2/user-config.jam && \
-        ./bjam install threading=single link=static,shared cflags="${BZLIB_CPPFLAGS}" linkflags="${BZLIB_LDFLAGS}" && exit 0; exit 1
+        echo "using gcc : : $(CXX) ;" > tools/build/user-config.jam && \
+        echo "using darwin : : $(CXX) ;" >> tools/build/user-config.jam && \
+        ./bjam install threading=single link=static,shared cxxflags="${BZLIB_CPPFLAGS}" linkflags="${BZLIB_LDFLAGS}" && exit 0; exit 1
 # On mac, the full name of the library isn't put into the installed library.
 # This command will fail on linux, which is fine. We just ignore failure.
 	-install_name_tool -id ${prefix}/lib/libboost_regex.dylib ${prefix}/lib/libboost_regex.dylib
@@ -11904,11 +11920,12 @@ $(LUA_TARGET): $(thirdpartysrc)/$(LUA_NAME).tar.gz $(thirdpartysrc)/$(LUA_PATCH)
 	touch $(LUA_TARGET)
 	@echo "========================== Done building Lua"
 
-$(LUABIND_TARGET): $(thirdpartysrc)/$(LUABIND_NAME).tar.gz $(LUA_TARGET) $(BOOST_TARGET) $(thirdpartysrc)/$(LUABIND_PATCH)
+$(LUABIND_TARGET): $(thirdpartysrc)/$(LUABIND_NAME).tar.gz $(LUA_TARGET) $(BOOST_TARGET) $(thirdpartysrc)/$(LUABIND_PATCH) $(thirdpartysrc)/$(LUABIND_PATCH2) $(thirdpartysrc)/$(LUABIND_PATCH3)
 	@echo "*************************** Building Luabind"
 	${AMTAR} xzf $< && cd $(LUABIND_NAME) && \
         patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(LUABIND_PATCH) && \
         patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(LUABIND_PATCH2) && \
+        patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(LUABIND_PATCH3) && \
         $(MKDIR_P) $(includedir)/luabind && \
         $(MKDIR_P) $(includedir)/luabind/detail && \
         $(INSTALL_HEADER) luabind/*.hpp $(includedir)/luabind && \

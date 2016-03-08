@@ -5058,6 +5058,65 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_MaxAPosteriori__v_param_a_priori_uncertainty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::MaxAPosteriori *arg1 = (FullPhysics::MaxAPosteriori *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::MaxAPosteriori const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::MaxAPosteriori const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SwigValueWrapper< blitz::Array< double,1 > > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__MaxAPosteriori_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MaxAPosteriori__v_param_a_priori_uncertainty" "', argument " "1"" of type '" "FullPhysics::MaxAPosteriori const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::MaxAPosteriori > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::MaxAPosteriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::MaxAPosteriori * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::MaxAPosteriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::MaxAPosteriori * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::MaxAPosteriori const *)arg1)->param_a_priori_uncertainty();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    npy_intp dims[1], stride[1];
+    for(int i = 0; i < 1; ++i) {
+      dims[i] = (&result)->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = (&result)->stride(i) * sizeof(double);
+    }
+    resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
+      stride, (&result)->data(), 0, 0, 0);
+    blitz::Array<double, 1>* t = new blitz::Array<double, 1>(result);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_MaxAPosteriori__v_parameter_a_priori_diff(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::MaxAPosteriori *arg1 = (FullPhysics::MaxAPosteriori *) 0 ;
@@ -5499,6 +5558,17 @@ static PyMethodDef SwigMethods[] = {
 		"Returns the a priori covariance matrix.\n"
 		"\n"
 		"The a priori covariance matrix \n"
+		""},
+	 { (char *)"MaxAPosteriori__v_param_a_priori_uncertainty", (PyCFunction)_wrap_MaxAPosteriori__v_param_a_priori_uncertainty, METH_O, (char *)"\n"
+		"\n"
+		"Array< double, 1 > MaxAPosteriori::param_a_priori_uncertainty() const\n"
+		"Returns the square root of the diagonal of the a-priori covariance\n"
+		"matrix.\n"
+		"\n"
+		"A-priori covariance matrix is returned by a_priori_cov() method, and\n"
+		"this method returns the square root of the diagonal of the matrix.\n"
+		"\n"
+		"The square root of the diagonal of the a-priori covariance matrix \n"
 		""},
 	 { (char *)"MaxAPosteriori__v_parameter_a_priori_diff", (PyCFunction)_wrap_MaxAPosteriori__v_parameter_a_priori_diff, METH_O, (char *)"\n"
 		"\n"

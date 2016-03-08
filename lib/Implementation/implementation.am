@@ -345,6 +345,7 @@ SWIG_SRC += @swigsrc@/l2_fp_configuration_lua_wrap.cc
 SWIG_SRC += @swigsrc@/nonuniform_spectrum_sampling_wrap.cc
 SWIG_SRC += @swigsrc@/spectral_window_range_wrap.cc
 SWIG_SRC += @swigsrc@/temperature_ecmwf_wrap.cc
+SWIG_SRC += @swigsrc@/temperature_level_offset_wrap.cc
 SWIG_SRC += @swigsrc@/absorber_vmr_ecmwf_wrap.cc
 SWIG_SRC += @swigsrc@/absorber_vmr_level_wrap.cc
 SWIG_SRC += @swigsrc@/absorber_vmr_level_scaled_wrap.cc

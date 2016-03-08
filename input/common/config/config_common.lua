@@ -3487,10 +3487,10 @@ end
 
 
 function ConfigCommon:scaled_nlls_max_a_posteriori(config)
-   self:nlls_max_a_posteriori(config)
-   config.opt_problem = NLLSProblemScaled(
-                              config.stat_method_map:param_a_priori_uncertainty(),
-                              config.opt_problem)
+   ConfigCommon.nlls_max_a_posteriori(self,config)
+   config.opt_problem = NLLSProblemScaled.create(
+      config.stat_method_map:param_a_priori_uncertainty(),
+      config.opt_problem)
    config.opt_problem:parameters(config.opt_problem:scale_parameters(config.initial_guess:initial_guess()))
 end
 

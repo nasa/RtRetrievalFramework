@@ -184,7 +184,7 @@ void getsp(int nlev, double * z, double * p, double * t, double ths, double roc,
   double ds,dx,dz,dt,dphi,phi,th,thp,zh,rpsh,rp;
 
   const double pi=OldConstant::pi;
-  const double d2r=conversion(units::deg, units::rad);
+  const double d2r=FullPhysics::conversion(units::deg, units::rad);
   const double piby2=0.5*pi;
    
   for (k=0; k<nlev; ++k)

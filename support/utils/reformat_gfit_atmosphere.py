@@ -15,10 +15,11 @@ mav_col_extract = [ ['Pres', 1.01325e5],
                     ['1h2o', 1 ],
                     ['1co2', 1 ], 
                     ['1o2',  1 ],
+                    ['1o3',  1 ],
                     ['1ch4',  1 ],]
 
-all_col_names = ['Pressure', 'Height', 'Temperature', 'H2O', 'CO2', 'O2', 'CH4']
-all_unit_names = ['Pa', 'km', 'K', 'VMR', 'VMR', 'VMR', 'VMR']
+all_col_names = ['Pressure', 'Height', 'Temperature', 'H2O', 'CO2', 'O2', 'O3', 'CH4']
+all_unit_names = ['Pa', 'km', 'K', 'VMR', 'VMR', 'VMR', 'VMR', 'VMR']
 
 
 def reformat_gfit_atmosphere(mav_file, out_file, next_spec_srch=None):
@@ -52,7 +53,7 @@ def reformat_gfit_atmosphere(mav_file, out_file, next_spec_srch=None):
     print('Processing for', ' '.join(mav_data[spec_line_start]))
 
     mav_size_row   = spec_line_start + 1
-    mav_header_row = mav_size_row + 2
+    mav_header_row = mav_size_row + 4
 
     try:
         (num_skip, num_cols, num_rows) = [int(val) for val in mav_data[mav_size_row]]

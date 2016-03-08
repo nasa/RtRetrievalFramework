@@ -180,8 +180,8 @@ void Level1bOco::initialize()
     // filter
     stokes_coef_(ra, 0) = 0.5;
     for(int bidx = 0; bidx < stokes_coef_.extent(firstDim); bidx++) {
-      stokes_coef_(bidx,1) = 0.5*cos(2.0*pol_ang(frame_index, sounding_index, bidx)*conversion(units::deg, units::rad));
-      stokes_coef_(bidx,2) = 0.5*sin(2.0*pol_ang(frame_index, sounding_index, bidx)*conversion(units::deg, units::rad));
+      stokes_coef_(bidx,1) = 0.5*cos(2.0*pol_ang(frame_index, sounding_index, bidx)*FullPhysics::conversion(units::deg, units::rad));
+      stokes_coef_(bidx,2) = 0.5*sin(2.0*pol_ang(frame_index, sounding_index, bidx)*FullPhysics::conversion(units::deg, units::rad));
     }
     stokes_coef_(ra, 3) = 0.0;
 

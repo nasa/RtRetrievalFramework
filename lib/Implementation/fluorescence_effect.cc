@@ -57,7 +57,7 @@ void FluorescenceEffect::apply_effect(Spectrum& Spec,
     ArrayAd<double, 1>& rt_solar_rad = Spec.spectral_range().data_ad();
 
     // Access fluoresence retireved values in the correct units
-    double conv_factor = conversion(retrieval_unit, Spec.spectral_range().units());
+    double conv_factor = FullPhysics::conversion(retrieval_unit, Spec.spectral_range().units());
     AutoDerivative<double> fs_ref = coefficient()(0) * conv_factor;
     AutoDerivative<double> slope = coefficient()(1);
 

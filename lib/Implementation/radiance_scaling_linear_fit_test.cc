@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(basic)
 
   // Convert to units like would be seen in forward model InstrumentCorrection loop
   Unit dest_unit = Unit("ph / s / m^2 / micron W / (cm^-1) / (ph / (s) / (micron)) sr^-1");
-  //double conv_factor = conversion(spec_meas.units(), dest_unit);
+  //double conv_factor = FullPhysics:conversion(spec_meas.units(), dest_unit);
   SpectralRange meas_rad_conv( spec_meas.convert(dest_unit) );
 
   // Scale and offset test these effects on linear fit

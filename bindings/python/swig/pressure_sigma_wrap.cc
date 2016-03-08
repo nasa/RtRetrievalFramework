@@ -5069,7 +5069,7 @@ SWIGINTERN PyObject *SHARED_PTR_DISOWN_swigconstant(PyObject *SWIGUNUSEDPARM(sel
 }
 
 
-SWIGINTERN PyObject *_wrap_new_PressureSigma(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_PressureSigma__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   blitz::Array< double,1 > *arg1 = 0 ;
   blitz::Array< double,1 > *arg2 = 0 ;
@@ -5083,10 +5083,9 @@ SWIGINTERN PyObject *_wrap_new_PressureSigma(PyObject *SWIGUNUSEDPARM(self), PyO
   int ecode3 = 0 ;
   bool val4 ;
   int ecode4 = 0 ;
-  PyObject *swig_obj[4] ;
   FullPhysics::PressureSigma *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args,"new_PressureSigma",4,4,swig_obj)) SWIG_fail;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   {
     int res = SWIG_ConvertPtr(swig_obj[0], (void**)(&arg1), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
       0 );
@@ -5135,6 +5134,84 @@ SWIGINTERN PyObject *_wrap_new_PressureSigma(PyObject *SWIGUNUSEDPARM(self), PyO
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_PressureSigma__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  blitz::Array< double,1 > *arg1 = 0 ;
+  double arg2 ;
+  bool arg3 ;
+  blitz::Array< double,1 > a1 ;
+  PythonObject numpy1 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  FullPhysics::PressureSigma *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  {
+    int res = SWIG_ConvertPtr(swig_obj[0], (void**)(&arg1), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy1.obj = to_numpy<double>(swig_obj[0]);
+      if(!numpy1.obj)
+      return NULL;
+      a1.reference(to_blitz_array<double, 1>(numpy1));
+      arg1 = &a1;
+    }
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_PressureSigma" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_PressureSigma" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = static_cast< bool >(val3);
+  {
+    try {
+      result = (FullPhysics::PressureSigma *)new FullPhysics::PressureSigma((blitz::Array< double,1 > const &)*arg1,arg2,arg3);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::PressureSigma > *smartresult = result ? new boost::shared_ptr<  FullPhysics::PressureSigma >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__PressureSigma_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_PressureSigma(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_PressureSigma",0,4,argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    return _wrap_new_PressureSigma__SWIG_1(self, argc, argv);
+  }
+  if (argc == 4) {
+    return _wrap_new_PressureSigma__SWIG_0(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_PressureSigma'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::PressureSigma::PressureSigma(blitz::Array< double,1 > const &,blitz::Array< double,1 > const &,double,bool)\n"
+    "    FullPhysics::PressureSigma::PressureSigma(blitz::Array< double,1 > const &,double,bool)\n");
+  return 0;
 }
 
 

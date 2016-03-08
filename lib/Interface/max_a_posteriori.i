@@ -16,6 +16,7 @@ public:
   %python_attribute(a_priori_params, blitz::Array<double, 1>)
   %python_attribute(a_priori_cov, blitz::Array<double, 2>);
 
+  %python_attribute(param_a_priori_uncertainty, blitz::Array<double, 1>)
   %python_attribute(parameter_a_priori_diff, blitz::Array<double, 1>)
   %python_attribute(cov_weighted_parameter_a_priori_diff, blitz::Array<double, 1>)
   %python_attribute(a_priori_cov_chol_inv, blitz::Array<double, 2>)

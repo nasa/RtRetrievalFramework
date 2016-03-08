@@ -88,3 +88,17 @@ ArrayAd<double, 1> RelativeHumidity::relative_humidity_grid() const
   res = 0.263 * pgrid * shgrid * exp(-17.67*(tgrid-273.16)/(tgrid-29.65));
   return ArrayAd<double, 1>(res);
 }
+
+//-----------------------------------------------------------------------
+/// Relative humidity for each layer. This is just the average of the 
+/// 2 levels.
+//-----------------------------------------------------------------------
+
+ArrayAd<double, 1> RelativeHumidity::relative_humidity_layer() const
+{
+  ArrayAd<double, 1> rh_lev = relative_humidity_grid();
+  ArrayAd<double, 1> res(rh_lev.rows() - 1, rh_lev.number_variable());
+  for(int i = 0; i < res.rows(); ++i)
+    res(i) = (rh_lev(i) + rh_lev(i+1)) / 2.0;
+  return res;
+}
