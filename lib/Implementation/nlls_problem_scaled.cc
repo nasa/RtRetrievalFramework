@@ -1,12 +1,8 @@
 #include "nlls_problem_scaled.h"
 #include "fp_exception.h"
 
-
 using namespace FullPhysics;
 using namespace blitz;
-using namespace boost;
-
-
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
@@ -20,7 +16,7 @@ boost::shared_ptr<CostFunc> create_nlls_problem_scaled
 }
 			   
 REGISTER_LUA_DERIVED_CLASS(NLLSProblemScaled, CostFunc)
-.def(luabind::constructor< const Array<double, 1>&, const shared_ptr<NLLSProblem>& >())
+.def(luabind::constructor< const Array<double, 1>&, const boost::shared_ptr<NLLSProblem>& >())
 .def("parameters", (void( NLLSProblemScaled::*)(const blitz::Array<double, 1>&))&NLLSProblemScaled::parameters)
 .def("scale_parameters", &NLLSProblemScaled::scale_parameters)
 .scope
@@ -33,7 +29,7 @@ REGISTER_LUA_END()
 
 
 NLLSProblemScaled::NLLSProblemScaled( const Array<double, 1>& s,
-                   const shared_ptr<NLLSProblem>& p ) 
+                   const boost::shared_ptr<NLLSProblem>& p ) 
   : NLLSProblem(), S(s.copy()), P(p)
 {
   if(s.rows() != P->expected_parameter_size()) {

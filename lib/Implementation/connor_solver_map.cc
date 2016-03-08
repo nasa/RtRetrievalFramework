@@ -7,8 +7,6 @@
 
 using namespace FullPhysics;
 using namespace blitz;
-using namespace boost;
-
 
 
 boost::shared_ptr<IterativeSolver> connor_solver_map_create(
