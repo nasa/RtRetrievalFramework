@@ -1,5 +1,6 @@
 #include "aerosol_property_rh_hdf.h"
 #include "ostream_pad.h"
+#include <boost/make_shared.hpp>
 using namespace FullPhysics;
 using namespace blitz;
 
@@ -26,26 +27,33 @@ AerosolPropertyRhHdf::AerosolPropertyRhHdf
 {
   press = Press;
   Array<double, 1> wn(F.read_field<double, 1>(Group_name + "/wave_number"));
-  Array<double, 1> rh(F.read_field<double, 1>(Group_name + "/relative_humidity"));
+  Array<double, 1> rhv(F.read_field<double, 1>(Group_name + "/relative_humidity"));
   Array<double, 2> 
     qscatv(F.read_field<double, 2>(Group_name + "/scattering_coefficient"));
   Array<double, 2> 
     qextv(F.read_field<double, 2>(Group_name + "/extinction_coefficient"));
   Array<double, 4>
     pfv(F.read_field<double, 4>(Group_name + "/phase_function_moment"));
+  if(rhv.rows() != qscatv.cols() ||
+     rhv.rows() != qextv.cols() ||
+     rhv.rows() != pfv.cols())
+    throw Exception("Mismatch between the number of relative humidity values and the aerosol property arrays");
   Array<double, 1> qscatvt(qscatv.rows());
   Array<double, 1> qextvt(qextv.rows());
-  qscatvt = qscatv(Range::all(), 0);
-  qextvt = qextv(Range::all(), 0);
-  qext.reset(new LinearInterpolate<double, double>(wn.begin(), wn.end(), 
-					   qextvt.begin()));
-  qscat.reset(new LinearInterpolate<double, double>(wn.begin(), wn.end(), 
-					    qscatvt.begin()));
-  std::vector<Array<double, 2> > pf_vec;
-  for(int i = 0; i < pfv.rows(); ++i)
-    pf_vec.push_back(Array<double, 2>(pfv(i, 0, Range::all(), Range::all())));
-  pf.reset(new ScatteringMomentInterpolate(wn.begin(), wn.end(),
-					   pf_vec.begin()));
+  for(int i = 0; i < rhv.rows(); ++i) {
+    rh_val.push_back(rhv(i));
+    qscatvt = qscatv(Range::all(), i);
+    qextvt = qextv(Range::all(), i);
+    qext.push_back(boost::make_shared<LinearInterpolate<double, double> >
+		  (wn.begin(), wn.end(), qextvt.begin()));
+    qscat.push_back(boost::make_shared<LinearInterpolate<double, double> >
+		   (wn.begin(), wn.end(), qscatvt.begin()));
+    std::vector<Array<double, 2> > pf_vec;
+    for(int j = 0; j < pfv.rows(); ++j)
+      pf_vec.push_back(Array<double, 2>(pfv(j, i, Range::all(), Range::all())));
+    pf.push_back(boost::make_shared<ScatteringMomentInterpolate>
+		(wn.begin(), wn.end(), pf_vec.begin()));
+  }
 }
 
 boost::shared_ptr<AerosolProperty> AerosolPropertyRhHdf::clone() const
@@ -65,38 +73,55 @@ boost::shared_ptr<AerosolProperty> AerosolPropertyRhHdf::clone
 ArrayAd<double, 1> AerosolPropertyRhHdf::extinction_coefficient_each_layer
 (double wn) const
 {
-  firstIndex i1; secondIndex i2;
-  AutoDerivative<double> t = (*qext)(wn);
-  ArrayAd<double, 1> res(press->number_layer(), t.number_variable());
-  res.value() = t.value();
-  if(t.number_variable() > 0)
-    res.jacobian() = t.gradient()(i2);
-  return res;
+  std::vector<AutoDerivative<double> > qextv;
+  for(int i = 0; i < (int) rh_val.size(); ++i)
+    qextv.push_back((*qext[i])(wn));
+  LinearInterpolate<AutoDerivative<double>, AutoDerivative<double> > 
+    lin(rh_val.begin(), rh_val.end(), qextv.begin());
+  ArrayAd<double, 1> rhl = rh->relative_humidity_layer();
+  blitz::Array<AutoDerivative<double>, 1> res(rhl.rows());
+  for(int i = 0; i < res.rows(); ++i)
+    res(i) = lin(rhl(i));
+  return ArrayAd<double, 1>(res);
 }
 
 ArrayAd<double, 1> AerosolPropertyRhHdf::scattering_coefficient_each_layer
 (double wn) const
 {
-  firstIndex i1; secondIndex i2;
-  AutoDerivative<double> t = (*qscat)(wn);
-  ArrayAd<double, 1> res(press->number_layer(), t.number_variable());
-  res.value() = t.value();
-  if(t.number_variable() > 0)
-    res.jacobian() = t.gradient()(i2);
-  return res;
+  std::vector<AutoDerivative<double> > qscatv;
+  for(int i = 0; i < (int) rh_val.size(); ++i)
+    qscatv.push_back((*qscat[i])(wn));
+  LinearInterpolate<AutoDerivative<double>, AutoDerivative<double> > 
+    lin(rh_val.begin(), rh_val.end(), qscatv.begin());
+  ArrayAd<double, 1> rhl = rh->relative_humidity_layer();
+  blitz::Array<AutoDerivative<double>, 1> res(rhl.rows());
+  for(int i = 0; i < res.rows(); ++i)
+    res(i) = lin(rhl(i));
+  return ArrayAd<double, 1>(res);
 }
 
 ArrayAd<double, 3> AerosolPropertyRhHdf::phase_function_moment_each_layer
 (double wn, int nmom, int nscatt) const
 { 
   firstIndex i1; secondIndex i2; thirdIndex i3; fourthIndex i4;
-  ArrayAd<double, 2> t = (*pf)(wn, nmom, nscatt);
-  ArrayAd<double, 3> res(t.rows(), press->number_layer(), 
-			 t.cols(), t.number_variable());
-  res.value() = t.value()(i1, i3);
-  if(t.number_variable() > 0)
-    res.jacobian() = t.jacobian()(i1, i3, i4);
-  return res; 
+  std::vector<blitz::Array<AutoDerivative<double>, 2> > pfv;
+  for(int i = 0; i < (int) rh_val.size(); ++i) {
+    blitz::Array<double, 2> t((*pf[i])(wn, nmom, nscatt));
+    blitz::Array<AutoDerivative<double>, 2> t2(t.shape());
+    for(int j  = 0; j < t2.rows(); ++j)
+      for(int k  = 0; k < t2.cols(); ++k)
+	t2(j, k) = t(j, k);
+    pfv.push_back(t2);
+  }
+  LinearInterpolate<AutoDerivative<double>, 
+    blitz::Array<AutoDerivative<double>, 2> >
+    lin(rh_val.begin(), rh_val.end(), pfv.begin());
+  ArrayAd<double, 1> rhl = rh->relative_humidity_layer();
+  blitz::Array<AutoDerivative<double>, 3> 
+    res(pfv[0].rows(), press->number_layer(), pfv[1].cols());
+  for(int i = 0; i < res.cols(); ++i)
+    res(Range::all(), i, Range::all()) = lin(rhl(i));
+  return ArrayAd<double, 3>(res); 
 }
 
 void AerosolPropertyRhHdf::print(std::ostream& Os) const 

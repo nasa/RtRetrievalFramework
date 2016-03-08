@@ -43,17 +43,17 @@ public:
   { value /= D.value; units /= D.units; return *this;}
   inline AutoDerivativeWithUnit<T>& 
   operator+=(const AutoDerivativeWithUnit<T>& D)
-  { value += D.value * conversion(D.units, units); return *this;}
+  { value += D.value * FullPhysics::conversion(D.units, units); return *this;}
   inline AutoDerivativeWithUnit<T>& 
   operator-=(const AutoDerivativeWithUnit<T>& D)
-  { value -= D.value * conversion(D.units, units); return *this;}
+  { value -= D.value * FullPhysics::conversion(D.units, units); return *this;}
 
 //-----------------------------------------------------------------------
 /// Convert to the given units.
 //-----------------------------------------------------------------------
 
   inline AutoDerivativeWithUnit<T> convert(const Unit& R) const
-  { return AutoDerivativeWithUnit<T>(value * conversion(units, R), R); }
+  { return AutoDerivativeWithUnit<T>(value * FullPhysics::conversion(units, R), R); }
 
   void print(std::ostream& Os) const 
   { Os << value << " " << units.name(); }

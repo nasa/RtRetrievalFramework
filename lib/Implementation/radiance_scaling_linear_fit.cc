@@ -33,7 +33,7 @@ void RadianceScalingLinearFit::apply_correction
 
   // Convert measured radiances into same units as radiance to scale
   // and only use those pixels being used for the retrieval
-  double conv_factor = conversion(measured_radiance.units(), Radiance.units());
+  double conv_factor = FullPhysics::conversion(measured_radiance.units(), Radiance.units());
   Array<double, 1> meas_conv_data(Pixel_list.size());
   for(int i = 0; i < (int) Pixel_list.size(); i++)
     meas_conv_data(i) = measured_radiance.data()(Pixel_list[i]) * conv_factor;
@@ -72,7 +72,7 @@ void RadianceScalingLinearFit::apply_correction
   if(false) {
     std::ofstream debug_out(("radiance_scaling_linear_fit_debug_" + band_name + ".txt").c_str());
     debug_out << "# scale_offset: " << std::endl << scale_offset << std::endl;
-    double conv_factor = conversion(measured_radiance.units(), Radiance.units());
+    double conv_factor = FullPhysics::conversion(measured_radiance.units(), Radiance.units());
     debug_out << "# inst_corr conv_factor = " << conv_factor << std::endl
       << "# measured_radiance: " << measured_radiance.units().name() << std::endl
       << measured_radiance.data() << std::endl

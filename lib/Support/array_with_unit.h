@@ -40,9 +40,9 @@ public:
   inline ArrayWithUnit<T, D>& operator/=(const ArrayWithUnit<T, D>& V)
   { value /= V.value; units /= V.units; return *this;}
   inline ArrayWithUnit<T, D>& operator+=(const ArrayWithUnit<T, D> & V)
-  { value += V.value * conversion(V.units, units); return *this;}
+  { value += V.value * FullPhysics::conversion(V.units, units); return *this;}
   inline ArrayWithUnit<T, D>& operator-=(const ArrayWithUnit<T, D> & V)
-  { value -= V.value * conversion(V.units, units); return *this;}
+  { value -= V.value * FullPhysics::conversion(V.units, units); return *this;}
 
   DoubleWithUnit operator()(int i1) const 
   {return DoubleWithUnit(value(i1), units);}
@@ -101,7 +101,7 @@ public:
   ArrayWithUnit<T, D> convert(const Unit& R) const
   { 
     ArrayWithUnit<T,D> res;
-    res.value.reference(blitz::Array<T, D>(value * conversion(units, R)));
+    res.value.reference(blitz::Array<T, D>(value * FullPhysics::conversion(units, R)));
     res.units = R;
     return res; 
   }
@@ -119,9 +119,9 @@ public:
     ArrayWithUnit<T,D> res;
     res.units = R;
     if(units.is_commensurate(R))
-      res.value.reference(blitz::Array<T, D>(conversion(units, R) * value));
+      res.value.reference(blitz::Array<T, D>(FullPhysics::conversion(units, R) * value));
     else
-      res.value.reference(blitz::Array<T, D>(conversion(1 / units, R) / value));
+      res.value.reference(blitz::Array<T, D>(FullPhysics::conversion(1 / units, R) / value));
     return res;
   }
 

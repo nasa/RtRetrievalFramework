@@ -31,16 +31,16 @@ public:
   inline DoubleWithUnit& operator/=(const DoubleWithUnit& D)
   { value /= D.value; units /= D.units; return *this;}
   inline DoubleWithUnit& operator+=(const DoubleWithUnit& D)
-  { value += D.value * conversion(D.units, units); return *this;}
+  { value += D.value * FullPhysics::conversion(D.units, units); return *this;}
   inline DoubleWithUnit& operator-=(const DoubleWithUnit& D)
-  { value -= D.value * conversion(D.units, units); return *this;}
+  { value -= D.value * FullPhysics::conversion(D.units, units); return *this;}
 
 //-----------------------------------------------------------------------
 /// Convert to the given units.
 //-----------------------------------------------------------------------
 
   inline DoubleWithUnit convert(const Unit& R) const
-  { return DoubleWithUnit(value * conversion(units, R), R); }
+  { return DoubleWithUnit(value * FullPhysics::conversion(units, R), R); }
 
 //-----------------------------------------------------------------------
 /// We often need to handle conversion from wavenumber to/from

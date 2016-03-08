@@ -18,7 +18,7 @@ REGISTER_LUA_END()
 
 SpectralRange SpectralRange::convert(const Unit& R) const
 {
-  double conv = conversion(units_, R);
+  double conv = FullPhysics::conversion(units_, R);
   Array<double, 1> dv(data_.value().shape()), uncer(uncertainty_.shape());
   Array<double, 2> djac(data_.jacobian().shape());
   dv = data_.value() * conv;
