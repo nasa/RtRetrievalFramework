@@ -42,6 +42,7 @@ AerosolPropertyRhHdf::AerosolPropertyRhHdf
   Array<double, 1> qextvt(qextv.rows());
   for(int i = 0; i < rhv.rows(); ++i) {
     rh_val.push_back(rhv(i));
+    rh_val_d.push_back(rhv(i));
     qscatvt = qscatv(Range::all(), i);
     qextvt = qextv(Range::all(), i);
     qext.push_back(boost::make_shared<LinearInterpolate<double, double> >
@@ -70,7 +71,15 @@ boost::shared_ptr<AerosolProperty> AerosolPropertyRhHdf::clone
     (new AerosolPropertyRhHdf(f, hdf_group, Press, Rh));
 }
 
-ArrayAd<double, 1> AerosolPropertyRhHdf::extinction_coefficient_each_layer
+// Right now we don't support extinction_coefficient_each_layer 
+// having a jacobian,
+// this has to do with our optimization in the LIDORT jacobian
+// calculation that uses the "intermediate" variables - see
+// rt_atmosphere.h for more details on this. So we will just leave
+// this jacobian out. Not clear what if any impact this will have on
+// the retrieval, but we'll do this to try things out.
+
+ArrayAd<double, 1> AerosolPropertyRhHdf::extinction_coefficient_each_layer_not_used
 (double wn) const
 {
   std::vector<AutoDerivative<double> > qextv;
@@ -85,7 +94,30 @@ ArrayAd<double, 1> AerosolPropertyRhHdf::extinction_coefficient_each_layer
   return ArrayAd<double, 1>(res);
 }
 
-ArrayAd<double, 1> AerosolPropertyRhHdf::scattering_coefficient_each_layer
+ArrayAd<double, 1> AerosolPropertyRhHdf::extinction_coefficient_each_layer
+(double wn) const
+{
+  std::vector<double> qextv;
+  for(int i = 0; i < (int) rh_val.size(); ++i)
+    qextv.push_back((*qext[i])(wn));
+  LinearInterpolate<double, double> 
+    lin(rh_val_d.begin(), rh_val_d.end(), qextv.begin());
+  blitz::Array<double, 1> rhl = rh->relative_humidity_layer().value();
+  blitz::Array<double, 1> res(rhl.rows());
+  for(int i = 0; i < res.rows(); ++i)
+    res(i) = lin(rhl(i));
+  return ArrayAd<double, 1>(res);
+}
+
+// Right now we don't support scattering_coefficient_each_layer 
+// having a jacobian,
+// this has to do with our optimization in the LIDORT jacobian
+// calculation that uses the "intermediate" variables - see
+// rt_atmosphere.h for more details on this. So we will just leave
+// this jacobian out. Not clear what if any impact this will have on
+// the retrieval, but we'll do this to try things out.
+
+ArrayAd<double, 1> AerosolPropertyRhHdf::scattering_coefficient_each_layer_not_used
 (double wn) const
 {
   std::vector<AutoDerivative<double> > qscatv;
@@ -100,7 +132,28 @@ ArrayAd<double, 1> AerosolPropertyRhHdf::scattering_coefficient_each_layer
   return ArrayAd<double, 1>(res);
 }
 
-ArrayAd<double, 3> AerosolPropertyRhHdf::phase_function_moment_each_layer
+ArrayAd<double, 1> AerosolPropertyRhHdf::scattering_coefficient_each_layer
+(double wn) const
+{
+  std::vector<double> qscatv;
+  for(int i = 0; i < (int) rh_val.size(); ++i)
+    qscatv.push_back((*qscat[i])(wn));
+  LinearInterpolate<double, double> 
+    lin(rh_val_d.begin(), rh_val_d.end(), qscatv.begin());
+  blitz::Array<double, 1> rhl = rh->relative_humidity_layer().value();
+  blitz::Array<double, 1> res(rhl.rows());
+  for(int i = 0; i < res.rows(); ++i)
+    res(i) = lin(rhl(i));
+  return ArrayAd<double, 1>(res);
+}
+
+// Right now we don't support phase_function_moment having a jacobian,
+// this has to do with our optimization in the LIDORT jacobian
+// calculation that uses the "intermediate" variables - see
+// rt_atmosphere.h for more details on this. So we will just leave
+// this jacobian out. Not clear what if any impact this will have on
+// the retrieval, but we'll do this to try things out.
+ArrayAd<double, 3> AerosolPropertyRhHdf::phase_function_moment_each_layer_not_used
 (double wn, int nmom, int nscatt) const
 { 
   firstIndex i1; secondIndex i2; thirdIndex i3; fourthIndex i4;
@@ -118,6 +171,25 @@ ArrayAd<double, 3> AerosolPropertyRhHdf::phase_function_moment_each_layer
     lin(rh_val.begin(), rh_val.end(), pfv.begin());
   ArrayAd<double, 1> rhl = rh->relative_humidity_layer();
   blitz::Array<AutoDerivative<double>, 3> 
+    res(pfv[0].rows(), press->number_layer(), pfv[1].cols());
+  for(int i = 0; i < res.cols(); ++i)
+    res(Range::all(), i, Range::all()) = lin(rhl(i));
+  return ArrayAd<double, 3>(res); 
+}
+
+ArrayAd<double, 3> AerosolPropertyRhHdf::phase_function_moment_each_layer
+(double wn, int nmom, int nscatt) const
+{ 
+  firstIndex i1; secondIndex i2; thirdIndex i3; fourthIndex i4;
+  std::vector<blitz::Array<double, 2> > pfv;
+  for(int i = 0; i < (int) rh_val.size(); ++i) {
+    blitz::Array<double, 2> t((*pf[i])(wn, nmom, nscatt));
+    pfv.push_back(t);
+  }
+  LinearInterpolate<double, blitz::Array<double, 2> >
+    lin(rh_val_d.begin(), rh_val_d.end(), pfv.begin());
+  blitz::Array<double, 1> rhl = rh->relative_humidity_layer().value();
+  blitz::Array<double, 3> 
     res(pfv[0].rows(), press->number_layer(), pfv[1].cols());
   for(int i = 0; i < res.cols(); ++i)
     res(Range::all(), i, Range::all()) = lin(rhl(i));
