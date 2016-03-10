@@ -44,7 +44,7 @@ public:
     (double Wn, int Spec_index, const ArrayAd<double, 2>& Iv) const;
 
 private:
-  static constexpr double SOLID_ANGLE = 6.79929414e-5;
+  static const double SOLID_ANGLE = 6.79929414e-5;
   virtual int number_stokes() const {return 1;}
 
   blitz::Array<double, 1> sza;
