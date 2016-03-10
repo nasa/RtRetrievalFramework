@@ -264,12 +264,8 @@ $(BLITZ_TARGET): $(thirdpartysrc)/$(BLITZ_NAME).tar.gz $(thirdpartysrc)/$(BLITZ_
 # ========================================================================
 # Build ncurses. This is only needed by Readline right now.
 
-NCURSES_NAME = ncurses-5.9
+NCURSES_NAME = ncurses-6.0
 NCURSES_TARGET = $(includedir)/ncurses/curses.h
-
-# This patch removes the "-no-cpp-precomp" forced on darwin systems. This
-# isn't supported by more recent compilers, and isn't needed.
-NCURSES_PATCH = ncurses-5.9-macbuild.patch
 
 EXTRA_DIST += @thirdpartysrc@/$(NCURSES_NAME).tar.gz
 EXTRA_DIST += @thirdpartysrc@/$(NCURSES_PATCH)
@@ -278,7 +274,6 @@ $(NCURSES_TARGET): $(thirdpartysrc)/$(NCURSES_NAME).tar.gz $(thirdpartysrc)/$(NC
 	@echo "*************************** Building Ncurses"
 	${AMTAR} xzf $<
 	cd $(NCURSES_NAME) &&\
-        patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(NCURSES_PATCH) &&\
         ./configure --prefix="$(prefix)" --with-shared \
            CXX="$(CXX)" CC="$(CC)" F77="$(F77)" && \
         $(MAKE) && $(MAKE) install && exit 0; exit 1
