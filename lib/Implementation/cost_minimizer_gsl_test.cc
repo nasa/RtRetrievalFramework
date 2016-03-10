@@ -18,7 +18,6 @@
 
 using namespace FullPhysics;
 using namespace blitz;
-using namespace boost;
 
 BOOST_FIXTURE_TEST_SUITE(cost_minimizer_gsl, GlobalFixture)
 
@@ -29,7 +28,7 @@ bool verbose = false;
 BOOST_AUTO_TEST_CASE(bard)
 {
   Array<double, 1> x0(3); x0 = 1.0, 1.0, 1.0;
-  shared_ptr<BardNLLSProblem> nlls(new BardNLLSProblem);
+  boost::shared_ptr<BardNLLSProblem> nlls(new BardNLLSProblem);
   nlls->parameters(x0);
   CostMinimizerGSL solver(1000, dx_epsabs, dx_epsrel, size_tol, nlls, Array<double,1>(), verbose);
   BOOST_CHECK_EQUAL((int)solver.status(), (int)CostMinimizerGSL::UNTRIED);
@@ -74,7 +73,7 @@ BOOST_AUTO_TEST_CASE(bard)
 BOOST_AUTO_TEST_CASE(brown)
 {
   Array<double, 1> x0(2); x0 = 1.0, 1.0;
-  shared_ptr<BrownNLLSProblem> nlls(new BrownNLLSProblem);
+  boost::shared_ptr<BrownNLLSProblem> nlls(new BrownNLLSProblem);
   nlls->parameters(x0);
   CostMinimizerGSL solver(1000, dx_epsabs, dx_epsrel, size_tol, nlls, Array<double,1>(), verbose);
   BOOST_CHECK_EQUAL((int)solver.status(), (int)CostMinimizerGSL::UNTRIED);
@@ -116,7 +115,7 @@ BOOST_AUTO_TEST_CASE(brown)
 BOOST_AUTO_TEST_CASE(freudenstein_roth__a)
 {
   Array<double, 1> x0(2); x0 = 0.5, -2.0;
-  shared_ptr<FreudensteinRothNLLSProblem> nlls(new FreudensteinRothNLLSProblem);
+  boost::shared_ptr<FreudensteinRothNLLSProblem> nlls(new FreudensteinRothNLLSProblem);
   nlls->parameters(x0);
   CostMinimizerGSL solver(1000, dx_epsabs, dx_epsrel, size_tol, nlls, Array<double,1>(), verbose);
   BOOST_CHECK_EQUAL((int)solver.status(), (int)CostMinimizerGSL::UNTRIED);
@@ -163,7 +162,7 @@ BOOST_AUTO_TEST_CASE(freudenstein_roth__a)
 BOOST_AUTO_TEST_CASE(freudenstein_roth__b)
 {
   Array<double, 1> x0(2); x0 = 6.0, 2.0;
-  shared_ptr<FreudensteinRothNLLSProblem> nlls(new FreudensteinRothNLLSProblem);
+  boost::shared_ptr<FreudensteinRothNLLSProblem> nlls(new FreudensteinRothNLLSProblem);
   nlls->parameters(x0);
   CostMinimizerGSL solver(1000, dx_epsabs, dx_epsrel, size_tol, nlls, Array<double,1>(), verbose);
   BOOST_CHECK_EQUAL((int)solver.status(), (int)CostMinimizerGSL::UNTRIED);
@@ -210,7 +209,7 @@ BOOST_AUTO_TEST_CASE(freudenstein_roth__b)
 BOOST_AUTO_TEST_CASE(helical_valley)
 {
   Array<double, 1> x0(3); x0 = -1.2, 0.0, 0.0;
-  shared_ptr<HelicalValleyNLLSProblem> nlls(new HelicalValleyNLLSProblem);
+  boost::shared_ptr<HelicalValleyNLLSProblem> nlls(new HelicalValleyNLLSProblem);
   nlls->parameters(x0);
   CostMinimizerGSL solver(1000, dx_epsabs, dx_epsrel, size_tol*0.01, nlls, Array<double,1>(), verbose);  // A smaller size_tol is needed, hence *0.01
   BOOST_CHECK_EQUAL((int)solver.status(), (int)CostMinimizerGSL::UNTRIED);
@@ -253,7 +252,7 @@ BOOST_AUTO_TEST_CASE(helical_valley)
 BOOST_AUTO_TEST_CASE(jennrich_sampson)
 {
   Array<double, 1> x0(2); x0 = 0.3, 0.4;
-  shared_ptr<JennrichSampsonNLLSProblem> nlls(new JennrichSampsonNLLSProblem);
+  boost::shared_ptr<JennrichSampsonNLLSProblem> nlls(new JennrichSampsonNLLSProblem);
   nlls->parameters(x0);
   CostMinimizerGSL solver(1000, dx_epsabs, dx_epsrel, size_tol, nlls, Array<double,1>(), verbose);
   BOOST_CHECK_EQUAL((int)solver.status(), (int)CostMinimizerGSL::UNTRIED);
@@ -295,7 +294,7 @@ BOOST_AUTO_TEST_CASE(jennrich_sampson)
 BOOST_AUTO_TEST_CASE(meyer)
 {
   Array<double, 1> x0(3); x0 = 0.02, 4000.0, 250.0;
-  shared_ptr<MeyerNLLSProblem> nlls(new MeyerNLLSProblem);
+  boost::shared_ptr<MeyerNLLSProblem> nlls(new MeyerNLLSProblem);
   nlls->parameters(x0);
   CostMinimizerGSL solver(2000, dx_epsabs, dx_epsrel, size_tol, nlls, Array<double,1>(), verbose);
   BOOST_CHECK_EQUAL((int)solver.status(), (int)CostMinimizerGSL::UNTRIED);
@@ -338,7 +337,7 @@ BOOST_AUTO_TEST_CASE(meyer)
 BOOST_AUTO_TEST_CASE(powell)
 {
   Array<double, 1> x0(2); x0 = 0.0, 1.0;
-  shared_ptr<PowellNLLSProblem> nlls(new PowellNLLSProblem);
+  boost::shared_ptr<PowellNLLSProblem> nlls(new PowellNLLSProblem);
   nlls->parameters(x0);
   CostMinimizerGSL solver(1000, dx_epsabs, dx_epsrel, size_tol, nlls, Array<double,1>(), verbose);
   BOOST_CHECK_EQUAL((int)solver.status(), (int)CostMinimizerGSL::UNTRIED);
@@ -380,7 +379,7 @@ BOOST_AUTO_TEST_CASE(powell)
 BOOST_AUTO_TEST_CASE(powell_singular)
 {
   Array<double, 1> x0(4); x0 = 3.0, -1.0, 0.0, 1.0;
-  shared_ptr<PowellSingularNLLSProblem> nlls(new PowellSingularNLLSProblem);
+  boost::shared_ptr<PowellSingularNLLSProblem> nlls(new PowellSingularNLLSProblem);
   nlls->parameters(x0);
   CostMinimizerGSL solver(3000, 1e-21, 1e-21, 1e-10, nlls, Array<double,1>(), verbose);
   BOOST_CHECK_EQUAL((int)solver.status(), (int)CostMinimizerGSL::UNTRIED);
@@ -424,7 +423,7 @@ BOOST_AUTO_TEST_CASE(powell_singular)
 BOOST_AUTO_TEST_CASE(rosenbrock2)
 {
   Array<double, 1> x0(2); x0 = -1.2, 1.0;
-  shared_ptr<Rosenbrock2NLLSProblem> nlls(new Rosenbrock2NLLSProblem);
+  boost::shared_ptr<Rosenbrock2NLLSProblem> nlls(new Rosenbrock2NLLSProblem);
   nlls->parameters(x0);
   CostMinimizerGSL solver(1000, dx_epsabs, dx_epsrel, size_tol, nlls, Array<double,1>(), verbose);
   BOOST_CHECK_EQUAL((int)solver.status(), (int)CostMinimizerGSL::UNTRIED);
@@ -466,7 +465,7 @@ BOOST_AUTO_TEST_CASE(rosenbrock2)
 BOOST_AUTO_TEST_CASE(powell_singular_multiple)
 {
   Array<double, 1> x0(4); x0 = 3.0, -1.0, 0.0, 1.0;
-  shared_ptr<PowellSingularNLLSProblem> nlls(new PowellSingularNLLSProblem);
+  boost::shared_ptr<PowellSingularNLLSProblem> nlls(new PowellSingularNLLSProblem);
   nlls->parameters(x0);
   CostMinimizerGSL solver1(1000, 1e-5, 1e-5, 1e-4, nlls, Array<double,1>(), verbose);
   CostMinimizerGSL solver2(2000, 1e-21, 1e-21, 1e-10, nlls, Array<double,1>(), verbose);
@@ -584,8 +583,8 @@ BOOST_AUTO_TEST_CASE(bard_ml)
   measurement = 0.14, 0.18, 0.22, 0.25, 0.29, 0.32, 0.35, 0.39, 0.37, 0.58, 0.73, 0.96, 1.34, 2.10, 4.39;
   measurement_error_cov = 1.0;
 
-  shared_ptr<BardMLProblem> ml(new BardMLProblem(measurement, measurement_error_cov));
-  shared_ptr<NLLSMaxLikelihood> nlls(new NLLSMaxLikelihood(ml, false));
+  boost::shared_ptr<BardMLProblem> ml(new BardMLProblem(measurement, measurement_error_cov));
+  boost::shared_ptr<NLLSMaxLikelihood> nlls(new NLLSMaxLikelihood(ml, false));
   nlls->parameters(x0);
   CostMinimizerGSL solver(1000, dx_epsabs, dx_epsrel, size_tol, nlls, Array<double,1>(), verbose);
   BOOST_CHECK_EQUAL((int)solver.status(), (int)CostMinimizerGSL::UNTRIED);
@@ -637,8 +636,8 @@ BOOST_AUTO_TEST_CASE(meyer_ml)
   measurement = 34780.0, 28610.0, 23650.0, 19630.0, 16370.0, 13720.0, 11540.0, 9744.0, 8261.0, 7030.0, 6005.0, 5147.0, 4427.0, 3820.0, 3307.0, 2872.0;
   measurement_error_cov = 1.0;
 
-  shared_ptr<MeyerMLProblem> ml(new MeyerMLProblem(measurement, measurement_error_cov));
-  shared_ptr<NLLSMaxLikelihood> nlls(new NLLSMaxLikelihood(ml, false));
+  boost::shared_ptr<MeyerMLProblem> ml(new MeyerMLProblem(measurement, measurement_error_cov));
+  boost::shared_ptr<NLLSMaxLikelihood> nlls(new NLLSMaxLikelihood(ml, false));
   nlls->parameters(x0);
   CostMinimizerGSL solver(2000, dx_epsabs, dx_epsrel, size_tol, nlls, Array<double,1>(), verbose);
   BOOST_CHECK_EQUAL((int)solver.status(), (int)CostMinimizerGSL::UNTRIED);

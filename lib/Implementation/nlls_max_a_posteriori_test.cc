@@ -4,8 +4,6 @@
 
 using namespace FullPhysics;
 using namespace blitz;
-using namespace boost;
-
 
 class MaxAPosterioriTest : public MaxAPosteriori
 {
@@ -139,7 +137,7 @@ BOOST_AUTO_TEST_CASE(residual_jacobian)
 
   x_a_prior_uncert = sqrt(2.2500), sqrt(114.2500), sqrt(39.312500);
 
-  shared_ptr<MaxAPosterioriTest> mapt(new MaxAPosterioriTest(Msrmnt, Msrmnt_err_cov, A_p_params, A_p_cov, Mdl, Mdl_jac));
+  boost::shared_ptr<MaxAPosterioriTest> mapt(new MaxAPosterioriTest(Msrmnt, Msrmnt_err_cov, A_p_params, A_p_cov, Mdl, Mdl_jac));
   NLLSMaxAPosteriori nlls_map(mapt);
   nlls_map.parameters(Params);
 
