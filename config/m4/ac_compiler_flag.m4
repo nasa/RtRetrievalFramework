@@ -76,16 +76,10 @@ fi],
 ])
 
 #----------------------------------------------------------------
-# Add support for C++11.
-# Short term we allow this is be partially short circuited to support
-# older gcc compilers with partial C++11 support. This won't work
-# long term
+# Add support for C++11
 #----------------------------------------------------------------
 
-AC_ARG_WITH([old-gcc],
-[AS_HELP_STRING([--with-old-gcc], [support older gcc compilers that don not have full C++11 support. This is a shortterm thing to allow Mike to use older gcc compiler on a Redhat 6 system, gcc 4.4 has *most* of what we are using now. So allow this temporarily, until he gets a newer gcc compiler installed])],
-[ CXXFLAGS="$CXXFLAGS -std=gnu++0x" ],
-[ AX_CXX_COMPILE_STDCXX_11([],[mandatory]) ])
+AX_CXX_COMPILE_STDCXX_11([],[mandatory])
 
 #----------------------------------------------------------------
 # Add extra checking for fortran, if requested.
