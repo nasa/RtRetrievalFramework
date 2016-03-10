@@ -987,7 +987,6 @@ with_sysroot
 enable_libtool_lock
 with_python_swig
 enable_debug
-with_old_gcc
 enable_addcheck
 with_hdf5
 with_lidort_3_6
@@ -1698,12 +1697,6 @@ Optional Packages:
   --with-python-swig      build SWIG wrappers for use with Python (default is
                           no) - it is possible to specify a path to python
                           (optional)
-  --with-old-gcc          support older gcc compilers that don not have full
-                          C++11 support. This is a shortterm thing to allow
-                          Mike to use older gcc compiler on a Redhat 6 system,
-                          gcc 4.4 has *most* of what we are using now. So
-                          allow this temporarily, until he gets a newer gcc
-                          compiler installed
   --with-hdf5[=DIR]       use HDF 5 (default is yes if found) - it is possible
                           to specify the root directory for HDF 5 (optional).
                           You can also specify "build" if you want to build
@@ -23780,18 +23773,10 @@ fi
 
 
 #----------------------------------------------------------------
-# Add support for C++11.
-# Short term we allow this is be partially short circuited to support
-# older gcc compilers with partial C++11 support. This won't work
-# long term
+# Add support for C++11
 #----------------------------------------------------------------
 
-
-# Check whether --with-old-gcc was given.
-if test "${with_old_gcc+set}" = set; then :
-  withval=$with_old_gcc;  CXXFLAGS="$CXXFLAGS -std=gnu++0x"
-else
-         ax_cxx_compile_cxx11_required=true
+      ax_cxx_compile_cxx11_required=true
   ac_ext=cpp
 ac_cpp='$CXXCPP $CPPFLAGS'
 ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -24762,8 +24747,6 @@ $as_echo "#define HAVE_CXX11 1" >>confdefs.h
 
   fi
 
-
-fi
 
 
 #----------------------------------------------------------------
