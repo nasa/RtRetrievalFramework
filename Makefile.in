@@ -318,6 +318,8 @@ am__aclocal_m4_deps = $(top_srcdir)/config/m4/ac_2stream.m4 \
 	$(top_srcdir)/config/m4/ac_python_sphinx.m4 \
 	$(top_srcdir)/config/m4/ac_ruby.m4 \
 	$(top_srcdir)/config/m4/acx_pthread.m4 \
+	$(top_srcdir)/config/m4/ax_cxx_compile_stdcxx.m4 \
+	$(top_srcdir)/config/m4/ax_cxx_compile_stdcxx_11.m4 \
 	$(top_srcdir)/config/m4/libtool.m4 \
 	$(top_srcdir)/config/m4/loc_msg.m4 \
 	$(top_srcdir)/config/m4/ltoptions.m4 \
@@ -2216,6 +2218,7 @@ FGREP = @FGREP@
 GREP = @GREP@
 GSL_CPPFLAGS = @GSL_CPPFLAGS@
 GSL_LDFLAGS = @GSL_LDFLAGS@
+HAVE_CXX11 = @HAVE_CXX11@
 HDF5HOME = @HDF5HOME@
 HDF5_BIN = @HDF5_BIN@
 HDF5_CPPFLAGS = @HDF5_CPPFLAGS@
