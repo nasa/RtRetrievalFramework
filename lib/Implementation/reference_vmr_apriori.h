@@ -33,7 +33,7 @@ public:
     double model_tropopause_altitude() const;
     const blitz::Array<double, 1> effective_altitude() const;
     const blitz::Array<double, 1> resample_to_model_grid(const blitz::Array<double, 1>& vmr) const;
-    const blitz::Array<double, 1> apply_latitude_gradients(const blitz::Array<double, 1>& vmr, std::string& gas_name) const;
+    const blitz::Array<double, 1> apply_latitude_gradient(const blitz::Array<double, 1>& vmr, std::string& gas_name) const;
 
     void print(std::ostream& Os) const { Os << "ReferenceVmrApriori"; }
 

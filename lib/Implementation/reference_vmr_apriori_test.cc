@@ -36,36 +36,58 @@ public:
         ref_ap.reset(new ReferenceVmrApriori(model_altitude, model_temperature, 
                                              ref_altitude, ref_latitude, ref_topo_alt,
                                              obs_latitude));
+
+        IfstreamCs gas_names_input(test_data_dir() + "expected/reference_vmr_apriori/gas_names.txt");
+        std::string line;
+        while (std::getline(gas_names_input, line)) {
+           gas_names.push_back(line);
+        }
+
+        BOOST_CHECK_EQUAL(gas_names.size(), ref_vmr.cols());
+
     }
     virtual ~RefVmrFixture() {}
 
     Array<double, 2> ref_vmr;
+    std::vector<std::string> gas_names;
 
     boost::shared_ptr<ReferenceVmrApriori> ref_ap;
 };
 
 BOOST_FIXTURE_TEST_SUITE(reference_vmr_apriori, RefVmrFixture)
 
-BOOST_AUTO_TEST_CASE(model_grid_vmr)
+BOOST_AUTO_TEST_CASE(apriori_calc)
 {
     // Check tropopause altitude calculation
     BOOST_CHECK_CLOSE(14.392430521241026, ref_ap->model_tropopause_altitude(), 1e-6);
 
     // Check effective altitude calculation
     IfstreamCs eff_alt_input(test_data_dir() + "expected/reference_vmr_apriori/effective_altitude.dat");
-    Array<double, 1> eff_alt;
-    eff_alt_input >> eff_alt;
+    Array<double, 1> eff_alt_expt;
+    eff_alt_input >> eff_alt_expt;
  
-    BOOST_CHECK_MATRIX_CLOSE_TOL(ref_ap->effective_altitude(), eff_alt, 1e-4);
+    Array<double, 1> eff_alt_calc = ref_ap->effective_altitude();
 
-    // Check resampling of vmr
+    BOOST_CHECK_MATRIX_CLOSE_TOL(eff_alt_calc, eff_alt_expt, 1e-4);
+
     IfstreamCs model_grid_input(test_data_dir() + "expected/reference_vmr_apriori/model_grid_vmr.dat");
     Array<double, 2> ggg_model_grid_vmr;
     model_grid_input >> ggg_model_grid_vmr;
 
-    for(int gas_idx = 0; gas_idx << ggg_model_grid_vmr.rows(); gas_idx++) {
+    IfstreamCs latitude_grad_input(test_data_dir() + "expected/reference_vmr_apriori/latitude_grad_vmr.dat");
+    Array<double, 2> ggg_lat_grad_vmr;
+    latitude_grad_input >> ggg_lat_grad_vmr;
+
+    for(int gas_idx = 0; gas_idx < ref_vmr.cols(); gas_idx++) {
+        // Resample to model grid
         Array<double, 1> mod_grid_vmr = ref_ap->resample_to_model_grid(ref_vmr(Range::all(), gas_idx));
-        BOOST_CHECK_MATRIX_CLOSE(mod_grid_vmr, ggg_model_grid_vmr(Range::all(), gas_idx));
+        BOOST_CHECK_MATRIX_CLOSE_TOL(mod_grid_vmr, ggg_model_grid_vmr(Range::all(), gas_idx), 1e-4);
+
+        // Apply latitude gradient, use expected from last step due to resampling differences so we
+        // can still compare to our expected value
+        Array<double, 1> lat_grad_vmr = ref_ap->apply_latitude_gradient(ggg_model_grid_vmr(Range::all(), gas_idx), gas_names[gas_idx]);
+        BOOST_CHECK_MATRIX_CLOSE_TOL(lat_grad_vmr, ggg_lat_grad_vmr(Range::all(), gas_idx), 1e-9);
+        //BOOST_CHECK_MATRIX_CLOSE_TOL(lat_grad_vmr, mod_grid_vmr, 1e-8);
     }
 }
 

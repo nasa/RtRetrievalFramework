@@ -169,7 +169,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::resample_to_model_grid(const 
 /// are interpolated between these limiting behaviors.
 //-----------------------------------------------------------------------
 
-const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradients(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
+const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradient(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
 {
     double mod_tropo_alt = model_tropopause_altitude();
     Array<double, 1> eff_altitude(effective_altitude());
