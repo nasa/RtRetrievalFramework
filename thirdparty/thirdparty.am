@@ -218,8 +218,8 @@ $(BOOST_TARGET): $(thirdpartysrc)/$(BOOST_NAME).tar.gz $(BZLIB_TARGET)
 	cd $(BOOST_NAME) && \
         ./bootstrap.sh --prefix="$(prefix)" \
            --with-libraries=date_time,regex,iostreams,filesystem && \
-        echo "using gcc : : $(CXX) ;" > tools/build/user-config.jam && \
-        echo "using darwin : : $(CXX) ;" >> tools/build/user-config.jam && \
+        echo "using gcc : : $(CXX) ;" > tools/build/src/user-config.jam && \
+        echo "using darwin : : $(CXX) ;" >> tools/build/src/user-config.jam && \
         ./bjam install threading=single link=static,shared cxxflags="${BZLIB_CPPFLAGS}" linkflags="${BZLIB_LDFLAGS}" && exit 0; exit 1
 # On mac, the full name of the library isn't put into the installed library.
 # This command will fail on linux, which is fine. We just ignore failure.
