@@ -1,4 +1,6 @@
 #include "reference_vmr_apriori.h"
+#include "wgs84_constant.h"
+#include "old_constant.h"
 #include "linear_interpolate.h"
 #include "fp_logger.h"
 
@@ -62,6 +64,9 @@ std::map<std::string, double> seasonal_amplitude =
     {"CO2",     0.0081},
     {"CO",      0.25},
 };
+//
+// From original code
+const double lapse_rate_threshold = -2;
 
 ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_altitude,
                                          const blitz::Array<double, 1>& Model_temperature,
@@ -86,9 +91,8 @@ ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_al
 
 double ReferenceVmrApriori::model_tropopause_altitude() const
 {
-    // From original code
-    const double lapse_rate_threshold = -2;
-    const double radius = 6378.137;  // Equatorial radius (km)
+    // Equatorial radius (km)
+    double radius = OldConstant::wgs84_a.convert(units::km).value;
 
     double last_lr_alt = 0;
     double last_lapse_rate = 0;
@@ -157,8 +161,8 @@ const double ReferenceVmrApriori::age_of_air(const double altitude) const
     double mod_tropo_alt = model_tropopause_altitude();
     
     double fl = obs_latitude / 22;
-    double aoa = 0.313 - 0.085 * exp(-pow((obs_latitude - 49) / 18, 2))
-        -0.268 * exp(-1.42 * altitude / (altitude + mod_tropo_alt)) * fl / sqrt(1 + pow(fl, 2));
+    double aoa = 0.313 - 0.085 * exp(-std::pow((obs_latitude - 49) / 18, 2))
+        -0.268 * exp(-1.42 * altitude / (altitude + mod_tropo_alt)) * fl / sqrt(1 + std::pow(fl, 2));
     if(altitude > mod_tropo_alt) 
         aoa = aoa + 7.0 * (altitude - mod_tropo_alt) / altitude;
     return aoa;
@@ -260,7 +264,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_secular_trend(const bli
 
 const blitz::Array<double, 1> ReferenceVmrApriori::apply_seasonal_cycle(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
 {
-    double twopi = 4.0 * std::acos(0.0);
+    double twopi = 2.0 * OldConstant::pi;
     double obs_frac_hours = obs_time.frac_day_of_year() - 1;
 
     double amplitude;
