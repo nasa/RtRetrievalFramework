@@ -1,9 +1,10 @@
 #include "reference_vmr_apriori.h"
 #include "linear_interpolate.h"
-//#include "fp_logger.h"
+#include "fp_logger.h"
 
 using namespace FullPhysics;
 using namespace blitz;
+using namespace boost::posix_time;
 
 /// Inter-hemispheric gradients
 /// Positive values imply more in the NH than the SH than
@@ -46,16 +47,26 @@ std::map<std::string, double> lat_gradient =
     {"C3H8",    0.500 }
 };
 
+std::map<std::string, double> secular_trend = 
+{
+    {"CO2",     0.0052},
+    {"N2O",     0.001},
+    {"CO",     -0.006},
+    {"CH4",     0.003},
+    {"HF",     -0.01}
+};
 
 ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_altitude,
                                          const blitz::Array<double, 1>& Model_temperature,
                                          const blitz::Array<double, 1>& Ref_altitude,
                                          const double Ref_latitude,
+                                         const Time& Ref_time,
                                          const double Ref_tropopause_altitude,
-                                         const double Obs_latitude)
+                                         const double Obs_latitude,
+                                         const Time& Obs_time)
 : model_altitude(Model_altitude), model_temperature(Model_temperature),
-  ref_altitude(Ref_altitude), ref_latitude(Ref_latitude), ref_tropopause_altitude(Ref_tropopause_altitude),
-  obs_latitude(Obs_latitude)
+  ref_altitude(Ref_altitude), ref_latitude(Ref_latitude), ref_time(Ref_time), ref_tropopause_altitude(Ref_tropopause_altitude),
+  obs_latitude(Obs_latitude), obs_time(Obs_time)
 {
     /*Array<double, 1> mod_grid_vmr = resample_ref_vmrs_to_model_grid(Ref_vmr);
     ap_vmr.reference(mod_grid_vmr);
@@ -137,6 +148,23 @@ const blitz::Array<double, 1> ReferenceVmrApriori::effective_altitude() const
 }
 
 //-----------------------------------------------------------------------
+/// Computes the Age of Air at particular location  (Altitude, Latitude)
+/// relative to the surface at 50N, where Age=0
+//-----------------------------------------------------------------------
+
+const double ReferenceVmrApriori::age_of_air(const double altitude) const
+{
+    double mod_tropo_alt = model_tropopause_altitude();
+    
+    double fl = obs_latitude / 22;
+    double aoa = 0.313 - 0.085 * exp(-pow((obs_latitude - 49) / 18, 2))
+        -0.268 * exp(-1.42 * altitude / (altitude + mod_tropo_alt)) * fl / sqrt(1 + pow(fl, 2));
+    if(altitude > mod_tropo_alt) 
+        aoa = aoa + 7.0 * (altitude - mod_tropo_alt) / altitude;
+    return aoa;
+}
+
+//-----------------------------------------------------------------------
 /// Resamples a VMR to the effective model altitude grid that accounts
 /// for the difference in tropopause altitudes
 //-----------------------------------------------------------------------
@@ -178,7 +206,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradient(const
     try {
         gas_gradient = lat_gradient.at(gas_name);
     } catch(const std::out_of_range& exc) {
-        //Logger::warning() << "apply_latitude_gradients: No latitude gradient found for: " << gas_name;
+        Logger::warning() << "apply_latitude_gradients: No latitude gradient found for: " << gas_name;
         gas_gradient = 0.0;
     }
     double xref = gas_gradient * (ref_latitude / 15) / sqrt(1 + std::pow(ref_latitude/15, 2));
@@ -192,8 +220,40 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradient(const
     return grad_vmr;
 }
 
-void ReferenceVmrApriori::apply_secular_trends()
+///-----------------------------------------------------------------------
+/// Modifies the a priori profiles on a gas-by-gas basis to account for 
+/// the difference in time between the observation/model and the reference 
+/// vmrs. This includes the secular trend but not the seasonal cycle.
+///-----------------------------------------------------------------------
+
+const blitz::Array<double, 1> ReferenceVmrApriori::apply_secular_trend(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
 {
+    Array<double, 1> eff_altitude(effective_altitude());
+
+    // Convert times into year + fractional hours
+    double obs_frac_year = ptime(obs_time).date().year() + obs_time.frac_day_of_year() - 1;
+    double ref_frac_year = ptime(ref_time).date().year() + ref_time.frac_day_of_year() - 1;
+    double time_diff = obs_frac_year - ref_frac_year;
+
+    double trend;
+    try {
+        trend = secular_trend.at(gas_name);
+    } catch(const std::out_of_range& exc) {
+        Logger::warning() << "apply_secular_trend: No secular trend found for: " << gas_name;
+        trend = 0.0;
+    }
+
+    Array<double, 1> secular_vmr(vmr.shape());
+    for(int lev_idx = 0; lev_idx < vmr.rows(); lev_idx++) {
+        double aoa = age_of_air(eff_altitude(lev_idx));
+        secular_vmr(lev_idx) = vmr(lev_idx) * (1 + trend * (time_diff - aoa));
+        if(gas_name == "HF") 
+            secular_vmr(lev_idx) = secular_vmr(lev_idx) / (1.0 + exp((-time_diff + aoa - 16) / 5.0));
+        if(gas_name == "SF6")
+            secular_vmr(lev_idx) = 1.5 * secular_vmr(lev_idx) / (1.0 + exp((-time_diff + aoa - 4) / 9.0));
+    }
+
+    return secular_vmr;
 }
 
 void ReferenceVmrApriori::apply_seasonal_cycle()

@@ -1,6 +1,8 @@
 #ifndef REFERENCE_VMR_APRIORI_H
 #define REFERENCE_VMR_APRIORI_H
-#include "level_1b.h"
+
+#include <blitz/array.h>
+#include "fp_time.h"
 
 namespace FullPhysics {
 
@@ -15,8 +17,10 @@ namespace FullPhysics {
   This class is based on the TCCON 2014 release of gsetup. As
   per those techniques, values are interpolated based on altitudes.
 
-  Inputs are expected to be inin increasing altitude
+  Inputs are expected to be in increasing altitude
   decreasing pressure order.
+
+  Make sure gas names are capatilized.
 *******************************************************************/
 
 class ReferenceVmrApriori : public Printable<ReferenceVmrApriori> {
@@ -26,20 +30,24 @@ public:
                         const blitz::Array<double, 1>& Model_temperature,
                         const blitz::Array<double, 1>& Ref_altitude,
                         const double Ref_latitude,
+                        const Time& Ref_time,
                         const double Ref_tropopause_altitude,
-                        const double Obs_latitude);
+                        const double Obs_latitude,
+                        const Time& Obs_time);
     
 
     double model_tropopause_altitude() const;
     const blitz::Array<double, 1> effective_altitude() const;
+    const double age_of_air(const double altitude) const;
+
     const blitz::Array<double, 1> resample_to_model_grid(const blitz::Array<double, 1>& vmr) const;
     const blitz::Array<double, 1> apply_latitude_gradient(const blitz::Array<double, 1>& vmr, std::string& gas_name) const;
+    const blitz::Array<double, 1> apply_secular_trend(const blitz::Array<double, 1>& vmr, std::string& gas_name) const;
 
     void print(std::ostream& Os) const { Os << "ReferenceVmrApriori"; }
 
 private:
     
-    void apply_secular_trends();
     void apply_seasonal_cycle();
 
     blitz::Array<double, 1> model_altitude;
@@ -47,9 +55,11 @@ private:
 
     blitz::Array<double, 1> ref_altitude;
     double ref_latitude;
+    Time ref_time;
     double ref_tropopause_altitude;
 
     double obs_latitude;
+    Time obs_time;
 
 };
 }

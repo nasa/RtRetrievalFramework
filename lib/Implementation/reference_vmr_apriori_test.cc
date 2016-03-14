@@ -29,13 +29,14 @@ public:
 
         double ref_latitude = 35.0;
         double ref_topo_alt = 15.0;
+        Time ref_time = Time::parse_time("2005-01-01T00:00:00");
 
         double obs_latitude = 45.945;
-        //Time reference_time("2005-01-01T00:00:00");
+        Time obs_time = Time::parse_time("2004-01-01T13:20:19.921875");
 
         ref_ap.reset(new ReferenceVmrApriori(model_altitude, model_temperature, 
-                                             ref_altitude, ref_latitude, ref_topo_alt,
-                                             obs_latitude));
+                                             ref_altitude, ref_latitude, ref_time, ref_topo_alt,
+                                             obs_latitude, obs_time));
 
         IfstreamCs gas_names_input(test_data_dir() + "expected/reference_vmr_apriori/gas_names.txt");
         std::string line;
@@ -78,6 +79,10 @@ BOOST_AUTO_TEST_CASE(apriori_calc)
     Array<double, 2> ggg_lat_grad_vmr;
     latitude_grad_input >> ggg_lat_grad_vmr;
 
+    IfstreamCs secular_trend_input(test_data_dir() + "expected/reference_vmr_apriori/secular_trend_vmr.dat");
+    Array<double, 2> ggg_secular_trend_vmr;
+    secular_trend_input >> ggg_secular_trend_vmr;
+
     for(int gas_idx = 0; gas_idx < ref_vmr.cols(); gas_idx++) {
         // Resample to model grid
         Array<double, 1> mod_grid_vmr = ref_ap->resample_to_model_grid(ref_vmr(Range::all(), gas_idx));
@@ -87,7 +92,10 @@ BOOST_AUTO_TEST_CASE(apriori_calc)
         // can still compare to our expected value
         Array<double, 1> lat_grad_vmr = ref_ap->apply_latitude_gradient(ggg_model_grid_vmr(Range::all(), gas_idx), gas_names[gas_idx]);
         BOOST_CHECK_MATRIX_CLOSE_TOL(lat_grad_vmr, ggg_lat_grad_vmr(Range::all(), gas_idx), 1e-9);
-        //BOOST_CHECK_MATRIX_CLOSE_TOL(lat_grad_vmr, mod_grid_vmr, 1e-8);
+
+        // Secular trend
+        Array<double, 1> secular_trend_vmr = ref_ap->apply_secular_trend(lat_grad_vmr, gas_names[gas_idx]);
+        BOOST_CHECK_MATRIX_CLOSE_TOL(secular_trend_vmr, ggg_secular_trend_vmr(Range::all(), gas_idx), 5e-7);
     }
 }
 
