@@ -56,6 +56,13 @@ std::map<std::string, double> secular_trend =
     {"HF",     -0.01}
 };
 
+// Amplitude at surface at 50N
+std::map<std::string, double> seasonal_amplitude =
+{
+    {"CO2",     0.0081},
+    {"CO",      0.25},
+};
+
 ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_altitude,
                                          const blitz::Array<double, 1>& Model_temperature,
                                          const blitz::Array<double, 1>& Ref_altitude,
@@ -200,7 +207,6 @@ const blitz::Array<double, 1> ReferenceVmrApriori::resample_to_model_grid(const 
 const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradient(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
 {
     double mod_tropo_alt = model_tropopause_altitude();
-    Array<double, 1> eff_altitude(effective_altitude());
 
     double gas_gradient;
     try {
@@ -214,7 +220,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradient(const
 
     Array<double, 1> grad_vmr(vmr.shape());
     for(int lev_idx = 0; lev_idx < vmr.rows(); lev_idx++) {
-        double frac = 1.0 / (1.0 + std::pow(eff_altitude(lev_idx) / mod_tropo_alt, 2));
+        double frac = 1.0 / (1.0 + std::pow(model_altitude(lev_idx) / mod_tropo_alt, 2));
         grad_vmr(lev_idx) = vmr(lev_idx) * (1 + frac * xobs) / (1 + frac * xref);
     }
     return grad_vmr;
@@ -228,8 +234,6 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradient(const
 
 const blitz::Array<double, 1> ReferenceVmrApriori::apply_secular_trend(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
 {
-    Array<double, 1> eff_altitude(effective_altitude());
-
     // Convert times into year + fractional hours
     double obs_frac_year = ptime(obs_time).date().year() + obs_time.frac_day_of_year() - 1;
     double ref_frac_year = ptime(ref_time).date().year() + ref_time.frac_day_of_year() - 1;
@@ -245,7 +249,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_secular_trend(const bli
 
     Array<double, 1> secular_vmr(vmr.shape());
     for(int lev_idx = 0; lev_idx < vmr.rows(); lev_idx++) {
-        double aoa = age_of_air(eff_altitude(lev_idx));
+        double aoa = age_of_air(model_altitude(lev_idx));
         secular_vmr(lev_idx) = vmr(lev_idx) * (1 + trend * (time_diff - aoa));
         if(gas_name == "HF") 
             secular_vmr(lev_idx) = secular_vmr(lev_idx) / (1.0 + exp((-time_diff + aoa - 16) / 5.0));
@@ -256,7 +260,45 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_secular_trend(const bli
     return secular_vmr;
 }
 
-void ReferenceVmrApriori::apply_seasonal_cycle()
+///-----------------------------------------------------------------------
+/// Modifies the a priori vmr profile to account for the season of 
+/// the observation/model.
+///-----------------------------------------------------------------------
+
+const blitz::Array<double, 1> ReferenceVmrApriori::apply_seasonal_cycle(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
 {
+    double twopi = 4.0 * std::acos(0.0);
+    double obs_frac_hours = obs_time.frac_day_of_year() - 1;
+
+    double amplitude;
+    try {
+        amplitude = seasonal_amplitude.at(gas_name);
+    } catch(const std::out_of_range& exc) {
+        Logger::warning() << "apply_seasonal_cycle: No seasonal cycle amplitude found for: " << gas_name;
+        amplitude = 0.0;
+    }
+
+    Array<double, 1> seasonal_vmr(vmr.shape());
+    for(int lev_idx = 0; lev_idx < vmr.rows(); lev_idx++) {
+        double zobs = model_altitude(lev_idx);
+        double aoa = age_of_air(zobs);
+        double sca;
+        if (gas_name == "CO2") {
+            // seasonal variation
+            double sv = std::sin(twopi * (obs_frac_hours - 0.834 - aoa));
+            // seasonal variation
+            double svnl = sv + 1.80 * exp(-std::pow((obs_latitude - 74) / 41, 2)) * (0.5 - std::pow(sv, 2));
+            sca = svnl * exp(-aoa/0.20) * (1 + 1.33 * exp(-std::pow((obs_latitude - 76) / 48, 2))*(zobs + 6.0) / (zobs + 1.4));
+        } else {
+            // basic seasonal variation
+            double sv = std::sin(twopi * (obs_frac_hours - 0.89));
+            // latitude dependence 
+            double svl = sv * (obs_latitude / 15) / sqrt(1 + std::pow(obs_latitude / 15, 2));
+            // altitude dependence
+            sca = svl * exp(-aoa / 1.60);
+        }
+        seasonal_vmr(lev_idx) = vmr(lev_idx) * (1.0 + sca * amplitude);
+    }
+    return seasonal_vmr;
 }
 
