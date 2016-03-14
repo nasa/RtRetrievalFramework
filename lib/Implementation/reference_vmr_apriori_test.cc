@@ -102,9 +102,12 @@ BOOST_AUTO_TEST_CASE(apriori_calc)
         BOOST_CHECK_MATRIX_CLOSE_TOL(secular_trend_vmr, ggg_secular_trend_vmr(Range::all(), gas_idx), 1e-10);
 
         // Seasonal cycle
-        Array<double, 1> seasonal_cycle_vmr = ref_ap->apply_seasonal_cycle(ggg_secular_trend_vmr(Range::all(), gas_idx), gas_names[gas_idx]);
+        Array<double, 1> seasonal_cycle_vmr = ref_ap->apply_seasonal_cycle(secular_trend_vmr, gas_names[gas_idx]);
         BOOST_CHECK_MATRIX_CLOSE_TOL(seasonal_cycle_vmr, ggg_seasonal_cycle_vmr(Range::all(), gas_idx), 1e-10);
 
+        // All steps together, once again differences in resampling contributes to higher level of differences here
+        Array<double, 1> apriori_vmr = ref_ap->apriori_vmr(ref_vmr(Range::all(), gas_idx), gas_names[gas_idx]);
+        BOOST_CHECK_MATRIX_CLOSE_TOL(apriori_vmr, ggg_seasonal_cycle_vmr(Range::all(), gas_idx), 6e-5);
     }
 }
 

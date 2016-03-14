@@ -75,14 +75,7 @@ ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_al
   ref_altitude(Ref_altitude), ref_latitude(Ref_latitude), ref_time(Ref_time), ref_tropopause_altitude(Ref_tropopause_altitude),
   obs_latitude(Obs_latitude), obs_time(Obs_time)
 {
-    /*Array<double, 1> mod_grid_vmr = resample_ref_vmrs_to_model_grid(Ref_vmr);
-    ap_vmr.reference(mod_grid_vmr);
-    resample_at_effective_altitudes();
-    apply_latitude_gradients();
-    apply_secular_trends();
-    apply_seasonal_cycle();*/
 }
-
 
 //-----------------------------------------------------------------------
 /// Calculate the tropopause altitude for the model data used to 
@@ -302,3 +295,16 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_seasonal_cycle(const bl
     return seasonal_vmr;
 }
 
+///-----------------------------------------------------------------------
+/// Creates the a priori VMR using the various transformation methods
+/// of the class.
+///-----------------------------------------------------------------------
+
+const blitz::Array<double, 1> ReferenceVmrApriori::apriori_vmr(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
+{
+    Array<double, 1> mod_grid_vmr = resample_to_model_grid(vmr);
+    Array<double, 1> lat_grad_vmr = apply_latitude_gradient(mod_grid_vmr, gas_name);
+    Array<double, 1> secular_trend_vmr = apply_secular_trend(lat_grad_vmr, gas_name);
+    Array<double, 1> seasonal_cycle_vmr = apply_seasonal_cycle(secular_trend_vmr, gas_name);
+    return seasonal_cycle_vmr;
+}
