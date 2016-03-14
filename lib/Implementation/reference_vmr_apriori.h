@@ -45,6 +45,8 @@ public:
     const blitz::Array<double, 1> apply_secular_trend(const blitz::Array<double, 1>& vmr, std::string& gas_name) const;
     const blitz::Array<double, 1> apply_seasonal_cycle(const blitz::Array<double, 1>& vmr, std::string& gas_name) const;
 
+    const blitz::Array<double, 1> apriori_vmr(const blitz::Array<double, 1>& vmr, std::string& gas_name) const;
+
     void print(std::ostream& Os) const { Os << "ReferenceVmrApriori"; }
 
 private:
