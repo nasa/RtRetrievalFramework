@@ -43,13 +43,12 @@ public:
     const blitz::Array<double, 1> resample_to_model_grid(const blitz::Array<double, 1>& vmr) const;
     const blitz::Array<double, 1> apply_latitude_gradient(const blitz::Array<double, 1>& vmr, std::string& gas_name) const;
     const blitz::Array<double, 1> apply_secular_trend(const blitz::Array<double, 1>& vmr, std::string& gas_name) const;
+    const blitz::Array<double, 1> apply_seasonal_cycle(const blitz::Array<double, 1>& vmr, std::string& gas_name) const;
 
     void print(std::ostream& Os) const { Os << "ReferenceVmrApriori"; }
 
 private:
     
-    void apply_seasonal_cycle();
-
     blitz::Array<double, 1> model_altitude;
     blitz::Array<double, 1> model_temperature;
 

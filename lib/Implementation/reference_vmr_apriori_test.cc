@@ -68,8 +68,7 @@ BOOST_AUTO_TEST_CASE(apriori_calc)
     eff_alt_input >> eff_alt_expt;
  
     Array<double, 1> eff_alt_calc = ref_ap->effective_altitude();
-
-    BOOST_CHECK_MATRIX_CLOSE_TOL(eff_alt_calc, eff_alt_expt, 1e-4);
+    BOOST_CHECK_MATRIX_CLOSE_TOL(eff_alt_calc, eff_alt_expt, 5e-6);
 
     IfstreamCs model_grid_input(test_data_dir() + "expected/reference_vmr_apriori/model_grid_vmr.dat");
     Array<double, 2> ggg_model_grid_vmr;
@@ -83,19 +82,29 @@ BOOST_AUTO_TEST_CASE(apriori_calc)
     Array<double, 2> ggg_secular_trend_vmr;
     secular_trend_input >> ggg_secular_trend_vmr;
 
+    IfstreamCs seasonal_cycle_input(test_data_dir() + "expected/reference_vmr_apriori/seasonal_cycle_vmr.dat");
+    Array<double, 2> ggg_seasonal_cycle_vmr;
+    seasonal_cycle_input >> ggg_seasonal_cycle_vmr;
+
     for(int gas_idx = 0; gas_idx < ref_vmr.cols(); gas_idx++) {
-        // Resample to model grid
+        // Resample to model grid, resampling here not implemented 100% the same way as from expected
+        // inputs.
         Array<double, 1> mod_grid_vmr = ref_ap->resample_to_model_grid(ref_vmr(Range::all(), gas_idx));
         BOOST_CHECK_MATRIX_CLOSE_TOL(mod_grid_vmr, ggg_model_grid_vmr(Range::all(), gas_idx), 1e-4);
 
         // Apply latitude gradient, use expected from last step due to resampling differences so we
         // can still compare to our expected value
         Array<double, 1> lat_grad_vmr = ref_ap->apply_latitude_gradient(ggg_model_grid_vmr(Range::all(), gas_idx), gas_names[gas_idx]);
-        BOOST_CHECK_MATRIX_CLOSE_TOL(lat_grad_vmr, ggg_lat_grad_vmr(Range::all(), gas_idx), 1e-9);
+        BOOST_CHECK_MATRIX_CLOSE_TOL(lat_grad_vmr, ggg_lat_grad_vmr(Range::all(), gas_idx), 1e-10);
 
         // Secular trend
         Array<double, 1> secular_trend_vmr = ref_ap->apply_secular_trend(lat_grad_vmr, gas_names[gas_idx]);
-        BOOST_CHECK_MATRIX_CLOSE_TOL(secular_trend_vmr, ggg_secular_trend_vmr(Range::all(), gas_idx), 5e-7);
+        BOOST_CHECK_MATRIX_CLOSE_TOL(secular_trend_vmr, ggg_secular_trend_vmr(Range::all(), gas_idx), 1e-10);
+
+        // Seasonal cycle
+        Array<double, 1> seasonal_cycle_vmr = ref_ap->apply_seasonal_cycle(ggg_secular_trend_vmr(Range::all(), gas_idx), gas_names[gas_idx]);
+        BOOST_CHECK_MATRIX_CLOSE_TOL(seasonal_cycle_vmr, ggg_seasonal_cycle_vmr(Range::all(), gas_idx), 1e-10);
+
     }
 }
 
