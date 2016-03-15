@@ -2,6 +2,7 @@ from __future__ import absolute_import
 import sys
 import glob
 import os
+import re
 
 from .try_swig_load import *
 
@@ -15,4 +16,6 @@ from . import safe_matplotlib_import
 
 for i in glob.glob(os.path.dirname(__file__) + "/*.py"):
     mname = os.path.basename(i).split('.')[0]
-    exec('from .%s import *' % mname)
+    print(mname)
+    if(not re.match('.*_test', mname)):
+        exec('from .%s import *' % mname)
