@@ -16,6 +16,5 @@ from . import safe_matplotlib_import
 
 for i in glob.glob(os.path.dirname(__file__) + "/*.py"):
     mname = os.path.basename(i).split('.')[0]
-    print(mname)
     if(not re.match('.*_test', mname)):
         exec('from .%s import *' % mname)
