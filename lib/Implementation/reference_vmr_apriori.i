@@ -1,31 +1,16 @@
-#ifndef REFERENCE_VMR_APRIORI_H
-#define REFERENCE_VMR_APRIORI_H
+%include "common.i"
+%{
+#include "reference_vmr_apriori.h"
+%}
 
-#include <blitz/array.h>
-#include "fp_time.h"
+%base_import(generic_object)
+%import "fp_time.i"
+
+%fp_shared_ptr(FullPhysics::ReferenceVmrApriori);
 
 namespace FullPhysics {
-
-/****************************************************************//**
-  Creates a VMR profile for a gas using a set of dated reference
-  VMRs with a known latitude. These VMRs are then modified as so:
-  1. Resampled to effective altitudes
-  2. Latitude gradient applied
-  3. Secular trends applied
-  4. Season cycle applied
-
-  This class is based on the TCCON 2014 release of gsetup. As
-  per those techniques, values are interpolated based on altitudes.
-
-  NOTE: Inputs are expected to be in increasing altitude
-  decreasing pressure order.
-
-  Make sure gas names are capatilized.
-*******************************************************************/
-
-class ReferenceVmrApriori : public Printable<ReferenceVmrApriori> {
+class ReferenceVmrApriori : public GenericObject {
 public:
-
     ReferenceVmrApriori(const blitz::Array<double, 1>& Model_altitude,
                         const blitz::Array<double, 1>& Model_temperature,
                         const blitz::Array<double, 1>& Ref_altitude,
@@ -46,23 +31,6 @@ public:
 
     const blitz::Array<double, 1> apriori_vmr(const blitz::Array<double, 1>& vmr, std::string& gas_name) const;
 
-    void print(std::ostream& Os) const { Os << "ReferenceVmrApriori"; }
-
-private:
-    
-    blitz::Array<double, 1> model_altitude;
-    blitz::Array<double, 1> model_temperature;
-
-    blitz::Array<double, 1> ref_altitude;
-    double ref_latitude;
-    Time ref_time;
-    double ref_tropopause_altitude;
-
-    double obs_latitude;
-    Time obs_time;
-
+    std::string print_to_string() const;
 };
 }
-
-#endif
-

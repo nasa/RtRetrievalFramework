@@ -353,6 +353,7 @@ SWIG_SRC += @swigsrc@/pressure_sigma_wrap.cc
 SWIG_SRC += @swigsrc@/stokes_coefficient_constant_wrap.cc
 SWIG_SRC += @swigsrc@/stokes_coefficient_fraction_wrap.cc
 SWIG_SRC += @swigsrc@/tccon_apriori_wrap.cc
+SWIG_SRC += @swigsrc@/reference_vmr_apriori_wrap.cc
 SWIG_SRC += @swigsrc@/oco_sim_apriori_wrap.cc
 SWIG_SRC += @swigsrc@/dispersion_fit_wrap.cc
 SWIG_SRC += @swigsrc@/fluorescence_effect_wrap.cc
