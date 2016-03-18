@@ -968,8 +968,8 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@implsrc@/stokes_coefficient_constant.cc \
 	@implsrc@/stokes_coefficient_fraction.cc \
 	@implsrc@/tccon_apriori.cc @implsrc@/reference_vmr_apriori.cc \
-	@implsrc@/oco_sim_apriori.cc @implsrc@/dispersion_fit.cc \
-	@implsrc@/fluorescence_effect.cc \
+	@implsrc@/gas_vmr_apriori.cc @implsrc@/oco_sim_apriori.cc \
+	@implsrc@/dispersion_fit.cc @implsrc@/fluorescence_effect.cc \
 	@implsrc@/instrument_doppler.cc \
 	@implsrc@/solar_absorption_gfit_file.cc \
 	@implsrc@/solar_absorption_gfit_file_f.F90 \
@@ -1247,6 +1247,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@implsrc@/libfp_la-stokes_coefficient_fraction.lo \
 	@implsrc@/libfp_la-tccon_apriori.lo \
 	@implsrc@/libfp_la-reference_vmr_apriori.lo \
+	@implsrc@/libfp_la-gas_vmr_apriori.lo \
 	@implsrc@/libfp_la-oco_sim_apriori.lo \
 	@implsrc@/libfp_la-dispersion_fit.lo \
 	@implsrc@/libfp_la-fluorescence_effect.lo \
@@ -1569,6 +1570,7 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@implsrc@/aerosol_shape_gaussian_test.cc \
 	@implsrc@/tccon_apriori_test.cc \
 	@implsrc@/reference_vmr_apriori_test.cc \
+	@implsrc@/gas_vmr_apriori_test.cc \
 	@implsrc@/oco_sim_apriori_test.cc \
 	@implsrc@/dispersion_fit_test.cc \
 	@implsrc@/fluorescence_effect_test.cc \
@@ -1741,6 +1743,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@implsrc@/aerosol_shape_gaussian_test.$(OBJEXT) \
 	@implsrc@/tccon_apriori_test.$(OBJEXT) \
 	@implsrc@/reference_vmr_apriori_test.$(OBJEXT) \
+	@implsrc@/gas_vmr_apriori_test.$(OBJEXT) \
 	@implsrc@/oco_sim_apriori_test.$(OBJEXT) \
 	@implsrc@/dispersion_fit_test.$(OBJEXT) \
 	@implsrc@/fluorescence_effect_test.$(OBJEXT) \
@@ -2029,8 +2032,9 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@implsrc@/stokes_coefficient_constant.h \
 	@implsrc@/stokes_coefficient_fraction.h \
 	@implsrc@/tccon_apriori.h @implsrc@/reference_vmr_apriori.h \
-	@implsrc@/oco_sim_apriori.h @implsrc@/dispersion_fit.h \
-	@implsrc@/fluorescence_effect.h @implsrc@/instrument_doppler.h \
+	@implsrc@/gas_vmr_apriori.h @implsrc@/oco_sim_apriori.h \
+	@implsrc@/dispersion_fit.h @implsrc@/fluorescence_effect.h \
+	@implsrc@/instrument_doppler.h \
 	@implsrc@/solar_absorption_gfit_file.h \
 	@implsrc@/fdf_nlls_solver.h @implsrc@/gsl_lsp.h \
 	@implsrc@/nlls_solver_gsl.h @implsrc@/nlls_solver_gsl_lmsder.h \
@@ -2671,8 +2675,9 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@implsrc@/stokes_coefficient_constant.h \
 	@implsrc@/stokes_coefficient_fraction.h \
 	@implsrc@/tccon_apriori.h @implsrc@/reference_vmr_apriori.h \
-	@implsrc@/oco_sim_apriori.h @implsrc@/dispersion_fit.h \
-	@implsrc@/fluorescence_effect.h @implsrc@/instrument_doppler.h \
+	@implsrc@/gas_vmr_apriori.h @implsrc@/oco_sim_apriori.h \
+	@implsrc@/dispersion_fit.h @implsrc@/fluorescence_effect.h \
+	@implsrc@/instrument_doppler.h \
 	@implsrc@/solar_absorption_gfit_file.h \
 	@implsrc@/fdf_nlls_solver.h @implsrc@/gsl_lsp.h \
 	@implsrc@/nlls_solver_gsl.h @implsrc@/nlls_solver_gsl_lmsder.h \
@@ -2850,6 +2855,7 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@implsrc@/aerosol_shape_gaussian_test.cc \
 	@implsrc@/tccon_apriori_test.cc \
 	@implsrc@/reference_vmr_apriori_test.cc \
+	@implsrc@/gas_vmr_apriori_test.cc \
 	@implsrc@/oco_sim_apriori_test.cc \
 	@implsrc@/dispersion_fit_test.cc \
 	@implsrc@/fluorescence_effect_test.cc \
@@ -3395,8 +3401,8 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@implsrc@/stokes_coefficient_constant.cc \
 	@implsrc@/stokes_coefficient_fraction.cc \
 	@implsrc@/tccon_apriori.cc @implsrc@/reference_vmr_apriori.cc \
-	@implsrc@/oco_sim_apriori.cc @implsrc@/dispersion_fit.cc \
-	@implsrc@/fluorescence_effect.cc \
+	@implsrc@/gas_vmr_apriori.cc @implsrc@/oco_sim_apriori.cc \
+	@implsrc@/dispersion_fit.cc @implsrc@/fluorescence_effect.cc \
 	@implsrc@/instrument_doppler.cc \
 	@implsrc@/solar_absorption_gfit_file.cc \
 	@implsrc@/solar_absorption_gfit_file_f.F90 \
@@ -4923,6 +4929,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-reference_vmr_apriori.lo:  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-gas_vmr_apriori.lo: @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-oco_sim_apriori.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-dispersion_fit.lo: @implsrc@/$(am__dirstamp) \
@@ -5801,6 +5809,8 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/reference_vmr_apriori_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/gas_vmr_apriori_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/oco_sim_apriori_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/dispersion_fit_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
@@ -6029,6 +6039,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/forward_model_cost_function_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/fp_logger_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/full_output_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/gas_vmr_apriori_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/gosat_noise_model_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_brdf_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_coxmunk_plus_lambertian_test.Po@am__quote@
@@ -6088,6 +6099,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-forward_model_cost_function.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-fp_logger.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-freudenstein_roth_nlls_problem.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-gas_vmr_apriori.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-gosat_noise_model.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-ground_brdf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk.Plo@am__quote@
@@ -9969,6 +9981,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/reference_vmr_apriori.cc' object='@implsrc@/libfp_la-reference_vmr_apriori.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-reference_vmr_apriori.lo `test -f '@implsrc@/reference_vmr_apriori.cc' || echo '$(srcdir)/'`@implsrc@/reference_vmr_apriori.cc
+
+@implsrc@/libfp_la-gas_vmr_apriori.lo: @implsrc@/gas_vmr_apriori.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-gas_vmr_apriori.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-gas_vmr_apriori.Tpo -c -o @implsrc@/libfp_la-gas_vmr_apriori.lo `test -f '@implsrc@/gas_vmr_apriori.cc' || echo '$(srcdir)/'`@implsrc@/gas_vmr_apriori.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-gas_vmr_apriori.Tpo @implsrc@/$(DEPDIR)/libfp_la-gas_vmr_apriori.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/gas_vmr_apriori.cc' object='@implsrc@/libfp_la-gas_vmr_apriori.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-gas_vmr_apriori.lo `test -f '@implsrc@/gas_vmr_apriori.cc' || echo '$(srcdir)/'`@implsrc@/gas_vmr_apriori.cc
 
 @implsrc@/libfp_la-oco_sim_apriori.lo: @implsrc@/oco_sim_apriori.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-oco_sim_apriori.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-oco_sim_apriori.Tpo -c -o @implsrc@/libfp_la-oco_sim_apriori.lo `test -f '@implsrc@/oco_sim_apriori.cc' || echo '$(srcdir)/'`@implsrc@/oco_sim_apriori.cc

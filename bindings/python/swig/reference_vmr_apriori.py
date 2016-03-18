@@ -219,7 +219,8 @@ class ReferenceVmrApriori(full_physics_swig.generic_object.GenericObject):
     def apply_latitude_gradient(self, vmr, gas_name):
         """
 
-        const blitz::Array< double, 1 > ReferenceVmrApriori::apply_latitude_gradient(const blitz::Array< double, 1 > &vmr, std::string &gas_name) const
+        const blitz::Array< double, 1 > ReferenceVmrApriori::apply_latitude_gradient(const blitz::Array< double, 1 > &vmr, const std::string &gas_name)
+        const
         Modifies the vmr profiles to account for the difference in latitude
         between the observation latitude and the reference latitude.
 
@@ -234,7 +235,8 @@ class ReferenceVmrApriori(full_physics_swig.generic_object.GenericObject):
     def apply_secular_trend(self, vmr, gas_name):
         """
 
-        const blitz::Array< double, 1 > ReferenceVmrApriori::apply_secular_trend(const blitz::Array< double, 1 > &vmr, std::string &gas_name) const
+        const blitz::Array< double, 1 > ReferenceVmrApriori::apply_secular_trend(const blitz::Array< double, 1 > &vmr, const std::string &gas_name)
+        const
         Modifies the a priori profiles on a gas-by-gas basis to account for
         the difference in time between the observation/model and the reference
         vmrs.
@@ -247,7 +249,8 @@ class ReferenceVmrApriori(full_physics_swig.generic_object.GenericObject):
     def apply_seasonal_cycle(self, vmr, gas_name):
         """
 
-        const blitz::Array< double, 1 > ReferenceVmrApriori::apply_seasonal_cycle(const blitz::Array< double, 1 > &vmr, std::string &gas_name) const
+        const blitz::Array< double, 1 > ReferenceVmrApriori::apply_seasonal_cycle(const blitz::Array< double, 1 > &vmr, const std::string &gas_name)
+        const
         Modifies the a priori vmr profile to account for the season of the
         observation/model. 
         """
@@ -257,7 +260,8 @@ class ReferenceVmrApriori(full_physics_swig.generic_object.GenericObject):
     def apriori_vmr(self, vmr, gas_name):
         """
 
-        const blitz::Array< double, 1 > ReferenceVmrApriori::apriori_vmr(const blitz::Array< double, 1 > &vmr, std::string &gas_name) const
+        const blitz::Array< double, 1 > ReferenceVmrApriori::apriori_vmr(const blitz::Array< double, 1 > &vmr, const std::string &gas_name)
+        const
         Creates the a priori VMR using the various transformation methods of
         the class. 
         """

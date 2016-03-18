@@ -201,7 +201,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::resample_to_model_grid(const 
 /// are interpolated between these limiting behaviors.
 //-----------------------------------------------------------------------
 
-const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradient(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
+const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradient(const blitz::Array<double, 1>& vmr, const std::string& gas_name) const
 {
     double mod_tropo_alt = model_tropopause_altitude();
 
@@ -229,7 +229,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradient(const
 /// vmrs. This includes the secular trend but not the seasonal cycle.
 ///-----------------------------------------------------------------------
 
-const blitz::Array<double, 1> ReferenceVmrApriori::apply_secular_trend(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
+const blitz::Array<double, 1> ReferenceVmrApriori::apply_secular_trend(const blitz::Array<double, 1>& vmr, const std::string& gas_name) const
 {
     // Convert times into year + fractional hours
     double obs_frac_year = ptime(obs_time).date().year() + obs_time.frac_day_of_year() - 1;
@@ -262,7 +262,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_secular_trend(const bli
 /// the observation/model.
 ///-----------------------------------------------------------------------
 
-const blitz::Array<double, 1> ReferenceVmrApriori::apply_seasonal_cycle(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
+const blitz::Array<double, 1> ReferenceVmrApriori::apply_seasonal_cycle(const blitz::Array<double, 1>& vmr, const std::string& gas_name) const
 {
     double twopi = 2.0 * OldConstant::pi;
     double obs_frac_hours = obs_time.frac_day_of_year() - 1;
@@ -304,7 +304,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_seasonal_cycle(const bl
 /// of the class.
 ///-----------------------------------------------------------------------
 
-const blitz::Array<double, 1> ReferenceVmrApriori::apriori_vmr(const blitz::Array<double, 1>& vmr, std::string& gas_name) const
+const blitz::Array<double, 1> ReferenceVmrApriori::apriori_vmr(const blitz::Array<double, 1>& vmr, const std::string& gas_name) const
 {
     Array<double, 1> mod_grid_vmr = resample_to_model_grid(vmr);
     Array<double, 1> lat_grad_vmr = apply_latitude_gradient(mod_grid_vmr, gas_name);
