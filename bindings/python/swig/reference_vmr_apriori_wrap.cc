@@ -5842,7 +5842,8 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"ReferenceVmrApriori_apply_latitude_gradient", _wrap_ReferenceVmrApriori_apply_latitude_gradient, METH_VARARGS, (char *)"\n"
 		"\n"
-		"const blitz::Array< double, 1 > ReferenceVmrApriori::apply_latitude_gradient(const blitz::Array< double, 1 > &vmr, std::string &gas_name) const\n"
+		"const blitz::Array< double, 1 > ReferenceVmrApriori::apply_latitude_gradient(const blitz::Array< double, 1 > &vmr, const std::string &gas_name)\n"
+		"const\n"
 		"Modifies the vmr profiles to account for the difference in latitude\n"
 		"between the observation latitude and the reference latitude.\n"
 		"\n"
@@ -5853,7 +5854,8 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"ReferenceVmrApriori_apply_secular_trend", _wrap_ReferenceVmrApriori_apply_secular_trend, METH_VARARGS, (char *)"\n"
 		"\n"
-		"const blitz::Array< double, 1 > ReferenceVmrApriori::apply_secular_trend(const blitz::Array< double, 1 > &vmr, std::string &gas_name) const\n"
+		"const blitz::Array< double, 1 > ReferenceVmrApriori::apply_secular_trend(const blitz::Array< double, 1 > &vmr, const std::string &gas_name)\n"
+		"const\n"
 		"Modifies the a priori profiles on a gas-by-gas basis to account for\n"
 		"the difference in time between the observation/model and the reference\n"
 		"vmrs.\n"
@@ -5862,13 +5864,15 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"ReferenceVmrApriori_apply_seasonal_cycle", _wrap_ReferenceVmrApriori_apply_seasonal_cycle, METH_VARARGS, (char *)"\n"
 		"\n"
-		"const blitz::Array< double, 1 > ReferenceVmrApriori::apply_seasonal_cycle(const blitz::Array< double, 1 > &vmr, std::string &gas_name) const\n"
+		"const blitz::Array< double, 1 > ReferenceVmrApriori::apply_seasonal_cycle(const blitz::Array< double, 1 > &vmr, const std::string &gas_name)\n"
+		"const\n"
 		"Modifies the a priori vmr profile to account for the season of the\n"
 		"observation/model. \n"
 		""},
 	 { (char *)"ReferenceVmrApriori_apriori_vmr", _wrap_ReferenceVmrApriori_apriori_vmr, METH_VARARGS, (char *)"\n"
 		"\n"
-		"const blitz::Array< double, 1 > ReferenceVmrApriori::apriori_vmr(const blitz::Array< double, 1 > &vmr, std::string &gas_name) const\n"
+		"const blitz::Array< double, 1 > ReferenceVmrApriori::apriori_vmr(const blitz::Array< double, 1 > &vmr, const std::string &gas_name)\n"
+		"const\n"
 		"Creates the a priori VMR using the various transformation methods of\n"
 		"the class. \n"
 		""},
