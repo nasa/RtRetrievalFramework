@@ -54,5 +54,6 @@ GasVmrApriori::GasVmrApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
 const blitz::Array<double, 1> GasVmrApriori::apriori_vmr() const
 {
     Array<double, 1> ap_vmr = ref_apriori->apriori_vmr(ref_vmr, gas_name);
-    return ap_vmr;
+    // Reverse to be in pressure increasing order
+    return ap_vmr.reverse(firstDim);
 }

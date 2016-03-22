@@ -231,10 +231,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradient(const
 
 const blitz::Array<double, 1> ReferenceVmrApriori::apply_secular_trend(const blitz::Array<double, 1>& vmr, const std::string& gas_name) const
 {
-    // Convert times into year + fractional hours
-    double obs_frac_year = ptime(obs_time).date().year() + obs_time.frac_day_of_year() - 1;
-    double ref_frac_year = ptime(ref_time).date().year() + ref_time.frac_day_of_year() - 1;
-    double time_diff = obs_frac_year - ref_frac_year;
+    double time_diff = obs_time.frac_year() - ref_time.frac_year();
 
     double trend;
     try {
@@ -265,7 +262,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_secular_trend(const bli
 const blitz::Array<double, 1> ReferenceVmrApriori::apply_seasonal_cycle(const blitz::Array<double, 1>& vmr, const std::string& gas_name) const
 {
     double twopi = 2.0 * OldConstant::pi;
-    double obs_frac_hours = obs_time.frac_day_of_year() - 1;
+    double obs_year_frac = obs_time.frac_year();
 
     double amplitude;
     try {
@@ -282,13 +279,13 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_seasonal_cycle(const bl
         double sca;
         if (gas_name == "CO2") {
             // seasonal variation
-            double sv = std::sin(twopi * (obs_frac_hours - 0.834 - aoa));
+            double sv = std::sin(twopi * (obs_year_frac - 0.834 - aoa));
             // seasonal variation
             double svnl = sv + 1.80 * exp(-std::pow((obs_latitude - 74) / 41, 2)) * (0.5 - std::pow(sv, 2));
             sca = svnl * exp(-aoa/0.20) * (1 + 1.33 * exp(-std::pow((obs_latitude - 76) / 48, 2))*(zobs + 6.0) / (zobs + 1.4));
         } else {
             // basic seasonal variation
-            double sv = std::sin(twopi * (obs_frac_hours - 0.89));
+            double sv = std::sin(twopi * (obs_year_frac - 0.89));
             // latitude dependence 
             double svl = sv * (obs_latitude / 15) / sqrt(1 + std::pow(obs_latitude / 15, 2));
             // altitude dependence

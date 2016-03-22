@@ -80,6 +80,8 @@ public:
   double pgs_time() const { return unix_time_ - 725846400.0;}
 
   double frac_day_of_year() const;
+  double frac_year() const;
+
   static Time parse_time(const std::string& Time_string);
   std::string to_string() const;
 

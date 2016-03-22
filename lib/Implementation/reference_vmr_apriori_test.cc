@@ -32,7 +32,7 @@ public:
         Time ref_time = Time::parse_time("2005-01-01T00:00:00");
 
         double obs_latitude = 45.945;
-        Time obs_time = Time::parse_time("2004-01-01T13:20:19.921875");
+        Time obs_time = Time::parse_time("2004-07-21T20:41:11.484375");
 
         ref_ap.reset(new ReferenceVmrApriori(model_altitude, model_temperature, 
                                              ref_altitude, ref_latitude, ref_time, ref_topo_alt,
