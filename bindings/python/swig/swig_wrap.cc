@@ -226,6 +226,7 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(stokes_coefficient_fraction)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(tccon_apriori)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(reference_vmr_apriori)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(gas_vmr_apriori)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_sim_apriori)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(dispersion_fit)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(fluorescence_effect)(void);
@@ -622,6 +623,7 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_stokes_coefficient_fraction", SWIG_INIT_FUNC(stokes_coefficient_fraction));
   SWIG_INIT_MODULE(package, "_tccon_apriori", SWIG_INIT_FUNC(tccon_apriori));
   SWIG_INIT_MODULE(package, "_reference_vmr_apriori", SWIG_INIT_FUNC(reference_vmr_apriori));
+  SWIG_INIT_MODULE(package, "_gas_vmr_apriori", SWIG_INIT_FUNC(gas_vmr_apriori));
   SWIG_INIT_MODULE(package, "_oco_sim_apriori", SWIG_INIT_FUNC(oco_sim_apriori));
   SWIG_INIT_MODULE(package, "_dispersion_fit", SWIG_INIT_FUNC(dispersion_fit));
   SWIG_INIT_MODULE(package, "_fluorescence_effect", SWIG_INIT_FUNC(fluorescence_effect));

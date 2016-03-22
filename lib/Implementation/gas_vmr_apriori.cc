@@ -6,6 +6,13 @@ using namespace blitz;
 #ifdef HAVE_LUA
 #include "register_lua.h"
 REGISTER_LUA_CLASS(GasVmrApriori)
+.def(luabind::constructor<const boost::shared_ptr<Ecmwf>&,
+                          const boost::shared_ptr<Level1b>&,
+                          const boost::shared_ptr<Altitude>&,
+                          const HdfFile&,
+                          const std::string&,
+                          const std::string&>())
+.def("apriori_vmr", &GasVmrApriori::apriori_vmr)
 REGISTER_LUA_END()
 #endif
 
