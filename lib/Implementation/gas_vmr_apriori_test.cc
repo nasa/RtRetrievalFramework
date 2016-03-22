@@ -20,7 +20,7 @@ BOOST_AUTO_TEST_CASE(apriori_calc)
     boost::shared_ptr<AcosSoundingId> sid (new AcosSoundingId(*sfile, "20091009203401", AcosSoundingId::S_SOUNDING));
     boost::shared_ptr<AcosEcmwf> ecmwf(new AcosEcmwf(test_data_dir() + "in/ecmwf.h5", sid, true));
     boost::shared_ptr<Level1bAcos> l1b(new Level1bAcos(sfile, sid));
-    
+
     // Compute model altitudes
     blitz::Array<double, 1> press_profile;
     blitz::Array<double, 1> temp_profile;
@@ -39,7 +39,12 @@ BOOST_AUTO_TEST_CASE(apriori_calc)
 
     GasVmrApriori gas_vmr(ecmwf, l1b, alt, hdf_static_input, "/Reference_Atmosphere/", "CO2");
 
-    std::cerr << "ap_vmr = " << gas_vmr.apriori_vmr() << std::endl;
+    IfstreamCs ggg_vmr_input(test_data_dir() + "expected/gas_vmr_apriori/ggg_result");
+    Array<double, 1> ggg_res;
+    ggg_vmr_input >> ggg_res;
+
+    Array<double, 1> calc_ap_vmr = gas_vmr.apriori_vmr();
+    BOOST_CHECK_MATRIX_CLOSE_TOL(ggg_res, calc_ap_vmr, 2e-7);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

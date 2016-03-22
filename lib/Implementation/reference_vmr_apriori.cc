@@ -262,7 +262,9 @@ const blitz::Array<double, 1> ReferenceVmrApriori::apply_secular_trend(const bli
 const blitz::Array<double, 1> ReferenceVmrApriori::apply_seasonal_cycle(const blitz::Array<double, 1>& vmr, const std::string& gas_name) const
 {
     double twopi = 2.0 * OldConstant::pi;
-    double obs_year_frac = obs_time.frac_year();
+
+    // Remove year just to get how far into the year
+    double obs_year_frac = obs_time.frac_year() - ptime(obs_time).date().year();
 
     double amplitude;
     try {
