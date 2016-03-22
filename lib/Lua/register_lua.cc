@@ -324,6 +324,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(RadianceScalingLinearFit);
   REGISTER_LUA_LIST(NonuniformSpectrumSampling);
   REGISTER_LUA_LIST(TcconApriori);
+  REGISTER_LUA_LIST(GasVmrApriori);
   REGISTER_LUA_LIST(OcoSimApriori);
   REGISTER_LUA_LIST(DispersionFit);
   REGISTER_LUA_LIST(DispersionFitOutput);

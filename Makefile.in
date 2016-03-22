@@ -537,6 +537,7 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/stokes_coefficient_fraction_wrap.cc \
 	@swigsrc@/tccon_apriori_wrap.cc \
 	@swigsrc@/reference_vmr_apriori_wrap.cc \
+	@swigsrc@/gas_vmr_apriori_wrap.cc \
 	@swigsrc@/oco_sim_apriori_wrap.cc \
 	@swigsrc@/dispersion_fit_wrap.cc \
 	@swigsrc@/fluorescence_effect_wrap.cc \
@@ -775,6 +776,7 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-stokes_coefficient_fraction_wrap.lo \
 	@swigsrc@/_swig_wrap_la-tccon_apriori_wrap.lo \
 	@swigsrc@/_swig_wrap_la-reference_vmr_apriori_wrap.lo \
+	@swigsrc@/_swig_wrap_la-gas_vmr_apriori_wrap.lo \
 	@swigsrc@/_swig_wrap_la-oco_sim_apriori_wrap.lo \
 	@swigsrc@/_swig_wrap_la-dispersion_fit_wrap.lo \
 	@swigsrc@/_swig_wrap_la-fluorescence_effect_wrap.lo \
@@ -3152,6 +3154,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/stokes_coefficient_fraction_wrap.cc \
 	@swigsrc@/tccon_apriori_wrap.cc \
 	@swigsrc@/reference_vmr_apriori_wrap.cc \
+	@swigsrc@/gas_vmr_apriori_wrap.cc \
 	@swigsrc@/oco_sim_apriori_wrap.cc \
 	@swigsrc@/dispersion_fit_wrap.cc \
 	@swigsrc@/fluorescence_effect_wrap.cc \
@@ -4355,6 +4358,8 @@ clean-pkgpythonswigLTLIBRARIES:
 @swigsrc@/_swig_wrap_la-tccon_apriori_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-reference_vmr_apriori_wrap.lo:  \
+	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
+@swigsrc@/_swig_wrap_la-gas_vmr_apriori_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-oco_sim_apriori_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -6502,6 +6507,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-fp_time_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-fts_run_log_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-gas_absorption_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-gas_vmr_apriori_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-generic_object_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-gosat_noise_model_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-ground_brdf_wrap.Plo@am__quote@
@@ -8378,6 +8384,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/reference_vmr_apriori_wrap.cc' object='@swigsrc@/_swig_wrap_la-reference_vmr_apriori_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-reference_vmr_apriori_wrap.lo `test -f '@swigsrc@/reference_vmr_apriori_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/reference_vmr_apriori_wrap.cc
+
+@swigsrc@/_swig_wrap_la-gas_vmr_apriori_wrap.lo: @swigsrc@/gas_vmr_apriori_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-gas_vmr_apriori_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-gas_vmr_apriori_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-gas_vmr_apriori_wrap.lo `test -f '@swigsrc@/gas_vmr_apriori_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/gas_vmr_apriori_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-gas_vmr_apriori_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-gas_vmr_apriori_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/gas_vmr_apriori_wrap.cc' object='@swigsrc@/_swig_wrap_la-gas_vmr_apriori_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-gas_vmr_apriori_wrap.lo `test -f '@swigsrc@/gas_vmr_apriori_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/gas_vmr_apriori_wrap.cc
 
 @swigsrc@/_swig_wrap_la-oco_sim_apriori_wrap.lo: @swigsrc@/oco_sim_apriori_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-oco_sim_apriori_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-oco_sim_apriori_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-oco_sim_apriori_wrap.lo `test -f '@swigsrc@/oco_sim_apriori_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/oco_sim_apriori_wrap.cc
