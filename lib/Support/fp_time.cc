@@ -42,6 +42,22 @@ double Time::frac_day_of_year() const
 }
 
 //-----------------------------------------------------------------------
+/// Calculate the fractional year. This is the year plus the fractional
+/// part of it.
+//-----------------------------------------------------------------------
+
+double Time::frac_year() const
+{
+  ptime pt(*this);
+  // Fractional part of the year. Do it this way to account for leap years 
+  // Use total_microseconds for greater precision
+  double frac = double(( pt - ptime(date(pt.date().year(), 1, 1)) ).total_microseconds()) /
+      double(( ptime(date(pt.date().year(), 12, 31)) - ptime(date(pt.date().year(), 1, 1)) ).total_microseconds());
+  return pt.date().year() + frac;
+
+}
+
+//-----------------------------------------------------------------------
 /// Parse CCSDS format time (e.g., "1996-07-03T04:13:57.987654Z")
 //-----------------------------------------------------------------------
 
