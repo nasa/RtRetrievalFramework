@@ -7,6 +7,7 @@
 #include "level_1b.h"
 #include "altitude.h"
 #include "hdf_file.h"
+#include "pressure.h"
 
 #include "reference_vmr_apriori.h"
 
@@ -34,13 +35,16 @@ public:
                   const std::string& Gas_name);
 
     const blitz::Array<double, 1> apriori_vmr() const;
+    const blitz::Array<double, 1> apriori_vmr(const Pressure& pressure) const;
 
     void print(std::ostream& Os) const { Os << "GasVmrApriori"; }
 
 private:
     boost::shared_ptr<ReferenceVmrApriori> ref_apriori;
 
+    blitz::Array<double, 1> model_press;
     blitz::Array<double, 1> ref_vmr;
+
     std::string gas_name;
 };
 
