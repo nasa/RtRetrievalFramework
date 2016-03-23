@@ -900,6 +900,15 @@ function ConfigCommon:tccon_co2_apriori()
 end
 
 ------------------------------------------------------------
+--- Get co2 apriori using reference apriori method
+------------------------------------------------------------
+
+function ConfigCommon:reference_co2_apriori_ecmwf()
+   local t = GasVmrApriori(self.config.ecmwf, self.config.l1b, self.config.altitude:value(0), self.config:h(), "/Reference_Atmosphere", "CO2")
+   return t:apriori_vmr(self.config.pressure)
+end
+
+------------------------------------------------------------
 -- Short cut for making a flag array. This takes a size, creates
 -- a bool array of that size and sets everything in the passed
 -- in range to true, and everything else to false

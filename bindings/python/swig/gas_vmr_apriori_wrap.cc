@@ -5287,18 +5287,16 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GasVmrApriori__v_apriori_vmr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GasVmrApriori__v_apriori_vmr__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::GasVmrApriori *arg1 = (FullPhysics::GasVmrApriori *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   boost::shared_ptr< FullPhysics::GasVmrApriori const > tempshared1 ;
   boost::shared_ptr< FullPhysics::GasVmrApriori const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< blitz::Array< double,1 > > result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GasVmrApriori_t, 0 |  0 , &newmem);
@@ -5343,6 +5341,116 @@ SWIGINTERN PyObject *_wrap_GasVmrApriori__v_apriori_vmr(PyObject *SWIGUNUSEDPARM
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GasVmrApriori__v_apriori_vmr__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::GasVmrApriori *arg1 = (FullPhysics::GasVmrApriori *) 0 ;
+  FullPhysics::Pressure *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GasVmrApriori const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GasVmrApriori const > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::Pressure const > tempshared2 ;
+  SwigValueWrapper< blitz::Array< double,1 > > result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GasVmrApriori_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GasVmrApriori__v_apriori_vmr" "', argument " "1"" of type '" "FullPhysics::GasVmrApriori const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GasVmrApriori > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GasVmrApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::GasVmrApriori * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GasVmrApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::GasVmrApriori * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::Pressure *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__Pressure,  0 , &newmem);
+    if (SWIG_IsOK(res2)) {
+      arg2 = ptr;
+    } else {
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 , &newmem);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GasVmrApriori__v_apriori_vmr" "', argument " "2"" of type '" "FullPhysics::Pressure const &""'"); 
+      }
+      if (!argp2) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GasVmrApriori__v_apriori_vmr" "', argument " "2"" of type '" "FullPhysics::Pressure const &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Pressure > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Pressure > * >(argp2);
+        arg2 = const_cast< FullPhysics::Pressure * >(tempshared2.get());
+      } else {
+        arg2 = const_cast< FullPhysics::Pressure * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::Pressure > * >(argp2)->get());
+      }
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::GasVmrApriori const *)arg1)->apriori_vmr((FullPhysics::Pressure const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    npy_intp dims[1], stride[1];
+    for(int i = 0; i < 1; ++i) {
+      dims[i] = (&result)->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = (&result)->stride(i) * sizeof(double);
+    }
+    resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
+      stride, (&result)->data(), 0, 0, 0);
+    blitz::Array<double, 1>* t = new blitz::Array<double, 1>(result);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GasVmrApriori__v_apriori_vmr(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"GasVmrApriori__v_apriori_vmr",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_GasVmrApriori__v_apriori_vmr__SWIG_0(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_GasVmrApriori__v_apriori_vmr__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GasVmrApriori__v_apriori_vmr'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::GasVmrApriori::apriori_vmr() const\n"
+    "    FullPhysics::GasVmrApriori::apriori_vmr(FullPhysics::Pressure const &) const\n");
+  return 0;
 }
 
 
@@ -5453,9 +5561,9 @@ static PyMethodDef SwigMethods[] = {
 		"&Hdf_group, const std::string &Gas_name)\n"
 		"\n"
 		""},
-	 { (char *)"GasVmrApriori__v_apriori_vmr", (PyCFunction)_wrap_GasVmrApriori__v_apriori_vmr, METH_O, (char *)"\n"
+	 { (char *)"GasVmrApriori__v_apriori_vmr", _wrap_GasVmrApriori__v_apriori_vmr, METH_VARARGS, (char *)"\n"
 		"\n"
-		"const blitz::Array< double, 1 > GasVmrApriori::apriori_vmr() const\n"
+		"const blitz::Array< double, 1 > GasVmrApriori::apriori_vmr(const Pressure &pressure) const\n"
 		"\n"
 		""},
 	 { (char *)"GasVmrApriori___str__", (PyCFunction)_wrap_GasVmrApriori___str__, METH_O, NULL},

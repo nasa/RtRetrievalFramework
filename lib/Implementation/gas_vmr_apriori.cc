@@ -1,10 +1,12 @@
 #include "gas_vmr_apriori.h"
+#include "linear_interpolate.h"
 
 using namespace FullPhysics;
 using namespace blitz;
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
+
 REGISTER_LUA_CLASS(GasVmrApriori)
 .def(luabind::constructor<const boost::shared_ptr<Ecmwf>&,
                           const boost::shared_ptr<Level1b>&,
@@ -12,7 +14,8 @@ REGISTER_LUA_CLASS(GasVmrApriori)
                           const HdfFile&,
                           const std::string&,
                           const std::string&>())
-.def("apriori_vmr", &GasVmrApriori::apriori_vmr)
+// Expose version which requires a Pressure argument
+.def("apriori_vmr", (const blitz::Array<double, 1>(GasVmrApriori::*)(const Pressure&) const) &GasVmrApriori::apriori_vmr)
 REGISTER_LUA_END()
 #endif
 
@@ -23,7 +26,6 @@ GasVmrApriori::GasVmrApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
                              const std::string& Hdf_group,
                              const std::string& Gas_name)
 {
-    blitz::Array<double, 1> model_press;
     blitz::Array<double, 1> model_temp;
     
     // Read pressure and temperature grids
@@ -61,6 +63,24 @@ GasVmrApriori::GasVmrApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
 const blitz::Array<double, 1> GasVmrApriori::apriori_vmr() const
 {
     Array<double, 1> ap_vmr = ref_apriori->apriori_vmr(ref_vmr, gas_name);
-    // Reverse to be in pressure increasing order
-    return ap_vmr.reverse(firstDim);
+    ap_vmr.reverseSelf(firstDim);
+    return ap_vmr;
+}
+
+const blitz::Array<double, 1> GasVmrApriori::apriori_vmr(const Pressure& pressure) const
+{
+    // Make a copy to avoid issues with memory access into the reversed view
+    Array<double, 1> model_ap_vmr(model_press.shape());
+    model_ap_vmr = apriori_vmr();
+
+    Array<double, 1> press_levels(pressure.pressure_grid().convert(units::Pa).value.value());
+
+    LinearInterpolate<double, double> mod_vmr_interp(model_press.begin(), model_press.end(), model_ap_vmr.begin());
+
+    Array<double, 1> interp_vmr(press_levels.shape());
+    for(int lev_idx = 0; lev_idx < interp_vmr.rows(); lev_idx++) {
+        interp_vmr(lev_idx) = mod_vmr_interp(press_levels(lev_idx));
+    }
+
+    return interp_vmr;
 }

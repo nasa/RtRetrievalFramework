@@ -163,18 +163,18 @@ class GasVmrApriori(full_physics_swig.generic_object.GenericObject):
         """
         _gas_vmr_apriori.GasVmrApriori_swiginit(self, _gas_vmr_apriori.new_GasVmrApriori(Ecmwf_file, L1b_file, Alt, Hdf_static_input, Hdf_group, Gas_name))
 
-    def _v_apriori_vmr(self):
-        """
-
-        const blitz::Array< double, 1 > GasVmrApriori::apriori_vmr() const
-
-        """
-        return _gas_vmr_apriori.GasVmrApriori__v_apriori_vmr(self)
-
-
     @property
     def apriori_vmr(self):
         return self._v_apriori_vmr()
+
+
+    def _v_apriori_vmr(self, *args):
+        """
+
+        const blitz::Array< double, 1 > GasVmrApriori::apriori_vmr(const Pressure &pressure) const
+
+        """
+        return _gas_vmr_apriori.GasVmrApriori__v_apriori_vmr(self, *args)
 
     __swig_destroy__ = _gas_vmr_apriori.delete_GasVmrApriori
 GasVmrApriori._v_apriori_vmr = new_instancemethod(_gas_vmr_apriori.GasVmrApriori__v_apriori_vmr, None, GasVmrApriori)
