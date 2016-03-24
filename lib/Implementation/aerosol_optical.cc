@@ -188,6 +188,9 @@ ArrayAd<double, 1> AerosolOptical::ssa_each_layer
   ArrayAd<double, 1> t = aprop[particle_index]->scattering_coefficient_each_layer(wn);
   ArrayAd<double, 1> t2 = aprop[particle_index]->extinction_coefficient_each_layer(wn);
   t.value() /= t2.value();
+  if(!t.is_constant() && !res.is_constant() &&
+     res.number_variable() != t.number_variable())
+    throw Exception("We don't currently have the code working correctly for combining intermediates and state vector derivatives. We'll need to think through how to do this.");
   if(!t.is_constant())
     t.jacobian() = 1 / t2.value()(i1) * t.jacobian()(i1,i2) -
       t.value()(i1)/(t2.value()(i1) * t2.value()(i1))  * t2.jacobian()(i1,i2);
@@ -319,6 +322,9 @@ ArrayAd<double, 3> AerosolOptical::pf_mom(double wn,
     s1 = std::max(s1, pf[j].rows());
     s2 = std::max(s2, pf[j].depth());
     nvar = std::max(nvar, pf[j].number_variable());
+    if(!pf[j].is_constant() && !frac_aer.is_constant() &&
+       pf[j].number_variable() != frac_aer.number_variable())
+      throw Exception("We don't currently have the code working correctly for combining intermediates and state vector derivatives. We'll need to think through how to do this.");
   }
   ArrayAd<double, 3> res(s1, nlay, s2, nvar);
   res = 0;

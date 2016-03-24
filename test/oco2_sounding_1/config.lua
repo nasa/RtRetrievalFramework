@@ -8,4 +8,5 @@ config = OcoBaseConfig:new()
 config.fm.instrument.instrument_correction.ic_nadir = {}
 config.fm.instrument.instrument_correction.ic_glint = {}
 config.fm.instrument.instrument_correction.ic_target = {}
+
 config:do_config()
