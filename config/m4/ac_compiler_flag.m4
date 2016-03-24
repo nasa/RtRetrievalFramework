@@ -17,7 +17,7 @@ AS_HELP_STRING([--enable-debug],[Enable compiler debugging flags]),
 [if test "$enableval" = yes; then  
    enable_debug="yes"
    AC_MSG_RESULT([yes])
-   CXXFLAGS="-ggdb -Wall -DBZ_DEBUG -Wno-unused-local-typedefs -std=c++11"
+   CXXFLAGS="-ggdb -Wall -DBZ_DEBUG -Wno-unused-local-typedefs"
    CFLAGS="-ggdb -Wall"
    if test "$use_ifort" = "yes"; then
      FCFLAGS="-g -O0 -check all,noarg_temp_created -traceback -Difort -heap-arrays 1024"
@@ -47,7 +47,6 @@ AS_HELP_STRING([--enable-debug],[Enable compiler debugging flags]),
 fi],
 [AC_MSG_RESULT([no])
    enable_debug="no"
-   CXXFLAGS="-std=c++11"
    if test "$use_ifort" = "yes"; then
 # See ticket #526 in trac for why we need the -fp-mode options.
      FCFLAGS="$FCFLAGS -xSSE2 -O2 -fp-model precise -fp-model source -Difort -heap-arrays 1024"
@@ -75,6 +74,12 @@ fi],
      FFLAGS="$FFLAGS -O"
    fi
 ])
+
+#----------------------------------------------------------------
+# Add support for C++11
+#----------------------------------------------------------------
+
+AX_CXX_COMPILE_STDCXX_11([],[mandatory])
 
 #----------------------------------------------------------------
 # Add extra checking for fortran, if requested.

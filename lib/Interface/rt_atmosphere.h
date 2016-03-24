@@ -29,6 +29,9 @@ namespace FullPhysics {
   function can be used to get the value of these intermediate
   variables and Jacobian with the state vector variables.
 
+  A description of the intermediate variables can be found in 
+  doc/LIDORT_Jacobian.pdf.
+
   Note that it is assumed by the LSI that averaging these intermediate
   variables to get average optical properties makes sense. This is
   true if the variables are taur etc., but might not be true in

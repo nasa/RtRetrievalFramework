@@ -34,15 +34,23 @@ public:
 	const boost::shared_ptr<RelativeHumidity>& Rh) const;
   virtual ArrayAd<double, 1> extinction_coefficient_each_layer(double wn) 
     const;
+  virtual ArrayAd<double, 1> extinction_coefficient_each_layer_not_used(double wn) 
+    const;
   virtual ArrayAd<double, 1> scattering_coefficient_each_layer(double wn)
+    const;
+  virtual ArrayAd<double, 1> scattering_coefficient_each_layer_not_used(double wn)
     const;
   virtual ArrayAd<double, 3> 
   phase_function_moment_each_layer(double wn, int nmom = -1, 
 				   int nscatt = -1) const;
+  ArrayAd<double, 3> 
+  phase_function_moment_each_layer_not_used(double wn, int nmom = -1, 
+					    int nscatt = -1) const;
   virtual void print(std::ostream& Os) const;
 private:
   boost::shared_ptr<RelativeHumidity> rh;
   std::vector<AutoDerivative<double> > rh_val;
+  std::vector<double> rh_val_d; // Temporary
   std::vector<boost::shared_ptr<LinearInterpolate<double, double> > > qext;
   std::vector<boost::shared_ptr<LinearInterpolate<double, double> > > qscat;
   std::vector<boost::shared_ptr<ScatteringMomentInterpolate> > pf;
