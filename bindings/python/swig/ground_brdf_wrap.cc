@@ -6668,6 +6668,72 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GroundBrdfVeg_brdf_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBrdfVeg *arg1 = (FullPhysics::GroundBrdfVeg *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBrdfVeg const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBrdfVeg const > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  SwigValueWrapper< blitz::Array< double,2 > > result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"GroundBrdfVeg_brdf_covariance",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfVeg_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfVeg_brdf_covariance" "', argument " "1"" of type '" "FullPhysics::GroundBrdfVeg const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBrdfVeg > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBrdfVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBrdfVeg * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBrdfVeg > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBrdfVeg * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfVeg_brdf_covariance" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = ((FullPhysics::GroundBrdfVeg const *)arg1)->brdf_covariance(arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    npy_intp dims[2], stride[2];
+    for(int i = 0; i < 2; ++i) {
+      dims[i] = (&result)->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = (&result)->stride(i) * sizeof(double);
+    }
+    resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
+      stride, (&result)->data(), 0, 0, 0);
+    blitz::Array<double, 2>* t = new blitz::Array<double, 2>(result);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_GroundBrdfVeg_refractive_index(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfVeg *arg1 = (FullPhysics::GroundBrdfVeg *) 0 ;
@@ -8378,6 +8444,72 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GroundBrdfSoil_brdf_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GroundBrdfSoil *arg1 = (FullPhysics::GroundBrdfSoil *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GroundBrdfSoil const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GroundBrdfSoil const > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  SwigValueWrapper< blitz::Array< double,2 > > result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"GroundBrdfSoil_brdf_covariance",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfSoil_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfSoil_brdf_covariance" "', argument " "1"" of type '" "FullPhysics::GroundBrdfSoil const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBrdfSoil > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBrdfSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBrdfSoil * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBrdfSoil > * >(argp1);
+      arg1 = const_cast< FullPhysics::GroundBrdfSoil * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfSoil_brdf_covariance" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = ((FullPhysics::GroundBrdfSoil const *)arg1)->brdf_covariance(arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    npy_intp dims[2], stride[2];
+    for(int i = 0; i < 2; ++i) {
+      dims[i] = (&result)->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = (&result)->stride(i) * sizeof(double);
+    }
+    resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
+      stride, (&result)->data(), 0, 0, 0);
+    blitz::Array<double, 2>* t = new blitz::Array<double, 2>(result);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_GroundBrdfSoil_refractive_index(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfSoil *arg1 = (FullPhysics::GroundBrdfSoil *) 0 ;
@@ -8871,6 +9003,11 @@ static PyMethodDef SwigMethods[] = {
 		"void GroundBrdf::breon_factor(const int spec_index, const AutoDerivative< double > &val)\n"
 		"\n"
 		""},
+	 { (char *)"GroundBrdfVeg_brdf_covariance", _wrap_GroundBrdfVeg_brdf_covariance, METH_VARARGS, (char *)"\n"
+		"\n"
+		"const blitz::Array< double, 2 > GroundBrdf::brdf_covariance(const int spec_index) const\n"
+		"\n"
+		""},
 	 { (char *)"GroundBrdfVeg_refractive_index", _wrap_GroundBrdfVeg_refractive_index, METH_VARARGS, (char *)"\n"
 		"\n"
 		"virtual const double FullPhysics::GroundBrdf::refractive_index(const int Spec_idx) const\n"
@@ -8963,6 +9100,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"GroundBrdfSoil_breon_factor", _wrap_GroundBrdfSoil_breon_factor, METH_VARARGS, (char *)"\n"
 		"\n"
 		"void GroundBrdf::breon_factor(const int spec_index, const AutoDerivative< double > &val)\n"
+		"\n"
+		""},
+	 { (char *)"GroundBrdfSoil_brdf_covariance", _wrap_GroundBrdfSoil_brdf_covariance, METH_VARARGS, (char *)"\n"
+		"\n"
+		"const blitz::Array< double, 2 > GroundBrdf::brdf_covariance(const int spec_index) const\n"
 		"\n"
 		""},
 	 { (char *)"GroundBrdfSoil_refractive_index", _wrap_GroundBrdfSoil_refractive_index, METH_VARARGS, (char *)"\n"
