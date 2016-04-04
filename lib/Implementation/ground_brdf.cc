@@ -5,14 +5,6 @@
 using namespace FullPhysics;
 using namespace blitz;
 
-#define BRDF_WEIGHT_INTERCEPT_INDEX    0
-#define BRDF_WEIGHT_SLOPE_INDEX        1
-#define RAHMAN_KERNEL_FACTOR_INDEX     2
-#define RAHMAN_OVERALL_AMPLITUDE_INDEX 3
-#define RAHMAN_ASYMMETRY_FACTOR_INDEX  4
-#define RAHMAN_GEOMETRIC_FACTOR_INDEX  5
-#define BREON_KERNEL_FACTOR_INDEX      6
-
 // Number of coefficients per band in the state vector
 #define NUM_COEFF 7
 
@@ -262,6 +254,39 @@ void GroundBrdf::breon_factor(const int spec_index, const AutoDerivative<double>
     range_check(spec_index, 0, number_spectrometer());
 
     coeff(NUM_COEFF * spec_index + BREON_KERNEL_FACTOR_INDEX) = val;
+}
+
+const blitz::Array<double, 2> GroundBrdf::brdf_covariance(const int spec_index) const
+{ 
+    range_check(spec_index, 0, number_spectrometer());
+
+    // Return empty array if covariance is empty due to not being retrieved
+    if(product(statevector_covariance().shape()) == 0) {
+        return Array<double, 2>(0, 0);
+    }
+
+    int ret_num_param = statevector_covariance().rows() / desc_band_names.size();
+    int ret_cov_offset = ret_num_param * spec_index;
+
+    blitz::Array<double, 2> cov(NUM_COEFF, NUM_COEFF);
+    cov = 0.0;
+
+    // Copy out the retrieved covariance values into a matrix for the spectrometer that includes
+    // zeros for non retrieved elements
+    int in_idx_a = ret_cov_offset;
+    for (int out_idx_a = 0; out_idx_a < NUM_COEFF; out_idx_a++) {
+        if (used_flag_value()(out_idx_a)) {
+            int in_idx_b = ret_cov_offset;
+            for (int out_idx_b = 0; out_idx_b < NUM_COEFF; out_idx_b++) {
+                if (used_flag_value()(out_idx_b)) {
+                    cov(out_idx_a, out_idx_b) = statevector_covariance()(in_idx_a, in_idx_b++);
+                }
+            }
+            in_idx_a++;
+        }
+    }
+
+    return cov;
 }
 
 // Helper function 
