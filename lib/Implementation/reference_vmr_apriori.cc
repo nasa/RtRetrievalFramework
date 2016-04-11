@@ -68,6 +68,10 @@ std::map<std::string, double> seasonal_amplitude =
 // From original code
 const double lapse_rate_threshold = -2;
 
+// Number of points before and after the current temperature value
+// to average among
+const int temp_avg_window = 5;
+
 ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_altitude,
                                          const blitz::Array<double, 1>& Model_temperature,
                                          const blitz::Array<double, 1>& Ref_altitude,
@@ -76,10 +80,24 @@ ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_al
                                          const double Ref_tropopause_altitude,
                                          const double Obs_latitude,
                                          const Time& Obs_time)
-: model_altitude(Model_altitude), model_temperature(Model_temperature),
+: model_altitude(Model_altitude), 
   ref_altitude(Ref_altitude), ref_latitude(Ref_latitude), ref_time(Ref_time), ref_tropopause_altitude(Ref_tropopause_altitude),
   obs_latitude(Obs_latitude), obs_time(Obs_time)
 {
+    // Smooth the model temperature out with a simple moving average to reduce problems finding
+    // tropopause altitude due to kinks in the data
+    model_temperature.resize(Model_temperature.rows());
+    for (int out_idx = 0; out_idx < Model_temperature.rows(); out_idx++) {
+        double sum = 0;
+        int count = 0;
+        int avg_beg = std::max(out_idx - temp_avg_window, 0);
+        int avg_end = std::min(out_idx + temp_avg_window, Model_temperature.rows() - 1);
+        for(int avg_idx = avg_beg; avg_idx <= avg_end; avg_idx++) {
+            sum += Model_temperature(avg_idx);
+            count++;
+        }
+        model_temperature(out_idx) = sum/count;
+    }
 }
 
 //-----------------------------------------------------------------------
