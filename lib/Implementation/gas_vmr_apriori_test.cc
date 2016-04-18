@@ -39,12 +39,12 @@ BOOST_AUTO_TEST_CASE(apriori_calc)
 
     GasVmrApriori gas_vmr(ecmwf, l1b, alt, hdf_static_input, "/Reference_Atmosphere/", "CO2");
 
-    IfstreamCs ggg_vmr_input(test_data_dir() + "expected/gas_vmr_apriori/ggg_result");
-    Array<double, 1> ggg_res;
-    ggg_vmr_input >> ggg_res;
+    IfstreamCs expt_vmr_input(test_data_dir() + "expected/gas_vmr_apriori/expt_result");
+    Array<double, 1> expt_res;
+    expt_vmr_input >> expt_res;
 
     Array<double, 1> calc_ap_vmr = gas_vmr.apriori_vmr();
-    BOOST_CHECK_MATRIX_CLOSE_TOL(ggg_res, calc_ap_vmr, 2e-7);
+    BOOST_CHECK_MATRIX_CLOSE_TOL(expt_res, calc_ap_vmr, 2e-7);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
