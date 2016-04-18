@@ -1046,7 +1046,8 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@outsrc@/max_a_posteriori_output.cc \
 	@outsrc@/fluorescence_effect_output.cc \
 	@outsrc@/radiance_scaling_output.cc \
-	@outsrc@/ecmwf_pass_through_output.cc @luasrc@/register_lua.cc \
+	@outsrc@/ecmwf_pass_through_output.cc \
+	@outsrc@/gas_vmr_apriori_output.cc @luasrc@/register_lua.cc \
 	@luasrc@/lua_state.cc @luasrc@/lua_callback.cc \
 	@luasrc@/lua_blitz.cc @luasrc@/luabind_object.cc
 @HAVE_LUA_TRUE@am__objects_3 = @luasrc@/libfp_la-register_lua.lo \
@@ -1342,7 +1343,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@outsrc@/libfp_la-fluorescence_effect_output.lo \
 	@outsrc@/libfp_la-radiance_scaling_output.lo \
 	@outsrc@/libfp_la-ecmwf_pass_through_output.lo \
-	$(am__objects_3)
+	@outsrc@/libfp_la-gas_vmr_apriori_output.lo $(am__objects_3)
 libfp_la_OBJECTS = $(am_libfp_la_OBJECTS)
 libfp_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -2094,7 +2095,8 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@outsrc@/max_a_posteriori_output.h \
 	@outsrc@/fluorescence_effect_output.h \
 	@outsrc@/radiance_scaling_output.h \
-	@outsrc@/ecmwf_pass_through_output.h @luasrc@/dir_change.h \
+	@outsrc@/ecmwf_pass_through_output.h \
+	@outsrc@/gas_vmr_apriori_output.h @luasrc@/dir_change.h \
 	@luasrc@/register_lua.h @luasrc@/lua_state.h \
 	@luasrc@/lua_callback.h @luasrc@/luabind_object.h
 HEADERS = $(fullphysicsinc_HEADERS) $(ourboostinc_HEADERS)
@@ -2737,7 +2739,8 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@outsrc@/max_a_posteriori_output.h \
 	@outsrc@/fluorescence_effect_output.h \
 	@outsrc@/radiance_scaling_output.h \
-	@outsrc@/ecmwf_pass_through_output.h $(am__append_5)
+	@outsrc@/ecmwf_pass_through_output.h \
+	@outsrc@/gas_vmr_apriori_output.h $(am__append_5)
 ourboostinc_HEADERS = @supportsrc@/boost/backtrace.hpp
 
 # Test files
@@ -3480,7 +3483,8 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@outsrc@/max_a_posteriori_output.cc \
 	@outsrc@/fluorescence_effect_output.cc \
 	@outsrc@/radiance_scaling_output.cc \
-	@outsrc@/ecmwf_pass_through_output.cc $(am__append_6)
+	@outsrc@/ecmwf_pass_through_output.cc \
+	@outsrc@/gas_vmr_apriori_output.cc $(am__append_6)
 libfull_physics_la_LIBADD = libfp.la
 libfull_physics_la_LDFLAGS = $(AM_LDFLAGS) $(BOOST_LDFLAGS) \
 	$(HDF5_LDFLAGS) $(FCLIBS)
@@ -5158,6 +5162,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-ecmwf_pass_through_output.lo:  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/libfp_la-gas_vmr_apriori_output.lo: @outsrc@/$(am__dirstamp) \
+	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @luasrc@/$(am__dirstamp):
 	@$(MKDIR_P) @luasrc@
 	@: > @luasrc@/$(am__dirstamp)
@@ -6335,6 +6341,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-fluorescence_effect_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-forward_model_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-fts_run_log_output.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-gas_vmr_apriori_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-ground_lambertian_output.Plo@am__quote@
@@ -10533,6 +10540,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/ecmwf_pass_through_output.cc' object='@outsrc@/libfp_la-ecmwf_pass_through_output.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ecmwf_pass_through_output.lo `test -f '@outsrc@/ecmwf_pass_through_output.cc' || echo '$(srcdir)/'`@outsrc@/ecmwf_pass_through_output.cc
+
+@outsrc@/libfp_la-gas_vmr_apriori_output.lo: @outsrc@/gas_vmr_apriori_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-gas_vmr_apriori_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-gas_vmr_apriori_output.Tpo -c -o @outsrc@/libfp_la-gas_vmr_apriori_output.lo `test -f '@outsrc@/gas_vmr_apriori_output.cc' || echo '$(srcdir)/'`@outsrc@/gas_vmr_apriori_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-gas_vmr_apriori_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-gas_vmr_apriori_output.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/gas_vmr_apriori_output.cc' object='@outsrc@/libfp_la-gas_vmr_apriori_output.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-gas_vmr_apriori_output.lo `test -f '@outsrc@/gas_vmr_apriori_output.cc' || echo '$(srcdir)/'`@outsrc@/gas_vmr_apriori_output.cc
 
 @luasrc@/libfp_la-register_lua.lo: @luasrc@/register_lua.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @luasrc@/libfp_la-register_lua.lo -MD -MP -MF @luasrc@/$(DEPDIR)/libfp_la-register_lua.Tpo -c -o @luasrc@/libfp_la-register_lua.lo `test -f '@luasrc@/register_lua.cc' || echo '$(srcdir)/'`@luasrc@/register_lua.cc

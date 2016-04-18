@@ -480,29 +480,6 @@ function ConfigCommon:l1b_sid_list()
 end
 
 ------------------------------------------------------------
---- Load the TCCON apriori object using ECMWF data
-------------------------------------------------------------
-
-function ConfigCommon:tccon_apriori_ecmwf()
-    if(not self.tccon_ap_ecmwf_obj) then
-        self.tccon_ap_ecmwf_obj = TcconApriori(self.ecmwf, self.l1b)
-    end
-    return self.tccon_ap_ecmwf_obj
-end
-
-------------------------------------------------------------
---- Load the TCCON apriori object using pressure/temp
---- objects.
-------------------------------------------------------------
-
-function ConfigCommon:tccon_apriori_pressure()
-    if(not self.tccon_ap_ecmwf_obj) then
-        self.tccon_ap_ecmwf_obj = TcconApriori(self.l1b, self.pressure, self.temperature)
-    end
-    return self.tccon_ap_ecmwf_obj
-end
-
-------------------------------------------------------------
 -- Allows an apriori or covariance to be a function
 -- that returns the value or a simple type
 ------------------------------------------------------------
@@ -882,6 +859,29 @@ function ConfigCommon:ecmwf_h2o_vmr()
 end
 
 ------------------------------------------------------------
+--- Load the TCCON apriori object using ECMWF data
+------------------------------------------------------------
+
+function ConfigCommon:tccon_apriori_ecmwf()
+    if(not self.tccon_ap_ecmwf_obj) then
+        self.tccon_ap_ecmwf_obj = TcconApriori(self.ecmwf, self.l1b)
+    end
+    return self.tccon_ap_ecmwf_obj
+end
+
+------------------------------------------------------------
+--- Load the TCCON apriori object using pressure/temp
+--- objects.
+------------------------------------------------------------
+
+function ConfigCommon:tccon_apriori_pressure()
+    if(not self.tccon_ap_ecmwf_obj) then
+        self.tccon_ap_ecmwf_obj = TcconApriori(self.l1b, self.pressure, self.temperature)
+    end
+    return self.tccon_ap_ecmwf_obj
+end
+
+------------------------------------------------------------
 --- Get tccon co2 apriori from tccon using ECMWF file
 ------------------------------------------------------------
 
@@ -900,11 +900,23 @@ function ConfigCommon:tccon_co2_apriori()
 end
 
 ------------------------------------------------------------
+--- Load the CO2 VMR object
+------------------------------------------------------------
+
+function ConfigCommon:reference_co2_apriori_ecmwf_obj()
+    if (not self.ref_co2_ap_obj) then
+        self.ref_co2_ap_obj = GasVmrApriori(self.ecmwf, self.l1b, self.altitude:value(0), self:h(), "/Reference_Atmosphere", "CO2")
+    end
+
+    return self.ref_co2_ap_obj 
+end
+
+------------------------------------------------------------
 --- Get co2 apriori using reference apriori method
 ------------------------------------------------------------
 
-function ConfigCommon:reference_co2_apriori_ecmwf()
-   local t = GasVmrApriori(self.config.ecmwf, self.config.l1b, self.config.altitude:value(0), self.config:h(), "/Reference_Atmosphere", "CO2")
+function ConfigCommon:reference_co2_apriori_ecmwf_apriori()
+   local t = self.config:reference_co2_apriori_ecmwf_obj()
    return t:apriori_vmr(self.config.pressure)
 end
 
@@ -3038,8 +3050,13 @@ end
 
 function ConfigCommon.absorber_creator:register_output(ro)
    CompositeCreator.register_output(self, ro)
-   ro:push_back(AbsorberAbscoOutput.create(self.config.absorber, 
-				   self.config:spectral_bound()))
+   ro:push_back(AbsorberAbscoOutput.create(self.config.absorber, self.config:spectral_bound()))
+
+   -- Create output for GasVmrApriori object it it was created
+   -- not really any better places to put this
+   if (self.config.ref_co2_ap_obj) then
+       ro:push_back(GasVmrAprioriOutput(self.config.ref_co2_ap_obj))
+   end
 end
 
 ------------------------------------------------------------

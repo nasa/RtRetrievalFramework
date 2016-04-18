@@ -29,6 +29,8 @@ public:
     %python_attribute(apriori_vmr, blitz::Array<double, 1>)
     const blitz::Array<double, 1> apriori_vmr(const Pressure& pressure) const;
 
+    %python_attribute(reference, boost::shared_ptr<ReferenceVmrApriori>)
+
     std::string print_to_string() const;
 };
 }
