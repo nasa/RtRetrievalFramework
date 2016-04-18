@@ -3487,27 +3487,28 @@ namespace Swig {
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Temperature_t swig_types[68]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Time_t swig_types[69]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[70]
-#define SWIGTYPE_p_char swig_types[71]
-#define SWIGTYPE_p_char_type swig_types[72]
-#define SWIGTYPE_p_difference_type swig_types[73]
-#define SWIGTYPE_p_fmtflags swig_types[74]
-#define SWIGTYPE_p_int_type swig_types[75]
-#define SWIGTYPE_p_iostate swig_types[76]
-#define SWIGTYPE_p_off_type swig_types[77]
-#define SWIGTYPE_p_openmode swig_types[78]
-#define SWIGTYPE_p_pos_type swig_types[79]
-#define SWIGTYPE_p_seekdir swig_types[80]
-#define SWIGTYPE_p_size_t swig_types[81]
-#define SWIGTYPE_p_size_type swig_types[82]
-#define SWIGTYPE_p_state_type swig_types[83]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[84]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[85]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[86]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[87]
-#define SWIGTYPE_p_traits_type swig_types[88]
-#define SWIGTYPE_p_value_type swig_types[89]
-static swig_type_info *swig_types[91];
-static swig_module_info swig_module = {swig_types, 90, 0, 0, 0, 0};
+#define SWIGTYPE_p_boost__shared_ptrT_ReferenceVmrApriori_t swig_types[71]
+#define SWIGTYPE_p_char swig_types[72]
+#define SWIGTYPE_p_char_type swig_types[73]
+#define SWIGTYPE_p_difference_type swig_types[74]
+#define SWIGTYPE_p_fmtflags swig_types[75]
+#define SWIGTYPE_p_int_type swig_types[76]
+#define SWIGTYPE_p_iostate swig_types[77]
+#define SWIGTYPE_p_off_type swig_types[78]
+#define SWIGTYPE_p_openmode swig_types[79]
+#define SWIGTYPE_p_pos_type swig_types[80]
+#define SWIGTYPE_p_seekdir swig_types[81]
+#define SWIGTYPE_p_size_t swig_types[82]
+#define SWIGTYPE_p_size_type swig_types[83]
+#define SWIGTYPE_p_state_type swig_types[84]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[85]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[86]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[87]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[88]
+#define SWIGTYPE_p_traits_type swig_types[89]
+#define SWIGTYPE_p_value_type swig_types[90]
+static swig_type_info *swig_types[92];
+static swig_module_info swig_module = {swig_types, 91, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5454,6 +5455,49 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GasVmrApriori__v_reference(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GasVmrApriori *arg1 = (FullPhysics::GasVmrApriori *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GasVmrApriori const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GasVmrApriori const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SwigValueWrapper< boost::shared_ptr< ReferenceVmrApriori > > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GasVmrApriori_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GasVmrApriori__v_reference" "', argument " "1"" of type '" "FullPhysics::GasVmrApriori const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GasVmrApriori > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GasVmrApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::GasVmrApriori * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GasVmrApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::GasVmrApriori * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::GasVmrApriori const *)arg1)->reference();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new boost::shared_ptr< ReferenceVmrApriori >(static_cast< const boost::shared_ptr< ReferenceVmrApriori >& >(result))), SWIGTYPE_p_boost__shared_ptrT_ReferenceVmrApriori_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_GasVmrApriori___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::GasVmrApriori *arg1 = (FullPhysics::GasVmrApriori *) 0 ;
@@ -5564,6 +5608,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"GasVmrApriori__v_apriori_vmr", _wrap_GasVmrApriori__v_apriori_vmr, METH_VARARGS, (char *)"\n"
 		"\n"
 		"const blitz::Array< double, 1 > GasVmrApriori::apriori_vmr(const Pressure &pressure) const\n"
+		"\n"
+		""},
+	 { (char *)"GasVmrApriori__v_reference", (PyCFunction)_wrap_GasVmrApriori__v_reference, METH_O, (char *)"\n"
+		"\n"
+		"const boost::shared_ptr<ReferenceVmrApriori> FullPhysics::GasVmrApriori::reference() const\n"
 		"\n"
 		""},
 	 { (char *)"GasVmrApriori___str__", (PyCFunction)_wrap_GasVmrApriori___str__, METH_O, NULL},
@@ -5914,6 +5963,7 @@ static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorOb
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t = {"_p_boost__shared_ptrT_FullPhysics__Temperature_t", "boost::shared_ptr< FullPhysics::Temperature > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Time_t = {"_p_boost__shared_ptrT_FullPhysics__Time_t", "boost::shared_ptr< FullPhysics::Time > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Unit_t = {"_p_boost__shared_ptrT_FullPhysics__Unit_t", "boost::shared_ptr< FullPhysics::Unit > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_ReferenceVmrApriori_t = {"_p_boost__shared_ptrT_ReferenceVmrApriori_t", "boost::shared_ptr< ReferenceVmrApriori > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char_type = {"_p_char_type", "char_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
@@ -6006,6 +6056,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Time_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t,
+  &_swigt__p_boost__shared_ptrT_ReferenceVmrApriori_t,
   &_swigt__p_char,
   &_swigt__p_char_type,
   &_swigt__p_difference_type,
@@ -6098,6 +6149,7 @@ static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorOb
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Temperature_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Time_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Time_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_ReferenceVmrApriori_t[] = {  {&_swigt__p_boost__shared_ptrT_ReferenceVmrApriori_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char_type[] = {  {&_swigt__p_char_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -6190,6 +6242,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__Temperature_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Time_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t,
+  _swigc__p_boost__shared_ptrT_ReferenceVmrApriori_t,
   _swigc__p_char,
   _swigc__p_char_type,
   _swigc__p_difference_type,

@@ -176,8 +176,23 @@ class GasVmrApriori(full_physics_swig.generic_object.GenericObject):
         """
         return _gas_vmr_apriori.GasVmrApriori__v_apriori_vmr(self, *args)
 
+
+    def _v_reference(self):
+        """
+
+        const boost::shared_ptr<ReferenceVmrApriori> FullPhysics::GasVmrApriori::reference() const
+
+        """
+        return _gas_vmr_apriori.GasVmrApriori__v_reference(self)
+
+
+    @property
+    def reference(self):
+        return self._v_reference()
+
     __swig_destroy__ = _gas_vmr_apriori.delete_GasVmrApriori
 GasVmrApriori._v_apriori_vmr = new_instancemethod(_gas_vmr_apriori.GasVmrApriori__v_apriori_vmr, None, GasVmrApriori)
+GasVmrApriori._v_reference = new_instancemethod(_gas_vmr_apriori.GasVmrApriori__v_reference, None, GasVmrApriori)
 GasVmrApriori.__str__ = new_instancemethod(_gas_vmr_apriori.GasVmrApriori___str__, None, GasVmrApriori)
 GasVmrApriori_swigregister = _gas_vmr_apriori.GasVmrApriori_swigregister
 GasVmrApriori_swigregister(GasVmrApriori)

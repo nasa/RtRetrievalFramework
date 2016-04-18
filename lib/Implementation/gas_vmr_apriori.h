@@ -37,6 +37,8 @@ public:
     const blitz::Array<double, 1> apriori_vmr() const;
     const blitz::Array<double, 1> apriori_vmr(const Pressure& pressure) const;
 
+    const boost::shared_ptr<ReferenceVmrApriori> reference() const { return ref_apriori; }
+
     void print(std::ostream& Os) const { Os << "GasVmrApriori"; }
 
 private:
