@@ -246,6 +246,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(PressureFixedLevelOutput);
   REGISTER_LUA_LIST(PressureOutput);
   REGISTER_LUA_LIST(PressureSigma);
+  REGISTER_LUA_LIST(AltitudeOutput);
   REGISTER_LUA_LIST(StokesCoefficientConstant);
   REGISTER_LUA_LIST(StokesCoefficientFraction);
   REGISTER_LUA_LIST(TemperatureFixedLevel);

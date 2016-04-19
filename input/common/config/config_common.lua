@@ -2695,6 +2695,10 @@ function ConfigCommon.hydrostatic_altitude:create()
    return res
 end
 
+function ConfigCommon.hydrostatic_altitude:register_output(ro)
+   ro:push_back(AltitudeOutput(self.config.altitude:value(0), self.config.pressure))
+end
+
 ------------------------------------------------------------
 --- Create relative humidity. Right now only one class that
 --- calculates this, but we have all the infrastructure in 
