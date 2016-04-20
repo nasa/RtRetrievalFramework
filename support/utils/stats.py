@@ -1,6 +1,7 @@
+#!/usr/bin/env python
+
 from future import standard_library
 standard_library.install_aliases()
-#!/usr/bin/env python
 
 import os
 from glob import glob

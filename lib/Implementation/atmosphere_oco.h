@@ -26,6 +26,11 @@ namespace FullPhysics {
   Rayleigh only atmosphere, we don't have any aerosol to include. For
   up looking (e.g., TCCON FTS), there is no ground portion included in
   the radiative transfer.
+
+  To speed up the calculation of the Jacobian in LIDORT, we make use
+  of "intermediate" variables instead of directly using state vector
+  variables. A description of this in more detail can be found in 
+  doc/LIDORT_Jacobian.pdf
 *******************************************************************/
 class AtmosphereOco : public RtAtmosphere,
 		      public Observer<Aerosol>, 

@@ -18,6 +18,16 @@ namespace FullPhysics {
 *******************************************************************/
 class GroundBrdf: public SubStateVectorArray<Ground> {
 public:
+    enum ParamIndex {
+        BRDF_WEIGHT_INTERCEPT_INDEX, 
+        BRDF_WEIGHT_SLOPE_INDEX,
+        RAHMAN_KERNEL_FACTOR_INDEX,
+        RAHMAN_OVERALL_AMPLITUDE_INDEX,
+        RAHMAN_ASYMMETRY_FACTOR_INDEX,
+        RAHMAN_GEOMETRIC_FACTOR_INDEX,
+        BREON_KERNEL_FACTOR_INDEX
+    };
+
     GroundBrdf(const blitz::Array<double, 2>& Coeffs,
                const blitz::Array<bool, 2>& Flag,
                const ArrayWithUnit<double, 1>& Ref_points,
@@ -44,6 +54,8 @@ public:
     virtual void asymmetry_parameter(const int spec_index, const AutoDerivative<double>& val);
     virtual void geometric_factor(const int spec_index, const AutoDerivative<double>& val);
     virtual void breon_factor(const int spec_index, const AutoDerivative<double>& val);
+
+    const blitz::Array<double, 2> brdf_covariance(const int spec_index) const;
    
     /// Returns hard coded value of 1.5 since that is the value hardcoded into LIDORT
     virtual const double refractive_index(const int Spec_idx) const { return 1.5; }

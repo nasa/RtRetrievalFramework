@@ -239,6 +239,15 @@ class GroundBrdfVeg(full_physics_swig.ground.Ground):
         return _ground_brdf.GroundBrdfVeg_breon_factor(self, *args)
 
 
+    def brdf_covariance(self, spec_index):
+        """
+
+        const blitz::Array< double, 2 > GroundBrdf::brdf_covariance(const int spec_index) const
+
+        """
+        return _ground_brdf.GroundBrdfVeg_brdf_covariance(self, spec_index)
+
+
     def refractive_index(self, Spec_idx):
         """
 
@@ -315,6 +324,7 @@ GroundBrdfVeg.overall_amplitude = new_instancemethod(_ground_brdf.GroundBrdfVeg_
 GroundBrdfVeg.asymmetry_parameter = new_instancemethod(_ground_brdf.GroundBrdfVeg_asymmetry_parameter, None, GroundBrdfVeg)
 GroundBrdfVeg.geometric_factor = new_instancemethod(_ground_brdf.GroundBrdfVeg_geometric_factor, None, GroundBrdfVeg)
 GroundBrdfVeg.breon_factor = new_instancemethod(_ground_brdf.GroundBrdfVeg_breon_factor, None, GroundBrdfVeg)
+GroundBrdfVeg.brdf_covariance = new_instancemethod(_ground_brdf.GroundBrdfVeg_brdf_covariance, None, GroundBrdfVeg)
 GroundBrdfVeg.refractive_index = new_instancemethod(_ground_brdf.GroundBrdfVeg_refractive_index, None, GroundBrdfVeg)
 GroundBrdfVeg.black_sky_albedo = new_instancemethod(_ground_brdf.GroundBrdfVeg_black_sky_albedo, None, GroundBrdfVeg)
 GroundBrdfVeg.albedo = new_instancemethod(_ground_brdf.GroundBrdfVeg_albedo, None, GroundBrdfVeg)
@@ -425,6 +435,15 @@ class GroundBrdfSoil(full_physics_swig.ground.Ground):
         return _ground_brdf.GroundBrdfSoil_breon_factor(self, *args)
 
 
+    def brdf_covariance(self, spec_index):
+        """
+
+        const blitz::Array< double, 2 > GroundBrdf::brdf_covariance(const int spec_index) const
+
+        """
+        return _ground_brdf.GroundBrdfSoil_brdf_covariance(self, spec_index)
+
+
     def refractive_index(self, Spec_idx):
         """
 
@@ -501,6 +520,7 @@ GroundBrdfSoil.overall_amplitude = new_instancemethod(_ground_brdf.GroundBrdfSoi
 GroundBrdfSoil.asymmetry_parameter = new_instancemethod(_ground_brdf.GroundBrdfSoil_asymmetry_parameter, None, GroundBrdfSoil)
 GroundBrdfSoil.geometric_factor = new_instancemethod(_ground_brdf.GroundBrdfSoil_geometric_factor, None, GroundBrdfSoil)
 GroundBrdfSoil.breon_factor = new_instancemethod(_ground_brdf.GroundBrdfSoil_breon_factor, None, GroundBrdfSoil)
+GroundBrdfSoil.brdf_covariance = new_instancemethod(_ground_brdf.GroundBrdfSoil_brdf_covariance, None, GroundBrdfSoil)
 GroundBrdfSoil.refractive_index = new_instancemethod(_ground_brdf.GroundBrdfSoil_refractive_index, None, GroundBrdfSoil)
 GroundBrdfSoil.black_sky_albedo = new_instancemethod(_ground_brdf.GroundBrdfSoil_black_sky_albedo, None, GroundBrdfSoil)
 GroundBrdfSoil.albedo = new_instancemethod(_ground_brdf.GroundBrdfSoil_albedo, None, GroundBrdfSoil)

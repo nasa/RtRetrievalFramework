@@ -139,7 +139,7 @@ public:
   {
     try {
       return luabind::object_cast<T>(obj);
-    } catch(std::exception e) {
+    } catch(std::exception eoriginal) {
       Exception e;
       e << "Error converting lua value to\n"
         << "Requested type: " << typeid(T).name() << "\n";
@@ -285,7 +285,7 @@ public:
     try { 
       return LuabindObject((luabind::object) 
 			   luabind::call_function<luabind::object>(obj), ls);
-    } catch(const luabind::error& e) {
+    } catch(const luabind::error& eoriginal) {
       Exception e;
       e << "Lua error: " << lua_tostring(lua_state()->lua_state(), -1) << "\n";
       lua_pop(lua_state()->lua_state(), 1); // Remove error message from stack.
@@ -300,7 +300,7 @@ public:
       return LuabindObject((luabind::object) 
 			   luabind::call_function<luabind::object>(obj, Arg1), 
 			   ls); 
-    } catch(const luabind::error& e) {
+    } catch(const luabind::error& eoriginal) {
       Exception e;
       e << "Lua error: " << lua_tostring(lua_state()->lua_state(), -1) << "\n";
       lua_pop(lua_state()->lua_state(), 1); // Remove error message from stack.
@@ -316,7 +316,7 @@ public:
 			   luabind::call_function<luabind::object>
 			   (obj, Arg1, Arg2), 
 			   ls); 
-    } catch(const luabind::error& e) {
+    } catch(const luabind::error& eoriginal) {
       Exception e;
       e << "Lua error: " << lua_tostring(lua_state()->lua_state(), -1) << "\n";
       lua_pop(lua_state()->lua_state(), 1); // Remove error message from stack.
@@ -332,7 +332,7 @@ public:
 			   luabind::call_function<luabind::object>
 			   (obj, Arg1, Arg2, Arg3), 
 			   ls); 
-    } catch(const luabind::error& e) {
+    } catch(const luabind::error& eoriginal) {
       Exception e;
       e << "Lua error: " << lua_tostring(lua_state()->lua_state(), -1) << "\n";
       lua_pop(lua_state()->lua_state(), 1); // Remove error message from stack.
@@ -349,7 +349,7 @@ public:
 			   luabind::call_function<luabind::object>
 			   (obj, Arg1, Arg2, Arg3, Arg4), 
 			   ls); 
-    } catch(const luabind::error& e) {
+    } catch(const luabind::error& eoriginal) {
       Exception e;
       e << "Lua error: " << lua_tostring(lua_state()->lua_state(), -1) << "\n";
       lua_pop(lua_state()->lua_state(), 1); // Remove error message from stack.
@@ -367,7 +367,7 @@ public:
 			   luabind::call_function<luabind::object>
 			   (obj, Arg1, Arg2, Arg3, Arg4, Arg5), 
 			   ls); 
-    } catch(const luabind::error& e) {
+    } catch(const luabind::error& eoriginal) {
       Exception e;
       e << "Lua error: " << lua_tostring(lua_state()->lua_state(), -1) << "\n";
       lua_pop(lua_state()->lua_state(), 1); // Remove error message from stack.
@@ -384,7 +384,7 @@ public:
 			   luabind::call_function<luabind::object>
 			   (obj, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6), 
 			   ls); 
-    } catch(const luabind::error& e) {
+    } catch(const luabind::error& eoriginal) {
       Exception e;
       e << "Lua error: " << lua_tostring(lua_state()->lua_state(), -1) << "\n";
       lua_pop(lua_state()->lua_state(), 1); // Remove error message from stack.
@@ -403,7 +403,7 @@ public:
 			   luabind::call_function<luabind::object>
 			   (obj, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7), 
 			   ls); 
-    } catch(const luabind::error& e) {
+    } catch(const luabind::error& eoriginal) {
       Exception e;
       e << "Lua error: " << lua_tostring(lua_state()->lua_state(), -1) << "\n";
       lua_pop(lua_state()->lua_state(), 1); // Remove error message from stack.
@@ -422,7 +422,7 @@ public:
 			   luabind::call_function<luabind::object>
 			   (obj, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, 
 			    Arg8), ls); 
-    } catch(const luabind::error& e) {
+    } catch(const luabind::error& eoriginal) {
       Exception e;
       e << "Lua error: " << lua_tostring(lua_state()->lua_state(), -1) << "\n";
       lua_pop(lua_state()->lua_state(), 1); // Remove error message from stack.
