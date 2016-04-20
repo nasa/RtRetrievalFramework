@@ -41,10 +41,10 @@ class TCCONPlotRoutinesReal(RefBarPlotRoutines, TimeDiffPlotRoutines):
         for l2_ids, l2_data, tccon_ids, tccon_data in zip(l2_ids_list, l2_data_list, tccon_ids_list, tccon_data_list):
             # Since we may be doing a second filtering, pass the L2 ids, TCCON we want indexes for
             corr_results = self.analysis_env.correlate_soundings([l2_ids, tccon_ids], [l2_ids], [tccon_ids])
-            l2_match_indexes = corr_results['data_id_indexes'][0]
-            tccon_match_indexes = corr_results['addl_id_indexes'][0]
+            l2_match_indexes = corr_results['data_id_indexes']
+            tccon_match_indexes = corr_results['addl_id_indexes']
 
-            results.append( comparison_func(l2_data[l2_match_indexes,:], tccon_data[tccon_match_indexes,:]) )
+            results.append( comparison_func(l2_data[l2_match_indexes], tccon_data[tccon_match_indexes]) )
         return results
 
     def _get_combined_values(self, obj_names, l2_ids, l2_xco2, tccon_ids, tccon_xco2, **kwargs):

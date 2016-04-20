@@ -168,6 +168,11 @@ class AtmosphereOco(full_physics_swig.rt_atmosphere.RtAtmosphere, full_physics_s
     looking (e.g., TCCON FTS), there is no ground portion included in the
     radiative transfer.
 
+    To speed up the calculation of the Jacobian in LIDORT, we make use of
+    "intermediate" variables instead of directly using state vector
+    variables. A description of this in more detail can be found in
+    doc/LIDORT_Jacobian.pdf
+
     C++ includes: atmosphere_oco.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')

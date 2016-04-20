@@ -43,6 +43,7 @@ public:
     virtual void asymmetry_parameter(const int spec_index, const AutoDerivative<double>& val);
     virtual void geometric_factor(const int spec_index, const AutoDerivative<double>& val);
     virtual void breon_factor(const int spec_index, const AutoDerivative<double>& val);
+    const blitz::Array<double, 2> brdf_covariance(const int spec_index) const;
     virtual const double refractive_index(const int Spec_idx) const;
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
     virtual const double albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef);
@@ -77,6 +78,7 @@ public:
     virtual void asymmetry_parameter(const int spec_index, const AutoDerivative<double>& val);
     virtual void geometric_factor(const int spec_index, const AutoDerivative<double>& val);
     virtual void breon_factor(const int spec_index, const AutoDerivative<double>& val);
+    const blitz::Array<double, 2> brdf_covariance(const int spec_index) const;
     virtual const double refractive_index(const int Spec_idx) const;
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
     virtual const double albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef);

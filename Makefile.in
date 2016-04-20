@@ -318,6 +318,8 @@ am__aclocal_m4_deps = $(top_srcdir)/config/m4/ac_2stream.m4 \
 	$(top_srcdir)/config/m4/ac_python_sphinx.m4 \
 	$(top_srcdir)/config/m4/ac_ruby.m4 \
 	$(top_srcdir)/config/m4/acx_pthread.m4 \
+	$(top_srcdir)/config/m4/ax_cxx_compile_stdcxx.m4 \
+	$(top_srcdir)/config/m4/ax_cxx_compile_stdcxx_11.m4 \
 	$(top_srcdir)/config/m4/libtool.m4 \
 	$(top_srcdir)/config/m4/loc_msg.m4 \
 	$(top_srcdir)/config/m4/ltoptions.m4 \
@@ -1022,6 +1024,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@outsrc@/ground_lambertian_output.cc \
 	@outsrc@/ground_coxmunk_output.cc \
 	@outsrc@/ground_coxmunk_plus_lambertian_output.cc \
+	@outsrc@/ground_brdf_output.cc \
 	@outsrc@/dispersion_polynomial_output.cc \
 	@outsrc@/stokes_coefficient_fraction_output.cc \
 	@outsrc@/zero_offset_waveform_output.cc \
@@ -1318,6 +1321,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@outsrc@/libfp_la-ground_lambertian_output.lo \
 	@outsrc@/libfp_la-ground_coxmunk_output.lo \
 	@outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo \
+	@outsrc@/libfp_la-ground_brdf_output.lo \
 	@outsrc@/libfp_la-dispersion_polynomial_output.lo \
 	@outsrc@/libfp_la-stokes_coefficient_fraction_output.lo \
 	@outsrc@/libfp_la-zero_offset_waveform_output.lo \
@@ -1605,6 +1609,7 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@outsrc@/ground_lambertian_output_test.cc \
 	@outsrc@/ground_coxmunk_output_test.cc \
 	@outsrc@/ground_coxmunk_plus_lambertian_output_test.cc \
+	@outsrc@/ground_brdf_output_test.cc \
 	@outsrc@/dispersion_polynomial_output_test.cc \
 	@outsrc@/stokes_coefficient_fraction_output_test.cc \
 	@outsrc@/zero_offset_waveform_output_test.cc \
@@ -1778,6 +1783,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@outsrc@/ground_lambertian_output_test.$(OBJEXT) \
 	@outsrc@/ground_coxmunk_output_test.$(OBJEXT) \
 	@outsrc@/ground_coxmunk_plus_lambertian_output_test.$(OBJEXT) \
+	@outsrc@/ground_brdf_output_test.$(OBJEXT) \
 	@outsrc@/dispersion_polynomial_output_test.$(OBJEXT) \
 	@outsrc@/stokes_coefficient_fraction_output_test.$(OBJEXT) \
 	@outsrc@/zero_offset_waveform_output_test.$(OBJEXT) \
@@ -2074,6 +2080,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@outsrc@/altitude_output.h @outsrc@/ground_lambertian_output.h \
 	@outsrc@/ground_coxmunk_output.h \
 	@outsrc@/ground_coxmunk_plus_lambertian_output.h \
+	@outsrc@/ground_brdf_output.h \
 	@outsrc@/dispersion_polynomial_output.h \
 	@outsrc@/stokes_coefficient_fraction_output.h \
 	@outsrc@/zero_offset_waveform_output.h \
@@ -2232,6 +2239,7 @@ FGREP = @FGREP@
 GREP = @GREP@
 GSL_CPPFLAGS = @GSL_CPPFLAGS@
 GSL_LDFLAGS = @GSL_LDFLAGS@
+HAVE_CXX11 = @HAVE_CXX11@
 HDF5HOME = @HDF5HOME@
 HDF5_BIN = @HDF5_BIN@
 HDF5_CPPFLAGS = @HDF5_CPPFLAGS@
@@ -2251,6 +2259,7 @@ LIDORT_3_6_LDFLAGS = @LIDORT_3_6_LDFLAGS@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
+LT_SYS_LIBRARY_PATH = @LT_SYS_LIBRARY_PATH@
 LUA_CPPFLAGS = @LUA_CPPFLAGS@
 LUA_LDFLAGS = @LUA_LDFLAGS@
 MAINT = @MAINT@
@@ -2718,6 +2727,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@outsrc@/altitude_output.h @outsrc@/ground_lambertian_output.h \
 	@outsrc@/ground_coxmunk_output.h \
 	@outsrc@/ground_coxmunk_plus_lambertian_output.h \
+	@outsrc@/ground_brdf_output.h \
 	@outsrc@/dispersion_polynomial_output.h \
 	@outsrc@/stokes_coefficient_fraction_output.h \
 	@outsrc@/zero_offset_waveform_output.h \
@@ -2892,6 +2902,7 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@outsrc@/ground_lambertian_output_test.cc \
 	@outsrc@/ground_coxmunk_output_test.cc \
 	@outsrc@/ground_coxmunk_plus_lambertian_output_test.cc \
+	@outsrc@/ground_brdf_output_test.cc \
 	@outsrc@/dispersion_polynomial_output_test.cc \
 	@outsrc@/stokes_coefficient_fraction_output_test.cc \
 	@outsrc@/zero_offset_waveform_output_test.cc \
@@ -3461,6 +3472,7 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@outsrc@/ground_lambertian_output.cc \
 	@outsrc@/ground_coxmunk_output.cc \
 	@outsrc@/ground_coxmunk_plus_lambertian_output.cc \
+	@outsrc@/ground_brdf_output.cc \
 	@outsrc@/dispersion_polynomial_output.cc \
 	@outsrc@/stokes_coefficient_fraction_output.cc \
 	@outsrc@/zero_offset_waveform_output.cc \
@@ -3701,12 +3713,8 @@ BLITZ_PATCH = blitz++.patch
 
 # ========================================================================
 # Build ncurses. This is only needed by Readline right now.
-NCURSES_NAME = ncurses-5.9
+NCURSES_NAME = ncurses-6.0
 NCURSES_TARGET = $(includedir)/ncurses/curses.h
-
-# This patch removes the "-no-cpp-precomp" forced on darwin systems. This
-# isn't supported by more recent compilers, and isn't needed.
-NCURSES_PATCH = ncurses-5.9-macbuild.patch
 
 # ========================================================================
 # Build Readline. This is only needed by Lua right now.
@@ -5113,6 +5121,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo:  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/libfp_la-ground_brdf_output.lo: @outsrc@/$(am__dirstamp) \
+	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-dispersion_polynomial_output.lo:  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-stokes_coefficient_fraction_output.lo:  \
@@ -5894,6 +5904,8 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/ground_coxmunk_plus_lambertian_output_test.$(OBJEXT):  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/ground_brdf_output_test.$(OBJEXT): @outsrc@/$(am__dirstamp) \
+	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/dispersion_polynomial_output_test.$(OBJEXT):  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/stokes_coefficient_fraction_output_test.$(OBJEXT):  \
@@ -6325,6 +6337,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/fluorescence_effect_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/forward_model_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/fts_run_log_output_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/ground_brdf_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/ground_coxmunk_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/ground_coxmunk_plus_lambertian_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/ground_lambertian_output_test.Po@am__quote@
@@ -6348,6 +6361,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-forward_model_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-fts_run_log_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-gas_vmr_apriori_output.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-ground_brdf_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-ground_lambertian_output.Plo@am__quote@
@@ -10365,6 +10379,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo `test -f '@outsrc@/ground_coxmunk_plus_lambertian_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_coxmunk_plus_lambertian_output.cc
 
+@outsrc@/libfp_la-ground_brdf_output.lo: @outsrc@/ground_brdf_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-ground_brdf_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_output.Tpo -c -o @outsrc@/libfp_la-ground_brdf_output.lo `test -f '@outsrc@/ground_brdf_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_brdf_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_output.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/ground_brdf_output.cc' object='@outsrc@/libfp_la-ground_brdf_output.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ground_brdf_output.lo `test -f '@outsrc@/ground_brdf_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_brdf_output.cc
+
 @outsrc@/libfp_la-dispersion_polynomial_output.lo: @outsrc@/dispersion_polynomial_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-dispersion_polynomial_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-dispersion_polynomial_output.Tpo -c -o @outsrc@/libfp_la-dispersion_polynomial_output.lo `test -f '@outsrc@/dispersion_polynomial_output.cc' || echo '$(srcdir)/'`@outsrc@/dispersion_polynomial_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-dispersion_polynomial_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-dispersion_polynomial_output.Plo
@@ -11923,8 +11944,8 @@ $(BOOST_TARGET): $(thirdpartysrc)/$(BOOST_NAME).tar.gz $(BZLIB_TARGET)
 	cd $(BOOST_NAME) && \
         ./bootstrap.sh --prefix="$(prefix)" \
            --with-libraries=date_time,regex,iostreams,filesystem && \
-        echo "using gcc : : $(CXX) ;" > tools/build/user-config.jam && \
-        echo "using darwin : : $(CXX) ;" >> tools/build/user-config.jam && \
+        echo "using gcc : : $(CXX) ;" > tools/build/src/user-config.jam && \
+        echo "using darwin : : $(CXX) ;" >> tools/build/src/user-config.jam && \
         ./bjam install threading=single link=static,shared cxxflags="${BZLIB_CPPFLAGS}" linkflags="${BZLIB_LDFLAGS}" && exit 0; exit 1
 # On mac, the full name of the library isn't put into the installed library.
 # This command will fail on linux, which is fine. We just ignore failure.
@@ -11954,7 +11975,6 @@ $(NCURSES_TARGET): $(thirdpartysrc)/$(NCURSES_NAME).tar.gz $(thirdpartysrc)/$(NC
 	@echo "*************************** Building Ncurses"
 	${AMTAR} xzf $<
 	cd $(NCURSES_NAME) &&\
-        patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(NCURSES_PATCH) &&\
         ./configure --prefix="$(prefix)" --with-shared \
            CXX="$(CXX)" CC="$(CC)" F77="$(F77)" && \
         $(MAKE) && $(MAKE) install && exit 0; exit 1

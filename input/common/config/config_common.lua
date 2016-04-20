@@ -2233,10 +2233,6 @@ function ConfigCommon.brdf_retrieval:retrieval_flag(i)
         flag:set(0, true)
         -- BRDF weight slope
         flag:set(1, true)
-        -- Overall amplitude
-        flag:set(2, true)
-         -- Geometric factor
-        flag:set(5, true)
    else
         flag:set(Range.all(), false)
    end
@@ -2279,7 +2275,7 @@ function ConfigCommon.ground_brdf_veg:create_parent_object(sub_object)
 end
 
 function ConfigCommon.ground_brdf_veg:register_output(ro)
-   --ro:push_back(GroundBrdfOutput.create(self.config.brdf_veg))
+   ro:push_back(GroundBrdfOutput.create(self.config.brdf_veg, self.config.common.hdf_band_name))
 end
 
 ------------------------------------------------------------
@@ -2317,7 +2313,7 @@ function ConfigCommon.ground_brdf_soil:create_parent_object(sub_object)
 end
 
 function ConfigCommon.ground_brdf_soil:register_output(ro)
-   --ro:push_back(GroundBrdfOutput.create(self.config.brdf_soil))
+   ro:push_back(GroundBrdfOutput.create(self.config.brdf_soil, self.config.common.hdf_band_name))
 end
 
 ------------------------------------------------------------
