@@ -12,6 +12,7 @@
 %import "temperature.i"
 %import "altitude.i"
 %import "hdf_file.i"
+%import "reference_vmr_apriori.i"
 
 %fp_shared_ptr(FullPhysics::GasVmrApriori);
 
