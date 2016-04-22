@@ -24,7 +24,7 @@ function init_aerosol_interference(config)
     function interference_apriori_1()
         local ap = Blitz_double_array_1d(3)
         -- 0.0, 0.95, 0.05
-        ap:set(0, 0.0)
+        ap:set(0, 1.0e-4)
         ap:set(1, 0.95)
         ap:set(2, 0.05)
         return ap
@@ -33,7 +33,7 @@ function init_aerosol_interference(config)
     function interference_apriori_2()
         local ap = Blitz_double_array_1d(3)
         -- 0.0, 0.5, 0.2
-        ap:set(0, 0.0)
+        ap:set(0, 1.0e-4)
         ap:set(1, 0.5)
         ap:set(2, 0.2)
         return ap
