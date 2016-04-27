@@ -23,7 +23,9 @@ then
 else
     export L2_SUPPORT_PATH="$support_dir"
 
-    if [ -e "/opt/local/depot/python/2.7.10/bin" ]
+    # Assume if a virtual environment is set that we want to use that
+    # version of python. Otherwise, select the default 2.7.10 version
+    if ([ -z ${VIRTUAL_ENV+x} ] && [ -e "/opt/local/depot/python/2.7.10/bin" ])
     then
         export PATH="/opt/local/depot/python/2.7.10/bin:$PATH"
         export LD_LIBRARY_PATH="/opt/local/depot/python/2.7.10/lib:$LD_LIBRARY_PATH"
