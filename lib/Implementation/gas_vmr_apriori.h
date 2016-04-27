@@ -39,11 +39,15 @@ public:
 
     const boost::shared_ptr<ReferenceVmrApriori> reference() const { return ref_apriori; }
 
+    const double tropopause_altitude() const { return ref_apriori->model_tropopause_altitude(); }
+    const double tropopause_pressure() const;
+
     void print(std::ostream& Os) const { Os << "GasVmrApriori"; }
 
 private:
     boost::shared_ptr<ReferenceVmrApriori> ref_apriori;
 
+    blitz::Array<double, 1> model_alt;
     blitz::Array<double, 1> model_press;
     blitz::Array<double, 1> ref_vmr;
 

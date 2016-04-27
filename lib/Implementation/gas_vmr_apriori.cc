@@ -31,7 +31,7 @@ GasVmrApriori::GasVmrApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
     // Read pressure and temperature grids
     Ecmwf_file->temperature_grid(model_press, model_temp);
 
-    blitz::Array<double, 1> model_alt(model_press.rows());
+    model_alt.resize(model_press.rows());
     for(int lev_idx = 0; lev_idx < model_press.rows(); lev_idx++) {
         model_alt(lev_idx) = Alt->altitude(AutoDerivativeWithUnit<double>(model_press(lev_idx), units::Pa)).convert(units::km).value.value();
     }
@@ -83,4 +83,16 @@ const blitz::Array<double, 1> GasVmrApriori::apriori_vmr(const Pressure& pressur
     }
 
     return interp_vmr;
+}
+
+const double GasVmrApriori::tropopause_pressure() const
+{
+    // Make a copy and reverse to satisfy array increasing ordering and memory contiguous requirements of linear interpolator
+    blitz::Array<double, 1> rev_alt(model_alt.shape());
+    rev_alt = model_alt.copy().reverse(firstDim);
+    blitz::Array<double, 1> rev_press(rev_alt.shape());
+    rev_press = model_press.copy().reverse(firstDim);
+
+    LinearInterpolate<double, double> alt_press_interp(rev_alt.begin(), rev_alt.end(), rev_press.begin());
+    return alt_press_interp(tropopause_altitude());
 }

@@ -190,9 +190,39 @@ class GasVmrApriori(full_physics_swig.generic_object.GenericObject):
     def reference(self):
         return self._v_reference()
 
+
+    def _v_tropopause_altitude(self):
+        """
+
+        const double FullPhysics::GasVmrApriori::tropopause_altitude() const
+
+        """
+        return _gas_vmr_apriori.GasVmrApriori__v_tropopause_altitude(self)
+
+
+    @property
+    def tropopause_altitude(self):
+        return self._v_tropopause_altitude()
+
+
+    def _v_tropopause_pressure(self):
+        """
+
+        const double GasVmrApriori::tropopause_pressure() const
+
+        """
+        return _gas_vmr_apriori.GasVmrApriori__v_tropopause_pressure(self)
+
+
+    @property
+    def tropopause_pressure(self):
+        return self._v_tropopause_pressure()
+
     __swig_destroy__ = _gas_vmr_apriori.delete_GasVmrApriori
 GasVmrApriori._v_apriori_vmr = new_instancemethod(_gas_vmr_apriori.GasVmrApriori__v_apriori_vmr, None, GasVmrApriori)
 GasVmrApriori._v_reference = new_instancemethod(_gas_vmr_apriori.GasVmrApriori__v_reference, None, GasVmrApriori)
+GasVmrApriori._v_tropopause_altitude = new_instancemethod(_gas_vmr_apriori.GasVmrApriori__v_tropopause_altitude, None, GasVmrApriori)
+GasVmrApriori._v_tropopause_pressure = new_instancemethod(_gas_vmr_apriori.GasVmrApriori__v_tropopause_pressure, None, GasVmrApriori)
 GasVmrApriori.__str__ = new_instancemethod(_gas_vmr_apriori.GasVmrApriori___str__, None, GasVmrApriori)
 GasVmrApriori_swigregister = _gas_vmr_apriori.GasVmrApriori_swigregister
 GasVmrApriori_swigregister(GasVmrApriori)
