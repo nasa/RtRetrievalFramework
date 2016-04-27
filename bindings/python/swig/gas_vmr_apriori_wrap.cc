@@ -5062,6 +5062,9 @@ struct SWIG_null_deleter {
 #define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
 
 
+  #define SWIG_From_double   PyFloat_FromDouble 
+
+
 SWIGINTERNINLINE PyObject *
 SWIG_FromCharPtrAndSize(const char* carray, size_t size)
 {
@@ -5501,6 +5504,92 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GasVmrApriori__v_tropopause_altitude(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GasVmrApriori *arg1 = (FullPhysics::GasVmrApriori *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GasVmrApriori const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GasVmrApriori const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GasVmrApriori_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GasVmrApriori__v_tropopause_altitude" "', argument " "1"" of type '" "FullPhysics::GasVmrApriori const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GasVmrApriori > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GasVmrApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::GasVmrApriori * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GasVmrApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::GasVmrApriori * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((FullPhysics::GasVmrApriori const *)arg1)->tropopause_altitude();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GasVmrApriori__v_tropopause_pressure(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::GasVmrApriori *arg1 = (FullPhysics::GasVmrApriori *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::GasVmrApriori const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::GasVmrApriori const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GasVmrApriori_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GasVmrApriori__v_tropopause_pressure" "', argument " "1"" of type '" "FullPhysics::GasVmrApriori const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GasVmrApriori > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::GasVmrApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::GasVmrApriori * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::GasVmrApriori > * >(argp1);
+      arg1 = const_cast< FullPhysics::GasVmrApriori * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((FullPhysics::GasVmrApriori const *)arg1)->tropopause_pressure();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_GasVmrApriori___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::GasVmrApriori *arg1 = (FullPhysics::GasVmrApriori *) 0 ;
@@ -5616,6 +5705,16 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"GasVmrApriori__v_reference", (PyCFunction)_wrap_GasVmrApriori__v_reference, METH_O, (char *)"\n"
 		"\n"
 		"const boost::shared_ptr<ReferenceVmrApriori> FullPhysics::GasVmrApriori::reference() const\n"
+		"\n"
+		""},
+	 { (char *)"GasVmrApriori__v_tropopause_altitude", (PyCFunction)_wrap_GasVmrApriori__v_tropopause_altitude, METH_O, (char *)"\n"
+		"\n"
+		"const double FullPhysics::GasVmrApriori::tropopause_altitude() const\n"
+		"\n"
+		""},
+	 { (char *)"GasVmrApriori__v_tropopause_pressure", (PyCFunction)_wrap_GasVmrApriori__v_tropopause_pressure, METH_O, (char *)"\n"
+		"\n"
+		"const double GasVmrApriori::tropopause_pressure() const\n"
 		"\n"
 		""},
 	 { (char *)"GasVmrApriori___str__", (PyCFunction)_wrap_GasVmrApriori___str__, METH_O, NULL},
