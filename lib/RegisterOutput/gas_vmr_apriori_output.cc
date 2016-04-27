@@ -13,7 +13,12 @@ REGISTER_LUA_END()
 
 double tropopause_altitude(const boost::shared_ptr<GasVmrApriori>& ga)
 {
-    return ga->reference()->model_tropopause_altitude();
+    return ga->tropopause_altitude();
+}
+
+double tropopause_pressure(const boost::shared_ptr<GasVmrApriori>& ga)
+{
+    return ga->tropopause_pressure();
 }
 
 void GasVmrAprioriOutput::register_output_apriori(const boost::shared_ptr<Output>& out) const
@@ -24,4 +29,7 @@ void GasVmrAprioriOutput::register_output(const boost::shared_ptr<Output>& out) 
 {
     { boost::function<double ()> f = boost::bind(&tropopause_altitude, gas_apriori); 
       out->register_data_source("/RetrievalResults/tropopause_altitude", f); }
+
+    { boost::function<double ()> f = boost::bind(&tropopause_pressure, gas_apriori); 
+      out->register_data_source("/RetrievalResults/tropopause_pressure", f); }
 }
