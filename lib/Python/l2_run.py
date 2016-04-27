@@ -9,24 +9,28 @@ class L2Run(object):
     the underlying C++ wrapped python classes.'''
     def __init__(self, lua_config, sounding_id, ecmwf_file, spectrum_file, 
                  print_log = True, scene_file = None,
-                 abscodir = None, merradir = None):
+                 abscodir = None, merradir = None, imap_file = None):
         '''Load a Lua config file, setting the given sounding id, ecmf_file,
         and spectrum_file. By default we also turn logging on so you get 
         progress messages as you run. You can optionally turn this off.'''
         # Save information to use in pickling
         self.__state_save = (lua_config, sounding_id, ecmwf_file, 
                              spectrum_file, print_log, 
-                             scene_file, abscodir, merradir)
+                             scene_file, abscodir, merradir,
+                             imap_file)
         self.output_file_name = None
         self.output_file_ = None
         self.sounding_id = sounding_id
         self.ecmwf_file = ecmwf_file
         self.spectrum_file = spectrum_file
+        self.imap_file = imap_file
         os.environ["ecmwf_file"] = ecmwf_file
         os.environ["spectrum_file"] = spectrum_file
         os.environ["sounding_id"] = sounding_id
         if(scene_file is not None):
             os.environ["scene_file"] = scene_file
+        if(imap_file is not None):
+            os.environ["imap_file"] = imap_file
         if(abscodir is not None):
             os.environ["abscodir"] = abscodir
         if(merradir is not None):
@@ -70,6 +74,7 @@ class L2Run(object):
         t = c.get_section("input->InputProductFiles")[0]
         l1b = t.get_keyword_value("L1BFile")
         met = t.get_keyword_value("ResampledMetFile")
+        imap = t.get_keyword_value("IMAPFile")
         if(lua_config is None):
             lua_config = os.path.join(os.environ.get('L2_INPUT_PATH', ''), "gosat/config/config.lua")
         if(sounding_id is None):
@@ -78,7 +83,22 @@ class L2Run(object):
                 t = c.get_section("input->OCOFullPhysics->LIST->VALUES")
             sid = t[0].get_matrix_data()
             sounding_id = sid[sounding_id_index]
-        r = L2Run(lua_config, sounding_id, met, l1b)
+        if(t.get_keyword_value("InputFileMapping")):
+            inpmap = t.get_keyword_value("InputFileMapping")
+            with open(inpmap) as f:
+                for ln in f:
+                    sid,val = ln.split(' ')
+                    if(sid == sounding_id):
+                        for v2 in val.split(';'):
+                            k,v = v2.split('=')
+                            if(k == "spectrum_file"):
+                                l1b = eval(v)
+                            if(k == "ecmwf_file"):
+                                met = eval(v)
+                            if(k == "imap_file"):
+                                imap = eval(v)
+
+        r = L2Run(lua_config, sounding_id, met, l1b, imap_file = imap)
         r.output_file_name = os.path.dirname(config_file) + "/output/l2_" + \
             sounding_id + ".h5"
         return r
