@@ -51,7 +51,7 @@ public:
 
   L2FpConfigurationLua(const std::string& Fname, 
 		       const std::string& Out_file = "out.h5")
-    : ls(LuaState::load_file(Fname)), output_name(Out_file) {}
+    : ls(LuaState::load_file(Fname)), output_name_(Out_file) {}
 
 //-----------------------------------------------------------------------
 /// Take a LuaState that we've already generated the configuration
@@ -61,7 +61,7 @@ public:
 
   L2FpConfigurationLua(const boost::shared_ptr<LuaState>& Ls, 
 		       const std::string& Out_file = "out.h5")
-    : ls(Ls), output_name(Out_file) {}
+    : ls(Ls), output_name_(Out_file) {}
   
 //-----------------------------------------------------------------------
 /// Parse the arguments passed to the executable to set up
@@ -70,7 +70,7 @@ public:
 
   L2FpConfigurationLua(int Argc, char** Argv)
     : ls(LuaState::load_file(Argc > 0 ? Argv[0] :  "config.lua")), 
-      output_name(Argc > 1 ? Argv[1] : "out.h5")
+      output_name_(Argc > 1 ? Argv[1] : "out.h5")
   {
   }
   virtual ~L2FpConfigurationLua() {}
@@ -111,9 +111,16 @@ public:
       return ls->globals()["stat_method_map"].value_ptr<MaxAPosteriori>();
     return boost::shared_ptr<MaxAPosteriori>();
   }
+
+//-----------------------------------------------------------------------
+/// Output file name.
+//-----------------------------------------------------------------------
+
+  const std::string& output_name() const {return output_name_;}
+  void output_name(const std::string& F) { output_name_ = F; }
 private:
   boost::shared_ptr<LuaState> ls;
-  std::string output_name;
+  std::string output_name_;
   mutable boost::shared_ptr<Output> out_iteration;
 };
 }

@@ -19,6 +19,7 @@ public:
 		       const std::string& Out_file = "out.h5");
   L2FpConfigurationLua(int Argc, char** Argv);
   %python_attribute_nonconst(lua_state, LuaState)
+  %python_attribute_with_set(output_name, std::string);
   virtual void output(boost::shared_ptr<Output>& OUTPUT,
 		      boost::shared_ptr<Output>& OUTPUT) const;
 };
