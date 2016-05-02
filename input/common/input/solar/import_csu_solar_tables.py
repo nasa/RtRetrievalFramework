@@ -82,7 +82,7 @@ def read_csu_ascii_table(filename, header_size=5):
         elif not cont_units: 
             raise ValueError("Failed to parse continuum units")
 
-    table_data = numpy.loadtxt(filename, skiprows=header_size)
+    table_data = numpy.loadtxt(filename, skip_header=header_size)
 
     SolarTableData = namedtuple('SolarTableData', 'doppler_velocity solar_distance table_columns table_data continuum_units')
     return SolarTableData(doppler_vel, solar_dist, column_names, table_data, cont_units)
