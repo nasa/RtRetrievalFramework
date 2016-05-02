@@ -5,7 +5,7 @@ import h5py
 
 f = h5py.File("Level2/input/gosat/input/l2_gosat_static_input_quicklook.h5")
 f["Instrument/ILS_jaxa_update"].create_group("ILS_1")
-t = np.genfromtxt("temp.txt", skiprows=3)
+t = np.genfromtxt("temp.txt", skip_header=3)
 a = np.empty((3,t.shape[0]))
 a[0,:] = t[:,0]
 a[1,:] = t[:,0]

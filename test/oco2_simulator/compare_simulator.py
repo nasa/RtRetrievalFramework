@@ -24,7 +24,7 @@ refl = []
 rad = []
 # Spectral domain for high resolution data
 hres_sd = []
-hres_ref = np.genfromtxt(sdir + "hires_10774_1.txt", skiprows = 1)
+hres_ref = np.genfromtxt(sdir + "hires_10774_1.txt", skip_header = 1)
 sd = SpectralDomain(hres_ref[:,0], Unit("nanometer"))
 # Conversion currently needed by ILS. This is really a bug, which
 # we will fix as Ticket #1260. But for now, work around
@@ -35,7 +35,7 @@ sr = SpectralRange(hres_ref[:,2] * hres_ref[:,3],
                    Unit("Ph / sec / m^2 / sr / um"))
 rad.append(Spectrum(sd, sr))
 
-hres_ref = np.genfromtxt(sdir + "hires_10774_2.txt", skiprows = 1)
+hres_ref = np.genfromtxt(sdir + "hires_10774_2.txt", skip_header = 1)
 sd = SpectralDomain(hres_ref[:,0], Unit("nanometer"))
 sd = SpectralDomain(sd.wavelength(Unit("micron")), Unit("micron"))
 hres_sd.append(sd)
@@ -44,7 +44,7 @@ sr = SpectralRange(hres_ref[:,2] * hres_ref[:,3],
                    Unit("Ph / sec / m^2 / sr / um"))
 rad.append(Spectrum(sd, sr))
 
-hres_ref = np.genfromtxt(sdir + "hires_10774_3.txt", skiprows = 1)
+hres_ref = np.genfromtxt(sdir + "hires_10774_3.txt", skip_header = 1)
 sd = SpectralDomain(hres_ref[:,0], Unit("nanometer"))
 sd = SpectralDomain(sd.wavelength(Unit("micron")), Unit("micron"))
 hres_sd.append(sd)
@@ -66,21 +66,20 @@ sm = r.solar_model[0]
 ds = sm.doppler_shift
 sabs.append(sm.absorption_spectrum.solar_absorption_spectrum(ds.doppler_stretch(hres_sd[0])))
 sspec.append(sm.solar_spectrum(hres_sd[0]))
-sabssim.append(np.genfromtxt(sdir + "solar_spectrum_10774_1.txt", skiprows = 5)[:,3])
-sspecsim.append(np.genfromtxt(sdir + "solar_spectrum_10774_1.txt", skiprows = 5)[:,4])
+sabssim.append(np.genfromtxt(sdir + "solar_spectrum_10774_1.txt", skip_header = 5)[:,3])
+sspecsim.append(np.genfromtxt(sdir + "solar_spectrum_10774_1.txt", skip_header = 5)[:,4])
 sm = r.solar_model[1]
 ds = sm.doppler_shift
 sabs.append(sm.absorption_spectrum.solar_absorption_spectrum(ds.doppler_stretch(hres_sd[1])))
 sspec.append(sm.solar_spectrum(hres_sd[1]))
-sabssim.append(np.genfromtxt(sdir + "solar_spectrum_10774_2.txt", skiprows = 5)[:,3])
-sspecsim.append(np.genfromtxt(sdir + "solar_spectrum_10774_2.txt", skiprows = 5)[:,4])
+sabssim.append(np.genfromtxt(sdir + "solar_spectrum_10774_2.txt", skip_header = 5)[:,3])
+sspecsim.append(np.genfromtxt(sdir + "solar_spectrum_10774_2.txt", skip_header = 5)[:,4])
 sm = r.solar_model[2]
 ds = sm.doppler_shift
 sabs.append(sm.absorption_spectrum.solar_absorption_spectrum(ds.doppler_stretch(hres_sd[2])))
 sspec.append(sm.solar_spectrum(hres_sd[2]))
-sabssim.append(np.genfromtxt(sdir + "solar_spectrum_10774_3.txt", skiprows = 5)[:,3])
-sspecsim.append(np.genfromtxt(sdir + "solar_spectrum_10774_3.txt", skiprows = 5)[:,4])
-
+sabssim.append(np.genfromtxt(sdir + "solar_spectrum_10774_3.txt", skip_header = 5)[:,3])
+sspecsim.append(np.genfromtxt(sdir + "solar_spectrum_10774_3.txt", skip_header = 5)[:,4])
 figure(1)
 subplot(311)
 title("Difference solar transmittance band 1")
