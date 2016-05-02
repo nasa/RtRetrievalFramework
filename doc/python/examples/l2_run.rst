@@ -76,7 +76,7 @@ easily do all 3:
    
    In [14]: sdir = bdir + "simulator_result/"
 
-   In [14]: hres_ref = np.genfromtxt(sdir + "hires_10774_1.txt", skiprows = 1)
+   In [14]: hres_ref = np.genfromtxt(sdir + "hires_10774_1.txt", skip_header = 1)
 
    In [14]: hres_sd = SpectralDomain(hres_ref[:,0], Unit("nanometer"))
 
