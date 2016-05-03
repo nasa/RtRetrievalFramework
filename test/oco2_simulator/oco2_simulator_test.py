@@ -20,7 +20,7 @@ r = L2Run(bdir + "config/config_orbit_sim_match.lua", sid_name,ecmwf_name,
 sd = []
 for b in range(3):
     sd.append(SpectralDomain(np.genfromtxt(sdir + "hires_10774_%d.txt" % (b+1), 
-                                           skiprows = 1)[:,0], 
+                                           skip_header = 1)[:,0], 
                              Unit("nanometer")))
 
 def test_solar_spectrum():
@@ -29,7 +29,7 @@ def test_solar_spectrum():
         jpl_spec = r.solar_model[b].solar_spectrum(sd[b])
         # Data is 5th column, after skipping 5 header rows
         csu_spec = np.genfromtxt(sdir + "solar_spectrum_10774_%d.txt" % (b + 1),
-                                 skiprows = 5)[:,4]
+                                 skip_header = 5)[:,4]
         per_diff = (jpl_spec.value - csu_spec) / max(csu_spec) * 100.0
         assert max(abs(per_diff)) < 0.15
 
@@ -39,7 +39,7 @@ def test_plot_solar_spectrum():
         jpl_spec = r.solar_model[b].solar_spectrum(sd[b])
         # Data is 5th column, after skipping 5 header rows
         csu_spec = np.genfromtxt(sdir + "solar_spectrum_10774_%d.txt" % (b + 1),
-                                 skiprows = 5)[:,4]
+                                 skip_header = 5)[:,4]
         per_diff = (jpl_spec.value - csu_spec) / max(csu_spec) * 100.0
         subplot(3,1,b+1)
         title("Difference full solar spectrum band %d" % (b+1))

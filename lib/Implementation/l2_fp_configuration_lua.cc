@@ -9,7 +9,7 @@ using namespace FullPhysics;
 void L2FpConfigurationLua::output(boost::shared_ptr<Output>& Regular_output,
 				  boost::shared_ptr<Output>& Error_output) const
 {
-  boost::shared_ptr<HdfFileGenerating> output_g(new HdfFileGenerating(output_name));
+  boost::shared_ptr<HdfFileGenerating> output_g(new HdfFileGenerating(output_name_));
   int num_aer_part = ls->globals()["number_aerosol"].value<int>();
   int npres = ls->globals()["number_pressure_level"].value<int>();
   int nband = ls->globals()["number_band"].value<int>();
@@ -26,7 +26,7 @@ void L2FpConfigurationLua::output(boost::shared_ptr<Output>& Regular_output,
       throw Exception("Iteration_output can only be used with a Connor solver, not the newer IterativeSolver that Edwin developed");
   }
   Error_output.reset
-    (new OutputHdf(output_name + ".error", npres, 
+    (new OutputHdf(output_name_ + ".error", npres, 
 		   forward_model()->state_vector()->observer_claimed_size(), 
 		   num_aer_part + 1, nband));
   std::vector<boost::shared_ptr<RegisterOutputBase> > out_reg
