@@ -5212,6 +5212,38 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 }
 
 
+SWIGINTERNINLINE PyObject *
+SWIG_FromCharPtrAndSize(const char* carray, size_t size)
+{
+  if (carray) {
+    if (size > INT_MAX) {
+      swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+      return pchar_descriptor ? 
+	SWIG_InternalNewPointerObj(const_cast< char * >(carray), pchar_descriptor, 0) : SWIG_Py_Void();
+    } else {
+#if PY_VERSION_HEX >= 0x03000000
+#if PY_VERSION_HEX >= 0x03010000
+      return PyUnicode_DecodeUTF8(carray, static_cast< int >(size), "surrogateescape");
+#else
+      return PyUnicode_FromStringAndSize(carray, static_cast< int >(size));
+#endif
+#else
+      return PyString_FromStringAndSize(carray, static_cast< int >(size));
+#endif
+    }
+  } else {
+    return SWIG_Py_Void();
+  }
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_std_string  (const std::string& s)
+{
+  return SWIG_FromCharPtrAndSize(s.data(), s.size());
+}
+
+
 
 /* ---------------------------------------------------
  * C++ director class methods
@@ -5608,6 +5640,126 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_L2FpConfigurationLua__v_output_name__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::L2FpConfigurationLua *arg1 = (FullPhysics::L2FpConfigurationLua *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::L2FpConfigurationLua const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::L2FpConfigurationLua const > *smartarg1 = 0 ;
+  std::string result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__L2FpConfigurationLua_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "L2FpConfigurationLua__v_output_name" "', argument " "1"" of type '" "FullPhysics::L2FpConfigurationLua const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::L2FpConfigurationLua > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::L2FpConfigurationLua > * >(argp1);
+      arg1 = const_cast< FullPhysics::L2FpConfigurationLua * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::L2FpConfigurationLua > * >(argp1);
+      arg1 = const_cast< FullPhysics::L2FpConfigurationLua * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::L2FpConfigurationLua const *)arg1)->output_name();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_L2FpConfigurationLua__v_output_name__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::L2FpConfigurationLua *arg1 = (FullPhysics::L2FpConfigurationLua *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::L2FpConfigurationLua > tempshared1 ;
+  boost::shared_ptr< FullPhysics::L2FpConfigurationLua > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__L2FpConfigurationLua_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "L2FpConfigurationLua__v_output_name" "', argument " "1"" of type '" "FullPhysics::L2FpConfigurationLua *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::L2FpConfigurationLua > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::L2FpConfigurationLua > * >(argp1);
+      arg1 = const_cast< FullPhysics::L2FpConfigurationLua * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::L2FpConfigurationLua > * >(argp1);
+      arg1 = const_cast< FullPhysics::L2FpConfigurationLua * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "L2FpConfigurationLua__v_output_name" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "L2FpConfigurationLua__v_output_name" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      (arg1)->output_name((std::string const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_L2FpConfigurationLua__v_output_name(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"L2FpConfigurationLua__v_output_name",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_L2FpConfigurationLua__v_output_name__SWIG_0(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_L2FpConfigurationLua__v_output_name__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'L2FpConfigurationLua__v_output_name'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::L2FpConfigurationLua::output_name() const\n"
+    "    FullPhysics::L2FpConfigurationLua::output_name(std::string const &)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_L2FpConfigurationLua(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::L2FpConfigurationLua *arg1 = (FullPhysics::L2FpConfigurationLua *) 0 ;
@@ -5673,6 +5825,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"L2FpConfigurationLua__v_lua_state", (PyCFunction)_wrap_L2FpConfigurationLua__v_lua_state, METH_O, (char *)"\n"
 		"\n"
 		"LuaState& FullPhysics::L2FpConfigurationLua::lua_state()\n"
+		"\n"
+		""},
+	 { (char *)"L2FpConfigurationLua__v_output_name", _wrap_L2FpConfigurationLua__v_output_name, METH_VARARGS, (char *)"\n"
+		"\n"
+		"void FullPhysics::L2FpConfigurationLua::output_name(const std::string &F)\n"
 		"\n"
 		""},
 	 { (char *)"delete_L2FpConfigurationLua", (PyCFunction)_wrap_delete_L2FpConfigurationLua, METH_O, (char *)"\n"

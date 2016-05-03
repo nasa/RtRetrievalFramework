@@ -208,8 +208,27 @@ class L2FpConfigurationLua(full_physics_swig.l2_fp_configuration.L2FpConfigurati
     def lua_state(self):
         return self._v_lua_state()
 
+
+    def _v_output_name(self, *args):
+        """
+
+        void FullPhysics::L2FpConfigurationLua::output_name(const std::string &F)
+
+        """
+        return _l2_fp_configuration_lua.L2FpConfigurationLua__v_output_name(self, *args)
+
+
+    @property
+    def output_name(self):
+        return self._v_output_name()
+
+    @output_name.setter
+    def output_name(self, value):
+      self._v_output_name(value)
+
     __swig_destroy__ = _l2_fp_configuration_lua.delete_L2FpConfigurationLua
 L2FpConfigurationLua._v_lua_state = new_instancemethod(_l2_fp_configuration_lua.L2FpConfigurationLua__v_lua_state, None, L2FpConfigurationLua)
+L2FpConfigurationLua._v_output_name = new_instancemethod(_l2_fp_configuration_lua.L2FpConfigurationLua__v_output_name, None, L2FpConfigurationLua)
 L2FpConfigurationLua_swigregister = _l2_fp_configuration_lua.L2FpConfigurationLua_swigregister
 L2FpConfigurationLua_swigregister(L2FpConfigurationLua)
 

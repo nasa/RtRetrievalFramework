@@ -11,7 +11,7 @@ scene_file = "../input/oco2_sim_scene.h5"
 r = L2Run(bdir + "config/config_orbit_sim_match.lua", sid_name,ecmwf_name, 
           l1b_name, scene_file = scene_file)
 
-hres_ref = np.genfromtxt(sdir + "hires_10774_1.txt", skiprows = 1)
+hres_ref = np.genfromtxt(sdir + "hires_10774_1.txt", skip_header = 1)
 sd = SpectralDomain(hres_ref[:,0], Unit("nanometer"))
 sd = SpectralDomain(sd.wavelength(Unit("micron")), Unit("micron"))
 refl = hres_ref[:,2]
