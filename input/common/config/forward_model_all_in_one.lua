@@ -27,6 +27,23 @@ function init_forward_model(config)
         end
     end
 
+    function sim_apriori_sounding(field)
+        return function(self, aer_name)
+            local sid = self.config:l1b_sid_list()
+            local frame_idx = sid:frame_number()
+            local sounding_idx = sid:sounding_number()
+
+            return self.config:l1b_hdf_file():read_double_3d(field)(frame_idx, sounding_idx, Range.all())
+        end
+    end
+
+    --------------
+    -- Pressure --
+    --------------
+
+    config.fm.atmosphere.pressure.creator = ConfigCommon.pressure_sigma_profile
+    config.fm.atmosphere.pressure.pressure_levels = sim_apriori_sounding("/Pressure/PressureLevels")
+
     ------------
     -- Ground --
     ------------
