@@ -51,7 +51,7 @@ cov_a = np.copy(l2run.state_vector.state_covariance)
 
 # <sample code here, change as needed>
 for i, svname in enumerate(l2run.state_vector.state_vector_name):
-    if(re.match(r'Aerosol Shape SO Logarithmic Gaussian for Coefficient 2'_,
+    if(re.match(r'Aerosol Shape SO Logarithmic Gaussian for Coefficient 2',
                 svname)):
         x_a[i] = 0.6
 # Want initial guess same apriori for this particular test
