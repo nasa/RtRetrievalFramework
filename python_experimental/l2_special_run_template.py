@@ -48,9 +48,18 @@ x_i = np.copy(x_a)
 cov_a = np.copy(l2run.state_vector.state_covariance)
 
 # Update whatever
-# <blah blah>
 
-# Setup output
+# <sample code here, change as needed>
+for i, svname in enumerate(l2run.state_vector.state_vector_name):
+    if(re.match(r'Aerosol Shape SO Logarithmic Gaussian for Coefficient 2'_,
+                svname)):
+        x_a[i] = 0.6
+# Want initial guess same apriori for this particular test
+x_i = np.copy(x_a)
+
+# Setup output. We need to make sure the state is whatever the apriori is
+# so all the various 'apriori' fields are correct
+l2run.state_vector.update_state(x_a, cov_a)
 l2run.config.output_name = args.output_file
 out, outerr = l2run.config.output()
 
