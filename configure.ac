@@ -6,7 +6,7 @@ AC_INIT(full_physics, 8.0.00)
 [commonlib_version='8.00.00b']
 
 AC_COPYRIGHT(
-[Copyright 2015, California Institute of Technology. 
+[Copyright 2016, California Institute of Technology. 
 ALL RIGHTS RESERVED. U.S. Government Sponsorship acknowledged.])
 
 AC_CONFIG_AUX_DIR([config])
