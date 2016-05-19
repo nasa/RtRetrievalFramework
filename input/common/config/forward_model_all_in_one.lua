@@ -37,6 +37,29 @@ function init_forward_model(config)
         end
     end
 
+    ---------------------
+    -- Spectral Window --
+    ---------------------
+    
+    local orig_spec_win_creator = config.fm.spec_win.creator
+
+    spectral_window_custom = Creator:new()
+    function spectral_window_custom:create()
+        local orig_win_ranges = orig_spec_win_creator.create(self):range_array()
+
+        local new_win_data = Blitz_double_array_3d(orig_win_ranges.value:rows(), 1, 2)
+        new_win_data:set(Range.all(), Range.all(), Range.all(), 0.0)
+        local new_win_ranges = ArrayWithUnit_3d(new_win_data, orig_win_ranges.units)
+
+        for band_idx = 0, new_win_data:rows()-1 do
+            new_win_ranges.value:set(band_idx, 0, 0, 1)
+            new_win_ranges.value:set(band_idx, 0, 1, 1017)
+        end
+
+        return SpectralWindowRange(new_win_ranges)
+    end
+    config.fm.spec_win.creator = spectral_window_custom
+
     --------------
     -- Pressure --
     --------------
@@ -129,27 +152,37 @@ function init_forward_model(config)
             apriori = sim_aerosol_apriori(),
             property = ConfigCommon.hdf_aerosol_property("wc_004"),
         },
-        wc_006 = {
-            creator = sim_aerosol_profile_creator,
-            apriori = sim_aerosol_apriori(),
-            property = ConfigCommon.hdf_aerosol_property("wc_006"),
-        },
         wc_008 = {
             creator = sim_aerosol_profile_creator,
             apriori = sim_aerosol_apriori(),
             property = ConfigCommon.hdf_aerosol_property("wc_008"),
-        },
-        wc_010 = {
-            creator = sim_aerosol_profile_creator,
-            apriori = sim_aerosol_apriori(),
-            property = ConfigCommon.hdf_aerosol_property("wc_010"),
         },
         wc_012 = {
             creator = sim_aerosol_profile_creator,
             apriori = sim_aerosol_apriori(),
             property = ConfigCommon.hdf_aerosol_property("wc_012"),
         },
-    }
+        wc_016 = {
+            creator = sim_aerosol_profile_creator,
+            apriori = sim_aerosol_apriori(),
+            property = ConfigCommon.hdf_aerosol_property("wc_016"),
+        },
+        wc_018 = {
+            creator = sim_aerosol_profile_creator,
+            apriori = sim_aerosol_apriori(),
+            property = ConfigCommon.hdf_aerosol_property("wc_018"),
+        },
+        wc_022 = {
+            creator = sim_aerosol_profile_creator,
+            apriori = sim_aerosol_apriori(),
+            property = ConfigCommon.hdf_aerosol_property("wc_022"),
+        },
+        wc_026 = {
+            creator = sim_aerosol_profile_creator,
+            apriori = sim_aerosol_apriori(),
+            property = ConfigCommon.hdf_aerosol_property("wc_026"),
+        },
+     }
 
     -- Remove EOF from state vector
     config.fm.instrument.instrument_correction.ic_nadir = {}
