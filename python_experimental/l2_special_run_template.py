@@ -88,6 +88,11 @@ except:
     print("-" * 25, file=sys.stderr)
     traceback.print_exc()
     print("-" * 25, file=sys.stderr)
+    out = None
+    try:
+        os.unlink(args.output_file)
+    except OSError as exc:
+        pass # Ok if we can't remove file
     outerr.write_best_attempt()
 
 # Force flush of output
