@@ -5297,6 +5297,183 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_AbsorberVmrLevel__v_vmr_profile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::AbsorberVmrLevel *arg1 = (FullPhysics::AbsorberVmrLevel *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrLevel const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrLevel const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SwigValueWrapper< blitz::Array< double,1 > > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrLevel_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrLevel__v_vmr_profile" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrLevel const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrLevel > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrLevel > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrLevel * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrLevel > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrLevel * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::AbsorberVmrLevel const *)arg1)->vmr_profile();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    npy_intp dims[1], stride[1];
+    for(int i = 0; i < 1; ++i) {
+      dims[i] = (&result)->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = (&result)->stride(i) * sizeof(double);
+    }
+    resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
+      stride, (&result)->data(), 0, 0, 0);
+    blitz::Array<double, 1>* t = new blitz::Array<double, 1>(result);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AbsorberVmrLevel__v_vmr_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::AbsorberVmrLevel *arg1 = (FullPhysics::AbsorberVmrLevel *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrLevel const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrLevel const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SwigValueWrapper< blitz::Array< double,2 > > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrLevel_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrLevel__v_vmr_covariance" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrLevel const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrLevel > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrLevel > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrLevel * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrLevel > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrLevel * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::AbsorberVmrLevel const *)arg1)->vmr_covariance();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    npy_intp dims[2], stride[2];
+    for(int i = 0; i < 2; ++i) {
+      dims[i] = (&result)->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = (&result)->stride(i) * sizeof(double);
+    }
+    resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
+      stride, (&result)->data(), 0, 0, 0);
+    blitz::Array<double, 2>* t = new blitz::Array<double, 2>(result);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AbsorberVmrLevel__v_vmr_uncertainty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::AbsorberVmrLevel *arg1 = (FullPhysics::AbsorberVmrLevel *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrLevel const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrLevel const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SwigValueWrapper< blitz::Array< double,1 > > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrLevel_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrLevel__v_vmr_uncertainty" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrLevel const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrLevel > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrLevel > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrLevel * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrLevel > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrLevel * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::AbsorberVmrLevel const *)arg1)->vmr_uncertainty();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    npy_intp dims[1], stride[1];
+    for(int i = 0; i < 1; ++i) {
+      dims[i] = (&result)->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = (&result)->stride(i) * sizeof(double);
+    }
+    resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
+      stride, (&result)->data(), 0, 0, 0);
+    blitz::Array<double, 1>* t = new blitz::Array<double, 1>(result);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_AbsorberVmrLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::AbsorberVmrLevel *arg1 = (FullPhysics::AbsorberVmrLevel *) 0 ;
@@ -5364,6 +5541,23 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"boost::shared_ptr< AbsorberVmr > AbsorberVmrLevel::clone(const boost::shared_ptr< Pressure > &Press) const\n"
 		"\n"
+		""},
+	 { (char *)"AbsorberVmrLevel__v_vmr_profile", (PyCFunction)_wrap_AbsorberVmrLevel__v_vmr_profile, METH_O, (char *)"\n"
+		"\n"
+		"blitz::Array<double, 1> FullPhysics::AbsorberVmrLevel::vmr_profile() const\n"
+		"VMR on the pressure grid.\n"
+		"\n"
+		"This is just coeff.value, but this is useful for generating output. \n"
+		""},
+	 { (char *)"AbsorberVmrLevel__v_vmr_covariance", (PyCFunction)_wrap_AbsorberVmrLevel__v_vmr_covariance, METH_O, (char *)"\n"
+		"\n"
+		"blitz::Array<double, 2> FullPhysics::AbsorberVmrLevel::vmr_covariance() const\n"
+		"Covariance of vmr profile. \n"
+		""},
+	 { (char *)"AbsorberVmrLevel__v_vmr_uncertainty", (PyCFunction)_wrap_AbsorberVmrLevel__v_vmr_uncertainty, METH_O, (char *)"\n"
+		"\n"
+		"blitz::Array<double, 1> FullPhysics::AbsorberVmrLevel::vmr_uncertainty() const\n"
+		"Uncertainty of VMR. \n"
 		""},
 	 { (char *)"delete_AbsorberVmrLevel", (PyCFunction)_wrap_delete_AbsorberVmrLevel, METH_O, (char *)"\n"
 		"\n"

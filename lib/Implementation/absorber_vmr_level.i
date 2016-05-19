@@ -19,6 +19,9 @@ public:
   virtual boost::shared_ptr<AbsorberVmr> 
   clone(const boost::shared_ptr<Pressure>& Press) const;
   virtual std::string state_vector_name_i(int i) const;
+  %python_attribute(vmr_profile, blitz::Array<double, 1>);
+  %python_attribute(vmr_covariance, blitz::Array<double, 2>);
+  %python_attribute(vmr_uncertainty, blitz::Array<double, 1>);
 protected:
   virtual void calc_vmr() const;
 };
