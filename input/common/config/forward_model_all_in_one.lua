@@ -182,6 +182,11 @@ function init_forward_model(config)
             apriori = sim_aerosol_apriori(),
             property = ConfigCommon.hdf_aerosol_property("wc_026"),
         },
+        wc_030 = {
+            creator = sim_aerosol_profile_creator,
+            apriori = sim_aerosol_apriori(),
+            property = ConfigCommon.hdf_aerosol_property("wc_030"),
+        },
      }
 
     -- Remove EOF from state vector
