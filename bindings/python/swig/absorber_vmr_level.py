@@ -169,8 +169,55 @@ class AbsorberVmrLevel(full_physics_swig.absorber_vmr_imp_base.AbsorberVmrImpBas
         """
         return _absorber_vmr_level.AbsorberVmrLevel_clone(self, *args)
 
+
+    def _v_vmr_profile(self):
+        """
+
+        blitz::Array<double, 1> FullPhysics::AbsorberVmrLevel::vmr_profile() const
+        VMR on the pressure grid.
+
+        This is just coeff.value, but this is useful for generating output. 
+        """
+        return _absorber_vmr_level.AbsorberVmrLevel__v_vmr_profile(self)
+
+
+    @property
+    def vmr_profile(self):
+        return self._v_vmr_profile()
+
+
+    def _v_vmr_covariance(self):
+        """
+
+        blitz::Array<double, 2> FullPhysics::AbsorberVmrLevel::vmr_covariance() const
+        Covariance of vmr profile. 
+        """
+        return _absorber_vmr_level.AbsorberVmrLevel__v_vmr_covariance(self)
+
+
+    @property
+    def vmr_covariance(self):
+        return self._v_vmr_covariance()
+
+
+    def _v_vmr_uncertainty(self):
+        """
+
+        blitz::Array<double, 1> FullPhysics::AbsorberVmrLevel::vmr_uncertainty() const
+        Uncertainty of VMR. 
+        """
+        return _absorber_vmr_level.AbsorberVmrLevel__v_vmr_uncertainty(self)
+
+
+    @property
+    def vmr_uncertainty(self):
+        return self._v_vmr_uncertainty()
+
     __swig_destroy__ = _absorber_vmr_level.delete_AbsorberVmrLevel
 AbsorberVmrLevel.clone = new_instancemethod(_absorber_vmr_level.AbsorberVmrLevel_clone, None, AbsorberVmrLevel)
+AbsorberVmrLevel._v_vmr_profile = new_instancemethod(_absorber_vmr_level.AbsorberVmrLevel__v_vmr_profile, None, AbsorberVmrLevel)
+AbsorberVmrLevel._v_vmr_covariance = new_instancemethod(_absorber_vmr_level.AbsorberVmrLevel__v_vmr_covariance, None, AbsorberVmrLevel)
+AbsorberVmrLevel._v_vmr_uncertainty = new_instancemethod(_absorber_vmr_level.AbsorberVmrLevel__v_vmr_uncertainty, None, AbsorberVmrLevel)
 AbsorberVmrLevel_swigregister = _absorber_vmr_level.AbsorberVmrLevel_swigregister
 AbsorberVmrLevel_swigregister(AbsorberVmrLevel)
 
