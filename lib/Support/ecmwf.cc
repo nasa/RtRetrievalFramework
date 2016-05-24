@@ -83,6 +83,16 @@ ArrayAd<double, 1> Ecmwf::ozone_vmr(const ArrayAd<double, 1>& Pressure_level) co
 }
 
 //-----------------------------------------------------------------------
+/// Ozone on the ECMWF pressure grid. 
+/// Pressure is in pascals.
+//-----------------------------------------------------------------------
+
+void Ecmwf::ozone_mmr_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& H) const
+{
+  throw Exception("Not implemented");
+}
+
+//-----------------------------------------------------------------------
 /// The temperature and specific_humidity reading is identical except
 /// for the field read. So we have a generic function here with the
 /// field name passed in.
