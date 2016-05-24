@@ -50,6 +50,13 @@ public:
   virtual void specific_humidity_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& H) const = 0;
 
 //-----------------------------------------------------------------------
+/// Ozone mass mixing ratio on the ECMWF pressure grid. 
+/// Pressure is in pascals.
+//-----------------------------------------------------------------------
+
+  virtual void ozone_mmr_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& H) const;
+
+//-----------------------------------------------------------------------
 /// Get the surface pressure from the Ecmwf file.
 //-----------------------------------------------------------------------
 

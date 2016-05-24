@@ -36,6 +36,8 @@ public:
 			blitz::Array<double, 1>& OUTPUT) const;
   void specific_humidity_grid(blitz::Array<double, 1>& OUTPUT,
 			     blitz::Array<double, 1>& OUTPUT) const;
+  void ozone_grid(blitz::Array<double, 1>& OUTPUT,
+		  blitz::Array<double, 1>& OUTPUT) const;
   blitz::Array<double, 1> temperature(const 
       blitz::Array<double, 1>& Pressure_level) const;
   ArrayAd<double, 1> temperature(const 
