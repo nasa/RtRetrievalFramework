@@ -976,26 +976,6 @@ function ConfigCommon:l1b_spectral_coefficient_i(spec_idx)
 end
 
 ------------------------------------------------------------
--- Continuum signal level of measurement spectral 
--- Will only take into account samples used in retrieval
--- when called after spec_win, dispesion and l1b are set up
--- Indexing is zero based
-------------------------------------------------------------
-
-function ConfigCommon:meas_cont_signal(spec_idx)
-    local signal
-    if self.dispersion[spec_idx+1] ~= nil then
-        local pixel_grid = self.dispersion[spec_idx+1]:pixel_grid()
-        local grid_indexes = self.spec_win:grid_indexes(pixel_grid, spec_idx)
-        signal = self.l1b:signal(spec_idx, grid_indexes) 
-    else
-        self:diagnostic_message("Not removing bad samples or out of range samples for measurement continuum signal calculation")
-        signal = self.l1b:signal(spec_idx) 
-    end
-    return signal
-end
-
-------------------------------------------------------------
 --- Evaluates the table elements that are functions in the
 --- context of the configuration environment.
 --- This is useful for pull information out of the HDF
@@ -2412,6 +2392,52 @@ function ConfigCommon:albedo_from_radiance(band_idx, solar_strength, continuum_p
                                                                        use_range_max[band_idx+1],
                                                                        polynomial_degree)
    return albedo_val
+end
+
+------------------------------------------------------------
+-- Continuum signal level of measurement spectral 
+-- Will only take into account samples used in retrieval
+-- when called after spec_win, dispesion and l1b are set up
+-- Indexing is zero based
+------------------------------------------------------------
+
+function ConfigCommon:meas_cont_signal(spec_idx)
+    local signal
+    if self.dispersion[spec_idx+1] ~= nil then
+        local pixel_grid = self.dispersion[spec_idx+1]:pixel_grid()
+        local grid_indexes = self.spec_win:grid_indexes(pixel_grid, spec_idx)
+        signal = self.l1b:signal(spec_idx, grid_indexes) 
+    else
+        self:diagnostic_message("Not removing bad samples or out of range samples for measurement continuum signal calculation")
+        signal = self.l1b:signal(spec_idx) 
+    end
+    return signal
+end
+
+------------------------------------------------------------
+--- Create lambertian ground initial guess from radiance
+--- using the signal level reported by the L1b object
+--- Meant to replace albedo_from_radiance() above.
+------------------------------------------------------------
+
+function ConfigCommon:albedo_from_signal_level(polynomial_degree)
+    if not polynomial_degree then
+        polynomial_degree = 1
+    end
+
+    return function(self, spec_idx)
+        local signal = self.config:meas_cont_signal(spec_idx).value
+        local solar_strength = self.config.fm.atmosphere.ground.solar_strength[spec_idx+1]
+        local sza_r = self.config.l1b:sza()(spec_idx) * math.pi / 180.0
+
+        local offset = math.pi * signal / (math.cos(sza_r) * solar_strength)
+
+        local albedo_val = Blitz_double_array_1d(polynomial_degree + 1)
+        albedo_val:set(Range.all(), 0)
+        albedo_val:set(0, offset)
+
+        return albedo_val
+    end
 end
 
 ------------------------------------------------------------
