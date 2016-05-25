@@ -190,25 +190,6 @@ function AcosConfig.ground_land_fraction:get_creator()
 end
 
 ------------------------------------------------------------
---- Create lambertian ground initial guess from radiance
---- but the other parts from the static HDF file
-------------------------------------------------------------
-
-function AcosConfig.gosat_albedo_from_radiance(polynomial_degree)
-   return function(self, band_idx)
-      MAX_MS = {7.2e-6, 6.5e-6, 4.5e-6}
-      BAND_CONTINUUMS = 
-         { { Range(491, 529), Range(1586, 1602) },
-           { Range(2390, 2394), Range(2400, 2404) },
-           { Range(333, 336), Range(518, 521), Range(729, 732) },
-         }
-      USE_RANGE_MAX = { false, false, true }
-
-      return ConfigCommon.albedo_from_radiance(self, band_idx, MAX_MS, BAND_CONTINUUMS, USE_RANGE_MAX, polynomial_degree)
-   end
-end
-
-------------------------------------------------------------
 --- Create ILS table by reading from an L1B hdf file using
 --- Lua to do the reading and index massaging.
 ------------------------------------------------------------
