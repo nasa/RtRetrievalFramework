@@ -277,7 +277,7 @@ GosatBaseConfig = AcosConfig:new {
 
             -- Pure lambertian
             lambertian = {
-               apriori = AcosConfig.gosat_albedo_from_radiance(1),  
+               apriori = ConfigCommon.albedo_from_signal_level(1),  
                covariance = ConfigCommon.hdf_covariance_i("Ground/Albedo"),
                retrieve_bands = { true, true, true },
                creator = ConfigCommon.lambertian_retrieval,
