@@ -155,6 +155,28 @@ class Level1bOco(full_physics_swig.level_1b_hdf.Level1bHdf):
         """
         _level_1b_oco.Level1bOco_swiginit(self, _level_1b_oco.new_Level1bOco(*args))
 
+    def has_spike_eof(self, Spec_index):
+        """
+
+        bool Level1bOco::has_spike_eof(int Spec_index) const
+        True if we have the SpikeEOF data available.
+
+        Dataset names hardcoded for now. 
+        """
+        return _level_1b_oco.Level1bOco_has_spike_eof(self, Spec_index)
+
+
+    def spike_eof(self, Spec_index):
+        """
+
+        blitz::Array< double, 1 > Level1bOco::spike_eof(int Spec_index) const
+        Return spike eof data, used to perform SAA detection.
+
+        Dataset names hardcoded for now. 
+        """
+        return _level_1b_oco.Level1bOco_spike_eof(self, Spec_index)
+
+
     def _v_has_solar_relative_velocity(self):
         """
 
@@ -170,6 +192,20 @@ class Level1bOco(full_physics_swig.level_1b_hdf.Level1bHdf):
     @property
     def has_solar_relative_velocity(self):
         return self._v_has_solar_relative_velocity()
+
+
+    def _v_land_fraction(self):
+        """
+
+        double FullPhysics::Level1bOco::land_fraction() const
+        Return land fraction, as a percentage going from 0 to 100. 
+        """
+        return _level_1b_oco.Level1bOco__v_land_fraction(self)
+
+
+    @property
+    def land_fraction(self):
+        return self._v_land_fraction()
 
 
     def _v_solar_distance(self):
@@ -220,7 +256,10 @@ class Level1bOco(full_physics_swig.level_1b_hdf.Level1bHdf):
         return self._v_acquisition_mode()
 
     __swig_destroy__ = _level_1b_oco.delete_Level1bOco
+Level1bOco.has_spike_eof = new_instancemethod(_level_1b_oco.Level1bOco_has_spike_eof, None, Level1bOco)
+Level1bOco.spike_eof = new_instancemethod(_level_1b_oco.Level1bOco_spike_eof, None, Level1bOco)
 Level1bOco._v_has_solar_relative_velocity = new_instancemethod(_level_1b_oco.Level1bOco__v_has_solar_relative_velocity, None, Level1bOco)
+Level1bOco._v_land_fraction = new_instancemethod(_level_1b_oco.Level1bOco__v_land_fraction, None, Level1bOco)
 Level1bOco._v_solar_distance = new_instancemethod(_level_1b_oco.Level1bOco__v_solar_distance, None, Level1bOco)
 Level1bOco._v_solar_velocity = new_instancemethod(_level_1b_oco.Level1bOco__v_solar_velocity, None, Level1bOco)
 Level1bOco._v_acquisition_mode = new_instancemethod(_level_1b_oco.Level1bOco__v_acquisition_mode, None, Level1bOco)
