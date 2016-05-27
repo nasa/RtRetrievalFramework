@@ -5783,7 +5783,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Ecmwf_ozone_grid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Ecmwf_ozone_mmr_grid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Ecmwf *arg1 = (FullPhysics::Ecmwf *) 0 ;
   blitz::Array< double,1 > *arg2 = 0 ;
@@ -5808,7 +5808,7 @@ SWIGINTERN PyObject *_wrap_Ecmwf_ozone_grid(PyObject *SWIGUNUSEDPARM(self), PyOb
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ecmwf_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Ecmwf_ozone_grid" "', argument " "1"" of type '" "FullPhysics::Ecmwf const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Ecmwf_ozone_mmr_grid" "', argument " "1"" of type '" "FullPhysics::Ecmwf const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
@@ -5821,7 +5821,7 @@ SWIGINTERN PyObject *_wrap_Ecmwf_ozone_grid(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      ((FullPhysics::Ecmwf const *)arg1)->ozone_grid(*arg2,*arg3);
+      ((FullPhysics::Ecmwf const *)arg1)->ozone_mmr_grid(*arg2,*arg3);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -6292,7 +6292,16 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Pressure is in pascals. \n"
 		""},
-	 { (char *)"Ecmwf_ozone_grid", (PyCFunction)_wrap_Ecmwf_ozone_grid, METH_O, NULL},
+	 { (char *)"Ecmwf_ozone_mmr_grid", (PyCFunction)_wrap_Ecmwf_ozone_mmr_grid, METH_O, (char *)"\n"
+		"\n"
+		"void Ecmwf::ozone_mmr_grid(blitz::Array< double, 1 > &Pressure, blitz::Array< double, 1 > &H)\n"
+		"const\n"
+		"Ozone mass mixing ratio on the ECMWF pressure grid.\n"
+		"\n"
+		"Ozone on the ECMWF pressure grid.\n"
+		"\n"
+		"Pressure is in pascals. \n"
+		""},
 	 { (char *)"Ecmwf_temperature", _wrap_Ecmwf_temperature, METH_VARARGS, (char *)"\n"
 		"\n"
 		"virtual ArrayAd<double, 1> FullPhysics::Ecmwf::temperature(const ArrayAd< double, 1 > &Pressure_level) const =0\n"
