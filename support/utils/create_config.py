@@ -143,7 +143,7 @@ def handle_fts_config(template_obj, out_config_filename, used_files, sounding_id
 
 def handle_uq_config(template_obj, out_config_filename, used_files, filter_options, run_type):
 
-    handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, ids_file_keyword='UqFile', id_list_sect='input->UqFullPhysics')
+    handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, run_type, ids_file_keyword='UqFile', id_list_sect='input->UqFullPhysics')
 
 if __name__ == "__main__":
     
