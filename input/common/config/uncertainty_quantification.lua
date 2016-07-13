@@ -138,14 +138,21 @@ function init_uq(config)
     -- ECMWF --
     -----------
 
-    -- Use UQ specific reader for ECMWF file
-    function config:ecmwf()
-        if(self.spectrum_file and not self.ecmwf_v) then 
-            self.ecmwf_v = UqEcmwf(self.spectrum_file)
-            self.input_file_description = self.input_file_description .. "ECMWF input file:    " .. self.spectrum_file .. "\n"
-        end
-        return self.ecmwf_v
+    uq_ecmwf = Creator:new()
+
+    function uq_ecmwf:create()
+        local ecmwf = UqEcmwf(self.config.spectrum_file)
+        self.config.input_file_description = self.config.input_file_description .. "ECMWF input file:    " .. self.config.spectrum_file .. "\n"
+        return ecmwf
     end
+
+    function uq_ecmwf:register_output(ro)
+        if (self.config.ecmwf) then
+            ro:push_back(EcmwfPassThroughOutput(self.config.ecmwf))
+        end
+    end
+
+    config.fm.input.ecmwf.creator = uq_ecmwf
 
     ---------
     -- ILS --
