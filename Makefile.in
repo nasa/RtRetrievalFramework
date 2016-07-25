@@ -3041,7 +3041,7 @@ pkgpython_PYTHON = @pythonlibsrc@/__init__.py \
 	@pythonlibsrc@/oco_uplooking_populator.py \
 	@pythonlibsrc@/uq_populator.py @pythonlibsrc@/plot_util.py \
 	@pythonlibsrc@/l2_lua.py @pythonlibsrc@/splice_tool_mapping.py \
-	@pythonlibsrc@/fill_value.py
+	@pythonlibsrc@/fill_value.py @pythonlibsrc@/fp_perturbation.py
 
 # Files that contain SWIG wrapper information
 
