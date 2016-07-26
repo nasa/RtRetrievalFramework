@@ -208,7 +208,7 @@ if __name__ == "__main__":
         # about not using paths as supplied on command line
         config_filename, output_file = [ os.path.realpath(fn) for fn in args ]
 
-        fm_errors = FmPerturbations(config_filename, output_file, use_existing=options.use_existing, check_reset=options.check_reset, perturb_type_filters=options.error_type_filters, run_retrieval=options.run_retrieval, save_stokes=options.save_stokes, num_perturbed_iterations=options.num_perturbed_iterations, gain_perturb=GAIN_PERTURB)
+        fm_errors = FmPerturbations(config_filename, output_file, use_existing=options.use_existing, check_reset=options.check_reset, perturb_type_filters=options.error_type_filters, run_retrieval=options.run_retrieval, save_stokes=options.save_stokes, num_perturbed_iterations=options.num_perturbed_iterations, gain_perturb=GAIN_PERTURB, output_group="Forward_Model_Errors")
         fm_errors.run()
 
     else:
