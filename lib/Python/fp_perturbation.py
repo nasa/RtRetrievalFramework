@@ -119,8 +119,11 @@ class PerturbTypeDesc(namedtuple('ErrorType', 'name description perturb_amount')
         if self.description:
             create_sounding_dataset(curr_perturb_grp, "description", self.description)
 
-        create_sounding_dataset(curr_perturb_grp, "derivative", perturb_rad_diff / self.perturb_amount, "SciColor", units)
-        create_sounding_dataset(curr_perturb_grp, "perturbation_amount", self.perturb_amount)
+        if self.perturb_amount is not None:
+            create_sounding_dataset(curr_perturb_grp, "derivative", perturb_rad_diff / self.perturb_amount, "SciColor", units)
+            create_sounding_dataset(curr_perturb_grp, "perturbation_amount", self.perturb_amount)
+        else:
+            create_sounding_dataset(curr_perturb_grp, "radiance_difference", perturb_rad_diff, "SciColor", units)
 
         return curr_perturb_grp
 
@@ -167,7 +170,7 @@ class StokesStorage(ObserverStokesUpdate):
 
 class FmPerturbations(object):
 
-    def __init__(self, config_filename, output_file, use_existing=False, check_reset=False, perturb_type_filters=[], run_retrieval=True, save_stokes=True, num_perturbed_iterations=0, gain_perturb=None):
+    def __init__(self, config_filename, output_file, use_existing=False, check_reset=False, perturb_type_filters=[], run_retrieval=True, save_stokes=True, num_perturbed_iterations=0, gain_perturb=None, output_group="Perturbations"):
         # Load Lua state, and config object
         self.ls, self.lua_config = l2_lua.load_lua_config(config_filename)
 
@@ -186,6 +189,9 @@ class FmPerturbations(object):
 
         # Perturbation for writing gain datasets
         self.gain_perturb = gain_perturb
+
+        # Name of the group that perturbation datasets are added to
+        self.output_group = output_group
      
         # Get the list of perturb case functions that will be run
         self.filtered_perturb_funcs = filter_perturb_funcs(_fm_perturb_funcs, perturb_type_filters)
@@ -370,14 +376,19 @@ class FmPerturbations(object):
         self.lua_config.rt.add_observer(stokes_storage)
         
         # Re-open output file and add perturb terms
-        out_hdf = h5py.File(self.output_file, "r+")
-        fm_err_grp = out_hdf.create_group("Forward_Model_Errors")
+        if os.path.exists(self.output_file):
+            out_hdf = h5py.File(self.output_file, "r+")
+        else:
+            out_hdf = h5py.File(self.output_file, "w")
+        fm_err_grp = out_hdf.create_group(self.output_group)
 
         # Must rerun FM+Jacobians for final statevector
         unpert_spec_range = self.calc_final_radiance_jacobian(meas_spec, out_hdf, fm_err_grp)
 
         # Use this when modifying things per band
-        band_num_pix = out_hdf["/SpectralParameters/num_colors_per_band"][0,:]
+        num_colors_per_band_ds = out_hdf.get("/SpectralParameters/num_colors_per_band", None)
+        if num_colors_per_band_ds is not None:
+            band_num_pix = num_colors_per_band_ds[0,:]
 
         # Radiometry gain
         if self.gain_perturb is not None:
