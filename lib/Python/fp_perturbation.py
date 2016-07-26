@@ -234,7 +234,10 @@ class FmPerturbations(object):
 
         unpert_grp = fm_err_grp.create_group("Unperturbed")
         create_sounding_dataset(unpert_grp, "modeled_radiance", unpert_spec_range.data, "SciColor", unpert_spec_range.units.name)
-        create_sounding_dataset(out_hdf, "Jacobian", self.lua_config.conn_solver.jacobian, ("SciColor", "SVElem"))
+
+        jacobian_data = self.lua_config.conn_solver.jacobian
+        if numpy.product(jacobian_data.shape) > 0:
+            create_sounding_dataset(out_hdf, "Jacobian", jacobian_data, ("SciColor", "SVElem"))
 
         return unpert_spec_range
 
