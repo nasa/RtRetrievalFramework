@@ -53,7 +53,7 @@ def register_multiple_perturb_types(prefix_name):
         return None
     return do_register
 
-def filter_perturb_funcs(func_dict, filters):
+def filter_perturb_funcs(filters, func_dict=_fm_perturb_funcs):
     "Returns perturb function dict with only functions matching the filter string list"
 
     if len(filters) == 0:
@@ -194,7 +194,7 @@ class FmPerturbations(object):
         self.output_group = output_group
      
         # Get the list of perturb case functions that will be run
-        self.filtered_perturb_funcs = filter_perturb_funcs(_fm_perturb_funcs, perturb_type_filters)
+        self.filtered_perturb_funcs = filter_perturb_funcs(perturb_type_filters)
 
         # Wheter a retrieval should be run before perturbations values are calculated
         self.run_retrieval = run_retrieval
