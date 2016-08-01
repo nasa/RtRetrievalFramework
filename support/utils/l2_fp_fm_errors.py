@@ -10,7 +10,7 @@ import re
 from collections import namedtuple
 from six.moves import zip_longest
 
-from full_physics.fp_perturbation import BAND_NAMES, register_multiple_perturb_types, register_perturb_init, FmPerturbations, log_info, PerturbTypeDesc
+from full_physics.fp_perturbation import BAND_NAMES, register_multiple_perturb_types, register_perturb_init, FmPerturbations, log_info, PerturbTypeDesc, filter_perturb_funcs 
 
 # Set up ABSCO files that should be used for base calculation
 # and spectroscopy error cases
@@ -197,7 +197,7 @@ if __name__ == "__main__":
     
     if options.list_error_types:
         print("Will process the following error types:")
-        for name in sorted(filter_error_funcs(_fm_error_funcs, options.error_type_filters).keys()):
+        for name in sorted(filter_perturb_funcs(options.error_type_filters).keys()):
             print(name)
         sys.exit(1)
 
