@@ -7,6 +7,10 @@
 %base_import(aerosol_extinction_imp_base)
 %import "pressure.i"
 %fp_shared_ptr(FullPhysics::AerosolExtinctionLog)
+
+// Force to be not abstract, SWIG had troubles seeing that the clone methods ARE implemented below
+%feature("notabstract") AerosolExtinctionLog;
+
 namespace FullPhysics {
 class AerosolExtinctionLog : public AerosolExtinctionImpBase { 
 public:
