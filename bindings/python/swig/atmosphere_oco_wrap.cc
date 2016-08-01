@@ -6977,6 +6977,106 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_AtmosphereOco_set_aerosol(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::AtmosphereOco *arg1 = (FullPhysics::AtmosphereOco *) 0 ;
+  boost::shared_ptr< FullPhysics::Aerosol > *arg2 = 0 ;
+  FullPhysics::StateVector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::AtmosphereOco > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AtmosphereOco > *smartarg1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::Aerosol > tempshared2 ;
+  boost::shared_ptr< FullPhysics::Aerosol > temp2shared2 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  boost::shared_ptr< FullPhysics::StateVector > tempshared3 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"AtmosphereOco_set_aerosol",3,3,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AtmosphereOco_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AtmosphereOco_set_aerosol" "', argument " "1"" of type '" "FullPhysics::AtmosphereOco *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::AtmosphereOco > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::AtmosphereOco > * >(argp1);
+      arg1 = const_cast< FullPhysics::AtmosphereOco * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::AtmosphereOco > * >(argp1);
+      arg1 = const_cast< FullPhysics::AtmosphereOco * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Aerosol_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AtmosphereOco_set_aerosol" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Aerosol > &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Aerosol > * >(argp2);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::Aerosol > * >(argp2);
+      arg2 = &tempshared2;
+    } else {
+      arg2 = (argp2) ? reinterpret_cast< boost::shared_ptr< FullPhysics::Aerosol > * >(argp2) : &tempshared2;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg2->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared2.reset(arg2->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg2 = &temp2shared2;
+    }
+  }
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::StateVector *ptr;
+    res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], (void**)(&ptr), SWIGTYPE_p_FullPhysics__StateVector,  0 , &newmem);
+    if (SWIG_IsOK(res3)) {
+      arg3 = ptr;
+    } else {
+      res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t,  0 , &newmem);
+      if (!SWIG_IsOK(res3)) {
+        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "AtmosphereOco_set_aerosol" "', argument " "3"" of type '" "FullPhysics::StateVector &""'"); 
+      }
+      if (!argp3) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AtmosphereOco_set_aerosol" "', argument " "3"" of type '" "FullPhysics::StateVector &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared3 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::StateVector > * >(argp3);
+        delete reinterpret_cast< boost::shared_ptr<  FullPhysics::StateVector > * >(argp3);
+        arg3 = const_cast< FullPhysics::StateVector * >(tempshared3.get());
+      } else {
+        arg3 = const_cast< FullPhysics::StateVector * >(reinterpret_cast< boost::shared_ptr<  FullPhysics::StateVector > * >(argp3)->get());
+      }
+    }
+  }
+  {
+    try {
+      (arg1)->set_aerosol(*arg2,*arg3);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_AtmosphereOco__v_temperature(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::AtmosphereOco *arg1 = (FullPhysics::AtmosphereOco *) 0 ;
@@ -7449,6 +7549,13 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"const boost::shared_ptr<Aerosol>& FullPhysics::AtmosphereOco::aerosol_ptr() const\n"
 		"\n"
+		""},
+	 { (char *)"AtmosphereOco_set_aerosol", _wrap_AtmosphereOco_set_aerosol, METH_VARARGS, (char *)"\n"
+		"\n"
+		"void AtmosphereOco::set_aerosol(boost::shared_ptr< Aerosol > &new_aerosol, StateVector &Sv)\n"
+		"Changes the aerosol class used.\n"
+		"\n"
+		"Notifies the relevant obsevers and invalidates the cache \n"
 		""},
 	 { (char *)"AtmosphereOco__v_temperature", (PyCFunction)_wrap_AtmosphereOco__v_temperature, METH_O, (char *)"\n"
 		"\n"

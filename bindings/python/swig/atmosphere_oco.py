@@ -278,6 +278,17 @@ class AtmosphereOco(full_physics_swig.rt_atmosphere.RtAtmosphere, full_physics_s
         return self._v_aerosol()
 
 
+    def set_aerosol(self, new_aerosol, Sv):
+        """
+
+        void AtmosphereOco::set_aerosol(boost::shared_ptr< Aerosol > &new_aerosol, StateVector &Sv)
+        Changes the aerosol class used.
+
+        Notifies the relevant obsevers and invalidates the cache 
+        """
+        return _atmosphere_oco.AtmosphereOco_set_aerosol(self, new_aerosol, Sv)
+
+
     def _v_temperature(self):
         """
 
@@ -407,6 +418,7 @@ AtmosphereOco._v_timer_info = new_instancemethod(_atmosphere_oco.AtmosphereOco__
 AtmosphereOco._v_pressure = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_pressure, None, AtmosphereOco)
 AtmosphereOco._v_absorber = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_absorber, None, AtmosphereOco)
 AtmosphereOco._v_aerosol = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_aerosol, None, AtmosphereOco)
+AtmosphereOco.set_aerosol = new_instancemethod(_atmosphere_oco.AtmosphereOco_set_aerosol, None, AtmosphereOco)
 AtmosphereOco._v_temperature = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_temperature, None, AtmosphereOco)
 AtmosphereOco._v_relative_humidity = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_relative_humidity, None, AtmosphereOco)
 AtmosphereOco._v_constant = new_instancemethod(_atmosphere_oco.AtmosphereOco__v_constant, None, AtmosphereOco)
