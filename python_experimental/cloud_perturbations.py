@@ -6,7 +6,12 @@ from __future__ import division
 import os
 import sys
 
-from full_physics.fp_perturbation import FmPerturbations, PerturbTypeDesc, register_perturb_type, register_multiple_perturb_types, register_perturb_init
+import h5py
+import numpy as np
+
+from full_physics.fp_perturbation import FmPerturbations, PerturbTypeDesc, register_perturb_type, register_multiple_perturb_types, register_perturb_init, filter_perturb_funcs
+
+from full_physics import AerosolExtinctionLinear, AerosolPropertyHdf, AerosolOptical, vector_aerosol_extinction, vector_aerosol_property
 
 ################################################################################
 
@@ -36,6 +41,60 @@ def perturb_cloud_top_pressure():
             return perturb_pressure
         yield perturb_name, make_perturb(perturb_name, pressure_dataset)
     
+@register_multiple_perturb_types("aerosol_extinction")
+def perturb_aerosol_extinction():
+
+    aerosol_perturb_def = { 'extinction': ("/Aerosol/TypesUsed", "/Perturbations/Profiles"),
+                            'type': ("/Perturbations/TypesUsed", "/Aerosol/Profiles"), }
+    for perturb_name, ds_names in aerosol_perturb_def.items():
+        def make_perturb(perturb_name, types_dataset_name, profiles_dataset_name):
+            def perturb_aerosol(ls, lua_config):
+                orig_aerosol = lua_config.atmosphere.aerosol
+                print("Original aerosol: ", orig_aerosol)
+
+                new_aerosol = create_aerosol_setup(lua_config, types_dataset_name, profiles_dataset_name)
+                print("New aerosol: ", new_aerosol)
+
+                lua_config.atmosphere.set_aerosol(new_aerosol, lua_config.state_vector)
+
+                yield PerturbTypeDesc("aerosol/%s" % perturb_name, "Perturbation of aerosol for %s" % perturb_name, None)
+
+                lua_config.atmosphere.set_aerosol(orig_aerosol, lua_config.state_vector)
+            return perturb_aerosol
+        types_dataset_name, profiles_dataset_name = ds_names
+        yield perturb_name, make_perturb(perturb_name, types_dataset_name, profiles_dataset_name)
+
+def create_aerosol_setup(lua_config, types_dataset_name, profiles_dataset_name):
+    hdf_file = lua_config.l1b_hdf_file(lua_config)
+
+    sid = lua_config.l1b_sid_list(lua_config)
+    frame_idx = sid.frame_number
+    sounding_idx = sid.sounding_number
+
+    type_indexes = hdf_file.read_int_3d(types_dataset_name)[frame_idx, sounding_idx, :]
+
+    with h5py.File(hdf_file.file_name, "r") as h5py_obj:
+        type_names = list(h5py_obj["/Aerosol/TypeNames"].value)
+    type_profiles = hdf_file.read_double_4d(profiles_dataset_name)[frame_idx, sounding_idx, :, :]
+
+    aerosols_used = set()
+    for idx in type_indexes:
+        if idx >= 0:
+            aerosols_used.add(type_names[idx])
+
+    aerosol_extinction = vector_aerosol_extinction()
+    aerosol_properties = vector_aerosol_property()
+    for aer_name in aerosols_used:
+        profile = type_profiles[type_names.index(aer_name), :][:]
+        ret_flag = np.zeros(profile.shape[0], dtype=bool)
+        ext = AerosolExtinctionLinear(lua_config.pressure, ret_flag, profile, aer_name)
+        aerosol_extinction.push_back(ext)
+
+        aer_hdf_file = lua_config.h_aerosol(lua_config)
+        prop = AerosolPropertyHdf(aer_hdf_file, "%s/Properties" % aer_name, lua_config.pressure)
+        aerosol_properties.push_back(prop)
+    
+    return AerosolOptical(aerosol_extinction, aerosol_properties, lua_config.pressure, lua_config.relative_humidity)
 
 ################################################################################
 
@@ -88,7 +147,7 @@ if __name__ == "__main__":
     
     if options.list_error_types:
         print("Will process the following error types:")
-        for name in sorted(filter_error_funcs(_fm_error_funcs, options.error_type_filters).keys()):
+        for name in sorted(filter_perturb_funcs(options.error_type_filters).keys()):
             print(name)
         sys.exit(1)
 
