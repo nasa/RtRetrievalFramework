@@ -28,7 +28,7 @@ class FakePopulator(PopulatorBase):
         self.target_cluster = 'pbs_pro'
         self.array_idx_var_name = 'PBS_ARRAY_INDEX'
         self.job_array_option = '-J'
-        self.depend_option = "-W depend=afterok"
+        self.depend_option = "-W depend=afterany"
         self.group_size = 1
 
     @property
