@@ -5049,6 +5049,151 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
 }
 
 
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+SWIGINTERN int
+SWIG_AsVal_double (PyObject *obj, double *val)
+{
+  int res = SWIG_TypeError;
+  if (PyFloat_Check(obj)) {
+    if (val) *val = PyFloat_AsDouble(obj);
+    return SWIG_OK;
+  } else if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else if (PyLong_Check(obj)) {
+    double v = PyLong_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    double d = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = d;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      long v = PyLong_AsLong(obj);
+      if (!PyErr_Occurred()) {
+	if (val) *val = v;
+	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
+      } else {
+	PyErr_Clear();
+      }
+    }
+  }
+#endif
+  return res;
+}
+
+
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx = floor(x);
+   double cx = ceil(x);
+   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_int (PyObject * obj, int *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < INT_MIN || v > INT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< int >(v);
+    }
+  }  
+  return res;
+}
+
+
 struct SWIG_null_deleter {
   void operator() (void const *) const {
   }
@@ -5126,6 +5271,7 @@ SWIGINTERN PyObject *_wrap_new_GasVmrApriori(PyObject *SWIGUNUSEDPARM(self), PyO
   FullPhysics::HdfFile *arg4 = 0 ;
   std::string *arg5 = 0 ;
   std::string *arg6 = 0 ;
+  int arg7 ;
   void *argp1 ;
   int res1 = 0 ;
   boost::shared_ptr< FullPhysics::Ecmwf > tempshared1 ;
@@ -5143,10 +5289,12 @@ SWIGINTERN PyObject *_wrap_new_GasVmrApriori(PyObject *SWIGUNUSEDPARM(self), PyO
   boost::shared_ptr< FullPhysics::HdfFile const > tempshared4 ;
   int res5 = SWIG_OLDOBJ ;
   int res6 = SWIG_OLDOBJ ;
-  PyObject *swig_obj[6] ;
+  int val7 ;
+  int ecode7 = 0 ;
+  PyObject *swig_obj[7] ;
   FullPhysics::GasVmrApriori *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args,"new_GasVmrApriori",6,6,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"new_GasVmrApriori",7,7,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ecmwf_t,  0 , &newmem);
@@ -5269,9 +5417,14 @@ SWIGINTERN PyObject *_wrap_new_GasVmrApriori(PyObject *SWIGUNUSEDPARM(self), PyO
     }
     arg6 = ptr;
   }
+  ecode7 = SWIG_AsVal_int(swig_obj[6], &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_GasVmrApriori" "', argument " "7"" of type '" "int""'");
+  } 
+  arg7 = static_cast< int >(val7);
   {
     try {
-      result = (FullPhysics::GasVmrApriori *)new FullPhysics::GasVmrApriori((boost::shared_ptr< FullPhysics::Ecmwf > const &)*arg1,(boost::shared_ptr< FullPhysics::Level1b > const &)*arg2,(boost::shared_ptr< FullPhysics::Altitude > const &)*arg3,(FullPhysics::HdfFile const &)*arg4,(std::string const &)*arg5,(std::string const &)*arg6);
+      result = (FullPhysics::GasVmrApriori *)new FullPhysics::GasVmrApriori((boost::shared_ptr< FullPhysics::Ecmwf > const &)*arg1,(boost::shared_ptr< FullPhysics::Level1b > const &)*arg2,(boost::shared_ptr< FullPhysics::Altitude > const &)*arg3,(FullPhysics::HdfFile const &)*arg4,(std::string const &)*arg5,(std::string const &)*arg6,arg7);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5694,7 +5847,7 @@ static PyMethodDef SwigMethods[] = {
 		"GasVmrApriori::GasVmrApriori(const boost::shared_ptr< Ecmwf > &Ecmwf_file, const\n"
 		"boost::shared_ptr< Level1b > &L1b_file, const boost::shared_ptr<\n"
 		"Altitude > &Alt, const HdfFile &Hdf_static_input, const std::string\n"
-		"&Hdf_group, const std::string &Gas_name)\n"
+		"&Hdf_group, const std::string &Gas_name, const int temp_avg_window=11)\n"
 		"\n"
 		""},
 	 { (char *)"GasVmrApriori__v_apriori_vmr", _wrap_GasVmrApriori__v_apriori_vmr, METH_VARARGS, (char *)"\n"

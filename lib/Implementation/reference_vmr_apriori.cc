@@ -4,6 +4,12 @@
 #include "linear_interpolate.h"
 #include "fp_logger.h"
 
+/*
+* DEBUG *
+#include <fstream>
+* DEBUG *
+*/
+
 using namespace FullPhysics;
 using namespace blitz;
 using namespace boost::posix_time;
@@ -64,15 +70,19 @@ std::map<std::string, double> seasonal_amplitude =
     {"CO2",     0.0081},
     {"CO",      0.25},
 };
-//
-// From original code
+
+// Lapse rate threshold in deg C/km
 const double lapse_rate_threshold = -2;
 
-// Number of points before and after the current temperature value
-// to average among
-const int temp_avg_window = 5;
+// How many km above the level where the lapse rate should still does not exceed 2 degC/km
+const double mean_lapse_rate_region_alt = 2;
 
-ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_altitude,
+// Bounds of pressure levels to consider when searching for tropopause altitude
+const double tropopause_min_press = 7500;
+const double tropopause_max_press = 45000;
+
+ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_pressure,
+                                         const blitz::Array<double, 1>& Model_altitude,
                                          const blitz::Array<double, 1>& Model_temperature,
                                          const blitz::Array<double, 1>& Ref_altitude,
                                          const double Ref_latitude,
@@ -80,24 +90,10 @@ ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_al
                                          const double Ref_tropopause_altitude,
                                          const double Obs_latitude,
                                          const Time& Obs_time)
-: model_altitude(Model_altitude), 
+: model_pressure(Model_pressure), model_altitude(Model_altitude), model_temperature(Model_temperature), 
   ref_altitude(Ref_altitude), ref_latitude(Ref_latitude), ref_time(Ref_time), ref_tropopause_altitude(Ref_tropopause_altitude),
   obs_latitude(Obs_latitude), obs_time(Obs_time)
 {
-    // Smooth the model temperature out with a simple moving average to reduce problems finding
-    // tropopause altitude due to kinks in the data
-    model_temperature.resize(Model_temperature.rows());
-    for (int out_idx = 0; out_idx < Model_temperature.rows(); out_idx++) {
-        double sum = 0;
-        int count = 0;
-        int avg_beg = std::max(out_idx - temp_avg_window, 0);
-        int avg_end = std::min(out_idx + temp_avg_window, Model_temperature.rows() - 1);
-        for(int avg_idx = avg_beg; avg_idx <= avg_end; avg_idx++) {
-            sum += Model_temperature(avg_idx);
-            count++;
-        }
-        model_temperature(out_idx) = sum/count;
-    }
 }
 
 //-----------------------------------------------------------------------
@@ -112,27 +108,77 @@ double ReferenceVmrApriori::model_tropopause_altitude() const
     // Equatorial radius (km)
     double radius = OldConstant::wgs84_a.convert(units::km).value;
 
-    double last_lr_alt = 0;
-    double last_lapse_rate = 0;
-    double ztrop = 0;
+    // Precompute lapse rates for evaluation
+    blitz::Array<double, 1> lapse_rates(model_altitude.rows());
+    lapse_rates(0) = 0.0;
+    double min_temp_val = max(model_temperature);
+    double min_temp_idx = -1;
     for (int i = 1; i < model_altitude.rows(); i++) {
         // Lapse rate
-        double lapse_rate = (model_temperature(i) - model_temperature(i - 1)) / 
+        lapse_rates(i) = (model_temperature(i) - model_temperature(i - 1)) / 
             (model_altitude(i) - model_altitude(i - 1));
 
-        // Altitude at which lapse rate == lr
-        double lr_alt = 0.5 * (model_altitude(i) + model_altitude(i - 1));
-
-        if(model_altitude(i - 1) > 5.0 && lapse_rate > lapse_rate_threshold) {
-            ztrop = last_lr_alt + (lr_alt - last_lr_alt) * (-2 - last_lapse_rate) /(lapse_rate - last_lapse_rate);
-            ztrop = ztrop / (1 - ztrop / radius);  // convert H to Z
-            return ztrop;
+        // Save minimum temperature in case lapse rate check fails, but only
+        // where we are within a valid preesure region
+        if( model_pressure(i) > tropopause_min_press && model_pressure(i) < tropopause_max_press && 
+            model_temperature(i) < min_temp_val ) {
+            min_temp_val = model_temperature(i);
+            min_temp_idx = i;
         }
-
-        last_lr_alt = lr_alt;
-        last_lapse_rate = lapse_rate;
     }
-    throw Exception("Could not determine tropopause altitude");
+
+    // Find lowest level where lapse rate is below the threshold
+    int lr_idx = -1;
+    for (int chk_idx = 1; chk_idx < lapse_rates.rows(); chk_idx++) {
+        double lay_p = 0.5 * (model_pressure(chk_idx) + model_pressure(chk_idx - 1));
+        double lay_alt = 0.5 * (model_altitude(chk_idx) + model_altitude(chk_idx - 1));
+
+        if( lay_p > tropopause_min_press && lay_p < tropopause_max_press &&
+            lapse_rates(chk_idx) > lapse_rate_threshold ) {
+
+            // Check if mean lapse rate at the 2 km above the current level does not exceeed the threshold
+            double lr_sum = 0;
+            int avg_idx = chk_idx;
+            double avg_alt;
+            do {
+                avg_idx++;
+                avg_alt = 0.5 * (model_altitude(avg_idx) + model_altitude(avg_idx - 1));
+                lr_sum += lapse_rates(avg_idx);
+            } while (avg_idx < lapse_rates.rows() && avg_alt < (lay_alt + mean_lapse_rate_region_alt));
+
+            double lr_mean = lr_sum / (avg_idx - chk_idx);
+            if (lr_mean >= lapse_rate_threshold) {
+                lr_idx = chk_idx;
+                break;
+            }
+        }
+    }
+
+    // No tropopause found, use location of minimum temperature, we need at least to be two levels in for averaging
+    if (lr_idx < 2) {
+        Logger::warning() << "Could not determine tropopause altitude using lapse rate, falling back to minimum temperature";
+        lr_idx = min_temp_idx; 
+    }
+
+    // Altitude at which lapse rate == lr
+    double last_lr_alt = 0.5 * (model_altitude(lr_idx - 1) + model_altitude(lr_idx - 2));
+    double lr_alt = 0.5 * (model_altitude(lr_idx) + model_altitude(lr_idx - 1));
+
+    double ztrop = last_lr_alt + (lr_alt - last_lr_alt) * (lapse_rate_threshold - lapse_rates(lr_idx-1)) /(lapse_rates(lr_idx) - lapse_rates(lr_idx - 1));
+    ztrop = ztrop / (1 - ztrop / radius);  // convert H to Z
+
+    /*
+     * DEBUG *
+    std::ofstream debug("model_tropopause_altitude.debug");
+    debug << lr_idx << "\t" << ztrop << std::endl;
+    debug << "press, alt, temp, lr" << std::endl;
+    for (int i = 0; i < model_altitude.rows(); i++) {
+        debug << i << "\t" << model_pressure(i) << "\t" << model_altitude(i) << "\t" << model_temperature(i) << "\t" << lapse_rates(i) << std::endl;
+    }
+     * DEBUG *
+    */
+
+    return ztrop;
 }
 
 //-----------------------------------------------------------------------
@@ -160,7 +206,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::effective_altitude() const
         }
         
         // Don't let effective altitude exceeed limit of model altitude
-        if(zeff > model_altitude(model_altitude.rows() - 1)) {
+        if(zeff <= model_altitude(model_altitude.rows() - 1)) {
             zeff = model_altitude(model_altitude.rows() - 1);
         }
 
