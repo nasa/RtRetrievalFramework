@@ -206,7 +206,7 @@ const blitz::Array<double, 1> ReferenceVmrApriori::effective_altitude() const
         }
         
         // Don't let effective altitude exceeed limit of model altitude
-        if(zeff <= model_altitude(model_altitude.rows() - 1)) {
+        if(zeff > model_altitude(model_altitude.rows() - 1)) {
             zeff = model_altitude(model_altitude.rows() - 1);
         }
 
