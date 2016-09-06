@@ -4,12 +4,6 @@
 #include "linear_interpolate.h"
 #include "fp_logger.h"
 
-/*
-* DEBUG *
-#include <fstream>
-* DEBUG *
-*/
-
 using namespace FullPhysics;
 using namespace blitz;
 using namespace boost::posix_time;
@@ -166,17 +160,6 @@ double ReferenceVmrApriori::model_tropopause_altitude() const
 
     double ztrop = last_lr_alt + (lr_alt - last_lr_alt) * (lapse_rate_threshold - lapse_rates(lr_idx-1)) /(lapse_rates(lr_idx) - lapse_rates(lr_idx - 1));
     ztrop = ztrop / (1 - ztrop / radius);  // convert H to Z
-
-    /*
-     * DEBUG *
-    std::ofstream debug("model_tropopause_altitude.debug");
-    debug << lr_idx << "\t" << ztrop << std::endl;
-    debug << "press, alt, temp, lr" << std::endl;
-    for (int i = 0; i < model_altitude.rows(); i++) {
-        debug << i << "\t" << model_pressure(i) << "\t" << model_altitude(i) << "\t" << model_temperature(i) << "\t" << lapse_rates(i) << std::endl;
-    }
-     * DEBUG *
-    */
 
     return ztrop;
 }
