@@ -11,7 +11,8 @@
 namespace FullPhysics {
 class ReferenceVmrApriori : public GenericObject {
 public:
-    ReferenceVmrApriori(const blitz::Array<double, 1>& Model_altitude,
+    ReferenceVmrApriori(const blitz::Array<double, 1>& Model_pressure,
+                        const blitz::Array<double, 1>& Model_altitude,
                         const blitz::Array<double, 1>& Model_temperature,
                         const blitz::Array<double, 1>& Ref_altitude,
                         const double Ref_latitude,
