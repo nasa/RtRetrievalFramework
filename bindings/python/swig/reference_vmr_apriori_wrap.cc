@@ -5005,33 +5005,36 @@ SWIGINTERN PyObject *_wrap_new_ReferenceVmrApriori(PyObject *SWIGUNUSEDPARM(self
   blitz::Array< double,1 > *arg1 = 0 ;
   blitz::Array< double,1 > *arg2 = 0 ;
   blitz::Array< double,1 > *arg3 = 0 ;
-  double arg4 ;
-  FullPhysics::Time *arg5 = 0 ;
-  double arg6 ;
+  blitz::Array< double,1 > *arg4 = 0 ;
+  double arg5 ;
+  FullPhysics::Time *arg6 = 0 ;
   double arg7 ;
-  FullPhysics::Time *arg8 = 0 ;
+  double arg8 ;
+  FullPhysics::Time *arg9 = 0 ;
   blitz::Array< double,1 > a1 ;
   PythonObject numpy1 ;
   blitz::Array< double,1 > a2 ;
   PythonObject numpy2 ;
   blitz::Array< double,1 > a3 ;
   PythonObject numpy3 ;
-  double val4 ;
-  int ecode4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  boost::shared_ptr< FullPhysics::Time const > tempshared5 ;
-  double val6 ;
-  int ecode6 = 0 ;
+  blitz::Array< double,1 > a4 ;
+  PythonObject numpy4 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  boost::shared_ptr< FullPhysics::Time const > tempshared6 ;
   double val7 ;
   int ecode7 = 0 ;
-  void *argp8 = 0 ;
-  int res8 = 0 ;
-  boost::shared_ptr< FullPhysics::Time const > tempshared8 ;
-  PyObject *swig_obj[8] ;
+  double val8 ;
+  int ecode8 = 0 ;
+  void *argp9 = 0 ;
+  int res9 = 0 ;
+  boost::shared_ptr< FullPhysics::Time const > tempshared9 ;
+  PyObject *swig_obj[9] ;
   FullPhysics::ReferenceVmrApriori *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args,"new_ReferenceVmrApriori",8,8,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"new_ReferenceVmrApriori",9,9,swig_obj)) SWIG_fail;
   {
     int res = SWIG_ConvertPtr(swig_obj[0], (void**)(&arg1), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
       0 );
@@ -5065,74 +5068,85 @@ SWIGINTERN PyObject *_wrap_new_ReferenceVmrApriori(PyObject *SWIGUNUSEDPARM(self
       arg3 = &a3;
     }
   }
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_ReferenceVmrApriori" "', argument " "4"" of type '" "double""'");
+  {
+    int res = SWIG_ConvertPtr(swig_obj[3], (void**)(&arg4), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy4.obj = to_numpy<double>(swig_obj[3]);
+      if(!numpy4.obj)
+      return NULL;
+      a4.reference(to_blitz_array<double, 1>(numpy4));
+      arg4 = &a4;
+    }
+  }
+  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_ReferenceVmrApriori" "', argument " "5"" of type '" "double""'");
   } 
-  arg4 = static_cast< double >(val4);
+  arg5 = static_cast< double >(val5);
   {
     int newmem = 0;
     // Added mms
     // First check to see if all ready pointer type
     FullPhysics::Time *ptr;
-    res5 = SWIG_ConvertPtrAndOwn(swig_obj[4], (void**)(&ptr), SWIGTYPE_p_FullPhysics__Time,  0 , &newmem);
-    if (SWIG_IsOK(res5)) {
-      arg5 = ptr;
+    res6 = SWIG_ConvertPtrAndOwn(swig_obj[5], (void**)(&ptr), SWIGTYPE_p_FullPhysics__Time,  0 , &newmem);
+    if (SWIG_IsOK(res6)) {
+      arg6 = ptr;
     } else {
-      res5 = SWIG_ConvertPtrAndOwn(swig_obj[4], &argp5, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Time_t,  0 , &newmem);
-      if (!SWIG_IsOK(res5)) {
-        SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "new_ReferenceVmrApriori" "', argument " "5"" of type '" "FullPhysics::Time const &""'"); 
+      res6 = SWIG_ConvertPtrAndOwn(swig_obj[5], &argp6, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Time_t,  0 , &newmem);
+      if (!SWIG_IsOK(res6)) {
+        SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "new_ReferenceVmrApriori" "', argument " "6"" of type '" "FullPhysics::Time const &""'"); 
       }
-      if (!argp5) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ReferenceVmrApriori" "', argument " "5"" of type '" "FullPhysics::Time const &""'"); 
+      if (!argp6) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ReferenceVmrApriori" "', argument " "6"" of type '" "FullPhysics::Time const &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
-        tempshared5 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Time > * >(argp5);
-        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Time > * >(argp5);
-        arg5 = const_cast< FullPhysics::Time * >(tempshared5.get());
+        tempshared6 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Time > * >(argp6);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Time > * >(argp6);
+        arg6 = const_cast< FullPhysics::Time * >(tempshared6.get());
       } else {
-        arg5 = const_cast< FullPhysics::Time * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::Time > * >(argp5)->get());
+        arg6 = const_cast< FullPhysics::Time * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::Time > * >(argp6)->get());
       }
     }
   }
-  ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_ReferenceVmrApriori" "', argument " "6"" of type '" "double""'");
-  } 
-  arg6 = static_cast< double >(val6);
   ecode7 = SWIG_AsVal_double(swig_obj[6], &val7);
   if (!SWIG_IsOK(ecode7)) {
     SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_ReferenceVmrApriori" "', argument " "7"" of type '" "double""'");
   } 
   arg7 = static_cast< double >(val7);
+  ecode8 = SWIG_AsVal_double(swig_obj[7], &val8);
+  if (!SWIG_IsOK(ecode8)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_ReferenceVmrApriori" "', argument " "8"" of type '" "double""'");
+  } 
+  arg8 = static_cast< double >(val8);
   {
     int newmem = 0;
     // Added mms
     // First check to see if all ready pointer type
     FullPhysics::Time *ptr;
-    res8 = SWIG_ConvertPtrAndOwn(swig_obj[7], (void**)(&ptr), SWIGTYPE_p_FullPhysics__Time,  0 , &newmem);
-    if (SWIG_IsOK(res8)) {
-      arg8 = ptr;
+    res9 = SWIG_ConvertPtrAndOwn(swig_obj[8], (void**)(&ptr), SWIGTYPE_p_FullPhysics__Time,  0 , &newmem);
+    if (SWIG_IsOK(res9)) {
+      arg9 = ptr;
     } else {
-      res8 = SWIG_ConvertPtrAndOwn(swig_obj[7], &argp8, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Time_t,  0 , &newmem);
-      if (!SWIG_IsOK(res8)) {
-        SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "new_ReferenceVmrApriori" "', argument " "8"" of type '" "FullPhysics::Time const &""'"); 
+      res9 = SWIG_ConvertPtrAndOwn(swig_obj[8], &argp9, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Time_t,  0 , &newmem);
+      if (!SWIG_IsOK(res9)) {
+        SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "new_ReferenceVmrApriori" "', argument " "9"" of type '" "FullPhysics::Time const &""'"); 
       }
-      if (!argp8) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ReferenceVmrApriori" "', argument " "8"" of type '" "FullPhysics::Time const &""'"); 
+      if (!argp9) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ReferenceVmrApriori" "', argument " "9"" of type '" "FullPhysics::Time const &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
-        tempshared8 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Time > * >(argp8);
-        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Time > * >(argp8);
-        arg8 = const_cast< FullPhysics::Time * >(tempshared8.get());
+        tempshared9 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Time > * >(argp9);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Time > * >(argp9);
+        arg9 = const_cast< FullPhysics::Time * >(tempshared9.get());
       } else {
-        arg8 = const_cast< FullPhysics::Time * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::Time > * >(argp8)->get());
+        arg9 = const_cast< FullPhysics::Time * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::Time > * >(argp9)->get());
       }
     }
   }
   {
     try {
-      result = (FullPhysics::ReferenceVmrApriori *)new FullPhysics::ReferenceVmrApriori((blitz::Array< double,1 > const &)*arg1,(blitz::Array< double,1 > const &)*arg2,(blitz::Array< double,1 > const &)*arg3,arg4,(FullPhysics::Time const &)*arg5,arg6,arg7,(FullPhysics::Time const &)*arg8);
+      result = (FullPhysics::ReferenceVmrApriori *)new FullPhysics::ReferenceVmrApriori((blitz::Array< double,1 > const &)*arg1,(blitz::Array< double,1 > const &)*arg2,(blitz::Array< double,1 > const &)*arg3,(blitz::Array< double,1 > const &)*arg4,arg5,(FullPhysics::Time const &)*arg6,arg7,arg8,(FullPhysics::Time const &)*arg9);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5806,10 +5820,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SHARED_PTR_DISOWN_swigconstant", SHARED_PTR_DISOWN_swigconstant, METH_VARARGS, NULL},
 	 { (char *)"new_ReferenceVmrApriori", _wrap_new_ReferenceVmrApriori, METH_VARARGS, (char *)"\n"
 		"\n"
-		"ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array< double, 1 > &Model_altitude, const blitz::Array<\n"
-		"double, 1 > &Model_temperature, const blitz::Array< double, 1 >\n"
-		"&Ref_altitude, const double Ref_latitude, const Time &Ref_time, const\n"
-		"double Ref_tropopause_altitude, const double Obs_latitude, const Time\n"
+		"ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array< double, 1 > &Model_pressure, const blitz::Array<\n"
+		"double, 1 > &Model_altitude, const blitz::Array< double, 1 >\n"
+		"&Model_temperature, const blitz::Array< double, 1 > &Ref_altitude,\n"
+		"const double Ref_latitude, const Time &Ref_time, const double\n"
+		"Ref_tropopause_altitude, const double Obs_latitude, const Time\n"
 		"&Obs_time)\n"
 		"\n"
 		""},

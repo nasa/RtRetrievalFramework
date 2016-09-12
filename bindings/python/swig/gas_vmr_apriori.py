@@ -152,16 +152,16 @@ class GasVmrApriori(full_physics_swig.generic_object.GenericObject):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, Ecmwf_file, L1b_file, Alt, Hdf_static_input, Hdf_group, Gas_name):
+    def __init__(self, Ecmwf_file, L1b_file, Alt, Hdf_static_input, Hdf_group, Gas_name, temp_avg_window):
         """
 
         GasVmrApriori::GasVmrApriori(const boost::shared_ptr< Ecmwf > &Ecmwf_file, const
         boost::shared_ptr< Level1b > &L1b_file, const boost::shared_ptr<
         Altitude > &Alt, const HdfFile &Hdf_static_input, const std::string
-        &Hdf_group, const std::string &Gas_name)
+        &Hdf_group, const std::string &Gas_name, const int temp_avg_window=11)
 
         """
-        _gas_vmr_apriori.GasVmrApriori_swiginit(self, _gas_vmr_apriori.new_GasVmrApriori(Ecmwf_file, L1b_file, Alt, Hdf_static_input, Hdf_group, Gas_name))
+        _gas_vmr_apriori.GasVmrApriori_swiginit(self, _gas_vmr_apriori.new_GasVmrApriori(Ecmwf_file, L1b_file, Alt, Hdf_static_input, Hdf_group, Gas_name, temp_avg_window))
 
     @property
     def apriori_vmr(self):
