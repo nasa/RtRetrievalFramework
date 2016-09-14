@@ -278,7 +278,7 @@ EmpiricalOrthogonalFunction::EmpiricalOrthogonalFunction
     eof_.value.reference(Hdf_static_input.read_field<double, 1>(fldname));
     eof_depend_on_sounding_number_ = false;
   }
-  eof_.value = eof_.value / Uncertainty.value;
+  eof_.value = eof_.value * Uncertainty.value;
   // Scale eof so stddev is the given value
   double s = scale_to_stddev_ / sqrt(sum(sqr(eof_.value - mean(eof_.value))) /
 				     (eof_.value.size() - 1));
