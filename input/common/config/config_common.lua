@@ -1324,7 +1324,24 @@ function ConfigCommon.empirical_orthogonal_function:create()
    for i=1,self.config.number_pixel:rows() do
       local fit_scale = self:retrieval_flag(i)
       if(self.by_pixel) then
-         res[i] = EmpiricalOrthogonalFunction(self:apriori(i - 1)(0),
+	 if(self.scale_uncertainty) then
+    -- Luabind can only handle up to 10 arguments per function. As an easy
+    -- work around we put various values into an array
+	    local mq = Blitz_double_array_1d(5)
+	    mq:set(0, self:apriori(i - 1)(0))
+	    mq:set(1, i - 1)
+	    mq:set(2, self.config.sid:sounding_number())
+	    mq:set(3, self.order)
+	    mq:set(4, self.scale_to_stddev)
+	    res[i] = EmpiricalOrthogonalFunction.create(
+                                  fit_scale(0),
+                                  hdf_file,
+				  self.config.l1b:uncertainty_with_unit(i-1),
+				  self.config.common.desc_band_name:value(i-1),
+				  hdf_group,
+				  mq)
+	 else
+	    res[i] = EmpiricalOrthogonalFunction(self:apriori(i - 1)(0),
                                   fit_scale(0),
                                   hdf_file,
                                   i - 1,
@@ -1332,6 +1349,7 @@ function ConfigCommon.empirical_orthogonal_function:create()
                                   self.order, 
                                   self.config.common.desc_band_name:value(i-1),
                                   hdf_group)
+	 end
       else
          res[i] = EmpiricalOrthogonalFunction(self:apriori(i - 1)(0),
                                   fit_scale(0),
