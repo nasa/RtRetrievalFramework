@@ -242,6 +242,9 @@ function init_uq(config)
     config.fm.atmosphere.ground.coxmunk.apriori = uq_apriori_sounding_scalar("Ground/Windspeed")
     config.fm.atmosphere.ground.coxmunk.covariance = uq_covariance("Ground/Windspeed")
 
+    config.fm.atmosphere.ground.coxmunk_lambertian.apriori = uq_apriori_sounding_i("Ground/Albedo")
+    config.fm.atmosphere.ground.coxmunk_lambertian.covariance = uq_covariance_i("Ground/Albedo")
+
     ---------
     -- Gas --
     ---------
