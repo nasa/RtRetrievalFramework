@@ -23,6 +23,7 @@ REGISTER_LUA_CLASS(GasVmrApriori)
                           const int>())
 // Expose version which requires a Pressure argument
 .def("apriori_vmr", (const blitz::Array<double, 1>(GasVmrApriori::*)(const Pressure&) const) &GasVmrApriori::apriori_vmr)
+.def("tropopause_pressure", &GasVmrApriori::tropopause_pressure)
 REGISTER_LUA_END()
 #endif
     
