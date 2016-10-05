@@ -1,0 +1,9 @@
+begin HEADER
+  File_ID = "Windspeed F Covariance Matrix"
+  File_Creation = "Wed Mar 18 10:52:10 PDT 2009"
+  File_Type = "Matrix"
+  Num_Rows = 1
+  Num_Columns = 1
+  Windspeed_F = true
+end HEADER
+  2500.0D0

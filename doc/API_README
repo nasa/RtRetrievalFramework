@@ -1,0 +1,11 @@
+We use to check the doxygen documentation in as part of the source tree,
+but this was just too many files and was overwhelming subversion. So now
+you need to build your own copy.
+
+We have rules in the makefile to build doxygen documentation if doxygen is
+on your system. Do "make doxygen-run". 
+
+If you are on the JPL computers, there is a version of this already built
+and available at /groups/algorithm/level2_fp_doxygen/html/index.html.
+
+

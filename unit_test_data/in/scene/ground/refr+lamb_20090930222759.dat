@@ -1,0 +1,15 @@
+begin HEADER
+  File_ID = "Refractive Index + Lamberian - Ocean"
+  File_Creation = "Tue Aug 31 16:45:42 PDT 2010"
+  File_Type = "Matrix"
+  Num_Rows = 4
+  Num_Columns = 5
+  Labels = "PARAMETER" "COEFFICIENT" "REFR+LAMB_1" "REFR+LAMB_2" "REFR+LAMB_3"
+  center_wavelengths = 0.77 1.615 2.06
+end HEADER
+
+#parameter      COEFFICIENT  REFR+LAMB_1   REFR+LAMB_2    REFR+LAMB_3
+ 1              1                  1.331         1.318          1.303
+ 1              2                  0.000         0.000          0.000
+ 2              1                  0.100         0.100          0.100
+ 3              2                  0.000         0.000          0.000

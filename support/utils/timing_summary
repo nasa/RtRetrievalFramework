@@ -1,0 +1,141 @@
+#! /usr/bin/env ruby
+# This gives a summary of timing information from a run.
+require "rubygems"
+require "ruport"
+include Ruport
+require 'getoptlong'
+require 'find'
+
+opts = GetoptLong.new(
+["--help", "-h", GetoptLong::NO_ARGUMENT],
+["--full-report", "-r", GetoptLong::REQUIRED_ARGUMENT]
+)
+help = false
+fullreport = nil
+opts.each do |opt, arg|
+  help = true if(opt == "--help")
+  fullreport = arg if(opt == "--full-report")
+  csvreport = arg if(opt == "--csv-report")
+end
+if(help)
+  puts <<END
+This gives a summary of timing information. You can supply a list
+of directories to search, or if none is given we default to the
+current directory. We look for files that look like l2_20090627212549.log.
+
+The default report is just to give an overall summary. You can also
+request a --full-report=<outfilename> that gives detailed information to a 
+PDF or CSV report. If the output name ends in ".csv" then we output a csv
+report, otherwise it is a PDF report.
+END
+  exit 1
+end
+
+tab = Table([:sounding, :error, :twall, :vm, :rss, 
+             :num_success, :num_div, :tstep, :wall, 
+             :user, :sys])
+path = ARGV
+path = ["."] if (ARGV.size ==0)
+Find.find(*path) do |fn|
+  next unless fn =~ /l2_(\d+)\.log$/
+  row = {}
+  row[:sounding] = $1.to_i if($1)
+  row[:error] = "No error"
+  File.open(fn) do |f|
+    ln = f.readline until(f.eof? || ln =~/Final (Error )?Timing/)
+    row[:error] = "Error" if($1)
+    ln = f.readline until(f.eof? || ln =~/Total Wall clock time:\s*(\S+)/)
+    row[:twall] = $1.to_i if($1)
+    ln = f.readline until(f.eof? || ln =~/Virtual memory maximum:\s*(\S+)/)
+    row[:vm] = $1.to_f if($1)
+    ln = f.readline until(f.eof? || ln =~/Resident memory maximum:\s*(\S+)/)
+    row[:rss] = $1.to_f if($1)
+    ln = f.readline until(f.eof? || ln =~/Number successful steps:\s*(\d+)/)
+    row[:num_success] = $1.to_i if($1)
+    ln = f.readline until(f.eof? || ln =~/Number divergent steps:\s*(\d+)/)
+    row[:num_div] = $1.to_i if($1)
+    ln = f.readline until(f.eof? || ln =~/Total iteration:\s*(\d+)/)
+    row[:tstep] = $1.to_i if($1)
+    ln = f.readline until(f.eof? || ln =~/Normalized wall clock time per iteration:\s*(\S+)/)
+    row[:wall] = $1.to_f if($1)
+    ln = f.readline until(f.eof? || ln =~/Normalized user time per iteration:\s*(\S+)/)
+    row[:user] = $1.to_f if($1)
+    ln = f.readline until(f.eof? || ln =~/Normalized system time per iteration:\s*(\S+)/)
+    row[:sys] = $1.to_f if($1)
+  end
+  tab << row if(row[:tstep])
+end
+
+dsuccess = tab.rows_with(:error => "No error") 
+derr = tab.rows_with(:error => "Error") 
+
+t = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+dsuccess.each do |f|
+  t[0] += f[:twall]
+  t[1] += f[:vm]
+  t[2] += f[:rss]
+  t[3] += f[:num_success]
+  t[4] += f[:num_div]
+  t[5] += f[:tstep]
+  t[6] += f[:wall]
+  t[7] += f[:user]
+  t[8] += f[:sys]
+end
+puts "Successful Runs:"
+puts "  Average wall clock:          #{t[0] / dsuccess.size}"
+puts "  Average virtual memory max:  #{t[1] / dsuccess.size} MB"
+puts "  Average resident memory max: #{t[2] / dsuccess.size} MB"
+puts "  Average successful iter:     #{t[3] / dsuccess.size}"
+puts "  Average divergent iter:      #{t[4] / dsuccess.size}"
+puts "  Average total steps:         #{t[5] / dsuccess.size}"
+puts "  Average Wall Clock/Iter:     #{t[6] / dsuccess.size}"
+puts "  Average User Time/Iter:      #{t[7] / dsuccess.size}"
+puts "  Average System Time/Iter:    #{t[8] / dsuccess.size}"
+
+t = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+derr.each do |f|
+  t[0] += f[:twall]
+  t[1] += f[:vm]
+  t[2] += f[:rss]
+  t[3] += f[:num_success]
+  t[4] += f[:num_div]
+  t[5] += f[:tstep]
+  t[6] += f[:wall]
+  t[7] += f[:user]
+  t[8] += f[:sys]
+end
+puts "Error Runs:"
+puts "  Average wall clock:       #{t[0] / derr.size}"
+puts "  Average virtual memory max:  #{t[1] / derr.size} MB"
+puts "  Average resident memory max: #{t[2] / derr.size} MB"
+puts "  Average successful iter:  #{t[3] / derr.size}"
+puts "  Average divergent iter:   #{t[4] / derr.size}"
+puts "  Average total steps:      #{t[5] / derr.size}"
+puts "  Average Wall Clock/Iter:  #{t[5] / derr.size}"
+puts "  Average User Time/Iter:   #{t[6] / derr.size}"
+puts "  Average System Time/Iter: #{t[7] / derr.size}"
+
+if(fullreport)
+  tab.rename_columns(:sounding => "Sounding",
+                     :twall => "Total Time",
+                     :vm => "Virtual Memory Max",
+                     :rss => "Resident Memory Max",
+                     :num_success => "# Succ",
+                     :num_div => "# Diverg",
+                     :tstep => "Tot Steps",
+                     :wall => "Wall Clock/Iter",
+                     :user => "User/Iter",
+                     :sys => "Sys/Iter")
+  tab.sort_rows_by("Sounding")
+  g = Grouping(tab, :by => :error)
+  File.open(fullreport, "w") do |f|
+    if(fullreport =~ /\.csv$/)
+      f << g.to_csv
+    else
+      f << g.to_pdf
+    end
+  end
+end
+
+
+

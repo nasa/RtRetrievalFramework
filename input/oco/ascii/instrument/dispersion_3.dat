@@ -1,0 +1,15 @@
+begin HEADER
+  File_Creation = 2008-11-10T22:25:17 UTC
+  File_ID = "Dispersion parameters for footprint 3"
+  Labels =  "PARAMETER"  "DISP_1"  "DISP_2"  "DISP_3"
+  Num_Columns = 4
+  Num_Rows = 6
+end HEADER
+                             
+#   PARAMETER           DISP_1           DISP_2           DISP_3
+            1   7.57453000e-01   1.58994952e+00   2.04117995e+00
+            2   1.73516220e-05   3.62587433e-05   4.69871717e-05
+            3  -2.78341148e-09  -5.74601643e-09  -8.30140214e-09
+            4   0.00000000e+00  -5.00246212e-14   7.87960152e-13
+            5   0.00000000e+00   0.00000000e+00  -1.73629182e-16
+            6   0.00000000e+00   0.00000000e+00   0.00000000e+00

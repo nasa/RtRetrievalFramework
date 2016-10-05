@@ -1,0 +1,8 @@
+This contains the boost portable stack trace function. This is not yet in boost,
+but the code was made available in a post at http://lists.boost.org/Archives/boost/2010/10/172303.php. Rather than writing out own implementation, we have
+just copied the boost implementation here. This can go away if the boost
+library ever adds this, or if a replacement is added.
+
+We have included the supplied unit test in this directory. We don't actually
+do anything with this, and it isn't even compiled. But it is a useful reference
+to have.

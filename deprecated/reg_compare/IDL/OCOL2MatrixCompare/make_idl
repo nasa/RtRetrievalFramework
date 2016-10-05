@@ -1,0 +1,25 @@
+RegCommon = '../Common'
+
+dirsToExpand = [ $
+  RegCommon,     $
+  getenv('L2_SUPPORT_PATH') + '/IDL_Utils' $
+]
+
+; Expand and added to !PATH all directories with .pro files.
+;
+CASE !D.NAME OF         & $
+  'VMS' : delim = ','   & $
+  'WIN' : delim = ';'   & $
+ELSE    : delim = ':'   & $
+ENDCASE
+
+FOR iPath=0, N_Elements(dirsToExpand)-1L DO $
+  !PATH = Expand_Path('+' + dirsToExpand[iPath]) + delim + !PATH
+
+MATRIX_FILE__DEFINE
+
+.compile oco_l2_matrix_compare.pro
+
+Resolve_All, /CONTINUE
+
+Save, /ROUTINE, FILE='../oco_l2_matrix_compare.sav'

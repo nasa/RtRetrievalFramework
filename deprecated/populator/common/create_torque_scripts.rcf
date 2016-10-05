@@ -1,0 +1,36 @@
+include = <CONTROL_FILE_DIRECTORY>/common_constants.rcf
+include = <CONTROL_FILE_DIRECTORY>/aggregate_constants.rcf
+include = <type_constants_filename>
+
+# Record source of input files and add headers
+begin SET
+   dest_base_dir = <aggregate_base_dir>
+
+   begin FILE
+       begin CREATE_TORQUE_SCRIPTS
+          only_if                   = 'eval( len("<l2_binary_filename|>") > 0 )'
+
+	  sounding_id_file          = <config_filename>
+          sounding_id_sect          = <config_id_section>
+
+          qsub_name                 = l2_fp
+          aggregate_name            = aggregate
+	  python_path               = 'eval( os.environ["PYTHONPATH"] )'
+	  l2_support_path           = 'eval( os.environ["L2_SUPPORT_PATH"] )'
+          l2_binary_filename        = '<l2_binary_filename|>'
+          l2_config                 = <l2_config>
+          aggregate                 = <aggregate>	  
+          job_script_filename       = <job_script_filename>
+          aggregate_script_filename = <aggregate_script_filename>
+          qsub_script_filename      = <qsub_script_filename>
+          sounding_id_list_filename = <sounding_id_list_filename>
+          execution_directory       = <aggregate_base_dir>
+          log_directory             = <log_directory>
+          out_directory             = <output_directory>
+	  spectrum_file             = <l1b_real_filename>
+	  ecmwf_file                = <ecmwf_real_filename>
+	  cloud_file                = '<cloud_real_filename|>'
+       end CREATE_TORQUE_SCRIPTs
+   end FILE
+
+end SET

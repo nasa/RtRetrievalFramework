@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Exit if any part fails
+set -e
+
+basedir=`dirname $0`
+# Fortran LIDORT can use large amount of the stack space. To
+# prevent spurious valgrind errors, make sure it allows for
+# a large enough stack.
+valgrind --error-exitcode=1 --max-stackframe=10485760 $basedir/l2_fp $*

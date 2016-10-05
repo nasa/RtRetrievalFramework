@@ -1,0 +1,31 @@
+begin HEADER
+  File_ID = "Aerosol Profile"
+  File_Creation = Thu Feb 19 01:16:23 2009
+  File_Type = "Matrix"
+  Num_Rows =       20
+  Num_Columns = 5
+  Retrieval_Mode = linear
+  Labels = "Pressure" "kahn_2b" "kahn_3b" "water" "ice"
+end HEADER
+#  Pressure aero1 aero2 wc ic
+       100.00000      0 0 0 0 
+       7000.0000      0 0 0 0 
+       10000.000      0 0 0 0 
+       20000.000      0 0 0 0 
+       28000.000      0 0 0 0 
+       35000.000      0 0 0 0 
+       40000.000      0 0 0 0 
+       45000.000      0 0 0 0 
+       50000.000      0 0 0 0 
+       55000.000      0 0 0 0 
+       60000.000      0 0 0 0 
+       65000.000      0 0 0 0 
+       70000.000      0 0 0 0 
+       75000.000      0 0 0 0 
+       80000.000      0 0 0 0 
+       85000.000      0 0 0 0 
+       90000.000      0 0 0 0 
+       95000.000      0 0 0 0 
+       100000.00      0 0 0 0 
+       105000.00      0 0 0 0 
+

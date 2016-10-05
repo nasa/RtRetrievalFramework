@@ -1,0 +1,1 @@
+seq 100 | parallel --gnu python xco2_simulate.py --lua-config=OcoRun/config.lua my_cov.pkl OcoRun/oco_Orbit001.config 2012061617570404 job_{}.pkl '>&' job_{}.log

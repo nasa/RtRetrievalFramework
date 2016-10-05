@@ -1,0 +1,120 @@
+#! /usr/bin/env python
+#
+# This calculates the XCO2 bias
+
+from full_physics import *
+import scipy.io
+import shelve
+from multiprocessing import Pool
+
+version = "May 1, 2013"
+usage = '''Usage:
+  xco2_bias_calc [options] <config_file> <sounding_id> <output>
+  xco2_bias_calc --run-index [options] <config_file> <index> <output>
+  xco2_bias_calc -h | --help
+  xco2_bias_calc -v | --version
+
+This program is used to calculate XCO2 bias, according to the document
+"Readme file for Mike Smyth" from Rui Wang and Noel Cressie.
+
+This works off of an already completes L2 run, this is a post processing
+step that requires the results from L2 retrieval. We pass the configuration
+file that was used by the populator.py script, and either the sounding ID
+or run index to use for the run.
+
+The output is a MATLAB ".mat" file for this single sounding if the output
+file ends in ".mat". If it ends in ".shlv" we write out a shelve file.
+
+Options:
+  -h --help         
+     Print this message
+
+  --distribution-covariance=s
+     File containing a pickled distribution covariance matrix to use 
+     instead of the apriori covariance matrix used in the Level 2 
+     retrieval. [default: ]
+
+  --debug-mode
+     Run in debug mode, where we put lots of intermediate values into
+     the MATLAB output
+
+  --debug-full-mode
+     Run in debug mode, where we put lots of intermediate values into
+     the MATLAB output. This puts even more than with --debug-mode, including
+     the very large Hessian and perturbed jacobians.
+
+  --lua-config=s
+     Specify the Lua config file to use. Default is normal 
+     gosat/config/config.lua [default: ]
+
+  --number-process=n 
+       Number of processors to use. [default: 1]
+
+  --run-index
+     Use run index instead of sounding id
+
+  --xa-file=f
+      Get x_a from a file rather than from the L2 run. This should be a
+      shelve object with a value x_a.
+
+  -v --version      
+     Print program version
+'''
+
+args = docopt_simple(usage, version=version)
+lua_config = args.lua_config
+if(lua_config == ""):
+    lua_config = None
+dist_cov_file = args.distribution_covariance
+if(dist_cov_file ==""):
+    dist_cov_file = None
+if(args.number_process == 1):
+    pool = None
+else:
+    pool = Pool(args.number_process)
+
+b = XCO2BiasFromL2Run(args.config_file, sounding_id = str(args.sounding_id),
+                      sounding_id_index = args.index, 
+                      lua_config = lua_config, pool = pool,
+                      dist_cov_file = dist_cov_file)
+if(args.xa_file):
+    f = shelve.open(args.xa_file, "r")
+    b.x_a = f["x_a"]
+    b.r.state_vector.update_state(b.x_a)
+
+print b.xco2_retrieved
+print "Lua configuration file: ", b.r.lua_config_name
+print "Distribution covariance file: ", b.dist_cov_file
+
+print "===================================================="
+print "Setup:"
+print b.r.forward_model
+print "===================================================="
+if(os.path.splitext(args.output)[1] == ".mat"):
+    ismat = True
+    res = {}
+else:
+    ismat = False
+    res = shelve.open(args.output)
+
+res["sounding_id"] = b.sounding_id
+res["XCO2_bias"] = b.xco2_bias
+res["X_apriori"] = b.x_a
+res["X_sol"] = b.x_sol
+res["XCO2_retrieved"] = [b.xco2_retrieved]
+res["bias"] = b.bias
+res["mspe"] = b.mspe
+res["xco2_pressure_weighting_function"] =  b.xco2_averaging_kernel
+print "XCO2 bias: %f" % b.xco2_bias
+if(args.debug_mode or args.debug_full_mode):
+    res["K"] = b.jacobian
+    res["perturb" ] = b.finite_diff_step_size
+    res["Sa" ] = b.apriori_covariance
+    res["Se" ] = b.measurement_uncertainty
+    res["state_vector_name"] = b.state_vector_name
+if(args.debug_full_mode):
+    res["K_perturb"] = b.jacobian_perturbed
+    res["HeS"] = b.hessian_unit_free
+
+if(ismat):
+    scipy.io.savemat(args.output, res)

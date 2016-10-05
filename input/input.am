@@ -1,0 +1,19 @@
+include input/common/common.am
+include input/fts/fts.am
+include input/gosat/gosat.am
+include input/oco/oco.am
+
+config_DATA += $(top_builddir)/version.lua
+
+BUILT_SOURCES += lua_version.stamp
+
+lua_version.stamp:
+	@echo 'Creating version.lua'
+	@echo 'version = {' > version.lua.tmp
+	@echo '    major_version = "$(VERSION)",' >> version.lua.tmp
+	@echo '    cm_version = "'`python $(abs_srcdir)/support/full_physics/version_util.py $(abs_srcdir)`'",' >> version.lua.tmp
+	@echo '    source_directory = "$(abs_srcdir)",' >> version.lua.tmp
+	@echo '    build_user = "$(USER)",' >> version.lua.tmp
+	@echo '}' >> version.lua.tmp
+	@test -e version.lua && cmp version.lua.tmp version.lua || mv version.lua.tmp version.lua
+	@rm -f version.lua.tmp

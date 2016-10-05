@@ -1,0 +1,12 @@
+#! /bin/sh
+
+# This is the command to generate the automake stuff the first time.
+# After the first time, if you do configure with --enable-maintainer-mode
+# then then the generate makefile will automatically rerun the autoconf
+# stuff that might be needed when you change something up stream (like 
+# configure.in)
+
+aclocal -I config/m4 \
+&& libtoolize \
+&& automake --gnu --add-missing \
+&& autoconf

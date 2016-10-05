@@ -1,0 +1,16 @@
+begin CONSTANTS
+   case_atmosphere_filename   = in/scene/atmosphere/atmosphere.dat
+   case_psurf_filename        = in/scene/atmosphere/psurf.dat
+
+   case_aerosol_filename      = in/scene/aerosol/aerosol.dat
+   case_aod_filename          = in/scene/aerosol/aerosol_od.dat
+
+   case_albedo_filename       = in/scene/ground/albedo.dat
+   case_windspeed_filename    = in/scene/ground/windspeed.dat
+
+   case_soundinginfo_filename = in/l1b/soundinginfo.dat
+
+   case_dispersion_filename   = in/instrument/dispersion.dat
+
+   case_spectrum_filename     = in/l1b/spec/spectra.dat
+end CONSTANTS

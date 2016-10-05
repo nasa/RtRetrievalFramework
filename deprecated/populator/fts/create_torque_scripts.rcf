@@ -1,0 +1,35 @@
+include = <type_constants_filename>
+
+# Record source of input files and add headers
+begin SET
+   dest_base_dir = <aggregate_base_dir>
+
+   begin FILE
+       # Source filename supplies mapping from sounding ids to configuration types
+       source_filename = <snd_id_config_map_file>
+
+       begin CREATE_TORQUE_SCRIPTS
+          only_if                   = 'eval( len("<l2_binary_filename|>") > 0 )'
+
+	  sounding_id_file          = <config_filename>
+          sounding_id_sect          = <config_id_section>
+
+          qsub_name                 = l2_fp
+          l2_binary_filename        = '<l2_binary_filename|>'
+          l2_config                 = default/l2_fp.config
+          job_script_filename       = <job_script_filename>
+          qsub_script_filename      = <qsub_script_filename>
+          sounding_id_list_filename = <sounding_id_list_filename>
+          config_list_filename      = <config_list_filename>
+          execution_directory       = <aggregate_base_dir>
+          log_directory             = <log_directory>
+          out_directory             = <output_directory>
+
+          begin ADDL_VAR_LISTS
+	      spectrum_a_file = <fts_spec_a_list_file>
+	      spectrum_b_file = <fts_spec_b_list_file>
+          end ADDL_VAR_LISTS
+       end CREATE_TORQUE_SCRIPTS
+   end FILE
+
+end SET

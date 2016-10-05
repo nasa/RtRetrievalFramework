@@ -1,0 +1,5 @@
+#! /bin/bash
+
+${srcdir}/test/tccon_small_set/run_test 0 l2_fp_valgrind
+
+

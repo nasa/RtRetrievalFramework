@@ -1,0 +1,24 @@
+Steps:
+
+python ~/Level2/python_experimental/Bias/create_cov.py
+
+ls -d 201206180* | sort | head -20 > sounding_list.txt
+(Selects 20 soundings)
+
+Create draws, and Level 1b going with that:
+./create_draw_job_submit.sh
+(On fullerene, submits a bunch of jobs to calculate this)
+
+Do initial retrieval, to see which draws we can include
+./do_retrieval_job_submit.sh
+
+Get covariance from actual draws that made it through the retrieval
+./create_draw_cov_job.sh
+
+Do second retrieval:
+./do_second_retrieval_job_submit.sh
+
+Can start at the same time the bias calculation:
+./bias_calc_job_submit.sh
+
+

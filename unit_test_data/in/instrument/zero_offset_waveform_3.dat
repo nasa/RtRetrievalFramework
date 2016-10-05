@@ -1,0 +1,14 @@
+begin HEADER
+  File_ID = "Zero offset waveform"
+  File_Creation = "Tue May 17 15:05:51 PDT 2011"
+  File_Type = "Matrix"
+  Num_Rows = 4
+  Num_Columns = 2
+  Labels = "WN" "Value"
+end HEADER
+
+#WN      Value
+4734         0 
+4814     1e-07 
+4894     1e-07 
+4974         0

@@ -1,0 +1,1 @@
+xco2_bias_calc --distribution-covariance=my_cov.pkl --lua-config=OcoRun/config.lua --number-process=24 OcoRun/oco_Orbit001.config 2012061617570404 bias_oco.mat

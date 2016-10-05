@@ -1,0 +1,17 @@
+Using macport g++ 4.4 on Mac OS X, I ran into an obscure problem that was 
+fairly difficult to diagnose. Using swig wrappers for Python or Ruby, the
+code mostly work *except* any use of ostream or istream that required a 
+C++ local would not work.
+
+The problem was traced down to the Mac loading libstdc++ from /usr/lib rather
+than /opt/local/lib/gcc44. This despite all of the path pointers being set
+correctly in the swig and full physics library (as shown using the mac "otool").
+For some reason, the mac was overriding which verision of the library was 
+being loaded. This causes problems, because the locale and string routines
+were generated in one version of libstdc++ and used in another.
+
+The fix is to set the DYLD_LIBRARY_PATH path In my case, this was
+
+export DYLD_LIBRARY_PATH=/opt/local/lib/gcc44
+
+Then the correct version of libstdc++ was loaded.

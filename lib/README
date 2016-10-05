@@ -1,0 +1,16 @@
+This contains the Full Physics library.
+
+For the C++ code, we divide into "Support", "Interface" and "Implementation".
+The idea is that "Support" is the lowest level (e.g., FullPhysics::Exception 
+class), "Interface" is mostly abstract classes and functions that work
+with abstract classes, and "Implementation" is specific implementations
+of the abstract classes.
+
+If you are creating a new class, don't get too hung up on exactly where
+it should go in the directory structure. All The code gets put into
+one library, the divisions in directory are really just to organize the
+source code files and give you some hint as to where to look for a
+particular routine.  This is really just so we don't have one directory
+with a hundred files in it,  the division between "Support",
+"Interface" and "Implemenation" is pretty loose and in many cases somewhat
+arbitrary.

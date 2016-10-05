@@ -1,0 +1,9 @@
+This is the test data used with OCO2 small set tests. This directory
+handles the set up of the common test area.
+
+Note that the actual tests are run in the directories oco2_small_set_1 etc. 
+
+Source files:
+/scratch-science/algorithm/OCO2_orbit_simulations/r69/02a/nadir_glint/20120616_168/OCO2_meteorology_NDa_20120616_168_r69CSUSim02a_001.hdf
+/scratch-science/algorithm/OCO2_orbit_simulations/r69/02c/nadir_glint/20120616_168/OCO2_cld_NDa_20120616_168_r69CSUSim02c_001.hdf
+/scratch-science/algorithm/OCO2_orbit_simulations/r69/02c/nadir_glint/20120616_168/OCO2_sim_NDa_20120616_168_r69CSUSim02c_001.hdf

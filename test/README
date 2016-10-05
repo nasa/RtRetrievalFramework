@@ -1,0 +1,12 @@
+This directory is for tests that are regularly run, but that are a higher
+level than the unit tests.
+
+To add a new test, create a directory containing executable files
+run_test and clean_test. Then add the directory to test.list to the list of
+tests. See the sample "sample" for an example of this.
+
+It is common to make some well understood change that will modify all the
+expected results (e.g., change the absco tables used). There is a target
+"make update_tests" that runs all the tests, and uses the resulting data
+to update the expected results. Obviously you should be careful when doing
+this, that an incorrect file is not accepted as the new "valid results".

@@ -1,0 +1,5 @@
+config_DATA += @ftsconfigsrc@/fts_config.lua
+config_DATA += @ftsconfigsrc@/fts_base_config.lua
+ftsconfigdir = @configdir@/fts/config
+ftsconfig_DATA = @ftsconfigsrc@/config.lua
+input_DATA += @ftsinputsrc@/l2_fts_static_input.h5

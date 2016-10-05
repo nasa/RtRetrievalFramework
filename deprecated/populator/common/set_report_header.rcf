@@ -1,0 +1,27 @@
+include = <CONTROL_FILE_DIRECTORY>/common_constants.rcf
+include = <CONTROL_FILE_DIRECTORY>/aggregate_constants.rcf
+
+# For any custom scripts
+modules_dir = <CONTROL_FILE_PARENT_DIR>/modules
+
+# Record source of input files and add headers
+begin SET
+   dest_base_dir = <aggregate_base_dir>
+
+   begin FILE
+       source_filename = <sdos_inputs_filename>
+
+       begin SET_INPUT_CONFIG_VALUES
+          sounding_id_file = <config_filename>
+          sounding_id_sect = <config_id_section>
+          exe_path = '<l2_binary_filename|Unknown>'
+	  data_path = <l2_input_dir>
+          src_path = 'eval( os.environ.get("L2_FP_SRC_PATH", "") )'
+          algorithm_descriptor = 'L2 Full Physics'
+          algorithm_maturity = 'operational'
+          comments = 'Generated using L2 Populator'
+       end SET_INPUT_CONFIG_VALUES
+
+   end FILE
+
+end SET

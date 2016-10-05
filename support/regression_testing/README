@@ -1,0 +1,14 @@
+This directory contains scripts used for regression testing purposes.
+
+input_generation/ contains the scripts and configurations needed for
+recreating the inputs for the regression tests in the format required
+by the run scripts.
+
+In addition, the scripts used to run the full set of tests are
+included here in processing_scripts. These are copies of what are already
+found in the regression data area, e.g.,
+/groups/algorithm/l2_fp/regression_test/B2.08.00/
+
+weekly_scripts/ contains scripts for use by buildbot to perform a
+weekly regression test run.
+

@@ -1,0 +1,14 @@
+libfp_la_SOURCES += @l_radsrc@/calc_geom_first_enh.F90
+libfp_la_SOURCES += @l_radsrc@/calc_geom_first_reg.F90
+libfp_la_SOURCES += @l_radsrc@/calc_geom_second.F90
+libfp_la_SOURCES += @l_radsrc@/l_calc_phase_first.F90
+libfp_la_SOURCES += @l_radsrc@/l_rad_first_enh.F90
+libfp_la_SOURCES += @l_radsrc@/l_rad_first_reg.F90
+libfp_la_SOURCES += @l_radsrc@/l_rad_second.F90
+libfp_la_SOURCES += @l_radsrc@/l_surface.F90
+libfp_la_SOURCES += @l_radsrc@/l_surface_fourier.F90
+libfp_la_SOURCES += @l_radsrc@/geometry_pool.F90
+libfp_la_SOURCES += @l_radsrc@/l_rad_first_pp.F90
+libfp_la_SOURCES += @l_radsrc@/l_sscorr_nadir.F90
+libfp_la_SOURCES += @l_radsrc@/l_sscorr_outgoing.F90
+libfp_la_SOURCES += @l_radsrc@/l_sscorr_pp.F90

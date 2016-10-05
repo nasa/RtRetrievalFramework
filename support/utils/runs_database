@@ -1,0 +1,121 @@
+#! /usr/bin/env ruby
+# This puts run information into a database, that can then be used to
+# provide summary information.
+require "rubygems"
+require "sqlite3"
+require 'getoptlong'
+
+require 'find'
+
+opts = GetoptLong.new(
+["--help", "-h", GetoptLong::NO_ARGUMENT],
+["--database", "-d", GetoptLong::REQUIRED_ARGUMENT],
+["--tablebase", "-t", GetoptLong::REQUIRED_ARGUMENT]
+)
+help = false
+database = "runs.db"
+tablebase = ""
+opts.each do |opt, arg|
+  help = true if(opt == "--help")
+  database = arg if(opt == "--database")
+  tablebase = arg if(opt == "--tablebase")
+end
+if(help)
+  puts <<END
+This create a database of run results, including timing information.
+You can supply the database to use with the --database command. The
+default is runs.db. 
+
+You can supply a base name to use in the table names. This is useful if
+you want to be able to compare two different types of runs, e.g., B2.8
+and B2.9. You can run this script twice, once with the --tablebase b28_ and
+once with --tablebase b29_ - this will then give b28_runs and b29_runs.
+
+You can supply a list of directories to search, or if none is given we
+default to the current directory. We look for files that look like
+l2_20090627212549.log.
+END
+  exit 1
+end
+
+db = SQLite3::Database.new database
+
+# Create a database
+db.execute"drop table if exists #{tablebase}runs"
+db.execute <<-SQL
+    create table #{tablebase}runs (
+      log_file text,
+      sounding text,
+      handled_error bool,
+      execution_error bool,
+      wall_time float,
+      wall_time_iteration float,
+      user_time_iteration float,
+      system_time_iteration float,
+      successful_iteration integer,
+      divergent_iteration integer,
+      total_steps integer
+    );
+SQL
+
+db.execute"drop table if exists #{tablebase}type"
+db.execute <<-SQL
+    create table #{tablebase}type (
+      sounding text,
+      surfacetype text
+    );
+SQL
+
+path = ARGV
+path = ["."] if (ARGV.size ==0)
+db.execute("BEGIN")
+# This is B2.8 populator script
+Find.find(*path) do |fn|
+  next unless fn =~ /sounding_id_list\.txt/
+  sid = File.read(fn).split
+  tid = File.read(File.dirname(fn) + "/config_list.txt").split
+  sid.size.times do |i|
+    db.execute "insert into #{tablebase}type values (?, ?)", sid[i], tid[i]
+  end
+end
+# This is B2.9 populator script
+Find.find(*path) do |fn|
+  next unless fn =~ /sounding_id\.list/
+  sid = File.read(fn).split
+  tid = File.read(File.dirname(fn) + "/populate/config_type.list").split
+  sid.size.times do |i|
+    db.execute "insert into #{tablebase}type values (?, ?)", sid[i], tid[i]
+  end
+end
+Find.find(*path) do |fn|
+  next unless fn =~ /l2_(\d+)\.log$/
+  row = {}
+  row[:sounding] = $1.to_i if($1)
+  row[:error] = 'f'
+  row[:execution_error] = 'f'
+  File.open(fn) do |f|
+    ln = f.readline until(f.eof? || ln =~/Final (Error )?Timing/)
+    row[:execution_error] = 't' if(f.eof?)
+    row[:error] = 't' if($1)
+    ln = f.readline until(f.eof? || ln =~/Total Wall clock time:\s*(\d+)/)
+    row[:twall] = $1.to_f if($1)
+    ln = f.readline until(f.eof? || ln =~/Number successful steps:\s*(\d+)/)
+    row[:num_success] = $1.to_i if($1)
+    ln = f.readline until(f.eof? || ln =~/Number divergent steps:\s*(\d+)/)
+    row[:num_div] = $1.to_i if($1)
+    ln = f.readline until(f.eof? || ln =~/Total iteration:\s*(\d+)/)
+    row[:tstep] = $1.to_i if($1)
+    ln = f.readline until(f.eof? || ln =~/Normalized wall clock time per iteration:\s*(\S+)/)
+    row[:wall] = $1.to_f if($1)
+    ln = f.readline until(f.eof? || ln =~/Normalized user time per iteration:\s*(\S+)/)
+    row[:user] = $1.to_f if($1)
+    ln = f.readline until(f.eof? || ln =~/Normalized system time per iteration:\s*(\S+)/)
+    row[:sys] = $1.to_f if($1)
+  end
+  db.execute "insert into #{tablebase}runs values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", fn,
+  row[:sounding], row[:error], row[:execution_error], row[:twall], 
+  row[:wall], row[:user], 
+  row[:sys], row[:num_success], row[:num_div],
+  row[:tstep]
+end
+db.execute("COMMIT")

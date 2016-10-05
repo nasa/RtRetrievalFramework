@@ -1,0 +1,60 @@
+include = <type_constants_filename>
+
+begin SET
+   dest_base_dir = <aggregate_base_dir>
+
+   begin LIST
+      name = config_type
+      from_constant = <config_type_names>
+   end LIST
+
+   # Make static maps for aod
+   begin FILE
+       dest_filename   = <snd_id_config_map_file>
+
+       begin MAKE_VALUE_MAP
+          list_file    = <config_filename>
+          static_value = <config_type>
+          section      = <config_id_section>
+       end MAKE_VALUE_MAP
+   end FILE
+end SET
+
+begin SET
+   dest_base_dir = config/
+   dest_case_dir = <config_type>/
+
+   begin LIST
+      name = config_type
+      from_constant = <config_type_names>
+   end LIST
+
+   begin FILE
+      source_filename = l2_fp.config
+
+      begin PICK
+          section  = SOUNDING_INFO
+          keyword  = runlog_file
+          template = <runlog_real_filename>
+      end PICK
+
+      begin PICK
+          section  = SOUNDING_INFO
+          keyword  = pressure_file
+          template = <atmosphere_real_filename>
+      end PICK
+
+      begin PICK
+          section  = PARAMETER_DEFINITION->GAS
+          keyword  = a_priori
+          template = <atmosphere_real_filename>
+      end PICK
+
+      begin PICK
+          section  = PARAMETER_DEFINITION->TEMPERATURE
+          keyword  = a_priori
+          template = <atmosphere_real_filename>
+      end PICK
+   end FILE
+
+end SET
