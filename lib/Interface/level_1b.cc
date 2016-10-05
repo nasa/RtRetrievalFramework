@@ -1,4 +1,5 @@
 #include "level_1b.h"
+#include "fe_disable_exception.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -158,6 +159,7 @@ REGISTER_LUA_CLASS(Level1b)
 .def("radiance", &level_1b_radiance)
 .def("radiance_with_unit", &level_1b_radiance_with_unit)
 .def("radiance_spectral_range", &level_1b_radiance_spectral_range)
+.def("signal", &Level1b::signal)
 .def("relative_velocity", &level_1b_relative_velocity)
 .def("time", &Level1b::time)
 REGISTER_LUA_END()
@@ -167,5 +169,34 @@ REGISTER_LUA_CLASS_NAME(std::vector<boost::shared_ptr<Level1b> >,
 .def(luabind::constructor<>())
 .def("push_back", &std::vector<boost::shared_ptr<Level1b> >::push_back)
 REGISTER_LUA_END()
+
+DoubleWithUnit Level1b::signal(int Spec_index, const std::vector<int>& Sample_indexes) const
+{
+    // Basically a copy of what is in ErrorAnalysis::signal
+    FeDisableException disable_fp;
+    const int nrad = 10;
+    SpectralRange rad(radiance(Spec_index));
+  
+    if(rad.data().rows() ==0) {
+        return DoubleWithUnit(0, rad.units());
+    }
+  
+    // Copy either the whole data if no sample index list is used
+    // or only selected samples indexes listed in Sample_indexes
+    Array<double, 1> used_rad;
+    if (Sample_indexes.size() == 0) {
+        used_rad.resize(rad.data().rows());
+        used_rad = rad.data();
+    } else {
+        used_rad.resize(Sample_indexes.size());
+        for(int samp_idx = 0; samp_idx < Sample_indexes.size(); samp_idx++) {
+            used_rad(samp_idx) = rad.data()(Sample_indexes[samp_idx]);
+        }
+    }
+    std::sort(used_rad.data(), used_rad.data() + used_rad.rows()); // Min to max value
+    used_rad.reverseSelf(firstDim);     // Now max to min value
+    Range avg_range(0, std::min(nrad - 1, used_rad.rows() - 1));
+    return DoubleWithUnit(sum(used_rad(avg_range) / avg_range.length()), rad.units());
+}
 
 #endif
