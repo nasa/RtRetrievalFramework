@@ -1,12 +1,12 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(full_physics, 7.0.00)
+AC_INIT(full_physics, 7.3.09)
 
 # Base version for commlib.
 [commonlib_version='6.00.00a']
 
 AC_COPYRIGHT(
-[Copyright 2015, California Institute of Technology. 
+[Copyright 2016, California Institute of Technology. 
 ALL RIGHTS RESERVED. U.S. Government Sponsorship acknowledged.])
 
 AC_CONFIG_AUX_DIR([config])
