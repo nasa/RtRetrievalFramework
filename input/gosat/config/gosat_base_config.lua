@@ -158,8 +158,8 @@ GosatBaseConfig = AcosConfig:new {
             ic_m_gain = { "zero_offset_waveform", "eof_m_gain_1",
 			  "eof_m_gain_2", "eof_m_gain_3" },
             zero_offset_waveform = {
-               apriori = ConfigCommon.hdf_eof_apriori_i("Instrument/ZeroLevelOffset"),
-               covariance = ConfigCommon.hdf_eof_covariance_i("Instrument/ZeroLevelOffset"),
+               apriori = ConfigCommon.hdf_apriori_i("Instrument/ZeroLevelOffset"),
+               covariance = ConfigCommon.hdf_covariance_i("Instrument/ZeroLevelOffset"),
                creator = ConfigCommon.zero_offset_waveform,
                retrieve_bands = { true, false, false },
             },
