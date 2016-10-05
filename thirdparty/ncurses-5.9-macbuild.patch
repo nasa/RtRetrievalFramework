@@ -1,0 +1,12 @@
+diff -Naur ncurses-5.9.original/configure ncurses-5.9/configure
+--- ncurses-5.9.original/configure	2013-02-15 16:48:34.000000000 -0800
++++ ncurses-5.9/configure	2013-02-15 16:49:12.000000000 -0800
+@@ -5584,7 +5584,7 @@
+ 		chmod +x mk_shared_lib.sh
+ 		;;
+ 	darwin*) #(vi
+-		EXTRA_CFLAGS="-no-cpp-precomp"
++		#EXTRA_CFLAGS="-no-cpp-precomp"
+ 		CC_SHARED_OPTS="-dynamic"
+ 		MK_SHARED_LIB='${CC} ${CFLAGS} -dynamiclib -install_name ${libdir}/`basename $@` -compatibility_version ${ABI_VERSION} -current_version ${ABI_VERSION} -o $@'
+ 		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=abi

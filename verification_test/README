@@ -1,0 +1,6 @@
+This is for the validation/verification tests. It isn't clear if we really
+want to separate this out in a different directory than all are other tests.
+But for now we'll do this, just to keep things clean.
+
+This directory may go away in the future, and our code get moved to another
+area.

@@ -1,0 +1,6 @@
+This is the test data used with TCCON small set tests. This directory
+handles the set up of the common test area.
+
+Note that the actual tests are run in the directories
+tccon_small_set_1 etc. We split the orbits up so that we can treat
+each one as a separate test.

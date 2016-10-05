@@ -1,0 +1,105 @@
+#! /bin/sh
+# Build for Pleiades system
+
+usage()
+{
+    cat <<EOF
+Usage $0 [options] <install directory> <absco directory> <merra directory>
+
+This is used to build the Level 2 executable on Pleiades. Note that you need
+to supply a "install" directory. This *must* be on one of the NFS systems
+(e.g., you home directory). You should not have an executable run from the Lustre
+file system (e.g. /nobackup). You can see the Pleiades documentation for a discussion
+of this (http://www.nas.nasa.gov/hecc/support/kb/Lustre-Best-Practices_226.html),
+but the summary is that they've encounted problems with executables on Lustre and
+recommend that you don't run from there.
+
+It is perfectly ok, and even recommended, to have the source and build on the
+Lustre filesystem.
+
+Because we aren't on the scf-srv machines, we also don't know where the absco
+data is. You need to supply a top directory for this. Note that we need several
+versions. Currently (B3.4) we use 3.3.0, v4.1.1_rescaled, and whatever version
+we are currently running with (v4.2.0_unscaled). This can be copied from the
+scf-srv system at jpl from the base directory /groups/algorith/l2_fp/absco.
+
+Note that the absco data should be on the Lustre system (e.g., /nobackup)
+
+OPTIONS:
+   -h Show this message
+
+   -k Normally we strip out debugging symbols to rduce the space of
+      the install. This option keeps them. The code is still compiled
+      optimized, it just has the debugging symbols still available.
+
+   -t Include running tests
+EOF
+}
+run_test=n
+strip=y
+while getopts “htk” OPTION; do
+    case $OPTION in
+        h)
+            usage
+            exit 1
+            ;;
+        t)
+            run_test=y
+            ;;
+        k)
+            strip=n
+            ;;
+        ?)
+            usage
+            exit
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+if [ -z "$1" ]; then
+    usage
+    exit 1
+fi
+if [ -z "$2" ]; then
+    usage
+    exit 1
+fi
+if [ -z "$3" ]; then
+    usage
+    exit 1
+fi
+
+# Die on error
+set -e
+
+# Select a newer version of gcc and python
+# Note if you change this, also change script/setup_fp_env.sh.in
+source /usr/share/modules/init/bash
+module load gcc/4.7.3
+module load python/2.7.8
+module load ruby/1.9.1-p376
+
+# Create a build directory
+mkdir -p build
+cd build
+
+# Do configuration
+../configure THIRDPARTY=build --prefix=$1 --with-absco=$2 --with-python-module --with-merra=$3
+
+# The frontend system typically has 32 processors. We use 20 here, pretty much 
+# arbitrarily. This can be adjusted to whatever if needed.
+
+(make -j 20 all || echo $?) 2>&1 | tee make_all.log
+if [ "$run_test" == "y" ]; then
+   (make -j 20 long_check || exit $?) 2>&1 | tee long_check.log
+   (make -j 20 run_tests || exit $?) 2>&2 | tee run_tests.log
+fi
+# Note that we strip out debugging symbols here. This significanly reduces
+# the size of what we install, which matters a lot on Pleiades. If we end up
+# have particular issues, we can build and leave in the debugging symbols
+if [ "$strip" == "y" ]; then
+    (make install-strip || exit $?) 2>&1 | tee install.log
+else
+    (make install || exit $?) 2>&1 | tee install.log
+fi
+

@@ -1,0 +1,10 @@
+begin HEADER
+  File_Creation = "2009-02-11T02:00:07 UTC"
+  File_ID       = "psurf value extracted for spectrum named: jc20080227sddddb.097 from runlog file: /scratch/algorithm/l2_fp/runs/tvac2/oco_uplooking_080227.new/from_gfit/jc20080227.grl"
+  Labels        = "PSURF"
+  Num_Columns   = 1
+  Num_Rows      = 1
+end HEADER
+
+#           PSURF
+   9.73100000e+04

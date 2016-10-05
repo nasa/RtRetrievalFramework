@@ -1,0 +1,23 @@
+The design files in the directory *cannot* be merged by subversion if
+multiple people work at the same time (e.g., A makes changes to r100, 
+B makes changes to r100, A check in as r101, B tries to check in as
+r102).
+
+You need to use subversions locking mechanism. This is described in
+detail at http://svnbook.red-bean.com/en/1.5/svn.advanced.locking.html,
+but the short instructions are:
+
+1. Before working on a file do a lock, e.g,
+   svn lock -m 'Locking to doblah blah' file.uml
+
+2. Check in the file as normal when done "svn commit". This also removes
+   the lock.
+
+Note that if you want to commit a file to check point but continue working
+on it, you need to lock it a second time after doing the commit. (or if you
+want to be fancy, you can add "--no-unlock" to the commit command).
+
+In certain cases, you may want to steal or break a lock (e.g., we need
+to make a deliver, but user A is out sick and has a lock), you can
+consult the subversion documentation on directions for this.
+

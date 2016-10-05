@@ -1,0 +1,5 @@
+#! /bin/bash
+
+${srcdir}/test/tccon_small_set/update_expected 2 l2_fp
+
+

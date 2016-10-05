@@ -1,0 +1,30 @@
+This directory contains the scripts needed for recreating the inputs
+for the L2 regression tests. Nominally this would only be done when
+one wants to change the version of the SDOS files used as a basis or
+to test that this process still works. 
+
+input_config.sh contains variables used by the scripts defining which
+SDOS and GOSAT versions of source files to use. Additionally it
+defines the directory structure under which each dataset is placed.
+
+The assembled files will be create according to the
+OUTPUT_FILES_STRUCTURE variable under the current directory where the
+script is run from. 
+
+There are two data generation directories:
+* nearby_sites - Older regression data based on distance to certain FTS sites
+* regression_inputs - Latest regression data sets:
+  - integration_test
+  - quick_look
+  - repeat_cycle
+  - regression_test
+    - valset_model
+    - valset_tccon
+
+Data is recreated by running the assemble.sh script from the directory where you 
+want the generated files to be located.
+
+Two directories exist where data provided by the scientists have been formatted
+into HDF5 files which can be used in plotting for comparisons.
+* quick_look_comparison
+* valset_comparison

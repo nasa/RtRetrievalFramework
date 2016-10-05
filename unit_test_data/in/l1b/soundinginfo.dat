@@ -1,0 +1,20 @@
+begin HEADER
+  File_Creation          = "2009-12-02T18:05:51"
+  File_ID                = "Sounding info from orbit simulator for sounding id: 2006091412272205"
+  frame_time_stamp       = 2006-09-14T12:27:22.001Z
+  polarization_angle     = 90.0 90.0 90.0
+  relative_velocity      = -7.24916553497
+  sounding_altitude      = 416.0 416.0 416.0
+  sounding_azimuth       = 0.0 0.0 0.0
+  sounding_id            = 2006091412272205
+  sounding_latitude      = 77.1828918457 77.1828918457 77.1828918457
+  sounding_longitude     = -19.9801197052 -19.9801197052 -19.9801197052
+  sounding_solar_azimuth = 167.495071411 167.495071411 167.495071411
+  sounding_solar_zenith  = 74.128288269 74.128288269 74.128288269
+  sounding_zenith        = 0.0 0.0 0.0
+  spacecraft_alt         = 721679.375
+  spacecraft_lat         = 77.1913833618
+  spacecraft_lon         = -19.9801197052
+  stokes_coefficients    = 1 0 0 0   1 0 0 0   1 0 0 0
+end HEADER
+

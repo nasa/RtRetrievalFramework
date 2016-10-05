@@ -1,0 +1,17 @@
+begin HEADER
+  File_ID = "Continuum Covariance Matrix"
+  File_Creation = "Wed May 18 12:30:43 PDT 2011"
+  File_Type = "Matrix"
+  Num_Rows = 9
+  Num_Columns = 9
+end HEADER
+
+1 0 0 0 0 0 0 0 0
+0 1 0 0 0 0 0 0 0
+0 0 1 0 0 0 0 0 0
+0 0 0 1 0 0 0 0 0
+0 0 0 0 1 0 0 0 0
+0 0 0 0 0 1 0 0 0
+0 0 0 0 0 0 1 0 0
+0 0 0 0 0 0 0 1 0
+0 0 0 0 0 0 0 0 1

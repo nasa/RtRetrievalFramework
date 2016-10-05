@@ -1,0 +1,24 @@
+begin WINDOW
+   id        = ABO2_Full
+   name      = O2 A Band
+   units     = wavelength
+   range     = 0.755 0.785
+   species   = O2
+end WINDOW
+
+begin WINDOW
+   id        = WCO2_Full
+   name      = Weak CO2
+   units     = wavelength
+   range     = 1.58 1.65
+   species   = CO2 H2O
+end WINDOW
+
+begin WINDOW
+   id        = SCO2_Full
+   name      = Strong CO2
+   units     = wavelength
+   range     = 2.03 2.09
+   species   = CO2
+end WINDOW
+

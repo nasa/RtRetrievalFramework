@@ -1,0 +1,125 @@
+#
+# Revision: 60
+#
+#&
+# FILES MENU
+# **********
+#
+# Shared data path:                               '../dat_share/'
+# Node data path:                                 ' '
+#     Preflight calibration file root             'ARP/oco_ArpND_080729210000.hdf'
+#     Fluorescence File                           'MS3/fluor_data_2009_fortran.dat'
+#     HDF specifications:
+#         simulation                              'hdf/specification_simulation.dat'
+#         optical properties                      'hdf/specification_optics.dat'
+#         L1B                                     'hdf/specification_l1b_oco.dat'
+#         ARP                                     'hdf/specification_arp_oco.dat'
+#
+# Local data path (from command line)
+#     Simulation file name                        'scene/OCO2_scene_NDa_20100909_252_r60CSUSim01a_012.hdf'
+#     L1B output file name                        'output/OCO2_sim_NDa_20100909_252_r60CSUSim01b7_012.hdf'
+#     Optical properties file name                'auto'
+#     MS3 log file name                           'auto'
+#     Log file name                               'auto'
+#
+#&
+# MS3 FILE OPTIONS
+# ****************
+#
+# MS3 output directory                            'output/'
+# MS3 solar line file name                        'solar_di_20100208.101'
+# MS3 dispersion file name                        'dispersion_5_OCO2.dat'
+#     'dispersion_gosat_james.dat'
+# MS3 absorption coefficient file prefix          'gasabs_absco_v402_ms3_'
+# MS3 LSI file prefix                             'lsi_bounds_new_dk'
+# MS3 optimal sampling file prefix                'os_absco_v4.0.2_conservative_'
+# MS3 ILS file prefix                             'OCO2_ILS_tv1c_meets_spec_band'
+#
+#&
+# MS3 RADIATIVE TRANSFER OPTIONS
+# ******************************
+#
+# RT options: lo (1st col)     hi (2nd col)
+#
+# Verbose RT?                                     F       F
+# Number of streams lo, hi    4       24          2       20
+# Initial layer optical thickness (0 = auto)      1.0E-3  1.0E-5
+# Fractional convergence for SOI                  2.0E-5  2.0E-5
+# Fractional convergence for fourier loop         3.0E-5  3.0E-6
+# Use truncated doubling?                         T       F
+# Use adding?                                     F       T
+# Apply TMS single scattering correction?         T       T
+# Apply delta scaling?                            T       T
+# Apply pseudo-spherical correction?              T       T
+# Check phase function?                           F       F
+# Layer initialization (0/1/2 = auto/EIGI/SSA)    0       0
+# Polarization correct (0/1/2 = no/1OS/2OS)       1       2
+#
+# Use optimal sampling?                           T
+# Cloud-free RT?                                  T
+# Use Rayleigh scattering                         T
+# Number of BRDF quadrature points                128
+# NSum for 2+OS RT (LO only)                      5
+# Number of sublayers for gas absorption          3
+# RT Speedup Method (0/1/2 = none/LSI/EOF)        1
+#
+#&
+# MS3 GENERAL OPTIONS
+# *******************
+#
+# Use solar Doppler shift?                        T
+# Use instrument Doppler shift?                   T
+# Calculate Doppler velocities?                   F
+# Convolve with solar spectrum?                   T
+# Solar continuum model (old/solspec fit = 1/2)   2
+# Turn on plant fluorescence?                     F
+#
+# Write high resolution text file?                T
+# Write high resolution binary file?              T
+# Write low resolution convolved text file?       T
+# Write LSI files (if LSI on)?                    T
+# Write solar spectrum files?                     T
+# Verbose output?                                 T
+#
+# Units (0/1/2 = cm^{-1}/micrometres/nm)          1
+# Wavenumber spacing to match gas absorption      0.01D0
+# Radiance units (1/2 = OCO/GOSAT)                1
+# Interpolate log of ILS (0/1 = n/y)              1
+#
+#&
+# MS3 INSTRUMENT OPTIONS
+# **********************
+#
+# Number of polarization states                   1
+# ILS Type (0/1 = gaussian/table)                 1
+# ILS FWHM                                        0.2D0      0.2D0      0.2D0
+# ILS extent                                      3E-04      1E-03      1E-03
+# Number of spectral points per band              1016       1016       1016
+#     1805       3508       2005
+# Field of view (not used yet)                    0.0D0
+#
+#&
+# CONFIGURATION MENU
+# ******************
+#
+# Surface model                                   0
+#   0 - specified Lambertian albedo everywhere
+#   1 - MODIS Lambertian albedo everywhere
+#   2 - MODIS scalar BRDF (land), C&M (ocean)
+#   3 - MODIS polarized BRDF (land), C&M (ocean)
+#   4 - Cox and Munk everywhere (water world)
+#
+# Force a fixed surface wind speed                F
+# Specified surface wind speed (m/s)              5.0
+# Specified Lambertian albedo
+#   band 1                                        0.3 0.3
+#   band 2                                        0.3 0.3
+#   band 3                                        0.3 0.3
+#
+#&
+#
+#           Frame      Sounding ID    Surface model     EffAlbedo_1A     EffAlbedo_1B     EffAlbedo_2A     EffAlbedo_2B     EffAlbedo_3A     EffAlbedo_3B      Tau_water_1        Tau_ice_1    Tau_aerosol_1      Tau_water_2        Tau_ice_2    Tau_aerosol_2      Tau_water_3        Tau_ice_3    Tau_aerosol_3         Fluo_755
+#               1                2                3                4                5                6                7                8                9               10               11               12               13               14               15               16               17               18               19
+#
+             2693  201009091200407                0    0.3000000E+00    0.3000000E+00    0.3000000E+00    0.3000000E+00    0.3000000E+00    0.3000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00
+             2693  201009091200407                0    0.3000000E+00    0.3000000E+00    0.3000000E+00    0.3000000E+00    0.3000000E+00    0.3000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00    0.0000000E+00

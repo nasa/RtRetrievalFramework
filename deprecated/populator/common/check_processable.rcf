@@ -1,0 +1,18 @@
+include = <CONTROL_FILE_DIRECTORY>/common_constants.rcf
+include = <CONTROL_FILE_DIRECTORY>/aggregate_constants.rcf
+
+# For any custom scripts
+modules_dir = <CONTROL_FILE_PARENT_DIR>/modules
+
+# Record source of input files and add headers
+begin SET
+   dest_base_dir = <aggregate_base_dir>
+
+   begin FILE
+       begin CHECK_PROCESSABLE
+          sounding_id_file = <config_filename>
+          sounding_id_sect = <config_id_section>
+       end CHECK_PROCESSABLE
+   end FILE
+
+end SET

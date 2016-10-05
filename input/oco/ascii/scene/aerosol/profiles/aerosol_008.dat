@@ -1,0 +1,22 @@
+begin HEADER
+  File_ID = "Aerosol Profile"
+  File_Creation = "Tue July 23 15:53:00 PDT 2007"
+  File_Type = "Matrix"
+  Num_Rows = 12
+  Num_Columns = 2
+  Retrieval_Mode = linear
+  Labels = "Pressure" "TROP_008"
+end HEADER
+#  Pressure       TROP_008
+   1.00E+02  8.2082239E-31
+   7.00E+03  8.2082239E-31
+   1.00E+04  8.2082239E-31
+   2.00E+04  5.1550199E-08
+   3.50E+04  1.0938867E-07
+   4.50E+04  1.7570263E-07
+   5.50E+04  3.2254708E-07
+   6.50E+04  5.7827007E-07
+   7.50E+04  1.0093986E-06
+   8.50E+04  1.5999247E-06
+   9.50E+04  2.3984111E-06
+   1.05E+05  3.4291511E-06

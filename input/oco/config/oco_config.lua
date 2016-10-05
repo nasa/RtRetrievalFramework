@@ -1,0 +1,407 @@
+
+-- This adds OCO specific routines for use by base_config
+
+require "config_common"
+
+------------------------------------------------------------
+--- Get the file names found in source_files, because
+--- they change from run to run.
+------------------------------------------------------------
+
+OcoConfig = ConfigCommon:new()
+
+------------------------------------------------------------
+--- Determine acquisition mode (nadir, glint, or target), and
+--- select the instrument corrections based on this.
+------------------------------------------------------------
+
+
+OcoConfig.instrument_correction_list_acquisition_mode = ConfigCommon.instrument_correction_list:new()
+
+
+function OcoConfig.instrument_correction_list_acquisition_mode:sub_object_key()
+   local res
+   if self.config.l1b:acquisition_mode() == "Glint" then 
+      res = self.ic_glint
+   elseif self.config.l1b:acquisition_mode() == "Target" then 
+      res = self.ic_target
+   elseif self.config.l1b:acquisition_mode() == "Transition" then 
+      --- We treat this the same as target. We can make a separate ic_transition
+      --- if needed in the future, but for now just do what we do with target
+      --- mode
+      res = self.ic_target
+   elseif self.config.l1b:acquisition_mode() == "Nadir" then 
+      res = self.ic_nadir
+   else
+      error("Unrecognized acquistion mode " .. 
+	    self.config.l1b:acquisition_mode())
+   end
+   return res
+end
+
+------------------------------------------------------------
+-- Determine sounding id list from HDF file
+-- Overrides empty behavior from ConfigCommon
+------------------------------------------------------------
+
+function OcoConfig:l1b_sid_list()
+    if (not self.sid_string or self.sid_string == "") then
+        error("Sounding id string not defined")
+    end
+   if(not self.l1b_sid_list_v) then
+      local hv = self:l1b_hdf_file()
+      if(hv) then
+         self.l1b_sid_list_v = OcoSoundingId(hv, self.sid_string)
+	 self.sid = self.l1b_sid_list_v
+      end
+   end
+   return self.l1b_sid_list_v
+end
+
+------------------------------------------------------------
+--- Open ECMWF if we have one
+------------------------------------------------------------
+
+function OcoConfig:ecmwf()
+   local sid = self:l1b_sid_list()
+   if(self.ecmwf_file and not self.ecmwf_v) then 
+      self.ecmwf_v = OcoEcmwf(self.ecmwf_file, self:l1b_sid_list())
+      self.input_file_description = self.input_file_description .. 
+	 "ECMWF input file:    " .. self.ecmwf_file .. "\n"
+   end
+   return self.ecmwf_v
+end
+
+------------------------------------------------------------
+--- Create a level 1b file were we read it from a HDF file.
+------------------------------------------------------------
+
+OcoConfig.level1b_hdf = CreatorL1b:new()
+
+function OcoConfig.level1b_hdf:create_parent_object()
+   local hv = self.config:l1b_hdf_file()
+   local sid = self.config:l1b_sid_list()
+   l1b_oco = Level1bOco(hv, sid)
+   l1b_oco.noise_model = self.config.noise
+   return l1b_oco
+end
+
+------------------------------------------------------------
+--- Short routine to mark all pixels as bad if they are outside of the
+--- normal spectral window.
+---
+--- This can be used in combination with bad_sample_noise_model
+--- to get the full spectrum.
+------------------------------------------------------------
+
+function bad_sample_mask_outside_window(self)
+   local bad_sample_mask = self:bad_sample_mask_before_window()
+   local window = {{100,888}, {211, 863}, {100, 911}}
+   for i=1,3 do
+      local lb = window[i][1]
+      local ub = window[i][2]
+      for j=0,bad_sample_mask:cols() - 1 do
+         if(j < lb or j >= ub) then
+            bad_sample_mask:set(i - 1, j, 1)
+         end
+      end
+   end
+   return bad_sample_mask
+end
+
+------------------------------------------------------------
+--- Create a noise model where we add a large uncertainty
+--- where we have bad samples. This is an alternative to just
+--- remove the bad samples from the calculation, useful when we
+--- want the residuals of the bad samples calculated but not
+--- used in the retrieval (e.g., we are analyzing ARPs).
+------------------------------------------------------------
+
+OcoConfig.bad_sample_noise_model = Creator:new()
+
+function OcoConfig.bad_sample_noise_model:create()
+   local noise_model = self.creator_before_bad_sample.create(self)
+   local bad_sample = self:bad_sample_mask()
+   return BadSampleNoiseModel(noise_model, bad_sample, 
+			      self.bad_sample_uncertainty)
+end
+
+------------------------------------------------------------
+--- Create a OCO Noise model.
+------------------------------------------------------------
+
+OcoConfig.oco_noise = Creator:new()
+
+function OcoConfig.oco_noise:create()
+   local hv = self.config:l1b_hdf_file()
+   local sid = self.config:l1b_sid_list()
+   local nspec = self.config.spec_win:number_spectrometer()
+   local max_ms = Blitz_double_array_1d(nspec)
+   for i, v in ipairs(self.max_ms) do
+      max_ms:set(i-1, v)
+   end
+   return OcoNoiseModel(hv, sid, max_ms)
+end
+
+------------------------------------------------------------
+--- Retrieves a bad pixel mask out of an extra dimension
+--- in the snr_coef dataset
+------------------------------------------------------------
+
+function OcoConfig:snr_coef_bad_sample_mask()
+    local l1b_hdf_file = self.config:l1b_hdf_file()
+    local sid = self.config:l1b_sid_list()
+    local sounding_num = sid:sounding_number()
+    local snr_coef = l1b_hdf_file:read_double_4d_sounding("/InstrumentHeader/snr_coef", sounding_num)
+
+    if (snr_coef:depth() > 2) then
+        local bad_sample_mask = snr_coef(Range.all(), Range.all(), 2)
+        return bad_sample_mask
+    end
+    
+    return nil
+end
+
+------------------------------------------------------------
+--- Extends the snr coef bad sample mask routine but also
+--- applies South Atlantic Anomoly (SAA) bad sample
+--- removal.
+---
+--- This first applies the mask "bad_sample_mask_before_saa",
+--- then it applies the SAA filtering, but only if we are
+--- within the latitude/longitude box given by latitude_min, etc.
+--- We use the given saa_tolerance to find bad samples.
+------------------------------------------------------------
+
+function OcoConfig.bad_sample_mask_with_saa(self)
+   -- Ensure the saa_tolerance is set
+   if (not self.saa_tolerance) then
+      error("SAA filtering saa_tolerance not set")
+   end
+
+   -- Shape: band x sample_index
+   local bad_samp_mask = self:bad_sample_mask_before_saa()
+
+   if (bad_samp_mask ~= nil) then
+      -- We haven't read in the l1b object yet, because we have
+      -- a chicken an egg problem where we haven't yet generated
+      -- the noise model. But go ahead a create a local copy that we 
+      -- use just to get the latitude and longitude
+      local sid = self.config:l1b_sid_list()
+      local l1b_temp = Level1bOco(self.config:l1b_hdf_file(), sid)
+      local lat = l1b_temp:latitude(0).value
+      local lon = l1b_temp:longitude(0).value
+      if(lat >= self.latitude_min and lat <= self.latitude_max and
+	 lon >= self.longitude_min and lon <= self.longitude_max) then
+	 self.config:diagnostic_message("Applying SAA bad sample filtering with saa_tolerance: " .. self.saa_tolerance)
+	 
+	 local frame_num = sid:frame_number()
+	 local sounding_num = sid:sounding_number()
+	 
+	 for band_idx = 0, bad_samp_mask:rows() - 1 do
+	    if l1b_temp:has_spike_eof(band_idx) then
+	       local saa_weighted = l1b_temp:spike_eof(band_idx)
+	       for samp_idx = 0, bad_samp_mask:cols() - 1 do
+		  if(saa_weighted(samp_idx) >= self.saa_tolerance) then
+		     bad_samp_mask:set(band_idx, samp_idx, 1.0)
+		     self.config:diagnostic_message("Setting SAA bad point band_idx " .. band_idx .. " samp_idx " .. samp_idx)
+		  end
+	       end
+	    else
+	       self.config:diagnostic_message("Not applying SAA filtering for " .. band_idx .. "dataset does not exist")
+	    end
+	 end
+      else
+	 self.config:diagnostic_message("Not applying SAA bad sample filtering because we are outside of the lat/lon box we apply this to")
+      end
+   else
+      self.config:diagnostic_message("Not applying SAA bad sample filtering due to nil bad sample list")
+   end
+   
+   return bad_samp_mask
+end
+
+------------------------------------------------------------
+--- Retrieve offset scaling for static HDF file
+------------------------------------------------------------
+
+function OcoConfig.oco_offset_scaling(field)
+   return 
+      function (self)
+         local sid = self.config:l1b_sid_list()
+         sounding_pos = sid:sounding_position()
+         scaling_all = self.config:h():read_double_with_unit_2d(field)
+         return ArrayWithUnit_1d(scaling_all.data(sounding_pos-1, Range.all()), scaling_all.units)
+      end
+end
+
+------------------------------------------------------------
+--- Defines the ground type name we should use, based on
+--- land water fag
+------------------------------------------------------------
+
+function OcoConfig:ground_type_name()
+   local lf = self.l1b:land_fraction()
+
+   if(lf > 80.0) then
+      return "lambertian"
+   elseif(lf < 20.0) then
+      return "coxmunk"
+   else
+      error("Invalid land fraction value read from L1B file: " .. lf .. " (must be > 80 or < 20 to process Level 2)")
+   end
+end
+
+------------------------------------------------------------
+--- Create ground based on the surface type
+------------------------------------------------------------
+
+OcoConfig.ground_land_water_indicator = DispatchCreator:new()
+
+function OcoConfig.ground_land_water_indicator:get_creator()
+   local ground_type = self.config:ground_type_name()
+
+   if (ground_type == "lambertian") then
+      return ConfigCommon.ground_lambertian
+   elseif (ground_type == "coxmunk") then
+      if(self.config.using_radiance_scaling ~= nil) then
+         return ConfigCommon.ground_coxmunk
+      else
+         return ConfigCommon.ground_coxmunk_plus_lamb
+      end
+   else
+      error("Invalid ground type value: " .. ground_type)
+   end
+end
+
+------------------------------------------------------------
+--- Create lambertian ground initial guess from radiance
+--- but the other parts from the static HDF file
+------------------------------------------------------------
+
+function OcoConfig.oco_albedo_from_radiance(polynomial_degree)
+   return function(self, band_idx)
+
+      -- Fsun0 - Roughly at 1 AU
+      local solar_strength = {4.87e21, 2.096e21, 1.15e21}
+      local stokes_coef = self.config.l1b:stokes_coef()
+      for idx = 1, self.config.number_pixel:rows() do
+         -- Create SolarDopplerShiftPolynomial so we can compute solar distance
+         solar_doppler_shift = 
+            SolarDopplerShiftPolynomial.create_from_l1b(self.config.l1b, idx-1, true)
+         solar_dist = solar_doppler_shift:solar_distance().value
+
+         -- Account for solar distance Fsun = Fsun0 / (solar_distance_meters/AU)^2
+         solar_strength[idx] = solar_strength[idx] / solar_dist^2
+ 
+         -- Account for stokes element for I
+         solar_strength[idx] = solar_strength[idx] * stokes_coef(idx-1, 0)
+      end
+
+      local continuum_points = {
+         -- ABO2
+         { { Range(20,31) }, { Range(912,923) } },
+         -- WCO2
+         { { 56, Range(85,88), Range(99,104), 145, Range(151,158) },
+           { Range(766,770), 892, 893, Range(957,963), Range(967,969), Range(1000,1002) } },
+         -- SCO2
+         { { 10, 11, 12, 25, 26, 86, 87, 95, 105, 127, 128, 129 },
+           { 949, 950, Range(973,976), 992, 993, 997, 998, 1008, 1009 } },
+      }
+      local use_range_max = { false, false, false }
+
+      return ConfigCommon.albedo_from_radiance(self, band_idx, solar_strength, continuum_points, use_range_max, polynomial_degree)
+   end
+end
+
+------------------------------------------------------------
+--- The number of dispersion values for OCO-2 is 6, but
+--- for OCO-1 there were 10. This number is carried into
+--- many older files. For backwards compatibility we
+--- extend the dispersion covariance for these older files.
+------------------------------------------------------------
+
+function OcoConfig.dispersion_covariance_i(field)
+    return function(self, i)
+        local num_disp = self.config.l1b:spectral_coefficient():cols()
+        local orig_disp = ConfigCommon.hdf_covariance_i(field)(self, i)
+        if num_disp == orig_disp:rows() then
+            return orig_disp
+        else
+            local new_disp = Blitz_double_array_2d(num_disp, num_disp)
+            new_disp:set(Range.all(), Range.all(), 0.0)
+            local orig_vals_range = Range(0, orig_disp:rows()-1)
+            new_disp:set(orig_vals_range, orig_vals_range, orig_disp(Range.all(), Range.all()))
+            return new_disp
+        end
+    end
+end
+
+------------------------------------------------------------
+--- Create ILS table by reading from an L1B hdf file using
+--- Lua to do the reading and index massaging.
+------------------------------------------------------------
+OcoConfig.ils_table_l1b = Creator:new()
+
+function OcoConfig.ils_table_l1b:create()
+   -- Load reference to L1B HDF file
+   local l1b_hdf_file = self.config:l1b_hdf_file()
+
+   local sid = self.config:l1b_sid_list()
+   sounding_num = sid:sounding_number()
+
+   -- Use a simple table ILS since the ILS supplies
+   -- a full set of delta_lambda/repsonses per pixel
+   interpolate = false
+
+   local idx
+   local wavenumber, delta_lambda, response_name
+   local res = {}
+   for idx = 0, self.config.number_pixel:rows() - 1 do
+      local hdf_band_name = self.config.common.hdf_band_name:value(idx)
+      local desc_band_name = self.config.common.desc_band_name:value(idx)
+
+      -- Delta lambda
+      delta_lambda = l1b_hdf_file:read_double_4d_sounding("/InstrumentHeader/ils_delta_lambda", sounding_num)
+      delta_lambda = delta_lambda(idx, Range.all(), Range.all())
+
+      -- Load ILS response values
+      response = l1b_hdf_file:read_double_4d_sounding("/InstrumentHeader/ils_relative_response", sounding_num)
+      response = response(idx, Range.all(), Range.all())
+
+
+      -- Calculate center wavenumber from dispersion, there should be number pixel
+      -- of these per spectrometer
+      wavenumber = self.config.dispersion[idx+1]:pixel_grid():data()
+
+      res[idx+1] = IlsTableLog(wavenumber, delta_lambda, response, desc_band_name, hdf_band_name, interpolate)
+   end
+   return res
+end
+
+------------------------------------------------------------
+--- Open a ECWMF based on the orbit simulator meteorology 
+--- file. 
+------------------------------------------------------------
+
+function OcoConfig:ecwmf_meteorology_file()
+   local sid = self:l1b_sid_list()
+   if(self.ecmwf_file and not self.ecmwf_v) then 
+      self.ecmwf_v = OcoSimMetEcmwf(self.ecmwf_file, self:l1b_sid_list())
+   end
+   return self.ecmwf_v
+end
+
+------------------------------------------------------------
+--- Get the CO2 apriori from the profile given in the scene
+--- file, rather than trying to guess it. This is useful 
+--- when we are trying to exactly match a OCO simulator run.
+---
+--- If you use this function, then you should have scene_file
+--- defined in the config object
+------------------------------------------------------------
+
+function OcoConfig:co2_apriori_from_scene()
+   local t = OcoSimApriori(self.config.scene_file, self.config:l1b_sid_list())
+   return t:co2_vmr_grid(self.config.pressure)
+end

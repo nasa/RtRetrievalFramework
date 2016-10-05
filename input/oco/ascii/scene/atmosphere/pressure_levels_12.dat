@@ -1,0 +1,24 @@
+begin HEADER
+  File_ID       = "Pressure levels"
+  File_Creation = "Tue Oct 10 15:35:10 2006"
+  File_Type     = "Matrix"
+  Num_Rows      = 12
+  Num_Columns   = 1
+  Labels        = "Pressure"
+  Units		= "Pascals"
+end HEADER
+
+# Pressure
+# (Pa)
+100.000
+7000.00
+10000.0
+20000.0
+35000.0
+45000.0
+55000.0
+65000.0
+75000.0
+85000.0
+95000.0
+105000.

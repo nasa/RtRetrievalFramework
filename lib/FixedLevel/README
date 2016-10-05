@@ -1,0 +1,5 @@
+Up until B2.10, we used a fixed set of pressure levels. This meant that we
+would have a variable number of "active levels".  This has been replaced with
+pressure sigma levels. This directory contains the old code. We will keep
+this around for a bit for backwards compatibility, although this may
+eventually go away.

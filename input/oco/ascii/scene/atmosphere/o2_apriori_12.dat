@@ -1,0 +1,24 @@
+begin HEADER
+  File_Creation = 2008-12-03T18:27:13 UTC
+  File_ID = "O2 Atmospheric Apriori"
+  File_Type = "Matrix"
+  Labels =  "Pressure"  "O2" 
+  Num_Columns = 2
+  Num_Rows = 12
+  Units =  "Pa"  "VMR" 
+end HEADER
+
+#         Pressure         O2
+#               Pa        VMR
+    1.00000000e+02  2.095e-01
+    7.00000000e+03  2.095e-01
+    1.00000000e+04  2.095e-01
+    2.00000000e+04  2.095e-01
+    3.50000000e+04  2.095e-01
+    4.50000000e+04  2.095e-01
+    5.50000000e+04  2.095e-01
+    6.50000000e+04  2.095e-01
+    7.50000000e+04  2.095e-01
+    8.50000000e+04  2.095e-01
+    9.50000000e+04  2.095e-01
+    1.05000000e+05  2.095e-01

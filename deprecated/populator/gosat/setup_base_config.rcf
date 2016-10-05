@@ -1,0 +1,34 @@
+include = <type_constants_filename>
+
+begin SET
+   dest_base_dir = config/
+
+   begin FILE
+      source_filename = file_list.lua
+
+      begin PICK
+          keyword  = spectrum_file
+          template = '"<l1b_real_filename>"'
+      end PICK
+
+      begin PICK
+          keyword  = ecmwf_file
+          template = '"<ecmwf_real_filename>"'
+      end PICK
+
+      begin PICK
+          keyword  = cloud_file
+          template = '"<cloud_real_filename>"'
+          only_if  = 'eval( len("<cloud_real_filename|>") > 0)'
+      end PICK
+
+
+      begin PICK
+          keyword  = cloud_file
+          template = '""'
+          not_if   = 'eval( len("<cloud_real_filename|>") > 0)'
+      end PICK
+
+   end FILE
+
+end SET
