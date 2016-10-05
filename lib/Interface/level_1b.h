@@ -141,7 +141,19 @@ public:
 //-----------------------------------------------------------------------
 
   virtual SpectralRange radiance(int Spec_index) const = 0;
-  
+
+//-----------------------------------------------------------------------
+/// Calculate an approximation to the size of the continuum signal
+/// where there is no significant atmosphere absorption. We
+/// approximate this by finding the 10 highest radiance values and
+/// averaging them.
+///
+/// Optionally takes a list of sample indexes. Will only uses these
+/// sample indexes for the calculation when supplied.
+//-----------------------------------------------------------------------
+
+  virtual DoubleWithUnit signal(int Spec_index, const std::vector<int>& Sample_indexes = std::vector<int>()) const;
+   
 };
 } // End of FullPhysics namespace
 #endif

@@ -27,11 +27,24 @@ std::string double_vector_tostring(const std::vector<double>& Vec)
   return os.str();
 }
 
+std::string int_vector_tostring(const std::vector<int>& Vec)
+{
+  std::ostringstream os;
+  os << "std::vector<std::int>:" << std::endl;
+  for(int i = 0; i < (int) Vec.size(); i++)
+    os << "["<<i<<"] = " << Vec[i] << std::endl;
+  return os.str();
+}
+
 std::string string_value(const std::vector<std::string>& Vec, int index) {
   return Vec.at(index);
 }
 
 double double_value(const std::vector<double>& Vec, int index) {
+  return Vec.at(index);
+}
+
+int int_value(const std::vector<int>& Vec, int index) {
   return Vec.at(index);
 }
 
@@ -42,12 +55,21 @@ REGISTER_LUA_CLASS_NAME(std::vector<std::string>, VectorString)
 .def("value", &string_value)
 .def("__tostring", &string_vector_tostring)
 REGISTER_LUA_END()
+
 REGISTER_LUA_CLASS_NAME(std::vector<double>, VectorDouble)
 .def(luabind::constructor<>())
 .def("size", &std::vector<double>::size)
 .def("push_back", &std::vector<double>::push_back)
 .def("value", &double_value)
 .def("__tostring", &double_vector_tostring)
+REGISTER_LUA_END()
+
+REGISTER_LUA_CLASS_NAME(std::vector<int>, VectorInt)
+.def(luabind::constructor<>())
+.def("size", &std::vector<int>::size)
+.def("push_back", &std::vector<int>::push_back)
+.def("value", &int_value)
+.def("__tostring", &int_vector_tostring)
 REGISTER_LUA_END()
 
 //-----------------------------------------------------------------------
@@ -109,6 +131,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(Blitz_bool_array_3d);
   REGISTER_LUA_LIST(VectorString);
   REGISTER_LUA_LIST(VectorDouble);
+  REGISTER_LUA_LIST(VectorInt);
   REGISTER_LUA_LIST(LogImp);
   REGISTER_LUA_LIST(Logger);
   REGISTER_LUA_LIST(Constant);
