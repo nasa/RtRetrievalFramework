@@ -266,6 +266,9 @@ GosatBaseConfig = AcosConfig:new {
             creator = ConfigCommon.temperature_ecmwf,
          },
          ground = {
+            -- Instrument specific solar strengths used for ground calculations 
+            solar_strength = {7.2e-6, 6.5e-6, 4.5e-6},
+
             -- Pure lambertian
             lambertian = {
                apriori = ConfigCommon.albedo_from_signal_level(1),  
