@@ -2962,6 +2962,7 @@ config_DATA = @commonconfigsrc@/config_common.lua \
 	@commonconfigsrc@/helper_functions.lua \
 	@commonconfigsrc@/rail_road_valley.lua \
 	@commonconfigsrc@/uncertainty_quantification.lua \
+	@commonconfigsrc@/forward_model_all_in_one.lua \
 	@ftsconfigsrc@/fts_config.lua \
 	@ftsconfigsrc@/fts_base_config.lua \
 	@gosatconfigsrc@/acos_config.lua \
