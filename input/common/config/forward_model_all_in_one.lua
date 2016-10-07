@@ -144,45 +144,26 @@ function init_forward_model(config)
         end
     end
 
- 
     config.fm.atmosphere.aerosol = {
-        creator = sim_aerosol_creator,
-        wc_004 = {
+        creator = sim_aerosol_creator
+    }
+
+    aerosol_prop_types ={ "wc_004", "wc_005", "wc_006", "wc_007", "wc_008", "wc_009", "wc_010",
+        "wc_011", "wc_012", "wc_013", "wc_014", "wc_015", "wc_016", "wc_017",
+        "wc_018", "wc_019", "wc_020", "wc_021", "wc_022", "wc_023",
+        "wc_024", "wc_025", "wc_026", "wc_027", "wc_028", "wc_029", "wc_030",
+        "ic_010", "ic_015", "ic_020", "ic_025", "ic_030", "ic_035", "ic_040",
+        "ic_045", "ic_050", "ic_055", "ic_060", "ic_065", "ic_070", "ic_075",
+        "ic_080", "ic_085", "ic_090",
+    }
+
+    for i, prop_name in ipairs(aerosol_prop_types) do
+        config.fm.atmosphere.aerosol[prop_name] = {
             creator = sim_aerosol_profile_creator,
             apriori = sim_aerosol_apriori(),
-            property = ConfigCommon.hdf_aerosol_property("wc_004"),
-        },
-        wc_008 = {
-            creator = sim_aerosol_profile_creator,
-            apriori = sim_aerosol_apriori(),
-            property = ConfigCommon.hdf_aerosol_property("wc_008"),
-        },
-        wc_012 = {
-            creator = sim_aerosol_profile_creator,
-            apriori = sim_aerosol_apriori(),
-            property = ConfigCommon.hdf_aerosol_property("wc_012"),
-        },
-        wc_016 = {
-            creator = sim_aerosol_profile_creator,
-            apriori = sim_aerosol_apriori(),
-            property = ConfigCommon.hdf_aerosol_property("wc_016"),
-        },
-        wc_018 = {
-            creator = sim_aerosol_profile_creator,
-            apriori = sim_aerosol_apriori(),
-            property = ConfigCommon.hdf_aerosol_property("wc_018"),
-        },
-        wc_022 = {
-            creator = sim_aerosol_profile_creator,
-            apriori = sim_aerosol_apriori(),
-            property = ConfigCommon.hdf_aerosol_property("wc_022"),
-        },
-        wc_026 = {
-            creator = sim_aerosol_profile_creator,
-            apriori = sim_aerosol_apriori(),
-            property = ConfigCommon.hdf_aerosol_property("wc_026"),
-        },
-     }
+            property = ConfigCommon.hdf_aerosol_property(prop_name),
+        }
+    end
 
     -- Remove EOF from state vector
     config.fm.instrument.instrument_correction.ic_nadir = {}

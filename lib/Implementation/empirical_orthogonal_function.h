@@ -4,6 +4,7 @@
 #include "instrument_correction.h"
 #include "hdf_file.h"
 #include "sub_state_vector_array.h"
+#include "array_with_unit.h"
 
 namespace FullPhysics {
 /****************************************************************//**
@@ -36,6 +37,9 @@ public:
 ///    object, we aren't actually reading from HDF in this particular
 ///    constructor. If the Eof_waveform does not come from and HDF
 ///    file, you can just leave this as the default "N/A" value.
+/// \param Sounding_number - The sounding number
+/// \param Eof_depend_on_sounding_number - True if the EOF depends
+///    on the sounding number, false otherwise      
 //-----------------------------------------------------------------------
   
   EmpiricalOrthogonalFunction(double Coeff, 
@@ -74,6 +78,17 @@ public:
 			      const std::string& Band_name,
 			      const std::string& Hdf_group = 
 			      "Instrument/EmpiricalOrthogonalFunction");
+  EmpiricalOrthogonalFunction(double Coeff, 
+			      bool Used_flag,
+			      const HdfFile& Hdf_static_input,
+			      const ArrayWithUnit<double, 1>& Uncertainty,
+			      int Spec_index,
+			      int Sounding_number,
+			      int Order,
+			      const std::string& Band_name,
+			      const std::string& Hdf_group = 
+			      "Instrument/EmpiricalOrthogonalFunction",
+			      double Scale_to_stddev = 1e19);
   virtual ~EmpiricalOrthogonalFunction() {}
   virtual std::string state_vector_name_i(int i) const
   { return "EOF order " + boost::lexical_cast<std::string>(order_) +
@@ -127,6 +142,8 @@ private:
   int order_;
   int sounding_number_;
   bool eof_depend_on_sounding_number_;
+  bool eof_scale_uncertainty_;
+  double scale_to_stddev_;
   ArrayWithUnit<double, 1> eof_;
 };
 }

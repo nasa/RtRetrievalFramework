@@ -18,7 +18,10 @@ public:
   Level1bOco(const boost::shared_ptr<HdfFile>& Hfile, 
 	     const boost::shared_ptr<HdfSoundingId>& Sounding_id);
   virtual SpectralRange radiance(int Spec_index) const;
+  bool has_spike_eof(int Spec_index) const;
+  blitz::Array<double, 1> spike_eof(int Spec_index) const;
   %python_attribute(has_solar_relative_velocity, bool);
+  %python_attribute(land_fraction, double);
   %python_attribute(solar_distance, DoubleWithUnit);
   %python_attribute(solar_velocity, DoubleWithUnit);
   %python_attribute(acquisition_mode, std::string);

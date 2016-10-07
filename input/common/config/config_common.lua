@@ -976,26 +976,6 @@ function ConfigCommon:l1b_spectral_coefficient_i(spec_idx)
 end
 
 ------------------------------------------------------------
--- Continuum signal level of measurement spectral 
--- Will only take into account samples used in retrieval
--- when called after spec_win, dispesion and l1b are set up
--- Indexing is zero based
-------------------------------------------------------------
-
-function ConfigCommon:meas_cont_signal(spec_idx)
-    local signal
-    if self.dispersion[spec_idx+1] ~= nil then
-        local pixel_grid = self.dispersion[spec_idx+1]:pixel_grid()
-        local grid_indexes = self.spec_win:grid_indexes(pixel_grid, spec_idx)
-        signal = self.l1b:signal(spec_idx, grid_indexes) 
-    else
-        self:diagnostic_message("Not removing bad samples or out of range samples for measurement continuum signal calculation")
-        signal = self.l1b:signal(spec_idx) 
-    end
-    return signal
-end
-
-------------------------------------------------------------
 --- Evaluates the table elements that are functions in the
 --- context of the configuration environment.
 --- This is useful for pull information out of the HDF
@@ -1344,7 +1324,24 @@ function ConfigCommon.empirical_orthogonal_function:create()
    for i=1,self.config.number_pixel:rows() do
       local fit_scale = self:retrieval_flag(i)
       if(self.by_pixel) then
-         res[i] = EmpiricalOrthogonalFunction(self:apriori(i - 1)(0),
+	 if(self.scale_uncertainty) then
+    -- Luabind can only handle up to 10 arguments per function. As an easy
+    -- work around we put various values into an array
+	    local mq = Blitz_double_array_1d(5)
+	    mq:set(0, self:apriori(i - 1)(0))
+	    mq:set(1, i - 1)
+	    mq:set(2, self.config.sid:sounding_number())
+	    mq:set(3, self.order)
+	    mq:set(4, self.scale_to_stddev)
+	    res[i] = EmpiricalOrthogonalFunction.create(
+                                  fit_scale(0),
+                                  hdf_file,
+				  self.config.l1b:uncertainty_with_unit(i-1),
+				  self.config.common.desc_band_name:value(i-1),
+				  hdf_group,
+				  mq)
+	 else
+	    res[i] = EmpiricalOrthogonalFunction(self:apriori(i - 1)(0),
                                   fit_scale(0),
                                   hdf_file,
                                   i - 1,
@@ -1352,6 +1349,7 @@ function ConfigCommon.empirical_orthogonal_function:create()
                                   self.order, 
                                   self.config.common.desc_band_name:value(i-1),
                                   hdf_group)
+	 end
       else
          res[i] = EmpiricalOrthogonalFunction(self:apriori(i - 1)(0),
                                   fit_scale(0),
@@ -2275,7 +2273,10 @@ function ConfigCommon.ground_brdf_veg:create_parent_object(sub_object)
 end
 
 function ConfigCommon.ground_brdf_veg:register_output(ro)
-   ro:push_back(GroundBrdfOutput.create(self.config.brdf_veg, self.config.common.hdf_band_name))
+   local sza = self.config.l1b:sza()
+   local cos_solar_zenith  = self.config:h():read_double_1d("/Ground/Brdf/Effective_Albedo_Table/cos_solar_zenith")
+   local intensity_scaling = self.config:h():read_double_1d("/Ground/Brdf/Effective_Albedo_Table/intensity_scaling")
+   ro:push_back(GroundBrdfOutput.create(self.config.brdf_veg, sza, cos_solar_zenith, intensity_scaling, self.config.common.hdf_band_name))
 end
 
 ------------------------------------------------------------
@@ -2313,7 +2314,10 @@ function ConfigCommon.ground_brdf_soil:create_parent_object(sub_object)
 end
 
 function ConfigCommon.ground_brdf_soil:register_output(ro)
-   ro:push_back(GroundBrdfOutput.create(self.config.brdf_soil, self.config.common.hdf_band_name))
+   local sza = self.config.l1b:sza()
+   local cos_solar_zenith  = self.config:h():read_double_1d("/Ground/Brdf/Effective_Albedo_Table/cos_solar_zenith")
+   local intensity_scaling = self.config:h():read_double_1d("/Ground/Brdf/Effective_Albedo_Table/intensity_scaling")
+   ro:push_back(GroundBrdfOutput.create(self.config.brdf_soil, sza, cos_solar_zenith, intensity_scaling, self.config.common.hdf_band_name))
 end
 
 ------------------------------------------------------------
@@ -2412,6 +2416,52 @@ function ConfigCommon:albedo_from_radiance(band_idx, solar_strength, continuum_p
                                                                        use_range_max[band_idx+1],
                                                                        polynomial_degree)
    return albedo_val
+end
+
+------------------------------------------------------------
+-- Continuum signal level of measurement spectral 
+-- Will only take into account samples used in retrieval
+-- when called after spec_win, dispesion and l1b are set up
+-- Indexing is zero based
+------------------------------------------------------------
+
+function ConfigCommon:meas_cont_signal(spec_idx)
+    local signal
+    if self.dispersion[spec_idx+1] ~= nil then
+        local pixel_grid = self.dispersion[spec_idx+1]:pixel_grid()
+        local grid_indexes = self.spec_win:grid_indexes(pixel_grid, spec_idx)
+        signal = self.l1b:signal(spec_idx, grid_indexes) 
+    else
+        self:diagnostic_message("Not removing bad samples or out of range samples for measurement continuum signal calculation")
+        signal = self.l1b:signal(spec_idx) 
+    end
+    return signal
+end
+
+------------------------------------------------------------
+--- Create lambertian ground initial guess from radiance
+--- using the signal level reported by the L1b object
+--- Meant to replace albedo_from_radiance() above.
+------------------------------------------------------------
+
+function ConfigCommon:albedo_from_signal_level(polynomial_degree)
+    if not polynomial_degree then
+        polynomial_degree = 1
+    end
+
+    return function(self, spec_idx)
+        local signal = self.config:meas_cont_signal(spec_idx).value
+        local solar_strength = self.config.fm.atmosphere.ground.solar_strength[spec_idx+1]
+        local sza_r = self.config.l1b:sza()(spec_idx) * math.pi / 180.0
+
+        local offset = math.pi * signal / (math.cos(sza_r) * solar_strength)
+
+        local albedo_val = Blitz_double_array_1d(polynomial_degree + 1)
+        albedo_val:set(Range.all(), 0)
+        albedo_val:set(0, offset)
+
+        return albedo_val
+    end
 end
 
 ------------------------------------------------------------

@@ -168,6 +168,7 @@ public:
   const boost::shared_ptr<Temperature>& temperature_ptr() const 
   {return temperature;}
   const boost::shared_ptr<Aerosol>& aerosol_ptr() const {return aerosol;}
+  void set_aerosol(boost::shared_ptr<Aerosol>& new_aerosol, StateVector& Sv);
   const boost::shared_ptr<RelativeHumidity>& relative_humidity_ptr() const
   { return rh; }
   const boost::shared_ptr<Constant>& constant_ptr() const {return constant;}

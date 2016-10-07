@@ -16,17 +16,17 @@ CLUSTER_OPTIONS = {
         'torque': {
             'array_idx_var_name': 'PBS_ARRAYID',
             'job_array_option': '-t',
-            'depend_option': '-W depend=afterokarray'
+            'depend_option': '-W depend=afteranyarray'
             },
         'pbs_pro': {
             'array_idx_var_name': 'PBS_ARRAY_INDEX',
             'job_array_option': '-J',
-            'depend_option': '-W depend=afterok'
+            'depend_option': '-W depend=afterany'
              },
         'pleiades': {
             'array_idx_var_name': 'PBS_ARRAY_INDEX',
             'job_array_option': '-J',
-            'depend_option': '-W depend=afterok'
+            'depend_option': '-W depend=afterany'
             },
         }
 

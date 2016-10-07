@@ -151,10 +151,31 @@ class AerosolExtinctionLinear(full_physics_swig.aerosol_extinction_imp_base.Aero
     C++ includes: aerosol_extinction_linear.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def __init__(self, Press, Flag, Aext, Aerosol_name):
+        """
+
+        FullPhysics::AerosolExtinctionLinear::AerosolExtinctionLinear(const boost::shared_ptr< Pressure > &Press, const blitz::Array< bool,
+        1 > &Flag, const blitz::Array< double, 1 > &Aext, const std::string
+        &Aerosol_name)
+        Constructor.
+
+        Parameters:
+        -----------
+
+        Press:  The pressure to use
+
+        Flag:  Boolean flag indicating which levels are to be set by the state
+        vector. A value of false means the level is held fixed when the state
+        vector changes.
+
+        Aext:  The aerosol extinction value.
+
+        Aerosol_name:  The name of the aerosol. This is used to generate the
+        state vector name metadata, so it should be whatever is convenient. 
+        """
+        _aerosol_extinction_linear.AerosolExtinctionLinear_swiginit(self, _aerosol_extinction_linear.new_AerosolExtinctionLinear(Press, Flag, Aext, Aerosol_name))
 
     def clone(self, *args):
         """

@@ -171,6 +171,24 @@ class Ecmwf(full_physics_swig.generic_object.GenericObject):
         return _ecmwf.Ecmwf_h2o_vmr(self, *args)
 
 
+    def ozone_mmr(self, *args):
+        """
+
+        ArrayAd< double, 1 > Ecmwf::ozone_mmr(const ArrayAd< double, 1 > &Pressure_level) const
+
+        """
+        return _ecmwf.Ecmwf_ozone_mmr(self, *args)
+
+
+    def ozone_vmr(self, *args):
+        """
+
+        ArrayAd< double, 1 > Ecmwf::ozone_vmr(const ArrayAd< double, 1 > &Pressure_level) const
+
+        """
+        return _ecmwf.Ecmwf_ozone_vmr(self, *args)
+
+
     def temperature_grid(self):
         """
 
@@ -193,6 +211,20 @@ class Ecmwf(full_physics_swig.generic_object.GenericObject):
         Pressure is in pascals. 
         """
         return _ecmwf.Ecmwf_specific_humidity_grid(self)
+
+
+    def ozone_mmr_grid(self):
+        """
+
+        void Ecmwf::ozone_mmr_grid(blitz::Array< double, 1 > &Pressure, blitz::Array< double, 1 > &H)
+        const
+        Ozone mass mixing ratio on the ECMWF pressure grid.
+
+        Ozone on the ECMWF pressure grid.
+
+        Pressure is in pascals. 
+        """
+        return _ecmwf.Ecmwf_ozone_mmr_grid(self)
 
 
     def temperature(self, *args):
@@ -261,8 +293,11 @@ class Ecmwf(full_physics_swig.generic_object.GenericObject):
 
 Ecmwf.specific_humidity = new_instancemethod(_ecmwf.Ecmwf_specific_humidity, None, Ecmwf)
 Ecmwf.h2o_vmr = new_instancemethod(_ecmwf.Ecmwf_h2o_vmr, None, Ecmwf)
+Ecmwf.ozone_mmr = new_instancemethod(_ecmwf.Ecmwf_ozone_mmr, None, Ecmwf)
+Ecmwf.ozone_vmr = new_instancemethod(_ecmwf.Ecmwf_ozone_vmr, None, Ecmwf)
 Ecmwf.temperature_grid = new_instancemethod(_ecmwf.Ecmwf_temperature_grid, None, Ecmwf)
 Ecmwf.specific_humidity_grid = new_instancemethod(_ecmwf.Ecmwf_specific_humidity_grid, None, Ecmwf)
+Ecmwf.ozone_mmr_grid = new_instancemethod(_ecmwf.Ecmwf_ozone_mmr_grid, None, Ecmwf)
 Ecmwf.temperature = new_instancemethod(_ecmwf.Ecmwf_temperature, None, Ecmwf)
 Ecmwf._v_surface_pressure = new_instancemethod(_ecmwf.Ecmwf__v_surface_pressure, None, Ecmwf)
 Ecmwf._v_windspeed = new_instancemethod(_ecmwf.Ecmwf__v_windspeed, None, Ecmwf)

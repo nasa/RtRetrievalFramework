@@ -24,10 +24,20 @@ public:
 	  blitz::Array<double, 1>& Pressure_level) const;
   ArrayAd<double, 1> h2o_vmr(const
 	  ArrayAd<double, 1>& Pressure_level) const;
+  virtual blitz::Array<double, 1> ozone_mmr(const
+	  blitz::Array<double, 1>& Pressure_level) const;
+  virtual ArrayAd<double, 1> ozone_mmr(const
+	  ArrayAd<double, 1>& Pressure_level) const;
+  blitz::Array<double, 1> ozone_vmr(const
+	  blitz::Array<double, 1>& Pressure_level) const;
+  ArrayAd<double, 1> ozone_vmr(const
+	  ArrayAd<double, 1>& Pressure_level) const;
   void temperature_grid(blitz::Array<double, 1>& OUTPUT,
 			blitz::Array<double, 1>& OUTPUT) const;
   void specific_humidity_grid(blitz::Array<double, 1>& OUTPUT,
 			     blitz::Array<double, 1>& OUTPUT) const;
+  void ozone_mmr_grid(blitz::Array<double, 1>& OUTPUT,
+		      blitz::Array<double, 1>& OUTPUT) const;
   blitz::Array<double, 1> temperature(const 
       blitz::Array<double, 1>& Pressure_level) const;
   ArrayAd<double, 1> temperature(const 

@@ -4,9 +4,14 @@
 %{
 #include "aerosol_extinction_linear.h"
 %}
+
 %base_import(aerosol_extinction_imp_base)
 %import "pressure.i"
 %fp_shared_ptr(FullPhysics::AerosolExtinctionLinear)
+
+// Force to be not abstract, SWIG had troubles seeing that the clone methods ARE implemented below
+%feature("notabstract") AerosolExtinctionLinear;
+
 namespace FullPhysics {
 class AerosolExtinctionLinear : public AerosolExtinctionImpBase {
 public:

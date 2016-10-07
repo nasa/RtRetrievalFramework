@@ -5,7 +5,7 @@ from builtins import zip
 from builtins import str
 from builtins import range
 from builtins import object
-from past.utils import old_div
+
 import logging
 from optparse import OptionParser
 from glob import glob
@@ -62,8 +62,8 @@ Model = namedtuple("Model", ["pressure", "temperature", "height", "h2o_vmr", "su
 # Output: svp (mbar)
 def svp_wv_over_ice(temp):
   t0=273.16   # triple point temperature (K)
-  tr=old_div(t0,temp)
-  yy=-9.09718*(tr-1)-3.56654*log10(tr)+0.876793*(1-old_div(1,tr))
+  tr=t0/temp
+  yy=-9.09718*(tr-1)-3.56654*log10(tr)+0.876793*(1-1/tr)
   svp=6.1173*10**yy   # saturation vapor pressure over ice (mbar)
   return svp
 
@@ -125,14 +125,14 @@ def log1pxox(x):
        LOG1PXOX is approximated by the series 1-x/2+x**2/3-x**3/4+x**4/5-x**5/6"""
 
     if (abs(x) > 0.1):
-        log1pxox = old_div(log(1 + x), x)
+        log1pxox = log(1 + x) / x
     else:
         nterm=13  # double precision
         #nterm = 6   # single precision
-        log1pxox = old_div(1.e0, nterm)
+        log1pxox = 1.e0 / nterm
         #for j = nterm-1,1,-1:
         for j in range(nterm-1,0,-1):
-            log1pxox = old_div(1.e0, j) - x * log1pxox
+            log1pxox = 1.e0 / j - x * log1pxox
 
     return log1pxox
 
@@ -166,7 +166,7 @@ class ModelMaker(object):
         #         based on julian time? At least it was 2 days off for the first
         #         Entry in the 2012 files...
         self.epoch_hours = (self.model_dt - datetime(1,1,1,0)).total_seconds()/60.0/60.0 \
-            - old_div(self.site_lon_180,15.0) + 48
+            - self.site_lon_180/15.0 + 48
         
         self.ncep_data = self.load_ncep_data(**kwargs)
 
@@ -198,10 +198,10 @@ class ModelMaker(object):
 
     def interp_to_site(self, ncep_obj, global_data_name):
         def frac_lat(lat_arr):
-            return old_div((self.site_lat - lat_arr[0]), (lat_arr[1] - lat_arr[0]))
+            return (self.site_lat - lat_arr[0]) / (lat_arr[1] - lat_arr[0])
 
         def frac_lon(lon_arr):
-            return old_div((self.site_lon - lon_arr[0]), (lon_arr[1] - lon_arr[0]))
+            return (self.site_lon - lon_arr[0]) / (lon_arr[1] - lon_arr[0])
 
         logger.debug("Loading data for %s interpolation from %s:" % (global_data_name, ncep_obj.filename))
 
@@ -227,7 +227,7 @@ class ModelMaker(object):
         global_data = global_data[:] * global_data.scale_factor + global_data.add_offset
 
         # Interpolate to lat/lon of site and to local noon
-        frac_time = old_div((self.epoch_hours-time_file[0]), (time_file[1]-time_file[0]))
+        frac_time = (self.epoch_hours-time_file[0]) / (time_file[1]-time_file[0])
 
         if len(global_data.shape) == 4:
             interp_loc = bilinear_interp2(global_data, frac_lon(lon_file), frac_lat(lat_file))
@@ -267,7 +267,7 @@ class ModelMaker(object):
         # Specific Humidity interpolated to Lat/Long of site:
         # Convert the spec hum data into vmr units
         spec_hum_data = self.interp_to_site(self.ncep_data.spec_hum, "shum")
-        spec_hum_data *= old_div(28.964,18.02)
+        spec_hum_data *= 28.964/18.02
 
         # Surface pressure interpolated to Lat/Lon of site
         surf_pres_data = self.interp_to_site(self.ncep_data.surface_pres, "pres")
@@ -319,14 +319,14 @@ class ModelMaker(object):
         lstp=log10(stp)
         for k in range(len(ssh), lev_at.shape[0]):
             zz = log10(lev_at[k])  # log10[pressure]
-            strat_h2o=7.5E-06*exp(-3.0*(old_div(zz,lstp))**2)
-            dsh = dsh * pow(old_div(lev_at[k], lev_at[k-1]), 5.5 - old_div(lev_at[k], 100))
+            strat_h2o=7.5E-06*exp(-3.0*(zz/lstp)**2)
+            dsh = dsh * pow(lev_at[k] / lev_at[k-1], 5.5 - lev_at[k] / 100)
             svp = svp_wv_over_ice(sat[k])
-            satvmr = old_div(svp, lev_at[k])   # vmr of saturated WV at T/P
+            satvmr = svp / lev_at[k]   # vmr of saturated WV at T/P
 
             if ( dsh > satvmr ):
                 dsh=satvmr
-            if (lev_at[k] < old_div(stp, 100.0)):
+            if (lev_at[k] < stp / 100.0):
                 dsh = sqrt(dsh * strat_h2o)  # above the trop
 
             p_out.append(lev_at[k])
@@ -339,7 +339,7 @@ class ModelMaker(object):
 
         # Export the P-T profile above 10mbar
         for k in range(1, 8):
-            delta_t = old_div(delta_t,2)
+            delta_t = delta_t/2
             zz = log10(p_ussa[k])  # log10[pressure]
             strat_h2o=7.5E-06*exp(-0.25*zz**2)
 
@@ -390,10 +390,10 @@ class ModelMaker(object):
         gs = 9.81
         zold = self.interp_data.geo_height[0]
         pfact = 1013.25
-        ptrop_ncep = old_div(self.interp_data.trop_pres,10**2)  # mbar
+        ptrop_ncep = self.interp_data.trop_pres/10**2  # mbar
 
         #print radius,ecc2, tlat,gs,zold,pfact,ptrop_ncep
-        hold=old_div(zold,(1+old_div(zold,radius)))  # Convert geometric to geopotential altitude
+        hold=zold/(1+zold/radius)  # Convert geometric to geopotential altitude
         roc=radius                 # don't correct for Earth's ecentricity
                                    # OK for ground based & mid latitude
 
@@ -424,14 +424,14 @@ class ModelMaker(object):
             h2onew=h2oold
 
         #print hold,pold,told
-        x=old_div(tnew,told)-1
-        hnew=hold+U_GAS_CONST*told*log(old_div(pold,pnew))/gs/w_arr[0]/log1pxox(x)
+        x=tnew/told-1
+        hnew=hold+U_GAS_CONST*told*log(pold/pnew)/gs/w_arr[0]/log1pxox(x)
         #print 'hnew=',hnew,pold,pnew,told,tnew,x
         #print 'hnew=',hnew,hnew/(1-hnew/radius),pnew,tnew
 
         iztrop=0.0
         for k in range(nlev):       # loop over levels
-            hk=old_div(z_arr[k],(1+old_div(z_arr[k],radius)))  # Convert from geometric to geopotential
+            hk=z_arr[k]/(1+z_arr[k]/radius)  # Convert from geometric to geopotential
             while (hk > hnew):      # hold & hnew are both below hk; read another record
                 pold=pnew
                 told=tnew
@@ -443,14 +443,14 @@ class ModelMaker(object):
                 ii=ii+1
                 if(ii > ninlvl):
                     logger.debug('ii, ninlvl, modname z(k) zold znew = %f, %d, %d, %f, %f, %f' % \
-                        (ii,ninlvl,ninlvl,z(k),old_div(hold,(1-old_div(hold,radius))),old_div(hnew,(1-old_div(hnew,radius)))))
+                        (ii,ninlvl,ninlvl,z(k),hold/(1-hold/radius),hnew/(1-hnew/radius)))
                     raise Exception('Warning: Model levels do not extend high enough Model levels do not extend high enough')
                 pnew=inpress[ii]
                 tnew=intemp[ii]
                 znew=inheight[ii]
 
                 # Compute tropopause altitude
-                lr=old_div((tnew-told),(znew-zold)) # Lapse Rate
+                lr=(tnew-told)/(znew-zold) # Lapse Rate
                 zlr=0.5*(zold+znew)        # Altitude at which lapse rate = lr
 
                 # Find first instance of lapse-rate exceeding -2K/km
@@ -459,14 +459,14 @@ class ModelMaker(object):
                 if(iztrop == 0.0 and zold > 5 and lr > -2.0):
                     iztrop=1.0 # do not compute the trop altitude more than once
                     ztrop_gct=zlrwas+(zlr-zlrwas)*(-2-lrwas)/(lr-lrwas)
-                    ztrop_gct=old_div(ztrop_gct,(1-old_div(ztrop_gct,radius)))  # convert H to Z
+                    ztrop_gct=ztrop_gct/(1-ztrop_gct/radius)  # convert H to Z
 
                 if(tnew < 0.0):
                     logger.debug("pnew, tnew = %f, %f" % pnew, tnew)
                     raise Exception('Model temperatures must be in Kelvin')
 
-                x=old_div(tnew,told)-1
-                hnew=hold+U_GAS_CONST*told*log(old_div(pold,pnew))/gs/w_arr[k]/log1pxox(x)
+                x=tnew/told-1
+                hnew=hold+U_GAS_CONST*told*log(pold/pnew)/gs/w_arr[k]/log1pxox(x)
                 #print hnew,hnew/(1-hnew/radius),pnew,tnew
                 h2onew=inh2ovmr[ii]
 
@@ -475,9 +475,9 @@ class ModelMaker(object):
             if(hnew == hold):
                 x = 0.0
             else:
-                x=(old_div(tnew,told)-1)*(hk-hold)/(hnew-hold)
+                x=(tnew/told-1)*(hk-hold)/(hnew-hold)
                 if(h2oold > 0.0):
-                    h2ox=(old_div(h2onew,h2oold)-1)*(hk-hold)/(hnew-hold)
+                    h2ox=(h2onew/h2oold-1)*(hk-hold)/(hnew-hold)
             temp_interp[k] = told*(1+x)
             press_interp[k] = pold/pfact*exp((hold-hk)*w_arr[k]*gs*log1pxox(x)/U_GAS_CONST/told)
             #print 'p(k)=', press_interp[k],told,tnew,hk,hold,hnew,U_GAS_CONST,w_arr[k],gs,x
@@ -489,10 +489,10 @@ class ModelMaker(object):
         # Convert NCEP tropopause pressure to altitude
         if(ptrop_ncep > 0 and  nlev > 1):
             for k in range(2,nlev): # loop over levels
-                if(press_interp[k] < old_div(ptrop_ncep, pfact)):
+                if(press_interp[k] < ptrop_ncep / pfact):
                   break
 
-            fr=old_div(log(ptrop_ncep/pfact/press_interp[k]),log(old_div(press_interp[k-1],press_interp[k])))
+            fr=log(ptrop_ncep/pfact/press_interp[k])/log(press_interp[k-1]/press_interp[k])
             ztrop_ncep=fr*z_arr[k]+(1-fr)*z_arr[k]
         else:
             ztrop_ncep=0.0

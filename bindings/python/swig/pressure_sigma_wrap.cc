@@ -5328,6 +5328,61 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_PressureSigma_set_levels_from_grid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::PressureSigma *arg1 = (FullPhysics::PressureSigma *) 0 ;
+  blitz::Array< double,1 > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::PressureSigma > tempshared1 ;
+  boost::shared_ptr< FullPhysics::PressureSigma > *smartarg1 = 0 ;
+  blitz::Array< double,1 > a2 ;
+  PythonObject numpy2 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"PressureSigma_set_levels_from_grid",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__PressureSigma_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PressureSigma_set_levels_from_grid" "', argument " "1"" of type '" "FullPhysics::PressureSigma *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::PressureSigma > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::PressureSigma > * >(argp1);
+      arg1 = const_cast< FullPhysics::PressureSigma * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::PressureSigma > * >(argp1);
+      arg1 = const_cast< FullPhysics::PressureSigma * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy2.obj = to_numpy<double>(swig_obj[1]);
+      if(!numpy2.obj)
+      return NULL;
+      a2.reference(to_blitz_array<double, 1>(numpy2));
+      arg2 = &a2;
+    }
+  }
+  {
+    try {
+      (arg1)->set_levels_from_grid((blitz::Array< double,1 > const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_PressureSigma__v_a(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::PressureSigma *arg1 = (FullPhysics::PressureSigma *) 0 ;
@@ -5522,6 +5577,14 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"void FullPhysics::PressureSigma::set_surface_pressure(const AutoDerivative< double > &Surface_pressure)\n"
 		"Set the surface pressure. This is in Pascals. \n"
+		""},
+	 { (char *)"PressureSigma_set_levels_from_grid", _wrap_PressureSigma_set_levels_from_grid, METH_VARARGS, (char *)"\n"
+		"\n"
+		"void PressureSigma::set_levels_from_grid(const blitz::Array< double, 1 > &Pressure_grid)\n"
+		"Creates A and B parameters from the pressure grid passed in.\n"
+		"\n"
+		"A becomes all 0 of the same size as Pressure_grid B becomes\n"
+		"Pressure_grid / Pressure_grid[-1] \n"
 		""},
 	 { (char *)"PressureSigma__v_a", (PyCFunction)_wrap_PressureSigma__v_a, METH_O, (char *)"\n"
 		"\n"

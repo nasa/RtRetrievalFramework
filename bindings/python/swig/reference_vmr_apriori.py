@@ -161,17 +161,18 @@ class ReferenceVmrApriori(full_physics_swig.generic_object.GenericObject):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, Model_altitude, Model_temperature, Ref_altitude, Ref_latitude, Ref_time, Ref_tropopause_altitude, Obs_latitude, Obs_time):
+    def __init__(self, Model_pressure, Model_altitude, Model_temperature, Ref_altitude, Ref_latitude, Ref_time, Ref_tropopause_altitude, Obs_latitude, Obs_time):
         """
 
-        ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array< double, 1 > &Model_altitude, const blitz::Array<
-        double, 1 > &Model_temperature, const blitz::Array< double, 1 >
-        &Ref_altitude, const double Ref_latitude, const Time &Ref_time, const
-        double Ref_tropopause_altitude, const double Obs_latitude, const Time
+        ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array< double, 1 > &Model_pressure, const blitz::Array<
+        double, 1 > &Model_altitude, const blitz::Array< double, 1 >
+        &Model_temperature, const blitz::Array< double, 1 > &Ref_altitude,
+        const double Ref_latitude, const Time &Ref_time, const double
+        Ref_tropopause_altitude, const double Obs_latitude, const Time
         &Obs_time)
 
         """
-        _reference_vmr_apriori.ReferenceVmrApriori_swiginit(self, _reference_vmr_apriori.new_ReferenceVmrApriori(Model_altitude, Model_temperature, Ref_altitude, Ref_latitude, Ref_time, Ref_tropopause_altitude, Obs_latitude, Obs_time))
+        _reference_vmr_apriori.ReferenceVmrApriori_swiginit(self, _reference_vmr_apriori.new_ReferenceVmrApriori(Model_pressure, Model_altitude, Model_temperature, Ref_altitude, Ref_latitude, Ref_time, Ref_tropopause_altitude, Obs_latitude, Obs_time))
 
     def model_tropopause_altitude(self):
         """

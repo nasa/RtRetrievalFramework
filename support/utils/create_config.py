@@ -44,16 +44,22 @@ def insert_alternative_settings(template_obj, alt_settings_hash):
 
 def check_file_type(filename):
     (file_prefix, file_ext) = os.path.splitext(filename)
+
+    file_type_keywords = []
     if file_ext in HDF_VALID_EXTENSIONS:
+        # A file could match multiple types, for instance if several types of information are wrapped in one file
         with h5py.File(filename, 'r') as hdf_obj:
             for keyword_name, groups in list(FILE_SEARCH_GROUPS.items()):
                 for curr_group in groups:
                     if curr_group in list(hdf_obj.keys()):
-                        return keyword_name
+                        file_type_keywords.append(keyword_name)
+
     elif file_ext == INPUT_FILE_MAP_EXT:
-        return INPUT_FILE_MAP_KEYWORD
+        file_type_keywords.append(INPUT_FILE_MAP_KEYWORD)
     else:
         return None
+
+    return file_type_keywords
 
 def handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, run_type, ids_file_keyword='L1BFile', id_list_sect=None):
     inp_prod_section = template_obj.get_section(INP_PROD_SECTION_NAME)
@@ -63,9 +69,10 @@ def handle_common_config(template_obj, out_config_filename, used_files, sounding
         raise IOError('Could not find input product file section of %s' % template_obj.filename)
 
     for curr_file in used_files:
-        keyword_name = check_file_type(curr_file)
-        if keyword_name != None:
-            inp_prod_section[0].set_keyword_value(keyword_name, curr_file)
+        keyword_names = check_file_type(curr_file)
+        if keyword_names is not None:
+            for kw in keyword_names:
+                inp_prod_section[0].set_keyword_value(kw, curr_file)
     
     ids_file = inp_prod_section[0].get_keyword_value(ids_file_keyword)
     if ids_file != None and len(ids_file) > 0 and ids_file != "NONE" and sounding_ids == None:
@@ -143,7 +150,7 @@ def handle_fts_config(template_obj, out_config_filename, used_files, sounding_id
 
 def handle_uq_config(template_obj, out_config_filename, used_files, filter_options, run_type):
 
-    handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, ids_file_keyword='UqFile', id_list_sect='input->UqFullPhysics')
+    handle_common_config(template_obj, out_config_filename, used_files, sounding_ids, run_type, ids_file_keyword='UqFile', id_list_sect='input->UqFullPhysics')
 
 if __name__ == "__main__":
     

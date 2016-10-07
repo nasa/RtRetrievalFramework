@@ -15,6 +15,7 @@ REGISTER_LUA_CLASS(Ecmwf)
 .def("windspeed_v", &Ecmwf::windspeed_v)
 .def("temperature", ((f1) &Ecmwf::temperature))
 .def("h2o_vmr", ((f1) &Ecmwf::h2o_vmr))
+.def("ozone_vmr", ((f1) &Ecmwf::ozone_vmr))
 REGISTER_LUA_END()
 #endif
 
@@ -40,6 +41,55 @@ ArrayAd<double, 1> Ecmwf::h2o_vmr(const ArrayAd<double, 1>& Pressure_level) cons
   vmr = s / (1 - s) * OldConstant::molar_weight_dry_air / 
     OldConstant::molar_weight_water;
   return vmr;
+}
+
+//-----------------------------------------------------------------------
+/// Ozone mass mixing ratio.
+//-----------------------------------------------------------------------
+
+blitz::Array<double, 1> Ecmwf::ozone_mmr(const blitz::Array<double, 1>& Pressure_level) const
+{
+  // Default is no implementation.
+  throw Exception("Not implemented");
+}
+
+ArrayAd<double, 1> Ecmwf::ozone_mmr(const ArrayAd<double, 1>& Pressure_level) const
+{
+  // Default is no implementation.
+  throw Exception("Not implemented");
+}
+
+//-----------------------------------------------------------------------
+/// Get ozone VMR at the given pressure levels.
+//-----------------------------------------------------------------------
+
+blitz::Array<double, 1> Ecmwf::ozone_vmr(const blitz::Array<double, 1>& Pressure_level) const
+{
+  Array<double, 1> s = ozone_mmr(Pressure_level);
+  Array<double, 1> vmr(s.shape());
+  vmr = s * OldConstant::molar_weight_dry_air / 
+    OldConstant::molar_weight_ozone;
+  return vmr;
+}
+
+ArrayAd<double, 1> Ecmwf::ozone_vmr(const ArrayAd<double, 1>& Pressure_level) const
+{
+  Array<AutoDerivative<double>, 1> s = 
+    ozone_mmr(Pressure_level).to_array();
+  Array<AutoDerivative<double>, 1> vmr(s.shape());
+  vmr = s * OldConstant::molar_weight_dry_air / 
+    OldConstant::molar_weight_ozone;
+  return vmr;
+}
+
+//-----------------------------------------------------------------------
+/// Ozone on the ECMWF pressure grid. 
+/// Pressure is in pascals.
+//-----------------------------------------------------------------------
+
+void Ecmwf::ozone_mmr_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& H) const
+{
+  throw Exception("Not implemented");
 }
 
 //-----------------------------------------------------------------------

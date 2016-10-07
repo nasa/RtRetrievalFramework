@@ -14,22 +14,49 @@ REGISTER_LUA_CLASS(GasVmrApriori)
                           const HdfFile&,
                           const std::string&,
                           const std::string&>())
+.def(luabind::constructor<const boost::shared_ptr<Ecmwf>&,
+                          const boost::shared_ptr<Level1b>&,
+                          const boost::shared_ptr<Altitude>&,
+                          const HdfFile&,
+                          const std::string&,
+                          const std::string&,
+                          const int>())
 // Expose version which requires a Pressure argument
 .def("apriori_vmr", (const blitz::Array<double, 1>(GasVmrApriori::*)(const Pressure&) const) &GasVmrApriori::apriori_vmr)
+.def("tropopause_pressure", &GasVmrApriori::tropopause_pressure)
 REGISTER_LUA_END()
 #endif
+    
+// temp_avg_window is the number of points before and after the current temperature value
+// to average among
 
 GasVmrApriori::GasVmrApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
                              const boost::shared_ptr<Level1b>& L1b_file,
                              const boost::shared_ptr<Altitude>& Alt,
                              const HdfFile& Hdf_static_input,
                              const std::string& Hdf_group,
-                             const std::string& Gas_name)
+                             const std::string& Gas_name,
+                             const int temp_avg_window)
 {
     blitz::Array<double, 1> model_temp;
-    
+
     // Read pressure and temperature grids
     Ecmwf_file->temperature_grid(model_press, model_temp);
+
+    // Smooth the model temperature out with a simple moving average to reduce problems finding
+    // tropopause altitude due to kinks in the data
+    blitz::Array<double, 1> smoothed_model_temp(model_temp.rows());
+    for (int out_idx = 0; out_idx < model_temp.rows(); out_idx++) {
+        double sum = 0;
+        int count = 0;
+        int avg_beg = std::max(out_idx - temp_avg_window, 0);
+        int avg_end = std::min(out_idx + temp_avg_window, model_temp.rows() - 1);
+        for(int avg_idx = avg_beg; avg_idx <= avg_end; avg_idx++) {
+            sum += model_temp(avg_idx);
+            count++;
+        }
+        smoothed_model_temp(out_idx) = sum/count;
+    }
 
     model_alt.resize(model_press.rows());
     for(int lev_idx = 0; lev_idx < model_press.rows(); lev_idx++) {
@@ -57,7 +84,7 @@ GasVmrApriori::GasVmrApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
     double obs_latitude = L1b_file->latitude(0).value;
     Time obs_time = L1b_file->time(0);
 
-    ref_apriori.reset(new ReferenceVmrApriori(model_alt.reverse(firstDim), model_temp.reverse(firstDim), ref_altitude, ref_latitude, ref_time, ref_tropo_alt, obs_latitude, obs_time)); 
+    ref_apriori.reset(new ReferenceVmrApriori(model_press.reverse(firstDim), model_alt.reverse(firstDim), smoothed_model_temp.reverse(firstDim), ref_altitude, ref_latitude, ref_time, ref_tropo_alt, obs_latitude, obs_time)); 
 }
 
 const blitz::Array<double, 1> GasVmrApriori::apriori_vmr() const
