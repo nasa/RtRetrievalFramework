@@ -187,6 +187,18 @@ class PressureSigma(full_physics_swig.pressure_imp_base.PressureImpBase):
         return _pressure_sigma.PressureSigma_set_surface_pressure(self, Surface_pressure)
 
 
+    def set_levels_from_grid(self, Pressure_grid):
+        """
+
+        void PressureSigma::set_levels_from_grid(const blitz::Array< double, 1 > &Pressure_grid)
+        Creates A and B parameters from the pressure grid passed in.
+
+        A becomes all 0 of the same size as Pressure_grid B becomes
+        Pressure_grid / Pressure_grid[-1] 
+        """
+        return _pressure_sigma.PressureSigma_set_levels_from_grid(self, Pressure_grid)
+
+
     def _v_a(self):
         """
 
@@ -217,6 +229,7 @@ class PressureSigma(full_physics_swig.pressure_imp_base.PressureImpBase):
     __swig_destroy__ = _pressure_sigma.delete_PressureSigma
 PressureSigma._v_surface_pressure_uncertainty = new_instancemethod(_pressure_sigma.PressureSigma__v_surface_pressure_uncertainty, None, PressureSigma)
 PressureSigma.set_surface_pressure = new_instancemethod(_pressure_sigma.PressureSigma_set_surface_pressure, None, PressureSigma)
+PressureSigma.set_levels_from_grid = new_instancemethod(_pressure_sigma.PressureSigma_set_levels_from_grid, None, PressureSigma)
 PressureSigma._v_a = new_instancemethod(_pressure_sigma.PressureSigma__v_a, None, PressureSigma)
 PressureSigma._v_b = new_instancemethod(_pressure_sigma.PressureSigma__v_b, None, PressureSigma)
 PressureSigma_swigregister = _pressure_sigma.PressureSigma_swigregister

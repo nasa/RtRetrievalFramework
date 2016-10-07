@@ -5297,6 +5297,316 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Ecmwf_ozone_mmr__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::Ecmwf *arg1 = (FullPhysics::Ecmwf *) 0 ;
+  blitz::Array< double,1 > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > *smartarg1 = 0 ;
+  blitz::Array< double,1 > a2 ;
+  PythonObject numpy2 ;
+  SwigValueWrapper< blitz::Array< double,1 > > result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ecmwf_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Ecmwf_ozone_mmr" "', argument " "1"" of type '" "FullPhysics::Ecmwf const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy2.obj = to_numpy<double>(swig_obj[1]);
+      if(!numpy2.obj)
+      return NULL;
+      a2.reference(to_blitz_array<double, 1>(numpy2));
+      arg2 = &a2;
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::Ecmwf const *)arg1)->ozone_mmr((blitz::Array< double,1 > const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    npy_intp dims[1], stride[1];
+    for(int i = 0; i < 1; ++i) {
+      dims[i] = (&result)->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = (&result)->stride(i) * sizeof(double);
+    }
+    resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
+      stride, (&result)->data(), 0, 0, 0);
+    blitz::Array<double, 1>* t = new blitz::Array<double, 1>(result);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Ecmwf_ozone_mmr__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::Ecmwf *arg1 = (FullPhysics::Ecmwf *) 0 ;
+  FullPhysics::ArrayAd< double,1 > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  SwigValueWrapper< FullPhysics::ArrayAd< double,1 > > result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ecmwf_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Ecmwf_ozone_mmr" "', argument " "1"" of type '" "FullPhysics::Ecmwf const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Ecmwf_ozone_mmr" "', argument " "2"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Ecmwf_ozone_mmr" "', argument " "2"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  arg2 = reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(argp2);
+  {
+    try {
+      result = ((FullPhysics::Ecmwf const *)arg1)->ozone_mmr((FullPhysics::ArrayAd< double,1 > const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,1 >(static_cast< const FullPhysics::ArrayAd< double,1 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Ecmwf_ozone_mmr(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"Ecmwf_ozone_mmr",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_Ecmwf_ozone_mmr__SWIG_1(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    return _wrap_Ecmwf_ozone_mmr__SWIG_0(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Ecmwf_ozone_mmr'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::Ecmwf::ozone_mmr(blitz::Array< double,1 > const &) const\n"
+    "    FullPhysics::Ecmwf::ozone_mmr(FullPhysics::ArrayAd< double,1 > const &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Ecmwf_ozone_vmr__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::Ecmwf *arg1 = (FullPhysics::Ecmwf *) 0 ;
+  blitz::Array< double,1 > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > *smartarg1 = 0 ;
+  blitz::Array< double,1 > a2 ;
+  PythonObject numpy2 ;
+  SwigValueWrapper< blitz::Array< double,1 > > result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ecmwf_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Ecmwf_ozone_vmr" "', argument " "1"" of type '" "FullPhysics::Ecmwf const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy2.obj = to_numpy<double>(swig_obj[1]);
+      if(!numpy2.obj)
+      return NULL;
+      a2.reference(to_blitz_array<double, 1>(numpy2));
+      arg2 = &a2;
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::Ecmwf const *)arg1)->ozone_vmr((blitz::Array< double,1 > const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    npy_intp dims[1], stride[1];
+    for(int i = 0; i < 1; ++i) {
+      dims[i] = (&result)->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = (&result)->stride(i) * sizeof(double);
+    }
+    resultobj = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
+      stride, (&result)->data(), 0, 0, 0);
+    blitz::Array<double, 1>* t = new blitz::Array<double, 1>(result);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Ecmwf_ozone_vmr__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::Ecmwf *arg1 = (FullPhysics::Ecmwf *) 0 ;
+  FullPhysics::ArrayAd< double,1 > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  SwigValueWrapper< FullPhysics::ArrayAd< double,1 > > result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ecmwf_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Ecmwf_ozone_vmr" "', argument " "1"" of type '" "FullPhysics::Ecmwf const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Ecmwf_ozone_vmr" "', argument " "2"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Ecmwf_ozone_vmr" "', argument " "2"" of type '" "FullPhysics::ArrayAd< double,1 > const &""'"); 
+  }
+  arg2 = reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(argp2);
+  {
+    try {
+      result = ((FullPhysics::Ecmwf const *)arg1)->ozone_vmr((FullPhysics::ArrayAd< double,1 > const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new FullPhysics::ArrayAd< double,1 >(static_cast< const FullPhysics::ArrayAd< double,1 >& >(result))), SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Ecmwf_ozone_vmr(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"Ecmwf_ozone_vmr",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_Ecmwf_ozone_vmr__SWIG_1(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    return _wrap_Ecmwf_ozone_vmr__SWIG_0(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Ecmwf_ozone_vmr'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::Ecmwf::ozone_vmr(blitz::Array< double,1 > const &) const\n"
+    "    FullPhysics::Ecmwf::ozone_vmr(FullPhysics::ArrayAd< double,1 > const &) const\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_Ecmwf_temperature_grid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Ecmwf *arg1 = (FullPhysics::Ecmwf *) 0 ;
@@ -5424,6 +5734,94 @@ SWIGINTERN PyObject *_wrap_Ecmwf_specific_humidity_grid(PyObject *SWIGUNUSEDPARM
   {
     try {
       ((FullPhysics::Ecmwf const *)arg1)->specific_humidity_grid(*arg2,*arg3);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1], stride[1];
+    for(int i = 0; i < 1; ++i) {
+      dims[i] = arg2->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = arg2->stride(i) * sizeof(double);
+    }
+    PyObject *res = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
+      stride, arg2->data(), 0, 0, 0);
+    blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*arg2);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)res,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
+    resultobj = SWIG_Python_AppendOutput(resultobj, res);
+  }
+  {
+    npy_intp dims[1], stride[1];
+    for(int i = 0; i < 1; ++i) {
+      dims[i] = arg3->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = arg3->stride(i) * sizeof(double);
+    }
+    PyObject *res = PyArray_New(&PyArray_Type, 1, dims, type_to_npy<double>(), 
+      stride, arg3->data(), 0, 0, 0);
+    blitz::Array<double, 1>* t = new blitz::Array<double, 1>(*arg3);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)res,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+        SWIG_POINTER_NEW | 0 ));
+    resultobj = SWIG_Python_AppendOutput(resultobj, res);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Ecmwf_ozone_mmr_grid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Ecmwf *arg1 = (FullPhysics::Ecmwf *) 0 ;
+  blitz::Array< double,1 > *arg2 = 0 ;
+  blitz::Array< double,1 > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Ecmwf const > *smartarg1 = 0 ;
+  blitz::Array< double,1 > temp2 ;
+  blitz::Array< double,1 > temp3 ;
+  PyObject *swig_obj[1] ;
+  
+  {
+    arg2 = &temp2;
+  }
+  {
+    arg3 = &temp3;
+  }
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ecmwf_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Ecmwf_ozone_mmr_grid" "', argument " "1"" of type '" "FullPhysics::Ecmwf const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Ecmwf > * >(argp1);
+      arg1 = const_cast< FullPhysics::Ecmwf * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      ((FullPhysics::Ecmwf const *)arg1)->ozone_mmr_grid(*arg2,*arg3);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5868,6 +6266,16 @@ static PyMethodDef SwigMethods[] = {
 		"ArrayAd< double, 1 > Ecmwf::h2o_vmr(const ArrayAd< double, 1 > &Pressure_level) const\n"
 		"\n"
 		""},
+	 { (char *)"Ecmwf_ozone_mmr", _wrap_Ecmwf_ozone_mmr, METH_VARARGS, (char *)"\n"
+		"\n"
+		"ArrayAd< double, 1 > Ecmwf::ozone_mmr(const ArrayAd< double, 1 > &Pressure_level) const\n"
+		"\n"
+		""},
+	 { (char *)"Ecmwf_ozone_vmr", _wrap_Ecmwf_ozone_vmr, METH_VARARGS, (char *)"\n"
+		"\n"
+		"ArrayAd< double, 1 > Ecmwf::ozone_vmr(const ArrayAd< double, 1 > &Pressure_level) const\n"
+		"\n"
+		""},
 	 { (char *)"Ecmwf_temperature_grid", (PyCFunction)_wrap_Ecmwf_temperature_grid, METH_O, (char *)"\n"
 		"\n"
 		"virtual void FullPhysics::Ecmwf::temperature_grid(blitz::Array< double, 1 > &Pressure, blitz::Array< double, 1 > &T)\n"
@@ -5881,6 +6289,16 @@ static PyMethodDef SwigMethods[] = {
 		"virtual void FullPhysics::Ecmwf::specific_humidity_grid(blitz::Array< double, 1 > &Pressure, blitz::Array< double, 1 > &H)\n"
 		"const =0\n"
 		"Humidity on the ECMWF pressure grid.\n"
+		"\n"
+		"Pressure is in pascals. \n"
+		""},
+	 { (char *)"Ecmwf_ozone_mmr_grid", (PyCFunction)_wrap_Ecmwf_ozone_mmr_grid, METH_O, (char *)"\n"
+		"\n"
+		"void Ecmwf::ozone_mmr_grid(blitz::Array< double, 1 > &Pressure, blitz::Array< double, 1 > &H)\n"
+		"const\n"
+		"Ozone mass mixing ratio on the ECMWF pressure grid.\n"
+		"\n"
+		"Ozone on the ECMWF pressure grid.\n"
 		"\n"
 		"Pressure is in pascals. \n"
 		""},

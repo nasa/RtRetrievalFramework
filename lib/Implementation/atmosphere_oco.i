@@ -70,6 +70,7 @@ public:
   %python_attribute2(pressure, pressure_ptr, boost::shared_ptr<Pressure>)
   %python_attribute2(absorber, absorber_ptr, boost::shared_ptr<Absorber>)
   %python_attribute2(aerosol, aerosol_ptr, boost::shared_ptr<Aerosol>)
+  void set_aerosol(boost::shared_ptr<Aerosol>& new_aerosol, StateVector& Sv);
   %python_attribute2(temperature, temperature_ptr, boost::shared_ptr<Temperature>)
   %python_attribute2(relative_humidity, relative_humidity_ptr, boost::shared_ptr<RelativeHumidity>)
   %python_attribute2(constant, constant_ptr, boost::shared_ptr<Constant>)

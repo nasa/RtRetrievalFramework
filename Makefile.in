@@ -2962,6 +2962,7 @@ config_DATA = @commonconfigsrc@/config_common.lua \
 	@commonconfigsrc@/helper_functions.lua \
 	@commonconfigsrc@/rail_road_valley.lua \
 	@commonconfigsrc@/uncertainty_quantification.lua \
+	@commonconfigsrc@/forward_model_all_in_one.lua \
 	@ftsconfigsrc@/fts_config.lua \
 	@ftsconfigsrc@/fts_base_config.lua \
 	@gosatconfigsrc@/acos_config.lua \
@@ -3041,7 +3042,7 @@ pkgpython_PYTHON = @pythonlibsrc@/__init__.py \
 	@pythonlibsrc@/oco_uplooking_populator.py \
 	@pythonlibsrc@/uq_populator.py @pythonlibsrc@/plot_util.py \
 	@pythonlibsrc@/l2_lua.py @pythonlibsrc@/splice_tool_mapping.py \
-	@pythonlibsrc@/fill_value.py
+	@pythonlibsrc@/fill_value.py @pythonlibsrc@/fp_perturbation.py
 
 # Files that contain SWIG wrapper information
 

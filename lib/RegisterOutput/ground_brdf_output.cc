@@ -1,3 +1,5 @@
+#include "linear_interpolate.h"
+#include "old_constant.h"
 #include "ground_brdf_output.h"
 
 using namespace FullPhysics;
@@ -6,14 +8,14 @@ using namespace blitz;
 #ifdef HAVE_LUA
 #include "register_lua.h"
 
-boost::shared_ptr<RegisterOutputBase> ground_brdf_output_create(const boost::shared_ptr<Ground>& ground, const std::vector<std::string>& hdf_band_names)
+boost::shared_ptr<RegisterOutputBase> ground_brdf_output_create(const boost::shared_ptr<Ground>& ground, const blitz::Array<double, 1>& sza, const blitz::Array<double, 1>& eff_alb_table_cos_sza, const blitz::Array<double, 1>& eff_alb_table_intensity_scaling, const std::vector<std::string>& hdf_band_names)
 {
     return boost::shared_ptr<RegisterOutputBase>
-        (new GroundBrdfOutput(boost::dynamic_pointer_cast<GroundBrdf>(ground), hdf_band_names));
+        (new GroundBrdfOutput(boost::dynamic_pointer_cast<GroundBrdf>(ground), sza, eff_alb_table_cos_sza, eff_alb_table_intensity_scaling, hdf_band_names));
 }
 
 REGISTER_LUA_DERIVED_CLASS(GroundBrdfOutput, RegisterOutputBase)
-.def(luabind::constructor<const boost::shared_ptr<GroundBrdf>&, const std::vector<std::string>&>())
+.def(luabind::constructor<const boost::shared_ptr<GroundBrdf>&, const blitz::Array<double, 1>&, const blitz::Array<double, 1>&, const blitz::Array<double, 1>&, const std::vector<std::string>&>())
 .scope
 [
     luabind::def("create", &ground_brdf_output_create)
@@ -101,6 +103,22 @@ double breon_factor_uncert(boost::shared_ptr<GroundBrdf> Brdf, int spec_idx)
     return uncert_value(Brdf, spec_idx, GroundBrdf::BREON_KERNEL_FACTOR_INDEX);
 }
 
+double effective_albedo_intercept(boost::shared_ptr<GroundBrdf>& Brdf, int spec_idx, double scaling)
+{
+    return weight_intercept(Brdf, spec_idx) * scaling;
+}
+
+double effective_albedo_slope(boost::shared_ptr<GroundBrdf>& Brdf, int spec_idx, double scaling)
+{
+    return weight_slope(Brdf, spec_idx) * scaling;
+}
+
+double GroundBrdfOutput::interpolated_intensity_scaling(int spec_idx) const
+{
+    LinearInterpolate<double, double> eff_alb_interp(eff_alb_table_cos_sza.begin(), eff_alb_table_cos_sza.end(), eff_alb_table_intensity_scaling.begin());
+    return eff_alb_interp(cos(sza(spec_idx) * OldConstant::pi / 180.0));
+}
+
 void GroundBrdfOutput::register_output_apriori(const boost::shared_ptr<Output>& out) const
 {
   boost::shared_ptr<GroundBrdf> brdf_freeze = 
@@ -108,12 +126,19 @@ void GroundBrdfOutput::register_output_apriori(const boost::shared_ptr<Output>& 
 
   for(int spec_idx = 0; spec_idx < brdf->number_spectrometer(); spec_idx++) {
       std::string band_name = hdf_band_names[spec_idx];
+      double scaling = interpolated_intensity_scaling(spec_idx);
 
       { boost::function<double ()> f = boost::bind(&weight_intercept, brdf_freeze, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_intercept_apriori_" + band_name, f); }
 
       { boost::function<double ()> f = boost::bind(&weight_slope, brdf_freeze, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_slope_apriori_" + band_name, f); }
+
+      { boost::function<double ()> f = boost::bind(&effective_albedo_intercept, brdf_freeze, spec_idx, scaling);
+        out->register_data_source("/RetrievalResults/brdf_effective_albedo_intercept_apriori_" + band_name, f); }
+
+      { boost::function<double ()> f = boost::bind(&effective_albedo_slope, brdf_freeze, spec_idx, scaling);
+        out->register_data_source("/RetrievalResults/brdf_effective_albedo_slope_apriori_" + band_name, f); }
 
       { boost::function<double ()> f = boost::bind(&rahman_factor, brdf_freeze, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_rahman_factor_apriori_" + band_name, f); }
@@ -136,6 +161,7 @@ void GroundBrdfOutput::register_output(const boost::shared_ptr<Output>& out) con
 {
   for(int spec_idx = 0; spec_idx < brdf->number_spectrometer(); spec_idx++) {
       std::string band_name = hdf_band_names[spec_idx];
+      double scaling = interpolated_intensity_scaling(spec_idx);
 
       { boost::function<double ()> f = boost::bind(&weight_intercept, brdf, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_intercept_" + band_name, f); }
@@ -148,6 +174,12 @@ void GroundBrdfOutput::register_output(const boost::shared_ptr<Output>& out) con
 
       { boost::function<double ()> f = boost::bind(&weight_slope_uncert, brdf, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_slope_uncert_" + band_name, f); }
+
+      { boost::function<double ()> f = boost::bind(&effective_albedo_intercept, brdf, spec_idx, scaling);
+        out->register_data_source("/RetrievalResults/brdf_effective_albedo_intercept_" + band_name, f); }
+
+      { boost::function<double ()> f = boost::bind(&effective_albedo_slope, brdf, spec_idx, scaling);
+        out->register_data_source("/RetrievalResults/brdf_effective_albedo_slope_" + band_name, f); }
 
       { boost::function<double ()> f = boost::bind(&rahman_factor, brdf, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_rahman_factor_" + band_name, f); }

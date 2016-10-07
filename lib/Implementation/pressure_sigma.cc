@@ -44,14 +44,9 @@ PressureSigma::PressureSigma(const blitz::Array<double, 1>& A,
 //-----------------------------------------------------------------------
 
 PressureSigma::PressureSigma(const blitz::Array<double, 1>& Pressure_grid,
-			     double Surface_pressure, bool Pressure_flag)
+                             double Surface_pressure, bool Pressure_flag)
 {
-  a_.resize(Pressure_grid.rows());
-  a_ = 0.0;
-  
-  b_.resize(Pressure_grid.rows());
-  b_ = Pressure_grid;
-  b_ = b_ / Pressure_grid(Pressure_grid.rows()-1);
+  set_levels_from_grid(Pressure_grid);
 
   blitz::Array<double, 1> val(1);
   blitz::Array<bool, 1> flag(1);
@@ -60,6 +55,25 @@ PressureSigma::PressureSigma(const blitz::Array<double, 1>& Pressure_grid,
   init(val, flag);
   cov.resize(1, 1);
   cov(0,0) = 1;
+}
+
+//-----------------------------------------------------------------------
+/// Creates A and B parameters from the pressure grid passed in. 
+/// A becomes all 0 of the same size as Pressure_grid
+/// B becomes Pressure_grid / Pressure_grid[-1]
+//-----------------------------------------------------------------------
+
+void PressureSigma::set_levels_from_grid(const blitz::Array<double, 1>& Pressure_grid)
+{
+  a_.resize(Pressure_grid.rows());
+  a_ = 0.0;
+
+  b_.resize(Pressure_grid.rows());
+  b_ = Pressure_grid;
+  b_ = b_ / Pressure_grid(Pressure_grid.rows()-1); 
+  
+  cache_stale = true;
+  Observable<Pressure>::notify_update_do(*this);
 }
 
 //-----------------------------------------------------------------------

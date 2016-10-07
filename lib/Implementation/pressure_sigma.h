@@ -39,7 +39,9 @@ public:
     cache_stale = true;
     Observable<Pressure>::notify_update_do(*this);
   }
-
+  
+  void set_levels_from_grid(const blitz::Array<double, 1>& Pressure_grid);
+ 
   virtual void print(std::ostream& Os) const;
 
   virtual boost::shared_ptr<Pressure> clone() const;

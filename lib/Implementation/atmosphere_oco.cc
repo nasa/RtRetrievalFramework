@@ -225,6 +225,30 @@ void AtmosphereOco::notify_remove(StateVector& Sv)
 }
 
 //-----------------------------------------------------------------------
+/// Changes the aerosol class used. Notifies the relevant obsevers 
+/// and invalidates the cache
+//-----------------------------------------------------------------------
+
+void AtmosphereOco::set_aerosol(boost::shared_ptr<Aerosol>& new_aerosol, StateVector& Sv) {
+    // Remove observers from old aerosol instance
+    Sv.remove_observer(*aerosol);
+
+    // Switch to new instance
+    aerosol = new_aerosol;
+
+    // Register observers
+    aerosol->add_observer(*this);
+    Sv.add_observer(*aerosol);
+
+    // Run notify update so gradient is set up correctly
+    aerosol->notify_update(Sv);
+
+    // Invalidate caches
+    wn_tau_cache = -1;
+    spec_index_tau_cache = -1;
+}
+
+//-----------------------------------------------------------------------
 /// Most of the calculation of each variation of scattering_moment is
 /// the same. This does the common part of the calculation, picking up
 /// after frac_aer and frac_ray have been filled in.

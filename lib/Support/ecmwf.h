@@ -30,6 +30,10 @@ public:
 
   blitz::Array<double, 1> h2o_vmr(const blitz::Array<double, 1>& Pressure_level) const;
   ArrayAd<double, 1> h2o_vmr(const ArrayAd<double, 1>& Pressure_level) const;
+  virtual blitz::Array<double, 1> ozone_mmr(const blitz::Array<double, 1>& Pressure_level) const;
+  virtual ArrayAd<double, 1> ozone_mmr(const ArrayAd<double, 1>& Pressure_level) const;
+  blitz::Array<double, 1> ozone_vmr(const blitz::Array<double, 1>& Pressure_level) const;
+  ArrayAd<double, 1> ozone_vmr(const ArrayAd<double, 1>& Pressure_level) const;
 
 //-----------------------------------------------------------------------
 /// Temperature grid on the ECMWF pressure grid. The temperature is in
@@ -44,6 +48,13 @@ public:
 //-----------------------------------------------------------------------
 
   virtual void specific_humidity_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& H) const = 0;
+
+//-----------------------------------------------------------------------
+/// Ozone mass mixing ratio on the ECMWF pressure grid. 
+/// Pressure is in pascals.
+//-----------------------------------------------------------------------
+
+  virtual void ozone_mmr_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& H) const;
 
 //-----------------------------------------------------------------------
 /// Get the surface pressure from the Ecmwf file.

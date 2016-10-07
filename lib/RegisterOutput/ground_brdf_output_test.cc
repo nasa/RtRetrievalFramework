@@ -17,7 +17,17 @@ BOOST_AUTO_TEST_CASE(basic)
     band_name.push_back("Weak-CO2");
     band_name.push_back("Strong-CO2");
 
-    GroundBrdfOutput po(g_brdf, band_name);
+    // Dunmy values to satisfy the interface
+    blitz::Array<double, 1> sza(3);
+    sza = 20, 20, 20;
+
+    blitz::Array<double, 1> tab_cos_sza(2);
+    tab_cos_sza = 0.1, 1.0;
+
+    blitz::Array<double, 1> tab_i_scaling(2);
+    tab_i_scaling = 0.4, 0.5;
+
+    GroundBrdfOutput po(g_brdf, sza, tab_cos_sza, tab_i_scaling, band_name);
   
     boost::shared_ptr<OutputHdf> out(new OutputHdf("ground_brdf_output.h5", 20, 112, 5, 3));
     add_file_to_cleanup("ground_brdf_output.h5");

@@ -30,9 +30,10 @@ AbsorberVmrEcmwf::AbsorberVmrEcmwf
 {
   std::string gname = gas_name();
   boost::to_upper(gname);
-  if (gname != "H2O") {
+  if (gname != "H2O" &&
+      gname != "O3") {
     std::stringstream err_msg; 
-    err_msg << "Only H2O is supported by AbsorberVmrEcmwf, unknown absorber: " 
+    err_msg << "Only H2O and O3 is supported by AbsorberVmrEcmwf, unknown absorber: " 
 	    << gas_name();
     throw Exception(err_msg.str());
   }
@@ -47,10 +48,19 @@ blitz::Array<double, 1> AbsorberVmrEcmwf::specific_humidity_ecmwf() const
 
 blitz::Array<double, 1> AbsorberVmrEcmwf::vmr_profile() const
 { 
-  blitz::Array<double, 1> s( specific_humidity_ecmwf() );
-  blitz::Array<double, 1> res( s / (1 - s) * OldConstant::molar_weight_dry_air / 
-			       OldConstant::molar_weight_water );
-  return res;
+  if(gas_name() == "H2O") {
+    blitz::Array<double, 1> s( specific_humidity_ecmwf() );
+    blitz::Array<double, 1> res( s / (1 - s) * OldConstant::molar_weight_dry_air / 
+				 OldConstant::molar_weight_water );
+    return res;
+  }
+  if(gas_name() == "O3") {
+    blitz::Array<double, 1> s, p;
+    ecmwf->ozone_mmr_grid(p, s);
+    blitz::Array<double, 1> res(s * OldConstant::molar_weight_dry_air / 
+				 OldConstant::molar_weight_ozone);
+    return res;
+  }
 }
 
 blitz::Array<double, 1> AbsorberVmrEcmwf::pressure_profile() const

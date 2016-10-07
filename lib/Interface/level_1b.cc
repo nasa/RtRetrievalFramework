@@ -114,6 +114,16 @@ blitz::Array<double, 1> level_1b_radiance(const Level1b& Lev1, int Spec_index)
   return Lev1.radiance(Spec_index).data();
 }
 
+blitz::Array<double, 1> level_1b_uncertainty(const Level1b& Lev1, int Spec_index)
+{
+  return Lev1.radiance(Spec_index).uncertainty();
+}
+
+ArrayWithUnit<double, 1> level_1b_uncertainty_with_unit(const Level1b& Lev1, int Spec_index)
+{
+  return ArrayWithUnit<double, 1>(Lev1.radiance(Spec_index).uncertainty(), Lev1.radiance(Spec_index).units());
+}
+
 ArrayWithUnit<double, 1> level_1b_radiance_with_unit(const Level1b& Lev1, int Spec_index)
 {
   return ArrayWithUnit<double, 1>(Lev1.radiance(Spec_index).data(), Lev1.radiance(Spec_index).units());
@@ -205,6 +215,8 @@ REGISTER_LUA_CLASS(Level1b)
 .def("second", &level_1b_second)
 .def("dayofyear", &level_1b_dayofyear)
 .def("radiance", &level_1b_radiance)
+.def("uncertainty", &level_1b_uncertainty)
+.def("uncertainty_with_unit", &level_1b_uncertainty_with_unit)
 .def("radiance_with_unit", &level_1b_radiance_with_unit)
 .def("radiance_spectral_range", &level_1b_radiance_spectral_range)
 .def("signal", &Level1b::signal)

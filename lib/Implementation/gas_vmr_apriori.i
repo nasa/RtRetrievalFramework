@@ -25,7 +25,8 @@ public:
                   const boost::shared_ptr<Altitude>& Alt,
                   const HdfFile& Hdf_static_input,
                   const std::string& Hdf_group,
-                  const std::string& Gas_name);
+                  const std::string& Gas_name,
+                  const int temp_avg_window);
 
     %python_attribute(apriori_vmr, blitz::Array<double, 1>)
     const blitz::Array<double, 1> apriori_vmr(const Pressure& pressure) const;

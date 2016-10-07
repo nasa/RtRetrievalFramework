@@ -13,6 +13,7 @@ public:
         IfstreamCs model_data_input(test_data_dir() + "expected/reference_vmr_apriori/model_data.dat");
         model_data_input >> model_data;
         
+        Array<double, 1> model_pressure( model_data(Range::all(), 0) * 100 ); // Convert hPa to Pa
         Array<double, 1> model_temperature( model_data(Range::all(), 1) );
         Array<double, 1> model_altitude( model_data(Range::all(), 2) );
 
@@ -34,7 +35,7 @@ public:
         double obs_latitude = 45.945;
         Time obs_time = Time::parse_time("2004-07-21T20:41:11.484375");
 
-        ref_ap.reset(new ReferenceVmrApriori(model_altitude, model_temperature, 
+        ref_ap.reset(new ReferenceVmrApriori(model_pressure, model_altitude, model_temperature, 
                                              ref_altitude, ref_latitude, ref_time, ref_topo_alt,
                                              obs_latitude, obs_time));
 
@@ -60,7 +61,7 @@ BOOST_FIXTURE_TEST_SUITE(reference_vmr_apriori, RefVmrFixture)
 BOOST_AUTO_TEST_CASE(apriori_calc)
 {
     // Check tropopause altitude calculation
-    BOOST_CHECK_CLOSE(13.981051269171445, ref_ap->model_tropopause_altitude(), 1e-6);
+    BOOST_CHECK_CLOSE(14.392430521241026, ref_ap->model_tropopause_altitude(), 1e-6);
 
     // Check effective altitude calculation
     IfstreamCs eff_alt_input(test_data_dir() + "expected/reference_vmr_apriori/effective_altitude.dat");
