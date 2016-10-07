@@ -151,7 +151,11 @@ function init_forward_model(config)
     aerosol_prop_types ={ "wc_004", "wc_005", "wc_006", "wc_007", "wc_008", "wc_009", "wc_010",
         "wc_011", "wc_012", "wc_013", "wc_014", "wc_015", "wc_016", "wc_017",
         "wc_018", "wc_019", "wc_020", "wc_021", "wc_022", "wc_023",
-        "wc_024", "wc_025", "wc_026", "wc_027", "wc_028", "wc_029", "wc_030" }
+        "wc_024", "wc_025", "wc_026", "wc_027", "wc_028", "wc_029", "wc_030",
+        "ic_010", "ic_015", "ic_020", "ic_025", "ic_030", "ic_035", "ic_040",
+        "ic_045", "ic_050", "ic_055", "ic_060", "ic_065", "ic_070", "ic_075",
+        "ic_080", "ic_085", "ic_090",
+    }
 
     for i, prop_name in ipairs(aerosol_prop_types) do
         config.fm.atmosphere.aerosol[prop_name] = {
