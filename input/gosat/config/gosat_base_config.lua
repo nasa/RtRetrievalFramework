@@ -266,7 +266,11 @@ GosatBaseConfig = AcosConfig:new {
          nadir_threshold = 0.25,
          lsi_constant = {
             dedicated_twostream = true,
+	    -- Note that the "1" here is just a convention to use the
+	    -- dedicated two stream code
             low_stream = 1, 
+	    -- LIDORT input is in Half-Streams. Full-streams is double
+	    -- this (so high_stream = 8 would mean 16 full-streams)
             high_stream = 8
          },
       },
