@@ -501,8 +501,8 @@ class ModelMaker(object):
         press_interp *= pfact
 
         # Replace model values
-        data_models = (self.model.pressure, self.model.temperature, self.model.height, self.model.h2o_vmr)
-        new_data = (press_interp, temp_interp, z_arr, h2o_interp)
+        data_models = (self.model.pressure, self.model.temperature, self.model.height, self.model.h2o_vmr, self.model.surface_pressure)
+        new_data = (press_interp, temp_interp, z_arr, h2o_interp, self.model.surface_pressure.data)
 
         data_list = []
         for mod, data in zip(data_models, new_data):
@@ -539,8 +539,14 @@ class ModelMaker(object):
 
         out_mat.file_id = "Atmosphere Model Created from NCEP data interpolated to latitude: %f, longitude: %f on %s" % (self.site_lat, self.site_lon, id_date_str)
 
-        out_mat.units = [ v.units for v in data_in_order ]
-        out_mat.labels = [ v.name for v in data_in_order ]
+        out_mat.units = [] 
+        out_mat.labels = []
+        for val in data_in_order:
+            out_mat.units.append(val.units)
+            if val.name == "Temperature":
+                out_mat.labels.append("T")
+            else:
+                out_mat.labels.append(val.name)
 
         out_mat.header["Surface_Pressure"] = self.model.surface_pressure.data
         out_mat.header["Surface_Pressure_Units"] = self.model.surface_pressure.units
