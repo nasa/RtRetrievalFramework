@@ -3,8 +3,10 @@
 # containing a list of sounding ids. The program will then extract the data for those sounding
 # ids from the various files and splice them into a new L1B and and additional files.
 
+from __future__ import unicode_literals
 from __future__ import print_function
 from __future__ import division
+from __future__ import absolute_import
 from builtins import zip
 from builtins import map
 from builtins import range
@@ -486,9 +488,9 @@ class ProductSplicer(object):
                         out_dataset_obj.attrs.create(attr_name, attr_value)
 
         # Add extra information for dataset, overwrite an existing shape, because we may have
-        # reshaped the data
+        # reshaped the data. This must be a bytes and not string object
         if dst_shape_names:
-            out_dataset_obj.attrs["Shape"] = numpy.array(["_".join(dst_shape_names) + "_Array"]) 
+            out_dataset_obj.attrs["Shape"] = numpy.array([("_".join(dst_shape_names) + "_Array").encode('utf-8')]) 
 
         return out_dataset_obj
 
@@ -497,7 +499,7 @@ class ProductSplicer(object):
         # Loop over dataset names/shapes
         # Create datasets and copy any non id_shape datasets
         num_datasets = len(list(self.source_info.datasets_info.keys()))
-        for curr_index, (curr_dataset_name, curr_dataset_info) in enumerate(self.source_info.datasets_info.items()):
+        for curr_index, (curr_dataset_name, curr_dataset_info) in enumerate(list(self.source_info.datasets_info.items())):
             id_dimension = curr_dataset_info.inp_id_dims
 
             if self.dest_obj.get(curr_dataset_info.out_name, None) != None:
