@@ -1,5 +1,7 @@
+from __future__ import unicode_literals
 from __future__ import absolute_import
 from __future__ import division
+from __future__ import absolute_import
 from builtins import zip
 from builtins import map
 from builtins import str
@@ -339,17 +341,14 @@ class SoundingDataFile(h5py.File):
         dataset_shape = dataset_obj.attrs.get('Shape', None)
 
         if dataset_shape is not None:
-            # Make value from file is an array
-            if not hasattr(dataset_shape, "__iter__"):
-                dataset_shape = [ dataset_shape ]
-
             # Intelligently split up the shape name so that something like Dim_1 does
             # not get split incorrectly 
+            # Ensure we are using a unicode string instead of bytes as HDF lib will return
             shape_names = []
-            dataset_shape = dataset_shape[0].replace(b"_Array", b'')
+            dataset_shape = dataset_shape[0].decode('utf-8').replace("_Array", '')
             # Search for next location of _
-            while dataset_shape.find(b"_") >= 0:
-                split_loc = dataset_shape.find(b"_")
+            while dataset_shape.find("_") >= 0:
+                split_loc = dataset_shape.find("_")
                 end_loc = split_loc
                 check_num_idx = split_loc + 2 
                 # While the portion after _ is still a number keep increasing the end location
@@ -913,7 +912,7 @@ class SoundingFirstFile(SoundingDataFile):
         self._sounding_id_dataset = None
 
         # Specifically return frame only for OCO2 files
-        if(self.filename.find(b"OCO2_") >= 0):
+        if(self.filename.find("OCO2_") >= 0):
             if single_id_dim:
                 self._id_dim_names = ('Frame',)
             else:
