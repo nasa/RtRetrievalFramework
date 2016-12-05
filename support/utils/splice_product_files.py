@@ -378,7 +378,7 @@ class SourceInformation(object):
         self.found_sounding_ids = sorted(self.found_sounding_ids)
 
         # Make a mapping of sounding ids to index
-        self.found_ids_to_index = { sid: index for (index, sid) in numpy.ndenumerate(self.found_sounding_ids) }
+        self.found_ids_to_index = { sid: index[0] for (index, sid) in numpy.ndenumerate(self.found_sounding_ids) }
 
     def analyze_files(self):
         # Loop over a copy of the source filenames as we will remove from the original list any that
