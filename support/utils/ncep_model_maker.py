@@ -12,7 +12,7 @@ from glob import glob
 from collections import namedtuple
 from datetime import datetime, timedelta
 
-from scipy.io.netcdf import netcdf_file as NetCDFFile
+from netCDF4 import Dataset as NetCDFFile
 from numpy import *
 
 logger = logging.getLogger()
@@ -157,22 +157,34 @@ class ModelMaker(object):
         else:
           raise Exception("Unknown datetime format: %s" % model_date)
 
-        # Convert site date into number of hours at noon since epoch used by NCEP
-        # which is hours since 1-1-1 00:00:0.0
-        #
-        # - self.site_lon_180/15.0 -- Account for offset of sun due to longitude 
-        # + 48 -- Epoch time is off by 2 days if you just convert
-        #         number of hours + 1,1,1 you can see this, I suppose due to being 
-        #         based on julian time? At least it was 2 days off for the first
-        #         Entry in the 2012 files...
-        self.epoch_hours = (self.model_dt - datetime(1,1,1,0)).total_seconds()/60.0/60.0 \
-            - self.site_lon_180/15.0 + 48
-        
+        # Load data from file
         self.ncep_data = self.load_ncep_data(**kwargs)
 
         # These are created as needed
         self.interp_data = None
         self.model = None
+
+    def epoch_hours(self, ncep_obj):
+        """Convert site date into number of hours at noon since epoch used by NCEP
+            which is hours since 1-1-1 00:00:0.0 for NetCDF3 files and
+            1800-01-01 00:00:0.0 for NetCDF4 files
+        
+            - self.site_lon_180/15.0 -- Account for offset of sun due to longitude 
+            + 48 -- Epoch time is off by 2 days if you just convert
+                    number of hours + 1,1,1 you can see this, I suppose due to being 
+                    based on julian time? At least it was 2 days off for the first
+                    Entry in the 2012 files..."""
+
+        if(ncep_obj.file_format.find("NETCDF4") == 0):
+            epoch_start = datetime(1800,1,1,0)
+            correction = 0
+        else:
+            epoch_start = datetime(1,1,1,0)
+            correction = 48
+        epoch_hours = (self.model_dt - epoch_start).total_seconds()/60.0/60.0 \
+            - self.site_lon_180/15.0 + correction
+
+        return epoch_hours
 
     def load_ncep_data(self, air_temp_file=None, spec_hum_file=None, trop_pres_file=None, geo_height_file=None, surface_pres_file=None):
         """Loads NCEP Reanalysis data into NetCdf objects. Returns a named tuple with objects."""
@@ -203,7 +215,7 @@ class ModelMaker(object):
         def frac_lon(lon_arr):
             return (self.site_lon - lon_arr[0]) / (lon_arr[1] - lon_arr[0])
 
-        logger.debug("Loading data for %s interpolation from %s:" % (global_data_name, ncep_obj.filename))
+        logger.debug("Loading data for %s interpolation from %s:" % (global_data_name, ncep_obj.filepath()))
 
         lat_file = ncep_obj.variables["lat"]
         logger.debug("  latitude: %s" % str(lat_file.shape))
@@ -224,10 +236,12 @@ class ModelMaker(object):
 
         logger.debug("Interpolating %s data" % global_data_name)
 
-        global_data = global_data[:] * global_data.scale_factor + global_data.add_offset
+        if hasattr(global_data, "scale_factor"):
+            # Old NetCDF3 file with integers scaled and with offset
+            global_data = global_data[:] * global_data.scale_factor + global_data.add_offset
 
         # Interpolate to lat/lon of site and to local noon
-        frac_time = (self.epoch_hours-time_file[0]) / (time_file[1]-time_file[0])
+        frac_time = (self.epoch_hours(ncep_obj) - time_file[0]) / (time_file[1] - time_file[0])
 
         if len(global_data.shape) == 4:
             interp_loc = bilinear_interp2(global_data, frac_lon(lon_file), frac_lat(lat_file))
