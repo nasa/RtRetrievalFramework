@@ -29,7 +29,16 @@ function init_single_band_support(config)
             end
         end
 
-        return SpectralWindowRange(win_ranges)
+        if (self.bad_sample_mask) then
+            local bsamp = self:bad_sample_mask()
+            if(bsamp) then
+                return SpectralWindowRange(win_ranges, bsamp)
+            else
+                return SpectralWindowRange(win_ranges)
+            end
+        else
+            return SpectralWindowRange(win_ranges)
+        end
     end
     config.fm.spec_win.creator = config.spec_select_spectral_window_hdf
 

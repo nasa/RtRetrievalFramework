@@ -56,9 +56,22 @@ function init_forward_model(config)
             new_win_ranges.value:set(band_idx, 0, 1, 1017)
         end
 
-        return SpectralWindowRange(new_win_ranges)
+        if (self.bad_sample_mask) then
+            local bsamp = self:bad_sample_mask()
+            if(bsamp) then
+                return SpectralWindowRange(new_win_ranges, bsamp)
+            else
+                return SpectralWindowRange(new_win_ranges)
+            end
+        else
+            return SpectralWindowRange(new_win_ranges)
+        end
+
     end
     config.fm.spec_win.creator = spectral_window_custom
+
+    -- Use bad samples mask only, don't use SAA masking
+    config.fm.spec_win.bad_sample_mask = OcoConfig.snr_coef_bad_sample_mask
 
     --------------
     -- Pressure --
