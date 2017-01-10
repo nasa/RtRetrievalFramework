@@ -158,6 +158,12 @@ double hdf_file_read_double_4d_i(const HdfFile& h,
   return h.read_field<double, 4>(fname, start, sz)(0, 0, 0, 0);
 }
 
+Array<double, 5> hdf_file_read_double_5d(const HdfFile& h, 
+					 const std::string& fname)
+{
+  return h.read_field<double, 5>(fname);
+}
+
 Array<double, 1> hdf_file_apriori(const HdfFile& h, 
 				  const std::string& gname)
 {
@@ -234,6 +240,7 @@ REGISTER_LUA_CLASS(HdfFile)
 .def("read_double_with_unit_3d", &hdf_file_read_double_with_unit_3d)
 .def("read_double_4d", &hdf_file_read_double_4d)
 .def("read_double_4d_sounding", &hdf_file_read_double_4d_sounding)
+.def("read_double_5d", &hdf_file_read_double_5d)
 .def("apriori", &hdf_file_apriori)
 .def("apriori_with_unit", &hdf_file_apriori_with_unit)
 .def("apriori", &hdf_file_apriori2)
