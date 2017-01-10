@@ -1,4 +1,23 @@
 -- Modifications from standard configuration for using a file specifying aerosol apriori information
+-- 
+-- Requires an external aerosol file formatted like so:
+-- /Aerosol/GaussianParam   Dataset {F, S, T, A}
+-- /Aerosol/GaussianParamCov Dataset {F, S, T, A, A}
+-- /Aerosol/TypeNames       Dataset {T}
+-- /Aerosol/TypesUsed       Dataset {F, S, T}
+--
+-- F = frame index
+-- S = sounding index
+-- T = aerosol type index
+-- A = aerosol param index
+--
+-- Use by putting the following in a config.lua file:
+--
+-- config.aer_file = "/path/to/external_aerosol_file.h5"
+--
+-- require "external_aerosol_file"
+-- init_external_aerosol_file(config)
+-- 
 
 -- For table.contains
 require "helper_functions"
