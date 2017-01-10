@@ -440,6 +440,165 @@ std::string blitz_double_array_4d_tostring(const Array<double, 4>& V)
   std::ostringstream os;
   os << "Array<double, 4>: "<< V;
   return os.str();
+} 
+// double 5d
+int blitz_double_array_5d_extent_4(const Array<double, 5>& V) {
+  return V.extent(fourthDim);
+}
+
+int blitz_double_array_5d_extent_5(const Array<double, 5>& V) {
+  return V.extent(fifthDim);
+}
+
+double blitz_double_array_5d_read(const Array<double, 5>& V, int i, int j, int k, int l, int m)
+{ return V(i, j, k, l, m); }
+
+blitz::Array<double, 5> blitz_double_array_5d_slice_rrrrr(const Array<double, 5>& V, Range i, Range j, Range k, Range l, Range m)
+{ return V(i, j, k, l, m); }
+
+blitz::Array<double, 4> blitz_double_array_5d_slice_irrrr(const Array<double, 5>& V, int i, Range j, Range k, Range l, Range m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 4> blitz_double_array_5d_slice_rirrr(const Array<double, 5>& V, Range i, int j, Range k, Range l, Range m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 4> blitz_double_array_5d_slice_rrirr(const Array<double, 5>& V, Range i, Range j, int k, Range l, Range m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 4> blitz_double_array_5d_slice_rrrir(const Array<double, 5>& V, Range i, Range j, Range k, int l, Range m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 4> blitz_double_array_5d_slice_rrrri(const Array<double, 5>& V, Range i, Range j, Range k, Range l, int m)
+{ return V(i, j, k, l, m); }
+
+blitz::Array<double, 3> blitz_double_array_5d_slice_iirrr(const Array<double, 5>& V, int i, int j, Range k, Range l, Range m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 3> blitz_double_array_5d_slice_irirr(const Array<double, 5>& V, int i, Range j, int k, Range l, Range m) 
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 3> blitz_double_array_5d_slice_irrir(const Array<double, 5>& V, int i, Range j, Range k, int l, Range m) 
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 3> blitz_double_array_5d_slice_irrri(const Array<double, 5>& V, int i, Range j, Range k, Range l, int m) 
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 3> blitz_double_array_5d_slice_riirr(const Array<double, 5>& V, Range i, int j, int k, Range l, Range m) 
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 3> blitz_double_array_5d_slice_ririr(const Array<double, 5>& V, Range i, int j, Range k, int l, Range m) 
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 3> blitz_double_array_5d_slice_rirri(const Array<double, 5>& V, Range i, int j, Range k, Range l, int m) 
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 3> blitz_double_array_5d_slice_rriir(const Array<double, 5>& V, Range i, Range j, int k, int l, Range m) 
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 3> blitz_double_array_5d_slice_rriri(const Array<double, 5>& V, Range i, Range j, int k, Range l, int m) 
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 3> blitz_double_array_5d_slice_rrrii(const Array<double, 5>& V, Range i, Range j, Range k, int l, int m) 
+{ return V(i, j, k, l, m); }
+
+blitz::Array<double, 2> blitz_double_array_5d_slice_rriii(const Array<double, 5>& V, Range i, Range j, int k, int l, int m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 2> blitz_double_array_5d_slice_ririi(const Array<double, 5>& V, Range i, int j, Range k, int l, int m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 2> blitz_double_array_5d_slice_riiri(const Array<double, 5>& V, Range i, int j, int k, Range l, int m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 2> blitz_double_array_5d_slice_irrii(const Array<double, 5>& V, int i, Range j, Range k, int l, int m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 2> blitz_double_array_5d_slice_iriri(const Array<double, 5>& V, int i, Range j, int k, Range l, int m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 2> blitz_double_array_5d_slice_iirri(const Array<double, 5>& V, int i, int j, Range k, Range l, int m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 2> blitz_double_array_5d_slice_iirir(const Array<double, 5>& V, int i, int j, Range k, int l, Range m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 2> blitz_double_array_5d_slice_riiir(const Array<double, 5>& V, Range i, int j, int k, int l, Range m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 2> blitz_double_array_5d_slice_iriir(const Array<double, 5>& V, int i, Range j, int k, int l, Range m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 2> blitz_double_array_5d_slice_iiirr(const Array<double, 5>& V, int i, int j, int k, Range l, Range m)
+{ return V(i, j, k, l, m); }
+
+blitz::Array<double, 1> blitz_double_array_5d_slice_iirii(const Array<double, 5>& V, int i, int j, Range k, int l, int m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 1> blitz_double_array_5d_slice_iiiri(const Array<double, 5>& V, int i, int j, int k, Range l, int m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 1> blitz_double_array_5d_slice_iiiir(const Array<double, 5>& V, int i, int j, int k, int l, Range m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 1> blitz_double_array_5d_slice_riiii(const Array<double, 5>& V, Range i, int j, int k, int l, int m)
+{ return V(i, j, k, l, m); }
+blitz::Array<double, 1> blitz_double_array_5d_slice_iriii(const Array<double, 5>& V, int i, Range j, int k, int l, int m)
+{ return V(i, j, k, l, m); }
+
+
+void blitz_double_array_5d_set_iiiii(Array<double, 5>& V, int i, int j, int k, int l, int m, double v)
+{ V(i, j, k, l, m) = v; }
+
+void blitz_double_array_5d_set_rrrrr_val(Array<double, 5>& V, Range i, Range j, Range k, Range l, Range m, double v)
+{ V(i, j, k, l, m) = v; }
+
+void blitz_double_array_5d_set_rrrrr_arr(Array<double, 5>& V, Range i, Range j, Range k, Range l, Range m, blitz::Array<double, 5> v)
+{ V(i, j, k, l, m) = v; }
+
+void blitz_double_array_5d_set_irrrr(Array<double, 5>& V, int i, Range j, Range k, Range l, Range m, blitz::Array<double, 4> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_rirrr(Array<double, 5>& V, Range i, int j, Range k, Range l, Range m, blitz::Array<double, 4> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_rrirr(Array<double, 5>& V, Range i, Range j, int k, Range l, Range m, blitz::Array<double, 4> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_rrrir(Array<double, 5>& V, Range i, Range j, Range k, int l, Range m, blitz::Array<double, 4> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_rrrri(Array<double, 5>& V, Range i, Range j, Range k, Range l, int m, blitz::Array<double, 4> v)
+{ V(i, j, k, l, m) = v; }
+
+void blitz_double_array_5d_set_iirrr(Array<double, 5>& V, int i, int j, Range k, Range l, Range m, blitz::Array<double, 3> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_irirr(Array<double, 5>& V, int i, Range j, int k, Range l, Range m, blitz::Array<double, 3> v) 
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_irrir(Array<double, 5>& V, int i, Range j, Range k, int l, Range m, blitz::Array<double, 3> v) 
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_irrri(Array<double, 5>& V, int i, Range j, Range k, Range l, int m, blitz::Array<double, 3> v) 
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_riirr(Array<double, 5>& V, Range i, int j, int k, Range l, Range m, blitz::Array<double, 3> v) 
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_ririr(Array<double, 5>& V, Range i, int j, Range k, int l, Range m, blitz::Array<double, 3> v) 
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_rirri(Array<double, 5>& V, Range i, int j, Range k, Range l, int m, blitz::Array<double, 3> v) 
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_rriir(Array<double, 5>& V, Range i, Range j, int k, int l, Range m, blitz::Array<double, 3> v) 
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_rriri(Array<double, 5>& V, Range i, Range j, int k, Range l, int m, blitz::Array<double, 3> v) 
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_rrrii(Array<double, 5>& V, Range i, Range j, Range k, int l, int m, blitz::Array<double, 3> v) 
+{ V(i, j, k, l, m) = v; }
+
+void blitz_double_array_5d_set_rriii(Array<double, 5>& V, Range i, Range j, int k, int l, int m, blitz::Array<double, 2> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_ririi(Array<double, 5>& V, Range i, int j, Range k, int l, int m, blitz::Array<double, 2> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_riiri(Array<double, 5>& V, Range i, int j, int k, Range l, int m, blitz::Array<double, 2> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_irrii(Array<double, 5>& V, int i, Range j, Range k, int l, int m, blitz::Array<double, 2> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_iriri(Array<double, 5>& V, int i, Range j, int k, Range l, int m, blitz::Array<double, 2> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_iirri(Array<double, 5>& V, int i, int j, Range k, Range l, int m, blitz::Array<double, 2> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_iirir(Array<double, 5>& V, int i, int j, Range k, int l, Range m, blitz::Array<double, 2> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_riiir(Array<double, 5>& V, Range i, int j, int k, int l, Range m, blitz::Array<double, 2> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_iriir(Array<double, 5>& V, int i, Range j, int k, int l, Range m, blitz::Array<double, 2> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_iiirr(Array<double, 5>& V, int i, int j, int k, Range l, Range m, blitz::Array<double, 2> v)
+{ V(i, j, k, l, m) = v; }
+
+void blitz_double_array_5d_set_iirii(Array<double, 5>& V, int i, int j, Range k, int l, int m, blitz::Array<double, 1> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_iiiri(Array<double, 5>& V, int i, int j, int k, Range l, int m, blitz::Array<double, 1> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_iiiir(Array<double, 5>& V, int i, int j, int k, int l, Range m, blitz::Array<double, 1> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_riiii(Array<double, 5>& V, Range i, int j, int k, int l, int m, blitz::Array<double, 1> v)
+{ V(i, j, k, l, m) = v; }
+void blitz_double_array_5d_set_iriii(Array<double, 5>& V, int i, Range j, int k, int l, int m, blitz::Array<double, 1> v)
+{ V(i, j, k, l, m) = v; }
+
+std::string blitz_double_array_5d_tostring(const Array<double, 5>& V)
+{
+  std::ostringstream os;
+  os << "Array<double, 5>: "<< V;
+  return os.str();
 }
 
 // Math operations
@@ -557,6 +716,7 @@ typedef Array<double, 1> ad1;
 typedef Array<double, 2> ad2;
 typedef Array<double, 3> ad3;
 typedef Array<double, 4> ad4;
+typedef Array<double, 5> ad5;
 typedef Array<bool, 1> ab1;
 typedef Array<bool, 2> ab2;
 typedef Array<bool, 3> ab3;
@@ -854,6 +1014,99 @@ REGISTER_LUA_CLASS_NAME(ad4, Blitz_double_array_4d)
 .def("exp", &blitz_exp<ad4>)
 REGISTER_LUA_END()
 
+REGISTER_LUA_CLASS_NAME(ad5, Blitz_double_array_5d)
+.def(luabind::constructor<int,int,int,int,int>())
+.def("rows", &Array<double, 5>::rows)
+.def("cols", &Array<double, 5>::cols)
+.def("depth", &Array<double, 5>::depth)
+.def("fourth_dim", &blitz_double_array_5d_extent_4)
+.def("fifth_dim", &blitz_double_array_5d_extent_5)
+.def("__call", &blitz_double_array_5d_read)
+.def("__call", &blitz_double_array_5d_slice_iiiir)
+.def("__call", &blitz_double_array_5d_slice_iiiri)
+.def("__call", &blitz_double_array_5d_slice_iiirr)
+.def("__call", &blitz_double_array_5d_slice_iirii)
+.def("__call", &blitz_double_array_5d_slice_iirir)
+.def("__call", &blitz_double_array_5d_slice_iirri)
+.def("__call", &blitz_double_array_5d_slice_iirrr)
+.def("__call", &blitz_double_array_5d_slice_iriii)
+.def("__call", &blitz_double_array_5d_slice_iriir)
+.def("__call", &blitz_double_array_5d_slice_iriri)
+.def("__call", &blitz_double_array_5d_slice_irirr)
+.def("__call", &blitz_double_array_5d_slice_irrii)
+.def("__call", &blitz_double_array_5d_slice_irrir)
+.def("__call", &blitz_double_array_5d_slice_irrri)
+.def("__call", &blitz_double_array_5d_slice_irrrr)
+.def("__call", &blitz_double_array_5d_slice_riiii)
+.def("__call", &blitz_double_array_5d_slice_riiir)
+.def("__call", &blitz_double_array_5d_slice_riiri)
+.def("__call", &blitz_double_array_5d_slice_riirr)
+.def("__call", &blitz_double_array_5d_slice_ririi)
+.def("__call", &blitz_double_array_5d_slice_ririr)
+.def("__call", &blitz_double_array_5d_slice_rirri)
+.def("__call", &blitz_double_array_5d_slice_rirrr)
+.def("__call", &blitz_double_array_5d_slice_rriii)
+.def("__call", &blitz_double_array_5d_slice_rriir)
+.def("__call", &blitz_double_array_5d_slice_rriri)
+.def("__call", &blitz_double_array_5d_slice_rrirr)
+.def("__call", &blitz_double_array_5d_slice_rrrii)
+.def("__call", &blitz_double_array_5d_slice_rrrir)
+.def("__call", &blitz_double_array_5d_slice_rrrri)
+.def("__call", &blitz_double_array_5d_slice_rrrrr)
+.def("set", &blitz_double_array_5d_set_iiiii)
+.def("set", &blitz_double_array_5d_set_rrrrr_val)
+.def("set", &blitz_double_array_5d_set_rrrrr_arr)
+.def("set", &blitz_double_array_5d_set_iiiir)
+.def("set", &blitz_double_array_5d_set_iiiri)
+.def("set", &blitz_double_array_5d_set_iiirr)
+.def("set", &blitz_double_array_5d_set_iirii)
+.def("set", &blitz_double_array_5d_set_iirir)
+.def("set", &blitz_double_array_5d_set_iirri)
+.def("set", &blitz_double_array_5d_set_iirrr)
+.def("set", &blitz_double_array_5d_set_iriii)
+.def("set", &blitz_double_array_5d_set_iriir)
+.def("set", &blitz_double_array_5d_set_iriri)
+.def("set", &blitz_double_array_5d_set_irirr)
+.def("set", &blitz_double_array_5d_set_irrii)
+.def("set", &blitz_double_array_5d_set_irrir)
+.def("set", &blitz_double_array_5d_set_irrri)
+.def("set", &blitz_double_array_5d_set_irrrr)
+.def("set", &blitz_double_array_5d_set_riiii)
+.def("set", &blitz_double_array_5d_set_riiir)
+.def("set", &blitz_double_array_5d_set_riiri)
+.def("set", &blitz_double_array_5d_set_riirr)
+.def("set", &blitz_double_array_5d_set_ririi)
+.def("set", &blitz_double_array_5d_set_ririr)
+.def("set", &blitz_double_array_5d_set_rirri)
+.def("set", &blitz_double_array_5d_set_rirrr)
+.def("set", &blitz_double_array_5d_set_rriii)
+.def("set", &blitz_double_array_5d_set_rriir)
+.def("set", &blitz_double_array_5d_set_rriri)
+.def("set", &blitz_double_array_5d_set_rrirr)
+.def("set", &blitz_double_array_5d_set_rrrii)
+.def("set", &blitz_double_array_5d_set_rrrir)
+.def("set", &blitz_double_array_5d_set_rrrri)
+.def("__tostring", &blitz_double_array_5d_tostring)
+.def("__add", &blitz_oper_add_double<ad5>)
+.def("__add", &double_oper_add_blitz<ad5>)
+.def("__add", &blitz_oper_add_array<ad5>)
+.def("__sub", &blitz_oper_sub_double<ad5>)
+.def("__sub", &double_oper_sub_blitz<ad5>)
+.def("__sub", &blitz_oper_sub_array<ad5>)
+.def("__mul", &blitz_oper_mul_double<ad5>)
+.def("__mul", &double_oper_mul_blitz<ad5>)
+.def("__mul", &blitz_oper_mul_array<ad5>)
+.def("__div", &blitz_oper_div_double<ad5>)
+.def("__div", &double_oper_div_blitz<ad5>)
+.def("__div", &blitz_oper_div_array<ad5>)
+.def("sum", &blitz_sum<ad5>)
+.def("product", &blitz_product<ad5>)
+.def("mean", &blitz_mean<ad5>)
+.def("min", &blitz_min<ad5>)
+.def("max", &blitz_max<ad5>)
+.def("log", &blitz_log<ad5>)
+.def("exp", &blitz_exp<ad5>)
+REGISTER_LUA_END()
 
 std::string range_tostring(const blitz::Range& R)
 {

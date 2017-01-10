@@ -128,6 +128,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(Blitz_double_array_2d);
   REGISTER_LUA_LIST(Blitz_double_array_3d);
   REGISTER_LUA_LIST(Blitz_double_array_4d);
+  REGISTER_LUA_LIST(Blitz_double_array_5d);
   REGISTER_LUA_LIST(Blitz_int_array_1d);
   REGISTER_LUA_LIST(Blitz_int_array_2d);
   REGISTER_LUA_LIST(Blitz_int_array_3d);
