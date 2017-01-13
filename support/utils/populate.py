@@ -33,6 +33,11 @@ Options:
       After generating level 2 output files, aggregate them into one
       common file.
 
+  --skip-check
+      Skip check to see if data is processable. This can take a while, and
+      is unnecessary if we already know the data is processable (e.g., we
+      generated the QTS data by looking at real data file).
+
   -g, --group_size=NUM
       Number of L2 jobs to group together in a single instance
       on the cluster.
@@ -80,6 +85,7 @@ if(args.binary):
     populate_options["l2_binary_filename"] = args.binary
 if(args.l2_config):
     populate_options["l2_config_filename"] = args.l2_config
+populate_options["skip_check"] = args.skip_check
 populate_options["aggregate"] = args.aggregate
 populate_options["abscoversion"] = args.absco_version
 populate_options["target_cluster"] = args.target_cluster
