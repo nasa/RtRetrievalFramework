@@ -135,10 +135,11 @@ class AcosPopulator(PopulatorBase):
 
         # Check if the configuration can be processed, else signal
         # that we can not proceed
-        self.logger.info("Checking if processable")
-        if not self.is_processable(config_filename,
-                                   self.config_sounding_id_section):
-            return False
+        if not self.skip_check:
+            self.logger.info("Checking if processable")
+            if not self.is_processable(config_filename,
+                                       self.config_sounding_id_section):
+                return False
 
         # Create common necessary files and directories
         self.logger.info("Initializing processing dir")

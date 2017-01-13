@@ -45,6 +45,7 @@ class PopulatorBase(object):
         '''Initialize object'''
         self.logger = logging.getLogger(os.path.basename(__file__))
         self.aggregate = False
+        self.skip_check = False
         self.l2_binary_filename = None
         self.abscoversion = ""
         self.group_size = 1
