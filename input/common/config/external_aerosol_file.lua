@@ -56,7 +56,7 @@ function init_external_aerosol_file(config)
         local aerosols = {}
         for idx=0,type_indexes:rows()-1 do
             if (type_indexes(idx) >= 0) then
-                type_idx = type_indexes(idx)
+                local type_idx = type_indexes(idx)
                 table.insert(aerosols, type_names:value(type_idx))
             end
         end
@@ -75,7 +75,7 @@ function init_external_aerosol_file(config)
         local aer_index
         for idx=0,type_indexes:rows()-1 do
             if (type_indexes(idx) >= 0) then
-                type_idx = type_indexes(idx)
+                local type_idx = type_indexes(idx)
                 if (type_names:value(type_idx) == aer_name) then
                     aer_index = idx
                 end
@@ -96,7 +96,7 @@ function init_external_aerosol_file(config)
             local sounding_idx = sid:sounding_number()
 
             local type_index = self.config:aerosol_type_index(aer_name)
-            return self.config:aer_priori_file():read_double_4d("/Aerosol/GaussianParam")(frame_idx, sounding_idx, type_idx, Range.all())
+            return self.config:aer_priori_file():read_double_4d("/Aerosol/GaussianParam")(frame_idx, sounding_idx, type_index, Range.all())
         end
     end
 
@@ -107,7 +107,7 @@ function init_external_aerosol_file(config)
             local sounding_idx = sid:sounding_number()
 
             local type_index = self.config:aerosol_type_index(aer_name)
-            val = self.config:aer_priori_file():read_double_5d("/Aerosol/GaussianParamCov")(frame_idx, sounding_idx, type_idx, Range.all(), Range.all())
+            val = self.config:aer_priori_file():read_double_5d("/Aerosol/GaussianParamCov")(frame_idx, sounding_idx, type_index, Range.all(), Range.all())
             print("cov = ", val)
             return val
         end
