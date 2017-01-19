@@ -431,7 +431,7 @@ class SoundingDataFile(h5py.File):
         if dataset_obj == None or hasattr(dataset_obj, "__iter__") and len(dataset_obj) == 0:
             raise ValueError("No datasets matched data name: %s" % data_name)
         elif (hasattr(dataset_obj, "__iter__") and not hasattr(dataset_obj, "shape")) and len(dataset_obj) > 1:
-            raise ValueError("Data name: %s matches too many datasets: %s" % (data_name, [ o.name for o in dataset_obj]))
+            raise ValueError("Data name: %s matches too many datasets: %s" % (data_name, [ o for o in dataset_obj]))
         elif hasattr(dataset_obj, "__iter__") and not hasattr(dataset_obj, "shape"):
             dataset_obj = dataset_obj[0]
 

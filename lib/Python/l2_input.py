@@ -52,7 +52,8 @@ class _Node(object):
 
         return [value, frontspace, endspace]
 
-    def __init__(self, nodeType, leaf=None, children=None):
+    def __init__(self, nodeType, leaf=None, children=None, value_list=None):
+         self.value_list = value_list
          self.type = nodeType
          if children:
               self.children = children
@@ -319,7 +320,18 @@ class _Section(_Node):
         for child in self.children:
             if child.type == 'matrix':
                 matrixValues = []
-
+                # Faster handling if we pulled the values out (e.g.
+                # for _AsciiParser)
+                if(child.value_list is not None):
+                    mval = child.value_list[int(child.children[0][0].leaf)]
+                    # Each line is a row, and each entry on a row is a column
+                    res = [i.split() for i in mval.split("\n")]
+                    # Now flatten this, so a 1 column matrix gets returned as a
+                    # vector
+                    res = [i[0] if len(i) == 1 else i for i in res
+                           if len(i) != 0]
+                    return res
+                # Drop down to slower handling (e.g., for _XmlParser)
                 for rowNode in child.children:
                     rowValues = [ x.leaf for x in rowNode ]
 
@@ -329,7 +341,6 @@ class _Section(_Node):
                         matrixValues.append(rowValues)
 
                 return matrixValues
-            
         return None
 
     def set_matrix_data(self, newData):
@@ -385,8 +396,9 @@ class _Section(_Node):
 
 class _AsciiParser(PlyParser):
 
-    def __init__(self, contents='', **kw):
+    def __init__(self, value_list=None, contents='', **kw):
         'Initialize the class'
+        self.value_list=value_list
         PlyParser.__init__(self, **kw)
 
     ##############
@@ -542,8 +554,8 @@ class _AsciiParser(PlyParser):
         # matrix row
         if len(matrixData[rowIndex]) == 0:
             del(matrixData[rowIndex])
-
-        p[0] = [ _Node('matrix', children=matrixData) ]
+        p[0] = [ _Node('matrix', children=matrixData,
+                       value_list=self.value_list) ]
 
     def p_section_contents_empty(self, p):
         'section_contents : empty'
@@ -782,10 +794,41 @@ class L2InputFile(object):
                         is_xml = True
                     break
 
+            # The _AsciiParser can be extremely slow for large files.
+            # We pull out any values to handle separately. We have a array
+            # value_list that contains the contents of the value, we replace
+            # this in fileContentsShort with the index number for this. So
+            # _AsciiParser never actually sees the potentially long list of
+            # values, which allows it to run much faster. We translate the
+            # value back to the contents when we eventually look up the value.
+            value_list = None
+            if(not is_xml):
+                fileContentsShort = ""
+                value_list = []
+                in_value = False
+                for t in re.split('(begin|end)\s+values', fileContents, flags=re.IGNORECASE):
+                    if(t.lower() == "begin"):
+                        if(in_value):
+                            raise RuntimeError("Confused processing %s" % self.filename)
+                        in_value = True
+                        fileContentsShort += "begin VALUES\n"
+                        fileContentsShort += "%d\n" % len(value_list)
+                        value_list.append("")
+                    elif(t.lower() == "end"):
+                        if(not in_value):
+                            raise RuntimeError("Confused processing %s" % self.filename)
+                        in_value = False
+                        fileContentsShort += "end VALUES\n"
+                    else:
+                        if(in_value):
+                            value_list[-1] = t
+                        else:
+                            fileContentsShort += t
+
             if (is_xml):
                 self.rootNode = _XmlParser().parse(fileContents)
             else:
-                self.rootNode = _AsciiParser(filename=self.filename).parse(fileContents)
+                self.rootNode = _AsciiParser(value_list=value_list,filename=self.filename).parse(fileContentsShort)
 
 
     def write(self, file_output=None, doIndent=False):
