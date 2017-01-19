@@ -90,3 +90,25 @@ def test_get_config_keyword_value():
     assert (val ==
  "/data/smyth/Level2/test/tccon_small_set/acos_L1bB2900_tccon_5_good_qual.h5")
 
+
+def test_read_id_list_file_large():
+    '''Test the reading the ID list for a large file. Historically this has
+    been really slow, so we have a test in place here to check the speed of 
+    this.'''
+    pb = PopulatorBase()
+    id_list = pb.read_id_list_file(test_data + "large_sounding_ids.list")
+    assert len(id_list) == 199158
+    
+def test_read_id_list_config_large():
+    '''Test the reading the ID list for a large file. Historically this has
+    been really slow, so we have a test in place here to check the speed of 
+    this. 
+
+    This checks a file that uses our old ASCII format, rather than the 
+    simpler list of soundings'''
+    pb = PopulatorBase()
+    id_list = pb.read_id_list_file(test_data + "large.config",
+                                   "input/OCOFullPhysics/SoundingIds")
+    assert len(id_list) == 199158
+    
+
