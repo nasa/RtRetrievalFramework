@@ -90,8 +90,9 @@ if splice_file.get(RET_INDEX_DS, None) is None:
             else:
                 snd_idx = where_id[0][0]
 
-            if has_frames and int(l1b_sounding_ids[frame_idx, snd_idx]) != int(ret_id):
-                raise Exception("Found L1B sounding id: %d which is not the same as retrieval sounding id used to search: %d at frame index: %d" % (l1b_sounding_ids[frame_idx, snd_idx], ret_id, frame_idx))
+            if has_frames:
+                if int(l1b_sounding_ids[frame_idx, snd_idx]) != int(ret_id):
+                    raise Exception("Found L1B sounding id: %d which is not the same as retrieval sounding id used to search: %d at frame index: %d" % (l1b_sounding_ids[frame_idx, snd_idx], ret_id, frame_idx))
             elif int(l1b_sounding_ids[snd_idx]) != int(ret_id):
                 raise Exception("Found L1B sounding id: %d which is not the same as retrieval sounding id used to search: %d at sounding index: %d" % (l1b_sounding_ids[snd_idx], ret_id, snd_idx))
 

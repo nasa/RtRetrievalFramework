@@ -95,6 +95,9 @@ class ProgressWriter(object):
             else:
                 self.fd.write(string)
 
+    def flush(self):
+        self.fd.flush()
+
 class DatasetInformation(object):
 
     def __init__(self, dataset_name, rename_mapping=False):
