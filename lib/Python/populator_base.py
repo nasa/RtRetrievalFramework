@@ -67,6 +67,7 @@ class PopulatorBase(object):
         # to create a l2/l1 aggregate. This is a useful thing for all the ACOS
         # like populators, but doesn't make any sense for FTS.
         self.have_l1b1 = True
+        self._l2_input_file_cache = {}
 
     # This will get filled in by a map of type name and class to handle
     # it, e.g., populator_list["oco"] = OcoPopulator. We fill this in as each
@@ -193,6 +194,13 @@ class PopulatorBase(object):
         else:
             return None
 
+    def _l2_input_file(self, file):
+        '''This caches reading a config file, so we don't parse the same file 
+        multiple_times.'''
+        if(file not in self._l2_input_file_cache):
+            self._l2_input_file_cache[file] = L2InputFile(file)
+        return self._l2_input_file_cache[file]
+    
     @staticmethod
     def create_populator_from_config_file(config_file, **user_settings):
         '''Read the L2 input configuration file supplied, and based on the
@@ -347,8 +355,7 @@ class PopulatorBase(object):
                     listFileObj.close()
             else:
                 self.logger.debug('Loading LIST %s section as %s contents from file: %s' % (sectionName, listName, listFile))
-                fileObj = L2InputFile(listFile)
-
+                fileObj = self._l2_input_file(listFile)
                 sectNameParts = sectionName.split('->')
 
                 foundSects = fileObj.get_section('->'.join(sectNameParts[0:-1]) + '->LIST')
@@ -359,7 +366,6 @@ class PopulatorBase(object):
                     if currListName != None and currListName == sectNameParts[-1]:
                         fileListSect = currFileSect.get_section('LIST->VALUES')
                         break
-
                 if fileListSect == None or len(fileListSect) == 0:
                     raise IOError('Could not find section %s in file: %s' % (sectionName, listFile))
 
@@ -377,33 +383,27 @@ class PopulatorBase(object):
 
         if section != None:
             self.logger.debug('Reading id list from section %s file: %s' % (section, id_list_file))
-            id_list_str = self.__get_list_file_values(id_list_file, str(id_list_file), section)
+            id_list = self.__get_list_file_values(id_list_file, str(id_list_file), section)
         else:
             self.logger.debug('Reading id list from file: %s' % id_list_file)
-            id_obj = L2InputFile(id_list_file)                                   
-            id_list_str = id_obj.get_matrix_data()
+            # Quicker read for text only file
+            id_list = open(id_list_file).read().split()
 
-        if id_list_str == None:
+        if id_list == None:
             return []
 
-        id_list_long = []
-        for curr_id_str in id_list_str:
-            # Try to match sounding id pattern
-            id_match = re.search('\d{3,17}\w?', curr_id_str)
-            if not id_match:
-                raise IOError('Could not find sounding id in string: "%s" in file %s' % (curr_id_str, id_list_file))
-            beg_pos = int(id_match.start())
-            end_pos = int(id_match.end())
-            found_id = curr_id_str[beg_pos:end_pos]
-            id_list_long.append( found_id )
-
-        return id_list_long
-
+        # Remove any white space
+        id_list = [i.strip() for i in id_list]
+        # Check for any bad data
+        bad = [i for i in id_list if not re.match('\d{3,17}', i)]
+        if(len(bad) > 0):
+            raise IOError('Could not find sounding id in string: "%s" in file %s' % (bad[0], id_list_file))
+        return id_list
 
     def get_config_keyword_value(self, config_filename, keyword_path):
         '''Read a L2 input file as keyword/value pairs, and return the value
         for the given keyword'''
-        config_obj = L2InputFile(config_filename)
+        config_obj = self._l2_input_file(config_filename)
 
         search_sect_name = '->'.join(keyword_path.split('/')[0:-1])
         search_key_name  = keyword_path.split('/')[-1]
