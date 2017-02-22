@@ -144,9 +144,9 @@ ArrayAd<double, 1> SpurrBrdfDriver::setup_brdf_inputs(int surface_type, const Ar
   case BREONSOIL:
     parameter_indexes.resize(4);
     parameter_indexes(0) = 0; // rahman kernel factor
-    parameter_indexes(1) = 1; // overall amplitude
+    parameter_indexes(1) = 1; // hotspot parameter
     parameter_indexes(2) = 2; // asymmetry
-    parameter_indexes(3) = 3; // geometric factor
+    parameter_indexes(3) = 3; // anisotropy_parameter
     setup_rahman_inputs(0, rt_surf_params, parameter_indexes);
 
     parameter_indexes.resize(1);

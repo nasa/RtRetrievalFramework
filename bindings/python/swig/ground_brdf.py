@@ -203,13 +203,13 @@ class GroundBrdfVeg(full_physics_swig.ground.Ground):
         return _ground_brdf.GroundBrdfVeg_rahman_factor(self, *args)
 
 
-    def overall_amplitude(self, *args):
+    def hotspot_parameter(self, *args):
         """
 
-        void GroundBrdf::overall_amplitude(const int spec_index, const AutoDerivative< double > &val)
+        void GroundBrdf::hotspot_parameter(const int spec_index, const AutoDerivative< double > &val)
 
         """
-        return _ground_brdf.GroundBrdfVeg_overall_amplitude(self, *args)
+        return _ground_brdf.GroundBrdfVeg_hotspot_parameter(self, *args)
 
 
     def asymmetry_parameter(self, *args):
@@ -221,13 +221,13 @@ class GroundBrdfVeg(full_physics_swig.ground.Ground):
         return _ground_brdf.GroundBrdfVeg_asymmetry_parameter(self, *args)
 
 
-    def geometric_factor(self, *args):
+    def anisotropy_parameter(self, *args):
         """
 
-        void GroundBrdf::geometric_factor(const int spec_index, const AutoDerivative< double > &val)
+        void GroundBrdf::anisotropy_parameter(const int spec_index, const AutoDerivative< double > &val)
 
         """
-        return _ground_brdf.GroundBrdfVeg_geometric_factor(self, *args)
+        return _ground_brdf.GroundBrdfVeg_anisotropy_parameter(self, *args)
 
 
     def breon_factor(self, *args):
@@ -320,9 +320,9 @@ GroundBrdfVeg.weight = new_instancemethod(_ground_brdf.GroundBrdfVeg_weight, Non
 GroundBrdfVeg.weight_intercept = new_instancemethod(_ground_brdf.GroundBrdfVeg_weight_intercept, None, GroundBrdfVeg)
 GroundBrdfVeg.weight_slope = new_instancemethod(_ground_brdf.GroundBrdfVeg_weight_slope, None, GroundBrdfVeg)
 GroundBrdfVeg.rahman_factor = new_instancemethod(_ground_brdf.GroundBrdfVeg_rahman_factor, None, GroundBrdfVeg)
-GroundBrdfVeg.overall_amplitude = new_instancemethod(_ground_brdf.GroundBrdfVeg_overall_amplitude, None, GroundBrdfVeg)
+GroundBrdfVeg.hotspot_parameter = new_instancemethod(_ground_brdf.GroundBrdfVeg_hotspot_parameter, None, GroundBrdfVeg)
 GroundBrdfVeg.asymmetry_parameter = new_instancemethod(_ground_brdf.GroundBrdfVeg_asymmetry_parameter, None, GroundBrdfVeg)
-GroundBrdfVeg.geometric_factor = new_instancemethod(_ground_brdf.GroundBrdfVeg_geometric_factor, None, GroundBrdfVeg)
+GroundBrdfVeg.anisotropy_parameter = new_instancemethod(_ground_brdf.GroundBrdfVeg_anisotropy_parameter, None, GroundBrdfVeg)
 GroundBrdfVeg.breon_factor = new_instancemethod(_ground_brdf.GroundBrdfVeg_breon_factor, None, GroundBrdfVeg)
 GroundBrdfVeg.brdf_covariance = new_instancemethod(_ground_brdf.GroundBrdfVeg_brdf_covariance, None, GroundBrdfVeg)
 GroundBrdfVeg.refractive_index = new_instancemethod(_ground_brdf.GroundBrdfVeg_refractive_index, None, GroundBrdfVeg)
@@ -399,13 +399,13 @@ class GroundBrdfSoil(full_physics_swig.ground.Ground):
         return _ground_brdf.GroundBrdfSoil_rahman_factor(self, *args)
 
 
-    def overall_amplitude(self, *args):
+    def hotspot_parameter(self, *args):
         """
 
-        void GroundBrdf::overall_amplitude(const int spec_index, const AutoDerivative< double > &val)
+        void GroundBrdf::hotspot_parameter(const int spec_index, const AutoDerivative< double > &val)
 
         """
-        return _ground_brdf.GroundBrdfSoil_overall_amplitude(self, *args)
+        return _ground_brdf.GroundBrdfSoil_hotspot_parameter(self, *args)
 
 
     def asymmetry_parameter(self, *args):
@@ -417,13 +417,13 @@ class GroundBrdfSoil(full_physics_swig.ground.Ground):
         return _ground_brdf.GroundBrdfSoil_asymmetry_parameter(self, *args)
 
 
-    def geometric_factor(self, *args):
+    def anisotropy_parameter(self, *args):
         """
 
-        void GroundBrdf::geometric_factor(const int spec_index, const AutoDerivative< double > &val)
+        void GroundBrdf::anisotropy_parameter(const int spec_index, const AutoDerivative< double > &val)
 
         """
-        return _ground_brdf.GroundBrdfSoil_geometric_factor(self, *args)
+        return _ground_brdf.GroundBrdfSoil_anisotropy_parameter(self, *args)
 
 
     def breon_factor(self, *args):
@@ -516,9 +516,9 @@ GroundBrdfSoil.weight = new_instancemethod(_ground_brdf.GroundBrdfSoil_weight, N
 GroundBrdfSoil.weight_intercept = new_instancemethod(_ground_brdf.GroundBrdfSoil_weight_intercept, None, GroundBrdfSoil)
 GroundBrdfSoil.weight_slope = new_instancemethod(_ground_brdf.GroundBrdfSoil_weight_slope, None, GroundBrdfSoil)
 GroundBrdfSoil.rahman_factor = new_instancemethod(_ground_brdf.GroundBrdfSoil_rahman_factor, None, GroundBrdfSoil)
-GroundBrdfSoil.overall_amplitude = new_instancemethod(_ground_brdf.GroundBrdfSoil_overall_amplitude, None, GroundBrdfSoil)
+GroundBrdfSoil.hotspot_parameter = new_instancemethod(_ground_brdf.GroundBrdfSoil_hotspot_parameter, None, GroundBrdfSoil)
 GroundBrdfSoil.asymmetry_parameter = new_instancemethod(_ground_brdf.GroundBrdfSoil_asymmetry_parameter, None, GroundBrdfSoil)
-GroundBrdfSoil.geometric_factor = new_instancemethod(_ground_brdf.GroundBrdfSoil_geometric_factor, None, GroundBrdfSoil)
+GroundBrdfSoil.anisotropy_parameter = new_instancemethod(_ground_brdf.GroundBrdfSoil_anisotropy_parameter, None, GroundBrdfSoil)
 GroundBrdfSoil.breon_factor = new_instancemethod(_ground_brdf.GroundBrdfSoil_breon_factor, None, GroundBrdfSoil)
 GroundBrdfSoil.brdf_covariance = new_instancemethod(_ground_brdf.GroundBrdfSoil_brdf_covariance, None, GroundBrdfSoil)
 GroundBrdfSoil.refractive_index = new_instancemethod(_ground_brdf.GroundBrdfSoil_refractive_index, None, GroundBrdfSoil)

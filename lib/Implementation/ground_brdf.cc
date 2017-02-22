@@ -71,9 +71,9 @@ REGISTER_LUA_END()
   0: BRDF overall weight intercept
   1: BRDF overall weight slope
   2: Rahman kernel factor
-  3: Rahman overall amplitude 
+  3: Rahman hotspot parameter
   4: Rahman asymmetry factor
-  5: Rahman geometric factor
+  5: Rahman anisotropy parameter
   6: Breon kernel factor
  *******************************************************************/
 
@@ -138,9 +138,9 @@ ArrayAd<double, 1> GroundBrdf::surface_parameter(const double wn, const int spec
     ArrayAd<double, 1> spars;
     spars.resize(NUM_PARAMS, coefficient().number_variable());
     spars(0) = w * rahman_factor(spec_index);
-    spars(1) = overall_amplitude(spec_index);
+    spars(1) = hotspot_parameter(spec_index);
     spars(2) = asymmetry_parameter(spec_index);
-    spars(3) = geometric_factor(spec_index);
+    spars(3) = anisotropy_parameter(spec_index);
     spars(4) = w * breon_factor(spec_index);
     return spars;
 }
@@ -177,7 +177,7 @@ const AutoDerivative<double> GroundBrdf::rahman_factor(const int spec_index) con
     return coefficient()(NUM_COEFF * spec_index + RAHMAN_KERNEL_FACTOR_INDEX);
 }
 
-const AutoDerivative<double> GroundBrdf::overall_amplitude(const int spec_index) const
+const AutoDerivative<double> GroundBrdf::hotspot_parameter(const int spec_index) const
 {
     range_check(spec_index, 0, number_spectrometer());
 
@@ -191,7 +191,7 @@ const AutoDerivative<double> GroundBrdf::asymmetry_parameter(const int spec_inde
     return coefficient()(NUM_COEFF * spec_index + RAHMAN_ASYMMETRY_FACTOR_INDEX);
 }
 
-const AutoDerivative<double> GroundBrdf::geometric_factor(const int spec_index) const
+const AutoDerivative<double> GroundBrdf::anisotropy_parameter(const int spec_index) const
 {
     range_check(spec_index, 0, number_spectrometer());
 
@@ -228,7 +228,7 @@ void GroundBrdf::rahman_factor(const int spec_index, const AutoDerivative<double
     coeff(NUM_COEFF * spec_index + RAHMAN_KERNEL_FACTOR_INDEX) = val;
 }
 
-void GroundBrdf::overall_amplitude(const int spec_index, const AutoDerivative<double>& val)
+void GroundBrdf::hotspot_parameter(const int spec_index, const AutoDerivative<double>& val)
 {
     range_check(spec_index, 0, number_spectrometer());
 
@@ -242,7 +242,7 @@ void GroundBrdf::asymmetry_parameter(const int spec_index, const AutoDerivative<
     coeff(NUM_COEFF * spec_index + RAHMAN_ASYMMETRY_FACTOR_INDEX) = val;
 }
 
-void GroundBrdf::geometric_factor(const int spec_index, const AutoDerivative<double>& val)
+void GroundBrdf::anisotropy_parameter(const int spec_index, const AutoDerivative<double>& val)
 {
     range_check(spec_index, 0, number_spectrometer());
 
@@ -297,9 +297,9 @@ blitz::Array<double, 1> GroundBrdf::albedo_calc_params(const int Spec_index)
 
     blitz::Array<double, 1> params(NUM_PARAMS, blitz::ColumnMajorArray<1>());
     params(0) = w * rahman_factor(Spec_index).value();
-    params(1) = overall_amplitude(Spec_index).value();
+    params(1) = hotspot_parameter(Spec_index).value();
     params(2) = asymmetry_parameter(Spec_index).value();
-    params(3) = geometric_factor(Spec_index).value();
+    params(3) = anisotropy_parameter(Spec_index).value();
     params(4) = w * breon_factor(Spec_index).value();
     return params;
 }
@@ -347,13 +347,13 @@ std::string GroundBrdf::state_vector_name_i(int i) const {
         name << "Rahman Factor";
         break;
     case RAHMAN_OVERALL_AMPLITUDE_INDEX:
-        name << "Overall Amplitude";
+        name << "Hotspot Parameter";
         break;
     case RAHMAN_ASYMMETRY_FACTOR_INDEX:
         name << "Asymmetry Parameter";
         break;
     case RAHMAN_GEOMETRIC_FACTOR_INDEX:
-        name << "Geometric Factor";
+        name << "Anisotropy Parameter";
         break;
     case BREON_KERNEL_FACTOR_INDEX:
         name << "Breon Factor";
@@ -374,9 +374,9 @@ void GroundBrdf::print(std::ostream& Os) const
         opad << "BRDF Weight Intercept: " << weight_intercept(spec_idx).value() << std::endl
              << "BRDF Weight Slope: " << weight_slope(spec_idx).value() << std::endl
              << "Rahman Factor: " << rahman_factor(spec_idx).value() << std::endl
-             << "Overall Amplitude: " << overall_amplitude(spec_idx).value() << std::endl
+             << "Hotspot Parameter: " << hotspot_parameter(spec_idx).value() << std::endl
              << "Asymmetry Parameter: " << asymmetry_parameter(spec_idx).value() << std::endl
-             << "Geometric Factor: " << geometric_factor(spec_idx).value() << std::endl
+             << "Anisotropy Parameter: " << anisotropy_parameter(spec_idx).value() << std::endl
              << "Breon Factor: " << breon_factor(spec_idx).value() << std::endl;
         opad.strict_sync();
     }
