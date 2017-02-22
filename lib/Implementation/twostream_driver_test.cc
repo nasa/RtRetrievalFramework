@@ -298,9 +298,9 @@ BOOST_AUTO_TEST_CASE(brdf)
   ////////////////
   // Surface only
   surface_params.value()(0) = 1.0; // rahman kernel factor
-  surface_params.value()(1) = 0.1; // overall amplitude
+  surface_params.value()(1) = 0.1; // hotspot parameter
   surface_params.value()(2) = 0.3; // asymmetry
-  surface_params.value()(3) = 1.5; // geometric factor
+  surface_params.value()(3) = 1.5; // anisotropy_parameter
   surface_params.value()(4) = 1.0; // breon kernel factor
 
   taur = 1.0e-6/nlayer;

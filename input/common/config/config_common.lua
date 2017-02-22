@@ -2273,10 +2273,7 @@ function ConfigCommon.ground_brdf_veg:create_parent_object(sub_object)
 end
 
 function ConfigCommon.ground_brdf_veg:register_output(ro)
-   local sza = self.config.l1b:sza()
-   local cos_solar_zenith  = self.config:h():read_double_1d("/Ground/Brdf/Effective_Albedo_Table/cos_solar_zenith")
-   local intensity_scaling = self.config:h():read_double_1d("/Ground/Brdf/Effective_Albedo_Table/intensity_scaling")
-   ro:push_back(GroundBrdfOutput.create(self.config.brdf_veg, sza, cos_solar_zenith, intensity_scaling, self.config.common.hdf_band_name))
+   ro:push_back(GroundBrdfOutput.create(self.config.brdf_veg, self.config.l1b, self.config.common.hdf_band_name))
 end
 
 ------------------------------------------------------------
@@ -2314,10 +2311,7 @@ function ConfigCommon.ground_brdf_soil:create_parent_object(sub_object)
 end
 
 function ConfigCommon.ground_brdf_soil:register_output(ro)
-   local sza = self.config.l1b:sza()
-   local cos_solar_zenith  = self.config:h():read_double_1d("/Ground/Brdf/Effective_Albedo_Table/cos_solar_zenith")
-   local intensity_scaling = self.config:h():read_double_1d("/Ground/Brdf/Effective_Albedo_Table/intensity_scaling")
-   ro:push_back(GroundBrdfOutput.create(self.config.brdf_soil, sza, cos_solar_zenith, intensity_scaling, self.config.common.hdf_band_name))
+   ro:push_back(GroundBrdfOutput.create(self.config.brdf_soil, self.config.l1b, self.config.common.hdf_band_name))
 end
 
 ------------------------------------------------------------

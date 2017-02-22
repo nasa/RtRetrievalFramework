@@ -17,17 +17,17 @@ BOOST_AUTO_TEST_CASE(basic)
     BOOST_CHECK_CLOSE(brdf_soil->rahman_factor(1).value(), 0.8, 1e-8);
     BOOST_CHECK_CLOSE(brdf_soil->rahman_factor(2).value(), 0.9, 1e-8);
 
-    BOOST_CHECK_CLOSE(brdf_soil->overall_amplitude(0).value(), 1.0, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_soil->overall_amplitude(1).value(), 1.1, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_soil->overall_amplitude(2).value(), 1.2, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_soil->hotspot_parameter(0).value(), 1.0, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_soil->hotspot_parameter(1).value(), 1.1, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_soil->hotspot_parameter(2).value(), 1.2, 1e-8);
 
     BOOST_CHECK_CLOSE(brdf_soil->asymmetry_parameter(0).value(), 1.3, 1e-8);
     BOOST_CHECK_CLOSE(brdf_soil->asymmetry_parameter(1).value(), 1.4, 1e-8);
     BOOST_CHECK_CLOSE(brdf_soil->asymmetry_parameter(2).value(), 1.5, 1e-8);
 
-    BOOST_CHECK_CLOSE(brdf_soil->geometric_factor(0).value(), 1.6, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_soil->geometric_factor(1).value(), 1.7, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_soil->geometric_factor(2).value(), 1.8, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_soil->anisotropy_parameter(0).value(), 1.6, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_soil->anisotropy_parameter(1).value(), 1.7, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_soil->anisotropy_parameter(2).value(), 1.8, 1e-8);
 
     BOOST_CHECK_CLOSE(brdf_soil->breon_factor(0).value(), 1.9, 1e-8);
     BOOST_CHECK_CLOSE(brdf_soil->breon_factor(1).value(), 2.0, 1e-8);
@@ -42,17 +42,17 @@ BOOST_AUTO_TEST_CASE(basic)
     BOOST_CHECK_CLOSE(brdf_veg->rahman_factor(1).value(), 0.8, 1e-8);
     BOOST_CHECK_CLOSE(brdf_veg->rahman_factor(2).value(), 0.9, 1e-8);
 
-    BOOST_CHECK_CLOSE(brdf_veg->overall_amplitude(0).value(), 1.0, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_veg->overall_amplitude(1).value(), 1.1, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_veg->overall_amplitude(2).value(), 1.2, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_veg->hotspot_parameter(0).value(), 1.0, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_veg->hotspot_parameter(1).value(), 1.1, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_veg->hotspot_parameter(2).value(), 1.2, 1e-8);
 
     BOOST_CHECK_CLOSE(brdf_veg->asymmetry_parameter(0).value(), 1.3, 1e-8);
     BOOST_CHECK_CLOSE(brdf_veg->asymmetry_parameter(1).value(), 1.4, 1e-8);
     BOOST_CHECK_CLOSE(brdf_veg->asymmetry_parameter(2).value(), 1.5, 1e-8);
 
-    BOOST_CHECK_CLOSE(brdf_veg->geometric_factor(0).value(), 1.6, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_veg->geometric_factor(1).value(), 1.7, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_veg->geometric_factor(2).value(), 1.8, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_veg->anisotropy_parameter(0).value(), 1.6, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_veg->anisotropy_parameter(1).value(), 1.7, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_veg->anisotropy_parameter(2).value(), 1.8, 1e-8);
 
     BOOST_CHECK_CLOSE(brdf_veg->breon_factor(0).value(), 1.9, 1e-8);
     BOOST_CHECK_CLOSE(brdf_veg->breon_factor(1).value(), 2.0, 1e-8);
