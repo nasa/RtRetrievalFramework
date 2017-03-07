@@ -267,14 +267,14 @@ class GroundBrdfVeg(full_physics_swig.ground.Ground):
         return _ground_brdf.GroundBrdfVeg_black_sky_albedo(self, Spec_index, Sza)
 
 
-    def albedo(self, Spec_index, Sza, Vza, Azm, Stokes_coef):
+    def kernel_value(self, Spec_index, Sza, Vza, Azm):
         """
 
-        const double GroundBrdfVeg::albedo(const int Spec_index, const double Sza, const double Vza, const
-        double Azm, const blitz::Array< double, 1 > &Stokes_coef)
+        const double GroundBrdfVeg::kernel_value(const int Spec_index, const double Sza, const double Vza, const
+        double Azm)
 
         """
-        return _ground_brdf.GroundBrdfVeg_albedo(self, Spec_index, Sza, Vza, Azm, Stokes_coef)
+        return _ground_brdf.GroundBrdfVeg_kernel_value(self, Spec_index, Sza, Vza, Azm)
 
 
     def breon_type(self):
@@ -327,7 +327,7 @@ GroundBrdfVeg.breon_factor = new_instancemethod(_ground_brdf.GroundBrdfVeg_breon
 GroundBrdfVeg.brdf_covariance = new_instancemethod(_ground_brdf.GroundBrdfVeg_brdf_covariance, None, GroundBrdfVeg)
 GroundBrdfVeg.refractive_index = new_instancemethod(_ground_brdf.GroundBrdfVeg_refractive_index, None, GroundBrdfVeg)
 GroundBrdfVeg.black_sky_albedo = new_instancemethod(_ground_brdf.GroundBrdfVeg_black_sky_albedo, None, GroundBrdfVeg)
-GroundBrdfVeg.albedo = new_instancemethod(_ground_brdf.GroundBrdfVeg_albedo, None, GroundBrdfVeg)
+GroundBrdfVeg.kernel_value = new_instancemethod(_ground_brdf.GroundBrdfVeg_kernel_value, None, GroundBrdfVeg)
 GroundBrdfVeg.breon_type = new_instancemethod(_ground_brdf.GroundBrdfVeg_breon_type, None, GroundBrdfVeg)
 GroundBrdfVeg.reference_point = new_instancemethod(_ground_brdf.GroundBrdfVeg_reference_point, None, GroundBrdfVeg)
 GroundBrdfVeg.state_vector_name_i = new_instancemethod(_ground_brdf.GroundBrdfVeg_state_vector_name_i, None, GroundBrdfVeg)
@@ -463,14 +463,14 @@ class GroundBrdfSoil(full_physics_swig.ground.Ground):
         return _ground_brdf.GroundBrdfSoil_black_sky_albedo(self, Spec_index, Sza)
 
 
-    def albedo(self, Spec_index, Sza, Vza, Azm, Stokes_coef):
+    def kernel_value(self, Spec_index, Sza, Vza, Azm):
         """
 
-        const double GroundBrdfSoil::albedo(const int Spec_index, const double Sza, const double Vza, const
-        double Azm, const blitz::Array< double, 1 > &Stokes_coef)
+        const double GroundBrdfSoil::kernel_value(const int Spec_index, const double Sza, const double Vza, const
+        double Azm)
 
         """
-        return _ground_brdf.GroundBrdfSoil_albedo(self, Spec_index, Sza, Vza, Azm, Stokes_coef)
+        return _ground_brdf.GroundBrdfSoil_kernel_value(self, Spec_index, Sza, Vza, Azm)
 
 
     def breon_type(self):
@@ -523,7 +523,7 @@ GroundBrdfSoil.breon_factor = new_instancemethod(_ground_brdf.GroundBrdfSoil_bre
 GroundBrdfSoil.brdf_covariance = new_instancemethod(_ground_brdf.GroundBrdfSoil_brdf_covariance, None, GroundBrdfSoil)
 GroundBrdfSoil.refractive_index = new_instancemethod(_ground_brdf.GroundBrdfSoil_refractive_index, None, GroundBrdfSoil)
 GroundBrdfSoil.black_sky_albedo = new_instancemethod(_ground_brdf.GroundBrdfSoil_black_sky_albedo, None, GroundBrdfSoil)
-GroundBrdfSoil.albedo = new_instancemethod(_ground_brdf.GroundBrdfSoil_albedo, None, GroundBrdfSoil)
+GroundBrdfSoil.kernel_value = new_instancemethod(_ground_brdf.GroundBrdfSoil_kernel_value, None, GroundBrdfSoil)
 GroundBrdfSoil.breon_type = new_instancemethod(_ground_brdf.GroundBrdfSoil_breon_type, None, GroundBrdfSoil)
 GroundBrdfSoil.reference_point = new_instancemethod(_ground_brdf.GroundBrdfSoil_reference_point, None, GroundBrdfSoil)
 GroundBrdfSoil.state_vector_name_i = new_instancemethod(_ground_brdf.GroundBrdfSoil_state_vector_name_i, None, GroundBrdfSoil)

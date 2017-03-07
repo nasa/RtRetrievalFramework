@@ -2173,8 +2173,8 @@ function ConfigCommon.ground_coxmunk_plus_lamb:register_output(ro)
 end
 
 ------------------------------------------------------------
---- Modify the GroundBrdf a_priori, scaling by the black
---- sky albedo
+--- Modify the GroundBrdf a_priori, scaling by the 
+--- kernel value
 ------------------------------------------------------------
 
 function ConfigCommon.brdf_weight(self, brdf_class, ap, i)
@@ -2184,7 +2184,6 @@ function ConfigCommon.brdf_weight(self, brdf_class, ap, i)
    local vza_d = self.config.l1b:zen()(i) 
    local azm_d = self.config.l1b:azm()(i) 
    local sza_r = sza_d * math.pi / 180.0
-   local stokes_coef = self.config.l1b:stokes_coef()(i, Range.all())
    local alb_cont = math.pi * signal / (math.cos(sza_r) * solar_strength)
 
    -- Extract all but the slope portion of the apriori to feed into the
@@ -2192,7 +2191,7 @@ function ConfigCommon.brdf_weight(self, brdf_class, ap, i)
    local params = Blitz_double_array_1d(5)
    params:set(Range.all(), ap(Range(2, 6)))
 
-   local alb_calc = brdf_class.albedo(params, sza_d, vza_d, azm_d, stokes_coef)
+   local alb_calc = brdf_class.kernel_value(params, sza_d, vza_d, azm_d)
    local weight = alb_cont / alb_calc
 
    return weight

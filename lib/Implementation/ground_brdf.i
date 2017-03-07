@@ -46,7 +46,7 @@ public:
     const blitz::Array<double, 2> brdf_covariance(const int spec_index) const;
     virtual const double refractive_index(const int Spec_idx) const;
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
-    virtual const double albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef);
+    virtual const double kernel_value(const int Spec_index, const double Sza, const double Vza, const double Azm);
     virtual const std::string breon_type() const;
     virtual const DoubleWithUnit reference_point(const int spec_index) const;
     virtual boost::shared_ptr<Ground> clone() const;
@@ -81,7 +81,7 @@ public:
     const blitz::Array<double, 2> brdf_covariance(const int spec_index) const;
     virtual const double refractive_index(const int Spec_idx) const;
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
-    virtual const double albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef);
+    virtual const double kernel_value(const int Spec_index, const double Sza, const double Vza, const double Azm);
     virtual const std::string breon_type() const;
     virtual const DoubleWithUnit reference_point(const int spec_index) const;
     virtual boost::shared_ptr<Ground> clone() const;
