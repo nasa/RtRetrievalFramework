@@ -120,15 +120,12 @@ BOOST_AUTO_TEST_CASE(albedo)
     double vza = 45.0;
     double azm = 10.0;
     blitz::Array<double, 1> stokes(4);
-    stokes = 0.5, -0.5, 0, 0;
 
-    double alb_veg = brdf_veg->albedo(spec_idx, sza, vza, azm, stokes);
-    // Value calculated in offline tester (same code as in L2, but as an independent program)
-    BOOST_CHECK_CLOSE(alb_veg, -5.40109310104388944118e-03, 1e-10);
+    double alb_veg = brdf_veg->kernel_value(spec_idx, sza, vza, azm);
+    BOOST_CHECK_CLOSE(alb_veg, -0.013077020591798197, 1e-10);
 
-    double alb_soil = brdf_soil->albedo(spec_idx, sza, vza, azm, stokes);
-    // Value calculated in offline tester (same code as in L2, but as an independent program)
-    BOOST_CHECK_CLOSE(alb_soil, -2.71124317407245817024e-03, 1e-10);
+    double alb_soil = brdf_soil->kernel_value(spec_idx, sza, vza, azm);
+    BOOST_CHECK_CLOSE(alb_soil, -0.012104239120264813, 1e-10);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

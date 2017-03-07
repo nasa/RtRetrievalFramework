@@ -11,34 +11,27 @@ module brdf_functions_m
 
 contains
 
-    real(kind=c_double) function exact_brdf_value_veg_f(params, sza, vza, azm, stokes_coef, nstokes) bind(c)
+    real(kind=c_double) function exact_brdf_value_veg_f(params, sza, vza, azm) bind(c)
         real(kind=c_double), intent(in) :: params(5)
         real(kind=c_double), intent(in) :: sza
         real(kind=c_double), intent(in) :: vza
         real(kind=c_double), intent(in) :: azm
-        integer(c_int), intent(in)      :: nstokes
-        real(kind=c_double), intent(in) :: stokes_coef(nstokes)
 
-        exact_brdf_value_veg_f = exact_brdf_value_f(BREONVEG_IDX, params, sza, &
-                                                    vza, azm, stokes_coef, nstokes)
+        exact_brdf_value_veg_f = exact_brdf_value_f(BREONVEG_IDX, params, sza, vza, azm)
     end function exact_brdf_value_veg_f
 
-    real(kind=c_double) function exact_brdf_value_soil_f(params, sza, vza, azm, stokes_coef, nstokes) bind(c)
+    real(kind=c_double) function exact_brdf_value_soil_f(params, sza, vza, azm) bind(c)
         real(kind=c_double), intent(in) :: params(5)
         real(kind=c_double), intent(in) :: sza
         real(kind=c_double), intent(in) :: vza
         real(kind=c_double), intent(in) :: azm
-        integer(c_int), intent(in)      :: nstokes
-        real(kind=c_double), intent(in) :: stokes_coef(nstokes)
 
-        exact_brdf_value_soil_f = exact_brdf_value_f(BREONSOIL_IDX, params, sza, &
-                                                    vza, azm, stokes_coef, nstokes)
+        exact_brdf_value_soil_f = exact_brdf_value_f(BREONSOIL_IDX, params, sza, vza, azm)
     end function exact_brdf_value_soil_f
  
-    real(kind=c_double) function exact_brdf_value_f(breon_type, params, sza, vza, azm, stokes_coef, nstokes_arr) bind(c)
+    real(kind=c_double) function exact_brdf_value_f(breon_type, params, sza, vza, azm) bind(c)
 
       USE brdf_sup_routines_m, only : BRDF_FUNCTION
-      USE l_surface_m
 
 !  Parameters for lrad
 
@@ -50,8 +43,6 @@ contains
       real(kind=c_double), intent(in) :: sza
       real(kind=c_double), intent(in) :: vza
       real(kind=c_double), intent(in) :: azm
-      integer(c_int), intent(in)      :: nstokes_arr
-      real(kind=c_double), intent(in) :: stokes_coef(nstokes_arr)
 
 !  Number and index-list of bidirectional functions
 
@@ -103,19 +94,12 @@ contains
 
 !  Calculated BRDF
 
-      REAL(fpk)  :: EXACT_BRDF_VALUE(NSTOKES)
       REAL(fpk)  :: EXACT_CALC_BRDF
 
 !  Help
 
       INTEGER    :: IB, K, UI, IA
       REAL(fpk)  :: MUX
-
-!  Ensure that nstokes_arr is at least as big as nstokes
-      if (NSTOKES > nstokes_arr) then 
-          write(*,*) "exact_brdf_value_f: Size of stokes coefficient array must be at least 3, not: ", nstokes_arr
-          return 
-      endif
 
 !  Set values for the basic LIDORT variables
 
@@ -190,7 +174,7 @@ contains
 !  Exact BRDF (LIDORT)
 !  -------------------
 
-      EXACT_BRDF_VALUE(1) = ZERO
+      EXACT_CALC_BRDF = ZERO
 
 !  Kernel loop
 
@@ -208,23 +192,9 @@ contains
             ENDDO
          ENDDO
 
-         EXACT_BRDF_VALUE(1) = EXACT_BRDF_VALUE(1) + BRDF_FACTORS(K) * EXACTDB_BRDFUNC(1,1,1)
+         EXACT_CALC_BRDF = EXACT_CALC_BRDF + BRDF_FACTORS(K) * EXACTDB_BRDFUNC(1,1,1)
 
       ENDDO
-
-!  Exact BRDF (l_rad)
-!  ------------------
-
-      CALL LANDBRDF_VFUNCTION &
-          (NSTOKES, NSPARS, SPARS, HFUNCTION_INDEX, & !inputs
-           XJ, SXJ, XI, SXI, & !inputs
-           CKPHI_REF, SKPHI_REF, & !inputs
-           R1 ) ! output
-
-      EXACT_BRDF_VALUE(2) = R1(2)
-      EXACT_BRDF_VALUE(3) = R1(3)
-
-      EXACT_CALC_BRDF = DOT_PRODUCT(EXACT_BRDF_VALUE(1:NSTOKES),STOKES_COEF(1:NSTOKES))
 
       exact_brdf_value_f = EXACT_CALC_BRDF
 

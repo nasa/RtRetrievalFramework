@@ -63,8 +63,8 @@ public:
     // Uses LIDORT to compute the black sky albedo from the parameters
     virtual const double black_sky_albedo(const int Spec_index, const double Sza) = 0;
 
-    // Computes albedo using parameters and specified geometry
-    virtual const double albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef) = 0;
+    // Computes kernel value using parameters and specified geometry
+    virtual const double kernel_value(const int Spec_index, const double Sza, const double Vza, const double Azm) = 0;
   
     /// String describing which type of Breon surface type, also makes this class abstract
     virtual const std::string breon_type() const = 0;
@@ -104,7 +104,7 @@ public:
         GroundBrdf(Coeffs, Flag, Ref_points, Desc_band_names) {}
 
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
-    virtual const double albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef);
+    virtual const double kernel_value(const int Spec_index, const double Sza, const double Vza, const double Azm);
     virtual const std::string breon_type() const { return "Vegetative"; }
 
     virtual boost::shared_ptr<Ground> clone() const {
@@ -127,7 +127,7 @@ public:
         GroundBrdf(Coeffs, Flag, Ref_points, Desc_band_names) {}
 
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
-    virtual const double albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef);
+    virtual const double kernel_value(const int Spec_index, const double Sza, const double Vza, const double Azm);
     virtual const std::string breon_type() const { return "Soil"; }
 
     virtual boost::shared_ptr<Ground> clone() const {

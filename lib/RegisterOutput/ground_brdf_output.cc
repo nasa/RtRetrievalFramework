@@ -116,11 +116,10 @@ double effective_albedo_slope(boost::shared_ptr<GroundBrdf>& Brdf, int spec_idx,
 double GroundBrdfOutput::kernel_amplitude(int spec_idx) const
 {
     Unit angle_unit("deg");
-    return brdf->albedo(spec_idx, 
+    return brdf->kernel_value(spec_idx, 
             l1b->solar_zenith(spec_idx).convert(angle_unit).value, 
             l1b->sounding_zenith(spec_idx).convert(angle_unit).value, 
-            l1b->sounding_azimuth(spec_idx).convert(angle_unit).value, 
-            l1b->stokes_coefficient(spec_idx));
+            l1b->sounding_azimuth(spec_idx).convert(angle_unit).value);
 }
 
 void GroundBrdfOutput::register_output_apriori(const boost::shared_ptr<Output>& out) const
