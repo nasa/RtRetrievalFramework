@@ -471,6 +471,7 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/max_likelihood_wrap.cc \
 	@swigsrc@/max_a_posteriori_wrap.cc \
 	@swigsrc@/pressure_holder_wrap.cc \
+	@swigsrc@/meteorology_wrap.cc \
 	@swigsrc@/aerosol_property_hdf_wrap.cc \
 	@swigsrc@/aerosol_property_rh_hdf_wrap.cc \
 	@swigsrc@/hdf_constant_wrap.cc \
@@ -701,6 +702,7 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-max_likelihood_wrap.lo \
 	@swigsrc@/_swig_wrap_la-max_a_posteriori_wrap.lo \
 	@swigsrc@/_swig_wrap_la-pressure_holder_wrap.lo \
+	@swigsrc@/_swig_wrap_la-meteorology_wrap.lo \
 	@swigsrc@/_swig_wrap_la-aerosol_property_hdf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-aerosol_property_rh_hdf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-hdf_constant_wrap.lo \
@@ -1989,7 +1991,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@interfacesrc@/iterative_solver_der.h \
 	@interfacesrc@/nlls_solver.h @interfacesrc@/cost_minimizer.h \
 	@interfacesrc@/model_measure.h @interfacesrc@/max_likelihood.h \
-	@interfacesrc@/max_a_posteriori.h \
+	@interfacesrc@/max_a_posteriori.h @interfacesrc@/meteorology.h \
 	@implsrc@/forward_model_cost_function.h \
 	@implsrc@/hdf_constant.h @implsrc@/aerosol_property_hdf.h \
 	@implsrc@/aerosol_property_rh_hdf.h \
@@ -2668,7 +2670,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@interfacesrc@/iterative_solver_der.h \
 	@interfacesrc@/nlls_solver.h @interfacesrc@/cost_minimizer.h \
 	@interfacesrc@/model_measure.h @interfacesrc@/max_likelihood.h \
-	@interfacesrc@/max_a_posteriori.h \
+	@interfacesrc@/max_a_posteriori.h @interfacesrc@/meteorology.h \
 	@implsrc@/forward_model_cost_function.h \
 	@implsrc@/hdf_constant.h @implsrc@/aerosol_property_hdf.h \
 	@implsrc@/aerosol_property_rh_hdf.h \
@@ -3136,6 +3138,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/max_likelihood_wrap.cc \
 	@swigsrc@/max_a_posteriori_wrap.cc \
 	@swigsrc@/pressure_holder_wrap.cc \
+	@swigsrc@/meteorology_wrap.cc \
 	@swigsrc@/aerosol_property_hdf_wrap.cc \
 	@swigsrc@/aerosol_property_rh_hdf_wrap.cc \
 	@swigsrc@/hdf_constant_wrap.cc \
@@ -4245,6 +4248,8 @@ clean-pkgpythonswigLTLIBRARIES:
 @swigsrc@/_swig_wrap_la-max_a_posteriori_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-pressure_holder_wrap.lo:  \
+	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
+@swigsrc@/_swig_wrap_la-meteorology_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-aerosol_property_hdf_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -6642,6 +6647,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-max_likelihood_oco_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-max_likelihood_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-merra_aerosol_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-meteorology_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-model_measure_oco_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-model_measure_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-model_state_wrap.Plo@am__quote@
@@ -7865,6 +7871,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/pressure_holder_wrap.cc' object='@swigsrc@/_swig_wrap_la-pressure_holder_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-pressure_holder_wrap.lo `test -f '@swigsrc@/pressure_holder_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/pressure_holder_wrap.cc
+
+@swigsrc@/_swig_wrap_la-meteorology_wrap.lo: @swigsrc@/meteorology_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-meteorology_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-meteorology_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-meteorology_wrap.lo `test -f '@swigsrc@/meteorology_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/meteorology_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-meteorology_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-meteorology_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/meteorology_wrap.cc' object='@swigsrc@/_swig_wrap_la-meteorology_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-meteorology_wrap.lo `test -f '@swigsrc@/meteorology_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/meteorology_wrap.cc
 
 @swigsrc@/_swig_wrap_la-aerosol_property_hdf_wrap.lo: @swigsrc@/aerosol_property_hdf_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-aerosol_property_hdf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-aerosol_property_hdf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-aerosol_property_hdf_wrap.lo `test -f '@swigsrc@/aerosol_property_hdf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/aerosol_property_hdf_wrap.cc
