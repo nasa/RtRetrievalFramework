@@ -38,10 +38,12 @@ GasVmrApriori::GasVmrApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
                              const std::string& Gas_name,
                              const int temp_avg_window)
 {
-    blitz::Array<double, 1> model_temp;
-
     // Read pressure and temperature grids
-    Ecmwf_file->temperature_grid(model_press, model_temp);
+    blitz::Array<double, 1> ecmwf_press = Ecmwf_file->pressure_levels();
+    model_press.resize(ecmwf_press.rows());
+    model_press = ecmwf_press;
+
+    blitz::Array<double, 1> model_temp = Ecmwf_file->temperature();
 
     // Smooth the model temperature out with a simple moving average to reduce problems finding
     // tropopause altitude due to kinks in the data

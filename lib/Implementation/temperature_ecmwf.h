@@ -28,11 +28,7 @@ public:
 //-----------------------------------------------------------------------
 
   virtual blitz::Array<double, 1> temperature_profile() const
-  { 
-    blitz::Array<double, 1> t1, p;
-    ecmwf->temperature_grid(p, t1);
-    return t1;
-  }
+      { return ecmwf->temperature(); }
 
 //-----------------------------------------------------------------------
 /// Pressure levels that temperature is on from ECMWF, used to write
@@ -40,11 +36,7 @@ public:
 //-----------------------------------------------------------------------
 
   virtual blitz::Array<double, 1> pressure_profile() const
-  { 
-    blitz::Array<double, 1> t1, p;
-    ecmwf->temperature_grid(p, t1);
-    return p;
-  }
+      { return ecmwf->pressure_levels(); } 
 
 private:
   boost::shared_ptr<Ecmwf> ecmwf;

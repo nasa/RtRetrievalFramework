@@ -132,6 +132,7 @@ libfp_la_SOURCES+= @interfacesrc@/max_likelihood.cc
 fullphysicsinc_HEADERS+= @interfacesrc@/max_a_posteriori.h
 libfp_la_SOURCES+= @interfacesrc@/max_a_posteriori.cc
 fullphysicsinc_HEADERS+= @interfacesrc@/meteorology.h
+libfp_la_SOURCES+= @interfacesrc@/meteorology.cc
 
 # Files that contain SWIG wrapper information
 

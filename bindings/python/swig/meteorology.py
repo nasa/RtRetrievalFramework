@@ -133,7 +133,8 @@ def _new_from_set(cls, version, *args):
     inst.set(*args)
     return inst
 
-class Meteorology(object):
+import full_physics_swig.generic_object
+class Meteorology(full_physics_swig.generic_object.GenericObject):
     """
 
     Defines the interface for supplying meteorological data.
@@ -146,7 +147,7 @@ class Meteorology(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
 
     def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
+        raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     __swig_destroy__ = _meteorology.delete_Meteorology
 
@@ -172,7 +173,7 @@ class Meteorology(object):
     def _v_specific_humidity(self, *args):
         """
 
-        virtual blitz::Array<double, 1> FullPhysics::Meteorology::specific_humidity(const blitz::Array< double, 1 > &Pressure_level) const =0
+        virtual blitz::Array<double, 1> FullPhysics::Meteorology::specific_humidity(const blitz::Array< double, 1 > &Pressure_level) const
         Specific humidity interpolated to the requested pressure levels. 
         """
         return _meteorology.Meteorology__v_specific_humidity(self, *args)
@@ -182,7 +183,7 @@ class Meteorology(object):
         """
 
         virtual blitz::Array<double, 1> FullPhysics::Meteorology::vmr(const std::string &Species, const blitz::Array< double, 1 >
-        &Pressure_level) const =0
+        &Pressure_level) const
         Volume mixing ratio for a particular species interpolated to the
         requested pressure levels. 
         """
@@ -197,7 +198,7 @@ class Meteorology(object):
     def _v_temperature(self, *args):
         """
 
-        virtual blitz::Array<double, 1> FullPhysics::Meteorology::temperature(const blitz::Array< double, 1 > &Pressure_level) const =0
+        virtual blitz::Array<double, 1> FullPhysics::Meteorology::temperature(const blitz::Array< double, 1 > &Pressure_level) const
         Temperature profile in Kelvins interpolated to the requested pressure
         levels. 
         """

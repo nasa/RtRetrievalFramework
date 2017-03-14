@@ -134,6 +134,7 @@ def _new_from_set(cls, version, *args):
     return inst
 
 import full_physics_swig.ecmwf
+import full_physics_swig.meteorology
 import full_physics_swig.generic_object
 class AcosEcmwf(full_physics_swig.ecmwf.Ecmwf):
     """

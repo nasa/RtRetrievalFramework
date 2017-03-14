@@ -139,6 +139,7 @@ import full_physics_swig.state_vector
 import full_physics_swig.generic_object
 import full_physics_swig.sub_state_vector_array
 import full_physics_swig.absorber_vmr
+import full_physics_swig.meteorology
 class AbsorberVmrEcmwf(full_physics_swig.absorber_vmr_scaled.AbsorberVmrScaled):
     """
 

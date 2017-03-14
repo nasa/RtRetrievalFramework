@@ -69,7 +69,14 @@ TcconApriori::TcconApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
   age_air_strat(Age_air_upper_stratosphere)
 {
   surface_pressure = Ecmwf_file->surface_pressure();
-  Ecmwf_file->temperature_grid(press_profile, temp_profile);
+
+  Array<double, 1> ecmwf_press = Ecmwf_file->pressure_levels();
+  press_profile.resize(ecmwf_press.rows());
+  press_profile = ecmwf_press;
+
+  Array<double, 1> ecmwf_temp = Ecmwf_file->temperature();
+  temp_profile.resize(ecmwf_temp.rows());
+  temp_profile = ecmwf_temp;
 
   trop_pres = tropopause_pressure();
   pbl_pres = planetary_boundary_layer_pressure();
