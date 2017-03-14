@@ -134,6 +134,7 @@ def _new_from_set(cls, version, *args):
     return inst
 
 import full_physics_swig.generic_object
+import full_physics_swig.meteorology
 import full_physics_swig.state_vector
 class TcconApriori(full_physics_swig.generic_object.GenericObject):
     """

@@ -40,39 +40,7 @@ BOOST_AUTO_TEST_CASE(basic)
     5.48674415316505658877e-04, 5.73115442420909929414e-04, 6.15337784112228577613e-04,
     7.40936275682209898041e-04, 9.08908284989747017324e-04, 1.30631957917109933071e-03,
     1.41811951670399731713e-03, 1.55141541137329805507e-03;
-  BOOST_CHECK_MATRIX_CLOSE(e.h2o_vmr(press), vmr_expect);
-
-  ArrayAd<double, 1> press2(20, 20);
-  press2.value() = press;
-  press2.jacobian() = 0;
-  for(int i = 0; i < press2.rows(); ++i)
-    press2.jacobian()(i,i) = 1;
-  BOOST_CHECK_MATRIX_CLOSE(e.temperature(press2).value(), texpect);
-  BOOST_CHECK_MATRIX_CLOSE(e.h2o_vmr(press2).value(), vmr_expect);
-  Array<double, 2> jac = e.temperature(press2).jacobian();
-  Array<double, 1> t0 = e.temperature(press2).value();
-  for(int i = 0; i < 20; ++i) {
-    double eps = 0.1;
-    press(i) += eps;
-    Array<double, 1> t1 = e.temperature(press);
-    // Changing the first pressure gives a larger temperature
-    // differece. The values were inspected, and looked fine
-    if(i == 0)
-      BOOST_CHECK_MATRIX_CLOSE_TOL((t1 - t0) / eps, jac(Range::all(), i), 1e-3);
-    else
-      BOOST_CHECK_MATRIX_CLOSE_TOL((t1 - t0) / eps, jac(Range::all(), i), 1e-7);
-    press(i) -= eps;
-  }
-
-  jac = e.h2o_vmr(press2).jacobian();
-  t0 = e.h2o_vmr(press2).value();
-  for(int i = 0; i < 20; ++i) {
-    double eps = 0.1;
-    press(i) += eps;
-    Array<double, 1> t1 = e.h2o_vmr(press);
-    BOOST_CHECK_MATRIX_CLOSE_TOL((t1 - t0) / eps, jac(Range::all(), i), 1e-12);
-    press(i) -= eps;
-  }
+  BOOST_CHECK_MATRIX_CLOSE(e.vmr("H2O", press), vmr_expect);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
@@ -103,47 +71,15 @@ BOOST_AUTO_TEST_CASE(basic)
   BOOST_CHECK_MATRIX_CLOSE(e.temperature(press), texpect);
   Array<double, 1> vmr_expect(20);
   vmr_expect = 
-    6.1846336386044464047e-06, 2.3696526616669067966e-06, 1.7912447195779596004e-06,
-    4.4493971613491540648e-06, 4.2663811750629721735e-06, 2.310533211457202921e-05,
-    4.3066677729604225546e-05, 8.0495354151999834675e-05, 0.00012825322759659445052,
-    0.00011939929116084474232, 0.00013114229383684339217, 0.00019820301866710661053,
-    0.00050859154716482578729, 0.00060071598235635829781, 0.00049173906754511310067,
-    0.00043043330031180778751, 0.00078522606393224120801, 0.001024082783212755662,
-    0.0014987653090951654714, 0.0021981331635712191876;
-  BOOST_CHECK_MATRIX_CLOSE(e.h2o_vmr(press), vmr_expect);
+    6.18463363909663014530e-06, 2.36965266390393393926e-06, 1.79124472076385485451e-06,
+    4.44939716759828362880e-06, 4.26638117666292847238e-06, 2.31053455225090924774e-05,
+    4.30666795274530419808e-05, 8.04953920753194977376e-05, 1.28253250001733338365e-04,
+    1.19399307731459902292e-04, 1.31142344697486427658e-04, 1.98203458381546247617e-04,
+    5.08592865304613645817e-04, 6.00716039185911080192e-04, 4.91739179804330539016e-04,
+    4.30433305414070366962e-04, 7.85226390760217999448e-04, 1.02408279413748835168e-03,
+    1.49869481155999960918e-03, 2.19762296775938021504e-03;
 
-  ArrayAd<double, 1> press2(20, 20);
-  press2.value() = press;
-  press2.jacobian() = 0;
-  for(int i = 0; i < press2.rows(); ++i)
-    press2.jacobian()(i,i) = 1;
-  BOOST_CHECK_MATRIX_CLOSE(e.temperature(press2).value(), texpect);
-  BOOST_CHECK_MATRIX_CLOSE(e.h2o_vmr(press2).value(), vmr_expect);
-  Array<double, 2> jac = e.temperature(press2).jacobian();
-  Array<double, 1> t0 = e.temperature(press2).value();
-  for(int i = 0; i < 20; ++i) {
-    double eps = 0.1;
-    press(i) += eps;
-    Array<double, 1> t1 = e.temperature(press);
-    // Changing the first pressure gives a larger temperature
-    // differece. The values were inspected, and looked fine
-    if(i == 0)
-      BOOST_CHECK_MATRIX_CLOSE_TOL((t1 - t0) / eps, jac(Range::all(), i), 1e-3);
-    else
-      BOOST_CHECK_MATRIX_CLOSE_TOL((t1 - t0) / eps, jac(Range::all(), i), 1e-7);
-    press(i) -= eps;
-  }
-
-  jac = e.h2o_vmr(press2).jacobian();
-  t0 = e.h2o_vmr(press2).value();
-  for(int i = 0; i < 20; ++i) {
-    double eps = 0.1;
-    press(i) += eps;
-    Array<double, 1> t1 = e.h2o_vmr(press);
-    BOOST_CHECK_MATRIX_CLOSE_TOL((t1 - t0) / eps, jac(Range::all(), i), 1e-10);
-    press(i) -= eps;
-  }
-
+  BOOST_CHECK_MATRIX_CLOSE(e.vmr("H2O", press), vmr_expect);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

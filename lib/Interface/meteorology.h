@@ -29,7 +29,7 @@ public:
     //-----------------------------------------------------------------------
     /// Specific humidity interpolated to the requested pressure levels
     //-----------------------------------------------------------------------
-    virtual blitz::Array<double, 1> specific_humidity(const blitz::Array<double, 1>& Pressure_level) const = 0;
+    virtual blitz::Array<double, 1> specific_humidity(const blitz::Array<double, 1>& Pressure_level) const;
 
     //-----------------------------------------------------------------------
     /// Volume mixing ratio for a particular species on the meteorological 
@@ -42,7 +42,7 @@ public:
     /// Volume mixing ratio for a particular species interpolated to the 
     /// requested pressure levels
     //-----------------------------------------------------------------------
-    virtual blitz::Array<double, 1> vmr(const std::string& Species, const blitz::Array<double, 1>& Pressure_level) const = 0;
+    virtual blitz::Array<double, 1> vmr(const std::string& Species, const blitz::Array<double, 1>& Pressure_level) const;
 
     //-----------------------------------------------------------------------
     /// Temperature profile in Kelvins on the meteorological pressure levels
@@ -52,7 +52,7 @@ public:
     //-----------------------------------------------------------------------
     /// Temperature profile in Kelvins interpolated to the requested pressure levels
     //-----------------------------------------------------------------------
-    virtual blitz::Array<double, 1> temperature(const blitz::Array<double, 1>& Pressure_level) const = 0;
+    virtual blitz::Array<double, 1> temperature(const blitz::Array<double, 1>& Pressure_level) const;
 
     //-----------------------------------------------------------------------
     /// Surface pressure in Pascals
@@ -65,6 +65,14 @@ public:
     virtual double windspeed() const = 0;
 
     void print(std::ostream& Os) const { Os << "Meteorology"; }
+
+protected:
+
+    //-----------------------------------------------------------------------
+    /// Interpolates a profile of data from the internal pressure grid
+    /// to the supplied one. Uses log-log interpolation.
+    //-----------------------------------------------------------------------
+    blitz::Array<double, 1> interpolate_to_grid(const blitz::Array<double, 1>& Profile, const blitz::Array<double, 1>& Dest_pressure_levels) const;
 
 };
 }

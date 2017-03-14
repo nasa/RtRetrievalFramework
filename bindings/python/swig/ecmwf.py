@@ -133,8 +133,9 @@ def _new_from_set(cls, version, *args):
     inst.set(*args)
     return inst
 
+import full_physics_swig.meteorology
 import full_physics_swig.generic_object
-class Ecmwf(full_physics_swig.generic_object.GenericObject):
+class Ecmwf(full_physics_swig.meteorology.Meteorology):
     """
 
     This class is used to read some of the fields from the ECMWF file,
@@ -153,115 +154,48 @@ class Ecmwf(full_physics_swig.generic_object.GenericObject):
     __repr__ = _swig_repr
     __swig_destroy__ = _ecmwf.delete_Ecmwf
 
-    def specific_humidity(self, *args):
+    def _v_h2o_vmr(self):
         """
 
-        virtual ArrayAd<double, 1> FullPhysics::Ecmwf::specific_humidity(const ArrayAd< double, 1 > &Pressure_level) const =0
+        blitz::Array< double, 1 > Ecmwf::h2o_vmr() const
+        Return the H20 VMR.
 
+        This is the specific_humidity converted to a volume mixing ratio. 
         """
-        return _ecmwf.Ecmwf_specific_humidity(self, *args)
-
-
-    def h2o_vmr(self, *args):
-        """
-
-        ArrayAd< double, 1 > Ecmwf::h2o_vmr(const ArrayAd< double, 1 > &Pressure_level) const
-
-        """
-        return _ecmwf.Ecmwf_h2o_vmr(self, *args)
-
-
-    def ozone_mmr(self, *args):
-        """
-
-        ArrayAd< double, 1 > Ecmwf::ozone_mmr(const ArrayAd< double, 1 > &Pressure_level) const
-
-        """
-        return _ecmwf.Ecmwf_ozone_mmr(self, *args)
-
-
-    def ozone_vmr(self, *args):
-        """
-
-        ArrayAd< double, 1 > Ecmwf::ozone_vmr(const ArrayAd< double, 1 > &Pressure_level) const
-
-        """
-        return _ecmwf.Ecmwf_ozone_vmr(self, *args)
-
-
-    def temperature_grid(self):
-        """
-
-        virtual void FullPhysics::Ecmwf::temperature_grid(blitz::Array< double, 1 > &Pressure, blitz::Array< double, 1 > &T)
-        const =0
-        Temperature grid on the ECMWF pressure grid.
-
-        The temperature is in Kelvin, and the Pressure is in pascals. 
-        """
-        return _ecmwf.Ecmwf_temperature_grid(self)
-
-
-    def specific_humidity_grid(self):
-        """
-
-        virtual void FullPhysics::Ecmwf::specific_humidity_grid(blitz::Array< double, 1 > &Pressure, blitz::Array< double, 1 > &H)
-        const =0
-        Humidity on the ECMWF pressure grid.
-
-        Pressure is in pascals. 
-        """
-        return _ecmwf.Ecmwf_specific_humidity_grid(self)
-
-
-    def ozone_mmr_grid(self):
-        """
-
-        void Ecmwf::ozone_mmr_grid(blitz::Array< double, 1 > &Pressure, blitz::Array< double, 1 > &H)
-        const
-        Ozone mass mixing ratio on the ECMWF pressure grid.
-
-        Ozone on the ECMWF pressure grid.
-
-        Pressure is in pascals. 
-        """
-        return _ecmwf.Ecmwf_ozone_mmr_grid(self)
-
-
-    def temperature(self, *args):
-        """
-
-        virtual ArrayAd<double, 1> FullPhysics::Ecmwf::temperature(const ArrayAd< double, 1 > &Pressure_level) const =0
-
-        """
-        return _ecmwf.Ecmwf_temperature(self, *args)
-
-
-    def _v_surface_pressure(self):
-        """
-
-        virtual double FullPhysics::Ecmwf::surface_pressure() const =0
-        Get the surface pressure from the Ecmwf file. 
-        """
-        return _ecmwf.Ecmwf__v_surface_pressure(self)
+        return _ecmwf.Ecmwf__v_h2o_vmr(self)
 
 
     @property
-    def surface_pressure(self):
-        return self._v_surface_pressure()
+    def h2o_vmr(self):
+        return self._v_h2o_vmr()
 
 
-    def _v_windspeed(self):
+    def _v_ozone_mmr(self):
         """
 
-        virtual double FullPhysics::Ecmwf::windspeed() const
-        Calculate windspeed magnitude from windspeed components. 
+        virtual blitz::Array<double, 1> FullPhysics::Ecmwf::ozone_mmr() const =0
+        Ozone mass mixing ratio. 
         """
-        return _ecmwf.Ecmwf__v_windspeed(self)
+        return _ecmwf.Ecmwf__v_ozone_mmr(self)
 
 
     @property
-    def windspeed(self):
-        return self._v_windspeed()
+    def ozone_mmr(self):
+        return self._v_ozone_mmr()
+
+
+    def _v_ozone_vmr(self):
+        """
+
+        blitz::Array< double, 1 > Ecmwf::ozone_vmr() const
+        Return the Ozone VMR. 
+        """
+        return _ecmwf.Ecmwf__v_ozone_vmr(self)
+
+
+    @property
+    def ozone_vmr(self):
+        return self._v_ozone_vmr()
 
 
     def _v_windspeed_u(self):
@@ -291,16 +225,9 @@ class Ecmwf(full_physics_swig.generic_object.GenericObject):
     def windspeed_v(self):
         return self._v_windspeed_v()
 
-Ecmwf.specific_humidity = new_instancemethod(_ecmwf.Ecmwf_specific_humidity, None, Ecmwf)
-Ecmwf.h2o_vmr = new_instancemethod(_ecmwf.Ecmwf_h2o_vmr, None, Ecmwf)
-Ecmwf.ozone_mmr = new_instancemethod(_ecmwf.Ecmwf_ozone_mmr, None, Ecmwf)
-Ecmwf.ozone_vmr = new_instancemethod(_ecmwf.Ecmwf_ozone_vmr, None, Ecmwf)
-Ecmwf.temperature_grid = new_instancemethod(_ecmwf.Ecmwf_temperature_grid, None, Ecmwf)
-Ecmwf.specific_humidity_grid = new_instancemethod(_ecmwf.Ecmwf_specific_humidity_grid, None, Ecmwf)
-Ecmwf.ozone_mmr_grid = new_instancemethod(_ecmwf.Ecmwf_ozone_mmr_grid, None, Ecmwf)
-Ecmwf.temperature = new_instancemethod(_ecmwf.Ecmwf_temperature, None, Ecmwf)
-Ecmwf._v_surface_pressure = new_instancemethod(_ecmwf.Ecmwf__v_surface_pressure, None, Ecmwf)
-Ecmwf._v_windspeed = new_instancemethod(_ecmwf.Ecmwf__v_windspeed, None, Ecmwf)
+Ecmwf._v_h2o_vmr = new_instancemethod(_ecmwf.Ecmwf__v_h2o_vmr, None, Ecmwf)
+Ecmwf._v_ozone_mmr = new_instancemethod(_ecmwf.Ecmwf__v_ozone_mmr, None, Ecmwf)
+Ecmwf._v_ozone_vmr = new_instancemethod(_ecmwf.Ecmwf__v_ozone_vmr, None, Ecmwf)
 Ecmwf._v_windspeed_u = new_instancemethod(_ecmwf.Ecmwf__v_windspeed_u, None, Ecmwf)
 Ecmwf._v_windspeed_v = new_instancemethod(_ecmwf.Ecmwf__v_windspeed_v, None, Ecmwf)
 Ecmwf.__str__ = new_instancemethod(_ecmwf.Ecmwf___str__, None, Ecmwf)

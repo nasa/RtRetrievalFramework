@@ -235,6 +235,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(Level1bFts);
   REGISTER_LUA_LIST(Level1bOco);
   REGISTER_LUA_LIST(Level1bUq);
+  REGISTER_LUA_LIST(Meteorology);
   REGISTER_LUA_LIST(Ecmwf);
   REGISTER_LUA_LIST(AcosEcmwf);
   REGISTER_LUA_LIST(OcoEcmwf);

@@ -41,33 +41,17 @@ AbsorberVmrEcmwf::AbsorberVmrEcmwf
 
 blitz::Array<double, 1> AbsorberVmrEcmwf::specific_humidity_ecmwf() const
 { 
-  blitz::Array<double, 1> s, p;
-  ecmwf->specific_humidity_grid(p, s);
-  return s;
+  return ecmwf->specific_humidity();
 }
 
 blitz::Array<double, 1> AbsorberVmrEcmwf::vmr_profile() const
 { 
-  if(gas_name() == "H2O") {
-    blitz::Array<double, 1> s( specific_humidity_ecmwf() );
-    blitz::Array<double, 1> res( s / (1 - s) * OldConstant::molar_weight_dry_air / 
-				 OldConstant::molar_weight_water );
-    return res;
-  }
-  if(gas_name() == "O3") {
-    blitz::Array<double, 1> s, p;
-    ecmwf->ozone_mmr_grid(p, s);
-    blitz::Array<double, 1> res(s * OldConstant::molar_weight_dry_air / 
-				 OldConstant::molar_weight_ozone);
-    return res;
-  }
+  return ecmwf->vmr(gas_name());
 }
 
 blitz::Array<double, 1> AbsorberVmrEcmwf::pressure_profile() const
 { 
-  blitz::Array<double, 1> s, p;
-  ecmwf->specific_humidity_grid(p, s);
-  return p;
+  return ecmwf->pressure_levels();
 }
 
 boost::shared_ptr<AbsorberVmr> AbsorberVmrEcmwf::clone

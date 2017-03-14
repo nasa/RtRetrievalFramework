@@ -914,6 +914,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@interfacesrc@/model_measure.cc \
 	@interfacesrc@/max_likelihood.cc \
 	@interfacesrc@/max_a_posteriori.cc \
+	@interfacesrc@/meteorology.cc \
 	@implsrc@/forward_model_cost_function.cc \
 	@implsrc@/hdf_constant.cc @implsrc@/aerosol_property_hdf.cc \
 	@implsrc@/aerosol_property_rh_hdf.cc \
@@ -1167,6 +1168,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@interfacesrc@/libfp_la-model_measure.lo \
 	@interfacesrc@/libfp_la-max_likelihood.lo \
 	@interfacesrc@/libfp_la-max_a_posteriori.lo \
+	@interfacesrc@/libfp_la-meteorology.lo \
 	@implsrc@/libfp_la-forward_model_cost_function.lo \
 	@implsrc@/libfp_la-hdf_constant.lo \
 	@implsrc@/libfp_la-aerosol_property_hdf.lo \
@@ -3397,6 +3399,7 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@interfacesrc@/model_measure.cc \
 	@interfacesrc@/max_likelihood.cc \
 	@interfacesrc@/max_a_posteriori.cc \
+	@interfacesrc@/meteorology.cc \
 	@implsrc@/forward_model_cost_function.cc \
 	@implsrc@/hdf_constant.cc @implsrc@/aerosol_property_hdf.cc \
 	@implsrc@/aerosol_property_rh_hdf.cc \
@@ -4789,6 +4792,9 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@interfacesrc@/$(am__dirstamp) \
 	@interfacesrc@/$(DEPDIR)/$(am__dirstamp)
 @interfacesrc@/libfp_la-max_a_posteriori.lo:  \
+	@interfacesrc@/$(am__dirstamp) \
+	@interfacesrc@/$(DEPDIR)/$(am__dirstamp)
+@interfacesrc@/libfp_la-meteorology.lo:  \
 	@interfacesrc@/$(am__dirstamp) \
 	@interfacesrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/$(am__dirstamp):
@@ -6346,6 +6352,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-level_1b_hdf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-max_a_posteriori.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-max_likelihood.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-meteorology.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-model_measure.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-model_state.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@interfacesrc@/$(DEPDIR)/libfp_la-nlls_problem.Plo@am__quote@
@@ -9460,6 +9467,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@interfacesrc@/max_a_posteriori.cc' object='@interfacesrc@/libfp_la-max_a_posteriori.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @interfacesrc@/libfp_la-max_a_posteriori.lo `test -f '@interfacesrc@/max_a_posteriori.cc' || echo '$(srcdir)/'`@interfacesrc@/max_a_posteriori.cc
+
+@interfacesrc@/libfp_la-meteorology.lo: @interfacesrc@/meteorology.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @interfacesrc@/libfp_la-meteorology.lo -MD -MP -MF @interfacesrc@/$(DEPDIR)/libfp_la-meteorology.Tpo -c -o @interfacesrc@/libfp_la-meteorology.lo `test -f '@interfacesrc@/meteorology.cc' || echo '$(srcdir)/'`@interfacesrc@/meteorology.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @interfacesrc@/$(DEPDIR)/libfp_la-meteorology.Tpo @interfacesrc@/$(DEPDIR)/libfp_la-meteorology.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@interfacesrc@/meteorology.cc' object='@interfacesrc@/libfp_la-meteorology.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @interfacesrc@/libfp_la-meteorology.lo `test -f '@interfacesrc@/meteorology.cc' || echo '$(srcdir)/'`@interfacesrc@/meteorology.cc
 
 @implsrc@/libfp_la-forward_model_cost_function.lo: @implsrc@/forward_model_cost_function.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-forward_model_cost_function.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-forward_model_cost_function.Tpo -c -o @implsrc@/libfp_la-forward_model_cost_function.lo `test -f '@implsrc@/forward_model_cost_function.cc' || echo '$(srcdir)/'`@implsrc@/forward_model_cost_function.cc

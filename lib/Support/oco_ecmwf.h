@@ -10,61 +10,48 @@ namespace FullPhysics {
 
 class OcoEcmwf : public Ecmwf {
 public:
-  OcoEcmwf(const std::string& Fname, const boost::shared_ptr<HdfSoundingId>& Hdf_sounding_id);
-  ~OcoEcmwf() {}
+    OcoEcmwf(const std::string& Fname, const boost::shared_ptr<HdfSoundingId>& Hdf_sounding_id);
+    ~OcoEcmwf() {}
 
-  // Define how to read various items
-  blitz::Array<double, 1> specific_humidity(const blitz::Array<double, 1>& Pressure_level) const
-  { return read_and_interpolate("ECMWF/specific_humidity_profile_ecmwf", Pressure_level); }
- 
-  ArrayAd<double, 1> specific_humidity(const ArrayAd<double, 1>& Pressure_level) const
-  { return read_and_interpolate("ECMWF/specific_humidity_profile_ecmwf", Pressure_level); }
+    // Define how to read various items
+    using Meteorology::pressure_levels;
+    blitz::Array<double, 1> pressure_levels() const
+        { return read_array("ECMWF/vector_pressure_levels_ecmwf"); }
 
-  virtual blitz::Array<double, 1> ozone_mmr(const blitz::Array<double, 1>& Pressure_level) const
-  { return read_and_interpolate("/ECMWF/ozone_profile_ecmwf", Pressure_level); }
+    using Meteorology::specific_humidity;
+    blitz::Array<double, 1> specific_humidity() const
+        { return read_array("ECMWF/specific_humidity_profile_ecmwf"); }
 
-  virtual ArrayAd<double, 1> ozone_mmr(const ArrayAd<double, 1>& Pressure_level) const 
-  { return read_and_interpolate("/ECMWF/ozone_profile_ecmwf", Pressure_level); }
+    blitz::Array<double, 1> ozone_mmr() const
+        { return read_array("/ECMWF/ozone_profile_ecmwf"); }
 
-  void temperature_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& T) const
-  { read("ECMWF/temperature_profile_ecmwf", Pressure, T); }
+    double surface_pressure() const
+        { return read_scalar("ECMWF/surface_pressure_ecmwf"); }
 
-  void specific_humidity_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& H) const
-  { read("ECMWF/specific_humidity_profile_ecmwf", Pressure, H); }
+    double windspeed_u() const
+        { return read_scalar("ECMWF/windspeed_u_ecmwf"); }
 
-  void ozone_mmr_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& H) const
-  { read("ECMWF/ozone_profile_ecmwf", Pressure, H); }
+    double windspeed_v() const
+        { return read_scalar("ECMWF/windspeed_v_ecmwf"); }
 
-  double surface_pressure() const
-  { return read("ECMWF/surface_pressure_ecmwf"); }
+    using Meteorology::temperature;
+    blitz::Array<double, 1> temperature() const
+        { return read_array("ECMWF/temperature_profile_ecmwf"); }
 
-  double windspeed_u() const
-  { return read("ECMWF/windspeed_u_ecmwf"); }
-
-  double windspeed_v() const
-  { return read("ECMWF/windspeed_v_ecmwf"); }
-  
-  blitz::Array<double, 1> temperature(const blitz::Array<double, 1>& Pressure_level) const
-  { return read_and_interpolate("ECMWF/temperature_profile_ecmwf", Pressure_level); }
-
-  virtual ArrayAd<double, 1> temperature(const ArrayAd<double, 1>& Pressure_level) const
-  { return read_and_interpolate("ECMWF/temperature_profile_ecmwf", Pressure_level); }
-
-  void print(std::ostream& Os) const { Os << "OcoEcmwf"; }
+    void print(std::ostream& Os) const { Os << "OcoEcmwf"; }
 
 private:
 
-  //-----------------------------------------------------------------------
-  /// OCO specific ECMWF reader routines
-  //-----------------------------------------------------------------------
-  
-  double read(const std::string& Field) const;
-  void read(const std::string& Field, blitz::Array<double, 1>& P, 
-		    blitz::Array<double, 1>& V) const;
+    //-----------------------------------------------------------------------
+    /// OCO specific ECMWF reader routines
+    //-----------------------------------------------------------------------
 
-  HdfFile h;
-  boost::shared_ptr<HdfSoundingId> hsid;
-  bool average_sounding_number;
+    double read_scalar(const std::string& Field) const;
+    blitz::Array<double, 1> read_array(const std::string& Field) const;
+
+    HdfFile h;
+    boost::shared_ptr<HdfSoundingId> hsid;
+    bool average_sounding_number;
 };
 }
 #endif

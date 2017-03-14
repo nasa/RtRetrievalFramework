@@ -855,7 +855,7 @@ function ConfigCommon:ecmwf_temperature()
 end
 
 function ConfigCommon:ecmwf_h2o_vmr()
-   return self.config.ecmwf:h2o_vmr(self.config.pinp:pressure_level())
+   return self.config.ecmwf:vmr("H2O", self.config.pinp:pressure_level())
 end
 
 ------------------------------------------------------------
