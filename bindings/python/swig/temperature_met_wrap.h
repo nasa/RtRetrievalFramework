@@ -8,8 +8,8 @@
  * interface file instead.
  * ----------------------------------------------------------------------------- */
 
-#ifndef SWIG_temperature_ecmwf_WRAP_H_
-#define SWIG_temperature_ecmwf_WRAP_H_
+#ifndef SWIG_temperature_met_WRAP_H_
+#define SWIG_temperature_met_WRAP_H_
 
 #include <map>
 #include <string>

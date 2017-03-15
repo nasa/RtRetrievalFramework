@@ -60,9 +60,19 @@ public:
     virtual double surface_pressure() const = 0;
 
     //-----------------------------------------------------------------------
-    /// Windspeed in m/s for the surface
+    /// Windspeed magnitude in m/s for the surface
     //-----------------------------------------------------------------------
-    virtual double windspeed() const = 0;
+    virtual double windspeed() const;
+
+    //-----------------------------------------------------------------------
+    /// The U component windspeed in m/s
+    //-----------------------------------------------------------------------
+    virtual double windspeed_u() const = 0;
+
+    //-----------------------------------------------------------------------
+    /// The V component windspeed in m/s
+    //-----------------------------------------------------------------------
+    virtual double windspeed_v() const = 0;
 
     void print(std::ostream& Os) const { Os << "Meteorology"; }
 

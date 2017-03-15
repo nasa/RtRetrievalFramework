@@ -205,30 +205,70 @@ class Meteorology(full_physics_swig.generic_object.GenericObject):
         return _meteorology.Meteorology__v_temperature(self, *args)
 
 
-    def surface_pressure(self):
+    def _v_surface_pressure(self):
         """
 
         virtual double FullPhysics::Meteorology::surface_pressure() const =0
         Surface pressure in Pascals. 
         """
-        return _meteorology.Meteorology_surface_pressure(self)
+        return _meteorology.Meteorology__v_surface_pressure(self)
 
 
+    @property
+    def surface_pressure(self):
+        return self._v_surface_pressure()
+
+
+    def _v_windspeed(self):
+        """
+
+        double Meteorology::windspeed() const
+        Windspeed magnitude in m/s for the surface. 
+        """
+        return _meteorology.Meteorology__v_windspeed(self)
+
+
+    @property
     def windspeed(self):
+        return self._v_windspeed()
+
+
+    def _v_windspeed_u(self):
         """
 
-        virtual double FullPhysics::Meteorology::windspeed() const =0
-        Windspeed in m/s for the surface. 
+        virtual double FullPhysics::Meteorology::windspeed_u() const =0
+        The U component windspeed in m/s. 
         """
-        return _meteorology.Meteorology_windspeed(self)
+        return _meteorology.Meteorology__v_windspeed_u(self)
+
+
+    @property
+    def windspeed_u(self):
+        return self._v_windspeed_u()
+
+
+    def _v_windspeed_v(self):
+        """
+
+        virtual double FullPhysics::Meteorology::windspeed_v() const =0
+        The V component windspeed in m/s. 
+        """
+        return _meteorology.Meteorology__v_windspeed_v(self)
+
+
+    @property
+    def windspeed_v(self):
+        return self._v_windspeed_v()
 
 Meteorology.__str__ = new_instancemethod(_meteorology.Meteorology___str__, None, Meteorology)
 Meteorology._v_pressure_levels = new_instancemethod(_meteorology.Meteorology__v_pressure_levels, None, Meteorology)
 Meteorology._v_specific_humidity = new_instancemethod(_meteorology.Meteorology__v_specific_humidity, None, Meteorology)
 Meteorology.vmr = new_instancemethod(_meteorology.Meteorology_vmr, None, Meteorology)
 Meteorology._v_temperature = new_instancemethod(_meteorology.Meteorology__v_temperature, None, Meteorology)
-Meteorology.surface_pressure = new_instancemethod(_meteorology.Meteorology_surface_pressure, None, Meteorology)
-Meteorology.windspeed = new_instancemethod(_meteorology.Meteorology_windspeed, None, Meteorology)
+Meteorology._v_surface_pressure = new_instancemethod(_meteorology.Meteorology__v_surface_pressure, None, Meteorology)
+Meteorology._v_windspeed = new_instancemethod(_meteorology.Meteorology__v_windspeed, None, Meteorology)
+Meteorology._v_windspeed_u = new_instancemethod(_meteorology.Meteorology__v_windspeed_u, None, Meteorology)
+Meteorology._v_windspeed_v = new_instancemethod(_meteorology.Meteorology__v_windspeed_v, None, Meteorology)
 Meteorology_swigregister = _meteorology.Meteorology_swigregister
 Meteorology_swigregister(Meteorology)
 

@@ -197,39 +197,9 @@ class Ecmwf(full_physics_swig.meteorology.Meteorology):
     def ozone_vmr(self):
         return self._v_ozone_vmr()
 
-
-    def _v_windspeed_u(self):
-        """
-
-        virtual double FullPhysics::Ecmwf::windspeed_u() const =0
-        The U component windspeed from the Ecmwf file. 
-        """
-        return _ecmwf.Ecmwf__v_windspeed_u(self)
-
-
-    @property
-    def windspeed_u(self):
-        return self._v_windspeed_u()
-
-
-    def _v_windspeed_v(self):
-        """
-
-        virtual double FullPhysics::Ecmwf::windspeed_v() const =0
-        The V component windspeed from the Ecmwf file. 
-        """
-        return _ecmwf.Ecmwf__v_windspeed_v(self)
-
-
-    @property
-    def windspeed_v(self):
-        return self._v_windspeed_v()
-
 Ecmwf._v_h2o_vmr = new_instancemethod(_ecmwf.Ecmwf__v_h2o_vmr, None, Ecmwf)
 Ecmwf._v_ozone_mmr = new_instancemethod(_ecmwf.Ecmwf__v_ozone_mmr, None, Ecmwf)
 Ecmwf._v_ozone_vmr = new_instancemethod(_ecmwf.Ecmwf__v_ozone_vmr, None, Ecmwf)
-Ecmwf._v_windspeed_u = new_instancemethod(_ecmwf.Ecmwf__v_windspeed_u, None, Ecmwf)
-Ecmwf._v_windspeed_v = new_instancemethod(_ecmwf.Ecmwf__v_windspeed_v, None, Ecmwf)
 Ecmwf.__str__ = new_instancemethod(_ecmwf.Ecmwf___str__, None, Ecmwf)
 Ecmwf_swigregister = _ecmwf.Ecmwf_swigregister
 Ecmwf_swigregister(Ecmwf)

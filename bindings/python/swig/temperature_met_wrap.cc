@@ -3422,84 +3422,82 @@ namespace Swig {
 #define SWIGTYPE_p_FullPhysics__AutoDerivativeRefT_double_t swig_types[3]
 #define SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t swig_types[4]
 #define SWIGTYPE_p_FullPhysics__AutoDerivativeWithUnitT_double_t swig_types[5]
-#define SWIGTYPE_p_FullPhysics__Ecmwf swig_types[6]
-#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[7]
-#define SWIGTYPE_p_FullPhysics__Meteorology swig_types[8]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[9]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[10]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Temperature_t swig_types[11]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[12]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[13]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Temperature_t swig_types[14]
-#define SWIGTYPE_p_FullPhysics__Pressure swig_types[15]
-#define SWIGTYPE_p_FullPhysics__StateVector swig_types[16]
-#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[17]
-#define SWIGTYPE_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t swig_types[18]
-#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[19]
-#define SWIGTYPE_p_FullPhysics__Temperature swig_types[20]
-#define SWIGTYPE_p_FullPhysics__TemperatureEcmwf swig_types[21]
-#define SWIGTYPE_p_FullPhysics__TemperatureImpBase swig_types[22]
-#define SWIGTYPE_p_FullPhysics__TemperatureOffset swig_types[23]
-#define SWIGTYPE_p_FullPhysics__Unit swig_types[24]
-#define SWIGTYPE_p_allocator_type swig_types[25]
-#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[26]
-#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[27]
-#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[28]
-#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[29]
-#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[30]
-#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[31]
-#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[32]
-#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[33]
-#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[34]
-#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[35]
-#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[36]
-#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[37]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t swig_types[38]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t swig_types[39]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t swig_types[40]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[41]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[42]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[43]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ecmwf_t swig_types[44]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[45]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Meteorology_t swig_types[46]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[47]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[48]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t swig_types[49]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[50]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[51]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t swig_types[52]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[53]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[54]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[55]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t swig_types[56]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[57]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t swig_types[58]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t swig_types[59]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t swig_types[60]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Temperature_t swig_types[61]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[62]
-#define SWIGTYPE_p_char swig_types[63]
-#define SWIGTYPE_p_char_type swig_types[64]
-#define SWIGTYPE_p_difference_type swig_types[65]
-#define SWIGTYPE_p_fmtflags swig_types[66]
-#define SWIGTYPE_p_int_type swig_types[67]
-#define SWIGTYPE_p_iostate swig_types[68]
-#define SWIGTYPE_p_off_type swig_types[69]
-#define SWIGTYPE_p_openmode swig_types[70]
-#define SWIGTYPE_p_pos_type swig_types[71]
-#define SWIGTYPE_p_seekdir swig_types[72]
-#define SWIGTYPE_p_size_t swig_types[73]
-#define SWIGTYPE_p_size_type swig_types[74]
-#define SWIGTYPE_p_state_type swig_types[75]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[76]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[77]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[78]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[79]
-#define SWIGTYPE_p_traits_type swig_types[80]
-#define SWIGTYPE_p_value_type swig_types[81]
-static swig_type_info *swig_types[83];
-static swig_module_info swig_module = {swig_types, 82, 0, 0, 0, 0};
+#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[6]
+#define SWIGTYPE_p_FullPhysics__Meteorology swig_types[7]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[8]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[9]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Temperature_t swig_types[10]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[11]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[12]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Temperature_t swig_types[13]
+#define SWIGTYPE_p_FullPhysics__Pressure swig_types[14]
+#define SWIGTYPE_p_FullPhysics__StateVector swig_types[15]
+#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[16]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t swig_types[17]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[18]
+#define SWIGTYPE_p_FullPhysics__Temperature swig_types[19]
+#define SWIGTYPE_p_FullPhysics__TemperatureImpBase swig_types[20]
+#define SWIGTYPE_p_FullPhysics__TemperatureMet swig_types[21]
+#define SWIGTYPE_p_FullPhysics__TemperatureOffset swig_types[22]
+#define SWIGTYPE_p_FullPhysics__Unit swig_types[23]
+#define SWIGTYPE_p_allocator_type swig_types[24]
+#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[25]
+#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[26]
+#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[27]
+#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[28]
+#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[29]
+#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[30]
+#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[31]
+#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[32]
+#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[33]
+#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[34]
+#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[35]
+#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[36]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t swig_types[37]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t swig_types[38]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t swig_types[39]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[40]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[41]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[42]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[43]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Meteorology_t swig_types[44]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[45]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[46]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t swig_types[47]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[48]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[49]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t swig_types[50]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[51]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[52]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[53]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t swig_types[54]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[55]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t swig_types[56]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureMet_t swig_types[57]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t swig_types[58]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Temperature_t swig_types[59]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[60]
+#define SWIGTYPE_p_char swig_types[61]
+#define SWIGTYPE_p_char_type swig_types[62]
+#define SWIGTYPE_p_difference_type swig_types[63]
+#define SWIGTYPE_p_fmtflags swig_types[64]
+#define SWIGTYPE_p_int_type swig_types[65]
+#define SWIGTYPE_p_iostate swig_types[66]
+#define SWIGTYPE_p_off_type swig_types[67]
+#define SWIGTYPE_p_openmode swig_types[68]
+#define SWIGTYPE_p_pos_type swig_types[69]
+#define SWIGTYPE_p_seekdir swig_types[70]
+#define SWIGTYPE_p_size_t swig_types[71]
+#define SWIGTYPE_p_size_type swig_types[72]
+#define SWIGTYPE_p_state_type swig_types[73]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[74]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[75]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[76]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[77]
+#define SWIGTYPE_p_traits_type swig_types[78]
+#define SWIGTYPE_p_value_type swig_types[79]
+static swig_type_info *swig_types[81];
+static swig_module_info swig_module = {swig_types, 80, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3525,16 +3523,16 @@ static swig_module_info swig_module = {swig_types, 82, 0, 0, 0, 0};
 #define SWIG_TypeQuery SWIG_Python_TypeQuery
 
 /*-----------------------------------------------
-              @(target):= _temperature_ecmwf.so
+              @(target):= _temperature_met.so
   ------------------------------------------------*/
 #if PY_VERSION_HEX >= 0x03000000
-#  define SWIG_init    PyInit__temperature_ecmwf
+#  define SWIG_init    PyInit__temperature_met
 
 #else
-#  define SWIG_init    init_temperature_ecmwf
+#  define SWIG_init    init_temperature_met
 
 #endif
-#define SWIG_name    "_temperature_ecmwf"
+#define SWIG_name    "_temperature_met"
 
 #define SWIGVERSION 0x030007 
 #define SWIG_VERSION SWIGVERSION
@@ -4914,7 +4912,7 @@ template<class T, int D> inline blitz::Array<T, D>
 
 
 
-#include "temperature_ecmwf.h"
+#include "temperature_met.h"
 
 
 SWIGINTERN int
@@ -5071,7 +5069,7 @@ struct SWIG_null_deleter {
  * C++ director class methods
  * --------------------------------------------------- */
 
-#include "temperature_ecmwf_wrap.h"
+#include "temperature_met_wrap.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -5087,16 +5085,16 @@ SWIGINTERN PyObject *SHARED_PTR_DISOWN_swigconstant(PyObject *SWIGUNUSEDPARM(sel
 }
 
 
-SWIGINTERN PyObject *_wrap_new_TemperatureEcmwf(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_TemperatureMet(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  boost::shared_ptr< FullPhysics::Ecmwf > *arg1 = 0 ;
+  boost::shared_ptr< FullPhysics::Meteorology > *arg1 = 0 ;
   boost::shared_ptr< FullPhysics::Pressure > *arg2 = 0 ;
   double arg3 ;
   bool arg4 ;
   void *argp1 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Ecmwf > tempshared1 ;
-  boost::shared_ptr< FullPhysics::Ecmwf > temp2shared1 ;
+  boost::shared_ptr< FullPhysics::Meteorology > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Meteorology > temp2shared1 ;
   void *argp2 ;
   int res2 = 0 ;
   boost::shared_ptr< FullPhysics::Pressure > tempshared2 ;
@@ -5106,21 +5104,21 @@ SWIGINTERN PyObject *_wrap_new_TemperatureEcmwf(PyObject *SWIGUNUSEDPARM(self), 
   bool val4 ;
   int ecode4 = 0 ;
   PyObject *swig_obj[4] ;
-  FullPhysics::TemperatureEcmwf *result = 0 ;
+  FullPhysics::TemperatureMet *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args,"new_TemperatureEcmwf",4,4,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"new_TemperatureMet",4,4,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ecmwf_t,  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Meteorology_t,  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_TemperatureEcmwf" "', argument " "1"" of type '" "boost::shared_ptr< FullPhysics::Ecmwf > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_TemperatureMet" "', argument " "1"" of type '" "boost::shared_ptr< FullPhysics::Meteorology > const &""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      if (argp1) tempshared1 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Ecmwf > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< FullPhysics::Ecmwf > * >(argp1);
+      if (argp1) tempshared1 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Meteorology > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::Meteorology > * >(argp1);
       arg1 = &tempshared1;
     } else {
-      arg1 = (argp1) ? reinterpret_cast< boost::shared_ptr< FullPhysics::Ecmwf > * >(argp1) : &tempshared1;
+      arg1 = (argp1) ? reinterpret_cast< boost::shared_ptr< FullPhysics::Meteorology > * >(argp1) : &tempshared1;
     }
     // Special handling if this is a director class. In that case, we
     // don't own the underlying python object. Instead,
@@ -5138,7 +5136,7 @@ SWIGINTERN PyObject *_wrap_new_TemperatureEcmwf(PyObject *SWIGUNUSEDPARM(self), 
     int newmem = 0;
     res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 , &newmem);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_TemperatureEcmwf" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_TemperatureMet" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp2);
@@ -5161,17 +5159,17 @@ SWIGINTERN PyObject *_wrap_new_TemperatureEcmwf(PyObject *SWIGUNUSEDPARM(self), 
   }
   ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_TemperatureEcmwf" "', argument " "3"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_TemperatureMet" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
   ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_TemperatureEcmwf" "', argument " "4"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_TemperatureMet" "', argument " "4"" of type '" "bool""'");
   } 
   arg4 = static_cast< bool >(val4);
   {
     try {
-      result = (FullPhysics::TemperatureEcmwf *)new FullPhysics::TemperatureEcmwf((boost::shared_ptr< FullPhysics::Ecmwf > const &)*arg1,(boost::shared_ptr< FullPhysics::Pressure > const &)*arg2,arg3,arg4);
+      result = (FullPhysics::TemperatureMet *)new FullPhysics::TemperatureMet((boost::shared_ptr< FullPhysics::Meteorology > const &)*arg1,(boost::shared_ptr< FullPhysics::Pressure > const &)*arg2,arg3,arg4);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5179,8 +5177,8 @@ SWIGINTERN PyObject *_wrap_new_TemperatureEcmwf(PyObject *SWIGUNUSEDPARM(self), 
     }
   }
   {
-    boost::shared_ptr<  FullPhysics::TemperatureEcmwf > *smartresult = result ? new boost::shared_ptr<  FullPhysics::TemperatureEcmwf >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+    boost::shared_ptr<  FullPhysics::TemperatureMet > *smartresult = result ? new boost::shared_ptr<  FullPhysics::TemperatureMet >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
   }
   return resultobj;
 fail:
@@ -5188,34 +5186,34 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TemperatureEcmwf_clone__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_TemperatureMet_clone__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::TemperatureEcmwf *arg1 = (FullPhysics::TemperatureEcmwf *) 0 ;
+  FullPhysics::TemperatureMet *arg1 = (FullPhysics::TemperatureMet *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet const > *smartarg1 = 0 ;
   boost::shared_ptr< FullPhysics::Temperature > result;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureEcmwf_clone" "', argument " "1"" of type '" "FullPhysics::TemperatureEcmwf const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureMet_clone" "', argument " "1"" of type '" "FullPhysics::TemperatureMet const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = ((FullPhysics::TemperatureEcmwf const *)arg1)->clone();
+      result = ((FullPhysics::TemperatureMet const *)arg1)->clone();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5231,14 +5229,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TemperatureEcmwf_clone__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_TemperatureMet_clone__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::TemperatureEcmwf *arg1 = (FullPhysics::TemperatureEcmwf *) 0 ;
+  FullPhysics::TemperatureMet *arg1 = (FullPhysics::TemperatureMet *) 0 ;
   boost::shared_ptr< FullPhysics::Pressure > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet const > *smartarg1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
   boost::shared_ptr< FullPhysics::Pressure > tempshared2 ;
@@ -5248,24 +5246,24 @@ SWIGINTERN PyObject *_wrap_TemperatureEcmwf_clone__SWIG_1(PyObject *SWIGUNUSEDPA
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureEcmwf_clone" "', argument " "1"" of type '" "FullPhysics::TemperatureEcmwf const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureMet_clone" "', argument " "1"" of type '" "FullPhysics::TemperatureMet const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     int newmem = 0;
     res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 , &newmem);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TemperatureEcmwf_clone" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TemperatureMet_clone" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp2);
@@ -5288,7 +5286,7 @@ SWIGINTERN PyObject *_wrap_TemperatureEcmwf_clone__SWIG_1(PyObject *SWIGUNUSEDPA
   }
   {
     try {
-      result = ((FullPhysics::TemperatureEcmwf const *)arg1)->clone((boost::shared_ptr< FullPhysics::Pressure > const &)*arg2);
+      result = ((FullPhysics::TemperatureMet const *)arg1)->clone((boost::shared_ptr< FullPhysics::Pressure > const &)*arg2);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5304,37 +5302,37 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TemperatureEcmwf_clone(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_TemperatureMet_clone(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"TemperatureEcmwf_clone",0,2,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"TemperatureMet_clone",0,2,argv))) SWIG_fail;
   --argc;
   if (argc == 1) {
-    return _wrap_TemperatureEcmwf_clone__SWIG_0(self, argc, argv);
+    return _wrap_TemperatureMet_clone__SWIG_0(self, argc, argv);
   }
   if (argc == 2) {
-    return _wrap_TemperatureEcmwf_clone__SWIG_1(self, argc, argv);
+    return _wrap_TemperatureMet_clone__SWIG_1(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'TemperatureEcmwf_clone'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'TemperatureMet_clone'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::TemperatureEcmwf::clone() const\n"
-    "    FullPhysics::TemperatureEcmwf::clone(boost::shared_ptr< FullPhysics::Pressure > const &) const\n");
+    "    FullPhysics::TemperatureMet::clone() const\n"
+    "    FullPhysics::TemperatureMet::clone(boost::shared_ptr< FullPhysics::Pressure > const &) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_TemperatureEcmwf__v_temperature_offset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TemperatureMet__v_temperature_offset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::TemperatureEcmwf *arg1 = (FullPhysics::TemperatureEcmwf *) 0 ;
+  FullPhysics::TemperatureMet *arg1 = (FullPhysics::TemperatureMet *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
@@ -5342,22 +5340,22 @@ SWIGINTERN PyObject *_wrap_TemperatureEcmwf__v_temperature_offset(PyObject *SWIG
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureEcmwf__v_temperature_offset" "', argument " "1"" of type '" "FullPhysics::TemperatureEcmwf const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureMet__v_temperature_offset" "', argument " "1"" of type '" "FullPhysics::TemperatureMet const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = (double)((FullPhysics::TemperatureEcmwf const *)arg1)->temperature_offset();
+      result = (double)((FullPhysics::TemperatureMet const *)arg1)->temperature_offset();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5371,13 +5369,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TemperatureEcmwf__v_temperature_offset_uncertainty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TemperatureMet__v_temperature_offset_uncertainty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::TemperatureEcmwf *arg1 = (FullPhysics::TemperatureEcmwf *) 0 ;
+  FullPhysics::TemperatureMet *arg1 = (FullPhysics::TemperatureMet *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
@@ -5385,22 +5383,22 @@ SWIGINTERN PyObject *_wrap_TemperatureEcmwf__v_temperature_offset_uncertainty(Py
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureEcmwf__v_temperature_offset_uncertainty" "', argument " "1"" of type '" "FullPhysics::TemperatureEcmwf const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureMet__v_temperature_offset_uncertainty" "', argument " "1"" of type '" "FullPhysics::TemperatureMet const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = (double)((FullPhysics::TemperatureEcmwf const *)arg1)->temperature_offset_uncertainty();
+      result = (double)((FullPhysics::TemperatureMet const *)arg1)->temperature_offset_uncertainty();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5414,13 +5412,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TemperatureEcmwf__v_temperature_profile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TemperatureMet__v_temperature_profile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::TemperatureEcmwf *arg1 = (FullPhysics::TemperatureEcmwf *) 0 ;
+  FullPhysics::TemperatureMet *arg1 = (FullPhysics::TemperatureMet *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   SwigValueWrapper< blitz::Array< double,1 > > result;
   
@@ -5428,22 +5426,22 @@ SWIGINTERN PyObject *_wrap_TemperatureEcmwf__v_temperature_profile(PyObject *SWI
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureEcmwf__v_temperature_profile" "', argument " "1"" of type '" "FullPhysics::TemperatureEcmwf const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureMet__v_temperature_profile" "', argument " "1"" of type '" "FullPhysics::TemperatureMet const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = ((FullPhysics::TemperatureEcmwf const *)arg1)->temperature_profile();
+      result = ((FullPhysics::TemperatureMet const *)arg1)->temperature_profile();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5473,13 +5471,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TemperatureEcmwf__v_pressure_profile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TemperatureMet__v_pressure_profile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::TemperatureEcmwf *arg1 = (FullPhysics::TemperatureEcmwf *) 0 ;
+  FullPhysics::TemperatureMet *arg1 = (FullPhysics::TemperatureMet *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   SwigValueWrapper< blitz::Array< double,1 > > result;
   
@@ -5487,22 +5485,22 @@ SWIGINTERN PyObject *_wrap_TemperatureEcmwf__v_pressure_profile(PyObject *SWIGUN
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureEcmwf__v_pressure_profile" "', argument " "1"" of type '" "FullPhysics::TemperatureEcmwf const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TemperatureMet__v_pressure_profile" "', argument " "1"" of type '" "FullPhysics::TemperatureMet const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = ((FullPhysics::TemperatureEcmwf const *)arg1)->pressure_profile();
+      result = ((FullPhysics::TemperatureMet const *)arg1)->pressure_profile();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5532,30 +5530,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_TemperatureEcmwf(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_TemperatureMet(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::TemperatureEcmwf *arg1 = (FullPhysics::TemperatureEcmwf *) 0 ;
+  FullPhysics::TemperatureMet *arg1 = (FullPhysics::TemperatureMet *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf > tempshared1 ;
-  boost::shared_ptr< FullPhysics::TemperatureEcmwf > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet > tempshared1 ;
+  boost::shared_ptr< FullPhysics::TemperatureMet > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_TemperatureEcmwf" "', argument " "1"" of type '" "FullPhysics::TemperatureEcmwf *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_TemperatureMet" "', argument " "1"" of type '" "FullPhysics::TemperatureMet *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::TemperatureEcmwf > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::TemperatureMet > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::TemperatureEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::TemperatureEcmwf * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::TemperatureMet > * >(argp1);
+      arg1 = const_cast< FullPhysics::TemperatureMet * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
@@ -5574,73 +5572,66 @@ fail:
 }
 
 
-SWIGINTERN PyObject *TemperatureEcmwf_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *TemperatureMet_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *TemperatureEcmwf_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *TemperatureMet_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"SHARED_PTR_DISOWN_swigconstant", SHARED_PTR_DISOWN_swigconstant, METH_VARARGS, NULL},
-	 { (char *)"new_TemperatureEcmwf", _wrap_new_TemperatureEcmwf, METH_VARARGS, (char *)"\n"
+	 { (char *)"new_TemperatureMet", _wrap_new_TemperatureMet, METH_VARARGS, (char *)"\n"
 		"\n"
-		"TemperatureEcmwf::TemperatureEcmwf(const boost::shared_ptr< Ecmwf > &Ecmwf_file, const\n"
+		"TemperatureMet::TemperatureMet(const boost::shared_ptr< Meteorology > &Met_file, const\n"
 		"boost::shared_ptr< Pressure > &Press, double Temp_offset, bool\n"
 		"Temp_flag)\n"
 		"Create an Temperature. \n"
 		""},
-	 { (char *)"TemperatureEcmwf_clone", _wrap_TemperatureEcmwf_clone, METH_VARARGS, (char *)"\n"
+	 { (char *)"TemperatureMet_clone", _wrap_TemperatureMet_clone, METH_VARARGS, (char *)"\n"
 		"\n"
-		"boost::shared_ptr< Temperature > TemperatureEcmwf::clone(const boost::shared_ptr< Pressure > &Press) const\n"
+		"boost::shared_ptr< Temperature > TemperatureMet::clone(const boost::shared_ptr< Pressure > &Press) const\n"
 		"\n"
 		""},
-	 { (char *)"TemperatureEcmwf__v_temperature_offset", (PyCFunction)_wrap_TemperatureEcmwf__v_temperature_offset, METH_O, NULL},
-	 { (char *)"TemperatureEcmwf__v_temperature_offset_uncertainty", (PyCFunction)_wrap_TemperatureEcmwf__v_temperature_offset_uncertainty, METH_O, NULL},
-	 { (char *)"TemperatureEcmwf__v_temperature_profile", (PyCFunction)_wrap_TemperatureEcmwf__v_temperature_profile, METH_O, (char *)"\n"
+	 { (char *)"TemperatureMet__v_temperature_offset", (PyCFunction)_wrap_TemperatureMet__v_temperature_offset, METH_O, NULL},
+	 { (char *)"TemperatureMet__v_temperature_offset_uncertainty", (PyCFunction)_wrap_TemperatureMet__v_temperature_offset_uncertainty, METH_O, NULL},
+	 { (char *)"TemperatureMet__v_temperature_profile", (PyCFunction)_wrap_TemperatureMet__v_temperature_profile, METH_O, (char *)"\n"
 		"\n"
-		"virtual blitz::Array<double, 1> FullPhysics::TemperatureEcmwf::temperature_profile() const\n"
-		"Temperature from ECMWF, used to write to output file. \n"
+		"virtual blitz::Array<double, 1> FullPhysics::TemperatureMet::temperature_profile() const\n"
+		"Temperature from MET, used to write to output file. \n"
 		""},
-	 { (char *)"TemperatureEcmwf__v_pressure_profile", (PyCFunction)_wrap_TemperatureEcmwf__v_pressure_profile, METH_O, (char *)"\n"
+	 { (char *)"TemperatureMet__v_pressure_profile", (PyCFunction)_wrap_TemperatureMet__v_pressure_profile, METH_O, (char *)"\n"
 		"\n"
-		"virtual blitz::Array<double, 1> FullPhysics::TemperatureEcmwf::pressure_profile() const\n"
-		"Pressure levels that temperature is on from ECMWF, used to write to\n"
+		"virtual blitz::Array<double, 1> FullPhysics::TemperatureMet::pressure_profile() const\n"
+		"Pressure levels that temperature is on from MET, used to write to\n"
 		"output file. \n"
 		""},
-	 { (char *)"delete_TemperatureEcmwf", (PyCFunction)_wrap_delete_TemperatureEcmwf, METH_O, (char *)"\n"
+	 { (char *)"delete_TemperatureMet", (PyCFunction)_wrap_delete_TemperatureMet, METH_O, (char *)"\n"
 		"\n"
-		"virtual FullPhysics::TemperatureEcmwf::~TemperatureEcmwf()\n"
+		"virtual FullPhysics::TemperatureMet::~TemperatureMet()\n"
 		"\n"
 		""},
-	 { (char *)"TemperatureEcmwf_swigregister", TemperatureEcmwf_swigregister, METH_VARARGS, NULL},
-	 { (char *)"TemperatureEcmwf_swiginit", TemperatureEcmwf_swiginit, METH_VARARGS, NULL},
+	 { (char *)"TemperatureMet_swigregister", TemperatureMet_swigregister, METH_VARARGS, NULL},
+	 { (char *)"TemperatureMet_swiginit", TemperatureMet_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__TemperatureOffset(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::TemperatureOffset *)  ((FullPhysics::TemperatureEcmwf *) x));
+static void *_p_FullPhysics__TemperatureMetTo_p_FullPhysics__TemperatureOffset(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::TemperatureOffset *)  ((FullPhysics::TemperatureMet *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__Ecmwf_tTo_p_boost__shared_ptrT_FullPhysics__Meteorology_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Meteorology >(*(boost::shared_ptr< FullPhysics::Ecmwf > *)x);
-}
-static void *_p_FullPhysics__EcmwfTo_p_FullPhysics__Meteorology(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Meteorology *)  ((FullPhysics::Ecmwf *) x));
+static void *_p_FullPhysics__TemperatureMetTo_p_FullPhysics__TemperatureImpBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::TemperatureImpBase *) (FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureMet *) x));
 }
 static void *_p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__TemperatureImpBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::TemperatureImpBase *)  ((FullPhysics::TemperatureOffset *) x));
-}
-static void *_p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__TemperatureImpBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::TemperatureImpBase *) (FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureEcmwf *) x));
 }
 static void *_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -5654,9 +5645,9 @@ static void *_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__s
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorObserver >(*(boost::shared_ptr< FullPhysics::TemperatureOffset > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorObserver >(*(boost::shared_ptr< FullPhysics::TemperatureEcmwf > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorObserver >(*(boost::shared_ptr< FullPhysics::TemperatureMet > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -5674,9 +5665,9 @@ static void *_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__s
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Temperature > >(*(boost::shared_ptr< FullPhysics::TemperatureOffset > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Temperature > >(*(boost::shared_ptr< FullPhysics::TemperatureEcmwf > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Temperature > >(*(boost::shared_ptr< FullPhysics::TemperatureMet > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -5698,9 +5689,9 @@ static void *_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__s
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Temperature >(*(boost::shared_ptr< FullPhysics::TemperatureOffset > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__Temperature_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__Temperature_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Temperature >(*(boost::shared_ptr< FullPhysics::TemperatureEcmwf > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Temperature >(*(boost::shared_ptr< FullPhysics::TemperatureMet > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -5758,6 +5749,10 @@ static void *_p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Temperature > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::TemperatureMet > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AutoDerivative< double > > *)x);
@@ -5769,14 +5764,6 @@ static void *_p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_Fu
 static void *_p_boost__shared_ptrT_FullPhysics__Meteorology_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Meteorology > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__Ecmwf_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Ecmwf > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::TemperatureEcmwf > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -5791,6 +5778,9 @@ static void *_p_FullPhysics__UnitTo_p_FullPhysics__GenericObject(void *x, int *S
 }
 static void *_p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::StateVector > *) x));
+}
+static void *_p_FullPhysics__TemperatureMetTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::Temperature > *)(FullPhysics::Temperature *)(FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureMet *) x));
 }
 static void *_p_FullPhysics__ArrayWithUnitT_double_2_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::ArrayWithUnit< double,2 > *) x));
@@ -5809,9 +5799,6 @@ static void *_p_FullPhysics__ObservableT_FullPhysics__Temperature_tTo_p_FullPhys
 }
 static void *_p_FullPhysics__ArrayWithUnitT_double_3_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::ArrayWithUnit< double,3 > *) x));
-}
-static void *_p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::Temperature > *)(FullPhysics::Temperature *)(FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureEcmwf *) x));
 }
 static void *_p_FullPhysics__ObserverT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observer< FullPhysics::Temperature > *) x));
@@ -5837,9 +5824,6 @@ static void *_p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject(void *x,
 static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::Temperature > *)(FullPhysics::Temperature *) ((FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *) x));
 }
-static void *_p_FullPhysics__EcmwfTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Meteorology *) ((FullPhysics::Ecmwf *) x));
-}
 static void *_p_FullPhysics__ArrayWithUnitT_double_1_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::ArrayWithUnit< double,1 > *) x));
 }
@@ -5852,6 +5836,9 @@ static void *_p_FullPhysics__MeteorologyTo_p_FullPhysics__GenericObject(void *x,
 static void *_p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observable< FullPhysics::Temperature > *) (FullPhysics::Temperature *)(FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *) ((FullPhysics::TemperatureImpBase *) x));
 }
+static void *_p_FullPhysics__TemperatureMetTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::Temperature > *) (FullPhysics::Temperature *)(FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureMet *) x));
+}
 static void *_p_FullPhysics__TemperatureTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observable< FullPhysics::Temperature > *)  ((FullPhysics::Temperature *) x));
 }
@@ -5861,16 +5848,13 @@ static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p
 static void *_p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observable< FullPhysics::Temperature > *) (FullPhysics::Temperature *)(FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *) ((FullPhysics::TemperatureOffset *) x));
 }
-static void *_p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observable< FullPhysics::Temperature > *) (FullPhysics::Temperature *)(FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureEcmwf *) x));
-}
 static void *_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::TemperatureImpBase >(*(boost::shared_ptr< FullPhysics::TemperatureOffset > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::TemperatureImpBase >(*(boost::shared_ptr< FullPhysics::TemperatureEcmwf > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::TemperatureImpBase >(*(boost::shared_ptr< FullPhysics::TemperatureMet > *)x);
 }
 static void *_p_std__basic_ostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_ios< char,std::char_traits< char > > *)  ((std::basic_ostream< char,std::char_traits< char > > *) x));
@@ -5901,9 +5885,9 @@ static void *_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__s
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::TemperatureOffset > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::TemperatureEcmwf > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::TemperatureMet > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -5936,9 +5920,9 @@ static void *_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__s
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::TemperatureOffset > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::TemperatureEcmwf > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::TemperatureMet > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -5949,6 +5933,9 @@ static void *_p_FullPhysics__PressureTo_p_FullPhysics__ObservableT_FullPhysics__
 }
 static void *_p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *)(FullPhysics::Temperature *)(FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *) ((FullPhysics::TemperatureImpBase *) x));
+}
+static void *_p_FullPhysics__TemperatureMetTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *)(FullPhysics::Temperature *)(FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureMet *) x));
 }
 static void *_p_FullPhysics__TemperatureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::Temperature *) x));
@@ -5968,17 +5955,14 @@ static void *_p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__ObserverT_FullPh
 static void *_p_FullPhysics__PressureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::Pressure *) x));
 }
-static void *_p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *)(FullPhysics::Temperature *)(FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureEcmwf *) x));
-}
 static void *_p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)  ((FullPhysics::TemperatureImpBase *) x));
 }
+static void *_p_FullPhysics__TemperatureMetTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *) (FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureMet *) x));
+}
 static void *_p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *) (FullPhysics::TemperatureImpBase *) ((FullPhysics::TemperatureOffset *) x));
-}
-static void *_p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *) (FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureEcmwf *) x));
 }
 static void *_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -5988,21 +5972,21 @@ static void *_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__s
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Temperature > >(*(boost::shared_ptr< FullPhysics::TemperatureOffset > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Temperature > >(*(boost::shared_ptr< FullPhysics::TemperatureEcmwf > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Temperature > >(*(boost::shared_ptr< FullPhysics::TemperatureMet > *)x);
 }
 static void *_p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__Temperature(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Temperature *) (FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *) ((FullPhysics::TemperatureImpBase *) x));
+}
+static void *_p_FullPhysics__TemperatureMetTo_p_FullPhysics__Temperature(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Temperature *) (FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureMet *) x));
 }
 static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__Temperature(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Temperature *)  ((FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *) x));
 }
 static void *_p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__Temperature(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::Temperature *) (FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *) ((FullPhysics::TemperatureOffset *) x));
-}
-static void *_p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__Temperature(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Temperature *) (FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureEcmwf *) x));
 }
 static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_ostream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
@@ -6013,17 +5997,20 @@ static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__ba
 static void *_p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::SubStateVectorObserver *) (FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *) ((FullPhysics::TemperatureImpBase *) x));
 }
+static void *_p_FullPhysics__TemperatureMetTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::SubStateVectorObserver *) (FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureMet *) x));
+}
 static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::SubStateVectorObserver *)  ((FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *) x));
 }
 static void *_p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::SubStateVectorObserver *) (FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *) ((FullPhysics::TemperatureOffset *) x));
 }
-static void *_p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::SubStateVectorObserver *) (FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureEcmwf *) x));
-}
 static void *_p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::StateVectorObserver *) (FullPhysics::Temperature *)(FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *) ((FullPhysics::TemperatureImpBase *) x));
+}
+static void *_p_FullPhysics__TemperatureMetTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::StateVectorObserver *) (FullPhysics::Temperature *)(FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureMet *) x));
 }
 static void *_p_FullPhysics__TemperatureTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::Temperature *) x));
@@ -6040,12 +6027,9 @@ static void *_p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__StateVectorObser
 static void *_p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::Pressure *) x));
 }
-static void *_p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::StateVectorObserver *) (FullPhysics::Temperature *)(FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *)(FullPhysics::TemperatureImpBase *)(FullPhysics::TemperatureOffset *) ((FullPhysics::TemperatureEcmwf *) x));
-}
-static void *_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::TemperatureOffset >(*(boost::shared_ptr< FullPhysics::TemperatureEcmwf > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::TemperatureOffset >(*(boost::shared_ptr< FullPhysics::TemperatureMet > *)x);
 }
 static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_1_t = {"_p_FullPhysics__ArrayWithUnitT_double_1_t", "FullPhysics::ArrayWithUnit< double,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_2_t = {"_p_FullPhysics__ArrayWithUnitT_double_2_t", "FullPhysics::ArrayWithUnit< double,2 > *", 0, 0, (void*)0, 0};
@@ -6053,7 +6037,6 @@ static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_3_t = {"_p_Fu
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeRefT_double_t = {"_p_FullPhysics__AutoDerivativeRefT_double_t", "FullPhysics::AutoDerivativeRef< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeT_double_t = {"_p_FullPhysics__AutoDerivativeT_double_t", "FullPhysics::AutoDerivative< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t = {"_p_FullPhysics__AutoDerivativeWithUnitT_double_t", "FullPhysics::AutoDerivativeWithUnit< double > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_FullPhysics__Ecmwf = {"_p_FullPhysics__Ecmwf", "FullPhysics::Ecmwf *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__GenericObject = {"_p_FullPhysics__GenericObject", "FullPhysics::GenericObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Meteorology = {"_p_FullPhysics__Meteorology", "FullPhysics::Meteorology *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t = {"_p_FullPhysics__ObservableT_FullPhysics__Pressure_t", "FullPhysics::Observable< FullPhysics::Pressure > *", 0, 0, (void*)0, 0};
@@ -6068,8 +6051,8 @@ static swig_type_info _swigt__p_FullPhysics__StateVectorObserver = {"_p_FullPhys
 static swig_type_info _swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t = {"_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t", "FullPhysics::SubStateVectorArray< FullPhysics::Temperature > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__SubStateVectorObserver = {"_p_FullPhysics__SubStateVectorObserver", "FullPhysics::SubStateVectorObserver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Temperature = {"_p_FullPhysics__Temperature", "FullPhysics::Temperature *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_FullPhysics__TemperatureEcmwf = {"_p_FullPhysics__TemperatureEcmwf", "FullPhysics::TemperatureEcmwf *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__TemperatureImpBase = {"_p_FullPhysics__TemperatureImpBase", "FullPhysics::TemperatureImpBase *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__TemperatureMet = {"_p_FullPhysics__TemperatureMet", "FullPhysics::TemperatureMet *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__TemperatureOffset = {"_p_FullPhysics__TemperatureOffset", "FullPhysics::TemperatureOffset *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Unit = {"_p_FullPhysics__Unit", "FullPhysics::Unit *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
@@ -6091,7 +6074,6 @@ static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_d
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivativeRef< double > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivative< double > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivativeWithUnit< double > > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Ecmwf_t = {"_p_boost__shared_ptrT_FullPhysics__Ecmwf_t", "boost::shared_ptr< FullPhysics::Ecmwf > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t = {"_p_boost__shared_ptrT_FullPhysics__GenericObject_t", "boost::shared_ptr< FullPhysics::GenericObject > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t = {"_p_boost__shared_ptrT_FullPhysics__Meteorology_t", "boost::shared_ptr< FullPhysics::Meteorology > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > > *", 0, 0, (void*)0, 0};
@@ -6105,8 +6087,8 @@ static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObser
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t = {"_p_boost__shared_ptrT_FullPhysics__StateVector_t", "boost::shared_ptr< FullPhysics::StateVector > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t = {"_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t", "boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::Temperature > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t = {"_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t", "boost::shared_ptr< FullPhysics::SubStateVectorObserver > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t = {"_p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t", "boost::shared_ptr< FullPhysics::TemperatureEcmwf > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t = {"_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t", "boost::shared_ptr< FullPhysics::TemperatureImpBase > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t = {"_p_boost__shared_ptrT_FullPhysics__TemperatureMet_t", "boost::shared_ptr< FullPhysics::TemperatureMet > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t = {"_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t", "boost::shared_ptr< FullPhysics::TemperatureOffset > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t = {"_p_boost__shared_ptrT_FullPhysics__Temperature_t", "boost::shared_ptr< FullPhysics::Temperature > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Unit_t = {"_p_boost__shared_ptrT_FullPhysics__Unit_t", "boost::shared_ptr< FullPhysics::Unit > *", 0, 0, (void*)0, 0};
@@ -6137,7 +6119,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__AutoDerivativeRefT_double_t,
   &_swigt__p_FullPhysics__AutoDerivativeT_double_t,
   &_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t,
-  &_swigt__p_FullPhysics__Ecmwf,
   &_swigt__p_FullPhysics__GenericObject,
   &_swigt__p_FullPhysics__Meteorology,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t,
@@ -6152,8 +6133,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t,
   &_swigt__p_FullPhysics__SubStateVectorObserver,
   &_swigt__p_FullPhysics__Temperature,
-  &_swigt__p_FullPhysics__TemperatureEcmwf,
   &_swigt__p_FullPhysics__TemperatureImpBase,
+  &_swigt__p_FullPhysics__TemperatureMet,
   &_swigt__p_FullPhysics__TemperatureOffset,
   &_swigt__p_FullPhysics__Unit,
   &_swigt__p_allocator_type,
@@ -6175,7 +6156,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t,
-  &_swigt__p_boost__shared_ptrT_FullPhysics__Ecmwf_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t,
@@ -6189,8 +6169,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t,
-  &_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t,
@@ -6221,24 +6201,23 @@ static swig_cast_info _swigc__p_FullPhysics__ArrayWithUnitT_double_3_t[] = {  {&
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeRefT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeWithUnitT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__Ecmwf[] = {  {&_swigt__p_FullPhysics__Ecmwf, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, _p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_3_t, _p_FullPhysics__ArrayWithUnitT_double_3_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, _p_FullPhysics__AutoDerivativeWithUnitT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__TemperatureEcmwf, _p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Temperature_t, _p_FullPhysics__ObservableT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Unit, _p_FullPhysics__UnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_1_t, _p_FullPhysics__ArrayWithUnitT_double_1_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, _p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Temperature_t, _p_FullPhysics__ObserverT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Ecmwf, _p_FullPhysics__EcmwfTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Meteorology, _p_FullPhysics__MeteorologyTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, _p_FullPhysics__ObservableT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_2_t, _p_FullPhysics__ArrayWithUnitT_double_2_tTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__Meteorology[] = {  {&_swigt__p_FullPhysics__Ecmwf, _p_FullPhysics__EcmwfTo_p_FullPhysics__Meteorology, 0, 0},  {&_swigt__p_FullPhysics__Meteorology, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__TemperatureMet, _p_FullPhysics__TemperatureMetTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, _p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_3_t, _p_FullPhysics__ArrayWithUnitT_double_3_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, _p_FullPhysics__AutoDerivativeWithUnitT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Temperature_t, _p_FullPhysics__ObservableT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Unit, _p_FullPhysics__UnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_1_t, _p_FullPhysics__ArrayWithUnitT_double_1_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, _p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Temperature_t, _p_FullPhysics__ObserverT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Meteorology, _p_FullPhysics__MeteorologyTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, _p_FullPhysics__ObservableT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_2_t, _p_FullPhysics__ArrayWithUnitT_double_2_tTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Meteorology[] = {  {&_swigt__p_FullPhysics__Meteorology, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Pressure_t[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObservableT_FullPhysics__Pressure_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__StateVector_t[] = {  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__ObservableT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Temperature_t[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Temperature_t, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_FullPhysics__TemperatureEcmwf, _p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Temperature_t[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_FullPhysics__TemperatureMet, _p_FullPhysics__TemperatureMetTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Temperature_t, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__ObservableT_FullPhysics__Temperature_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Pressure_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__StateVector_t[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, _p_FullPhysics__StateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__TemperatureEcmwf, _p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__StateVector_t[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__TemperatureMet, _p_FullPhysics__TemperatureMetTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, _p_FullPhysics__StateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Temperature_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Temperature_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Pressure[] = {  {&_swigt__p_FullPhysics__Pressure, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__StateVector[] = {  {&_swigt__p_FullPhysics__StateVector, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__StateVectorObserver[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__TemperatureEcmwf, _p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__StateVectorObserver, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, 0, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_FullPhysics__TemperatureEcmwf, _p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__SubStateVectorObserver[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__SubStateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__SubStateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__SubStateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__TemperatureEcmwf, _p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__SubStateVectorObserver, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__Temperature[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__Temperature, 0, 0},  {&_swigt__p_FullPhysics__Temperature, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__Temperature, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__Temperature, 0, 0},  {&_swigt__p_FullPhysics__TemperatureEcmwf, _p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__Temperature, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__TemperatureEcmwf[] = {  {&_swigt__p_FullPhysics__TemperatureEcmwf, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__TemperatureImpBase[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, 0, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__TemperatureImpBase, 0, 0},  {&_swigt__p_FullPhysics__TemperatureEcmwf, _p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__TemperatureImpBase, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__TemperatureOffset[] = {  {&_swigt__p_FullPhysics__TemperatureOffset, 0, 0, 0},  {&_swigt__p_FullPhysics__TemperatureEcmwf, _p_FullPhysics__TemperatureEcmwfTo_p_FullPhysics__TemperatureOffset, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__StateVectorObserver[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__TemperatureMet, _p_FullPhysics__TemperatureMetTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Temperature, _p_FullPhysics__TemperatureTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_FullPhysics__TemperatureMet, _p_FullPhysics__TemperatureMetTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, 0, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__SubStateVectorObserver[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__SubStateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__TemperatureMet, _p_FullPhysics__TemperatureMetTo_p_FullPhysics__SubStateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__SubStateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__SubStateVectorObserver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Temperature[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, _p_FullPhysics__TemperatureImpBaseTo_p_FullPhysics__Temperature, 0, 0},  {&_swigt__p_FullPhysics__TemperatureMet, _p_FullPhysics__TemperatureMetTo_p_FullPhysics__Temperature, 0, 0},  {&_swigt__p_FullPhysics__Temperature, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_tTo_p_FullPhysics__Temperature, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__Temperature, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__TemperatureImpBase[] = {  {&_swigt__p_FullPhysics__TemperatureImpBase, 0, 0, 0},  {&_swigt__p_FullPhysics__TemperatureMet, _p_FullPhysics__TemperatureMetTo_p_FullPhysics__TemperatureImpBase, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, _p_FullPhysics__TemperatureOffsetTo_p_FullPhysics__TemperatureImpBase, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__TemperatureMet[] = {  {&_swigt__p_FullPhysics__TemperatureMet, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__TemperatureOffset[] = {  {&_swigt__p_FullPhysics__TemperatureMet, _p_FullPhysics__TemperatureMetTo_p_FullPhysics__TemperatureOffset, 0, 0},  {&_swigt__p_FullPhysics__TemperatureOffset, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Unit[] = {  {&_swigt__p_FullPhysics__Unit, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_bool_1_t[] = {  {&_swigt__p_blitz__ArrayT_bool_1_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -6259,24 +6238,23 @@ static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_d
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Ecmwf_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ecmwf_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, _p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t, _p_boost__shared_ptrT_FullPhysics__Meteorology_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ecmwf_t, _p_boost__shared_ptrT_FullPhysics__Ecmwf_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Meteorology_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ecmwf_t, _p_boost__shared_ptrT_FullPhysics__Ecmwf_tTo_p_boost__shared_ptrT_FullPhysics__Meteorology_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t, _p_boost__shared_ptrT_FullPhysics__Meteorology_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, _p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Meteorology_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, _p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, _p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Temperature_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__StateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, _p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__StateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, _p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Temperature_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Pressure_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, _p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, _p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, _p_boost__shared_ptrT_FullPhysics__Temperature_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVector_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, _p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, _p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, _p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, _p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Temperature_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t, _p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__Temperature_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, _p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, _p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, _p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, _p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Temperature_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t, _p_boost__shared_ptrT_FullPhysics__TemperatureOffset_tTo_p_boost__shared_ptrT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Temperature_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t, _p_boost__shared_ptrT_FullPhysics__TemperatureMet_tTo_p_boost__shared_ptrT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t, _p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_tTo_p_boost__shared_ptrT_FullPhysics__Temperature_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_tTo_p_boost__shared_ptrT_FullPhysics__Temperature_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char_type[] = {  {&_swigt__p_char_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -6305,7 +6283,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__AutoDerivativeRefT_double_t,
   _swigc__p_FullPhysics__AutoDerivativeT_double_t,
   _swigc__p_FullPhysics__AutoDerivativeWithUnitT_double_t,
-  _swigc__p_FullPhysics__Ecmwf,
   _swigc__p_FullPhysics__GenericObject,
   _swigc__p_FullPhysics__Meteorology,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__Pressure_t,
@@ -6320,8 +6297,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t,
   _swigc__p_FullPhysics__SubStateVectorObserver,
   _swigc__p_FullPhysics__Temperature,
-  _swigc__p_FullPhysics__TemperatureEcmwf,
   _swigc__p_FullPhysics__TemperatureImpBase,
+  _swigc__p_FullPhysics__TemperatureMet,
   _swigc__p_FullPhysics__TemperatureOffset,
   _swigc__p_FullPhysics__Unit,
   _swigc__p_allocator_type,
@@ -6343,7 +6320,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t,
-  _swigc__p_boost__shared_ptrT_FullPhysics__Ecmwf_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Meteorology_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t,
@@ -6357,8 +6333,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__StateVector_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Temperature_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t,
-  _swigc__p_boost__shared_ptrT_FullPhysics__TemperatureEcmwf_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__TemperatureImpBase_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__TemperatureMet_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__TemperatureOffset_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Temperature_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t,
@@ -7067,8 +7043,8 @@ SWIG_init(void) {
   SWIG_InstallConstants(d,swig_const_table);
   
   
-  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::TemperatureEcmwf))] =
-  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::TemperatureEcmwf >("boost::shared_ptr< FullPhysics::TemperatureEcmwf > *"));
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::TemperatureMet))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::TemperatureMet >("boost::shared_ptr< FullPhysics::TemperatureMet > *"));
   
 #if PY_VERSION_HEX >= 0x03000000
   return m;

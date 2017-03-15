@@ -8,8 +8,8 @@
  * interface file instead.
  * ----------------------------------------------------------------------------- */
 
-#ifndef SWIG_absorber_vmr_ecmwf_WRAP_H_
-#define SWIG_absorber_vmr_ecmwf_WRAP_H_
+#ifndef SWIG_absorber_vmr_met_WRAP_H_
+#define SWIG_absorber_vmr_met_WRAP_H_
 
 #include <map>
 #include <string>

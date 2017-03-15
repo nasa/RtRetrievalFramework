@@ -10,7 +10,7 @@
 
 from sys import version_info
 if version_info >= (3, 0, 0):
-    new_instancemethod = lambda func, inst, cls: _absorber_vmr_ecmwf.SWIG_PyInstanceMethod_New(func)
+    new_instancemethod = lambda func, inst, cls: _absorber_vmr_met.SWIG_PyInstanceMethod_New(func)
 else:
     from new import instancemethod as new_instancemethod
 if version_info >= (2, 6, 0):
@@ -19,20 +19,20 @@ if version_info >= (2, 6, 0):
         import imp
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_absorber_vmr_ecmwf', [dirname(__file__)])
+            fp, pathname, description = imp.find_module('_absorber_vmr_met', [dirname(__file__)])
         except ImportError:
-            import _absorber_vmr_ecmwf
-            return _absorber_vmr_ecmwf
+            import _absorber_vmr_met
+            return _absorber_vmr_met
         if fp is not None:
             try:
-                _mod = imp.load_module('_absorber_vmr_ecmwf', fp, pathname, description)
+                _mod = imp.load_module('_absorber_vmr_met', fp, pathname, description)
             finally:
                 fp.close()
             return _mod
-    _absorber_vmr_ecmwf = swig_import_helper()
+    _absorber_vmr_met = swig_import_helper()
     del swig_import_helper
 else:
-    import _absorber_vmr_ecmwf
+    import _absorber_vmr_met
 del version_info
 try:
     _swig_property = property
@@ -111,8 +111,8 @@ except:
 
 
 
-_absorber_vmr_ecmwf.SHARED_PTR_DISOWN_swigconstant(_absorber_vmr_ecmwf)
-SHARED_PTR_DISOWN = _absorber_vmr_ecmwf.SHARED_PTR_DISOWN
+_absorber_vmr_met.SHARED_PTR_DISOWN_swigconstant(_absorber_vmr_met)
+SHARED_PTR_DISOWN = _absorber_vmr_met.SHARED_PTR_DISOWN
 
 def _new_from_init(cls, version, *args):
     '''For use with pickle, covers common case where we just store the
@@ -139,17 +139,16 @@ import full_physics_swig.state_vector
 import full_physics_swig.generic_object
 import full_physics_swig.sub_state_vector_array
 import full_physics_swig.absorber_vmr
-import full_physics_swig.meteorology
-class AbsorberVmrEcmwf(full_physics_swig.absorber_vmr_scaled.AbsorberVmrScaled):
+class AbsorberVmrMet(full_physics_swig.absorber_vmr_scaled.AbsorberVmrScaled):
     """
 
     This class maps the state vector to the absorber VMR on each level.
 
-    This particular implementation uses the value from ECMWF file
+    This particular implementation uses the value from MET file
     (interpolated to the current pressure grid), along with a scale
     factor.
 
-    C++ includes: absorber_vmr_ecmwf.h 
+    C++ includes: absorber_vmr_met.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
 
@@ -166,11 +165,11 @@ class AbsorberVmrEcmwf(full_physics_swig.absorber_vmr_scaled.AbsorberVmrScaled):
     def scale_uncertainty(self):
         return self._v_scale_uncertainty()
 
-    __swig_destroy__ = _absorber_vmr_ecmwf.delete_AbsorberVmrEcmwf
-AbsorberVmrEcmwf._v_scale_factor = new_instancemethod(_absorber_vmr_ecmwf.AbsorberVmrEcmwf__v_scale_factor, None, AbsorberVmrEcmwf)
-AbsorberVmrEcmwf._v_scale_uncertainty = new_instancemethod(_absorber_vmr_ecmwf.AbsorberVmrEcmwf__v_scale_uncertainty, None, AbsorberVmrEcmwf)
-AbsorberVmrEcmwf_swigregister = _absorber_vmr_ecmwf.AbsorberVmrEcmwf_swigregister
-AbsorberVmrEcmwf_swigregister(AbsorberVmrEcmwf)
+    __swig_destroy__ = _absorber_vmr_met.delete_AbsorberVmrMet
+AbsorberVmrMet._v_scale_factor = new_instancemethod(_absorber_vmr_met.AbsorberVmrMet__v_scale_factor, None, AbsorberVmrMet)
+AbsorberVmrMet._v_scale_uncertainty = new_instancemethod(_absorber_vmr_met.AbsorberVmrMet__v_scale_uncertainty, None, AbsorberVmrMet)
+AbsorberVmrMet_swigregister = _absorber_vmr_met.AbsorberVmrMet_swigregister
+AbsorberVmrMet_swigregister(AbsorberVmrMet)
 
 
 

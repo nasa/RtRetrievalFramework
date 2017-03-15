@@ -2,17 +2,17 @@
 // (Not really c++, but closest emacs mode)
 %include "common.i"
 %{
-#include "temperature_ecmwf.h"
+#include "temperature_met.h"
 %}
 %base_import(temperature_offset)
-%import "ecmwf.i"
+%import "meteorology.i"
 %import "pressure.i"
-%fp_shared_ptr(FullPhysics::TemperatureEcmwf);
+%fp_shared_ptr(FullPhysics::TemperatureMet);
 
 namespace FullPhysics {
-class TemperatureEcmwf: public TemperatureOffset {
+class TemperatureMet: public TemperatureOffset {
 public:
-  TemperatureEcmwf(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
+  TemperatureMet(const boost::shared_ptr<Meteorology>& Met_file,
 		   const boost::shared_ptr<Pressure>& Press,
 		   double Temp_offset,
 		   bool Temp_flag);

@@ -5,12 +5,6 @@
 using namespace FullPhysics;
 using namespace blitz;
 
-#ifdef HAVE_LUA
-#include "register_lua.h"
-REGISTER_LUA_DERIVED_CLASS(Ecmwf, Meteorology)
-REGISTER_LUA_END()
-#endif
-
 blitz::Array<double, 1> Ecmwf::h2o_vmr() const
 {
     Array<double, 1> s = specific_humidity();

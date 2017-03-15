@@ -148,7 +148,7 @@ function init_uq(config)
 
     function uq_ecmwf:register_output(ro)
         if (self.config.ecmwf) then
-            ro:push_back(EcmwfPassThroughOutput(self.config.ecmwf))
+            ro:push_back(MetPassThroughOutput(self.config.ecmwf))
         end
     end
 

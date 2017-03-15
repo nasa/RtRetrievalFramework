@@ -8,13 +8,13 @@ using namespace blitz;
 #include "register_lua.h"
 
 REGISTER_LUA_CLASS(GasVmrApriori)
-.def(luabind::constructor<const boost::shared_ptr<Ecmwf>&,
+.def(luabind::constructor<const boost::shared_ptr<Meteorology>&,
                           const boost::shared_ptr<Level1b>&,
                           const boost::shared_ptr<Altitude>&,
                           const HdfFile&,
                           const std::string&,
                           const std::string&>())
-.def(luabind::constructor<const boost::shared_ptr<Ecmwf>&,
+.def(luabind::constructor<const boost::shared_ptr<Meteorology>&,
                           const boost::shared_ptr<Level1b>&,
                           const boost::shared_ptr<Altitude>&,
                           const HdfFile&,
@@ -30,7 +30,7 @@ REGISTER_LUA_END()
 // temp_avg_window is the number of points before and after the current temperature value
 // to average among
 
-GasVmrApriori::GasVmrApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
+GasVmrApriori::GasVmrApriori(const boost::shared_ptr<Meteorology>& Met_file,
                              const boost::shared_ptr<Level1b>& L1b_file,
                              const boost::shared_ptr<Altitude>& Alt,
                              const HdfFile& Hdf_static_input,
@@ -39,11 +39,11 @@ GasVmrApriori::GasVmrApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
                              const int temp_avg_window)
 {
     // Read pressure and temperature grids
-    blitz::Array<double, 1> ecmwf_press = Ecmwf_file->pressure_levels();
+    blitz::Array<double, 1> ecmwf_press = Met_file->pressure_levels();
     model_press.resize(ecmwf_press.rows());
     model_press = ecmwf_press;
 
-    blitz::Array<double, 1> model_temp = Ecmwf_file->temperature();
+    blitz::Array<double, 1> model_temp = Met_file->temperature();
 
     // Smooth the model temperature out with a simple moving average to reduce problems finding
     // tropopause altitude due to kinks in the data

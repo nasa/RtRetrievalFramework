@@ -10,7 +10,7 @@
 
 from sys import version_info
 if version_info >= (3, 0, 0):
-    new_instancemethod = lambda func, inst, cls: _temperature_ecmwf.SWIG_PyInstanceMethod_New(func)
+    new_instancemethod = lambda func, inst, cls: _temperature_met.SWIG_PyInstanceMethod_New(func)
 else:
     from new import instancemethod as new_instancemethod
 if version_info >= (2, 6, 0):
@@ -19,20 +19,20 @@ if version_info >= (2, 6, 0):
         import imp
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_temperature_ecmwf', [dirname(__file__)])
+            fp, pathname, description = imp.find_module('_temperature_met', [dirname(__file__)])
         except ImportError:
-            import _temperature_ecmwf
-            return _temperature_ecmwf
+            import _temperature_met
+            return _temperature_met
         if fp is not None:
             try:
-                _mod = imp.load_module('_temperature_ecmwf', fp, pathname, description)
+                _mod = imp.load_module('_temperature_met', fp, pathname, description)
             finally:
                 fp.close()
             return _mod
-    _temperature_ecmwf = swig_import_helper()
+    _temperature_met = swig_import_helper()
     del swig_import_helper
 else:
-    import _temperature_ecmwf
+    import _temperature_met
 del version_info
 try:
     _swig_property = property
@@ -111,8 +111,8 @@ except:
 
 
 
-_temperature_ecmwf.SHARED_PTR_DISOWN_swigconstant(_temperature_ecmwf)
-SHARED_PTR_DISOWN = _temperature_ecmwf.SHARED_PTR_DISOWN
+_temperature_met.SHARED_PTR_DISOWN_swigconstant(_temperature_met)
+SHARED_PTR_DISOWN = _temperature_met.SHARED_PTR_DISOWN
 
 def _new_from_init(cls, version, *args):
     '''For use with pickle, covers common case where we just store the
@@ -139,37 +139,36 @@ import full_physics_swig.temperature
 import full_physics_swig.state_vector
 import full_physics_swig.generic_object
 import full_physics_swig.sub_state_vector_array
-import full_physics_swig.meteorology
-class TemperatureEcmwf(full_physics_swig.temperature_offset.TemperatureOffset):
+class TemperatureMet(full_physics_swig.temperature_offset.TemperatureOffset):
     """
 
     This class maintains the temperature portion of the state.
 
-    This particular implementation uses the temperature from ECMWF file
+    This particular implementation uses the temperature from MET file
     (interpolated to the current pressure grid), along with an offset.
 
-    C++ includes: temperature_ecmwf.h 
+    C++ includes: temperature_met.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, Ecmwf_file, Press, Temp_offset, Temp_flag):
+    def __init__(self, Met_file, Press, Temp_offset, Temp_flag):
         """
 
-        TemperatureEcmwf::TemperatureEcmwf(const boost::shared_ptr< Ecmwf > &Ecmwf_file, const
+        TemperatureMet::TemperatureMet(const boost::shared_ptr< Meteorology > &Met_file, const
         boost::shared_ptr< Pressure > &Press, double Temp_offset, bool
         Temp_flag)
         Create an Temperature. 
         """
-        _temperature_ecmwf.TemperatureEcmwf_swiginit(self, _temperature_ecmwf.new_TemperatureEcmwf(Ecmwf_file, Press, Temp_offset, Temp_flag))
+        _temperature_met.TemperatureMet_swiginit(self, _temperature_met.new_TemperatureMet(Met_file, Press, Temp_offset, Temp_flag))
 
     def clone(self, *args):
         """
 
-        boost::shared_ptr< Temperature > TemperatureEcmwf::clone(const boost::shared_ptr< Pressure > &Press) const
+        boost::shared_ptr< Temperature > TemperatureMet::clone(const boost::shared_ptr< Pressure > &Press) const
 
         """
-        return _temperature_ecmwf.TemperatureEcmwf_clone(self, *args)
+        return _temperature_met.TemperatureMet_clone(self, *args)
 
 
     @property
@@ -185,10 +184,10 @@ class TemperatureEcmwf(full_physics_swig.temperature_offset.TemperatureOffset):
     def _v_temperature_profile(self):
         """
 
-        virtual blitz::Array<double, 1> FullPhysics::TemperatureEcmwf::temperature_profile() const
-        Temperature from ECMWF, used to write to output file. 
+        virtual blitz::Array<double, 1> FullPhysics::TemperatureMet::temperature_profile() const
+        Temperature from MET, used to write to output file. 
         """
-        return _temperature_ecmwf.TemperatureEcmwf__v_temperature_profile(self)
+        return _temperature_met.TemperatureMet__v_temperature_profile(self)
 
 
     @property
@@ -199,25 +198,25 @@ class TemperatureEcmwf(full_physics_swig.temperature_offset.TemperatureOffset):
     def _v_pressure_profile(self):
         """
 
-        virtual blitz::Array<double, 1> FullPhysics::TemperatureEcmwf::pressure_profile() const
-        Pressure levels that temperature is on from ECMWF, used to write to
+        virtual blitz::Array<double, 1> FullPhysics::TemperatureMet::pressure_profile() const
+        Pressure levels that temperature is on from MET, used to write to
         output file. 
         """
-        return _temperature_ecmwf.TemperatureEcmwf__v_pressure_profile(self)
+        return _temperature_met.TemperatureMet__v_pressure_profile(self)
 
 
     @property
     def pressure_profile(self):
         return self._v_pressure_profile()
 
-    __swig_destroy__ = _temperature_ecmwf.delete_TemperatureEcmwf
-TemperatureEcmwf.clone = new_instancemethod(_temperature_ecmwf.TemperatureEcmwf_clone, None, TemperatureEcmwf)
-TemperatureEcmwf._v_temperature_offset = new_instancemethod(_temperature_ecmwf.TemperatureEcmwf__v_temperature_offset, None, TemperatureEcmwf)
-TemperatureEcmwf._v_temperature_offset_uncertainty = new_instancemethod(_temperature_ecmwf.TemperatureEcmwf__v_temperature_offset_uncertainty, None, TemperatureEcmwf)
-TemperatureEcmwf._v_temperature_profile = new_instancemethod(_temperature_ecmwf.TemperatureEcmwf__v_temperature_profile, None, TemperatureEcmwf)
-TemperatureEcmwf._v_pressure_profile = new_instancemethod(_temperature_ecmwf.TemperatureEcmwf__v_pressure_profile, None, TemperatureEcmwf)
-TemperatureEcmwf_swigregister = _temperature_ecmwf.TemperatureEcmwf_swigregister
-TemperatureEcmwf_swigregister(TemperatureEcmwf)
+    __swig_destroy__ = _temperature_met.delete_TemperatureMet
+TemperatureMet.clone = new_instancemethod(_temperature_met.TemperatureMet_clone, None, TemperatureMet)
+TemperatureMet._v_temperature_offset = new_instancemethod(_temperature_met.TemperatureMet__v_temperature_offset, None, TemperatureMet)
+TemperatureMet._v_temperature_offset_uncertainty = new_instancemethod(_temperature_met.TemperatureMet__v_temperature_offset_uncertainty, None, TemperatureMet)
+TemperatureMet._v_temperature_profile = new_instancemethod(_temperature_met.TemperatureMet__v_temperature_profile, None, TemperatureMet)
+TemperatureMet._v_pressure_profile = new_instancemethod(_temperature_met.TemperatureMet__v_pressure_profile, None, TemperatureMet)
+TemperatureMet_swigregister = _temperature_met.TemperatureMet_swigregister
+TemperatureMet_swigregister(TemperatureMet)
 
 
 

@@ -5,7 +5,7 @@ using namespace blitz;
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
-REGISTER_LUA_DERIVED_CLASS(UqEcmwf, Ecmwf)
+REGISTER_LUA_DERIVED_CLASS(UqEcmwf, Meteorology)
 .def(luabind::constructor<std::string>())
 REGISTER_LUA_END()
 #endif

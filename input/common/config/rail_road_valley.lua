@@ -114,7 +114,7 @@ function init_rrv(config)
            return TemperatureLevelOffset(self.config.pressure, self:temperature_levels(),
                                          self:apriori()(0), self:retrieval_flag()(0))
         else
-           return TemperatureEcmwf(self.config.ecmwf, self.config.pressure,
+           return TemperatureMet(self.config.ecmwf, self.config.pressure,
                                    self:apriori()(0), self:retrieval_flag()(0))
         end
     end
@@ -123,7 +123,7 @@ function init_rrv(config)
         if (r(self):has_object("/radiosonde/sonde_temperature")) then
             ro:push_back(TemperatureLevelOffsetOutput.create(self.config.temperature))
         else
-            ro:push_back(TemperatureEcmwfOutput.create(self.config.temperature))
+            ro:push_back(TemperatureMetOutput.create(self.config.temperature))
         end
     end
 
@@ -168,7 +168,7 @@ function init_rrv(config)
                                              self:retrieval_flag()(0),
                                              self.name)
         else
-            self.vmr = AbsorberVmrEcmwf(self.config.ecmwf,
+            self.vmr = AbsorberVmrMet(self.config.ecmwf,
                                         self.config.pressure,
                                         self.scale_apriori, 
                                         self:retrieval_flag()(0),
@@ -181,7 +181,7 @@ function init_rrv(config)
         if(r(self):has_object("/radiosonde/sonde_vmr")) then
             ro:push_back(AbsorberVmrLevelScaledOutput.create(self.vmr))
         else
-            ro:push_back(AbsorberVmrEcmwfOutput.create(self.vmr))
+            ro:push_back(AbsorberVmrMetOutput.create(self.vmr))
         end
     end
 

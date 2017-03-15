@@ -2029,12 +2029,12 @@ end
 ConfigCommon.temperature_ecmwf = CreatorApriori:new {}
 
 function ConfigCommon.temperature_ecmwf:create()
-   return TemperatureEcmwf(self.config.ecmwf, self.config.pressure,
-                           self:apriori()(0), self:retrieval_flag()(0))
+   return TemperatureMet(self.config.ecmwf, self.config.pressure,
+                         self:apriori()(0), self:retrieval_flag()(0))
 end
 
 function ConfigCommon.temperature_ecmwf:register_output(ro)
-   ro:push_back(TemperatureEcmwfOutput.create(self.config.temperature))
+   ro:push_back(TemperatureMetOutput.create(self.config.temperature))
 end
 
 ------------------------------------------------------------
@@ -2957,16 +2957,16 @@ function ConfigCommon.vmr_ecmwf:covariance_v()
 end
 
 function ConfigCommon.vmr_ecmwf:create_vmr()
-   self.vmr = AbsorberVmrEcmwf(self.config.ecmwf,
-                               self.config.pressure,
-                               function_or_simple_value(self.scale_apriori, self), 
-                               self:retrieval_flag()(0),
-                               self.name)
+   self.vmr = AbsorberVmrMet(self.config.ecmwf,
+                             self.config.pressure,
+                             function_or_simple_value(self.scale_apriori, self), 
+                             self:retrieval_flag()(0),
+                             self.name)
    return self.vmr
 end
 
 function ConfigCommon.vmr_ecmwf:register_output(ro)
-   ro:push_back(AbsorberVmrEcmwfOutput.create(self.vmr))
+   ro:push_back(AbsorberVmrMetOutput.create(self.vmr))
 end
 
 ------------------------------------------------------------

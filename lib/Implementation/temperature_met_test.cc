@@ -1,4 +1,4 @@
-#include "temperature_ecmwf.h"
+#include "temperature_met.h"
 #include "atmosphere_fixture.h"
 #include "acos_sounding_id.h"
 #include "unit_test_support.h"
@@ -7,7 +7,7 @@
 using namespace FullPhysics;
 using namespace blitz;
 
-BOOST_FIXTURE_TEST_SUITE(temperature_ecmwf, AtmosphereFixture)
+BOOST_FIXTURE_TEST_SUITE(temperature_met, AtmosphereFixture)
 
 BOOST_AUTO_TEST_CASE(basic)
 {
@@ -19,7 +19,7 @@ BOOST_AUTO_TEST_CASE(basic)
 					       sidv[0], sidv.size() > 1));
   boost::shared_ptr<Pressure> p = config_pressure;
   StateVector sv;
-  TemperatureEcmwf t1(e, p, 0, true);
+  TemperatureMet t1(e, p, 0, true);
   sv.add_observer(t1);
   Array<double, 1> temp_expect(19);
   temp_expect = 244.2, 214.553, 218.029, 222.544, 218.341, 221.37, 227.38,

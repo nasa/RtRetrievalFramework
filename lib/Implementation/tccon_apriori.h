@@ -1,6 +1,6 @@
 #ifndef TCCON_APRIORI_H
 #define TCCON_APRIORI_H
-#include "ecmwf.h"
+#include "meteorology.h"
 #include "pressure.h"
 #include "temperature.h"
 #include "level_1b.h"
@@ -13,7 +13,7 @@ namespace FullPhysics {
 
 class TcconApriori : public Printable<TcconApriori> {
 public:
-  TcconApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
+  TcconApriori(const boost::shared_ptr<Meteorology>& Met_file,
 	       const boost::shared_ptr<Level1b>& L1b_file,
 	       double Co2_ref = 0.000380,
 	       const Time& Ref_time = Time::parse_time("2005-01-01T00:00:00Z"),

@@ -41,25 +41,6 @@ public:
     using Meteorology::vmr;
     virtual blitz::Array<double, 1> vmr(const std::string& Species) const;
 
-    //-----------------------------------------------------------------------
-    /// Calculate windspeed magnitude from windspeed components
-    //-----------------------------------------------------------------------
-
-    virtual double windspeed() const 
-    { return sqrt( sqr(windspeed_u()) + sqr(windspeed_v()) ); }
-
-    //-----------------------------------------------------------------------
-    /// The U component windspeed from the Ecmwf file.
-    //-----------------------------------------------------------------------
-
-    virtual double windspeed_u() const = 0;
-
-    //-----------------------------------------------------------------------
-    /// The V component windspeed from the Ecmwf file.
-    //-----------------------------------------------------------------------
-
-    virtual double windspeed_v() const = 0;
-
     void print(std::ostream& Os) const { Os << "Ecmwf"; }
 
 };

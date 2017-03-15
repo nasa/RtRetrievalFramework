@@ -1,22 +1,22 @@
-#ifndef ABSORBER_VMR_ECMWF_OUTPUT_H
-#define ABSORBER_VMR_ECMWF_OUTPUT_H
+#ifndef ABSORBER_VMR_MET_OUTPUT_H
+#define ABSORBER_VMR_MET_OUTPUT_H
 #include "register_output_base.h"
-#include "absorber_vmr_ecmwf.h"
+#include "absorber_vmr_met.h"
 #include "state_vector.h"
 
 namespace FullPhysics {
 /****************************************************************//**
-  This registers the portions of the AbsorberVmrEcmwf class that
+  This registers the portions of the AbsorberVmrMet class that
   should be written as output.
 
   See the discussion in RegisterOutputBase why this isn't just part of
-  the AbsorberVmrEcmwf class.
+  the AbsorberVmrMet class.
 *******************************************************************/
-class AbsorberVmrEcmwfOutput : public RegisterOutputBase {
+class AbsorberVmrMetOutput : public RegisterOutputBase {
 public:
-  AbsorberVmrEcmwfOutput(const boost::shared_ptr<AbsorberVmrEcmwf>& A)
+  AbsorberVmrMetOutput(const boost::shared_ptr<AbsorberVmrMet>& A)
     : a(A) {}
-  virtual ~AbsorberVmrEcmwfOutput() {}
+  virtual ~AbsorberVmrMetOutput() {}
   virtual void register_output(const boost::shared_ptr<Output>& out) const;
   virtual void register_output_apriori(const boost::shared_ptr<Output>& out) const;
 private:
