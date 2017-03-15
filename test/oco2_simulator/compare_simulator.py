@@ -15,8 +15,8 @@ scene_file = "../input/oco2_sim_scene.h5"
 r = L2Run(bdir + "config/config_orbit_sim_match.lua", sid_name,ecmwf_name, 
           l1b_name, scene_file = scene_file)
 
-print r.forward_model
-print r.xco2
+print (r.forward_model)
+print (r.xco2)
 
 # High resolution reflectance from CSU
 refl = []
