@@ -1,21 +1,21 @@
-#ifndef TEMPERATURE_ECMWF_OUTPUT_H
-#define TEMPERATURE_ECMWF_OUTPUT_H
+#ifndef TEMPERATURE_MET_OUTPUT_H
+#define TEMPERATURE_MET_OUTPUT_H
 #include "register_output_base.h"
-#include "temperature_ecmwf.h"
+#include "temperature_met.h"
 
 namespace FullPhysics {
 /****************************************************************//**
-  This registers the portions of the TemperatureEcmwf class that
+  This registers the portions of the TemperatureMet class that
   should be written as output.
 
   See the discussion in RegisterOutputBase why this isn't just part of
-  the TemperatureEcmwf class.
+  the TemperatureMet class.
 *******************************************************************/
-class TemperatureEcmwfOutput : public RegisterOutputBase {
+class TemperatureMetOutput : public RegisterOutputBase {
 public:
-  TemperatureEcmwfOutput(const boost::shared_ptr<TemperatureEcmwf>& T) 
+  TemperatureMetOutput(const boost::shared_ptr<TemperatureMet>& T) 
   : t(T) {}
-  virtual ~TemperatureEcmwfOutput() {}
+  virtual ~TemperatureMetOutput() {}
   virtual void register_output(const boost::shared_ptr<Output>& out) const;
   virtual void register_output_apriori(const boost::shared_ptr<Output>& out) const;
 private:

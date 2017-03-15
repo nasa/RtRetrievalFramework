@@ -5677,7 +5677,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Meteorology_surface_pressure(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Meteorology__v_surface_pressure(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Meteorology *arg1 = (FullPhysics::Meteorology *) 0 ;
   void *argp1 = 0 ;
@@ -5693,7 +5693,7 @@ SWIGINTERN PyObject *_wrap_Meteorology_surface_pressure(PyObject *SWIGUNUSEDPARM
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Meteorology_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Meteorology_surface_pressure" "', argument " "1"" of type '" "FullPhysics::Meteorology const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Meteorology__v_surface_pressure" "', argument " "1"" of type '" "FullPhysics::Meteorology const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Meteorology > * >(argp1);
@@ -5720,7 +5720,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Meteorology_windspeed(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Meteorology__v_windspeed(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Meteorology *arg1 = (FullPhysics::Meteorology *) 0 ;
   void *argp1 = 0 ;
@@ -5736,7 +5736,7 @@ SWIGINTERN PyObject *_wrap_Meteorology_windspeed(PyObject *SWIGUNUSEDPARM(self),
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Meteorology_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Meteorology_windspeed" "', argument " "1"" of type '" "FullPhysics::Meteorology const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Meteorology__v_windspeed" "', argument " "1"" of type '" "FullPhysics::Meteorology const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Meteorology > * >(argp1);
@@ -5750,6 +5750,92 @@ SWIGINTERN PyObject *_wrap_Meteorology_windspeed(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (double)((FullPhysics::Meteorology const *)arg1)->windspeed();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Meteorology__v_windspeed_u(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Meteorology *arg1 = (FullPhysics::Meteorology *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Meteorology const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Meteorology const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Meteorology_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Meteorology__v_windspeed_u" "', argument " "1"" of type '" "FullPhysics::Meteorology const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Meteorology > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Meteorology > * >(argp1);
+      arg1 = const_cast< FullPhysics::Meteorology * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Meteorology > * >(argp1);
+      arg1 = const_cast< FullPhysics::Meteorology * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((FullPhysics::Meteorology const *)arg1)->windspeed_u();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Meteorology__v_windspeed_v(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Meteorology *arg1 = (FullPhysics::Meteorology *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Meteorology const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Meteorology const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Meteorology_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Meteorology__v_windspeed_v" "', argument " "1"" of type '" "FullPhysics::Meteorology const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Meteorology > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Meteorology > * >(argp1);
+      arg1 = const_cast< FullPhysics::Meteorology * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Meteorology > * >(argp1);
+      arg1 = const_cast< FullPhysics::Meteorology * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((FullPhysics::Meteorology const *)arg1)->windspeed_v();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5802,15 +5888,25 @@ static PyMethodDef SwigMethods[] = {
 		"Temperature profile in Kelvins interpolated to the requested pressure\n"
 		"levels. \n"
 		""},
-	 { (char *)"Meteorology_surface_pressure", (PyCFunction)_wrap_Meteorology_surface_pressure, METH_O, (char *)"\n"
+	 { (char *)"Meteorology__v_surface_pressure", (PyCFunction)_wrap_Meteorology__v_surface_pressure, METH_O, (char *)"\n"
 		"\n"
 		"virtual double FullPhysics::Meteorology::surface_pressure() const =0\n"
 		"Surface pressure in Pascals. \n"
 		""},
-	 { (char *)"Meteorology_windspeed", (PyCFunction)_wrap_Meteorology_windspeed, METH_O, (char *)"\n"
+	 { (char *)"Meteorology__v_windspeed", (PyCFunction)_wrap_Meteorology__v_windspeed, METH_O, (char *)"\n"
 		"\n"
-		"virtual double FullPhysics::Meteorology::windspeed() const =0\n"
-		"Windspeed in m/s for the surface. \n"
+		"double Meteorology::windspeed() const\n"
+		"Windspeed magnitude in m/s for the surface. \n"
+		""},
+	 { (char *)"Meteorology__v_windspeed_u", (PyCFunction)_wrap_Meteorology__v_windspeed_u, METH_O, (char *)"\n"
+		"\n"
+		"virtual double FullPhysics::Meteorology::windspeed_u() const =0\n"
+		"The U component windspeed in m/s. \n"
+		""},
+	 { (char *)"Meteorology__v_windspeed_v", (PyCFunction)_wrap_Meteorology__v_windspeed_v, METH_O, (char *)"\n"
+		"\n"
+		"virtual double FullPhysics::Meteorology::windspeed_v() const =0\n"
+		"The V component windspeed in m/s. \n"
 		""},
 	 { (char *)"Meteorology_swigregister", Meteorology_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

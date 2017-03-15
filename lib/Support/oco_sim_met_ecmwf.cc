@@ -5,7 +5,7 @@ using namespace blitz;
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
-REGISTER_LUA_DERIVED_CLASS(OcoSimMetEcmwf, Ecmwf)
+REGISTER_LUA_DERIVED_CLASS(OcoSimMetEcmwf, Meteorology)
 .def(luabind::constructor<std::string, 
 			  const boost::shared_ptr<HdfSoundingId>&>())
 REGISTER_LUA_END()

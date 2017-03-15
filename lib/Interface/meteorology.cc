@@ -23,6 +23,8 @@ REGISTER_LUA_CLASS(Meteorology)
 .def("temperature", ((f_interp) &Meteorology::temperature))
 .def("surface_pressure", &Meteorology::surface_pressure)
 .def("windspeed", &Meteorology::windspeed)
+.def("windspeed_u", &Meteorology::windspeed_u)
+.def("windspeed_v", &Meteorology::windspeed_v)
 REGISTER_LUA_END()
 #endif
 
@@ -39,6 +41,11 @@ Array<double, 1> Meteorology::vmr(const std::string& Species, const Array<double
 Array<double, 1> Meteorology::temperature(const Array<double, 1>& Pressure_level) const
 {
     return interpolate_to_grid(temperature(), Pressure_level);
+}
+
+double Meteorology::windspeed() const
+{
+    return sqrt( sqr(windspeed_u()) + sqr(windspeed_v()) ); 
 }
 
 Array<double, 1> Meteorology::interpolate_to_grid(const Array<double, 1>& Profile, const Array<double, 1>& Dest_pressure_levels) const

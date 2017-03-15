@@ -217,9 +217,9 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(l2_fp_configuration_lua)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(nonuniform_spectrum_sampling)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(spectral_window_range)(void);
-  SWIG_INIT_TYPE SWIG_INIT_FUNC(temperature_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(temperature_met)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(temperature_level_offset)(void);
-  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_met)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_level)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_level_scaled)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(pressure_sigma)(void);
@@ -615,9 +615,9 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_l2_fp_configuration_lua", SWIG_INIT_FUNC(l2_fp_configuration_lua));
   SWIG_INIT_MODULE(package, "_nonuniform_spectrum_sampling", SWIG_INIT_FUNC(nonuniform_spectrum_sampling));
   SWIG_INIT_MODULE(package, "_spectral_window_range", SWIG_INIT_FUNC(spectral_window_range));
-  SWIG_INIT_MODULE(package, "_temperature_ecmwf", SWIG_INIT_FUNC(temperature_ecmwf));
+  SWIG_INIT_MODULE(package, "_temperature_met", SWIG_INIT_FUNC(temperature_met));
   SWIG_INIT_MODULE(package, "_temperature_level_offset", SWIG_INIT_FUNC(temperature_level_offset));
-  SWIG_INIT_MODULE(package, "_absorber_vmr_ecmwf", SWIG_INIT_FUNC(absorber_vmr_ecmwf));
+  SWIG_INIT_MODULE(package, "_absorber_vmr_met", SWIG_INIT_FUNC(absorber_vmr_met));
   SWIG_INIT_MODULE(package, "_absorber_vmr_level", SWIG_INIT_FUNC(absorber_vmr_level));
   SWIG_INIT_MODULE(package, "_absorber_vmr_level_scaled", SWIG_INIT_FUNC(absorber_vmr_level_scaled));
   SWIG_INIT_MODULE(package, "_pressure_sigma", SWIG_INIT_FUNC(pressure_sigma));

@@ -18,8 +18,6 @@ public:
     %python_attribute(h2o_vmr, blitz::Array<double, 1>);
     %python_attribute(ozone_mmr, virtual blitz::Array<double, 1>)
     %python_attribute(ozone_vmr, blitz::Array<double, 1>)
-    %python_attribute(windspeed_u, double);
-    %python_attribute(windspeed_v, double);
     std::string print_to_string();
 };
 }

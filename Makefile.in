@@ -538,9 +538,9 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/l2_fp_configuration_lua_wrap.cc \
 	@swigsrc@/nonuniform_spectrum_sampling_wrap.cc \
 	@swigsrc@/spectral_window_range_wrap.cc \
-	@swigsrc@/temperature_ecmwf_wrap.cc \
+	@swigsrc@/temperature_met_wrap.cc \
 	@swigsrc@/temperature_level_offset_wrap.cc \
-	@swigsrc@/absorber_vmr_ecmwf_wrap.cc \
+	@swigsrc@/absorber_vmr_met_wrap.cc \
 	@swigsrc@/absorber_vmr_level_wrap.cc \
 	@swigsrc@/absorber_vmr_level_scaled_wrap.cc \
 	@swigsrc@/pressure_sigma_wrap.cc \
@@ -778,9 +778,9 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-l2_fp_configuration_lua_wrap.lo \
 	@swigsrc@/_swig_wrap_la-nonuniform_spectrum_sampling_wrap.lo \
 	@swigsrc@/_swig_wrap_la-spectral_window_range_wrap.lo \
-	@swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo \
+	@swigsrc@/_swig_wrap_la-temperature_met_wrap.lo \
 	@swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo \
-	@swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo \
+	@swigsrc@/_swig_wrap_la-absorber_vmr_met_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_level_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_level_scaled_wrap.lo \
 	@swigsrc@/_swig_wrap_la-pressure_sigma_wrap.lo \
@@ -974,10 +974,9 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@implsrc@/aerosol_shape_gaussian.cc \
 	@implsrc@/l2_fp_configuration_lua.cc \
 	@implsrc@/nonuniform_spectrum_sampling.cc \
-	@implsrc@/log_timing.cc @implsrc@/temperature_ecmwf.cc \
+	@implsrc@/log_timing.cc @implsrc@/temperature_met.cc \
 	@implsrc@/temperature_level_offset.cc \
-	@implsrc@/absorber_vmr_ecmwf.cc \
-	@implsrc@/absorber_vmr_level.cc \
+	@implsrc@/absorber_vmr_met.cc @implsrc@/absorber_vmr_level.cc \
 	@implsrc@/absorber_vmr_level_scaled.cc \
 	@implsrc@/pressure_sigma.cc \
 	@implsrc@/stokes_coefficient_constant.cc \
@@ -1043,7 +1042,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@outsrc@/absorber_absco_output.cc \
 	@outsrc@/absorber_vmr_level_output.cc \
 	@outsrc@/absorber_vmr_level_scaled_output.cc \
-	@outsrc@/absorber_vmr_ecmwf_output.cc \
+	@outsrc@/absorber_vmr_met_output.cc \
 	@outsrc@/aerosol_aod_output.cc \
 	@outsrc@/connor_solver_output.cc \
 	@outsrc@/error_analysis_output.cc \
@@ -1051,7 +1050,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@outsrc@/oco_forward_model_output.cc \
 	@outsrc@/connor_convergence_output.cc \
 	@outsrc@/level_1b_output.cc @outsrc@/state_vector_output.cc \
-	@outsrc@/temperature_ecmwf_output.cc \
+	@outsrc@/temperature_met_output.cc \
 	@outsrc@/temperature_level_offset_output.cc \
 	@outsrc@/aerosol_param_output.cc \
 	@outsrc@/fts_run_log_output.cc \
@@ -1061,7 +1060,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@outsrc@/max_a_posteriori_output.cc \
 	@outsrc@/fluorescence_effect_output.cc \
 	@outsrc@/radiance_scaling_output.cc \
-	@outsrc@/ecmwf_pass_through_output.cc \
+	@outsrc@/met_pass_through_output.cc \
 	@outsrc@/gas_vmr_apriori_output.cc @luasrc@/register_lua.cc \
 	@luasrc@/lua_state.cc @luasrc@/lua_callback.cc \
 	@luasrc@/lua_blitz.cc @luasrc@/luabind_object.cc
@@ -1256,9 +1255,9 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@implsrc@/libfp_la-l2_fp_configuration_lua.lo \
 	@implsrc@/libfp_la-nonuniform_spectrum_sampling.lo \
 	@implsrc@/libfp_la-log_timing.lo \
-	@implsrc@/libfp_la-temperature_ecmwf.lo \
+	@implsrc@/libfp_la-temperature_met.lo \
 	@implsrc@/libfp_la-temperature_level_offset.lo \
-	@implsrc@/libfp_la-absorber_vmr_ecmwf.lo \
+	@implsrc@/libfp_la-absorber_vmr_met.lo \
 	@implsrc@/libfp_la-absorber_vmr_level.lo \
 	@implsrc@/libfp_la-absorber_vmr_level_scaled.lo \
 	@implsrc@/libfp_la-pressure_sigma.lo \
@@ -1341,7 +1340,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@outsrc@/libfp_la-absorber_absco_output.lo \
 	@outsrc@/libfp_la-absorber_vmr_level_output.lo \
 	@outsrc@/libfp_la-absorber_vmr_level_scaled_output.lo \
-	@outsrc@/libfp_la-absorber_vmr_ecmwf_output.lo \
+	@outsrc@/libfp_la-absorber_vmr_met_output.lo \
 	@outsrc@/libfp_la-aerosol_aod_output.lo \
 	@outsrc@/libfp_la-connor_solver_output.lo \
 	@outsrc@/libfp_la-error_analysis_output.lo \
@@ -1350,7 +1349,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@outsrc@/libfp_la-connor_convergence_output.lo \
 	@outsrc@/libfp_la-level_1b_output.lo \
 	@outsrc@/libfp_la-state_vector_output.lo \
-	@outsrc@/libfp_la-temperature_ecmwf_output.lo \
+	@outsrc@/libfp_la-temperature_met_output.lo \
 	@outsrc@/libfp_la-temperature_level_offset_output.lo \
 	@outsrc@/libfp_la-aerosol_param_output.lo \
 	@outsrc@/libfp_la-fts_run_log_output.lo \
@@ -1360,7 +1359,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@outsrc@/libfp_la-max_a_posteriori_output.lo \
 	@outsrc@/libfp_la-fluorescence_effect_output.lo \
 	@outsrc@/libfp_la-radiance_scaling_output.lo \
-	@outsrc@/libfp_la-ecmwf_pass_through_output.lo \
+	@outsrc@/libfp_la-met_pass_through_output.lo \
 	@outsrc@/libfp_la-gas_vmr_apriori_output.lo $(am__objects_3)
 libfp_la_OBJECTS = $(am_libfp_la_OBJECTS)
 libfp_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -1580,9 +1579,9 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@implsrc@/level_1b_fts_test.cc \
 	@implsrc@/nonuniform_spectrum_sampling_test.cc \
 	@implsrc@/nonuniform_lsi_rt_test.cc \
-	@implsrc@/temperature_ecmwf_test.cc \
+	@implsrc@/temperature_met_test.cc \
 	@implsrc@/temperature_level_offset_test.cc \
-	@implsrc@/absorber_vmr_ecmwf_test.cc \
+	@implsrc@/absorber_vmr_met_test.cc \
 	@implsrc@/absorber_vmr_level_test.cc \
 	@implsrc@/absorber_vmr_level_scaled_test.cc \
 	@implsrc@/pressure_sigma_test.cc \
@@ -1628,7 +1627,7 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@outsrc@/empirical_orthogonal_function_output_test.cc \
 	@outsrc@/level_1b_output_test.cc \
 	@outsrc@/state_vector_output_test.cc \
-	@outsrc@/temperature_ecmwf_output_test.cc \
+	@outsrc@/temperature_met_output_test.cc \
 	@outsrc@/temperature_level_offset_output_test.cc \
 	@outsrc@/aerosol_param_output_test.cc \
 	@outsrc@/fts_run_log_output_test.cc \
@@ -1754,9 +1753,9 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@implsrc@/level_1b_fts_test.$(OBJEXT) \
 	@implsrc@/nonuniform_spectrum_sampling_test.$(OBJEXT) \
 	@implsrc@/nonuniform_lsi_rt_test.$(OBJEXT) \
-	@implsrc@/temperature_ecmwf_test.$(OBJEXT) \
+	@implsrc@/temperature_met_test.$(OBJEXT) \
 	@implsrc@/temperature_level_offset_test.$(OBJEXT) \
-	@implsrc@/absorber_vmr_ecmwf_test.$(OBJEXT) \
+	@implsrc@/absorber_vmr_met_test.$(OBJEXT) \
 	@implsrc@/absorber_vmr_level_test.$(OBJEXT) \
 	@implsrc@/absorber_vmr_level_scaled_test.$(OBJEXT) \
 	@implsrc@/pressure_sigma_test.$(OBJEXT) \
@@ -1802,7 +1801,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@outsrc@/empirical_orthogonal_function_output_test.$(OBJEXT) \
 	@outsrc@/level_1b_output_test.$(OBJEXT) \
 	@outsrc@/state_vector_output_test.$(OBJEXT) \
-	@outsrc@/temperature_ecmwf_output_test.$(OBJEXT) \
+	@outsrc@/temperature_met_output_test.$(OBJEXT) \
 	@outsrc@/temperature_level_offset_output_test.$(OBJEXT) \
 	@outsrc@/aerosol_param_output_test.$(OBJEXT) \
 	@outsrc@/fts_run_log_output_test.$(OBJEXT) \
@@ -2047,9 +2046,9 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@implsrc@/l2_fp_configuration_lua.h \
 	@implsrc@/nonuniform_spectrum_sampling.h \
 	@implsrc@/log_timing.h @implsrc@/l2_fp_configuration.h \
-	@implsrc@/temperature_ecmwf.h \
+	@implsrc@/temperature_met.h \
 	@implsrc@/temperature_level_offset.h \
-	@implsrc@/absorber_vmr_ecmwf.h @implsrc@/absorber_vmr_level.h \
+	@implsrc@/absorber_vmr_met.h @implsrc@/absorber_vmr_level.h \
 	@implsrc@/absorber_vmr_level_scaled.h \
 	@implsrc@/pressure_sigma.h \
 	@implsrc@/stokes_coefficient_constant.h \
@@ -2099,7 +2098,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@outsrc@/empirical_orthogonal_function_output.h \
 	@outsrc@/absorber_vmr_level_output.h \
 	@outsrc@/absorber_vmr_level_scaled_output.h \
-	@outsrc@/absorber_vmr_ecmwf_output.h \
+	@outsrc@/absorber_vmr_met_output.h \
 	@outsrc@/absorber_absco_output.h @outsrc@/aerosol_aod_output.h \
 	@outsrc@/connor_solver_output.h \
 	@outsrc@/error_analysis_output.h \
@@ -2107,7 +2106,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@outsrc@/oco_forward_model_output.h \
 	@outsrc@/connor_convergence_output.h \
 	@outsrc@/level_1b_output.h @outsrc@/state_vector_output.h \
-	@outsrc@/temperature_ecmwf_output.h \
+	@outsrc@/temperature_met_output.h \
 	@outsrc@/temperature_level_offset_output.h \
 	@outsrc@/aerosol_param_output.h @outsrc@/fts_run_log_output.h \
 	@outsrc@/dispersion_fit_output.h \
@@ -2116,7 +2115,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@outsrc@/max_a_posteriori_output.h \
 	@outsrc@/fluorescence_effect_output.h \
 	@outsrc@/radiance_scaling_output.h \
-	@outsrc@/ecmwf_pass_through_output.h \
+	@outsrc@/met_pass_through_output.h \
 	@outsrc@/gas_vmr_apriori_output.h @luasrc@/dir_change.h \
 	@luasrc@/register_lua.h @luasrc@/lua_state.h \
 	@luasrc@/lua_callback.h @luasrc@/luabind_object.h
@@ -2726,9 +2725,9 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@implsrc@/l2_fp_configuration_lua.h \
 	@implsrc@/nonuniform_spectrum_sampling.h \
 	@implsrc@/log_timing.h @implsrc@/l2_fp_configuration.h \
-	@implsrc@/temperature_ecmwf.h \
+	@implsrc@/temperature_met.h \
 	@implsrc@/temperature_level_offset.h \
-	@implsrc@/absorber_vmr_ecmwf.h @implsrc@/absorber_vmr_level.h \
+	@implsrc@/absorber_vmr_met.h @implsrc@/absorber_vmr_level.h \
 	@implsrc@/absorber_vmr_level_scaled.h \
 	@implsrc@/pressure_sigma.h \
 	@implsrc@/stokes_coefficient_constant.h \
@@ -2778,7 +2777,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@outsrc@/empirical_orthogonal_function_output.h \
 	@outsrc@/absorber_vmr_level_output.h \
 	@outsrc@/absorber_vmr_level_scaled_output.h \
-	@outsrc@/absorber_vmr_ecmwf_output.h \
+	@outsrc@/absorber_vmr_met_output.h \
 	@outsrc@/absorber_absco_output.h @outsrc@/aerosol_aod_output.h \
 	@outsrc@/connor_solver_output.h \
 	@outsrc@/error_analysis_output.h \
@@ -2786,7 +2785,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@outsrc@/oco_forward_model_output.h \
 	@outsrc@/connor_convergence_output.h \
 	@outsrc@/level_1b_output.h @outsrc@/state_vector_output.h \
-	@outsrc@/temperature_ecmwf_output.h \
+	@outsrc@/temperature_met_output.h \
 	@outsrc@/temperature_level_offset_output.h \
 	@outsrc@/aerosol_param_output.h @outsrc@/fts_run_log_output.h \
 	@outsrc@/dispersion_fit_output.h \
@@ -2795,7 +2794,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@outsrc@/max_a_posteriori_output.h \
 	@outsrc@/fluorescence_effect_output.h \
 	@outsrc@/radiance_scaling_output.h \
-	@outsrc@/ecmwf_pass_through_output.h \
+	@outsrc@/met_pass_through_output.h \
 	@outsrc@/gas_vmr_apriori_output.h $(am__append_5)
 ourboostinc_HEADERS = @supportsrc@/boost/backtrace.hpp
 
@@ -2905,9 +2904,9 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@implsrc@/level_1b_fts_test.cc \
 	@implsrc@/nonuniform_spectrum_sampling_test.cc \
 	@implsrc@/nonuniform_lsi_rt_test.cc \
-	@implsrc@/temperature_ecmwf_test.cc \
+	@implsrc@/temperature_met_test.cc \
 	@implsrc@/temperature_level_offset_test.cc \
-	@implsrc@/absorber_vmr_ecmwf_test.cc \
+	@implsrc@/absorber_vmr_met_test.cc \
 	@implsrc@/absorber_vmr_level_test.cc \
 	@implsrc@/absorber_vmr_level_scaled_test.cc \
 	@implsrc@/pressure_sigma_test.cc \
@@ -2953,7 +2952,7 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@outsrc@/empirical_orthogonal_function_output_test.cc \
 	@outsrc@/level_1b_output_test.cc \
 	@outsrc@/state_vector_output_test.cc \
-	@outsrc@/temperature_ecmwf_output_test.cc \
+	@outsrc@/temperature_met_output_test.cc \
 	@outsrc@/temperature_level_offset_output_test.cc \
 	@outsrc@/aerosol_param_output_test.cc \
 	@outsrc@/fts_run_log_output_test.cc \
@@ -3207,9 +3206,9 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/l2_fp_configuration_lua_wrap.cc \
 	@swigsrc@/nonuniform_spectrum_sampling_wrap.cc \
 	@swigsrc@/spectral_window_range_wrap.cc \
-	@swigsrc@/temperature_ecmwf_wrap.cc \
+	@swigsrc@/temperature_met_wrap.cc \
 	@swigsrc@/temperature_level_offset_wrap.cc \
-	@swigsrc@/absorber_vmr_ecmwf_wrap.cc \
+	@swigsrc@/absorber_vmr_met_wrap.cc \
 	@swigsrc@/absorber_vmr_level_wrap.cc \
 	@swigsrc@/absorber_vmr_level_scaled_wrap.cc \
 	@swigsrc@/pressure_sigma_wrap.cc \
@@ -3459,10 +3458,9 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@implsrc@/aerosol_shape_gaussian.cc \
 	@implsrc@/l2_fp_configuration_lua.cc \
 	@implsrc@/nonuniform_spectrum_sampling.cc \
-	@implsrc@/log_timing.cc @implsrc@/temperature_ecmwf.cc \
+	@implsrc@/log_timing.cc @implsrc@/temperature_met.cc \
 	@implsrc@/temperature_level_offset.cc \
-	@implsrc@/absorber_vmr_ecmwf.cc \
-	@implsrc@/absorber_vmr_level.cc \
+	@implsrc@/absorber_vmr_met.cc @implsrc@/absorber_vmr_level.cc \
 	@implsrc@/absorber_vmr_level_scaled.cc \
 	@implsrc@/pressure_sigma.cc \
 	@implsrc@/stokes_coefficient_constant.cc \
@@ -3528,7 +3526,7 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@outsrc@/absorber_absco_output.cc \
 	@outsrc@/absorber_vmr_level_output.cc \
 	@outsrc@/absorber_vmr_level_scaled_output.cc \
-	@outsrc@/absorber_vmr_ecmwf_output.cc \
+	@outsrc@/absorber_vmr_met_output.cc \
 	@outsrc@/aerosol_aod_output.cc \
 	@outsrc@/connor_solver_output.cc \
 	@outsrc@/error_analysis_output.cc \
@@ -3536,7 +3534,7 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@outsrc@/oco_forward_model_output.cc \
 	@outsrc@/connor_convergence_output.cc \
 	@outsrc@/level_1b_output.cc @outsrc@/state_vector_output.cc \
-	@outsrc@/temperature_ecmwf_output.cc \
+	@outsrc@/temperature_met_output.cc \
 	@outsrc@/temperature_level_offset_output.cc \
 	@outsrc@/aerosol_param_output.cc \
 	@outsrc@/fts_run_log_output.cc \
@@ -3546,7 +3544,7 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@outsrc@/max_a_posteriori_output.cc \
 	@outsrc@/fluorescence_effect_output.cc \
 	@outsrc@/radiance_scaling_output.cc \
-	@outsrc@/ecmwf_pass_through_output.cc \
+	@outsrc@/met_pass_through_output.cc \
 	@outsrc@/gas_vmr_apriori_output.cc $(am__append_6)
 libfull_physics_la_LIBADD = libfp.la
 libfull_physics_la_LDFLAGS = $(AM_LDFLAGS) $(BOOST_LDFLAGS) \
@@ -4404,11 +4402,11 @@ clean-pkgpythonswigLTLIBRARIES:
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-spectral_window_range_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
-@swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo:  \
+@swigsrc@/_swig_wrap_la-temperature_met_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
-@swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo:  \
+@swigsrc@/_swig_wrap_la-absorber_vmr_met_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-absorber_vmr_level_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -4983,11 +4981,11 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-log_timing.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
-@implsrc@/libfp_la-temperature_ecmwf.lo: @implsrc@/$(am__dirstamp) \
+@implsrc@/libfp_la-temperature_met.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-temperature_level_offset.lo:  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
-@implsrc@/libfp_la-absorber_vmr_ecmwf.lo: @implsrc@/$(am__dirstamp) \
+@implsrc@/libfp_la-absorber_vmr_met.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-absorber_vmr_level.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -5191,7 +5189,7 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-absorber_vmr_level_scaled_output.lo:  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
-@outsrc@/libfp_la-absorber_vmr_ecmwf_output.lo:  \
+@outsrc@/libfp_la-absorber_vmr_met_output.lo:  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-aerosol_aod_output.lo: @outsrc@/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -5209,8 +5207,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-state_vector_output.lo: @outsrc@/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
-@outsrc@/libfp_la-temperature_ecmwf_output.lo:  \
-	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/libfp_la-temperature_met_output.lo: @outsrc@/$(am__dirstamp) \
+	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-temperature_level_offset_output.lo:  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-aerosol_param_output.lo: @outsrc@/$(am__dirstamp) \
@@ -5229,7 +5227,7 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-radiance_scaling_output.lo:  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
-@outsrc@/libfp_la-ecmwf_pass_through_output.lo:  \
+@outsrc@/libfp_la-met_pass_through_output.lo:  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-gas_vmr_apriori_output.lo: @outsrc@/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -5872,12 +5870,12 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/nonuniform_lsi_rt_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
-@implsrc@/temperature_ecmwf_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
+@implsrc@/temperature_met_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/temperature_level_offset_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
-@implsrc@/absorber_vmr_ecmwf_test.$(OBJEXT):  \
-	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/absorber_vmr_met_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/absorber_vmr_level_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/absorber_vmr_level_scaled_test.$(OBJEXT):  \
@@ -5977,7 +5975,7 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/state_vector_output_test.$(OBJEXT): @outsrc@/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
-@outsrc@/temperature_ecmwf_output_test.$(OBJEXT):  \
+@outsrc@/temperature_met_output_test.$(OBJEXT):  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/temperature_level_offset_output_test.$(OBJEXT):  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -6098,9 +6096,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@fixedlevelsrc@/$(DEPDIR)/temperature_fixed_level_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/absco_hdf_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/absorber_absco_test.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/absorber_vmr_ecmwf_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/absorber_vmr_level_scaled_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/absorber_vmr_level_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/absorber_vmr_met_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/aerosol_optical_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/aerosol_property_hdf_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/aerosol_property_rh_hdf_test.Po@am__quote@
@@ -6153,9 +6151,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absco.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absco_hdf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absorber_absco.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_ecmwf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level_scaled.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-aerosol_extinction_linear.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-aerosol_extinction_log.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-aerosol_optical.Plo@am__quote@
@@ -6265,8 +6263,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-stokes_coefficient_constant.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-stokes_coefficient_fraction.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-tccon_apriori.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-temperature_ecmwf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-temperature_level_offset.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-temperature_met.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-twostream_driver.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-twostream_rt.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-uniform_spectrum_sampling.Plo@am__quote@
@@ -6311,8 +6309,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/stokes_coefficient_constant_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/stokes_coefficient_fraction_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/tccon_apriori_test.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/temperature_ecmwf_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/temperature_level_offset_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/temperature_met_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/twostream_driver_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/twostream_interface_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/twostream_rt_test.Po@am__quote@
@@ -6405,9 +6403,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/high_res_spectrum_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/level_1b_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-absorber_absco_output.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_ecmwf_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level_scaled_output.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-aerosol_aod_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-aerosol_param_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-altitude_output.Plo@am__quote@
@@ -6415,7 +6413,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-connor_solver_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-dispersion_fit_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-dispersion_polynomial_output.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-ecmwf_pass_through_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-empirical_orthogonal_function_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-error_analysis_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-fluorescence_effect_output.Plo@am__quote@
@@ -6429,6 +6426,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-high_res_spectrum_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-level_1b_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-max_a_posteriori_output.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-met_pass_through_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-oco_forward_model_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-pressure_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-radiance_scaling_output.Plo@am__quote@
@@ -6436,15 +6434,15 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-source_files_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-state_vector_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-stokes_coefficient_fraction_output.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-temperature_ecmwf_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-temperature_level_offset_output.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-temperature_met_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-zero_offset_waveform_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/oco_forward_model_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/radiance_scaling_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/state_vector_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/stokes_coefficient_fraction_output_test.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/temperature_ecmwf_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/temperature_level_offset_output_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/temperature_met_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/zero_offset_waveform_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/acos_sounding_id_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/array_ad_cache_test.Po@am__quote@
@@ -6522,12 +6520,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absco_hdf_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absco_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_absco_wrap.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_ecmwf_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_fixed_level_scaled_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_fixed_level_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_imp_base_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_level_scaled_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_level_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_met_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_scaled_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_wrap.Plo@am__quote@
@@ -6743,10 +6741,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-swig_std_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-swig_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-tccon_apriori_wrap.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_ecmwf_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_fixed_level_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_imp_base_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_met_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_offset_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-twostream_driver_wrap.Plo@am__quote@
@@ -8411,12 +8409,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-spectral_window_range_wrap.lo `test -f '@swigsrc@/spectral_window_range_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/spectral_window_range_wrap.cc
 
-@swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo: @swigsrc@/temperature_ecmwf_wrap.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_ecmwf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo `test -f '@swigsrc@/temperature_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_ecmwf_wrap.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_ecmwf_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_ecmwf_wrap.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/temperature_ecmwf_wrap.cc' object='@swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@swigsrc@/_swig_wrap_la-temperature_met_wrap.lo: @swigsrc@/temperature_met_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-temperature_met_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_met_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-temperature_met_wrap.lo `test -f '@swigsrc@/temperature_met_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_met_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_met_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_met_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/temperature_met_wrap.cc' object='@swigsrc@/_swig_wrap_la-temperature_met_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-temperature_ecmwf_wrap.lo `test -f '@swigsrc@/temperature_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_ecmwf_wrap.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-temperature_met_wrap.lo `test -f '@swigsrc@/temperature_met_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_met_wrap.cc
 
 @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo: @swigsrc@/temperature_level_offset_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_level_offset_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo `test -f '@swigsrc@/temperature_level_offset_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_level_offset_wrap.cc
@@ -8425,12 +8423,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-temperature_level_offset_wrap.lo `test -f '@swigsrc@/temperature_level_offset_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/temperature_level_offset_wrap.cc
 
-@swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo: @swigsrc@/absorber_vmr_ecmwf_wrap.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_ecmwf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo `test -f '@swigsrc@/absorber_vmr_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/absorber_vmr_ecmwf_wrap.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_ecmwf_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_ecmwf_wrap.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/absorber_vmr_ecmwf_wrap.cc' object='@swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@swigsrc@/_swig_wrap_la-absorber_vmr_met_wrap.lo: @swigsrc@/absorber_vmr_met_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-absorber_vmr_met_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_met_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-absorber_vmr_met_wrap.lo `test -f '@swigsrc@/absorber_vmr_met_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/absorber_vmr_met_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_met_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_met_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/absorber_vmr_met_wrap.cc' object='@swigsrc@/_swig_wrap_la-absorber_vmr_met_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-absorber_vmr_ecmwf_wrap.lo `test -f '@swigsrc@/absorber_vmr_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/absorber_vmr_ecmwf_wrap.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-absorber_vmr_met_wrap.lo `test -f '@swigsrc@/absorber_vmr_met_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/absorber_vmr_met_wrap.cc
 
 @swigsrc@/_swig_wrap_la-absorber_vmr_level_wrap.lo: @swigsrc@/absorber_vmr_level_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-absorber_vmr_level_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_level_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-absorber_vmr_level_wrap.lo `test -f '@swigsrc@/absorber_vmr_level_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/absorber_vmr_level_wrap.cc
@@ -10028,12 +10026,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-log_timing.lo `test -f '@implsrc@/log_timing.cc' || echo '$(srcdir)/'`@implsrc@/log_timing.cc
 
-@implsrc@/libfp_la-temperature_ecmwf.lo: @implsrc@/temperature_ecmwf.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-temperature_ecmwf.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-temperature_ecmwf.Tpo -c -o @implsrc@/libfp_la-temperature_ecmwf.lo `test -f '@implsrc@/temperature_ecmwf.cc' || echo '$(srcdir)/'`@implsrc@/temperature_ecmwf.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-temperature_ecmwf.Tpo @implsrc@/$(DEPDIR)/libfp_la-temperature_ecmwf.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/temperature_ecmwf.cc' object='@implsrc@/libfp_la-temperature_ecmwf.lo' libtool=yes @AMDEPBACKSLASH@
+@implsrc@/libfp_la-temperature_met.lo: @implsrc@/temperature_met.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-temperature_met.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-temperature_met.Tpo -c -o @implsrc@/libfp_la-temperature_met.lo `test -f '@implsrc@/temperature_met.cc' || echo '$(srcdir)/'`@implsrc@/temperature_met.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-temperature_met.Tpo @implsrc@/$(DEPDIR)/libfp_la-temperature_met.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/temperature_met.cc' object='@implsrc@/libfp_la-temperature_met.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-temperature_ecmwf.lo `test -f '@implsrc@/temperature_ecmwf.cc' || echo '$(srcdir)/'`@implsrc@/temperature_ecmwf.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-temperature_met.lo `test -f '@implsrc@/temperature_met.cc' || echo '$(srcdir)/'`@implsrc@/temperature_met.cc
 
 @implsrc@/libfp_la-temperature_level_offset.lo: @implsrc@/temperature_level_offset.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-temperature_level_offset.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-temperature_level_offset.Tpo -c -o @implsrc@/libfp_la-temperature_level_offset.lo `test -f '@implsrc@/temperature_level_offset.cc' || echo '$(srcdir)/'`@implsrc@/temperature_level_offset.cc
@@ -10042,12 +10040,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-temperature_level_offset.lo `test -f '@implsrc@/temperature_level_offset.cc' || echo '$(srcdir)/'`@implsrc@/temperature_level_offset.cc
 
-@implsrc@/libfp_la-absorber_vmr_ecmwf.lo: @implsrc@/absorber_vmr_ecmwf.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-absorber_vmr_ecmwf.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_ecmwf.Tpo -c -o @implsrc@/libfp_la-absorber_vmr_ecmwf.lo `test -f '@implsrc@/absorber_vmr_ecmwf.cc' || echo '$(srcdir)/'`@implsrc@/absorber_vmr_ecmwf.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_ecmwf.Tpo @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_ecmwf.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/absorber_vmr_ecmwf.cc' object='@implsrc@/libfp_la-absorber_vmr_ecmwf.lo' libtool=yes @AMDEPBACKSLASH@
+@implsrc@/libfp_la-absorber_vmr_met.lo: @implsrc@/absorber_vmr_met.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-absorber_vmr_met.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met.Tpo -c -o @implsrc@/libfp_la-absorber_vmr_met.lo `test -f '@implsrc@/absorber_vmr_met.cc' || echo '$(srcdir)/'`@implsrc@/absorber_vmr_met.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met.Tpo @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/absorber_vmr_met.cc' object='@implsrc@/libfp_la-absorber_vmr_met.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-absorber_vmr_ecmwf.lo `test -f '@implsrc@/absorber_vmr_ecmwf.cc' || echo '$(srcdir)/'`@implsrc@/absorber_vmr_ecmwf.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-absorber_vmr_met.lo `test -f '@implsrc@/absorber_vmr_met.cc' || echo '$(srcdir)/'`@implsrc@/absorber_vmr_met.cc
 
 @implsrc@/libfp_la-absorber_vmr_level.lo: @implsrc@/absorber_vmr_level.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-absorber_vmr_level.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level.Tpo -c -o @implsrc@/libfp_la-absorber_vmr_level.lo `test -f '@implsrc@/absorber_vmr_level.cc' || echo '$(srcdir)/'`@implsrc@/absorber_vmr_level.cc
@@ -10511,12 +10509,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-absorber_vmr_level_scaled_output.lo `test -f '@outsrc@/absorber_vmr_level_scaled_output.cc' || echo '$(srcdir)/'`@outsrc@/absorber_vmr_level_scaled_output.cc
 
-@outsrc@/libfp_la-absorber_vmr_ecmwf_output.lo: @outsrc@/absorber_vmr_ecmwf_output.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-absorber_vmr_ecmwf_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_ecmwf_output.Tpo -c -o @outsrc@/libfp_la-absorber_vmr_ecmwf_output.lo `test -f '@outsrc@/absorber_vmr_ecmwf_output.cc' || echo '$(srcdir)/'`@outsrc@/absorber_vmr_ecmwf_output.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_ecmwf_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_ecmwf_output.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/absorber_vmr_ecmwf_output.cc' object='@outsrc@/libfp_la-absorber_vmr_ecmwf_output.lo' libtool=yes @AMDEPBACKSLASH@
+@outsrc@/libfp_la-absorber_vmr_met_output.lo: @outsrc@/absorber_vmr_met_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-absorber_vmr_met_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met_output.Tpo -c -o @outsrc@/libfp_la-absorber_vmr_met_output.lo `test -f '@outsrc@/absorber_vmr_met_output.cc' || echo '$(srcdir)/'`@outsrc@/absorber_vmr_met_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met_output.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/absorber_vmr_met_output.cc' object='@outsrc@/libfp_la-absorber_vmr_met_output.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-absorber_vmr_ecmwf_output.lo `test -f '@outsrc@/absorber_vmr_ecmwf_output.cc' || echo '$(srcdir)/'`@outsrc@/absorber_vmr_ecmwf_output.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-absorber_vmr_met_output.lo `test -f '@outsrc@/absorber_vmr_met_output.cc' || echo '$(srcdir)/'`@outsrc@/absorber_vmr_met_output.cc
 
 @outsrc@/libfp_la-aerosol_aod_output.lo: @outsrc@/aerosol_aod_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-aerosol_aod_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-aerosol_aod_output.Tpo -c -o @outsrc@/libfp_la-aerosol_aod_output.lo `test -f '@outsrc@/aerosol_aod_output.cc' || echo '$(srcdir)/'`@outsrc@/aerosol_aod_output.cc
@@ -10574,12 +10572,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-state_vector_output.lo `test -f '@outsrc@/state_vector_output.cc' || echo '$(srcdir)/'`@outsrc@/state_vector_output.cc
 
-@outsrc@/libfp_la-temperature_ecmwf_output.lo: @outsrc@/temperature_ecmwf_output.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-temperature_ecmwf_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-temperature_ecmwf_output.Tpo -c -o @outsrc@/libfp_la-temperature_ecmwf_output.lo `test -f '@outsrc@/temperature_ecmwf_output.cc' || echo '$(srcdir)/'`@outsrc@/temperature_ecmwf_output.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-temperature_ecmwf_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-temperature_ecmwf_output.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/temperature_ecmwf_output.cc' object='@outsrc@/libfp_la-temperature_ecmwf_output.lo' libtool=yes @AMDEPBACKSLASH@
+@outsrc@/libfp_la-temperature_met_output.lo: @outsrc@/temperature_met_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-temperature_met_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-temperature_met_output.Tpo -c -o @outsrc@/libfp_la-temperature_met_output.lo `test -f '@outsrc@/temperature_met_output.cc' || echo '$(srcdir)/'`@outsrc@/temperature_met_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-temperature_met_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-temperature_met_output.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/temperature_met_output.cc' object='@outsrc@/libfp_la-temperature_met_output.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-temperature_ecmwf_output.lo `test -f '@outsrc@/temperature_ecmwf_output.cc' || echo '$(srcdir)/'`@outsrc@/temperature_ecmwf_output.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-temperature_met_output.lo `test -f '@outsrc@/temperature_met_output.cc' || echo '$(srcdir)/'`@outsrc@/temperature_met_output.cc
 
 @outsrc@/libfp_la-temperature_level_offset_output.lo: @outsrc@/temperature_level_offset_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-temperature_level_offset_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-temperature_level_offset_output.Tpo -c -o @outsrc@/libfp_la-temperature_level_offset_output.lo `test -f '@outsrc@/temperature_level_offset_output.cc' || echo '$(srcdir)/'`@outsrc@/temperature_level_offset_output.cc
@@ -10644,12 +10642,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-radiance_scaling_output.lo `test -f '@outsrc@/radiance_scaling_output.cc' || echo '$(srcdir)/'`@outsrc@/radiance_scaling_output.cc
 
-@outsrc@/libfp_la-ecmwf_pass_through_output.lo: @outsrc@/ecmwf_pass_through_output.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-ecmwf_pass_through_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-ecmwf_pass_through_output.Tpo -c -o @outsrc@/libfp_la-ecmwf_pass_through_output.lo `test -f '@outsrc@/ecmwf_pass_through_output.cc' || echo '$(srcdir)/'`@outsrc@/ecmwf_pass_through_output.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-ecmwf_pass_through_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-ecmwf_pass_through_output.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/ecmwf_pass_through_output.cc' object='@outsrc@/libfp_la-ecmwf_pass_through_output.lo' libtool=yes @AMDEPBACKSLASH@
+@outsrc@/libfp_la-met_pass_through_output.lo: @outsrc@/met_pass_through_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-met_pass_through_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-met_pass_through_output.Tpo -c -o @outsrc@/libfp_la-met_pass_through_output.lo `test -f '@outsrc@/met_pass_through_output.cc' || echo '$(srcdir)/'`@outsrc@/met_pass_through_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-met_pass_through_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-met_pass_through_output.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/met_pass_through_output.cc' object='@outsrc@/libfp_la-met_pass_through_output.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ecmwf_pass_through_output.lo `test -f '@outsrc@/ecmwf_pass_through_output.cc' || echo '$(srcdir)/'`@outsrc@/ecmwf_pass_through_output.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-met_pass_through_output.lo `test -f '@outsrc@/met_pass_through_output.cc' || echo '$(srcdir)/'`@outsrc@/met_pass_through_output.cc
 
 @outsrc@/libfp_la-gas_vmr_apriori_output.lo: @outsrc@/gas_vmr_apriori_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-gas_vmr_apriori_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-gas_vmr_apriori_output.Tpo -c -o @outsrc@/libfp_la-gas_vmr_apriori_output.lo `test -f '@outsrc@/gas_vmr_apriori_output.cc' || echo '$(srcdir)/'`@outsrc@/gas_vmr_apriori_output.cc

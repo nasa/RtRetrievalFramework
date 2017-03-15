@@ -1,21 +1,21 @@
-#ifndef ECMWF_PASS_THROUGH_H
-#define ECMWF_PASS_THROUGH_H
+#ifndef MET_PASS_THROUGH_H
+#define MET_PASS_THROUGH_H
 
 #include "register_output_base.h"
-#include "ecmwf.h"
+#include "meteorology.h"
 
 namespace FullPhysics {
 
 /****************************************************************//**
   Writes source filenames into the output file
 *******************************************************************/
-class EcmwfPassThroughOutput : public RegisterOutputBase {
+class MetPassThroughOutput : public RegisterOutputBase {
 public:
-    EcmwfPassThroughOutput(const boost::shared_ptr<Ecmwf>& ecmwf) : ecmwf_(ecmwf) {}
-    virtual ~EcmwfPassThroughOutput() {}
+    MetPassThroughOutput(const boost::shared_ptr<Meteorology>& met) : met_(met) {}
+    virtual ~MetPassThroughOutput() {}
     virtual void register_output(const boost::shared_ptr<Output>& out) const;
 private:
-    const boost::shared_ptr<Ecmwf> ecmwf_;
+    const boost::shared_ptr<Meteorology> met_;
 };
 }
 #endif

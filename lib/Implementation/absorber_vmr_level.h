@@ -1,7 +1,6 @@
 #ifndef ABSORBER_VMR_LEVEL_H
 #define ABSORBER_VMR_LEVEL_H
 #include "absorber_vmr_imp_base.h"
-#include "ecmwf.h"
 
 namespace FullPhysics {
 /****************************************************************//**

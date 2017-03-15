@@ -6,7 +6,7 @@ using namespace blitz;
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
-REGISTER_LUA_DERIVED_CLASS(AcosEcmwf, Ecmwf)
+REGISTER_LUA_DERIVED_CLASS(AcosEcmwf, Meteorology)
 .def(luabind::constructor<std::string, 
 			  const boost::shared_ptr<HdfSoundingId>&,
 			  bool>())

@@ -2,16 +2,16 @@
 // (Not really c++, but closest emacs mode)
 %include "common.i"
 %{
-#include "absorber_vmr_ecmwf.h"
+#include "absorber_vmr_met.h"
 %}
 %base_import(absorber_vmr_scaled)
-%import "ecmwf.i"
+%import "meteorology.i"
 %import "pressure.i"
-%fp_shared_ptr(FullPhysics::AbsorberVmrEcmwf)
+%fp_shared_ptr(FullPhysics::AbsorberVmrMet)
 namespace FullPhysics {
-class AbsorberVmrEcmwf : public AbsorberVmrScaled {
+class AbsorberVmrMet : public AbsorberVmrScaled {
 public:
-  AbsorberVmrEcmwf(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
+  AbsorberVmrMet(const boost::shared_ptr<Meteorology>& Met_file,
 		   const boost::shared_ptr<Pressure>& Press,
 		   double Scale,                         
 		   bool Scale_flag,
