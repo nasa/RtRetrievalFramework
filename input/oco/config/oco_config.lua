@@ -159,11 +159,40 @@ function OcoConfig.oco_noise:create()
 end
 
 ------------------------------------------------------------
---- Retrieves a bad pixel mask out of an extra dimension
---- in the snr_coef dataset
+--- Get bad sample from either snr_coef or bad_sample_list,
+--- depending on what we find in the file.
 ------------------------------------------------------------
 
-function OcoConfig:snr_coef_bad_sample_mask()
+function OcoConfig.l1b_bad_sample_mask(self)
+   local l1b_hdf_file = self.config:l1b_hdf_file()
+   if(l1b_hdf_file:has_object("/InstrumentHeader/bad_sample_list")) then
+      return self.config.bad_sample_list_bad_sample_mask(self)
+   else
+      return self.config.snr_coef_bad_sample_mask(self)
+   end
+end   
+
+------------------------------------------------------------
+--- Retrieve a bad pixel mask from the bad_sample_list field.
+--- This was added in B8.00
+------------------------------------------------------------
+
+function OcoConfig.bad_sample_list_bad_sample_mask(self)
+    local l1b_hdf_file = self.config:l1b_hdf_file()
+    local sid = self.config:l1b_sid_list()
+    local sounding_num = sid:sounding_number()
+    local bad_sample_mask = l1b_hdf_file:read_double_3d("/InstrumentHeader/bad_sample_list", sounding_num)(Range.all(), sounding_num, Range.all())
+
+    return bad_sample_mask
+end
+
+------------------------------------------------------------
+--- Retrieves a bad pixel mask out of an extra dimension
+--- in the snr_coef dataset. This was how things were done
+--- pre B8.00
+------------------------------------------------------------
+
+function OcoConfig.snr_coef_bad_sample_mask(self)
     local l1b_hdf_file = self.config:l1b_hdf_file()
     local sid = self.config:l1b_sid_list()
     local sounding_num = sid:sounding_number()
