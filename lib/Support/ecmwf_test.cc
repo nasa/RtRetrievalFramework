@@ -2,7 +2,7 @@
 #include "acos_sounding_id.h"
 #include "oco_sounding_id.h"
 #include "acos_ecmwf.h"
-#include "oco_ecmwf.h"
+#include "oco_met_file.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE(basic)
   std::string sid = "2010090900133574";
   HdfFile sfile(test_data_dir() + "/oco2_ECMWFND_80008a_111018214952d_spliced.h5");
   boost::shared_ptr<HdfSoundingId> sido(new OcoSoundingId(sfile, sid));
-  OcoEcmwf e(test_data_dir() + "/oco2_ECMWFND_80008a_111018214952d_spliced.h5", sido);
+  OcoMetFile e(test_data_dir() + "/oco2_ECMWFND_80008a_111018214952d_spliced.h5", sido);
   BOOST_CHECK_CLOSE(e.surface_pressure(), 95796, 1e-6);
   BOOST_CHECK_CLOSE(e.windspeed(), 9.5288243675028176938, 1e-6);
   Array<double, 1> press(20);

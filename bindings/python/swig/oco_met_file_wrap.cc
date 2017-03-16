@@ -3419,7 +3419,7 @@ namespace Swig {
 #define SWIGTYPE_p_FullPhysics__GenericObject swig_types[0]
 #define SWIGTYPE_p_FullPhysics__HdfSoundingId swig_types[1]
 #define SWIGTYPE_p_FullPhysics__Meteorology swig_types[2]
-#define SWIGTYPE_p_FullPhysics__OcoEcmwf swig_types[3]
+#define SWIGTYPE_p_FullPhysics__OcoMetFile swig_types[3]
 #define SWIGTYPE_p_allocator_type swig_types[4]
 #define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[5]
 #define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[6]
@@ -3436,7 +3436,7 @@ namespace Swig {
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[17]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t swig_types[18]
 #define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Meteorology_t swig_types[19]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__OcoEcmwf_t swig_types[20]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__OcoMetFile_t swig_types[20]
 #define SWIGTYPE_p_char swig_types[21]
 #define SWIGTYPE_p_char_type swig_types[22]
 #define SWIGTYPE_p_difference_type swig_types[23]
@@ -3483,16 +3483,16 @@ static swig_module_info swig_module = {swig_types, 40, 0, 0, 0, 0};
 #define SWIG_TypeQuery SWIG_Python_TypeQuery
 
 /*-----------------------------------------------
-              @(target):= _oco_ecmwf.so
+              @(target):= _oco_met_file.so
   ------------------------------------------------*/
 #if PY_VERSION_HEX >= 0x03000000
-#  define SWIG_init    PyInit__oco_ecmwf
+#  define SWIG_init    PyInit__oco_met_file
 
 #else
-#  define SWIG_init    init_oco_ecmwf
+#  define SWIG_init    init_oco_met_file
 
 #endif
-#define SWIG_name    "_oco_ecmwf"
+#define SWIG_name    "_oco_met_file"
 
 #define SWIGVERSION 0x030007 
 #define SWIG_VERSION SWIGVERSION
@@ -4872,7 +4872,7 @@ template<class T, int D> inline blitz::Array<T, D>
 
 
 
-#include "oco_ecmwf.h"
+#include "oco_met_file.h"
 
 
 SWIGINTERN swig_type_info*
@@ -5013,7 +5013,7 @@ struct SWIG_null_deleter {
  * C++ director class methods
  * --------------------------------------------------- */
 
-#include "oco_ecmwf_wrap.h"
+#include "oco_met_file_wrap.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -5029,30 +5029,30 @@ SWIGINTERN PyObject *SHARED_PTR_DISOWN_swigconstant(PyObject *SWIGUNUSEDPARM(sel
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_OcoEcmwf(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_OcoMetFile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::OcoEcmwf *arg1 = (FullPhysics::OcoEcmwf *) 0 ;
+  FullPhysics::OcoMetFile *arg1 = (FullPhysics::OcoMetFile *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::OcoEcmwf > tempshared1 ;
-  boost::shared_ptr< FullPhysics::OcoEcmwf > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::OcoMetFile > tempshared1 ;
+  boost::shared_ptr< FullPhysics::OcoMetFile > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__OcoEcmwf_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__OcoMetFile_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_OcoEcmwf" "', argument " "1"" of type '" "FullPhysics::OcoEcmwf *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_OcoMetFile" "', argument " "1"" of type '" "FullPhysics::OcoMetFile *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::OcoEcmwf > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::OcoEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::OcoEcmwf * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::OcoMetFile > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::OcoMetFile > * >(argp1);
+      arg1 = const_cast< FullPhysics::OcoMetFile * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::OcoEcmwf > * >(argp1);
-      arg1 = const_cast< FullPhysics::OcoEcmwf * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::OcoMetFile > * >(argp1);
+      arg1 = const_cast< FullPhysics::OcoMetFile * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
@@ -5071,7 +5071,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_OcoEcmwf(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_OcoMetFile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
   boost::shared_ptr< FullPhysics::HdfSoundingId > *arg2 = 0 ;
@@ -5081,17 +5081,17 @@ SWIGINTERN PyObject *_wrap_new_OcoEcmwf(PyObject *SWIGUNUSEDPARM(self), PyObject
   boost::shared_ptr< FullPhysics::HdfSoundingId > tempshared2 ;
   boost::shared_ptr< FullPhysics::HdfSoundingId > temp2shared2 ;
   PyObject *swig_obj[2] ;
-  FullPhysics::OcoEcmwf *result = 0 ;
+  FullPhysics::OcoMetFile *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args,"new_OcoEcmwf",2,2,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"new_OcoMetFile",2,2,swig_obj)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
     res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OcoEcmwf" "', argument " "1"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OcoMetFile" "', argument " "1"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OcoEcmwf" "', argument " "1"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OcoMetFile" "', argument " "1"" of type '" "std::string const &""'"); 
     }
     arg1 = ptr;
   }
@@ -5099,7 +5099,7 @@ SWIGINTERN PyObject *_wrap_new_OcoEcmwf(PyObject *SWIGUNUSEDPARM(self), PyObject
     int newmem = 0;
     res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t,  0 , &newmem);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_OcoEcmwf" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::HdfSoundingId > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_OcoMetFile" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::HdfSoundingId > const &""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::HdfSoundingId > * >(argp2);
@@ -5122,7 +5122,7 @@ SWIGINTERN PyObject *_wrap_new_OcoEcmwf(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      result = (FullPhysics::OcoEcmwf *)new FullPhysics::OcoEcmwf((std::string const &)*arg1,(boost::shared_ptr< FullPhysics::HdfSoundingId > const &)*arg2);
+      result = (FullPhysics::OcoMetFile *)new FullPhysics::OcoMetFile((std::string const &)*arg1,(boost::shared_ptr< FullPhysics::HdfSoundingId > const &)*arg2);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5130,8 +5130,8 @@ SWIGINTERN PyObject *_wrap_new_OcoEcmwf(PyObject *SWIGUNUSEDPARM(self), PyObject
     }
   }
   {
-    boost::shared_ptr<  FullPhysics::OcoEcmwf > *smartresult = result ? new boost::shared_ptr<  FullPhysics::OcoEcmwf >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__OcoEcmwf_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+    boost::shared_ptr<  FullPhysics::OcoMetFile > *smartresult = result ? new boost::shared_ptr<  FullPhysics::OcoMetFile >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__OcoMetFile_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
   }
   if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
@@ -5141,28 +5141,28 @@ fail:
 }
 
 
-SWIGINTERN PyObject *OcoEcmwf_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *OcoMetFile_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__OcoEcmwf_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__OcoMetFile_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *OcoEcmwf_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *OcoMetFile_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"SHARED_PTR_DISOWN_swigconstant", SHARED_PTR_DISOWN_swigconstant, METH_VARARGS, NULL},
-	 { (char *)"delete_OcoEcmwf", (PyCFunction)_wrap_delete_OcoEcmwf, METH_O, (char *)"\n"
+	 { (char *)"delete_OcoMetFile", (PyCFunction)_wrap_delete_OcoMetFile, METH_O, (char *)"\n"
 		"\n"
-		"FullPhysics::OcoEcmwf::~OcoEcmwf()\n"
+		"FullPhysics::OcoMetFile::~OcoMetFile()\n"
 		"\n"
 		""},
-	 { (char *)"new_OcoEcmwf", _wrap_new_OcoEcmwf, METH_VARARGS, (char *)"\n"
+	 { (char *)"new_OcoMetFile", _wrap_new_OcoMetFile, METH_VARARGS, (char *)"\n"
 		"\n"
-		"OcoEcmwf::OcoEcmwf(const std::string &Fname, const boost::shared_ptr< HdfSoundingId >\n"
+		"OcoMetFile::OcoMetFile(const std::string &Fname, const boost::shared_ptr< HdfSoundingId >\n"
 		"&Hdf_sounding_id)\n"
 		"Constructor.\n"
 		"\n"
@@ -5174,8 +5174,8 @@ static PyMethodDef SwigMethods[] = {
 		"Hdf_sounding_id:  The sounding id to read in the file. and pressure as\n"
 		"the average value for all the sounding numbers. \n"
 		""},
-	 { (char *)"OcoEcmwf_swigregister", OcoEcmwf_swigregister, METH_VARARGS, NULL},
-	 { (char *)"OcoEcmwf_swiginit", OcoEcmwf_swiginit, METH_VARARGS, NULL},
+	 { (char *)"OcoMetFile_swigregister", OcoMetFile_swigregister, METH_VARARGS, NULL},
+	 { (char *)"OcoMetFile_swiginit", OcoMetFile_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5191,21 +5191,21 @@ static void *_p_std__basic_istreamT_char_std__char_traitsT_char_t_tTo_p_std__bas
 static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_ios< char,std::char_traits< char > > *) (std::basic_istream< char > *) ((std::basic_iostream< char,std::char_traits< char > > *) x));
 }
-static void *_p_FullPhysics__OcoEcmwfTo_p_FullPhysics__Meteorology(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Meteorology *)  ((FullPhysics::OcoEcmwf *) x));
+static void *_p_FullPhysics__OcoMetFileTo_p_FullPhysics__Meteorology(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Meteorology *)  ((FullPhysics::OcoMetFile *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__OcoEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__Meteorology_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__OcoMetFile_tTo_p_boost__shared_ptrT_FullPhysics__Meteorology_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Meteorology >(*(boost::shared_ptr< FullPhysics::OcoEcmwf > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Meteorology >(*(boost::shared_ptr< FullPhysics::OcoMetFile > *)x);
 }
 static void *_p_FullPhysics__HdfSoundingIdTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::HdfSoundingId *) x));
 }
-static void *_p_FullPhysics__OcoEcmwfTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Meteorology *) ((FullPhysics::OcoEcmwf *) x));
-}
 static void *_p_FullPhysics__MeteorologyTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Meteorology *) x));
+}
+static void *_p_FullPhysics__OcoMetFileTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Meteorology *) ((FullPhysics::OcoMetFile *) x));
 }
 static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_istreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_istream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
@@ -5217,18 +5217,18 @@ static void *_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_tTo_p_boost__share
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::HdfSoundingId > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__OcoMetFile_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::OcoMetFile > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__Meteorology_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Meteorology > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__OcoEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::OcoEcmwf > *)x);
-}
 static swig_type_info _swigt__p_FullPhysics__GenericObject = {"_p_FullPhysics__GenericObject", "FullPhysics::GenericObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__HdfSoundingId = {"_p_FullPhysics__HdfSoundingId", "FullPhysics::HdfSoundingId *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Meteorology = {"_p_FullPhysics__Meteorology", "FullPhysics::Meteorology *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_FullPhysics__OcoEcmwf = {"_p_FullPhysics__OcoEcmwf", "FullPhysics::OcoEcmwf *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__OcoMetFile = {"_p_FullPhysics__OcoMetFile", "FullPhysics::OcoMetFile *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_bool_1_t = {"_p_blitz__ArrayT_bool_1_t", "blitz::Array< bool,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_bool_2_t = {"_p_blitz__ArrayT_bool_2_t", "blitz::Array< bool,2 > *", 0, 0, (void*)0, 0};
@@ -5245,7 +5245,7 @@ static swig_type_info _swigt__p_blitz__ArrayT_int_4_t = {"_p_blitz__ArrayT_int_4
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t = {"_p_boost__shared_ptrT_FullPhysics__GenericObject_t", "boost::shared_ptr< FullPhysics::GenericObject > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t = {"_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t", "boost::shared_ptr< FullPhysics::HdfSoundingId > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t = {"_p_boost__shared_ptrT_FullPhysics__Meteorology_t", "boost::shared_ptr< FullPhysics::Meteorology > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__OcoEcmwf_t = {"_p_boost__shared_ptrT_FullPhysics__OcoEcmwf_t", "boost::shared_ptr< FullPhysics::OcoEcmwf > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__OcoMetFile_t = {"_p_boost__shared_ptrT_FullPhysics__OcoMetFile_t", "boost::shared_ptr< FullPhysics::OcoMetFile > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char_type = {"_p_char_type", "char_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
@@ -5270,7 +5270,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__GenericObject,
   &_swigt__p_FullPhysics__HdfSoundingId,
   &_swigt__p_FullPhysics__Meteorology,
-  &_swigt__p_FullPhysics__OcoEcmwf,
+  &_swigt__p_FullPhysics__OcoMetFile,
   &_swigt__p_allocator_type,
   &_swigt__p_blitz__ArrayT_bool_1_t,
   &_swigt__p_blitz__ArrayT_bool_2_t,
@@ -5287,7 +5287,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t,
-  &_swigt__p_boost__shared_ptrT_FullPhysics__OcoEcmwf_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__OcoMetFile_t,
   &_swigt__p_char,
   &_swigt__p_char_type,
   &_swigt__p_difference_type,
@@ -5309,10 +5309,10 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_value_type,
 };
 
-static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__HdfSoundingId, _p_FullPhysics__HdfSoundingIdTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__OcoEcmwf, _p_FullPhysics__OcoEcmwfTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Meteorology, _p_FullPhysics__MeteorologyTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__HdfSoundingId, _p_FullPhysics__HdfSoundingIdTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__Meteorology, _p_FullPhysics__MeteorologyTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__OcoMetFile, _p_FullPhysics__OcoMetFileTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__HdfSoundingId[] = {  {&_swigt__p_FullPhysics__HdfSoundingId, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__Meteorology[] = {  {&_swigt__p_FullPhysics__OcoEcmwf, _p_FullPhysics__OcoEcmwfTo_p_FullPhysics__Meteorology, 0, 0},  {&_swigt__p_FullPhysics__Meteorology, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__OcoEcmwf[] = {  {&_swigt__p_FullPhysics__OcoEcmwf, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Meteorology[] = {  {&_swigt__p_FullPhysics__Meteorology, 0, 0, 0},  {&_swigt__p_FullPhysics__OcoMetFile, _p_FullPhysics__OcoMetFileTo_p_FullPhysics__Meteorology, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__OcoMetFile[] = {  {&_swigt__p_FullPhysics__OcoMetFile, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_bool_1_t[] = {  {&_swigt__p_blitz__ArrayT_bool_1_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_bool_2_t[] = {  {&_swigt__p_blitz__ArrayT_bool_2_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5326,10 +5326,10 @@ static swig_cast_info _swigc__p_blitz__ArrayT_int_1_t[] = {  {&_swigt__p_blitz__
 static swig_cast_info _swigc__p_blitz__ArrayT_int_2_t[] = {  {&_swigt__p_blitz__ArrayT_int_2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_int_3_t[] = {  {&_swigt__p_blitz__ArrayT_int_3_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_int_4_t[] = {  {&_swigt__p_blitz__ArrayT_int_4_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t, _p_boost__shared_ptrT_FullPhysics__Meteorology_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__OcoEcmwf_t, _p_boost__shared_ptrT_FullPhysics__OcoEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t, _p_boost__shared_ptrT_FullPhysics__HdfSoundingId_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t, _p_boost__shared_ptrT_FullPhysics__Meteorology_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t, _p_boost__shared_ptrT_FullPhysics__HdfSoundingId_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__OcoMetFile_t, _p_boost__shared_ptrT_FullPhysics__OcoMetFile_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Meteorology_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__OcoEcmwf_t, _p_boost__shared_ptrT_FullPhysics__OcoEcmwf_tTo_p_boost__shared_ptrT_FullPhysics__Meteorology_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__OcoEcmwf_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__OcoEcmwf_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Meteorology_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__OcoMetFile_t, _p_boost__shared_ptrT_FullPhysics__OcoMetFile_tTo_p_boost__shared_ptrT_FullPhysics__Meteorology_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__OcoMetFile_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__OcoMetFile_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char_type[] = {  {&_swigt__p_char_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -5354,7 +5354,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__GenericObject,
   _swigc__p_FullPhysics__HdfSoundingId,
   _swigc__p_FullPhysics__Meteorology,
-  _swigc__p_FullPhysics__OcoEcmwf,
+  _swigc__p_FullPhysics__OcoMetFile,
   _swigc__p_allocator_type,
   _swigc__p_blitz__ArrayT_bool_1_t,
   _swigc__p_blitz__ArrayT_bool_2_t,
@@ -5371,7 +5371,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Meteorology_t,
-  _swigc__p_boost__shared_ptrT_FullPhysics__OcoEcmwf_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__OcoMetFile_t,
   _swigc__p_char,
   _swigc__p_char_type,
   _swigc__p_difference_type,
@@ -6077,8 +6077,8 @@ SWIG_init(void) {
   SWIG_InstallConstants(d,swig_const_table);
   
   
-  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::OcoEcmwf))] =
-  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::OcoEcmwf >("boost::shared_ptr< FullPhysics::OcoEcmwf > *"));
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::OcoMetFile))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::OcoMetFile >("boost::shared_ptr< FullPhysics::OcoMetFile > *"));
   
 #if PY_VERSION_HEX >= 0x03000000
   return m;
