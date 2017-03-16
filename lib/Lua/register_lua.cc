@@ -237,7 +237,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(Level1bUq);
   REGISTER_LUA_LIST(Meteorology);
   REGISTER_LUA_LIST(AcosEcmwf);
-  REGISTER_LUA_LIST(OcoEcmwf);
+  REGISTER_LUA_LIST(OcoMetFile);
   REGISTER_LUA_LIST(UqEcmwf);
   REGISTER_LUA_LIST(OcoSimMetEcmwf);
   REGISTER_LUA_LIST(HdfFile);

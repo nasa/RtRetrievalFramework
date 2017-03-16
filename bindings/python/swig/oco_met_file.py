@@ -10,7 +10,7 @@
 
 from sys import version_info
 if version_info >= (3, 0, 0):
-    new_instancemethod = lambda func, inst, cls: _oco_ecmwf.SWIG_PyInstanceMethod_New(func)
+    new_instancemethod = lambda func, inst, cls: _oco_met_file.SWIG_PyInstanceMethod_New(func)
 else:
     from new import instancemethod as new_instancemethod
 if version_info >= (2, 6, 0):
@@ -19,20 +19,20 @@ if version_info >= (2, 6, 0):
         import imp
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_oco_ecmwf', [dirname(__file__)])
+            fp, pathname, description = imp.find_module('_oco_met_file', [dirname(__file__)])
         except ImportError:
-            import _oco_ecmwf
-            return _oco_ecmwf
+            import _oco_met_file
+            return _oco_met_file
         if fp is not None:
             try:
-                _mod = imp.load_module('_oco_ecmwf', fp, pathname, description)
+                _mod = imp.load_module('_oco_met_file', fp, pathname, description)
             finally:
                 fp.close()
             return _mod
-    _oco_ecmwf = swig_import_helper()
+    _oco_met_file = swig_import_helper()
     del swig_import_helper
 else:
-    import _oco_ecmwf
+    import _oco_met_file
 del version_info
 try:
     _swig_property = property
@@ -111,8 +111,8 @@ except:
 
 
 
-_oco_ecmwf.SHARED_PTR_DISOWN_swigconstant(_oco_ecmwf)
-SHARED_PTR_DISOWN = _oco_ecmwf.SHARED_PTR_DISOWN
+_oco_met_file.SHARED_PTR_DISOWN_swigconstant(_oco_met_file)
+SHARED_PTR_DISOWN = _oco_met_file.SHARED_PTR_DISOWN
 
 def _new_from_init(cls, version, *args):
     '''For use with pickle, covers common case where we just store the
@@ -135,21 +135,21 @@ def _new_from_set(cls, version, *args):
 
 import full_physics_swig.meteorology
 import full_physics_swig.generic_object
-class OcoEcmwf(full_physics_swig.meteorology.Meteorology):
+class OcoMetFile(full_physics_swig.meteorology.Meteorology):
     """
 
     This class implements the OCO specific ECMWF reading functionality.
 
-    C++ includes: oco_ecmwf.h 
+    C++ includes: oco_met_file.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    __swig_destroy__ = _oco_ecmwf.delete_OcoEcmwf
+    __swig_destroy__ = _oco_met_file.delete_OcoMetFile
 
     def __init__(self, Fname, Hdf_sounding_id):
         """
 
-        OcoEcmwf::OcoEcmwf(const std::string &Fname, const boost::shared_ptr< HdfSoundingId >
+        OcoMetFile::OcoMetFile(const std::string &Fname, const boost::shared_ptr< HdfSoundingId >
         &Hdf_sounding_id)
         Constructor.
 
@@ -161,9 +161,9 @@ class OcoEcmwf(full_physics_swig.meteorology.Meteorology):
         Hdf_sounding_id:  The sounding id to read in the file. and pressure as
         the average value for all the sounding numbers. 
         """
-        _oco_ecmwf.OcoEcmwf_swiginit(self, _oco_ecmwf.new_OcoEcmwf(Fname, Hdf_sounding_id))
-OcoEcmwf_swigregister = _oco_ecmwf.OcoEcmwf_swigregister
-OcoEcmwf_swigregister(OcoEcmwf)
+        _oco_met_file.OcoMetFile_swiginit(self, _oco_met_file.new_OcoMetFile(Fname, Hdf_sounding_id))
+OcoMetFile_swigregister = _oco_met_file.OcoMetFile_swigregister
+OcoMetFile_swigregister(OcoMetFile)
 
 
 

@@ -74,7 +74,7 @@ OcoConfig.oco_met = Creator:new()
 function OcoConfig.oco_met:create()
    local sid = self.config:l1b_sid_list()
    if (self.config.met_file) then
-       local met = OcoEcmwf(self.config.met_file, self.config:l1b_sid_list())
+       local met = OcoMetFile(self.config.met_file, self.config:l1b_sid_list())
        self.config.input_file_description = self.config.input_file_description .. 
           "ECMWF input file:    " .. self.config.met_file .. "\n"
        return met

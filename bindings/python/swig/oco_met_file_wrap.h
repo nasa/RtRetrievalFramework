@@ -8,8 +8,8 @@
  * interface file instead.
  * ----------------------------------------------------------------------------- */
 
-#ifndef SWIG_oco_ecmwf_WRAP_H_
-#define SWIG_oco_ecmwf_WRAP_H_
+#ifndef SWIG_oco_met_file_WRAP_H_
+#define SWIG_oco_met_file_WRAP_H_
 
 #include <map>
 #include <string>
