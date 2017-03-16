@@ -6,13 +6,13 @@
 %{
 #include "uq_ecmwf.h"
 %}
-%base_import(ecmwf);
+%base_import(meteorology);
 %import "hdf_sounding_id.i"
 
 %fp_shared_ptr(FullPhysics::UqEcmwf);
 
 namespace FullPhysics {
-class UqEcmwf : public Ecmwf  {
+class UqEcmwf : public Meteorology {
 public:
     virtual ~UqEcmwf();
     UqEcmwf(const std::string& Fname);

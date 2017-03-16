@@ -55,7 +55,6 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(acos_sounding_id)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_sounding_id)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(uq_sounding_id)(void);
-  SWIG_INIT_TYPE SWIG_INIT_FUNC(ecmwf)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(acos_ecmwf)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_ecmwf)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(uq_ecmwf)(void);
@@ -453,7 +452,6 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_acos_sounding_id", SWIG_INIT_FUNC(acos_sounding_id));
   SWIG_INIT_MODULE(package, "_oco_sounding_id", SWIG_INIT_FUNC(oco_sounding_id));
   SWIG_INIT_MODULE(package, "_uq_sounding_id", SWIG_INIT_FUNC(uq_sounding_id));
-  SWIG_INIT_MODULE(package, "_ecmwf", SWIG_INIT_FUNC(ecmwf));
   SWIG_INIT_MODULE(package, "_acos_ecmwf", SWIG_INIT_FUNC(acos_ecmwf));
   SWIG_INIT_MODULE(package, "_oco_ecmwf", SWIG_INIT_FUNC(oco_ecmwf));
   SWIG_INIT_MODULE(package, "_uq_ecmwf", SWIG_INIT_FUNC(uq_ecmwf));

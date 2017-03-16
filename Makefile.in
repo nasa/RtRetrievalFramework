@@ -403,11 +403,10 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/hdf_file_wrap.cc @swigsrc@/hdf_sounding_id_wrap.cc \
 	@swigsrc@/acos_sounding_id_wrap.cc \
 	@swigsrc@/oco_sounding_id_wrap.cc \
-	@swigsrc@/uq_sounding_id_wrap.cc @swigsrc@/ecmwf_wrap.cc \
-	@swigsrc@/acos_ecmwf_wrap.cc @swigsrc@/oco_ecmwf_wrap.cc \
-	@swigsrc@/uq_ecmwf_wrap.cc @swigsrc@/oco_sim_met_ecmwf_wrap.cc \
-	@swigsrc@/observer_wrap.cc @swigsrc@/fts_run_log_wrap.cc \
-	@swigsrc@/spectral_range_wrap.cc \
+	@swigsrc@/uq_sounding_id_wrap.cc @swigsrc@/acos_ecmwf_wrap.cc \
+	@swigsrc@/oco_ecmwf_wrap.cc @swigsrc@/uq_ecmwf_wrap.cc \
+	@swigsrc@/oco_sim_met_ecmwf_wrap.cc @swigsrc@/observer_wrap.cc \
+	@swigsrc@/fts_run_log_wrap.cc @swigsrc@/spectral_range_wrap.cc \
 	@swigsrc@/spectral_bound_wrap.cc @swigsrc@/spectrum_wrap.cc \
 	@swigsrc@/named_spectrum_wrap.cc \
 	@swigsrc@/state_vector_wrap.cc \
@@ -616,7 +615,6 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-acos_sounding_id_wrap.lo \
 	@swigsrc@/_swig_wrap_la-oco_sounding_id_wrap.lo \
 	@swigsrc@/_swig_wrap_la-uq_sounding_id_wrap.lo \
-	@swigsrc@/_swig_wrap_la-ecmwf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-acos_ecmwf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-oco_ecmwf_wrap.lo \
 	@swigsrc@/_swig_wrap_la-uq_ecmwf_wrap.lo \
@@ -864,10 +862,10 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@supportsrc@/hdf_sounding_id.cc \
 	@supportsrc@/acos_sounding_id.cc \
 	@supportsrc@/oco_sounding_id.cc @supportsrc@/uq_sounding_id.cc \
-	@supportsrc@/ecmwf.cc @supportsrc@/acos_ecmwf.cc \
-	@supportsrc@/oco_ecmwf.cc @supportsrc@/uq_ecmwf.cc \
-	@supportsrc@/oco_sim_met_ecmwf.cc @supportsrc@/fts_run_log.cc \
-	@supportsrc@/spectrum.cc @supportsrc@/state_vector.cc \
+	@supportsrc@/acos_ecmwf.cc @supportsrc@/oco_ecmwf.cc \
+	@supportsrc@/uq_ecmwf.cc @supportsrc@/oco_sim_met_ecmwf.cc \
+	@supportsrc@/fts_run_log.cc @supportsrc@/spectrum.cc \
+	@supportsrc@/state_vector.cc \
 	@supportsrc@/sub_state_vector_proxy.cc \
 	@supportsrc@/rf_gauleg.cc @supportsrc@/polynomial_eval.cc \
 	@interfacesrc@/solar_absorption_spectrum.cc \
@@ -1098,7 +1096,6 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@supportsrc@/libfp_la-acos_sounding_id.lo \
 	@supportsrc@/libfp_la-oco_sounding_id.lo \
 	@supportsrc@/libfp_la-uq_sounding_id.lo \
-	@supportsrc@/libfp_la-ecmwf.lo \
 	@supportsrc@/libfp_la-acos_ecmwf.lo \
 	@supportsrc@/libfp_la-oco_ecmwf.lo \
 	@supportsrc@/libfp_la-uq_ecmwf.lo \
@@ -1929,9 +1926,8 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@supportsrc@/hdf_file_generating.h \
 	@supportsrc@/hdf_sounding_id.h @supportsrc@/acos_sounding_id.h \
 	@supportsrc@/oco_sounding_id.h @supportsrc@/uq_sounding_id.h \
-	@supportsrc@/ecmwf.h @supportsrc@/acos_ecmwf.h \
-	@supportsrc@/oco_ecmwf.h @supportsrc@/uq_ecmwf.h \
-	@supportsrc@/oco_sim_met_ecmwf.h \
+	@supportsrc@/acos_ecmwf.h @supportsrc@/oco_ecmwf.h \
+	@supportsrc@/uq_ecmwf.h @supportsrc@/oco_sim_met_ecmwf.h \
 	@supportsrc@/linear_interpolate.h \
 	@supportsrc@/linear_interpolate_ad.h @supportsrc@/bin_map.h \
 	@supportsrc@/log_interpolate.h @supportsrc@/fts_run_log.h \
@@ -2608,9 +2604,8 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@supportsrc@/hdf_file_generating.h \
 	@supportsrc@/hdf_sounding_id.h @supportsrc@/acos_sounding_id.h \
 	@supportsrc@/oco_sounding_id.h @supportsrc@/uq_sounding_id.h \
-	@supportsrc@/ecmwf.h @supportsrc@/acos_ecmwf.h \
-	@supportsrc@/oco_ecmwf.h @supportsrc@/uq_ecmwf.h \
-	@supportsrc@/oco_sim_met_ecmwf.h \
+	@supportsrc@/acos_ecmwf.h @supportsrc@/oco_ecmwf.h \
+	@supportsrc@/uq_ecmwf.h @supportsrc@/oco_sim_met_ecmwf.h \
 	@supportsrc@/linear_interpolate.h \
 	@supportsrc@/linear_interpolate_ad.h @supportsrc@/bin_map.h \
 	@supportsrc@/log_interpolate.h @supportsrc@/fts_run_log.h \
@@ -3071,11 +3066,10 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/hdf_file_wrap.cc @swigsrc@/hdf_sounding_id_wrap.cc \
 	@swigsrc@/acos_sounding_id_wrap.cc \
 	@swigsrc@/oco_sounding_id_wrap.cc \
-	@swigsrc@/uq_sounding_id_wrap.cc @swigsrc@/ecmwf_wrap.cc \
-	@swigsrc@/acos_ecmwf_wrap.cc @swigsrc@/oco_ecmwf_wrap.cc \
-	@swigsrc@/uq_ecmwf_wrap.cc @swigsrc@/oco_sim_met_ecmwf_wrap.cc \
-	@swigsrc@/observer_wrap.cc @swigsrc@/fts_run_log_wrap.cc \
-	@swigsrc@/spectral_range_wrap.cc \
+	@swigsrc@/uq_sounding_id_wrap.cc @swigsrc@/acos_ecmwf_wrap.cc \
+	@swigsrc@/oco_ecmwf_wrap.cc @swigsrc@/uq_ecmwf_wrap.cc \
+	@swigsrc@/oco_sim_met_ecmwf_wrap.cc @swigsrc@/observer_wrap.cc \
+	@swigsrc@/fts_run_log_wrap.cc @swigsrc@/spectral_range_wrap.cc \
 	@swigsrc@/spectral_bound_wrap.cc @swigsrc@/spectrum_wrap.cc \
 	@swigsrc@/named_spectrum_wrap.cc \
 	@swigsrc@/state_vector_wrap.cc \
@@ -3348,10 +3342,10 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@supportsrc@/hdf_sounding_id.cc \
 	@supportsrc@/acos_sounding_id.cc \
 	@supportsrc@/oco_sounding_id.cc @supportsrc@/uq_sounding_id.cc \
-	@supportsrc@/ecmwf.cc @supportsrc@/acos_ecmwf.cc \
-	@supportsrc@/oco_ecmwf.cc @supportsrc@/uq_ecmwf.cc \
-	@supportsrc@/oco_sim_met_ecmwf.cc @supportsrc@/fts_run_log.cc \
-	@supportsrc@/spectrum.cc @supportsrc@/state_vector.cc \
+	@supportsrc@/acos_ecmwf.cc @supportsrc@/oco_ecmwf.cc \
+	@supportsrc@/uq_ecmwf.cc @supportsrc@/oco_sim_met_ecmwf.cc \
+	@supportsrc@/fts_run_log.cc @supportsrc@/spectrum.cc \
+	@supportsrc@/state_vector.cc \
 	@supportsrc@/sub_state_vector_proxy.cc \
 	@supportsrc@/rf_gauleg.cc @supportsrc@/polynomial_eval.cc \
 	@interfacesrc@/solar_absorption_spectrum.cc \
@@ -4078,8 +4072,6 @@ clean-pkgpythonswigLTLIBRARIES:
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-uq_sounding_id_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
-@swigsrc@/_swig_wrap_la-ecmwf_wrap.lo: @swigsrc@/$(am__dirstamp) \
-	@swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-acos_ecmwf_wrap.lo: @swigsrc@/$(am__dirstamp) \
 	@swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-oco_ecmwf_wrap.lo: @swigsrc@/$(am__dirstamp) \
@@ -4598,8 +4590,6 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@supportsrc@/$(am__dirstamp) \
 	@supportsrc@/$(DEPDIR)/$(am__dirstamp)
 @supportsrc@/libfp_la-uq_sounding_id.lo: @supportsrc@/$(am__dirstamp) \
-	@supportsrc@/$(DEPDIR)/$(am__dirstamp)
-@supportsrc@/libfp_la-ecmwf.lo: @supportsrc@/$(am__dirstamp) \
 	@supportsrc@/$(DEPDIR)/$(am__dirstamp)
 @supportsrc@/libfp_la-acos_ecmwf.lo: @supportsrc@/$(am__dirstamp) \
 	@supportsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -6470,7 +6460,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-constant.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-default_constant.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-double_with_unit.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-ecmwf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-environment_substitute.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-fp_gsl_integrate.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-fp_gsl_matrix.Plo@am__quote@
@@ -6576,7 +6565,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-dispersion_polynomial_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-dispersion_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-double_with_unit_wrap.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-ecmwf_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-empirical_orthogonal_function_output_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-empirical_orthogonal_function_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-error_analysis_output_wrap.Plo@am__quote@
@@ -7274,13 +7262,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/uq_sounding_id_wrap.cc' object='@swigsrc@/_swig_wrap_la-uq_sounding_id_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-uq_sounding_id_wrap.lo `test -f '@swigsrc@/uq_sounding_id_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/uq_sounding_id_wrap.cc
-
-@swigsrc@/_swig_wrap_la-ecmwf_wrap.lo: @swigsrc@/ecmwf_wrap.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-ecmwf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-ecmwf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-ecmwf_wrap.lo `test -f '@swigsrc@/ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/ecmwf_wrap.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-ecmwf_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-ecmwf_wrap.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/ecmwf_wrap.cc' object='@swigsrc@/_swig_wrap_la-ecmwf_wrap.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-ecmwf_wrap.lo `test -f '@swigsrc@/ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/ecmwf_wrap.cc
 
 @swigsrc@/_swig_wrap_la-acos_ecmwf_wrap.lo: @swigsrc@/acos_ecmwf_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-acos_ecmwf_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-acos_ecmwf_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-acos_ecmwf_wrap.lo `test -f '@swigsrc@/acos_ecmwf_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/acos_ecmwf_wrap.cc
@@ -8982,13 +8963,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@supportsrc@/uq_sounding_id.cc' object='@supportsrc@/libfp_la-uq_sounding_id.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @supportsrc@/libfp_la-uq_sounding_id.lo `test -f '@supportsrc@/uq_sounding_id.cc' || echo '$(srcdir)/'`@supportsrc@/uq_sounding_id.cc
-
-@supportsrc@/libfp_la-ecmwf.lo: @supportsrc@/ecmwf.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @supportsrc@/libfp_la-ecmwf.lo -MD -MP -MF @supportsrc@/$(DEPDIR)/libfp_la-ecmwf.Tpo -c -o @supportsrc@/libfp_la-ecmwf.lo `test -f '@supportsrc@/ecmwf.cc' || echo '$(srcdir)/'`@supportsrc@/ecmwf.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @supportsrc@/$(DEPDIR)/libfp_la-ecmwf.Tpo @supportsrc@/$(DEPDIR)/libfp_la-ecmwf.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@supportsrc@/ecmwf.cc' object='@supportsrc@/libfp_la-ecmwf.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @supportsrc@/libfp_la-ecmwf.lo `test -f '@supportsrc@/ecmwf.cc' || echo '$(srcdir)/'`@supportsrc@/ecmwf.cc
 
 @supportsrc@/libfp_la-acos_ecmwf.lo: @supportsrc@/acos_ecmwf.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @supportsrc@/libfp_la-acos_ecmwf.lo -MD -MP -MF @supportsrc@/$(DEPDIR)/libfp_la-acos_ecmwf.Tpo -c -o @supportsrc@/libfp_la-acos_ecmwf.lo `test -f '@supportsrc@/acos_ecmwf.cc' || echo '$(srcdir)/'`@supportsrc@/acos_ecmwf.cc

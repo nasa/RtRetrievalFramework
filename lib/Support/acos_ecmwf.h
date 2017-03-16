@@ -1,6 +1,6 @@
 #ifndef ACOS_ECMWF_H
 #define ACOS_ECMWF_H
-#include "ecmwf.h"
+#include "meteorology.h"
 
 namespace FullPhysics {
 /****************************************************************//**
@@ -8,7 +8,7 @@ namespace FullPhysics {
   functionality.
 *******************************************************************/
 
-class AcosEcmwf : public Ecmwf {
+class AcosEcmwf : public Meteorology {
 public:
     AcosEcmwf(const std::string& Fname, const boost::shared_ptr<HdfSoundingId>& 
     Hdf_sounding_id, bool Avg_sounding_number);
@@ -23,9 +23,6 @@ public:
     using Meteorology::specific_humidity;
     blitz::Array<double, 1> specific_humidity() const
         { return read_array("ecmwf/specific_humidity"); }
-
-    blitz::Array<double, 1> ozone_mmr() const
-        { throw Exception("ozone_mmr undefined"); }
 
     double surface_pressure() const
         { return read_scalar("ecmwf/surface_pressure"); }

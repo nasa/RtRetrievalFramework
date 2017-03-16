@@ -1,4 +1,5 @@
 #include "oco_ecmwf.h"
+#include "old_constant.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -6,8 +7,7 @@ using namespace blitz;
 #ifdef HAVE_LUA
 #include "register_lua.h"
 REGISTER_LUA_DERIVED_CLASS(OcoEcmwf, Meteorology)
-.def(luabind::constructor<std::string, 
-			  const boost::shared_ptr<HdfSoundingId>&>())
+.def(luabind::constructor<std::string, const boost::shared_ptr<HdfSoundingId>&>())
 REGISTER_LUA_END()
 #endif
 
@@ -21,6 +21,33 @@ REGISTER_LUA_END()
 OcoEcmwf::OcoEcmwf(const std::string& Fname, const boost::shared_ptr<HdfSoundingId>& Hdf_sounding_id)
 : h(Fname), hsid(Hdf_sounding_id)
 {
+}
+
+//-----------------------------------------------------------------------
+/// Add the capability to return Ozone VMR
+//-----------------------------------------------------------------------
+
+blitz::Array<double, 1> OcoEcmwf::vmr(const std::string& Species) const
+{
+    std::string species_upper = Species;
+    boost::algorithm::to_upper(species_upper);
+    if (species_upper == "O3") {
+        return ozone_vmr();
+    } else {
+        return Meteorology::vmr(Species);
+    }   
+}
+
+//-----------------------------------------------------------------------
+/// Return the Ozone VMR.
+//-----------------------------------------------------------------------
+
+blitz::Array<double, 1> OcoEcmwf::ozone_vmr() const
+{
+    Array<double, 1> s = ozone_mmr();
+    Array<double, 1> vmr(s.shape());
+    vmr = s * OldConstant::molar_weight_dry_air / OldConstant::molar_weight_ozone;
+    return vmr;
 }
 
 //-----------------------------------------------------------------------
@@ -47,9 +74,6 @@ Array<double, 1> OcoEcmwf::read_array(const std::string& Field) const
     (Field,
      TinyVector<int, 3>(hsid->frame_number(), hsid->sounding_number(), 0),
      TinyVector<int, 3>(1,1,sz[2]));
-  TinyVector<int, 3> sz2 = 
-    h.read_shape<3>("ECMWF/vector_pressure_levels_ecmwf");
-
   Array<double, 1> V(traw.extent(thirdDim));
 
   V = traw(0, 0, Range::all());

@@ -35,8 +35,12 @@ public:
     /// Volume mixing ratio for a particular species on the meteorological 
     /// pressure levels. Species name should use the standard molecular compound
     /// naming convention. Ie, oxygen = O2, water = H2O, etc..
+    /// 
+    /// Functions for computing the VMR values are registered into
+    /// vmr_func_map. This base class includes an implementation for H2O
+    /// VMR from specific_humidity.
     //-----------------------------------------------------------------------
-    virtual blitz::Array<double, 1> vmr(const std::string& Species) const = 0;
+    virtual blitz::Array<double, 1> vmr(const std::string& Species) const;
 
     //-----------------------------------------------------------------------
     /// Volume mixing ratio for a particular species interpolated to the 
@@ -77,6 +81,12 @@ public:
     void print(std::ostream& Os) const { Os << "Meteorology"; }
 
 protected:
+
+    //-----------------------------------------------------------------------
+    /// Return the H20 VMR. This is the specific_humidity converted to a
+    /// volume mixing ratio.
+    //-----------------------------------------------------------------------
+    virtual blitz::Array<double, 1> h2o_vmr() const;
 
     //-----------------------------------------------------------------------
     /// Interpolates a profile of data from the internal pressure grid
