@@ -159,21 +159,53 @@ function OcoConfig.oco_noise:create()
 end
 
 ------------------------------------------------------------
---- Retrieves a bad pixel mask out of an extra dimension
---- in the snr_coef dataset
+--- Get bad sample from either snr_coef or bad_sample_list,
+--- depending on what we find in the file.
 ------------------------------------------------------------
 
-function OcoConfig:snr_coef_bad_sample_mask()
+function OcoConfig.l1b_bad_sample_mask(self)
+   local l1b_hdf_file = self.config:l1b_hdf_file()
+   if(l1b_hdf_file:has_object("/InstrumentHeader/bad_sample_list")) then
+      return self.config.bad_sample_list_bad_sample_mask(self)
+   else
+      return self.config.snr_coef_bad_sample_mask(self)
+   end
+end   
+
+------------------------------------------------------------
+--- Retrieve a bad pixel mask from the bad_sample_list field.
+--- This was added in B8.00
+------------------------------------------------------------
+
+function OcoConfig.bad_sample_list_bad_sample_mask(self)
+    self.config:diagnostic_message("Using bad_sample_list field for bad sample mask")
+    local l1b_hdf_file = self.config:l1b_hdf_file()
+    local sid = self.config:l1b_sid_list()
+    local sounding_num = sid:sounding_number()
+    local bad_sample_mask = l1b_hdf_file:read_double_3d("/InstrumentHeader/bad_sample_list")(Range.all(), sounding_num, Range.all())
+    
+    return bad_sample_mask
+end
+
+------------------------------------------------------------
+--- Retrieves a bad pixel mask out of an extra dimension
+--- in the snr_coef dataset. This was how things were done
+--- pre B8.00
+------------------------------------------------------------
+
+function OcoConfig.snr_coef_bad_sample_mask(self)
     local l1b_hdf_file = self.config:l1b_hdf_file()
     local sid = self.config:l1b_sid_list()
     local sounding_num = sid:sounding_number()
     local snr_coef = l1b_hdf_file:read_double_4d_sounding("/InstrumentHeader/snr_coef", sounding_num)
 
     if (snr_coef:depth() > 2) then
+        self.config:diagnostic_message("Using snr_coeff third component for bad sample data")
         local bad_sample_mask = snr_coef(Range.all(), Range.all(), 2)
         return bad_sample_mask
     end
     
+    self.config:diagnostic_message("No bad sample data found in snr_coeff")
     return nil
 end
 

@@ -169,17 +169,17 @@ class PopulatorBase(object):
     def addl_var_list_def(self):
         return "\n".join(
             ['%s_list=( `cat %s` )\n' % (k, v) 
-             for k, v in list(self.additional_var_list.items())])
+             for k, v in list(sorted(self.additional_var_list.items()))])
     @property
     def addl_var_run_export(self):
         return "\n".join(
             ['export %s="${%s_list[${job_index}]}"\n' % (i, i)
-             for i in list(self.additional_var_list.keys())])
+             for i in list(sorted(self.additional_var_list.keys()))])
     @property
     def variable_exports(self):
         return "\n".join(
             ['export %s="%s"\n' % (var_name, var_value) 
-             for var_name, var_value in list(self.variable_exports_list.items())])
+             for var_name, var_value in list(sorted(self.variable_exports_list.items()))])
     @property
     def spectrum_file(self):
         return self.variable_exports_list["spectrum_file"]
