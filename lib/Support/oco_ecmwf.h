@@ -1,6 +1,6 @@
 #ifndef OCO_ECMWF_H
 #define OCO_ECMWF_H
-#include "ecmwf.h"
+#include "meteorology.h"
 
 namespace FullPhysics {
 /****************************************************************//**
@@ -8,7 +8,7 @@ namespace FullPhysics {
   functionality.
 *******************************************************************/
 
-class OcoEcmwf : public Ecmwf {
+class OcoEcmwf : public Meteorology {
 public:
     OcoEcmwf(const std::string& Fname, const boost::shared_ptr<HdfSoundingId>& Hdf_sounding_id);
     ~OcoEcmwf() {}
@@ -22,8 +22,13 @@ public:
     blitz::Array<double, 1> specific_humidity() const
         { return read_array("ECMWF/specific_humidity_profile_ecmwf"); }
 
+    using Meteorology::vmr;
+    blitz::Array<double, 1> vmr(const std::string& Species) const;
+
     blitz::Array<double, 1> ozone_mmr() const
         { return read_array("/ECMWF/ozone_profile_ecmwf"); }
+
+    virtual blitz::Array<double, 1> ozone_vmr() const;
 
     double surface_pressure() const
         { return read_scalar("ECMWF/surface_pressure_ecmwf"); }

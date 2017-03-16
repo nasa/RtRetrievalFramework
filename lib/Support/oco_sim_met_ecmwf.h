@@ -1,6 +1,6 @@
 #ifndef OCO_SIM_MET_ECMWF_H
 #define OCO_SIM_MET_ECMWF_H
-#include "ecmwf.h"
+#include "meteorology.h"
 
 namespace FullPhysics {
 /****************************************************************//**
@@ -17,7 +17,7 @@ namespace FullPhysics {
   levels. 
 *******************************************************************/
 
-class OcoSimMetEcmwf : public Ecmwf {
+class OcoSimMetEcmwf : public Meteorology {
 public:
     OcoSimMetEcmwf(const std::string& Fname, const boost::shared_ptr<HdfSoundingId>& Hdf_sounding_id);
     ~OcoSimMetEcmwf() {}
@@ -30,9 +30,6 @@ public:
     using Meteorology::specific_humidity;
     blitz::Array<double, 1> specific_humidity() const
         { return read_array("ecmwf/specific_humidity"); }
-
-    blitz::Array<double, 1> ozone_mmr() const
-        { throw Exception("ozone_mmr undefined"); }
 
     double surface_pressure() const
         { return read_scalar("ecmwf/surface_pressure"); }

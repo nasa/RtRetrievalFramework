@@ -1,6 +1,6 @@
 #ifndef UQ_ECMWF_H
 #define UQ_ECMWF_H
-#include "ecmwf.h"
+#include "meteorology.h"
 
 namespace FullPhysics {
 
@@ -9,7 +9,7 @@ namespace FullPhysics {
   ECMWF reading functionality.
 *******************************************************************/
 
-class UqEcmwf : public Ecmwf {
+class UqEcmwf : public Meteorology {
 public:
     UqEcmwf(const std::string& Fname);
     ~UqEcmwf() {}
@@ -22,9 +22,6 @@ public:
     using Meteorology::specific_humidity;
     blitz::Array<double, 1> specific_humidity() const
         { return read_array("ECMWF/specific_humidity_profile_ecmwf"); }
-
-    blitz::Array<double, 1> ozone_mmr() const
-        { return read_array("/ECMWF/ozone_profile_ecmwf"); }
 
     double surface_pressure() const
         { return read_scalar("ECMWF/surface_pressure_ecmwf"); }
