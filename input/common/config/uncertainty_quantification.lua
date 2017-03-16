@@ -78,8 +78,21 @@ function init_uq(config)
         
         return nil
     end
+    function bad_sample_list_bad_sample_mask(self)
+        local l1b_hdf_file = self.config:l1b_hdf_file()
+	local bad_sample_mask = l1b_hdf_file:read_double_2d("/InstrumentHeader/bad_sample_list")
+	return bad_sample_mask
+    end
+    function l1b_bad_sample_mask(self)
+       local l1b_hdf_file = self.config:l1b_hdf_file()
+       if(l1b_hdf_file:has_object("/InstrumentHeader/bad_sample_list")) then
+	  return self.config.bad_sample_list_bad_sample_mask(self)
+       else
+	  return self.config.snr_coef_bad_sample_mask(self)
+       end
+    end   
 
-    config.fm.spec_win.bad_sample_mask = snr_coef_bad_sample_mask_uq
+    config.fm.spec_win.bad_sample_mask = l1b_bad_sample_mask_uq
 
     -----------
     -- Noise --
