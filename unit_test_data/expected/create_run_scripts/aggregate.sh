@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #PBS -l select=ncpus=16
 
-export ecmwf_file="/fake_path/ecmwf.h5"
-
 export imap_file="/fake_path/imap.h5"
+
+export met_file="/fake_path/ecmwf.h5"
 
 export spectrum_file="/fake_path/spectrum.h5"
 
