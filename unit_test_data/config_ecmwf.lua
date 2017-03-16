@@ -15,24 +15,24 @@ config = FixedLevelBaseConfig:new {
    cloud_file = "",
 }
 --- Pressure from ECMWF
-config.ecmwf_file = "in/ecmwf.h5"
+config.met_file = "in/ecmwf.h5"
 
 --- Use HDF Level 1 file rather than ASCII
 config.fm.input = {
-    creator = ConfigCommon.l1b_ecmwf_input,
+    creator = ConfigCommon.l1b_met_input,
     l1b = {
         creator = AcosConfig.level1b_hdf,
         noise = {
             creator = ConfigCommon.noise_ascii_array
         },
     },
-    ecmwf = {
+    met = {
         creator = AcosConfig.acos_ecmwf,
     },
 }
 
-config.fm.atmosphere.pressure.apriori = ConfigCommon.ecmwf_pressure
-config.fm.atmosphere.temperature.levels.apriori = ConfigCommon.ecmwf_temperature
-config.fm.atmosphere.absorber.H2O.apriori = ConfigCommon.ecmwf_h2o_vmr
+config.fm.atmosphere.pressure.apriori = ConfigCommon.met_pressure
+config.fm.atmosphere.temperature.levels.apriori = ConfigCommon.met_temperature
+config.fm.atmosphere.absorber.H2O.apriori = ConfigCommon.met_h2o_vmr
 
 config:do_config()

@@ -7,24 +7,24 @@ import os
 class L2Run(object):
     '''This is a convenience class that provides a simpler interface to
     the underlying C++ wrapped python classes.'''
-    def __init__(self, lua_config, sounding_id, ecmwf_file, spectrum_file, 
+    def __init__(self, lua_config, sounding_id, met_file, spectrum_file, 
                  print_log = True, scene_file = None,
                  abscodir = None, merradir = None, imap_file = None):
         '''Load a Lua config file, setting the given sounding id, ecmf_file,
         and spectrum_file. By default we also turn logging on so you get 
         progress messages as you run. You can optionally turn this off.'''
         # Save information to use in pickling
-        self.__state_save = (lua_config, sounding_id, ecmwf_file, 
+        self.__state_save = (lua_config, sounding_id, met_file, 
                              spectrum_file, print_log, 
                              scene_file, abscodir, merradir,
                              imap_file)
         self.output_file_name = None
         self.output_file_ = None
         self.sounding_id = sounding_id
-        self.ecmwf_file = ecmwf_file
+        self.met_file = met_file
         self.spectrum_file = spectrum_file
         self.imap_file = imap_file
-        os.environ["ecmwf_file"] = ecmwf_file
+        os.environ["met_file"] = met_file
         os.environ["spectrum_file"] = spectrum_file
         os.environ["sounding_id"] = sounding_id
         if(scene_file is not None):
@@ -93,7 +93,7 @@ class L2Run(object):
                             k,v = v2.split('=')
                             if(k == "spectrum_file"):
                                 l1b = eval(v)
-                            if(k == "ecmwf_file"):
+                            if(k == "met_file"):
                                 met = eval(v)
                             if(k == "imap_file"):
                                 imap = eval(v)

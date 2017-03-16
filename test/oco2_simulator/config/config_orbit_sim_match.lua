@@ -20,7 +20,7 @@ config.fm.instrument.dispersion.retrieved=true
 --- Use meteorology file for ECMWF
 ------------------------------------------------------------
 
-config.fm.input.ecmwf.creator = OcoConfig.oco_ecmwf_meteorology
+config.fm.input.met.creator = OcoConfig.oco_meteorology
 
 ------------------------------------------------------------
 --- Use apriori that matches what was used in the scene file

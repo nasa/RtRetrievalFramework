@@ -138,21 +138,21 @@ function init_uq(config)
     -- ECMWF --
     -----------
 
-    uq_ecmwf = Creator:new()
+    uq_met = Creator:new()
 
-    function uq_ecmwf:create()
-        local ecmwf = UqEcmwf(self.config.spectrum_file)
+    function uq_met:create()
+        local met = UqEcmwf(self.config.spectrum_file)
         self.config.input_file_description = self.config.input_file_description .. "ECMWF input file:    " .. self.config.spectrum_file .. "\n"
-        return ecmwf
+        return met
     end
 
-    function uq_ecmwf:register_output(ro)
-        if (self.config.ecmwf) then
-            ro:push_back(MetPassThroughOutput(self.config.ecmwf))
+    function uq_met:register_output(ro)
+        if (self.config.met) then
+            ro:push_back(MetPassThroughOutput(self.config.met))
         end
     end
 
-    config.fm.input.ecmwf.creator = uq_ecmwf
+    config.fm.input.met.creator = uq_met
 
     ---------
     -- ILS --

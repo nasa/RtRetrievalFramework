@@ -35,7 +35,7 @@ TcconSounding1Fixture::TcconSounding1Fixture()
     std::string ecmwf = test_data_dir() + "../test/tccon_small_set/acos_EcmB2900_tccon_5_good_qual.h5";
     std::string spectrum = test_data_dir() + "../test/tccon_small_set/acos_L1bB2900_tccon_5_good_qual.h5";
     std::string config = test_data_dir() + "../input/gosat/config/config.lua";
-    setenv("ecmwf_file", ecmwf.c_str(), 1);
+    setenv("met_file", ecmwf.c_str(), 1);
     setenv("spectrum_file", spectrum.c_str() , 1);
     setenv("sounding_id", "20100223034944", 1);
     ls = LuaState::load_file(config);
