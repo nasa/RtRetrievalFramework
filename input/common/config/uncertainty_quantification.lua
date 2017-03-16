@@ -80,7 +80,7 @@ function init_uq(config)
     end
     function bad_sample_list_bad_sample_mask(self)
         local l1b_hdf_file = self.config:l1b_hdf_file()
-	local bad_sample_mask = l1b_hdf_file:read_double_2d("/InstrumentHeader/bad_sample_list", sounding_num)
+	local bad_sample_mask = l1b_hdf_file:read_double_2d("/InstrumentHeader/bad_sample_list")
 	return bad_sample_mask
     end
     function l1b_bad_sample_mask(self)
