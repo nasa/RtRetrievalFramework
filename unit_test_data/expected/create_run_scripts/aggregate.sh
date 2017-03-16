@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #PBS -l select=ncpus=16
 
-export spectrum_file="/fake_path/spectrum.h5"
-
 export ecmwf_file="/fake_path/ecmwf.h5"
 
 export imap_file="/fake_path/imap.h5"
+
+export spectrum_file="/fake_path/spectrum.h5"
 
 sounding_id_list_filename=create_run_scripts_test/sounding_id.list
 l2_agg_fn=create_run_scripts_test/l2_aggregate.h5
