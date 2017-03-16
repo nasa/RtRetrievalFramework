@@ -33,7 +33,7 @@ class FakePopulator(PopulatorBase):
 
     @property
     def variable_exports_list(self):
-        return {'ecmwf_file': "/fake_path/ecmwf.h5",
+        return {'met_file': "/fake_path/ecmwf.h5",
                 'imap_file': "/fake_path/imap.h5",
                 'spectrum_file': "/fake_path/spectrum.h5"}
     @property

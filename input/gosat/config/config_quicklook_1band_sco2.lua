@@ -50,7 +50,7 @@ config.fm.instrument.ils_func.hdf_group_name = "Instrument/ILS_theoretical"
 -- Set up retrieval as suggested by Christian
 --- Use a scaled version of the CO2 retrieval
 
-config.fm.atmosphere.absorber.CO2.vmr_profile = ConfigCommon.tccon_co2_apriori_ecmwf
+config.fm.atmosphere.absorber.CO2.vmr_profile = ConfigCommon.tccon_co2_apriori_met
 config.fm.atmosphere.absorber.CO2.scale_apriori = 1.0
 config.fm.atmosphere.absorber.CO2.scale_cov = 0.1
 config.fm.atmosphere.absorber.CO2.creator = ConfigCommon.vmr_level_scaled

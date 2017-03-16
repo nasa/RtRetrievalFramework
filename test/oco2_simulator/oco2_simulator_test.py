@@ -9,10 +9,10 @@ import os
 bdir = os.path.dirname(__file__) + "/"
 sdir = bdir + "simulator_result/"
 sid_name = "2010090912004075"
-ecmwf_name = "../input/oco2_sim_met.h5"
+met_name = "../input/oco2_sim_met.h5"
 l1b_name = "../input/oco2_sim_l1b.h5"
 scene_file = "../input/oco2_sim_scene.h5"
-r = L2Run(bdir + "config/config_orbit_sim_match.lua", sid_name,ecmwf_name, 
+r = L2Run(bdir + "config/config_orbit_sim_match.lua", sid_name,met_name, 
           l1b_name, scene_file = scene_file)
 
 # Read in the spectral domain that we will be comparing against. This is the

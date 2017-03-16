@@ -17,7 +17,7 @@ GosatBaseConfig = AcosConfig:new {
    -- variables.
    sid_string = os.getenv("sounding_id"),
    spectrum_file = os.getenv("spectrum_file"),
-   ecmwf_file = os.getenv("ecmwf_file"),
+   met_file = os.getenv("met_file"),
    static_file = gosat_base_config_dir .. "/../input/l2_gosat_static_input.h5",
    static_eof_file = gosat_base_config_dir .. "/../input/l2_gosat_eof.h5",
    static_solar_file = config_common_dir .. "/../input/l2_solar_model.h5",
@@ -122,14 +122,14 @@ GosatBaseConfig = AcosConfig:new {
          creator = ConfigCommon.spectral_window_hdf,
       },
       input = {
-          creator = ConfigCommon.l1b_ecmwf_input,
+          creator = ConfigCommon.l1b_met_input,
           l1b = {
              creator = AcosConfig.level1b_hdf,
              noise = {
                 creator = AcosConfig.gosat_noise_l1b,
              },
           },
-          ecmwf = {
+          met = {
               creator = AcosConfig.acos_ecmwf,
           },
       },
@@ -283,7 +283,7 @@ GosatBaseConfig = AcosConfig:new {
             creator = ConfigCommon.default_constant,
          },
          pressure = {
-            apriori = ConfigCommon.ecmwf_pressure,
+            apriori = ConfigCommon.met_pressure,
             covariance = ConfigCommon.hdf_covariance("Surface_Pressure"),
             a = ConfigCommon.hdf_read_double_1d("Pressure/Pressure_sigma_a"),
             b = ConfigCommon.hdf_read_double_1d("Pressure/Pressure_sigma_b"),
@@ -292,7 +292,7 @@ GosatBaseConfig = AcosConfig:new {
          temperature = {
             apriori = ConfigCommon.hdf_apriori("Temperature/Offset"),
             covariance = ConfigCommon.hdf_covariance("Temperature/Offset"),
-            creator = ConfigCommon.temperature_ecmwf,
+            creator = ConfigCommon.temperature_met,
          },
          ground = {
             -- Instrument specific solar strengths used for ground calculations 
@@ -309,7 +309,7 @@ GosatBaseConfig = AcosConfig:new {
             -- Coxmunk windspeed and refractive index inputs
             coxmunk = {
                refractive_index = ConfigCommon.hdf_apriori("Ground/Refractive_Index"),
-               apriori = ConfigCommon.ecmwf_windspeed,
+               apriori = ConfigCommon.met_windspeed,
                covariance = ConfigCommon.hdf_covariance("Ground/Windspeed"),
                creator = ConfigCommon.coxmunk_retrieval,
             },
@@ -371,7 +371,7 @@ GosatBaseConfig = AcosConfig:new {
             creator = ConfigCommon.absorber_creator,
             gases = {"CO2", "H2O", "O2"},
             CO2 = {
-               apriori = ConfigCommon.tccon_co2_apriori_ecmwf,
+               apriori = ConfigCommon.tccon_co2_apriori_met,
                covariance = ConfigCommon.hdf_covariance("Gas/CO2"),
                absco = "v4.2.0_unscaled/co2_v4.2.0_with_ctm.hdf",
 	       table_scale = {1.0, 1.0038, 0.9946},
@@ -381,7 +381,7 @@ GosatBaseConfig = AcosConfig:new {
                scale_apriori = 1.0,
                scale_cov = 0.25,
                absco = "v4.2.0_unscaled/h2o_v4.2.0.hdf",
-               creator = ConfigCommon.vmr_ecmwf,
+               creator = ConfigCommon.vmr_met,
             },
             O2 = {
                apriori = ConfigCommon.hdf_read_double_1d("Gas/O2/average_mole_fraction"),

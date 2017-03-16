@@ -3,7 +3,7 @@
 # Things that vary from one run to the next
 export spectrum_file="/fake_path/spectrum.h5"
 
-export ecmwf_file="/fake_path/ecmwf.h5"
+export met_file="/fake_path/ecmwf.h5"
 
 export imap_file="/fake_path/imap.h5"
 

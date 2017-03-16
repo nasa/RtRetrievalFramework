@@ -69,21 +69,21 @@ end
 --- Create the ECMWF  fileif we have one
 ------------------------------------------------------------
 
-OcoConfig.oco_ecmwf = Creator:new()
+OcoConfig.oco_met = Creator:new()
 
-function OcoConfig.oco_ecmwf:create()
+function OcoConfig.oco_met:create()
    local sid = self.config:l1b_sid_list()
-   if (self.config.ecmwf_file) then
-       local ecmwf = OcoEcmwf(self.config.ecmwf_file, self.config:l1b_sid_list())
+   if (self.config.met_file) then
+       local met = OcoEcmwf(self.config.met_file, self.config:l1b_sid_list())
        self.config.input_file_description = self.config.input_file_description .. 
-          "ECMWF input file:    " .. self.config.ecmwf_file .. "\n"
-       return ecmwf
+          "ECMWF input file:    " .. self.config.met_file .. "\n"
+       return met
    end
 end
 
-function OcoConfig.oco_ecmwf:register_output(ro)
-    if (self.config.ecmwf) then
-        ro:push_back(MetPassThroughOutput(self.config.ecmwf))
+function OcoConfig.oco_met:register_output(ro)
+    if (self.config.met) then
+        ro:push_back(MetPassThroughOutput(self.config.met))
     end
 end
 
@@ -405,21 +405,21 @@ end
 --- file. 
 ------------------------------------------------------------
 
-OcoConfig.oco_ecmwf_meteorology = Creator:new()
+OcoConfig.oco_meteorology = Creator:new()
 
-function OcoConfig.oco_ecmwf_meteorology:create()
+function OcoConfig.oco_meteorology:create()
    local sid = self.config:l1b_sid_list()
-   if (self.config.ecmwf_file) then
-       local ecmwf = OcoSimMetEcmwf(self.config.ecmwf_file, self.config:l1b_sid_list())
+   if (self.config.met_file) then
+       local met = OcoSimMetEcmwf(self.config.met_file, self.config:l1b_sid_list())
        self.config.input_file_description = self.config.input_file_description .. 
-          "ECMWF input file:    " .. self.config.ecmwf_file .. "\n"
-       return ecmwf
+          "ECMWF input file:    " .. self.config.met_file .. "\n"
+       return met
    end
 end
 
-function OcoConfig.oco_ecmwf_meteorology:register_output(ro)
-    if (self.config.ecmwf) then
-        ro:push_back(MetPassThroughOutput(self.config.ecmwf))
+function OcoConfig.oco_meteorology:register_output(ro)
+    if (self.config.met) then
+        ro:push_back(MetPassThroughOutput(self.config.met))
     end
 end
 

@@ -42,7 +42,7 @@ class XCO2BiasFromL2Run(XCO2Bias):
         the simulator met file (it usually is). We can extend this later
         if that because an issue.'''
         logfile = re.sub(r'.hdf', '.log', 
-                       re.sub(r'meteorology', 'scene', self.r.ecmwf_file))
+                       re.sub(r'meteorology', 'scene', self.r.met_file))
         lf = OrbitSimLogFile(logfile, self.r.spectrum_file)
         return lf.data[lf.get_sounding_indexes(self.r.sounding_id).Frame, 0,
                        lf.get_column_index("XCO2")]
