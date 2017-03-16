@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Things that vary from one run to the next
+export imap_file="/fake_path/imap.h5"
+
 export spectrum_file="/fake_path/spectrum.h5"
 
 export met_file="/fake_path/ecmwf.h5"
-
-export imap_file="/fake_path/imap.h5"
 
 export l2_binary_filename=/fake_path/l2_fp
 export l2_config_filename=/fake_path/input/gosat/config/config.lua
