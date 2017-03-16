@@ -397,7 +397,7 @@ class PopulatorBase(object):
         # Check for any bad data
         bad = [i for i in id_list if not re.match('\d{3,17}', i)]
         if(len(bad) > 0):
-            raise IOError('Could not find sounding id in string: "%s" in file %s' % (bad[0], id_list_file))
+            raise IOError('Bad data in sounding ID list, could not find sounding id in string: "%s" in file %s' % (bad[0], id_list_file))
         return id_list
 
     def get_config_keyword_value(self, config_filename, keyword_path):
