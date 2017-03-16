@@ -178,11 +178,12 @@ end
 ------------------------------------------------------------
 
 function OcoConfig.bad_sample_list_bad_sample_mask(self)
+    self.config:diagnostic_message("Using bad_sample_list field for bad sample mask")
     local l1b_hdf_file = self.config:l1b_hdf_file()
     local sid = self.config:l1b_sid_list()
     local sounding_num = sid:sounding_number()
-    local bad_sample_mask = l1b_hdf_file:read_double_3d("/InstrumentHeader/bad_sample_list", sounding_num)(Range.all(), sounding_num, Range.all())
-
+    local bad_sample_mask = l1b_hdf_file:read_double_3d("/InstrumentHeader/bad_sample_list")(Range.all(), sounding_num, Range.all())
+    
     return bad_sample_mask
 end
 
@@ -199,10 +200,12 @@ function OcoConfig.snr_coef_bad_sample_mask(self)
     local snr_coef = l1b_hdf_file:read_double_4d_sounding("/InstrumentHeader/snr_coef", sounding_num)
 
     if (snr_coef:depth() > 2) then
+        self.config:diagnostic_message("Using snr_coeff third component for bad sample data")
         local bad_sample_mask = snr_coef(Range.all(), Range.all(), 2)
         return bad_sample_mask
     end
     
+    self.config:diagnostic_message("No bad sample data found in snr_coeff")
     return nil
 end
 
