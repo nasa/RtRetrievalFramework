@@ -1,7 +1,8 @@
 #! /bin/bash
 # We wrap this command in a script so that we know we are using bash rather
 # /bin/sh which may or may not be bash.
-source ${srcdir}/setup_env.sh && cd fts_test && \
+source ${srcdir}/setup_env.sh && PYTHONPATH=${srcdir}/support && \
+    cd fts_test && \
     ${srcdir}/support/utils/create_config.py -t fts \
     ${srcdir}/test/fts/input/pa20091103saaaaa_100223160344.008 \
     ${srcdir}/test/fts/input/pa20091103saaaab_100223160344.008 \
