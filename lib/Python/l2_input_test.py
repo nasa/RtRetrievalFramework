@@ -22,10 +22,11 @@ def test_get_all_section_names():
 def test_get_config_type():
     '''Make sure we can read the configuration type from an XML file.'''
     config = L2InputFile(test_data + "acos_Fph_090627_37_Test_v050050_Fph2900_r11_110523154640i.config")
-    assert config.get_section("input->PGENameGroup")[0].get_keyword_value("PGEName") == b'GOSATFullPhysics'
-    assert config["input/PGENameGroup/PGEName"] == b"GOSATFullPhysics"
-    assert config["input/GOSATFullPhysics"][0] == b'20090627210055'
-    assert config.sounding_ids()[0] == b"20090627210055"
+    assert config.get_section("input->PGENameGroup")[0].get_keyword_value("PGEName") == 'GOSATFullPhysics'
+    assert config["input/PGENameGroup/PGEName"] == "GOSATFullPhysics"
+    print(config["input/GOSATFullPhysics"][0])
+    assert config["input/GOSATFullPhysics"][0] == '20090627210055'
+    assert config.sounding_ids()[0] == "20090627210055"
 
 def test_ascii_file():
     '''Make sure we can read an ascii file'''

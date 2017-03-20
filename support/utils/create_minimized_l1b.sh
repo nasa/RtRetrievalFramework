@@ -28,6 +28,13 @@ cat > ${datasets_input_file} <<DATASETS
 /ECMWF/windspeed_u_ecmwf
 /ecmwf/windspeed_v
 /ECMWF/windspeed_v_ecmwf
+/Meteorology/ozone_profile_met
+/Meteorology/specific_humidity_profile_met
+/Meteorology/surface_pressure_met
+/Meteorology/temperature_profile_met
+/Meteorology/vector_pressure_levels_met
+/Meteorology/windspeed_u_met
+/Meteorology/windspeed_v_met
 /FootprintGeometry/footprint_altitude
 /FootprintGeometry/footprint_azimuth
 /FootprintGeometry/footprint_land_fraction

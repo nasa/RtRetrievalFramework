@@ -2,13 +2,13 @@
 #include "acos_sounding_id.h"
 #include "oco_sounding_id.h"
 #include "acos_ecmwf.h"
-#include "oco_ecmwf.h"
+#include "oco_met_file.h"
 
 using namespace FullPhysics;
 using namespace blitz;
-BOOST_FIXTURE_TEST_SUITE(ecmwf_acos, GlobalFixture)
+BOOST_FIXTURE_TEST_SUITE(met_acos, GlobalFixture)
 
-BOOST_AUTO_TEST_CASE(basic)
+BOOST_AUTO_TEST_CASE(ecmwf)
 {
   std::string sid = "20091009203401";
   HdfFile sfile(test_data_dir() + "in/sounding_id.h5");
@@ -40,51 +40,19 @@ BOOST_AUTO_TEST_CASE(basic)
     5.48674415316505658877e-04, 5.73115442420909929414e-04, 6.15337784112228577613e-04,
     7.40936275682209898041e-04, 9.08908284989747017324e-04, 1.30631957917109933071e-03,
     1.41811951670399731713e-03, 1.55141541137329805507e-03;
-  BOOST_CHECK_MATRIX_CLOSE(e.h2o_vmr(press), vmr_expect);
-
-  ArrayAd<double, 1> press2(20, 20);
-  press2.value() = press;
-  press2.jacobian() = 0;
-  for(int i = 0; i < press2.rows(); ++i)
-    press2.jacobian()(i,i) = 1;
-  BOOST_CHECK_MATRIX_CLOSE(e.temperature(press2).value(), texpect);
-  BOOST_CHECK_MATRIX_CLOSE(e.h2o_vmr(press2).value(), vmr_expect);
-  Array<double, 2> jac = e.temperature(press2).jacobian();
-  Array<double, 1> t0 = e.temperature(press2).value();
-  for(int i = 0; i < 20; ++i) {
-    double eps = 0.1;
-    press(i) += eps;
-    Array<double, 1> t1 = e.temperature(press);
-    // Changing the first pressure gives a larger temperature
-    // differece. The values were inspected, and looked fine
-    if(i == 0)
-      BOOST_CHECK_MATRIX_CLOSE_TOL((t1 - t0) / eps, jac(Range::all(), i), 1e-3);
-    else
-      BOOST_CHECK_MATRIX_CLOSE_TOL((t1 - t0) / eps, jac(Range::all(), i), 1e-7);
-    press(i) -= eps;
-  }
-
-  jac = e.h2o_vmr(press2).jacobian();
-  t0 = e.h2o_vmr(press2).value();
-  for(int i = 0; i < 20; ++i) {
-    double eps = 0.1;
-    press(i) += eps;
-    Array<double, 1> t1 = e.h2o_vmr(press);
-    BOOST_CHECK_MATRIX_CLOSE_TOL((t1 - t0) / eps, jac(Range::all(), i), 1e-12);
-    press(i) -= eps;
-  }
+  BOOST_CHECK_MATRIX_CLOSE(e.vmr("H2O", press), vmr_expect);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
 
-BOOST_FIXTURE_TEST_SUITE(ecmwf_oco, GlobalFixture)
+BOOST_FIXTURE_TEST_SUITE(met_oco, GlobalFixture)
 
-BOOST_AUTO_TEST_CASE(basic)
+BOOST_AUTO_TEST_CASE(ecmwf)
 {
   std::string sid = "2010090900133574";
   HdfFile sfile(test_data_dir() + "/oco2_ECMWFND_80008a_111018214952d_spliced.h5");
   boost::shared_ptr<HdfSoundingId> sido(new OcoSoundingId(sfile, sid));
-  OcoEcmwf e(test_data_dir() + "/oco2_ECMWFND_80008a_111018214952d_spliced.h5", sido);
+  OcoMetFile e(test_data_dir() + "/oco2_ECMWFND_80008a_111018214952d_spliced.h5", sido);
   BOOST_CHECK_CLOSE(e.surface_pressure(), 95796, 1e-6);
   BOOST_CHECK_CLOSE(e.windspeed(), 9.5288243675028176938, 1e-6);
   Array<double, 1> press(20);
@@ -103,47 +71,50 @@ BOOST_AUTO_TEST_CASE(basic)
   BOOST_CHECK_MATRIX_CLOSE(e.temperature(press), texpect);
   Array<double, 1> vmr_expect(20);
   vmr_expect = 
-    6.1846336386044464047e-06, 2.3696526616669067966e-06, 1.7912447195779596004e-06,
-    4.4493971613491540648e-06, 4.2663811750629721735e-06, 2.310533211457202921e-05,
-    4.3066677729604225546e-05, 8.0495354151999834675e-05, 0.00012825322759659445052,
-    0.00011939929116084474232, 0.00013114229383684339217, 0.00019820301866710661053,
-    0.00050859154716482578729, 0.00060071598235635829781, 0.00049173906754511310067,
-    0.00043043330031180778751, 0.00078522606393224120801, 0.001024082783212755662,
-    0.0014987653090951654714, 0.0021981331635712191876;
-  BOOST_CHECK_MATRIX_CLOSE(e.h2o_vmr(press), vmr_expect);
+    6.18463363909663014530e-06, 2.36965266390393393926e-06, 1.79124472076385485451e-06,
+    4.44939716759828362880e-06, 4.26638117666292847238e-06, 2.31053455225090924774e-05,
+    4.30666795274530419808e-05, 8.04953920753194977376e-05, 1.28253250001733338365e-04,
+    1.19399307731459902292e-04, 1.31142344697486427658e-04, 1.98203458381546247617e-04,
+    5.08592865304613645817e-04, 6.00716039185911080192e-04, 4.91739179804330539016e-04,
+    4.30433305414070366962e-04, 7.85226390760217999448e-04, 1.02408279413748835168e-03,
+    1.49869481155999960918e-03, 2.19762296775938021504e-03;
 
-  ArrayAd<double, 1> press2(20, 20);
-  press2.value() = press;
-  press2.jacobian() = 0;
-  for(int i = 0; i < press2.rows(); ++i)
-    press2.jacobian()(i,i) = 1;
-  BOOST_CHECK_MATRIX_CLOSE(e.temperature(press2).value(), texpect);
-  BOOST_CHECK_MATRIX_CLOSE(e.h2o_vmr(press2).value(), vmr_expect);
-  Array<double, 2> jac = e.temperature(press2).jacobian();
-  Array<double, 1> t0 = e.temperature(press2).value();
-  for(int i = 0; i < 20; ++i) {
-    double eps = 0.1;
-    press(i) += eps;
-    Array<double, 1> t1 = e.temperature(press);
-    // Changing the first pressure gives a larger temperature
-    // differece. The values were inspected, and looked fine
-    if(i == 0)
-      BOOST_CHECK_MATRIX_CLOSE_TOL((t1 - t0) / eps, jac(Range::all(), i), 1e-3);
-    else
-      BOOST_CHECK_MATRIX_CLOSE_TOL((t1 - t0) / eps, jac(Range::all(), i), 1e-7);
-    press(i) -= eps;
-  }
+  BOOST_CHECK_MATRIX_CLOSE(e.vmr("H2O", press), vmr_expect);
+}
 
-  jac = e.h2o_vmr(press2).jacobian();
-  t0 = e.h2o_vmr(press2).value();
-  for(int i = 0; i < 20; ++i) {
-    double eps = 0.1;
-    press(i) += eps;
-    Array<double, 1> t1 = e.h2o_vmr(press);
-    BOOST_CHECK_MATRIX_CLOSE_TOL((t1 - t0) / eps, jac(Range::all(), i), 1e-10);
-    press(i) -= eps;
-  }
+BOOST_AUTO_TEST_CASE(geos5)
+{
+  std::string sid = "2015070100333531";
+  HdfFile sfile(test_data_dir() + "/oco2_L2MetGL_05297a_150701_Bxxxx_170127155155d_spliced.h5");
+  boost::shared_ptr<HdfSoundingId> sido(new OcoSoundingId(sfile, sid));
+  OcoMetFile e(test_data_dir() + "/oco2_L2MetGL_05297a_150701_Bxxxx_170127155155d_spliced.h5", sido);
+  BOOST_CHECK_CLOSE(e.surface_pressure(), 96871.289, 1e-6);
+  BOOST_CHECK_CLOSE(e.windspeed(), 8.428493579942538, 1e-6);
+  Array<double, 1> press(20);
+  press = 100, 7000, 10000, 20000, 28000, 35000, 40000, 45000,
+    50000, 55000, 60000, 65000, 70000, 75000, 80000, 85000, 90000, 95000,
+    100000, 105000;
+  Array<double, 1> texpect(20);
+  texpect =
+      230.5346396005774352, 218.60047801197865169, 220.64412804746820029, 
+      223.16561002844196082, 219.26148179720536291, 222.40556675538212517, 
+      228.34629129485082899, 234.70629521425851749, 242.32803370589996916, 
+      248.75573227792187936, 253.50945760168744414, 257.45739991023572202, 
+      260.72271454883457409, 264.43200731469079301, 267.96359689836515372, 
+      271.38280941891349585, 274.01680236144864011, 276.9505894260992136, 
+      280.98359546819432353, 284.87427687730797743;
+  BOOST_CHECK_MATRIX_CLOSE(e.temperature(press), texpect);
+  Array<double, 1> vmr_expect(20);
+  vmr_expect = 
+      6.32858778109025421605e-06, 4.69937319817151636958e-06, 4.70072557676363511452e-06,
+      1.03786999947082847403e-05, 1.43230675337823501166e-05, 4.05647993230577822029e-05,
+      1.47489513146525105889e-04, 3.35148700732445549433e-04, 6.95477941722260403073e-04,
+      1.20923427018879365083e-03, 1.74569623879772869296e-03, 2.29547574694992850483e-03,
+      2.57661651668930537923e-03, 2.94160816596165941572e-03, 3.69432736254865588116e-03,
+      5.33150511708435463631e-03, 7.13869769764232959403e-03, 8.11776571828678322751e-03,
+      9.11614312203354142106e-03, 1.01795237014713577800e-02;
 
+  BOOST_CHECK_MATRIX_CLOSE(e.vmr("H2O", press), vmr_expect);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

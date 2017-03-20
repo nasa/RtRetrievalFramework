@@ -55,9 +55,8 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(acos_sounding_id)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_sounding_id)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(uq_sounding_id)(void);
-  SWIG_INIT_TYPE SWIG_INIT_FUNC(ecmwf)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(acos_ecmwf)(void);
-  SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_met_file)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(uq_ecmwf)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_sim_met_ecmwf)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(observer)(void);
@@ -141,6 +140,7 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(max_likelihood)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(max_a_posteriori)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(pressure_holder)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(meteorology)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_property_hdf)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_property_rh_hdf)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(hdf_constant)(void);
@@ -216,9 +216,9 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(l2_fp_configuration_lua)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(nonuniform_spectrum_sampling)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(spectral_window_range)(void);
-  SWIG_INIT_TYPE SWIG_INIT_FUNC(temperature_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(temperature_met)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(temperature_level_offset)(void);
-  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_met)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_level)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_level_scaled)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(pressure_sigma)(void);
@@ -452,9 +452,8 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_acos_sounding_id", SWIG_INIT_FUNC(acos_sounding_id));
   SWIG_INIT_MODULE(package, "_oco_sounding_id", SWIG_INIT_FUNC(oco_sounding_id));
   SWIG_INIT_MODULE(package, "_uq_sounding_id", SWIG_INIT_FUNC(uq_sounding_id));
-  SWIG_INIT_MODULE(package, "_ecmwf", SWIG_INIT_FUNC(ecmwf));
   SWIG_INIT_MODULE(package, "_acos_ecmwf", SWIG_INIT_FUNC(acos_ecmwf));
-  SWIG_INIT_MODULE(package, "_oco_ecmwf", SWIG_INIT_FUNC(oco_ecmwf));
+  SWIG_INIT_MODULE(package, "_oco_met_file", SWIG_INIT_FUNC(oco_met_file));
   SWIG_INIT_MODULE(package, "_uq_ecmwf", SWIG_INIT_FUNC(uq_ecmwf));
   SWIG_INIT_MODULE(package, "_oco_sim_met_ecmwf", SWIG_INIT_FUNC(oco_sim_met_ecmwf));
   SWIG_INIT_MODULE(package, "_observer", SWIG_INIT_FUNC(observer));
@@ -538,6 +537,7 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_max_likelihood", SWIG_INIT_FUNC(max_likelihood));
   SWIG_INIT_MODULE(package, "_max_a_posteriori", SWIG_INIT_FUNC(max_a_posteriori));
   SWIG_INIT_MODULE(package, "_pressure_holder", SWIG_INIT_FUNC(pressure_holder));
+  SWIG_INIT_MODULE(package, "_meteorology", SWIG_INIT_FUNC(meteorology));
   SWIG_INIT_MODULE(package, "_aerosol_property_hdf", SWIG_INIT_FUNC(aerosol_property_hdf));
   SWIG_INIT_MODULE(package, "_aerosol_property_rh_hdf", SWIG_INIT_FUNC(aerosol_property_rh_hdf));
   SWIG_INIT_MODULE(package, "_hdf_constant", SWIG_INIT_FUNC(hdf_constant));
@@ -613,9 +613,9 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_l2_fp_configuration_lua", SWIG_INIT_FUNC(l2_fp_configuration_lua));
   SWIG_INIT_MODULE(package, "_nonuniform_spectrum_sampling", SWIG_INIT_FUNC(nonuniform_spectrum_sampling));
   SWIG_INIT_MODULE(package, "_spectral_window_range", SWIG_INIT_FUNC(spectral_window_range));
-  SWIG_INIT_MODULE(package, "_temperature_ecmwf", SWIG_INIT_FUNC(temperature_ecmwf));
+  SWIG_INIT_MODULE(package, "_temperature_met", SWIG_INIT_FUNC(temperature_met));
   SWIG_INIT_MODULE(package, "_temperature_level_offset", SWIG_INIT_FUNC(temperature_level_offset));
-  SWIG_INIT_MODULE(package, "_absorber_vmr_ecmwf", SWIG_INIT_FUNC(absorber_vmr_ecmwf));
+  SWIG_INIT_MODULE(package, "_absorber_vmr_met", SWIG_INIT_FUNC(absorber_vmr_met));
   SWIG_INIT_MODULE(package, "_absorber_vmr_level", SWIG_INIT_FUNC(absorber_vmr_level));
   SWIG_INIT_MODULE(package, "_absorber_vmr_level_scaled", SWIG_INIT_FUNC(absorber_vmr_level_scaled));
   SWIG_INIT_MODULE(package, "_pressure_sigma", SWIG_INIT_FUNC(pressure_sigma));

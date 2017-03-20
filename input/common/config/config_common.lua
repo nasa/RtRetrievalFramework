@@ -838,35 +838,35 @@ end
 --- Get various a priori values from ECMWF
 ------------------------------------------------------------
 
-function ConfigCommon:ecmwf_pressure()
+function ConfigCommon:met_pressure()
    local r = Blitz_double_array_1d(1)
-   r:set(0,self.config.ecmwf:surface_pressure())
+   r:set(0,self.config.met:surface_pressure())
    return r
 end
 
-function ConfigCommon:ecmwf_windspeed()
+function ConfigCommon:met_windspeed()
    local r = Blitz_double_array_1d(1)
-   r:set(0,self.config.ecmwf:windspeed())
+   r:set(0,self.config.met:windspeed())
    return r
 end
 
-function ConfigCommon:ecmwf_temperature()
-   return self.config.ecmwf:temperature(self.config.pinp:pressure_level())
+function ConfigCommon:met_temperature()
+   return self.config.met:temperature(self.config.pinp:pressure_level())
 end
 
-function ConfigCommon:ecmwf_h2o_vmr()
-   return self.config.ecmwf:h2o_vmr(self.config.pinp:pressure_level())
+function ConfigCommon:met_h2o_vmr()
+   return self.config.met:vmr("H2O", self.config.pinp:pressure_level())
 end
 
 ------------------------------------------------------------
 --- Load the TCCON apriori object using ECMWF data
 ------------------------------------------------------------
 
-function ConfigCommon:tccon_apriori_ecmwf()
-    if(not self.tccon_ap_ecmwf_obj) then
-        self.tccon_ap_ecmwf_obj = TcconApriori(self.ecmwf, self.l1b)
+function ConfigCommon:tccon_apriori_met()
+    if(not self.tccon_ap_met_obj) then
+        self.tccon_ap_met_obj = TcconApriori(self.met, self.l1b)
     end
-    return self.tccon_ap_ecmwf_obj
+    return self.tccon_ap_met_obj
 end
 
 ------------------------------------------------------------
@@ -875,18 +875,18 @@ end
 ------------------------------------------------------------
 
 function ConfigCommon:tccon_apriori_pressure()
-    if(not self.tccon_ap_ecmwf_obj) then
-        self.tccon_ap_ecmwf_obj = TcconApriori(self.l1b, self.pressure, self.temperature)
+    if(not self.tccon_ap_met_obj) then
+        self.tccon_ap_met_obj = TcconApriori(self.l1b, self.pressure, self.temperature)
     end
-    return self.tccon_ap_ecmwf_obj
+    return self.tccon_ap_met_obj
 end
 
 ------------------------------------------------------------
 --- Get tccon co2 apriori from tccon using ECMWF file
 ------------------------------------------------------------
 
-function ConfigCommon:tccon_co2_apriori_ecmwf()
-   local t = self.config:tccon_apriori_ecmwf()
+function ConfigCommon:tccon_co2_apriori_met()
+   local t = self.config:tccon_apriori_met()
    return t:co2_vmr_grid(self.config.pressure)
 end
 
@@ -903,9 +903,9 @@ end
 --- Load the CO2 VMR object
 ------------------------------------------------------------
 
-function ConfigCommon:reference_co2_apriori_ecmwf_obj()
+function ConfigCommon:reference_co2_apriori_met_obj()
     if (not self.ref_co2_ap_obj) then
-        self.ref_co2_ap_obj = GasVmrApriori(self.ecmwf, self.l1b, self.altitude:value(0), self:h(), "/Reference_Atmosphere", "CO2")
+        self.ref_co2_ap_obj = GasVmrApriori(self.met, self.l1b, self.altitude:value(0), self:h(), "/Reference_Atmosphere", "CO2")
     end
 
     return self.ref_co2_ap_obj 
@@ -915,8 +915,8 @@ end
 --- Get co2 apriori using reference apriori method
 ------------------------------------------------------------
 
-function ConfigCommon:reference_co2_apriori_ecmwf_apriori()
-   local t = self.config:reference_co2_apriori_ecmwf_obj()
+function ConfigCommon:reference_co2_apriori_met_apriori()
+   local t = self.config:reference_co2_apriori_met_obj()
    return t:apriori_vmr(self.config.pressure)
 end
 
@@ -1645,10 +1645,10 @@ end
 
 ConfigCommon.l1b_input = CreatorInput:new()
 
-ConfigCommon.l1b_ecmwf_input = CreatorInput:new()
+ConfigCommon.l1b_met_input = CreatorInput:new()
 
-function ConfigCommon.l1b_ecmwf_input:sub_object_key()
-   return {"l1b", "ecmwf"}
+function ConfigCommon.l1b_met_input:sub_object_key()
+   return {"l1b", "met"}
 end
 
 ------------------------------------------------------------
@@ -2026,15 +2026,15 @@ end
 --- offset.
 ------------------------------------------------------------
 
-ConfigCommon.temperature_ecmwf = CreatorApriori:new {}
+ConfigCommon.temperature_met = CreatorApriori:new {}
 
-function ConfigCommon.temperature_ecmwf:create()
-   return TemperatureEcmwf(self.config.ecmwf, self.config.pressure,
-                           self:apriori()(0), self:retrieval_flag()(0))
+function ConfigCommon.temperature_met:create()
+   return TemperatureMet(self.config.met, self.config.pressure,
+                         self:apriori()(0), self:retrieval_flag()(0))
 end
 
-function ConfigCommon.temperature_ecmwf:register_output(ro)
-   ro:push_back(TemperatureEcmwfOutput.create(self.config.temperature))
+function ConfigCommon.temperature_met:register_output(ro)
+   ro:push_back(TemperatureMetOutput.create(self.config.temperature))
 end
 
 ------------------------------------------------------------
@@ -2935,31 +2935,31 @@ end
 --- Create an absorber ECMWF, where we fit for a scale.
 ------------------------------------------------------------
 
-ConfigCommon.vmr_ecmwf = CreatorVmr:new()
+ConfigCommon.vmr_met = CreatorVmr:new()
 
-function ConfigCommon.vmr_ecmwf:apriori_v()
+function ConfigCommon.vmr_met:apriori_v()
    local r = Blitz_double_array_1d(1)
    r:set(0, function_or_simple_value(self.scale_apriori, self))
    return r
 end
 
-function ConfigCommon.vmr_ecmwf:covariance_v()
+function ConfigCommon.vmr_met:covariance_v()
    local r = Blitz_double_array_2d(1, 1)
    r:set(0, 0, function_or_simple_value(self.scale_cov, self))
    return r
 end
 
-function ConfigCommon.vmr_ecmwf:create_vmr()
-   self.vmr = AbsorberVmrEcmwf(self.config.ecmwf,
-                               self.config.pressure,
-                               function_or_simple_value(self.scale_apriori, self), 
-                               self:retrieval_flag()(0),
-                               self.name)
+function ConfigCommon.vmr_met:create_vmr()
+   self.vmr = AbsorberVmrMet(self.config.met,
+                             self.config.pressure,
+                             function_or_simple_value(self.scale_apriori, self), 
+                             self:retrieval_flag()(0),
+                             self.name)
    return self.vmr
 end
 
-function ConfigCommon.vmr_ecmwf:register_output(ro)
-   ro:push_back(AbsorberVmrEcmwfOutput.create(self.vmr))
+function ConfigCommon.vmr_met:register_output(ro)
+   ro:push_back(AbsorberVmrMetOutput.create(self.vmr))
 end
 
 ------------------------------------------------------------
@@ -3456,7 +3456,7 @@ function ConfigCommon.oco_forward_model:register_output(ro)
 
    -- Add source data files
    for i,var_ds in ipairs({ { "L1BFile", "spectrum_file"},
-                            { "ResampledMetFile", "ecmwf_file" },
+                            { "ResampledMetFile", "met_file" },
 			    { "StaticInput", "static_file"},
 			    { "SolarFile", "static_solar_file"},
 			    { "AerosolFile", "static_aerosol_file"},

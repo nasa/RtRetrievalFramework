@@ -18,8 +18,8 @@ BOOST_AUTO_TEST_CASE(basic)
 						   sid, true));
   boost::shared_ptr<Level1bAcos> l1b(new Level1bAcos(sfile, sid));
 
-  Array<double, 1> pecmwf, tecmwf;
-  ecmwf->temperature_grid(pecmwf, tecmwf);
+  Array<double, 1> pecmwf = ecmwf->pressure_levels();
+  Array<double, 1> tecmwf = ecmwf->temperature();
 
   // Test two interfaces for using class
   TcconApriori a1(ecmwf, l1b);
@@ -81,8 +81,10 @@ BOOST_AUTO_TEST_CASE(error_case)
 						   sid, true));
   boost::shared_ptr<Level1bAcos> l1b(new Level1bAcos(sfile, sid));
   TcconApriori a(ecmwf, l1b);
-  Array<double, 1> pecmwf, tecmwf;
-  ecmwf->temperature_grid(pecmwf, tecmwf);
+
+  Array<double, 1> pecmwf = ecmwf->pressure_levels();
+  Array<double, 1> tecmwf = ecmwf->temperature();
+
   for(int i = 0; i < pecmwf.rows(); ++i)
     std::cerr << pecmwf(i) << "  " << a.co2_vmr(pecmwf(i)) << "\n";
 }

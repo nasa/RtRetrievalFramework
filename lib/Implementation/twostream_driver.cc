@@ -342,6 +342,33 @@ void TwostreamRtDriver::setup_linear_inputs(const ArrayAd<double, 1>& od,
   // Certainly wouldn't need this if not retrieving ground
   twostream_interface_->do_surface_wfs(do_surface_linearization);
 
+  // Check that we fit within the LIDORT configuration
+  if(twostream_interface_->l_deltau_input().rows() < od.rows()) {
+    Exception e;
+    e << "The number of layers you are using exceeds the maximum allowed by\n"
+      << "the current build of Lidort. The number requested is "
+      << od.rows() << "\nand the maximum allowed is "
+      << twostream_interface_->l_deltau_input().rows() << "\n"
+      << "\n"
+      << "You might try rebuilding with a larger value given to the configure\n"
+      << "option --with-lidort-maxlayer=value set to a larger value.\n";
+    throw e;
+  }
+  if(twostream_interface_->l_deltau_input().cols() < natm_jac) {
+    Exception e;
+    e << "The number of jacobians you are using exceeds the maximum allowed by\n"
+      << "the current build of Lidort. The number requested is "
+      << natm_jac << "\nand the maximum allowed is "
+      << twostream_interface_->l_deltau_input().cols() << "\n"
+      << "\n"
+      << "This number of jacobians is a function of the number of aerosols\n"
+      << "in your state vector, so you can reduce the number of aerosols\n"
+      << "\n"
+      << "You might also try rebuilding with a larger value given to the configure\n"
+      << "option --with-lidort-maxatmoswfs=value set to a larger value.\n";
+    throw e;
+  }
+
   // Setup optical linear inputs
   Array<double, 2> l_deltau( twostream_interface_->l_deltau_input()(rlay,rjac,0) );
   Array<double, 2> l_omega( twostream_interface_->l_omega_input()(rlay,rjac,0) );

@@ -209,7 +209,7 @@ AsciiAtmBaseConfig = OcoConfig:new {
             -- Coxmunk windspeed and refractive index inputs
             coxmunk = {
                refractive_index = ConfigCommon.hdf_apriori("Ground/Refractive_Index"),
-               apriori = ConfigCommon.ecmwf_windspeed, 
+               apriori = ConfigCommon.met_windspeed, 
                covariance = ConfigCommon.hdf_covariance("Ground/Windspeed"),
                creator = ConfigCommon.coxmunk_retrieval,
             },

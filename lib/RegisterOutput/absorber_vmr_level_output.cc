@@ -1,4 +1,6 @@
 #include "absorber_vmr_level_output.h"
+#include <boost/algorithm/string.hpp>
+
 using namespace FullPhysics;
 using namespace blitz;
 
@@ -55,7 +57,7 @@ void AbsorberVmrLevelOutput::register_output_apriori(const boost::shared_ptr<Out
   boost::shared_ptr<AbsorberVmrLevel> afreeze = 
     boost::dynamic_pointer_cast<AbsorberVmrLevel>(a->clone());
   std::string gname = a->gas_name();
-  boost::to_lower(gname);
+  boost::algorithm::to_lower(gname);
   out->register_data_source
     ("/RetrievalResults/" + gname + "_profile_apriori", 
      &AbsorberVmrLevel::vmr_profile, afreeze);
@@ -70,7 +72,7 @@ void AbsorberVmrLevelOutput::register_output_apriori(const boost::shared_ptr<Out
 void AbsorberVmrLevelOutput::register_output(const boost::shared_ptr<Output>& out) const
 {
   std::string gname = a->gas_name();
-  boost::to_lower(gname);
+  boost::algorithm::to_lower(gname);
   out->register_data_source
     ("/RetrievalResults/" + gname + "_profile", 
      &AbsorberVmrLevel::vmr_profile, a);

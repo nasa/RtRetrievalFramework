@@ -235,9 +235,9 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(Level1bFts);
   REGISTER_LUA_LIST(Level1bOco);
   REGISTER_LUA_LIST(Level1bUq);
-  REGISTER_LUA_LIST(Ecmwf);
+  REGISTER_LUA_LIST(Meteorology);
   REGISTER_LUA_LIST(AcosEcmwf);
-  REGISTER_LUA_LIST(OcoEcmwf);
+  REGISTER_LUA_LIST(OcoMetFile);
   REGISTER_LUA_LIST(UqEcmwf);
   REGISTER_LUA_LIST(OcoSimMetEcmwf);
   REGISTER_LUA_LIST(HdfFile);
@@ -251,8 +251,8 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(StokesCoefficientConstant);
   REGISTER_LUA_LIST(StokesCoefficientFraction);
   REGISTER_LUA_LIST(TemperatureFixedLevel);
-  REGISTER_LUA_LIST(TemperatureEcmwf);
-  REGISTER_LUA_LIST(TemperatureEcmwfOutput);
+  REGISTER_LUA_LIST(TemperatureMet);
+  REGISTER_LUA_LIST(TemperatureMetOutput);
   REGISTER_LUA_LIST(TemperatureLevelOffset);
   REGISTER_LUA_LIST(TemperatureLevelOffsetOutput);
   REGISTER_LUA_LIST(TemperatureFixedLevelOutput);
@@ -280,8 +280,8 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(AbsorberVmrFixedLevelOutput);
   REGISTER_LUA_LIST(AbsorberVmrFixedLevelScaled);
   REGISTER_LUA_LIST(AbsorberVmrFixedLevelScaledOutput);
-  REGISTER_LUA_LIST(AbsorberVmrEcmwf);
-  REGISTER_LUA_LIST(AbsorberVmrEcmwfOutput);
+  REGISTER_LUA_LIST(AbsorberVmrMet);
+  REGISTER_LUA_LIST(AbsorberVmrMetOutput);
   REGISTER_LUA_LIST(AbsorberVmrLevel);
   REGISTER_LUA_LIST(AbsorberVmrLevelOutput);
   REGISTER_LUA_LIST(AbsorberVmrLevelScaled);
@@ -334,7 +334,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(DispersionFitOutput);
   REGISTER_LUA_LIST(SolverIterationLog);
   REGISTER_LUA_LIST(SourceFilesOutput);
-  REGISTER_LUA_LIST(EcmwfPassThroughOutput);
+  REGISTER_LUA_LIST(MetPassThroughOutput);
   REGISTER_LUA_LIST(HighResSpectrumOutput);
   REGISTER_LUA_LIST(MaxAPosteriori);
   REGISTER_LUA_LIST(MaxLikelihood);

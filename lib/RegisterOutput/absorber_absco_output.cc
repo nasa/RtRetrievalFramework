@@ -1,7 +1,6 @@
 #include "absorber_absco_output.h"
 #include "absorber_vmr_fixed_level.h"
 #include "absorber_vmr_fixed_level_scaled.h"
-#include "absorber_vmr_ecmwf.h"
 using namespace FullPhysics;
 using namespace blitz;
 

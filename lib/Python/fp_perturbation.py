@@ -4,10 +4,11 @@ from builtins import filter
 from builtins import next
 from builtins import range
 from builtins import object
+from past.builtins import basestring
 
 import os
 import re
-from types import GeneratorType, StringType
+from types import GeneratorType
 from collections import namedtuple
 from six.moves import zip_longest
 
@@ -92,7 +93,7 @@ def create_sounding_dataset(parent_group, dataset_name, in_data, shape_names=(),
 
     # Adds optionally passed shape names as an attribute to the dataset
     # Missing dimensions will be called Dim%d
-    if type(shape_names) is StringType:
+    if isinstance(shape_names, basestring):
         shape_names = [shape_names]
 
     all_shape_names = []
@@ -101,10 +102,12 @@ def create_sounding_dataset(parent_group, dataset_name, in_data, shape_names=(),
             all_shape_names.append(s_name)
         else:
             all_shape_names.append("Dim%d" % (idx+1))
-    new_ds.attrs["Shape"] = [ numpy.array("_".join(all_shape_names) + "_Array") ]
+
+    shape_str = ("_".join(all_shape_names) + "_Array").encode("utf-8")
+    new_ds.attrs["Shape"] = [ numpy.array(shape_str) ]
 
     if units:
-        new_ds.attrs["Units"] = [ numpy.array(units) ]
+        new_ds.attrs["Units"] = [ numpy.array(units.encode('utf-8')) ]
 
     return new_ds
 
@@ -117,7 +120,7 @@ class PerturbTypeDesc(namedtuple('ErrorType', 'name description perturb_amount')
         curr_perturb_grp = parent_group.require_group(self.name)
 
         if self.description:
-            create_sounding_dataset(curr_perturb_grp, "description", self.description)
+            create_sounding_dataset(curr_perturb_grp, "description", self.description.encode("UTF-8"))
 
         if self.perturb_amount is not None:
             create_sounding_dataset(curr_perturb_grp, "derivative", perturb_rad_diff / self.perturb_amount, "SciColor", units)

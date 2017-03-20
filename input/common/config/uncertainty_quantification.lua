@@ -78,8 +78,21 @@ function init_uq(config)
         
         return nil
     end
+    function bad_sample_list_bad_sample_mask(self)
+        local l1b_hdf_file = self.config:l1b_hdf_file()
+	local bad_sample_mask = l1b_hdf_file:read_double_2d("/InstrumentHeader/bad_sample_list")
+	return bad_sample_mask
+    end
+    function l1b_bad_sample_mask(self)
+       local l1b_hdf_file = self.config:l1b_hdf_file()
+       if(l1b_hdf_file:has_object("/InstrumentHeader/bad_sample_list")) then
+	  return self.config.bad_sample_list_bad_sample_mask(self)
+       else
+	  return self.config.snr_coef_bad_sample_mask(self)
+       end
+    end   
 
-    config.fm.spec_win.bad_sample_mask = snr_coef_bad_sample_mask_uq
+    config.fm.spec_win.bad_sample_mask = l1b_bad_sample_mask_uq
 
     -----------
     -- Noise --
@@ -138,21 +151,21 @@ function init_uq(config)
     -- ECMWF --
     -----------
 
-    uq_ecmwf = Creator:new()
+    uq_met = Creator:new()
 
-    function uq_ecmwf:create()
-        local ecmwf = UqEcmwf(self.config.spectrum_file)
+    function uq_met:create()
+        local met = UqEcmwf(self.config.spectrum_file)
         self.config.input_file_description = self.config.input_file_description .. "ECMWF input file:    " .. self.config.spectrum_file .. "\n"
-        return ecmwf
+        return met
     end
 
-    function uq_ecmwf:register_output(ro)
-        if (self.config.ecmwf) then
-            ro:push_back(EcmwfPassThroughOutput(self.config.ecmwf))
+    function uq_met:register_output(ro)
+        if (self.config.met) then
+            ro:push_back(MetPassThroughOutput(self.config.met))
         end
     end
 
-    config.fm.input.ecmwf.creator = uq_ecmwf
+    config.fm.input.met.creator = uq_met
 
     ---------
     -- ILS --

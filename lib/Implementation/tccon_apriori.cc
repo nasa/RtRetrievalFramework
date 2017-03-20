@@ -9,27 +9,27 @@ using namespace boost::posix_time;
 #ifdef HAVE_LUA
 #include "register_lua.h"
 REGISTER_LUA_CLASS(TcconApriori)
-.def(luabind::constructor<const boost::shared_ptr<Ecmwf>&,
+.def(luabind::constructor<const boost::shared_ptr<Meteorology>&,
 			  const boost::shared_ptr<Level1b>&>())
-.def(luabind::constructor<const boost::shared_ptr<Ecmwf>&,
+.def(luabind::constructor<const boost::shared_ptr<Meteorology>&,
 			  const boost::shared_ptr<Level1b>&,
 			  double>())
-.def(luabind::constructor<const boost::shared_ptr<Ecmwf>&,
+.def(luabind::constructor<const boost::shared_ptr<Meteorology>&,
 			  const boost::shared_ptr<Level1b>&,
 			  double, const Time&>())
-.def(luabind::constructor<const boost::shared_ptr<Ecmwf>&,
+.def(luabind::constructor<const boost::shared_ptr<Meteorology>&,
 			  const boost::shared_ptr<Level1b>&,
 			  double, const Time&, const DoubleWithUnit&>())
-.def(luabind::constructor<const boost::shared_ptr<Ecmwf>&,
+.def(luabind::constructor<const boost::shared_ptr<Meteorology>&,
 			  const boost::shared_ptr<Level1b>&,
 			  double, const Time&, const DoubleWithUnit&,
 			  const DoubleWithUnit&>())
-.def(luabind::constructor<const boost::shared_ptr<Ecmwf>&,
+.def(luabind::constructor<const boost::shared_ptr<Meteorology>&,
 			  const boost::shared_ptr<Level1b>&,
 			  double, const Time&, const DoubleWithUnit&,
 			  const DoubleWithUnit&, 
 			  const DoubleWithUnit&>())
-.def(luabind::constructor<const boost::shared_ptr<Ecmwf>&,
+.def(luabind::constructor<const boost::shared_ptr<Meteorology>&,
 			  const boost::shared_ptr<Level1b>&,
 			  double, const Time&, const DoubleWithUnit&,
 			  const DoubleWithUnit&, 
@@ -54,7 +54,7 @@ REGISTER_LUA_END()
 /// Constructor. Latitude should be in degrees, height in meters.
 //-----------------------------------------------------------------------
 
-TcconApriori::TcconApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
+TcconApriori::TcconApriori(const boost::shared_ptr<Meteorology>& Met_file,
 			   const boost::shared_ptr<Level1b>& L1b_file,
 			   double Co2_ref,
 			   const Time& Ref_time,
@@ -68,8 +68,15 @@ TcconApriori::TcconApriori(const boost::shared_ptr<Ecmwf>& Ecmwf_file,
   age_air_pbl(Age_air_pbl), age_air_trop(Age_air_tropopause),
   age_air_strat(Age_air_upper_stratosphere)
 {
-  surface_pressure = Ecmwf_file->surface_pressure();
-  Ecmwf_file->temperature_grid(press_profile, temp_profile);
+  surface_pressure = Met_file->surface_pressure();
+
+  Array<double, 1> met_press = Met_file->pressure_levels();
+  press_profile.resize(met_press.rows());
+  press_profile = met_press;
+
+  Array<double, 1> met_temp = Met_file->temperature();
+  temp_profile.resize(met_temp.rows());
+  temp_profile = met_temp;
 
   trop_pres = tropopause_pressure();
   pbl_pres = planetary_boundary_layer_pressure();

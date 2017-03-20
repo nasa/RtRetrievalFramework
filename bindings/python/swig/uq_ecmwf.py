@@ -133,9 +133,9 @@ def _new_from_set(cls, version, *args):
     inst.set(*args)
     return inst
 
-import full_physics_swig.ecmwf
+import full_physics_swig.meteorology
 import full_physics_swig.generic_object
-class UqEcmwf(full_physics_swig.ecmwf.Ecmwf):
+class UqEcmwf(full_physics_swig.meteorology.Meteorology):
     """
 
     This class implements the Uncertainty Quantification specific ECMWF

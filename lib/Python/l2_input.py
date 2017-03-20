@@ -5,6 +5,8 @@ from builtins import str
 from builtins import range
 from builtins import object
 import six
+import sys
+
 # -----------------------------------------------------------------------------
 # Parser for OCO L2 Input Files
 # -----------------------------------------------------------------------------
@@ -108,7 +110,6 @@ class _Section(_Node):
                     valueList = [x.frontspace + x.leaf + x.endspace.rstrip('\n') for x in child.children]
                 else:
                     valueList = [x.leaf for x in child.children]
-                    
                 if len(valueList) == 1:
                     keywords.append( valueList[0] )
                 else:
@@ -123,7 +124,6 @@ class _Section(_Node):
 
                     for child_key in child_key_list:
                         keywords.append(child_key)
-
         if len(keywords) == 0:
             return None
         elif len(keywords) == 1:
@@ -357,7 +357,11 @@ class _Section(_Node):
                 
             newRow = []
             for colValue in rowData:
-                newRow.append( _Node('value', leaf=str(colValue) + '\t' ) )
+                if(sys.version_info > (3,) and
+                   isinstance(colValue, bytes)):
+                    newRow.append( _Node('value', leaf=colValue.decode("utf-8") + '\t' ) )
+                else:
+                    newRow.append( _Node('value', leaf=str(colValue) + '\t' ) )
                 
             lastValue = newRow[len(newRow)-1]
             lastValue.endspace = '\n'
@@ -718,7 +722,11 @@ class _XmlParser(object):
             if type(element) is my_list_type: 
                 element.append(data)
             elif element.type == 'assignment':
-                element.children.append( _Node('value', leaf=str(data)) )
+                if(sys.version_info > (3,) and
+                   isinstance(data, bytes)):
+                    element.children.append( _Node('value', leaf=data.decode("utf-8")))
+                else:
+                    element.children.append( _Node('value', leaf=str(data)) )
             else:
                 raise ValueError('Element of type %s does not support setting character data' % element.type)
                 

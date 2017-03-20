@@ -253,7 +253,7 @@ if [ ! -z "$met_file" ]; then
         cat >>$config_options_file << OPTS
 
 -- Use CSU ECMWF format reader
-config.fm.input.ecmwf.creator = OcoConfig.oco_ecmwf_meteorology
+config.fm.input.metg.creator = OcoConfig.oco_meteorology
 OPTS
     fi
 fi

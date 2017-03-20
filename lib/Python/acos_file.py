@@ -7,6 +7,7 @@ from builtins import map
 from builtins import str
 from builtins import range
 from past.utils import old_div
+import six
 # Read ACOS,OCO L1B file and add a programatic wrapper interface
 
 import os
@@ -255,6 +256,15 @@ class NamedShapeArray(numpy.ndarray):
         if obj is None: return
         self.named_shape = getattr(obj, 'named_shape', None)
 
+def is_list_like(d):
+    '''Check if an object is like a list. Basically we check for __iter__,
+    but explicitly exclude str types which in python 2 did not have __iter__,
+    but was added in python 3 (our code use to just look for __iter__, but
+    this breaks in python 3 since both ["foo"] and "foo" have __iter__.'''
+    if isinstance(d, six.string_types):
+        return False
+    return hasattr(d, '__iter__')
+
 ################################################################################################
 
 class SoundingDataFile(h5py.File):
@@ -317,7 +327,7 @@ class SoundingDataFile(h5py.File):
         
         # Construct a named tuple with those indexes, padding None if
         # the named tuple has more names than indexes we found
-        if not hasattr(id_indexes, "__iter__"):
+        if not is_list_like(id_indexes):
             id_indexes = [ id_indexes ]
         else:
             id_indexes = list(id_indexes)
@@ -428,11 +438,11 @@ class SoundingDataFile(h5py.File):
                         dataset_obj.append( ds_obj )
 
         # See if we matched too many or none
-        if dataset_obj == None or hasattr(dataset_obj, "__iter__") and len(dataset_obj) == 0:
+        if dataset_obj == None or is_list_like(dataset_obj) and len(dataset_obj) == 0:
             raise ValueError("No datasets matched data name: %s" % data_name)
-        elif (hasattr(dataset_obj, "__iter__") and not hasattr(dataset_obj, "shape")) and len(dataset_obj) > 1:
+        elif (is_list_like(dataset_obj) and not hasattr(dataset_obj, "shape")) and len(dataset_obj) > 1:
             raise ValueError("Data name: %s matches too many datasets: %s" % (data_name, [ o for o in dataset_obj]))
-        elif hasattr(dataset_obj, "__iter__") and not hasattr(dataset_obj, "shape"):
+        elif is_list_like(dataset_obj) and not hasattr(dataset_obj, "shape"):
             dataset_obj = dataset_obj[0]
 
         data_dim_indexes = self.get_data_indexes(dataset_obj, sounding_id, indexes)
@@ -496,7 +506,7 @@ class SoundingDataFile(h5py.File):
         """
 
         # A iterable means we should try multiple names
-        if hasattr(dataset_names, '__iter__'):
+        if is_list_like(dataset_names):
             for curr_dataset_try in dataset_names:
                 dataset_obj = self.get(curr_dataset_try, None)
                 found_dataset_name = curr_dataset_try
@@ -652,7 +662,7 @@ class L1B(SoundingDataFile):
                     raise 
 
             if as_strings:
-                if hasattr(info_data, '__iter__'):
+                if is_list_like(info_data):
                     info_str = ' '.join([str(value) for value in numpy.ravel(info_data)])
                 else:
                     info_str = str(info_data)
@@ -757,7 +767,7 @@ class L1B(SoundingDataFile):
 
             if gain_code == None:
                 gain_code = self.get_sounding_info('gain', sounding_id)
-                if hasattr(gain_code, '__iter__'):
+                if is_list_like(gain_code):
                     if not numpy.all(gain_code == gain_code[0]):
                         raise ValueError('sounding id: %s does not specify polarization name and averaging not enababled or gain codes differ for polarization channels: %s' % (sounding_id, gain_code))
                     else:
@@ -781,7 +791,7 @@ class L1B(SoundingDataFile):
         try:
             b_id_str = self[BUILD_ID_DATASET[self.instrument_name]]
             l1b_build_id = []
-            for id_part in b_id_str[0].replace('v','').split('.'):
+            for id_part in b_id_str[0].replace(b'v',b'').split(b'.'):
                 if id_part.isdigit():
                     l1b_build_id.append( int(id_part) )
                 else:
