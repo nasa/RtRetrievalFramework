@@ -34,4 +34,4 @@ end
 OcoBaselineConfig.fm.atmosphere.absorber.CO2.apriori = OcoBaselineConfig.scaled_apriori
 
 -- Use CSU ECMWF format reader
-OcoBaselineConfig.fm.input.ecmwf.creator = OcoConfig.oco_ecmwf_meteorology
+OcoBaselineConfig.fm.input.met.creator = OcoConfig.oco_meteorology

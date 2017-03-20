@@ -1,6 +1,6 @@
 #ifndef ACOS_ECMWF_H
 #define ACOS_ECMWF_H
-#include "ecmwf.h"
+#include "meteorology.h"
 
 namespace FullPhysics {
 /****************************************************************//**
@@ -8,56 +8,49 @@ namespace FullPhysics {
   functionality.
 *******************************************************************/
 
-class AcosEcmwf : public Ecmwf {
+class AcosEcmwf : public Meteorology {
 public:
-  AcosEcmwf(const std::string& Fname, const boost::shared_ptr<HdfSoundingId>& 
-	Hdf_sounding_id, bool Avg_sounding_number);
-  AcosEcmwf(const std::string& Fname, const HeritageFile& Run_file);
-  ~AcosEcmwf() {}
+    AcosEcmwf(const std::string& Fname, const boost::shared_ptr<HdfSoundingId>& 
+    Hdf_sounding_id, bool Avg_sounding_number);
+    AcosEcmwf(const std::string& Fname, const HeritageFile& Run_file);
+    ~AcosEcmwf() {}
 
-  // Define how to read various items
-  blitz::Array<double, 1> specific_humidity(const blitz::Array<double, 1>& Pressure_level) const
-  { return read_and_interpolate("ecmwf/specific_humidity", Pressure_level); }
- 
-  ArrayAd<double, 1> specific_humidity(const ArrayAd<double, 1>& Pressure_level) const
-  { return read_and_interpolate("ecmwf/specific_humidity", Pressure_level); }
+    // Define how to read various items
+    using Meteorology::pressure_levels;
+    blitz::Array<double, 1> pressure_levels() const
+        { return read_array("/ecmwf/specific_humidity_pressures"); }
 
-  void temperature_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& T) const
-  { read("ecmwf/temperature", Pressure, T); }
+    using Meteorology::specific_humidity;
+    blitz::Array<double, 1> specific_humidity() const
+        { return read_array("ecmwf/specific_humidity"); }
 
-  void specific_humidity_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& H) const
-  { read("ecmwf/specific_humidity", Pressure, H); }
+    double surface_pressure() const
+        { return read_scalar("ecmwf/surface_pressure"); }
 
-  double surface_pressure() const
-  { return read("ecmwf/surface_pressure"); }
+    double windspeed_u() const
+        { return read_scalar("ecmwf/windspeed_u"); }
 
-  double windspeed_u() const
-  { return read("ecmwf/windspeed_u"); }
+    double windspeed_v() const
+        { return read_scalar("ecmwf/windspeed_v"); }
 
-  double windspeed_v() const
-  { return read("ecmwf/windspeed_v"); }
-   
-  blitz::Array<double, 1> temperature(const blitz::Array<double, 1>& Pressure_level) const
-  { return read_and_interpolate("ecmwf/temperature", Pressure_level); }
+    using Meteorology::temperature;
+    blitz::Array<double, 1> temperature() const
+        { return read_array("ecmwf/temperature"); }
 
-  ArrayAd<double, 1> temperature(const ArrayAd<double, 1>& Pressure_level) const
-  { return read_and_interpolate("ecmwf/temperature", Pressure_level); }
-
-  void print(std::ostream& Os) const { Os << "AcosEcmwf"; }
+    void print(std::ostream& Os) const { Os << "AcosEcmwf"; }
 
 private:
 
-  //-----------------------------------------------------------------------
-  /// ACOS specific ECMWF reader routines
-  //-----------------------------------------------------------------------
-  
-  double read(const std::string& Field) const;
-  void read(const std::string& Field, blitz::Array<double, 1>& P, 
-	    blitz::Array<double, 1>& V) const;
+    //-----------------------------------------------------------------------
+    /// ACOS specific ECMWF reader routines
+    //-----------------------------------------------------------------------
 
-  HdfFile h;
-  boost::shared_ptr<HdfSoundingId> hsid;
-  bool average_sounding_number;
+    double read_scalar(const std::string& Field) const;
+    blitz::Array<double, 1> read_array(const std::string& Field) const;
+
+    HdfFile h;
+    boost::shared_ptr<HdfSoundingId> hsid;
+    bool average_sounding_number;
 };
 }
 #endif

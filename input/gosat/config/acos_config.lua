@@ -33,18 +33,18 @@ AcosConfig.acos_ecmwf = Creator:new()
 
 function AcosConfig.acos_ecmwf:create()
    local sid = self.config:l1b_sid_list()
-   if (self.config.ecmwf_file) then
-       local ecmwf = AcosEcmwf(self.config.ecmwf_file, self.config:l1b_sid_list():value(0),
+   if (self.config.met_file) then
+       local met = AcosEcmwf(self.config.met_file, self.config:l1b_sid_list():value(0),
                                self.config:l1b_sid_list():size() > 1)
        self.config.input_file_description = self.config.input_file_description .. 
-          "ECMWF input file:    " .. self.config.ecmwf_file .. "\n"
-       return ecmwf
+          "ECMWF input file:    " .. self.config.met_file .. "\n"
+       return met
    end
 end
 
 function AcosConfig.acos_ecmwf:register_output(ro)
-    if (self.config.ecmwf) then
-        ro:push_back(EcmwfPassThroughOutput(self.config.ecmwf))
+    if (self.config.met) then
+        ro:push_back(MetPassThroughOutput(self.config.met))
     end
 end
 

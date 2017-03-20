@@ -107,23 +107,23 @@ function init_rrv(config)
     --- data is present
     ------------------------------------------------------------
 
-    temperature_rrv_or_ecmwf = CreatorApriori:new {}
+    temperature_rrv_or_met = CreatorApriori:new {}
 
-    function temperature_rrv_or_ecmwf:create()
+    function temperature_rrv_or_met:create()
         if (r(self):has_object("/radiosonde/sonde_temperature")) then
            return TemperatureLevelOffset(self.config.pressure, self:temperature_levels(),
                                          self:apriori()(0), self:retrieval_flag()(0))
         else
-           return TemperatureEcmwf(self.config.ecmwf, self.config.pressure,
+           return TemperatureMet(self.config.met, self.config.pressure,
                                    self:apriori()(0), self:retrieval_flag()(0))
         end
     end
 
-    function ConfigCommon.temperature_ecmwf:register_output(ro)
+    function ConfigCommon.temperature_met:register_output(ro)
         if (r(self):has_object("/radiosonde/sonde_temperature")) then
             ro:push_back(TemperatureLevelOffsetOutput.create(self.config.temperature))
         else
-            ro:push_back(TemperatureEcmwfOutput.create(self.config.temperature))
+            ro:push_back(TemperatureMetOutput.create(self.config.temperature))
         end
     end
 
@@ -132,7 +132,7 @@ function init_rrv(config)
        temperature_levels = read_rrv_temperature,
        apriori = ConfigCommon.hdf_apriori("Temperature/Offset"),
        covariance = ConfigCommon.hdf_covariance("Temperature/Offset"),
-       creator = temperature_rrv_or_ecmwf,
+       creator = temperature_rrv_or_met,
        retrieved = false,
     }
 
@@ -146,21 +146,21 @@ function init_rrv(config)
        return h2o
     end
 
-    vmr_rrv_or_ecmwf = CreatorVmr:new {}
+    vmr_rrv_or_met = CreatorVmr:new {}
 
-    function vmr_rrv_or_ecmwf:apriori_v()
+    function vmr_rrv_or_met:apriori_v()
        local r = Blitz_double_array_1d(1)
        r:set(0, self.scale_apriori)
        return r
     end
 
-    function vmr_rrv_or_ecmwf:covariance_v()
+    function vmr_rrv_or_met:covariance_v()
        local r = Blitz_double_array_2d(1, 1)
        r:set(0, 0, self.scale_cov)
        return r
     end
 
-    function vmr_rrv_or_ecmwf:create_vmr()
+    function vmr_rrv_or_met:create_vmr()
         if(r(self):has_object("/radiosonde/sonde_vmr")) then
             self.vmr = AbsorberVmrLevelScaled(self.config.pressure,
                                              self:vmr_profile(), 
@@ -168,7 +168,7 @@ function init_rrv(config)
                                              self:retrieval_flag()(0),
                                              self.name)
         else
-            self.vmr = AbsorberVmrEcmwf(self.config.ecmwf,
+            self.vmr = AbsorberVmrMet(self.config.met,
                                         self.config.pressure,
                                         self.scale_apriori, 
                                         self:retrieval_flag()(0),
@@ -177,15 +177,15 @@ function init_rrv(config)
         return self.vmr
     end
 
-    function vmr_rrv_or_ecmwf:register_output(ro)
+    function vmr_rrv_or_met:register_output(ro)
         if(r(self):has_object("/radiosonde/sonde_vmr")) then
             ro:push_back(AbsorberVmrLevelScaledOutput.create(self.vmr))
         else
-            ro:push_back(AbsorberVmrEcmwfOutput.create(self.vmr))
+            ro:push_back(AbsorberVmrMetOutput.create(self.vmr))
         end
     end
 
-    config.fm.atmosphere.absorber.H2O.creator = vmr_rrv_or_ecmwf
+    config.fm.atmosphere.absorber.H2O.creator = vmr_rrv_or_met
     config.fm.atmosphere.absorber.H2O.vmr_profile = read_rrv_h2o
     config.fm.atmosphere.absorber.H2O.retrieved = false
 

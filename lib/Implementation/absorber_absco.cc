@@ -141,7 +141,7 @@ AbsorberAbsco::optical_depth_each_layer_direct_integrate
 ///
 /// In addition of the nsub / 2 points, we also add any points marked
 /// as "important" by the temperature object. For example, if the
-/// temperate is TemperatureEcmwf this is the 91 ECMWF levels that 
+/// temperate is TemperatureMet this is the 91 ECMWF levels that 
 /// the temperature is reported on.
 //----------------------------------------------------------------
 

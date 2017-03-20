@@ -1,6 +1,6 @@
 #ifndef UQ_ECMWF_H
 #define UQ_ECMWF_H
-#include "ecmwf.h"
+#include "meteorology.h"
 
 namespace FullPhysics {
 
@@ -9,61 +9,35 @@ namespace FullPhysics {
   ECMWF reading functionality.
 *******************************************************************/
 
-class UqEcmwf : public Ecmwf {
+class UqEcmwf : public Meteorology {
 public:
     UqEcmwf(const std::string& Fname);
     ~UqEcmwf() {}
 
     // Define how to read various items
-    blitz::Array<double, 1> specific_humidity(const blitz::Array<double, 1>& Pressure_level) const
-    {
-        return read_and_interpolate("ECMWF/specific_humidity_profile_ecmwf", Pressure_level);
-    }
+    using Meteorology::pressure_levels;
+    blitz::Array<double, 1> pressure_levels() const
+        { return read_array("ECMWF/vector_pressure_levels_ecmwf"); }
 
-    ArrayAd<double, 1> specific_humidity(const ArrayAd<double, 1>& Pressure_level) const
-    {
-        return read_and_interpolate("ECMWF/specific_humidity_profile_ecmwf", Pressure_level);
-    }
-
-    void temperature_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& T) const
-    {
-        read("ECMWF/temperature_profile_ecmwf", Pressure, T);
-    }
-
-    void specific_humidity_grid(blitz::Array<double, 1>& Pressure, blitz::Array<double, 1>& H) const
-    {
-        read("ECMWF/specific_humidity_profile_ecmwf", Pressure, H);
-    }
+    using Meteorology::specific_humidity;
+    blitz::Array<double, 1> specific_humidity() const
+        { return read_array("ECMWF/specific_humidity_profile_ecmwf"); }
 
     double surface_pressure() const
-    {
-        return read("ECMWF/surface_pressure_ecmwf");
-    }
+        { return read_scalar("ECMWF/surface_pressure_ecmwf"); }
 
     double windspeed_u() const
-    {
-        return read("ECMWF/windspeed_u_ecmwf");
-    }
+        { return read_scalar("ECMWF/windspeed_u_ecmwf"); }
 
     double windspeed_v() const
-    {
-        return read("ECMWF/windspeed_v_ecmwf");
-    }
+        { return read_scalar("ECMWF/windspeed_v_ecmwf"); }
 
-    blitz::Array<double, 1> temperature(const blitz::Array<double, 1>& Pressure_level) const
-    {
-        return read_and_interpolate("ECMWF/temperature_profile_ecmwf", Pressure_level);
-    }
-
-    ArrayAd<double, 1> temperature(const ArrayAd<double, 1>& Pressure_level) const
-    {
-        return read_and_interpolate("ECMWF/temperature_profile_ecmwf", Pressure_level);
-    }
+    using Meteorology::temperature;
+    blitz::Array<double, 1> temperature() const
+        { return read_array("ECMWF/temperature_profile_ecmwf"); }
 
     void print(std::ostream& Os) const
-    {
-        Os << "UqEcmwf";
-    }
+        { Os << "UqEcmwf"; }
 
 private:
 
@@ -71,8 +45,8 @@ private:
     /// UQ specific ECMWF reader routines
     //-----------------------------------------------------------------------
 
-    double read(const std::string& Field) const;
-    void read(const std::string& Field, blitz::Array<double, 1>& P, blitz::Array<double, 1>& V) const;
+    double read_scalar(const std::string& Field) const;
+    blitz::Array<double, 1> read_array(const std::string& Field) const;
 
     HdfFile h;
 };

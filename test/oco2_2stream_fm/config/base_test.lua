@@ -11,7 +11,7 @@ config = OcoBaseConfig:new()
 config.do_retrieval = false
 config.sid_string = "2010090911454303"
 config.spectrum_file = "../input/oco2_L1bScND_89012a_100909_Bxxxx_120315145001d_spliced.h5"
-config.ecmwf_file = "../input/oco2_ECMWFND_89012a_100909_Bxxxx_120510145007d_spliced.h5"
+config.met_file = "../input/oco2_ECMWFND_89012a_100909_Bxxxx_120510145007d_spliced.h5"
 
 -- Ensure that low stream = 1 (ie 2 full stream) for this test
 config.fm.rt.lsi_constant.low_stream = 1 

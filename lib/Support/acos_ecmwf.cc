@@ -6,7 +6,7 @@ using namespace blitz;
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
-REGISTER_LUA_DERIVED_CLASS(AcosEcmwf, Ecmwf)
+REGISTER_LUA_DERIVED_CLASS(AcosEcmwf, Meteorology)
 .def(luabind::constructor<std::string, 
 			  const boost::shared_ptr<HdfSoundingId>&,
 			  bool>())
@@ -52,7 +52,7 @@ AcosEcmwf::AcosEcmwf(const std::string& Fname, const HeritageFile& Run_file)
 /// Read a field where a single number is expected to be returned
 //-----------------------------------------------------------------------
 
-double AcosEcmwf::read(const std::string& Field) const
+double AcosEcmwf::read_scalar(const std::string& Field) const
 {
   int spec_index = 0;
   TinyVector<int, 3> sz = h.read_shape<3>(Field);
@@ -70,8 +70,7 @@ double AcosEcmwf::read(const std::string& Field) const
 /// Read a field and the pressure it is reported on. Average if needed.
 //-----------------------------------------------------------------------
 
-void AcosEcmwf::read(const std::string& Field, blitz::Array<double, 1>& P, 
-		     blitz::Array<double, 1>& V) const
+blitz::Array<double, 1> AcosEcmwf::read_array(const std::string& Field) const
 {
   firstIndex i1; secondIndex i2;
   int spec_index = 0;
@@ -80,18 +79,11 @@ void AcosEcmwf::read(const std::string& Field, blitz::Array<double, 1>& P,
     (Field,
      TinyVector<int, 4>(hsid->frame_number(), spec_index, 0, 0),
      TinyVector<int, 4>(1,1,sz[2],sz[3]));
-  TinyVector<int, 4> sz2 = h.read_shape<4>(Field + "_pressures");
-  Array<double, 4> praw = h.read_field<double, 4>
-    (Field + "_pressures",
-     TinyVector<int, 4>(hsid->frame_number(), spec_index, 0, 0),
-     TinyVector<int, 4>(1,1,sz2[2],sz2[3]));
-  V.resize(traw.extent(fourthDim));
-  P.resize(traw.extent(fourthDim));
+  Array<double, 1> V(traw.extent(fourthDim));
   if(average_sounding_number) {
     V = sum(traw(0, 0, Range::all(), Range::all())(i2, i1), i2) / 2;
-    P = sum(praw(0, 0, Range::all(), Range::all())(i2, i1), i2) / 2;
   } else {
     V = traw(0, 0, hsid->sounding_number(), Range::all());
-    P = praw(0, 0, hsid->sounding_number(), Range::all());
   }
+  return V;
 }

@@ -511,6 +511,33 @@ void LidortRtDriver::setup_linear_inputs(const ArrayAd<double, 1>& od,
   // Certainly wouldn't need this if not retrieving ground
   lincontrol.ts_do_surface_linearization(do_surface_linearization);
 
+    // Check that we fit within the LIDORT configuration
+  if(linoptical.ts_l_deltau_vert_input().cols() < od.rows()) {
+    Exception e;
+    e << "The number of layers you are using exceeds the maximum allowed by\n"
+      << "the current build of Lidort. The number requested is "
+      << od.rows() << "\nand the maximum allowed is "
+      << linoptical.ts_l_deltau_vert_input().cols() << "\n"
+      << "\n"
+      << "You might try rebuilding with a larger value given to the configure\n"
+      << "option --with-lidort-maxlayer=value set to a larger value.\n";
+    throw e;
+  }
+  if(linoptical.ts_l_deltau_vert_input().rows() < natm_jac) {
+    Exception e;
+    e << "The number of jacobians you are using exceeds the maximum allowed by\n"
+      << "the current build of Lidort. The number requested is "
+      << natm_jac << "\nand the maximum allowed is "
+      << linoptical.ts_l_deltau_vert_input().rows() << "\n"
+      << "\n"
+      << "This number of jacobians is a function of the number of aerosols\n"
+      << "in your state vector, so you can reduce the number of aerosols\n"
+      << "\n"
+      << "You might also try rebuilding with a larger value given to the configure\n"
+      << "option --with-lidort-maxatmoswfs=value set to a larger value.\n";
+    throw e;
+  }
+
   // Setup optical linear inputs
   // LIDORT expects the following:
   // l_deltau = xi/tau * dtau/dxi

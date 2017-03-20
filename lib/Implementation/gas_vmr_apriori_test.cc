@@ -4,9 +4,9 @@
 
 #include "oco_sounding_id.h"
 #include "level_1b_oco.h"
-#include "oco_ecmwf.h"
+#include "oco_met_file.h"
 #include "pressure_sigma.h"
-#include "temperature_ecmwf.h"
+#include "temperature_met.h"
 #include "altitude_hydrostatic.h"
 
 using namespace FullPhysics;
@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(apriori_calc)
         // Match setup used in TcconApriori test
         boost::shared_ptr<HdfFile> sfile(new HdfFile(test_data_dir() + "in/oco2_l1b_apriori_check.h5"));
         boost::shared_ptr<OcoSoundingId> sid (new OcoSoundingId(*sfile, curr_sid));
-        boost::shared_ptr<OcoEcmwf> ecmwf(new OcoEcmwf(test_data_dir() + "in/oco2_ecmwf_apriori_check.h5", sid));
+        boost::shared_ptr<OcoMetFile> ecmwf(new OcoMetFile(test_data_dir() + "in/oco2_ecmwf_apriori_check.h5", sid));
         boost::shared_ptr<Level1bOco> l1b(new Level1bOco(sfile, sid));
         HdfFile hdf_static_input(test_data_dir() + "../input/oco/input/l2_oco_static_input.h5");
 
@@ -36,8 +36,8 @@ BOOST_AUTO_TEST_CASE(apriori_calc)
         boost::shared_ptr<PressureSigma> press
           (new PressureSigma(sigma_a, sigma_b, surface_pressure, false));
 
-        boost::shared_ptr<TemperatureEcmwf> temp
-          (new TemperatureEcmwf(ecmwf, press, 0, false));
+        boost::shared_ptr<TemperatureMet> temp
+          (new TemperatureMet(ecmwf, press, 0, false));
 
         boost::shared_ptr<Altitude> alt(new AltitudeHydrostatic(press, temp, l1b->latitude(0), l1b->altitude(0)));
 
