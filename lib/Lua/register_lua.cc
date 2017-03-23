@@ -223,6 +223,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(VectorHdfSoundingId);
   REGISTER_LUA_LIST(AerosolAodOutput);
   REGISTER_LUA_LIST(AerosolParamOutput);
+  REGISTER_LUA_LIST(AerosolConsolidatedOutput);
   REGISTER_LUA_LIST(Level1bHdf);
   REGISTER_LUA_LIST(Level1bHeritage);
   REGISTER_LUA_LIST(Level1bAcos);
