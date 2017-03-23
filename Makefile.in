@@ -1042,6 +1042,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 	@outsrc@/absorber_vmr_level_scaled_output.cc \
 	@outsrc@/absorber_vmr_met_output.cc \
 	@outsrc@/aerosol_aod_output.cc \
+	@outsrc@/aerosol_consolidated_output.cc \
 	@outsrc@/connor_solver_output.cc \
 	@outsrc@/error_analysis_output.cc \
 	@outsrc@/forward_model_output.cc \
@@ -1339,6 +1340,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
 	@outsrc@/libfp_la-absorber_vmr_level_scaled_output.lo \
 	@outsrc@/libfp_la-absorber_vmr_met_output.lo \
 	@outsrc@/libfp_la-aerosol_aod_output.lo \
+	@outsrc@/libfp_la-aerosol_consolidated_output.lo \
 	@outsrc@/libfp_la-connor_solver_output.lo \
 	@outsrc@/libfp_la-error_analysis_output.lo \
 	@outsrc@/libfp_la-forward_model_output.lo \
@@ -1609,6 +1611,7 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@deprecatedsrc@/solar_absorption_oco_file_test.cc \
 	@outsrc@/absorber_absco_output_test.cc \
 	@outsrc@/aerosol_aod_output_test.cc \
+	@outsrc@/aerosol_consolidated_output_test.cc \
 	@outsrc@/connor_solver_output_test.cc \
 	@outsrc@/error_analysis_output_test.cc \
 	@outsrc@/forward_model_output_test.cc \
@@ -1783,6 +1786,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@deprecatedsrc@/solar_absorption_oco_file_test.$(OBJEXT) \
 	@outsrc@/absorber_absco_output_test.$(OBJEXT) \
 	@outsrc@/aerosol_aod_output_test.$(OBJEXT) \
+	@outsrc@/aerosol_consolidated_output_test.$(OBJEXT) \
 	@outsrc@/connor_solver_output_test.$(OBJEXT) \
 	@outsrc@/error_analysis_output_test.$(OBJEXT) \
 	@outsrc@/forward_model_output_test.$(OBJEXT) \
@@ -2096,6 +2100,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@outsrc@/absorber_vmr_level_scaled_output.h \
 	@outsrc@/absorber_vmr_met_output.h \
 	@outsrc@/absorber_absco_output.h @outsrc@/aerosol_aod_output.h \
+	@outsrc@/aerosol_consolidated_output.h \
 	@outsrc@/connor_solver_output.h \
 	@outsrc@/error_analysis_output.h \
 	@outsrc@/forward_model_output.h \
@@ -2774,6 +2779,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@outsrc@/absorber_vmr_level_scaled_output.h \
 	@outsrc@/absorber_vmr_met_output.h \
 	@outsrc@/absorber_absco_output.h @outsrc@/aerosol_aod_output.h \
+	@outsrc@/aerosol_consolidated_output.h \
 	@outsrc@/connor_solver_output.h \
 	@outsrc@/error_analysis_output.h \
 	@outsrc@/forward_model_output.h \
@@ -2932,6 +2938,7 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@deprecatedsrc@/solar_absorption_oco_file_test.cc \
 	@outsrc@/absorber_absco_output_test.cc \
 	@outsrc@/aerosol_aod_output_test.cc \
+	@outsrc@/aerosol_consolidated_output_test.cc \
 	@outsrc@/connor_solver_output_test.cc \
 	@outsrc@/error_analysis_output_test.cc \
 	@outsrc@/forward_model_output_test.cc \
@@ -3522,6 +3529,7 @@ libfp_la_SOURCES = @supportsrc@/unit.cc \
 	@outsrc@/absorber_vmr_level_scaled_output.cc \
 	@outsrc@/absorber_vmr_met_output.cc \
 	@outsrc@/aerosol_aod_output.cc \
+	@outsrc@/aerosol_consolidated_output.cc \
 	@outsrc@/connor_solver_output.cc \
 	@outsrc@/error_analysis_output.cc \
 	@outsrc@/forward_model_output.cc \
@@ -5183,6 +5191,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-aerosol_aod_output.lo: @outsrc@/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/libfp_la-aerosol_consolidated_output.lo:  \
+	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-connor_solver_output.lo: @outsrc@/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-error_analysis_output.lo: @outsrc@/$(am__dirstamp) \
@@ -5935,6 +5945,8 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/aerosol_aod_output_test.$(OBJEXT): @outsrc@/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/aerosol_consolidated_output_test.$(OBJEXT):  \
+	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/connor_solver_output_test.$(OBJEXT):  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/error_analysis_output_test.$(OBJEXT):  \
@@ -6377,6 +6389,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@luasrc@/$(DEPDIR)/lua_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/absorber_absco_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/aerosol_aod_output_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/aerosol_consolidated_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/aerosol_param_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/connor_convergence_output_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/connor_solver_output_test.Po@am__quote@
@@ -6397,6 +6410,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level_scaled_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-aerosol_aod_output.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-aerosol_consolidated_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-aerosol_param_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-altitude_output.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-connor_convergence_output.Plo@am__quote@
@@ -10496,6 +10510,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/aerosol_aod_output.cc' object='@outsrc@/libfp_la-aerosol_aod_output.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-aerosol_aod_output.lo `test -f '@outsrc@/aerosol_aod_output.cc' || echo '$(srcdir)/'`@outsrc@/aerosol_aod_output.cc
+
+@outsrc@/libfp_la-aerosol_consolidated_output.lo: @outsrc@/aerosol_consolidated_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-aerosol_consolidated_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-aerosol_consolidated_output.Tpo -c -o @outsrc@/libfp_la-aerosol_consolidated_output.lo `test -f '@outsrc@/aerosol_consolidated_output.cc' || echo '$(srcdir)/'`@outsrc@/aerosol_consolidated_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-aerosol_consolidated_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-aerosol_consolidated_output.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/aerosol_consolidated_output.cc' object='@outsrc@/libfp_la-aerosol_consolidated_output.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-aerosol_consolidated_output.lo `test -f '@outsrc@/aerosol_consolidated_output.cc' || echo '$(srcdir)/'`@outsrc@/aerosol_consolidated_output.cc
 
 @outsrc@/libfp_la-connor_solver_output.lo: @outsrc@/connor_solver_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-connor_solver_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-connor_solver_output.Tpo -c -o @outsrc@/libfp_la-connor_solver_output.lo `test -f '@outsrc@/connor_solver_output.cc' || echo '$(srcdir)/'`@outsrc@/connor_solver_output.cc

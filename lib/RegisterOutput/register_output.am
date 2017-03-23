@@ -37,6 +37,8 @@ libfp_la_SOURCES += @outsrc@/absorber_vmr_met_output.cc
 fullphysicsinc_HEADERS += @outsrc@/absorber_absco_output.h
 libfp_la_SOURCES += @outsrc@/aerosol_aod_output.cc
 fullphysicsinc_HEADERS += @outsrc@/aerosol_aod_output.h
+libfp_la_SOURCES += @outsrc@/aerosol_consolidated_output.cc
+fullphysicsinc_HEADERS += @outsrc@/aerosol_consolidated_output.h
 libfp_la_SOURCES += @outsrc@/connor_solver_output.cc
 fullphysicsinc_HEADERS += @outsrc@/connor_solver_output.h
 libfp_la_SOURCES += @outsrc@/error_analysis_output.cc
@@ -100,6 +102,7 @@ EXTRA_DIST += @outsrc@/*.i
 # Test files
 lib_test_all_SOURCES+= @outsrc@/absorber_absco_output_test.cc
 lib_test_all_SOURCES+= @outsrc@/aerosol_aod_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/aerosol_consolidated_output_test.cc
 lib_test_all_SOURCES+= @outsrc@/connor_solver_output_test.cc
 lib_test_all_SOURCES+= @outsrc@/error_analysis_output_test.cc
 lib_test_all_SOURCES+= @outsrc@/forward_model_output_test.cc
