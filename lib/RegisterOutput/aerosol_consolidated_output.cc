@@ -18,48 +18,13 @@ public:
     AerosolOutputHelper(const boost::shared_ptr<AerosolOptical>& Aerosol, const std::vector<std::string>& All_aer_names)
         : aerosol(Aerosol), all_aer_names(All_aer_names) { initialize(); }
 
-    Array<double, 2> aerosol_aod_matrix() const { return aer_aod_matrix_; }
-    Array<double, 2> aerosol_param_matrix() const { return aer_param_matrix_; }
-    Array<double, 2> aerosol_param_uncert_matrix() const { return aer_param_uncert_matrix_; }
-    blitz::Array<std::string, 1> aerosol_model_types() const { return aer_model_types_; }
-    blitz::Array<std::string, 1> all_aerosol_names() const { 
-        // Convert to blitz array for output
-        blitz::Array<std::string, 1> out_aer_names(all_aer_names.size());
-        for(int i; i < all_aer_names.size(); i++)
-            out_aer_names(i) = all_aer_names[i];
-        return out_aer_names;
-    }
-
-private:
-
-    void initialize() 
-    {
-        std::vector<std::string> ret_aer_names = aerosol->aerosol_name();
-
+    Array<double, 2> aerosol_aod_matrix() const {
         // Limits for low/high aerosol types
         double minv = std::numeric_limits<double>::min();
         double maxv = std::numeric_limits<double>::max();
 
-        aer_aod_matrix_.resize(all_aer_names.size(), 4);
-        aer_aod_matrix_ = -999;
-
-        // Make this array match the retrieved aerosol types length
-        aer_model_types_.resize(ret_aer_names.size());
-
-        // Find the maximum number of parameters and also fill in the model types array
-        int max_num_param = 0;
-        for(int aer_idx = 0; aer_idx < ret_aer_names.size(); aer_idx++) {
-            auto aer_ext = boost::dynamic_pointer_cast<AerosolExtinctionImpBase>(aerosol->aerosol_extinction(aer_idx));
-            if (!aer_ext)
-                throw Exception("Could not ast aerosol extinction into AerosolExctinctionImpBase");
-            max_num_param = max(max_num_param, aer_ext->aerosol_parameter().rows());
-
-            aer_model_types_(aer_idx) = aer_ext->model_short_name();
-        }
-        aer_param_matrix_.resize(all_aer_names.size(), max_num_param);
-        aer_param_uncert_matrix_.resize(all_aer_names.size(), max_num_param);
-        aer_param_matrix_ = -999;
-        aer_param_uncert_matrix_ = -999;
+        Array<double, 2> aer_aod_matrix_(all_aer_names.size(), 4);
+        aer_aod_matrix_ = -999; 
 
         for(int out_aer_idx = 0; out_aer_idx < all_aer_names.size(); out_aer_idx++) {
             auto match_iter = std::find(ret_aer_names.begin(), ret_aer_names.end(), all_aer_names[out_aer_idx]);
@@ -78,6 +43,20 @@ private:
 
                 // low
                 aer_aod_matrix_(out_aer_idx, 3) = aerosol->aerosol_optical_depth(in_aer_idx, minv, high_boundary);
+            }
+        }
+        return aer_aod_matrix_; 
+    }
+    
+    Array<double, 2> aerosol_param_matrix() const { 
+        Array<double, 2> aer_param_matrix_(all_aer_names.size(), max_num_param);
+        aer_param_matrix_ = -999;
+
+        for(int out_aer_idx = 0; out_aer_idx < all_aer_names.size(); out_aer_idx++) {
+            auto match_iter = std::find(ret_aer_names.begin(), ret_aer_names.end(), all_aer_names[out_aer_idx]);
+
+            if(match_iter != ret_aer_names.end()) {
+                int in_aer_idx = std::distance(ret_aer_names.begin(), match_iter);
 
                 auto aer_ext = boost::dynamic_pointer_cast<AerosolExtinctionImpBase>(aerosol->aerosol_extinction(in_aer_idx));
                 if (!aer_ext)
@@ -85,10 +64,63 @@ private:
 
                 Range param_r = Range(0, aer_ext->aerosol_parameter().rows()-1);
                 aer_param_matrix_(out_aer_idx, param_r) = aer_ext->aerosol_parameter();
+            }
+        }
+        return aer_param_matrix_; 
+    }
+
+    Array<double, 2> aerosol_param_uncert_matrix() const { 
+        Array<double, 2> aer_param_uncert_matrix_(all_aer_names.size(), max_num_param);
+        aer_param_uncert_matrix_  = -999;
+
+        for(int out_aer_idx = 0; out_aer_idx < all_aer_names.size(); out_aer_idx++) {
+            auto match_iter = std::find(ret_aer_names.begin(), ret_aer_names.end(), all_aer_names[out_aer_idx]);
+
+            if(match_iter != ret_aer_names.end()) {
+                int in_aer_idx = std::distance(ret_aer_names.begin(), match_iter);
+
+                auto aer_ext = boost::dynamic_pointer_cast<AerosolExtinctionImpBase>(aerosol->aerosol_extinction(in_aer_idx));
+                if (!aer_ext)
+                    throw Exception("Could not ast aerosol extinction into AerosolExctinctionImpBase");
+
+                Range param_r = Range(0, aer_ext->aerosol_parameter().rows()-1);
                 aer_param_uncert_matrix_(out_aer_idx, param_r) = aer_ext->aerosol_parameter_uncertainty();
             }
         }
+        return aer_param_uncert_matrix_; 
     }
+
+    blitz::Array<std::string, 1> aerosol_model_types() const { return aer_model_types_; }
+    blitz::Array<std::string, 1> all_aerosol_names() const { 
+        // Convert to blitz array for output
+        blitz::Array<std::string, 1> out_aer_names(all_aer_names.size());
+        for(int i; i < all_aer_names.size(); i++)
+            out_aer_names(i) = all_aer_names[i];
+        return out_aer_names;
+    }
+
+private:
+
+    void initialize() 
+    {
+        ret_aer_names = aerosol->aerosol_name();
+
+
+        // Make this array match the retrieved aerosol types length
+        aer_model_types_.resize(ret_aer_names.size());
+
+        // Find the maximum number of parameters and also fill in the model types array
+        max_num_param = 0;
+        for(int aer_idx = 0; aer_idx < ret_aer_names.size(); aer_idx++) {
+            auto aer_ext = boost::dynamic_pointer_cast<AerosolExtinctionImpBase>(aerosol->aerosol_extinction(aer_idx));
+            if (!aer_ext)
+                throw Exception("Could not ast aerosol extinction into AerosolExctinctionImpBase");
+            max_num_param = max(max_num_param, aer_ext->aerosol_parameter().rows());
+
+            aer_model_types_(aer_idx) = aer_ext->model_short_name();
+        }
+    }
+
 private:
     /// The boundary for calculating retrieved_aerosol_aod_by_type_low
     const double low_boundary = 800e2;
@@ -98,10 +130,9 @@ private:
 
     boost::shared_ptr<AerosolOptical> aerosol;
     std::vector<std::string> all_aer_names;
+    std::vector<std::string> ret_aer_names;
+    int max_num_param;
 
-    Array<double, 2> aer_aod_matrix_;
-    Array<double, 2> aer_param_matrix_;
-    Array<double, 2> aer_param_uncert_matrix_;
     blitz::Array<std::string, 1> aer_model_types_;
   
 };
