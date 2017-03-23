@@ -22,7 +22,7 @@ BOOST_AUTO_TEST_CASE(basic)
   
   StokesCoefficientFractionOutput po(s, 0, "o2");
   boost::shared_ptr<OutputHdf> out(new OutputHdf("stokes_coefficient_fraction_output.h5", 20, 112, 5, 3));
-  //add_file_to_cleanup("stokes_coefficient_fraction_output.h5");
+  add_file_to_cleanup("stokes_coefficient_fraction_output.h5");
   po.register_output_apriori(out);
   po.register_output(out);
 
