@@ -4892,19 +4892,6 @@ template<class T, int D> inline blitz::Array<T, D>
 #include "level_1b_cache.h"
 
 
-struct SWIG_null_deleter {
-  void operator() (void const *) const {
-  }
-};
-#define SWIG_NO_NULL_DELETER_0 , SWIG_null_deleter()
-#define SWIG_NO_NULL_DELETER_1
-#define SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW
-#define SWIG_NO_NULL_DELETER_SWIG_POINTER_OWN
-
-
-#define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
-
-
 #include <limits.h>
 #if !defined(SWIG_NO_LLONG_MAX)
 # if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
@@ -5196,61 +5183,6 @@ SWIGINTERN PyObject *SHARED_PTR_DISOWN_swigconstant(PyObject *SWIGUNUSEDPARM(sel
   if (!d) return NULL;
   SWIG_Python_SetConstant(d, "SHARED_PTR_DISOWN",SWIG_From_int(static_cast< int >(0)));
   return SWIG_Py_Void();
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Level1bCache(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Level1b *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::Level1b const > tempshared1 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Level1bCache *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    // Added mms
-    // First check to see if all ready pointer type
-    FullPhysics::Level1b *ptr;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], (void**)(&ptr), SWIGTYPE_p_FullPhysics__Level1b,  0 , &newmem);
-    if (SWIG_IsOK(res1)) {
-      arg1 = ptr;
-    } else {
-      res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Level1b_t,  0 , &newmem);
-      if (!SWIG_IsOK(res1)) {
-        SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Level1bCache" "', argument " "1"" of type '" "FullPhysics::Level1b const &""'"); 
-      }
-      if (!argp1) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Level1bCache" "', argument " "1"" of type '" "FullPhysics::Level1b const &""'"); 
-      }
-      if (newmem & SWIG_CAST_NEW_MEMORY) {
-        tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Level1b > * >(argp1);
-        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Level1b > * >(argp1);
-        arg1 = const_cast< FullPhysics::Level1b * >(tempshared1.get());
-      } else {
-        arg1 = const_cast< FullPhysics::Level1b * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::Level1b > * >(argp1)->get());
-      }
-    }
-  }
-  {
-    try {
-      result = (FullPhysics::Level1bCache *)new FullPhysics::Level1bCache((FullPhysics::Level1b const &)*arg1);
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  {
-    boost::shared_ptr<  FullPhysics::Level1bCache > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Level1bCache >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Level1bCache_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
-  }
-  return resultobj;
-fail:
-  return NULL;
 }
 
 
@@ -6498,18 +6430,9 @@ SWIGINTERN PyObject *Level1bCache_swigregister(PyObject *SWIGUNUSEDPARM(self), P
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *Level1bCache_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"SHARED_PTR_DISOWN_swigconstant", SHARED_PTR_DISOWN_swigconstant, METH_VARARGS, NULL},
-	 { (char *)"new_Level1bCache", (PyCFunction)_wrap_new_Level1bCache, METH_O, (char *)"\n"
-		"\n"
-		"Level1bCache::Level1bCache(const Level1b &L1_in)\n"
-		"Constructor. \n"
-		""},
 	 { (char *)"Level1bCache_set_latitude", _wrap_Level1bCache_set_latitude, METH_VARARGS, (char *)"\n"
 		"\n"
 		"void FullPhysics::Level1bCache::set_latitude(int i, const DoubleWithUnit &V)\n"
@@ -6593,7 +6516,6 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		""},
 	 { (char *)"Level1bCache_swigregister", Level1bCache_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Level1bCache_swiginit", Level1bCache_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

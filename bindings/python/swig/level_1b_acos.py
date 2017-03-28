@@ -144,16 +144,10 @@ class Level1bAcos(full_physics_swig.level_1b_hdf.Level1bHdf):
     C++ includes: level_1b_acos.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        """
-
-        Level1bAcos::Level1bAcos(const boost::shared_ptr< HdfFile > &Hfile, const boost::shared_ptr<
-        HdfSoundingId > &Sounding_id)
-
-        """
-        _level_1b_acos.Level1bAcos_swiginit(self, _level_1b_acos.new_Level1bAcos(*args))
 
     def land_fraction(self, spec_index):
         """

@@ -85,6 +85,16 @@ public:
   virtual DoubleWithUnit solar_azimuth(int i) const = 0;
 
 //-----------------------------------------------------------------------
+/// Realtive azimuth
+/// \param i Spectrometer index (between 0 and number_spectrometer() -
+///    1)
+/// \return Relative azimuth angle between solar and sounding azimuth
+//     angles.
+//-----------------------------------------------------------------------
+
+  virtual DoubleWithUnit relative_azimuth(int i) const;
+
+//-----------------------------------------------------------------------
 /// Altitude
 /// \param i Spectrometer index (between 0 and number_spectrometer() -
 ///    1)

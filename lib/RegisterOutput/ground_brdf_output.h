@@ -19,9 +19,8 @@ public:
                    const std::vector<std::string>& Hdf_band_names) 
     : brdf(Brdf), l1b(L1b), hdf_band_names(Hdf_band_names) {}
   virtual ~GroundBrdfOutput() {}
-  double kernel_amplitude(int spec_idx) const;
-  virtual void register_output(const boost::shared_ptr<Output>& out) const;
   virtual void register_output_apriori(const boost::shared_ptr<Output>& out) const;
+  virtual void register_output(const boost::shared_ptr<Output>& out) const;
 private:
   boost::shared_ptr<GroundBrdf> brdf;
   boost::shared_ptr<Level1b> l1b;
