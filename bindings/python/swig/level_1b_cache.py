@@ -147,15 +147,10 @@ class Level1bCache(full_physics_swig.level_1b.Level1b):
     C++ includes: level_1b_cache.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-
-    def __init__(self, L1_in):
-        """
-
-        Level1bCache::Level1bCache(const Level1b &L1_in)
-        Constructor. 
-        """
-        _level_1b_cache.Level1bCache_swiginit(self, _level_1b_cache.new_Level1bCache(L1_in))
 
     def set_latitude(self, i, V):
         """

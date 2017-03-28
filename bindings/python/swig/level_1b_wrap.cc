@@ -5613,6 +5613,59 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Level1b_relative_azimuth(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Level1b *arg1 = (FullPhysics::Level1b *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Level1b const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Level1b const > *smartarg1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  FullPhysics::DoubleWithUnit result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"Level1b_relative_azimuth",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Level1b_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level1b_relative_azimuth" "', argument " "1"" of type '" "FullPhysics::Level1b const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Level1b > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Level1b > * >(argp1);
+      arg1 = const_cast< FullPhysics::Level1b * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Level1b > * >(argp1);
+      arg1 = const_cast< FullPhysics::Level1b * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Level1b_relative_azimuth" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = ((FullPhysics::Level1b const *)arg1)->relative_azimuth(arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::DoubleWithUnit > *smartresult = new boost::shared_ptr<  FullPhysics::DoubleWithUnit >(new FullPhysics::DoubleWithUnit((FullPhysics::DoubleWithUnit &)result));
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Level1b_altitude(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Level1b *arg1 = (FullPhysics::Level1b *) 0 ;
@@ -6068,6 +6121,18 @@ static PyMethodDef SwigMethods[] = {
 		"i:  Spectrometer index (between 0 and number_spectrometer() - 1)\n"
 		"\n"
 		"Solar azimuth angle \n"
+		""},
+	 { (char *)"Level1b_relative_azimuth", _wrap_Level1b_relative_azimuth, METH_VARARGS, (char *)"\n"
+		"\n"
+		"virtual DoubleWithUnit FullPhysics::Level1b::relative_azimuth(int i) const\n"
+		"Realtive azimuth.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"i:  Spectrometer index (between 0 and number_spectrometer() - 1)\n"
+		"\n"
+		"Relative azimuth angle between solar and sounding azimuth \n"
 		""},
 	 { (char *)"Level1b_altitude", _wrap_Level1b_altitude, METH_VARARGS, (char *)"\n"
 		"\n"

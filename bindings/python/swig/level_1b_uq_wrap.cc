@@ -4901,19 +4901,6 @@ template<class T, int D> inline blitz::Array<T, D>
 #include "level_1b_uq.h"
 
 
-struct SWIG_null_deleter {
-  void operator() (void const *) const {
-  }
-};
-#define SWIG_NO_NULL_DELETER_0 , SWIG_null_deleter()
-#define SWIG_NO_NULL_DELETER_1
-#define SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW
-#define SWIG_NO_NULL_DELETER_SWIG_POINTER_OWN
-
-
-#define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
-
-
 #include <limits.h>
 #if !defined(SWIG_NO_LLONG_MAX)
 # if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
@@ -5080,91 +5067,6 @@ SWIGINTERN PyObject *SHARED_PTR_DISOWN_swigconstant(PyObject *SWIGUNUSEDPARM(sel
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Level1bUq(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  boost::shared_ptr< FullPhysics::HdfFile > *arg1 = 0 ;
-  boost::shared_ptr< FullPhysics::HdfSoundingId > *arg2 = 0 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::HdfFile > tempshared1 ;
-  boost::shared_ptr< FullPhysics::HdfFile > temp2shared1 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  boost::shared_ptr< FullPhysics::HdfSoundingId > tempshared2 ;
-  boost::shared_ptr< FullPhysics::HdfSoundingId > temp2shared2 ;
-  PyObject *swig_obj[2] ;
-  FullPhysics::Level1bUq *result = 0 ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"new_Level1bUq",2,2,swig_obj)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfFile_t,  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Level1bUq" "', argument " "1"" of type '" "boost::shared_ptr< FullPhysics::HdfFile > const &""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      if (argp1) tempshared1 = *reinterpret_cast< boost::shared_ptr< FullPhysics::HdfFile > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< FullPhysics::HdfFile > * >(argp1);
-      arg1 = &tempshared1;
-    } else {
-      arg1 = (argp1) ? reinterpret_cast< boost::shared_ptr< FullPhysics::HdfFile > * >(argp1) : &tempshared1;
-    }
-    // Special handling if this is a director class. In that case, we
-    // don't own the underlying python object. Instead,
-    // we tell python we have a reference to the underlying object, and
-    // when this gets destroyed we decrement the reference to the python
-    // object. 
-    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg1->get());
-    if(dp) {
-      Py_INCREF(dp->swig_get_self());
-      temp2shared1.reset(arg1->get(), PythonRefPtrCleanup(dp->swig_get_self()));
-      arg1 = &temp2shared1;
-    }
-  }
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Level1bUq" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::HdfSoundingId > const &""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::HdfSoundingId > * >(argp2);
-      delete reinterpret_cast< boost::shared_ptr< FullPhysics::HdfSoundingId > * >(argp2);
-      arg2 = &tempshared2;
-    } else {
-      arg2 = (argp2) ? reinterpret_cast< boost::shared_ptr< FullPhysics::HdfSoundingId > * >(argp2) : &tempshared2;
-    }
-    // Special handling if this is a director class. In that case, we
-    // don't own the underlying python object. Instead,
-    // we tell python we have a reference to the underlying object, and
-    // when this gets destroyed we decrement the reference to the python
-    // object. 
-    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg2->get());
-    if(dp) {
-      Py_INCREF(dp->swig_get_self());
-      temp2shared2.reset(arg2->get(), PythonRefPtrCleanup(dp->swig_get_self()));
-      arg2 = &temp2shared2;
-    }
-  }
-  {
-    try {
-      result = (FullPhysics::Level1bUq *)new FullPhysics::Level1bUq((boost::shared_ptr< FullPhysics::HdfFile > const &)*arg1,(boost::shared_ptr< FullPhysics::HdfSoundingId > const &)*arg2);
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  {
-    boost::shared_ptr<  FullPhysics::Level1bUq > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Level1bUq >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Level1bUq_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
-  }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_Level1bUq_set_radiance(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Level1bUq *arg1 = (FullPhysics::Level1bUq *) 0 ;
@@ -5293,19 +5195,9 @@ SWIGINTERN PyObject *Level1bUq_swigregister(PyObject *SWIGUNUSEDPARM(self), PyOb
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *Level1bUq_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"SHARED_PTR_DISOWN_swigconstant", SHARED_PTR_DISOWN_swigconstant, METH_VARARGS, NULL},
-	 { (char *)"new_Level1bUq", _wrap_new_Level1bUq, METH_VARARGS, (char *)"\n"
-		"\n"
-		"Level1bUq::Level1bUq(const boost::shared_ptr< HdfFile > &Hfile, const boost::shared_ptr<\n"
-		"HdfSoundingId > &Sounding_id)\n"
-		"\n"
-		""},
 	 { (char *)"Level1bUq_set_radiance", _wrap_Level1bUq_set_radiance, METH_VARARGS, (char *)"\n"
 		"\n"
 		"void Level1bUq::set_radiance(int Spec_index, boost::shared_ptr< SpectralRange > &Rad)\n"
@@ -5313,7 +5205,6 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"delete_Level1bUq", (PyCFunction)_wrap_delete_Level1bUq, METH_O, NULL},
 	 { (char *)"Level1bUq_swigregister", Level1bUq_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Level1bUq_swiginit", Level1bUq_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

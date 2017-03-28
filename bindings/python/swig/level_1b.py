@@ -274,6 +274,22 @@ class Level1b(full_physics_swig.generic_object.GenericObject):
         return _level_1b.Level1b_solar_azimuth(self, i)
 
 
+    def relative_azimuth(self, i):
+        """
+
+        virtual DoubleWithUnit FullPhysics::Level1b::relative_azimuth(int i) const
+        Realtive azimuth.
+
+        Parameters:
+        -----------
+
+        i:  Spectrometer index (between 0 and number_spectrometer() - 1)
+
+        Relative azimuth angle between solar and sounding azimuth 
+        """
+        return _level_1b.Level1b_relative_azimuth(self, i)
+
+
     def altitude(self, i):
         """
 
@@ -372,6 +388,7 @@ Level1b.sounding_azimuth = new_instancemethod(_level_1b.Level1b_sounding_azimuth
 Level1b.stokes_coefficient = new_instancemethod(_level_1b.Level1b_stokes_coefficient, None, Level1b)
 Level1b.solar_zenith = new_instancemethod(_level_1b.Level1b_solar_zenith, None, Level1b)
 Level1b.solar_azimuth = new_instancemethod(_level_1b.Level1b_solar_azimuth, None, Level1b)
+Level1b.relative_azimuth = new_instancemethod(_level_1b.Level1b_relative_azimuth, None, Level1b)
 Level1b.altitude = new_instancemethod(_level_1b.Level1b_altitude, None, Level1b)
 Level1b.relative_velocity = new_instancemethod(_level_1b.Level1b_relative_velocity, None, Level1b)
 Level1b.spectral_coefficient = new_instancemethod(_level_1b.Level1b_spectral_coefficient, None, Level1b)
