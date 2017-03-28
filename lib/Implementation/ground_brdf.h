@@ -42,17 +42,17 @@ public:
     virtual const AutoDerivative<double> weight_intercept(const int spec_index) const;
     virtual const AutoDerivative<double> weight_slope(const int spec_index) const;
     virtual const AutoDerivative<double> rahman_factor(const int spec_index) const;
-    virtual const AutoDerivative<double> overall_amplitude(const int spec_index) const;
+    virtual const AutoDerivative<double> hotspot_parameter(const int spec_index) const;
     virtual const AutoDerivative<double> asymmetry_parameter(const int spec_index) const;
-    virtual const AutoDerivative<double> geometric_factor(const int spec_index) const;
+    virtual const AutoDerivative<double> anisotropy_parameter(const int spec_index) const;
     virtual const AutoDerivative<double> breon_factor(const int spec_index) const;
 
     virtual void weight_intercept(const int spec_index, const AutoDerivative<double>& val);
     virtual void weight_slope(const int spec_index, const AutoDerivative<double>& val);
     virtual void rahman_factor(const int spec_index, const AutoDerivative<double>& val);
-    virtual void overall_amplitude(const int spec_index, const AutoDerivative<double>& val);
+    virtual void hotspot_parameter(const int spec_index, const AutoDerivative<double>& val);
     virtual void asymmetry_parameter(const int spec_index, const AutoDerivative<double>& val);
-    virtual void geometric_factor(const int spec_index, const AutoDerivative<double>& val);
+    virtual void anisotropy_parameter(const int spec_index, const AutoDerivative<double>& val);
     virtual void breon_factor(const int spec_index, const AutoDerivative<double>& val);
 
     const blitz::Array<double, 2> brdf_covariance(const int spec_index) const;
@@ -63,8 +63,8 @@ public:
     // Uses LIDORT to compute the black sky albedo from the parameters
     virtual const double black_sky_albedo(const int Spec_index, const double Sza) = 0;
 
-    // Computes albedo using parameters and specified geometry
-    virtual const double albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef) = 0;
+    // Computes kernel value using parameters and specified geometry
+    virtual const double kernel_value(const int Spec_index, const double Sza, const double Vza, const double Azm) = 0;
   
     /// String describing which type of Breon surface type, also makes this class abstract
     virtual const std::string breon_type() const = 0;
@@ -91,7 +91,8 @@ protected:
     std::vector<std::string> desc_band_names;
 
     // Helper function for routines that call fortran codes
-    blitz::Array<double, 1> albedo_calc_params(const int Spec_index);
+    blitz::Array<double, 1> black_sky_params(const int Spec_index);
+    blitz::Array<double, 1> kernel_value_params(const int Spec_index);
 };
 
 
@@ -104,7 +105,7 @@ public:
         GroundBrdf(Coeffs, Flag, Ref_points, Desc_band_names) {}
 
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
-    virtual const double albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef);
+    virtual const double kernel_value(const int Spec_index, const double Sza, const double Vza, const double Azm);
     virtual const std::string breon_type() const { return "Vegetative"; }
 
     virtual boost::shared_ptr<Ground> clone() const {
@@ -127,7 +128,7 @@ public:
         GroundBrdf(Coeffs, Flag, Ref_points, Desc_band_names) {}
 
     virtual const double black_sky_albedo(const int Spec_index, const double Sza);
-    virtual const double albedo(const int Spec_index, const double Sza, const double Vza, const double Azm, const blitz::Array<double, 1>& Stokes_coef);
+    virtual const double kernel_value(const int Spec_index, const double Sza, const double Vza, const double Azm);
     virtual const std::string breon_type() const { return "Soil"; }
 
     virtual boost::shared_ptr<Ground> clone() const {

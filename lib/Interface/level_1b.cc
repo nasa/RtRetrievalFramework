@@ -7,21 +7,7 @@ using namespace blitz;
 #ifdef HAVE_LUA
 
 // Convenience function to give us solar zenith, relative azimuth, 
-// stokes_coefficents, and sounding azimuth.
-//
-// Azimuth is modified because the convention used by the OCO L1B file is to
-// take both solar and observation angles as viewed from an observer
-// standing in the FOV.  In this convention, the convention for glint
-// would be a relative azimuth difference of 180 degrees, as the
-// spacecraft and sun would be on opposite sides of the sky. However, the
-// radiative transfer convention is that the azimuth angles must be the
-// same for glint (it is "follow the photons" convention). However, we'd
-// like the solar azimuth to not be changed, so as to continue to agree
-// with zenith, so this change of the observation azimuth has the effect
-// of putting everything in a "reverse follow-the-photons" convention,
-// where we look from the satellite to the FOV, then from the FOV to the
-// sun.  Note that because of an old historical reason, however, both
-// zenith angles remain > 0 and < 90, even in the RT convention.
+// stokes_coefficents, and sounding azimuth in different forms for Lua
 
 blitz::Array<double, 1> level_1b_sza(const Level1b& Lev1)
 {
@@ -53,33 +39,14 @@ blitz::Array<double, 1> level_1b_azm(const Level1b& Lev1)
 {
   blitz::Array<double, 1> res(Lev1.number_spectrometer());
   for(int i = 0; i < res.rows(); ++i) {
-    res(i) = (180 + Lev1.sounding_azimuth(i).convert(units::deg).value) - 
-      Lev1.solar_azimuth(i).convert(units::deg).value;
-
-    // Make sure azimuth is in the range [0, 360)
-    res(i) = res(i) < 360 ? res(i) + 360 : res(i);
-    res(i) = fmod(res(i), 360.0);
+    res(i) = Lev1.relative_azimuth(i).convert(units::deg).value;
   }
   return res;
 }
 
-DoubleWithUnit level_1b_azm_i_with_unit(const Level1b& Lev1, int Spec_index)
-{
-  Unit orig_unit = Lev1.sounding_azimuth(Spec_index).units;
-  double res = (180 + Lev1.sounding_azimuth(Spec_index).convert(units::deg).value) - 
-    Lev1.solar_azimuth(Spec_index).convert(units::deg).value;
-
-  if (res > 360)
-    res -= 360;
-  else if(res < 0)
-    res += 360;
-      
-  return DoubleWithUnit(res, units::deg).convert(orig_unit);
-}
-
 double level_1b_azm_i(const Level1b& Lev1, int Spec_index)
 {
-  return level_1b_azm_i_with_unit(Lev1, Spec_index).convert(units::deg).value;
+  return Lev1.relative_azimuth(Spec_index).convert(units::deg).value;
 }
 
 blitz::Array<double, 2> level_1b_stokes(const Level1b& Lev1)
@@ -199,7 +166,7 @@ REGISTER_LUA_CLASS(Level1b)
 .def("sza_with_unit", &Level1b::solar_zenith)
 .def("azm", &level_1b_azm)
 .def("azm", &level_1b_azm_i)
-.def("azm_with_unit", &level_1b_azm_i_with_unit)
+.def("azm_with_unit", &Level1b::relative_azimuth)
 .def("zen", &level_1b_zen)
 .def("zen", &level_1b_zen_i)
 .def("zen_with_unit", &Level1b::sounding_zenith)
@@ -234,6 +201,34 @@ REGISTER_LUA_CLASS_NAME(std::vector<boost::shared_ptr<Level1b> >,
 .def(luabind::constructor<>())
 .def("push_back", ((pbt1) &std::vector<boost::shared_ptr<Level1b> >::push_back))
 REGISTER_LUA_END()
+
+// Azimuth is modified because the convention used by the OCO L1B file is to
+// take both solar and observation angles as viewed from an observer
+// standing in the FOV.  In this convention, the convention for glint
+// would be a relative azimuth difference of 180 degrees, as the
+// spacecraft and sun would be on opposite sides of the sky. However, the
+// radiative transfer convention is that the azimuth angles must be the
+// same for glint (it is "follow the photons" convention). However, we'd
+// like the solar azimuth to not be changed, so as to continue to agree
+// with zenith, so this change of the observation azimuth has the effect
+// of putting everything in a "reverse follow-the-photons" convention,
+// where we look from the satellite to the FOV, then from the FOV to the
+// sun.  Note that because of an old historical reason, however, both
+// zenith angles remain > 0 and < 90, even in the RT convention.
+
+DoubleWithUnit Level1b::relative_azimuth(int Spec_index) const
+{
+    Unit orig_unit = sounding_azimuth(Spec_index).units;
+    double res = (180 + sounding_azimuth(Spec_index).convert(units::deg).value) - 
+        solar_azimuth(Spec_index).convert(units::deg).value;
+
+    if (res > 360)
+        res -= 360;
+    else if(res < 0)
+        res += 360;
+      
+    return DoubleWithUnit(res, units::deg).convert(orig_unit);
+}
 
 DoubleWithUnit Level1b::signal(int Spec_index, const std::vector<int>& Sample_indexes) const
 {

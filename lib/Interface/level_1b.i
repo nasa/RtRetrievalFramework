@@ -27,6 +27,7 @@ public:
   virtual blitz::Array<double, 1> stokes_coefficient(int i) const = 0;
   virtual DoubleWithUnit solar_zenith(int i) const = 0;
   virtual DoubleWithUnit solar_azimuth(int i) const = 0;
+  virtual DoubleWithUnit relative_azimuth(int i) const = 0;
   virtual DoubleWithUnit altitude(int i) const = 0;
   virtual DoubleWithUnit relative_velocity(int i) const = 0;
   virtual ArrayWithUnit<double, 1> spectral_coefficient(int Spec_index) const = 0;

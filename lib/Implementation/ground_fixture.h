@@ -1,4 +1,4 @@
-#include "ground_lambertian.h"
+ #include "ground_lambertian.h"
 #include "ground_coxmunk.h"
 #include "ground_brdf.h"
 #include "configuration_fixture.h"
@@ -53,7 +53,7 @@ public:
         // BRDF (Rahman + Breon)
         Array<double, 2> brdf_coeffs(3, 7);
         brdf_coeffs = 
-            // weight_intercept, weight_slope, rahman_factor, amplitude, asymmetry, geometric, breon_factor
+            // weight_intercept, weight_slope, rahman_factor, hotspot, asymmetry, anisotropy, breon_factor
             0.1, 0.4, 0.7, 1.0, 1.3, 1.6, 1.9,
             0.2, 0.5, 0.8, 1.1, 1.4, 1.7, 2.0,
             0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1;
