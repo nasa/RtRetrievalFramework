@@ -91,7 +91,8 @@ protected:
     std::vector<std::string> desc_band_names;
 
     // Helper function for routines that call fortran codes
-    blitz::Array<double, 1> albedo_calc_params(const int Spec_index);
+    blitz::Array<double, 1> black_sky_params(const int Spec_index);
+    blitz::Array<double, 1> kernel_value_params(const int Spec_index);
 };
 
 
