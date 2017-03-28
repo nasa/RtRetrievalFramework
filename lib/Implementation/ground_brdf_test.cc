@@ -17,17 +17,17 @@ BOOST_AUTO_TEST_CASE(basic)
     BOOST_CHECK_CLOSE(brdf_soil->rahman_factor(1).value(), 0.8, 1e-8);
     BOOST_CHECK_CLOSE(brdf_soil->rahman_factor(2).value(), 0.9, 1e-8);
 
-    BOOST_CHECK_CLOSE(brdf_soil->overall_amplitude(0).value(), 1.0, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_soil->overall_amplitude(1).value(), 1.1, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_soil->overall_amplitude(2).value(), 1.2, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_soil->hotspot_parameter(0).value(), 1.0, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_soil->hotspot_parameter(1).value(), 1.1, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_soil->hotspot_parameter(2).value(), 1.2, 1e-8);
 
     BOOST_CHECK_CLOSE(brdf_soil->asymmetry_parameter(0).value(), 1.3, 1e-8);
     BOOST_CHECK_CLOSE(brdf_soil->asymmetry_parameter(1).value(), 1.4, 1e-8);
     BOOST_CHECK_CLOSE(brdf_soil->asymmetry_parameter(2).value(), 1.5, 1e-8);
 
-    BOOST_CHECK_CLOSE(brdf_soil->geometric_factor(0).value(), 1.6, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_soil->geometric_factor(1).value(), 1.7, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_soil->geometric_factor(2).value(), 1.8, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_soil->anisotropy_parameter(0).value(), 1.6, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_soil->anisotropy_parameter(1).value(), 1.7, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_soil->anisotropy_parameter(2).value(), 1.8, 1e-8);
 
     BOOST_CHECK_CLOSE(brdf_soil->breon_factor(0).value(), 1.9, 1e-8);
     BOOST_CHECK_CLOSE(brdf_soil->breon_factor(1).value(), 2.0, 1e-8);
@@ -42,17 +42,17 @@ BOOST_AUTO_TEST_CASE(basic)
     BOOST_CHECK_CLOSE(brdf_veg->rahman_factor(1).value(), 0.8, 1e-8);
     BOOST_CHECK_CLOSE(brdf_veg->rahman_factor(2).value(), 0.9, 1e-8);
 
-    BOOST_CHECK_CLOSE(brdf_veg->overall_amplitude(0).value(), 1.0, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_veg->overall_amplitude(1).value(), 1.1, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_veg->overall_amplitude(2).value(), 1.2, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_veg->hotspot_parameter(0).value(), 1.0, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_veg->hotspot_parameter(1).value(), 1.1, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_veg->hotspot_parameter(2).value(), 1.2, 1e-8);
 
     BOOST_CHECK_CLOSE(brdf_veg->asymmetry_parameter(0).value(), 1.3, 1e-8);
     BOOST_CHECK_CLOSE(brdf_veg->asymmetry_parameter(1).value(), 1.4, 1e-8);
     BOOST_CHECK_CLOSE(brdf_veg->asymmetry_parameter(2).value(), 1.5, 1e-8);
 
-    BOOST_CHECK_CLOSE(brdf_veg->geometric_factor(0).value(), 1.6, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_veg->geometric_factor(1).value(), 1.7, 1e-8);
-    BOOST_CHECK_CLOSE(brdf_veg->geometric_factor(2).value(), 1.8, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_veg->anisotropy_parameter(0).value(), 1.6, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_veg->anisotropy_parameter(1).value(), 1.7, 1e-8);
+    BOOST_CHECK_CLOSE(brdf_veg->anisotropy_parameter(2).value(), 1.8, 1e-8);
 
     BOOST_CHECK_CLOSE(brdf_veg->breon_factor(0).value(), 1.9, 1e-8);
     BOOST_CHECK_CLOSE(brdf_veg->breon_factor(1).value(), 2.0, 1e-8);
@@ -119,16 +119,12 @@ BOOST_AUTO_TEST_CASE(albedo)
     double sza = 50.0;
     double vza = 45.0;
     double azm = 10.0;
-    blitz::Array<double, 1> stokes(4);
-    stokes = 0.5, -0.5, 0, 0;
 
-    double alb_veg = brdf_veg->albedo(spec_idx, sza, vza, azm, stokes);
-    // Value calculated in offline tester (same code as in L2, but as an independent program)
-    BOOST_CHECK_CLOSE(alb_veg, -5.40109310104388944118e-03, 1e-10);
+    double alb_veg = brdf_veg->kernel_value(spec_idx, sza, vza, azm);
+    BOOST_CHECK_CLOSE(alb_veg, -0.13077020591798197, 1e-8);
 
-    double alb_soil = brdf_soil->albedo(spec_idx, sza, vza, azm, stokes);
-    // Value calculated in offline tester (same code as in L2, but as an independent program)
-    BOOST_CHECK_CLOSE(alb_soil, -2.71124317407245817024e-03, 1e-10);
+    double alb_soil = brdf_soil->kernel_value(spec_idx, sza, vza, azm);
+    BOOST_CHECK_CLOSE(alb_soil, -0.12104239120264813, 1e-8);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
@@ -148,11 +144,21 @@ BOOST_AUTO_TEST_CASE(load_from_lua)
     }
 }
 
- 
+BOOST_AUTO_TEST_CASE(kernel_value)
+{
+    float retrieval_solar_zenith = 50.0654;
+    float retrieval_zenith = 52.8452;
+    float rel_azimuth = 193.705;
+
+    boost::shared_ptr<GroundBrdfVeg> ground_brdf(boost::dynamic_pointer_cast<GroundBrdfVeg>(config_ground));
+
+    float kernel_val = ground_brdf->kernel_value(0, retrieval_solar_zenith, retrieval_zenith, rel_azimuth);
+    BOOST_CHECK_CLOSE(kernel_val, 0.16137830913066864014, 1e-8);
+}
+
 BOOST_AUTO_TEST_SUITE_END()
 
-
-BOOST_FIXTURE_TEST_SUITE(ground_brdf_soil_config, ConfigurationBrdfVegFixture)
+BOOST_FIXTURE_TEST_SUITE(ground_brdf_soil_config, ConfigurationBrdfSoilFixture)
 
 BOOST_AUTO_TEST_CASE(load_from_lua)
 {
@@ -164,6 +170,18 @@ BOOST_AUTO_TEST_CASE(load_from_lua)
         BOOST_CHECK_CLOSE(config_ground->surface_parameter(13000, spec_idx)(3).value(), 0.75, 1e-8);
         BOOST_CHECK_CLOSE(config_ground->surface_parameter(13000, spec_idx)(4).value(), 1.0, 1e-8);
     }
+}
+
+BOOST_AUTO_TEST_CASE(kernel_value)
+{
+    float retrieval_solar_zenith = 50.0654;
+    float retrieval_zenith = 52.8452;
+    float rel_azimuth = 193.705;
+
+    boost::shared_ptr<GroundBrdfSoil> ground_brdf(boost::dynamic_pointer_cast<GroundBrdfSoil>(config_ground));
+
+    float kernel_val = ground_brdf->kernel_value(0, retrieval_solar_zenith, retrieval_zenith, rel_azimuth);
+    BOOST_CHECK_CLOSE(kernel_val, 0.16221261024475097656, 1e-8);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

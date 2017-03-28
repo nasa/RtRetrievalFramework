@@ -145,16 +145,10 @@ class Level1bUq(full_physics_swig.level_1b_oco.Level1bOco):
     C++ includes: level_1b_uq.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-
-    def __init__(self, Hfile, Sounding_id):
-        """
-
-        Level1bUq::Level1bUq(const boost::shared_ptr< HdfFile > &Hfile, const boost::shared_ptr<
-        HdfSoundingId > &Sounding_id)
-
-        """
-        _level_1b_uq.Level1bUq_swiginit(self, _level_1b_uq.new_Level1bUq(Hfile, Sounding_id))
 
     def set_radiance(self, Spec_index, Rad):
         """

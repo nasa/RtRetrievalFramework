@@ -5753,7 +5753,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfVeg_overall_amplitude__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GroundBrdfVeg_hotspot_parameter__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfVeg *arg1 = (FullPhysics::GroundBrdfVeg *) 0 ;
   int arg2 ;
@@ -5770,7 +5770,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_overall_amplitude__SWIG_0(PyObject *SWI
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfVeg_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfVeg_overall_amplitude" "', argument " "1"" of type '" "FullPhysics::GroundBrdfVeg const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfVeg_hotspot_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBrdfVeg const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBrdfVeg > * >(argp1);
@@ -5783,12 +5783,12 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_overall_amplitude__SWIG_0(PyObject *SWI
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfVeg_overall_amplitude" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfVeg_hotspot_parameter" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
     try {
-      result = ((FullPhysics::GroundBrdfVeg const *)arg1)->overall_amplitude(arg2);
+      result = ((FullPhysics::GroundBrdfVeg const *)arg1)->hotspot_parameter(arg2);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5857,7 +5857,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfVeg_geometric_factor__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GroundBrdfVeg_anisotropy_parameter__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfVeg *arg1 = (FullPhysics::GroundBrdfVeg *) 0 ;
   int arg2 ;
@@ -5874,7 +5874,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_geometric_factor__SWIG_0(PyObject *SWIG
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfVeg_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfVeg_geometric_factor" "', argument " "1"" of type '" "FullPhysics::GroundBrdfVeg const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfVeg_anisotropy_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBrdfVeg const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBrdfVeg > * >(argp1);
@@ -5887,12 +5887,12 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_geometric_factor__SWIG_0(PyObject *SWIG
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfVeg_geometric_factor" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfVeg_anisotropy_parameter" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
     try {
-      result = ((FullPhysics::GroundBrdfVeg const *)arg1)->geometric_factor(arg2);
+      result = ((FullPhysics::GroundBrdfVeg const *)arg1)->anisotropy_parameter(arg2);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -6264,7 +6264,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfVeg_overall_amplitude__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GroundBrdfVeg_hotspot_parameter__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfVeg *arg1 = (FullPhysics::GroundBrdfVeg *) 0 ;
   int arg2 ;
@@ -6284,7 +6284,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_overall_amplitude__SWIG_1(PyObject *SWI
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfVeg_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfVeg_overall_amplitude" "', argument " "1"" of type '" "FullPhysics::GroundBrdfVeg *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfVeg_hotspot_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBrdfVeg *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBrdfVeg > * >(argp1);
@@ -6297,7 +6297,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_overall_amplitude__SWIG_1(PyObject *SWI
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfVeg_overall_amplitude" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfVeg_hotspot_parameter" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -6311,10 +6311,10 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_overall_amplitude__SWIG_1(PyObject *SWI
     } else {
       res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,  0 , &newmem);
       if (!SWIG_IsOK(res3)) {
-        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GroundBrdfVeg_overall_amplitude" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GroundBrdfVeg_hotspot_parameter" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
       }
       if (!argp3) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBrdfVeg_overall_amplitude" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBrdfVeg_hotspot_parameter" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
         tempshared3 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp3);
@@ -6327,7 +6327,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_overall_amplitude__SWIG_1(PyObject *SWI
   }
   {
     try {
-      (arg1)->overall_amplitude(arg2,(FullPhysics::AutoDerivative< double > const &)*arg3);
+      (arg1)->hotspot_parameter(arg2,(FullPhysics::AutoDerivative< double > const &)*arg3);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -6341,26 +6341,26 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfVeg_overall_amplitude(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroundBrdfVeg_hotspot_parameter(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBrdfVeg_overall_amplitude",0,3,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBrdfVeg_hotspot_parameter",0,3,argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
-    return _wrap_GroundBrdfVeg_overall_amplitude__SWIG_0(self, argc, argv);
+    return _wrap_GroundBrdfVeg_hotspot_parameter__SWIG_0(self, argc, argv);
   }
   if (argc == 3) {
-    return _wrap_GroundBrdfVeg_overall_amplitude__SWIG_1(self, argc, argv);
+    return _wrap_GroundBrdfVeg_hotspot_parameter__SWIG_1(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBrdfVeg_overall_amplitude'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBrdfVeg_hotspot_parameter'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::GroundBrdfVeg::overall_amplitude(int const) const\n"
-    "    FullPhysics::GroundBrdfVeg::overall_amplitude(int const,FullPhysics::AutoDerivative< double > const &)\n");
+    "    FullPhysics::GroundBrdfVeg::hotspot_parameter(int const) const\n"
+    "    FullPhysics::GroundBrdfVeg::hotspot_parameter(int const,FullPhysics::AutoDerivative< double > const &)\n");
   return 0;
 }
 
@@ -6466,7 +6466,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfVeg_geometric_factor__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GroundBrdfVeg_anisotropy_parameter__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfVeg *arg1 = (FullPhysics::GroundBrdfVeg *) 0 ;
   int arg2 ;
@@ -6486,7 +6486,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_geometric_factor__SWIG_1(PyObject *SWIG
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfVeg_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfVeg_geometric_factor" "', argument " "1"" of type '" "FullPhysics::GroundBrdfVeg *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfVeg_anisotropy_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBrdfVeg *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBrdfVeg > * >(argp1);
@@ -6499,7 +6499,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_geometric_factor__SWIG_1(PyObject *SWIG
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfVeg_geometric_factor" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfVeg_anisotropy_parameter" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -6513,10 +6513,10 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_geometric_factor__SWIG_1(PyObject *SWIG
     } else {
       res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,  0 , &newmem);
       if (!SWIG_IsOK(res3)) {
-        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GroundBrdfVeg_geometric_factor" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GroundBrdfVeg_anisotropy_parameter" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
       }
       if (!argp3) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBrdfVeg_geometric_factor" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBrdfVeg_anisotropy_parameter" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
         tempshared3 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp3);
@@ -6529,7 +6529,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_geometric_factor__SWIG_1(PyObject *SWIG
   }
   {
     try {
-      (arg1)->geometric_factor(arg2,(FullPhysics::AutoDerivative< double > const &)*arg3);
+      (arg1)->anisotropy_parameter(arg2,(FullPhysics::AutoDerivative< double > const &)*arg3);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -6543,26 +6543,26 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfVeg_geometric_factor(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroundBrdfVeg_anisotropy_parameter(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBrdfVeg_geometric_factor",0,3,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBrdfVeg_anisotropy_parameter",0,3,argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
-    return _wrap_GroundBrdfVeg_geometric_factor__SWIG_0(self, argc, argv);
+    return _wrap_GroundBrdfVeg_anisotropy_parameter__SWIG_0(self, argc, argv);
   }
   if (argc == 3) {
-    return _wrap_GroundBrdfVeg_geometric_factor__SWIG_1(self, argc, argv);
+    return _wrap_GroundBrdfVeg_anisotropy_parameter__SWIG_1(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBrdfVeg_geometric_factor'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBrdfVeg_anisotropy_parameter'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::GroundBrdfVeg::geometric_factor(int const) const\n"
-    "    FullPhysics::GroundBrdfVeg::geometric_factor(int const,FullPhysics::AutoDerivative< double > const &)\n");
+    "    FullPhysics::GroundBrdfVeg::anisotropy_parameter(int const) const\n"
+    "    FullPhysics::GroundBrdfVeg::anisotropy_parameter(int const,FullPhysics::AutoDerivative< double > const &)\n");
   return 0;
 }
 
@@ -6842,14 +6842,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfVeg_albedo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroundBrdfVeg_kernel_value(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfVeg *arg1 = (FullPhysics::GroundBrdfVeg *) 0 ;
   int arg2 ;
   double arg3 ;
   double arg4 ;
   double arg5 ;
-  blitz::Array< double,1 > *arg6 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   boost::shared_ptr< FullPhysics::GroundBrdfVeg > tempshared1 ;
@@ -6862,17 +6861,15 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_albedo(PyObject *SWIGUNUSEDPARM(self), 
   int ecode4 = 0 ;
   double val5 ;
   int ecode5 = 0 ;
-  blitz::Array< double,1 > a6 ;
-  PythonObject numpy6 ;
-  PyObject *swig_obj[6] ;
+  PyObject *swig_obj[5] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"GroundBrdfVeg_albedo",6,6,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"GroundBrdfVeg_kernel_value",5,5,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfVeg_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfVeg_albedo" "', argument " "1"" of type '" "FullPhysics::GroundBrdfVeg *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfVeg_kernel_value" "', argument " "1"" of type '" "FullPhysics::GroundBrdfVeg *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBrdfVeg > * >(argp1);
@@ -6885,38 +6882,27 @@ SWIGINTERN PyObject *_wrap_GroundBrdfVeg_albedo(PyObject *SWIGUNUSEDPARM(self), 
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfVeg_albedo" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfVeg_kernel_value" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GroundBrdfVeg_albedo" "', argument " "3"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GroundBrdfVeg_kernel_value" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
   ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "GroundBrdfVeg_albedo" "', argument " "4"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "GroundBrdfVeg_kernel_value" "', argument " "4"" of type '" "double""'");
   } 
   arg4 = static_cast< double >(val4);
   ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
   if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "GroundBrdfVeg_albedo" "', argument " "5"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "GroundBrdfVeg_kernel_value" "', argument " "5"" of type '" "double""'");
   } 
   arg5 = static_cast< double >(val5);
   {
-    int res = SWIG_ConvertPtr(swig_obj[5], (void**)(&arg6), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy6.obj = to_numpy<double>(swig_obj[5]);
-      if(!numpy6.obj)
-      return NULL;
-      a6.reference(to_blitz_array<double, 1>(numpy6));
-      arg6 = &a6;
-    }
-  }
-  {
     try {
-      result = (double)(arg1)->albedo(arg2,arg3,arg4,arg5,(blitz::Array< double,1 > const &)*arg6);
+      result = (double)(arg1)->kernel_value(arg2,arg3,arg4,arg5);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -7529,7 +7515,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfSoil_overall_amplitude__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GroundBrdfSoil_hotspot_parameter__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfSoil *arg1 = (FullPhysics::GroundBrdfSoil *) 0 ;
   int arg2 ;
@@ -7546,7 +7532,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_overall_amplitude__SWIG_0(PyObject *SW
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfSoil_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfSoil_overall_amplitude" "', argument " "1"" of type '" "FullPhysics::GroundBrdfSoil const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfSoil_hotspot_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBrdfSoil const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBrdfSoil > * >(argp1);
@@ -7559,12 +7545,12 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_overall_amplitude__SWIG_0(PyObject *SW
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfSoil_overall_amplitude" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfSoil_hotspot_parameter" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
     try {
-      result = ((FullPhysics::GroundBrdfSoil const *)arg1)->overall_amplitude(arg2);
+      result = ((FullPhysics::GroundBrdfSoil const *)arg1)->hotspot_parameter(arg2);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -7633,7 +7619,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfSoil_geometric_factor__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GroundBrdfSoil_anisotropy_parameter__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfSoil *arg1 = (FullPhysics::GroundBrdfSoil *) 0 ;
   int arg2 ;
@@ -7650,7 +7636,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_geometric_factor__SWIG_0(PyObject *SWI
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfSoil_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfSoil_geometric_factor" "', argument " "1"" of type '" "FullPhysics::GroundBrdfSoil const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfSoil_anisotropy_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBrdfSoil const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::GroundBrdfSoil > * >(argp1);
@@ -7663,12 +7649,12 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_geometric_factor__SWIG_0(PyObject *SWI
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfSoil_geometric_factor" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfSoil_anisotropy_parameter" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
     try {
-      result = ((FullPhysics::GroundBrdfSoil const *)arg1)->geometric_factor(arg2);
+      result = ((FullPhysics::GroundBrdfSoil const *)arg1)->anisotropy_parameter(arg2);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -8040,7 +8026,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfSoil_overall_amplitude__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GroundBrdfSoil_hotspot_parameter__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfSoil *arg1 = (FullPhysics::GroundBrdfSoil *) 0 ;
   int arg2 ;
@@ -8060,7 +8046,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_overall_amplitude__SWIG_1(PyObject *SW
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfSoil_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfSoil_overall_amplitude" "', argument " "1"" of type '" "FullPhysics::GroundBrdfSoil *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfSoil_hotspot_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBrdfSoil *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBrdfSoil > * >(argp1);
@@ -8073,7 +8059,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_overall_amplitude__SWIG_1(PyObject *SW
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfSoil_overall_amplitude" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfSoil_hotspot_parameter" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -8087,10 +8073,10 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_overall_amplitude__SWIG_1(PyObject *SW
     } else {
       res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,  0 , &newmem);
       if (!SWIG_IsOK(res3)) {
-        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GroundBrdfSoil_overall_amplitude" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GroundBrdfSoil_hotspot_parameter" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
       }
       if (!argp3) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBrdfSoil_overall_amplitude" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBrdfSoil_hotspot_parameter" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
         tempshared3 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp3);
@@ -8103,7 +8089,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_overall_amplitude__SWIG_1(PyObject *SW
   }
   {
     try {
-      (arg1)->overall_amplitude(arg2,(FullPhysics::AutoDerivative< double > const &)*arg3);
+      (arg1)->hotspot_parameter(arg2,(FullPhysics::AutoDerivative< double > const &)*arg3);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -8117,26 +8103,26 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfSoil_overall_amplitude(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroundBrdfSoil_hotspot_parameter(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBrdfSoil_overall_amplitude",0,3,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBrdfSoil_hotspot_parameter",0,3,argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
-    return _wrap_GroundBrdfSoil_overall_amplitude__SWIG_0(self, argc, argv);
+    return _wrap_GroundBrdfSoil_hotspot_parameter__SWIG_0(self, argc, argv);
   }
   if (argc == 3) {
-    return _wrap_GroundBrdfSoil_overall_amplitude__SWIG_1(self, argc, argv);
+    return _wrap_GroundBrdfSoil_hotspot_parameter__SWIG_1(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBrdfSoil_overall_amplitude'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBrdfSoil_hotspot_parameter'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::GroundBrdfSoil::overall_amplitude(int const) const\n"
-    "    FullPhysics::GroundBrdfSoil::overall_amplitude(int const,FullPhysics::AutoDerivative< double > const &)\n");
+    "    FullPhysics::GroundBrdfSoil::hotspot_parameter(int const) const\n"
+    "    FullPhysics::GroundBrdfSoil::hotspot_parameter(int const,FullPhysics::AutoDerivative< double > const &)\n");
   return 0;
 }
 
@@ -8242,7 +8228,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfSoil_geometric_factor__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GroundBrdfSoil_anisotropy_parameter__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfSoil *arg1 = (FullPhysics::GroundBrdfSoil *) 0 ;
   int arg2 ;
@@ -8262,7 +8248,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_geometric_factor__SWIG_1(PyObject *SWI
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfSoil_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfSoil_geometric_factor" "', argument " "1"" of type '" "FullPhysics::GroundBrdfSoil *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfSoil_anisotropy_parameter" "', argument " "1"" of type '" "FullPhysics::GroundBrdfSoil *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBrdfSoil > * >(argp1);
@@ -8275,7 +8261,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_geometric_factor__SWIG_1(PyObject *SWI
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfSoil_geometric_factor" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfSoil_anisotropy_parameter" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -8289,10 +8275,10 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_geometric_factor__SWIG_1(PyObject *SWI
     } else {
       res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,  0 , &newmem);
       if (!SWIG_IsOK(res3)) {
-        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GroundBrdfSoil_geometric_factor" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GroundBrdfSoil_anisotropy_parameter" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
       }
       if (!argp3) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBrdfSoil_geometric_factor" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroundBrdfSoil_anisotropy_parameter" "', argument " "3"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
       }
       if (newmem & SWIG_CAST_NEW_MEMORY) {
         tempshared3 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp3);
@@ -8305,7 +8291,7 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_geometric_factor__SWIG_1(PyObject *SWI
   }
   {
     try {
-      (arg1)->geometric_factor(arg2,(FullPhysics::AutoDerivative< double > const &)*arg3);
+      (arg1)->anisotropy_parameter(arg2,(FullPhysics::AutoDerivative< double > const &)*arg3);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -8319,26 +8305,26 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfSoil_geometric_factor(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroundBrdfSoil_anisotropy_parameter(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBrdfSoil_geometric_factor",0,3,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"GroundBrdfSoil_anisotropy_parameter",0,3,argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
-    return _wrap_GroundBrdfSoil_geometric_factor__SWIG_0(self, argc, argv);
+    return _wrap_GroundBrdfSoil_anisotropy_parameter__SWIG_0(self, argc, argv);
   }
   if (argc == 3) {
-    return _wrap_GroundBrdfSoil_geometric_factor__SWIG_1(self, argc, argv);
+    return _wrap_GroundBrdfSoil_anisotropy_parameter__SWIG_1(self, argc, argv);
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBrdfSoil_geometric_factor'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GroundBrdfSoil_anisotropy_parameter'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::GroundBrdfSoil::geometric_factor(int const) const\n"
-    "    FullPhysics::GroundBrdfSoil::geometric_factor(int const,FullPhysics::AutoDerivative< double > const &)\n");
+    "    FullPhysics::GroundBrdfSoil::anisotropy_parameter(int const) const\n"
+    "    FullPhysics::GroundBrdfSoil::anisotropy_parameter(int const,FullPhysics::AutoDerivative< double > const &)\n");
   return 0;
 }
 
@@ -8618,14 +8604,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroundBrdfSoil_albedo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroundBrdfSoil_kernel_value(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::GroundBrdfSoil *arg1 = (FullPhysics::GroundBrdfSoil *) 0 ;
   int arg2 ;
   double arg3 ;
   double arg4 ;
   double arg5 ;
-  blitz::Array< double,1 > *arg6 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   boost::shared_ptr< FullPhysics::GroundBrdfSoil > tempshared1 ;
@@ -8638,17 +8623,15 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_albedo(PyObject *SWIGUNUSEDPARM(self),
   int ecode4 = 0 ;
   double val5 ;
   int ecode5 = 0 ;
-  blitz::Array< double,1 > a6 ;
-  PythonObject numpy6 ;
-  PyObject *swig_obj[6] ;
+  PyObject *swig_obj[5] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"GroundBrdfSoil_albedo",6,6,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"GroundBrdfSoil_kernel_value",5,5,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GroundBrdfSoil_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfSoil_albedo" "', argument " "1"" of type '" "FullPhysics::GroundBrdfSoil *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroundBrdfSoil_kernel_value" "', argument " "1"" of type '" "FullPhysics::GroundBrdfSoil *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::GroundBrdfSoil > * >(argp1);
@@ -8661,38 +8644,27 @@ SWIGINTERN PyObject *_wrap_GroundBrdfSoil_albedo(PyObject *SWIGUNUSEDPARM(self),
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfSoil_albedo" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GroundBrdfSoil_kernel_value" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GroundBrdfSoil_albedo" "', argument " "3"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GroundBrdfSoil_kernel_value" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
   ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "GroundBrdfSoil_albedo" "', argument " "4"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "GroundBrdfSoil_kernel_value" "', argument " "4"" of type '" "double""'");
   } 
   arg4 = static_cast< double >(val4);
   ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
   if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "GroundBrdfSoil_albedo" "', argument " "5"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "GroundBrdfSoil_kernel_value" "', argument " "5"" of type '" "double""'");
   } 
   arg5 = static_cast< double >(val5);
   {
-    int res = SWIG_ConvertPtr(swig_obj[5], (void**)(&arg6), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy6.obj = to_numpy<double>(swig_obj[5]);
-      if(!numpy6.obj)
-      return NULL;
-      a6.reference(to_blitz_array<double, 1>(numpy6));
-      arg6 = &a6;
-    }
-  }
-  {
     try {
-      result = (double)(arg1)->albedo(arg2,arg3,arg4,arg5,(blitz::Array< double,1 > const &)*arg6);
+      result = (double)(arg1)->kernel_value(arg2,arg3,arg4,arg5);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -8983,9 +8955,9 @@ static PyMethodDef SwigMethods[] = {
 		"void GroundBrdf::rahman_factor(const int spec_index, const AutoDerivative< double > &val)\n"
 		"\n"
 		""},
-	 { (char *)"GroundBrdfVeg_overall_amplitude", _wrap_GroundBrdfVeg_overall_amplitude, METH_VARARGS, (char *)"\n"
+	 { (char *)"GroundBrdfVeg_hotspot_parameter", _wrap_GroundBrdfVeg_hotspot_parameter, METH_VARARGS, (char *)"\n"
 		"\n"
-		"void GroundBrdf::overall_amplitude(const int spec_index, const AutoDerivative< double > &val)\n"
+		"void GroundBrdf::hotspot_parameter(const int spec_index, const AutoDerivative< double > &val)\n"
 		"\n"
 		""},
 	 { (char *)"GroundBrdfVeg_asymmetry_parameter", _wrap_GroundBrdfVeg_asymmetry_parameter, METH_VARARGS, (char *)"\n"
@@ -8993,9 +8965,9 @@ static PyMethodDef SwigMethods[] = {
 		"void GroundBrdf::asymmetry_parameter(const int spec_index, const AutoDerivative< double > &val)\n"
 		"\n"
 		""},
-	 { (char *)"GroundBrdfVeg_geometric_factor", _wrap_GroundBrdfVeg_geometric_factor, METH_VARARGS, (char *)"\n"
+	 { (char *)"GroundBrdfVeg_anisotropy_parameter", _wrap_GroundBrdfVeg_anisotropy_parameter, METH_VARARGS, (char *)"\n"
 		"\n"
-		"void GroundBrdf::geometric_factor(const int spec_index, const AutoDerivative< double > &val)\n"
+		"void GroundBrdf::anisotropy_parameter(const int spec_index, const AutoDerivative< double > &val)\n"
 		"\n"
 		""},
 	 { (char *)"GroundBrdfVeg_breon_factor", _wrap_GroundBrdfVeg_breon_factor, METH_VARARGS, (char *)"\n"
@@ -9019,10 +8991,10 @@ static PyMethodDef SwigMethods[] = {
 		"const double GroundBrdfVeg::black_sky_albedo(const int Spec_index, const double Sza)\n"
 		"\n"
 		""},
-	 { (char *)"GroundBrdfVeg_albedo", _wrap_GroundBrdfVeg_albedo, METH_VARARGS, (char *)"\n"
+	 { (char *)"GroundBrdfVeg_kernel_value", _wrap_GroundBrdfVeg_kernel_value, METH_VARARGS, (char *)"\n"
 		"\n"
-		"const double GroundBrdfVeg::albedo(const int Spec_index, const double Sza, const double Vza, const\n"
-		"double Azm, const blitz::Array< double, 1 > &Stokes_coef)\n"
+		"const double GroundBrdfVeg::kernel_value(const int Spec_index, const double Sza, const double Vza, const\n"
+		"double Azm)\n"
 		"\n"
 		""},
 	 { (char *)"GroundBrdfVeg_breon_type", (PyCFunction)_wrap_GroundBrdfVeg_breon_type, METH_O, (char *)"\n"
@@ -9082,9 +9054,9 @@ static PyMethodDef SwigMethods[] = {
 		"void GroundBrdf::rahman_factor(const int spec_index, const AutoDerivative< double > &val)\n"
 		"\n"
 		""},
-	 { (char *)"GroundBrdfSoil_overall_amplitude", _wrap_GroundBrdfSoil_overall_amplitude, METH_VARARGS, (char *)"\n"
+	 { (char *)"GroundBrdfSoil_hotspot_parameter", _wrap_GroundBrdfSoil_hotspot_parameter, METH_VARARGS, (char *)"\n"
 		"\n"
-		"void GroundBrdf::overall_amplitude(const int spec_index, const AutoDerivative< double > &val)\n"
+		"void GroundBrdf::hotspot_parameter(const int spec_index, const AutoDerivative< double > &val)\n"
 		"\n"
 		""},
 	 { (char *)"GroundBrdfSoil_asymmetry_parameter", _wrap_GroundBrdfSoil_asymmetry_parameter, METH_VARARGS, (char *)"\n"
@@ -9092,9 +9064,9 @@ static PyMethodDef SwigMethods[] = {
 		"void GroundBrdf::asymmetry_parameter(const int spec_index, const AutoDerivative< double > &val)\n"
 		"\n"
 		""},
-	 { (char *)"GroundBrdfSoil_geometric_factor", _wrap_GroundBrdfSoil_geometric_factor, METH_VARARGS, (char *)"\n"
+	 { (char *)"GroundBrdfSoil_anisotropy_parameter", _wrap_GroundBrdfSoil_anisotropy_parameter, METH_VARARGS, (char *)"\n"
 		"\n"
-		"void GroundBrdf::geometric_factor(const int spec_index, const AutoDerivative< double > &val)\n"
+		"void GroundBrdf::anisotropy_parameter(const int spec_index, const AutoDerivative< double > &val)\n"
 		"\n"
 		""},
 	 { (char *)"GroundBrdfSoil_breon_factor", _wrap_GroundBrdfSoil_breon_factor, METH_VARARGS, (char *)"\n"
@@ -9118,10 +9090,10 @@ static PyMethodDef SwigMethods[] = {
 		"const double GroundBrdfSoil::black_sky_albedo(const int Spec_index, const double Sza)\n"
 		"\n"
 		""},
-	 { (char *)"GroundBrdfSoil_albedo", _wrap_GroundBrdfSoil_albedo, METH_VARARGS, (char *)"\n"
+	 { (char *)"GroundBrdfSoil_kernel_value", _wrap_GroundBrdfSoil_kernel_value, METH_VARARGS, (char *)"\n"
 		"\n"
-		"const double GroundBrdfSoil::albedo(const int Spec_index, const double Sza, const double Vza, const\n"
-		"double Azm, const blitz::Array< double, 1 > &Stokes_coef)\n"
+		"const double GroundBrdfSoil::kernel_value(const int Spec_index, const double Sza, const double Vza, const\n"
+		"double Azm)\n"
 		"\n"
 		""},
 	 { (char *)"GroundBrdfSoil_breon_type", (PyCFunction)_wrap_GroundBrdfSoil_breon_type, METH_O, (char *)"\n"

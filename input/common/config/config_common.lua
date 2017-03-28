@@ -2173,26 +2173,22 @@ function ConfigCommon.ground_coxmunk_plus_lamb:register_output(ro)
 end
 
 ------------------------------------------------------------
---- Modify the GroundBrdf a_priori, scaling by the black
---- sky albedo
+--- Modify the GroundBrdf a_priori, scaling by the 
+--- kernel value
 ------------------------------------------------------------
 
 function ConfigCommon.brdf_weight(self, brdf_class, ap, i)
-   local signal = self.config:meas_cont_signal(i).value
-   local solar_strength = self.config.fm.atmosphere.ground.solar_strength[i+1]
    local sza_d = self.config.l1b:sza()(i) 
    local vza_d = self.config.l1b:zen()(i) 
    local azm_d = self.config.l1b:azm()(i) 
-   local sza_r = sza_d * math.pi / 180.0
-   local stokes_coef = self.config.l1b:stokes_coef()(i, Range.all())
-   local alb_cont = math.pi * signal / (math.cos(sza_r) * solar_strength)
+   local alb_cont = self.config:albedo_from_signal_level(1)(self, i)(0)
 
    -- Extract all but the slope portion of the apriori to feed into the
    -- albedo calculation function
    local params = Blitz_double_array_1d(5)
    params:set(Range.all(), ap(Range(2, 6)))
 
-   local alb_calc = brdf_class.albedo(params, sza_d, vza_d, azm_d, stokes_coef)
+   local alb_calc = brdf_class.kernel_value(params, sza_d, vza_d, azm_d)
    local weight = alb_cont / alb_calc
 
    return weight
@@ -2273,10 +2269,7 @@ function ConfigCommon.ground_brdf_veg:create_parent_object(sub_object)
 end
 
 function ConfigCommon.ground_brdf_veg:register_output(ro)
-   local sza = self.config.l1b:sza()
-   local cos_solar_zenith  = self.config:h():read_double_1d("/Ground/Brdf/Effective_Albedo_Table/cos_solar_zenith")
-   local intensity_scaling = self.config:h():read_double_1d("/Ground/Brdf/Effective_Albedo_Table/intensity_scaling")
-   ro:push_back(GroundBrdfOutput.create(self.config.brdf_veg, sza, cos_solar_zenith, intensity_scaling, self.config.common.hdf_band_name))
+   ro:push_back(GroundBrdfOutput.create(self.config.brdf_veg, self.config.l1b, self.config.common.hdf_band_name))
 end
 
 ------------------------------------------------------------
@@ -2314,10 +2307,7 @@ function ConfigCommon.ground_brdf_soil:create_parent_object(sub_object)
 end
 
 function ConfigCommon.ground_brdf_soil:register_output(ro)
-   local sza = self.config.l1b:sza()
-   local cos_solar_zenith  = self.config:h():read_double_1d("/Ground/Brdf/Effective_Albedo_Table/cos_solar_zenith")
-   local intensity_scaling = self.config:h():read_double_1d("/Ground/Brdf/Effective_Albedo_Table/intensity_scaling")
-   ro:push_back(GroundBrdfOutput.create(self.config.brdf_soil, sza, cos_solar_zenith, intensity_scaling, self.config.common.hdf_band_name))
+   ro:push_back(GroundBrdfOutput.create(self.config.brdf_soil, self.config.l1b, self.config.common.hdf_band_name))
 end
 
 ------------------------------------------------------------
@@ -2453,6 +2443,16 @@ function ConfigCommon:albedo_from_signal_level(polynomial_degree)
         local signal = self.config:meas_cont_signal(spec_idx).value
         local solar_strength = self.config.fm.atmosphere.ground.solar_strength[spec_idx+1]
         local sza_r = self.config.l1b:sza()(spec_idx) * math.pi / 180.0
+
+        -- Account for solar distance Fsun = Fsun0 / (solar_distance_meters/AU)^2
+        -- Create SolarDopplerShiftPolynomial so we can compute solar distance
+        local solar_doppler_shift = SolarDopplerShiftPolynomial.create_from_l1b(self.config.l1b, spec_idx, true)
+        local solar_dist = solar_doppler_shift:solar_distance().value
+        solar_strength = solar_strength / solar_dist^2
+     
+        -- Account for stokes element for I
+        local stokes_coef = self.config.l1b:stokes_coef()
+        solar_strength = solar_strength * stokes_coef(spec_idx, 0)
 
         local offset = math.pi * signal / (math.cos(sza_r) * solar_strength)
 

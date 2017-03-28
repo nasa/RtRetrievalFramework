@@ -143,16 +143,10 @@ class Level1bHeritage(full_physics_swig.level_1b.Level1b):
     C++ includes: level_1b_heritage.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-
-    def __init__(self, Sounding_info_file, Spectrum_file, Nm):
-        """
-
-        Level1bHeritage::Level1bHeritage(const std::string &Sounding_info_file, const std::string
-        &Spectrum_file, const boost::shared_ptr< NoiseModel > &Nm)
-        Read the given Level 1B heritage file. 
-        """
-        _level_1b_heritage.Level1bHeritage_swiginit(self, _level_1b_heritage.new_Level1bHeritage(Sounding_info_file, Spectrum_file, Nm))
     __swig_destroy__ = _level_1b_heritage.delete_Level1bHeritage
 Level1bHeritage_swigregister = _level_1b_heritage.Level1bHeritage_swigregister
 Level1bHeritage_swigregister(Level1bHeritage)
