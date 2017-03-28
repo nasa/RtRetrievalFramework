@@ -119,13 +119,12 @@ BOOST_AUTO_TEST_CASE(albedo)
     double sza = 50.0;
     double vza = 45.0;
     double azm = 10.0;
-    blitz::Array<double, 1> stokes(4);
 
     double alb_veg = brdf_veg->kernel_value(spec_idx, sza, vza, azm);
-    BOOST_CHECK_CLOSE(alb_veg, -0.013077020591798197, 1e-10);
+    BOOST_CHECK_CLOSE(alb_veg, -0.13077020591798197, 1e-8);
 
     double alb_soil = brdf_soil->kernel_value(spec_idx, sza, vza, azm);
-    BOOST_CHECK_CLOSE(alb_soil, -0.012104239120264813, 1e-10);
+    BOOST_CHECK_CLOSE(alb_soil, -0.12104239120264813, 1e-8);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
@@ -145,11 +144,21 @@ BOOST_AUTO_TEST_CASE(load_from_lua)
     }
 }
 
- 
+BOOST_AUTO_TEST_CASE(kernel_value)
+{
+    float retrieval_solar_zenith = 50.0654;
+    float retrieval_zenith = 52.8452;
+    float rel_azimuth = 193.705;
+
+    boost::shared_ptr<GroundBrdfVeg> ground_brdf(boost::dynamic_pointer_cast<GroundBrdfVeg>(config_ground));
+
+    float kernel_val = ground_brdf->kernel_value(0, retrieval_solar_zenith, retrieval_zenith, rel_azimuth);
+    BOOST_CHECK_CLOSE(kernel_val, 0.16137830913066864014, 1e-8);
+}
+
 BOOST_AUTO_TEST_SUITE_END()
 
-
-BOOST_FIXTURE_TEST_SUITE(ground_brdf_soil_config, ConfigurationBrdfVegFixture)
+BOOST_FIXTURE_TEST_SUITE(ground_brdf_soil_config, ConfigurationBrdfSoilFixture)
 
 BOOST_AUTO_TEST_CASE(load_from_lua)
 {
@@ -161,6 +170,18 @@ BOOST_AUTO_TEST_CASE(load_from_lua)
         BOOST_CHECK_CLOSE(config_ground->surface_parameter(13000, spec_idx)(3).value(), 0.75, 1e-8);
         BOOST_CHECK_CLOSE(config_ground->surface_parameter(13000, spec_idx)(4).value(), 1.0, 1e-8);
     }
+}
+
+BOOST_AUTO_TEST_CASE(kernel_value)
+{
+    float retrieval_solar_zenith = 50.0654;
+    float retrieval_zenith = 52.8452;
+    float rel_azimuth = 193.705;
+
+    boost::shared_ptr<GroundBrdfSoil> ground_brdf(boost::dynamic_pointer_cast<GroundBrdfSoil>(config_ground));
+
+    float kernel_val = ground_brdf->kernel_value(0, retrieval_solar_zenith, retrieval_zenith, rel_azimuth);
+    BOOST_CHECK_CLOSE(kernel_val, 0.16221261024475097656, 1e-8);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

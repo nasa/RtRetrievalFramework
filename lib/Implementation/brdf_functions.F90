@@ -111,9 +111,9 @@ contains
       BRDF_PARAMETERS = ZERO
       ! Breon refactive index squared, same as value hardcoded inside lrad
       BRDF_PARAMETERS(1,1)   = 2.25_fpk 
-      BRDF_PARAMETERS(2,1)   = params(2) ! Overall amplitude
+      BRDF_PARAMETERS(2,1)   = params(2) ! hotspot parameter
       BRDF_PARAMETERS(2,2)   = params(3) ! Asymmetry parameter
-      BRDF_PARAMETERS(2,3)   = params(4) ! Geometric factor
+      BRDF_PARAMETERS(2,3)   = params(4) ! anisotropy
       BRDF_FACTORS(1) = params(5) ! Breon factor
       BRDF_FACTORS(2) = params(1) ! Rahman factor
       NBEAMS = 1

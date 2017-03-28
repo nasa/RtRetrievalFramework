@@ -23,197 +23,209 @@ REGISTER_LUA_DERIVED_CLASS(GroundBrdfOutput, RegisterOutputBase)
 REGISTER_LUA_END()
 #endif
 
-double weight_intercept(boost::shared_ptr<GroundBrdf>& Brdf, int spec_idx)
-{
-    return Brdf->weight_intercept(spec_idx).value();
-}
+ 
+class BrdfOutputHelper {
+public:
 
-double weight_slope(boost::shared_ptr<GroundBrdf>& Brdf, int spec_idx)
-{
-    return Brdf->weight_slope(spec_idx).value();
-}
+    BrdfOutputHelper(const boost::shared_ptr<GroundBrdf>& Brdf, 
+                      const boost::shared_ptr<Level1b>& L1b)
+    : brdf(Brdf), l1b(L1b) { }
 
-double rahman_factor(boost::shared_ptr<GroundBrdf> Brdf, int spec_idx)
-{
-    return Brdf->rahman_factor(spec_idx).value();
-}
-
-double hotspot_parameter(boost::shared_ptr<GroundBrdf> Brdf, int spec_idx) 
-{
-    return Brdf->hotspot_parameter(spec_idx).value();
-}
-
-double asymmetry_parameter(boost::shared_ptr<GroundBrdf> Brdf, int spec_idx)
-{
-    return Brdf->asymmetry_parameter(spec_idx).value();
-}
-
-double anisotropy_parameter(boost::shared_ptr<GroundBrdf> Brdf, int spec_idx)
-{
-    return Brdf->anisotropy_parameter(spec_idx).value();
-}
-
-double breon_factor(boost::shared_ptr<GroundBrdf> Brdf, int spec_idx)
-{
-    return Brdf->breon_factor(spec_idx).value();
-}
-
-double uncert_value(boost::shared_ptr<GroundBrdf>& Brdf, int spec_idx, int coeff_idx)
-{
-    Array<double, 2> cov = Brdf->brdf_covariance(spec_idx);
-    if(cov.rows() > 0 and cov.cols() > 0) {
-        return (cov(coeff_idx, coeff_idx) < 0 ? 0.0 : sqrt(cov(coeff_idx, coeff_idx)));
-    } else {
-        return 0.0;
+    double weight_intercept(int spec_idx)
+    {
+        return brdf->weight_intercept(spec_idx).value();
     }
-}
 
-double weight_intercept_uncert(boost::shared_ptr<GroundBrdf>& Brdf, int spec_idx)
-{
-    return uncert_value(Brdf, spec_idx, GroundBrdf::BRDF_WEIGHT_INTERCEPT_INDEX);
-}
+    double weight_slope(int spec_idx)
+    {
+        return brdf->weight_slope(spec_idx).value();
+    }
 
-double weight_slope_uncert(boost::shared_ptr<GroundBrdf>& Brdf, int spec_idx)
-{
-    return uncert_value(Brdf, spec_idx, GroundBrdf::BRDF_WEIGHT_SLOPE_INDEX);
-}
+    double rahman_factor(int spec_idx)
+    {
+        return brdf->rahman_factor(spec_idx).value();
+    }
 
-double rahman_factor_uncert(boost::shared_ptr<GroundBrdf> Brdf, int spec_idx)
-{
-    return uncert_value(Brdf, spec_idx, GroundBrdf::RAHMAN_KERNEL_FACTOR_INDEX);
-}
+    double hotspot_parameter(int spec_idx) 
+    {
+        return brdf->hotspot_parameter(spec_idx).value();
+    }
 
-double hotspot_parameter_uncert(boost::shared_ptr<GroundBrdf> Brdf, int spec_idx) 
-{
-    return uncert_value(Brdf, spec_idx, GroundBrdf::RAHMAN_OVERALL_AMPLITUDE_INDEX);
-}
+    double asymmetry_parameter(int spec_idx)
+    {
+        return brdf->asymmetry_parameter(spec_idx).value();
+    }
 
-double asymmetry_parameter_uncert(boost::shared_ptr<GroundBrdf> Brdf, int spec_idx)
-{
-    return uncert_value(Brdf, spec_idx, GroundBrdf::RAHMAN_ASYMMETRY_FACTOR_INDEX);
-}
+    double anisotropy_parameter(int spec_idx)
+    {
+        return brdf->anisotropy_parameter(spec_idx).value();
+    }
 
-double anisotropy_parameter_uncert(boost::shared_ptr<GroundBrdf> Brdf, int spec_idx)
-{
-    return uncert_value(Brdf, spec_idx, GroundBrdf::RAHMAN_GEOMETRIC_FACTOR_INDEX);
-}
+    double breon_factor(int spec_idx)
+    {
+        return brdf->breon_factor(spec_idx).value();
+    }
 
-double breon_factor_uncert(boost::shared_ptr<GroundBrdf> Brdf, int spec_idx)
-{
-    return uncert_value(Brdf, spec_idx, GroundBrdf::BREON_KERNEL_FACTOR_INDEX);
-}
+    double uncert_value(int spec_idx, int coeff_idx)
+    {
+        Array<double, 2> cov = brdf->brdf_covariance(spec_idx);
+        if(cov.rows() > 0 and cov.cols() > 0) {
+            return (cov(coeff_idx, coeff_idx) < 0 ? 0.0 : sqrt(cov(coeff_idx, coeff_idx)));
+        } else {
+            return 0.0;
+        }
+    }
 
-double effective_albedo_intercept(boost::shared_ptr<GroundBrdf>& Brdf, int spec_idx, double kernel_value)
-{
-    return weight_intercept(Brdf, spec_idx) * kernel_value;
-}
+    double weight_intercept_uncert(int spec_idx)
+    {
+        return uncert_value(spec_idx, GroundBrdf::BRDF_WEIGHT_INTERCEPT_INDEX);
+    }
 
-double effective_albedo_slope(boost::shared_ptr<GroundBrdf>& Brdf, int spec_idx, double kernel_value)
-{
-    return weight_slope(Brdf, spec_idx) * kernel_value;
-}
+    double weight_slope_uncert(int spec_idx)
+    {
+        return uncert_value(spec_idx, GroundBrdf::BRDF_WEIGHT_SLOPE_INDEX);
+    }
 
-double GroundBrdfOutput::kernel_amplitude(int spec_idx) const
-{
-    Unit angle_unit("deg");
-    return brdf->kernel_value(spec_idx, 
-            l1b->solar_zenith(spec_idx).convert(angle_unit).value, 
-            l1b->sounding_zenith(spec_idx).convert(angle_unit).value, 
-            l1b->sounding_azimuth(spec_idx).convert(angle_unit).value);
-}
+    double rahman_factor_uncert(int spec_idx)
+    {
+        return uncert_value(spec_idx, GroundBrdf::RAHMAN_KERNEL_FACTOR_INDEX);
+    }
+
+    double hotspot_parameter_uncert(int spec_idx) 
+    {
+        return uncert_value(spec_idx, GroundBrdf::RAHMAN_OVERALL_AMPLITUDE_INDEX);
+    }
+
+    double asymmetry_parameter_uncert(int spec_idx)
+    {
+        return uncert_value(spec_idx, GroundBrdf::RAHMAN_ASYMMETRY_FACTOR_INDEX);
+    }
+
+    double anisotropy_parameter_uncert(int spec_idx)
+    {
+        return uncert_value(spec_idx, GroundBrdf::RAHMAN_GEOMETRIC_FACTOR_INDEX);
+    }
+
+    double breon_factor_uncert(int spec_idx)
+    {
+        return uncert_value(spec_idx, GroundBrdf::BREON_KERNEL_FACTOR_INDEX);
+    }
+
+    double effective_albedo_intercept(int spec_idx)
+    {
+        return weight_intercept(spec_idx) * kernel_amplitude(spec_idx);
+    }
+
+    double effective_albedo_slope(int spec_idx)
+    {
+        return weight_slope(spec_idx) * kernel_amplitude(spec_idx);
+    }
+
+    double kernel_amplitude(int spec_idx) const
+    {
+        Unit angle_unit("deg");
+        return brdf->kernel_value(spec_idx, 
+                l1b->solar_zenith(spec_idx).convert(angle_unit).value, 
+                l1b->sounding_zenith(spec_idx).convert(angle_unit).value, 
+                l1b->relative_azimuth(spec_idx).convert(angle_unit).value);
+    }
+private:
+    boost::shared_ptr<GroundBrdf> brdf;
+    boost::shared_ptr<Level1b> l1b;
+};
 
 void GroundBrdfOutput::register_output_apriori(const boost::shared_ptr<Output>& out) const
 {
   boost::shared_ptr<GroundBrdf> brdf_freeze = 
     boost::dynamic_pointer_cast<GroundBrdf>(brdf->clone());
+  boost::shared_ptr<BrdfOutputHelper> helper(new BrdfOutputHelper(brdf_freeze, l1b));
 
   for(int spec_idx = 0; spec_idx < brdf->number_spectrometer(); spec_idx++) {
       std::string band_name = hdf_band_names[spec_idx];
-      double kernel_value = kernel_amplitude(spec_idx);
 
-      { boost::function<double ()> f = boost::bind(&weight_intercept, brdf_freeze, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_intercept, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_intercept_apriori_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&weight_slope, brdf_freeze, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_slope, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_slope_apriori_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&effective_albedo_intercept, brdf_freeze, spec_idx, kernel_value);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_intercept, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_effective_albedo_apriori_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&effective_albedo_slope, brdf_freeze, spec_idx, kernel_value);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_slope, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_effective_albedo_slope_apriori_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&rahman_factor, brdf_freeze, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::rahman_factor, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_rahman_factor_apriori_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&hotspot_parameter, brdf_freeze, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::hotspot_parameter, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_hotspot_parameter_apriori_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&asymmetry_parameter, brdf_freeze, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::asymmetry_parameter, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_asymmetry_parameter_apriori_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&anisotropy_parameter, brdf_freeze, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::anisotropy_parameter, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_anisotropy_parameter_apriori_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&breon_factor, brdf_freeze, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::breon_factor, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_breon_factor_apriori_" + band_name, f); }
   }
 }
 
 void GroundBrdfOutput::register_output(const boost::shared_ptr<Output>& out) const
 {
+  boost::shared_ptr<BrdfOutputHelper> helper(new BrdfOutputHelper(brdf, l1b));
+
   for(int spec_idx = 0; spec_idx < brdf->number_spectrometer(); spec_idx++) {
       std::string band_name = hdf_band_names[spec_idx];
-      double kernel_value = kernel_amplitude(spec_idx);
 
-      { boost::function<double ()> f = boost::bind(&weight_intercept, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_intercept, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_intercept_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&weight_intercept_uncert, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_intercept_uncert, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_intercept_uncert_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&weight_slope, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_slope, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_slope_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&weight_slope_uncert, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_slope_uncert, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_slope_uncert_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&effective_albedo_intercept, brdf, spec_idx, kernel_value);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_intercept, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_effective_albedo_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&effective_albedo_slope, brdf, spec_idx, kernel_value);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_slope, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_effective_albedo_slope_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&rahman_factor, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::rahman_factor, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_rahman_factor_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&rahman_factor_uncert, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::rahman_factor_uncert, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_rahman_factor_uncert_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&hotspot_parameter, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::hotspot_parameter, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_hotspot_parameter_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&hotspot_parameter_uncert, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::hotspot_parameter_uncert, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_hotspot_parameter_uncert_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&asymmetry_parameter, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::asymmetry_parameter, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_asymmetry_parameter_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&asymmetry_parameter_uncert, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::asymmetry_parameter_uncert, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_asymmetry_parameter_uncert_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&anisotropy_parameter, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::anisotropy_parameter, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_anisotropy_parameter_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&anisotropy_parameter_uncert, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::anisotropy_parameter_uncert, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_anisotropy_parameter_uncert_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&breon_factor, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::breon_factor, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_breon_factor_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&breon_factor_uncert, brdf, spec_idx);
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::breon_factor_uncert, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_breon_factor_uncert_" + band_name, f); }
-
   }
 
   surface_type = "BRDF " + brdf->breon_type();

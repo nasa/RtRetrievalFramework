@@ -289,7 +289,7 @@ const blitz::Array<double, 2> GroundBrdf::brdf_covariance(const int spec_index) 
 }
 
 // Helper function 
-blitz::Array<double, 1> GroundBrdf::albedo_calc_params(const int Spec_index)
+blitz::Array<double, 1> GroundBrdf::black_sky_params(const int Spec_index)
 {
     double ref_wn = reference_points(Spec_index).convert_wave(units::inv_cm).value;
     double w = weight(ref_wn, Spec_index).value();
@@ -303,27 +303,39 @@ blitz::Array<double, 1> GroundBrdf::albedo_calc_params(const int Spec_index)
     return params;
 }
 
+// Helper function 
+blitz::Array<double, 1> GroundBrdf::kernel_value_params(const int Spec_index)
+{
+    blitz::Array<double, 1> params(NUM_PARAMS, blitz::ColumnMajorArray<1>());
+    params(0) = rahman_factor(Spec_index).value();
+    params(1) = hotspot_parameter(Spec_index).value();
+    params(2) = asymmetry_parameter(Spec_index).value();
+    params(3) = anisotropy_parameter(Spec_index).value();
+    params(4) = breon_factor(Spec_index).value();
+    return params;
+}
+
 const double GroundBrdfVeg::black_sky_albedo(const int Spec_index, const double Sza)
 {
-    blitz::Array<double, 1> params = albedo_calc_params(Spec_index);
+    blitz::Array<double, 1> params = black_sky_params(Spec_index);
     return black_sky_albedo_veg_f(params.dataFirst(), &Sza);
 }
 
 const double GroundBrdfSoil::black_sky_albedo(const int Spec_index, const double Sza)
 {
-    blitz::Array<double, 1> params = albedo_calc_params(Spec_index);
+    blitz::Array<double, 1> params = black_sky_params(Spec_index);
     return black_sky_albedo_soil_f(params.dataFirst(), &Sza);
 }
 
 const double GroundBrdfVeg::kernel_value(const int Spec_index, const double Sza, const double Vza, const double Azm)
 {
-    blitz::Array<double, 1> params = albedo_calc_params(Spec_index);
+    blitz::Array<double, 1> params = kernel_value_params(Spec_index);
     return exact_brdf_value_veg_f(params.dataFirst(), &Sza, &Vza, &Azm);
 }
 
 const double GroundBrdfSoil::kernel_value(const int Spec_index, const double Sza, const double Vza, const double Azm)
 {
-    blitz::Array<double, 1> params = albedo_calc_params(Spec_index);
+    blitz::Array<double, 1> params = kernel_value_params(Spec_index);
     return exact_brdf_value_soil_f(params.dataFirst(), &Sza, &Vza, &Azm);
 }
 
