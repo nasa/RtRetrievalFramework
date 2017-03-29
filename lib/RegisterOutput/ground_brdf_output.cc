@@ -121,6 +121,16 @@ public:
         return weight_slope(spec_idx) * kernel_amplitude(spec_idx);
     }
 
+    double effective_albedo_intercept_uncert(int spec_idx)
+    {
+        return weight_intercept_uncert(spec_idx) * kernel_amplitude(spec_idx);
+    }
+
+    double effective_albedo_slope_uncert(int spec_idx)
+    {
+        return weight_slope_uncert(spec_idx) * kernel_amplitude(spec_idx);
+    }
+
     double kernel_amplitude(int spec_idx) const
     {
         Unit angle_unit("deg");
@@ -144,7 +154,7 @@ void GroundBrdfOutput::register_output_apriori(const boost::shared_ptr<Output>& 
       std::string band_name = hdf_band_names[spec_idx];
 
       { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_intercept, helper, spec_idx);
-        out->register_data_source("/RetrievalResults/brdf_weight_intercept_apriori_" + band_name, f); }
+        out->register_data_source("/RetrievalResults/brdf_weight_apriori_" + band_name, f); }
 
       { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_slope, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_slope_apriori_" + band_name, f); }
@@ -180,10 +190,10 @@ void GroundBrdfOutput::register_output(const boost::shared_ptr<Output>& out) con
       std::string band_name = hdf_band_names[spec_idx];
 
       { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_intercept, helper, spec_idx);
-        out->register_data_source("/RetrievalResults/brdf_weight_intercept_" + band_name, f); }
+        out->register_data_source("/RetrievalResults/brdf_weight_" + band_name, f); }
 
       { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_intercept_uncert, helper, spec_idx);
-        out->register_data_source("/RetrievalResults/brdf_weight_intercept_uncert_" + band_name, f); }
+        out->register_data_source("/RetrievalResults/brdf_weight_uncert_" + band_name, f); }
 
       { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_slope, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_slope_" + band_name, f); }
@@ -196,6 +206,12 @@ void GroundBrdfOutput::register_output(const boost::shared_ptr<Output>& out) con
 
       { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_slope, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_effective_albedo_slope_" + band_name, f); }
+
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_intercept_uncert, helper, spec_idx);
+        out->register_data_source("/RetrievalResults/brdf_effective_albedo_uncert_" + band_name, f); }
+
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_slope_uncert, helper, spec_idx);
+        out->register_data_source("/RetrievalResults/brdf_effective_albedo_slope_uncert_" + band_name, f); }
 
       { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::rahman_factor, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_rahman_factor_" + band_name, f); }
