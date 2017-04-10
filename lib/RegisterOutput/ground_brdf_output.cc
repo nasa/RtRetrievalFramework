@@ -111,22 +111,22 @@ public:
         return uncert_value(spec_idx, GroundBrdf::BREON_KERNEL_FACTOR_INDEX);
     }
 
-    double effective_albedo_intercept(int spec_idx)
+    double reflectance_intercept(int spec_idx)
     {
         return weight_intercept(spec_idx) * kernel_amplitude(spec_idx);
     }
 
-    double effective_albedo_slope(int spec_idx)
+    double reflectance_slope(int spec_idx)
     {
         return weight_slope(spec_idx) * kernel_amplitude(spec_idx);
     }
 
-    double effective_albedo_intercept_uncert(int spec_idx)
+    double reflectance_intercept_uncert(int spec_idx)
     {
         return weight_intercept_uncert(spec_idx) * kernel_amplitude(spec_idx);
     }
 
-    double effective_albedo_slope_uncert(int spec_idx)
+    double reflectance_slope_uncert(int spec_idx)
     {
         return weight_slope_uncert(spec_idx) * kernel_amplitude(spec_idx);
     }
@@ -159,11 +159,11 @@ void GroundBrdfOutput::register_output_apriori(const boost::shared_ptr<Output>& 
       { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_slope, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_slope_apriori_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_intercept, helper, spec_idx);
-        out->register_data_source("/RetrievalResults/brdf_effective_albedo_apriori_" + band_name, f); }
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::reflectance_intercept, helper, spec_idx);
+        out->register_data_source("/RetrievalResults/brdf_reflectance_apriori_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_slope, helper, spec_idx);
-        out->register_data_source("/RetrievalResults/brdf_effective_albedo_slope_apriori_" + band_name, f); }
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::reflectance_slope, helper, spec_idx);
+        out->register_data_source("/RetrievalResults/brdf_reflectance_slope_apriori_" + band_name, f); }
 
       { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::rahman_factor, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_rahman_factor_apriori_" + band_name, f); }
@@ -201,17 +201,17 @@ void GroundBrdfOutput::register_output(const boost::shared_ptr<Output>& out) con
       { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_slope_uncert, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_slope_uncert_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_intercept, helper, spec_idx);
-        out->register_data_source("/RetrievalResults/brdf_effective_albedo_" + band_name, f); }
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::reflectance_intercept, helper, spec_idx);
+        out->register_data_source("/RetrievalResults/brdf_reflectance_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_slope, helper, spec_idx);
-        out->register_data_source("/RetrievalResults/brdf_effective_albedo_slope_" + band_name, f); }
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::reflectance_slope, helper, spec_idx);
+        out->register_data_source("/RetrievalResults/brdf_reflectance_slope_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_intercept_uncert, helper, spec_idx);
-        out->register_data_source("/RetrievalResults/brdf_effective_albedo_uncert_" + band_name, f); }
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::reflectance_intercept_uncert, helper, spec_idx);
+        out->register_data_source("/RetrievalResults/brdf_reflectance_uncert_" + band_name, f); }
 
-      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::effective_albedo_slope_uncert, helper, spec_idx);
-        out->register_data_source("/RetrievalResults/brdf_effective_albedo_slope_uncert_" + band_name, f); }
+      { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::reflectance_slope_uncert, helper, spec_idx);
+        out->register_data_source("/RetrievalResults/brdf_reflectance_slope_uncert_" + band_name, f); }
 
       { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::rahman_factor, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_rahman_factor_" + band_name, f); }
