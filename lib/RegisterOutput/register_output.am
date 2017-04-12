@@ -77,6 +77,7 @@ fullphysicsinc_HEADERS += @outsrc@/met_pass_through_output.h
 libfp_la_SOURCES += @outsrc@/met_pass_through_output.cc
 fullphysicsinc_HEADERS += @outsrc@/gas_vmr_apriori_output.h
 libfp_la_SOURCES += @outsrc@/gas_vmr_apriori_output.cc
+fullphysicsinc_HEADERS += @outsrc@/fill_value.h
 
 # Files that contain SWIG wrapper information
 

@@ -2,6 +2,7 @@
 #include <boost/lexical_cast.hpp>
 #include "aerosol_consolidated_output.h"
 #include "aerosol_extinction_imp_base.h"
+#include "fill_value.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -24,7 +25,7 @@ public:
         double maxv = std::numeric_limits<double>::max();
 
         Array<double, 2> aer_aod_matrix_(all_aer_names.size(), 4);
-        aer_aod_matrix_ = -999; 
+        aer_aod_matrix_ = fill_value<double>(); 
 
         for(int out_aer_idx = 0; out_aer_idx < all_aer_names.size(); out_aer_idx++) {
             auto match_iter = std::find(ret_aer_names.begin(), ret_aer_names.end(), all_aer_names[out_aer_idx]);
@@ -50,7 +51,7 @@ public:
     
     Array<double, 2> aerosol_param_matrix() const { 
         Array<double, 2> aer_param_matrix_(all_aer_names.size(), max_num_param);
-        aer_param_matrix_ = -999;
+        aer_param_matrix_ = fill_value<double>();
 
         for(int out_aer_idx = 0; out_aer_idx < all_aer_names.size(); out_aer_idx++) {
             auto match_iter = std::find(ret_aer_names.begin(), ret_aer_names.end(), all_aer_names[out_aer_idx]);
@@ -71,7 +72,7 @@ public:
 
     Array<double, 2> aerosol_param_uncert_matrix() const { 
         Array<double, 2> aer_param_uncert_matrix_(all_aer_names.size(), max_num_param);
-        aer_param_uncert_matrix_  = -999;
+        aer_param_uncert_matrix_ = fill_value<double>();
 
         for(int out_aer_idx = 0; out_aer_idx < all_aer_names.size(); out_aer_idx++) {
             auto match_iter = std::find(ret_aer_names.begin(), ret_aer_names.end(), all_aer_names[out_aer_idx]);
