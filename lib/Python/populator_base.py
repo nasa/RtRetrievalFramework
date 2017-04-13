@@ -50,6 +50,7 @@ class PopulatorBase(object):
         self.abscoversion = ""
         self.group_size = 1
         self.parallel_size = 1
+        self.email_address = ""
 
         # Add cluster specific template substition values
         if 'target_cluster' in user_settings:
