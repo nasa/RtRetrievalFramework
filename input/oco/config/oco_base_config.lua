@@ -457,7 +457,8 @@ OcoBaseConfig = OcoConfig:new {
             },
             Ice = {
                creator = ConfigCommon.aerosol_log_shape_gaussian,
-               apriori = ConfigCommon.hdf_aerosol_apriori("Aerosol", "Gaussian/Log"),
+               apriori_initial = ConfigCommon.hdf_aerosol_apriori("Aerosol", "Gaussian/Log"),
+	       apriori = OcoConfig.tropopause_height_ap
                covariance = ConfigCommon.hdf_aerosol_covariance("Aerosol", "Gaussian/Log"),
                property = ConfigCommon.hdf_aerosol_property("ice_cloud_MODIS6_deltaM_1000"),
             },
