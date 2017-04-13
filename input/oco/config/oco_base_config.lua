@@ -448,7 +448,7 @@ OcoBaseConfig = OcoConfig:new {
             covariance = ConfigCommon.hdf_covariance("/Aerosol/Merra/Gaussian/Log"),
             -- Lua doesn't preserve order in a table, so we have a list
             -- saying what order we want the Aerosols in
-            aerosols = {"Ice", "Water"},
+            aerosols = {"Ice", "Water", "ST"},
             Water = {
                creator = ConfigCommon.aerosol_log_shape_gaussian,
                apriori = ConfigCommon.hdf_aerosol_apriori("Aerosol", "Gaussian/Log"),
@@ -462,6 +462,16 @@ OcoBaseConfig = OcoConfig:new {
                covariance = ConfigCommon.hdf_aerosol_covariance("Aerosol", "Gaussian/Log"),
                property = ConfigCommon.hdf_aerosol_property("ice_cloud_MODIS6_deltaM_1000"),
             },
+	    ST = {
+	       creator = ConfigCommon.aerosol_log_shape_gaussian,
+	       apriori = function(self)
+		  return ConfigCommon.lua_to_blitz_double_1d({-5.11599580975408205124,0.03,0.04})
+	       end,
+	       covariance = function(self)
+		  return ConfigCommon.lua_to_blitz_double_2d({{3.24,0,0},{0,1e-8,0},{0,0,1e-4}})
+	       end,
+	       property = ConfigCommon.hdf_aerosol_property("strat"),
+	    },
          },
          absorber = {
             creator = ConfigCommon.absorber_creator,
