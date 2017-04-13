@@ -17,3 +17,4 @@ bindings/python/.deps/swig_python_wrap.Tpcc
 
 # Vim swap files
 *.swp
+.tramp_history
