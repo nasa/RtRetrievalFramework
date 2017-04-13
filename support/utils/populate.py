@@ -38,6 +38,9 @@ Options:
       is unnecessary if we already know the data is processable (e.g., we
       generated the QTS data by looking at real data file).
 
+  --email-address=d
+      Email address to mail when aggregation starts and ends.
+
   -g, --group_size=NUM
       Number of L2 jobs to group together in a single instance
       on the cluster.
@@ -86,6 +89,9 @@ if(args.binary):
 if(args.l2_config):
     populate_options["l2_config_filename"] = args.l2_config
 populate_options["skip_check"] = args.skip_check
+populate_options["email_address"] = ""
+if(args.email_address is not None):
+    populate_options["email_address"] = args.email_address
 populate_options["aggregate"] = args.aggregate
 populate_options["abscoversion"] = args.absco_version
 populate_options["target_cluster"] = args.target_cluster

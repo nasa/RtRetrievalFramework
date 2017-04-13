@@ -2711,7 +2711,7 @@ function ConfigCommon.merra_aerosol_creator:register_output(ro)
        all_aer_names:push_back(aer_name)
    end
  
-   ro:push_back(AerosolConsolidatedOutput(self.config.aerosol, all_aer_names)
+   ro:push_back(AerosolConsolidatedOutput(self.config.aerosol, all_aer_names))
 end
 
 ------------------------------------------------------------
