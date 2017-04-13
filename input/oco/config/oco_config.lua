@@ -499,3 +499,18 @@ function OcoConfig:co2_apriori_from_scene()
    local t = OcoSimApriori(self.config.scene_file, self.config:l1b_sid_list())
    return t:co2_vmr_grid(self.config.pressure)
 end
+
+------------------------------------------------------------
+--- Use tropopause height for initial guess as cirrus ice
+--- height
+------------------------------------------------------------
+
+function OcoConfig.tropopause_height_ap(self, base, type, aer_name)
+    local ap = self:apriori_initial(base, type, aer_name)
+    
+    local t = self.config:reference_co2_apriori_met_obj()
+    local psurf = self.config.met:surface_pressure()
+    ap:set(1, (t:tropopause_pressure() - 100) / psurf)
+    
+    return ap
+end
