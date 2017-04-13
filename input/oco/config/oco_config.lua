@@ -283,11 +283,11 @@ function OcoConfig.oco_offset_scaling(field)
 end
 
 ------------------------------------------------------------
---- Defines the ground type name we should use, based on
---- land water fag
+--- Determine if we are land or water. Return "land" or 
+--- "water"
 ------------------------------------------------------------
 
-function OcoConfig:ground_type_name()
+function config:land_or_water()
    local lf
    if (self.unscaled_l1b ~= nil) then
       lf = self.unscaled_l1b:land_fraction()
@@ -296,11 +296,38 @@ function OcoConfig:ground_type_name()
    end
 
    if(lf > 80.0) then
-      return "lambertian"
+      return "land"
    elseif(lf < 20.0) then
-      return "coxmunk"
+      return "water"
    else
       error("Invalid land fraction value read from L1B file: " .. lf .. " (must be > 80 or < 20 to process Level 2)")
+   end
+end
+
+------------------------------------------------------------
+--- Defines the ground type name we should use, based on
+--- land water fag
+------------------------------------------------------------
+
+function OcoConfig:ground_type_name()
+   if(self:land_or_water() == "land") then
+      return "brdf_soil"
+   else
+      return "coxmunk"
+   end
+end
+
+------------------------------------------------------------
+--- Fluorescence only for land runs
+------------------------------------------------------------
+
+OcoConfig.fluorescence_effect_land_only = ConfigCommon.fluorescence_effect:new()
+function OcoConfig.fluorescence_effect_land_only:create()
+   -- Only use this for land runs
+   if(self.config:land_or_water() == "land") then
+      return ConfigCommon.fluorescence_effect.create(self)
+   else
+      return nil
    end
 end
 
@@ -308,13 +335,17 @@ end
 --- Create ground based on the surface type
 ------------------------------------------------------------
 
-OcoConfig.ground_land_water_indicator = DispatchCreator:new()
+OcoConfig.ground_from_ground_type = DispatchCreator:new()
 
-function OcoConfig.ground_land_water_indicator:get_creator()
+function OcoConfig.ground_from_ground_type:get_creator()
    local ground_type = self.config:ground_type_name()
 
    if (ground_type == "lambertian") then
       return ConfigCommon.ground_lambertian
+   elseif (ground_type == "brdf_soil") then
+      return ConfigCommon.ground_brdf_soil
+   elseif (ground_type == "brdf_veg") then
+      return ConfigCommon.ground_brdf_veg
    elseif (ground_type == "coxmunk") then
       if(self.config.using_radiance_scaling ~= nil) then
          return ConfigCommon.ground_coxmunk
