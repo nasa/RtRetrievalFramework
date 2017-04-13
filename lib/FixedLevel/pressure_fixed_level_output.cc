@@ -1,4 +1,5 @@
 #include "pressure_fixed_level_output.h"
+#include "fill_value.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -68,6 +69,6 @@ void PressureFixedLevelOutput::register_output(const boost::shared_ptr<Output>& 
 			   &PressureFixedLevel::number_active_level, p);
   out->register_data_source_pad("/RetrievalResults/vector_pressure_levels", 
 			       &PressureFixedLevel::pressure_active_levels, p,
-			       p->max_number_level(), -999999.0);
+			       p->max_number_level(), fill_value<double>());
 }
 

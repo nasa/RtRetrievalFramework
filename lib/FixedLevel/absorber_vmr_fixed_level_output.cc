@@ -1,4 +1,6 @@
 #include "absorber_vmr_fixed_level_output.h"
+#include "fill_value.h"
+
 using namespace FullPhysics;
 using namespace blitz;
 
@@ -76,7 +78,7 @@ void AbsorberVmrFixedLevelOutput::register_output_apriori(const boost::shared_pt
   out->register_data_source_pad
     ("/RetrievalResults/" + gname + "_profile_apriori", 
      &AbsorberVmrFixedLevel::volume_mixing_ratio_active_level, 
-     afreeze, num_level, 0.0);
+     afreeze, num_level, fill_value<double>());
 }
 
 void AbsorberVmrFixedLevelOutput::register_output(const boost::shared_ptr<Output>& out) const
@@ -88,11 +90,11 @@ void AbsorberVmrFixedLevelOutput::register_output(const boost::shared_ptr<Output
   out->register_data_source_pad
     ("/RetrievalResults/" + gname + "_profile", 
      &AbsorberVmrFixedLevel::volume_mixing_ratio_active_level, 
-     a, num_level, 0.0);
+     a, num_level, fill_value<double>());
   out->register_data_source_pad
     ("/RetrievalResults/" + gname + "_profile_uncert", 
-     &AbsorberVmrFixedLevelOutputHelper::vmr_uncertainty, h, num_level, 0.0);
+     &AbsorberVmrFixedLevelOutputHelper::vmr_uncertainty, h, num_level, fill_value<double>());
   out->register_data_source_pad
     ("/RetrievalResults/" + gname + "_profile_covariance_matrix", 
-     &AbsorberVmrFixedLevelOutputHelper::vmr_covariance, h, num_level, 0.0);
+     &AbsorberVmrFixedLevelOutputHelper::vmr_covariance, h, num_level, fill_value<double>());
 }

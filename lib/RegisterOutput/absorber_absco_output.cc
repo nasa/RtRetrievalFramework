@@ -1,6 +1,8 @@
 #include "absorber_absco_output.h"
 #include "absorber_vmr_fixed_level.h"
 #include "absorber_vmr_fixed_level_scaled.h"
+#include "fill_value.h"
+
 using namespace FullPhysics;
 using namespace blitz;
 
@@ -101,7 +103,7 @@ void AbsorberAbscoOutput::register_output(const boost::shared_ptr<Output>& out) 
     out->register_data_source_pad
       ("/RetrievalResults/xco2_pressure_weighting_function",
        &AbsorberAbscoOutputHelper::pressure_weighting_function_grid_value, h, 
-       num_level, 0.0);
+       num_level, fill_value<double>());
 
     out->register_data_source("/RetrievalResults/retrieved_co2_column",
 			     &AbsorberAbscoOutputHelper::total_column_thickness_co2_value, h);
@@ -120,15 +122,15 @@ void AbsorberAbscoOutput::register_output(const boost::shared_ptr<Output>& out) 
 			     &AbsorberAbscoOutputHelper::total_column_thickness_h2o_value, h);
 
     out->register_data_source_pad("/RetrievalResults/retrieved_h2o_column_layer_thickness",
-				 &AbsorberAbscoOutputHelper::layer_column_thickness_h2o_value, h, num_level - 1 , 0.0);
+				 &AbsorberAbscoOutputHelper::layer_column_thickness_h2o_value, h, num_level - 1 , fill_value<double>());
   }
 
   // Wet and dry air mass, H2O used in calculation of results
   out->register_data_source_pad("/RetrievalResults/retrieved_dry_air_column_layer_thickness",
-			       &AbsorberAbscoOutputHelper::dry_air_column_thickness_value, h, num_level - 1 , 0.0);
+			       &AbsorberAbscoOutputHelper::dry_air_column_thickness_value, h, num_level - 1 , fill_value<double>());
     
   out->register_data_source_pad("/RetrievalResults/retrieved_wet_air_column_layer_thickness",
-			       &AbsorberAbscoOutputHelper::wet_air_column_thickness_value, h, num_level - 1, 0.0);
+			       &AbsorberAbscoOutputHelper::wet_air_column_thickness_value, h, num_level - 1, fill_value<double>());
   for(int i = 0; i < a->number_species(); ++i) {
     std::string gas_name = a->gas_name(i);
     boost::shared_ptr<Absco> ab =
