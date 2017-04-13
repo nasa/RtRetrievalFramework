@@ -342,7 +342,7 @@ OcoBaseConfig = OcoConfig:new {
             apriori = ConfigCommon.fluorescence_apriori("Fluorescence"),
             sif_sigma_scale = 1.0 / 3,
             covariance = ConfigCommon.fluorescence_covariance("Fluorescence"),
-            creator = ConfigCommon.fluorescence_effect_lambertian_only,
+            creator = OcoConfig.fluorescence_effect_land_only,
             reference_point = ConfigCommon.hdf_read_double_with_unit("Fluorescence/reference_point"),
             retrieved = true,
          },
@@ -433,7 +433,7 @@ OcoBaseConfig = OcoConfig:new {
                creator = ConfigCommon.brdf_soil_retrieval,
             },
 
-            creator = OcoConfig.ground_land_water_indicator,
+            creator = OcoConfig.ground_from_ground_type,
          },
          aerosol = {
             creator = ConfigCommon.merra_aerosol_creator,
