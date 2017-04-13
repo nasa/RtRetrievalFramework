@@ -2706,11 +2706,12 @@ function ConfigCommon.merra_aerosol_creator:initial_guess()
 end
 
 function ConfigCommon.merra_aerosol_creator:register_output(ro)
-   ro:push_back(AerosolAodOutput(self.config.aerosol, true))
-
-   for i=0, self.config.aerosol:number_particle() - 1 do
-      ro:push_back(AerosolParamOutput.create(self.config.aerosol:aerosol_extinction(i), "" .. (i + 1)))
+   local all_aer_names = self.config:merra_file():read_string_vector("/COMPOSITE_NAME")
+   for i, aer_name in ipairs(self.aerosols) do
+       all_aer_names:push_back(aer_name)
    end
+ 
+   ro:push_back(AerosolConsolidatedOutput(self.config.aerosol, all_aer_names)
 end
 
 ------------------------------------------------------------
