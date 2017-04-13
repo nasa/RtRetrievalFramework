@@ -2117,9 +2117,10 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@outsrc@/fluorescence_effect_output.h \
 	@outsrc@/radiance_scaling_output.h \
 	@outsrc@/met_pass_through_output.h \
-	@outsrc@/gas_vmr_apriori_output.h @luasrc@/dir_change.h \
-	@luasrc@/register_lua.h @luasrc@/lua_state.h \
-	@luasrc@/lua_callback.h @luasrc@/luabind_object.h
+	@outsrc@/gas_vmr_apriori_output.h @outsrc@/fill_value.h \
+	@luasrc@/dir_change.h @luasrc@/register_lua.h \
+	@luasrc@/lua_state.h @luasrc@/lua_callback.h \
+	@luasrc@/luabind_object.h
 HEADERS = $(fullphysicsinc_HEADERS) $(ourboostinc_HEADERS)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
@@ -2796,7 +2797,8 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@outsrc@/fluorescence_effect_output.h \
 	@outsrc@/radiance_scaling_output.h \
 	@outsrc@/met_pass_through_output.h \
-	@outsrc@/gas_vmr_apriori_output.h $(am__append_5)
+	@outsrc@/gas_vmr_apriori_output.h @outsrc@/fill_value.h \
+	$(am__append_5)
 ourboostinc_HEADERS = @supportsrc@/boost/backtrace.hpp
 
 # Test files

@@ -1,5 +1,6 @@
 #include "absorber_vmr_level_output.h"
 #include <boost/algorithm/string.hpp>
+#include "fill_value.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -39,7 +40,7 @@ public:
   {
     blitz::Array<double, 1> p = a_->vmr_profile();
     blitz::Array<double, 1> ap = afreeze_->vmr_profile();
-    double res = -999;
+    double res = fill_value<double>();
     // Don't try to calculate this unless we have enough levels.
     if(p.rows() >= 20) 
       res = (p(19) - p(12)) - (ap(19) - ap(12));
