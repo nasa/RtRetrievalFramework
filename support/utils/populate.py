@@ -49,7 +49,7 @@ Options:
     
   --absco-version=V
       Version of ABSCO to use. This is only used by Pleiades runs.
-      [default: v4.2.0_unscaled]
+      [default: v5.0]
 
   -t, --target_cluster=NAME
       Name of cluster management system to be run on.
