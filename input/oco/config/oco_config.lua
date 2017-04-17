@@ -111,7 +111,7 @@ end
 
 function bad_sample_mask_outside_window(self)
    local bad_sample_mask = self:bad_sample_mask_before_window()
-   local window = {{100,888}, {211, 863}, {100, 911}}
+   local window = {{90,925}, {211, 863}, {100, 911}}
    for i=1,3 do
       local lb = window[i][1]
       local ub = window[i][2]
