@@ -76,7 +76,7 @@ function OcoConfig.oco_met:create()
    if (self.config.met_file) then
        local met = OcoMetFile(self.config.met_file, self.config:l1b_sid_list())
        self.config.input_file_description = self.config.input_file_description .. 
-          "ECMWF input file:    " .. self.config.met_file .. "\n"
+          "Meteorology input file:    " .. self.config.met_file .. "\n"
        return met
    end
 end
@@ -475,7 +475,7 @@ function OcoConfig.oco_meteorology:create()
    if (self.config.met_file) then
        local met = OcoSimMetEcmwf(self.config.met_file, self.config:l1b_sid_list())
        self.config.input_file_description = self.config.input_file_description .. 
-          "ECMWF input file:    " .. self.config.met_file .. "\n"
+          "Meteorology input file:    " .. self.config.met_file .. "\n"
        return met
    end
 end
