@@ -41,20 +41,5 @@ BOOST_AUTO_TEST_CASE(jacobian)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-BOOST_FIXTURE_TEST_SUITE(ground_lambertian_config_oco2, ConfigurationOco2Fixture)
-
-BOOST_AUTO_TEST_CASE(jacobian)
-{
-    ArrayAd<double, 1> surface = config_ground->surface_parameter(13000, 0);
-  
-    BOOST_CHECK_EQUAL(surface.value().rows(), 1);
-  
-    BOOST_CHECK_CLOSE(surface.value()(0), 0.20861756852175922, 1e-6);
-  
-    // Slope jacobian should just be 13000-1e4/0.77
-    BOOST_CHECK_CLOSE(surface.jacobian()(0, 35), 1, 1e-8);
-    BOOST_CHECK_CLOSE(surface.jacobian()(0, 36), 12.987012987014168, 1e-6);
-}
-BOOST_AUTO_TEST_SUITE_END()
 
 
