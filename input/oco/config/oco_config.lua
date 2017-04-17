@@ -287,7 +287,7 @@ end
 --- "water"
 ------------------------------------------------------------
 
-function config:land_or_water()
+function OcoConfig:land_or_water()
    local lf
    if (self.unscaled_l1b ~= nil) then
       lf = self.unscaled_l1b:land_fraction()

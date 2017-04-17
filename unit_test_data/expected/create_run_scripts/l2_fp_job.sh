@@ -30,8 +30,6 @@ export merradir=/fake_merra_path
 # The rest of this should not need to be changed.
 cd ${processing_dir}
 id_list=( `cat ${sounding_id_list_filename}` )
-mkdir -p ${log_directory}
-mkdir -p ${output_directory}
 
 keep_exit="no"
 print_help="no"
@@ -93,6 +91,17 @@ fi
 export do_tee
 
 
+
+# Break up log and output directories so they don't get too big. Just
+# use the job index padded with 0's for this. Skip if we aren't grouping
+# data into large enough groups - we don't want directories with a single
+# file in them.
+if [ $group_size -gt 9 ]; then
+    log_directory=${log_directory}/$(printf "%04d" $job_index)
+    output_directory=${output_directory}/$(printf "%04d" $job_index)
+fi
+mkdir -p ${log_directory}
+mkdir -p ${output_directory}
 
 run_job_index() {
     id_index=$1

@@ -10,6 +10,7 @@ export spectrum_file="/fake_path/spectrum.h5"
 sounding_id_list_filename=create_run_scripts_test/sounding_id.list
 l2_agg_fn=create_run_scripts_test/l2_aggregate.h5
 l2_plus_more_agg_fn=create_run_scripts_test/l2_plus_more_aggregate.h5
+email_address=
 
 export PYTHONPATH=/fake_python_path
 export PATH=/fake_bin_path
@@ -22,6 +23,12 @@ else
     worker_temp=create_run_scripts_test
 fi
 
+if [ ! -z $email_address ]; then
+   cat <<EOF | mail -s "Aggregation started" $email_address
+Aggregation has started for the file
+${l2_agg_fn}
+EOF
+fi
 # Aggregate all single sounding output hdf files into a single hdf file
 if [ ! -e "$l2_agg_fn" ]; then
     # Use find instead of a glob because there could be too much files that
@@ -90,5 +97,17 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
     fi
 else
     echo "L2 plus more file exists, skipping creation"
+fi
+if [ ! -z $email_address ]; then
+   cat <<EOF | mail -s "Aggregation ended" $email_address
+Aggregation has ended for the file
+${l2_agg_fn}
+
+File information:
+$(h5ls ${l2_agg_fn}/RetrievalHeader/sounding_id_reference 2>&1)
+
+Plus for file information:
+$(h5ls ${l2_plus_more_agg_fn}/RetrievalHeader/sounding_id_reference 2>&1)
+EOF
 fi
 
