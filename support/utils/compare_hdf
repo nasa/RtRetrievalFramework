@@ -62,7 +62,7 @@ dlist.each do |dname|
       # Contains path information that changes depending on the system run on,
       # so skip comparison
     elsif(dname == "/RetrievalResults/co2_profile_covariance_matrix")
-      system "h5diff #{report} -p #{rel_diff} #{ARGV[0]} #{ARGV[1]} #{dname}"
+      system "h5diff #{report} -p 1e-2 #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname == "/SpectralParameters/modeled_radiance")
       system "h5diff #{report} -p 1e-3  #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname == "/RetrievalResults/dof_co2_profile")
