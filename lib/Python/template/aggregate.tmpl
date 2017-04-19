@@ -5,6 +5,7 @@
 sounding_id_list_filename={0.sounding_id_list_filename}
 l2_agg_fn={0.processing_dir}/l2_aggregate.h5
 l2_plus_more_agg_fn={0.processing_dir}/l2_plus_more_aggregate.h5
+group_size={0.group_size}
 email_address={0.email_address}
 
 export PYTHONPATH={0.python_path}
@@ -29,7 +30,11 @@ if [ ! -e "$l2_agg_fn" ]; then
     # Use find instead of a glob because there could be too much files that
     # could exhaust the command line length limit
     input_files_tmp=$(mktemp)
-    find {0.output_directory} -name "*.h5" > $input_files_tmp
+    if [ $group_size -gt 9 ]; then
+       find {0.output_directory} -name "l2_aggregate.h5" > $input_files_tmp
+    else
+       find {0.output_directory} -name "*.h5" | grep -v "l2_aggregate.h5" > $input_files_tmp
+    fi
 
     # Make a version of the sounding id file with newlines instead of spaces
     # for use by splice tool
