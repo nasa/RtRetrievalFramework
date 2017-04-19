@@ -10,6 +10,7 @@ export spectrum_file="/fake_path/spectrum.h5"
 sounding_id_list_filename=create_run_scripts_test/sounding_id.list
 l2_agg_fn=create_run_scripts_test/l2_aggregate.h5
 l2_plus_more_agg_fn=create_run_scripts_test/l2_plus_more_aggregate.h5
+group_size=1
 email_address=
 
 export PYTHONPATH=/fake_python_path
@@ -34,7 +35,11 @@ if [ ! -e "$l2_agg_fn" ]; then
     # Use find instead of a glob because there could be too much files that
     # could exhaust the command line length limit
     input_files_tmp=$(mktemp)
-    find create_run_scripts_test/output -name "*.h5" > $input_files_tmp
+    if [ $group_size -gt 9 ]; then
+       find create_run_scripts_test/output -name "l2_aggregate.h5" > $input_files_tmp
+    else
+       find create_run_scripts_test/output -name "*.h5" | grep -v "l2_aggregate.h5" > $input_files_tmp
+    fi
 
     # Make a version of the sounding id file with newlines instead of spaces
     # for use by splice tool
