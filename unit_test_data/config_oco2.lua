@@ -35,4 +35,9 @@ config.fm.atmosphere.absorber.CO2.absco = "v3.3.0/lowres/co2_v3.3.0-lowres.hdf"
 config.fm.atmosphere.absorber.H2O.absco = "v3.3.0/lowres/h2o_v3.3.0-lowres.hdf"
 config.fm.atmosphere.absorber.O2.absco  = "v3.3.0/lowres/o2_v3.3.0-lowres.hdf"
 
+--- Only use 3 EOFs for now
+config.fm.instrument.instrument_correction.ic_nadir = {"eof_glint_1", "eof_glint_2","eof_glint_3"}
+config.fm.instrument.instrument_correction.ic_glint = {"eof_glint_1", "eof_glint_2","eof_glint_3"}
+config.fm.instrument.instrument_correction.ic_target = {"eof_glint_1", "eof_glint_2","eof_glint_3"}
+
 config:do_config()
