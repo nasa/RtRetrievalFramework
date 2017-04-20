@@ -466,7 +466,7 @@ endif
 # but on Pleiades it is cleaner to install ourselves
 
 RUPORT_NAME = ruport-1.6.1
-RUPORT_TARGET = $(DESTDIR)$(rubygemdir)/$(RUPORT_NAME)
+RUPORT_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(RUPORT_NAME)
 EXTRA_DIST += @thirdpartysrc@/$(RUPORT_NAME).gem
 
 $(RUPORT_TARGET): $(thirdpartysrc)/$(RUPORT_NAME).gem $(FASTERCSV_TARGET) $(PDFWRITER_TARGET)
@@ -477,7 +477,7 @@ $(RUPORT_TARGET): $(thirdpartysrc)/$(RUPORT_NAME).gem $(FASTERCSV_TARGET) $(PDFW
 	@echo "========================== Done building ruport"
 
 COLOR_NAME = color-1.4.2
-COLOR_TARGET = $(DESTDIR)$(rubygemdir)/$(COLOR_NAME)
+COLOR_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(COLOR_NAME)
 EXTRA_DIST += @thirdpartysrc@/$(COLOR_NAME).gem
 
 $(COLOR_TARGET): $(thirdpartysrc)/$(COLOR_NAME).gem
@@ -488,7 +488,7 @@ $(COLOR_TARGET): $(thirdpartysrc)/$(COLOR_NAME).gem
 	@echo "========================== Done building color"
 
 FASTERCSV_NAME = fastercsv-1.2.3
-FASTERCSV_TARGET = $(DESTDIR)$(rubygemdir)/$(FASTERCSV_NAME)
+FASTERCSV_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(FASTERCSV_NAME)
 EXTRA_DIST += @thirdpartysrc@/$(FASTERCSV_NAME).gem
 
 $(FASTERCSV_TARGET): $(thirdpartysrc)/$(FASTERCSV_NAME).gem
@@ -499,18 +499,22 @@ $(FASTERCSV_TARGET): $(thirdpartysrc)/$(FASTERCSV_NAME).gem
 	@echo "========================== Done building fastercsv"
 
 PDFWRITER_NAME = pdf-writer-1.1.8
-PDFWRITER_TARGET = $(DESTDIR)$(rubygemdir)/$(PDFWRITER_NAME)
+PDFWRITER_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(PDFWRITER_NAME)
 EXTRA_DIST += @thirdpartysrc@/$(PDFWRITER_NAME).gem
 
+# Not sure what the problem is here, but pdf-write doesn't seem to correctly
+# recognize TRANSSIMPLE_TARGET. So just tell it to skip looking for
+# dependencies, I think the problem is in the ruby spec, not in
+# transaction-simple. 
 $(PDFWRITER_TARGET): $(thirdpartysrc)/$(PDFWRITER_NAME).gem $(COLOR_TARGET) $(TRANSSIMPLE_TARGET)
 	@echo "*************************** Building pdf-writer"
 	$(MKDIR_P) $(rubygemdir)
-	gem install --local --install-dir $(rubygemdir) $<
+	gem install --local --install-dir $(rubygemdir) --ignore-dependencies $<
 	touch $(PDFWRITER_TARGET)
 	@echo "========================== Done building pdf-writer"
 
 TRANSSIMPLE_NAME = transaction-simple-1.4.0.2
-TRANSSIMPLE_TARGET = $(DESTDIR)$(rubygemdir)/$(TRANSSIMPLE_NAME)
+TRANSSIMPLE_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(TRANSSIMPLE_NAME)
 EXTRA_DIST += @thirdpartysrc@/$(TRANSSIMPLE_NAME).gem
 
 $(TRANSSIMPLE_TARGET): $(thirdpartysrc)/$(TRANSSIMPLE_NAME).gem

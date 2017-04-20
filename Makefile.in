@@ -3818,15 +3818,15 @@ NOSE_TARGET = $(DESTDIR)$(bindir)/nosetests
 # Build ruport. Note that normally we just assume this has been installed,
 # but on Pleiades it is cleaner to install ourselves
 RUPORT_NAME = ruport-1.6.1
-RUPORT_TARGET = $(DESTDIR)$(rubygemdir)/$(RUPORT_NAME)
+RUPORT_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(RUPORT_NAME)
 COLOR_NAME = color-1.4.2
-COLOR_TARGET = $(DESTDIR)$(rubygemdir)/$(COLOR_NAME)
+COLOR_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(COLOR_NAME)
 FASTERCSV_NAME = fastercsv-1.2.3
-FASTERCSV_TARGET = $(DESTDIR)$(rubygemdir)/$(FASTERCSV_NAME)
+FASTERCSV_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(FASTERCSV_NAME)
 PDFWRITER_NAME = pdf-writer-1.1.8
-PDFWRITER_TARGET = $(DESTDIR)$(rubygemdir)/$(PDFWRITER_NAME)
+PDFWRITER_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(PDFWRITER_NAME)
 TRANSSIMPLE_NAME = transaction-simple-1.4.0.2
-TRANSSIMPLE_TARGET = $(DESTDIR)$(rubygemdir)/$(TRANSSIMPLE_NAME)
+TRANSSIMPLE_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(TRANSSIMPLE_NAME)
 
 # ========================================================================
 # Build h5py. Note that normally we just assume this has been installed,
@@ -12179,10 +12179,14 @@ $(FASTERCSV_TARGET): $(thirdpartysrc)/$(FASTERCSV_NAME).gem
 	touch $(FASTERCSV_TARGET)
 	@echo "========================== Done building fastercsv"
 
+# Not sure what the problem is here, but pdf-write doesn't seem to correctly
+# recognize TRANSSIMPLE_TARGET. So just tell it to skip looking for
+# dependencies, I think the problem is in the ruby spec, not in
+# transaction-simple. 
 $(PDFWRITER_TARGET): $(thirdpartysrc)/$(PDFWRITER_NAME).gem $(COLOR_TARGET) $(TRANSSIMPLE_TARGET)
 	@echo "*************************** Building pdf-writer"
 	$(MKDIR_P) $(rubygemdir)
-	gem install --local --install-dir $(rubygemdir) $<
+	gem install --local --install-dir $(rubygemdir) --ignore-dependencies $<
 	touch $(PDFWRITER_TARGET)
 	@echo "========================== Done building pdf-writer"
 
