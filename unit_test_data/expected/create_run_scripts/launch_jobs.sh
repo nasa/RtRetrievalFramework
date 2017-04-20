@@ -5,7 +5,7 @@ if [[ $# -lt 1 ]]; then
    echo 'At a minimum, you need to supply the queue to use, e.g., "-q long"'
    exit 1
 fi
-jid=`qsub $* -j oe -o create_run_scripts_test/log/ -N l2_fp -J 0-4 create_run_scripts_test/l2_fp_job.sh`
+jid=`qsub $* -j oe -o create_run_scripts_test/log/qsub -N l2_fp -J 0-4 create_run_scripts_test/l2_fp_job.sh`
 do_aggregate=False
 if [[ "$do_aggregate" == "True" ]]; then
    # Wait for job to get into torque, otherwise dependency doesn't seem

@@ -1,11 +1,56 @@
 #!/usr/bin/env bash
 l2_agg_fn={0.processing_dir}/l2_aggregate.h5
+group_size={0.group_size}
+email_address={0.email_address}
 
 export PYTHONPATH={0.python_path}
 export PATH={0.bin_path}
 export LD_LIBRARY_PATH={0.lib_path}
 export LUA_PATH="{0.l2_lua_path}"
 
+if [ -w "/state/partition1/" ]; then
+    worker_temp=/state/partition1/
+else
+    worker_temp={0.processing_dir}
+fi
+
+if [ ! -z $email_address ]; then
+   cat <<EOF | mail -s "Aggregation started" $email_address
+Aggregation has started for the file
+${{l2_agg_fn}}
+EOF
+fi
 # Aggregate all single sounding output hdf files into a single hdf file
-echo "Aggregating L2 output files"
-{0.l2_support_path}/utils/splice_product_files.py --single-file-type -o $l2_agg_fn {0.output_directory}/*.h5 $*
+if [ ! -e "$l2_agg_fn" ]; then
+    # Use find instead of a glob because there could be too much files that
+    # could exhaust the command line length limit
+    input_files_tmp=$(mktemp)
+    if [ $group_size -gt 9 ]; then
+       find {0.output_directory} -name "l2_aggregate.h5" > $input_files_tmp
+    else
+       find {0.output_directory} -name "*.h5" | grep -v "l2_aggregate.h5" | grep -v "l2_plus_more_aggregate.h5" > $input_files_tmp
+    fi
+
+    # Make a version of the sounding id file with newlines instead of spaces
+    # for use by splice tool
+    in_snd_id_tmp=$(mktemp)
+    cat $sounding_id_list_filename | tr ' ' '\n' > $in_snd_id_tmp
+
+    echo "Aggregating L2 output files"
+    log_file=agg_$(basename ${{l2_agg_fn}} | sed 's/\.h5$/.log/')
+    {0.l2_support_path}/utils/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -s $in_snd_id_tmp -l {0.log_directory}/$log_file $* -w 16 --temp $worker_temp
+
+    rm $input_files_tmp
+    rm $in_snd_id_tmp
+else
+    echo "L2 aggregated file exists, skipping creation"
+fi
+if [ ! -z $email_address ]; then
+   cat <<EOF | mail -s "Aggregation ended" $email_address
+Aggregation has ended for the file
+${{l2_agg_fn}}
+
+File information:
+$(h5ls ${{l2_agg_fn}}/RetrievalHeader/sounding_id_reference 2>&1)
+EOF
+fi
