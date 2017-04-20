@@ -74,10 +74,12 @@ set -e
 
 # Select a newer version of gcc and python
 # Note if you change this, also change script/setup_fp_env.sh.in
-source /usr/share/modules/init/bash
-module load gcc/4.7.3
-module load python/2.7.8
-module load ruby/1.9.1-p376
+# Temporary? For SLES12 checkout, modules don't seem to be defined. Use what is in
+# the environment. It is possible these will come later
+#source /usr/share/modules/init/bash
+#module load gcc/4.7.3
+#module load python/2.7.8
+#module load ruby/1.9.1-p376
 
 # Create a build directory
 mkdir -p build
