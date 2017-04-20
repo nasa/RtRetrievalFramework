@@ -13,12 +13,12 @@ REGISTER_LUA_END()
 
 double tropopause_altitude(const boost::shared_ptr<GasVmrApriori>& ga)
 {
-    return ga->tropopause_altitude();
+  return ga->tropopause_altitude().convert(units::km).value;
 }
 
 double tropopause_pressure(const boost::shared_ptr<GasVmrApriori>& ga)
 {
-    return ga->tropopause_pressure();
+  return ga->tropopause_pressure();
 }
 
 void GasVmrAprioriOutput::register_output_apriori(const boost::shared_ptr<Output>& out) const

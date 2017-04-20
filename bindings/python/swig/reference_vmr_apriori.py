@@ -177,7 +177,7 @@ class ReferenceVmrApriori(full_physics_swig.generic_object.GenericObject):
     def model_tropopause_altitude(self):
         """
 
-        double ReferenceVmrApriori::model_tropopause_altitude() const
+        DoubleWithUnit ReferenceVmrApriori::model_tropopause_altitude() const
         Calculate the tropopause altitude for the model data used to initalize
         the class.
 

@@ -61,7 +61,7 @@ BOOST_FIXTURE_TEST_SUITE(reference_vmr_apriori, RefVmrFixture)
 BOOST_AUTO_TEST_CASE(apriori_calc)
 {
     // Check tropopause altitude calculation
-    BOOST_CHECK_CLOSE(14.392430521241026, ref_ap->model_tropopause_altitude(), 1e-6);
+    BOOST_CHECK_CLOSE(14.392430521241026, ref_ap->model_tropopause_altitude().value, 1e-6);
 
     // Check effective altitude calculation
     IfstreamCs eff_alt_input(test_data_dir() + "expected/reference_vmr_apriori/effective_altitude.dat");

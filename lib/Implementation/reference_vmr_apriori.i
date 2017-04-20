@@ -5,7 +5,7 @@
 
 %base_import(generic_object)
 %import "fp_time.i"
-
+%import "double_with_unit.i"
 %fp_shared_ptr(FullPhysics::ReferenceVmrApriori);
 
 namespace FullPhysics {
@@ -21,7 +21,7 @@ public:
                         const double Obs_latitude,
                         const Time& Obs_time);
 
-    double model_tropopause_altitude() const;
+    DoubleWithUnit model_tropopause_altitude() const;
     const blitz::Array<double, 1> effective_altitude() const;
     const double age_of_air(const double altitude) const;
 

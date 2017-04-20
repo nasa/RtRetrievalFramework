@@ -123,5 +123,5 @@ const double GasVmrApriori::tropopause_pressure() const
     rev_press = model_press.copy().reverse(firstDim);
 
     LinearInterpolate<double, double> alt_press_interp(rev_alt.begin(), rev_alt.end(), rev_press.begin());
-    return alt_press_interp(tropopause_altitude());
+    return alt_press_interp(tropopause_altitude().convert(units::km).value);
 }

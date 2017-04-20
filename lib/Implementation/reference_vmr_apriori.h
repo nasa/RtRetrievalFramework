@@ -3,6 +3,7 @@
 
 #include <blitz/array.h>
 #include "fp_time.h"
+#include "double_with_unit.h"
 
 namespace FullPhysics {
 
@@ -36,7 +37,7 @@ public:
                         const double Obs_latitude,
                         const Time& Obs_time);
 
-    double model_tropopause_altitude() const;
+    DoubleWithUnit model_tropopause_altitude() const;
     const blitz::Array<double, 1> effective_altitude() const;
     const double age_of_air(const double altitude) const;
 

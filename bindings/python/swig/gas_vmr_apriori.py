@@ -194,7 +194,7 @@ class GasVmrApriori(full_physics_swig.generic_object.GenericObject):
     def _v_tropopause_altitude(self):
         """
 
-        const double FullPhysics::GasVmrApriori::tropopause_altitude() const
+        const DoubleWithUnit FullPhysics::GasVmrApriori::tropopause_altitude() const
 
         """
         return _gas_vmr_apriori.GasVmrApriori__v_tropopause_altitude(self)
