@@ -61,6 +61,8 @@ rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm
 mkdir -p $2/absco/v4.1.1
 rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/absco/v4.1.1/lowres $2/absco/v4.1.1/
 
+rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/absco/v4.2.0_unscaled $2/absco/
+
 # Copy integration test data
 mkdir -p $2/integration_test
 rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/integration_test/B7.3.09 $2/integration_test/
