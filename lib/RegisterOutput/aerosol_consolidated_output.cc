@@ -182,7 +182,7 @@ void AerosolConsolidatedOutput::register_output(const boost::shared_ptr<Output>&
 
     out->register_data_source("/Metadata/AllAerosolTypes", &AerosolOutputHelper::all_aerosol_names, h);
 
-    out->register_data_source("/RetrievalResults/aerosol_models", &AerosolOutputHelper::aerosol_model_types, h);
+    out->register_data_source("/RetrievalResults/aerosol_model", &AerosolOutputHelper::aerosol_model_types, h);
     out->register_data_source("/RetrievalResults/aerosol_type_retrieved", &AerosolOutputHelper::aerosol_type_retrieved, h);
 
     out->register_data_source("/RetrievalResults/aerosol_aod", &AerosolOutputHelper::aerosol_aod_matrix, h);
