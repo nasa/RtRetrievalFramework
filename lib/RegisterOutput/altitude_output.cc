@@ -15,7 +15,7 @@ blitz::Array<double, 1> altitude_levels(boost::shared_ptr<Altitude>& Alt, boost:
     blitz::Array<double, 1> pressure_levels(Pres->pressure_grid().convert(units::Pa).value.value());
     blitz::Array<double, 1> altitude(pressure_levels.shape());
     for(int lev_idx = 0; lev_idx < altitude.rows(); lev_idx++) {
-        altitude(lev_idx) = Alt->altitude(AutoDerivativeWithUnit<double>(pressure_levels(lev_idx), units::Pa)).convert(units::km).value.value();
+        altitude(lev_idx) = Alt->altitude(AutoDerivativeWithUnit<double>(pressure_levels(lev_idx), units::Pa)).convert(units::m).value.value();
     }
     return altitude;
 }
