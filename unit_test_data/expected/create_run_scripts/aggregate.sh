@@ -38,7 +38,7 @@ if [ ! -e "$l2_agg_fn" ]; then
     if [ $group_size -gt 9 ]; then
        find create_run_scripts_test/output -name "l2_aggregate.h5" > $input_files_tmp
     else
-       find create_run_scripts_test/output -name "*.h5" | grep -v "l2_aggregate.h5" > $input_files_tmp
+       find create_run_scripts_test/output -name "*.h5" | grep -v "l2_aggregate.h5" | grep -v "l2_plus_more_aggregate.h5" > $input_files_tmp
     fi
 
     # Make a version of the sounding id file with newlines instead of spaces
@@ -58,47 +58,69 @@ fi
 
 if [ ! -e "$l2_plus_more_agg_fn" ]; then
     echo "Creating L2 plus more aggregated file"
-    # Extract sounding ids, and reformat into a format that can be used by splice tool
-    # Take sounding ids from L2 aggregate so we know which soundings actually completed
-    # Otherwise we will have empty values for L2 datasets when we include IMAP or ABO2
-    # data.
-    l2_snd_id_tmp1=$(mktemp)
-    l2_snd_id_tmp2=$(mktemp)
-    h5dump --noindex -o $l2_snd_id_tmp1 -d RetrievalHeader/sounding_id_reference $l2_agg_fn > /dev/null
+    # If we already have the l2_plus_more_aggregate.h5 for each of the
+    # groups l2_fp_job.sh worked on, just combine those.
+    if [ $group_size -gt 9 ]; then
+	input_files_tmp=$(mktemp)
+	find create_run_scripts_test/output -name "l2_plus_more_aggregate.h5" > $input_files_tmp
 
-    # This line below, turns commas into new lines, removes empty spaces and blank lines
-    cat $l2_snd_id_tmp1 | sed 's|,|\n|g' | sed -r 's|^[ ]*||' | grep -v '^$' > $l2_snd_id_tmp2
-    rm $l2_snd_id_tmp1
+	# Make a version of the sounding id file with newlines instead of spaces
+	# for use by splice tool
+	in_snd_id_tmp=$(mktemp)
+	cat $sounding_id_list_filename | tr ' ' '\n' > $in_snd_id_tmp
+	log_file=agg_$(basename ${l2_plus_more_agg_fn} | sed 's/\.h5$/.log/')
+	/l2_support_fake_path/utils/splice_product_files.py --single-file-type -o $l2_plus_more_agg_fn -i $input_files_tmp -s $in_snd_id_tmp -l create_run_scripts_test/log/$log_file $* -w 16 --temp $worker_temp
 
-    # Combine L1B and L2 files into one file
-    # with IMAP and ABand files if they are supplied
-    inp_files_tmp=$(mktemp)
-    echo $l2_agg_fn > $inp_files_tmp
-    if [ ! -z "$input_file_mapping" ] && [ -e "$input_file_mapping" ]; then
-        # Set up input files from file mapping
-        while read -r sounding_id file_map; do
-            eval $(echo $file_map | tr ';' '\n')
-            if [ ! -z "$spectrum_file" ] && [ ! -z "$imap_file" ] && [ ! -z "$aband_file" ]; then
-                echo $spectrum_file
-                echo $imap_file 
-                echo $aband_file 
-            fi
-        done < $input_file_mapping | sort | uniq >> $inp_files_tmp
+	rm $input_files_tmp
+	rm $in_snd_id_tmp
     else
-        # Use input files from script variables
-        for fn in $spectrum_file $imap_file $aband_file; do
-            echo $fn >> $inp_files_tmp
-        done
-    fi
+	# Otherwise, generate everything from scratch
+        
+	# Extract sounding ids, and reformat into a format that can be
+	# used by splice tool Take sounding ids from L2 aggregate so
+	# we know which soundings actually completed Otherwise we will
+	# have empty values for L2 datasets when we include IMAP or
+	# ABO2 data.
 
-    log_file=agg_$(basename ${l2_plus_more_agg_fn} | sed 's/\.h5$/.log/')
-    /l2_support_fake_path/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l create_run_scripts_test/log/$log_file
-    rm $l2_snd_id_tmp2 $inp_files_tmp
+	l2_snd_id_tmp1=$(mktemp)
+	l2_snd_id_tmp2=$(mktemp)
+	h5dump --noindex -o $l2_snd_id_tmp1 -d RetrievalHeader/sounding_id_reference $l2_agg_fn > /dev/null
 
-    # Create retrieval_index dataset based on L1B file
-    if [ ! -z "$spectrum_file" ]; then
-        echo "Adding retrieval information datasets"
-        /l2_support_fake_path/utils/add_spliced_retrieval_info.py $spectrum_file $l2_plus_more_agg_fn
+	# This line below, turns commas into new lines, removes empty
+	# spaces and blank lines
+	cat $l2_snd_id_tmp1 | sed 's|,|\n|g' | sed -r 's|^[ ]*||' | grep -v '^$' > $l2_snd_id_tmp2
+	rm $l2_snd_id_tmp1
+
+	# Combine L1B and L2 files into one file with IMAP and ABand
+	# files if they are supplied
+	inp_files_tmp=$(mktemp)
+	echo $l2_agg_fn > $inp_files_tmp
+	if [ ! -z "$input_file_mapping" ] && [ -e "$input_file_mapping" ]; then
+        # Set up input files from file mapping
+            while read -r sounding_id file_map; do
+		eval $(echo $file_map | tr ';' '\n')
+		if [ ! -z "$spectrum_file" ] && [ ! -z "$imap_file" ] && [ ! -z "$aband_file" ]; then
+                    echo $spectrum_file
+                    echo $imap_file 
+                    echo $aband_file 
+		fi
+            done < $input_file_mapping | sort | uniq >> $inp_files_tmp
+	else
+            # Use input files from script variables
+            for fn in $spectrum_file $imap_file $aband_file; do
+		echo $fn >> $inp_files_tmp
+            done
+	fi
+
+	log_file=agg_$(basename ${l2_plus_more_agg_fn} | sed 's/\.h5$/.log/')
+	/l2_support_fake_path/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l create_run_scripts_test/log/$log_file
+	rm $l2_snd_id_tmp2 $inp_files_tmp
+
+	# Create retrieval_index dataset based on L1B file
+	if [ ! -z "$spectrum_file" ]; then
+            echo "Adding retrieval information datasets"
+            /l2_support_fake_path/utils/add_spliced_retrieval_info.py $spectrum_file $l2_plus_more_agg_fn
+	fi
     fi
 else
     echo "L2 plus more file exists, skipping creation"
