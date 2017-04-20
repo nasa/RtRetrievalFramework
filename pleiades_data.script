@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/bash
 # Copy data needed to run Level 2 on Pleiades system.
 
 usage()
