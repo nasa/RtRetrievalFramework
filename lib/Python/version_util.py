@@ -39,9 +39,9 @@ def _get_svn_version(source_path):
         info_process.wait()
 
         for ver_line in info_process.stdout.readlines():
-            if ver_line.find('URL:') >= 0:
+            if ver_line.find(b'URL:') >= 0:
                 svn_path = ver_line.replace(b'URL: ',b'').strip()
-            if ver_line.find('Revision:') >= 0:
+            if ver_line.find(b'Revision:') >= 0:
                 svn_revision = ver_line.replace(b'Revision: ',b'').strip()
         info_process.stdout.close()
     except Exception as exc:
@@ -50,13 +50,13 @@ def _get_svn_version(source_path):
     if svn_path == None:
         return None
 
-    tag_match = re.search('tags/([^/]+)(/[^/]*)*$', svn_path)
+    tag_match = re.search(b'tags/([^/]+)(/[^/]*)*$', svn_path)
     if tag_match:
         tag_name = tag_match.group(1)
     else:
         tag_name = None
 
-    branch_match = re.search('branches/([^/]+)(/[^/]*)*$', svn_path)
+    branch_match = re.search(b'branches/([^/]+)(/[^/]*)*$', svn_path)
     if branch_match:
         branch_name = branch_match.group(1)
     else:
@@ -70,7 +70,7 @@ def _get_svn_version(source_path):
 
     rev_str = None
     if len(tag_branch) > 0:
-        rev_str = tag_branch + '-' + svn_revision
+        rev_str = tag_branch + b'-' + svn_revision
     else:
         rev_str = svn_revision
 
