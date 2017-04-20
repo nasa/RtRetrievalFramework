@@ -1,5 +1,10 @@
 from __future__ import print_function
-from builtins import str
+try:
+    from builtins import str
+except ImportError:
+    # We might not have future installed yet, but this means we are using python 2.7 and 
+    # can ignore this
+    pass
 import re
 import os
 import sys
