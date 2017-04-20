@@ -82,7 +82,6 @@ source /usr/share/modules/init/bash
 module load /nasa/modulefiles/pkgsrc/sles12/python/2.7.12
 # This contains ruby 2.2.6p396
 module load /nasa/modulefiles/pkgsrc/sles12/pkgsrc/2016Q4
-#module load ruby/1.9.1-p376
 
 # Create a build directory
 
