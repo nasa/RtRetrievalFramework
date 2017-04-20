@@ -464,7 +464,7 @@ class ProductSplicer(object):
 
         self.logger.debug( "Creating new dataset: %s/%s sized: %s with fill type: %s and value: %s" % (dst_group, dst_name, dst_shape, fill_type, dataset_fill) )
         try:
-            out_dataset_obj = out_group_obj.create_dataset(dst_name, shape=dst_shape, dtype=dataset_info.out_type, maxshape=max_shape, compression="gzip", compression_opts=2, fillvalue=dataset_fill)
+            out_dataset_obj = out_group_obj.create_dataset(dst_name, shape=dst_shape, dtype=dataset_info.out_type, maxshape=max_shape, compression="gzip", compression_opts=2, fillvalue=dataset_fill, chunks=True)
         except RuntimeError as exc:
             raise RuntimeError("Error creating dataset %s/%s: %s" % (dst_group/dst_name, exc))
 
