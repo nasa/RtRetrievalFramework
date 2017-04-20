@@ -97,7 +97,7 @@ ReferenceVmrApriori::ReferenceVmrApriori(const blitz::Array<double, 1>& Model_pr
 /// Which is the first instance where the lapse rate exceeds -2K/km
 //-----------------------------------------------------------------------
 
-double ReferenceVmrApriori::model_tropopause_altitude() const
+DoubleWithUnit ReferenceVmrApriori::model_tropopause_altitude() const
 {
     // Equatorial radius (km)
     double radius = OldConstant::wgs84_a.convert(units::km).value;
@@ -161,7 +161,7 @@ double ReferenceVmrApriori::model_tropopause_altitude() const
     double ztrop = last_lr_alt + (lr_alt - last_lr_alt) * (lapse_rate_threshold - lapse_rates(lr_idx-1)) /(lapse_rates(lr_idx) - lapse_rates(lr_idx - 1));
     ztrop = ztrop / (1 - ztrop / radius);  // convert H to Z
 
-    return ztrop;
+    return DoubleWithUnit(ztrop, "km");
 }
 
 //-----------------------------------------------------------------------
@@ -172,30 +172,30 @@ double ReferenceVmrApriori::model_tropopause_altitude() const
 
 const blitz::Array<double, 1> ReferenceVmrApriori::effective_altitude() const 
 {
-    double mod_tropo_alt = model_tropopause_altitude();
-    Array<double, 1> effective_altitudes(model_altitude.shape());
-    for (int lev_idx = 0; lev_idx < model_altitude.rows(); lev_idx++) {
-        double zeff;
-        if(model_altitude(lev_idx) < mod_tropo_alt) {
-            // troposphere
-            zeff = model_altitude(lev_idx) * ref_tropopause_altitude / mod_tropo_alt;
-        } else { 
-            // stratosphere
-            zeff = model_altitude(lev_idx) + (ref_tropopause_altitude - mod_tropo_alt) *
-                exp(-(model_altitude(lev_idx) - mod_tropo_alt) / 10.0);
-            zeff = zeff - exp(-std::pow(obs_latitude / 25.0, 4))
-                * 3.5 * mod_tropo_alt * std::pow(model_altitude(lev_idx) / mod_tropo_alt - 1, 2)  
-                * exp(-(model_altitude(lev_idx) - mod_tropo_alt) / 9.0);
-        }
-        
-        // Don't let effective altitude exceeed limit of model altitude
-        if(zeff > model_altitude(model_altitude.rows() - 1)) {
-            zeff = model_altitude(model_altitude.rows() - 1);
-        }
-
-        effective_altitudes(lev_idx) = zeff;
+  double mod_tropo_alt = model_tropopause_altitude().convert(units::km).value;
+  Array<double, 1> effective_altitudes(model_altitude.shape());
+  for (int lev_idx = 0; lev_idx < model_altitude.rows(); lev_idx++) {
+    double zeff;
+    if(model_altitude(lev_idx) < mod_tropo_alt) {
+      // troposphere
+      zeff = model_altitude(lev_idx) * ref_tropopause_altitude / mod_tropo_alt;
+    } else { 
+      // stratosphere
+      zeff = model_altitude(lev_idx) + (ref_tropopause_altitude - mod_tropo_alt) *
+	exp(-(model_altitude(lev_idx) - mod_tropo_alt) / 10.0);
+      zeff = zeff - exp(-std::pow(obs_latitude / 25.0, 4))
+	* 3.5 * mod_tropo_alt * std::pow(model_altitude(lev_idx) / mod_tropo_alt - 1, 2)  
+	* exp(-(model_altitude(lev_idx) - mod_tropo_alt) / 9.0);
     }
-    return effective_altitudes;
+    
+    // Don't let effective altitude exceeed limit of model altitude
+    if(zeff > model_altitude(model_altitude.rows() - 1)) {
+      zeff = model_altitude(model_altitude.rows() - 1);
+    }
+    
+        effective_altitudes(lev_idx) = zeff;
+  }
+  return effective_altitudes;
 }
 
 //-----------------------------------------------------------------------
@@ -205,14 +205,14 @@ const blitz::Array<double, 1> ReferenceVmrApriori::effective_altitude() const
 
 const double ReferenceVmrApriori::age_of_air(const double altitude) const
 {
-    double mod_tropo_alt = model_tropopause_altitude();
+  double mod_tropo_alt = model_tropopause_altitude().convert(units::km).value;
     
-    double fl = obs_latitude / 22;
-    double aoa = 0.313 - 0.085 * exp(-std::pow((obs_latitude - 49) / 18, 2))
-        -0.268 * exp(-1.42 * altitude / (altitude + mod_tropo_alt)) * fl / sqrt(1 + std::pow(fl, 2));
-    if(altitude > mod_tropo_alt) 
-        aoa = aoa + 7.0 * (altitude - mod_tropo_alt) / altitude;
-    return aoa;
+  double fl = obs_latitude / 22;
+  double aoa = 0.313 - 0.085 * exp(-std::pow((obs_latitude - 49) / 18, 2))
+    -0.268 * exp(-1.42 * altitude / (altitude + mod_tropo_alt)) * fl / sqrt(1 + std::pow(fl, 2));
+  if(altitude > mod_tropo_alt) 
+    aoa = aoa + 7.0 * (altitude - mod_tropo_alt) / altitude;
+  return aoa;
 }
 
 //-----------------------------------------------------------------------
@@ -250,24 +250,24 @@ const blitz::Array<double, 1> ReferenceVmrApriori::resample_to_model_grid(const 
 
 const blitz::Array<double, 1> ReferenceVmrApriori::apply_latitude_gradient(const blitz::Array<double, 1>& vmr, const std::string& gas_name) const
 {
-    double mod_tropo_alt = model_tropopause_altitude();
+  double mod_tropo_alt = model_tropopause_altitude().convert(units::km).value;
 
-    double gas_gradient;
-    try {
-        gas_gradient = lat_gradient.at(gas_name);
-    } catch(const std::out_of_range& exc) {
-        Logger::warning() << "apply_latitude_gradients: No latitude gradient found for: " << gas_name;
-        gas_gradient = 0.0;
-    }
-    double xref = gas_gradient * (ref_latitude / 15) / sqrt(1 + std::pow(ref_latitude/15, 2));
-    double xobs = gas_gradient * (obs_latitude / 15) / sqrt(1 + std::pow(obs_latitude/15, 2));
-
-    Array<double, 1> grad_vmr(vmr.shape());
-    for(int lev_idx = 0; lev_idx < vmr.rows(); lev_idx++) {
-        double frac = 1.0 / (1.0 + std::pow(model_altitude(lev_idx) / mod_tropo_alt, 2));
-        grad_vmr(lev_idx) = vmr(lev_idx) * (1 + frac * xobs) / (1 + frac * xref);
-    }
-    return grad_vmr;
+  double gas_gradient;
+  try {
+    gas_gradient = lat_gradient.at(gas_name);
+  } catch(const std::out_of_range& exc) {
+    Logger::warning() << "apply_latitude_gradients: No latitude gradient found for: " << gas_name;
+    gas_gradient = 0.0;
+  }
+  double xref = gas_gradient * (ref_latitude / 15) / sqrt(1 + std::pow(ref_latitude/15, 2));
+  double xobs = gas_gradient * (obs_latitude / 15) / sqrt(1 + std::pow(obs_latitude/15, 2));
+  
+  Array<double, 1> grad_vmr(vmr.shape());
+  for(int lev_idx = 0; lev_idx < vmr.rows(); lev_idx++) {
+    double frac = 1.0 / (1.0 + std::pow(model_altitude(lev_idx) / mod_tropo_alt, 2));
+    grad_vmr(lev_idx) = vmr(lev_idx) * (1 + frac * xobs) / (1 + frac * xref);
+  }
+  return grad_vmr;
 }
 
 ///-----------------------------------------------------------------------

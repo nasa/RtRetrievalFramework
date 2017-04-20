@@ -5665,7 +5665,7 @@ SWIGINTERN PyObject *_wrap_GasVmrApriori__v_tropopause_altitude(PyObject *SWIGUN
   boost::shared_ptr< FullPhysics::GasVmrApriori const > tempshared1 ;
   boost::shared_ptr< FullPhysics::GasVmrApriori const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
-  double result;
+  FullPhysics::DoubleWithUnit result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -5686,14 +5686,17 @@ SWIGINTERN PyObject *_wrap_GasVmrApriori__v_tropopause_altitude(PyObject *SWIGUN
   }
   {
     try {
-      result = (double)((FullPhysics::GasVmrApriori const *)arg1)->tropopause_altitude();
+      result = ((FullPhysics::GasVmrApriori const *)arg1)->tropopause_altitude();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_From_double(static_cast< double >(result));
+  {
+    boost::shared_ptr<  FullPhysics::DoubleWithUnit > *smartresult = new boost::shared_ptr<  FullPhysics::DoubleWithUnit >(new FullPhysics::DoubleWithUnit((FullPhysics::DoubleWithUnit &)result));
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t, SWIG_POINTER_OWN);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -5862,7 +5865,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"GasVmrApriori__v_tropopause_altitude", (PyCFunction)_wrap_GasVmrApriori__v_tropopause_altitude, METH_O, (char *)"\n"
 		"\n"
-		"const double FullPhysics::GasVmrApriori::tropopause_altitude() const\n"
+		"const DoubleWithUnit FullPhysics::GasVmrApriori::tropopause_altitude() const\n"
 		"\n"
 		""},
 	 { (char *)"GasVmrApriori__v_tropopause_pressure", (PyCFunction)_wrap_GasVmrApriori__v_tropopause_pressure, METH_O, (char *)"\n"
