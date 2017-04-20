@@ -17,8 +17,8 @@ REGISTER_LUA_END()
 void MetPassThroughOutput::register_output(const boost::shared_ptr<Output>& out) const
 {
     out->register_data_source
-        ("/RetrievalResults/windspeed_u_met", &Meteorology::windspeed_u, met_);
+        ("/RetrievalResults/wind_speed_u_met", &Meteorology::windspeed_u, met_);
 
     out->register_data_source
-        ("/RetrievalResults/windspeed_v_met", &Meteorology::windspeed_v, met_);
+        ("/RetrievalResults/wind_speed_v_met", &Meteorology::windspeed_v, met_);
 }
