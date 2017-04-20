@@ -12,7 +12,7 @@ require 'set'
 
 # Set encoding for Ruby 1.9. Without this we get a harmless warning message if
 # we are using ruby later than 1.9
-if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
+if RUBY_VERSION =~ /1.9/ or RUBY_VERSION =~ /^2\./ # assuming you're running Ruby ~1.9
   Encoding.default_external = Encoding::UTF_8
   Encoding.default_internal = Encoding::UTF_8
 end
