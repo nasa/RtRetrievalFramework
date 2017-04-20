@@ -472,7 +472,7 @@ EXTRA_DIST += @thirdpartysrc@/$(RUPORT_NAME).gem
 $(RUPORT_TARGET): $(thirdpartysrc)/$(RUPORT_NAME).gem $(FASTERCSV_TARGET) $(PDFWRITER_TARGET)
 	@echo "*************************** Building ruport"
 	$(MKDIR_P) $(rubygemdir)
-	gem install --local --install-dir $(rubygemdir) $<
+	gem install --local --install-dir $(rubygemdir) --ignore-dependencies $<
 	touch $(RUPORT_TARGET)
 	@echo "========================== Done building ruport"
 
