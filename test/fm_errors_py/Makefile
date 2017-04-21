@@ -24,10 +24,15 @@ compare: $(out_dir)/stdout
 	PATH=$(HDF5_BIN):$(PATH) $(RUBY) $(srcdir)/support/utils/compare_hdf \
           $(out_dir)/out.h5 $(base_dir)/out.expected.h5
 
-update_expected:
+update_expected_full:
 	-rm -r $(out_dir)
 	$(MAKE) -f $(base_dir)/Makefile $(out_dir)/stdout_full && \
         cp $(out_dir)/out.h5 $(base_dir)/out.initial.h5 && \
+        cp $(out_dir)/out.h5 $(base_dir)/out.expected.h5 && exit 0; exit 1
+
+update_expected:
+	-rm -r $(out_dir)
+	$(MAKE) -f $(base_dir)/Makefile $(out_dir)/stdout && \
         cp $(out_dir)/out.h5 $(base_dir)/out.expected.h5 && exit 0; exit 1
 
 all: compare
