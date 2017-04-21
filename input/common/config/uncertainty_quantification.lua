@@ -249,6 +249,17 @@ function init_uq(config)
     -- Ground --
     ------------
 
+    -- UQ code only uses lambertian or coxmunk, so modify this since default code now uses BRDF
+    function config:uq_ground_type_name()
+       if(self:land_or_water() == "land") then
+          return "lambertian"
+       else
+          return "coxmunk"
+       end
+    end
+
+    config.ground_type_name = config.uq_ground_type_name
+
     config.fm.atmosphere.ground.lambertian.apriori = uq_apriori_sounding_i("Ground/Albedo")
     config.fm.atmosphere.ground.lambertian.covariance = uq_covariance_i("Ground/Albedo")
 
