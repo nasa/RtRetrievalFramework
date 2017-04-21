@@ -97,7 +97,7 @@ cd build
 (make -j 20 all || echo $?) 2>&1 | tee make_all.log
 if [ "$run_test" == "y" ]; then
    (make -j 20 long_check || exit $?) 2>&1 | tee long_check.log
-   (make -j 20 run_tests || exit $?) 2>&2 | tee run_tests.log
+   (make -j 20 run_tests || exit $?) 2>&1 | tee run_tests.log
 fi
 # Note that we strip out debugging symbols here. This significanly reduces
 # the size of what we install, which matters a lot on Pleiades. If we end up
