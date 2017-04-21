@@ -69,7 +69,7 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
 	in_snd_id_tmp=$(mktemp)
 	cat $sounding_id_list_filename | tr ' ' '\n' > $in_snd_id_tmp
 	log_file=agg_$(basename ${l2_plus_more_agg_fn} | sed 's/\.h5$/.log/')
-	/l2_support_fake_path/utils/splice_product_files.py --single-file-type -o $l2_plus_more_agg_fn -i $input_files_tmp -s $in_snd_id_tmp -l create_run_scripts_test/log/$log_file $* -w 16 --temp $worker_temp
+	/l2_support_fake_path/utils/splice_product_files.py --single-file-type --splice-all -o $l2_plus_more_agg_fn -i $input_files_tmp -s $in_snd_id_tmp -l create_run_scripts_test/log/$log_file $* -w 16 --temp $worker_temp
 
 	rm $input_files_tmp
 	rm $in_snd_id_tmp
