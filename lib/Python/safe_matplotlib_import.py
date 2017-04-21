@@ -20,7 +20,7 @@ try:
     warnings.filterwarnings(action="ignore",
                             message=".*could not open display.*")
     import matplotlib.pyplot as plt
-except RuntimeError:
+except (RuntimeError, ImportError):
     import matplotlib
     matplotlib.use('agg', warn=False, force=True)
     import matplotlib.pyplot as plt

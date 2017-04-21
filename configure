@@ -646,6 +646,10 @@ BUILD_RUPORT_FALSE
 BUILD_RUPORT_TRUE
 BUILD_PLY_FALSE
 BUILD_PLY_TRUE
+BUILD_SIX_FALSE
+BUILD_SIX_TRUE
+BUILD_FUTURE_FALSE
+BUILD_FUTURE_TRUE
 BUILD_H5PY_FALSE
 BUILD_H5PY_TRUE
 BUILD_NOSE_FALSE
@@ -29453,6 +29457,8 @@ fi
 if test "${with_python_module+set}" = set; then :
   withval=$with_python_module; build_nose=yes
 	    build_h5py=yes
+	    build_future=yes
+	    build_six=yes
 	    build_ply=yes
             build_ruport=yes
 	    rubygemdir='${prefix}'`${RUBY} -rrbconfig -rrubygems -e 'print Gem.dir.sub(Config::CONFIG.fetch(%q(prefix)), %q())'`
@@ -29460,6 +29466,8 @@ if test "${with_python_module+set}" = set; then :
 else
   build_nose=no
 	    build_h5py=no
+	    build_six=yes
+	    build_ply=yes
 	    build_ply=no
             build_ruport=no
             rubygemdir=""
@@ -29480,6 +29488,22 @@ fi
 else
   BUILD_H5PY_TRUE='#'
   BUILD_H5PY_FALSE=
+fi
+
+ if test x$build_future = xyes; then
+  BUILD_FUTURE_TRUE=
+  BUILD_FUTURE_FALSE='#'
+else
+  BUILD_FUTURE_TRUE='#'
+  BUILD_FUTURE_FALSE=
+fi
+
+ if test x$build_six = xyes; then
+  BUILD_SIX_TRUE=
+  BUILD_SIX_FALSE='#'
+else
+  BUILD_SIX_TRUE='#'
+  BUILD_SIX_FALSE=
 fi
 
  if test x$build_ply = xyes; then
@@ -30002,6 +30026,14 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${BUILD_H5PY_TRUE}" && test -z "${BUILD_H5PY_FALSE}"; then
   as_fn_error $? "conditional \"BUILD_H5PY\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${BUILD_FUTURE_TRUE}" && test -z "${BUILD_FUTURE_FALSE}"; then
+  as_fn_error $? "conditional \"BUILD_FUTURE\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${BUILD_SIX_TRUE}" && test -z "${BUILD_SIX_FALSE}"; then
+  as_fn_error $? "conditional \"BUILD_SIX\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${BUILD_PLY_TRUE}" && test -z "${BUILD_PLY_FALSE}"; then
@@ -32823,7 +32855,13 @@ echo "  Build own nose module:        ${build_nose}"
 echo "  Build own h5py module:        ${build_h5py}"
 
 
-echo "  Build own PLY module :        ${build_ply}"
+echo "  Build own future module:      ${build_future}"
+
+
+echo "  Build own six module:         ${build_future}"
+
+
+echo "  Build own PLY module:         ${build_ply}"
 
 
 echo "  Build own Ruport gem:         ${build_ruport}"
