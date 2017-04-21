@@ -30,12 +30,15 @@ Aggregation has started for the file
 ${l2_agg_fn}
 EOF
 fi
+
+use_subdir=False
+
 # Aggregate all single sounding output hdf files into a single hdf file
 if [ ! -e "$l2_agg_fn" ]; then
     # Use find instead of a glob because there could be too much files that
     # could exhaust the command line length limit
     input_files_tmp=$(mktemp)
-    if [ $group_size -gt 9 ]; then
+    if [ "$use_subdir" = "True" ]; then
        find create_run_scripts_test/output -name "l2_aggregate.h5" > $input_files_tmp
     else
        find create_run_scripts_test/output -name "*.h5" | grep -v "l2_aggregate.h5" | grep -v "l2_plus_more_aggregate.h5" > $input_files_tmp
@@ -60,7 +63,7 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
     echo "Creating L2 plus more aggregated file"
     # If we already have the l2_plus_more_aggregate.h5 for each of the
     # groups l2_fp_job.sh worked on, just combine those.
-    if [ $group_size -gt 9 ]; then
+    if [ "$use_subdir" = "True" ]; then
 	input_files_tmp=$(mktemp)
 	find create_run_scripts_test/output -name "l2_plus_more_aggregate.h5" > $input_files_tmp
 

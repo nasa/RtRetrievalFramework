@@ -96,8 +96,10 @@ export do_tee
 # use the job index padded with 0's for this. Skip if we aren't grouping
 # data into large enough groups - we don't want directories with a single
 # file in them.
-mkdir -p ${log_directory}/qsub
-if [ $group_size -gt 9 ]; then
+use_subdir=False
+
+if [ "$use_subdir" = "True" ]; then
+    mkdir -p ${log_directory}/qsub
     log_directory=${log_directory}/$(printf "%04d" $job_index)
     output_directory=${output_directory}/$(printf "%04d" $job_index)
 fi
@@ -153,7 +155,7 @@ fi
 seq ${beg_id_index} ${end_id_index} | parallel --gnu -j 1 --ungroup --env run_job_index 'run_job_index {}'
 
 # Aggregate the soundings together, if we have enough to be worth doing this
-if [ $group_size -gt 9 ]; then
+if [ "$use_subdir" = "True" ]; then
     input_files_tmp=$(mktemp)
     l2_agg_fn=${output_directory}/l2_aggregate.h5
     l2_plus_more_agg_fn=${output_directory}/l2_plus_more_aggregate.h5
