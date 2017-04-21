@@ -259,18 +259,24 @@ AC_ARG_WITH([python-module],
              [Build our own copy of the python modules we depend on. Normally you would just install this modules on your system, but for Pleiades this is convenient to build ourselves..])],
            [build_nose=yes
 	    build_h5py=yes
+	    build_future=yes
+	    build_six=yes
 	    build_ply=yes
             build_ruport=yes
 	    rubygemdir='${prefix}'`${RUBY} -rrbconfig -rrubygems -e 'print Gem.dir.sub(Config::CONFIG.fetch(%q(prefix)), %q())'`
 	   ],
            [build_nose=no
 	    build_h5py=no
+	    build_six=yes
+	    build_ply=yes
 	    build_ply=no
             build_ruport=no
             rubygemdir=""
 	   ])
 AM_CONDITIONAL([BUILD_NOSE], [test x$build_nose = xyes])
 AM_CONDITIONAL([BUILD_H5PY], [test x$build_h5py = xyes])
+AM_CONDITIONAL([BUILD_FUTURE], [test x$build_future = xyes])
+AM_CONDITIONAL([BUILD_SIX], [test x$build_six = xyes])
 AM_CONDITIONAL([BUILD_PLY], [test x$build_ply = xyes])
 AM_CONDITIONAL([BUILD_RUPORT], [test x$build_ruport = xyes])
 AC_SUBST(rubygemdir)
@@ -399,7 +405,9 @@ LOC_MSG([  Build own GSL library:        ${build_gsl}])
 LOC_MSG([  Build own LUA library:        ${build_lua}])
 LOC_MSG([  Build own nose module:        ${build_nose}])
 LOC_MSG([  Build own h5py module:        ${build_h5py}])
-LOC_MSG([  Build own PLY module :        ${build_ply}])
+LOC_MSG([  Build own future module:      ${build_future}])
+LOC_MSG([  Build own six module:         ${build_future}])
+LOC_MSG([  Build own PLY module:         ${build_ply}])
 LOC_MSG([  Build own Ruport gem:         ${build_ruport}])
 LOC_MSG([  Generate SWIG wrappers:       ${generate_swig}])
 LOC_MSG([  Compile Python SWIG wrappers: ${build_python_swig}])

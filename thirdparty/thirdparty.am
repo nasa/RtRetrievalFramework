@@ -597,3 +597,74 @@ $(PLY_TARGET): $(thirdpartysrc)/$(PLY_NAME).tar.gz
 	touch $@
 	@echo "========================== Done building ply"
 
+# ========================================================================
+# Simple name to install module. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+future: $(FUTURE_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of module,
+# then we do that
+
+if BUILD_FUTURE
+BUILT_SOURCES += $(FUTURE_TARGET)
+endif
+
+# ========================================================================
+# Build future. Note that normally we just assume this has been installed,
+# but on Pleiades it is cleaner to install ourselves
+
+FUTURE_NAME = future-0.15.2
+FUTURE_TARGET = $(DESTDIR)$(pythondir)/future_is_installed
+EXTRA_DIST += @thirdpartysrc@/$(FUTURE_NAME).tar.gz
+
+$(FUTURE_TARGET): $(thirdpartysrc)/$(FUTURE_NAME).tar.gz
+	@echo "*************************** Building future"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(FUTURE_NAME)
+	${AMTAR} xzf $<
+	export PATH=$(bindir):$$PATH && \
+        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
+        cd $(FUTURE_NAME) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(FUTURE_NAME)
+	touch $@
+	@echo "========================== Done building future"
+
+# ========================================================================
+# Simple name to install module. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+six: $(SIX_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of module,
+# then we do that
+
+if BUILD_SIX
+BUILT_SOURCES += $(SIX_TARGET)
+endif
+
+# ========================================================================
+# Build six. Note that normally we just assume this has been installed,
+# but on Pleiades it is cleaner to install ourselves
+
+SIX_NAME = six-1.10.0
+SIX_TARGET = $(DESTDIR)$(pythondir)/six_is_installed
+EXTRA_DIST += @thirdpartysrc@/$(SIX_NAME).tar.gz
+
+$(SIX_TARGET): $(thirdpartysrc)/$(SIX_NAME).tar.gz
+	@echo "*************************** Building six"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(SIX_NAME)
+	${AMTAR} xzf $<
+	export PATH=$(bindir):$$PATH && \
+        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
+        cd $(SIX_NAME) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(SIX_NAME)
+	touch $@
+	@echo "========================== Done building six"

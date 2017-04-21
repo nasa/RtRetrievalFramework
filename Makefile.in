@@ -298,10 +298,20 @@ check_PROGRAMS = lib/test_all$(EXEEXT)
 # Alternatively, if user specified that we build a local copy of module,
 # then we do that
 @BUILD_PLY_TRUE@am__append_24 = $(PLY_TARGET)
-@HAVE_SWIG_TRUE@@MAINTAINER_MODE_TRUE@am__append_25 = $(addprefix \
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of module,
+# then we do that
+@BUILD_FUTURE_TRUE@am__append_25 = $(FUTURE_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of module,
+# then we do that
+@BUILD_SIX_TRUE@am__append_26 = $(SIX_TARGET)
+@HAVE_SWIG_TRUE@@MAINTAINER_MODE_TRUE@am__append_27 = $(addprefix \
 @HAVE_SWIG_TRUE@@MAINTAINER_MODE_TRUE@	$(srcdir)/, $(SWIG_SRC)) \
 @HAVE_SWIG_TRUE@@MAINTAINER_MODE_TRUE@	$(srcdir)/$(swigsrc)/swig_wrap.cc
-@HAVE_SPHINX_TRUE@@WITH_DOCUMENTATION_TRUE@am__append_26 = install_python_doc
+@HAVE_SPHINX_TRUE@@WITH_DOCUMENTATION_TRUE@am__append_28 = install_python_doc
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/config/m4/ac_2stream.m4 \
@@ -2565,7 +2575,9 @@ EXTRA_DIST = config/depf90 lib/test_all.sh \
 	@thirdpartysrc@/$(PDFWRITER_NAME).gem \
 	@thirdpartysrc@/$(TRANSSIMPLE_NAME).gem \
 	@thirdpartysrc@/$(H5PY_NAME).tar.gz \
-	@thirdpartysrc@/$(PLY_NAME).tar.gz nonjpl_build.script \
+	@thirdpartysrc@/$(PLY_NAME).tar.gz \
+	@thirdpartysrc@/$(FUTURE_NAME).tar.gz \
+	@thirdpartysrc@/$(SIX_NAME).tar.gz nonjpl_build.script \
 	README.developer setup_env.sh config/setup_compiler_env.sh \
 	config/doc_footer.html config/doxygen.cfg \
 	config/doxygen_fortran.cfg doc/LIDORT_userguide_v3.0.pdf \
@@ -2576,8 +2588,8 @@ BUILT_SOURCES = $(am__append_13) $(am__append_14) $(am__append_15) \
 	$(am__append_16) $(am__append_17) $(am__append_18) \
 	$(am__append_19) $(am__append_20) $(am__append_21) \
 	$(am__append_22) $(am__append_23) $(am__append_24) \
-	l2_fp_profile l2_fp_valgrind lua_version.stamp \
-	$(am__append_25)
+	$(am__append_25) $(am__append_26) l2_fp_profile l2_fp_valgrind \
+	lua_version.stamp $(am__append_27)
 fullphysicsincdir = @includedir@/full_physics
 ourboostincdir = @includedir@/boost
 
@@ -3027,7 +3039,7 @@ AM_CPPFLAGS = -I$(srcdir)/@supportsrc@ -I$(prefix)/include \
 AM_LDFLAGS = -L$(prefix)/lib $(fortran_extra_ldflags) $(am__append_1)
 phony = $(am__append_2) check_message long_check fast_long_check \
 	fast_timing_check fast_check timing_check nosetests_check
-INSTALL_DATA_HOOK = $(am__append_3) $(am__append_26)
+INSTALL_DATA_HOOK = $(am__append_3) $(am__append_28)
 pkgpython_LTLIBRARIES = 
 pkgpython_PYTHON = @pythonlibsrc@/__init__.py \
 	@pythonlibsrc@/atmosphere_oco_extension.py \
@@ -3839,6 +3851,18 @@ H5PY_TARGET = $(DESTDIR)$(pythondir)/h5py/__init__.py
 # but on Pleiades it is cleaner to install ourselves
 PLY_NAME = ply-3.4
 PLY_TARGET = $(DESTDIR)$(pythondir)/ply_is_installed
+
+# ========================================================================
+# Build future. Note that normally we just assume this has been installed,
+# but on Pleiades it is cleaner to install ourselves
+FUTURE_NAME = future-0.15.2
+FUTURE_TARGET = $(DESTDIR)$(pythondir)/future_is_installed
+
+# ========================================================================
+# Build six. Note that normally we just assume this has been installed,
+# but on Pleiades it is cleaner to install ourselves
+SIX_NAME = six-1.10.0
+SIX_TARGET = $(DESTDIR)$(pythondir)/six_is_installed
 fpscriptdir = $(prefix)
 fpscript_DATA = @srcscript@/setup_fp_env.sh
 ftsconfigdir = @configdir@/fts/config
@@ -12236,6 +12260,46 @@ $(PLY_TARGET): $(thirdpartysrc)/$(PLY_NAME).tar.gz
 	rm -rf $(PLY_NAME)
 	touch $@
 	@echo "========================== Done building ply"
+
+# ========================================================================
+# Simple name to install module. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+future: $(FUTURE_TARGET)
+
+$(FUTURE_TARGET): $(thirdpartysrc)/$(FUTURE_NAME).tar.gz
+	@echo "*************************** Building future"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(FUTURE_NAME)
+	${AMTAR} xzf $<
+	export PATH=$(bindir):$$PATH && \
+        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
+        cd $(FUTURE_NAME) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(FUTURE_NAME)
+	touch $@
+	@echo "========================== Done building future"
+
+# ========================================================================
+# Simple name to install module. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+six: $(SIX_TARGET)
+
+$(SIX_TARGET): $(thirdpartysrc)/$(SIX_NAME).tar.gz
+	@echo "*************************** Building six"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(SIX_NAME)
+	${AMTAR} xzf $<
+	export PATH=$(bindir):$$PATH && \
+        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
+        cd $(SIX_NAME) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(SIX_NAME)
+	touch $@
+	@echo "========================== Done building six"
 
 l2_fp_profile: script/l2_fp_profile
 	cp $< $@
