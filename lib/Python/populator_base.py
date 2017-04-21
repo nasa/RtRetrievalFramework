@@ -49,6 +49,7 @@ class PopulatorBase(object):
         self.l2_binary_filename = None
         self.abscoversion = ""
         self.group_size = 1
+        self.use_subdirectory = False
         self.parallel_size = 1
         self.email_address = ""
 
