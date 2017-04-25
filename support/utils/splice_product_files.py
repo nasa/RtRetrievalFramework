@@ -100,15 +100,19 @@ class ProgressWriter(object):
 
 class DatasetInformation(object):
 
-    def __init__(self, dataset_name, rename_mapping=False):
+    def __init__(self, dataset_name, rename_mapping=False, collapse_id_dim=False):
         # Strip leading and trailing slashes just in case
         self.inp_name = dataset_name.strip("/")
 
         base_name = self.inp_name.split("/")[-1]
         if rename_mapping and base_name in aggregator_dataset_mapping:
             self.out_name = aggregator_dataset_mapping[base_name]["name"]
+            self._override_shape_names = aggregator_dataset_mapping[base_name]["shape"].replace("_Array", "").split("_")
         else:
             self.out_name = self.inp_name
+            self._override_shape_names = None
+
+        self.collapse_id_dim = collapse_id_dim
 
         # Default values
         self.id_names = None
@@ -183,6 +187,27 @@ class DatasetInformation(object):
             if curr_id_name in ds_dim_names:
                 self.inp_id_dims.append(ds_dim_names.index(curr_id_name))
 
+    @property
+    def out_shape_names(self):
+        if self._override_shape_names is not None:
+            out_shape_names = self._override_shape_names
+        else:
+            out_shape_names = list(self.inp_shape_names)
+
+        # Concatenate input shape names for id dims into one name
+        # Go through and collapse self.inp_id_dims dim(s) into a single one of
+        # sized according to self.inp_id_dims
+        if self.collapse_id_dim and self._override_shape_names is None and out_shape_names is not None and len(self.inp_id_dims) > 0:
+            out_id_name = ''.join([ out_shape_names[didx] for didx in self.inp_id_dims ])
+            out_shape_names[self.inp_id_dims[0]] = out_id_name
+
+            # Remove any other splice dims,
+            # Iterate backwards since we are
+            for s_dim in self.inp_id_dims[1:][::-1]:
+                out_shape_names.pop(s_dim)
+
+        return out_shape_names
+
     def _determine_output_shape(self, file_obj, dataset_obj):
         # Try and locate files that contain the dataset
         self.inp_file_shapes.append( dataset_obj.shape ) 
@@ -240,37 +265,26 @@ class DatasetInformation(object):
 
         return tuple(data_dim_indexes)
  
-    def output_dataset_shape(self, splice_size=None, collapse_id_dim=False):
+    def output_dataset_shape(self, splice_size=None):
         # Make a copy of dataset shape size and names as they will be modified
         dst_shape = self.out_shape 
-        out_shape_names = list(self.inp_shape_names)
-        splice_dim = self.inp_id_dims
 
-        if splice_dim != None and len(splice_dim) > 0 and splice_size != None:
+        if self.inp_id_dims != None and len(self.inp_id_dims) > 0 and splice_size != None:
             # Set first splice dim to splice size
-            dst_shape[splice_dim[0]] = splice_size
+            dst_shape[self.inp_id_dims[0]] = splice_size
 
-            # Concatenate input shape names for id dims into one name
-            # Go through and collapse splice_dim dim(s) into a single one of
-            # sized according to splice_dim
-            if collapse_id_dim:
-                if out_shape_names != None:
-                    out_id_name = ''.join([ out_shape_names[didx] for didx in splice_dim ])
-                    out_shape_names[splice_dim[0]] = out_id_name
-
-                # Remove any other splice dims,
-                # Iterate backwards since we are
-                # popping from dst_shape
-                for s_dim in splice_dim[1:][::-1]:
-                    dst_shape.pop(s_dim)
-                    if out_shape_names != None:
-                        out_shape_names.pop(s_dim)
+        if self.collapse_id_dim: 
+            # Remove any other splice dims,
+            # Iterate backwards since we are
+            # popping from dst_shape
+            for s_dim in self.inp_id_dims[1:][::-1]:
+                dst_shape.pop(s_dim)
 
         # Make sure any zero sized datasets are indicated as unlimited
         # by identifying them as None in the maxshape argument
         max_shape = [None if s == 0 else s for s in dst_shape]
 
-        return dst_shape, max_shape, out_shape_names
+        return dst_shape, max_shape
 
 class SourceInformation(object):
 
@@ -344,7 +358,7 @@ class SourceInformation(object):
 
             ds_info = self.datasets_info.get(ds_name, None)
             if ds_info == None:
-                ds_info = DatasetInformation(ds_name, self.rename_mapping)
+                ds_info = DatasetInformation(ds_name, rename_mapping=self.rename_mapping, collapse_id_dim=self.multi_source_types)
 
             # Search list of datasets based upon the destination dataset name, which is the same as
             # the input name when rename mapping is not used
@@ -435,7 +449,7 @@ class ProductSplicer(object):
 
         self.logger.debug("Creating new output dataset: %s" % dataset_info.out_name)
 
-        dst_shape, max_shape, dst_shape_names = dataset_info.output_dataset_shape(splice_size, self.multi_source_types) 
+        dst_shape, max_shape = dataset_info.output_dataset_shape(splice_size) 
 
         # Split name into two and create a group if needed
         # then create the desire dataset or load existing group
@@ -492,8 +506,8 @@ class ProductSplicer(object):
 
         # Add extra information for dataset, overwrite an existing shape, because we may have
         # reshaped the data. This must be a bytes and not string object
-        if dst_shape_names:
-            out_dataset_obj.attrs["Shape"] = numpy.array([("_".join(dst_shape_names) + "_Array").encode('utf-8')]) 
+        if dataset_info.out_shape_names is not None:
+            out_dataset_obj.attrs["Shape"] = numpy.array([("_".join(dataset_info.out_shape_names) + "_Array").encode('utf-8')]) 
 
         return out_dataset_obj
 
