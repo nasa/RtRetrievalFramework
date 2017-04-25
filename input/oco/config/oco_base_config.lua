@@ -488,19 +488,19 @@ OcoBaseConfig = OcoConfig:new {
             CO2 = {
                apriori = ConfigCommon.reference_co2_apriori_met_apriori,
                covariance = ConfigCommon.hdf_covariance("Gas/CO2"),
-               absco = "v5.0/co2_devi2015_wco2scale=nist_sco2scale=unity.hdf",
+               absco = "v5.0.0/co2_devi2015_wco2scale-nist_sco2scale-unity.h5",
                table_scale = {1.0, 1.0, 1.004},
                creator = ConfigCommon.vmr_level,
             },
             H2O = {
                scale_apriori = 1.0,
                scale_cov = 0.25,
-               absco = "v5.0/h2o_hitran12.hdf",
+               absco = "v5.0.0/h2o_hitran12.h5",
                creator = ConfigCommon.vmr_met,
             },
             O2 = {
                apriori = ConfigCommon.hdf_read_double_1d("Gas/O2/average_mole_fraction"),
-               absco = "v5.0/o2_v151005_cia_mlawer_v151005r1_narrow.hdf",
+               absco = "v5.0.0/o2_v151005_cia_mlawer_v151005r1_narrow.h5",
                table_scale = 1.0,
                creator = ConfigCommon.vmr_level_constant_well_mixed,
             },
