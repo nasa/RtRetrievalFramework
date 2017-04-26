@@ -29466,7 +29466,8 @@ if test "${with_python_module+set}" = set; then :
 else
   build_nose=no
 	    build_h5py=no
-	    build_six=yes
+	    build_six=no
+	    build_future=no
 	    build_ply=yes
 	    build_ply=no
             build_ruport=no
@@ -32858,7 +32859,7 @@ echo "  Build own h5py module:        ${build_h5py}"
 echo "  Build own future module:      ${build_future}"
 
 
-echo "  Build own six module:         ${build_future}"
+echo "  Build own six module:         ${build_six}"
 
 
 echo "  Build own PLY module:         ${build_ply}"

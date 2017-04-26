@@ -267,7 +267,8 @@ AC_ARG_WITH([python-module],
 	   ],
            [build_nose=no
 	    build_h5py=no
-	    build_six=yes
+	    build_six=no
+	    build_future=no
 	    build_ply=yes
 	    build_ply=no
             build_ruport=no
@@ -406,7 +407,7 @@ LOC_MSG([  Build own LUA library:        ${build_lua}])
 LOC_MSG([  Build own nose module:        ${build_nose}])
 LOC_MSG([  Build own h5py module:        ${build_h5py}])
 LOC_MSG([  Build own future module:      ${build_future}])
-LOC_MSG([  Build own six module:         ${build_future}])
+LOC_MSG([  Build own six module:         ${build_six}])
 LOC_MSG([  Build own PLY module:         ${build_ply}])
 LOC_MSG([  Build own Ruport gem:         ${build_ruport}])
 LOC_MSG([  Generate SWIG wrappers:       ${generate_swig}])
