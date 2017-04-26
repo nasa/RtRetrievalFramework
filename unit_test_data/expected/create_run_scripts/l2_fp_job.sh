@@ -97,7 +97,7 @@ export do_tee
 # data into large enough groups - we don't want directories with a single
 # file in them.
 use_subdir=False
-
+do_aggregate=False
 if [ "$use_subdir" = "True" ]; then
     mkdir -p ${log_directory}/qsub
     log_directory=${log_directory}/$(printf "%04d" $job_index)
@@ -155,12 +155,12 @@ fi
 seq ${beg_id_index} ${end_id_index} | parallel --gnu -j 1 --ungroup --env run_job_index 'run_job_index {}'
 
 # Aggregate the soundings together, if we have enough to be worth doing this
-if [ "$use_subdir" = "True" ]; then
+if [ "$do_aggregate" = "True" ]; then
     input_files_tmp=$(mktemp)
-    l2_agg_fn=${output_directory}/l2_aggregate.h5
-    l2_plus_more_agg_fn=${output_directory}/l2_plus_more_aggregate.h5
+    l2_agg_fn=${output_directory}/l2_aggregate_$(printf "%04d" $job_index).h5
+    l1_agg_fn=${output_directory}/l1_aggregate_$(printf "%04d" $job_index).h5
     find ${output_directory} -name "*.h5" > $input_files_tmp
-    /l2_support_fake_path/utils/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -l ${log_directory}/l2_aggregate.log
+    /l2_support_fake_path/utils/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -l ${log_directory}/l2_aggregate_$(printf "%04d" $job_index).log
     rm $input_files_tmp
 
     # Extract sounding ids, and reformat into a format that can be used by 
@@ -176,7 +176,6 @@ if [ "$use_subdir" = "True" ]; then
     # Combine L1B and L2 files into one file
     # with IMAP and ABand files if they are supplied
     inp_files_tmp=$(mktemp)
-    echo $l2_agg_fn > $inp_files_tmp
     if [ ! -z "$input_file_mapping" ] && [ -e "$input_file_mapping" ]; then
         # Set up input files from file mapping
 	while read -r sounding_id; do
@@ -186,19 +185,19 @@ if [ "$use_subdir" = "True" ]; then
                 echo $imap_file 
                 echo $aband_file 
             fi
-        done < $l2_snd_id_tmp2 | sort | uniq >> $inp_files_tmp
+        done < $l2_snd_id_tmp2 | sort | uniq > $inp_files_tmp
     else
         # Use input files from script variables
         for fn in $spectrum_file $imap_file $aband_file; do
-            echo $fn >> $inp_files_tmp
+            echo $fn > $inp_files_tmp
         done
     fi
-    /l2_support_fake_path/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l ${log_directory}/l2_plus_more_aggregate.log
+    /l2_support_fake_path/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l1_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l ${log_directory}/l1_aggregate_$(printf "%04d" $job_index).log
     rm $l2_snd_id_tmp2 $inp_files_tmp
     # Create retrieval_index dataset based on L1B file
     if [ ! -z "$spectrum_file" ]; then
         echo "Adding retrieval information datasets"
-        /l2_support_fake_path/utils/add_spliced_retrieval_info.py $spectrum_file $l2_plus_more_agg_fn
+        /l2_support_fake_path/utils/add_spliced_retrieval_info.py $spectrum_file $l1_agg_fn
     fi
 fi
 
