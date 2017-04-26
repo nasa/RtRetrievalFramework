@@ -5429,6 +5429,120 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_HdfFile_has_object(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::HdfFile *arg1 = (FullPhysics::HdfFile *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::HdfFile const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::HdfFile const > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"HdfFile_has_object",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfFile_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HdfFile_has_object" "', argument " "1"" of type '" "FullPhysics::HdfFile const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp1);
+      arg1 = const_cast< FullPhysics::HdfFile * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp1);
+      arg1 = const_cast< FullPhysics::HdfFile * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HdfFile_has_object" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HdfFile_has_object" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      result = (bool)((FullPhysics::HdfFile const *)arg1)->has_object((std::string const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HdfFile_has_attribute(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::HdfFile *arg1 = (FullPhysics::HdfFile *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::HdfFile const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::HdfFile const > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"HdfFile_has_attribute",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfFile_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HdfFile_has_attribute" "', argument " "1"" of type '" "FullPhysics::HdfFile const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp1);
+      arg1 = const_cast< FullPhysics::HdfFile * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::HdfFile > * >(argp1);
+      arg1 = const_cast< FullPhysics::HdfFile * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HdfFile_has_attribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HdfFile_has_attribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      result = (bool)((FullPhysics::HdfFile const *)arg1)->has_attribute((std::string const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_HdfFile__v_file_name(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::HdfFile *arg1 = (FullPhysics::HdfFile *) 0 ;
@@ -6723,6 +6837,18 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"This is automatically done by the destructor, so you only need to call\n"
 		"this if you want to force a close (e.g., for a unit test) \n"
+		""},
+	 { (char *)"HdfFile_has_object", _wrap_HdfFile_has_object, METH_VARARGS, (char *)"\n"
+		"\n"
+		"bool FullPhysics::HdfFile::has_object(const std::string &Objname) const\n"
+		"Check to see if an object (such as a Dataset) is in the file. \n"
+		""},
+	 { (char *)"HdfFile_has_attribute", _wrap_HdfFile_has_attribute, METH_VARARGS, (char *)"\n"
+		"\n"
+		"bool HdfFile::has_attribute(const std::string &Aname) const\n"
+		"Check to see if a attribute is in the file.\n"
+		"\n"
+		"Determine if attribute is present. \n"
 		""},
 	 { (char *)"HdfFile__v_file_name", (PyCFunction)_wrap_HdfFile__v_file_name, METH_O, (char *)"\n"
 		"\n"

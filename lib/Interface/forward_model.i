@@ -2,6 +2,7 @@
 // (Not really c++, but closest emacs mode)
 
 %include "common.i"
+%include "swig_optional.i"
 
 %{
 #include "forward_model.h"

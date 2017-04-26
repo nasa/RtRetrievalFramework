@@ -14,6 +14,15 @@ import numpy
 
 from full_physics import *
 
+logger = FpLogger(FpLogger.INFO)
+Logger.set_implementation(logger)
+
+def log_info(info_str):
+    logger.write(FpLogger.INFO, info_str)
+
+def log_flush():
+    logger.flush(FpLogger.INFO)
+
 class StateVectorError(BaseException):
     pass
 
@@ -67,7 +76,13 @@ class UqExperiment(object):
                 self.compare_svs(exc.message)
                 raise exc
 
-
+            if uq_obj.has_object("/SpectralParameters/sampled_radiance_offset"):
+                all_rad_offset = uq_obj.read_double_2d("/SpectralParameters/sampled_radiance_offset")[:, frame_idx]
+            else:
+                all_rad_offset = None
+                log_info("Could not find /SpectralParameters/sampled_radiance_offset in file: %s\n" % uq_obj.file_name)
+                log_flush()
+  
         # Change SpectralWindows so that all radiances points are computed
         spec_win_range = self.lua_config.spec_win.range_array
         orig_spec_win_value = spec_win_range.value.copy()
@@ -93,10 +108,16 @@ class UqExperiment(object):
             uq_spectrum = self.lua_config.fm.config.forward_model.radiance(spec_idx, skip_jacobian)
             uq_spec_range = uq_spectrum.spectral_range.convert(Unit("Ph sec^{-1} m^{-2} sr^{-1} um^{-1}"))
 
+            if all_rad_offset is not None:
+                pixel_range = self.lua_config.fm.config.forward_model.pixel_range(spec_idx)
+                band_rad_offset = all_rad_offset[pixel_range.first():pixel_range.last()+1]
+            else:
+                band_rad_offset = numpy.zeros(uq_spec_range.data.shape, dtype=uq_spec_range.data.dtype)
+
             # Add noise to radiances using nose model uncertainty for gaussian, use
             # sounding id number as seed for reproducability
             uncertainty = self.lua_config.l1b.noise_model.uncertainty(spec_idx, uq_spec_range.data)
-            noisified_radiance = numpy.random.normal(uq_spec_range.data, uncertainty)
+            noisified_radiance = numpy.random.normal(uq_spec_range.data + band_rad_offset, uncertainty)
             noisified_range = SpectralRange(noisified_radiance, uq_spec_range.units)
 
             # Save noisified spectra into the L1B class

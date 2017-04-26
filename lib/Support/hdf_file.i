@@ -18,6 +18,8 @@ public:
   enum Mode {READ, CREATE, READ_WRITE};
   HdfFile(const std::string& Fname, Mode M = READ);
   void close();
+  bool has_object(const std::string& Objname) const;
+  bool has_attribute(const std::string& Aname) const;
   %python_attribute(file_name, std::string)
   %python_attribute(mode, Mode)
   static bool is_hdf(const std::string& Fname);
