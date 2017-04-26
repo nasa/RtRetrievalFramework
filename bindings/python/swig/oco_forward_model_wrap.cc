@@ -3471,69 +3471,70 @@ namespace Swig {
 #define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[52]
 #define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[53]
 #define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[54]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t swig_types[55]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t swig_types[56]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t swig_types[57]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[58]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[59]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[60]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t swig_types[61]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ForwardModelSpectralGrid_t swig_types[62]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ForwardModel_t swig_types[63]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[64]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Instrument_t swig_types[65]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Level1b_t swig_types[66]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__NamedSpectrum_t swig_types[67]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Instrument_t_t swig_types[68]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__NamedSpectrum_t_t swig_types[69]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[70]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__SpectrumEffect_t_t swig_types[71]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[72]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t swig_types[73]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t_t swig_types[74]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Instrument_t_t swig_types[75]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__NamedSpectrum_t_t swig_types[76]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[77]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__SpectrumEffect_t_t swig_types[78]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[79]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t_t swig_types[80]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__OcoForwardModel_t swig_types[81]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[82]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RadiativeTransfer_t swig_types[83]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralBound_t swig_types[84]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralDomain_t swig_types[85]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralRange_t swig_types[86]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralWindow_t swig_types[87]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectrumEffect_t swig_types[88]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectrumSampling_t swig_types[89]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Spectrum_t swig_types[90]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[91]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[92]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__SpectrumEffect_t_t swig_types[93]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[94]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Time_t swig_types[95]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[96]
-#define SWIGTYPE_p_char swig_types[97]
-#define SWIGTYPE_p_char_type swig_types[98]
-#define SWIGTYPE_p_difference_type swig_types[99]
-#define SWIGTYPE_p_fmtflags swig_types[100]
-#define SWIGTYPE_p_int_type swig_types[101]
-#define SWIGTYPE_p_iostate swig_types[102]
-#define SWIGTYPE_p_off_type swig_types[103]
-#define SWIGTYPE_p_openmode swig_types[104]
-#define SWIGTYPE_p_pos_type swig_types[105]
-#define SWIGTYPE_p_seekdir swig_types[106]
-#define SWIGTYPE_p_size_t swig_types[107]
-#define SWIGTYPE_p_size_type swig_types[108]
-#define SWIGTYPE_p_state_type swig_types[109]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[110]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[111]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[112]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[113]
-#define SWIGTYPE_p_traits_type swig_types[114]
-#define SWIGTYPE_p_value_type swig_types[115]
-static swig_type_info *swig_types[117];
-static swig_module_info swig_module = {swig_types, 116, 0, 0, 0, 0};
+#define SWIGTYPE_p_blitz__Range swig_types[55]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t swig_types[56]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t swig_types[57]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t swig_types[58]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[59]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[60]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[61]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__DoubleWithUnit_t swig_types[62]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ForwardModelSpectralGrid_t swig_types[63]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ForwardModel_t swig_types[64]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[65]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Instrument_t swig_types[66]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Level1b_t swig_types[67]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__NamedSpectrum_t swig_types[68]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Instrument_t_t swig_types[69]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__NamedSpectrum_t_t swig_types[70]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[71]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__SpectrumEffect_t_t swig_types[72]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[73]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t swig_types[74]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t_t swig_types[75]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Instrument_t_t swig_types[76]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__NamedSpectrum_t_t swig_types[77]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[78]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__SpectrumEffect_t_t swig_types[79]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[80]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t_t swig_types[81]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__OcoForwardModel_t swig_types[82]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[83]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RadiativeTransfer_t swig_types[84]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralBound_t swig_types[85]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralDomain_t swig_types[86]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralRange_t swig_types[87]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralWindow_t swig_types[88]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectrumEffect_t swig_types[89]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectrumSampling_t swig_types[90]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Spectrum_t swig_types[91]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[92]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[93]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__SpectrumEffect_t_t swig_types[94]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[95]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Time_t swig_types[96]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[97]
+#define SWIGTYPE_p_char swig_types[98]
+#define SWIGTYPE_p_char_type swig_types[99]
+#define SWIGTYPE_p_difference_type swig_types[100]
+#define SWIGTYPE_p_fmtflags swig_types[101]
+#define SWIGTYPE_p_int_type swig_types[102]
+#define SWIGTYPE_p_iostate swig_types[103]
+#define SWIGTYPE_p_off_type swig_types[104]
+#define SWIGTYPE_p_openmode swig_types[105]
+#define SWIGTYPE_p_pos_type swig_types[106]
+#define SWIGTYPE_p_seekdir swig_types[107]
+#define SWIGTYPE_p_size_t swig_types[108]
+#define SWIGTYPE_p_size_type swig_types[109]
+#define SWIGTYPE_p_state_type swig_types[110]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[111]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[112]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[113]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[114]
+#define SWIGTYPE_p_traits_type swig_types[115]
+#define SWIGTYPE_p_value_type swig_types[116]
+static swig_type_info *swig_types[118];
+static swig_module_info swig_module = {swig_types, 117, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -7563,6 +7564,7 @@ static swig_type_info _swigt__p_blitz__ArrayT_int_1_t = {"_p_blitz__ArrayT_int_1
 static swig_type_info _swigt__p_blitz__ArrayT_int_2_t = {"_p_blitz__ArrayT_int_2_t", "blitz::Array< int,2 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_int_3_t = {"_p_blitz__ArrayT_int_3_t", "blitz::Array< int,3 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_int_4_t = {"_p_blitz__ArrayT_int_4_t", "blitz::Array< int,4 > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_blitz__Range = {"_p_blitz__Range", "blitz::Range *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t = {"_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t", "boost::shared_ptr< FullPhysics::ArrayWithUnit< double,1 > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t = {"_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t", "boost::shared_ptr< FullPhysics::ArrayWithUnit< double,2 > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t = {"_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t", "boost::shared_ptr< FullPhysics::ArrayWithUnit< double,3 > > *", 0, 0, (void*)0, 0};
@@ -7681,6 +7683,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_blitz__ArrayT_int_2_t,
   &_swigt__p_blitz__ArrayT_int_3_t,
   &_swigt__p_blitz__ArrayT_int_4_t,
+  &_swigt__p_blitz__Range,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t,
@@ -7799,6 +7802,7 @@ static swig_cast_info _swigc__p_blitz__ArrayT_int_1_t[] = {  {&_swigt__p_blitz__
 static swig_cast_info _swigc__p_blitz__ArrayT_int_2_t[] = {  {&_swigt__p_blitz__ArrayT_int_2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_int_3_t[] = {  {&_swigt__p_blitz__ArrayT_int_3_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_int_4_t[] = {  {&_swigt__p_blitz__ArrayT_int_4_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_blitz__Range[] = {  {&_swigt__p_blitz__Range, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -7917,6 +7921,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_blitz__ArrayT_int_2_t,
   _swigc__p_blitz__ArrayT_int_3_t,
   _swigc__p_blitz__ArrayT_int_4_t,
+  _swigc__p_blitz__Range,
   _swigc__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t,
