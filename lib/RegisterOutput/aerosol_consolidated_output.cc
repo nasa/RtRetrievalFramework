@@ -188,5 +188,18 @@ void AerosolConsolidatedOutput::register_output(const boost::shared_ptr<Output>&
     out->register_data_source("/RetrievalResults/aerosol_aod", &AerosolOutputHelper::aerosol_aod_matrix, h);
     out->register_data_source("/RetrievalResults/aerosol_param", &AerosolOutputHelper::aerosol_param_matrix, h);
     out->register_data_source("/RetrievalResults/aerosol_param_uncert", &AerosolOutputHelper::aerosol_param_uncert_matrix, h);
+
+    // Also include total optical depth. This is a duplicate of what
+    // we had in AerosolAodOutput. Hopefully this doesn't cause any
+    // problems, I don't believe we plan on having this both on at the
+    // same time. But if we do, we might need to add some simple logic
+    // here (e.g., add a flag to AerosolConsolidatedOutput to turn
+    // this on or off here).
+    double minv = std::numeric_limits<double>::min();
+    double maxv = std::numeric_limits<double>::max();
+    boost::function<double ()> func_tot_all = 
+      boost::bind(&AerosolOptical::aerosol_optical_depth_total, aerosol,
+		  minv, maxv);
+    out->register_data_source("/RetrievalResults/aerosol_total_aod", func_tot_all);
 }
 
