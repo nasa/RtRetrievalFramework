@@ -194,11 +194,6 @@ if [ "$do_aggregate" = "True" ]; then
     fi
     /l2_support_fake_path/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l1_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l ${log_directory}/l1_aggregate_$(printf "%04d" $job_index).log
     rm $l2_snd_id_tmp2 $inp_files_tmp
-    # Create retrieval_index dataset based on L1B file
-    if [ ! -z "$spectrum_file" ]; then
-        echo "Adding retrieval information datasets"
-        /l2_support_fake_path/utils/add_spliced_retrieval_info.py $spectrum_file $l1_agg_fn
-    fi
 fi
 
 if [ "$keep_exit" = "yes" ]; then
