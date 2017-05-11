@@ -1,10 +1,13 @@
 #_ This is version 3.6 of lidort. 
 
-lidort-3.6: liblidort-3.6.0.la
+$(libdir)/liblidort-3.6.0.la: liblidort-3.6.0.la
 	$(MKDIR_P) $(libdir)
 	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) liblidort-3.6.0.la "$(libdir)"
 	touch $@
-	touch $(libdir)/liblidort-3.6.0.la
+
+.PHONY: lidort-3.6
+
+lidort-3.6 : $(libdir)/liblidort-3.6.0.la
 
 if BUILD_LIDORT_3_6
 BUILT_SOURCES += lidort-3.6
