@@ -46,6 +46,8 @@ include thirdparty/2stream/2stream.am
 # Simple name to install HDF 5 library. We don't install this normally, the
 # user need to explicitly build this if desired.
 
+.PHONY: hdf5
+
 hdf5: $(HDF5_TARGET)
 
 # ========================================================================
@@ -60,6 +62,7 @@ endif
 # Simple name to install boost library. We don't install this normally, the
 # user need to explicitly build this if desired.
 
+.PHONY: boost
 boost: $(BOOST_TARGET)
 
 # ========================================================================
@@ -73,6 +76,8 @@ endif
 # ========================================================================
 # Simple name to install bzlib library. We don't install this normally, the
 # user need to explicitly build this if desired.
+
+.PHONY: bzlib
 
 bzlib: $(BZLIB_TARGET)
 
@@ -88,6 +93,8 @@ endif
 # Simple name to install Lua library. We don't install this normally, the
 # user need to explicitly build this if desired.
 
+.PHONY: lua
+
 lua: $(LUABIND_TARGET)
 
 # ========================================================================
@@ -102,6 +109,8 @@ endif
 # Simple name to install Blitz++ library. We don't install this normally, the
 # user need to explicitly build this if desired.
 
+.PHONY: blitz
+
 blitz: $(BLITZ_TARGET)
 
 # ========================================================================
@@ -115,6 +124,8 @@ endif
 # ========================================================================
 # Simple name to install GSL library. We don't install this normally, the
 # user need to explicitly build this if desired.
+
+.PHONY: gsl
 
 gsl: $(GSL_TARGET)
 
@@ -408,6 +419,8 @@ $(GSL_TARGET): $(thirdpartysrc)/$(GSL_NAME).tar.gz
 	rm -rf $(GSL_NAME)
 	touch $(GSL_TARGET)
 	@echo "========================== Done building GSL"
+
+.PHONY: python_module nose ruport h5py
 
 python_module: nose ruport h5py
 

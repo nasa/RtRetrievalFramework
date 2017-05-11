@@ -11921,11 +11921,14 @@ cpp_version.stamp:
 
 thirdparty: hdf5 boost lidort-3.6 2stream blitz gsl lua
 
-lidort-3.6: liblidort-3.6.0.la
+$(libdir)/liblidort-3.6.0.la: liblidort-3.6.0.la
 	$(MKDIR_P) $(libdir)
 	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) liblidort-3.6.0.la "$(libdir)"
 	touch $@
-	touch $(libdir)/liblidort-3.6.0.la
+
+.PHONY: lidort-3.6
+
+lidort-3.6 : $(libdir)/liblidort-3.6.0.la
 
 #=================================================================
 # Calculate dependencies between lidort routines
@@ -11937,10 +11940,14 @@ thirdparty/lidort-3.6/lidort-3.6.deps : $(liblidort_3_6_0_la_SOURCES)
 
 -include thirdparty/lidort-3.6/lidort-3.6.deps
 
-2stream: libtwostream.la
+$(libdir)/libtwostream.la: libtwostream.la
 	$(MKDIR_P) $(libdir)
 	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) libtwostream.la "$(libdir)"
 	touch $@
+
+.PHONY: 2stream
+
+2stream : $(libdir)/libtwostream.la
 
 #=================================================================
 # Calculate dependencies between 2stream
@@ -11971,17 +11978,22 @@ thirdparty/2stream/2stream.deps : $(libtwostream_la_SOURCES)
 # Simple name to install HDF 5 library. We don't install this normally, the
 # user need to explicitly build this if desired.
 
+.PHONY: hdf5
+
 hdf5: $(HDF5_TARGET)
 
 # ========================================================================
 # Simple name to install boost library. We don't install this normally, the
 # user need to explicitly build this if desired.
 
+.PHONY: boost
 boost: $(BOOST_TARGET)
 
 # ========================================================================
 # Simple name to install bzlib library. We don't install this normally, the
 # user need to explicitly build this if desired.
+
+.PHONY: bzlib
 
 bzlib: $(BZLIB_TARGET)
 
@@ -11989,17 +12001,23 @@ bzlib: $(BZLIB_TARGET)
 # Simple name to install Lua library. We don't install this normally, the
 # user need to explicitly build this if desired.
 
+.PHONY: lua
+
 lua: $(LUABIND_TARGET)
 
 # ========================================================================
 # Simple name to install Blitz++ library. We don't install this normally, the
 # user need to explicitly build this if desired.
 
+.PHONY: blitz
+
 blitz: $(BLITZ_TARGET)
 
 # ========================================================================
 # Simple name to install GSL library. We don't install this normally, the
 # user need to explicitly build this if desired.
+
+.PHONY: gsl
 
 gsl: $(GSL_TARGET)
 
@@ -12153,6 +12171,8 @@ $(GSL_TARGET): $(thirdpartysrc)/$(GSL_NAME).tar.gz
 	rm -rf $(GSL_NAME)
 	touch $(GSL_TARGET)
 	@echo "========================== Done building GSL"
+
+.PHONY: python_module nose ruport h5py
 
 python_module: nose ruport h5py
 

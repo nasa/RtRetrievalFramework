@@ -1,9 +1,13 @@
 # This the 2stream radiative transfer solver
 
-2stream: libtwostream.la
+$(libdir)/libtwostream.la: libtwostream.la
 	$(MKDIR_P) $(libdir)
 	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) libtwostream.la "$(libdir)"
 	touch $@
+
+.PHONY: 2stream
+
+2stream : $(libdir)/libtwostream.la
 
 if BUILD_TWOSTREAM
 BUILT_SOURCES += 2stream
