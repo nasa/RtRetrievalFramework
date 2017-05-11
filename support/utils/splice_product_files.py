@@ -172,6 +172,12 @@ class DatasetInformation(object):
         else:
             self.inp_shape_names = file_obj.get_data_shape(dataset_obj)
 
+        # Eliminate duplicate shape names
+        for name, num_occurance in list(Counter(self.inp_shape_names).items()):
+            if num_occurance > 1:
+                for name_count in range(1, num_occurance+1):
+                    self.inp_shape_names[self.inp_shape_names.index(name)] = "%s_%d" % (name, name_count)
+
     def _find_id_dims(self, file_obj, dataset_obj):
         "Finds where in the dataset's dimensions the id dimensions are indexed"
 
@@ -237,7 +243,7 @@ class DatasetInformation(object):
         "Faster version of what is in acos_file.SoundingDataFile"
 
         if self.inp_shape_names == None:
-            raise ValueError('No shape names are defined for dataset: %s in file: %s' % (dataset_name, self.filename))
+            raise ValueError('No shape names are defined for dataset: %s' % (dataset_name))
         elif len(self.inp_shape_names) != len(dataset_obj.shape):
             raise ValueError('Length of shape names: %s does not match length of data: %s for: %s' % (len(self.inp_shape_names), len(dataset_obj.shape), dataset_obj.name))
 
@@ -257,11 +263,6 @@ class DatasetInformation(object):
             else:
                 data_dim_indexes.append( slice(dataset_obj.shape[dim_idx]) )
 
-        # Eliminate duplicate shape names
-        for name, num_occurance in list(Counter(self.inp_shape_names).items()):
-            if num_occurance > 1:
-                for name_count in range(1, num_occurance+1):
-                    self.inp_shape_names[self.inp_shape_names.index(name)] = "%s_%d" % (name, name_count)
 
         return tuple(data_dim_indexes)
  
