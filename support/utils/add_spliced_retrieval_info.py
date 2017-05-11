@@ -61,7 +61,11 @@ if ret_sounding_ids is None:
 
 def copy_attrs(in_ds, out_ds):
     for k, v in list(in_ds.attrs.items()):
-        out_ds.attrs[k] = numpy.array([v[0]])
+        try:
+            # Ensure strings are output as bytes for Python 3 compatibility
+            out_ds.attrs[k] = numpy.array([str(v[0]).encode('utf-8')])
+        except TypeError as exc:
+            print("Could not copy attribute '%s' from dataset '%s' with value %s: %s" % (k, in_ds.name, v[0], exc))
 
 # Copy L1B sounding ids into destination file
 if splice_file.get(OUT_L1B_SND_ID_DS, None) is None:
