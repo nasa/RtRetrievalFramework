@@ -36,7 +36,11 @@ public:
     void _units_set(const FullPhysics::Unit& U) {$self->units = U;}
     DoubleWithUnit __mul__(const DoubleWithUnit& Y) 
     { return *$self * Y; }
+    // Python 2 division operator name
     DoubleWithUnit __div__(const DoubleWithUnit& Y) 
+    { return *$self / Y; }
+    // Python 3 division operator name
+    DoubleWithUnit __truediv__(const DoubleWithUnit& Y) 
     { return *$self / Y; }
     DoubleWithUnit __add__(const DoubleWithUnit& Y) 
     { return *$self + Y; }

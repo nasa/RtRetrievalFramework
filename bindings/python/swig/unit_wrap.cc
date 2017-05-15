@@ -5095,6 +5095,7 @@ SWIGINTERN FullPhysics::Unit FullPhysics_Unit___mul____SWIG_0(FullPhysics::Unit 
 SWIGINTERN FullPhysics::Unit FullPhysics_Unit___mul____SWIG_1(FullPhysics::Unit *self,double Y){ return *self * Y; }
 SWIGINTERN FullPhysics::Unit FullPhysics_Unit___rmul__(FullPhysics::Unit *self,double X){ return X * *self;}
 SWIGINTERN FullPhysics::Unit FullPhysics_Unit___div__(FullPhysics::Unit *self,FullPhysics::Unit const &Y){ return *self / Y; }
+SWIGINTERN FullPhysics::Unit FullPhysics_Unit___truediv__(FullPhysics::Unit *self,FullPhysics::Unit const &Y){ return *self / Y; }
 SWIGINTERN FullPhysics::Unit FullPhysics_Unit___rdiv__(FullPhysics::Unit *self,double X){ return X / *self;}
 
 #include <limits.h>
@@ -6313,6 +6314,80 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Unit___truediv__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Unit *arg1 = (FullPhysics::Unit *) 0 ;
+  FullPhysics::Unit *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Unit > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Unit > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::Unit const > tempshared2 ;
+  PyObject *swig_obj[2] ;
+  SwigValueWrapper< FullPhysics::Unit > result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"Unit___truediv__",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Unit___truediv__" "', argument " "1"" of type '" "FullPhysics::Unit *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Unit > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Unit > * >(argp1);
+      arg1 = const_cast< FullPhysics::Unit * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Unit > * >(argp1);
+      arg1 = const_cast< FullPhysics::Unit * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::Unit *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__Unit,  0 , &newmem);
+    if (SWIG_IsOK(res2)) {
+      arg2 = ptr;
+    } else {
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t,  0 , &newmem);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Unit___truediv__" "', argument " "2"" of type '" "FullPhysics::Unit const &""'"); 
+      }
+      if (!argp2) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Unit___truediv__" "', argument " "2"" of type '" "FullPhysics::Unit const &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Unit > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Unit > * >(argp2);
+        arg2 = const_cast< FullPhysics::Unit * >(tempshared2.get());
+      } else {
+        arg2 = const_cast< FullPhysics::Unit * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::Unit > * >(argp2)->get());
+      }
+    }
+  }
+  {
+    try {
+      result = FullPhysics_Unit___truediv__(arg1,(FullPhysics::Unit const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::Unit > *smartresult = new boost::shared_ptr<  FullPhysics::Unit >(new FullPhysics::Unit((FullPhysics::Unit &)result));
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Unit___rdiv__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Unit *arg1 = (FullPhysics::Unit *) 0 ;
@@ -6591,6 +6666,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Unit___mul__", _wrap_Unit___mul__, METH_VARARGS, NULL},
 	 { (char *)"Unit___rmul__", _wrap_Unit___rmul__, METH_VARARGS, NULL},
 	 { (char *)"Unit___div__", _wrap_Unit___div__, METH_VARARGS, NULL},
+	 { (char *)"Unit___truediv__", _wrap_Unit___truediv__, METH_VARARGS, NULL},
 	 { (char *)"Unit___rdiv__", _wrap_Unit___rdiv__, METH_VARARGS, NULL},
 	 { (char *)"Unit___pow__", _wrap_Unit___pow__, METH_VARARGS, NULL},
 	 { (char *)"delete_Unit", (PyCFunction)_wrap_delete_Unit, METH_O, NULL},

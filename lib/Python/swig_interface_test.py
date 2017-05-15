@@ -1,5 +1,4 @@
 from __future__ import division
-from past.utils import old_div
 # We don't normally need to test all the python interface to our C++ classes.
 # We already test the C++ classes in our C++ unit tests, and the interface
 # is automatically generated.
@@ -110,8 +109,8 @@ def test_class_using_another():
     assert_almost_equal(d3.convert("m").value, 14.0)
     d3 = d - d2
     assert_almost_equal(d3.convert("m").value, 6.0)
-    d3 = old_div(d, d2)
-    assert_almost_equal(d3.convert("dimensionless").value, old_div(10.0, 4))
+    d3 = d / d2
+    assert_almost_equal(d3.convert("dimensionless").value, 10.0 / 4)
     d3 = d * d2
     assert_almost_equal(d3.convert("m^2").value, 40.0)
 

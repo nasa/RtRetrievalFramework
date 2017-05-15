@@ -241,6 +241,7 @@ Unit.__idiv__ = new_instancemethod(_unit.Unit___idiv__, None, Unit)
 Unit.__mul__ = new_instancemethod(_unit.Unit___mul__, None, Unit)
 Unit.__rmul__ = new_instancemethod(_unit.Unit___rmul__, None, Unit)
 Unit.__div__ = new_instancemethod(_unit.Unit___div__, None, Unit)
+Unit.__truediv__ = new_instancemethod(_unit.Unit___truediv__, None, Unit)
 Unit.__rdiv__ = new_instancemethod(_unit.Unit___rdiv__, None, Unit)
 Unit.__pow__ = new_instancemethod(_unit.Unit___pow__, None, Unit)
 Unit_swigregister = _unit.Unit_swigregister

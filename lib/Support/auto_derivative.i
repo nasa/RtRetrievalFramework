@@ -71,11 +71,17 @@ public:
     { return *$self * Y; }
     AutoDerivative<T> __rmul__(const T& X) 
     { return X * *$self;}
+    // Python 2 division operator name
     AutoDerivative<T> __div__(const AutoDerivative<T>& Y) 
     { return *$self / Y; }
     AutoDerivative<T> __div__(const T& Y) 
     { return *$self / Y; }
-    AutoDerivative<T> __rdiv__(const T& X) 
+    // Python 3 division operator name
+    AutoDerivative<T> __truediv__(const AutoDerivative<T>& Y) 
+    { return *$self / Y; }
+    AutoDerivative<T> __truediv__(const T& Y) 
+    { return *$self / Y; }
+     AutoDerivative<T> __rdiv__(const T& X) 
     { return X / *$self;}
     AutoDerivative<T> __pow__(const T& X) 
     { return std::pow(*$self,  X);}

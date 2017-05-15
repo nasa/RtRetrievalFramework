@@ -275,6 +275,7 @@ AutoDerivativeDouble.__rsub__ = new_instancemethod(_auto_derivative.AutoDerivati
 AutoDerivativeDouble.__mul__ = new_instancemethod(_auto_derivative.AutoDerivativeDouble___mul__, None, AutoDerivativeDouble)
 AutoDerivativeDouble.__rmul__ = new_instancemethod(_auto_derivative.AutoDerivativeDouble___rmul__, None, AutoDerivativeDouble)
 AutoDerivativeDouble.__div__ = new_instancemethod(_auto_derivative.AutoDerivativeDouble___div__, None, AutoDerivativeDouble)
+AutoDerivativeDouble.__truediv__ = new_instancemethod(_auto_derivative.AutoDerivativeDouble___truediv__, None, AutoDerivativeDouble)
 AutoDerivativeDouble.__rdiv__ = new_instancemethod(_auto_derivative.AutoDerivativeDouble___rdiv__, None, AutoDerivativeDouble)
 AutoDerivativeDouble.__pow__ = new_instancemethod(_auto_derivative.AutoDerivativeDouble___pow__, None, AutoDerivativeDouble)
 AutoDerivativeDouble.__rpow__ = new_instancemethod(_auto_derivative.AutoDerivativeDouble___rpow__, None, AutoDerivativeDouble)
