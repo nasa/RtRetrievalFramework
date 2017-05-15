@@ -42,7 +42,11 @@ public:
     { return *$self * Y; }
     Unit __rmul__(double X) 
     { return X * *$self;}
+    // Python 2 division operator name 
     Unit __div__(const Unit& Y) 
+    { return *$self / Y; }
+    // Python 3 division operator name 
+    Unit __truediv__(const Unit& Y) 
     { return *$self / Y; }
     Unit __rdiv__(double X) 
     { return X / *$self;}

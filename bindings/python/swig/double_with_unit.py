@@ -203,6 +203,7 @@ DoubleWithUnit._units = new_instancemethod(_double_with_unit.DoubleWithUnit__uni
 DoubleWithUnit._units_set = new_instancemethod(_double_with_unit.DoubleWithUnit__units_set, None, DoubleWithUnit)
 DoubleWithUnit.__mul__ = new_instancemethod(_double_with_unit.DoubleWithUnit___mul__, None, DoubleWithUnit)
 DoubleWithUnit.__div__ = new_instancemethod(_double_with_unit.DoubleWithUnit___div__, None, DoubleWithUnit)
+DoubleWithUnit.__truediv__ = new_instancemethod(_double_with_unit.DoubleWithUnit___truediv__, None, DoubleWithUnit)
 DoubleWithUnit.__add__ = new_instancemethod(_double_with_unit.DoubleWithUnit___add__, None, DoubleWithUnit)
 DoubleWithUnit.__sub__ = new_instancemethod(_double_with_unit.DoubleWithUnit___sub__, None, DoubleWithUnit)
 DoubleWithUnit_swigregister = _double_with_unit.DoubleWithUnit_swigregister
