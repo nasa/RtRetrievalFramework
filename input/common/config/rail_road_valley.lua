@@ -351,17 +351,9 @@ function init_rrv(config)
         config.fm.instrument.instrument_correction.eof_m_gain_1.retrieve_bands = { false, false, false }
     else
         -- Remove eof_ from OCO instrument correction tables
-        ic_tables = { config.fm.instrument.instrument_correction.ic_glint, 
-                      config.fm.instrument.instrument_correction.ic_nadir,
-                      config.fm.instrument.instrument_correction.ic_target, }
-        for i, ic in ipairs(ic_tables) do
-            for j, ic_name in ipairs(ic) do
-                if (string.match(ic_name, "eof_")) then
-                    remove_at = table.index(ic, ic_name)
-                    table.remove(ic, remove_at)
-                end
-            end
-        end
+        config.fm.instrument.instrument_correction.ic_glint = {}
+        config.fm.instrument.instrument_correction.ic_nadir = {}
+        config.fm.instrument.instrument_correction.ic_target = {}
     end
 
     -- Disable zero offset correction retrieval
