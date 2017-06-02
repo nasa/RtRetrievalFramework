@@ -214,6 +214,7 @@ OcoBaseConfig = OcoConfig:new {
 	       scale_to_stddev = 1e19,
                creator = ConfigCommon.empirical_orthogonal_function,
                retrieve_bands = { true, true, true },
+	       eof_used = {true, true, true},
             },
             eof_nadir_2 = {
                hdf_group = "Instrument/EmpiricalOrthogonalFunction/Nadir",
@@ -225,6 +226,7 @@ OcoBaseConfig = OcoConfig:new {
 	       scale_to_stddev = 1e19,
                creator = ConfigCommon.empirical_orthogonal_function,
                retrieve_bands = { true, true, true },
+	       eof_used = {true, true, true},
             },
             eof_nadir_3 = {
                hdf_group = "Instrument/EmpiricalOrthogonalFunction/Nadir",
@@ -236,6 +238,7 @@ OcoBaseConfig = OcoConfig:new {
 	       scale_to_stddev = 1e19,
                creator = ConfigCommon.empirical_orthogonal_function,
                retrieve_bands = { true, true, true },
+	       eof_used = {true, true, true},
             },
             eof_glint_1 = {
                hdf_group = "Instrument/EmpiricalOrthogonalFunction/Glint",
@@ -247,6 +250,7 @@ OcoBaseConfig = OcoConfig:new {
 	       scale_to_stddev = 1e19,
                creator = ConfigCommon.empirical_orthogonal_function,
                retrieve_bands = { true, true, true },
+	       eof_used = {true, true, true},
             },
             eof_glint_2 = {
                hdf_group = "Instrument/EmpiricalOrthogonalFunction/Glint",
@@ -258,6 +262,7 @@ OcoBaseConfig = OcoConfig:new {
 	       scale_to_stddev = 1e19,
                creator = ConfigCommon.empirical_orthogonal_function,
                retrieve_bands = { true, true, true },
+	       eof_used = {true, true, true},
             },
             eof_glint_3 = {
                hdf_group = "Instrument/EmpiricalOrthogonalFunction/Glint",
@@ -269,6 +274,7 @@ OcoBaseConfig = OcoConfig:new {
 	       scale_to_stddev = 1e19,
                creator = ConfigCommon.empirical_orthogonal_function,
                retrieve_bands = { true, true, true },
+	       eof_used = {true, true, true},
             },
             eof_glint_4 = {
                hdf_group = "Instrument/EmpiricalOrthogonalFunction/Glint",
@@ -280,6 +286,7 @@ OcoBaseConfig = OcoConfig:new {
                scale_to_stddev = 1e19,
                creator = ConfigCommon.empirical_orthogonal_function,
                retrieve_bands = { true, true, true },
+	       eof_used = {true, true, true},
             },
             eof_target_1 = {
                hdf_group = "Instrument/EmpiricalOrthogonalFunction/Target",
@@ -291,6 +298,7 @@ OcoBaseConfig = OcoConfig:new {
 	       scale_to_stddev = 1e19,
                creator = ConfigCommon.empirical_orthogonal_function,
                retrieve_bands = { true, true, true },
+	       eof_used = {true, true, true},
             },
             eof_target_2 = {
                hdf_group = "Instrument/EmpiricalOrthogonalFunction/Target",
@@ -302,6 +310,7 @@ OcoBaseConfig = OcoConfig:new {
 	       scale_to_stddev = 1e19,
                creator = ConfigCommon.empirical_orthogonal_function,
                retrieve_bands = { true, true, true },
+	       eof_used = {true, true, true},
             },
             eof_target_3 = {
                hdf_group = "Instrument/EmpiricalOrthogonalFunction/Target",
@@ -313,6 +322,7 @@ OcoBaseConfig = OcoConfig:new {
 	       scale_to_stddev = 1e19,
                creator = ConfigCommon.empirical_orthogonal_function,
                retrieve_bands = { true, true, true },
+	       eof_used = {true, true, true},
             },
 
             -- Disabled by default, add "radiance_scaling" to 
