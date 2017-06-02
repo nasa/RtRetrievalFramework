@@ -159,7 +159,9 @@ if [ "$do_aggregate" = "True" ]; then
     input_files_tmp=$(mktemp)
     l2_agg_fn=${output_directory}/l2_aggregate_$(printf "%04d" $job_index).h5
     l1_agg_fn=${output_directory}/l1_aggregate_$(printf "%04d" $job_index).h5
-    find ${output_directory} -name "*.h5" > $input_files_tmp
+    for i in `seq ${beg_id_index} ${end_id_index}`; do
+	ls ${output_directory}/l2_${id_list[$i]}.h5 >> $input_files_tmp
+    done
     /l2_support_fake_path/utils/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -l ${log_directory}/l2_aggregate_$(printf "%04d" $job_index).log
     rm $input_files_tmp
 
