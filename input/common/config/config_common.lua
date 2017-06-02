@@ -1235,7 +1235,9 @@ function ConfigCommon.instrument_correction_list:create_parent_object(sub_object
       local icorr_vec = VectorInstrumentCorrection()
       local j, s
       for j, s in ipairs(sub_object) do
-         icorr_vec:push_back(s[i])
+	 if(s[i] ~= nil) then
+	    icorr_vec:push_back(s[i])
+	 end
       end
       res:push_back(icorr_vec)
    end
@@ -1323,7 +1325,9 @@ function ConfigCommon.empirical_orthogonal_function:create()
 
    for i=1,self.config.number_pixel:rows() do
       local fit_scale = self:retrieval_flag(i)
-      if(self.by_pixel) then
+      if(self.eof_used ~= nil and self.eof_used[i] == false) then
+	 res[i] = nil
+      elseif(self.by_pixel) then
 	 if(self.scale_uncertainty) then
     -- Luabind can only handle up to 10 arguments per function. As an easy
     -- work around we put various values into an array
@@ -1368,8 +1372,10 @@ end
 
 function ConfigCommon.empirical_orthogonal_function:register_output(ro)
    for i=1,self.config.number_pixel:rows() do
-      ro:push_back(EmpiricalOrthogonalFunctionOutput.create(self.eof[i], 
-                           self.config.common.hdf_band_name:value(i-1)))
+      if(self.eof[i] ~= nil) then
+	 ro:push_back(EmpiricalOrthogonalFunctionOutput.create(self.eof[i], 
+	              self.config.common.hdf_band_name:value(i-1)))
+      end
    end
 end
 
