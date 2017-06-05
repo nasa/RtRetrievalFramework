@@ -1379,6 +1379,17 @@ function ConfigCommon.empirical_orthogonal_function:register_output(ro)
    end
 end
 
+function ConfigCommon.empirical_orthogonal_function:retrieval_flag(i)
+   --- Use CreatorMultiSpec
+   local flag
+   flag = CreatorMultiSpec.retrieval_flag(self, i)
+   --- But override to make sure we don't retrieve EOFs we aren't using
+   if(self.eof_used ~= nil and self.eof_used[i] == false) then
+      flag:set(Range.all(), false)
+   end
+   return flag
+end
+
 ------------------------------------------------------------
 --- Create a RadianceScalingSvFit correction
 ------------------------------------------------------------
