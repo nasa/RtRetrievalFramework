@@ -18,6 +18,24 @@ export PATH=/fake_bin_path
 export LD_LIBRARY_PATH=/fake_lib_path
 export LUA_PATH="/fake_path/input/gosat/config/?.lua;/l2_lua_fake_path"
 
+function email_results {
+    echo "Emailing results"
+    cat <<EOF | mail -s "Aggregation ended" $email_address
+Aggregation has ended for the file
+${l2_agg_fn}
+
+File information:
+$(h5ls ${l2_agg_fn}/RetrievalHeader/sounding_id_reference 2>&1)
+
+Plus for file information:
+$(h5ls ${l2_plus_more_agg_fn}/RetrievalHeader/sounding_id_reference 2>&1)
+EOF
+}
+
+if [ ! -z $email_address ]; then
+    trap email_results EXIT
+fi
+
 if [ -w "/state/partition1/" ]; then
     worker_temp=/state/partition1/
 else
@@ -123,17 +141,5 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
     fi
 else
     echo "L2 plus more file exists, skipping creation"
-fi
-if [ ! -z $email_address ]; then
-   cat <<EOF | mail -s "Aggregation ended" $email_address
-Aggregation has ended for the file
-${l2_agg_fn}
-
-File information:
-$(h5ls ${l2_agg_fn}/RetrievalHeader/sounding_id_reference 2>&1)
-
-Plus for file information:
-$(h5ls ${l2_plus_more_agg_fn}/RetrievalHeader/sounding_id_reference 2>&1)
-EOF
 fi
 
