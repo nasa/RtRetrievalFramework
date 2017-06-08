@@ -11,60 +11,62 @@ import numpy as np
 
 from full_physics.fp_perturbation import FmPerturbations, PerturbTypeDesc, register_perturb_type, register_multiple_perturb_types, register_perturb_init, filter_perturb_funcs
 
-from full_physics import AerosolExtinctionLinear, AerosolPropertyHdf, AerosolOptical, vector_aerosol_extinction, vector_aerosol_property
+from full_physics import AerosolExtinctionLinear, AerosolPropertyHdf, AerosolOptical, vector_aerosol_extinction, vector_aerosol_property, Logger, FpLogger
+
+logger = FpLogger(FpLogger.INFO)
+Logger.set_implementation(logger)
+def log_info(info_str):
+    logger.write(FpLogger.INFO, info_str)
+
+def log_flush():
+    logger.flush(FpLogger.INFO)
 
 ################################################################################
 
+PERTURB_PRESSURE_DS_PREFIX = "/CloudPerturbations/PressureLevels_"
+PERTURB_AER_PROFILES_DS_PREFIX = "/CloudPerturbations/Profiles_"
+PERTURB_TYPES_USED_DS_PREFIX = "/CloudPerturbations/TypesUsed_"
 
-@register_multiple_perturb_types("cloud_pressure")
-def perturb_cloud_top_pressure():
+@register_multiple_perturb_types("cloud_jacobians")
+def perturb_cloud_jacobians():
 
-    pressure_perturb_def = { 'top': '/Perturbations/PressureLevels_ctP', 'bottom': '/Perturbations/PressureLevels_cbP' }
-    for perturb_name, pressure_dataset in pressure_perturb_def.items():
-        def make_perturb(perturb_name, pressure_dataset):
-            def perturb_pressure(ls, lua_config):
-                hdf_file = lua_config.l1b_hdf_file(lua_config)
+    cloud_perturb_def = { "optical_depth": "tau", "cloud_top_pressure": "ctP", "cloud_bottom_pressure": "cbP" }
 
-                sid = lua_config.l1b_sid_list(lua_config)
-                frame_idx = sid.frame_number
-                sounding_idx = sid.sounding_number
+    for perturb_name, ds_suffix in cloud_perturb_def.items():
+        def make_perturb(perturb_name, ds_suffix):
+            def perturb_cloud(ls, lua_config):
 
-                ct_pressures = hdf_file.read_double_3d(pressure_dataset)[frame_idx, sounding_idx, :]
-             
-                orig_pressures = lua_config.pressure.pressure_grid.value.value
-                lua_config.pressure.set_levels_from_grid(ct_pressures)
-
-                yield PerturbTypeDesc("cloud_pressure/%s" % perturb_name, "Perturbation of cloud top pressure at pressure level", None)
-
-                # Reset pressure levels to their initial state
-                lua_config.pressure.set_levels_from_grid(orig_pressures)
-            return perturb_pressure
-        yield perturb_name, make_perturb(perturb_name, pressure_dataset)
-    
-@register_multiple_perturb_types("aerosol_extinction")
-def perturb_aerosol_extinction():
-
-    aerosol_perturb_def = { 'extinction': ("/Aerosol/TypesUsed", "/Perturbations/Profiles"),
-                            'type': ("/Perturbations/TypesUsed", "/Aerosol/Profiles"), }
-    for perturb_name, ds_names in aerosol_perturb_def.items():
-        def make_perturb(perturb_name, types_dataset_name, profiles_dataset_name):
-            def perturb_aerosol(ls, lua_config):
+                orig_pressure = lua_config.pressure.pressure_grid.value.value
                 orig_aerosol = lua_config.atmosphere.aerosol
-                print("Original aerosol: ", orig_aerosol)
 
-                new_aerosol = create_aerosol_setup(lua_config, types_dataset_name, profiles_dataset_name)
-                print("New aerosol: ", new_aerosol)
+                new_pressure = get_perturb_pressure(lua_config, PERTURB_PRESSURE_DS_PREFIX + ds_suffix)
+                new_aerosol = get_aerosol_setup(lua_config, PERTURB_TYPES_USED_DS_PREFIX + ds_suffix, PERTURB_AER_PROFILES_DS_PREFIX + ds_suffix)
 
+                lua_config.pressure.set_levels_from_grid(new_pressure)
                 lua_config.atmosphere.set_aerosol(new_aerosol, lua_config.state_vector)
 
-                yield PerturbTypeDesc("aerosol/%s" % perturb_name, "Perturbation of aerosol for %s" % perturb_name, None)
+                yield PerturbTypeDesc(perturb_name, "Perturbation of clouds for %s" % perturb_name, None)
 
+                lua_config.pressure.set_levels_from_grid(orig_pressure)
                 lua_config.atmosphere.set_aerosol(orig_aerosol, lua_config.state_vector)
-            return perturb_aerosol
-        types_dataset_name, profiles_dataset_name = ds_names
-        yield perturb_name, make_perturb(perturb_name, types_dataset_name, profiles_dataset_name)
 
-def create_aerosol_setup(lua_config, types_dataset_name, profiles_dataset_name):
+            return perturb_cloud
+
+        yield perturb_name, make_perturb(perturb_name, ds_suffix)
+
+def get_perturb_pressure(lua_config, pressure_dataset):
+    hdf_file = lua_config.l1b_hdf_file(lua_config)
+
+    sid = lua_config.l1b_sid_list(lua_config)
+    frame_idx = sid.frame_number
+    sounding_idx = sid.sounding_number
+
+    new_pressure = hdf_file.read_double_3d(pressure_dataset)[frame_idx, sounding_idx, :]
+    log_info("Setting Pressure Levels:\n%s\n" % new_pressure)
+ 
+    return new_pressure
+
+def get_aerosol_setup(lua_config, types_dataset_name, profiles_dataset_name):
     hdf_file = lua_config.l1b_hdf_file(lua_config)
 
     sid = lua_config.l1b_sid_list(lua_config)
@@ -82,6 +84,8 @@ def create_aerosol_setup(lua_config, types_dataset_name, profiles_dataset_name):
         if idx >= 0:
             aerosols_used.add(type_names[idx])
 
+    log_info("Setting Aerosol Types: %s\n" % list(aerosols_used))
+
     aerosol_extinction = vector_aerosol_extinction()
     aerosol_properties = vector_aerosol_property()
     for aer_name in aerosols_used:
@@ -89,6 +93,8 @@ def create_aerosol_setup(lua_config, types_dataset_name, profiles_dataset_name):
         ret_flag = np.zeros(profile.shape[0], dtype=bool)
         ext = AerosolExtinctionLinear(lua_config.pressure, ret_flag, profile, aer_name)
         aerosol_extinction.push_back(ext)
+
+        log_info("Aerosol profile for %s:\n%s\n" % (aer_name, profile))
 
         aer_hdf_file = lua_config.h_aerosol(lua_config)
         prop = AerosolPropertyHdf(aer_hdf_file, "%s/Properties" % aer_name, lua_config.pressure)

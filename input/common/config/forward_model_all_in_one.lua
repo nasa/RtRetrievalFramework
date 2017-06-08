@@ -92,6 +92,10 @@ function init_forward_model(config)
 
        if (ground_type == "lambertian") then
           return ConfigCommon.ground_lambertian
+       elseif (ground_type == "brdf_soil") then
+          return ConfigCommon.ground_brdf_soil
+       elseif (ground_type == "brdf_veg") then
+          return ConfigCommon.ground_brdf_veg
        elseif (ground_type == "coxmunk") then
           return ConfigCommon.ground_coxmunk
        else
