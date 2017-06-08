@@ -176,7 +176,7 @@ class DatasetInformation(object):
         for name, num_occurance in list(Counter(self.inp_shape_names).items()):
             if num_occurance > 1:
                 for name_count in range(1, num_occurance+1):
-                    self.inp_shape_names[self.inp_shape_names.index(name)] = "%s_%d" % (name, name_count)
+                    self.inp_shape_names[self.inp_shape_names.index(name)] = "%s%d" % (name, name_count)
 
     def _find_id_dims(self, file_obj, dataset_obj):
         "Finds where in the dataset's dimensions the id dimensions are indexed"
@@ -646,12 +646,19 @@ class ProductSplicer(object):
             # Figure out where into the output file to copy source data for this file
             output_indexes = numpy.array([ self.source_info.found_ids_to_index[sid] for sid in curr_snd_ids ])
             index_count = numpy.sum(output_indexes[1:] - output_indexes[:-1]) + 1
-            if index_count != output_indexes.shape[0]:
-                raise ValueError("Output indexes do not appear to be contiguous: %s vs %s" % (index_count, output_indexes.shape[0]))
-            output_slice = slice(output_indexes[0], output_indexes[-1] + 1)
 
-            for curr_dataset_name, out_dataset_idx, stored_data in self.get_datasets_for_file(curr_file, curr_snd_indexes, output_slice):
-                self.out_dataset_objs[curr_dataset_name].__setitem__(tuple(out_dataset_idx), stored_data)
+            if index_count != output_indexes.shape[0]:
+                # Slices are not contiguous so copy each index individually, slower
+                output_slices = []
+                for indiv_in_index, indiv_out_index in zip(curr_snd_indexes, output_indexes):
+                    output_slices.append( ([indiv_in_index], slice(indiv_out_index, indiv_out_index + 1)) )
+            else:
+                # When output indexes are contiguous, faster
+                output_slices = [ (curr_snd_indexes, slice(output_indexes[0], output_indexes[-1] + 1)) ]
+
+            for curr_in_indexes, curr_out_slice in output_slices:
+                for curr_dataset_name, out_dataset_idx, stored_data in self.get_datasets_for_file(curr_file, curr_in_indexes, curr_out_slice):
+                    self.out_dataset_objs[curr_dataset_name].__setitem__(tuple(out_dataset_idx), stored_data)
 
             self.progress.update(file_index)
 
