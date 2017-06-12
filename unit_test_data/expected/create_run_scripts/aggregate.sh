@@ -19,8 +19,16 @@ export LD_LIBRARY_PATH=/fake_lib_path
 export LUA_PATH="/fake_path/input/gosat/config/?.lua;/l2_lua_fake_path"
 
 function email_results {
+# Right now, the second results email often isn't sent. I don't know why that
+# happens, there is no error message or anything. But for now we'll send a
+# separate email saying we are done, and then send results separate.
+    echo "Email that jobs is finished"
+    cat <<EOF | mail -s "Aggregation finished" $email_address
+Aggregation has finished for the file
+${l2_agg_fn}
+EOF
     echo "Results:"
-    echo <<EOF
+    cat <<EOF
 Aggregation has finished for the file
 ${l2_agg_fn}
 
@@ -31,7 +39,7 @@ Plus for file information:
 $(h5ls ${l2_plus_more_agg_fn}/RetrievalHeader/sounding_id_reference 2>&1)
 EOF
     echo "Emailing results"
-    cat <<EOF | mail -s "Aggregation done" $email_address
+    cat <<EOF | mail -s "Aggregation results" $email_address
 Aggregation has finished for the file
 ${l2_agg_fn}
 
