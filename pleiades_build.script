@@ -78,12 +78,12 @@ if [ -e /usr/share/modules/init/bash ]; then
     sles_version=$(cat /etc/SuSE-release | grep VERSION | cut -d " " -f 3)
     if [ "$t" == "11" ]; then # This is for SLES11
         source /usr/share/modules/init/bash
-	module load gcc/4.7.3
-	module load python/2.7.8
+	module load gcc/4.9.3
+	module load python/2.7.11
 	module load ruby/1.9.1-p376	
     else # This is for SLES12
         source /usr/share/modules/init/bash
-        # No modules to select gcc. The system one is gcc 4.8.5
+	module load gcc/4.9.4
         module load /nasa/modulefiles/pkgsrc/sles12/python/2.7.12
         # This contains ruby 2.2.6p396
         module load /nasa/modulefiles/pkgsrc/sles12/pkgsrc/2016Q4
