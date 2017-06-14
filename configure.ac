@@ -26,6 +26,16 @@ AC_PROG_CXX
 AC_FC_LIBRARY_LDFLAGS
 AC_DETERMINE_COMPILER
 AC_PROG_SPHINX
+AC_PROG_PARALLEL
+if test "$have_parallel" = "no"; then
+   AC_MSG_WARN([
+The GNU parallel program is not found. This is used by the populate.py
+script used to create scripts to run multiple soundings through l2_fp.
+Without this package, these scripts won't be run. Try specifying
+location using PARALLEL variable if configure couldn't find the
+package. 
+])
+fi
 AC_PROG_NOSETESTS
 if test "$have_nosetests" = "no"; then
    AC_MSG_WARN([
@@ -404,6 +414,7 @@ LOC_MSG([  Build own BOOST library:      ${build_boost}])
 LOC_MSG([  Build own Blitz++ library:    ${build_blitz}])
 LOC_MSG([  Build own GSL library:        ${build_gsl}])
 LOC_MSG([  Build own LUA library:        ${build_lua}])
+LOC_MSG([  Build own GNU parallel:       ${build_parallel}])
 LOC_MSG([  Build own nose module:        ${build_nose}])
 LOC_MSG([  Build own h5py module:        ${build_h5py}])
 LOC_MSG([  Build own future module:      ${build_future}])

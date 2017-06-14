@@ -828,6 +828,11 @@ SWIG
 HAVE_NOSETESTS_FALSE
 HAVE_NOSETESTS_TRUE
 NOSETESTS
+BUILD_PARALLEL_FALSE
+BUILD_PARALLEL_TRUE
+HAVE_PARALLEL_FALSE
+HAVE_PARALLEL_TRUE
+PARALLEL
 HAVE_SPHINX_FALSE
 HAVE_SPHINX_TRUE
 SPHINXBUILD
@@ -991,6 +996,7 @@ enable_dependency_tracking
 with_gnu_ld
 with_sysroot
 enable_libtool_lock
+with_parallel
 with_python_swig
 enable_debug
 enable_addcheck
@@ -1704,6 +1710,11 @@ Optional Packages:
   --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
   --with-sysroot[=DIR]    Search for dependent libraries within DIR (or the
                           compiler's sysroot if not specified).
+  --with-parallel[=DIR]   use PARALLEL (default is yes if found) - it is
+                          possible to specify the root directory for PARALLEL
+                          (optional). You can also specify "build" if you want
+                          to build your own local copy. See also THIRDPARTY
+                          variable described below.
   --with-python-swig      build SWIG wrappers for use with Python (default is
                           no) - it is possible to specify a path to python
                           (optional)
@@ -24103,6 +24114,143 @@ fi
 
 
 
+have_parallel="no"
+build_parallel="no"
+
+# Check whether --with-parallel was given.
+if test "${with_parallel+set}" = set; then :
+  withval=$with_parallel;
+    if test "$withval" = "no"; then
+        want_parallel="no"
+    elif test "$withval" = "yes"; then
+        want_parallel="yes"
+        ac_parallel_path=""
+    elif test "$withval" = "build"; then
+        want_parallel="yes"
+        build_parallel="yes"
+        if test "x$prefix" = xNONE; then
+           ac_parallel_path="$ac_default_prefix"
+        else
+           ac_parallel_path="$prefix"
+        fi
+    else
+        want_parallel="yes"
+        ac_parallel_path="$withval"
+    fi
+
+else
+
+    want_parallel="yes"
+    if test "$THIRDPARTY" = "build"; then
+        want_parallel="yes"
+        build_parallel="yes"
+        if test "x$prefix" = xNONE; then
+           ac_parallel_path="$ac_default_prefix"
+        else
+           ac_parallel_path="$prefix"
+        fi
+    fi
+
+fi
+
+if test "x$want_parallel" = "xyes"; then
+   if test "$ac_parallel_path" != ""; then
+      PARALLEL=$ac_parallel_path/bin/parallel
+      succeeded=yes
+   else
+      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for parallel" >&5
+$as_echo_n "checking for parallel... " >&6; }
+      succeeded=no
+      # Extract the first word of "$PARALLEL", so it can be a program name with args.
+set dummy $PARALLEL; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_PARALLEL+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $PARALLEL in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_PARALLEL="$PARALLEL" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_PARALLEL="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+PARALLEL=$ac_cv_path_PARALLEL
+if test -n "$PARALLEL"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PARALLEL" >&5
+$as_echo "$PARALLEL" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+      if test -z "$PARALLEL" ; then
+          have_parallel=no
+          PARALLEL='echo "Error: parallel is not installed. " ; false'
+      else
+         have_parallel=yes
+      fi
+      if test "$succeeded" != "yes" ; then
+           { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+      else
+           { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+$as_echo "yes" >&6; }
+      fi
+   fi
+
+fi
+ if test "$have_parallel" = "yes"; then
+  HAVE_PARALLEL_TRUE=
+  HAVE_PARALLEL_FALSE='#'
+else
+  HAVE_PARALLEL_TRUE='#'
+  HAVE_PARALLEL_FALSE=
+fi
+
+ if test "$build_parallel" = "yes"; then
+  BUILD_PARALLEL_TRUE=
+  BUILD_PARALLEL_FALSE='#'
+else
+  BUILD_PARALLEL_TRUE='#'
+  BUILD_PARALLEL_FALSE=
+fi
+
+
+if test "$have_parallel" = "no"; then
+   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING:
+The GNU parallel program is not found. This is used by the populate.py
+script used to create scripts to run multiple soundings through l2_fp.
+Without this package, these scripts won't be run. Try specifying
+location using PARALLEL variable if configure couldn't find the
+package.
+" >&5
+$as_echo "$as_me: WARNING:
+The GNU parallel program is not found. This is used by the populate.py
+script used to create scripts to run multiple soundings through l2_fp.
+Without this package, these scripts won't be run. Try specifying
+location using PARALLEL variable if configure couldn't find the
+package.
+" >&2;}
+fi
+
         have_nosetests=no
 
         if test "$NOSETESTS" == ""; then
@@ -29849,6 +29997,14 @@ if test -z "${HAVE_SPHINX_TRUE}" && test -z "${HAVE_SPHINX_FALSE}"; then
   as_fn_error $? "conditional \"HAVE_SPHINX\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
+if test -z "${HAVE_PARALLEL_TRUE}" && test -z "${HAVE_PARALLEL_FALSE}"; then
+  as_fn_error $? "conditional \"HAVE_PARALLEL\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${BUILD_PARALLEL_TRUE}" && test -z "${BUILD_PARALLEL_FALSE}"; then
+  as_fn_error $? "conditional \"BUILD_PARALLEL\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
 if test -z "${HAVE_NOSETESTS_TRUE}" && test -z "${HAVE_NOSETESTS_FALSE}"; then
   as_fn_error $? "conditional \"HAVE_NOSETESTS\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
@@ -32848,6 +33004,9 @@ echo "  Build own GSL library:        ${build_gsl}"
 
 
 echo "  Build own LUA library:        ${build_lua}"
+
+
+echo "  Build own GNU parallel:       ${build_parallel}"
 
 
 echo "  Build own nose module:        ${build_nose}"
