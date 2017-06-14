@@ -76,7 +76,7 @@ set -e
 # Note if you change this, also change script/setup_fp_env.sh.in
 if [ -e /usr/share/modules/init/bash ]; then
     sles_version=$(cat /etc/SuSE-release | grep VERSION | cut -d " " -f 3)
-    if [ "$t" == "11" ]; then # This is for SLES11
+    if [ "$sles_version" == "11" ]; then # This is for SLES11
         source /usr/share/modules/init/bash
 	module load gcc/4.9.3
 	module load python/2.7.11

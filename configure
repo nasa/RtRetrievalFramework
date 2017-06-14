@@ -24234,22 +24234,6 @@ else
 fi
 
 
-if test "$have_parallel" = "no"; then
-   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING:
-The GNU parallel program is not found. This is used by the populate.py
-script used to create scripts to run multiple soundings through l2_fp.
-Without this package, these scripts won't be run. Try specifying
-location using PARALLEL variable if configure couldn't find the
-package.
-" >&5
-$as_echo "$as_me: WARNING:
-The GNU parallel program is not found. This is used by the populate.py
-script used to create scripts to run multiple soundings through l2_fp.
-Without this package, these scripts won't be run. Try specifying
-location using PARALLEL variable if configure couldn't find the
-package.
-" >&2;}
-fi
 
         have_nosetests=no
 
