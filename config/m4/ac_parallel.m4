@@ -57,7 +57,7 @@ if test "x$want_parallel" = "xyes"; then
    else
       AC_MSG_CHECKING([for parallel])
       succeeded=no
-      AC_PATH_PROG([PARALLEL],[$PARALLEL])
+      AC_PATH_PROG([PARALLEL],[parallel])
       if test -z "$PARALLEL" ; then
           have_parallel=no
           PARALLEL='echo "Error: parallel is not installed. " ; false'
