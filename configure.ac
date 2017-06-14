@@ -27,15 +27,6 @@ AC_FC_LIBRARY_LDFLAGS
 AC_DETERMINE_COMPILER
 AC_PROG_SPHINX
 AC_PROG_PARALLEL
-if test "$have_parallel" = "no"; then
-   AC_MSG_WARN([
-The GNU parallel program is not found. This is used by the populate.py
-script used to create scripts to run multiple soundings through l2_fp.
-Without this package, these scripts won't be run. Try specifying
-location using PARALLEL variable if configure couldn't find the
-package. 
-])
-fi
 AC_PROG_NOSETESTS
 if test "$have_nosetests" = "no"; then
    AC_MSG_WARN([
