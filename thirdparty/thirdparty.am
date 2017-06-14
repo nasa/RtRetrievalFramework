@@ -21,7 +21,7 @@
 # list.
 #
 
-thirdparty: hdf5 boost lidort-3.6 2stream blitz gsl lua
+thirdparty: hdf5 boost lidort-3.6 2stream blitz gsl lua parallel
 
 # ========================================================================
 # Build radiant
@@ -138,6 +138,30 @@ BUILT_SOURCES += $(GSL_TARGET)
 endif
 
 # ========================================================================
+# Alternatively, if user specified that we build a local copy of GSL,
+# then we do that
+
+if BUILD_GSL
+BUILT_SOURCES += $(GSL_TARGET)
+endif
+
+# ========================================================================
+# Simple name to install GNU Parallel. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+.PHONY: parallel
+
+parallel: $(PARALLEL_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of parallel,
+# then we do that
+
+if BUILD_PARALLEL
+BUILT_SOURCES += $(PARALLEL_TARGET)
+endif
+
+# ========================================================================
 # Rule to Build HDF5.
 #
 # The --enable-using-memchecker option is used to prevent varioius (harmless)
@@ -159,6 +183,25 @@ $(HDF5_TARGET): $(thirdpartysrc)/$(HDF5_NAME).tar.gz
 	rm -rf $(HDF5_NAME)
 	touch $(HDF5_TARGET)
 	@echo "========================== Done building HDF-5"
+
+# ========================================================================
+# Rule to buile gnu parallel.
+#
+
+PARALLEL_NAME = parallel-20170522
+PARALLEL_TARGET = $(bindir)/parallel
+
+EXTRA_DIST += @thirdpartysrc@/$(PARALLEL_NAME).tar.gz
+
+$(PARALLEL_TARGET): $(thirdpartysrc)/$(PARALLEL_NAME).tar.gz
+	@echo "*************************** Building GNU Parallel"
+	${AMTAR} xzf $<
+	cd $(PARALLEL_NAME) && \
+        ./configure --prefix="$(prefix)" CXX="$(CXX)" CC="$(CC)" && \
+        $(MAKE) && $(MAKE) -j 1 install && exit 0; exit 1
+	rm -rf $(PARALLEL_NAME)
+	touch $(PARALLEL_TARGET)
+	@echo "========================== Done building GNU Parallel"
 
 # ========================================================================
 # Rule to Build bzlib.
