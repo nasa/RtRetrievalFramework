@@ -198,9 +198,9 @@ OcoBaseConfig = OcoConfig:new {
             -- If we end up doing this all the time in the future, we should
             -- consider just adding a new creator that doesn't pick the EOF
             -- base on mode. But for now leave this functionality in.
-            ic_nadir = { "eof_glint_1", "eof_glint_2","eof_glint_3","eof_glint_4",},
-            ic_glint = { "eof_glint_1", "eof_glint_2","eof_glint_3","eof_glint_4",},
-            ic_target = { "eof_glint_1", "eof_glint_2","eof_glint_3","eof_glint_4",},
+            ic_nadir = { "eof_glint_1", "eof_glint_2","eof_glint_3",},
+            ic_glint = { "eof_glint_1", "eof_glint_2","eof_glint_3",},
+            ic_target = { "eof_glint_1", "eof_glint_2","eof_glint_3",},
             --ic_nadir = { "eof_nadir_1", "eof_nadir_2", "eof_nadir_3",},
             --ic_glint = { "eof_glint_1", "eof_glint_2", "eof_glint_3",},
             --ic_target = { "eof_target_1", "eof_target_2", "eof_target_3",},
