@@ -3013,6 +3013,7 @@ input_DATA = @commoninputsrc@/l2_solar_model.h5 \
 	@commoninputsrc@/old_orbit_sim_solar_model.h5 \
 	@ftsinputsrc@/l2_fts_static_input.h5 \
 	@gosatinputsrc@/l2_gosat_static_input.h5 \
+	@gosatinputsrc@/l2_gosat_eof.h5 \
 	@ocoinputsrc@/l2_oco_static_input.h5 \
 	@ocoinputsrc@/l2_oco_eof.h5
 
