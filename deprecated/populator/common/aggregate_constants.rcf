@@ -1,0 +1,13 @@
+include = <CONTROL_FILE_DIRECTORY>/common_constants.rcf
+
+begin CONSTANTS 
+   sounding_id_list_filename = <aggregate_base_dir>/sounding_id.list
+
+   sdos_inputs_filename      = <aggregate_base_dir>/sdos_input_list.dat
+   job_script_filename       = <aggregate_base_dir>/l2_fp_torque_job.sh
+   aggregate_script_filename = <aggregate_base_dir>/aggregate.sh
+   qsub_script_filename      = <aggregate_base_dir>/launch_jobs.sh
+
+   log_directory             = <aggregate_base_dir>/log
+   output_directory          = <aggregate_base_dir>/output
+end CONSTANTS

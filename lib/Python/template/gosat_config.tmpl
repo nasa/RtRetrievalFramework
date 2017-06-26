@@ -1,0 +1,31 @@
+begin input
+   begin PGENameGroup
+      PGEName = GOSATFullPhysics 
+   end PGENameGroup
+
+   begin InputProductFiles
+      L1BFile = /path_to_/l1b.h5
+      ResampledMetFile = /path_to_/ecmwf.h5
+   end InputProductFiles
+
+   begin AlternativeSettings
+   end AlternativeSettings
+
+   begin GOSATFullPhysics
+      AggregateCounter = 1
+      begin LIST
+         name = SoundingIds
+         begin VALUES
+            200609141219580
+            200609141220000
+            200609141220000
+            200609141220020
+            200609141220020
+         end VALUES
+
+      end LIST
+
+   end GOSATFullPhysics
+
+end input
+

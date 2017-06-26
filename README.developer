@@ -1,0 +1,86 @@
+The build of l2_fp is slightly nonstandard. Because of the way the scientist
+are use to working, we build with the libtool flags
+-no-install -static-libtool-libs. This builds a executable with the "all"
+command, that can be directly run (e.g., it doesn't have the normal libtool
+shell script), and copied from the build directory w/o copying the libraries
+it links to.  This allows us to use the executables without doing the normal
+"make install".
+
+I'm not sure this is the right decision, we may want to revisit this.
+
+Debugging
+=========
+By default the build is optimized, which isn't good for using in a debugger. 
+With --enable-debug we compile with debugging information turned on.
+
+Building
+=================
+There are a number of directories that we need to keep track of when building.
+It is somewhat arbitrary how we do this. We have choosen to collect all of 
+this in the top level configure.in file. We could have just as easily 
+specified this is each of our automake files, but we needed to pick a way.
+
+To move directories or add new ones, edit the configure.in file.
+
+Autotools
+=================
+The system is built using the standard GNU autotools chain. If you are familiar
+with this, then this system is pretty standard. Things are set up as with most
+projects. Different projects seem to put local autoconf macros in different
+places, on this system they are in config/m4.
+
+If you are only vaguely familiar with autotools, it can be a bit confusing 
+about what files we generate, and which are derived files.
+
+The file ./booststrap can be used to initial generate the derived files.
+
+The input files are configure.in and Makefile.am. From these files the
+./configure and Makefile.in are generated. In addition to these file, there
+are local autoconf macros in config/m4, and derived files used by configure
+in the directory config. You can generally ignore these - you really need
+to know how to use autotools before you want to mess around with the
+autoconf macros (it isn't hard, just a bit obscure).
+
+To make it manageable, Makefile.am is broken into a number of pieces
+that are included into the top level Makefile.am file. Each directory
+with code has its own .am file that describes the code in that
+directory, for instance exe/full_physics/full_physics.am.
+
+Once these files are generated, the actual build is done by ./configure and
+make cycle that should be familiar if you've installed any of the GNU 
+software before. This generates an actual Makefile.
+
+If you are going to be changing the configure.in or .am files, it
+can be convenient to enable "maintainer mode" in the Makefiles. This adds rules
+in the Makefile to rebuild the ./configure and Makefile.in files as needed.
+To turn this on, you add the option "--enable-maintainer-mode" when you
+do configure, e.g, "./configure --enable-maintainer-mode".
+
+Autotools Problems
+==================
+Autotools has been showing its age and haphazard design for some time
+(often referred to as "auto-hell" see for example
+http://lwn.net/Articles/188693/), however right now there isn't an
+obvious replacement. Most FOSS project still use these tools, so for
+now we'll continue to do the same. KDE recently moved to CMake, but
+right now they are the only large project to use CMake.
+
+For a user, autotools stuff work fine, all of the complication is in
+writing the input files during development. Fortunately, Level 2 
+Physics isn't particularly complicated compared to other projects 
+(like KDE), so for now this complication is manageable.
+
+In the future, if there is a clear replacement for autotools, we may
+want to move this system to that.
+
+DOXYGEN
+==================
+Documentation is generated using doxygen (see 
+http://www.stack.nl/~dimitri/doxygen/). This generate html from the
+comments found in the code. Doxygen is commonly found on Linux
+systems, but if you are going to be generating the documentation you
+may need to install it.
+
+
+
+

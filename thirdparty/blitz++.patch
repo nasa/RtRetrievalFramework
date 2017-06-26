@@ -1,0 +1,73 @@
+diff -ur blitz++.old/blitz/funcs.h blitz++-0.9/blitz/funcs.h
+--- blitz++.old/blitz/funcs.h	2005-10-08 01:22:55.000000000 +0000
++++ blitz++-0.9/blitz/funcs.h	2007-12-11 23:39:56.000000000 +0000
+@@ -31,6 +31,8 @@
+ #include <blitz/promote.h>
+ #include <blitz/prettyprint.h>
+ 
++#include <cstdlib>
++
+ BZ_NAMESPACE(blitz)
+     
+ /* Helper functions */
+diff -ur blitz++.old/blitz/mathfunc.h blitz++-0.9/blitz/mathfunc.h
+--- blitz++.old/blitz/mathfunc.h	2005-05-18 20:22:38.000000000 +0000
++++ blitz++-0.9/blitz/mathfunc.h	2007-12-11 23:39:39.000000000 +0000
+@@ -12,6 +12,8 @@
+  #include <blitz/prettyprint.h>
+ #endif
+ 
++#include <cstdlib>
++
+ BZ_NAMESPACE(blitz)
+ 
+ // abs(P_numtype1)    Absolute value
+diff -ur blitz++.old/blitz/range.h blitz++-0.9/blitz/range.h
+--- blitz++.old/blitz/range.h	2005-05-18 20:22:38.000000000 +0000
++++ blitz++-0.9/blitz/range.h	2007-12-11 23:39:39.000000000 +0000
+@@ -89,9 +89,9 @@
+         : first_(first), last_(last), stride_(stride)
+     { 
+         BZPRECHECK((first == fromStart) || (last == toEnd) ||
+-                       (first < last) && (stride > 0) ||
+-                       (first > last) && (stride < 0) ||
+-                       (first == last), (*this) << " is an invalid range.");
++                  ((first < last) && (stride > 0)) ||
++                  ((first > last) && (stride < 0)) ||
++                  (first == last), (*this) << " is an invalid range.");
+         BZPRECHECK((last-first) % stride == 0,
+             (*this) << ": the stride must evenly divide the range");
+     }
+@@ -123,14 +123,14 @@
+ 
+     bool isAscendingContiguous() const
+     {
+-        return ((first_ < last_) && (stride_ == 1) || (first_ == last_));
++        return (((first_ < last_) && (stride_ == 1)) || (first_ == last_));
+     }
+ 
+     void setRange(int first, int last, int stride=1)
+     {
+-        BZPRECONDITION((first < last) && (stride > 0) ||
+-                       (first > last) && (stride < 0) ||
+-                       (first == last));
++      BZPRECONDITION(((first < last) && (stride > 0)) ||
++                    ((first > last) && (stride < 0)) ||
++                    (first == last));
+         BZPRECONDITION((last-first) % stride == 0);
+         first_ = first;
+         last_ = last;
+diff -ur blitz++.old/blitz/array/slicing.cc blitz++-0.9/blitz/array/slicing.cc
+--- blitz++.old/blitz/array/slicing.cc	2005-05-18 20:22:38.000000000 +0000
++++ blitz++-0.9/blitz/array/slicing.cc	2007-12-11 23:39:39.000000000 +0000
+@@ -325,8 +325,8 @@
+ #endif
+ 
+     BZPRECHECK(
+-        ((first <= last) && (stride > 0)
+-         || (first >= last) && (stride < 0))
++              (((first <= last) && (stride > 0))
++               || ((first >= last) && (stride < 0)))
+         && (first >= base(rank) && (first - base(rank)) < length_[rank])
+         && (last >= base(rank) && (last - base(rank)) < length_[rank]),
+         "Bad array slice: Range(" << first << ", " << last << ", "

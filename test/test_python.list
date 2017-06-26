@@ -1,0 +1,3 @@
+# Tests only run if we are building python
+TEST_LIST+= oco2_simulator
+TEST_LIST+= fm_errors_py

@@ -1,0 +1,31 @@
+#! /bin/bash
+
+rm -r tccon_sounding_${v}_test
+
+# Exit if any part fails
+set -e
+
+# Setup data to run
+$MAKE -f ${srcdir}/test/tccon_small_set/Makefile all job_index=$1 cmd=$2
+
+# Run orbit
+if [[ $# -lt 1 ]]; then
+    echo "Usage: $0 <job_index>"
+    echo "Please supply job array index"
+    exit 1
+else
+    job_index=$1
+fi
+v=$[ ${job_index} + 1 ]
+id_list=( `cat tccon_sounding_${v}_test/sounding_id.list` )
+sid="${id_list[${job_index}]}"
+abscodir=${abscodir}
+echo "Starting TCCON sounding ${sid}. Watch progress in tccon_sounding_${v}_test/log/l2_${sid}.log.running"
+tccon_sounding_${v}_test/l2_fp_job.sh -e ${job_index}
+if test ! -e tccon_sounding_${v}_test/output/l2_${sid}.h5; then
+    echo "File tccon_sounding_${v}_test/output/l2_${sid}.h5 not found"
+    exit 1
+fi
+cp tccon_sounding_${v}_test/output/l2_${sid}.h5 \
+${srcdir}/test/tccon_small_set/expected/l2_${sid}.h5
+

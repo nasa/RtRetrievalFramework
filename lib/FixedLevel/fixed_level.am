@@ -1,0 +1,42 @@
+fullphysicsinc_HEADERS += @fixedlevelsrc@/pressure_level_input.h
+libfp_la_SOURCES += @fixedlevelsrc@/pressure_level_input.cc
+fullphysicsinc_HEADERS += @fixedlevelsrc@/absorber_vmr_fixed_level.h
+libfp_la_SOURCES += @fixedlevelsrc@/absorber_vmr_fixed_level.cc
+fullphysicsinc_HEADERS += @fixedlevelsrc@/absorber_vmr_fixed_level_output.h
+libfp_la_SOURCES += @fixedlevelsrc@/absorber_vmr_fixed_level_output.cc
+fullphysicsinc_HEADERS += @fixedlevelsrc@/absorber_vmr_fixed_level_scaled.h
+libfp_la_SOURCES += @fixedlevelsrc@/absorber_vmr_fixed_level_scaled.cc
+fullphysicsinc_HEADERS += @fixedlevelsrc@/absorber_vmr_fixed_level_scaled_output.h
+libfp_la_SOURCES += @fixedlevelsrc@/absorber_vmr_fixed_level_scaled_output.cc
+fullphysicsinc_HEADERS += @fixedlevelsrc@/pressure_fixed_level.h
+libfp_la_SOURCES += @fixedlevelsrc@/pressure_fixed_level.cc
+fullphysicsinc_HEADERS += @fixedlevelsrc@/temperature_fixed_level.h
+libfp_la_SOURCES += @fixedlevelsrc@/temperature_fixed_level.cc
+libfp_la_SOURCES += @fixedlevelsrc@/pressure_fixed_level_output.cc
+fullphysicsinc_HEADERS += @fixedlevelsrc@/pressure_fixed_level_output.h
+libfp_la_SOURCES += @fixedlevelsrc@/temperature_fixed_level_output.cc
+fullphysicsinc_HEADERS += @fixedlevelsrc@/temperature_fixed_level_output.h
+
+SWIG_SRC += @swigsrc@/pressure_level_input_wrap.cc
+SWIG_SRC += @swigsrc@/pressure_fixed_level_wrap.cc
+SWIG_SRC += @swigsrc@/temperature_fixed_level_wrap.cc
+SWIG_SRC += @swigsrc@/absorber_vmr_fixed_level_wrap.cc
+SWIG_SRC += @swigsrc@/absorber_vmr_fixed_level_scaled_wrap.cc
+
+EXTRA_DIST += @fixedlevelsrc@/*.i
+
+lib_test_all_SOURCES+= @fixedlevelsrc@/pressure_level_input_test.cc
+lib_test_all_SOURCES+= @fixedlevelsrc@/pressure_fixed_level_output_test.cc
+lib_test_all_SOURCES+= @fixedlevelsrc@/temperature_fixed_level_output_test.cc
+lib_test_all_SOURCES+= @fixedlevelsrc@/absorber_vmr_fixed_level_test.cc
+lib_test_all_SOURCES+= @fixedlevelsrc@/absorber_vmr_fixed_level_scaled_test.cc
+lib_test_all_SOURCES+= @fixedlevelsrc@/pressure_fixed_level_test.cc
+lib_test_all_SOURCES+= @fixedlevelsrc@/temperature_fixed_level_test.cc
+
+# Allow files to be included in other directories.
+AM_CPPFLAGS+= -I$(srcdir)/@fixedlevelsrc@
+
+# Allow searchs for .i, .h. and .cc files in this directory
+vpath %.cc $(srcdir)/@fixedlevelsrc@
+vpath %.h $(srcdir)/@fixedlevelsrc@
+vpath %.i $(srcdir)/@fixedlevelsrc@

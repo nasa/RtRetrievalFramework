@@ -1,0 +1,11 @@
+begin HEADER
+  File_ID       = "Empirical Noise Correction Constants"
+  File_Creation = "Thu Oct 21 13:53:41 PDT 2010"
+  File_Type     = "Matrix"
+  Num_Rows      = 2
+  Num_Columns   = 3
+  Labels        = "EMP_NOISE_1" "EMP_NOISE_2" "EMP_NOISE_3"
+end HEADER
+# EMP_NOISE_1 EMP_NOISE_2 EMP_NOISE_3
+  0.00347370  0.00206760  0.00511459
+  1.06373     0.778230    1.11895

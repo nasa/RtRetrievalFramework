@@ -1,0 +1,33 @@
+begin input
+   begin PGENameGroup
+      PGEName = UqFullPhysics 
+   end PGENameGroup
+
+   begin InputProductFiles
+      UqFile = /path_to_/uq.h5
+   end InputProductFiles
+
+   begin AlternativeSettings
+   end AlternativeSettings
+
+   begin UqFullPhysics
+      AggregateCounter = 1
+      begin LIST
+         name = SoundingIds
+         begin VALUES
+             201410110010001
+             201410110010002
+             201410110010003
+             201410110010004
+             201410110010005
+             201410110010006
+             201410110010007
+             201410110010008 
+         end VALUES
+
+      end LIST
+
+   end UqFullPhysics
+
+end input
+

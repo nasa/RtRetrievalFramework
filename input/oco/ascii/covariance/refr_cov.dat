@@ -1,0 +1,11 @@
+begin HEADER
+  File_ID = "Refractive Index Covariance Matrix"
+  File_Creation = "Thu Feb 12 17:55:23 PST 2009"
+  File_Type = "Matrix"
+  Num_Rows = 3
+  Num_Columns = 3
+end HEADER
+
+  2.5d-5 0.0d0  0.0d0
+  0.0d0  2.5d-5 0.0d0
+  0.0d0  0.0d0  2.5d-5

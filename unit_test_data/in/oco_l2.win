@@ -1,0 +1,68 @@
+######################################
+# GOSAT spectrometers associated with
+# OCO spectrometer channels
+
+begin WINDOW
+      id = ABO2_OCO
+      name = O2 A Band - GOSAT Band 1
+      units = wavenumber
+      range = 12950. 13190.
+      species = O2 H2O
+end WINDOW
+
+begin WINDOW
+      id = WCO2_OCO
+      name = Weak CO2 - GOSAT Band 2
+      units = wavenumber
+      range = 6166.  6286.
+      species = CO2 H2O
+end WINDOW
+
+begin WINDOW
+      id = SCO2_OCO
+      name = Strong CO2 - GOSAT Band 3
+      units = wavenumber
+      range = 4810.  4897.
+      species = CO2 H2O
+end WINDOW
+
+######################################
+# GOSAT spectrometers matching range
+# in ACOS L1B file. Shortened to match
+# available absco data
+
+begin WINDOW
+      id = ABO2_Obs
+      name = O2 A Band - GOSAT Band 1
+      units = wavenumber
+      range = 12870. 13200.
+      species = O2
+end WINDOW
+
+begin WINDOW
+      id = WCO2_Obs
+      name = Weak CO2 - GOSAT Band 2
+      units = wavenumber
+      range = 6100.  6400.
+      species = CO2 H2O
+end WINDOW
+
+begin WINDOW
+      id = SCO2_Obs
+      name = Strong CO2 - GOSAT Band 3
+      units = wavenumber
+      range = 4807.  5100.
+      species = CO2 H2O
+end WINDOW
+
+###########################
+# GOSAT Thermal IR channel
+
+begin WINDOW
+      id = TIR
+      name = TIR - GOSAT Band 5
+      units = wavenumber
+      range = 700. 1800.
+      species = H2O CH4 O3 CO2
+end WINDOW
+

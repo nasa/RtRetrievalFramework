@@ -1,0 +1,204 @@
+#include <Python.h>
+#include <iostream>
+#include "swig_type_mapper_base.h"
+
+// Python 2 and 3 do strings differently, so we have a simple macro to 
+// keep from having lots of ifdefs spread around. See 
+// https://wiki.python.org/moin/PortingExtensionModulesToPy3k for details on
+// this.
+#if PY_MAJOR_VERSION > 2
+#define Text_FromUTF8(str) PyUnicode_FromString(str)
+#else
+#define Text_FromUTF8(str) PyString_FromString(str)
+#endif
+
+// Python 2 and 3 have different name for their swig init functions
+#if PY_MAJOR_VERSION > 2
+#define SWIG_INIT_FUNC(S) PyInit__ ## S
+#define SWIG_INIT_TYPE PyObject *
+#define SWIG_INIT_MODULE init_extension_module3
+#else
+#define SWIG_INIT_FUNC(S) init_ ## S
+#define SWIG_INIT_TYPE void
+#define SWIG_INIT_MODULE init_extension_module2
+#endif
+using namespace FullPhysics;
+// Map used between type_index and object to map this to python.
+std::map<type_index, boost::shared_ptr<SwigTypeMapperBase> > 
+  FullPhysics::swig_type_map;
+
+extern "C" {{
+#if PY_MAJOR_VERSION > 2
+  PyObject * PyInit__swig_wrap(void);
+#else
+  void init_swig_wrap(void);
+#endif
+{prototypes}
+}}
+
+// Used throughout SWIG wrapper, define here because it is convenient.
+std::string parse_python_exception() {{
+  PyObject *type = NULL, *value = NULL, *tb = NULL;
+  PyErr_Fetch(&type, &value, &tb);
+  PyObject* mod = PyImport_ImportModule("traceback");
+  PyObject* err_str_list = NULL;
+  if(tb)
+    err_str_list = PyObject_CallMethodObjArgs(mod,
+	      Text_FromUTF8("format_exception"), type, value, tb, NULL);
+  std::string ret = "Python error that I can't parse";
+  if(err_str_list) {{
+    PyObject* err_str = 
+      PyObject_CallMethodObjArgs(Text_FromUTF8(""),
+				 Text_FromUTF8("join"), 
+				 err_str_list, NULL);
+    if(err_str) {{
+        PyObject * temp_bytes = PyUnicode_AsEncodedString(err_str, "ASCII", 
+	"strict");
+        ret = PyBytes_AS_STRING(temp_bytes); // Borrowed pointer
+        Py_DECREF(temp_bytes);
+    }}
+    Py_XDECREF(err_str);
+  }} else if(value) {{
+    PyObject * temp_bytes = PyUnicode_AsEncodedString(value, "ASCII", 
+	"strict");
+    ret = PyBytes_AS_STRING(temp_bytes); // Borrowed pointer
+    Py_DECREF(temp_bytes);
+  }}
+  Py_XDECREF(mod);
+  Py_XDECREF(err_str_list);
+  Py_XDECREF(type);
+  Py_XDECREF(value);
+  Py_XDECREF(tb);
+  return ret;
+}}
+
+#if PY_MAJOR_VERSION > 2
+// Version for python 3
+static void init_extension_module3(PyObject* package, const char *modulename,
+				  PyObject * (*initfunction)(void)) {{
+  PyObject *module = initfunction();
+  PyObject *module_dic = PyImport_GetModuleDict();
+  PyDict_SetItem(module_dic, Text_FromUTF8(modulename), module);
+  if(PyModule_AddObject(package, (char *)modulename, module)) {{
+    std::cerr << "Initialisation in PyImport_AddObject failed for module "
+	      << modulename << "\n";
+    return;
+  }}
+  Py_INCREF(module);
+}}
+#else 
+// Version for python 2
+static void init_extension_module2(PyObject* package, const char *modulename,
+				  void (*initfunction)(void)) {{
+  PyObject *module = PyImport_AddModule((char *)modulename);
+  if(!module) {{
+    std::cerr << "Initialisation in PyImport_AddModule failed for module "
+	      << modulename << "\n";
+    return;
+  }}
+  if(PyModule_AddObject(package, (char *)modulename, module)) {{
+    std::cerr << "Initialisation in PyImport_AddObject failed for module "
+	      << modulename << "\n";
+    return;
+  }}
+  Py_INCREF(module);
+  initfunction();
+}}
+#endif
+
+
+// This next blob of code comes from 
+// https://wiki.python.org/moin/PortingExtensionModulesToPy3k
+
+struct module_state {{
+    PyObject *error;
+}};
+
+#if PY_MAJOR_VERSION >= 3
+#define GETSTATE(m) ((struct module_state*)PyModule_GetState(m))
+#else
+#define GETSTATE(m) (&_state)
+static struct module_state _state;
+#endif
+
+static PyObject *
+error_out(PyObject *m) {{
+    struct module_state *st = GETSTATE(m);
+    PyErr_SetString(st->error, "something bad happened");
+    return NULL;
+}}
+
+static PyMethodDef swig_wrap_methods[] = {{
+    {{"error_out", (PyCFunction)error_out, METH_NOARGS, NULL}},
+    {{NULL, NULL}}
+}};
+
+#if PY_MAJOR_VERSION >= 3
+
+static int swig_wrap_traverse(PyObject *m, visitproc visit, void *arg) {{
+    Py_VISIT(GETSTATE(m)->error);
+    return 0;
+}}
+
+static int swig_wrap_clear(PyObject *m) {{
+    Py_CLEAR(GETSTATE(m)->error);
+    return 0;
+}}
+
+
+static struct PyModuleDef moduledef = {{
+        PyModuleDef_HEAD_INIT,
+        "_swig_wrap",
+        NULL,
+        sizeof(struct module_state),
+        swig_wrap_methods,
+        NULL,
+        swig_wrap_traverse,
+        swig_wrap_clear,
+        NULL
+}};
+
+#define INITERROR return NULL
+
+PyObject *
+PyInit__swig_wrap(void)
+
+#else
+#define INITERROR return
+
+void
+init_swig_wrap(void)
+#endif
+{{
+#if PY_MAJOR_VERSION >= 3
+    PyObject *module = PyModule_Create(&moduledef);
+#else
+    PyObject *module = Py_InitModule("_swig_wrap", swig_wrap_methods);
+#endif
+
+    if (module == NULL) {{
+        std::cerr << "Initialization failed\n";
+        INITERROR;
+    }}
+    struct module_state *st = GETSTATE(module);
+
+    st->error = PyErr_NewException("swig_wrap.Error", NULL, NULL);
+    if (st->error == NULL) {{
+        Py_DECREF(module);
+        INITERROR;
+    }}
+
+  PyObject *package = PyImport_AddModule((char *)"new_geocal");
+  if(!package) {{
+      std::cerr << "Initialization failed\n";
+      INITERROR;
+  }}
+  
+{initcmd}
+
+#if PY_MAJOR_VERSION >= 3
+    return module;
+#endif
+}}
+
+

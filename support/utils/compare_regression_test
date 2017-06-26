@@ -1,0 +1,43 @@
+#! /usr/bin/env ruby
+# This compare two directories of HDF files. This is used in regression 
+# testing.
+
+require File.dirname(__FILE__) + '/ansicolor.rb'
+include Term::ANSIColor
+
+STDOUT.sync = true
+if(ARGV.size != 2)
+  puts <<END
+This compares two directories of HDF files, using compare_hdf. This
+is used in regression testing.
+END
+end
+dir1, dir2 = ARGV
+ok = true
+Dir.glob("#{dir1}/*.h5") do |f|
+  f2 = "#{dir2}/#{File.basename(f)}"
+  if(!File.exists?(f2))
+    puts red("\nFound file #{File.basename(f)} in first directory, but not the second")
+    ok = false
+  else
+    print "."
+    t = `#{File.dirname(__FILE__)}/compare_hdf #{f} #{f2}`
+    if($? != 0)
+      ok = false
+      puts red("\nComparison failed for #{File.basename(f)}:")
+      puts t
+    end
+  end
+end
+
+Dir.glob("#{dir2}/*.h5") do |f2|
+  f = "#{dir1}/#{File.basename(f2)}"
+  if(!File.exists?(f))
+    puts red("\nFound file #{File.basename(f2)} in second directory, but not the first")
+    ok = false
+  end
+end
+print "\n"
+puts green("Test passed") if(ok)
+puts red("Test failed") unless(ok)
+exit 1 unless(ok)

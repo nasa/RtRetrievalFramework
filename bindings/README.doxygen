@@ -1,0 +1,6 @@
+We will occasionally get a complaint when we try to generate python 
+documentation from SWIG about unicode characters. This comes from having
+nonASCII codes in a comments somewhere. A way to search for these:
+
+grep -P "[\x80-\xFF]" -R lib/
+

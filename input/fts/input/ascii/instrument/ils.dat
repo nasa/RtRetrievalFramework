@@ -1,0 +1,14 @@
+begin HEADER
+   File_ID            = "Instrument Line Shape parameters"
+   File_Creation      = "Thu May  7 16:11:02 PDT 2009"
+   File_Type          = "Matrix"
+   Num_Rows           = 0
+   Num_Columns        = 0
+   Labels             = "PARAMETER" "COEFFICIENT" "ILS_1" "ILS_2" "ILS_3"
+   num_ils_parameters = 3
+   num_ils_wndepend   = 1
+   ils_cycle          = 25 25 25
+   apo_m              = 1
+   interpolation      = 50 50 50      # resolution of fine grid/calculated grid
+end HEADER
+# HEADER only used. Coefficients read from runlog file

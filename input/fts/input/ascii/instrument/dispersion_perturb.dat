@@ -1,0 +1,12 @@
+begin HEADER
+  File_ID = "Dispersion parameters"
+  File_Creation = "Thu May  7 16:11:02 PDT 2009"
+  File_Type = "Matrix"
+  Num_Rows = 2
+  Num_Columns = 4
+  Labels = "PARAMETER" "DISP_1" "DISP_2" "DISP_3"
+end HEADER
+
+#parameter   DISP_1   DISP_2   DISP_3
+ 1           1.d-3    1.d-3    1.d-3 
+ 2           1.d-10   1.d-10   1.d-10

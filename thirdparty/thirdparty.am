@@ -1,0 +1,726 @@
+# *************************************************************************
+# Note that in most cases we want to export variables like CC and CXX to
+# the thirdparty library builds. However we don't want to assume that we
+# do this in all cases, so we don't just do a "export" at the Makefile level.
+# Instead we explicitly pass it to configure for thirdparty libraries when
+# we want to.
+#
+# If you add new thirdparty libraries, you will probably want to pass these
+# variables down the chain. See one of the existing libraries for how to
+# set this up.
+# *************************************************************************
+
+# ========================================================================
+# Build all thirdparty libraries.
+#
+# Note that we don't include radiant in this list. Right now we don't use
+# radiant at all. The hooks are still in place to build this if we want to,
+# but for now we don't.
+#
+# If we want to add radiant back in, it just needs to be put back into this
+# list.
+#
+
+thirdparty: hdf5 boost lidort-3.6 2stream blitz gsl lua parallel
+
+# ========================================================================
+# Build radiant
+
+# This code hasn't been built in a while, and we don't use it. We'll leave
+# the source in place, but don't allow a build. We can turn this back on
+# if needed at some point, but we'll need to make sure everything actually 
+# works first.
+# include thirdparty/radiant/radiant.am
+
+# ========================================================================
+# Build lidort 3.6
+
+include thirdparty/lidort-3.6/lidort-3.6.am
+
+# ========================================================================
+# Build 2stream
+
+include thirdparty/2stream/2stream.am
+
+# ========================================================================
+# Simple name to install HDF 5 library. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+.PHONY: hdf5
+
+hdf5: $(HDF5_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of HDF 5,
+# then we do that
+
+if BUILD_HDF5
+BUILT_SOURCES += $(HDF5_TARGET)
+endif
+
+# ========================================================================
+# Simple name to install boost library. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+.PHONY: boost
+boost: $(BOOST_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of boost,
+# then we do that
+
+if BUILD_BOOST
+BUILT_SOURCES += $(BOOST_TARGET)
+endif
+
+# ========================================================================
+# Simple name to install bzlib library. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+.PHONY: bzlib
+
+bzlib: $(BZLIB_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of bzlib,
+# then we do that
+
+if BUILD_BZLIB
+BUILT_SOURCES += $(BZLIB_TARGET)
+endif
+
+# ========================================================================
+# Simple name to install Lua library. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+.PHONY: lua
+
+lua: $(LUABIND_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of Lua,
+# then we do that
+
+if BUILD_LUA
+BUILT_SOURCES += $(LUABIND_TARGET)
+endif
+
+# ========================================================================
+# Simple name to install Blitz++ library. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+.PHONY: blitz
+
+blitz: $(BLITZ_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of Blitz++,
+# then we do that
+
+if BUILD_BLITZ
+BUILT_SOURCES += $(BLITZ_TARGET)
+endif
+
+# ========================================================================
+# Simple name to install GSL library. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+.PHONY: gsl
+
+gsl: $(GSL_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of GSL,
+# then we do that
+
+if BUILD_GSL
+BUILT_SOURCES += $(GSL_TARGET)
+endif
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of GSL,
+# then we do that
+
+if BUILD_GSL
+BUILT_SOURCES += $(GSL_TARGET)
+endif
+
+# ========================================================================
+# Simple name to install GNU Parallel. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+.PHONY: parallel
+
+parallel: $(PARALLEL_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of parallel,
+# then we do that
+
+if BUILD_PARALLEL
+BUILT_SOURCES += $(PARALLEL_TARGET)
+endif
+
+# ========================================================================
+# Rule to Build HDF5.
+#
+# The --enable-using-memchecker option is used to prevent varioius (harmless)
+# valgrind errors. See http://www.hdfgroup.org/HDF5/faq/valgrind.html for
+# details on this.
+
+HDF5_NAME = hdf5-1.8.14
+HDF5_TARGET = $(libdir)/libhdf5.la
+
+EXTRA_DIST += @thirdpartysrc@/$(HDF5_NAME).tar.gz
+
+$(HDF5_TARGET): $(thirdpartysrc)/$(HDF5_NAME).tar.gz
+	@echo "*************************** Building HDF-5"
+	${AMTAR} xzf $<
+	cd $(HDF5_NAME) && \
+        ./configure --enable-cxx --enable-using-memchecker \
+          --prefix="$(prefix)" CXX="$(CXX)" CC="$(CC)" && \
+        $(MAKE) -j 1 && $(MAKE) -j 1 install && exit 0; exit 1
+	rm -rf $(HDF5_NAME)
+	touch $(HDF5_TARGET)
+	@echo "========================== Done building HDF-5"
+
+# ========================================================================
+# Rule to buile gnu parallel.
+#
+
+PARALLEL_NAME = parallel-20170522
+PARALLEL_TARGET = $(bindir)/parallel
+
+EXTRA_DIST += @thirdpartysrc@/$(PARALLEL_NAME).tar.gz
+
+$(PARALLEL_TARGET): $(thirdpartysrc)/$(PARALLEL_NAME).tar.gz
+	@echo "*************************** Building GNU Parallel"
+	${AMTAR} xzf $<
+	cd $(PARALLEL_NAME) && \
+        ./configure --prefix="$(prefix)" CXX="$(CXX)" CC="$(CC)" && \
+        $(MAKE) && $(MAKE) -j 1 install && exit 0; exit 1
+	rm -rf $(PARALLEL_NAME)
+	touch $(PARALLEL_TARGET)
+	@echo "========================== Done building GNU Parallel"
+
+# ========================================================================
+# Rule to Build bzlib.
+
+BZLIB_NAME = bzip2-1.0.6
+# We get BZLIB_TARGET from autoconf. This allows the target to point to
+# someplace other than a version we install ourselves. This is needed
+# because boost is dependent on bzlib, either the one we build or the the
+# one specified on the system.
+#BZLIB_TARGET = $(includedir)/bzlib.h
+
+EXTRA_DIST += @thirdpartysrc@/$(BZLIB_NAME).tar.gz
+
+$(includedir)/bzlib.h: $(thirdpartysrc)/$(BZLIB_NAME).tar.gz
+	@echo "*************************** Building bzlib"
+	${AMTAR} xzf $<
+	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(CPPFLAGS) $(CFLAGS) -o $(BZLIB_NAME)/blocksort.lo -c $(BZLIB_NAME)/blocksort.c
+	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(CPPFLAGS) $(CFLAGS) -o $(BZLIB_NAME)/huffman.lo -c $(BZLIB_NAME)/huffman.c
+	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(CPPFLAGS) $(CFLAGS) -o $(BZLIB_NAME)/crctable.lo -c $(BZLIB_NAME)/crctable.c
+	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(CPPFLAGS) $(CFLAGS) -o $(BZLIB_NAME)/randtable.lo -c $(BZLIB_NAME)/randtable.c
+	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(CPPFLAGS) $(CFLAGS) -o $(BZLIB_NAME)/compress.lo -c $(BZLIB_NAME)/compress.c
+	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(CPPFLAGS) $(CFLAGS) -o $(BZLIB_NAME)/decompress.lo -c $(BZLIB_NAME)/decompress.c
+	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(CPPFLAGS) $(CFLAGS) -o $(BZLIB_NAME)/bzlib.lo -c $(BZLIB_NAME)/bzlib.c
+	$(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+	  --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+	   $(LDFLAGS) -o $(BZLIB_NAME)/libbz2.la -rpath $(libdir) \
+           $(BZLIB_NAME)/blocksort.lo \
+           $(BZLIB_NAME)/huffman.lo \
+           $(BZLIB_NAME)/crctable.lo \
+           $(BZLIB_NAME)/randtable.lo \
+           $(BZLIB_NAME)/compress.lo \
+           $(BZLIB_NAME)/decompress.lo \
+           $(BZLIB_NAME)/bzlib.lo
+	$(MKDIR_P) $(includedir)
+	$(MKDIR_P) $(libdir)
+	$(INSTALL_HEADER) $(BZLIB_NAME)/bzlib.h $(includedir)
+	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $(BZLIB_NAME)/libbz2.la '$(DESTDIR)$(libdir)'
+	rm -rf $(BZLIB_NAME)
+	touch $(includedir)/bzlib.h
+	@echo "========================== Done building bzlib"
+
+# ========================================================================
+# Rule to build boost
+#
+# Boost has many libraries. We used the --with-libraries to restrict to the
+# build to only the libraries we use. This is entirely to reduce build time
+# - all the libraries in boost build fine and we could use any of them that
+# are desired. If we want to add a library or two they can be added to the 
+# list, or if it is easier we can remove the --with-libraries option to build
+# the full set.
+#
+# Boost can be built for multithreading. We don't need or use that, so
+# we pass the option threading=single to turn that off. If we ever do
+# need it, we can change this option.
+
+BOOST_NAME = boost_1_59_0
+
+# Select one of the files installed. We use the timestamp on this to
+# determine if we already have installed boost, or if we need to. Nothing
+# special about this particular file, it is just one of them installed.
+BOOST_TARGET = $(includedir)/boost/smart_ptr.hpp
+
+EXTRA_DIST += @thirdpartysrc@/$(BOOST_NAME).tar.gz
+
+$(BOOST_TARGET): $(thirdpartysrc)/$(BOOST_NAME).tar.gz $(BZLIB_TARGET)
+	@echo "*************************** Building BOOST"
+	${AMTAR} xzf $<
+	cd $(BOOST_NAME) && \
+        ./bootstrap.sh --prefix="$(prefix)" \
+           --with-libraries=date_time,regex,iostreams,filesystem && \
+        echo "using gcc : : $(CXX) ;" > tools/build/src/user-config.jam && \
+        echo "using darwin : : $(CXX) ;" >> tools/build/src/user-config.jam && \
+        ./bjam install threading=single link=static,shared cxxflags="${BZLIB_CPPFLAGS}" linkflags="${BZLIB_LDFLAGS}" && exit 0; exit 1
+# On mac, the full name of the library isn't put into the installed library.
+# This command will fail on linux, which is fine. We just ignore failure.
+	-install_name_tool -id ${prefix}/lib/libboost_regex.dylib ${prefix}/lib/libboost_regex.dylib
+	-install_name_tool -id ${prefix}/lib/libboost_date_time.dylib ${prefix}/lib/libboost_date_time.dylib
+	-install_name_tool -id ${prefix}/lib/libboost_iostreams.dylib ${prefix}/lib/libboost_iostreams.dylib
+	-install_name_tool -id ${prefix}/lib/libboost_filesystem.dylib ${prefix}/lib/libboost_filesystem.dylib
+	-install_name_tool -change libboost_system.dylib ${prefix}/lib/libboost_system.dylib ${prefix}/lib/libboost_filesystem.dylib
+	-install_name_tool -id ${prefix}/lib/libboost_system.dylib ${prefix}/lib/libboost_system.dylib
+	rm -rf $(BOOST_NAME)
+	touch $(BOOST_TARGET)
+	@echo "========================== Done building BOOST"
+
+# ========================================================================
+# Build blitz++
+
+BLITZ_NAME = blitz-0.9
+BLITZ_TARGET = $(libdir)/libblitz.la
+
+# This patch is described at 
+# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=455661. This adds some
+# header files that are needed by gcc >= 4.3. These really should have
+# always been there, but the headers in gcc were a bit messy before
+BLITZ_PATCH = blitz++.patch
+
+EXTRA_DIST += @thirdpartysrc@/$(BLITZ_NAME).tar.gz
+EXTRA_DIST += @thirdpartysrc@/$(BLITZ_PATCH)
+
+$(BLITZ_TARGET): $(thirdpartysrc)/$(BLITZ_NAME).tar.gz $(thirdpartysrc)/$(BLITZ_PATCH)
+	@echo "*************************** Building Blitz"
+	${AMTAR} xzf $<
+	cd $(BLITZ_NAME) && patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(BLITZ_PATCH) \
+        && ./configure --prefix="$(prefix)" --enable-shared --disable-doxygen \
+           CXX="$(CXX)" CC="$(CC)" F77="$(F77)" && \
+        $(MAKE) LIBTOOL="$(abs_builddir)/libtool" && \
+        $(MAKE) LIBTOOL="$(abs_builddir)/libtool" install && exit 0; exit 1
+	rm -rf $(BLITZ_NAME)
+	touch $(BLITZ_TARGET)
+	@echo "========================== Done building Blitz"
+
+
+# ========================================================================
+# Build ncurses. This is only needed by Readline right now.
+
+NCURSES_NAME = ncurses-6.0
+NCURSES_TARGET = $(includedir)/ncurses/curses.h
+
+EXTRA_DIST += @thirdpartysrc@/$(NCURSES_NAME).tar.gz
+EXTRA_DIST += @thirdpartysrc@/$(NCURSES_PATCH)
+
+$(NCURSES_TARGET): $(thirdpartysrc)/$(NCURSES_NAME).tar.gz $(thirdpartysrc)/$(NCURSES_PATCH)
+	@echo "*************************** Building Ncurses"
+	${AMTAR} xzf $<
+	cd $(NCURSES_NAME) &&\
+        ./configure --prefix="$(prefix)" --with-shared \
+           CXX="$(CXX)" CC="$(CC)" F77="$(F77)" && \
+        $(MAKE) && $(MAKE) install && exit 0; exit 1
+	rm -rf $(NCURSES_NAME)
+	touch $(NCURSES_TARGET)
+	@echo "========================== Done building Ncurses"
+
+
+# ========================================================================
+# Build Readline. This is only needed by Lua right now.
+
+READLINE_NAME = readline-6.2
+READLINE_TARGET = $(includedir)/readline/readline.h
+
+EXTRA_DIST += @thirdpartysrc@/$(READLINE_NAME).tar.gz
+
+$(READLINE_TARGET): $(thirdpartysrc)/$(READLINE_NAME).tar.gz $(NCURSES_TARGET)
+	@echo "*************************** Building Readline"
+	${AMTAR} xzf $<
+	cd $(READLINE_NAME) &&\
+        ./configure --prefix="$(prefix)" --with-curses \
+           CXX="$(CXX)" CC="$(CC)" F77="$(F77)" \
+           LDFLAGS="-L$(libdir)" CPPFLAGS="-I$(includedir)" && \
+        $(MAKE) && $(MAKE) install && exit 0; exit 1
+	rm -rf $(READLINE_NAME)
+	touch $(READLINE_TARGET)
+	@echo "========================== Done building Readline"
+
+
+# ========================================================================
+# Build Lua and Luabind
+
+LUA_NAME = lua-5.2.2
+LUABIND_NAME = luabind-0.9.1
+LUA_TARGET = $(libdir)/liblua.la
+LUABIND_TARGET = $(libdir)/libluabind.la
+
+# This patch was downloaded from the Lua web site at 
+# http://www.lua.org/ftp/patch-lua-5.1.4-2
+#LUA_PATCH = lua-5.1.4-2.patch
+
+# This patch was taken from gentoo. It add support in the Makefile for building
+# a shared library version.
+LUA_PATCH2 = lua-make.patch
+
+# This patch was taken from https://gist.github.com/2011636. This fixes a 
+# problem with building with boost 1.49 and gcc-4.6.3. This problem is 
+# described at http://lists.boost.org/Archives/boost/2012/03/191081.php, but
+# basically this just rewrites a #elif as a separate #else + #if. It is unclear
+# if this is an actual bug in gcc-4.6.3 or not, but in any case this works
+# around this.
+LUABIND_PATCH = luabind_boost.patch
+
+# This patch allows luabind to work with Lua 5.2 (it was originally developed
+# for Lua 5.1). This originally comes from git://git.colberg.org/luabind.git,
+# and is described at http://lua.2524044.n2.nabble.com/Luabind-adapted-to-Lua-5-2-td7582662.html
+LUABIND_PATCH2 = luabind_lua5.2.patch
+
+# This patch lets luabind work with boost >= 1.57. 
+# See https://github.com/rpavlik/luabind/pull/23 for details
+
+LUABIND_PATCH3 = luabind_boost_1_57.patch
+
+EXTRA_DIST += @thirdpartysrc@/$(LUA_NAME).tar.gz
+EXTRA_DIST += @thirdpartysrc@/$(LUABIND_NAME).tar.gz
+EXTRA_DIST += @thirdpartysrc@/$(LUA_PATCH)
+EXTRA_DIST += @thirdpartysrc@/$(LUA_PATCH2)
+EXTRA_DIST += @thirdpartysrc@/$(LUABIND_PATCH)
+EXTRA_DIST += @thirdpartysrc@/$(LUABIND_PATCH2)
+EXTRA_DIST += @thirdpartysrc@/$(LUABIND_PATCH3)
+
+$(LUA_TARGET): $(thirdpartysrc)/$(LUA_NAME).tar.gz $(thirdpartysrc)/$(LUA_PATCH) $(thirdpartysrc)/$(LUA_PATCH2) $(READLINE_TARGET) $(NCURSES_TARGET)
+	@echo "*************************** Building Lua"
+	${AMTAR} xzf $< && cd $(LUA_NAME)/src && \
+        cd .. && patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(LUA_PATCH2) && \
+	cd src && $(MAKE) gentoo_all \
+        CXX="$(CXX)" CC="$(CC)" F77="$(F77)" RPATH="$(libdir)" \
+        LIBTOOL="$(abs_builddir)/libtool"  \
+        CFLAGS="$(CFLAGS) -DLUA_USE_LINUX -I$(includedir)" \
+        LUA_LIBS="-L$(libdir) -lreadline -lncurses" \
+        LIB_LIBS="-lm -ldl" && \
+	cd .. && $(MAKE) gentoo_install INSTALL_TOP="$(prefix)" \
+        CXX="$(CXX)" CC="$(CC)" F77="$(F77)" \
+        LIBTOOL="$(abs_builddir)/libtool"&& \
+        exit 0; exit 1
+	rm -rf $(LUA_NAME)
+	touch $(LUA_TARGET)
+	@echo "========================== Done building Lua"
+
+$(LUABIND_TARGET): $(thirdpartysrc)/$(LUABIND_NAME).tar.gz $(LUA_TARGET) $(BOOST_TARGET) $(thirdpartysrc)/$(LUABIND_PATCH) $(thirdpartysrc)/$(LUABIND_PATCH2) $(thirdpartysrc)/$(LUABIND_PATCH3)
+	@echo "*************************** Building Luabind"
+	${AMTAR} xzf $< && cd $(LUABIND_NAME) && \
+        patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(LUABIND_PATCH) && \
+        patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(LUABIND_PATCH2) && \
+        patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(LUABIND_PATCH3) && \
+        $(MKDIR_P) $(includedir)/luabind && \
+        $(MKDIR_P) $(includedir)/luabind/detail && \
+        $(INSTALL_HEADER) luabind/*.hpp $(includedir)/luabind && \
+        $(INSTALL_HEADER) luabind/detail/*.hpp \
+            $(includedir)/luabind/detail && \
+        cd src && \
+        for i in *.cpp; do \
+           $(abs_builddir)/libtool --tag=CXX --mode=compile $(CXX) \
+             $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_CPPFLAGS) $(CPPFLAGS)\
+             -I ../ -c $$i; \
+        done && \
+        $(abs_builddir)/libtool --tag=CXX --mode=link $(CXX) \
+             $(AM_CXXFLAGS) $(CXXFLAGS) \
+             -o libluabind.la *.lo -rpath $(libdir) -L$(libdir) -llua && \
+        exit 0; exit 1
+	$(LIBTOOL) --mode=install \
+          $(INSTALL) $(LUABIND_NAME)/src/libluabind.la $(libdir)
+	rm -rf $(LUABIND_NAME)
+	touch $(LUABIND_TARGET)
+	@echo "*************************** Done building Luabind"
+
+# ========================================================================
+# Build gsl++
+
+GSL_NAME = gsl-1.14
+GSL_TARGET = $(libdir)/libgsl.la
+
+EXTRA_DIST += @thirdpartysrc@/$(GSL_NAME).tar.gz
+
+$(GSL_TARGET): $(thirdpartysrc)/$(GSL_NAME).tar.gz
+	@echo "*************************** Building GSL"
+	${AMTAR} xzf $<
+	cd $(GSL_NAME) \
+        && ./configure --prefix="$(prefix)" \
+           CXX="$(CXX)" CC="$(CC)" F77="$(F77)" && \
+        $(MAKE) && $(MAKE) install && exit 0; exit 1
+	rm -rf $(GSL_NAME)
+	touch $(GSL_TARGET)
+	@echo "========================== Done building GSL"
+
+.PHONY: python_module nose ruport h5py
+
+python_module: nose ruport h5py
+
+# ========================================================================
+# Simple name to install module. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+nose: $(NOSE_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of module,
+# then we do that
+
+if BUILD_NOSE
+BUILT_SOURCES += $(NOSE_TARGET)
+endif
+
+# ========================================================================
+# Build nose. Note that normally we just assume this has been installed,
+# but on Pleiades it is cleaner to install ourselves
+
+NOSE_NAME = nose-1.3.0
+NOSE_TARGET = $(DESTDIR)$(bindir)/nosetests
+EXTRA_DIST += @thirdpartysrc@/$(NOSE_NAME).tar.gz
+
+$(NOSE_TARGET): $(thirdpartysrc)/$(NOSE_NAME).tar.gz
+	@echo "*************************** Building nose"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(NOSE_NAME)
+	${AMTAR} xzf $<
+	export PATH=$(bindir):$$PATH && \
+        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
+        cd $(NOSE_NAME) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(NOSE_NAME)
+	touch $(NOSE_TARGET)
+	@echo "========================== Done building nose"
+
+# ========================================================================
+# Simple name to install gem. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+ruport: $(RUPORT_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of module,
+# then we do that
+
+if BUILD_RUPORT
+BUILT_SOURCES += $(RUPORT_TARGET)
+endif
+
+# ========================================================================
+# Build ruport. Note that normally we just assume this has been installed,
+# but on Pleiades it is cleaner to install ourselves
+
+RUPORT_NAME = ruport-1.6.1
+RUPORT_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(RUPORT_NAME)
+EXTRA_DIST += @thirdpartysrc@/$(RUPORT_NAME).gem
+
+$(RUPORT_TARGET): $(thirdpartysrc)/$(RUPORT_NAME).gem $(FASTERCSV_TARGET) $(PDFWRITER_TARGET)
+	@echo "*************************** Building ruport"
+	$(MKDIR_P) $(rubygemdir)
+	gem install --local --install-dir $(rubygemdir) --ignore-dependencies $<
+	touch $(RUPORT_TARGET)
+	@echo "========================== Done building ruport"
+
+COLOR_NAME = color-1.4.2
+COLOR_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(COLOR_NAME)
+EXTRA_DIST += @thirdpartysrc@/$(COLOR_NAME).gem
+
+$(COLOR_TARGET): $(thirdpartysrc)/$(COLOR_NAME).gem
+	@echo "*************************** Building color"
+	$(MKDIR_P) $(rubygemdir)
+	gem install --local --install-dir $(rubygemdir) $<
+	touch $(COLOR_TARGET)
+	@echo "========================== Done building color"
+
+FASTERCSV_NAME = fastercsv-1.2.3
+FASTERCSV_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(FASTERCSV_NAME)
+EXTRA_DIST += @thirdpartysrc@/$(FASTERCSV_NAME).gem
+
+$(FASTERCSV_TARGET): $(thirdpartysrc)/$(FASTERCSV_NAME).gem
+	@echo "*************************** Building fastercsv"
+	$(MKDIR_P) $(rubygemdir)
+	gem install --local --install-dir $(rubygemdir) $<
+	touch $(FASTERCSV_TARGET)
+	@echo "========================== Done building fastercsv"
+
+PDFWRITER_NAME = pdf-writer-1.1.8
+PDFWRITER_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(PDFWRITER_NAME)
+EXTRA_DIST += @thirdpartysrc@/$(PDFWRITER_NAME).gem
+
+# Not sure what the problem is here, but pdf-write doesn't seem to correctly
+# recognize TRANSSIMPLE_TARGET. So just tell it to skip looking for
+# dependencies, I think the problem is in the ruby spec, not in
+# transaction-simple. 
+$(PDFWRITER_TARGET): $(thirdpartysrc)/$(PDFWRITER_NAME).gem $(COLOR_TARGET) $(TRANSSIMPLE_TARGET)
+	@echo "*************************** Building pdf-writer"
+	$(MKDIR_P) $(rubygemdir)
+	gem install --local --install-dir $(rubygemdir) --ignore-dependencies $<
+	touch $(PDFWRITER_TARGET)
+	@echo "========================== Done building pdf-writer"
+
+TRANSSIMPLE_NAME = transaction-simple-1.4.0.2
+TRANSSIMPLE_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(TRANSSIMPLE_NAME)
+EXTRA_DIST += @thirdpartysrc@/$(TRANSSIMPLE_NAME).gem
+
+$(TRANSSIMPLE_TARGET): $(thirdpartysrc)/$(TRANSSIMPLE_NAME).gem
+	@echo "*************************** Building transaction-simple"
+	$(MKDIR_P) $(rubygemdir)
+	gem install --local --install-dir $(rubygemdir) $<
+	touch $(TRANSSIMPLE_TARGET)
+	@echo "========================== Done building transaction-simple"
+
+
+# ========================================================================
+# Simple name to install module. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+h5py: $(H5PY_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of module,
+# then we do that
+
+if BUILD_H5PY
+BUILT_SOURCES += $(H5PY_TARGET)
+endif
+
+# ========================================================================
+# Build h5py. Note that normally we just assume this has been installed,
+# but on Pleiades it is cleaner to install ourselves
+
+H5PY_NAME = h5py-2.1.3
+H5PY_TARGET = $(DESTDIR)$(pythondir)/h5py/__init__.py
+EXTRA_DIST += @thirdpartysrc@/$(H5PY_NAME).tar.gz
+
+$(H5PY_TARGET): $(thirdpartysrc)/$(H5PY_NAME).tar.gz $(HDF5_TARGET)
+	@echo "*************************** Building h5py"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(H5PY_NAME)
+	${AMTAR} xzf $<
+	export PATH=$(bindir):$$PATH && \
+        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
+        cd $(H5PY_NAME) && python setup.py build --hdf5=$(prefix) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(H5PY_NAME)
+	touch $(H5PY_TARGET)
+	@echo "========================== Done building h5py"
+
+# ========================================================================
+# Simple name to install module. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+ply: $(PLY_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of module,
+# then we do that
+
+if BUILD_PLY
+BUILT_SOURCES += $(PLY_TARGET)
+endif
+
+# ========================================================================
+# Build ply. Note that normally we just assume this has been installed,
+# but on Pleiades it is cleaner to install ourselves
+
+PLY_NAME = ply-3.4
+PLY_TARGET = $(DESTDIR)$(pythondir)/ply_is_installed
+EXTRA_DIST += @thirdpartysrc@/$(PLY_NAME).tar.gz
+
+$(PLY_TARGET): $(thirdpartysrc)/$(PLY_NAME).tar.gz
+	@echo "*************************** Building ply"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(PLY_NAME)
+	${AMTAR} xzf $<
+	export PATH=$(bindir):$$PATH && \
+        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
+        cd $(PLY_NAME) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(PLY_NAME)
+	touch $@
+	@echo "========================== Done building ply"
+
+# ========================================================================
+# Simple name to install module. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+future: $(FUTURE_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of module,
+# then we do that
+
+if BUILD_FUTURE
+BUILT_SOURCES += $(FUTURE_TARGET)
+endif
+
+# ========================================================================
+# Build future. Note that normally we just assume this has been installed,
+# but on Pleiades it is cleaner to install ourselves
+
+FUTURE_NAME = future-0.15.2
+FUTURE_TARGET = $(DESTDIR)$(pythondir)/future_is_installed
+EXTRA_DIST += @thirdpartysrc@/$(FUTURE_NAME).tar.gz
+
+$(FUTURE_TARGET): $(thirdpartysrc)/$(FUTURE_NAME).tar.gz
+	@echo "*************************** Building future"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(FUTURE_NAME)
+	${AMTAR} xzf $<
+	export PATH=$(bindir):$$PATH && \
+        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
+        cd $(FUTURE_NAME) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(FUTURE_NAME)
+	touch $@
+	@echo "========================== Done building future"
+
+# ========================================================================
+# Simple name to install module. We don't install this normally, the
+# user need to explicitly build this if desired.
+
+six: $(SIX_TARGET)
+
+# ========================================================================
+# Alternatively, if user specified that we build a local copy of module,
+# then we do that
+
+if BUILD_SIX
+BUILT_SOURCES += $(SIX_TARGET)
+endif
+
+# ========================================================================
+# Build six. Note that normally we just assume this has been installed,
+# but on Pleiades it is cleaner to install ourselves
+
+SIX_NAME = six-1.10.0
+SIX_TARGET = $(DESTDIR)$(pythondir)/six_is_installed
+EXTRA_DIST += @thirdpartysrc@/$(SIX_NAME).tar.gz
+
+$(SIX_TARGET): $(thirdpartysrc)/$(SIX_NAME).tar.gz
+	@echo "*************************** Building six"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(SIX_NAME)
+	${AMTAR} xzf $<
+	export PATH=$(bindir):$$PATH && \
+        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
+        cd $(SIX_NAME) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(SIX_NAME)
+	touch $@
+	@echo "========================== Done building six"

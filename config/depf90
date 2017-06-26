@@ -1,0 +1,78 @@
+#!/usr/bin/env ruby
+# Short script to calculate dependencies between for Fortran 90. We
+# should probably rewrite this at some point in python, but for now 
+# use ruby that I'm familiar with.
+#
+# This takes the srcdir (which is used to file the source files), and
+# a set of pairs of arguments. Each pair is a base name added to the .lo
+# files, along with a list of files to use this base name with. Take
+# a look at full_physics.am for an example of using this.
+
+require 'set'
+
+# Set encoding for Ruby 1.9. Without this we get a harmless warning message if
+# we are using ruby later than 1.9
+if RUBY_VERSION =~ /1.9/ or RUBY_VERSION =~ /^2\./ # assuming you're running Ruby ~1.9
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
+# collect use and module declarations of all the source files.
+mod_to_file = {}
+obj_to_use = Hash.new {|h,k| h[k] = []}
+file_to_inc = Hash.new {|h,k| h[k] = []}
+obj_to_file = {}
+file_to_source = {}
+srcdir = ARGV.shift
+while(fbase = ARGV.shift)
+  flist = ARGV.shift.split
+  flist.each do |f|
+    objname = File.basename(f).sub(/\.[fF]90/,"") + ".lo"
+
+# For ".lo" files, Automake adds a base name to the object files generated. 
+# This is to allow the same source file to to used in two different libraries
+# with possible different compilation (so foo.lo is different in library A
+# vs. library B).
+
+    objname = File.dirname(f) + "/" + fbase + objname
+    fname = f
+    fname = srcdir + "/" + fname unless(File.exists?(fname))
+    obj_to_file[objname] = File.basename(f)
+    file_to_source[File.basename(f)] = f
+    IO.foreach(fname) do |ln|
+      if(ln =~ /^\s*use\s+(\w+)/i)
+        obj_to_use[objname] << $1.downcase
+      end
+      if(ln =~ /^\s*module\s+(\w+)/i)
+        mod_to_file[$1.downcase] = objname
+      end
+      if(ln =~ /^\s*include\s+[\"\'](\w+\.?\w*)[\"\']/i)
+        file_to_inc[File.basename(f)] << $1
+      end
+    end
+  end
+end
+
+def file_to_inc_dep(file, file_to_inc, file_to_source, set = nil)
+  set = Set.new unless(set)
+  set.merge(file_to_inc[file].collect {|f| file_to_source[f]})
+  file_to_inc[file].each do |f|
+    file_to_inc_dep(f, file_to_inc, file_to_source, set)
+  end
+  set.to_a.join(" ")
+end
+
+# Now, output the Makefile rules to support this.
+obj_to_use.each do |f, modlist|
+  deps = []
+  modlist.each do |m| 
+    fdep = mod_to_file[m]
+    deps << fdep if(fdep && fdep != f)
+  end
+  puts "#{f}: #{deps.join(" ")}"
+  puts
+  puts "#{f.sub("\.lo",".o")}: #{deps.join(" ")}"
+  puts
+  t = file_to_inc_dep(obj_to_file[f], file_to_inc, file_to_source)
+  puts "#{f}: #{t}" if(t =~ /\w/)
+  puts
+end

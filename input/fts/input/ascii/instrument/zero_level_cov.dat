@@ -1,0 +1,11 @@
+begin HEADER
+  File_ID = "Zero Level Covariance Matrix"
+  File_Creation = "Tue Apr 25 12:15:16 PDT 2006"
+  File_Type = "Matrix"
+  Num_Rows = 3
+  Num_Columns = 3
+end HEADER
+
+1.e-18 0      0
+0      1.e-18 0
+0      0      1.e-18

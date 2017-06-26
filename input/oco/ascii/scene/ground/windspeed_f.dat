@@ -1,0 +1,14 @@
+begin HEADER
+  File_ID = "Windspeed perturbation file"
+  File_Creation = "Tue Apr 25 12:15:16 PDT 2006"
+  File_Type = "Matrix"
+  Num_Rows = 1
+  Num_Columns = 2
+  Labels = "PARAMETER" "WINDSPEED"
+  Units = "None" "m/s"
+  Windspeed_F = true
+end HEADER
+
+# F = 1/(.003 + .00512*WS)
+#parameter	WINDSPEED
+ 1		2.5746D+1

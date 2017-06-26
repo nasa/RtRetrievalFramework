@@ -1,0 +1,9 @@
+As we convert the ASCII data to HDF, it can be useful to import the ASCII
+into hdf. The tool h5import can be used for this. As an example, to move
+the pressure over:
+
+tail -71 pressure_levels_71.dat > t.txt (strips off header)
+h5import t.txt -dims 71 -p Pressure_71/Pressure -s 64 -type TEXTFP -o ~/Level2/unit_test_data/l2_config.h5
+
+This creates the floating point field "Pressure_71/Pressure" in the existing
+config file, with a dimension of "71".

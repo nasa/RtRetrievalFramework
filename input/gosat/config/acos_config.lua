@@ -1,0 +1,269 @@
+-- This adds ACOS/GOSAT specific routines for use by base_config
+
+require "config_common"
+
+------------------------------------------------------------
+--- Get the file names found in source_files, because
+--- they change from run to run.
+------------------------------------------------------------
+
+AcosConfig = ConfigCommon:new()
+
+------------------------------------------------------------
+-- Determine sounding id list from HDF file
+-- Overrides empty behavior from ConfigCommon
+------------------------------------------------------------
+
+function AcosConfig:l1b_sid_list()
+   if(not self.l1b_sid_list_v) then
+      local hv = self:l1b_hdf_file()
+      if(hv) then
+         self.l1b_sid_list_v = AcosSoundingId.create(hv, self.sid_string)
+	 self.sid = self.l1b_sid_list_v:value(0)
+      end
+   end
+   return self.l1b_sid_list_v
+end
+
+------------------------------------------------------------
+--- Create ECMWF if we have one
+------------------------------------------------------------
+
+AcosConfig.acos_ecmwf = Creator:new()
+
+function AcosConfig.acos_ecmwf:create()
+   local sid = self.config:l1b_sid_list()
+   if (self.config.met_file) then
+       local met = AcosEcmwf(self.config.met_file, self.config:l1b_sid_list():value(0),
+                               self.config:l1b_sid_list():size() > 1)
+       self.config.input_file_description = self.config.input_file_description .. 
+          "ECMWF input file:    " .. self.config.met_file .. "\n"
+       return met
+   end
+end
+
+function AcosConfig.acos_ecmwf:register_output(ro)
+    if (self.config.met) then
+        ro:push_back(MetPassThroughOutput(self.config.met))
+    end
+end
+
+------------------------------------------------------------
+--- Create a level 1b file were we read it from a HDF file.
+---
+---  Depending on the value of sid_string, we either do S, P,
+---  or an average of both. So "20090726171701S" uses S band,
+---  "20090726171701P" uses P band and "20090726171701" averages.
+------------------------------------------------------------
+
+AcosConfig.level1b_hdf = CreatorL1b:new()
+
+function AcosConfig.level1b_hdf:create_parent_object()
+   local hv = self.config:l1b_hdf_file()
+   local slist = self.config:l1b_sid_list()
+   local l1blist = VectorLevel1b()
+   for i=0,slist:size() - 1 do
+      local l1bacos = Level1bAcos(hv, slist:value(i))
+      l1bacos.noise_model = self.config.noise[i]
+      l1blist:push_back(l1bacos)
+      
+      if (self.config.land_fraction and 
+          self.config.land_fraction ~= l1bacos:land_fraction(0)) then
+         error("Land fraction should be the same for all sounding parts")
+      else
+         self.config.land_fraction = l1bacos:land_fraction(0)
+      end
+      self.config.is_h_gain = l1bacos:is_h_gain()
+   end
+   return Level1bAverage(l1blist)
+end
+
+------------------------------------------------------------
+--- Variation of spectrum_effect_list that has a different
+--- set of spectrum effects for M for H gain.
+------------------------------------------------------------
+
+AcosConfig.spectrum_effect_list_h_and_m = ConfigCommon.spectrum_effect_list:new()
+
+function AcosConfig.spectrum_effect_list_h_and_m:sub_object_key()
+   local res
+   if(self.config.is_h_gain) then
+      res = self.speceff_h_gain
+   else
+      res = self.speceff_m_gain
+   end
+   return res
+end
+
+------------------------------------------------------------
+--- Variation of instrument_correction_list that has a different
+--- set of spectrum effects for M for H gain.
+------------------------------------------------------------
+
+AcosConfig.instrument_correction_list_h_and_m = ConfigCommon.instrument_correction_list:new()
+
+function AcosConfig.instrument_correction_list_h_and_m:sub_object_key()
+   local res
+   if(self.config.is_h_gain) then
+      res = self.ic_h_gain
+   else
+      res = self.ic_m_gain
+   end
+   return res
+end
+
+------------------------------------------------------------
+--- Create a Gosat Noise model.
+------------------------------------------------------------
+
+AcosConfig.gosat_noise = Creator:new()
+
+function AcosConfig.gosat_noise:create(hdf_file, sid)
+   local hv = self.config:l1b_hdf_file()
+   local slist = self.config:l1b_sid_list()
+   local res = {}
+   for i=0,slist:size() - 1 do
+      res[i] = GosatNoiseModel(hv, slist:value(i), self.config.common.hdf_band_name, 
+                               self.config:h(), "Instrument")
+   end
+   return res
+end
+
+------------------------------------------------------------
+--- Use a Gosat Noise model, but no empirical noise (just
+--- what is found in level 1b file)
+------------------------------------------------------------
+
+AcosConfig.gosat_noise_l1b = Creator:new()
+
+function AcosConfig.gosat_noise_l1b:create(hdf_file, sid)
+   local hv = self.config:l1b_hdf_file()
+   local slist = self.config:l1b_sid_list()
+   local res = {}
+   for i=0,slist:size() - 1 do
+      res[i] = GosatNoiseModel(hv, slist:value(i), self.config.common.hdf_band_name)
+   end
+   return res
+end
+
+------------------------------------------------------------
+--- Retrieve offset scaling for static HDF file
+------------------------------------------------------------
+
+function AcosConfig.gosat_offset_scaling(field)
+   return 
+      function (self)
+         return self.config:h():read_double_with_unit_1d(field)
+      end
+end
+
+------------------------------------------------------------
+--- Return the ground type name 
+------------------------------------------------------------
+
+AcosConfig.ground_type_name = DispatchCreator:new()
+
+function AcosConfig:ground_type_name()
+   if (not self.land_fraction) then
+      error("Land fraction not defined yet")
+   end
+   if(self.land_fraction >= 0.0 and 
+      self.land_fraction <= 90.0) then
+      return "coxmunk"
+   elseif(self.land_fraction > 90.0 and 
+          self.land_fraction <= 100.0) then
+      return "lambertian"
+   else
+      error("Invalid land fraction value read from L1B file: " .. self.config.land_fraction)
+   end
+end
+------------------------------------------------------------
+--- Create ground based on the surface type
+------------------------------------------------------------
+
+AcosConfig.ground_land_fraction = DispatchCreator:new()
+
+function AcosConfig.ground_land_fraction:get_creator()
+   if(self.config:ground_type_name() == "coxmunk") then
+      if(self.config.using_radiance_scaling ~= nil) then
+         return ConfigCommon.ground_coxmunk
+      else
+         return ConfigCommon.ground_coxmunk_plus_lamb
+      end
+   elseif(self.config:ground_type_name() == "lambertian") then
+      return ConfigCommon.ground_lambertian
+   else
+      error("Invalid ground type name: " .. self:ground_type_name())
+   end
+end
+
+------------------------------------------------------------
+--- Create ILS table by reading from an L1B hdf file using
+--- Lua to do the reading and index massaging.
+------------------------------------------------------------
+AcosConfig.ils_table_l1b = Creator:new()
+
+function AcosConfig.ils_table_l1b:create()
+   -- Load reference to L1B HDF file
+   l1b_hdf_file = self.config:l1b_hdf_file()
+
+   -- O2 band in L1B has an ILS table for P and S, 
+   -- Select by default the one used in production (S)
+   -- Can be set in base_config.lua
+   local o2_table_pick
+   if self.o2_table_pick == nil then
+      o2_table_pick = 1
+   else
+      o2_table_pick = self.o2_table_pick
+   end
+
+   -- Whether or not to interpolate the table values
+   -- Can be set in base_config.lua
+   local interpolate
+   if self.interpolate == nil then
+      interpolate = true
+   else
+      interpolate = self.interpolate
+   end
+
+   -- We know this is an ACOS file, since we had to write
+   -- specifics for it, so might as well define band names here
+   local idx
+   local wavenumber, delta_lambda, response_name
+   local res = {}
+   for idx = 0, self.config.common.hdf_band_name:size() - 1 do
+      local hdf_band_name = self.config.common.hdf_band_name:value(idx)
+      local desc_band_name = self.config.common.desc_band_name:value(idx)
+
+      -- Load center wavenumbers of ILS
+      if hdf_band_name == "o2" then
+         wavenumber = l1b_hdf_file:read_double_2d("InstrumentHeader/ils_coef_center_wavenumber_" .. hdf_band_name)
+         wavenumber = wavenumber(o2_table_pick, Range())
+      else
+         wavenumber = l1b_hdf_file:read_double_1d("InstrumentHeader/ils_coef_center_wavenumber_" .. hdf_band_name)
+      end
+
+      -- Load ILS response values
+      if hdf_band_name == "o2" then
+         response = l1b_hdf_file:read_double_3d("InstrumentHeader/ils_coef_" .. hdf_band_name)
+         response = response(o2_table_pick, Range(), Range())
+      else
+         response = l1b_hdf_file:read_double_2d("InstrumentHeader/ils_coef_" .. hdf_band_name)
+      end
+
+      -- Delta lambda as provided in L1B file is meant for all center wavenumbers,
+      -- But need to copy that array into a 2d array to meet IlsTable interface
+      -- which expects a different delta lambda per wavenumber index
+      delta_lambda = Blitz_double_array_2d(response:rows(), response:cols())
+
+      delta_lambda_in = l1b_hdf_file:read_double_1d("InstrumentHeader/ils_coef_relative_wavenumber_" .. hdf_band_name)
+
+      for wn_idx = 0, response:rows() - 1 do
+         delta_lambda:set(wn_idx, Range(), delta_lambda_in)
+      end
+
+      res[idx+1] = IlsTableLinear(wavenumber, delta_lambda, response, desc_band_name, hdf_band_name, interpolate)
+   end
+   return res
+end
+

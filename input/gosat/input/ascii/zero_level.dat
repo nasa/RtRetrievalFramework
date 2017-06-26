@@ -1,0 +1,11 @@
+begin HEADER
+  File_ID       = "Zero level parameters"
+  File_Creation = "Tue Apr 25 12:15:16 PDT 2006"
+  File_Type     = "Matrix"
+  Num_Rows      = 1
+  Num_Columns   = 4
+  Labels        = "PARAMETER" "ZERO_1" "ZERO_2" "ZERO_3"
+end HEADER
+
+#parameter        ZERO_1   ZERO_2   ZERO_3
+ 1                0        0        0

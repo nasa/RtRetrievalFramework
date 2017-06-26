@@ -1,0 +1,5 @@
+#! /bin/bash
+
+${srcdir}/test/tccon_small_set/run_test 1 l2_fp
+
+

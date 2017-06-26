@@ -1,0 +1,21 @@
+fullphysicsinc_HEADERS += @deprecatedsrc@/solar_continuum_polynomial.h
+libfp_la_SOURCES += @deprecatedsrc@/solar_continuum_polynomial.cc
+fullphysicsinc_HEADERS += @deprecatedsrc@/solar_absorption_oco_file.h
+libfp_la_SOURCES += @deprecatedsrc@/solar_absorption_oco_file.cc
+libfp_la_SOURCES += @deprecatedsrc@/solar_absorption_oco_file_f.F90
+
+SWIG_SRC += @swigsrc@/solar_continuum_polynomial_wrap.cc
+SWIG_SRC += @swigsrc@/solar_absorption_oco_file_wrap.cc
+
+EXTRA_DIST += @deprecatedsrc@/*.i
+
+lib_test_all_SOURCES+= @deprecatedsrc@/solar_continuum_polynomial_test.cc
+lib_test_all_SOURCES+= @deprecatedsrc@/solar_absorption_oco_file_test.cc
+
+# Allow files to be included in other directories.
+AM_CPPFLAGS+= -I$(srcdir)/@deprecatedsrc@
+
+# Allow searchs for .i, .h. and .cc files in this directory
+vpath %.cc $(srcdir)/@deprecatedsrc@
+vpath %.h $(srcdir)/@deprecatedsrc@
+vpath %.i $(srcdir)/@deprecatedsrc@

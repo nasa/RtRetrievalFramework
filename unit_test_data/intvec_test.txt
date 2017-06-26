@@ -1,0 +1,4 @@
+begin HEADER
+  invec1 = 1 2 3 4 5
+  invec2 = 4:8 15 40:45
+end HEADER

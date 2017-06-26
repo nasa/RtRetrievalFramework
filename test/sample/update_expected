@@ -1,0 +1,3 @@
+#! /bin/sh
+echo "Updated expected results"
+exit 0

@@ -1,0 +1,25 @@
+include = <type_constants_filename>
+
+begin SET
+   dest_base_dir = <aggregate_base_dir>
+
+   # Do not fail here in case deleted stuff already exists
+   begin SET_SETUP
+      fail_on_error = False
+
+      begin DELETE
+         <sdos_inputs_filename>
+      end DELETE
+
+   end SET_SETUP
+
+   begin SET_SETUP
+      remove_existing = True
+
+      begin MKDIR
+         <log_directory>
+         <output_directory>
+      end MKDIR
+   end SET_SETUP
+
+end SET

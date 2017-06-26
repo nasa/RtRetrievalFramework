@@ -1,0 +1,16 @@
+include = <type_constants_filename>
+
+begin SET
+   dest_base_dir = <aggregate_base_dir>
+
+   # Do not fail here in case deleted stuff already exists
+   begin SET_SETUP
+      fail_on_error = False
+
+      begin DELETE
+         <fts_spec_a_list_file>
+         <fts_spec_b_list_file>
+      end DELETE
+
+   end SET_SETUP
+end SET

@@ -1,0 +1,3 @@
+#! /bin/bash
+
+${srcdir}/test/oco2_small_set/clean_test 1

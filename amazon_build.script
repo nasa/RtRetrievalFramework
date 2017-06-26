@@ -1,0 +1,6 @@
+#! /bin/sh
+# Build for amazon. Pretty standard, but we make sure to use 4.8 version of
+# compilers.
+
+./configure FC=gfortran-4.8 F77=gfortran-4.8 CC=gcc-4.8 CXX=g++-4.8 THIRDPARTY=build && \
+make all

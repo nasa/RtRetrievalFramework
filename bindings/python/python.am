@@ -1,0 +1,88 @@
+SWIG_FLAG += -O
+if BUILD_PYTHON_SWIG
+pkgpythonswigdir = @pythondir@/full_physics_swig
+pkgpythonswig_PYTHON = @pythonsrc@/__init__.py
+pkgpythonswig_PYTHON += $(patsubst %_wrap.cc, %.py, $(SWIG_SRC))
+pkgpythonswig_LTLIBRARIES = _swig_wrap.la
+
+_swig_wrap_la_CPPFLAGS = $(PYTHON_CPPFLAGS) $(AM_CPPFLAGS) 
+_swig_wrap_la_CPPFLAGS+= -DSWIG_TYPE_TABLE=full_physics
+_swig_wrap_la_CXXFLAGS = $(AM_CXXFLAGS)
+_swig_wrap_la_LDFLAGS = -module -avoid-version
+_swig_wrap_la_LIBADD = libfull_physics.la
+_swig_wrap_la_SOURCES = $(SWIG_SRC)
+_swig_wrap_la_SOURCES+= @swigsrc@/swig_wrap.cc
+
+endif BUILD_PYTHON_SWIG
+
+noop = 
+
+
+if BUILD_PYTHON_SWIG
+install-python-2: install-libLTLIBRARIES install-pkgpythonLTLIBRARIES install-pkgpythonPYTHON install-pkgl2analysisPYTHON install-pkgpythontemplateDATA install-fpscriptDATA install-pkgpythonswigLTLIBRARIES install-pkgpythonswigPYTHON
+	$(noop)
+
+install-python: all
+	$(MAKE) -j 1 install-python-2 
+else
+install-python-2: install-pkgpythonLTLIBRARIES install-pkgpythonPYTHON install-fpscriptDATA install-pkgl2analysisPYTHON install-pkgpythontemplateDATA
+	$(noop)
+
+install-python: 
+	$(MAKE) -j 1 install-python-2 
+endif
+
+# Only generate these files in maintainer mode, otherwise consider them
+# as input.
+if MAINTAINER_MODE
+if HAVE_SWIG
+
+$(swigsrc)/%_wrap.Pcc : %.i %.cc %.h
+	$(SWIG) $(SWIG_PYTHON_OPT) $(SWIG_FLAG) $(AM_CPPFLAGS) -MM -MF $(builddir)/$@.tmp -module $* -o $(srcdir)/$(swigsrc)/$*_wrap.cc $<
+	sed 's,\($*_wrap\)\.cc[ :]*,\1.cc $@ : ,g' < $@.tmp > $@
+	rm $@.tmp
+	echo "$(swigsrc)/$*_wrap.cc: $(<D)/$*.cc" >> $@
+	echo "$(swigsrc)/$*_wrap.cc: $(<D)/$*.h" >> $@
+
+$(swigsrc)/%_wrap.Pcc : %.i %.h
+	$(SWIG) $(SWIG_PYTHON_OPT) $(SWIG_FLAG) $(AM_CPPFLAGS) -MM -MF $(builddir)/$@.tmp -module $* -o $(srcdir)/$(swigsrc)/$*_wrap.cc $<
+	sed 's,\($*_wrap\)\.cc[ :]*,\1.cc $@ : ,g' < $@.tmp > $@
+	rm $@.tmp
+	echo "$(swigsrc)/$*_wrap.cc: $(<D)/$*.h" >> $@
+
+$(swigsrc)/%_wrap.Pcc : %.i
+	$(SWIG) $(SWIG_PYTHON_OPT) $(SWIG_FLAG) $(AM_CPPFLAGS) -MM -MF $(builddir)/$@.tmp -module $* -o $(srcdir)/$(swigsrc)/$*_wrap.cc $<
+	sed 's,\($*_wrap\)\.cc[ :]*,\1.cc $@ : ,g' < $@.tmp > $@
+	rm $@.tmp
+
+$(srcdir)/$(swigsrc)/swig_wrap.cc: $(pythonsrc)/swig_wrap.tmpl $(pythonsrc)/create_swig_wrap.py Makefile
+	$(PYTHON) $(srcdir)/$(pythonsrc)/create_swig_wrap.py $@ $(patsubst %_wrap.cc,%,$(notdir $(SWIG_SRC)))
+
+$(srcdir)/$(swigsrc)/%_wrap.cc: %.i %.h %.cc
+	mkdir -p $*_doc
+	OUTDIR=$*_doc INPUT="$(<D)/$*.h $(<D)/$*.cc" $(DX_DOXYGEN) $(srcdir)/config/doxygen_single.cfg
+	$(PYTHON) $(srcdir)/config/doxy2swig.py $*_doc/xml/index.xml $*_doc.i
+	rm -r $*_doc
+	echo "%include \"$*.i\"" >> $*_doc.i
+	$(SWIG) $(SWIG_PYTHON_OPT) $(SWIG_FLAG) $(AM_CPPFLAGS) -module $* -o $(srcdir)/$(swigsrc)/$*_wrap.cc $*_doc.i 
+	rm $*_doc.i
+
+$(srcdir)/$(swigsrc)/%_wrap.cc: %.i %.h
+	mkdir -p $*_doc
+	OUTDIR=$*_doc INPUT="$(<D)/$*.h" $(DX_DOXYGEN) $(srcdir)/config/doxygen_single.cfg
+	$(PYTHON) $(srcdir)/config/doxy2swig.py $*_doc/xml/index.xml $*_doc.i
+	rm -r $*_doc
+	echo "%include \"$*.i\"" >> $*_doc.i
+	$(SWIG) $(SWIG_PYTHON_OPT) $(SWIG_FLAG) $(AM_CPPFLAGS) -module $* -o $(srcdir)/$(swigsrc)/$*_wrap.cc $*_doc.i 
+	rm $*_doc.i
+
+$(srcdir)/$(swigsrc)/%_wrap.cc: %.i
+	$(SWIG) $(SWIG_PYTHON_OPT) $(SWIG_FLAG) $(AM_CPPFLAGS) -module $* -o $(srcdir)/$(swigsrc)/$*_wrap.cc $<
+
+BUILT_SOURCES+= $(addprefix $(srcdir)/, $(SWIG_SRC))
+BUILT_SOURCES+= $(srcdir)/$(swigsrc)/swig_wrap.cc
+
+-include $(patsubst %.cc, %.Pcc, $(SWIG_SRC))
+
+endif HAVE_SWIG
+endif MAINTAINER_MODE

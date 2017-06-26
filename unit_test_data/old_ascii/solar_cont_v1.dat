@@ -1,0 +1,17 @@
+begin HEADER
+  File_ID = "Solar Parameters"
+  File_Creation = "Wed Feb 17 16:42:55 PST 2010"
+  File_Type = "Matrix"
+  Num_Rows = 6
+  Num_Columns = 2
+  solar_model_version = 2
+  Labels = "PARAMETER" "SOLAR"
+end HEADER
+
+#parameter	 SOLAR
+ 1		 8.83596E21 
+ 2		 -9.48206E20
+ 3		 -1.517E22  
+ 4		 1.74114E22 
+ 5               -7.73485E21
+ 6               1.2313E21  

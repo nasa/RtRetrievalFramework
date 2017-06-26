@@ -1,0 +1,26 @@
+#!/bin/bash
+if [[ $# -lt 1 ]]; then
+   echo "Usage: $0 <arguments to qsub>"
+   echo ""
+   echo 'At a minimum, you need to supply the queue to use, e.g., "-q long"'
+   exit 1
+fi
+log_directory="{0.log_directory}"
+use_subdir={0.use_subdirectory}
+if [ "$use_subdir" = "True" ]; then
+    log_directory="{0.log_directory}/qsub"
+fi
+jid=`qsub $* -j oe -o $log_directory -N {0.qsub_name} {0.job_array_option} 0-{0.max_array_index} {0.job_script_filename}`
+do_aggregate={0.aggregate}
+if [[ "$do_aggregate" == "True" ]]; then
+   # Wait for job to get into torque, otherwise dependency doesn't seem
+   # to work right (this appears to be a bug, as of 10/4/2011, but an
+   # easy one to work around). Don't think this is an issue for pbs_pro
+   # or pleiades, but sleep doesn't hurt them and easier to treat things
+   # the same.
+   sleep 5                      
+   jid2=`qsub $* -j oe -o ${{log_directory}}/qsub_aggregate.log -N {0.aggregate_name} {0.depend_option}:$jid {0.aggregate_script_filename}`
+fi
+# The buildbot regression scripts depend on the output from qsub, so go ahead and write that
+# out
+echo $jid
