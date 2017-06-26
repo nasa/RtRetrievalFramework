@@ -1,0 +1,5 @@
+This is a copy of the scripts we used for Rui Wang and Noel Cressie when doing
+the empirical Bias calculation.
+
+Note that the scripts in the RunJob directory tend to use hardcoded paths etc.
+But we grab a snapshot of these as a basis for any future changes.

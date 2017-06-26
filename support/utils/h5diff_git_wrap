@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# To use this diff wrapper put the following in your .git/config
+# [diff "h5diff"]
+#   command = h5diff_git_wrap
+
+path=$1
+old_file=$2
+old_hex=$3
+old_mode=$4
+new_file=$5
+new_hex=$6
+new_mode=$7
+
+sep=$(perl -e 'print "-" x 80,"\n"')
+
+echo ""
+echo "${old_file} vs ${new_file}"
+echo "${old_hex} vs ${new_hex}"
+
+echo $sep
+
+old_names=`mktemp`
+new_names=`mktemp`
+
+h5ls -r $old_file > $old_names
+h5ls -r $new_file > $new_names
+
+diff $old_names $new_names
+rm  $old_names $new_names
+
+if [ $? != 0 ]; then
+    echo $sep 
+fi
+
+# Use compare_hdf for files in the test/ directory,
+# which are L2 output
+if [[ "$(dirname $new_file)" =~ "test/" ]]; then
+    compare_hdf $old_file $new_file
+else
+    h5diff -c $old_file $new_file
+
+    echo $sep
+
+    h5diff -c -r $old_file $new_file
+fi
+echo ""
+
+exit 0

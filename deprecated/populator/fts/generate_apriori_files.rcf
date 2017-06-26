@@ -1,0 +1,45 @@
+include = <type_constants_filename>
+
+begin SET
+   dest_base_dir = <apriori_dir>
+
+   begin LIST
+      name = fts_obs_id
+      from_file = <config_filename>
+      section = input->FTSFullPhysics->FTSObsIds
+   end LIST
+   
+   begin MAP
+      name = spectrum_files
+      from_file = <config_filename>
+      section = input->InputProductFiles->SpectrumFiles
+   end MAP
+
+   # Record source of input files
+   begin FILE
+       source_filename = <fts_spec_a_list_file>
+
+       begin PICK
+          template = [spectrum_files:fts_obs_id+1]
+       end PICK
+   end FILE
+
+   # Record source of input files
+   begin FILE
+       source_filename = <fts_spec_b_list_file>
+
+       begin PICK
+          template = [spectrum_files:fts_obs_id+2]
+       end PICK
+   end FILE
+
+   begin FILE
+     source_filename = <runlog_real_filename>
+     dest_filename = <apriori_dir>/psurf_<fts_obs_id>.dat
+
+     begin PSURF_FROM_RUNLOG
+        spectrum_file = [spectrum_files:fts_obs_id+1]
+     end PSURF_FROM_RUNLOG
+   end FILE
+
+end SET

@@ -1,0 +1,56 @@
+#!/usr/bin/env python
+
+import h5py
+import sqlite3
+import os
+import re
+import glob
+
+count = 1
+def process_file(file,c):
+    global count
+    print "Processing %d %s" % (count, file)
+    count = count + 1
+    t = glob.glob(re.sub(r"_\d+\.", "_*", re.sub("L1b", "Ecm", file)))
+    if(len(t) != 1):
+        print "Couldn't find single ECMWF file, skipping"
+        return
+    ecmwf = t[0]
+    f = h5py.File(file, 'r')
+    sid = f["/SoundingHeader/sounding_id"]
+    lat = f["/FootprintGeometry/footprint_latitude"][:,0,0]
+    lon = f["/FootprintGeometry/footprint_longitude"][:,0,0]
+    tim = f["/FootprintGeometry/footprint_time_string"][:,0,0]
+    # Format of time is close but not the same as CCSDS time
+    tfts_version = f["Metadata/TFTSVersion"][0]
+    for i in range(sid.shape[0]):
+        if(lat[i] > -999 and lon[i] > -999):
+            tim2 = re.sub("Z", "", re.sub("T", " ", tim[i]))
+            c.execute('insert into l1b values (?, ?, ?, ?, ?, ?, ?)',
+                      (file, ecmwf, tim2, sid[i], float(lat[i]), float(lon[i]), 
+                       tfts_version))
+    f.close()
+
+conn = sqlite3.connect("l1b.db")
+c = conn.cursor()
+c.execute('''create table l1b
+(file text, ecmwf text, time text, sounding_id text, latitude real, longitude real, tfts_version text)
+''')
+
+for dir in ["/acos/product/Production/v050050/L1b20900/r01",
+            "/acos/product/Production/v080080/L1b20900/r01",
+            "/acos/product/Production/v100100/L1b20900/r01"]:
+    for root,dirs,files in os.walk(dir):
+        for fname in files:
+            if(re.match(r"acos_L1b_.*\.h5", fname)):
+                process_file(root + "/" + fname, c)
+
+conn.commit()
+c.close()
+c = conn.cursor()
+c.execute("alter table l1b add column julian_time real")
+c.execute("update l1b set julian_time = julianday(time)")
+c.execute("create index time_index on l1b(julian_time)")
+conn.commit()
+c.close()
+

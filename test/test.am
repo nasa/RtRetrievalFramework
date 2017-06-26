@@ -1,0 +1,56 @@
+-include $(srcdir)/test/test.list
+if BUILD_PYTHON_SWIG
+-include $(srcdir)/test/test_python.list
+endif
+
+# Colors that we can use in the output
+red = $$(tput setaf 1)
+green = $$(tput setaf 2)
+blue = $$(tput setaf 4)
+default = $$(tput setaf 9)
+
+%_run: l2_fp install-python
+	@PYTHONPATH=$(pythondir):$$PYTHONPATH MAKE=$(MAKE) srcdir=$(abs_srcdir) HDF5_BIN=$(HDF5_BIN) RUBY=$(RUBY) \
+        prefix=$(prefix) $(srcdir)/test/$*/run_test && \
+        echo "${green}Test '$*' ran successfully${default}" && \
+        exit 0; \
+        echo "${red}Test '$*' failed${default}"; exit 1
+
+%_update: l2_fp install-python
+	@PYTHONPATH=$(pythondir):$$PYTHONPATH MAKE=$(MAKE) srcdir=$(abs_srcdir) HDF5_BIN=$(HDF5_BIN) RUBY=$(RUBY) \
+        prefix=$(prefix) $(srcdir)/test/$*/update_expected && \
+        echo "${green}Update '$*' ran successfully${default}" && \
+        exit 0; \
+        echo "${red}Update '$*' failed${default}"; exit 1
+
+%_clean:
+	srcdir=$(abs_srcdir) $(srcdir)/test/$*/clean_test
+
+.PHONY: run_tests
+
+run_tests: $(addsuffix _run, $(TEST_LIST))
+
+update_tests: $(addsuffix _update, $(TEST_LIST))
+
+clean-local: clean_tests
+
+clean_tests: $(addsuffix _clean, $(TEST_LIST))
+
+# Special version of tccon test 1 that uses valgrind
+tccon_sounding_1_valgrind_run:
+	${MAKE} -f ${srcdir}/test/tccon_small_set/Makefile all \
+            job_index=0 cmd=l2_fp_valgrind srcdir=$(abs_srcdir)
+	tccon_sounding_1_test/l2_fp_job.sh -e 0
+
+# Special version of oco2 test 1 that uses valgrind
+oco2_sounding_1_valgrind_run:
+	${MAKE} -f ${srcdir}/test/oco2_small_set/Makefile all \
+            job_index=0 cmd=l2_fp_valgrind srcdir=$(abs_srcdir)
+	oco2_sounding_1_test/l2_fp_job.sh -e 0
+
+# Print out a message if somebody uses the old target. This can go away
+# once we've had enough time passed that nobody uses the old target
+
+.PHONY: l2_fp_run
+l2_fp_run: run_tests
+	@echo "${red}This target is deprecated. Use 'run_tests' instead${default}"

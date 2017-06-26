@@ -1,0 +1,11 @@
+begin HEADER
+  File_ID = "Refractive Index - Ocean perturbation file"
+  File_Creation = "Tue Apr 25 12:15:16 PDT 2006"
+  File_Type = "Matrix"
+  Num_Rows = 1
+  Num_Columns = 5
+  Labels = "PARAMETER" "COEFFICIENT" "REFR_1" "REFR_2" "REFR_3"
+end HEADER
+
+#parameter      COEFFICIENT  REFR_1   REFR_2    REFR_3
+ 1              1            0.001    0.001     0.001

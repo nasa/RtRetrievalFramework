@@ -1,0 +1,12 @@
+begin HEADER
+  File_ID = "Albedo - Apriori"
+  File_Creation = "Wed Dec  3 10:34:07 PST 2008"
+  File_Type = "Matrix"
+  Num_Rows = 2
+  Num_Columns = 4
+  Labels = "PARAMETER" "ALBEDO_1" "ALBEDO_2" "ALBEDO_3"
+end HEADER
+
+#parameter	  ALBEDO_1   ALBEDO_2    ALBEDO_3
+ 1		  0.3        0.3         0.3
+ 2		  0.0        0.0         0.0

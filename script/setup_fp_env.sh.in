@@ -1,0 +1,57 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+configdir=@configdir@
+export PATH=@bindir@:${PATH}
+export L2_EXE_PATH=@bindir@
+export L2_FP_SRC_PATH=@abs_top_srcdir@
+export abscodir=@abscodir@
+export merradir=@merradir@
+export L2_INPUT_PATH=@configdir@
+if [ -n "@rubygemdir" ]; then
+  if [ -n "$GEM_PATH" ]; then
+    export GEM_PATH=@rubygemdir@:${GEM_PATH}
+  else
+    export GEM_PATH=@rubygemdir@
+  fi
+fi
+if [ -n "$PYTHONPATH" ]; then
+  export PYTHONPATH=@pythondir@:@pyexecdir@:${PYTHONPATH}
+else
+  export PYTHONPATH=@pythondir@:@pyexecdir@
+fi
+if [ -n "$LUA_PATH" ]; then
+    export LUA_PATH="@configdir@/?.lua;${LUA_PATH}"
+else
+    export LUA_PATH="@configdir@/?.lua;"
+fi
+# Use same version of python that we used when we built the system
+alias python=@PYTHON@
+if [ -e `dirname @PYTHON@`/ipython ]; then
+  alias ipython=`dirname @PYTHON@`/ipython
+fi
+# And use same version of ruby
+# Use same version of python that we used when we built the system
+alias ruby=@RUBY@
+alias parallel=@PARALLEL@
+
+# Select a newer version of gcc and python
+# Note if you update this, also update ../pleiades_build.script
+if [ -e /usr/share/modules/init/bash ]; then
+    sles_version=$(cat /etc/SuSE-release | grep VERSION | cut -d " " -f 3)
+    if [ "$sles_version" == "11" ]; then # This is for SLES11
+        source /usr/share/modules/init/bash
+	module load gcc/4.9.3
+	module load python/2.7.11
+	module load ruby/1.9.1-p376	
+    else # This is for SLES12
+        source /usr/share/modules/init/bash
+	module load gcc/4.9.4
+        module load /nasa/modulefiles/pkgsrc/sles12/python/2.7.12
+        # This contains ruby 2.2.6p396
+        module load /nasa/modulefiles/pkgsrc/sles12/pkgsrc/2016Q4
+    fi
+fi
+
+    
+
+

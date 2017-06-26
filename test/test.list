@@ -1,0 +1,19 @@
+## Temp comment out for cleaner check
+TEST_LIST = sample
+TEST_LIST+= l2_full
+TEST_LIST+= fts
+TEST_LIST+= fts_sim
+TEST_LIST+= tccon_sounding_1
+# These cases are very sensitive to certain machine architectures
+# and cause spurious differences, ie retrieval is not stable
+#TEST_LIST+= tccon_sounding_2
+#TEST_LIST+= tccon_sounding_3
+TEST_LIST+= tccon_sounding_4
+TEST_LIST+= tccon_sounding_5
+# This test uses ascii files, not really essential to test anymore
+#TEST_LIST+= oco_simple_vs_26 
+TEST_LIST+= oco2_2stream_fm
+TEST_LIST+= oco2_sounding_1
+TEST_LIST+= oco2_sounding_2
+TEST_LIST+= oco2_sounding_3
+TEST_LIST+= oco2_brdf

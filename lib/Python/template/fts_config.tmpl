@@ -1,0 +1,33 @@
+begin input
+   begin PGENameGroup
+      PGEName = FTSFullPhysics 
+   end PGENameGroup
+
+   begin InputProductFiles
+      RunlogFile = /path/to/runlog.grl
+      AtmosphereFile = /path/to/atmosphere_from_gfit.dat
+
+      begin SpectrumFiles
+      end SpectrumFiles
+
+   end InputProductFiles
+
+   begin AlternativeSettings
+   end AlternativeSettings
+
+   begin FTSFullPhysics
+      AggregateCounter = 1
+      begin LIST
+         name = FTSObsIds
+         begin VALUES
+            001
+            002
+            ...
+         end VALUES
+
+      end LIST
+
+   end FTSFullPhysics
+
+end input
+

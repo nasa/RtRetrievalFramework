@@ -1,0 +1,54 @@
+# Include common constants such as where l2_input_dir is located
+include = <CONTROL_FILE_DIRECTORY>/common_constants.inc
+
+# Names of files based on files from scenario dirs. 
+# Names are relative to dest_case_dir
+include = <modifiers_dir>/def/case_filename_consts.def
+
+# Set up ability to use modules from level_2/support
+modules_dir = <l2_support_dir>/utils
+
+begin SET
+   source_dir    = <template_dir>
+   dest_base_dir = <tests_base_dir>
+
+   # Allow configuration sub directories but make sure if empty we only have one / 
+   dest_case_dir = 'eval( "<configuration_name>/<configuration_sub_dirs>/<configuration_case_dir>".replace("//","/") )'
+
+   # Load list of cases to generate
+   begin LIST
+      name = case_id
+      from_file = <case_list_filename>
+      directory_levels = '<case_dir_levels|1>'
+   end LIST
+
+   # Set up links to static files/directory
+   begin CASE_SETUP
+      verbose       = true
+      link_relative = true
+
+      # Make links to static files directory
+      begin LINK
+         <static_input_dir>/in          in/static
+         <static_input_dir>/oco_l2.win  oco_l2.win
+      end LINK
+
+   end CASE_SETUP
+
+   # Run actions specified in included run directory control file
+   include = <run_dir_include_filename>
+
+   # Place at end in case we rely on anything in <run_dir_include_filename>
+   # Setup directory locations
+   begin KEYWORDS
+      template_dir     = 'eval( os.path.realpath("<l2_input_dir>/<instrument_name>/template_<brdf_type>") )'
+   
+      static_input_dir = 'eval( os.path.realpath("<tests_base_dir>/<configuration_name>/static_input") )'
+
+      configuration_case_dir  = 'eval( len("<configuration_case_suffix>") > 0 and "<case_id>_<configuration_case_suffix>" or "<case_id>" )'
+
+      # Should the case_id include any preceeding paths
+      case_short_id = 'eval(os.path.basename("<case_id>"))'
+   end KEYWORDS
+
+end SET

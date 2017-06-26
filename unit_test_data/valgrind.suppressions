@@ -1,0 +1,184 @@
+{
+   fortran_read_errors
+   Memcheck:Addr8
+   ...
+   fun:ch_read_run_parameters
+}
+{
+   fortran_read_errors
+   Memcheck:Value8
+   ...
+   fun:ch_read_run_parameters
+}
+{
+   fortran_read_errors
+   Memcheck:Cond
+   ...
+   fun:ch_read_run_parameters
+}
+{
+   library_error
+   Memcheck:Cond
+   fun:strlen
+   fun:fillin_rpath
+   fun:_dl_init_paths
+   fun:_dl_non_dynamic_init
+   fun:__libc_init_first
+   fun:(below main)
+}
+{
+   HDF suppressions
+   Memcheck:Cond
+   ...
+   fun:H5_init_library
+}
+{
+   HDF suppressions
+   Memcheck:Cond
+   ...
+   fun:H5Tcopy
+}
+{
+   check1
+   Memcheck:Cond
+   ...
+   fun:_int_free
+   fun:free
+}
+{
+   check1
+   Memcheck:Value8
+   ...
+   fun:_int_free
+   fun:free
+}
+{
+   check2
+   Memcheck:Cond
+   ...
+   fun:_int_malloc
+   fun:malloc
+}
+{
+   check2
+   Memcheck:Value8
+   ...
+   fun:_int_malloc
+   fun:malloc
+}
+{
+   check3
+   Memcheck:Cond
+   fun:strlen
+}
+{
+   check4
+   Memcheck:Cond
+   ...
+   fun:for_open
+}
+{
+   check5
+   Memcheck:Value8
+   ...
+   fun:for__aio_acquire_lun
+}
+{
+   check6
+   Memcheck:Param
+   futex(op)
+   ...
+   fun:for__aio_acquire_lun
+}
+{
+   check7
+   Memcheck:Value8
+   ...
+   fun:for_open
+}
+{
+   check8
+   Memcheck:Param
+   futex(op)
+   ...
+   fun:for_open
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value8
+   ...
+   fun:for__release_lun
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value8
+   ...
+   fun:for_deallocate
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   open(filename)
+   ...
+   fun:for_open
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   ...
+   fun:iolibrary_m_mp_write_string_
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value8
+   ...
+   fun:iolibrary_m_mp_write_string_
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   ...
+   fun:for_read_seq_lis
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value8
+   ...
+   fun:for_read_seq_lis
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value8
+   ...
+   fun:stringfunctions_mp_tokenize_ 
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   ...
+   fun:stringfunctions_mp_tokenize_ 
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value8
+   ...
+   fun:for_read_seq_fmt
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   ...
+   fun:for_read_seq_fmt
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value8
+   ...
+   fun:aerosol_file_read
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   ...
+   fun:aerosol_file_read
+}

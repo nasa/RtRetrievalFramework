@@ -1,0 +1,13 @@
+begin HEADER
+  File_Creation      = "2011-07-06T21:30:39"
+  File_ID            = "Surface albedo data"
+  Labels             = "ALBEDO_1" "ALBEDO_2" "ALBEDO_3"
+  Num_Columns        = 3
+  Num_Rows           = 2
+  calc_albedo        = 0.759992, 0.121742, 0.026314
+  center_wavelengths = 0.77 1.615 2.06
+end HEADER
+
+#        ALBEDO_1         ALBEDO_2         ALBEDO_3
+   7.59992100e-01   1.21741566e-01   2.63137768e-02
+   0.00000000e+00   0.00000000e+00   0.00000000e+00

@@ -1,0 +1,26 @@
+include = <CONTROL_FILE_PARENT_DIR>/common/common_constants.rcf
+include = <CONTROL_FILE_PARENT_DIR>/common/aggregate_constants.rcf
+
+begin CONSTANTS 
+
+   instrument = gosat
+
+   begin EXTRACT
+      filename = <config_filename>
+
+      # Allow could file to be missing
+      allow_missing = True
+      begin KEYWORDS
+         l1b_real_filename   = input->InputProductFiles->L1BFile
+         ecmwf_real_filename = input->InputProductFiles->ResampledMetFile
+         cloud_real_filename = input->InputProductFiles->CloudFile
+      end KEYWORDS
+   end EXTRACT
+
+   l1b_real_filename   = 'eval( os.path.realpath("<l1b_real_filename>") )'
+   ecmwf_real_filename = 'eval( os.path.realpath("<ecmwf_real_filename>") )'
+
+   # Only evaluate real path if the cloud filename is not empty
+   cloud_real_filename = 'eval( len("<cloud_real_filename>") > 0 and os.path.realpath("<cloud_real_filename>") or "" )'
+
+end CONSTANTS

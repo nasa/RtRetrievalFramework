@@ -1,0 +1,136 @@
+# This gets included in the top makefile. This list files here that are
+# used to make up libfullphysics.la.
+
+# The various xxxsrc are set in configure.in in the top directory, in case
+# you need to modify these.
+
+# Source files for library
+fullphysicsinc_HEADERS += @outsrc@/register_output_base.h
+libfp_la_SOURCES += @outsrc@/register_output_base.cc
+libfp_la_SOURCES += @outsrc@/pressure_output.cc
+fullphysicsinc_HEADERS += @outsrc@/pressure_output.h
+libfp_la_SOURCES += @outsrc@/altitude_output.cc
+fullphysicsinc_HEADERS += @outsrc@/altitude_output.h
+fullphysicsinc_HEADERS += @outsrc@/ground_lambertian_output.h
+libfp_la_SOURCES += @outsrc@/ground_lambertian_output.cc
+fullphysicsinc_HEADERS += @outsrc@/ground_coxmunk_output.h
+libfp_la_SOURCES += @outsrc@/ground_coxmunk_output.cc
+fullphysicsinc_HEADERS += @outsrc@/ground_coxmunk_plus_lambertian_output.h
+libfp_la_SOURCES += @outsrc@/ground_coxmunk_plus_lambertian_output.cc
+fullphysicsinc_HEADERS += @outsrc@/ground_brdf_output.h
+libfp_la_SOURCES += @outsrc@/ground_brdf_output.cc
+fullphysicsinc_HEADERS += @outsrc@/dispersion_polynomial_output.h
+libfp_la_SOURCES += @outsrc@/dispersion_polynomial_output.cc
+fullphysicsinc_HEADERS += @outsrc@/stokes_coefficient_fraction_output.h
+libfp_la_SOURCES += @outsrc@/stokes_coefficient_fraction_output.cc
+fullphysicsinc_HEADERS += @outsrc@/zero_offset_waveform_output.h
+libfp_la_SOURCES += @outsrc@/zero_offset_waveform_output.cc
+fullphysicsinc_HEADERS += @outsrc@/empirical_orthogonal_function_output.h
+libfp_la_SOURCES += @outsrc@/empirical_orthogonal_function_output.cc
+libfp_la_SOURCES += @outsrc@/absorber_absco_output.cc
+fullphysicsinc_HEADERS += @outsrc@/absorber_vmr_level_output.h
+libfp_la_SOURCES += @outsrc@/absorber_vmr_level_output.cc
+fullphysicsinc_HEADERS += @outsrc@/absorber_vmr_level_scaled_output.h
+libfp_la_SOURCES += @outsrc@/absorber_vmr_level_scaled_output.cc
+fullphysicsinc_HEADERS += @outsrc@/absorber_vmr_met_output.h
+libfp_la_SOURCES += @outsrc@/absorber_vmr_met_output.cc
+fullphysicsinc_HEADERS += @outsrc@/absorber_absco_output.h
+libfp_la_SOURCES += @outsrc@/aerosol_aod_output.cc
+fullphysicsinc_HEADERS += @outsrc@/aerosol_aod_output.h
+libfp_la_SOURCES += @outsrc@/aerosol_consolidated_output.cc
+fullphysicsinc_HEADERS += @outsrc@/aerosol_consolidated_output.h
+libfp_la_SOURCES += @outsrc@/connor_solver_output.cc
+fullphysicsinc_HEADERS += @outsrc@/connor_solver_output.h
+libfp_la_SOURCES += @outsrc@/error_analysis_output.cc
+fullphysicsinc_HEADERS += @outsrc@/error_analysis_output.h
+fullphysicsinc_HEADERS += @outsrc@/forward_model_output.h
+libfp_la_SOURCES += @outsrc@/forward_model_output.cc
+fullphysicsinc_HEADERS += @outsrc@/oco_forward_model_output.h
+libfp_la_SOURCES += @outsrc@/oco_forward_model_output.cc
+libfp_la_SOURCES += @outsrc@/connor_convergence_output.cc
+fullphysicsinc_HEADERS += @outsrc@/connor_convergence_output.h
+libfp_la_SOURCES += @outsrc@/level_1b_output.cc
+fullphysicsinc_HEADERS += @outsrc@/level_1b_output.h
+libfp_la_SOURCES += @outsrc@/state_vector_output.cc
+fullphysicsinc_HEADERS += @outsrc@/state_vector_output.h
+libfp_la_SOURCES += @outsrc@/temperature_met_output.cc
+fullphysicsinc_HEADERS += @outsrc@/temperature_met_output.h
+libfp_la_SOURCES += @outsrc@/temperature_level_offset_output.cc
+fullphysicsinc_HEADERS += @outsrc@/temperature_level_offset_output.h
+libfp_la_SOURCES += @outsrc@/aerosol_param_output.cc
+fullphysicsinc_HEADERS += @outsrc@/aerosol_param_output.h
+libfp_la_SOURCES += @outsrc@/fts_run_log_output.cc
+fullphysicsinc_HEADERS += @outsrc@/fts_run_log_output.h
+fullphysicsinc_HEADERS += @outsrc@/dispersion_fit_output.h
+libfp_la_SOURCES += @outsrc@/dispersion_fit_output.cc
+fullphysicsinc_HEADERS += @outsrc@/source_files_output.h
+libfp_la_SOURCES += @outsrc@/source_files_output.cc
+fullphysicsinc_HEADERS += @outsrc@/high_res_spectrum_output.h
+libfp_la_SOURCES += @outsrc@/high_res_spectrum_output.cc
+fullphysicsinc_HEADERS += @outsrc@/max_a_posteriori_output.h
+libfp_la_SOURCES += @outsrc@/max_a_posteriori_output.cc
+fullphysicsinc_HEADERS += @outsrc@/fluorescence_effect_output.h
+libfp_la_SOURCES += @outsrc@/fluorescence_effect_output.cc
+fullphysicsinc_HEADERS += @outsrc@/radiance_scaling_output.h
+libfp_la_SOURCES += @outsrc@/radiance_scaling_output.cc
+fullphysicsinc_HEADERS += @outsrc@/met_pass_through_output.h
+libfp_la_SOURCES += @outsrc@/met_pass_through_output.cc
+fullphysicsinc_HEADERS += @outsrc@/gas_vmr_apriori_output.h
+libfp_la_SOURCES += @outsrc@/gas_vmr_apriori_output.cc
+fullphysicsinc_HEADERS += @outsrc@/fill_value.h
+
+# Files that contain SWIG wrapper information
+
+SWIG_SRC += @swigsrc@/register_output_base_wrap.cc
+SWIG_SRC += @swigsrc@/dispersion_polynomial_output_wrap.cc
+SWIG_SRC += @swigsrc@/stokes_coefficient_fraction_output_wrap.cc
+SWIG_SRC += @swigsrc@/zero_offset_waveform_output_wrap.cc
+SWIG_SRC += @swigsrc@/empirical_orthogonal_function_output_wrap.cc
+SWIG_SRC += @swigsrc@/level_1b_output_wrap.cc
+SWIG_SRC += @swigsrc@/state_vector_output_wrap.cc
+SWIG_SRC += @swigsrc@/forward_model_output_wrap.cc
+SWIG_SRC += @swigsrc@/oco_forward_model_output_wrap.cc
+SWIG_SRC += @swigsrc@/connor_convergence_output_wrap.cc
+SWIG_SRC += @swigsrc@/connor_solver_output_wrap.cc
+SWIG_SRC += @swigsrc@/error_analysis_output_wrap.cc
+SWIG_SRC += @swigsrc@/dispersion_fit_output_wrap.cc
+SWIG_SRC += @swigsrc@/max_a_posteriori_output_wrap.cc
+SWIG_SRC += @swigsrc@/fluorescence_effect_output_wrap.cc
+SWIG_SRC += @swigsrc@/radiance_scaling_output_wrap.cc
+
+EXTRA_DIST += @outsrc@/*.i
+
+# Test files
+lib_test_all_SOURCES+= @outsrc@/absorber_absco_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/aerosol_aod_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/aerosol_consolidated_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/connor_solver_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/error_analysis_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/forward_model_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/oco_forward_model_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/connor_convergence_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/ground_lambertian_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/ground_coxmunk_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/ground_coxmunk_plus_lambertian_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/ground_brdf_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/dispersion_polynomial_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/stokes_coefficient_fraction_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/zero_offset_waveform_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/empirical_orthogonal_function_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/level_1b_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/state_vector_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/temperature_met_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/temperature_level_offset_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/aerosol_param_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/fts_run_log_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/high_res_spectrum_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/fluorescence_effect_output_test.cc
+lib_test_all_SOURCES+= @outsrc@/radiance_scaling_output_test.cc
+
+# Allow files to be included in other directories.
+AM_CPPFLAGS+= -I$(srcdir)/@outsrc@
+
+# Allow searchs for .i, .h. and .cc files in this directory
+vpath %.cc $(srcdir)/@outsrc@
+vpath %.h $(srcdir)/@outsrc@
+vpath %.i $(srcdir)/@outsrc@

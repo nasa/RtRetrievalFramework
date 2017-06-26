@@ -1,0 +1,223 @@
+# Note that by default we read fields from the HDF static input file
+# given by SOUNDING_INFO/hdf_static_input_file. However, we still also have
+# the ability to read ASCII files, which can be useful if you are
+# trying to tweak something.
+#
+# The reading triggers off of the name, things with "group" give a HDF
+# 5 group to read. If instead you supply "file", then you can supply
+# an ASCII file. For example "lsi_group" reads the LSI configuration
+# from the HDF file, while "lsi_wavelength_file" reads the LSI from an
+# ASCII file.
+#
+# For the a_priori and covariance fields, you can specify a
+# "hdf_group" to read from the config file (the field read will be
+# <hdf_group>/a_priori and <hdf_group>/covariance). To use the HDF,
+# don't specify a "a_priori" or "covariance" entry. If you do, then
+# this should list a ASCII file to use instead of HDF. You can mix and
+# match HDF and ASCII. The ASCII file takes precedence if it is
+# listed, otherwise we look for HDF. So for example you can get the
+# apriori from a ASCII file and the covariance from the HDF config
+# file if desired.
+#
+# If you have an ASCII file that you want to put into the HDF config file,
+# the command line tool h5import can be useful, as is HDFView which allows
+# you to manually edit a HDF file.
+
+begin CONTROL
+   run_mode          = RETRIEVAL   
+
+   jacobian_mode     = ANALYTIC
+   
+   max_divergence    = 8    # stop after this number of diverging steps
+   max_iterations    = 12    # stop after this many iterations
+   max_chi2          = 1.4  # fail convergences if chi2 > max_chi2
+   lm_gamma          = 10.0  # Levenberg-Marquardt gamma
+   scale_convergence = 1.0  # converged if d_sigma_sq < scale_convergence * len_sv
+   fake_empty_for_test =
+end CONTROL
+
+begin ALGORITHMS
+   polarization              = true
+   num_diodes                = 1805 3508 2005
+   points_sun                = 10000
+   h2o_correction            = TRUE
+   retrieval_algorithm       = connor
+   psurf_correction_spec     = 1
+   solar_doppler_shift       = TRUE
+   inst_doppler_shift        = FALSE
+   total_intensity_only      = FALSE
+   rt_model_type             = lidort-3.5	
+
+   streams                   = 1 8 # lsi lo/hi streams
+   lsi_correction            = True
+   lsi_group                 = LSI
+end ALGORITHMS
+
+begin MASTER_QUALITY
+   # These are needed for either "Good" or "Caution"
+   reduced_chisq_o2_threshold          = 0.5
+   reduced_chisq_weak_co2_threshold    = 1.0
+   reduced_chisq_strong_co2_threshold  = 0.6
+   # These additional value are needed for "Good"
+   total_aod_threshold                 = 0.15
+   surface_pressure_error_min          = 0
+   surface_pressure_error_max          = 20e2
+   xco2_uncert_threshold               = 1.5e-6
+   number_divergent_threshold         = 0
+end MASTER_QUALITY
+
+begin OUTPUT
+   # Choices for verbosity are are DEBUG, INFO, WARNING, ERROR, FATAL.
+   verbosity             = FATAL
+   write_jacobian        = FALSE
+end OUTPUT
+
+begin WINDOW_INFO
+   spectral_window_file = oco_l2.win
+   target_species       = CO2
+   spectral_windows(1)  = ABO2_OCO 
+   spectral_windows(2)  = WCO2_OCO 
+   spectral_windows(3)  = SCO2_OCO 
+end WINDOW_INFO
+
+begin SOUNDING_INFO
+   hdf_static_input_file = l2_fixed_level_static_input.h5
+   soundinginfo_file = in/l1b/soundinginfo.dat
+   spectrum_file     = in/l1b/spec/spectra.dat
+   cloud_file        = in/cloud.h5
+   pressure_group    = Pressure
+   absco_path        = $(abscodir)/v3.3.0/lowres
+   instrument        = GOSAT
+# This sounding id is only used by the cloud file
+   sounding_id       = 20090627205850
+end SOUNDING_INFO
+
+begin PARAMETER_DEFINITION
+
+   # Aerosol types to use
+   aerosol_types    = Kahn_2b Kahn_3b Water Ice    # ground type (only specify one using the name parameter from a brdf block)
+
+   retrieval_vector = CO2 H2O PSURF T LAMBERTIAN DISP Kahn_2b Kahn_3b Water Ice    # The following blocks define the retrieval vector.
+   begin GAS
+      name              = CO2
+      hdf_group         = Gas/CO2
+      absco_file        = co2_v3.3.0-lowres.hdf
+      retrieval_indices = 1:20
+   end GAS
+
+   begin GAS
+      name              = H2O
+      hdf_group         = Gas/H2O
+      absco_file        = h2o_v3.3.0-lowres.hdf
+      scale_parameters  = 1.0 1.0 0.01 0.25
+   end GAS
+
+   begin GAS
+      name              = O2
+      hdf_group         = Gas/O2
+      absco_file        = o2_v3.3.0-lowres.hdf
+   end GAS
+
+   begin SURFACE_PRESSURE
+      name              = PSURF
+      hdf_group         = Surface_Pressure
+      retrieval_indices = 1
+   end SURFACE_PRESSURE
+
+   begin TEMPERATURE
+      name              = T
+      hdf_group         = Temperature/Levels
+      scale_parameters  = 0 0 2 25
+   end TEMPERATURE
+
+   begin BRDF
+      name = lambertian
+      type = lambert
+
+      begin SPECTRALLY_DEPENDENT
+         num_parameters       = 1
+         num_coefficients     = 2
+         name                 = albedo
+         hdf_group            = Ground/Lambertian
+
+         # Don't comment these out; just remove the indices if you don't want
+         # to retrieve them.
+         retrieval_indices(1) = 1 2      # spectrometer 1
+         retrieval_indices(2) = 1 2       # spectrometer 2
+         retrieval_indices(3) = 1 2      # spectrometer 3
+      end SPECTRALLY_DEPENDENT
+
+   end BRDF
+
+   begin INSTRUMENT
+      type                 = DISPERSION
+      name                 = DISP
+      hdf_group            = Instrument/Dispersion
+
+      # Don't comment these out; just remove the indices if you don't want
+      # to retrieve them.
+      retrieval_indices(1) = 1 # spectrometer 1
+      retrieval_indices(2) = 1 # spectrometer 2
+      retrieval_indices(3) = 1 # spectrometer 3
+   end INSTRUMENT
+
+   begin INSTRUMENT
+      type                 = ILS
+      name                 = ILS
+      hdf_group            = Instrument/ILS
+      ils_half_width       = 20  # In cm^-1
+   end INSTRUMENT
+
+#   begin INSTRUMENT
+#      type                 = ZERO_OFFSET
+#      name                 = ZERO_OFFSET
+#      hdf_group            = Instrument/ZeroLevelOffset
+#
+#      # Don't comment these out; just remove the indices if you don't want
+#      # to retrieve them.  
+#      retrieval_indices(1) = 1
+#      retrieval_indices(2) = 1
+#      retrieval_indices(3) = 1
+#
+#      a_priori             = ./in/instrument/zerolevel.dat
+#      covariance           = ./in/instrument/zerolevel_cov.dat
+#
+#     # zero-offset waveform corrections.  comment out entire lines if not using
+#     # waveform correction otherwise number of file entries must equal number of
+#     # spectrometers.  If waveform is used for any spectrometer, waveform must
+#     # be used for all (although waveforms can be zeroed).
+#      zero_offset_wf_file(1)  = ./in/instrument/zero_offset_waveform_short.dat
+#      zero_offset_wf_file(2)  = ./in/instrument/zero_offset_waveform_zero.dat
+#      zero_offset_wf_file(3)  = ./in/instrument/zero_offset_waveform_zero.dat
+#   end INSTRUMENT
+
+   begin SOLAR
+      hdf_group      = Solar
+   end SOLAR
+
+   begin AEROSOL
+      name              = Kahn_2b
+      hdf_group         = Aerosol/Kahn_2b
+      retrieval_indices = 1:20
+   end AEROSOL
+
+   begin AEROSOL
+      name              = Kahn_3b
+      hdf_group         = Aerosol/Kahn_3b
+      retrieval_indices = 1:20
+   end AEROSOL
+
+   begin AEROSOL
+      name              = Water
+      hdf_group         = Aerosol/Water
+      retrieval_indices = 1:20
+   end AEROSOL
+
+   begin AEROSOL
+      name              = Ice
+      hdf_group         = Aerosol/Ice
+      retrieval_indices = 1:20
+   end AEROSOL
+
+end PARAMETER_DEFINITION 
+

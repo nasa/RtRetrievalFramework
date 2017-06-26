@@ -1,0 +1,78 @@
+16 9
+multi_panel:  1 1 0 0
+;multi_panel:  1 2 0 0
+panel_size: .85 .85
+orientation: portrait
+;orientation: landscape
+color_table: -39  ; (-ve value forces black-white only plots)
+char_size:   2.50
+capt_size:   2.50
+line_thick:  3.00
+log_linear:  ii
+;log_linear:  oi
+;log_linear:  io
+;log_linear:  oo
+;ticklen: 0.05 0.05
+   size   nt  nls  nrot fill col   ls  xeb yeb
+   1.0    1   12    0    0   40    -1   1   0   $    ; circle (empty)
+   1.0    1    4    0    0   40    -1   1   1   $    ; diamond (empty)
+   1.0    2    5    0    0   40    -1   1   1   $    ; star up (empty)
+   1.0    1    3    0    0   40    -1   1   1   $    ; triangle up (empty)
+   0.0    1   12    0    0    0     0   1   1   $    ; circle (empty)
+   1.0    1    4    0    0  220    -1   1   1   $    ; diamond (empty)
+   1.0    2    5    0    0  220    -1   1   1   $    ; star up (empty)
+   1.0    1    3    0    0  220    -1   1   1   $    ; triangle up (empty)
+   1.0    1    4    0    1  120    -1   1   1   $    ; diamond (empty)
+   1.0    2    5    0    1  120    -1   1   1   $    ; star up (empty)
+   0.5    1    4    0    1   80    -1   1   1   $    ; diamond (empty)
+   0.5    1    4    0    1  120    -1   1   1   $    ; diamond (empty)
+   0.5    1    4    0    1  160    -1   1   1   $    ; diamond (empty)
+   0.5    1    4    0    1  200    -1   1   1   $    ; diamond (empty)
+   0.5    2    5    0    1   80    -1   1   1   $    ; star up (empty)
+   0.5    2    5    0    1  120    -1   1   1   $    ; star up (empty)
+   0.5    2    5    0    1  160    -1   1   1   $    ; star up (empty)
+   0.5    2    5    0    1  200    -1   1   1   $    ; star up (empty)
+   1.0    1   12    0    1  180    -1   1   1   $    ; circle (empty)
+   1.0    1    4    0    0  140    -1   1   1   $    ; diamond (empty)
+   1.0    1   12    0    0  140    -1   1   0   $    ; circle (empty)
+   1.0    1    4    0    1  120    -1   1   0   $    ; diamond (empty)
+   1.0    1   12    0    1  120    -1   1   0   $    ; circle (empty)
+   1.0    2    5    0    0  220    -1   1   0   $    ; star up (empty)
+   1.0    1    4    0    0  220    -1   1   0   $    ; diamond (empty)
+   1.0    1   12    0    0  220    -1   1   0   $    ; circle (empty)
+   1.0    1   12    0    0   80     1   1   1   $    ; circle (empty)
+   1.0    1   12    0    1  200    -1   1   1   $    ; circle (empty)
+   1.0    1   12    0    1  220    -1   1   1   $    ; circle (empty)
+   1.0    1   12    0    1  180    -1   1   1   $    ; circle (empty)
+   1.0    1   12    0    1  220    -1   1   1   $    ; circle (empty)
+   1.0    1    3    0    0   60    -1   1   1   $    ; triangle up (empty)
+   1.0    1    3    0    0  140    -1   1   1   $    ; triangle up (empty)
+   1.0    1    3    0    0  220    -1   1   1   $    ; triangle up (empty)
+   1.0    1    3    4    0  250    -1   1   1   $    ; triangle down (empty)
+   1.0    2    5    2    0    0    -1   1   1   $    ; star right (empty)
+   1.0    2    5    4    0    0    -1   1   1   $    ; star down (empty)
+   1.0    2    5    6    0    0    -1   1   1   $    ; star left (empty)
+   1.0    1    5    0    0    0    -1   1   1   $    ; pentagon up (empty)
+   1.0    1    5    2    0    0    -1   1   1   $    ; pentagon right (empty)
+   1.0    1    5    4    0    0    -1   1   1   $    ; pentagon down (empty)
+   1.0    1    5    6    0    0    -1   1   1   $    ; pentagon left (empty)
+   1.0    1    3    0    0    0    -1   1   1   $    ; triangle up (empty)
+   1.0    1    3    2    0    0    -1   1   1   $    ; triangle right (empty)
+   1.0    1    3    4    0    0    -1   1   1   $    ; triangle down (empty)
+   1.0    1    3    6    0    0    -1   1   1   $    ; triangle left (empty)
+   1.0    1    4    0    1   40    -1   1   1   $    ; diamond (filled)
+   1.0    1    4    1    1   80    -1   1   1   $    ; square (filled)
+   1.0    1   12    0    1  120    -1   1   1   $    ; circle (filled)
+   1.0    1    3    4    1  250    -1   1   1   $    ; triangle down (filled)
+   1.0    2    5    0    1    0    -1   1   1   $    ; star up (filled)
+   1.0    2    5    2    1    0    -1   1   1   $    ; star right (filled)
+   1.0    2    5    4    1    0    -1   1   1   $    ; star down (filled)
+   1.0    2    5    6    1    0    -1   1   1   $    ; star left (filled)
+   1.0    1    5    0    1    0    -1   1   1   $    ; pentagon up (filled)
+   1.0    1    5    2    1    0    -1   1   1   $    ; pentagon right (filled)
+   1.0    1    5    4    1    0    -1   1   1   $    ; pentagon down (filled)
+   1.0    1    5    6    1    0    -1   1   1   $    ; pentagon left (filled)
+   1.0    1    3    0    1    0    -1   1   1   $    ; triangle up (filled)
+   1.0    1    3    2    1    0    -1   1   1   $    ; triangle right (filled)
+   1.0    1    3    4    1    0    -1   1   1   $    ; triangle down (filled)
+   1.0    1    3    6    1    0    -1   1   1   $    ; triangle left (filled)

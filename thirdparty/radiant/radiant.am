@@ -1,0 +1,74 @@
+radiant: libradiant.la
+	$(MKDIR_P) $(libdir)
+	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) libradiant.la "$(libdir)"
+	touch $@
+
+if BUILD_RADIANT
+BUILT_SOURCES += radiant
+endif
+
+EXTRA_LTLIBRARIES += libradiant.la
+libradiant_la_SOURCES = @radiantsrc@/derfc.F90
+libradiant_la_SOURCES += @radiantsrc@/pleg3.F90
+libradiant_la_SOURCES += @radiantsrc@/matident.F
+libradiant_la_SOURCES += @radiantsrc@/matdiag.F
+libradiant_la_SOURCES += @radiantsrc@/mv_dv.F
+libradiant_la_SOURCES += @radiantsrc@/mm_ig1g2.F90
+libradiant_la_SOURCES += @radiantsrc@/mm_d1gd2.F
+libradiant_la_SOURCES += @radiantsrc@/getquad2.F90
+libradiant_la_SOURCES += @radiantsrc@/syssol.F90
+libradiant_la_SOURCES += @radiantsrc@/gaussq.F90
+libradiant_la_SOURCES += @radiantsrc@/qdata.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant_keywords.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant2.8_brdf_defs.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant2.8_brdf_lin_ss_subs.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant2.8_brdf_lin_subs.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant2.8_brdf_ss_subs.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant2.8_brdf_subs.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant2.8_cor.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant2.8_direct.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant2.8.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant2.8_global_var.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant2.8_io_defs.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant2.8_lin_comp.F90
+libradiant_la_SOURCES += @radiantsrc@/radiant2.8_utilities.F90
+# These are used both by radiant library and by full physics. Right now
+# we just build two copies of these. Perhaps they should be moved to
+# just one or the other?
+libradiant_la_SOURCES += @radiantsrc@/machine_constants_module.F90
+libradiant_la_SOURCES += @radiantsrc@/host_module.F90
+libradiant_la_SOURCES += @radiantsrc@/linear_algebra_module.F90
+
+# This is version 2.8 of radiant. We add the extra ".0" in case we have
+# changes we want to track that don't match a external version change.
+#
+# In addition to release, we have a "version" number. This is more library
+# focused, and indicates if programs can use newer versions without needing
+# to recompile. Bug fixes (as opposed to changes in functionality) can 
+# usually we thought of as version changes but not release changes, so
+# version-info might go to 0:1:0.
+# See http://sources.redhat.com/autobook/autobook/autobook_91.html for
+# a description of the difference between release and version.
+
+libradiant_la_LDFLAGS = -release 2.8.0 -rpath '$(libdir)' -version-info 0:0:0
+
+#=================================================================
+# Calculate dependencies between radiant routines
+
+thirdparty/radiant/radiant.deps : $(libradiant_la_SOURCES)
+	$(MKDIR_P) thirdparty/radiant
+	$(MKDIR_P) $(includedir)
+	$(srcdir)/config/depf90 "$(srcdir)" libradiant_la- "$(libradiant_la_SOURCES)" > $@.tmp && mv $@.tmp $@
+
+-include thirdparty/radiant/radiant.deps
+
+#=================================================================
+# Set up to put modules in modules directory.
+
+RADIANT_MOD_FLAGS := $(call fortran_module_path,$(includedir))
+libradiant_la_FCFLAGS = $(RADIANT_MOD_FLAGS)
+
+#=================================================================
+# Documentation needs to be rebuilt when these source files change
+
+doxygen_fortran_deps += $(libradiant_la_SOURCES) 

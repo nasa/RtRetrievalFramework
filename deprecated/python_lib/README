@@ -1,0 +1,9 @@
+This code was formerly in support/python_lib. It has been moved here because:
+
+1. It doesn't follow the PEP 8 python naming conventions
+2. Doesn't have a unit test
+3. Isn't used by anything in Level 2.
+
+If any of this is actually needed, we can move this into the new
+lib/Python directory, renaming and adding unit tests. But we won't bother
+unless this actually is needed somewhere.

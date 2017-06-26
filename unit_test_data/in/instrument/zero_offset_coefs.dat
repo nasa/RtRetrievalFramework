@@ -1,0 +1,13 @@
+begin HEADER
+  File_ID = "Zero offset parameters"
+  File_Creation = "Thu May  7 16:11:02 PDT 2009"
+  File_Type = "Matrix"
+  Num_Rows = 3
+  Num_Columns = 4
+  Labels = "PARAMETER" "ZERO_OFFSET_1" "ZERO_OFFSET_2" "ZERO_OFFSET_3"
+end HEADER
+
+#PARM  ZERO_OFFSET_1  ZERO_OFFSET_2  ZERO_OFFSET_3
+1              1e-07          1e-07          1e-07
+2              1e-11          1e-11          1e-11
+3              1e-15          1e-15          1e-15

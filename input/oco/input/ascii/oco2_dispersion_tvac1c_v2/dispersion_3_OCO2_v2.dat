@@ -1,0 +1,14 @@
+begin HEADER
+File_Creation = Thu Apr 12 14:05:10 2012
+File_ID = "Dispersion parameters for OCO2 footprint 3"
+Labels =  "PARAMETER"  "DISP_1"  "DISP_2"  "DISP_3"
+ Num_Columns = 4
+Num_Rows = 5
+ Start_Index = 1
+end HEADER
+#parameter                DISP_1           DISP_2           DISP_3
+1                 7.57630784e-01   1.59056189e+00   2.04303092e+00
+2                 1.74949448e-05   3.63041429e-05   4.69631495e-05
+3                -2.77935233e-09  -5.43823626e-09  -7.75654607e-09
+4                 7.73210609e-14   5.22564709e-15   5.93809263e-13
+5                -5.17428618e-17  -9.32917962e-17  -1.34601725e-16

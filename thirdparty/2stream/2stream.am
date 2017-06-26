@@ -1,0 +1,66 @@
+# This the 2stream radiative transfer solver
+
+$(libdir)/libtwostream.la: libtwostream.la
+	$(MKDIR_P) $(libdir)
+	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) libtwostream.la "$(libdir)"
+	touch $@
+
+.PHONY: 2stream
+
+2stream : $(libdir)/libtwostream.la
+
+if BUILD_TWOSTREAM
+BUILT_SOURCES += 2stream
+endif
+
+EXTRA_LTLIBRARIES += libtwostream.la
+libtwostream_la_SOURCES = 
+libtwostream_la_SOURCES += @twostream_src@/2stream_brdf_kernels.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_brdf_supplement.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_ls_brdf_supplement.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_ls_brdf_kernels.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_miscsetups.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_bvproblem.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_solutions.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_thermalsup.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_intensity.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_master.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_l_miscsetups.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_l_bvproblem.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_l_solutions.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_l_thermalsup.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_l_jacobians.F90
+libtwostream_la_SOURCES += @twostream_src@/2stream_l_master.F90
+
+# In addition to release, we have a "version" number. This is more library
+# focused, and indicates if programs can use newer versions without needing
+# to recompile. Bug fixes (as opposed to changes in functionality) can 
+# usually we thought of as version changes but not release changes, so
+# version-info might go to 0:1:0.
+# See http://sources.redhat.com/autobook/autobook/autobook_91.html for
+# a description of the difference between release and version.
+
+libtwostream_la_LDFLAGS = -rpath '$(libdir)' -version-info 0:0:0
+
+#=================================================================
+# Calculate dependencies between 2stream
+
+thirdparty/2stream/2stream.deps : $(libtwostream_la_SOURCES)
+	$(MKDIR_P) thirdparty/2stream
+	$(MKDIR_P) $(includedir)
+	$(RUBY) $(srcdir)/config/depf90 "$(srcdir)" libtwostream_la- "$(libtwostream_la_SOURCES)" > $@.tmp && mv $@.tmp $@
+
+-include thirdparty/2stream/2stream.deps
+
+CLEANFILES += thirdparty/2stream/2stream.deps
+
+#=================================================================
+# Set up to put modules in modules directory.
+
+TWOSTREAM_MOD_FLAGS := $(call fortran_module_path,$(includedir))
+libtwostream_la_FCFLAGS = $(TWOSTREAM_MOD_FLAGS)
+
+#=================================================================
+# Documentation needs to be rebuilt when these source files change
+
+doxygen_fortran_deps += $(libtwostream_la_SOURCES) 

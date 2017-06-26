@@ -1,0 +1,10 @@
+config_DATA += @gosatconfigsrc@/acos_config.lua
+config_DATA += @gosatconfigsrc@/gosat_base_config.lua
+config_DATA += @gosatconfigsrc@/gosat_orbit_sim_base_config.lua
+gosatconfigdir = @configdir@/gosat/config
+gosatconfig_DATA = @gosatconfigsrc@/config.lua
+gosatconfig_DATA += @gosatconfigsrc@/config_orbit_sim.lua
+gosatconfig_DATA += @gosatconfigsrc@/config_rrv.lua
+input_DATA += @gosatinputsrc@/l2_gosat_static_input.h5
+input_DATA += @gosatinputsrc@/l2_gosat_eof.h5
+

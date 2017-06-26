@@ -1,0 +1,14 @@
+# Include common constants such as where l2_input_dir is located
+include = <CONTROL_FILE_DIRECTORY>/common_constants.inc
+
+# Set up ability to use modules from level_2/support
+modules_dir = <l2_support_dir>/utils
+
+begin SET
+   source_dir    = <l2_input_dir>/<instrument_name>/static_input
+   dest_base_dir = <tests_base_dir>
+   dest_case_dir = <configuration_name>/static_input
+
+# Add includes here for modifying the static directory contents if needed
+
+end SET

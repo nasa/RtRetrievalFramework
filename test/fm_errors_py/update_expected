@@ -1,0 +1,5 @@
+#! /bin/bash
+export base_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Forward work to makefile, which checks dependencies for us
+$MAKE -f $base_dir/Makefile update_expected

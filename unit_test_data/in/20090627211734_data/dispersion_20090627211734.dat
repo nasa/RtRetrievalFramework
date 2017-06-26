@@ -1,0 +1,14 @@
+begin HEADER
+  File_Creation          = "2010-08-18T19:19:28"
+  File_ID                = "Dispersion apriori for: 20090627211734"
+  Labels                 = "PARAMETER" "DISP_1" "DISP_2" "DISP_3"
+  Num_Columns            = 4
+  Num_Rows               = 2
+  offsets                = [-0.37165186787579801, -0.17839289658038304, -0.14122770979280325]
+  scaling_equation       = "1 based indexing"
+  solar_doppler_velocity = 183.612935701
+end HEADER
+
+#       PARAMETER           DISP_1           DISP_2           DISP_3
+   1.00000000e+00   1.28695129e+04   5.74980507e+03   4.74978440e+03
+   2.00000000e+00   1.99492886e-01   1.99492886e-01   1.99492886e-01

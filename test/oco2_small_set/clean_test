@@ -1,0 +1,3 @@
+#! /bin/bash
+v=$[$1 + 1]
+rm -rf oco2_sounding_${v}_test

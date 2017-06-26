@@ -1,0 +1,12 @@
+begin HEADER
+   File_ID = "OCO Simple Noise Values"
+   File_Creation = 2009-11-05T00:00:00.000
+   File_Type = Matrix
+   Num_Rows = 2
+   Num_Columns =   3
+   Labels = "Noise_1" "Noise_2" "Noise_3"   
+   Rows = "Gain" "Floor"
+   Noise_Model = simple
+end HEADER
+9.521E-17 1.636E-16 2.318E-16
+1.924E+01 1.877E+01 2.813E+01

@@ -1,0 +1,30 @@
+bin_PROGRAMS += l2_fp
+l2_fp_SOURCES = @binsrc@/l2_fp.cc
+l2_fp_INCLUDES = $(top_builddir)/version.h
+l2_fp_LDADD = libfp.la  $(BOOST_LDSTATIC) $(HDF5_LDFLAGS)
+l2_fp_LDADD+= $(FCLIBS) $(PTHREAD_LIBS)
+EXTRA_l2_fp_DEPENDENCIES = version.h
+# Prefer to build an executable that can be copied from the build
+# directory. This causes all the thirdparty libraries (built with libtool) to
+# be linked in statically.
+l2_fp_LDFLAGS = -no-install -static-libtool-libs $(AM_LDFLAGS)
+if !HAVE_BOOST_STATIC
+  l2_fp_LDFLAGS += $(BOOST_LDFLAGS)
+endif
+
+# We make use of the fact that GNU make will try to create the (nonexistent) 
+# file cpp_version.stamp exactly once. As a side effect, we may or may not update
+# version.h. We can't have l2_fp directly depend on cpp_version.stamp, because it
+# will *always* think that this has changed. GNU make doesn't run the rule and *then*
+# check the time stamp, it always thinks it changes since it has executed the build
+# rule.
+-include cpp_version.stamp
+
+cpp_version.stamp:
+	@echo 'Creating version.h'
+	@echo '#define MAJOR_VERSION "$(VERSION)"' > version.h.tmp
+	@echo '#define CM_VERSION "'`python $(abs_srcdir)/support/full_physics/version_util.py $(abs_srcdir)`'"' >> version.h.tmp
+	@echo '#define SOURCE_DIRECTORY "$(abs_srcdir)"' >> version.h.tmp
+	@echo '#define BUILD_USER "$(USER)"' >> version.h.tmp
+	@test -e version.h && cmp version.h.tmp version.h || mv version.h.tmp version.h
+	@rm -f version.h.tmp

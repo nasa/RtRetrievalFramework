@@ -1,0 +1,15 @@
+begin HEADER
+  File_ID = "Nonuniform RT Grid ABO2"
+  File_Creation = "Thu Mar 31 08:35:00 PDT 2011"
+  File_Type = "Matrix"
+  Num_Rows = 7
+  Num_Columns = 1
+  Labels = "grid_points_wn"
+end HEADER
+31.75
+31.9
+32.2
+33.0
+33.9
+34.2
+34.55
