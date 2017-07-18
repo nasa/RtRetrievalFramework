@@ -45,6 +45,7 @@ OUTCOME_FLAG_DATASET = "RetrievalResults/outcome_flag"
 # String output into L2 code meaning that any error
 # causing premature execution was handled properly
 HANDLED_EXCEPTION_STRS = [ "Exception thrown by Full Physics code" ]
+FILE_EXCEPTION_STRS = ["While trying to open file '' a HDF 5 Exception thrown:"]
 
 # Use state vector names to add some debugging counts of configuration type
 STATEVECTOR_NAMES_DATASET = "RetrievedStateVector/state_vector_names"
@@ -74,6 +75,7 @@ class results_count(object):
 
         self.error_counts   = { "unknown_quality" : {"num": 0, "prefix": "with"},
                                 "handled_error"   : {"num": 0, "alt": "handled errors"},
+                                "file_open_error"   : {"num": 0, "alt": "opening file errors"},
                                 "exec_error"      : {"num": 0, "alt": "execution errors"},
                                 }
 
@@ -364,6 +366,11 @@ class run_id_result(object):
                         break
                     line_count += 1
 
+                    for error_str in FILE_EXCEPTION_STRS:
+                        if log_line.find(error_str) >= 0:
+                            if self.verbose: "Found error message:", log_line
+                            self.result_types.append( "file_open_error" )
+                            return True
                     for error_str in HANDLED_EXCEPTION_STRS:
                         if log_line.find(error_str) >= 0:
                             if self.verbose: "Found error message:", log_line
