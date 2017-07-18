@@ -8,9 +8,35 @@ from glob import glob
 from optparse import OptionParser
 from io import StringIO
 
-from full_physics import acos_file
+from full_physics import acos_file, docopt_simple
 
 import run_results
+
+version = "July 18, 2017"
+usage = '''Usage:
+  stats.py [options] [<run_dir_base>]
+  stats.py -h | --help
+  stats.py -v | --version
+
+Return stats on the jobs run in the given directory (default is the current
+director). 
+
+Options:
+  -h --help
+     Print this message
+
+  -o --output-dir=s
+     Directory for outputting status files. [default: ./]
+
+  -r --run-id-file=s
+     File to read with the list of run ids instead of relying on file 
+     searching, assumed ids located under current directory.
+
+  -v --version      
+     Print program version
+'''
+
+args = docopt_simple(usage, version=version)
 
 SOUNDING_ID_FILENAME_GLOBS = ['rmgr_sounding_ids.list', '*.config']
 
@@ -19,7 +45,8 @@ aggregate_types = { 'exceeded_max': [ 'max_iter', 'max_div' ],
                     'failed' : ['handled_error', 'exec_error', 'other', 'unknown_quality']
                     }
 
-def gather_status(base_dir, output_dir, run_id_file=None, aggregate_file=None, verbose=False):
+def gather_status(base_dir, output_dir, run_id_file=None,
+                  aggregate_file=None, verbose=False):
 
     # Strip trailing slash
     output_dir = output_dir.rstrip('/')
@@ -101,47 +128,26 @@ def gather_status(base_dir, output_dir, run_id_file=None, aggregate_file=None, v
     return run_lists
 
 
-def standalone_main():
-    parser = OptionParser(usage="usage: %prog [options] [run_dir_base]")
+if(args.run_dir_base):
+    base_dir = args.run_dir_base
+else:
+    base_dir = "./"
 
-    parser.add_option( "-o", "--output_dir", dest="output_dir",
-                       metavar="DIR",
-                       type="string",
-                       default='./',
-                       help="directory for outputting status files",
-                       )
+# Try and find a sounding id file to use
+run_id_file = args.run_id_file
+if run_id_file is None:
+    for srch_glob in SOUNDING_ID_FILENAME_GLOBS:
+        res = glob(os.path.join(base_dir, srch_glob))
+        if len(res) > 0:
+            run_id_file = res[0]
+            break
 
-    parser.add_option( "-r", "--run_id_file", dest="run_id_file",
-                       metavar="FILE",
-                       help="file to read with list of run ids instead of relying on file searching, assumed ids located under current directory")
+aggregate_srch = glob(os.path.join(base_dir, "l2_aggregate.h5"))
+if len(aggregate_srch) > 0:
+    aggregate_file = aggregate_srch[0]
+else:
+    aggregate_file = None
 
-    # Parse command line arguments
-    (options, args) = parser.parse_args()
+gather_status(base_dir, args.output_dir, run_id_file=run_id_file,
+              aggregate_file=aggregate_file, verbose=True)
 
-    if len(args) > 1:
-        raise ValueError('Only one base directory should be specified')
-    elif len(args) == 1:
-        base_dir = args[0]
-    else:
-        base_dir = './'
-
-    # Try and find a sounding id file to use
-    if options.run_id_file == None:
-        for srch_glob in SOUNDING_ID_FILENAME_GLOBS:
-            res = glob(os.path.join(base_dir, srch_glob))
-            if len(res) > 0:
-                run_id_file = res[0]
-                break
-    else:
-        run_id_file = options.run_id_file
-
-    aggregate_srch = glob(os.path.join(base_dir, "l2_aggregate.h5"))
-    if len(aggregate_srch) > 0:
-        aggregate_file = aggregate_srch[0]
-    else:
-        aggregate_file = None
-
-    gather_status(base_dir, options.output_dir, run_id_file=run_id_file, aggregate_file=aggregate_file, verbose=True)
-
-if __name__ == "__main__":
-    standalone_main()
