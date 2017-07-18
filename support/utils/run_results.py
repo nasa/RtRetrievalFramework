@@ -246,6 +246,9 @@ class run_id_result(object):
     def find_check_file(self, file_glob):
         file_search = (self.base_path + "/" + file_glob).format(base_path=self.base_path, run_id=self.run_id)
         file_result = glob.glob( file_search )
+        if(len(file_result) == 0):
+            file_search2 = (self.base_path + "/*/" + file_glob).format(base_path=self.base_path, run_id=self.run_id)
+            file_result = glob.glob( file_search2 )
 
         if self.verbose: print("Checking for file %s" % file_search)
         if len(file_result) > 0 and file_result[0] != "":
