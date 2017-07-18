@@ -42,7 +42,7 @@ SOUNDING_ID_FILENAME_GLOBS = ['rmgr_sounding_ids.list', '*.config']
 
 status_count_filename = 'run_results.txt'
 aggregate_types = { 'exceeded_max': [ 'max_iter', 'max_div' ],
-                    'failed' : ['handled_error', 'exec_error', 'other', 'unknown_quality']
+                    'failed' : ['handled_error', 'file_open_error', 'exec_error', 'other', 'unknown_quality']
                     }
 
 def gather_status(base_dir, output_dir, run_id_file=None,
