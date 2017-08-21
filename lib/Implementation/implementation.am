@@ -300,6 +300,7 @@ SWIG_SRC += @swigsrc@/level_1b_scale_radiance_wrap.cc
 SWIG_SRC += @swigsrc@/level_1b_oco_wrap.cc
 SWIG_SRC += @swigsrc@/level_1b_uq_wrap.cc
 SWIG_SRC += @swigsrc@/level_1b_cache_wrap.cc
+SWIG_SRC += @swigsrc@/oco_noise_model_wrap.cc
 SWIG_SRC += @swigsrc@/gosat_noise_model_wrap.cc
 SWIG_SRC += @swigsrc@/precomputed_noise_model_wrap.cc
 SWIG_SRC += @swigsrc@/absco_wrap.cc

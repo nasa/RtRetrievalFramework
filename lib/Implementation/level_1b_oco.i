@@ -11,6 +11,9 @@
 %fp_shared_ptr(FullPhysics::Level1bOco);
 
 namespace FullPhysics {
+
+%feature("notabstract") Level1bOco;
+
 class Level1bOco: public Level1bHdf {
 public:
   Level1bOco(const std::string& Fname, 

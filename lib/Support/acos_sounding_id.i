@@ -1,6 +1,7 @@
 // -*- mode: c++; -*-
 // (Not really c++, but closest emacs mode)
 
+%include <std_vector.i>
 %include "common.i"
 
 %{
@@ -20,6 +21,6 @@ public:
   static std::vector<boost::shared_ptr<HdfSoundingId> >
   create(const HdfFile& File, const std::string& Sounding_id);
 };
-
 }
 
+%template(vector_acos_sounding_id) std::vector<boost::shared_ptr<FullPhysics::HdfSoundingId> >;
