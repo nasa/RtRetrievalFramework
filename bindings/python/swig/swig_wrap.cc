@@ -170,6 +170,7 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_oco)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_uq)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_cache)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_noise_model)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(gosat_noise_model)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(precomputed_noise_model)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(absco)(void);
@@ -567,6 +568,7 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_level_1b_oco", SWIG_INIT_FUNC(level_1b_oco));
   SWIG_INIT_MODULE(package, "_level_1b_uq", SWIG_INIT_FUNC(level_1b_uq));
   SWIG_INIT_MODULE(package, "_level_1b_cache", SWIG_INIT_FUNC(level_1b_cache));
+  SWIG_INIT_MODULE(package, "_oco_noise_model", SWIG_INIT_FUNC(oco_noise_model));
   SWIG_INIT_MODULE(package, "_gosat_noise_model", SWIG_INIT_FUNC(gosat_noise_model));
   SWIG_INIT_MODULE(package, "_precomputed_noise_model", SWIG_INIT_FUNC(precomputed_noise_model));
   SWIG_INIT_MODULE(package, "_absco", SWIG_INIT_FUNC(absco));
