@@ -3453,20 +3453,24 @@ namespace Swig {
 #define SWIGTYPE_p_iostate swig_types[34]
 #define SWIGTYPE_p_off_type swig_types[35]
 #define SWIGTYPE_p_openmode swig_types[36]
-#define SWIGTYPE_p_pos_type swig_types[37]
-#define SWIGTYPE_p_seekdir swig_types[38]
-#define SWIGTYPE_p_size_t swig_types[39]
-#define SWIGTYPE_p_size_type swig_types[40]
-#define SWIGTYPE_p_state_type swig_types[41]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[42]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[43]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[44]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[45]
-#define SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t swig_types[46]
-#define SWIGTYPE_p_traits_type swig_types[47]
-#define SWIGTYPE_p_value_type swig_types[48]
-static swig_type_info *swig_types[50];
-static swig_module_info swig_module = {swig_types, 49, 0, 0, 0, 0};
+#define SWIGTYPE_p_p_PyObject swig_types[37]
+#define SWIGTYPE_p_pos_type swig_types[38]
+#define SWIGTYPE_p_seekdir swig_types[39]
+#define SWIGTYPE_p_size_t swig_types[40]
+#define SWIGTYPE_p_size_type swig_types[41]
+#define SWIGTYPE_p_state_type swig_types[42]
+#define SWIGTYPE_p_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t swig_types[43]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[44]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[45]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[46]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[47]
+#define SWIGTYPE_p_std__invalid_argument swig_types[48]
+#define SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t swig_types[49]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[50]
+#define SWIGTYPE_p_traits_type swig_types[51]
+#define SWIGTYPE_p_value_type swig_types[52]
+static swig_type_info *swig_types[54];
+static swig_module_info swig_module = {swig_types, 53, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3584,50 +3588,23 @@ namespace swig {
 }
 
 
-#include <boost/shared_ptr.hpp>
-#include <boost/rational.hpp>
+#include <iostream>
 
-//--------------------------------------------------------------
-// Helper class for python that holds an object and when deleted
-// decrements the reference to it.
-//--------------------------------------------------------------
-
-class PythonObject {
-public:
-  PythonObject(PyObject* Obj = 0) : obj(Obj) {}
-  ~PythonObject() { Py_XDECREF(obj); }
-  PyObject* obj;
-  operator PyObject*() {return obj;}
-};
+#if PY_VERSION_HEX >= 0x03020000
+# define SWIGPY_SLICE_ARG(obj) ((PyObject*) (obj))
+#else
+# define SWIGPY_SLICE_ARG(obj) ((PySliceObject*) (obj))
+#endif
 
 
-// If the object passed in actually a python director, we don't own
-// it. Instead, when the reference count goes to 0 we just decrement
-// our reference to it.
-//
-// The original RefPtr had null deleter if this is a director object,
-// so we don't actually delete the pointer p
-  class PythonRefPtrCleanup {
-  public:
-    PythonRefPtrCleanup(PyObject* Obj) : obj(Obj) {}
-    void operator()(void* p) { Py_DECREF(obj);}
-  private:
-    PyObject* obj;
-  };
+#include <stdexcept>
 
 
-SWIGINTERNINLINE PyObject*
-  SWIG_From_int  (int value)
-{
-  return PyInt_FromLong((long) value);
-}
-
-
-#include "swig_type_mapper.h"
-
-
-  // This is defined in swig_wrap.tmpl, so it gets put into swig_wrap.cc
-  std::string parse_python_exception();
+#if defined(__GNUC__)
+#  if __GNUC__ == 2 && __GNUC_MINOR <= 96
+#     define SWIG_STD_NOMODERN_STL
+#  endif
+#endif
 
 
 #include <string>
@@ -3761,6 +3738,273 @@ namespace swig {
   }
 #endif
 }
+
+
+SWIGINTERN int
+SWIG_AsVal_double (PyObject *obj, double *val)
+{
+  int res = SWIG_TypeError;
+  if (PyFloat_Check(obj)) {
+    if (val) *val = PyFloat_AsDouble(obj);
+    return SWIG_OK;
+  } else if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else if (PyLong_Check(obj)) {
+    double v = PyLong_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    double d = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = d;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      long v = PyLong_AsLong(obj);
+      if (!PyErr_Occurred()) {
+	if (val) *val = v;
+	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
+      } else {
+	PyErr_Clear();
+      }
+    }
+  }
+#endif
+  return res;
+}
+
+
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx = floor(x);
+   double cx = ceil(x);
+   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_unsigned_SS_long (PyObject *obj, unsigned long *val) 
+{
+#if PY_VERSION_HEX < 0x03000000
+  if (PyInt_Check(obj)) {
+    long v = PyInt_AsLong(obj);
+    if (v >= 0) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      return SWIG_OverflowError;
+    }
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    unsigned long v = PyLong_AsUnsignedLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+#if PY_VERSION_HEX >= 0x03000000
+      {
+        long v = PyLong_AsLong(obj);
+        if (!PyErr_Occurred()) {
+          if (v < 0) {
+            return SWIG_OverflowError;
+          }
+        } else {
+          PyErr_Clear();
+        }
+      }
+#endif
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    unsigned long v = PyLong_AsUnsignedLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, 0, ULONG_MAX)) {
+	if (val) *val = (unsigned long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERNINLINE int
+SWIG_AsVal_size_t (PyObject * obj, size_t *val)
+{
+  unsigned long v;
+  int res = SWIG_AsVal_unsigned_SS_long (obj, val ? &v : 0);
+  if (SWIG_IsOK(res) && val) *val = static_cast< size_t >(v);
+  return res;
+}
+
+
+  #define SWIG_From_long   PyLong_FromLong 
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_ptrdiff_t  (ptrdiff_t value)
+{    
+  return SWIG_From_long  (static_cast< long >(value));
+}
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERNINLINE int
+SWIG_AsVal_ptrdiff_t (PyObject * obj, ptrdiff_t *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, val ? &v : 0);
+  if (SWIG_IsOK(res) && val) *val = static_cast< ptrdiff_t >(v);
+  return res;
+}
+
+
+#include <algorithm>
+
+
+#include <vector>
+
+
+#include <boost/shared_ptr.hpp>
+#include <boost/rational.hpp>
+
+//--------------------------------------------------------------
+// Helper class for python that holds an object and when deleted
+// decrements the reference to it.
+//--------------------------------------------------------------
+
+class PythonObject {
+public:
+  PythonObject(PyObject* Obj = 0) : obj(Obj) {}
+  ~PythonObject() { Py_XDECREF(obj); }
+  PyObject* obj;
+  operator PyObject*() {return obj;}
+};
+
+
+// If the object passed in actually a python director, we don't own
+// it. Instead, when the reference count goes to 0 we just decrement
+// our reference to it.
+//
+// The original RefPtr had null deleter if this is a director object,
+// so we don't actually delete the pointer p
+  class PythonRefPtrCleanup {
+  public:
+    PythonRefPtrCleanup(PyObject* Obj) : obj(Obj) {}
+    void operator()(void* p) { Py_DECREF(obj);}
+  private:
+    PyObject* obj;
+  };
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_int  (int value)
+{
+  return PyInt_FromLong((long) value);
+}
+
+
+#include "swig_type_mapper.h"
+
+
+  // This is defined in swig_wrap.tmpl, so it gets put into swig_wrap.cc
+  std::string parse_python_exception();
 
 
 namespace swig {  
@@ -5015,125 +5259,6 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
 
 
 SWIGINTERN int
-SWIG_AsVal_double (PyObject *obj, double *val)
-{
-  int res = SWIG_TypeError;
-  if (PyFloat_Check(obj)) {
-    if (val) *val = PyFloat_AsDouble(obj);
-    return SWIG_OK;
-  } else if (PyInt_Check(obj)) {
-    if (val) *val = PyInt_AsLong(obj);
-    return SWIG_OK;
-  } else if (PyLong_Check(obj)) {
-    double v = PyLong_AsDouble(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    double d = PyFloat_AsDouble(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = d;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      long v = PyLong_AsLong(obj);
-      if (!PyErr_Occurred()) {
-	if (val) *val = v;
-	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
-      } else {
-	PyErr_Clear();
-      }
-    }
-  }
-#endif
-  return res;
-}
-
-
-#include <float.h>
-
-
-#include <math.h>
-
-
-SWIGINTERNINLINE int
-SWIG_CanCastAsInteger(double *d, double min, double max) {
-  double x = *d;
-  if ((min <= x && x <= max)) {
-   double fx = floor(x);
-   double cx = ceil(x);
-   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
-   if ((errno == EDOM) || (errno == ERANGE)) {
-     errno = 0;
-   } else {
-     double summ, reps, diff;
-     if (rd < x) {
-       diff = x - rd;
-     } else if (rd > x) {
-       diff = rd - x;
-     } else {
-       return 1;
-     }
-     summ = rd + x;
-     reps = diff/summ;
-     if (reps < 8*DBL_EPSILON) {
-       *d = rd;
-       return 1;
-     }
-   }
-  }
-  return 0;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_long (PyObject *obj, long* val)
-{
-  if (PyInt_Check(obj)) {
-    if (val) *val = PyInt_AsLong(obj);
-    return SWIG_OK;
-  } else if (PyLong_Check(obj)) {
-    long v = PyLong_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    long v = PyInt_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      double d;
-      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
-      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
-	if (val) *val = (long)(d);
-	return res;
-      }
-    }
-  }
-#endif
-  return SWIG_TypeError;
-}
-
-
-SWIGINTERN int
 SWIG_AsVal_int (PyObject * obj, int *val)
 {
   long v;
@@ -5162,6 +5287,225 @@ struct SWIG_null_deleter {
 #define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
 
 
+  namespace swig {
+    template <>  struct traits<boost::shared_ptr< FullPhysics::HdfSoundingId > > {
+      typedef pointer_category category;
+      static const char* type_name() { return"boost::shared_ptr< FullPhysics::HdfSoundingId >"; }
+    };
+  }
+
+
+namespace swig {
+  template <class SwigPySeq, class Seq>
+  inline void
+  assign(const SwigPySeq& swigpyseq, Seq* seq) {
+    // seq->assign(swigpyseq.begin(), swigpyseq.end()); // not used as not always implemented
+    typedef typename SwigPySeq::value_type value_type;
+    typename SwigPySeq::const_iterator it = swigpyseq.begin();
+    for (;it != swigpyseq.end(); ++it) {
+      seq->insert(seq->end(),(value_type)(*it));
+    }
+  }
+
+  template <class Seq, class T = typename Seq::value_type >
+  struct traits_asptr_stdseq {
+    typedef Seq sequence;
+    typedef T value_type;
+
+    static int asptr(PyObject *obj, sequence **seq) {
+      if (obj == Py_None || SWIG_Python_GetSwigThis(obj)) {
+	sequence *p;
+	if (::SWIG_ConvertPtr(obj,(void**)&p,
+			      swig::type_info<sequence>(),0) == SWIG_OK) {
+	  if (seq) *seq = p;
+	  return SWIG_OLDOBJ;
+	}
+      } else if (PySequence_Check(obj)) {
+	try {
+	  SwigPySequence_Cont<value_type> swigpyseq(obj);
+	  if (seq) {
+	    sequence *pseq = new sequence();
+	    assign(swigpyseq, pseq);
+	    *seq = pseq;
+	    return SWIG_NEWOBJ;
+	  } else {
+	    return swigpyseq.check() ? SWIG_OK : SWIG_ERROR;
+	  }
+	} catch (std::exception& e) {
+	  if (seq) {
+	    if (!PyErr_Occurred()) {
+	      PyErr_SetString(PyExc_TypeError, e.what());
+	    }
+	  }
+	  return SWIG_ERROR;
+	}
+      }
+      return SWIG_ERROR;
+    }
+  };
+
+  template <class Seq, class T = typename Seq::value_type >
+  struct traits_from_stdseq {
+    typedef Seq sequence;
+    typedef T value_type;
+    typedef typename Seq::size_type size_type;
+    typedef typename sequence::const_iterator const_iterator;
+
+    static PyObject *from(const sequence& seq) {
+#ifdef SWIG_PYTHON_EXTRA_NATIVE_CONTAINERS
+      swig_type_info *desc = swig::type_info<sequence>();
+      if (desc && desc->clientdata) {
+	return SWIG_NewPointerObj(new sequence(seq), desc, SWIG_POINTER_OWN);
+      }
+#endif
+      size_type size = seq.size();
+      if (size <= (size_type)INT_MAX) {
+	PyObject *obj = PyTuple_New((int)size);
+	int i = 0;
+	for (const_iterator it = seq.begin();
+	     it != seq.end(); ++it, ++i) {
+	  PyTuple_SetItem(obj,i,swig::from<value_type>(*it));
+	}
+	return obj;
+      } else {
+	PyErr_SetString(PyExc_OverflowError,"sequence size not valid in python");
+	return NULL;
+      }
+    }
+  };
+}
+
+
+  namespace swig {
+    template <class T>
+    struct traits_asptr<std::vector<T> >  {
+      static int asptr(PyObject *obj, std::vector<T> **vec) {
+	return traits_asptr_stdseq<std::vector<T> >::asptr(obj, vec);
+      }
+    };
+    
+    template <class T>
+    struct traits_from<std::vector<T> > {
+      static PyObject *from(const std::vector<T>& vec) {
+	return traits_from_stdseq<std::vector<T> >::from(vec);
+      }
+    };
+  }
+
+
+      namespace swig {
+	template <>  struct traits<std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >, std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > > {
+	  typedef pointer_category category;
+	  static const char* type_name() {
+	    return "std::vector<" "boost::shared_ptr< FullPhysics::HdfSoundingId >" "," "std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > >" " >";
+	  }
+	};
+      }
+    
+SWIGINTERN swig::SwigPyIterator *std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__iterator(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,PyObject **PYTHON_SELF){
+      return swig::make_output_iterator(self->begin(), self->begin(), self->end(), *PYTHON_SELF);
+    }
+SWIGINTERN bool std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____nonzero__(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *self){
+      return !(self->empty());
+    }
+SWIGINTERN bool std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____bool__(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *self){
+      return !(self->empty());
+    }
+SWIGINTERN std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____len__(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *self){
+      return self->size();
+    }
+
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyLong_FromLong(static_cast< long >(value)); 
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_size_t  (size_t value)
+{    
+  return SWIG_From_unsigned_SS_long  (static_cast< unsigned long >(value));
+}
+
+SWIGINTERN std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__pop(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self){
+      if (self->size() == 0)
+	throw std::out_of_range("pop from empty container");
+      std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > >::value_type x = self->back();
+      self->pop_back();
+      return x;
+    }
+SWIGINTERN std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____getslice__(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type i,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type j){
+      return swig::getslice(self, i, j, 1);
+    }
+SWIGINTERN void std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____setslice____SWIG_0(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type i,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type j,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > const &v=std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > >()){
+      swig::setslice(self, i, j, 1, v);
+    }
+SWIGINTERN void std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____delslice__(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type i,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type j){
+      swig::delslice(self, i, j, 1);
+    }
+SWIGINTERN void std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____delitem____SWIG_0(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type i){
+      self->erase(swig::getpos(self,i));
+    }
+SWIGINTERN std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____getitem____SWIG_0(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,PySliceObject *slice){
+      Py_ssize_t i, j, step;
+      if( !PySlice_Check(slice) ) {
+        SWIG_Error(SWIG_TypeError, "Slice object expected.");
+        return NULL;
+      }
+      PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
+      std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > >::difference_type id = i;
+      std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > >::difference_type jd = j;
+      return swig::getslice(self, id, jd, step);
+    }
+SWIGINTERN void std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____setitem____SWIG_0(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,PySliceObject *slice,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > const &v){
+      Py_ssize_t i, j, step;
+      if( !PySlice_Check(slice) ) {
+        SWIG_Error(SWIG_TypeError, "Slice object expected.");
+        return;
+      }
+      PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
+      std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > >::difference_type id = i;
+      std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > >::difference_type jd = j;
+      swig::setslice(self, id, jd, step, v);
+    }
+SWIGINTERN void std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____setitem____SWIG_1(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,PySliceObject *slice){
+      Py_ssize_t i, j, step;
+      if( !PySlice_Check(slice) ) {
+        SWIG_Error(SWIG_TypeError, "Slice object expected.");
+        return;
+      }
+      PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
+      std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > >::difference_type id = i;
+      std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > >::difference_type jd = j;
+      swig::delslice(self, id, jd, step);
+    }
+SWIGINTERN void std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____delitem____SWIG_1(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,PySliceObject *slice){
+      Py_ssize_t i, j, step;
+      if( !PySlice_Check(slice) ) {
+        SWIG_Error(SWIG_TypeError, "Slice object expected.");
+        return;
+      }
+      PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
+      std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > >::difference_type id = i;
+      std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > >::difference_type jd = j;
+      swig::delslice(self, id, jd, step);
+    }
+SWIGINTERN std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____getitem____SWIG_1(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *self,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type i){
+      return *(swig::cgetpos(self, i));
+    }
+SWIGINTERN void std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____setitem____SWIG_2(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type i,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &x){
+      *(swig::getpos(self,i)) = x;
+    }
+SWIGINTERN void std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__append(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &x){
+      self->push_back(x);
+    }
+SWIGINTERN std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__erase__SWIG_0(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator pos){ return self->erase(pos); }
+SWIGINTERN std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__erase__SWIG_1(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator first,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator last){ return self->erase(first, last); }
+SWIGINTERN std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__insert__SWIG_0(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator pos,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &x){ return self->insert(pos, x); }
+SWIGINTERN void std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__insert__SWIG_1(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *self,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator pos,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type n,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &x){ self->insert(pos, n, x); }
+
 
 /* ---------------------------------------------------
  * C++ director class methods
@@ -5172,6 +5516,782 @@ struct SWIG_null_deleter {
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_delete_SwigPyIterator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SwigPyIterator" "', argument " "1"" of type '" "swig::SwigPyIterator *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_value(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  PyObject *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator_value" "', argument " "1"" of type '" "swig::SwigPyIterator const *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  try {
+    result = (PyObject *)((swig::SwigPyIterator const *)arg1)->value();
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_incr__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  size_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator_incr" "', argument " "1"" of type '" "swig::SwigPyIterator *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SwigPyIterator_incr" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
+  try {
+    result = (swig::SwigPyIterator *)(arg1)->incr(arg2);
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_incr__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator_incr" "', argument " "1"" of type '" "swig::SwigPyIterator *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  try {
+    result = (swig::SwigPyIterator *)(arg1)->incr();
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_incr(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"SwigPyIterator_incr",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_SwigPyIterator_incr__SWIG_1(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_SwigPyIterator_incr__SWIG_0(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SwigPyIterator_incr'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    swig::SwigPyIterator::incr(size_t)\n"
+    "    swig::SwigPyIterator::incr()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_decr__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  size_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator_decr" "', argument " "1"" of type '" "swig::SwigPyIterator *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SwigPyIterator_decr" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
+  try {
+    result = (swig::SwigPyIterator *)(arg1)->decr(arg2);
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_decr__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator_decr" "', argument " "1"" of type '" "swig::SwigPyIterator *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  try {
+    result = (swig::SwigPyIterator *)(arg1)->decr();
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_decr(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"SwigPyIterator_decr",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_SwigPyIterator_decr__SWIG_1(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_SwigPyIterator_decr__SWIG_0(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SwigPyIterator_decr'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    swig::SwigPyIterator::decr(size_t)\n"
+    "    swig::SwigPyIterator::decr()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_distance(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  swig::SwigPyIterator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  ptrdiff_t result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SwigPyIterator_distance",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator_distance" "', argument " "1"" of type '" "swig::SwigPyIterator const *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_swig__SwigPyIterator,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SwigPyIterator_distance" "', argument " "2"" of type '" "swig::SwigPyIterator const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SwigPyIterator_distance" "', argument " "2"" of type '" "swig::SwigPyIterator const &""'"); 
+  }
+  arg2 = reinterpret_cast< swig::SwigPyIterator * >(argp2);
+  try {
+    result = ((swig::SwigPyIterator const *)arg1)->distance((swig::SwigPyIterator const &)*arg2);
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_Python_Raise(SWIG_NewPointerObj((new std::invalid_argument(static_cast< const std::invalid_argument& >(_e))),SWIGTYPE_p_std__invalid_argument,SWIG_POINTER_OWN), "std::invalid_argument", SWIGTYPE_p_std__invalid_argument); SWIG_fail;
+  }
+  
+  resultobj = SWIG_From_ptrdiff_t(static_cast< ptrdiff_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_equal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  swig::SwigPyIterator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SwigPyIterator_equal",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator_equal" "', argument " "1"" of type '" "swig::SwigPyIterator const *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_swig__SwigPyIterator,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SwigPyIterator_equal" "', argument " "2"" of type '" "swig::SwigPyIterator const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SwigPyIterator_equal" "', argument " "2"" of type '" "swig::SwigPyIterator const &""'"); 
+  }
+  arg2 = reinterpret_cast< swig::SwigPyIterator * >(argp2);
+  try {
+    result = (bool)((swig::SwigPyIterator const *)arg1)->equal((swig::SwigPyIterator const &)*arg2);
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_Python_Raise(SWIG_NewPointerObj((new std::invalid_argument(static_cast< const std::invalid_argument& >(_e))),SWIGTYPE_p_std__invalid_argument,SWIG_POINTER_OWN), "std::invalid_argument", SWIGTYPE_p_std__invalid_argument); SWIG_fail;
+  }
+  
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator_copy" "', argument " "1"" of type '" "swig::SwigPyIterator const *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  result = (swig::SwigPyIterator *)((swig::SwigPyIterator const *)arg1)->copy();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_next(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  PyObject *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator_next" "', argument " "1"" of type '" "swig::SwigPyIterator *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  try {
+    result = (PyObject *)(arg1)->next();
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator___next__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  PyObject *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator___next__" "', argument " "1"" of type '" "swig::SwigPyIterator *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  try {
+    result = (PyObject *)(arg1)->__next__();
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_previous(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  PyObject *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator_previous" "', argument " "1"" of type '" "swig::SwigPyIterator *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  try {
+    result = (PyObject *)(arg1)->previous();
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator_advance(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  ptrdiff_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SwigPyIterator_advance",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator_advance" "', argument " "1"" of type '" "swig::SwigPyIterator *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SwigPyIterator_advance" "', argument " "2"" of type '" "ptrdiff_t""'");
+  } 
+  arg2 = static_cast< ptrdiff_t >(val2);
+  try {
+    result = (swig::SwigPyIterator *)(arg1)->advance(arg2);
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  swig::SwigPyIterator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SwigPyIterator___eq__",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator___eq__" "', argument " "1"" of type '" "swig::SwigPyIterator const *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_swig__SwigPyIterator,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SwigPyIterator___eq__" "', argument " "2"" of type '" "swig::SwigPyIterator const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SwigPyIterator___eq__" "', argument " "2"" of type '" "swig::SwigPyIterator const &""'"); 
+  }
+  arg2 = reinterpret_cast< swig::SwigPyIterator * >(argp2);
+  result = (bool)((swig::SwigPyIterator const *)arg1)->operator ==((swig::SwigPyIterator const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator___ne__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  swig::SwigPyIterator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SwigPyIterator___ne__",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator___ne__" "', argument " "1"" of type '" "swig::SwigPyIterator const *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_swig__SwigPyIterator,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SwigPyIterator___ne__" "', argument " "2"" of type '" "swig::SwigPyIterator const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SwigPyIterator___ne__" "', argument " "2"" of type '" "swig::SwigPyIterator const &""'"); 
+  }
+  arg2 = reinterpret_cast< swig::SwigPyIterator * >(argp2);
+  result = (bool)((swig::SwigPyIterator const *)arg1)->operator !=((swig::SwigPyIterator const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  ptrdiff_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SwigPyIterator___iadd__",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator___iadd__" "', argument " "1"" of type '" "swig::SwigPyIterator *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SwigPyIterator___iadd__" "', argument " "2"" of type '" "ptrdiff_t""'");
+  } 
+  arg2 = static_cast< ptrdiff_t >(val2);
+  try {
+    result = (swig::SwigPyIterator *) &(arg1)->operator +=(arg2);
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator___isub__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  ptrdiff_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SwigPyIterator___isub__",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator___isub__" "', argument " "1"" of type '" "swig::SwigPyIterator *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SwigPyIterator___isub__" "', argument " "2"" of type '" "ptrdiff_t""'");
+  } 
+  arg2 = static_cast< ptrdiff_t >(val2);
+  try {
+    result = (swig::SwigPyIterator *) &(arg1)->operator -=(arg2);
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator___add__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  ptrdiff_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SwigPyIterator___add__",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator___add__" "', argument " "1"" of type '" "swig::SwigPyIterator const *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SwigPyIterator___add__" "', argument " "2"" of type '" "ptrdiff_t""'");
+  } 
+  arg2 = static_cast< ptrdiff_t >(val2);
+  try {
+    result = (swig::SwigPyIterator *)((swig::SwigPyIterator const *)arg1)->operator +(arg2);
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator___sub____SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  ptrdiff_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator___sub__" "', argument " "1"" of type '" "swig::SwigPyIterator const *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SwigPyIterator___sub__" "', argument " "2"" of type '" "ptrdiff_t""'");
+  } 
+  arg2 = static_cast< ptrdiff_t >(val2);
+  try {
+    result = (swig::SwigPyIterator *)((swig::SwigPyIterator const *)arg1)->operator -(arg2);
+  }
+  catch(swig::stop_iteration &_e) {
+    {
+      (void)_e;
+      SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
+      SWIG_fail;
+    }
+  }
+  
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator___sub____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  swig::SwigPyIterator *arg1 = (swig::SwigPyIterator *) 0 ;
+  swig::SwigPyIterator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  ptrdiff_t result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SwigPyIterator___sub__" "', argument " "1"" of type '" "swig::SwigPyIterator const *""'"); 
+  }
+  arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_swig__SwigPyIterator,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SwigPyIterator___sub__" "', argument " "2"" of type '" "swig::SwigPyIterator const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SwigPyIterator___sub__" "', argument " "2"" of type '" "swig::SwigPyIterator const &""'"); 
+  }
+  arg2 = reinterpret_cast< swig::SwigPyIterator * >(argp2);
+  result = ((swig::SwigPyIterator const *)arg1)->operator -((swig::SwigPyIterator const &)*arg2);
+  resultobj = SWIG_From_ptrdiff_t(static_cast< ptrdiff_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SwigPyIterator___sub__(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"SwigPyIterator___sub__",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_swig__SwigPyIterator, 0);
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_1;
+    return _wrap_SwigPyIterator___sub____SWIG_1(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    return _wrap_SwigPyIterator___sub____SWIG_0(self, argc, argv);
+  }
+  
+fail:
+  Py_INCREF(Py_NotImplemented);
+  return Py_NotImplemented;
+}
+
+
+SWIGINTERN PyObject *SwigPyIterator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_swig__SwigPyIterator, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *SHARED_PTR_DISOWN_swigconstant(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *module;
   PyObject *d;
@@ -5311,7 +6431,7 @@ SWIGINTERN PyObject *_wrap_AcosSoundingId_create(PyObject *SWIGUNUSEDPARM(self),
   boost::shared_ptr< FullPhysics::HdfFile const > tempshared1 ;
   int res2 = SWIG_OLDOBJ ;
   PyObject *swig_obj[2] ;
-  SwigValueWrapper< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > > result;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > result;
   
   if (!SWIG_Python_UnpackTuple(args,"AcosSoundingId_create",2,2,swig_obj)) SWIG_fail;
   {
@@ -5379,8 +6499,2202 @@ SWIGINTERN PyObject *AcosSoundingId_swiginit(PyObject *SWIGUNUSEDPARM(self), PyO
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_iterator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  PyObject **arg2 = (PyObject **) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  arg2 = &swig_obj[0];
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_iterator" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = (swig::SwigPyIterator *)std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__iterator(arg1,arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___nonzero__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___nonzero__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = (bool)std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____nonzero__((std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *)arg1);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___bool__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___bool__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = (bool)std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____bool__((std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *)arg1);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___len__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___len__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____len__((std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *)arg1);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_pop(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_pop" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      try {
+        result = std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__pop(arg1);
+      }
+      catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      }
+      
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___getslice__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type arg2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  ptrdiff_t val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id___getslice__",3,3,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___getslice__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector_acos_sounding_id___getslice__" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "vector_acos_sounding_id___getslice__" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type""'");
+  } 
+  arg3 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type >(val3);
+  {
+    try {
+      try {
+        result = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *)std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____getslice__(arg1,arg2,arg3);
+      }
+      catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      }
+      catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      }
+      
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___setslice____SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type arg2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type arg3 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  ptrdiff_t val3 ;
+  int ecode3 = 0 ;
+  int res4 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___setslice__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector_acos_sounding_id___setslice__" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "vector_acos_sounding_id___setslice__" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type""'");
+  } 
+  arg3 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type >(val3);
+  {
+    std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *ptr = (std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *)0;
+    res4 = swig::asptr(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "vector_acos_sounding_id___setslice__" "', argument " "4"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vector_acos_sounding_id___setslice__" "', argument " "4"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  {
+    try {
+      try {
+        std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____setslice____SWIG_0(arg1,arg2,arg3,(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > const &)*arg4);
+      }
+      catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      }
+      catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      }
+      
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___setslice____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type arg2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  ptrdiff_t val3 ;
+  int ecode3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___setslice__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector_acos_sounding_id___setslice__" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "vector_acos_sounding_id___setslice__" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type""'");
+  } 
+  arg3 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type >(val3);
+  {
+    try {
+      try {
+        std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____setslice____SWIG_0(arg1,arg2,arg3);
+      }
+      catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      }
+      catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      }
+      
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___setslice__(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id___setslice__",0,4,argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    return _wrap_vector_acos_sounding_id___setslice____SWIG_1(self, argc, argv);
+  }
+  if (argc == 4) {
+    return _wrap_vector_acos_sounding_id___setslice____SWIG_0(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'vector_acos_sounding_id___setslice__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::__setslice__(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > const &)\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::__setslice__(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___delslice__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type arg2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  ptrdiff_t val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id___delslice__",3,3,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___delslice__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector_acos_sounding_id___delslice__" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "vector_acos_sounding_id___delslice__" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type""'");
+  } 
+  arg3 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type >(val3);
+  {
+    try {
+      try {
+        std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____delslice__(arg1,arg2,arg3);
+      }
+      catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      }
+      catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      }
+      
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___delitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___delitem__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector_acos_sounding_id___delitem__" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type >(val2);
+  {
+    try {
+      try {
+        std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____delitem____SWIG_0(arg1,arg2);
+      }
+      catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      }
+      
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___getitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  PySliceObject *arg2 = (PySliceObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___getitem__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    if (!PySlice_Check(swig_obj[1])) {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id___getitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+    }
+    arg2 = (PySliceObject *) swig_obj[1];
+  }
+  {
+    try {
+      try {
+        result = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *)std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____getitem____SWIG_0(arg1,arg2);
+      }
+      catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      }
+      catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      }
+      
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___setitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  PySliceObject *arg2 = (PySliceObject *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___setitem__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    if (!PySlice_Check(swig_obj[1])) {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id___setitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+    }
+    arg2 = (PySliceObject *) swig_obj[1];
+  }
+  {
+    std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *ptr = (std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "vector_acos_sounding_id___setitem__" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vector_acos_sounding_id___setitem__" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      try {
+        std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____setitem____SWIG_0(arg1,arg2,(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > const &)*arg3);
+      }
+      catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      }
+      catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      }
+      
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___setitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  PySliceObject *arg2 = (PySliceObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___setitem__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    if (!PySlice_Check(swig_obj[1])) {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id___setitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+    }
+    arg2 = (PySliceObject *) swig_obj[1];
+  }
+  {
+    try {
+      try {
+        std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____setitem____SWIG_1(arg1,arg2);
+      }
+      catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      }
+      catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      }
+      
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___delitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  PySliceObject *arg2 = (PySliceObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___delitem__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    if (!PySlice_Check(swig_obj[1])) {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id___delitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+    }
+    arg2 = (PySliceObject *) swig_obj[1];
+  }
+  {
+    try {
+      try {
+        std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____delitem____SWIG_1(arg1,arg2);
+      }
+      catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      }
+      catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      }
+      
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___delitem__(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id___delitem__",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+    }
+    if (!_v) goto check_1;
+    return _wrap_vector_acos_sounding_id___delitem____SWIG_1(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    return _wrap_vector_acos_sounding_id___delitem____SWIG_0(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'vector_acos_sounding_id___delitem__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::__delitem__(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type)\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::__delitem__(PySliceObject *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___getitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___getitem__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector_acos_sounding_id___getitem__" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type >(val2);
+  {
+    try {
+      try {
+        result = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *) &std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____getitem____SWIG_1((std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *)arg1,arg2);
+      }
+      catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      }
+      
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___getitem__(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id___getitem__",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v = 0;
+    {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+    }
+    if (!_v) goto check_1;
+    return _wrap_vector_acos_sounding_id___getitem____SWIG_0(self, argc, argv);
+  }
+check_1:
+  
+  if (argc == 2) {
+    return _wrap_vector_acos_sounding_id___getitem____SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'vector_acos_sounding_id___getitem__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::__getitem__(PySliceObject *)\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::__getitem__(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___setitem____SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type arg2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type tempshared3 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type temp2shared3 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id___setitem__" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector_acos_sounding_id___setitem__" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type >(val2);
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "vector_acos_sounding_id___setitem__" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp3) tempshared3 = *reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp3);
+      delete reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp3);
+      arg3 = &tempshared3;
+    } else {
+      arg3 = (argp3) ? reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp3) : &tempshared3;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg3->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared3.reset(arg3->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg3 = &temp2shared3;
+    }
+  }
+  {
+    try {
+      try {
+        std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg____setitem____SWIG_2(arg1,arg2,(boost::shared_ptr< FullPhysics::HdfSoundingId > const &)*arg3);
+      }
+      catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      }
+      
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id___setitem__(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id___setitem__",0,3,argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    return _wrap_vector_acos_sounding_id___setitem____SWIG_1(self, argc, argv);
+  }
+  if (argc == 3) {
+    int _v = 0;
+    {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+    }
+    if (!_v) goto check_2;
+    {
+      int res = swig::asptr(argv[2], (std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > >**)(0));
+      _v = SWIG_CheckState(res);
+    }
+    if (!_v) goto check_2;
+    return _wrap_vector_acos_sounding_id___setitem____SWIG_0(self, argc, argv);
+  }
+check_2:
+  
+  if (argc == 3) {
+    return _wrap_vector_acos_sounding_id___setitem____SWIG_2(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'vector_acos_sounding_id___setitem__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::__setitem__(PySliceObject *,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > const &)\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::__setitem__(PySliceObject *)\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::__setitem__(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::difference_type,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_append(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type tempshared2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type temp2shared2 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id_append",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_append" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "vector_acos_sounding_id_append" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp2) tempshared2 = *reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp2);
+      delete reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp2);
+      arg2 = &tempshared2;
+    } else {
+      arg2 = (argp2) ? reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp2) : &tempshared2;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg2->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared2.reset(arg2->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg2 = &temp2shared2;
+    }
+  }
+  {
+    try {
+      std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__append(arg1,(boost::shared_ptr< FullPhysics::HdfSoundingId > const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vector_acos_sounding_id__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *)new std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vector_acos_sounding_id__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *ptr = (std::vector<boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_vector_acos_sounding_id" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_vector_acos_sounding_id" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    try {
+      result = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *)new std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >((std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const &)*arg1);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_empty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_empty" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = (bool)((std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *)arg1)->empty();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_size" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = ((std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *)arg1)->size();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_clear(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_clear" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      (arg1)->clear();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_swap(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id_swap",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_swap" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "vector_acos_sounding_id_swap" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vector_acos_sounding_id_swap" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp2);
+  {
+    try {
+      (arg1)->swap(*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_get_allocator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SwigValueWrapper< std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_get_allocator" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = ((std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *)arg1)->get_allocator();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::allocator_type(static_cast< const std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::allocator_type& >(result))), SWIGTYPE_p_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_begin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_begin" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = (arg1)->begin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_end(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_end" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = (arg1)->end();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_rbegin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::reverse_iterator result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_rbegin" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = (arg1)->rbegin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::reverse_iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_rend(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::reverse_iterator result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_rend" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = (arg1)->rend();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::reverse_iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vector_acos_sounding_id__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type arg1 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_vector_acos_sounding_id" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type""'");
+  } 
+  arg1 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type >(val1);
+  {
+    try {
+      result = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *)new std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >(arg1);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_pop_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_pop_back" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      (arg1)->pop_back();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_resize__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_resize" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector_acos_sounding_id_resize" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type >(val2);
+  {
+    try {
+      (arg1)->resize(arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_erase__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  swig::SwigPyIterator *iter2 = 0 ;
+  int res2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_erase" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], SWIG_as_voidptrptr(&iter2), swig::SwigPyIterator::descriptor(), 0);
+  if (!SWIG_IsOK(res2) || !iter2) {
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id_erase" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator""'");
+  } else {
+    swig::SwigPyIterator_T<std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator > *>(iter2);
+    if (iter_t) {
+      arg2 = iter_t->get_current();
+    } else {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id_erase" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator""'");
+    }
+  }
+  {
+    try {
+      result = std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__erase__SWIG_0(arg1,arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_erase__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator arg2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  swig::SwigPyIterator *iter2 = 0 ;
+  int res2 ;
+  swig::SwigPyIterator *iter3 = 0 ;
+  int res3 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator result;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_erase" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], SWIG_as_voidptrptr(&iter2), swig::SwigPyIterator::descriptor(), 0);
+  if (!SWIG_IsOK(res2) || !iter2) {
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id_erase" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator""'");
+  } else {
+    swig::SwigPyIterator_T<std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator > *>(iter2);
+    if (iter_t) {
+      arg2 = iter_t->get_current();
+    } else {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id_erase" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator""'");
+    }
+  }
+  res3 = SWIG_ConvertPtr(swig_obj[2], SWIG_as_voidptrptr(&iter3), swig::SwigPyIterator::descriptor(), 0);
+  if (!SWIG_IsOK(res3) || !iter3) {
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id_erase" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator""'");
+  } else {
+    swig::SwigPyIterator_T<std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator > *>(iter3);
+    if (iter_t) {
+      arg3 = iter_t->get_current();
+    } else {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id_erase" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator""'");
+    }
+  }
+  {
+    try {
+      result = std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__erase__SWIG_1(arg1,arg2,arg3);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_erase(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id_erase",0,3,argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    return _wrap_vector_acos_sounding_id_erase__SWIG_0(self, argc, argv);
+  }
+  if (argc == 3) {
+    return _wrap_vector_acos_sounding_id_erase__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'vector_acos_sounding_id_erase'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::erase(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator)\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::erase(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vector_acos_sounding_id__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type arg1 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *arg2 = 0 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type tempshared2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type temp2shared2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_vector_acos_sounding_id" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type""'");
+  } 
+  arg1 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type >(val1);
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_vector_acos_sounding_id" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp2) tempshared2 = *reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp2);
+      delete reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp2);
+      arg2 = &tempshared2;
+    } else {
+      arg2 = (argp2) ? reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp2) : &tempshared2;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg2->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared2.reset(arg2->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg2 = &temp2shared2;
+    }
+  }
+  {
+    try {
+      result = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *)new std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >(arg1,(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vector_acos_sounding_id(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_vector_acos_sounding_id",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_vector_acos_sounding_id__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v = 0;
+    {
+      {
+        int res = SWIG_AsVal_size_t(argv[0], NULL);
+        _v = SWIG_CheckState(res);
+      }
+    }
+    if (!_v) goto check_2;
+    return _wrap_new_vector_acos_sounding_id__SWIG_2(self, argc, argv);
+  }
+check_2:
+  
+  if (argc == 1) {
+    return _wrap_new_vector_acos_sounding_id__SWIG_1(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_new_vector_acos_sounding_id__SWIG_3(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_vector_acos_sounding_id'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::vector()\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::vector(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const &)\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::vector(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type)\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::vector(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_push_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type tempshared2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type temp2shared2 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id_push_back",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_push_back" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "vector_acos_sounding_id_push_back" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp2) tempshared2 = *reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp2);
+      delete reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp2);
+      arg2 = &tempshared2;
+    } else {
+      arg2 = (argp2) ? reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp2) : &tempshared2;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg2->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared2.reset(arg2->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg2 = &temp2shared2;
+    }
+  }
+  {
+    try {
+      (arg1)->push_back((std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_front(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_front" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *) &((std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *)arg1)->front();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_back" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *) &((std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *)arg1)->back();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type arg2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type tempshared3 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type temp2shared3 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id_assign",3,3,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_assign" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector_acos_sounding_id_assign" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type >(val2);
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "vector_acos_sounding_id_assign" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp3) tempshared3 = *reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp3);
+      delete reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp3);
+      arg3 = &tempshared3;
+    } else {
+      arg3 = (argp3) ? reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp3) : &tempshared3;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg3->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared3.reset(arg3->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg3 = &temp2shared3;
+    }
+  }
+  {
+    try {
+      (arg1)->assign(arg2,(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &)*arg3);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_resize__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type arg2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type tempshared3 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type temp2shared3 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_resize" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector_acos_sounding_id_resize" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type >(val2);
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "vector_acos_sounding_id_resize" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp3) tempshared3 = *reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp3);
+      delete reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp3);
+      arg3 = &tempshared3;
+    } else {
+      arg3 = (argp3) ? reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp3) : &tempshared3;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg3->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared3.reset(arg3->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg3 = &temp2shared3;
+    }
+  }
+  {
+    try {
+      (arg1)->resize(arg2,(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &)*arg3);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_resize(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id_resize",0,3,argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    return _wrap_vector_acos_sounding_id_resize__SWIG_0(self, argc, argv);
+  }
+  if (argc == 3) {
+    return _wrap_vector_acos_sounding_id_resize__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'vector_acos_sounding_id_resize'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::resize(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type)\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::resize(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_insert__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator arg2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  swig::SwigPyIterator *iter2 = 0 ;
+  int res2 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type tempshared3 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type temp2shared3 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator result;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_insert" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], SWIG_as_voidptrptr(&iter2), swig::SwigPyIterator::descriptor(), 0);
+  if (!SWIG_IsOK(res2) || !iter2) {
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id_insert" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator""'");
+  } else {
+    swig::SwigPyIterator_T<std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator > *>(iter2);
+    if (iter_t) {
+      arg2 = iter_t->get_current();
+    } else {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id_insert" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator""'");
+    }
+  }
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "vector_acos_sounding_id_insert" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp3) tempshared3 = *reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp3);
+      delete reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp3);
+      arg3 = &tempshared3;
+    } else {
+      arg3 = (argp3) ? reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp3) : &tempshared3;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg3->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared3.reset(arg3->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg3 = &temp2shared3;
+    }
+  }
+  {
+    try {
+      result = std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__insert__SWIG_0(arg1,arg2,(boost::shared_ptr< FullPhysics::HdfSoundingId > const &)*arg3);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_insert__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator arg2 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type arg3 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  swig::SwigPyIterator *iter2 = 0 ;
+  int res2 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  void *argp4 ;
+  int res4 = 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type tempshared4 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type temp2shared4 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_insert" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], SWIG_as_voidptrptr(&iter2), swig::SwigPyIterator::descriptor(), 0);
+  if (!SWIG_IsOK(res2) || !iter2) {
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id_insert" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator""'");
+  } else {
+    swig::SwigPyIterator_T<std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator > *>(iter2);
+    if (iter_t) {
+      arg2 = iter_t->get_current();
+    } else {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vector_acos_sounding_id_insert" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator""'");
+    }
+  }
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "vector_acos_sounding_id_insert" "', argument " "3"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type""'");
+  } 
+  arg3 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type >(val3);
+  {
+    int newmem = 0;
+    res4 = SWIG_ConvertPtrAndOwn(swig_obj[3], &argp4, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__HdfSoundingId_t,  0 , &newmem);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "vector_acos_sounding_id_insert" "', argument " "4"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp4) tempshared4 = *reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp4);
+      delete reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp4);
+      arg4 = &tempshared4;
+    } else {
+      arg4 = (argp4) ? reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type * >(argp4) : &tempshared4;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg4->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared4.reset(arg4->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg4 = &temp2shared4;
+    }
+  }
+  {
+    try {
+      std_vector_Sl_boost_shared_ptr_Sl_FullPhysics_HdfSoundingId_Sg__Sg__insert__SWIG_1(arg1,arg2,arg3,(boost::shared_ptr< FullPhysics::HdfSoundingId > const &)*arg4);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_insert(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id_insert",0,4,argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    return _wrap_vector_acos_sounding_id_insert__SWIG_0(self, argc, argv);
+  }
+  if (argc == 4) {
+    return _wrap_vector_acos_sounding_id_insert__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'vector_acos_sounding_id_insert'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::insert(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &)\n"
+    "    std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::insert(std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::iterator,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type,std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::value_type const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_reserve(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"vector_acos_sounding_id_reserve",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_reserve" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector_acos_sounding_id_reserve" "', argument " "2"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type >(val2);
+  {
+    try {
+      (arg1)->reserve(arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector_acos_sounding_id_capacity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::size_type result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector_acos_sounding_id_capacity" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      result = ((std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > const *)arg1)->capacity();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_vector_acos_sounding_id(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *arg1 = (std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_vector_acos_sounding_id" "', argument " "1"" of type '" "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *vector_acos_sounding_id_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *vector_acos_sounding_id_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { (char *)"delete_SwigPyIterator", (PyCFunction)_wrap_delete_SwigPyIterator, METH_O, NULL},
+	 { (char *)"SwigPyIterator_value", (PyCFunction)_wrap_SwigPyIterator_value, METH_O, NULL},
+	 { (char *)"SwigPyIterator_incr", _wrap_SwigPyIterator_incr, METH_VARARGS, NULL},
+	 { (char *)"SwigPyIterator_decr", _wrap_SwigPyIterator_decr, METH_VARARGS, NULL},
+	 { (char *)"SwigPyIterator_distance", _wrap_SwigPyIterator_distance, METH_VARARGS, NULL},
+	 { (char *)"SwigPyIterator_equal", _wrap_SwigPyIterator_equal, METH_VARARGS, NULL},
+	 { (char *)"SwigPyIterator_copy", (PyCFunction)_wrap_SwigPyIterator_copy, METH_O, NULL},
+	 { (char *)"SwigPyIterator_next", (PyCFunction)_wrap_SwigPyIterator_next, METH_O, NULL},
+	 { (char *)"SwigPyIterator___next__", (PyCFunction)_wrap_SwigPyIterator___next__, METH_O, NULL},
+	 { (char *)"SwigPyIterator_previous", (PyCFunction)_wrap_SwigPyIterator_previous, METH_O, NULL},
+	 { (char *)"SwigPyIterator_advance", _wrap_SwigPyIterator_advance, METH_VARARGS, NULL},
+	 { (char *)"SwigPyIterator___eq__", _wrap_SwigPyIterator___eq__, METH_VARARGS, NULL},
+	 { (char *)"SwigPyIterator___ne__", _wrap_SwigPyIterator___ne__, METH_VARARGS, NULL},
+	 { (char *)"SwigPyIterator___iadd__", _wrap_SwigPyIterator___iadd__, METH_VARARGS, NULL},
+	 { (char *)"SwigPyIterator___isub__", _wrap_SwigPyIterator___isub__, METH_VARARGS, NULL},
+	 { (char *)"SwigPyIterator___add__", _wrap_SwigPyIterator___add__, METH_VARARGS, NULL},
+	 { (char *)"SwigPyIterator___sub__", _wrap_SwigPyIterator___sub__, METH_VARARGS, NULL},
+	 { (char *)"SwigPyIterator_swigregister", SwigPyIterator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SHARED_PTR_DISOWN_swigconstant", SHARED_PTR_DISOWN_swigconstant, METH_VARARGS, NULL},
 	 { (char *)"delete_AcosSoundingId", (PyCFunction)_wrap_delete_AcosSoundingId, METH_O, (char *)"\n"
 		"\n"
@@ -5422,6 +8736,41 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"AcosSoundingId_swigregister", AcosSoundingId_swigregister, METH_VARARGS, NULL},
 	 { (char *)"AcosSoundingId_swiginit", AcosSoundingId_swiginit, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id_iterator", (PyCFunction)_wrap_vector_acos_sounding_id_iterator, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id___nonzero__", (PyCFunction)_wrap_vector_acos_sounding_id___nonzero__, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id___bool__", (PyCFunction)_wrap_vector_acos_sounding_id___bool__, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id___len__", (PyCFunction)_wrap_vector_acos_sounding_id___len__, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_pop", (PyCFunction)_wrap_vector_acos_sounding_id_pop, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id___getslice__", _wrap_vector_acos_sounding_id___getslice__, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id___setslice__", _wrap_vector_acos_sounding_id___setslice__, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id___delslice__", _wrap_vector_acos_sounding_id___delslice__, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id___delitem__", _wrap_vector_acos_sounding_id___delitem__, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id___getitem__", _wrap_vector_acos_sounding_id___getitem__, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id___setitem__", _wrap_vector_acos_sounding_id___setitem__, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id_append", _wrap_vector_acos_sounding_id_append, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id_empty", (PyCFunction)_wrap_vector_acos_sounding_id_empty, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_size", (PyCFunction)_wrap_vector_acos_sounding_id_size, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_clear", (PyCFunction)_wrap_vector_acos_sounding_id_clear, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_swap", _wrap_vector_acos_sounding_id_swap, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id_get_allocator", (PyCFunction)_wrap_vector_acos_sounding_id_get_allocator, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_begin", (PyCFunction)_wrap_vector_acos_sounding_id_begin, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_end", (PyCFunction)_wrap_vector_acos_sounding_id_end, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_rbegin", (PyCFunction)_wrap_vector_acos_sounding_id_rbegin, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_rend", (PyCFunction)_wrap_vector_acos_sounding_id_rend, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_pop_back", (PyCFunction)_wrap_vector_acos_sounding_id_pop_back, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_erase", _wrap_vector_acos_sounding_id_erase, METH_VARARGS, NULL},
+	 { (char *)"new_vector_acos_sounding_id", _wrap_new_vector_acos_sounding_id, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id_push_back", _wrap_vector_acos_sounding_id_push_back, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id_front", (PyCFunction)_wrap_vector_acos_sounding_id_front, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_back", (PyCFunction)_wrap_vector_acos_sounding_id_back, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_assign", _wrap_vector_acos_sounding_id_assign, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id_resize", _wrap_vector_acos_sounding_id_resize, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id_insert", _wrap_vector_acos_sounding_id_insert, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id_reserve", _wrap_vector_acos_sounding_id_reserve, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id_capacity", (PyCFunction)_wrap_vector_acos_sounding_id_capacity, METH_O, NULL},
+	 { (char *)"delete_vector_acos_sounding_id", (PyCFunction)_wrap_delete_vector_acos_sounding_id, METH_O, NULL},
+	 { (char *)"vector_acos_sounding_id_swigregister", vector_acos_sounding_id_swigregister, METH_VARARGS, NULL},
+	 { (char *)"vector_acos_sounding_id_swiginit", vector_acos_sounding_id_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5536,16 +8885,20 @@ static swig_type_info _swigt__p_int_type = {"_p_int_type", "int_type *", 0, 0, (
 static swig_type_info _swigt__p_iostate = {"_p_iostate", "iostate *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_off_type = {"_p_off_type", "off_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_openmode = {"_p_openmode", "openmode *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pos_type = {"_p_pos_type", "pos_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seekdir = {"_p_seekdir", "seekdir *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_size_t = {"_p_size_t", "std::streamsize *|size_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_state_type = {"_p_state_type", "state_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t = {"_p_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t", "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > >::allocator_type *|std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__basic_iosT_char_std__char_traitsT_char_t_t = {"_p_std__basic_iosT_char_std__char_traitsT_char_t_t", "std::basic_ios< char,std::char_traits< char > > *|std::ios *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t = {"_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t", "std::basic_iostream< char,std::char_traits< char > > *|std::iostream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__basic_istreamT_char_std__char_traitsT_char_t_t = {"_p_std__basic_istreamT_char_std__char_traitsT_char_t_t", "std::basic_istream< char,std::char_traits< char > > *|std::istream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t = {"_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t", "std::basic_ostream< char,std::char_traits< char > > *|std::ostream *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t = {"_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t", "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t = {"_p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t", "std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId >,std::allocator< boost::shared_ptr< FullPhysics::HdfSoundingId > > > *|std::vector< boost::shared_ptr< FullPhysics::HdfSoundingId > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_traits_type = {"_p_traits_type", "traits_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
@@ -5587,16 +8940,20 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_iostate,
   &_swigt__p_off_type,
   &_swigt__p_openmode,
+  &_swigt__p_p_PyObject,
   &_swigt__p_pos_type,
   &_swigt__p_seekdir,
   &_swigt__p_size_t,
   &_swigt__p_size_type,
   &_swigt__p_state_type,
+  &_swigt__p_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t,
   &_swigt__p_std__basic_iosT_char_std__char_traitsT_char_t_t,
   &_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t,
   &_swigt__p_std__basic_istreamT_char_std__char_traitsT_char_t_t,
   &_swigt__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t,
+  &_swigt__p_std__invalid_argument,
   &_swigt__p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t,
+  &_swigt__p_swig__SwigPyIterator,
   &_swigt__p_traits_type,
   &_swigt__p_value_type,
 };
@@ -5638,16 +8995,20 @@ static swig_cast_info _swigc__p_int_type[] = {  {&_swigt__p_int_type, 0, 0, 0},{
 static swig_cast_info _swigc__p_iostate[] = {  {&_swigt__p_iostate, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_off_type[] = {  {&_swigt__p_off_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_openmode[] = {  {&_swigt__p_openmode, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pos_type[] = {  {&_swigt__p_pos_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seekdir[] = {  {&_swigt__p_seekdir, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_size_t[] = {  {&_swigt__p_size_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_state_type[] = {  {&_swigt__p_state_type, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t[] = {  {&_swigt__p_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__basic_iosT_char_std__char_traitsT_char_t_t[] = {  {&_swigt__p_std__basic_iosT_char_std__char_traitsT_char_t_t, 0, 0, 0},  {&_swigt__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_ostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t, 0, 0},  {&_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t, 0, 0},  {&_swigt__p_std__basic_istreamT_char_std__char_traitsT_char_t_t, _p_std__basic_istreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t[] = {  {&_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__basic_istreamT_char_std__char_traitsT_char_t_t[] = {  {&_swigt__p_std__basic_istreamT_char_std__char_traitsT_char_t_t, 0, 0, 0},  {&_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_istreamT_char_std__char_traitsT_char_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t[] = {  {&_swigt__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t, 0, 0, 0},  {&_swigt__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t, _p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__invalid_argument[] = {  {&_swigt__p_std__invalid_argument, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t[] = {  {&_swigt__p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_traits_type[] = {  {&_swigt__p_traits_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -5689,16 +9050,20 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_iostate,
   _swigc__p_off_type,
   _swigc__p_openmode,
+  _swigc__p_p_PyObject,
   _swigc__p_pos_type,
   _swigc__p_seekdir,
   _swigc__p_size_t,
   _swigc__p_size_type,
   _swigc__p_state_type,
+  _swigc__p_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t,
   _swigc__p_std__basic_iosT_char_std__char_traitsT_char_t_t,
   _swigc__p_std__basic_iostreamT_char_std__char_traitsT_char_t_t,
   _swigc__p_std__basic_istreamT_char_std__char_traitsT_char_t_t,
   _swigc__p_std__basic_ostreamT_char_std__char_traitsT_char_t_t,
+  _swigc__p_std__invalid_argument,
   _swigc__p_std__vectorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_std__allocatorT_boost__shared_ptrT_FullPhysics__HdfSoundingId_t_t_t,
+  _swigc__p_swig__SwigPyIterator,
   _swigc__p_traits_type,
   _swigc__p_value_type,
 };
