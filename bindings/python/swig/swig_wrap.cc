@@ -34,6 +34,7 @@ extern "C" {
   void init_swig_wrap(void);
 #endif
   SWIG_INIT_TYPE SWIG_INIT_FUNC(fp_exception)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(turn_on_fe_exception)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(generic_object)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(unit)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(double_with_unit)(void);
@@ -432,6 +433,7 @@ init_swig_wrap(void)
   }
   
   SWIG_INIT_MODULE(package, "_fp_exception", SWIG_INIT_FUNC(fp_exception));
+  SWIG_INIT_MODULE(package, "_turn_on_fe_exception", SWIG_INIT_FUNC(turn_on_fe_exception));
   SWIG_INIT_MODULE(package, "_generic_object", SWIG_INIT_FUNC(generic_object));
   SWIG_INIT_MODULE(package, "_unit", SWIG_INIT_FUNC(unit));
   SWIG_INIT_MODULE(package, "_double_with_unit", SWIG_INIT_FUNC(double_with_unit));
