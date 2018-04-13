@@ -408,6 +408,7 @@ LTLIBRARIES = $(lib_LTLIBRARIES) $(noinst_LTLIBRARIES) \
 @BUILD_PYTHON_SWIG_TRUE@_swig_wrap_la_DEPENDENCIES =  \
 @BUILD_PYTHON_SWIG_TRUE@	libfull_physics.la
 am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
+	@swigsrc@/turn_on_fe_exception_wrap.cc \
 	@swigsrc@/generic_object_wrap.cc @swigsrc@/unit_wrap.cc \
 	@swigsrc@/double_with_unit_wrap.cc @swigsrc@/constant_wrap.cc \
 	@swigsrc@/default_constant_wrap.cc \
@@ -615,6 +616,7 @@ am__dirstamp = $(am__leading_dot)dirstamp
 @HAVE_LUA_TRUE@	@swigsrc@/_swig_wrap_la-lua_state_wrap.lo \
 @HAVE_LUA_TRUE@	@swigsrc@/_swig_wrap_la-luabind_object_wrap.lo
 am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
+	@swigsrc@/_swig_wrap_la-turn_on_fe_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-generic_object_wrap.lo \
 	@swigsrc@/_swig_wrap_la-unit_wrap.lo \
 	@swigsrc@/_swig_wrap_la-double_with_unit_wrap.lo \
@@ -865,8 +867,8 @@ _swig_wrap_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 @BUILD_PYTHON_SWIG_TRUE@	$(pkgpythonswigdir)
 am__DEPENDENCIES_1 =
 libfp_la_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
-am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
-	@supportsrc@/array_with_unit.cc \
+am__libfp_la_SOURCES_DIST = @supportsrc@/turn_on_fe_exception.cc \
+	@supportsrc@/unit.cc @supportsrc@/array_with_unit.cc \
 	@supportsrc@/double_with_unit.cc @supportsrc@/old_constant.cc \
 	@supportsrc@/constant.cc @supportsrc@/default_constant.cc \
 	@supportsrc@/spectral_domain.cc @supportsrc@/spectral_range.cc \
@@ -1090,7 +1092,8 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/unit.cc \
 @HAVE_LUA_TRUE@	@luasrc@/libfp_la-lua_callback.lo \
 @HAVE_LUA_TRUE@	@luasrc@/libfp_la-lua_blitz.lo \
 @HAVE_LUA_TRUE@	@luasrc@/libfp_la-luabind_object.lo
-am_libfp_la_OBJECTS = @supportsrc@/libfp_la-unit.lo \
+am_libfp_la_OBJECTS = @supportsrc@/libfp_la-turn_on_fe_exception.lo \
+	@supportsrc@/libfp_la-unit.lo \
 	@supportsrc@/libfp_la-array_with_unit.lo \
 	@supportsrc@/libfp_la-double_with_unit.lo \
 	@supportsrc@/libfp_la-old_constant.lo \
@@ -1932,7 +1935,8 @@ DATA = $(config_DATA) $(fpscript_DATA) $(ftsconfig_DATA) \
 	$(pkgpythontemplate_DATA)
 am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@supportsrc@/fp_type_index.h \
-	@supportsrc@/fe_disable_exception.h @supportsrc@/unit.h \
+	@supportsrc@/fe_disable_exception.h \
+	@supportsrc@/turn_on_fe_exception.h @supportsrc@/unit.h \
 	@supportsrc@/array_with_unit.h @supportsrc@/double_with_unit.h \
 	@supportsrc@/old_constant.h @supportsrc@/constant.h \
 	@supportsrc@/default_constant.h @supportsrc@/spectral_domain.h \
@@ -2617,7 +2621,8 @@ ourboostincdir = @includedir@/boost
 # Source files for library
 fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@supportsrc@/fp_type_index.h \
-	@supportsrc@/fe_disable_exception.h @supportsrc@/unit.h \
+	@supportsrc@/fe_disable_exception.h \
+	@supportsrc@/turn_on_fe_exception.h @supportsrc@/unit.h \
 	@supportsrc@/array_with_unit.h @supportsrc@/double_with_unit.h \
 	@supportsrc@/old_constant.h @supportsrc@/constant.h \
 	@supportsrc@/default_constant.h @supportsrc@/spectral_domain.h \
@@ -3088,6 +3093,7 @@ pkgpython_PYTHON = @pythonlibsrc@/__init__.py \
 
 # Files that contain SWIG wrapper information
 SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
+	@swigsrc@/turn_on_fe_exception_wrap.cc \
 	@swigsrc@/generic_object_wrap.cc @swigsrc@/unit_wrap.cc \
 	@swigsrc@/double_with_unit_wrap.cc @swigsrc@/constant_wrap.cc \
 	@swigsrc@/default_constant_wrap.cc \
@@ -3361,8 +3367,8 @@ lib_test_all_LDADD = libfp.la
 @IS_MAC_TRUE@	$(HDF5_LDFLAGS) $(FCLIBS) $(PTHREAD_LIBS)
 TESTS = lib/test_all.sh
 libfull_physics_la_SOURCES = 
-libfp_la_SOURCES = @supportsrc@/unit.cc \
-	@supportsrc@/array_with_unit.cc \
+libfp_la_SOURCES = @supportsrc@/turn_on_fe_exception.cc \
+	@supportsrc@/unit.cc @supportsrc@/array_with_unit.cc \
 	@supportsrc@/double_with_unit.cc @supportsrc@/old_constant.cc \
 	@supportsrc@/constant.cc @supportsrc@/default_constant.cc \
 	@supportsrc@/spectral_domain.cc @supportsrc@/spectral_range.cc \
@@ -4087,6 +4093,8 @@ clean-pkgpythonswigLTLIBRARIES:
 	@: > @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
+@swigsrc@/_swig_wrap_la-turn_on_fe_exception_wrap.lo:  \
+	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-generic_object_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-unit_wrap.lo: @swigsrc@/$(am__dirstamp) \
@@ -4572,6 +4580,9 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 @supportsrc@/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) @supportsrc@/$(DEPDIR)
 	@: > @supportsrc@/$(DEPDIR)/$(am__dirstamp)
+@supportsrc@/libfp_la-turn_on_fe_exception.lo:  \
+	@supportsrc@/$(am__dirstamp) \
+	@supportsrc@/$(DEPDIR)/$(am__dirstamp)
 @supportsrc@/libfp_la-unit.lo: @supportsrc@/$(am__dirstamp) \
 	@supportsrc@/$(DEPDIR)/$(am__dirstamp)
 @supportsrc@/libfp_la-array_with_unit.lo:  \
@@ -6552,6 +6563,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-spectrum.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-state_vector.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-sub_state_vector_proxy.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-turn_on_fe_exception.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-unit.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-uq_ecmwf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@supportsrc@/$(DEPDIR)/libfp_la-uq_sounding_id.Plo@am__quote@
@@ -6801,6 +6813,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_met_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_offset_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-temperature_wrap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-turn_on_fe_exception_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-twostream_driver_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-twostream_interface_wrap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-twostream_rt_wrap.Plo@am__quote@
@@ -7181,6 +7194,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/fp_exception_wrap.cc' object='@swigsrc@/_swig_wrap_la-fp_exception_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo `test -f '@swigsrc@/fp_exception_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/fp_exception_wrap.cc
+
+@swigsrc@/_swig_wrap_la-turn_on_fe_exception_wrap.lo: @swigsrc@/turn_on_fe_exception_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-turn_on_fe_exception_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-turn_on_fe_exception_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-turn_on_fe_exception_wrap.lo `test -f '@swigsrc@/turn_on_fe_exception_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/turn_on_fe_exception_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-turn_on_fe_exception_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-turn_on_fe_exception_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/turn_on_fe_exception_wrap.cc' object='@swigsrc@/_swig_wrap_la-turn_on_fe_exception_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-turn_on_fe_exception_wrap.lo `test -f '@swigsrc@/turn_on_fe_exception_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/turn_on_fe_exception_wrap.cc
 
 @swigsrc@/_swig_wrap_la-generic_object_wrap.lo: @swigsrc@/generic_object_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-generic_object_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-generic_object_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-generic_object_wrap.lo `test -f '@swigsrc@/generic_object_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/generic_object_wrap.cc
@@ -8847,6 +8867,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/swig_wrap.cc' object='@swigsrc@/_swig_wrap_la-swig_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-swig_wrap.lo `test -f '@swigsrc@/swig_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/swig_wrap.cc
+
+@supportsrc@/libfp_la-turn_on_fe_exception.lo: @supportsrc@/turn_on_fe_exception.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @supportsrc@/libfp_la-turn_on_fe_exception.lo -MD -MP -MF @supportsrc@/$(DEPDIR)/libfp_la-turn_on_fe_exception.Tpo -c -o @supportsrc@/libfp_la-turn_on_fe_exception.lo `test -f '@supportsrc@/turn_on_fe_exception.cc' || echo '$(srcdir)/'`@supportsrc@/turn_on_fe_exception.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @supportsrc@/$(DEPDIR)/libfp_la-turn_on_fe_exception.Tpo @supportsrc@/$(DEPDIR)/libfp_la-turn_on_fe_exception.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@supportsrc@/turn_on_fe_exception.cc' object='@supportsrc@/libfp_la-turn_on_fe_exception.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @supportsrc@/libfp_la-turn_on_fe_exception.lo `test -f '@supportsrc@/turn_on_fe_exception.cc' || echo '$(srcdir)/'`@supportsrc@/turn_on_fe_exception.cc
 
 @supportsrc@/libfp_la-unit.lo: @supportsrc@/unit.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @supportsrc@/libfp_la-unit.lo -MD -MP -MF @supportsrc@/$(DEPDIR)/libfp_la-unit.Tpo -c -o @supportsrc@/libfp_la-unit.lo `test -f '@supportsrc@/unit.cc' || echo '$(srcdir)/'`@supportsrc@/unit.cc

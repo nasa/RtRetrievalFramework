@@ -8,6 +8,8 @@
 fullphysicsinc_HEADERS+= @supportsrc@/generic_object.h
 fullphysicsinc_HEADERS+= @supportsrc@/fp_type_index.h
 fullphysicsinc_HEADERS+= @supportsrc@/fe_disable_exception.h
+fullphysicsinc_HEADERS+= @supportsrc@/turn_on_fe_exception.h
+libfp_la_SOURCES += @supportsrc@/turn_on_fe_exception.cc
 fullphysicsinc_HEADERS+= @supportsrc@/unit.h
 libfp_la_SOURCES += @supportsrc@/unit.cc
 fullphysicsinc_HEADERS+= @supportsrc@/array_with_unit.h
@@ -109,6 +111,7 @@ libfp_la_SOURCES += @supportsrc@/polynomial_eval.cc
 # Files that contain SWIG wrapper information
 
 SWIG_SRC += @swigsrc@/fp_exception_wrap.cc
+SWIG_SRC += @swigsrc@/turn_on_fe_exception_wrap.cc
 SWIG_SRC += @swigsrc@/generic_object_wrap.cc
 SWIG_SRC += @swigsrc@/unit_wrap.cc
 SWIG_SRC += @swigsrc@/double_with_unit_wrap.cc
