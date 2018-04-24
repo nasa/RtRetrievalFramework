@@ -26,7 +26,6 @@ public:
   (double Wn, int Spec_index, 
    const ArrayAd<double, 2>& Iv) const = 0;
 protected:
-  virtual void starting_stokes() const;
   RadiativeTransferSingleWn
   (const blitz::Array<double, 2>& Stokes_coef,
    const boost::shared_ptr<RtAtmosphere>& Atm);

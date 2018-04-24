@@ -77,13 +77,6 @@ public:
   const boost::shared_ptr<RtAtmosphere>& atmosphere() const
   { return atm; }
 protected:
-
-//-----------------------------------------------------------------------
-/// Notify class that we are starting a stokes/stokes_and_jacobian,
-/// in case there is any setup to do. The default is to do nothing.
-//-----------------------------------------------------------------------
-  virtual void starting_stokes() const { }
-  
 //-----------------------------------------------------------------------
 /// Constructor.
 /// \param Stokes_coef The stokes coefficients to go from vector stokes
