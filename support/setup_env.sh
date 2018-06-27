@@ -24,11 +24,10 @@ else
     export L2_SUPPORT_PATH="$support_dir"
 
     # Assume if a virtual environment is set that we want to use that
-    # version of python. Otherwise, select the default 2.7.10 version
-    if ([ -z ${VIRTUAL_ENV+x} ] && [ -e "/opt/local/depot/python/2.7.10/bin" ])
+    # version of python. Otherwise, select the default python 3 version
+    if ([ -z ${VIRTUAL_ENV+x} ] && [ -e "/groups/algorithm/venv3/bin/activate" ])
     then
-        export PATH="/opt/local/depot/python/2.7.10/bin:$PATH"
-        export LD_LIBRARY_PATH="/opt/local/depot/python/2.7.10/lib:$LD_LIBRARY_PATH"
+	VIRTUAL_ENV_DISABLE_PROMPT=t source /groups/algorithm/venv3/bin/activate
     fi
 
     # Path to h5diff, the system one doesn't work for us
