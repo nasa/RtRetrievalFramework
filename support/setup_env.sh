@@ -28,6 +28,7 @@ else
     if ([ -z ${VIRTUAL_ENV+x} ] && [ -e "/groups/algorithm/venv3/bin/activate" ])
     then
 	VIRTUAL_ENV_DISABLE_PROMPT=t source /groups/algorithm/venv3/bin/activate
+	export LD_LIBRARY_PATH=/groups/algorithm/tools/install/lib:/groups/algorithm/tools/install/lib64:$LD_LIBRARY_PATH
     fi
 
     # Path to h5diff, the system one doesn't work for us
