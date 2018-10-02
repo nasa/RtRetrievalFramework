@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(full_physics, 8.1.00)
+AC_INIT(full_physics, 8.1.02)
 
 # Base version for commlib.
 [commonlib_version='8.00.00b']
@@ -10,7 +10,7 @@ if grep "CentOS Linux release 7" /etc/centos-release; then
    commonlib_version="${commonlib_version}_centos7"
 fi
 AC_COPYRIGHT(
-[Copyright 2017, California Institute of Technology. 
+[Copyright 2018, California Institute of Technology. 
 ALL RIGHTS RESERVED. U.S. Government Sponsorship acknowledged.])
 
 AC_CONFIG_AUX_DIR([config])
