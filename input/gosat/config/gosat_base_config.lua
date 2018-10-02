@@ -159,10 +159,13 @@ GosatBaseConfig = AcosConfig:new {
          },
          instrument_correction = {
             creator = AcosConfig.instrument_correction_list_h_and_m,
-            ic_h_gain = { "zero_offset_waveform", "eof_h_gain_1",
-			  "eof_h_gain_2", "eof_h_gain_3" },
-            ic_m_gain = { "zero_offset_waveform", "eof_m_gain_1",
-			  "eof_m_gain_2", "eof_m_gain_3" },
+	    --- Have EOF turned off for now
+            -- ic_h_gain = { "zero_offset_waveform", "eof_h_gain_1",
+	    --		  "eof_h_gain_2", "eof_h_gain_3" },
+            -- ic_m_gain = { "zero_offset_waveform", "eof_m_gain_1",
+	    --		  "eof_m_gain_2", "eof_m_gain_3" },
+            ic_h_gain = { "zero_offset_waveform" },
+            ic_m_gain = { "zero_offset_waveform" },
             zero_offset_waveform = {
                apriori = ConfigCommon.hdf_apriori_i("Instrument/ZeroLevelOffset"),
                covariance = ConfigCommon.hdf_covariance_i("Instrument/ZeroLevelOffset"),
@@ -245,9 +248,10 @@ GosatBaseConfig = AcosConfig:new {
             },
          },
          fluorescence = {
-            apriori = ConfigCommon.hdf_apriori("Fluorescence"),
+            apriori = ConfigCommon.fluorescence_apriori("Fluorescence"),
+            sif_sigma_scale = 1.0 / 3,
             covariance = ConfigCommon.fluorescence_covariance("Fluorescence"),
-            creator = ConfigCommon.fluorescence_effect_lambertian_only,
+            creator = AcosConfig.fluorescence_effect_land_only,
             reference_point = ConfigCommon.hdf_read_double_with_unit("Fluorescence/reference_point"),
             retrieved = true,
          },
@@ -324,7 +328,7 @@ GosatBaseConfig = AcosConfig:new {
             
             -- Brdf vegetative kernel with Rahman retrieved parameters
             brdf_veg = {
-               apriori = ConfigCommon.hdf_apriori_i("Ground/Brdf"),
+               apriori = ConfigCommon.brdf_veg_apriori("Ground/Brdf"),
                covariance = ConfigCommon.hdf_covariance_i("Ground/Brdf"),
                retrieve_bands = { true, true, true },
                creator = ConfigCommon.brdf_veg_retrieval,
@@ -332,13 +336,13 @@ GosatBaseConfig = AcosConfig:new {
             
             -- Brdf soil kernel with Rahman retrieved parameters
             brdf_soil = {
-               apriori = ConfigCommon.hdf_apriori_i("Ground/Brdf"),
+               apriori = ConfigCommon.brdf_soil_apriori("Ground/Brdf"),
                covariance = ConfigCommon.hdf_covariance_i("Ground/Brdf"),
                retrieve_bands = { true, true, true },
                creator = ConfigCommon.brdf_soil_retrieval,
             },
 
-            creator = AcosConfig.ground_land_fraction,
+            creator = AcosConfig.ground_from_ground_type
          },
          aerosol = {
 	    creator = ConfigCommon.merra_aerosol_creator,
@@ -353,7 +357,7 @@ GosatBaseConfig = AcosConfig:new {
 	    covariance = ConfigCommon.hdf_covariance("/Aerosol/Merra/Gaussian/Log"),
 	    -- Lua doesn't preserve order in a table, so we have a list
 	    -- saying what order we want the Aerosols in
-	    aerosols = {"Ice", "Water"},
+	    aerosols = {"Ice", "Water", "ST"},
 	    Water = {
 	       creator = ConfigCommon.aerosol_log_shape_gaussian,
 	       apriori = ConfigCommon.hdf_aerosol_apriori("Aerosol", "Gaussian/Log"),
@@ -362,16 +366,27 @@ GosatBaseConfig = AcosConfig:new {
 	    },
 	    Ice = {
 	       creator = ConfigCommon.aerosol_log_shape_gaussian,
-	       apriori = ConfigCommon.hdf_aerosol_apriori("Aerosol", "Gaussian/Log"),
+	       apriori_initial = ConfigCommon.hdf_aerosol_apriori("Aerosol", "Gaussian/Log"),
+	       apriori = AcosConfig.tropopause_height_ap,
 	       covariance = ConfigCommon.hdf_aerosol_covariance("Aerosol", "Gaussian/Log"),
 	       property = ConfigCommon.hdf_aerosol_property("ice_cloud_MODIS6_deltaM_1000"),
+	    },
+	    ST = {
+	       creator = ConfigCommon.aerosol_log_shape_gaussian,
+	       apriori = function(self)
+		  return ConfigCommon.lua_to_blitz_double_1d({-5.11599580975408205124,0.03,0.04})
+	       end,
+	       covariance = function(self)
+		  return ConfigCommon.lua_to_blitz_double_2d({{3.24,0,0},{0,1e-8,0},{0,0,1e-4}})
+	       end,
+	       property = ConfigCommon.hdf_aerosol_property("strat"),
 	    },
          },
          absorber = {
             creator = ConfigCommon.absorber_creator,
             gases = {"CO2", "H2O", "O2"},
             CO2 = {
-               apriori = ConfigCommon.tccon_co2_apriori_met,
+               apriori = ConfigCommon.reference_co2_apriori_met_apriori,
                covariance = ConfigCommon.hdf_covariance("Gas/CO2"),
                absco = "v5.0.0/co2_devi2015_wco2scale-nist_sco2scale-unity.h5",
                table_scale = {1.0, 1.0, 1.004},

@@ -267,3 +267,83 @@ function AcosConfig.ils_table_l1b:create()
    return res
 end
 
+------------------------------------------------------------
+--- Determine of we are land or water
+------------------------------------------------------------
+
+function AcosConfig:land_or_water()
+   if(self.land_fraction > 90.0) then
+      return "land"
+   else
+      return "water"
+   end
+end
+
+------------------------------------------------------------
+--- Fluorescence only for land runs
+------------------------------------------------------------
+
+AcosConfig.fluorescence_effect_land_only = ConfigCommon.fluorescence_effect:new()
+function AcosConfig.fluorescence_effect_land_only:create()
+   -- Only use this for land runs
+   if(self.config:land_or_water() == "land") then
+      return ConfigCommon.fluorescence_effect.create(self)
+   else
+      return nil
+   end
+end
+
+------------------------------------------------------------
+--- Defines the ground type name we should use, based on
+--- land water fag
+------------------------------------------------------------
+
+function AcosConfig:ground_type_name()
+   if(self:land_or_water() == "land") then
+      return "brdf_soil"
+   else
+      return "coxmunk"
+   end
+end
+
+------------------------------------------------------------
+--- Create ground based on the surface type
+------------------------------------------------------------
+
+AcosConfig.ground_from_ground_type = DispatchCreator:new()
+
+function AcosConfig.ground_from_ground_type:get_creator()
+   local ground_type = self.config:ground_type_name()
+
+   if (ground_type == "lambertian") then
+      return ConfigCommon.ground_lambertian
+   elseif (ground_type == "brdf_soil") then
+      return ConfigCommon.ground_brdf_soil
+   elseif (ground_type == "brdf_veg") then
+      return ConfigCommon.ground_brdf_veg
+   elseif (ground_type == "coxmunk") then
+      if(self.config.using_radiance_scaling ~= nil) then
+         return ConfigCommon.ground_coxmunk
+      else
+         return ConfigCommon.ground_coxmunk_plus_lamb
+      end
+   else
+      error("Invalid ground type value: " .. ground_type)
+   end
+end
+
+
+------------------------------------------------------------
+--- Use tropopause height for initial guess as cirrus ice
+--- height
+------------------------------------------------------------
+
+function AcosConfig.tropopause_height_ap(self, base, type, aer_name)
+    local ap = self:apriori_initial(base, type, aer_name)
+    
+    local t = self.config:reference_co2_apriori_met_obj()
+    local psurf = self.config.met:surface_pressure()
+    ap:set(1, (t:tropopause_pressure() - 100) / psurf)
+    
+    return ap
+end
