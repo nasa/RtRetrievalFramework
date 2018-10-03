@@ -1,5 +1,5 @@
-#ifndef ACOS_ECMWF_H
-#define ACOS_ECMWF_H
+#ifndef ACOS_MET_FILE_H
+#define ACOS_MET_FILE_H
 #include "meteorology.h"
 
 namespace FullPhysics {
@@ -8,12 +8,12 @@ namespace FullPhysics {
   functionality.
 *******************************************************************/
 
-class AcosEcmwf : public Meteorology {
+class AcosMetFile : public Meteorology {
 public:
-    AcosEcmwf(const std::string& Fname, const boost::shared_ptr<HdfSoundingId>& 
+    AcosMetFile(const std::string& Fname, const boost::shared_ptr<HdfSoundingId>& 
     Hdf_sounding_id, bool Avg_sounding_number);
-    AcosEcmwf(const std::string& Fname, const HeritageFile& Run_file);
-    ~AcosEcmwf() {}
+    AcosMetFile(const std::string& Fname, const HeritageFile& Run_file);
+    ~AcosMetFile() {}
 
     // Define how to read various items
     using Meteorology::pressure_levels;
@@ -37,7 +37,7 @@ public:
     blitz::Array<double, 1> temperature() const
         { return read_array("ecmwf/temperature"); }
 
-    void print(std::ostream& Os) const { Os << "AcosEcmwf"; }
+    void print(std::ostream& Os) const { Os << "AcosMetFile"; }
 
 private:
 

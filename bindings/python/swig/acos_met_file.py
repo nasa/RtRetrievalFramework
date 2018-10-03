@@ -10,7 +10,7 @@
 
 from sys import version_info
 if version_info >= (3, 0, 0):
-    new_instancemethod = lambda func, inst, cls: _acos_ecmwf.SWIG_PyInstanceMethod_New(func)
+    new_instancemethod = lambda func, inst, cls: _acos_met_file.SWIG_PyInstanceMethod_New(func)
 else:
     from new import instancemethod as new_instancemethod
 if version_info >= (2, 6, 0):
@@ -19,20 +19,20 @@ if version_info >= (2, 6, 0):
         import imp
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_acos_ecmwf', [dirname(__file__)])
+            fp, pathname, description = imp.find_module('_acos_met_file', [dirname(__file__)])
         except ImportError:
-            import _acos_ecmwf
-            return _acos_ecmwf
+            import _acos_met_file
+            return _acos_met_file
         if fp is not None:
             try:
-                _mod = imp.load_module('_acos_ecmwf', fp, pathname, description)
+                _mod = imp.load_module('_acos_met_file', fp, pathname, description)
             finally:
                 fp.close()
             return _mod
-    _acos_ecmwf = swig_import_helper()
+    _acos_met_file = swig_import_helper()
     del swig_import_helper
 else:
-    import _acos_ecmwf
+    import _acos_met_file
 del version_info
 try:
     _swig_property = property
@@ -111,8 +111,8 @@ except:
 
 
 
-_acos_ecmwf.SHARED_PTR_DISOWN_swigconstant(_acos_ecmwf)
-SHARED_PTR_DISOWN = _acos_ecmwf.SHARED_PTR_DISOWN
+_acos_met_file.SHARED_PTR_DISOWN_swigconstant(_acos_met_file)
+SHARED_PTR_DISOWN = _acos_met_file.SHARED_PTR_DISOWN
 
 def _new_from_init(cls, version, *args):
     '''For use with pickle, covers common case where we just store the
@@ -135,27 +135,27 @@ def _new_from_set(cls, version, *args):
 
 import full_physics_swig.meteorology
 import full_physics_swig.generic_object
-class AcosEcmwf(full_physics_swig.meteorology.Meteorology):
+class AcosMetFile(full_physics_swig.meteorology.Meteorology):
     """
 
     This class implements the ACOS specific ECMWF reading functionality.
 
-    C++ includes: acos_ecmwf.h 
+    C++ includes: acos_met_file.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    __swig_destroy__ = _acos_ecmwf.delete_AcosEcmwf
+    __swig_destroy__ = _acos_met_file.delete_AcosMetFile
 
     def __init__(self, Fname, Hdf_sounding_id, Avg_sounding_number):
         """
 
-        AcosEcmwf::AcosEcmwf(const std::string &Fname, const HeritageFile &Run_file)
+        AcosMetFile::AcosMetFile(const std::string &Fname, const HeritageFile &Run_file)
         Constructor that reads the sounding information from the run config
         file 
         """
-        _acos_ecmwf.AcosEcmwf_swiginit(self, _acos_ecmwf.new_AcosEcmwf(Fname, Hdf_sounding_id, Avg_sounding_number))
-AcosEcmwf_swigregister = _acos_ecmwf.AcosEcmwf_swigregister
-AcosEcmwf_swigregister(AcosEcmwf)
+        _acos_met_file.AcosMetFile_swiginit(self, _acos_met_file.new_AcosMetFile(Fname, Hdf_sounding_id, Avg_sounding_number))
+AcosMetFile_swigregister = _acos_met_file.AcosMetFile_swigregister
+AcosMetFile_swigregister(AcosMetFile)
 
 
 
