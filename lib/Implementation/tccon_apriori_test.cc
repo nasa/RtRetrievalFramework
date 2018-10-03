@@ -1,7 +1,7 @@
 #include "tccon_apriori.h"
 #include "level_1b_acos.h"
 #include "unit_test_support.h"
-#include "acos_ecmwf.h"
+#include "acos_met_file.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -14,7 +14,7 @@ BOOST_AUTO_TEST_CASE(basic)
     (new HdfFile(test_data_dir() + "in/sounding_id.h5"));
   boost::shared_ptr<AcosSoundingId> sid
     (new AcosSoundingId(*sfile, "20091009203401", AcosSoundingId::S_SOUNDING));
-  boost::shared_ptr<AcosEcmwf> ecmwf(new AcosEcmwf(test_data_dir() + "in/ecmwf.h5", 
+  boost::shared_ptr<AcosMetFile> ecmwf(new AcosMetFile(test_data_dir() + "in/ecmwf.h5", 
 						   sid, true));
   boost::shared_ptr<Level1bAcos> l1b(new Level1bAcos(sfile, sid));
 
@@ -77,7 +77,7 @@ BOOST_AUTO_TEST_CASE(error_case)
     (new HdfFile("/acos/product/Production/v050050/L1b20900/r01/091128/acos_L1b_091128_23_Production_v050050_L1b20900_r01_110910225735.h5"));
   boost::shared_ptr<AcosSoundingId> sid
     (new AcosSoundingId(*sfile, "20091128134921", AcosSoundingId::S_SOUNDING));
-  boost::shared_ptr<AcosEcmwf> ecmwf(new AcosEcmwf("/acos/product/Production/v050050/Ecm20900/r01/091128/acos_Ecm_091128_23_Production_v050050_Ecm20900_r01_110910235754.h5", 
+  boost::shared_ptr<AcosMetFile> ecmwf(new AcosMetFile("/acos/product/Production/v050050/Ecm20900/r01/091128/acos_Ecm_091128_23_Production_v050050_Ecm20900_r01_110910235754.h5", 
 						   sid, true));
   boost::shared_ptr<Level1bAcos> l1b(new Level1bAcos(sfile, sid));
   TcconApriori a(ecmwf, l1b);

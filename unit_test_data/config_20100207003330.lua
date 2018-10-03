@@ -20,7 +20,7 @@ config.fm.input = {
         },
     },
     met = {
-        creator = AcosConfig.acos_ecmwf,
+        creator = AcosConfig.acos_met,
     },
 }
 

@@ -56,7 +56,7 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(acos_sounding_id)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_sounding_id)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(uq_sounding_id)(void);
-  SWIG_INIT_TYPE SWIG_INIT_FUNC(acos_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(acos_met_file)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_met_file)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(uq_ecmwf)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_sim_met_ecmwf)(void);
@@ -455,7 +455,7 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_acos_sounding_id", SWIG_INIT_FUNC(acos_sounding_id));
   SWIG_INIT_MODULE(package, "_oco_sounding_id", SWIG_INIT_FUNC(oco_sounding_id));
   SWIG_INIT_MODULE(package, "_uq_sounding_id", SWIG_INIT_FUNC(uq_sounding_id));
-  SWIG_INIT_MODULE(package, "_acos_ecmwf", SWIG_INIT_FUNC(acos_ecmwf));
+  SWIG_INIT_MODULE(package, "_acos_met_file", SWIG_INIT_FUNC(acos_met_file));
   SWIG_INIT_MODULE(package, "_oco_met_file", SWIG_INIT_FUNC(oco_met_file));
   SWIG_INIT_MODULE(package, "_uq_ecmwf", SWIG_INIT_FUNC(uq_ecmwf));
   SWIG_INIT_MODULE(package, "_oco_sim_met_ecmwf", SWIG_INIT_FUNC(oco_sim_met_ecmwf));

@@ -1,7 +1,7 @@
 #include "unit_test_support.h"
 #include "acos_sounding_id.h"
 #include "oco_sounding_id.h"
-#include "acos_ecmwf.h"
+#include "acos_met_file.h"
 #include "oco_met_file.h"
 
 using namespace FullPhysics;
@@ -14,7 +14,7 @@ BOOST_AUTO_TEST_CASE(ecmwf)
   HdfFile sfile(test_data_dir() + "in/sounding_id.h5");
   std::vector<boost::shared_ptr<HdfSoundingId> > sidv = 
     AcosSoundingId::create(sfile, sid);
-  AcosEcmwf e(test_data_dir() + "in/ecmwf.h5", sidv[0], sidv.size() > 1);
+  AcosMetFile e(test_data_dir() + "in/ecmwf.h5", sidv[0], sidv.size() > 1);
   BOOST_CHECK_CLOSE(e.surface_pressure(), 99682.828125, 1e-6);
   Array<double, 1> press(20);
   press = 100, 7000, 10000, 20000, 28000, 35000, 40000, 45000,

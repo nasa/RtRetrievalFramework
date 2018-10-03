@@ -130,7 +130,7 @@ GosatBaseConfig = AcosConfig:new {
              },
           },
           met = {
-              creator = AcosConfig.acos_ecmwf,
+              creator = AcosConfig.acos_met,
           },
       },
       stokes_coefficient = {

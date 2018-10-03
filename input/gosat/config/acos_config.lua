@@ -29,20 +29,20 @@ end
 --- Create ECMWF if we have one
 ------------------------------------------------------------
 
-AcosConfig.acos_ecmwf = Creator:new()
+AcosConfig.acos_met = Creator:new()
 
-function AcosConfig.acos_ecmwf:create()
+function AcosConfig.acos_met:create()
    local sid = self.config:l1b_sid_list()
    if (self.config.met_file) then
-       local met = AcosEcmwf(self.config.met_file, self.config:l1b_sid_list():value(0),
+       local met = AcosMetFile(self.config.met_file, self.config:l1b_sid_list():value(0),
                                self.config:l1b_sid_list():size() > 1)
        self.config.input_file_description = self.config.input_file_description .. 
-          "ECMWF input file:    " .. self.config.met_file .. "\n"
+          "Meteorology input file:    " .. self.config.met_file .. "\n"
        return met
    end
 end
 
-function AcosConfig.acos_ecmwf:register_output(ro)
+function AcosConfig.acos_met:register_output(ro)
     if (self.config.met) then
         ro:push_back(MetPassThroughOutput(self.config.met))
     end
