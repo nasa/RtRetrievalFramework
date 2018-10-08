@@ -25,6 +25,10 @@ AcosMetFile::AcosMetFile(const std::string& Fname, const boost::shared_ptr<HdfSo
 		     Hdf_sounding_id, bool Avg_sounding_number)
 : h(Fname), hsid(Hdf_sounding_id), average_sounding_number(Avg_sounding_number)
 {
+  if (h.has_object("/Meteorology/specific_humidity_profile_met"))
+    met_format = true;
+  else
+    met_format = false;
 }
 
 //-----------------------------------------------------------------------
@@ -38,7 +42,7 @@ AcosMetFile::AcosMetFile(const std::string& Fname, const boost::shared_ptr<HdfSo
 //-----------------------------------------------------------------------
 
 AcosMetFile::AcosMetFile(const std::string& Fname, const HeritageFile& Run_file)
-  : h(Fname)
+  : h(Fname), met_format(false)
 {
   std::string sid = Run_file.value<std::string>("SOUNDING_INFO/sounding_id");
   HdfFile h(Run_file.file_value("SOUNDING_INFO/spectrum_file"));
