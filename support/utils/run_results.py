@@ -14,6 +14,7 @@ from optparse import OptionParser
 if int(sys.version[0]) == 3:
     DictType = dict
     StringType = bytes
+    import functools
 else:
     from types import DictType, StringType
 
@@ -179,7 +180,10 @@ class results_count(object):
                 else:
                     return cmp(x_id, y_id)
                 
-            count_items.sort(count_compare)
+            if int(sys.version[0]) == 3:
+                count_items.sort(key=functools.cmp_to_key(count_compare))
+            else:
+                count_items.sort(count_compare)
 
             sect_string = ""
             for (count_id, count_desc) in count_items:
