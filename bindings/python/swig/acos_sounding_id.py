@@ -110,6 +110,34 @@ except:
     weakref_proxy = lambda x: x
 
 
+class SwigPyIterator(object):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _acos_sounding_id.delete_SwigPyIterator
+    def __iter__(self):
+        return self
+SwigPyIterator.value = new_instancemethod(_acos_sounding_id.SwigPyIterator_value, None, SwigPyIterator)
+SwigPyIterator.incr = new_instancemethod(_acos_sounding_id.SwigPyIterator_incr, None, SwigPyIterator)
+SwigPyIterator.decr = new_instancemethod(_acos_sounding_id.SwigPyIterator_decr, None, SwigPyIterator)
+SwigPyIterator.distance = new_instancemethod(_acos_sounding_id.SwigPyIterator_distance, None, SwigPyIterator)
+SwigPyIterator.equal = new_instancemethod(_acos_sounding_id.SwigPyIterator_equal, None, SwigPyIterator)
+SwigPyIterator.copy = new_instancemethod(_acos_sounding_id.SwigPyIterator_copy, None, SwigPyIterator)
+SwigPyIterator.next = new_instancemethod(_acos_sounding_id.SwigPyIterator_next, None, SwigPyIterator)
+SwigPyIterator.__next__ = new_instancemethod(_acos_sounding_id.SwigPyIterator___next__, None, SwigPyIterator)
+SwigPyIterator.previous = new_instancemethod(_acos_sounding_id.SwigPyIterator_previous, None, SwigPyIterator)
+SwigPyIterator.advance = new_instancemethod(_acos_sounding_id.SwigPyIterator_advance, None, SwigPyIterator)
+SwigPyIterator.__eq__ = new_instancemethod(_acos_sounding_id.SwigPyIterator___eq__, None, SwigPyIterator)
+SwigPyIterator.__ne__ = new_instancemethod(_acos_sounding_id.SwigPyIterator___ne__, None, SwigPyIterator)
+SwigPyIterator.__iadd__ = new_instancemethod(_acos_sounding_id.SwigPyIterator___iadd__, None, SwigPyIterator)
+SwigPyIterator.__isub__ = new_instancemethod(_acos_sounding_id.SwigPyIterator___isub__, None, SwigPyIterator)
+SwigPyIterator.__add__ = new_instancemethod(_acos_sounding_id.SwigPyIterator___add__, None, SwigPyIterator)
+SwigPyIterator.__sub__ = new_instancemethod(_acos_sounding_id.SwigPyIterator___sub__, None, SwigPyIterator)
+SwigPyIterator_swigregister = _acos_sounding_id.SwigPyIterator_swigregister
+SwigPyIterator_swigregister(SwigPyIterator)
+
 
 _acos_sounding_id.SHARED_PTR_DISOWN_swigconstant(_acos_sounding_id)
 SHARED_PTR_DISOWN = _acos_sounding_id.SHARED_PTR_DISOWN
@@ -216,6 +244,49 @@ def AcosSoundingId_create(File, Sounding_id):
     averaging or length 2 if we are averaging. 
     """
     return _acos_sounding_id.AcosSoundingId_create(File, Sounding_id)
+
+class vector_acos_sounding_id(object):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __iter__(self):
+        return self.iterator()
+
+    def __init__(self, *args):
+        _acos_sounding_id.vector_acos_sounding_id_swiginit(self, _acos_sounding_id.new_vector_acos_sounding_id(*args))
+    __swig_destroy__ = _acos_sounding_id.delete_vector_acos_sounding_id
+vector_acos_sounding_id.iterator = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_iterator, None, vector_acos_sounding_id)
+vector_acos_sounding_id.__nonzero__ = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id___nonzero__, None, vector_acos_sounding_id)
+vector_acos_sounding_id.__bool__ = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id___bool__, None, vector_acos_sounding_id)
+vector_acos_sounding_id.__len__ = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id___len__, None, vector_acos_sounding_id)
+vector_acos_sounding_id.pop = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_pop, None, vector_acos_sounding_id)
+vector_acos_sounding_id.__getslice__ = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id___getslice__, None, vector_acos_sounding_id)
+vector_acos_sounding_id.__setslice__ = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id___setslice__, None, vector_acos_sounding_id)
+vector_acos_sounding_id.__delslice__ = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id___delslice__, None, vector_acos_sounding_id)
+vector_acos_sounding_id.__delitem__ = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id___delitem__, None, vector_acos_sounding_id)
+vector_acos_sounding_id.__getitem__ = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id___getitem__, None, vector_acos_sounding_id)
+vector_acos_sounding_id.__setitem__ = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id___setitem__, None, vector_acos_sounding_id)
+vector_acos_sounding_id.append = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_append, None, vector_acos_sounding_id)
+vector_acos_sounding_id.empty = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_empty, None, vector_acos_sounding_id)
+vector_acos_sounding_id.size = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_size, None, vector_acos_sounding_id)
+vector_acos_sounding_id.clear = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_clear, None, vector_acos_sounding_id)
+vector_acos_sounding_id.swap = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_swap, None, vector_acos_sounding_id)
+vector_acos_sounding_id.get_allocator = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_get_allocator, None, vector_acos_sounding_id)
+vector_acos_sounding_id.begin = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_begin, None, vector_acos_sounding_id)
+vector_acos_sounding_id.end = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_end, None, vector_acos_sounding_id)
+vector_acos_sounding_id.rbegin = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_rbegin, None, vector_acos_sounding_id)
+vector_acos_sounding_id.rend = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_rend, None, vector_acos_sounding_id)
+vector_acos_sounding_id.pop_back = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_pop_back, None, vector_acos_sounding_id)
+vector_acos_sounding_id.erase = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_erase, None, vector_acos_sounding_id)
+vector_acos_sounding_id.push_back = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_push_back, None, vector_acos_sounding_id)
+vector_acos_sounding_id.front = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_front, None, vector_acos_sounding_id)
+vector_acos_sounding_id.back = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_back, None, vector_acos_sounding_id)
+vector_acos_sounding_id.assign = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_assign, None, vector_acos_sounding_id)
+vector_acos_sounding_id.resize = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_resize, None, vector_acos_sounding_id)
+vector_acos_sounding_id.insert = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_insert, None, vector_acos_sounding_id)
+vector_acos_sounding_id.reserve = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_reserve, None, vector_acos_sounding_id)
+vector_acos_sounding_id.capacity = new_instancemethod(_acos_sounding_id.vector_acos_sounding_id_capacity, None, vector_acos_sounding_id)
+vector_acos_sounding_id_swigregister = _acos_sounding_id.vector_acos_sounding_id_swigregister
+vector_acos_sounding_id_swigregister(vector_acos_sounding_id)
 
 
 
