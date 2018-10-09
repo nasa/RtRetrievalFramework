@@ -3,7 +3,9 @@
 
 # Note, the "tools" path is there to pick up ruby. We should completely
 # remove this dependency at some point, but that hasn't happened yet.
-source /opt/local/depot/intel/Compiler/2013/bin/ifortvars.sh intel64 && \
+# Path is for centos6, centos7 already has 4.8.5. But doesn't hurt to set
+# for centos7 and allows us to keep one script
+source /opt/local/depot/intel/Compiler/2015/bin/ifortvars.sh intel64 && \
 export PATH=/opt/local/depot/gcc/4.8.1/bin:/groups/algorithm/tools/install/bin:$PATH && \
 ./configure && \
 make -j 20 l2_fp
