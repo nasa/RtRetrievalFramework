@@ -14,6 +14,7 @@ from optparse import OptionParser
 if int(sys.version[0]) == 3:
     DictType = dict
     StringType = bytes
+    import functools
 else:
     from types import DictType, StringType
 
@@ -45,6 +46,7 @@ OUTCOME_FLAG_DATASET = "RetrievalResults/outcome_flag"
 # String output into L2 code meaning that any error
 # causing premature execution was handled properly
 HANDLED_EXCEPTION_STRS = [ "Exception thrown by Full Physics code" ]
+FILE_EXCEPTION_STRS = ["While trying to open file '' a HDF 5 Exception thrown:"]
 
 # Use state vector names to add some debugging counts of configuration type
 STATEVECTOR_NAMES_DATASET = "RetrievedStateVector/state_vector_names"
@@ -74,6 +76,7 @@ class results_count(object):
 
         self.error_counts   = { "unknown_quality" : {"num": 0, "prefix": "with"},
                                 "handled_error"   : {"num": 0, "alt": "handled errors"},
+                                "file_open_error"   : {"num": 0, "alt": "opening file errors"},
                                 "exec_error"      : {"num": 0, "alt": "execution errors"},
                                 }
 
@@ -138,7 +141,7 @@ class results_count(object):
                 raise ValueError('Unknown result type "%s" for run id "%s"' % (result_type, result_obj.run_id))
 
             if result_type in self.type_output_files:
-                print(result_obj.run_id.decode(), file=self.type_output_files[result_type]["object"])
+                print(result_obj.run_id, file=self.type_output_files[result_type]["object"])
 
         if result_obj.run_id in self.all_run_dirs and self.verbose:
             print("Duplicate sounding id: %s" % result_obj.run_id)                
@@ -146,7 +149,7 @@ class results_count(object):
         if count_duplicates or (not result_obj.run_id in self.all_run_dirs):
             self.all_run_dirs.append(result_obj.run_id)
             if "all" in self.type_output_files:
-                print(result_obj.run_id.decode(), file=self.type_output_files["all"]["object"])
+                print(result_obj.run_id, file=self.type_output_files["all"]["object"])
                     
     def print_overall_stats(self, out_obj=sys.stdout):
         stats_format = "%4s %s\n"
@@ -177,7 +180,10 @@ class results_count(object):
                 else:
                     return cmp(x_id, y_id)
                 
-            count_items.sort(count_compare)
+            if int(sys.version[0]) == 3:
+                count_items.sort(key=functools.cmp_to_key(count_compare))
+            else:
+                count_items.sort(count_compare)
 
             sect_string = ""
             for (count_id, count_desc) in count_items:
@@ -246,6 +252,9 @@ class run_id_result(object):
     def find_check_file(self, file_glob):
         file_search = (self.base_path + "/" + file_glob).format(base_path=self.base_path, run_id=self.run_id)
         file_result = glob.glob( file_search )
+        if(len(file_result) == 0):
+            file_search2 = (self.base_path + "/*/" + file_glob).format(base_path=self.base_path, run_id=self.run_id)
+            file_result = glob.glob( file_search2 )
 
         if self.verbose: print("Checking for file %s" % file_search)
         if len(file_result) > 0 and file_result[0] != "":
@@ -361,6 +370,11 @@ class run_id_result(object):
                         break
                     line_count += 1
 
+                    for error_str in FILE_EXCEPTION_STRS:
+                        if log_line.find(error_str) >= 0:
+                            if self.verbose: "Found error message:", log_line
+                            self.result_types.append( "file_open_error" )
+                            return True
                     for error_str in HANDLED_EXCEPTION_STRS:
                         if log_line.find(error_str) >= 0:
                             if self.verbose: "Found error message:", log_line
