@@ -2,7 +2,7 @@
 #include "acos_sounding_id.h"
 #include "configuration_fixture.h"
 #include "unit_test_support.h"
-#include "acos_ecmwf.h"
+#include "acos_met_file.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -16,7 +16,7 @@ BOOST_AUTO_TEST_CASE(basic)
   HdfFile sfile(test_data_dir() + "in/sounding_id.h5");
   std::vector<boost::shared_ptr<HdfSoundingId> > sidv = 
     AcosSoundingId::create(sfile, sid);
-  boost::shared_ptr<AcosEcmwf> e(new AcosEcmwf(test_data_dir() + "in/ecmwf.h5", 
+  boost::shared_ptr<AcosMetFile> e(new AcosMetFile(test_data_dir() + "in/ecmwf.h5", 
 					       sidv[0], sidv.size() > 1));
   boost::shared_ptr<Pressure> p = config_pressure;
   StateVector sv;
