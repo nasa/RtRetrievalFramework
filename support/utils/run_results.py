@@ -141,7 +141,7 @@ class results_count(object):
                 raise ValueError('Unknown result type "%s" for run id "%s"' % (result_type, result_obj.run_id))
 
             if result_type in self.type_output_files:
-                print(result_obj.run_id.decode(), file=self.type_output_files[result_type]["object"])
+                print(result_obj.run_id, file=self.type_output_files[result_type]["object"])
 
         if result_obj.run_id in self.all_run_dirs and self.verbose:
             print("Duplicate sounding id: %s" % result_obj.run_id)                
@@ -149,7 +149,7 @@ class results_count(object):
         if count_duplicates or (not result_obj.run_id in self.all_run_dirs):
             self.all_run_dirs.append(result_obj.run_id)
             if "all" in self.type_output_files:
-                print(result_obj.run_id.decode(), file=self.type_output_files["all"]["object"])
+                print(result_obj.run_id, file=self.type_output_files["all"]["object"])
                     
     def print_overall_stats(self, out_obj=sys.stdout):
         stats_format = "%4s %s\n"
