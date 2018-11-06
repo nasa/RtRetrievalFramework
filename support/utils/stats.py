@@ -71,7 +71,7 @@ def gather_status(base_dir, output_dir, run_id_file=None,
         r_count.register_output(type_name, out_obj)
 
     run_id_list = []
-    if(run_id_file != None):
+    if (run_id_file != None):
         for run_id in run_results.read_run_id_file(run_id_file):
             run_id_list.append( (base_dir, run_id) )
     else:
