@@ -304,6 +304,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(OcoNoiseModel);
   REGISTER_LUA_LIST(UqNoiseModel);
   REGISTER_LUA_LIST(BadSampleNoiseModel);
+  REGISTER_LUA_LIST(SpectrallyResolvedNoise);
   REGISTER_LUA_LIST(SpectrumSamplingFixedSpacing);
   REGISTER_LUA_LIST(StateVector);
   REGISTER_LUA_LIST(OcoForwardModel);

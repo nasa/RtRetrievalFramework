@@ -990,8 +990,9 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/turn_on_fe_exception.cc \
 	@implsrc@/fm_nlls_problem.cc @implsrc@/gosat_noise_model.cc \
 	@implsrc@/oco_noise_model.cc @implsrc@/uq_noise_model.cc \
 	@implsrc@/bad_sample_noise_model.cc \
-	@implsrc@/precomputed_noise_model.cc @implsrc@/level_1b_fts.cc \
-	@implsrc@/level_1b_fts_f.F90 \
+	@implsrc@/precomputed_noise_model.cc \
+	@implsrc@/spectrally_resolved_noise.cc \
+	@implsrc@/level_1b_fts.cc @implsrc@/level_1b_fts_f.F90 \
 	@implsrc@/aerosol_extinction_linear.cc \
 	@implsrc@/aerosol_extinction_log.cc \
 	@implsrc@/aerosol_shape_gaussian.cc \
@@ -1271,6 +1272,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-turn_on_fe_exception.lo \
 	@implsrc@/libfp_la-uq_noise_model.lo \
 	@implsrc@/libfp_la-bad_sample_noise_model.lo \
 	@implsrc@/libfp_la-precomputed_noise_model.lo \
+	@implsrc@/libfp_la-spectrally_resolved_noise.lo \
 	@implsrc@/libfp_la-level_1b_fts.lo \
 	@implsrc@/libfp_la-level_1b_fts_f.lo \
 	@implsrc@/libfp_la-aerosol_extinction_linear.lo \
@@ -1572,6 +1574,7 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@implsrc@/oco_noise_model_test.cc \
 	@implsrc@/bad_sample_noise_model_test.cc \
 	@implsrc@/precomputed_noise_model_test.cc \
+	@implsrc@/spectrally_resolved_noise_test.cc \
 	@implsrc@/absorber_absco_test.cc \
 	@implsrc@/ground_lambertian_test.cc \
 	@implsrc@/ground_coxmunk_test.cc \
@@ -1742,6 +1745,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@implsrc@/oco_noise_model_test.$(OBJEXT) \
 	@implsrc@/bad_sample_noise_model_test.$(OBJEXT) \
 	@implsrc@/precomputed_noise_model_test.$(OBJEXT) \
+	@implsrc@/spectrally_resolved_noise_test.$(OBJEXT) \
 	@implsrc@/absorber_absco_test.$(OBJEXT) \
 	@implsrc@/ground_lambertian_test.$(OBJEXT) \
 	@implsrc@/ground_coxmunk_test.$(OBJEXT) \
@@ -2066,7 +2070,8 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@implsrc@/fm_nlls_problem.h @implsrc@/gosat_noise_model.h \
 	@implsrc@/oco_noise_model.h @implsrc@/uq_noise_model.h \
 	@implsrc@/bad_sample_noise_model.h \
-	@implsrc@/precomputed_noise_model.h @implsrc@/level_1b_fts.h \
+	@implsrc@/precomputed_noise_model.h \
+	@implsrc@/spectrally_resolved_noise.h @implsrc@/level_1b_fts.h \
 	@implsrc@/aerosol_extinction_linear.h \
 	@implsrc@/aerosol_extinction_log.h \
 	@implsrc@/aerosol_shape_gaussian.h \
@@ -2752,7 +2757,8 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@implsrc@/fm_nlls_problem.h @implsrc@/gosat_noise_model.h \
 	@implsrc@/oco_noise_model.h @implsrc@/uq_noise_model.h \
 	@implsrc@/bad_sample_noise_model.h \
-	@implsrc@/precomputed_noise_model.h @implsrc@/level_1b_fts.h \
+	@implsrc@/precomputed_noise_model.h \
+	@implsrc@/spectrally_resolved_noise.h @implsrc@/level_1b_fts.h \
 	@implsrc@/aerosol_extinction_linear.h \
 	@implsrc@/aerosol_extinction_log.h \
 	@implsrc@/aerosol_shape_gaussian.h \
@@ -2908,6 +2914,7 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@implsrc@/oco_noise_model_test.cc \
 	@implsrc@/bad_sample_noise_model_test.cc \
 	@implsrc@/precomputed_noise_model_test.cc \
+	@implsrc@/spectrally_resolved_noise_test.cc \
 	@implsrc@/absorber_absco_test.cc \
 	@implsrc@/ground_lambertian_test.cc \
 	@implsrc@/ground_coxmunk_test.cc \
@@ -3491,8 +3498,9 @@ libfp_la_SOURCES = @supportsrc@/turn_on_fe_exception.cc \
 	@implsrc@/fm_nlls_problem.cc @implsrc@/gosat_noise_model.cc \
 	@implsrc@/oco_noise_model.cc @implsrc@/uq_noise_model.cc \
 	@implsrc@/bad_sample_noise_model.cc \
-	@implsrc@/precomputed_noise_model.cc @implsrc@/level_1b_fts.cc \
-	@implsrc@/level_1b_fts_f.F90 \
+	@implsrc@/precomputed_noise_model.cc \
+	@implsrc@/spectrally_resolved_noise.cc \
+	@implsrc@/level_1b_fts.cc @implsrc@/level_1b_fts_f.F90 \
 	@implsrc@/aerosol_extinction_linear.cc \
 	@implsrc@/aerosol_extinction_log.cc \
 	@implsrc@/aerosol_shape_gaussian.cc \
@@ -5027,6 +5035,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-precomputed_noise_model.lo:  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-spectrally_resolved_noise.lo:  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-level_1b_fts.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-level_1b_fts_f.lo: @implsrc@/$(am__dirstamp) \
@@ -5860,6 +5870,8 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/precomputed_noise_model_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/spectrally_resolved_noise_test.$(OBJEXT):  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/absorber_absco_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/ground_lambertian_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
@@ -6325,6 +6337,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-solar_doppler_shift_polynomial.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-solver_iteration_log.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-spectral_window_range.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-spectrally_resolved_noise.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-spectrum_sampling_fixed_spacing.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-stokes_coefficient_constant.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-stokes_coefficient_fraction.Plo@am__quote@
@@ -6371,6 +6384,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/solar_doppler_shift_polynomial_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/solver_finished_fixture.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/spectral_window_range_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/spectrally_resolved_noise_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/spectrum_sampling_fixed_spacing_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/stokes_coefficient_constant_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/stokes_coefficient_fraction_test.Po@am__quote@
@@ -10052,6 +10066,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/precomputed_noise_model.cc' object='@implsrc@/libfp_la-precomputed_noise_model.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-precomputed_noise_model.lo `test -f '@implsrc@/precomputed_noise_model.cc' || echo '$(srcdir)/'`@implsrc@/precomputed_noise_model.cc
+
+@implsrc@/libfp_la-spectrally_resolved_noise.lo: @implsrc@/spectrally_resolved_noise.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-spectrally_resolved_noise.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-spectrally_resolved_noise.Tpo -c -o @implsrc@/libfp_la-spectrally_resolved_noise.lo `test -f '@implsrc@/spectrally_resolved_noise.cc' || echo '$(srcdir)/'`@implsrc@/spectrally_resolved_noise.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-spectrally_resolved_noise.Tpo @implsrc@/$(DEPDIR)/libfp_la-spectrally_resolved_noise.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/spectrally_resolved_noise.cc' object='@implsrc@/libfp_la-spectrally_resolved_noise.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-spectrally_resolved_noise.lo `test -f '@implsrc@/spectrally_resolved_noise.cc' || echo '$(srcdir)/'`@implsrc@/spectrally_resolved_noise.cc
 
 @implsrc@/libfp_la-level_1b_fts.lo: @implsrc@/level_1b_fts.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-level_1b_fts.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-level_1b_fts.Tpo -c -o @implsrc@/libfp_la-level_1b_fts.lo `test -f '@implsrc@/level_1b_fts.cc' || echo '$(srcdir)/'`@implsrc@/level_1b_fts.cc
