@@ -741,6 +741,9 @@ class _XmlParser(object):
         expatParser.EndElementHandler = self.end_element
         expatParser.CharacterDataHandler = self.character_data
 
+        # Ensure that expat does not split values between multiple CharacterDataHandler calls
+        expatParser.buffer_text = True
+
         # Parse the XML File
         ParserStatus = expatParser.Parse(fileContents, 1)
        
