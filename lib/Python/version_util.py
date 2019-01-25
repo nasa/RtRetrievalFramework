@@ -100,7 +100,7 @@ def _get_git_version(source_path):
         git_ver = None
 
     # Try and get branch version
-    git_branch = '(no branch)'
+    git_branch = b'(no branch)'
     try:
         git_process = subprocess.Popen(["git", "symbolic-ref", "HEAD"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, close_fds=True)
         git_process.wait()
