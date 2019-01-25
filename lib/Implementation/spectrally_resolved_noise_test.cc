@@ -26,16 +26,25 @@ BOOST_AUTO_TEST_CASE(base)
     BOOST_CHECK_MATRIX_CLOSE_TOL(base_uncert, spec_uncert, 1e-14);
   }
 
-  // Check that scaling works
   for (unsigned int spec_idx = 0; spec_idx < empty_rad.size(); spec_idx++) {
     double scaling = (spec_idx + 1) / 100.0;
     Array<double, 1> base_uncert(base_noise->uncertainty(spec_idx, empty_rad[spec_idx]));
-    Array<double, 1> coeffs(empty_rad[spec_idx].rows());
-    spec_noise.set_noise_coefficients(spec_idx, coeffs);
-    coeffs = scaling;
     base_uncert = base_uncert * scaling;
+
+    // Check that scaling works when applied across the whole band
+    Array<double, 1> coeffs(empty_rad[spec_idx].rows());
+    coeffs = scaling;
+    spec_noise.set_full_noise_scaling(spec_idx, coeffs);
+
     Array<double, 1> spec_uncert(spec_noise.uncertainty(spec_idx, empty_rad[spec_idx]));
     BOOST_CHECK_MATRIX_CLOSE_TOL(base_uncert, spec_uncert, 1e-14);
+
+    // Check that a single scaling value works
+    spec_noise.set_single_noise_scaling(spec_idx, scaling);
+
+    spec_uncert.reference(spec_noise.uncertainty(spec_idx, empty_rad[spec_idx]));
+    BOOST_CHECK_MATRIX_CLOSE_TOL(base_uncert, spec_uncert, 1e-14);
+
   }
 
 }

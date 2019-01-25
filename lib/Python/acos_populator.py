@@ -118,6 +118,9 @@ class AcosPopulator(PopulatorBase):
             else:
                 self.logger.debug('Set %s into header' % head_key_name)
 
+                if isinstance(head_key_value, six.binary_type):
+                    head_key_value = head_key_value.decode('UTF-8')
+
                 if isinstance(head_key_value, six.string_types) and head_key_value.find(' ') >= 0:
                     out_mat_obj.header[head_key_name] = '"%s"' % head_key_value
                 elif head_key_value == None:

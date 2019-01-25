@@ -8,19 +8,49 @@ using namespace blitz;
 #include "register_lua.h"
 REGISTER_LUA_DERIVED_CLASS(SpectrallyResolvedNoise, NoiseModel)
 .def(luabind::constructor<boost::shared_ptr<NoiseModel> &>())
-.def("set_noise_coefficients", &SpectrallyResolvedNoise::set_noise_coefficients)
+.def("set_full_noise_scaling", &SpectrallyResolvedNoise::set_full_noise_scaling)
+.def("set_single_noise_scaling", &SpectrallyResolvedNoise::set_single_noise_scaling)
 REGISTER_LUA_END()
 #endif
+
+//-----------------------------------------------------------------------
+/// Create a new SpectrallyResolvedNoise modifying an existing noise
+/// model. The created object should be used in place of the base model.
+/// The noise coefficents for each band must be set individually since
+/// they might vary in size
+//-----------------------------------------------------------------------
+SpectrallyResolvedNoise::SpectrallyResolvedNoise(boost::shared_ptr<NoiseModel> Base_model) 
+: base_model_(Base_model)
+{
+}
   
 //-----------------------------------------------------------------------
-/// Add noise coefficents for a given band index. The coefficeints
-/// per band do not need to be added in any particular order
+/// Add noise scalings for a given band index where each array value
+/// corresponds to a sample index in the base noise uncertainty.
 //-----------------------------------------------------------------------
 
-void SpectrallyResolvedNoise::set_noise_coefficients(int Spec_index, const blitz::Array<double, 1> Noise_coeff) {
-  if(band_noise_coeffs_.size() <= Spec_index)
+void SpectrallyResolvedNoise::set_full_noise_scaling(int Spec_index, const blitz::Array<double, 1> Noise_scaling) {
+  if(band_noise_coeffs_.size() <= Spec_index) {
     band_noise_coeffs_.resize(Spec_index+1);
-  band_noise_coeffs_[Spec_index].reference(Noise_coeff);
+    band_single_value_.resize(Spec_index+1);
+  }
+  band_noise_coeffs_[Spec_index].reference(Noise_scaling);
+  band_single_value_[Spec_index] = false;
+}
+
+//-----------------------------------------------------------------------
+/// Add noise scalings for a given band index where a single value applies
+/// across the whole band.
+//-----------------------------------------------------------------------
+
+void SpectrallyResolvedNoise::set_single_noise_scaling(int Spec_index, double Noise_scaling) {
+  if(band_noise_coeffs_.size() <= Spec_index) {
+    band_noise_coeffs_.resize(Spec_index+1);
+    band_single_value_.resize(Spec_index+1);
+  }
+  band_noise_coeffs_[Spec_index].resize(1);
+  band_noise_coeffs_[Spec_index](0) = Noise_scaling;
+  band_single_value_[Spec_index] = true;
 }
 
 //-----------------------------------------------------------------------
@@ -35,7 +65,11 @@ blitz::Array<double, 1> SpectrallyResolvedNoise::uncertainty(int Spec_index, con
     return uncert;
 
   Range all = Range::all(); 
-  uncert(all) = uncert(all) * band_noise_coeffs_[Spec_index](all);
+  if(band_single_value_[Spec_index]) {
+    uncert(all) = uncert(all) * band_noise_coeffs_[Spec_index](0);
+  } else {
+    uncert(all) = uncert(all) * band_noise_coeffs_[Spec_index](all);
+  }
   return uncert;
 }
 

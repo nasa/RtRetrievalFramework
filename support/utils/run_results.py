@@ -440,10 +440,10 @@ def read_run_id_file(run_id_file):
     run_id_list = []
     for id_line in id_lines:
         # Parse out first part of space seperated line string or first item from list
-        if hasattr(id_line, "__iter__"):
-            run_id = id_line[0]
-        else:
+        if isinstance(id_line, str):
             run_id = id_line.split()[0].strip()
+        elif hasattr(id_line, "__iter__"):
+            run_id = id_line[0]
 
         run_id_list.append(run_id)
 
