@@ -143,6 +143,7 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(pressure_holder)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(meteorology)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_property_hdf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_met_prior)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_property_rh_hdf)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(hdf_constant)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_continuum_table)(void);
@@ -542,6 +543,7 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_pressure_holder", SWIG_INIT_FUNC(pressure_holder));
   SWIG_INIT_MODULE(package, "_meteorology", SWIG_INIT_FUNC(meteorology));
   SWIG_INIT_MODULE(package, "_aerosol_property_hdf", SWIG_INIT_FUNC(aerosol_property_hdf));
+  SWIG_INIT_MODULE(package, "_aerosol_met_prior", SWIG_INIT_FUNC(aerosol_met_prior));
   SWIG_INIT_MODULE(package, "_aerosol_property_rh_hdf", SWIG_INIT_FUNC(aerosol_property_rh_hdf));
   SWIG_INIT_MODULE(package, "_hdf_constant", SWIG_INIT_FUNC(hdf_constant));
   SWIG_INIT_MODULE(package, "_solar_continuum_table", SWIG_INIT_FUNC(solar_continuum_table));
