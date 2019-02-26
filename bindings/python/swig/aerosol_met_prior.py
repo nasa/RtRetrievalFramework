@@ -131,6 +131,7 @@ def _new_from_set(cls, version, *args):
 import full_physics_swig.generic_object
 import full_physics_swig.state_vector
 import full_physics_swig.initial_guess
+import full_physics_swig.meteorology
 class AerosolMetPrior(full_physics_swig.generic_object.GenericObject):
     """
 
@@ -142,15 +143,14 @@ class AerosolMetPrior(full_physics_swig.generic_object.GenericObject):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, Merra_climatology, Aerosol_property, Latitude, Longitude, Press, Rh, Aerosol_cov, Max_aod=0.2, Exp_aod=0.8, Min_types=2, Max_types=4, Linear_aod=False, Relative_humidity_aerosol=False, Max_residual=0.005, Reference_wn=1):
+    def __init__(self, Met_file, Aerosol_property, Press, Rh, Aerosol_cov, Max_aod=0.2, Exp_aod=0.8, Min_types=2, Max_types=4, Linear_aod=False, Relative_humidity_aerosol=False, Max_residual=0.005, Reference_wn=1):
         """
 
-        AerosolMetPrior::AerosolMetPrior(const HdfFile &Merra_climatology, const HdfFile &Aerosol_property,
-        DoubleWithUnit Latitude, DoubleWithUnit Longitude, const
+        AerosolMetPrior::AerosolMetPrior(const OcoMetFile &Met_file, const HdfFile &Aerosol_property, const
         boost::shared_ptr< Pressure > &Press, const boost::shared_ptr<
         RelativeHumidity > &Rh, const blitz::Array< double, 2 > &Aerosol_cov,
         double Max_aod=0.2, double Exp_aod=0.8, int Min_types=2, int
-        Max_types=4, bool Linear_aod=false, bool
+        Max_types=2, bool Linear_aod=false, bool
         Relative_humidity_aerosol=false, double Max_residual=0.005, double
         Reference_wn=1e4/0.755)
         Constructor.
@@ -158,13 +158,9 @@ class AerosolMetPrior(full_physics_swig.generic_object.GenericObject):
         Parameters:
         -----------
 
-        Merra_climatology:  The Merra climatology file
+        Met_file:  The Meteorological file.
 
         Aerosol_property:  The Aerosol property file
-
-        Latitude:  The latitude of the ground point
-
-        Longitude:  The longitude of the ground point
 
         Press:  The Pressure object that gives the pressure grid.
 
@@ -193,7 +189,7 @@ class AerosolMetPrior(full_physics_swig.generic_object.GenericObject):
         optional, the default value matches the reference band given in the
         ATB. 
         """
-        _aerosol_met_prior.AerosolMetPrior_swiginit(self, _aerosol_met_prior.new_AerosolMetPrior(Merra_climatology, Aerosol_property, Latitude, Longitude, Press, Rh, Aerosol_cov, Max_aod, Exp_aod, Min_types, Max_types, Linear_aod, Relative_humidity_aerosol, Max_residual, Reference_wn))
+        _aerosol_met_prior.AerosolMetPrior_swiginit(self, _aerosol_met_prior.new_AerosolMetPrior(Met_file, Aerosol_property, Press, Rh, Aerosol_cov, Max_aod, Exp_aod, Min_types, Max_types, Linear_aod, Relative_humidity_aerosol, Max_residual, Reference_wn))
 
     def _v_aerosol(self):
         """

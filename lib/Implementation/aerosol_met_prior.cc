@@ -14,21 +14,22 @@ using namespace blitz;
 // constructor for AerosolMetPrior takes too many. As an easy
 // workaround, just stuff a number of the values into an array.
 boost::shared_ptr<AerosolMetPrior> aerosol_met_prior_create(
-const HdfFile& Merra_climatology,
+const boost::shared_ptr<Meteorology>& Met_file,
 const HdfFile& Aerosol_property,
-DoubleWithUnit Latitude, DoubleWithUnit Longitude,
 const boost::shared_ptr<Pressure> &Press,
 const boost::shared_ptr<RelativeHumidity> &Rh,
 const blitz::Array<double, 2>& Aerosol_cov,
 const blitz::Array<double, 1>& val)
 {
+  if(boost::dynamic_pointer_cast<OcoMetFile>(Met_file) == 0)
+    throw Exception("Need a OcoMetFile");
   return boost::shared_ptr<AerosolMetPrior>
-    (new AerosolMetPrior(Merra_climatology, Aerosol_property,
-		      Latitude, Longitude, Press, Rh, Aerosol_cov,
-		      val(0), val(1), static_cast<int>(val(2)),
-		      static_cast<int>(val(3)), val(4),
-		      static_cast<int>(val(5)) == 1,
-		      static_cast<int>(val(6)) == 1));
+    (new AerosolMetPrior(*boost::dynamic_pointer_cast<OcoMetFile>(Met_file),
+			 Aerosol_property, Press, Rh, Aerosol_cov,
+			 val(0), val(1), static_cast<int>(val(2)),
+			 static_cast<int>(val(3)), val(4),
+			 static_cast<int>(val(5)) == 1,
+			 static_cast<int>(val(6)) == 1));
 }
 REGISTER_LUA_CLASS(AerosolMetPrior)
 .def("aerosol", &AerosolMetPrior::aerosol)
@@ -44,10 +45,8 @@ REGISTER_LUA_END()
 
 //-----------------------------------------------------------------------
 /// Constructor.
-/// \param Merra_climatology The Merra climatology file
+/// \param Met_file The Meteorological file. 
 /// \param Aerosol_property The Aerosol property file
-/// \param Latitude The latitude of the ground point
-/// \param Longitude The longitude of the ground point
 /// \param Press The Pressure object that gives the pressure grid.
 /// \param Rh The RelativeHumidity object that gives the relative humidity.
 /// \param Aerosol_cov The covariance matrix to use for each Aerosol.
@@ -68,9 +67,8 @@ REGISTER_LUA_END()
 //-----------------------------------------------------------------------
 
 AerosolMetPrior::AerosolMetPrior
-(const HdfFile& Merra_climatology,
+(const OcoMetFile& Met_file,
  const HdfFile& Aerosol_property,
- DoubleWithUnit Latitude, DoubleWithUnit Longitude,
  const boost::shared_ptr< Pressure > &Press, 
  const boost::shared_ptr<RelativeHumidity> &Rh,
  const blitz::Array<double, 2>& Aerosol_cov,
@@ -87,32 +85,18 @@ AerosolMetPrior::AerosolMetPrior
   press(Press),
   rh(Rh),
   ref_wn(Reference_wn),
-  merra_fname(Merra_climatology.file_name()),
-  prop_fname(Aerosol_property.file_name()),
-  lat(Latitude),
-  lon(Longitude)
+  met_fname(Met_file.file_name()),
+  prop_fname(Aerosol_property.file_name())
 {
-  int lat_ind = file_index(Merra_climatology, "Latitude", Latitude);
-  int lon_ind = file_index(Merra_climatology, "Longitude", Longitude, true);
-  TinyVector<int,3> shp = Merra_climatology.read_shape<3>("/AOD_Fraction");
-  Array<double, 3> aod_frac = 
-    Merra_climatology.read_field<double, 3>("/AOD_Fraction", 
-					    shape(0,lat_ind,lon_ind),
-					    shape(shp[0],1,1));
-  TinyVector<int,4> shp2 = 
-    Merra_climatology.read_shape<4>("/COMPOSITE_AOD_GAUSSIAN");
-  Array<double, 4> aod_gauss = 
-    Merra_climatology.read_field<double, 4>("/COMPOSITE_AOD_GAUSSIAN", 
-					    shape(0,0,lat_ind,lon_ind),
-					    shape(shp2[0],shp2[1], 1,1));
-  shp = Merra_climatology.read_shape<3>("/COMPOSITE_AOD_SORT_Index");
-  Array<int, 3> aod_sort_index =
-    Merra_climatology.read_field<int, 3>("/COMPOSITE_AOD_SORT_Index", 
-					shape(0,lat_ind,lon_ind),
-					shape(shp[0],1,1));
+  Array<double, 1> aod_frac = Met_file.read_array("/Aerosol/composite_aod_fraction_met");
+  Array<double, 2> aod_gauss =  Met_file.read_array_2d("/Aerosol/composite_aod_gaussian_met");
+  Array<int, 1> aod_sort_index = Met_file.read_array_int("/Aerosol/composite_aod_sort_index_met");
   Array<std::string, 1> comp_name = 
-    Merra_climatology.read_field<std::string, 1>("/COMPOSITE_NAME");
-  double total_aod = sum(aod_gauss(3, Range::all(), 0, 0));
+    Met_file.hdf_file().read_field<std::string, 1>("/Metadata/CompositeAerosolTypes");
+  std::cerr << "aod_frac: " << aod_frac << "\n"
+	    << "aod_gauss: " << aod_gauss << "\n"
+	    << "aod_sort_index: " << aod_sort_index << "\n";
+  double total_aod = sum(aod_gauss(Range::all(), 3));
   ig.reset(new CompositeInitialGuess);
   // Loop over composite types until thresholds are reached:
   number_merra_particle_ = 0;
@@ -121,17 +105,17 @@ AerosolMetPrior::AerosolMetPrior
     bool select;
     if(counter < Min_types)
       select = true;
-    else if(aod_frac(counter, 0, 0) > Exp_aod ||
-	    (1 - aod_frac(counter, 0, 0)) * total_aod < Max_residual ||
+    else if(aod_frac(counter) > Exp_aod ||
+	    (1 - aod_frac(counter)) * total_aod < Max_residual ||
 	    counter >= Max_types)
       select = false;
     else
       select = true;
     if(select) {
       ++number_merra_particle_;
-      double aod = aod_gauss(3, i);
-      double peak_height = aod_gauss(1, i);
-      double peak_width = aod_gauss(2, i);
+      double aod = aod_gauss(i, 3);
+      double peak_height = aod_gauss(i, 1);
+      double peak_width = aod_gauss(i, 2);
       if(aod > Max_aod)
 	aod = Max_aod;
       std::string aname = comp_name(i);
@@ -191,54 +175,6 @@ void AerosolMetPrior::add_aerosol
 }
 
 //-----------------------------------------------------------------------
-/// Determine latitude index to use.
-//-----------------------------------------------------------------------
-
-int AerosolMetPrior::file_index(const HdfFile& Merra_climatology, 
-			     const std::string& Field_name,
-			     DoubleWithUnit& V, bool Wrap_around)
-{
-  Array<double, 1> value_data = 
-    Merra_climatology.read_field<double, 1>("/" + Field_name);
-  double value = V.convert(Unit("deg")).value;
-  // Special handling at the edges for longitude
-  if(Wrap_around &&
-     value < value_data(0) && 
-     value >= (value_data(value_data.rows() - 1) - 360)) {
-    if(fabs(value - value_data(0)) <
-       fabs(value - (value_data(value_data.rows() - 1) - 360)))
-      return 0;
-    else
-      return value_data.rows() - 1;
-  }
-  if(Wrap_around &&
-     value >= value_data(value_data.rows() - 1) &&
-     value < (value_data(0) + 360)) {
-    if(fabs(value - (value_data(0) + 360)) <
-       fabs(value - value_data(value_data.rows() - 1)))
-      return 0;
-    else
-      return value_data.rows() - 1;
-  }
-  if(value < value_data(0) || value >= value_data(value_data.rows() - 1)) {
-    Exception e;
-    e << Field_name << " " << V << " is out or the range covered by the\n"
-      << "Merra_climatology file " << Merra_climatology.file_name();
-    throw e;
-  }
-  if(value == value_data(0))
-    return 0;
-  double* f = std::lower_bound(value_data.data(), 
-			       value_data.data() + value_data.rows(), 
-			       value);
-  int i = f - value_data.data();
-  if(((value - value_data(i - 1)) / (value_data(i) - value_data(i - 1))) < 0.5)
-    return i - 1;
-  else
-    return i;
-}
-
-//-----------------------------------------------------------------------
 /// Print to stream.
 //-----------------------------------------------------------------------
 
@@ -249,8 +185,6 @@ void AerosolMetPrior::print(std::ostream& Os) const
      << (rh_aerosol ? "RH aerosol" : "Not RH aerosol")
      << ")\n"
      << "  Coefficient:\n"
-     << "  Merra file name:            " << merra_fname << "\n"
-     << "  Aerosol property file name: " << prop_fname << "\n"
-     << "  Latitude:                   " << lat << "\n"
-     << "  Longitude:                  " << lon << "\n";
+     << "  Met file name:             " << met_fname << "\n"
+     << "  Aerosol property file name: " << prop_fname << "\n";
 }
