@@ -74,7 +74,7 @@ double OcoMetFile::read_scalar(const std::string& Field) const
 }
 
 //-----------------------------------------------------------------------
-/// Read a field and the pressure it is reported on. Average if needed.
+/// Read a field.
 //-----------------------------------------------------------------------
 
 Array<double, 1> OcoMetFile::read_array(const std::string& Field) const
@@ -88,6 +88,44 @@ Array<double, 1> OcoMetFile::read_array(const std::string& Field) const
   Array<double, 1> V(traw.extent(thirdDim));
 
   V = traw(0, 0, Range::all());
+
+  return V;
+}
+
+//-----------------------------------------------------------------------
+/// Read a field.
+//-----------------------------------------------------------------------
+
+Array<int, 1> OcoMetFile::read_array_int(const std::string& Field) const
+{
+  firstIndex i1; secondIndex i2;
+  TinyVector<int, 3> sz = h.read_shape<3>(Field);
+  Array<int, 3> traw = h.read_field<int, 3>
+    (Field,
+     TinyVector<int, 3>(hsid->frame_number(), hsid->sounding_number(), 0),
+     TinyVector<int, 3>(1,1,sz[2]));
+  Array<int, 1> V(traw.extent(thirdDim));
+
+  V = traw(0, 0, Range::all());
+
+  return V;
+}
+
+//-----------------------------------------------------------------------
+/// Read a field.
+//-----------------------------------------------------------------------
+
+Array<double, 2> OcoMetFile::read_array_2d(const std::string& Field) const
+{
+  firstIndex i1; secondIndex i2;
+  TinyVector<int, 4> sz = h.read_shape<4>(Field);
+  Array<double, 4> traw = h.read_field<double, 4>
+    (Field,
+     TinyVector<int, 4>(hsid->frame_number(), hsid->sounding_number(), 0,0),
+     TinyVector<int, 4>(1,1,sz[2], sz[3]));
+  Array<double, 2> V(traw.extent(thirdDim), traw.extent(fourthDim));
+
+  V = traw(0, 0, Range::all(), Range::all());
 
   return V;
 }

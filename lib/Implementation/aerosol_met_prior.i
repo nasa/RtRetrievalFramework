@@ -14,14 +14,14 @@
 %import "pressure.i"
 %import "aerosol.i"
 %import "composite_initial_guess.i"
+%import "oco_met_file.i"
 %fp_shared_ptr(FullPhysics::AerosolMetPrior);
 
 namespace FullPhysics {
 class AerosolMetPrior: public GenericObject {
 public:
-  AerosolMetPrior(const HdfFile& Merra_climatology,
+  AerosolMetPrior(const OcoMetFile& Met_file,
 	       const HdfFile& Aerosol_property,
-	       DoubleWithUnit Latitude, DoubleWithUnit Longitude,
 	       const boost::shared_ptr<Pressure> &Press,
 	       const boost::shared_ptr<RelativeHumidity> &Rh,
 	       const blitz::Array<double, 2>& Aerosol_cov,

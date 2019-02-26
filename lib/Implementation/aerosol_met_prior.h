@@ -6,6 +6,7 @@
 #include "hdf_file.h"
 #include "pressure.h"
 #include "composite_initial_guess.h"
+#include "oco_met_file.h"
 
 namespace FullPhysics {
 /****************************************************************//**
@@ -14,16 +15,15 @@ namespace FullPhysics {
 *******************************************************************/
 class AerosolMetPrior: public Printable<AerosolMetPrior> {
 public:
-  AerosolMetPrior(const HdfFile& Merra_climatology,
+  AerosolMetPrior(const OcoMetFile& Met_file,
 	       const HdfFile& Aerosol_property,
-	       DoubleWithUnit Latitude, DoubleWithUnit Longitude,
 	       const boost::shared_ptr<Pressure> &Press,
 	       const boost::shared_ptr<RelativeHumidity> &Rh,
 	       const blitz::Array<double, 2>& Aerosol_cov,
 	       double Max_aod = 0.2,
 	       double Exp_aod = 0.8,
 	       int Min_types = 2,
-	       int Max_types = 4,
+	       int Max_types = 2,
 	       bool Linear_aod = false,
 	       bool Relative_humidity_aerosol = false,
 	       double Max_residual = 0.005,
@@ -57,11 +57,7 @@ private:
   boost::shared_ptr<Pressure> press;
   boost::shared_ptr<RelativeHumidity> rh;
   double ref_wn;
-  std::string merra_fname, prop_fname;
-  DoubleWithUnit lat, lon;
-  int file_index(const HdfFile& Merra_climatology, 
-		 const std::string& Field_name,
-		 DoubleWithUnit& V, bool Wrap_around = false);
+  std::string met_fname, prop_fname;
 };
 }
 #endif
