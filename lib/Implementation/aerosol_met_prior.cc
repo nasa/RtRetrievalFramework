@@ -93,9 +93,6 @@ AerosolMetPrior::AerosolMetPrior
   Array<int, 1> aod_sort_index = Met_file.read_array_int("/Aerosol/composite_aod_sort_index_met");
   Array<std::string, 1> comp_name = 
     Met_file.hdf_file().read_field<std::string, 1>("/Metadata/CompositeAerosolTypes");
-  std::cerr << "aod_frac: " << aod_frac << "\n"
-	    << "aod_gauss: " << aod_gauss << "\n"
-	    << "aod_sort_index: " << aod_sort_index << "\n";
   double total_aod = sum(aod_gauss(Range::all(), 3));
   ig.reset(new CompositeInitialGuess);
   // Loop over composite types until thresholds are reached:
