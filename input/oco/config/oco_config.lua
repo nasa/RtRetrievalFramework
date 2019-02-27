@@ -514,3 +514,99 @@ function OcoConfig.tropopause_height_ap(self, base, type, aer_name)
     
     return ap
 end
+
+------------------------------------------------------------
+--- Create aerosol using the AerosolMetPrior class.
+------------------------------------------------------------
+
+OcoConfig.aerosol_met_prior_creator = CompositeCreator:new()
+
+function OcoConfig.aerosol_met_prior_creator:sub_object_key()
+   return self.aerosols
+end
+
+function OcoConfig.aerosol_met_prior_creator:create_parent_object(sub_object)
+   -- Luabind can only handle up to 10 arguments per function. As an easy
+   -- work around we put the various thresholds into an array.
+   local mq = Blitz_double_array_1d(7)
+   mq:set(0, self.max_aod)
+   mq:set(1, self.exp_aod)
+   mq:set(2, self.min_types)
+   mq:set(3, self.max_types)
+   if(self.linear_aod) then
+      mq:set(4, 1)
+   else
+      mq:set(4, 0)
+   end
+   if(self.relative_humidity_aerosol) then
+      mq:set(5, 1)
+   else
+      mq:set(5, 0)
+   end
+   mq:set(6, self.max_residual)
+
+   self.aerosol_met_prior = AerosolMetPrior.create(
+     self.config.met, self.config:h_merra_aerosol(),
+     self.config.pressure,
+     self.config.relative_humidity,
+     -- In production, have a single covariance for all merra types,
+     -- but allow for using functions that have a different covariance
+     -- for different types
+     self:covariance(0), 
+     mq)
+   self.sub_object_save = sub_object
+   local i, t
+   for i, t in ipairs(sub_object) do
+      self.aerosol_met_prior:add_aerosol(t.extinction, t.property, t.initial_guess)
+   end
+   local res = self.aerosol_met_prior:aerosol()
+   self.config.number_aerosol = res:number_particle()
+   return res
+end
+
+function OcoConfig.aerosol_met_prior_creator:initial_guess()
+   local cig = CompositeInitialGuess()
+   local flag = ConfigCommon.create_flag(3, Range.all())
+   local cig_merra = CompositeInitialGuess()
+   cig_merra:add_builder(self.aerosol_met_prior:initial_guess())
+
+   --- Use AOD from merra, but leave the remaining shape parameters at values
+   --- fixed at the supplied apriori values (e.g., read from HDF file, or 
+   --- whatever).
+   local ig_merra = cig_merra:initial_guess()
+   for i=1,self.aerosol_met_prior:number_merra_particle() do
+      -- Send particle number to ap and cov functions in case they
+      -- can use them
+      local oval = self:apriori(i-1)
+
+      -- Optionally ignore the merra initial guess value and just use
+      -- value from apriori function
+      if (self.ignore_merra_aod == nil) then
+        oval:set(0, ig_merra((i - 1) * 3))
+      end
+
+      local ig = InitialGuessValue()
+      ig:apriori_subset(flag, oval)
+      ig:apriori_covariance_subset(flag, self:covariance(i-1))
+      cig:add_builder(ig)
+   end
+
+   --- Now add in the fixed particles.
+   local i, t
+   for i, t in ipairs(self.sub_object_save) do
+      cig:add_builder(t.initial_guess)
+   end
+
+   return cig
+end
+
+function OcoConfig.aerosol_met_prior_creator:register_output(ro)
+   local h = HdfFile(self.config.met_file)
+   local all_aer_names = h:read_string_vector("/Metadata/CompositeAerosolTypes")
+   for i, aer_name in ipairs(self.aerosols) do
+       all_aer_names:push_back(aer_name)
+   end
+ 
+   ro:push_back(AerosolConsolidatedOutput(self.config.aerosol, all_aer_names))
+end
+
