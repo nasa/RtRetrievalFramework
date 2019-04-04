@@ -2526,6 +2526,7 @@ CLEANFILES = lib/full_physics.deps \
 	thirdparty/2stream/2stream.deps
 DISTCLEANFILES = 
 bin_SCRIPTS = @supportutilssrc@/addSoundingHeader.py \
+	@supportutilssrc@/add_spliced_retrieval_info.py \
 	@supportutilssrc@/analyze_l2.py @supportutilssrc@/ansicolor.rb \
 	@supportutilssrc@/closest_soundings.py \
 	@supportutilssrc@/compare_hdf \
