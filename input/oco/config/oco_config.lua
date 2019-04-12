@@ -529,21 +529,20 @@ function OcoConfig.aerosol_met_prior_creator:create_parent_object(sub_object)
    -- Luabind can only handle up to 10 arguments per function. As an easy
    -- work around we put the various thresholds into an array.
    local mq = Blitz_double_array_1d(7)
-   mq:set(0, self.max_aod)
-   mq:set(1, self.exp_aod)
-   mq:set(2, self.min_types)
-   mq:set(3, self.max_types)
+   mq:set(0, self.exp_aod)
+   mq:set(1, self.min_types)
+   mq:set(2, self.max_types)
    if(self.linear_aod) then
+      mq:set(3, 1)
+   else
+      mq:set(3, 0)
+   end
+   if(self.relative_humidity_aerosol) then
       mq:set(4, 1)
    else
       mq:set(4, 0)
    end
-   if(self.relative_humidity_aerosol) then
-      mq:set(5, 1)
-   else
-      mq:set(5, 0)
-   end
-   mq:set(6, self.max_residual)
+   mq:set(5, self.max_residual)
 
    self.aerosol_met_prior = AerosolMetPrior.create(
      self.config.met, self.config:h_merra_aerosol(),
