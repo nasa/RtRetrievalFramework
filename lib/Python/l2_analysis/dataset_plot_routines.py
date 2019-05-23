@@ -98,12 +98,12 @@ class DatasetPlotRoutines(PlotMaker, TimeDiffPlotRoutines, SzaDiffPlotRoutines):
                             return [ aer_data[:, aer_idx] for aer_data in file_aer_data ]
                         return filter_aer_type
 
-                    routine_name = "aerosol_%s" % aer_name.lower()
-                    display_name = "Aerosol %s" % aer_name
+                    routine_name = "aerosol_%s" % aer_name.lower().decode('utf-8')
+                    display_name = "Aerosol %s" % aer_name.decode('utf-8')
                     dataset_name = "RetrievalResults/retrieved_aerosol_aod_by_type"
                     self._create_dataset_routines(routine_name, display_name, display_name, translate_func=aer_filter_wrap(aer_idx), source_datasets=[dataset_name])
                 else:
-                    routine_name = "aerosol_%s" % aer_name.lower()
-                    display_name = "Aerosol %s" % aer_name
-                    dataset_name = "RetrievalResults/aerosol_%s_aod" % aer_name.lower()
+                    routine_name = "aerosol_%s" % aer_name.lower().decode('utf-8')
+                    display_name = "Aerosol %s" % aer_name.decode('utf-8')
+                    dataset_name = "RetrievalResults/aerosol_%s_aod" % aer_name.lower().decode('utf-8')
                     self._create_dataset_routines(routine_name, display_name, display_name, source_datasets=[dataset_name])

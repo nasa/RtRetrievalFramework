@@ -161,6 +161,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(Aerosol);
   REGISTER_LUA_LIST(AerosolOptical);
   REGISTER_LUA_LIST(MerraAerosol);
+  REGISTER_LUA_LIST(AerosolMetPrior);
   REGISTER_LUA_LIST(Altitude);
   REGISTER_LUA_LIST(VectorAltitude);
   REGISTER_LUA_LIST(AbsorberVmr);
