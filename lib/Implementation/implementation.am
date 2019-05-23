@@ -11,6 +11,8 @@ fullphysicsinc_HEADERS += @implsrc@/hdf_constant.h
 libfp_la_SOURCES += @implsrc@/hdf_constant.cc
 fullphysicsinc_HEADERS += @implsrc@/aerosol_property_hdf.h
 libfp_la_SOURCES += @implsrc@/aerosol_property_hdf.cc
+fullphysicsinc_HEADERS += @implsrc@/aerosol_met_prior.h
+libfp_la_SOURCES += @implsrc@/aerosol_met_prior.cc
 fullphysicsinc_HEADERS += @implsrc@/aerosol_property_rh_hdf.h
 libfp_la_SOURCES += @implsrc@/aerosol_property_rh_hdf.cc
 fullphysicsinc_HEADERS += @implsrc@/solar_continuum_table.h
@@ -274,6 +276,7 @@ libfp_la_SOURCES += @implsrc@/merra_aerosol.cc
 # Files that contain SWIG wrapper information
 
 SWIG_SRC += @swigsrc@/aerosol_property_hdf_wrap.cc
+SWIG_SRC += @swigsrc@/aerosol_met_prior_wrap.cc
 SWIG_SRC += @swigsrc@/aerosol_property_rh_hdf_wrap.cc
 SWIG_SRC += @swigsrc@/hdf_constant_wrap.cc
 SWIG_SRC += @swigsrc@/solar_continuum_table_wrap.cc
@@ -395,6 +398,7 @@ lib_test_all_SOURCES+= @implsrc@/forward_model_cost_function_test.cc
 lib_test_all_SOURCES+= @implsrc@/full_output_test.cc
 lib_test_all_SOURCES+= @implsrc@/hdf_constant_test.cc
 lib_test_all_SOURCES+= @implsrc@/aerosol_property_hdf_test.cc
+lib_test_all_SOURCES+= @implsrc@/aerosol_met_prior_test.cc
 lib_test_all_SOURCES+= @implsrc@/aerosol_property_rh_hdf_test.cc
 lib_test_all_SOURCES+= @implsrc@/solar_absorption_table_test.cc
 lib_test_all_SOURCES+= @implsrc@/solar_absorption_gfit_file_test.cc
