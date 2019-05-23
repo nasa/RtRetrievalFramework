@@ -159,13 +159,10 @@ GosatBaseConfig = AcosConfig:new {
          },
          instrument_correction = {
             creator = AcosConfig.instrument_correction_list_h_and_m,
-	    --- Have EOF turned off for now
-            -- ic_h_gain = { "zero_offset_waveform", "eof_h_gain_1",
-	    --		  "eof_h_gain_2", "eof_h_gain_3" },
-            -- ic_m_gain = { "zero_offset_waveform", "eof_m_gain_1",
-	    --		  "eof_m_gain_2", "eof_m_gain_3" },
-            ic_h_gain = { "zero_offset_waveform" },
-            ic_m_gain = { "zero_offset_waveform" },
+            ic_h_gain = { "zero_offset_waveform", "eof_h_gain_1",
+	    		  "eof_h_gain_2", "eof_h_gain_3" },
+	    ic_m_gain = { "zero_offset_waveform", "eof_m_gain_1",
+	    		  "eof_m_gain_2", "eof_m_gain_3" },
             zero_offset_waveform = {
                apriori = ConfigCommon.hdf_apriori_i("Instrument/ZeroLevelOffset"),
                covariance = ConfigCommon.hdf_covariance_i("Instrument/ZeroLevelOffset"),

@@ -932,8 +932,8 @@ class SoundingFirstFile(SoundingDataFile):
 
     def get_sounding_ids(self):
         # Look for the first dataset in the first group that is not a group itself
-        if len(list(self.values())) > 0 and len(list(self.values())[0].values()) > 0 and hasattr(list(self.values())[0].values()[0], "shape"):
-            indexes = numpy.zeros(list(self.values())[0].values()[0].shape, dtype=int)
+        if len(list(self.values())) > 0 and len(list(self.values())[0].values()) > 0 and hasattr(list(list(self.values())[0].values())[0], "shape"):
+            indexes = numpy.zeros(list(list(self.values())[0].values())[0].shape, dtype=int)
             indexes.ravel()[:] = list(range(numpy.product(indexes.shape))) 
         else:
             indexes = []
