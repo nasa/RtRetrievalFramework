@@ -53,7 +53,7 @@ class AnalysisEnvironment(object):
                 # in each file ie ECMWF file
                 try:
                     curr_obj = acos_file.IdDatasetFinder(curr_addl)
-                except LookupError:
+                except (LookupError, AttributeError):
                     curr_obj = acos_file.SoundingFirstFile(curr_addl)
                 self.addl_objs.append(curr_obj)
 
@@ -388,7 +388,7 @@ class AnalysisEnvironment(object):
 
         indent = "\t"
         script_code = [ "def main():" ]
-        with file(script_file,"r") as f_obj:
+        with open(script_file,"r") as f_obj:
             for script_line in f_obj.readlines():
                 script_code.append( indent + script_line.rstrip() )
         script_code.append("main()")
