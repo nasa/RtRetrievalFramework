@@ -38,7 +38,7 @@ if [ ! -e "$l2_agg_fn" ]; then
 
     echo "Aggregating L2 output files"
     log_file=agg_$(basename ${{l2_agg_fn}} | sed 's/\.h5$/.log/')
-    {0.l2_support_path}/utils/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -s $in_snd_id_tmp -l {0.log_directory}/$log_file $* -w 16 --temp $worker_temp
+    {0.l2_support_util_path}/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -s $in_snd_id_tmp -l {0.log_directory}/$log_file $* -w 16 --temp $worker_temp
 
     rm $input_files_tmp
     rm $in_snd_id_tmp
