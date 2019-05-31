@@ -7,6 +7,7 @@ export L2_FP_SRC_PATH=@abs_top_srcdir@
 export abscodir=@abscodir@
 export merradir=@merradir@
 export L2_INPUT_PATH=@configdir@
+export L2_SUPPORT_UTIL_PATH=@bindir@
 if [ -n "@rubygemdir" ]; then
   if [ -n "$GEM_PATH" ]; then
     export GEM_PATH=@rubygemdir@:${GEM_PATH}
