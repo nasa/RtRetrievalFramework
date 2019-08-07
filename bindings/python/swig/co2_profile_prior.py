@@ -146,16 +146,16 @@ class CO2ProfilePrior(full_physics_swig.generic_object.GenericObject):
     def __init__(self, Met_file, Profile_file):
         """
 
-        FullPhysics::CO2ProfilePrior::CO2ProfilePrior(const OcoMetFile &Met_file, const HdfFile &Profile_file)
-
+        CO2ProfilePrior::CO2ProfilePrior(const OcoMetFile &Met_file, const HdfFile &Profile_file)
+        Constructor. 
         """
         _co2_profile_prior.CO2ProfilePrior_swiginit(self, _co2_profile_prior.new_CO2ProfilePrior(Met_file, Profile_file))
 
     def apriori_vmr(self, pressure):
         """
 
-        const blitz::Array<double, 1> FullPhysics::CO2ProfilePrior::apriori_vmr(const Pressure &pressure) const
-
+        blitz::Array< double, 1 > CO2ProfilePrior::apriori_vmr(const Pressure &pressure) const
+        Apriori value. 
         """
         return _co2_profile_prior.CO2ProfilePrior_apriori_vmr(self, pressure)
 

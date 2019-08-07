@@ -15,6 +15,6 @@ class CO2ProfilePrior: public GenericObject {
 public:
   CO2ProfilePrior(const OcoMetFile& Met_file,
 		  const HdfFile& Profile_file) {}
-  const blitz::Array<double, 1> apriori_vmr(const Pressure& pressure) const;
+  blitz::Array<double, 1> apriori_vmr(const Pressure& pressure) const;
 };
 }
