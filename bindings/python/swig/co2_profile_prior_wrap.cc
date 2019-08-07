@@ -5220,13 +5220,13 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"new_CO2ProfilePrior", _wrap_new_CO2ProfilePrior, METH_VARARGS, (char *)"\n"
 		"\n"
-		"FullPhysics::CO2ProfilePrior::CO2ProfilePrior(const OcoMetFile &Met_file, const HdfFile &Profile_file)\n"
-		"\n"
+		"CO2ProfilePrior::CO2ProfilePrior(const OcoMetFile &Met_file, const HdfFile &Profile_file)\n"
+		"Constructor. \n"
 		""},
 	 { (char *)"CO2ProfilePrior_apriori_vmr", _wrap_CO2ProfilePrior_apriori_vmr, METH_VARARGS, (char *)"\n"
 		"\n"
-		"const blitz::Array<double, 1> FullPhysics::CO2ProfilePrior::apriori_vmr(const Pressure &pressure) const\n"
-		"\n"
+		"blitz::Array< double, 1 > CO2ProfilePrior::apriori_vmr(const Pressure &pressure) const\n"
+		"Apriori value. \n"
 		""},
 	 { (char *)"delete_CO2ProfilePrior", (PyCFunction)_wrap_delete_CO2ProfilePrior, METH_O, (char *)"\n"
 		"\n"
