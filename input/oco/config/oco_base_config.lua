@@ -19,6 +19,7 @@ OcoBaseConfig = OcoConfig:new {
    sid_string = os.getenv("sounding_id"),
    spectrum_file = os.getenv("spectrum_file"),
    met_file = os.getenv("met_file"),
+   co2_pr_file = os.getenv("co2_pr_file"),
    imap_file = os.getenv("imap_file"),
    --- Scene file is only used it we are trying to match a simulator
    --- run. So for a real data, this will be a empty string, and will

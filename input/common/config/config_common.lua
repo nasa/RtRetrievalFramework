@@ -3482,6 +3482,7 @@ function ConfigCommon.oco_forward_model:register_output(ro)
    -- Add source data files
    for i,var_ds in ipairs({ { "L1BFile", "spectrum_file"},
                             { "ResampledMetFile", "met_file" },
+                            { "CO2PriorFile", "co2_pr_file" },
 			    { "StaticInput", "static_file"},
 			    { "SolarFile", "static_solar_file"},
 			    { "AerosolFile", "static_aerosol_file"},
