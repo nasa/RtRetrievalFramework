@@ -34,6 +34,7 @@ extern "C" {
   void init_swig_wrap(void);
 #endif
   SWIG_INIT_TYPE SWIG_INIT_FUNC(fp_exception)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(turn_on_fe_exception)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(generic_object)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(unit)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(double_with_unit)(void);
@@ -55,7 +56,7 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(acos_sounding_id)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_sounding_id)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(uq_sounding_id)(void);
-  SWIG_INIT_TYPE SWIG_INIT_FUNC(acos_ecmwf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(acos_met_file)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_met_file)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(uq_ecmwf)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_sim_met_ecmwf)(void);
@@ -142,6 +143,7 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(pressure_holder)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(meteorology)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_property_hdf)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_met_prior)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(aerosol_property_rh_hdf)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(hdf_constant)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(solar_continuum_table)(void);
@@ -170,6 +172,7 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_oco)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_uq)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(level_1b_cache)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(oco_noise_model)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(gosat_noise_model)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(precomputed_noise_model)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(absco)(void);
@@ -431,6 +434,7 @@ init_swig_wrap(void)
   }
   
   SWIG_INIT_MODULE(package, "_fp_exception", SWIG_INIT_FUNC(fp_exception));
+  SWIG_INIT_MODULE(package, "_turn_on_fe_exception", SWIG_INIT_FUNC(turn_on_fe_exception));
   SWIG_INIT_MODULE(package, "_generic_object", SWIG_INIT_FUNC(generic_object));
   SWIG_INIT_MODULE(package, "_unit", SWIG_INIT_FUNC(unit));
   SWIG_INIT_MODULE(package, "_double_with_unit", SWIG_INIT_FUNC(double_with_unit));
@@ -452,7 +456,7 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_acos_sounding_id", SWIG_INIT_FUNC(acos_sounding_id));
   SWIG_INIT_MODULE(package, "_oco_sounding_id", SWIG_INIT_FUNC(oco_sounding_id));
   SWIG_INIT_MODULE(package, "_uq_sounding_id", SWIG_INIT_FUNC(uq_sounding_id));
-  SWIG_INIT_MODULE(package, "_acos_ecmwf", SWIG_INIT_FUNC(acos_ecmwf));
+  SWIG_INIT_MODULE(package, "_acos_met_file", SWIG_INIT_FUNC(acos_met_file));
   SWIG_INIT_MODULE(package, "_oco_met_file", SWIG_INIT_FUNC(oco_met_file));
   SWIG_INIT_MODULE(package, "_uq_ecmwf", SWIG_INIT_FUNC(uq_ecmwf));
   SWIG_INIT_MODULE(package, "_oco_sim_met_ecmwf", SWIG_INIT_FUNC(oco_sim_met_ecmwf));
@@ -539,6 +543,7 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_pressure_holder", SWIG_INIT_FUNC(pressure_holder));
   SWIG_INIT_MODULE(package, "_meteorology", SWIG_INIT_FUNC(meteorology));
   SWIG_INIT_MODULE(package, "_aerosol_property_hdf", SWIG_INIT_FUNC(aerosol_property_hdf));
+  SWIG_INIT_MODULE(package, "_aerosol_met_prior", SWIG_INIT_FUNC(aerosol_met_prior));
   SWIG_INIT_MODULE(package, "_aerosol_property_rh_hdf", SWIG_INIT_FUNC(aerosol_property_rh_hdf));
   SWIG_INIT_MODULE(package, "_hdf_constant", SWIG_INIT_FUNC(hdf_constant));
   SWIG_INIT_MODULE(package, "_solar_continuum_table", SWIG_INIT_FUNC(solar_continuum_table));
@@ -567,6 +572,7 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_level_1b_oco", SWIG_INIT_FUNC(level_1b_oco));
   SWIG_INIT_MODULE(package, "_level_1b_uq", SWIG_INIT_FUNC(level_1b_uq));
   SWIG_INIT_MODULE(package, "_level_1b_cache", SWIG_INIT_FUNC(level_1b_cache));
+  SWIG_INIT_MODULE(package, "_oco_noise_model", SWIG_INIT_FUNC(oco_noise_model));
   SWIG_INIT_MODULE(package, "_gosat_noise_model", SWIG_INIT_FUNC(gosat_noise_model));
   SWIG_INIT_MODULE(package, "_precomputed_noise_model", SWIG_INIT_FUNC(precomputed_noise_model));
   SWIG_INIT_MODULE(package, "_absco", SWIG_INIT_FUNC(absco));

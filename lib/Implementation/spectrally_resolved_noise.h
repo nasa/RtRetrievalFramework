@@ -16,21 +16,17 @@ namespace FullPhysics {
 class SpectrallyResolvedNoise: public NoiseModel {
 public:
 
-  //-----------------------------------------------------------------------
-  /// Create a new SpectrallyResolvedNoise modifying an existing noise
-  /// model. The created object should be used in place of the base model.
-  /// The noise coefficents for each band must be set individually since
-  /// they might vary in size
-  //-----------------------------------------------------------------------
-  SpectrallyResolvedNoise(boost::shared_ptr<NoiseModel> Base_model) : base_model_(Base_model) {};
+  SpectrallyResolvedNoise(boost::shared_ptr<NoiseModel> Base_model);
 
   virtual blitz::Array<double, 1> uncertainty(int Spec_index, const blitz::Array<double, 1>& Radiance) const;
-  virtual void set_noise_coefficients(int Spec_index, const blitz::Array<double, 1> Noise_coeff); 
+  virtual void set_full_noise_scaling(int Spec_index, const blitz::Array<double, 1> Noise_scaling);
+  virtual void set_single_noise_scaling(int Spec_index, double Noise_scaling);
 
   virtual void print(std::ostream& Os) const;
 
 private:
   boost::shared_ptr<NoiseModel> base_model_;
+  mutable std::vector<bool> band_single_value_;
   mutable std::vector<blitz::Array<double, 1> > band_noise_coeffs_;
 };
 }
