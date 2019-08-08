@@ -428,6 +428,15 @@ function ConfigCommon:h_imap()
    return self.h_imap_v
 end
 
+function ConfigCommon:h_co2_profile()
+   if(self.co2_pr_file and self.co2_pr_file ~= "" and not self.h_co2_profile_v) then
+      self.h_co2_profile_v = HdfFile(self.co2_pr_file)
+      self.input_file_description = self.input_file_description .. 
+        "CO2 Profile input file:   " .. self.co2_pr_file .. "\n"
+   end
+   return self.h_co2_profile_v
+end
+
 function ConfigCommon:h_merra_aerosol()
    --- Use static_merra_aerosol_file if found, otherwise use h_aerosol()
    -- Use static_aerosol_file if found, otherwise use the same static input
@@ -917,6 +926,15 @@ end
 
 function ConfigCommon:reference_co2_apriori_met_apriori()
    local t = self.config:reference_co2_apriori_met_obj()
+   return t:apriori_vmr(self.config.pressure)
+end
+
+------------------------------------------------------------
+--- Get co2 apriori for the profile file
+------------------------------------------------------------
+
+function ConfigCommon:co2_profile_file_apriori()
+   local t = CO2ProfilePrior(self.config.met, self.config:h_co2_profile())
    return t:apriori_vmr(self.config.pressure)
 end
 
