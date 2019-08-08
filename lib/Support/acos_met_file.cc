@@ -1,4 +1,4 @@
-#include "acos_ecmwf.h"
+#include "acos_met_file.h"
 #include "acos_sounding_id.h"
 
 using namespace FullPhysics;
@@ -6,7 +6,7 @@ using namespace blitz;
 
 #ifdef HAVE_LUA
 #include "register_lua.h"
-REGISTER_LUA_DERIVED_CLASS(AcosEcmwf, Meteorology)
+REGISTER_LUA_DERIVED_CLASS(AcosMetFile, Meteorology)
 .def(luabind::constructor<std::string, 
 			  const boost::shared_ptr<HdfSoundingId>&,
 			  bool>())
@@ -21,10 +21,14 @@ REGISTER_LUA_END()
 /// and pressure as the average value for all the sounding numbers.
 //-----------------------------------------------------------------------
 
-AcosEcmwf::AcosEcmwf(const std::string& Fname, const boost::shared_ptr<HdfSoundingId>& 
+AcosMetFile::AcosMetFile(const std::string& Fname, const boost::shared_ptr<HdfSoundingId>& 
 		     Hdf_sounding_id, bool Avg_sounding_number)
 : h(Fname), hsid(Hdf_sounding_id), average_sounding_number(Avg_sounding_number)
 {
+  if (h.has_object("/Meteorology/specific_humidity_profile_met"))
+    met_format = true;
+  else
+    met_format = false;
 }
 
 //-----------------------------------------------------------------------
@@ -37,8 +41,8 @@ AcosEcmwf::AcosEcmwf(const std::string& Fname, const boost::shared_ptr<HdfSoundi
 /// config file
 //-----------------------------------------------------------------------
 
-AcosEcmwf::AcosEcmwf(const std::string& Fname, const HeritageFile& Run_file)
-  : h(Fname)
+AcosMetFile::AcosMetFile(const std::string& Fname, const HeritageFile& Run_file)
+  : h(Fname), met_format(false)
 {
   std::string sid = Run_file.value<std::string>("SOUNDING_INFO/sounding_id");
   HdfFile h(Run_file.file_value("SOUNDING_INFO/spectrum_file"));
@@ -52,7 +56,7 @@ AcosEcmwf::AcosEcmwf(const std::string& Fname, const HeritageFile& Run_file)
 /// Read a field where a single number is expected to be returned
 //-----------------------------------------------------------------------
 
-double AcosEcmwf::read_scalar(const std::string& Field) const
+double AcosMetFile::read_scalar(const std::string& Field) const
 {
   int spec_index = 0;
   TinyVector<int, 3> sz = h.read_shape<3>(Field);
@@ -70,7 +74,7 @@ double AcosEcmwf::read_scalar(const std::string& Field) const
 /// Read a field and the pressure it is reported on. Average if needed.
 //-----------------------------------------------------------------------
 
-blitz::Array<double, 1> AcosEcmwf::read_array(const std::string& Field) const
+blitz::Array<double, 1> AcosMetFile::read_array(const std::string& Field) const
 {
   firstIndex i1; secondIndex i2;
   int spec_index = 0;

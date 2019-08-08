@@ -155,7 +155,14 @@ http://code.activestate.com/recipes/439045-read-a-text-file-backwards-yet-anothe
    buf = ""
 
    try:
-      file.seek(-1, 2)
+       # This is not legal in python 3 for text like files (see
+       # https://stackoverflow.com/questions/21533391/seeking-from-end-of-file-throwing-unsupported-exception)
+       # Think this is because we don't know the size of a character in
+       # something like utf-8 unless we read forward.
+       #file.seek(-1, 2)
+       # But can do it this way
+       file.seek(0, os.SEEK_END)
+       file.seek(file.tell() - 1, os.SEEK_SET)
    except IOError:
       # File is of zero size
       return
@@ -176,9 +183,9 @@ http://code.activestate.com/recipes/439045-read-a-text-file-backwards-yet-anothe
       elif pos:
          # Need to fill buffer
          toread = min(BLKSIZE, pos)
-         file.seek(-toread, 1)
+         file.seek(file.tell() - toread, os.SEEK_SET)
          buf = file.read(toread) + buf
-         file.seek(-toread, 1)
+         file.seek(file.tell() - toread, os.SEEK_SET)
          if pos == toread:
             buf = "\n" + buf
       else:

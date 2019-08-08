@@ -161,6 +161,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(Aerosol);
   REGISTER_LUA_LIST(AerosolOptical);
   REGISTER_LUA_LIST(MerraAerosol);
+  REGISTER_LUA_LIST(AerosolMetPrior);
   REGISTER_LUA_LIST(Altitude);
   REGISTER_LUA_LIST(VectorAltitude);
   REGISTER_LUA_LIST(AbsorberVmr);
@@ -237,7 +238,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(Level1bOco);
   REGISTER_LUA_LIST(Level1bUq);
   REGISTER_LUA_LIST(Meteorology);
-  REGISTER_LUA_LIST(AcosEcmwf);
+  REGISTER_LUA_LIST(AcosMetFile);
   REGISTER_LUA_LIST(OcoMetFile);
   REGISTER_LUA_LIST(UqEcmwf);
   REGISTER_LUA_LIST(OcoSimMetEcmwf);
@@ -304,6 +305,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(OcoNoiseModel);
   REGISTER_LUA_LIST(UqNoiseModel);
   REGISTER_LUA_LIST(BadSampleNoiseModel);
+  REGISTER_LUA_LIST(SpectrallyResolvedNoise);
   REGISTER_LUA_LIST(SpectrumSamplingFixedSpacing);
   REGISTER_LUA_LIST(StateVector);
   REGISTER_LUA_LIST(OcoForwardModel);

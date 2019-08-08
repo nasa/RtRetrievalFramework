@@ -14,6 +14,7 @@ from optparse import OptionParser
 if int(sys.version[0]) == 3:
     DictType = dict
     StringType = bytes
+    import functools
 else:
     from types import DictType, StringType
 
@@ -140,7 +141,7 @@ class results_count(object):
                 raise ValueError('Unknown result type "%s" for run id "%s"' % (result_type, result_obj.run_id))
 
             if result_type in self.type_output_files:
-                print(result_obj.run_id.decode(), file=self.type_output_files[result_type]["object"])
+                print(result_obj.run_id, file=self.type_output_files[result_type]["object"])
 
         if result_obj.run_id in self.all_run_dirs and self.verbose:
             print("Duplicate sounding id: %s" % result_obj.run_id)                
@@ -148,7 +149,7 @@ class results_count(object):
         if count_duplicates or (not result_obj.run_id in self.all_run_dirs):
             self.all_run_dirs.append(result_obj.run_id)
             if "all" in self.type_output_files:
-                print(result_obj.run_id.decode(), file=self.type_output_files["all"]["object"])
+                print(result_obj.run_id, file=self.type_output_files["all"]["object"])
                     
     def print_overall_stats(self, out_obj=sys.stdout):
         stats_format = "%4s %s\n"
@@ -179,7 +180,10 @@ class results_count(object):
                 else:
                     return cmp(x_id, y_id)
                 
-            count_items.sort(count_compare)
+            if int(sys.version[0]) == 3:
+                count_items.sort(key=functools.cmp_to_key(count_compare))
+            else:
+                count_items.sort(count_compare)
 
             sect_string = ""
             for (count_id, count_desc) in count_items:
@@ -436,10 +440,10 @@ def read_run_id_file(run_id_file):
     run_id_list = []
     for id_line in id_lines:
         # Parse out first part of space seperated line string or first item from list
-        if hasattr(id_line, "__iter__"):
-            run_id = id_line[0]
-        else:
+        if isinstance(id_line, str):
             run_id = id_line.split()[0].strip()
+        elif hasattr(id_line, "__iter__"):
+            run_id = id_line[0]
 
         run_id_list.append(run_id)
 
