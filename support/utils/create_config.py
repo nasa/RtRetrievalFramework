@@ -14,6 +14,7 @@ import full_physics.acos_file as acos_file
 # Maps the output locations in the config with the groups in the HDF files indentifying the file type
 FILE_SEARCH_GROUPS = { "L1BFile" :   ['InstrumentHeader'],
                        "ResampledMetFile" : ['ecmwf', 'ECMWF', 'Meteorology'],
+                       "CO2PriorFile" : ['CO2Prior'],
                        "IMAPFile" :  ['DOASFluorescence'],
                        "ABandFile" : ['ABandRetrieval'],
                        "RRVFile" :   ['campaign'],

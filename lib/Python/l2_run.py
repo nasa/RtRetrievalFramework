@@ -8,7 +8,7 @@ class L2Run(object):
     '''This is a convenience class that provides a simpler interface to
     the underlying C++ wrapped python classes.'''
     def __init__(self, lua_config, sounding_id, met_file, spectrum_file, 
-                 print_log = True, scene_file = None,
+                 print_log = True, scene_file = None, co2_pr_file = None,
                  abscodir = None, merradir = None, imap_file = None):
         '''Load a Lua config file, setting the given sounding id, ecmf_file,
         and spectrum_file. By default we also turn logging on so you get 
@@ -24,9 +24,11 @@ class L2Run(object):
         self.met_file = met_file
         self.spectrum_file = spectrum_file
         self.imap_file = imap_file
+        self.co2_pr_file = co2_pr_file
         os.environ["met_file"] = met_file
         os.environ["spectrum_file"] = spectrum_file
         os.environ["sounding_id"] = sounding_id
+        os.environ["co2_pr_file"] = co2_pr_file
         if(scene_file is not None):
             os.environ["scene_file"] = scene_file
         if(imap_file is not None):
@@ -74,6 +76,7 @@ class L2Run(object):
         t = c.get_section("input->InputProductFiles")[0]
         l1b = t.get_keyword_value("L1BFile")
         met = t.get_keyword_value("ResampledMetFile")
+        co2_pr = t.get_keyword_value("CO2PriorFile")
         imap = t.get_keyword_value("IMAPFile")
         if(lua_config is None):
             lua_config = os.path.join(os.environ.get('L2_INPUT_PATH', ''), "gosat/config/config.lua")
@@ -95,10 +98,13 @@ class L2Run(object):
                                 l1b = eval(v)
                             if(k == "met_file"):
                                 met = eval(v)
+                            if(k == "co2_pr_file"):
+                                co2_pr = eval(v)
                             if(k == "imap_file"):
                                 imap = eval(v)
 
-        r = L2Run(lua_config, sounding_id, met, l1b, imap_file = imap)
+        r = L2Run(lua_config, sounding_id, met, l1b, imap_file = imap,
+                  co2_pr_file = co2_pr)
         r.output_file_name = os.path.dirname(config_file) + "/output/l2_" + \
             sounding_id + ".h5"
         return r
