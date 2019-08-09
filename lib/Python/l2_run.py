@@ -28,7 +28,8 @@ class L2Run(object):
         os.environ["met_file"] = met_file
         os.environ["spectrum_file"] = spectrum_file
         os.environ["sounding_id"] = sounding_id
-        os.environ["co2_pr_file"] = co2_pr_file
+        if(co2_pr_file is not None):
+            os.environ["co2_pr_file"] = co2_pr_file
         if(scene_file is not None):
             os.environ["scene_file"] = scene_file
         if(imap_file is not None):
