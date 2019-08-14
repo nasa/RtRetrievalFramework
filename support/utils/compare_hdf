@@ -2,7 +2,7 @@
 # This compare two L2 HDF files, giving the right tolerance for each field.
 require 'getoptlong'
 
-rel_diff = 1.5e-3
+rel_diff = 4.5e-3
 apos_diff = 6e-2
 
 report = ""
@@ -40,19 +40,24 @@ dlist.each do |dname|
          dname == "/RetrievalResults/co2_profile_averaging_kernel_matrix" ||
          dname == "/RetrievalResults/averaging_kernel_matrix" ||
          dname == "/RetrievalResults/interference_smoothing_uncert" ||
-         dname == "/RetrievalResults/xco2_correlation_interf")
+         dname =~ /brdf_/ ||
+         dname == "/RetrievalResults/xco2_correlation_interf" ||
+         dname == "/RetrievalResults/xco2_gain_vector")
     if(dname == "/RetrievalResults/xco2_uncert_interf")
       system "h5diff #{report} -p 2e-2 #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname == "/Forward_Model_Errors/Spectroscopy/temperature/o2/derivative")
       system "h5diff #{report} -p 1e-1 #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname =~ /aerosol_.*_aod_(low|mid|high)/ ||
-          dname =~ /aerosol_.*_aod/
+          dname =~ /aerosol_.*_aod/ ||
+          dname =~ /aerosol_aod/
           )
-      system "h5diff #{report} -p 1e-2 #{ARGV[0]} #{ARGV[1]} #{dname}"
+      system "h5diff #{report} -d 1e-2 #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname =~ /aerosol_.*_log_param/)
       system "h5diff #{report} -p 1e-2 #{ARGV[0]} #{ARGV[1]} #{dname}"
+    elsif(dname =~ /aerosol_param/)
+      system "h5diff #{report} -d 0.1 #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname =~ /zero_level_offset/)
-      system "h5diff #{report} -p 1e-2 #{ARGV[0]} #{ARGV[1]} #{dname}"
+      system "h5diff #{report} -d 0.2 #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname == "/RetrievedStateVector/state_vector_result")
       # We can't easily compare state_vector_results because is mixes things with
       # wildly different scales so there is no natural tolerance to use. However
@@ -62,15 +67,13 @@ dlist.each do |dname|
       # Contains path information that changes depending on the system run on,
       # so skip comparison
     elsif(dname == "/RetrievalResults/co2_profile_covariance_matrix")
-      system "h5diff #{report} -p 1e-2 #{ARGV[0]} #{ARGV[1]} #{dname}"
+      # Skip, different between centos 6 and 7
     elsif(dname == "/SpectralParameters/modeled_radiance")
-      system "h5diff #{report} -p 1e-3  #{ARGV[0]} #{ARGV[1]} #{dname}"
+      system "h5diff #{report} -p 2.5e-3  #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname == "/RetrievalResults/dof_co2_profile")
       system "h5diff #{report} -p 1e-3  #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname == "/RetrievalResults/temperature_offset_fph")
       system "h5diff #{report} -d 5e-2  #{ARGV[0]} #{ARGV[1]} #{dname}"
-    elsif(dname == "/RetrievalResults/xco2_gain_vector")
-      system "h5diff #{report} -p 1.0 #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname =="/RetrievalResults/albedo_slope_uncert_o2" ||
   	  dname =="/RetrievalResults/albedo_uncert_o2_fph" ||
 	  dname =="/RetrievalResults/albedo_slope_uncert_strong_co2" ||
@@ -89,8 +92,10 @@ dlist.each do |dname|
           dname =="/RetrievalResults/surface_pressure_uncert_fph" ||
           dname =="/RetrievalResults/h2o_scale_factor_uncert" ||
 	  dname =="/RetrievalResults/dof_full_vector" ||
+	  dname =="/RetrievalResults/eof_3_scale_o2" ||
 	  dname =="/RetrievalResults/xco2_avg_kernel" ||
           dname =="/RetrievalResults/co2_profile_uncert" ||
+          dname =="/RetrievalResults/xco2_gain_vector" ||
 	  dname =="/RetrievalResults/xco2_avg_kernel_norm" ||
   	  dname =="/RetrievalResults/fluorescence_at_reference" ||
           dname =="/RetrievalResults/fluorescence_at_reference_uncert")
@@ -103,7 +108,9 @@ dlist.each do |dname|
     # wrong with this calculation, but for now don't trigger an error if we
     # are vaguely close to the expected results
     if(dname == "/RetrievalResults/averaging_kernel_matrix" ||
-       dname == "/RetrievalResults/aposteriori_covariance_matrix")
+       dname == "/RetrievalResults/aposteriori_covariance_matrix" ||
+       dname == "/RetrievalResults/xco2_gain_vector"
+       )
       # Skip all checks
     else
       system "h5diff #{report} -d #{apos_diff} #{ARGV[0]} #{ARGV[1]} #{dname}"
