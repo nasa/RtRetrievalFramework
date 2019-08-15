@@ -210,7 +210,7 @@ void GroundBrdfOutput::register_output_apriori(const boost::shared_ptr<Output>& 
 
       for (int i = 2; i < brdf->number_weight_parameters(); ++i) {
           { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::reflectance_weight, helper, spec_idx, i);
-            out->register_data_source("/RetrievalResults/brdf_reflectance_weight_" + std::to_string(i) + "_apriori_" + band_name, f); }
+            out->register_data_source("/RetrievalResults/brdf_reflectance_" + std::to_string(i) + "_apriori_" + band_name, f); }
       }
   }
 }
@@ -288,10 +288,10 @@ void GroundBrdfOutput::register_output(const boost::shared_ptr<Output>& out) con
       for (int i = 2; i < brdf->number_weight_parameters(); ++i) {
 
           { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::reflectance_weight, helper, spec_idx, i);
-            out->register_data_source("/RetrievalResults/brdf_reflectance_weight_" + std::to_string(i) + "_" + band_name, f); }
+            out->register_data_source("/RetrievalResults/brdf_reflectance_" + std::to_string(i) + "_" + band_name, f); }
 
           { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::reflectance_weight_uncert, helper, spec_idx, i);
-            out->register_data_source("/RetrievalResults/brdf_reflectance_weight_" + std::to_string(i) + "_uncert_" + band_name, f); }
+            out->register_data_source("/RetrievalResults/brdf_reflectance_" + std::to_string(i) + "_uncert_" + band_name, f); }
       }
   }
 
