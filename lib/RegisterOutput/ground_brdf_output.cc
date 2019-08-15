@@ -78,9 +78,9 @@ public:
         return brdf->weight_slope(spec_idx).value();
     }
 
-    double weight(int spec_idx, int weight_idx)
+    double weight_coeff(int spec_idx, int weight_idx)
     {
-        return brdf->weight(spec_idx, weight_idx).value();
+        return brdf->weight_coeff(spec_idx, weight_idx).value();
     }
 
     double reflectance_intercept(int spec_idx)
@@ -95,7 +95,7 @@ public:
 
     double reflectance_weight(int spec_idx, int weight_idx)
     {
-        return weight(spec_idx, weight_idx) * kernel_amplitude(spec_idx);
+        return weight_coeff(spec_idx, weight_idx) * kernel_amplitude(spec_idx);
     }
 
     double rahman_factor_uncert(int spec_idx)
@@ -198,7 +198,7 @@ void GroundBrdfOutput::register_output_apriori(const boost::shared_ptr<Output>& 
         out->register_data_source("/RetrievalResults/brdf_weight_slope_apriori_" + band_name, f); }
 
       for (int i = 2; i < brdf->number_weight_parameters(); ++i) {
-          { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight, helper, spec_idx, i);
+          { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_coeff, helper, spec_idx, i);
             out->register_data_source("/RetrievalResults/brdf_weight_" + std::to_string(i) + "_apriori_" + band_name, f); }
       }
 
@@ -266,7 +266,7 @@ void GroundBrdfOutput::register_output(const boost::shared_ptr<Output>& out) con
         out->register_data_source("/RetrievalResults/brdf_weight_slope_uncert_" + band_name, f); }
 
       for (int i = 2; i < brdf->number_weight_parameters(); ++i) {
-          { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight, helper, spec_idx, i);
+          { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_coeff, helper, spec_idx, i);
             out->register_data_source("/RetrievalResults/brdf_weight_" + std::to_string(i) + "_" + band_name, f); }
 
           { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_uncert, helper, spec_idx, i);

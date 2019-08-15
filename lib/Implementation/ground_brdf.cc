@@ -207,14 +207,14 @@ const AutoDerivative<double> GroundBrdf::weight_slope(const int spec_index) cons
     return coefficient()(num_coeff * spec_index + BRDF_WEIGHT_SLOPE_INDEX);
 }
 
-const AutoDerivative<double> GroundBrdf::weight(const int spec_index, const int weight_index) const
+AutoDerivative<double> GroundBrdf::weight_coeff(const int spec_index, const int weight_index) const
 {
     range_check(spec_index, 0, number_spectrometer());
 
     return coefficient()(num_coeff * spec_index + (NUM_BRDF_PARAMS + weight_index));
 }
 
-const ArrayAd<double, 1> GroundBrdf::weight_parameters(const int spec_index) const
+ArrayAd<double, 1> GroundBrdf::weight_parameters(const int spec_index) const
 {
     range_check(spec_index, 0, number_spectrometer());
 
