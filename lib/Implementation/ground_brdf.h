@@ -19,13 +19,13 @@ namespace FullPhysics {
 class GroundBrdf: public SubStateVectorArray<Ground> {
 public:
     enum ParamIndex {
-        RAHMAN_KERNEL_FACTOR_INDEX,
-        RAHMAN_OVERALL_AMPLITUDE_INDEX,
-        RAHMAN_ASYMMETRY_FACTOR_INDEX,
-        RAHMAN_GEOMETRIC_FACTOR_INDEX,
-        BREON_KERNEL_FACTOR_INDEX,
-        BRDF_WEIGHT_INTERCEPT_INDEX,
-        BRDF_WEIGHT_SLOPE_INDEX
+        RAHMAN_KERNEL_FACTOR_INDEX = 0,
+        RAHMAN_OVERALL_AMPLITUDE_INDEX = 1,
+        RAHMAN_ASYMMETRY_FACTOR_INDEX = 2,
+        RAHMAN_GEOMETRIC_FACTOR_INDEX = 3,
+        BREON_KERNEL_FACTOR_INDEX = 4,
+        BRDF_WEIGHT_INTERCEPT_INDEX = 5,
+        BRDF_WEIGHT_SLOPE_INDEX = 6
     };
 
     GroundBrdf(const blitz::Array<double, 2>& Coeffs,
@@ -48,8 +48,8 @@ public:
     virtual const AutoDerivative<double> breon_factor(const int spec_index) const;
     virtual const AutoDerivative<double> weight_intercept(const int spec_index) const;
     virtual const AutoDerivative<double> weight_slope(const int spec_index) const;
-    const AutoDerivative<double> weight(const int spec_index, const int weight_index) const;
-    const ArrayAd<double, 1> weight_parameters(const int spec_index) const;
+    AutoDerivative<double> weight_coeff(const int spec_index, const int weight_index) const;
+    ArrayAd<double, 1> weight_parameters(const int spec_index) const;
 
     virtual void rahman_factor(const int spec_index, const AutoDerivative<double>& val);
     virtual void hotspot_parameter(const int spec_index, const AutoDerivative<double>& val);
