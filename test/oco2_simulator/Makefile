@@ -8,6 +8,6 @@ $(out_dir)/comparison_plot.pdf: l2_fp $(base_dir)/config/config_orbit_sim_match.
 	mkdir -p $(out_dir)
 	source $(prefix)/setup_fp_env.sh && \
 	$(PYTHON) $(base_dir)/compare_simulator.py && \
-        $(PYHTON) $(base_dir)/print_values.py
+        $(PYTHON) $(base_dir)/print_values.py
 
 all: $(out_dir)/comparison_plot.pdf
