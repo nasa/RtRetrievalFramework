@@ -10,14 +10,14 @@ blue = $$(tput setaf 4)
 default = $$(tput setaf 9)
 
 %_run: l2_fp install-python
-	@PYTHONPATH=$(pythondir):$$PYTHONPATH MAKE=$(MAKE) srcdir=$(abs_srcdir) HDF5_BIN=$(HDF5_BIN) RUBY=$(RUBY) \
+	@PYTHONPATH=$(pythondir):$$PYTHONPATH MAKE=$(MAKE) srcdir=$(abs_srcdir) HDF5_BIN=$(HDF5_BIN) RUBY=$(RUBY) PYTHON=$(PYTHON) \
         prefix=$(prefix) $(srcdir)/test/$*/run_test && \
         echo "${green}Test '$*' ran successfully${default}" && \
         exit 0; \
         echo "${red}Test '$*' failed${default}"; exit 1
 
 %_update: l2_fp install-python
-	@PYTHONPATH=$(pythondir):$$PYTHONPATH MAKE=$(MAKE) srcdir=$(abs_srcdir) HDF5_BIN=$(HDF5_BIN) RUBY=$(RUBY) \
+	@PYTHONPATH=$(pythondir):$$PYTHONPATH MAKE=$(MAKE) srcdir=$(abs_srcdir) HDF5_BIN=$(HDF5_BIN) RUBY=$(RUBY) PYTHON=$(PYTHON) \
         prefix=$(prefix) $(srcdir)/test/$*/update_expected && \
         echo "${green}Update '$*' ran successfully${default}" && \
         exit 0; \
