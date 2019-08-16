@@ -65,7 +65,7 @@ rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm
 
 # Copy integration test data
 mkdir -p $2/integration_test
-rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/integration_test/B9.2.00 $2/integration_test/
+rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/integration_test/B10.0.00 $2/integration_test/
 
 
 
