@@ -398,7 +398,7 @@ GosatBaseConfig = AcosConfig:new {
             O2 = {
                apriori = ConfigCommon.hdf_read_double_1d("Gas/O2/average_mole_fraction"),
                absco = "v5.1.0/o2_v51.hdf",
-               table_scale = 1.0,
+               table_scale = 1.0048,
                creator = ConfigCommon.vmr_level_constant_well_mixed,
             },
          },
