@@ -439,16 +439,16 @@ OcoBaseConfig = OcoConfig:new {
 
             -- Brdf vegetative kernel with Rahman retrieved parameters
             brdf_veg = {
-               apriori = ConfigCommon.brdf_veg_apriori("Ground/Brdf"),
-               covariance = ConfigCommon.hdf_covariance_i("Ground/Brdf"),
+               apriori = ConfigCommon.brdf_veg_apriori("Ground/BrdfQuadratic"),
+               covariance = ConfigCommon.hdf_covariance_i("Ground/BrdfQuadratic"),
                retrieve_bands = { true, true, true },
                creator = ConfigCommon.brdf_veg_retrieval,
             },
             
             -- Brdf soil kernel with Rahman retrieved parameters
             brdf_soil = {
-               apriori = ConfigCommon.brdf_soil_apriori("Ground/Brdf"),
-               covariance = ConfigCommon.hdf_covariance_i("Ground/Brdf"),
+               apriori = ConfigCommon.brdf_soil_apriori("Ground/BrdfQuadratic"),
+               covariance = ConfigCommon.hdf_covariance_i("Ground/BrdfQuadratic"),
                retrieve_bands = { true, true, true },
                creator = ConfigCommon.brdf_soil_retrieval,
             },
