@@ -46,7 +46,7 @@ set -e
 mkdir -p $2
 
 # Copy absco data used in runs
-rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/absco/v5.0.0 $2/absco/
+rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/absco/v5.1.0 $2/absco/
 
 # Copy merra data used in runs
 rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/merra_composite/ $2/merra/

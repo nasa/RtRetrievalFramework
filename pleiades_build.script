@@ -20,7 +20,7 @@ Lustre filesystem.
 Because we aren't on the scf-srv machines, we also don't know where the absco
 data is. You need to supply a top directory for this. Note that we need several
 versions. Currently (B3.4) we use 3.3.0, v4.1.1_rescaled, and whatever version
-we are currently running with (v5.0.0). This can be copied from the
+we are currently running with (v5.1.0). This can be copied from the
 scf-srv system at jpl from the base directory /groups/algorith/l2_fp/absco.
 
 Note that the absco data should be on the Lustre system (e.g., /nobackup)
