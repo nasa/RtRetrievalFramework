@@ -40,6 +40,9 @@ function OcoConfig.instrument_correction_list_acquisition_mode:sub_object_key()
       res = self.ic_target
    elseif acq_mode == "Nadir" then 
       res = self.ic_nadir
+   elseif acq_mode == "Science" then
+      --- This is the OCO-3 science mode, treated the same as target
+      res = self.ic_target
    else
       error("Unrecognized acquistion mode " .. acq_mode)
    end
