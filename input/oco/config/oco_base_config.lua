@@ -360,7 +360,7 @@ OcoBaseConfig = OcoConfig:new {
          },
          fluorescence = {
             apriori = ConfigCommon.fluorescence_apriori("Fluorescence"),
-            sif_sigma_scale = 1.0 / 3,
+            sif_sigma_scale = 1.0,
             covariance = ConfigCommon.fluorescence_covariance("Fluorescence"),
             creator = OcoConfig.fluorescence_effect_land_only,
             reference_point = ConfigCommon.hdf_read_double_with_unit("Fluorescence/reference_point"),
