@@ -40,4 +40,9 @@ config.fm.instrument.instrument_correction.ic_nadir = {"eof_glint_1", "eof_glint
 config.fm.instrument.instrument_correction.ic_glint = {"eof_glint_1", "eof_glint_2","eof_glint_3"}
 config.fm.instrument.instrument_correction.ic_target = {"eof_glint_1", "eof_glint_2","eof_glint_3"}
 
+--- Newer OCO-2 configuration uses new fields in met file. But the old
+--- test data doesn't have these fields. So use the older merra climatology
+--- for these tests
+config.fm.atmosphere.aerosol.creator = ConfigCommon.merra_aerosol_creator
+
 config:do_config()

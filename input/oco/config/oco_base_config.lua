@@ -456,7 +456,7 @@ OcoBaseConfig = OcoConfig:new {
             creator = OcoConfig.ground_from_ground_type,
          },
          aerosol = {
-            creator = ConfigCommon.merra_aerosol_creator,
+            creator = ConfigCommon.aerosol_met_prior_creator,
             max_aod = 0.2,
             exp_aod = 0.8,
             min_types = 2,
