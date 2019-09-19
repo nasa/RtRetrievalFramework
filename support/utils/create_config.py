@@ -13,7 +13,8 @@ import full_physics.acos_file as acos_file
 
 # Maps the output locations in the config with the groups in the HDF files indentifying the file type
 FILE_SEARCH_GROUPS = { "L1BFile" :   ['InstrumentHeader'],
-                       "ResampledMetFile" : ['ecmwf', 'ECMWF', 'Meteorology'],
+                       "ResampledMetFile" : ['ecmwf', 'ECMWF',
+                                             'Meteorology/meteorology_flag'],
                        "CO2PriorFile" : ['CO2Prior'],
                        "IMAPFile" :  ['DOASFluorescence'],
                        "ABandFile" : ['ABandRetrieval'],
@@ -52,7 +53,7 @@ def check_file_type(filename):
         with h5py.File(filename, 'r') as hdf_obj:
             for keyword_name, groups in list(FILE_SEARCH_GROUPS.items()):
                 for curr_group in groups:
-                    if curr_group in list(hdf_obj.keys()):
+                    if curr_group in hdf_obj:
                         file_type_keywords.append(keyword_name)
 
     elif file_ext == INPUT_FILE_MAP_EXT:
