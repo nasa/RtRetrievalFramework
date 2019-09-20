@@ -7,9 +7,9 @@ config.fm.spec_win.bad_sample_mask = nil
 -- For now, suppress use of EOFs. These are in bit of flux, and there is
 -- no reason to change the output from this test each time we change the
 -- EOFs.
-config.fm.instrument.instrument_correction.ic_nadir = {}
-config.fm.instrument.instrument_correction.ic_glint = {}
-config.fm.instrument.instrument_correction.ic_target = {}
+config.fm.instrument.instrument_correction.ic_nadir = {"zero_offset_waveform"}
+config.fm.instrument.instrument_correction.ic_glint = {"zero_offset_waveform"}
+config.fm.instrument.instrument_correction.ic_target = {"zero_offset_waveform"}
 
 --- Newer OCO-2 configuration uses new fields in met file. But the old
 --- test data doesn't have these fields. So use the older merra climatology

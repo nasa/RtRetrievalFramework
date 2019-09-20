@@ -1307,10 +1307,19 @@ function ConfigCommon.zero_offset_waveform:create()
    return res
 end
 
+function ConfigCommon.zero_offset_waveform:initial_guess(i)
+   if (not self.zero_offset_waveform) then
+       return nil
+   end
+   return CreatorMultiSpec.initial_guess(self, i)
+end
+
 function ConfigCommon.zero_offset_waveform:register_output(ro)
-   for i=1,self.config.number_pixel:rows() do
-      ro:push_back(ZeroOffsetWaveformOutput.create(self.zero_offset_waveform[i], 
+   if(self.zero_offset_waveform) then
+      for i=1,self.config.number_pixel:rows() do
+	 ro:push_back(ZeroOffsetWaveformOutput.create(self.zero_offset_waveform[i], 
                            self.config.common.hdf_band_name:value(i-1)))
+      end
    end
 end
 
