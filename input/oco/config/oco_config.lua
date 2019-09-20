@@ -335,6 +335,20 @@ function OcoConfig.fluorescence_effect_land_only:create()
 end
 
 ------------------------------------------------------------
+--- ZLO only for land runs
+------------------------------------------------------------
+
+OcoConfig.zero_offset_waveform_land_only = ConfigCommon.zero_offset_waveform:new()
+function OcoConfig.zero_offset_waveform_land_only:create()
+   -- Only use this for land runs
+   if(self.config:land_or_water() == "land") then
+      return ConfigCommon.zero_offset_waveform.create(self)
+   else
+      return nil
+   end
+end
+
+------------------------------------------------------------
 --- Create ground based on the surface type
 ------------------------------------------------------------
 
