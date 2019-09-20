@@ -56,8 +56,10 @@ dlist.each do |dname|
       system "h5diff #{report} -p 1e-2 #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname =~ /aerosol_param/)
       system "h5diff #{report} -d 0.1 #{ARGV[0]} #{ARGV[1]} #{dname}"
+    elsif(dname =~ /vector_altitude_levels/)
+      system "h5diff #{report} -d 0.1 #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname =~ /zero_level_offset/)
-      system "h5diff #{report} -d 0.2 #{ARGV[0]} #{ARGV[1]} #{dname}"
+      system "h5diff #{report} -p 1e-2 #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname == "/RetrievedStateVector/state_vector_result")
       # We can't easily compare state_vector_results because is mixes things with
       # wildly different scales so there is no natural tolerance to use. However
@@ -69,7 +71,7 @@ dlist.each do |dname|
     elsif(dname == "/RetrievalResults/co2_profile_covariance_matrix")
       # Skip, different between centos 6 and 7
     elsif(dname == "/SpectralParameters/modeled_radiance")
-      system "h5diff #{report} -p 2.5e-3  #{ARGV[0]} #{ARGV[1]} #{dname}"
+      system "h5diff #{report} -p 5e-3  #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname == "/RetrievalResults/dof_co2_profile")
       system "h5diff #{report} -p 1e-3  #{ARGV[0]} #{ARGV[1]} #{dname}"
     elsif(dname == "/RetrievalResults/temperature_offset_fph")
