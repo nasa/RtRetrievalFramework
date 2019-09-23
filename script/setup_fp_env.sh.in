@@ -20,6 +20,11 @@ if [ -n "$PYTHONPATH" ]; then
 else
   export PYTHONPATH=@pythondir@:@pyexecdir@
 fi
+if [ -n "$LD_LIBRARY_PATH" ]; then
+  export LD_LIBRARY_PATH=@libdir@:${LD_LIBRARY_PATH}
+else
+  export PYTHONPATH=@libdir@
+fi
 if [ -n "$LUA_PATH" ]; then
     export LUA_PATH="@configdir@/?.lua;${LUA_PATH}"
 else
