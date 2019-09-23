@@ -29639,7 +29639,7 @@ else
   BUILD_FUTURE_FALSE=
 fi
 
- if test x$build_future = xpast; then
+ if test x$build_past = xyes; then
   BUILD_PAST_TRUE=
   BUILD_PAST_FALSE='#'
 else
