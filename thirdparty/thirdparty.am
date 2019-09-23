@@ -610,7 +610,7 @@ endif
 # but on Pleiades it is cleaner to install ourselves
 
 H5PY_NAME = h5py-2.10.0
-H5PY_TARGET = $(DESTDIR)$(pythondir)/h5py/__init__.py
+H5PY_TARGET = $(DESTDIR)$(pythondir)/h5py_is_installed
 EXTRA_DIST += @thirdpartysrc@/$(H5PY_NAME).tar.gz
 
 $(H5PY_TARGET): $(thirdpartysrc)/$(H5PY_NAME).tar.gz $(HDF5_TARGET) $(NOSE_BUILD_TARGET)
