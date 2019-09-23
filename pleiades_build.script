@@ -19,7 +19,7 @@ Lustre filesystem.
 
 Because we aren't on the scf-srv machines, we also don't know where the absco
 data is. You need to supply a top directory for this. Note that we need several
-versions. Currently (B3.4) we use 3.3.0, v4.1.1_rescaled, and whatever version
+versions. Currently (B10.0) we use 3.3.0, v4.1.1_rescaled, and whatever version
 we are currently running with (v5.1.0). This can be copied from the
 scf-srv system at jpl from the base directory /groups/algorith/l2_fp/absco.
 
@@ -75,19 +75,13 @@ set -e
 # Select a newer version of gcc and python
 # Note if you change this, also change script/setup_fp_env.sh.in
 if [ -e /usr/share/modules/init/bash ]; then
-    sles_version=$(cat /etc/SuSE-release | grep VERSION | cut -d " " -f 3)
-    if [ "$sles_version" == "11" ]; then # This is for SLES11
-        source /usr/share/modules/init/bash
-	module load gcc/4.9.3
-	module load python/2.7.11
-	module load ruby/1.9.1-p376	
-    else # This is for SLES12
-        source /usr/share/modules/init/bash
-	module load gcc/4.9.4
-        module load /nasa/modulefiles/pkgsrc/sles12/python/2.7.12
-        # This contains ruby 2.2.6p396
-        module load /nasa/modulefiles/pkgsrc/sles12/pkgsrc/2016Q4
-    fi
+    source /usr/share/modules/init/bash
+    module load gcc/4.9.4
+    module load /nasa/modulefiles/pkgsrc/sles12/python/3.5.2
+    # This contains ruby 2.2.6p396
+    module load /nasa/modulefiles/pkgsrc/sles12/pkgsrc/2016Q4
+    # Needed to get ruby working. Not sure why
+    ulimit -Ss unlimited
 fi
 # Create a build directory
 
