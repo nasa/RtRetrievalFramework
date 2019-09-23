@@ -23,7 +23,7 @@ fi
 if [ -n "$LD_LIBRARY_PATH" ]; then
   export LD_LIBRARY_PATH=@libdir@:${LD_LIBRARY_PATH}
 else
-  export PYTHONPATH=@libdir@
+  export LD_LIBRARY_PATH=@libdir@
 fi
 if [ -n "$LUA_PATH" ]; then
     export LUA_PATH="@configdir@/?.lua;${LUA_PATH}"
