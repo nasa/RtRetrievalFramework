@@ -4,7 +4,7 @@
 usage()
 {
     cat <<EOF
-Usage $0 [options] <scf user name> <install directory>
+Usage $0 [options] <scf user name> <port> <install directory>
 
 This copies the data needed from the soot system at JPL for testing
 and running Level 2 Full physics.  You should copy this data to the
@@ -12,6 +12,10 @@ Lustre system (e.g., /nobackup)
 
 Since your Pleiades username likely doesn't match the soot file name,
 you need to supply the user name that we use when copying the data.
+
+You also need to supply the port that was reverse forwarded when you
+logged into Pleiades (e.g., ssh -R 2210:localhost:22 pfe, then the port
+is 2210).
 
 OPTIONS:
    -h Show this message
@@ -43,29 +47,17 @@ fi
 set -e
 
 # Create parent directory
-mkdir -p $2
+mkdir -p $3
 
-# Copy absco data used in runs
-rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/absco/v5.1.0 $2/absco/
+# Copy all data used in the runs in one command, so we only need to
+# enter the password once. This is:
+# 1. absco data used in runs
+# 2. merra data used in runs
+# 3. absco data used in unit tests
+# 4. integration test data
 
-# Copy merra data used in runs
-rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/merra_composite/ $2/merra/
+rsync -avz --copy-links --progress --inplace --rsh "ssh -p $2" $1@localhost:/groups/algorithm/l2_fp/pleiades_data/ $2/
 
-# Copy data used in unit testing (probably can remove this in the future)
-mkdir -p $2/absco/v3.3.0
-rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/absco/v3.3.0/lowres $2/absco/v3.3.0/
-
-mkdir -p $2/absco/v4.1.1_rescaled
-rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/absco/v4.1.1_rescaled/lowres $2/absco/v4.1.1_rescaled/
-
-mkdir -p $2/absco/v4.1.1
-rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/absco/v4.1.1/lowres $2/absco/v4.1.1/
-
-rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/absco/v4.2.0_unscaled $2/absco/
-
-# Copy integration test data
-mkdir -p $2/integration_test
-rsync -avz --progress --inplace --rsh ssh $1@soot.jpl.nasa.gov:/groups/algorithm/l2_fp/integration_test/B10.0.00 $2/integration_test/
 
 
 
