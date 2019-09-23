@@ -4608,7 +4608,7 @@ PLY_TARGET = $(DESTDIR)$(pythondir)/ply_is_installed
 # ========================================================================
 # Build future. Note that normally we just assume this has been installed,
 # but on Pleiades it is cleaner to install ourselves
-FUTURE_NAME = future-0.15.2
+FUTURE_NAME = python-future-0.17.0
 FUTURE_TARGET = $(DESTDIR)$(pythondir)/future_is_installed
 
 # ========================================================================
