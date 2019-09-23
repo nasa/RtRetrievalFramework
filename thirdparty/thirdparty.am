@@ -479,6 +479,11 @@ nose: $(NOSE_TARGET)
 
 if BUILD_NOSE
 BUILT_SOURCES += $(NOSE_TARGET)
+# We need to single thread building of python modules, because otherwise
+# the update of easy-install.pth gets mangled
+NOSE_BUILD_TARGET = $(NOSE_TARGET)
+else
+NOSE_BUILD_TARGET = 
 endif
 
 # ========================================================================
@@ -593,6 +598,11 @@ h5py: $(H5PY_TARGET)
 
 if BUILD_H5PY
 BUILT_SOURCES += $(H5PY_TARGET)
+# We need to single thread building of python modules, because otherwise
+# the update of easy-install.pth gets mangled
+H5PY_BUILD_TARGET = $(H5PY_TARGET)
+else
+H5PY_BUILD_TARGET = 
 endif
 
 # ========================================================================
@@ -603,7 +613,7 @@ H5PY_NAME = h5py-2.1.3
 H5PY_TARGET = $(DESTDIR)$(pythondir)/h5py/__init__.py
 EXTRA_DIST += @thirdpartysrc@/$(H5PY_NAME).tar.gz
 
-$(H5PY_TARGET): $(thirdpartysrc)/$(H5PY_NAME).tar.gz $(HDF5_TARGET)
+$(H5PY_TARGET): $(thirdpartysrc)/$(H5PY_NAME).tar.gz $(HDF5_TARGET) $(NOSE_BUILD_TARGET)
 	@echo "*************************** Building h5py"
 	$(MKDIR_P) $(pythondir)
 	-rm -rf $(H5PY_NAME)
@@ -629,6 +639,11 @@ ply: $(PLY_TARGET)
 
 if BUILD_PLY
 BUILT_SOURCES += $(PLY_TARGET)
+# We need to single thread building of python modules, because otherwise
+# the update of easy-install.pth gets mangled
+PLY_BUILD_TARGET = $(PLY_TARGET)
+else
+PLY_BUILD_TARGET = 
 endif
 
 # ========================================================================
@@ -639,7 +654,7 @@ PLY_NAME = ply-3.4
 PLY_TARGET = $(DESTDIR)$(pythondir)/ply_is_installed
 EXTRA_DIST += @thirdpartysrc@/$(PLY_NAME).tar.gz
 
-$(PLY_TARGET): $(thirdpartysrc)/$(PLY_NAME).tar.gz
+$(PLY_TARGET): $(thirdpartysrc)/$(PLY_NAME).tar.gz $(NOSE_BUILD_TARGET) $(H5PY_BUILD_TARGET)
 	@echo "*************************** Building ply"
 	$(MKDIR_P) $(pythondir)
 	-rm -rf $(PLY_NAME)
@@ -665,6 +680,11 @@ future: $(FUTURE_TARGET)
 
 if BUILD_FUTURE
 BUILT_SOURCES += $(FUTURE_TARGET)
+# We need to single thread building of python modules, because otherwise
+# the update of easy-install.pth gets mangled
+FUTURE_BUILD_TARGET = $(FUTURE_TARGET)
+else
+FUTURE_BUILD_TARGET = 
 endif
 
 # ========================================================================
@@ -675,7 +695,7 @@ FUTURE_NAME = python-future-0.17.0
 FUTURE_TARGET = $(DESTDIR)$(pythondir)/future_is_installed
 EXTRA_DIST += @thirdpartysrc@/$(FUTURE_NAME).tar.gz
 
-$(FUTURE_TARGET): $(thirdpartysrc)/$(FUTURE_NAME).tar.gz
+$(FUTURE_TARGET): $(thirdpartysrc)/$(FUTURE_NAME).tar.gz $(NOSE_BUILD_TARGET) $(H5PY_BUILD_TARGET) $(PLY_BUILD_TARGET)
 	@echo "*************************** Building future"
 	$(MKDIR_P) $(pythondir)
 	-rm -rf $(FUTURE_NAME)
@@ -701,6 +721,11 @@ six: $(SIX_TARGET)
 
 if BUILD_SIX
 BUILT_SOURCES += $(SIX_TARGET)
+# We need to single thread building of python modules, because otherwise
+# the update of easy-install.pth gets mangled
+SIX_BUILD_TARGET = $(SIX_TARGET)
+else
+SIX_BUILD_TARGET = 
 endif
 
 # ========================================================================
@@ -711,7 +736,7 @@ SIX_NAME = six-1.10.0
 SIX_TARGET = $(DESTDIR)$(pythondir)/six_is_installed
 EXTRA_DIST += @thirdpartysrc@/$(SIX_NAME).tar.gz
 
-$(SIX_TARGET): $(thirdpartysrc)/$(SIX_NAME).tar.gz
+$(SIX_TARGET): $(thirdpartysrc)/$(SIX_NAME).tar.gz $(NOSE_BUILD_TARGET) $(H5PY_BUILD_TARGET) $(PLY_BUILD_TARGET) $(FUTURE_BUILD_TARGET)
 	@echo "*************************** Building six"
 	$(MKDIR_P) $(pythondir)
 	-rm -rf $(SIX_NAME)
