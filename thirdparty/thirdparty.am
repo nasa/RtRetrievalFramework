@@ -693,42 +693,6 @@ $(FUTURE_TARGET): $(thirdpartysrc)/$(FUTURE_NAME).tar.gz
 # Simple name to install module. We don't install this normally, the
 # user need to explicitly build this if desired.
 
-past: $(PAST_TARGET)
-
-# ========================================================================
-# Alternatively, if user specified that we build a local copy of module,
-# then we do that
-
-if BUILD_PAST
-BUILT_SOURCES += $(PAST_TARGET)
-endif
-
-# ========================================================================
-# Build past. Note that normally we just assume this has been installed,
-# but on Pleiades it is cleaner to install ourselves
-
-PAST_NAME = past-0.17.0
-PAST_TARGET = $(DESTDIR)$(pythondir)/past_is_installed
-EXTRA_DIST += @thirdpartysrc@/$(PAST_NAME).tar.gz
-
-$(PAST_TARGET): $(thirdpartysrc)/$(PAST_NAME).tar.gz
-	@echo "*************************** Building past"
-	$(MKDIR_P) $(pythondir)
-	-rm -rf $(PAST_NAME)
-	${AMTAR} xzf $<
-	export PATH=$(bindir):$$PATH && \
-        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
-        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        cd $(PAST_NAME) && \
-        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
-	rm -rf $(PAST_NAME)
-	touch $@
-	@echo "========================== Done building past"
-
-# ========================================================================
-# Simple name to install module. We don't install this normally, the
-# user need to explicitly build this if desired.
-
 six: $(SIX_TARGET)
 
 # ========================================================================

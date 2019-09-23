@@ -265,7 +265,6 @@ AC_ARG_WITH([python-module],
            [build_nose=yes
 	    build_h5py=yes
 	    build_future=yes
-	    build_past=yes
 	    build_six=yes
 	    build_ply=yes
             build_ruport=yes
@@ -275,7 +274,6 @@ AC_ARG_WITH([python-module],
 	    build_h5py=no
 	    build_six=no
 	    build_future=no
-	    build_past=no
 	    build_ply=yes
 	    build_ply=no
             build_ruport=no
@@ -284,7 +282,6 @@ AC_ARG_WITH([python-module],
 AM_CONDITIONAL([BUILD_NOSE], [test x$build_nose = xyes])
 AM_CONDITIONAL([BUILD_H5PY], [test x$build_h5py = xyes])
 AM_CONDITIONAL([BUILD_FUTURE], [test x$build_future = xyes])
-AM_CONDITIONAL([BUILD_PAST], [test x$build_past = xyes])
 AM_CONDITIONAL([BUILD_SIX], [test x$build_six = xyes])
 AM_CONDITIONAL([BUILD_PLY], [test x$build_ply = xyes])
 AM_CONDITIONAL([BUILD_RUPORT], [test x$build_ruport = xyes])
