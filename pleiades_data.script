@@ -56,7 +56,7 @@ mkdir -p $3
 # 3. absco data used in unit tests
 # 4. integration test data
 
-rsync -avz --copy-links --progress --inplace --rsh "ssh -p $2" $1@localhost:/groups/algorithm/l2_fp/pleiades_data/ $2/
+rsync -avz --copy-links --progress --inplace --rsh "ssh -p $2" $1@localhost:/groups/algorithm/l2_fp/pleiades_data/ $3/
 
 
 
