@@ -1,7 +1,7 @@
 #! /bin/bash
 # We wrap this command in a script so that we know we are using bash rather
 # /bin/sh which may or may not be bash.
-source ${srcdir}/setup_env.sh && PYTHONPATH=${srcdir}/support && \
+source ${srcdir}/setup_env.sh && PYTHONPATH=${srcdir}/support:${PYTHONPATH} && \
     cd tccon_sounding_${val}_test && \
     ${srcdir}/support/utils/create_config.py -t gosat \
     ${srcdir}/test/tccon_small_set/acos_L1bB2900_tccon_5_good_qual.h5 \

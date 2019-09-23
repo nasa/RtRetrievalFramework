@@ -1,7 +1,7 @@
 #! /bin/bash
 # We wrap this command in a script so that we know we are using bash rather
 # /bin/sh which may or may not be bash.
-source ${srcdir}/setup_env.sh && PYTHONPATH=${srcdir}/support && \
+source ${srcdir}/setup_env.sh && PYTHONPATH=${srcdir}/support:${PYTHONPATH} && \
     cd oco2_sounding_${val}_test && \
     ${srcdir}/support/utils/create_config.py -t oco \
     ${srcdir}/test/oco2_small_set/OCO2_sim_NDa_20120616_168_r69CSUSim02c_001_spliced.h5 \
