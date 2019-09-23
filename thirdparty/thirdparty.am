@@ -621,7 +621,7 @@ $(H5PY_TARGET): $(thirdpartysrc)/$(H5PY_NAME).tar.gz $(HDF5_TARGET) $(NOSE_BUILD
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        cd $(H5PY_NAME) && python setup.py build --hdf5=$(prefix) && \
+        cd $(H5PY_NAME) && python setup.py configure --hdf5=$(prefix) && \
         $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
 	rm -rf $(H5PY_NAME)
 	touch $(H5PY_TARGET)
