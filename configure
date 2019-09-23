@@ -648,8 +648,6 @@ BUILD_PLY_FALSE
 BUILD_PLY_TRUE
 BUILD_SIX_FALSE
 BUILD_SIX_TRUE
-BUILD_PAST_FALSE
-BUILD_PAST_TRUE
 BUILD_FUTURE_FALSE
 BUILD_FUTURE_TRUE
 BUILD_H5PY_FALSE
@@ -29596,7 +29594,6 @@ if test "${with_python_module+set}" = set; then :
   withval=$with_python_module; build_nose=yes
 	    build_h5py=yes
 	    build_future=yes
-	    build_past=yes
 	    build_six=yes
 	    build_ply=yes
             build_ruport=yes
@@ -29607,7 +29604,6 @@ else
 	    build_h5py=no
 	    build_six=no
 	    build_future=no
-	    build_past=no
 	    build_ply=yes
 	    build_ply=no
             build_ruport=no
@@ -29637,14 +29633,6 @@ fi
 else
   BUILD_FUTURE_TRUE='#'
   BUILD_FUTURE_FALSE=
-fi
-
- if test x$build_past = xyes; then
-  BUILD_PAST_TRUE=
-  BUILD_PAST_FALSE='#'
-else
-  BUILD_PAST_TRUE='#'
-  BUILD_PAST_FALSE=
 fi
 
  if test x$build_six = xyes; then
@@ -30187,10 +30175,6 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${BUILD_FUTURE_TRUE}" && test -z "${BUILD_FUTURE_FALSE}"; then
   as_fn_error $? "conditional \"BUILD_FUTURE\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${BUILD_PAST_TRUE}" && test -z "${BUILD_PAST_FALSE}"; then
-  as_fn_error $? "conditional \"BUILD_PAST\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${BUILD_SIX_TRUE}" && test -z "${BUILD_SIX_FALSE}"; then
