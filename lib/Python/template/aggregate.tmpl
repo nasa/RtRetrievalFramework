@@ -85,7 +85,7 @@ if [ ! -e "$l2_agg_fn" ]; then
 
     echo "Aggregating L2 output files"
     log_file=agg_$(basename ${{l2_agg_fn}} | sed 's/\.h5$/.log/')
-    {0.l2_support_path}/utils/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -s $in_snd_id_tmp -l {0.log_directory}/$log_file $* -w 16 --temp $worker_temp
+    {0.l2_support_util_path}/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -s $in_snd_id_tmp -l {0.log_directory}/$log_file $* -w 16 --temp $worker_temp
 
     rm $input_files_tmp
     rm $in_snd_id_tmp
@@ -118,7 +118,7 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
 	find {0.output_directory} -name "l1_aggregate_*.h5" >> $inp_files_tmp
 
 	log_file=agg_$(basename ${{l2_plus_more_agg_fn}} | sed 's/\.h5$/.log/')
-	{0.l2_support_path}/utils/splice_product_files.py --multiple-file-type --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l {0.log_directory}/$log_file $* -w 16 --temp $worker_temp
+	{0.l2_support_util_path}/splice_product_files.py --multiple-file-type --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l {0.log_directory}/$log_file $* -w 16 --temp $worker_temp
 
 	rm $inp_files_tmp
 	rm $l2_snd_id_tmp2
@@ -146,13 +146,13 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
 	fi
 
 	log_file=agg_$(basename ${{l2_plus_more_agg_fn}} | sed 's/\.h5$/.log/')
-	{0.l2_support_path}/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l {0.log_directory}/$log_file
+	{0.l2_support_util_path}/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l {0.log_directory}/$log_file
 	rm $l2_snd_id_tmp2 $inp_files_tmp
     fi
     # Create retrieval_index dataset based on L1B file
     if [ ! -z "$spectrum_file" ]; then
         echo "Adding retrieval information datasets"
-        {0.l2_support_path}/utils/add_spliced_retrieval_info.py $spectrum_file $l2_plus_more_agg_fn
+        {0.l2_support_util_path}/add_spliced_retrieval_info.py $spectrum_file $l2_plus_more_agg_fn
     fi
 else
     echo "L2 plus more file exists, skipping creation"

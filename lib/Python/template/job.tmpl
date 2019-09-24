@@ -157,7 +157,7 @@ if [ "$do_aggregate" = "True" ]; then
     for i in `seq ${{beg_id_index}} ${{end_id_index}}`; do
 	ls ${{output_directory}}/l2_${{id_list[$i]}}.h5 >> $input_files_tmp
     done
-    {0.l2_support_path}/utils/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -l ${{log_directory}}/l2_aggregate_$(printf "%04d" $job_index).log
+    {0.l2_support_util_path}/splice_product_files.py --single-file-type -o $l2_agg_fn -i $input_files_tmp -l ${{log_directory}}/l2_aggregate_$(printf "%04d" $job_index).log
     rm $input_files_tmp
 
     # Extract sounding ids, and reformat into a format that can be used by 
@@ -189,7 +189,7 @@ if [ "$do_aggregate" = "True" ]; then
             echo $fn > $inp_files_tmp
         done
     fi
-    {0.l2_support_path}/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l1_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l ${{log_directory}}/l1_aggregate_$(printf "%04d" $job_index).log
+    {0.l2_support_util_path}/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l1_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l ${{log_directory}}/l1_aggregate_$(printf "%04d" $job_index).log
     rm $l2_snd_id_tmp2 $inp_files_tmp
 fi
 

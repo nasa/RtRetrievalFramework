@@ -10,7 +10,7 @@ from optparse import OptionParser
 from full_physics import PopulatorBase, parse_keyval_str_list, docopt_simple
 import full_physics.log_util as log_util
 
-version = "July 10, 2013"
+version = "September 18, 2019"
 usage = '''Usage:
   populate.py [options] <config_file> [<config_file>...]
   populate.py -h | --help
@@ -57,7 +57,7 @@ Options:
     
   --absco-version=V
       Version of ABSCO to use. This is only used by Pleiades runs.
-      [default: v5.0.0]
+      [default: v5.1.0]
 
   -t, --target_cluster=NAME
       Name of cluster management system to be run on.
