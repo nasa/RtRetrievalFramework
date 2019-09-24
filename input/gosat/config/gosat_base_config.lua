@@ -246,7 +246,7 @@ GosatBaseConfig = AcosConfig:new {
          },
          fluorescence = {
             apriori = ConfigCommon.fluorescence_apriori("Fluorescence"),
-            sif_sigma_scale = 1.0 / 3,
+            sif_sigma_scale = 1.0,
             covariance = ConfigCommon.fluorescence_covariance("Fluorescence"),
             creator = AcosConfig.fluorescence_effect_land_only,
             reference_point = ConfigCommon.hdf_read_double_with_unit("Fluorescence/reference_point"),
@@ -385,20 +385,20 @@ GosatBaseConfig = AcosConfig:new {
             CO2 = {
                apriori = ConfigCommon.reference_co2_apriori_met_apriori,
                covariance = ConfigCommon.hdf_covariance("Gas/CO2"),
-               absco = "v5.0.0/co2_devi2015_wco2scale-nist_sco2scale-unity.h5",
+               absco = "v5.1.0/co2_v51.hdf",
                table_scale = {1.0, 1.0, 1.004},
                creator = ConfigCommon.vmr_level,
             },
             H2O = {
                scale_apriori = 1.0,
                scale_cov = 0.25,
-               absco = "v5.0.0/h2o_hitran12.h5",
+               absco = "v5.1.0/h2o_v51.hdf",
                creator = ConfigCommon.vmr_met,
             },
             O2 = {
                apriori = ConfigCommon.hdf_read_double_1d("Gas/O2/average_mole_fraction"),
-               absco = "v5.0.0/o2_v151005_cia_mlawer_v151005r1_narrow.h5",
-               table_scale = 1.0,
+               absco = "v5.1.0/o2_v51.hdf",
+               table_scale = 1.0048,
                creator = ConfigCommon.vmr_level_constant_well_mixed,
             },
          },

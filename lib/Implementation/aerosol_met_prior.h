@@ -20,7 +20,6 @@ public:
 	       const boost::shared_ptr<Pressure> &Press,
 	       const boost::shared_ptr<RelativeHumidity> &Rh,
 	       const blitz::Array<double, 2>& Aerosol_cov,
-	       double Max_aod = 0.2,
 	       double Exp_aod = 0.8,
 	       int Min_types = 2,
 	       int Max_types = 2,

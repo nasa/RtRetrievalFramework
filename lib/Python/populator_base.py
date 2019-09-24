@@ -162,6 +162,9 @@ class PopulatorBase(object):
     def l2_support_path(self):
         return os.environ.get("L2_SUPPORT_PATH", "")
     @property
+    def l2_support_util_path(self):
+        return os.environ.get("L2_SUPPORT_UTIL_PATH", "")
+    @property
     def qsub_name(self):
         return "l2_fp"
     @property

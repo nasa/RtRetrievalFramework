@@ -51,6 +51,7 @@ public:
   blitz::Array<double, 2> read_array_2d(const std::string& Field) const;
   const std::string& file_name() const { return h.file_name(); }
   const HdfFile& hdf_file() const { return h;}
+  const boost::shared_ptr<HdfSoundingId>& sounding_id() const { return hsid; }
 private:
 
   //-----------------------------------------------------------------------

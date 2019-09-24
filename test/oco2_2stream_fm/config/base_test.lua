@@ -29,3 +29,13 @@ config.fm.instrument.ils_half_width = {
 config.fm.instrument.instrument_correction.ic_nadir = {}
 config.fm.instrument.instrument_correction.ic_glint = {}
 config.fm.instrument.instrument_correction.ic_target = {}
+
+--- Newer OCO-2 configuration uses new fields in met file. But the old
+--- test data doesn't have these fields. So use the older merra climatology
+--- for these tests
+config.fm.atmosphere.aerosol.creator = ConfigCommon.merra_aerosol_creator
+
+--- Newer OCO-2 configuration gets the CO2 prior from a L2CPr file. But
+--- old test data doesn't have this file, use the older
+---- reference_co2_apriori_met_apriori
+config.fm.atmosphere.absorber.CO2.apriori = ConfigCommon.reference_co2_apriori_met_apriori

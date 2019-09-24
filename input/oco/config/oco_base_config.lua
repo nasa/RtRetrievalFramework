@@ -19,6 +19,7 @@ OcoBaseConfig = OcoConfig:new {
    sid_string = os.getenv("sounding_id"),
    spectrum_file = os.getenv("spectrum_file"),
    met_file = os.getenv("met_file"),
+   co2_pr_file = os.getenv("co2_pr_file"),
    imap_file = os.getenv("imap_file"),
    --- Scene file is only used it we are trying to match a simulator
    --- run. So for a real data, this will be a empty string, and will
@@ -198,9 +199,12 @@ OcoBaseConfig = OcoConfig:new {
             -- If we end up doing this all the time in the future, we should
             -- consider just adding a new creator that doesn't pick the EOF
             -- base on mode. But for now leave this functionality in.
-            ic_nadir = { "eof_glint_1", "eof_glint_2","eof_glint_3",},
-            ic_glint = { "eof_glint_1", "eof_glint_2","eof_glint_3",},
-            ic_target = { "eof_glint_1", "eof_glint_2","eof_glint_3",},
+            ic_nadir = { "eof_glint_1", "eof_glint_2","eof_glint_3",
+			 "zero_offset_waveform"},
+            ic_glint = { "eof_glint_1", "eof_glint_2","eof_glint_3",
+			 "zero_offset_waveform"},
+            ic_target = { "eof_glint_1", "eof_glint_2","eof_glint_3",
+			  "zero_offset_waveform"},
             --ic_nadir = { "eof_nadir_1", "eof_nadir_2", "eof_nadir_3",},
             --ic_glint = { "eof_glint_1", "eof_glint_2", "eof_glint_3",},
             --ic_target = { "eof_target_1", "eof_target_2", "eof_target_3",},
@@ -324,6 +328,12 @@ OcoBaseConfig = OcoConfig:new {
                retrieve_bands = { true, true, true },
 	       eof_used = {true, true, true},
             },
+	    zero_offset_waveform = {
+	       creator = OcoConfig.zero_offset_waveform_land_only,
+	       apriori = ConfigCommon.hdf_apriori_i("Instrument/ZeroLevelOffset"),
+	       covariance = ConfigCommon.hdf_covariance_i("Instrument/ZeroLevelOffset"),
+	       retrieve_bands = { false, true, true },
+	    },
 
             -- Disabled by default, add "radiance_scaling" to 
             -- config.fm.instrument_correction.ic to enable.
@@ -359,7 +369,7 @@ OcoBaseConfig = OcoConfig:new {
          },
          fluorescence = {
             apriori = ConfigCommon.fluorescence_apriori("Fluorescence"),
-            sif_sigma_scale = 1.0 / 3,
+            sif_sigma_scale = 1.0,
             covariance = ConfigCommon.fluorescence_covariance("Fluorescence"),
             creator = OcoConfig.fluorescence_effect_land_only,
             reference_point = ConfigCommon.hdf_read_double_with_unit("Fluorescence/reference_point"),
@@ -438,16 +448,16 @@ OcoBaseConfig = OcoConfig:new {
 
             -- Brdf vegetative kernel with Rahman retrieved parameters
             brdf_veg = {
-               apriori = ConfigCommon.brdf_veg_apriori("Ground/Brdf"),
-               covariance = ConfigCommon.hdf_covariance_i("Ground/Brdf"),
+               apriori = ConfigCommon.brdf_veg_apriori("Ground/BrdfQuadratic"),
+               covariance = ConfigCommon.hdf_covariance_i("Ground/BrdfQuadratic"),
                retrieve_bands = { true, true, true },
                creator = ConfigCommon.brdf_veg_retrieval,
             },
             
             -- Brdf soil kernel with Rahman retrieved parameters
             brdf_soil = {
-               apriori = ConfigCommon.brdf_soil_apriori("Ground/Brdf"),
-               covariance = ConfigCommon.hdf_covariance_i("Ground/Brdf"),
+               apriori = ConfigCommon.brdf_soil_apriori("Ground/BrdfQuadratic"),
+               covariance = ConfigCommon.hdf_covariance_i("Ground/BrdfQuadratic"),
                retrieve_bands = { true, true, true },
                creator = ConfigCommon.brdf_soil_retrieval,
             },
@@ -455,7 +465,7 @@ OcoBaseConfig = OcoConfig:new {
             creator = OcoConfig.ground_from_ground_type,
          },
          aerosol = {
-            creator = ConfigCommon.merra_aerosol_creator,
+            creator = ConfigCommon.aerosol_met_prior_creator,
             max_aod = 0.2,
             exp_aod = 0.8,
             min_types = 2,
@@ -496,22 +506,22 @@ OcoBaseConfig = OcoConfig:new {
             creator = ConfigCommon.absorber_creator,
             gases = {"CO2", "H2O", "O2"},
             CO2 = {
-               apriori = ConfigCommon.reference_co2_apriori_met_apriori,
+               apriori = ConfigCommon.co2_profile_file_apriori,
                covariance = ConfigCommon.hdf_covariance("Gas/CO2"),
-               absco = "v5.0.0/co2_devi2015_wco2scale-nist_sco2scale-unity.h5",
+               absco = "v5.1.0/co2_v51.hdf",
                table_scale = {1.0, 1.0, 1.004},
                creator = ConfigCommon.vmr_level,
             },
             H2O = {
                scale_apriori = 1.0,
                scale_cov = 0.25,
-               absco = "v5.0.0/h2o_hitran12.h5",
+               absco = "v5.1.0/h2o_v51.hdf",
                creator = ConfigCommon.vmr_met,
             },
             O2 = {
                apriori = ConfigCommon.hdf_read_double_1d("Gas/O2/average_mole_fraction"),
-               absco = "v5.0.0/o2_v151005_cia_mlawer_v151005r1_narrow.h5",
-               table_scale = 1.0,
+               absco = "v5.1.0/o2_v51.hdf",
+               table_scale = 1.0048,
                creator = ConfigCommon.vmr_level_constant_well_mixed,
             },
          },
