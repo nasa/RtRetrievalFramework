@@ -22,6 +22,7 @@ then
     echo "L2_Support: The support directory specified: '$support_dir' is not valid"
 else
     export L2_SUPPORT_PATH="$support_dir"
+    export L2_SUPPORT_UTIL_PATH="$support_dir/utils"
 
     # Assume if a virtual environment is set that we want to use that
     # version of python. Otherwise, select the default python 3 version

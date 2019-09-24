@@ -1,4 +1,5 @@
 bin_SCRIPTS += @supportutilssrc@/addSoundingHeader.py
+bin_SCRIPTS += @supportutilssrc@/add_spliced_retrieval_info.py
 bin_SCRIPTS += @supportutilssrc@/analyze_l2.py
 bin_SCRIPTS += @supportutilssrc@/ansicolor.rb
 bin_SCRIPTS += @supportutilssrc@/closest_soundings.py

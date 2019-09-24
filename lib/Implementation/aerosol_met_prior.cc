@@ -26,10 +26,10 @@ const blitz::Array<double, 1>& val)
   return boost::shared_ptr<AerosolMetPrior>
     (new AerosolMetPrior(*boost::dynamic_pointer_cast<OcoMetFile>(Met_file),
 			 Aerosol_property, Press, Rh, Aerosol_cov,
-			 val(0), val(1), static_cast<int>(val(2)),
-			 static_cast<int>(val(3)), val(4),
-			 static_cast<int>(val(5)) == 1,
-			 static_cast<int>(val(6)) == 1));
+			 val(0), static_cast<int>(val(1)),
+			 static_cast<int>(val(2)), val(3),
+			 static_cast<int>(val(4)) == 1,
+			 static_cast<int>(val(5)) == 1));
 }
 REGISTER_LUA_CLASS(AerosolMetPrior)
 .def("aerosol", &AerosolMetPrior::aerosol)
@@ -50,7 +50,6 @@ REGISTER_LUA_END()
 /// \param Press The Pressure object that gives the pressure grid.
 /// \param Rh The RelativeHumidity object that gives the relative humidity.
 /// \param Aerosol_cov The covariance matrix to use for each Aerosol.
-/// \param Max_aod Maximum AOD cap for each composite type
 /// \param Exp_aod Threshold for explained fraction of AOD
 /// \param Min_types Minimum number of types to be selected
 /// \param Max_types Maximum number of types to be selected
@@ -72,7 +71,6 @@ AerosolMetPrior::AerosolMetPrior
  const boost::shared_ptr< Pressure > &Press, 
  const boost::shared_ptr<RelativeHumidity> &Rh,
  const blitz::Array<double, 2>& Aerosol_cov,
- double Max_aod,
  double Exp_aod,
  int Min_types,
  int Max_types,
@@ -93,9 +91,6 @@ AerosolMetPrior::AerosolMetPrior
   Array<int, 1> aod_sort_index = Met_file.read_array_int("/Aerosol/composite_aod_sort_index_met");
   Array<std::string, 1> comp_name = 
     Met_file.hdf_file().read_field<std::string, 1>("/Metadata/CompositeAerosolTypes");
-  std::cerr << "aod_frac: " << aod_frac << "\n"
-	    << "aod_gauss: " << aod_gauss << "\n"
-	    << "aod_sort_index: " << aod_sort_index << "\n";
   double total_aod = sum(aod_gauss(Range::all(), 3));
   ig.reset(new CompositeInitialGuess);
   // Loop over composite types until thresholds are reached:
@@ -116,8 +111,6 @@ AerosolMetPrior::AerosolMetPrior
       double aod = aod_gauss(i, 3);
       double peak_height = aod_gauss(i, 1);
       double peak_width = aod_gauss(i, 2);
-      if(aod > Max_aod)
-	aod = Max_aod;
       std::string aname = comp_name(i);
       Array<bool, 1> flag(3);
       Array<double, 1> coeff(3);

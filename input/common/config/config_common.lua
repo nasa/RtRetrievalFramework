@@ -428,6 +428,15 @@ function ConfigCommon:h_imap()
    return self.h_imap_v
 end
 
+function ConfigCommon:h_co2_profile()
+   if(self.co2_pr_file and self.co2_pr_file ~= "" and not self.h_co2_profile_v) then
+      self.h_co2_profile_v = HdfFile(self.co2_pr_file)
+      self.input_file_description = self.input_file_description .. 
+        "CO2 Profile input file:   " .. self.co2_pr_file .. "\n"
+   end
+   return self.h_co2_profile_v
+end
+
 function ConfigCommon:h_merra_aerosol()
    --- Use static_merra_aerosol_file if found, otherwise use h_aerosol()
    -- Use static_aerosol_file if found, otherwise use the same static input
@@ -921,6 +930,15 @@ function ConfigCommon:reference_co2_apriori_met_apriori()
 end
 
 ------------------------------------------------------------
+--- Get co2 apriori for the profile file
+------------------------------------------------------------
+
+function ConfigCommon:co2_profile_file_apriori()
+   local t = CO2ProfilePrior(self.config.met, self.config:h_co2_profile())
+   return t:apriori_vmr(self.config.pressure)
+end
+
+------------------------------------------------------------
 -- Short cut for making a flag array. This takes a size, creates
 -- a bool array of that size and sets everything in the passed
 -- in range to true, and everything else to false
@@ -1289,10 +1307,19 @@ function ConfigCommon.zero_offset_waveform:create()
    return res
 end
 
+function ConfigCommon.zero_offset_waveform:initial_guess(i)
+   if (not self.zero_offset_waveform) then
+       return nil
+   end
+   return CreatorMultiSpec.initial_guess(self, i)
+end
+
 function ConfigCommon.zero_offset_waveform:register_output(ro)
-   for i=1,self.config.number_pixel:rows() do
-      ro:push_back(ZeroOffsetWaveformOutput.create(self.zero_offset_waveform[i], 
+   if(self.zero_offset_waveform) then
+      for i=1,self.config.number_pixel:rows() do
+	 ro:push_back(ZeroOffsetWaveformOutput.create(self.zero_offset_waveform[i], 
                            self.config.common.hdf_band_name:value(i-1)))
+      end
    end
 end
 
@@ -2203,7 +2230,7 @@ function ConfigCommon.brdf_weight(self, brdf_class, ap, i)
    -- Extract all but the slope portion of the apriori to feed into the
    -- albedo calculation function
    local params = Blitz_double_array_1d(5)
-   params:set(Range.all(), ap(Range(2, 6)))
+   params:set(Range.all(), ap(Range(0, 4)))
 
    local alb_calc = brdf_class.kernel_value(params, sza_d, vza_d, azm_d)
    local weight = alb_cont / alb_calc
@@ -2215,7 +2242,7 @@ function ConfigCommon.brdf_veg_apriori(field)
     return function(self, i)
         local ap = self.config:h():apriori(field, i) 
         local weight = ConfigCommon.brdf_weight(self, GroundBrdfVeg, ap, i)
-        ap:set(0, ap(0) * weight)
+        ap:set(5, ap(5) * weight)
         return ap
     end
 end
@@ -2224,7 +2251,7 @@ function ConfigCommon.brdf_soil_apriori(field)
     return function(self, i)
         local ap = self.config:h():apriori(field, i) 
         local weight = ConfigCommon.brdf_weight(self, GroundBrdfSoil, ap, i)
-        ap:set(0, ap(0) * weight)
+        ap:set(5, ap(5) * weight)
         return ap
     end
 end
@@ -2238,12 +2265,13 @@ ConfigCommon.brdf_retrieval = CreatorMultiSpec:new {}
 function ConfigCommon.brdf_retrieval:retrieval_flag(i)
    local flag = Blitz_bool_array_1d(self:apriori_v(i - 1):rows())
 
+   n_coefs = self:apriori_v(0):rows()
+
    if self.retrieve_bands ~= nil and self.retrieve_bands[i] then
-        flag:set(Range.all(), false)
-        -- BRDF weight intercept
-        flag:set(0, true)
-        -- BRDF weight slope
-        flag:set(1, true)
+       flag:set(Range.all(), false)
+       for i = 5, n_coefs - 1 do
+           flag:set(i, true)
+       end
    else
         flag:set(Range.all(), false)
    end
@@ -2260,8 +2288,10 @@ ConfigCommon.brdf_veg_retrieval = ConfigCommon.brdf_retrieval:new {}
 function ConfigCommon.brdf_veg_retrieval:create()
    local num_spec = self.config.number_pixel:rows()
 
-   local ap = Blitz_double_array_2d(num_spec, 7)
-   local flag = Blitz_bool_array_2d(num_spec, 7)
+   n_coefs = self:apriori_v(0):rows()
+
+   local ap = Blitz_double_array_2d(num_spec, n_coefs)
+   local flag = Blitz_bool_array_2d(num_spec, n_coefs)
 
    for i = 1, num_spec do
        ap:set(i-1, Range.all(), self:apriori_v(i - 1))
@@ -2298,8 +2328,10 @@ ConfigCommon.brdf_soil_retrieval = ConfigCommon.brdf_retrieval:new {}
 function ConfigCommon.brdf_soil_retrieval:create()
    local num_spec = self.config.number_pixel:rows()
 
-   local ap = Blitz_double_array_2d(num_spec, 7)
-   local flag = Blitz_bool_array_2d(num_spec, 7)
+   n_coefs = self:apriori_v(0):rows()
+
+   local ap = Blitz_double_array_2d(num_spec, n_coefs)
+   local flag = Blitz_bool_array_2d(num_spec, n_coefs)
 
    for i = 1, num_spec do
        ap:set(i-1, Range.all(), self:apriori_v(i - 1))
@@ -2724,6 +2756,100 @@ end
 
 function ConfigCommon.merra_aerosol_creator:register_output(ro)
    local all_aer_names = self.config:merra_file():read_string_vector("/COMPOSITE_NAME")
+   for i, aer_name in ipairs(self.aerosols) do
+       all_aer_names:push_back(aer_name)
+   end
+ 
+   ro:push_back(AerosolConsolidatedOutput(self.config.aerosol, all_aer_names))
+end
+
+------------------------------------------------------------
+--- Create aerosol using the AerosolMetPrior class.
+------------------------------------------------------------
+
+ConfigCommon.aerosol_met_prior_creator = CompositeCreator:new()
+
+function ConfigCommon.aerosol_met_prior_creator:sub_object_key()
+   return self.aerosols
+end
+
+function ConfigCommon.aerosol_met_prior_creator:create_parent_object(sub_object)
+   -- Luabind can only handle up to 10 arguments per function. As an easy
+   -- work around we put the various thresholds into an array.
+   local mq = Blitz_double_array_1d(7)
+   mq:set(0, self.exp_aod)
+   mq:set(1, self.min_types)
+   mq:set(2, self.max_types)
+   if(self.linear_aod) then
+      mq:set(3, 1)
+   else
+      mq:set(3, 0)
+   end
+   if(self.relative_humidity_aerosol) then
+      mq:set(4, 1)
+   else
+      mq:set(4, 0)
+   end
+   mq:set(5, self.max_residual)
+
+   self.aerosol_met_prior = AerosolMetPrior.create(
+     self.config.met, self.config:h_merra_aerosol(),
+     self.config.pressure,
+     self.config.relative_humidity,
+     -- In production, have a single covariance for all merra types,
+     -- but allow for using functions that have a different covariance
+     -- for different types
+     self:covariance(0), 
+     mq)
+   self.sub_object_save = sub_object
+   local i, t
+   for i, t in ipairs(sub_object) do
+      self.aerosol_met_prior:add_aerosol(t.extinction, t.property, t.initial_guess)
+   end
+   local res = self.aerosol_met_prior:aerosol()
+   self.config.number_aerosol = res:number_particle()
+   return res
+end
+
+function ConfigCommon.aerosol_met_prior_creator:initial_guess()
+   local cig = CompositeInitialGuess()
+   local flag = ConfigCommon.create_flag(3, Range.all())
+   local cig_merra = CompositeInitialGuess()
+   cig_merra:add_builder(self.aerosol_met_prior:initial_guess())
+
+   --- Use AOD from merra, but leave the remaining shape parameters at values
+   --- fixed at the supplied apriori values (e.g., read from HDF file, or 
+   --- whatever).
+   local ig_merra = cig_merra:initial_guess()
+   for i=1,self.aerosol_met_prior:number_merra_particle() do
+      -- Send particle number to ap and cov functions in case they
+      -- can use them
+      local oval = self:apriori(i-1)
+
+      -- Optionally ignore the merra initial guess value and just use
+      -- value from apriori function
+      if (self.ignore_merra_aod == nil) then
+        oval:set(0, ig_merra((i - 1) * 3))
+      end
+
+      local ig = InitialGuessValue()
+      ig:apriori_subset(flag, oval)
+      ig:apriori_covariance_subset(flag, self:covariance(i-1))
+      cig:add_builder(ig)
+   end
+
+   --- Now add in the fixed particles.
+   local i, t
+   for i, t in ipairs(self.sub_object_save) do
+      cig:add_builder(t.initial_guess)
+   end
+
+   return cig
+end
+
+function ConfigCommon.aerosol_met_prior_creator:register_output(ro)
+   local h = HdfFile(self.config.met_file)
+   local all_aer_names = h:read_string_vector("/Metadata/CompositeAerosolTypes")
    for i, aer_name in ipairs(self.aerosols) do
        all_aer_names:push_back(aer_name)
    end
@@ -3482,6 +3608,7 @@ function ConfigCommon.oco_forward_model:register_output(ro)
    -- Add source data files
    for i,var_ds in ipairs({ { "L1BFile", "spectrum_file"},
                             { "ResampledMetFile", "met_file" },
+                            { "CO2PriorFile", "co2_pr_file" },
 			    { "StaticInput", "static_file"},
 			    { "SolarFile", "static_solar_file"},
 			    { "AerosolFile", "static_aerosol_file"},
