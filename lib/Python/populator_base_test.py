@@ -15,6 +15,7 @@ class FakePopulator(PopulatorBase):
         self.processing_dir = "create_run_scripts_test"
         PopulatorBase.__init__(self)
         os.environ["L2_SUPPORT_PATH"] = "/l2_support_fake_path"
+        os.environ["L2_SUPPORT_UTIL_PATH"] = "/l2_support_fake_path/utils"
         os.environ["PATH"] = "/fake_bin_path"
         os.environ["PYTHONPATH"] = "/fake_python_path"
         os.environ["LD_LIBRARY_PATH"] = "/fake_lib_path"

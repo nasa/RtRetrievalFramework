@@ -31,7 +31,9 @@ public:
     virtual const AutoDerivative<double> weight(const double wn, const int spec_index) const;
     virtual const AutoDerivative<double> weight_intercept(const int spec_index) const;
     virtual const AutoDerivative<double> weight_slope(const int spec_index) const;
-    virtual const AutoDerivative<double> rahman_factor(const int spec_index) const;
+  AutoDerivative<double> GroundBrdf::weight_coeff(const int spec_index, const int weight_index) const;
+  ArrayAd<double, 1> weight_parameters(const int spec_index) const;
+  virtual const AutoDerivative<double> rahman_factor(const int spec_index) const;
     virtual const AutoDerivative<double> hotspot_parameter(const int spec_index) const;
     virtual const AutoDerivative<double> asymmetry_parameter(const int spec_index) const;
     virtual const AutoDerivative<double> anisotropy_parameter(const int spec_index) const;

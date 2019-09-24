@@ -14,6 +14,7 @@ class OcoPopulator(AcosPopulator):
         config_input_keywords = \
         { 'spectrum_file':      "input/InputProductFiles/L1BFile",
           'met_file':           "input/InputProductFiles/ResampledMetFile",
+          'co2_pr_file':        "input/InputProductFiles/CO2PriorFile",
           'imap_file':          "input/InputProductFiles/IMAPFile",
           'aband_file':         "input/InputProductFiles/ABandFile",
           'rrv_file':           "input/InputProductFiles/RRVFile",
