@@ -63,6 +63,14 @@ public:
   virtual ArrayAd<double, 1> vmr_grid(const Pressure& P) const;
 
 //-----------------------------------------------------------------------
+/// Lua doesn't like ArrayAd, so have a version of vmr_grid that just
+/// returns the value.
+//-----------------------------------------------------------------------
+
+  blitz::Array<double,1> vmr_grid_value(const Pressure& P) const
+  { return vmr_grid(P).value(); }
+  
+//-----------------------------------------------------------------------
 /// Indicate what portion of the state vector is used to calculate the
 /// VMR. 
 //-----------------------------------------------------------------------
