@@ -4344,6 +4344,7 @@ pkgpythontemplate_DATA = @pythontemplatesrc@/aggregate.tmpl \
 	@pythontemplatesrc@/pleiades_job.tmpl \
 	@pythontemplatesrc@/launch_jobs.tmpl \
 	@pythontemplatesrc@/oco_config.tmpl \
+	@pythontemplatesrc@/oco3_config.tmpl \
 	@pythontemplatesrc@/oco_uplooking_config.tmpl \
 	@pythontemplatesrc@/fts_config.tmpl \
 	@pythontemplatesrc@/gosat_config.tmpl \
