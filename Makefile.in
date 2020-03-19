@@ -3745,6 +3745,7 @@ config_DATA = @commonconfigsrc@/config_common.lua \
 	@gosatconfigsrc@/gosat_base_config.lua \
 	@gosatconfigsrc@/gosat_orbit_sim_base_config.lua \
 	@ococonfigsrc@/oco_base_config.lua \
+	@ococonfigsrc@/oco3_base_config.lua \
 	@ococonfigsrc@/oco_baseline_config.lua \
 	@ococonfigsrc@/oco_config.lua \
 	@ococonfigsrc@/oco_uplooking_base_config.lua \
@@ -3758,7 +3759,9 @@ input_DATA = @commoninputsrc@/l2_solar_model.h5 \
 	@gosatinputsrc@/l2_gosat_static_input.h5 \
 	@gosatinputsrc@/l2_gosat_eof.h5 \
 	@ocoinputsrc@/l2_oco_static_input.h5 \
-	@ocoinputsrc@/l2_oco_eof.h5
+	@ocoinputsrc@/l2_oco_eof.h5 \
+	@ocoinputsrc@/l2_oco3_static_input.h5 \
+	@ocoinputsrc@/l2_oco3_eof.h5
 
 # Make sure to look in local install directory first, in case we are
 # building our own copy of libraries also found in thirdparty library area.
@@ -4667,6 +4670,7 @@ gosatconfig_DATA = @gosatconfigsrc@/config.lua \
 	@gosatconfigsrc@/config_rrv.lua
 ococonfigdir = @configdir@/oco/config
 ococonfig_DATA = @ococonfigsrc@/config.lua \
+	@ococonfigsrc@/config_oco3.lua \
 	@ococonfigsrc@/config_uplooking.lua \
 	@ococonfigsrc@/config_rrv.lua @ococonfigsrc@/config_uq.lua
 @BUILD_PYTHON_SWIG_TRUE@pkgpythonswigdir = @pythondir@/full_physics_swig
