@@ -10,7 +10,7 @@ use_subdir=False
 if [ "$use_subdir" = "True" ]; then
     log_directory="create_run_scripts_test/log/qsub"
 fi
-jid=`qsub $* –S /bin/bash -j oe -o $log_directory -N l2_fp -J 0-4 create_run_scripts_test/l2_fp_job.sh`
+jid=`qsub $* -S /bin/bash -j oe -o $log_directory -N l2_fp -J 0-4 create_run_scripts_test/l2_fp_job.sh`
 do_aggregate=False
 if [[ "$do_aggregate" == "True" ]]; then
    # Wait for job to get into torque, otherwise dependency doesn't seem
@@ -19,7 +19,7 @@ if [[ "$do_aggregate" == "True" ]]; then
    # or pleiades, but sleep doesn't hurt them and easier to treat things
    # the same.
    sleep 5                      
-   jid2=`qsub $* –S /bin/bash -j oe -o ${log_directory}/qsub_aggregate.log -N aggregate -W depend=afterany:$jid create_run_scripts_test/aggregate.sh`
+   jid2=`qsub $* -S /bin/bash -j oe -o ${log_directory}/qsub_aggregate.log -N aggregate -W depend=afterany:$jid create_run_scripts_test/aggregate.sh`
 fi
 # The buildbot regression scripts depend on the output from qsub, so go ahead and write that
 # out
