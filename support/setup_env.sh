@@ -26,10 +26,12 @@ else
 
     # Assume if a virtual environment is set that we want to use that
     # version of python. Otherwise, select the default python 3 version
-    if ([ -z ${VIRTUAL_ENV+x} ] && [ -e "/groups/algorithm/venv3/bin/activate" ])
+    # We have a development version at /groups/algorithm/venv3, but
+    # instead use the production version as the default
+    DEFAULT_VENV="/groups/sdos/oco3/python_env/l2fp/20200303_l2fp"
+    if ([ -z ${VIRTUAL_ENV+x} ] && [ -e "$DEFAULT_VENV/bin/activate" ])
     then
-	VIRTUAL_ENV_DISABLE_PROMPT=t source /groups/algorithm/venv3/bin/activate
-	export LD_LIBRARY_PATH=/groups/algorithm/tools/install/lib:/groups/algorithm/tools/install/lib64:$LD_LIBRARY_PATH
+	VIRTUAL_ENV_DISABLE_PROMPT=t source $DEFAULT_VENV/bin/activate
     fi
 
     # Path to h5diff, the system one doesn't work for us
