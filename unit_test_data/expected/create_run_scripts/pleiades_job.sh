@@ -2,7 +2,7 @@
 
 # These are just sample values, you will probably want to changes these
 #PBS -l select=1:ncpus=12:model=has
-#PBS -l walltime=30:00
+#PBS -l walltime=60:00
 
 # Stuff that varies
 abscodir=/fake_absco_path
