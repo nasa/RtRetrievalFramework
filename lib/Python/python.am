@@ -39,6 +39,7 @@ pkgpythontemplate_DATA+= @pythontemplatesrc@/job.tmpl
 pkgpythontemplate_DATA+= @pythontemplatesrc@/pleiades_job.tmpl
 pkgpythontemplate_DATA+= @pythontemplatesrc@/launch_jobs.tmpl
 pkgpythontemplate_DATA+= @pythontemplatesrc@/oco_config.tmpl
+pkgpythontemplate_DATA+= @pythontemplatesrc@/oco3_config.tmpl
 pkgpythontemplate_DATA+= @pythontemplatesrc@/oco_uplooking_config.tmpl
 pkgpythontemplate_DATA+= @pythontemplatesrc@/fts_config.tmpl
 pkgpythontemplate_DATA+= @pythontemplatesrc@/gosat_config.tmpl

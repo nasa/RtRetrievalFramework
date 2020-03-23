@@ -1,12 +1,16 @@
 config_DATA += @ococonfigsrc@/oco_base_config.lua
+config_DATA += @ococonfigsrc@/oco3_base_config.lua
 config_DATA += @ococonfigsrc@/oco_baseline_config.lua
 config_DATA += @ococonfigsrc@/oco_config.lua
 config_DATA += @ococonfigsrc@/oco_uplooking_base_config.lua
 config_DATA += @ococonfigsrc@/oco_uplooking_tvac_base_config.lua
 ococonfigdir = @configdir@/oco/config
 ococonfig_DATA = @ococonfigsrc@/config.lua
+ococonfig_DATA += @ococonfigsrc@/config_oco3.lua
 ococonfig_DATA += @ococonfigsrc@/config_uplooking.lua
 ococonfig_DATA += @ococonfigsrc@/config_rrv.lua
 ococonfig_DATA += @ococonfigsrc@/config_uq.lua
 input_DATA += @ocoinputsrc@/l2_oco_static_input.h5
 input_DATA += @ocoinputsrc@/l2_oco_eof.h5
+input_DATA += @ocoinputsrc@/l2_oco3_static_input.h5
+input_DATA += @ocoinputsrc@/l2_oco3_eof.h5
