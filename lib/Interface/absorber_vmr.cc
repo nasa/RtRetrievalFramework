@@ -4,6 +4,7 @@ using namespace FullPhysics;
 #ifdef HAVE_LUA
 #include "register_lua.h"
 REGISTER_LUA_CLASS(AbsorberVmr)
+.def("vmr_grid_value", &AbsorberVmr::vmr_grid_value)
 REGISTER_LUA_END()
 
 // typedef to distinguish between copying value or moving value (C++11) push_back prototoypes 
