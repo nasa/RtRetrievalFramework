@@ -1,6 +1,7 @@
 #include "absorber_vmr_met.h"
 #include "ostream_pad.h"
 #include "old_constant.h"
+#include <boost/make_shared.hpp>
 
 using namespace FullPhysics;
 using namespace blitz;

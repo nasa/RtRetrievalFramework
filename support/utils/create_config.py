@@ -100,6 +100,7 @@ def handle_common_config(template_obj, out_config_filename, used_files, sounding
 
 # Same as gen_config with defaults
 handle_oco_config = handle_common_config
+handle_oco3_config = handle_common_config
 
 def handle_oco_uplooking_config(template_obj, out_config_filename, used_files, sounding_ids, run_type):
 

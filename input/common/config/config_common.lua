@@ -3051,6 +3051,35 @@ function ConfigCommon.vmr_level:register_output(ro)
 end
 
 ------------------------------------------------------------
+--- Create an absorber level, where we fit for all the
+--- log(VMR) levels
+------------------------------------------------------------
+
+ConfigCommon.vmr_log_level = CreatorVmr:new()
+
+function ConfigCommon.vmr_log_level:create_vmr()
+   self.vmr = AbsorberVmrLogLevel(self.config.pressure, self:apriori_v(), 
+				  self:retrieval_flag(), self.name)
+   return self.vmr
+end
+
+function ConfigCommon.vmr_log_level:register_output(ro)
+-- Don't write out output if we aren't fitting anything
+   local i
+   local r
+   r = self:retrieval_flag()
+   local any_true = false
+   for i=1,r:rows() do
+      if(r(i - 1)) then
+         any_true = true
+      end
+   end
+   if(any_true) then
+      ro:push_back(AbsorberVmrLogLevelOutput.create(self.vmr))
+   end
+end
+
+------------------------------------------------------------
 --- Create an absorber fixed level, where we hold all the
 --- fit for a scale.
 ------------------------------------------------------------
