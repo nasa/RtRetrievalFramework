@@ -105,7 +105,7 @@ ArrayAd<double, 1> IlsConvolution::apply_ils
 				 Hres_rad.number_variable()));
   // A few scratch variables, defined outside of loop so we don't keep
   // recreating them.
-  Array<double, 1> one(1);
+  Array<double, 1> one(2);
   one = 1;
   Array<double, 1> normfact_grad(disp_wn.number_variable());
   ArrayAd<double, 1> conv(1, res.number_variable());
@@ -113,7 +113,6 @@ ArrayAd<double, 1> IlsConvolution::apply_ils
   for(int i = 0; i < res.rows(); ++i) {
     // Find the range of Hres_wn that lie within
     // wn_center +- ils_half_width
-
     AutoDerivative<double> wn_center = disp_wn(Pixel_list[i]);
     Array<double, 1>::const_iterator itmin = 
       std::lower_bound(Hres_wn.begin(), Hres_wn.end(),
@@ -140,19 +139,39 @@ ArrayAd<double, 1> IlsConvolution::apply_ils
     normfact_grad = normfact_dwn.gradient()(0) * wn_center.gradient();
     AutoDerivative<double> normfact(normfact_dwn.value(), normfact_grad);
 
+    Array<double, 1> temp
+      (ils_func->coeff_func().jacobian()(0,Range::all()));
+
     conv.resize(response.rows(), res.number_variable());
     conv.value() = response.value() * Hres_rad(r).value();
-    if(!Hres_rad.is_constant() && !wn_center.is_constant())
-       conv.jacobian() = response.value()(i1) * Hres_rad(r).jacobian()(i1, i2) +
-	 response.jacobian()(Range::all(), 0)(i1) * wn_center.gradient()(i2) * 
-	 Hres_rad(r).value()(i1);
-    else if(!wn_center.is_constant())
-      conv.jacobian() = response.jacobian()(Range::all(), 0)(i1) * 
-	wn_center.gradient()(i2) * Hres_rad(r).value()(i1);
-    else if(!Hres_rad.is_constant())
-      conv.jacobian() = response.value()(i1) * Hres_rad(r).jacobian()(i1, i2);
+
+    if (!Hres_rad.is_constant() && !wn_center.is_constant()) {
+      conv.jacobian()  = response.value()(i1) * Hres_rad(r).jacobian()(i1, i2) +
+        response.jacobian()(Range::all(), 0)(i1) * wn_center.gradient()(i2) * 
+        Hres_rad(r).value()(i1);
+      if (ils_func->used_flag_func()(0))
+        conv.jacobian() += response.jacobian()(Range::all(), 1)(i1) *
+          temp(i2) * Hres_rad(r).value()(i1);
+    }
+
+    else if (!wn_center.is_constant()) {
+      conv.jacobian()  = response.jacobian()(Range::all(), 0)(i1) * 
+        wn_center.gradient()(i2) * Hres_rad(r).value()(i1);
+      if (ils_func->used_flag_func()(0))
+        conv.jacobian() += response.jacobian()(Range::all(), 1)(i1) *
+          temp(i2) * Hres_rad(r).value()(i1);
+    }
+
+    else if (!Hres_rad.is_constant()) {
+      conv.jacobian()  = response.value()(i1) * Hres_rad(r).jacobian()(i1, i2);
+      if (ils_func->used_flag_func()(0))
+        conv.jacobian() += response.jacobian()(Range::all(), 1)(i1) *
+          temp(i2) * Hres_rad(r).value()(i1);
+    }
+
     res(i) = integrate(Hres_wn(r), conv) / normfact;
   }
+
   return res;
 }
 

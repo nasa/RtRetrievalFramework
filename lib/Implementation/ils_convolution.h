@@ -11,7 +11,8 @@ namespace FullPhysics {
   wavenumbers of each pixel, and convolve against a IlsFunction.
 *******************************************************************/
 
-class IlsConvolution : public Ils, public Observer<Dispersion> {
+class IlsConvolution : public Ils, public Observer<Dispersion>,
+                       public Observer<IlsFunction> {
 public:
 //-----------------------------------------------------------------------
 /// Constructor.
@@ -21,7 +22,10 @@ public:
 		 const DoubleWithUnit&
 		 Ils_half_width = DoubleWithUnit(20, units::inv_cm))
     : disp(Disp), ils_func(Ils_func), ils_half_width_(Ils_half_width) 
-  { disp->add_observer(*this); }
+  {
+    disp->add_observer(*this);
+    ils_func->add_observer(*this);
+  }
 
 //-----------------------------------------------------------------------
 /// Constructor.
@@ -32,12 +36,17 @@ public:
 		 double Ils_half_width)
     : disp(Disp), ils_func(Ils_func), 
       ils_half_width_(Ils_half_width, units::inv_cm)
-  { disp->add_observer(*this); }
+  {
+    disp->add_observer(*this);
+    ils_func->add_observer(*this);
+  }
   virtual ~IlsConvolution() {}
   virtual void notify_update(const StateVector& Sv) 
   { /* Nothing to do, we have everything done by attached Disp. */ }
-  virtual void notify_add(StateVector& Sv) { Sv.add_observer(*disp); }
-  virtual void notify_remove(StateVector& Sv) { Sv.remove_observer(*disp);}
+  virtual void notify_add(StateVector& Sv) { Sv.add_observer(*disp);
+                                             Sv.add_observer(*ils_func); }
+  virtual void notify_remove(StateVector& Sv) { Sv.remove_observer(*disp);
+                                                Sv.remove_observer(*ils_func);}
   virtual void notify_update(const Dispersion& D)
   {
     notify_update_do(*this);

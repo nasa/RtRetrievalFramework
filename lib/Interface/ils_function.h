@@ -1,6 +1,7 @@
 #ifndef ILS_FUNCTION_H
 #define ILS_FUNCTION_H
-#include "printable.h"
+#include "state_vector.h"
+#include "observer.h"
 #include "array_ad.h"
 #include <blitz/array.h>
 
@@ -14,9 +15,14 @@ namespace FullPhysics {
   class should normalize this if needed. 
 *******************************************************************/
 
-class IlsFunction : public Printable<IlsFunction> {
+class IlsFunction : virtual public StateVectorObserver,
+                    public Observable<IlsFunction> {
 public:
   virtual ~IlsFunction() {}
+  virtual void add_observer(Observer<IlsFunction>& Obs) 
+  { add_observer_do(Obs, *this);}
+  virtual void remove_observer(Observer<IlsFunction>& Obs) 
+  { remove_observer_do(Obs, *this);}
 
 //-----------------------------------------------------------------------
 /// Return response function.
@@ -58,7 +64,8 @@ public:
 
   virtual std::string hdf_band_name() const { return band_name();}
 
-  virtual void print(std::ostream& os) const { os << "IlsFunction";}
+  virtual ArrayAd<double, 1> coeff_func() const = 0;
+  virtual blitz::Array<bool, 1> used_flag_func() const = 0;
 };
 }
 #endif

@@ -82,8 +82,7 @@ std::string DispersionPolynomial::state_vector_name_i(int i) const
 }
 
 // See base class for description.
-SpectralDomain
-DispersionPolynomial::pixel_grid() const
+SpectralDomain DispersionPolynomial::pixel_grid() const
 {
   firstIndex i1; secondIndex i2;
   ArrayAd<double, 1> res(index_array.rows(), coeff.number_variable());
