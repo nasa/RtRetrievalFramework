@@ -318,6 +318,8 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(StateVectorOutput);
   REGISTER_LUA_LIST(Level1bOutput);
   REGISTER_LUA_LIST(DispersionPolynomialOutput);
+  REGISTER_LUA_LIST(IlsTableLinearOutput);
+  REGISTER_LUA_LIST(IlsTableLogOutput);
   REGISTER_LUA_LIST(StokesCoefficientFractionOutput);
   REGISTER_LUA_LIST(ErrorAnalysisOutput);
   REGISTER_LUA_LIST(ForwardModelOutput);

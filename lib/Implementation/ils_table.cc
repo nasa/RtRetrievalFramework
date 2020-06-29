@@ -16,6 +16,8 @@ REGISTER_LUA_DERIVED_CLASS(IlsTableLinear, IlsFunction)
 .def(luabind::constructor<const blitz::Array<double, 1>&,
                           const blitz::Array<double, 2>&,
                           const blitz::Array<double, 2>&,
+                          const blitz::Array<double, 1>&,
+                          const blitz::Array<bool, 1>&,
                           const std::string&, const std::string&,
                           bool>())
 .def("band_name", &IlsTableLinear::band_name)
@@ -32,6 +34,8 @@ REGISTER_LUA_DERIVED_CLASS(IlsTableLog, IlsFunction)
 .def(luabind::constructor<const blitz::Array<double, 1>&,
                           const blitz::Array<double, 2>&,
                           const blitz::Array<double, 2>&,
+                          const blitz::Array<double, 1>&,
+                          const blitz::Array<bool, 1>&,
                           const std::string&, const std::string&,
                           bool>())
 .def("band_name", &IlsTableLog::band_name)
@@ -48,8 +52,10 @@ REGISTER_LUA_END()
 //-----------------------------------------------------------------------
 
 template<class Lint>
-IlsTable<Lint>::IlsTable(const HdfFile& Hdf_static_input, int Spec_index,
-                         const std::string& Band_name, const std::string& Hdf_band_name,
+IlsTable<Lint>::IlsTable(const HdfFile& Hdf_static_input,
+                         int Spec_index,
+                         const std::string& Band_name,
+                         const std::string& Hdf_band_name,
                          const std::string& Hdf_group)
 : band_name_(Band_name), hdf_band_name_(Hdf_band_name),
   from_hdf_file(true),
@@ -103,6 +109,14 @@ void IlsTable<Lint>::create_delta_lambda_to_response
   }
 }
 
+// See base class for description.
+template<class Lint>
+std::string IlsTable<Lint>::state_vector_name_i(int i) const
+{
+  std::string res = "ILS " + band_name_ + " Scale";
+  return res;
+}
+
 // See base class for description
 template<class Lint>
 void IlsTable<Lint>::ils
@@ -118,20 +132,32 @@ void IlsTable<Lint>::ils
   AutoDerivative<double> t;
   t.gradient().resize(wn_center.number_variable());
   AutoDerivativeRef<double> tref(t.value(), t.gradient());
+
   // w will be wn(i) - wn_center. We do this calculation in 2 steps
   // to speed up the calculation.
   AutoDerivative<double> w;
   w.gradient().resize(wn_center.number_variable());
-  w.gradient() = -wn_center.gradient();
+  w.gradient()(0) = -wn_center.gradient()(0);
+  w.gradient()(1) =  0.;
+
+  AutoDerivative<double> coeff2;
+  coeff2.value() = coeff.value()(0);
+  coeff2.gradient().resize(2);
+  coeff2.gradient()(0) = 0.;
+  coeff2.gradient()(1) = 1.;
+  AutoDerivative<double> w2;
+
   // This returns the value for the first wn not less than wn_center.
   it inter = delta_lambda_to_response.lower_bound(wn_center.value());
+
   // By the convention, we want the value for the last wn less than
   // wn_center.
   if(inter != delta_lambda_to_response.begin())
     --inter;
+
   for(int i = 0; i < res.rows(); ++i) {
-    w.value() = wn(i) - wn_center.value();
-    inter->second.interpolate(w, res(i));
+    w.value() = (wn(i) - wn_center.value());
+    inter->second.interpolate(w * 1. / coeff2, res(i));
   }
 
   // Do an interpolation in the wavenumber direction, if requested.
@@ -155,12 +181,28 @@ void IlsTable<Lint>::ils
 }
 
 template<class Lint>
+boost::shared_ptr<IlsFunction> IlsTable<Lint>::clone() const
+{
+  return boost::shared_ptr<IlsFunction>
+    (new IlsTable(wavenumber_, delta_lambda_, response_, coeff.value(),
+                  used_flag, band_name_, hdf_band_name_, interpolate_wavenumber));
+}
+
+template<class Lint>
 void IlsTable<Lint>::print(std::ostream& Os) const 
 {
   Os << "IlsTable for band " << band_name() << "\n"
-     << "  Interpolate wavenumber: " << (interpolate_wavenumber ? "true" : "false");
+     << "  Interpolate wavenumber: " << (interpolate_wavenumber ? "true" : "false")
+     << "\n";
   if(from_hdf_file)
-    Os << "\n"
-       << "  Hdf file name:          " << hdf_file_name << "\n"
+    Os << "  Hdf file name:          " << hdf_file_name << "\n"
        << "  Hdf group:              " << hdf_group;
+  Os << "  Scale:                  (";
+  for(int i = 0; i < coeff.rows() - 1; ++i)
+    Os << coeff.value()(i) << ", ";
+  Os << coeff.value()(coeff.rows() - 1) << ")\n"
+     << "  Retrieve:               (";
+  for(int i = 0; i < used_flag.rows() - 1; ++i)
+    Os << (used_flag(i) ? "true" : "false") << ", ";
+  Os << (used_flag(used_flag.rows() - 1) ? "true" : "false") << ")";
 }

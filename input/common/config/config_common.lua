@@ -1080,8 +1080,8 @@ function ConfigCommon.dispersion_polynomial:create()
    local res = {}
    for i=1,self.config.number_pixel:rows() do
       local disp_coeff = self:coefficients(i)
-      local disp_units = self:units(i)
       local disp_flag = self:retrieval_flag(i)
+      local disp_units = self:units(i)
       local desc_band_name = self.config.common.desc_band_name:value(i-1)
       res[i] = DispersionPolynomial(disp_coeff, disp_flag, disp_units,
                                     desc_band_name, 
@@ -1102,6 +1102,17 @@ function ConfigCommon.dispersion_polynomial:initial_guess()
       ig:apriori_covariance_subset(disp_flag, self:covariance(i - 1))
       res:add_builder(ig)
    end
+   return res
+end
+
+function ConfigCommon.dispersion_polynomial:initial_guess_i(i)
+   local res = CompositeInitialGuess()
+   local disp_coeff = self:coefficients(i)
+   local disp_flag = self:retrieval_flag(i)
+   local ig = InitialGuessValue()
+   ig:apriori_subset(disp_flag, disp_coeff)
+   ig:apriori_covariance_subset(disp_flag, self:covariance(i - 1))
+   res:add_builder(ig)
    return res
 end
 
@@ -1274,12 +1285,48 @@ end
 
 function ConfigCommon.ils_instrument:create_parent_object(sub_object)
    local ils = VectorIls()
-   local i, ilf
-   for i, ilf in ipairs(self.config.ils_func) do
-      ils:push_back(IlsConvolution(self.config.dispersion[i], ilf, 
+   local i
+   for i, disp in ipairs(self.config.dispersion) do
+      ils:push_back(IlsConvolution(self.config.dispersion[i],
+                                   self.config.ils_func[i],
                                    self.ils_half_width[i]))
    end
    return IlsInstrument(ils, self.config.instrument_correction)
+end
+
+function ConfigCommon.ils_instrument:initial_guess()
+   local i
+   local res = CompositeInitialGuess()
+   for i=1,self.config.number_pixel:rows() do
+      local t
+
+      k = 'dispersion'
+      t = self[k]
+      if t.retrieved then
+         local c = t.creator:new(t, self.config, k)
+         local ig = InitialGuessValue()
+         ig = c:initial_guess_i(i)
+         res:add_builder(ig)
+      end
+
+      k = 'ils_func'
+      t = self[k]
+      if t.retrieve_bands[i] then
+         local c = t.creator:new(t, self.config, k)
+         local ig = InitialGuessValue()
+         ig = c:initial_guess_i(i)
+         res:add_builder(ig)
+      end
+   end
+
+   k = 'instrument_correction'
+   t = self[k]
+   local c = t.creator:new(t, self.config, k)
+   local ig = InitialGuessValue()
+   ig = c:initial_guess()
+   res:add_builder(ig)
+
+   return res
 end
 
 function ConfigCommon.ils_instrument:add_to_statevector(sv)
