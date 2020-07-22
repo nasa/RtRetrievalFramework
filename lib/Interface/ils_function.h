@@ -64,8 +64,16 @@ public:
 
   virtual std::string hdf_band_name() const { return band_name();}
 
-  virtual ArrayAd<double, 1> coeff_func() const = 0;
-  virtual blitz::Array<bool, 1> used_flag_func() const = 0;
+  virtual ArrayAd<double, 1> coeff_func() const
+  { // Default is no coefficients
+    ArrayAd<double, 1> res;
+    return res;
+  }
+  virtual blitz::Array<bool, 1> used_flag_func() const
+  { // Default is no coefficients
+    blitz::Array<bool, 1> res;
+    return res;
+  }
 };
 }
 #endif
