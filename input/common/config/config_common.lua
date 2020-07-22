@@ -1311,7 +1311,7 @@ function ConfigCommon.ils_instrument:initial_guess()
 
       k = 'ils_func'
       t = self[k]
-      if t.retrieve_bands[i] then
+      if t.retrieve_bands ~= nil and t.retrieve_bands[i] then
          local c = t.creator:new(t, self.config, k)
          local ig = InitialGuessValue()
          ig = c:initial_guess_i(i)

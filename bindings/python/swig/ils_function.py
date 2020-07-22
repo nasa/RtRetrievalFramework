@@ -128,8 +128,35 @@ def _new_from_set(cls, version, *args):
     inst.set(*args)
     return inst
 
+import full_physics_swig.state_vector
 import full_physics_swig.generic_object
-class IlsFunction(full_physics_swig.generic_object.GenericObject):
+class ObservableIlsFunction(full_physics_swig.generic_object.GenericObject):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _ils_function.delete_ObservableIlsFunction
+ObservableIlsFunction.add_observer_and_keep_reference = new_instancemethod(_ils_function.ObservableIlsFunction_add_observer_and_keep_reference, None, ObservableIlsFunction)
+ObservableIlsFunction.add_observer = new_instancemethod(_ils_function.ObservableIlsFunction_add_observer, None, ObservableIlsFunction)
+ObservableIlsFunction.remove_observer = new_instancemethod(_ils_function.ObservableIlsFunction_remove_observer, None, ObservableIlsFunction)
+ObservableIlsFunction_swigregister = _ils_function.ObservableIlsFunction_swigregister
+ObservableIlsFunction_swigregister(ObservableIlsFunction)
+
+class ObserverIlsFunction(full_physics_swig.generic_object.GenericObject):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        _ils_function.ObserverIlsFunction_swiginit(self, _ils_function.new_ObserverIlsFunction())
+    __swig_destroy__ = _ils_function.delete_ObserverIlsFunction
+ObserverIlsFunction.notify_update = new_instancemethod(_ils_function.ObserverIlsFunction_notify_update, None, ObserverIlsFunction)
+ObserverIlsFunction.notify_add = new_instancemethod(_ils_function.ObserverIlsFunction_notify_add, None, ObserverIlsFunction)
+ObserverIlsFunction.notify_remove = new_instancemethod(_ils_function.ObserverIlsFunction_notify_remove, None, ObserverIlsFunction)
+ObserverIlsFunction_swigregister = _ils_function.ObserverIlsFunction_swigregister
+ObserverIlsFunction_swigregister(ObserverIlsFunction)
+
+class IlsFunction(full_physics_swig.state_vector.StateVectorObserver, ObservableIlsFunction):
     """
 
     This class models an Instrument Line Shape (ILS) function.
@@ -211,12 +238,50 @@ class IlsFunction(full_physics_swig.generic_object.GenericObject):
     def hdf_band_name(self):
         return self._v_hdf_band_name()
 
+IlsFunction.clone = new_instancemethod(_ils_function.IlsFunction_clone, None, IlsFunction)
 IlsFunction.__str__ = new_instancemethod(_ils_function.IlsFunction___str__, None, IlsFunction)
 IlsFunction.ils = new_instancemethod(_ils_function.IlsFunction_ils, None, IlsFunction)
 IlsFunction._v_band_name = new_instancemethod(_ils_function.IlsFunction__v_band_name, None, IlsFunction)
 IlsFunction._v_hdf_band_name = new_instancemethod(_ils_function.IlsFunction__v_hdf_band_name, None, IlsFunction)
 IlsFunction_swigregister = _ils_function.IlsFunction_swigregister
 IlsFunction_swigregister(IlsFunction)
+
+class SubStateVectorArrayIlsFunction(IlsFunction, full_physics_swig.state_vector.SubStateVectorObserver):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _ils_function.delete_SubStateVectorArrayIlsFunction
+
+    @property
+    def coefficient(self):
+        return self._v_coefficient()
+
+
+    @property
+    def used_flag_value(self):
+        return self._v_used_flag_value()
+
+
+    @property
+    def statevector_covariance(self):
+        return self._v_statevector_covariance()
+
+
+    @property
+    def pressure(self):
+        return self._v_pressure()
+
+SubStateVectorArrayIlsFunction.init = new_instancemethod(_ils_function.SubStateVectorArrayIlsFunction_init, None, SubStateVectorArrayIlsFunction)
+SubStateVectorArrayIlsFunction.state_vector_name_i = new_instancemethod(_ils_function.SubStateVectorArrayIlsFunction_state_vector_name_i, None, SubStateVectorArrayIlsFunction)
+SubStateVectorArrayIlsFunction.update_sub_state_hook = new_instancemethod(_ils_function.SubStateVectorArrayIlsFunction_update_sub_state_hook, None, SubStateVectorArrayIlsFunction)
+SubStateVectorArrayIlsFunction._v_coefficient = new_instancemethod(_ils_function.SubStateVectorArrayIlsFunction__v_coefficient, None, SubStateVectorArrayIlsFunction)
+SubStateVectorArrayIlsFunction._v_used_flag_value = new_instancemethod(_ils_function.SubStateVectorArrayIlsFunction__v_used_flag_value, None, SubStateVectorArrayIlsFunction)
+SubStateVectorArrayIlsFunction._v_statevector_covariance = new_instancemethod(_ils_function.SubStateVectorArrayIlsFunction__v_statevector_covariance, None, SubStateVectorArrayIlsFunction)
+SubStateVectorArrayIlsFunction._v_pressure = new_instancemethod(_ils_function.SubStateVectorArrayIlsFunction__v_pressure, None, SubStateVectorArrayIlsFunction)
+SubStateVectorArrayIlsFunction_swigregister = _ils_function.SubStateVectorArrayIlsFunction_swigregister
+SubStateVectorArrayIlsFunction_swigregister(SubStateVectorArrayIlsFunction)
 
 
 

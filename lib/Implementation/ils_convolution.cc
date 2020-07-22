@@ -139,8 +139,13 @@ ArrayAd<double, 1> IlsConvolution::apply_ils
     normfact_grad = normfact_dwn.gradient()(0) * wn_center.gradient();
     AutoDerivative<double> normfact(normfact_dwn.value(), normfact_grad);
 
-    Array<double, 1> temp
-      (ils_func->coeff_func().jacobian()(0,Range::all()));
+    // Note that this is currently hardcoded to assume only one
+    // scaling variable, so what we have in IlsTable. 
+    Array<double, 1> temp;
+    if(ils_func->used_flag_func().rows() > 1)
+      throw Exception("IlsConvolution is currently hardwired to assume at most one coefficient");
+    if(ils_func->used_flag_func().rows() == 1 && ils_func->used_flag_func()(0))
+      temp.reference(ils_func->coeff_func().jacobian()(0,Range::all()));
 
     conv.resize(response.rows(), res.number_variable());
     conv.value() = response.value() * Hres_rad(r).value();
