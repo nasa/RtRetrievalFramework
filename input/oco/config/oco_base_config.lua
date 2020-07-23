@@ -195,6 +195,7 @@ OcoBaseConfig = OcoConfig:new {
             scale_apriori = {1.0, 1.0, 1.0},
             scale_cov = {0.001, 0.001, 0.001},
             retrieve_bands = {false, false, false},
+	    use_scale = false
          },
          instrument_correction = {
             creator = OcoConfig.instrument_correction_list_acquisition_mode,
