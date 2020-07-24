@@ -17,10 +17,12 @@ namespace FullPhysics {
 class IlsTableLinear : public IlsFunction {
 public:
   IlsTableLinear(const blitz::Array<double, 1>& Wavenumber, 
-                 const blitz::Array<double, 2>& Delta_lambda, 
-                 const blitz::Array<double, 2>& Response,
-                 const std::string& Band_name, const std::string& Hdf_band_name,
-                 bool Interpolate_wavenumber = false);
+		 const blitz::Array<double, 2>& Delta_lambda, 
+		 const blitz::Array<double, 2>& Response,
+		 const blitz::Array<double, 1>& Scale,
+		 const blitz::Array<bool, 1>& Scale_flag,
+		 const std::string& Band_name, const std::string& Hdf_band_name,
+		 bool Interpolate_wavenumber = false);
   IlsTableLinear(const HdfFile& Hdf_static_input, int Spec_index,
                  const std::string& Band_name, const std::string& Hdf_band_name,
                  const std::string& Hdf_group = "Instrument/ILS");
@@ -42,10 +44,12 @@ public:
 class IlsTableLog : public IlsFunction {
 public:
   IlsTableLog(const blitz::Array<double, 1>& Wavenumber, 
-              const blitz::Array<double, 2>& Delta_lambda, 
-              const blitz::Array<double, 2>& Response,
-              const std::string& Band_name, const std::string& Hdf_band_name,
-              bool Interpolate_wavenumber = false);
+	      const blitz::Array<double, 2>& Delta_lambda, 
+	      const blitz::Array<double, 2>& Response,
+	      const blitz::Array<double, 1>& Scale,
+	      const blitz::Array<bool, 1>& Scale_flag,
+	      const std::string& Band_name, const std::string& Hdf_band_name,
+	      bool Interpolate_wavenumber = false);
   IlsTableLog(const HdfFile& Hdf_static_input, int Spec_index,
               const std::string& Band_name, const std::string& Hdf_band_name,
               const std::string& Hdf_group = "Instrument/ILS");
