@@ -129,6 +129,7 @@ def _new_from_set(cls, version, *args):
     return inst
 
 import full_physics_swig.ils_function
+import full_physics_swig.state_vector
 import full_physics_swig.generic_object
 class IlsGaussian(full_physics_swig.ils_function.IlsFunction):
     """

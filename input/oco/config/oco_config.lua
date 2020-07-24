@@ -456,9 +456,14 @@ function OcoConfig.ils_table_l1b:create()
    interpolate = false
 
    local idx
-   local wavenumber, delta_lambda, response_name
+   local wavenumber, delta_lambda
    local res = {}
+   local scale = Blitz_double_array_1d(1)
+   local scale_flag = Blitz_bool_array_1d(1)
    for idx = 0, self.config.number_pixel:rows() - 1 do
+      scale:set(0, self.scale_apriori[idx+1])
+      scale_flag:set(0, self.retrieve_bands[idx+1])
+
       local hdf_band_name = self.config.common.hdf_band_name:value(idx)
       local desc_band_name = self.config.common.desc_band_name:value(idx)
 
@@ -470,14 +475,40 @@ function OcoConfig.ils_table_l1b:create()
       response = l1b_hdf_file:read_double_4d_sounding("/InstrumentHeader/ils_relative_response", sounding_num)
       response = response(idx, Range.all(), Range.all())
 
-
       -- Calculate center wavenumber from dispersion, there should be number pixel
       -- of these per spectrometer
       wavenumber = self.config.dispersion[idx+1]:pixel_grid():data()
 
-      res[idx+1] = IlsTableLog(wavenumber, delta_lambda, response, desc_band_name, hdf_band_name, interpolate)
+--    res[idx+1] = IlsTableLinear(wavenumber, delta_lambda, response, scale, scale_flag, desc_band_name, hdf_band_name, interpolate)
+      res[idx+1] = IlsTableLog   (wavenumber, delta_lambda, response, scale, scale_flag, desc_band_name, hdf_band_name, interpolate)
    end
    return res
+end
+
+-- For IlsInstrument, we need to build up the initial guess in
+-- the same order things are put into the statevector.
+function OcoConfig.ils_table_l1b:initial_guess_i(i)
+   local res = CompositeInitialGuess()
+   local scale = Blitz_double_array_1d(1)
+   scale:set(0, self.scale_apriori[i])
+   local scale_flag = Blitz_bool_array_1d(1)
+   scale_flag:set(0, self.retrieve_bands[i])
+   local covariance = Blitz_double_array_2d(1,1)
+   covariance:set(0, 0, self.scale_cov[i])
+   local ig = InitialGuessValue()
+   ig:apriori_subset(scale_flag, scale)
+   ig:apriori_covariance_subset(scale_flag, covariance)
+   res:add_builder(ig)
+   return res
+end
+
+function OcoConfig.ils_table_l1b:register_output(ro)
+   if(self.use_scale) then
+      for i = 1, self.config.number_pixel:rows() do
+	 local hdf_band_name = self.config.common.hdf_band_name:value(i-1)
+	 ro:push_back(IlsTableLogOutput.create(self.config.ils_func[i], hdf_band_name))
+      end
+   end
 end
 
 ------------------------------------------------------------

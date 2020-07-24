@@ -3,6 +3,8 @@
 %include "common.i"
 %{
 #include "ils_gaussian.h"
+#include "sub_state_vector_array.h"
+#include "pressure.h"
 %}
 %base_import(ils_function)
 %import "array_ad.i"
