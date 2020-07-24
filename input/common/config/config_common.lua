@@ -1042,6 +1042,10 @@ function ConfigCommon.ils_table:create()
    return res
 end
 
+function ConfigCommon.ils_table:initial_guess_i(i)
+   return CompositeInitialGuess()
+end
+
 ------------------------------------------------------------
 --- Create dispersion as a polynomial
 ------------------------------------------------------------
@@ -1102,6 +1106,19 @@ function ConfigCommon.dispersion_polynomial:initial_guess()
       ig:apriori_covariance_subset(disp_flag, self:covariance(i - 1))
       res:add_builder(ig)
    end
+   return res
+end
+
+-- For IlsInstrument, we need to build up the initial guess in
+-- the same order things are put into the statevector.
+function ConfigCommon.dispersion_polynomial:initial_guess_i(i)
+   local res = CompositeInitialGuess()
+   local disp_coeff = self:coefficients(i)
+   local disp_flag = self:retrieval_flag(i)
+   local ig = InitialGuessValue()
+   ig:apriori_subset(disp_flag, disp_coeff)
+   ig:apriori_covariance_subset(disp_flag, self:covariance(i - 1))
+   res:add_builder(ig)
    return res
 end
 
@@ -1272,6 +1289,11 @@ function ConfigCommon.ils_instrument:sub_object_key()
    return {"dispersion", "ils_func", "instrument_correction"}
 end
 
+-- We handle dispersion and ils_func separately
+function ConfigCommon.ils_instrument:sub_initial_guess_key()
+   return {"instrument_correction"}
+end
+
 function ConfigCommon.ils_instrument:create_parent_object(sub_object)
    local ils = VectorIls()
    local i, ilf
@@ -1280,6 +1302,24 @@ function ConfigCommon.ils_instrument:create_parent_object(sub_object)
                                    self.ils_half_width[i]))
    end
    return IlsInstrument(ils, self.config.instrument_correction)
+end
+
+function ConfigCommon.ils_instrument:initial_guess()
+   local res = CompositeInitialGuess()
+   local i, j, k
+   local t, c
+   -- Reorder dispersion and ils_func. Because it comes in a IlsConvolution
+   -- indexed by spectrometer
+   for i=1,self.config.number_pixel:rows() do
+      for j, k in ipairs({"dispersion", "ils_func"}) do
+	 self.config:diagnostic_message("Initial guess " .. k .. "(" .. i .. ")")
+	 t = self[k]
+	 local c = t.creator:new(t, self.config, k)
+	 res:add_builder(c:initial_guess_i(i))
+      end
+   end
+   res:add_builder(CompositeCreator.initial_guess(self))
+   return res
 end
 
 function ConfigCommon.ils_instrument:add_to_statevector(sv)
