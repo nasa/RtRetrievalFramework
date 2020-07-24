@@ -157,6 +157,7 @@ IlsTableLinear._v_wavenumber = new_instancemethod(_ils_table.IlsTableLinear__v_w
 IlsTableLinear._v_delta_lambda = new_instancemethod(_ils_table.IlsTableLinear__v_delta_lambda, None, IlsTableLinear)
 IlsTableLinear._v_response = new_instancemethod(_ils_table.IlsTableLinear__v_response, None, IlsTableLinear)
 IlsTableLinear.create_delta_lambda_to_response = new_instancemethod(_ils_table.IlsTableLinear_create_delta_lambda_to_response, None, IlsTableLinear)
+IlsTableLinear.clone = new_instancemethod(_ils_table.IlsTableLinear_clone, None, IlsTableLinear)
 IlsTableLinear_swigregister = _ils_table.IlsTableLinear_swigregister
 IlsTableLinear_swigregister(IlsTableLinear)
 
@@ -186,6 +187,7 @@ IlsTableLog._v_wavenumber = new_instancemethod(_ils_table.IlsTableLog__v_wavenum
 IlsTableLog._v_delta_lambda = new_instancemethod(_ils_table.IlsTableLog__v_delta_lambda, None, IlsTableLog)
 IlsTableLog._v_response = new_instancemethod(_ils_table.IlsTableLog__v_response, None, IlsTableLog)
 IlsTableLog.create_delta_lambda_to_response = new_instancemethod(_ils_table.IlsTableLog_create_delta_lambda_to_response, None, IlsTableLog)
+IlsTableLog.clone = new_instancemethod(_ils_table.IlsTableLog_clone, None, IlsTableLog)
 IlsTableLog_swigregister = _ils_table.IlsTableLog_swigregister
 IlsTableLog_swigregister(IlsTableLog)
 

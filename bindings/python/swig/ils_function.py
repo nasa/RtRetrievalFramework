@@ -238,8 +238,6 @@ class IlsFunction(full_physics_swig.state_vector.StateVectorObserver, Observable
     def hdf_band_name(self):
         return self._v_hdf_band_name()
 
-IlsFunction.clone = new_instancemethod(_ils_function.IlsFunction_clone, None, IlsFunction)
-IlsFunction.__str__ = new_instancemethod(_ils_function.IlsFunction___str__, None, IlsFunction)
 IlsFunction.ils = new_instancemethod(_ils_function.IlsFunction_ils, None, IlsFunction)
 IlsFunction._v_band_name = new_instancemethod(_ils_function.IlsFunction__v_band_name, None, IlsFunction)
 IlsFunction._v_hdf_band_name = new_instancemethod(_ils_function.IlsFunction__v_hdf_band_name, None, IlsFunction)

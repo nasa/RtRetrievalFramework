@@ -4,8 +4,9 @@
 %include "common.i"
 
 %{
-#include "IlsFunction.h"
+#include "ils_function.h"
 #include "sub_state_vector_array.h"
+#include "pressure.h"
 %}
 
 %fp_shared_ptr(FullPhysics::IlsFunction)
@@ -14,18 +15,19 @@ namespace FullPhysics {
 }
 
 %base_import(state_vector)
-%import "spectral_domain.i"
 %import "sub_state_vector_array.i"
+%import "pressure.i"
 
 %fp_shared_ptr(FullPhysics::Observable<FullPhysics::IlsFunction>)
 %fp_shared_ptr(FullPhysics::Observer<FullPhysics::IlsFunction>)
+%template(ObservableIlsFunction) FullPhysics::Observable<FullPhysics::IlsFunction>;
+%template(ObserverIlsFunction) FullPhysics::Observer<FullPhysics::IlsFunction>;
+
 %fp_shared_ptr(FullPhysics::SubStateVectorArray<FullPhysics::IlsFunction>)
 %nodefaultctor FullPhysics::SubStateVectorArray<FullPhysics::IlsFunction>;
 
 namespace FullPhysics {
 
-%template(ObservableIlsFunction) FullPhysics::Observable<IlsFunction>;
-%template(ObserverIlsFunction) FullPhysics::Observer<IlsFunction>;
 
 class IlsFunction: virtual public StateVectorObserver,
 		   public Observable<IlsFunction> {
@@ -33,8 +35,6 @@ public:
   virtual ~IlsFunction();
   virtual void add_observer(Observer<IlsFunction>& Obs);
   virtual void remove_observer(Observer<IlsFunction>& Obs);
-  virtual boost::shared_ptr<IlsFunction> clone() const = 0;
-  std::string print_to_string() const;
   virtual void ils
   (const AutoDerivative<double>& wn_center,
    const blitz::Array<double, 1>& wn, ArrayAd<double, 1>& OUTPUT) const = 0;
