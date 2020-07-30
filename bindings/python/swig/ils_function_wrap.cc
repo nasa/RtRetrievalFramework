@@ -4978,55 +4978,6 @@ struct SWIG_null_deleter {
 #define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
 
 
-SWIGINTERN swig_type_info*
-SWIG_pchar_descriptor(void)
-{
-  static int init = 0;
-  static swig_type_info* info = 0;
-  if (!init) {
-    info = SWIG_TypeQuery("_p_char");
-    init = 1;
-  }
-  return info;
-}
-
-
-SWIGINTERNINLINE PyObject *
-SWIG_FromCharPtrAndSize(const char* carray, size_t size)
-{
-  if (carray) {
-    if (size > INT_MAX) {
-      swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
-      return pchar_descriptor ? 
-	SWIG_InternalNewPointerObj(const_cast< char * >(carray), pchar_descriptor, 0) : SWIG_Py_Void();
-    } else {
-#if PY_VERSION_HEX >= 0x03000000
-#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
-      return PyBytes_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
-#else
-#if PY_VERSION_HEX >= 0x03010000
-      return PyUnicode_DecodeUTF8(carray, static_cast< Py_ssize_t >(size), "surrogateescape");
-#else
-      return PyUnicode_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
-#endif
-#endif
-#else
-      return PyString_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
-#endif
-    }
-  } else {
-    return SWIG_Py_Void();
-  }
-}
-
-
-SWIGINTERNINLINE PyObject *
-SWIG_From_std_string  (const std::string& s)
-{
-  return SWIG_FromCharPtrAndSize(s.data(), s.size());
-}
-
-
 SWIGINTERN int
 SWIG_AsVal_double (PyObject *obj, double *val)
 {
@@ -5163,6 +5114,55 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
     return SWIG_ERROR;
   if (val) *val = r ? true : false;
   return SWIG_OK;
+}
+
+
+SWIGINTERN swig_type_info*
+SWIG_pchar_descriptor(void)
+{
+  static int init = 0;
+  static swig_type_info* info = 0;
+  if (!init) {
+    info = SWIG_TypeQuery("_p_char");
+    init = 1;
+  }
+  return info;
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_FromCharPtrAndSize(const char* carray, size_t size)
+{
+  if (carray) {
+    if (size > INT_MAX) {
+      swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+      return pchar_descriptor ? 
+	SWIG_InternalNewPointerObj(const_cast< char * >(carray), pchar_descriptor, 0) : SWIG_Py_Void();
+    } else {
+#if PY_VERSION_HEX >= 0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+      return PyBytes_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#else
+#if PY_VERSION_HEX >= 0x03010000
+      return PyUnicode_DecodeUTF8(carray, static_cast< Py_ssize_t >(size), "surrogateescape");
+#else
+      return PyUnicode_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#endif
+#endif
+#else
+      return PyString_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#endif
+    }
+  } else {
+    return SWIG_Py_Void();
+  }
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_std_string  (const std::string& s)
+{
+  return SWIG_FromCharPtrAndSize(s.data(), s.size());
 }
 
 
@@ -5791,7 +5791,109 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_IlsFunction_ils(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_IlsFunction_ils__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::IlsFunction *arg1 = (FullPhysics::IlsFunction *) 0 ;
+  FullPhysics::AutoDerivative< double > *arg2 = 0 ;
+  blitz::Array< double,1 > *arg3 = 0 ;
+  FullPhysics::ArrayAd< double,1 > *arg4 = 0 ;
+  bool arg5 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::IlsFunction const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::IlsFunction const > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::AutoDerivative< double > const > tempshared2 ;
+  blitz::Array< double,1 > a3 ;
+  PythonObject numpy3 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__IlsFunction_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IlsFunction_ils" "', argument " "1"" of type '" "FullPhysics::IlsFunction const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::IlsFunction > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::IlsFunction > * >(argp1);
+      arg1 = const_cast< FullPhysics::IlsFunction * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::IlsFunction > * >(argp1);
+      arg1 = const_cast< FullPhysics::IlsFunction * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    // Added mms
+    // First check to see if all ready pointer type
+    FullPhysics::AutoDerivative<double> *ptr;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], (void**)(&ptr), SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t,  0 , &newmem);
+    if (SWIG_IsOK(res2)) {
+      arg2 = ptr;
+    } else {
+      res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,  0 , &newmem);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IlsFunction_ils" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (!argp2) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IlsFunction_ils" "', argument " "2"" of type '" "FullPhysics::AutoDerivative< double > const &""'"); 
+      }
+      if (newmem & SWIG_CAST_NEW_MEMORY) {
+        tempshared2 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2);
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(tempshared2.get());
+      } else {
+        arg2 = const_cast< FullPhysics::AutoDerivative< double > * >(reinterpret_cast< boost::shared_ptr< const FullPhysics::AutoDerivative<double> > * >(argp2)->get());
+      }
+    }
+  }
+  {
+    int res = SWIG_ConvertPtr(swig_obj[2], (void**)(&arg3), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
+      0 );
+    if(!SWIG_IsOK(res)) {
+      numpy3.obj = to_numpy<double>(swig_obj[2]);
+      if(!numpy3.obj)
+      return NULL;
+      a3.reference(to_blitz_array<double, 1>(numpy3));
+      arg3 = &a3;
+    }
+  }
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_FullPhysics__ArrayAdT_double_1_t,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "IlsFunction_ils" "', argument " "4"" of type '" "FullPhysics::ArrayAd< double,1 > &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IlsFunction_ils" "', argument " "4"" of type '" "FullPhysics::ArrayAd< double,1 > &""'"); 
+  }
+  arg4 = reinterpret_cast< FullPhysics::ArrayAd< double,1 > * >(argp4);
+  ecode5 = SWIG_AsVal_bool(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "IlsFunction_ils" "', argument " "5"" of type '" "bool""'");
+  } 
+  arg5 = static_cast< bool >(val5);
+  {
+    try {
+      ((FullPhysics::IlsFunction const *)arg1)->ils((FullPhysics::AutoDerivative< double > const &)*arg2,(blitz::Array< double,1 > const &)*arg3,*arg4,arg5);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IlsFunction_ils__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   FullPhysics::IlsFunction *arg1 = (FullPhysics::IlsFunction *) 0 ;
   FullPhysics::AutoDerivative< double > *arg2 = 0 ;
@@ -5808,9 +5910,8 @@ SWIGINTERN PyObject *_wrap_IlsFunction_ils(PyObject *SWIGUNUSEDPARM(self), PyObj
   PythonObject numpy3 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"IlsFunction_ils",4,4,swig_obj)) SWIG_fail;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   {
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__IlsFunction_t, 0 |  0 , &newmem);
@@ -5883,6 +5984,30 @@ SWIGINTERN PyObject *_wrap_IlsFunction_ils(PyObject *SWIGUNUSEDPARM(self), PyObj
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IlsFunction_ils(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"IlsFunction_ils",0,5,argv))) SWIG_fail;
+  --argc;
+  if (argc == 4) {
+    return _wrap_IlsFunction_ils__SWIG_1(self, argc, argv);
+  }
+  if (argc == 5) {
+    return _wrap_IlsFunction_ils__SWIG_0(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'IlsFunction_ils'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::IlsFunction::ils(FullPhysics::AutoDerivative< double > const &,blitz::Array< double,1 > const &,FullPhysics::ArrayAd< double,1 > &,bool) const\n"
+    "    FullPhysics::IlsFunction::ils(FullPhysics::AutoDerivative< double > const &,blitz::Array< double,1 > const &,FullPhysics::ArrayAd< double,1 > &) const\n");
+  return 0;
 }
 
 
@@ -6766,7 +6891,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"IlsFunction_ils", _wrap_IlsFunction_ils, METH_VARARGS, (char *)"\n"
 		"\n"
 		"virtual void FullPhysics::IlsFunction::ils(const AutoDerivative< double > &wn_center, const blitz::Array<\n"
-		"double, 1 > &wn, ArrayAd< double, 1 > &res) const =0\n"
+		"double, 1 > &wn, ArrayAd< double, 1 > &res, bool\n"
+		"jacobian_optimization=false) const =0\n"
 		"Return response function.\n"
 		"\n"
 		"Note that is function turns out to be a bit of a bottle neck because\n"
@@ -6777,6 +6903,11 @@ static PyMethodDef SwigMethods[] = {
 		"fine if it doesn't happen to be the final result size. But much of the\n"
 		"time we avoid and extra allocation and destruction.\n"
 		"\n"
+		"An important optimization is done in IlsConvolution, where instead of\n"
+		"calculating dres/dstate we create a short gradient [dwn_center,\n"
+		"dscale]. IlsConvolution then applies the chain rule to get the final\n"
+		"results in dstate. The flag \"jac_optimization\" controls this.\n"
+		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
@@ -6784,7 +6915,9 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"wn:  The wavenumbers to return response function for.\n"
 		"\n"
-		"res:  Return the response function for each of the wn value. \n"
+		"res:  Return the response function for each of the wn value.\n"
+		"jacobian_optimization If true, then do the optimization described in\n"
+		"this function. \n"
 		""},
 	 { (char *)"IlsFunction__v_band_name", (PyCFunction)_wrap_IlsFunction__v_band_name, METH_O, (char *)"\n"
 		"\n"

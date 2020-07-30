@@ -34,17 +34,26 @@ public:
 /// do. This avoids recreating the array multiple times. We resize the
 /// output, so it is fine if it doesn't happen to be the final result
 /// size. But much of the time we avoid and extra allocation and
-/// destruction. 
+/// destruction.
+///
+/// An important optimization is done in IlsConvolution, where instead
+/// of calculating dres/dstate we create a short gradient
+/// [dwn_center, dscale]. IlsConvolution then applies the chain rule
+/// to get the final results in dstate. The flag "jac_optimization"
+/// controls this.  
 ///
 /// \param wn_center The wave number of the center of the response
 ///    function
 /// \param wn The wavenumbers to return response function for.
 /// \param res Return the response function for each of the wn value.
+/// \parmm jacobian_optimization If true, then do the optimization
+///    described in this function.  
 //-----------------------------------------------------------------------
 
   virtual void ils
   (const AutoDerivative<double>& wn_center,
-   const blitz::Array<double, 1>& wn, ArrayAd<double, 1>& res) const = 0;
+   const blitz::Array<double, 1>& wn, ArrayAd<double, 1>& res,
+   bool jacobian_optimization = false) const = 0;
 
 //-----------------------------------------------------------------------
 /// Descriptive name of the band.

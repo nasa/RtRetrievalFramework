@@ -153,6 +153,7 @@ class IlsTableLinear(full_physics_swig.ils_function.IlsFunction):
     def response(self):
         return self._v_response()
 
+IlsTableLinear.ils = new_instancemethod(_ils_table.IlsTableLinear_ils, None, IlsTableLinear)
 IlsTableLinear._v_wavenumber = new_instancemethod(_ils_table.IlsTableLinear__v_wavenumber, None, IlsTableLinear)
 IlsTableLinear._v_delta_lambda = new_instancemethod(_ils_table.IlsTableLinear__v_delta_lambda, None, IlsTableLinear)
 IlsTableLinear._v_response = new_instancemethod(_ils_table.IlsTableLinear__v_response, None, IlsTableLinear)
@@ -183,6 +184,7 @@ class IlsTableLog(full_physics_swig.ils_function.IlsFunction):
     def response(self):
         return self._v_response()
 
+IlsTableLog.ils = new_instancemethod(_ils_table.IlsTableLog_ils, None, IlsTableLog)
 IlsTableLog._v_wavenumber = new_instancemethod(_ils_table.IlsTableLog__v_wavenumber, None, IlsTableLog)
 IlsTableLog._v_delta_lambda = new_instancemethod(_ils_table.IlsTableLog__v_delta_lambda, None, IlsTableLog)
 IlsTableLog._v_response = new_instancemethod(_ils_table.IlsTableLog__v_response, None, IlsTableLog)

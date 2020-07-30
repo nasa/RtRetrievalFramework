@@ -29,7 +29,8 @@ public:
   virtual ~IlsTableLinear() {}
   virtual void ils
   (const AutoDerivative<double>& wn_center,
-   const blitz::Array<double, 1>& wn, ArrayAd<double, 1>& OUTPUT) const;
+   const blitz::Array<double, 1>& wn, ArrayAd<double, 1>& OUTPUT,
+   bool jac_optimization=false) const;
 
   %python_attribute(wavenumber, blitz::Array<double, 1>)
   %python_attribute(delta_lambda, blitz::Array<double, 2>)
@@ -56,7 +57,8 @@ public:
   virtual ~IlsTableLog() {}
   virtual void ils
   (const AutoDerivative<double>& wn_center,
-   const blitz::Array<double, 1>& wn, ArrayAd<double, 1>& OUTPUT) const;
+   const blitz::Array<double, 1>& wn, ArrayAd<double, 1>& OUTPUT,
+   bool jac_optimization=false) const;
 
   %python_attribute(wavenumber, blitz::Array<double, 1>)
   %python_attribute(delta_lambda, blitz::Array<double, 2>)
