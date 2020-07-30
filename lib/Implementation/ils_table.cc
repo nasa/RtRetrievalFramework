@@ -123,7 +123,7 @@ template<class Lint>
 void IlsTable<Lint>::ils
 (const AutoDerivative<double>& wn_center,
  const blitz::Array<double, 1>& wn,
- ArrayAd<double, 1>& res) const
+ ArrayAd<double, 1>& res, bool jac_optimization) const
 {
   // Note that this function is a bottleneck, so we have written this
   // for speed at the expense of some clarity.
@@ -138,10 +138,17 @@ void IlsTable<Lint>::ils
   // to speed up the calculation.
   AutoDerivative<double> w;
   w.gradient().resize(wn_center.number_variable());
-  blitz::Array<double, 1> g2 = (-wn_center/coeff(0)).gradient();
+  AutoDerivative<double> scale;
+  // See IlsFunction for description of this optimization.
+  // We use d[wn_center,coeff]
+  if(jac_optimization)
+    scale = AutoDerivative<double>(coeff(0).value(), 1, 2);
+  else
+    scale = coeff(0);
+  blitz::Array<double, 1> g2 = (-wn_center/scale).gradient();
   blitz::Array<double, 1> g1;
-  if(!coeff(0).is_constant())
-    g1.reference((1/coeff(0)).gradient());
+  if(!scale.is_constant())
+    g1.reference((1/scale).gradient());
   w.gradient() = g2;
 
   // This returns the value for the first wn not less than wn_center.
@@ -153,8 +160,8 @@ void IlsTable<Lint>::ils
     --inter;
 
   for(int i = 0; i < res.rows(); ++i) {
-    w.value() = (wn(i) - wn_center.value())/coeff(0).value();
-    if(!coeff(0).is_constant())
+    w.value() = (wn(i) - wn_center.value())/scale.value();
+    if(!scale.is_constant())
       w.gradient() = wn(i) * g1 + g2;
     inter->second.interpolate(w, res(i));
   }
@@ -168,8 +175,8 @@ void IlsTable<Lint>::ils
       f = (wn_center - wn1) / (wn2 - wn1);
       for(int i = 0; i < res.rows(); ++i) {
         w.value() = wn(i) - wn_center.value();
-	w.value() = (wn(i) - wn_center.value())/coeff(0).value();
-	if(!coeff(0).is_constant())
+	w.value() = (wn(i) - wn_center.value())/scale.value();
+	if(!scale.is_constant())
 	  w.gradient() = wn(i) * g1 + g2;
         inter->second.interpolate(w, tref);
         double v = res(i).value();

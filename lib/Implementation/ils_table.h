@@ -92,7 +92,7 @@ public:
   virtual void ils
   (const AutoDerivative<double>& wn_center,
    const blitz::Array<double, 1>& wn,
-   ArrayAd<double, 1>& res) const;
+   ArrayAd<double, 1>& res, bool jac_optimization=false) const;
 
   virtual std::string band_name() const {return band_name_;}
   virtual std::string hdf_band_name() const { return hdf_band_name_;}

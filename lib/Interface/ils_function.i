@@ -37,7 +37,8 @@ public:
   virtual void remove_observer(Observer<IlsFunction>& Obs);
   virtual void ils
   (const AutoDerivative<double>& wn_center,
-   const blitz::Array<double, 1>& wn, ArrayAd<double, 1>& OUTPUT) const = 0;
+   const blitz::Array<double, 1>& wn, ArrayAd<double, 1>& OUTPUT,
+   bool jac_optimization=false) const = 0;
   %python_attribute(band_name, virtual std::string);
   %python_attribute(hdf_band_name, virtual std::string);
 };

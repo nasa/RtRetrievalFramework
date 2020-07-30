@@ -105,8 +105,6 @@ ArrayAd<double, 1> IlsConvolution::apply_ils
 				 Hres_rad.number_variable()));
   // A few scratch variables, defined outside of loop so we don't keep
   // recreating them.
-  Array<double, 1> one(2);
-  one = 1;
   Array<double, 1> normfact_grad(disp_wn.number_variable());
   ArrayAd<double, 1> conv(1, res.number_variable());
   ArrayAd<double, 1> response;
@@ -126,27 +124,31 @@ ArrayAd<double, 1> IlsConvolution::apply_ils
 
     // Convolve with response
 
-    // For speed, we just calculate dresponse/dwn_center. This along
+    // For speed, we just calculate dresponse/d[wn_center, coeff]. This along
     // with the chain rule is enough to calculate the Jacobian, and is
     // faster. 
-    AutoDerivative<double> wn_center2(wn_center.value(), one);
-    ils_func->ils(wn_center2, Hres_wn(r), response);
+    AutoDerivative<double> wn_center2(wn_center.value(), 0, 2);
+    ils_func->ils(wn_center2, Hres_wn(r), response, true);
+
+    // Note that this is currently hardcoded to assume at most one
+    // coefficent, (like in IlsTable with 1 scale, of IlsGaussian with
+    // 0 coefficients)
+    Array<double, 1> coeff_grad;
+    if(ils_func->used_flag_func().rows() > 1)
+      throw Exception("IlsConvolution is currently hardwired to assume at most one coefficient");
+    if(ils_func->used_flag_func().rows() == 1 && ils_func->used_flag_func()(0))
+      coeff_grad.reference(ils_func->coeff_func().jacobian()(0,Range::all()));
 
     // Response may not be normalized, so calculate normalization
     // factor.
     AutoDerivative<double> normfact_dwn = integrate(Hres_wn(r), response);
     // Convert gradient from dwn_center to dState
     normfact_grad = normfact_dwn.gradient()(0) * wn_center.gradient();
+    if(coeff_grad.rows() > 0)
+      normfact_grad += normfact_dwn.gradient()(1) * coeff_grad;
     AutoDerivative<double> normfact(normfact_dwn.value(), normfact_grad);
 
-    // Note that this is currently hardcoded to assume only one
-    // scaling variable, so what we have in IlsTable. 
-    Array<double, 1> temp;
-    if(ils_func->used_flag_func().rows() > 1)
-      throw Exception("IlsConvolution is currently hardwired to assume at most one coefficient");
-    if(ils_func->used_flag_func().rows() == 1 && ils_func->used_flag_func()(0))
-      temp.reference(ils_func->coeff_func().jacobian()(0,Range::all()));
-
+    
     conv.resize(response.rows(), res.number_variable());
     conv.value() = response.value() * Hres_rad(r).value();
 
@@ -154,24 +156,24 @@ ArrayAd<double, 1> IlsConvolution::apply_ils
       conv.jacobian()  = response.value()(i1) * Hres_rad(r).jacobian()(i1, i2) +
         response.jacobian()(Range::all(), 0)(i1) * wn_center.gradient()(i2) * 
         Hres_rad(r).value()(i1);
-      if (ils_func->used_flag_func()(0))
+      if (coeff_grad.rows() > 0)
         conv.jacobian() += response.jacobian()(Range::all(), 1)(i1) *
-          temp(i2) * Hres_rad(r).value()(i1);
+          coeff_grad(i2) * Hres_rad(r).value()(i1);
     }
 
     else if (!wn_center.is_constant()) {
       conv.jacobian()  = response.jacobian()(Range::all(), 0)(i1) * 
         wn_center.gradient()(i2) * Hres_rad(r).value()(i1);
-      if (ils_func->used_flag_func()(0))
+      if (coeff_grad.rows() > 0)
         conv.jacobian() += response.jacobian()(Range::all(), 1)(i1) *
-          temp(i2) * Hres_rad(r).value()(i1);
+          coeff_grad(i2) * Hres_rad(r).value()(i1);
     }
 
     else if (!Hres_rad.is_constant()) {
       conv.jacobian()  = response.value()(i1) * Hres_rad(r).jacobian()(i1, i2);
-      if (ils_func->used_flag_func()(0))
+      if (coeff_grad.rows() > 0)
         conv.jacobian() += response.jacobian()(Range::all(), 1)(i1) *
-          temp(i2) * Hres_rad(r).value()(i1);
+          coeff_grad(i2) * Hres_rad(r).value()(i1);
     }
 
     res(i) = integrate(Hres_wn(r), conv) / normfact;

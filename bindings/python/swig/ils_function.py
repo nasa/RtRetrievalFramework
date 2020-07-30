@@ -177,11 +177,12 @@ class IlsFunction(full_physics_swig.state_vector.StateVectorObserver, Observable
     __repr__ = _swig_repr
     __swig_destroy__ = _ils_function.delete_IlsFunction
 
-    def ils(self, wn_center, wn, OUTPUT):
+    def ils(self, wn_center, wn, OUTPUT, jac_optimization=False):
         """
 
         virtual void FullPhysics::IlsFunction::ils(const AutoDerivative< double > &wn_center, const blitz::Array<
-        double, 1 > &wn, ArrayAd< double, 1 > &res) const =0
+        double, 1 > &wn, ArrayAd< double, 1 > &res, bool
+        jacobian_optimization=false) const =0
         Return response function.
 
         Note that is function turns out to be a bit of a bottle neck because
@@ -192,6 +193,11 @@ class IlsFunction(full_physics_swig.state_vector.StateVectorObserver, Observable
         fine if it doesn't happen to be the final result size. But much of the
         time we avoid and extra allocation and destruction.
 
+        An important optimization is done in IlsConvolution, where instead of
+        calculating dres/dstate we create a short gradient [dwn_center,
+        dscale]. IlsConvolution then applies the chain rule to get the final
+        results in dstate. The flag "jac_optimization" controls this.
+
         Parameters:
         -----------
 
@@ -199,9 +205,11 @@ class IlsFunction(full_physics_swig.state_vector.StateVectorObserver, Observable
 
         wn:  The wavenumbers to return response function for.
 
-        res:  Return the response function for each of the wn value. 
+        res:  Return the response function for each of the wn value.
+        jacobian_optimization If true, then do the optimization described in
+        this function. 
         """
-        return _ils_function.IlsFunction_ils(self, wn_center, wn, OUTPUT)
+        return _ils_function.IlsFunction_ils(self, wn_center, wn, OUTPUT, jac_optimization)
 
 
     def _v_band_name(self):
