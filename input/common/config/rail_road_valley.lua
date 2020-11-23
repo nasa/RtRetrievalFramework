@@ -336,45 +336,6 @@ function init_rrv(config)
         table.insert(config.fm.instrument.instrument_correction.ic_target, 'radiance_scaling')
     end
 
-    -- Disable EOF
-    if (config.fm.instrument.instrument_correction.ic_h_gain) then
-        -- Remove for GOSAT
-        if (table.contains(config.fm.instrument.instrument_correction.ic_h_gain, "eof_h_gain_1")) then
-            remove_at = table.index(config.fm.instrument.instrument_correction.ic_h_gain, "eof_h_gain_1")
-            table.remove(config.fm.instrument.instrument_correction.ic_h_gain, remove_at)
-        end
-        if (table.contains(config.fm.instrument.instrument_correction.ic_m_gain, "eof_m_gain_1")) then
-            remove_at = table.index(config.fm.instrument.instrument_correction.ic_m_gain, "eof_m_gain_1")
-            table.remove(config.fm.instrument.instrument_correction.ic_m_gain, remove_at)
-        end
-        config.fm.instrument.instrument_correction.eof_h_gain_1.retrieve_bands = { false, false, false }
-        config.fm.instrument.instrument_correction.eof_m_gain_1.retrieve_bands = { false, false, false }
-    else
-        -- Remove eof_ from OCO instrument correction tables
-        ic_tables = { config.fm.instrument.instrument_correction.ic_glint, 
-                      config.fm.instrument.instrument_correction.ic_nadir,
-                      config.fm.instrument.instrument_correction.ic_target, }
-        for i, ic in ipairs(ic_tables) do
-            -- Build new list of values
-            new_ic_values = {}
-            for i, ic_name in ipairs(ic) do
-                if (not string.match(ic_name, "eof_")) then
-                    table.insert(new_ic_values, ic_name)
-                end
-            end
-
-            -- Clear old table
-            for k, v in pairs(ic) do
-                ic[k] = nil
-            end
-
-            -- Add new values to old table
-            for i, ic_name in ipairs(new_ic_values) do
-                table.insert(ic, ic_name)
-            end
-        end
-    end
-
     -- Disable zero offset correction retrieval
     if (config.fm.instrument.instrument_correction.zero_offset_waveform) then
         config.fm.instrument.instrument_correction.zero_offset_waveform.retrieve_bands = { false, false, false }
