@@ -14,4 +14,5 @@ ococonfig_DATA += @ococonfigsrc@/config_uq.lua
 input_DATA += @ocoinputsrc@/l2_oco_static_input.h5
 input_DATA += @ocoinputsrc@/l2_oco_eof.h5
 input_DATA += @ocoinputsrc@/l2_oco3_static_input.h5
-input_DATA += @ocoinputsrc@/l2_oco3_eof.h5
+input_DATA += @ocoinputsrc@/l2_oco3_eof_ioc_B10208_QTS_land_sorted_L2.h5
+input_DATA += @ocoinputsrc@/l2_oco3_eof_ioc_B10208_QTS_oceanG_alt3_falt1_sorted_L2.h5

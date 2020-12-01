@@ -3070,7 +3070,8 @@ input_DATA = @commoninputsrc@/l2_solar_model.h5 \
 	@ocoinputsrc@/l2_oco_static_input.h5 \
 	@ocoinputsrc@/l2_oco_eof.h5 \
 	@ocoinputsrc@/l2_oco3_static_input.h5 \
-	@ocoinputsrc@/l2_oco3_eof.h5
+	@ocoinputsrc@/l2_oco3_eof_ioc_B10208_QTS_land_sorted_L2.h5 \
+	@ocoinputsrc@/l2_oco3_eof_ioc_B10208_QTS_oceanG_alt3_falt1_sorted_L2.h5
 
 # Make sure to look in local install directory first, in case we are
 # building our own copy of libraries also found in thirdparty library area.
