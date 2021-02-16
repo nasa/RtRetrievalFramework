@@ -284,37 +284,6 @@ function init_rrv(config)
     config.fm.atmosphere.ground.lambertian.creator = rrv_lamberitan_retrieval 
     config.fm.atmosphere.ground.lambertian.retrieve_bands = { false, false, false }
 
-    -------------
-    -- Aerosol --
-    -------------
-
-    -- Set up aerosol with one type that models RRV aerosol setup
-    -- Note that in l2_aerosol_combined.h5 the WCO2 and SCO2 aerosol
-    -- properties have been removed making this an ABO2 only
-    -- aerosol type
-
-    aerosol_log_rrv = ConfigCommon.aerosol_log_shape_gaussian:new()
-
-    function aerosol_log_rrv:apriori_v()
-        local ap_val = self:apriori(self.name)
-        local tot_aod = r(self):read_double_1d("/atmosphere/tau_aerosol_band_ctr")
-        -- Just use value mean for the ABAND from the dataset
-        ap_val:set(0, math.log(tot_aod(0)))
-        return ap_val
-    end
-
-    config.fm.atmosphere.aerosol = {
-       creator = ConfigCommon.aerosol_creator,
-       aerosols = {"Kahn_5a"},
-       Kahn_5a = {
-          creator = aerosol_log_rrv,
-          apriori = ConfigCommon.hdf_aerosol_apriori("Aerosol", "Gaussian/Log"),
-          covariance = ConfigCommon.hdf_aerosol_covariance("Aerosol", "Gaussian/Log"),
-          property = ConfigCommon.hdf_aerosol_property("kahn_5a_rrv"),
-          retrieved = false,
-       },
-    }
-
     ----------------
     -- Instrument --
     ----------------
