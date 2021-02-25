@@ -50,6 +50,31 @@ function OcoConfig.instrument_correction_list_acquisition_mode:sub_object_key()
 end
 
 ------------------------------------------------------------
+--- Determine land vs water, and
+--- select the instrument corrections based on this.
+------------------------------------------------------------
+
+
+OcoConfig.instrument_correction_list_land_water = ConfigCommon.instrument_correction_list:new()
+
+
+function OcoConfig.instrument_correction_list_land_water:sub_object_key()
+
+   local lw
+   lw = self.config:land_or_water()
+   
+   local res
+   if lw == "land" then 
+      res = self.ic_land
+   elseif lw == "water" then 
+      res = self.ic_water
+   else
+      error("Unrecognized land/water " .. lw)
+   end
+   return res
+end
+
+------------------------------------------------------------
 -- Determine sounding id list from HDF file
 -- Overrides empty behavior from ConfigCommon
 ------------------------------------------------------------
