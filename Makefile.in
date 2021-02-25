@@ -1006,6 +1006,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/turn_on_fe_exception.cc \
 	@implsrc@/l2_fp_configuration_lua.cc \
 	@implsrc@/nonuniform_spectrum_sampling.cc \
 	@implsrc@/log_timing.cc @implsrc@/temperature_met.cc \
+	@implsrc@/temperature_level.cc \
 	@implsrc@/temperature_level_offset.cc \
 	@implsrc@/absorber_vmr_met.cc @implsrc@/absorber_vmr_level.cc \
 	@implsrc@/absorber_vmr_log_level.cc \
@@ -1295,6 +1296,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-turn_on_fe_exception.lo \
 	@implsrc@/libfp_la-nonuniform_spectrum_sampling.lo \
 	@implsrc@/libfp_la-log_timing.lo \
 	@implsrc@/libfp_la-temperature_met.lo \
+	@implsrc@/libfp_la-temperature_level.lo \
 	@implsrc@/libfp_la-temperature_level_offset.lo \
 	@implsrc@/libfp_la-absorber_vmr_met.lo \
 	@implsrc@/libfp_la-absorber_vmr_level.lo \
@@ -2102,7 +2104,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@implsrc@/l2_fp_configuration_lua.h \
 	@implsrc@/nonuniform_spectrum_sampling.h \
 	@implsrc@/log_timing.h @implsrc@/l2_fp_configuration.h \
-	@implsrc@/temperature_met.h \
+	@implsrc@/temperature_met.h @implsrc@/temperature_level.h \
 	@implsrc@/temperature_level_offset.h \
 	@implsrc@/absorber_vmr_met.h @implsrc@/absorber_vmr_level.h \
 	@implsrc@/absorber_vmr_log_level.h \
@@ -2795,7 +2797,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@implsrc@/l2_fp_configuration_lua.h \
 	@implsrc@/nonuniform_spectrum_sampling.h \
 	@implsrc@/log_timing.h @implsrc@/l2_fp_configuration.h \
-	@implsrc@/temperature_met.h \
+	@implsrc@/temperature_met.h @implsrc@/temperature_level.h \
 	@implsrc@/temperature_level_offset.h \
 	@implsrc@/absorber_vmr_met.h @implsrc@/absorber_vmr_level.h \
 	@implsrc@/absorber_vmr_log_level.h \
@@ -3552,6 +3554,7 @@ libfp_la_SOURCES = @supportsrc@/turn_on_fe_exception.cc \
 	@implsrc@/l2_fp_configuration_lua.cc \
 	@implsrc@/nonuniform_spectrum_sampling.cc \
 	@implsrc@/log_timing.cc @implsrc@/temperature_met.cc \
+	@implsrc@/temperature_level.cc \
 	@implsrc@/temperature_level_offset.cc \
 	@implsrc@/absorber_vmr_met.cc @implsrc@/absorber_vmr_level.cc \
 	@implsrc@/absorber_vmr_log_level.cc \
@@ -5138,6 +5141,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-temperature_met.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-temperature_level.lo: @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-temperature_level_offset.lo:  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-absorber_vmr_met.lo: @implsrc@/$(am__dirstamp) \
@@ -6445,6 +6450,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-stokes_coefficient_constant.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-stokes_coefficient_fraction.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-tccon_apriori.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-temperature_level.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-temperature_level_offset.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-temperature_met.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-twostream_driver.Plo@am__quote@
@@ -10273,6 +10279,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/temperature_met.cc' object='@implsrc@/libfp_la-temperature_met.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-temperature_met.lo `test -f '@implsrc@/temperature_met.cc' || echo '$(srcdir)/'`@implsrc@/temperature_met.cc
+
+@implsrc@/libfp_la-temperature_level.lo: @implsrc@/temperature_level.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-temperature_level.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-temperature_level.Tpo -c -o @implsrc@/libfp_la-temperature_level.lo `test -f '@implsrc@/temperature_level.cc' || echo '$(srcdir)/'`@implsrc@/temperature_level.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-temperature_level.Tpo @implsrc@/$(DEPDIR)/libfp_la-temperature_level.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/temperature_level.cc' object='@implsrc@/libfp_la-temperature_level.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-temperature_level.lo `test -f '@implsrc@/temperature_level.cc' || echo '$(srcdir)/'`@implsrc@/temperature_level.cc
 
 @implsrc@/libfp_la-temperature_level_offset.lo: @implsrc@/temperature_level_offset.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-temperature_level_offset.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-temperature_level_offset.Tpo -c -o @implsrc@/libfp_la-temperature_level_offset.lo `test -f '@implsrc@/temperature_level_offset.cc' || echo '$(srcdir)/'`@implsrc@/temperature_level_offset.cc

@@ -255,6 +255,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(TemperatureFixedLevel);
   REGISTER_LUA_LIST(TemperatureMet);
   REGISTER_LUA_LIST(TemperatureMetOutput);
+  REGISTER_LUA_LIST(TemperatureLevel);
   REGISTER_LUA_LIST(TemperatureLevelOffset);
   REGISTER_LUA_LIST(TemperatureLevelOffsetOutput);
   REGISTER_LUA_LIST(TemperatureFixedLevelOutput);

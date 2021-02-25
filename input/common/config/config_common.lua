@@ -860,11 +860,11 @@ function ConfigCommon:met_windspeed()
 end
 
 function ConfigCommon:met_temperature()
-   return self.config.met:temperature(self.config.pinp:pressure_level())
+   return self.config.met:temperature(self.config.pressure:pressure_level())
 end
 
 function ConfigCommon:met_h2o_vmr()
-   return self.config.met:vmr("H2O", self.config.pinp:pressure_level())
+   return self.config.met:vmr("H2O", self.config.pressure:pressure_level())
 end
 
 ------------------------------------------------------------
@@ -2135,6 +2135,21 @@ end
 
 function ConfigCommon.temperature_level_offset:register_output(ro)
    ro:push_back(TemperatureLevelOffsetOutput.create(self.config.temperature))
+end
+
+------------------------------------------------------------
+--- Temperature using specificed level values
+--- where we fit all levels
+------------------------------------------------------------
+
+ConfigCommon.temperature_level = CreatorApriori:new {}
+
+function ConfigCommon.temperature_level:create()
+   return TemperatureLevel(self:apriori(), self.config.pressure, self:retrieval_flag())
+end
+
+function ConfigCommon.temperature_level:register_output(ro)
+  --ro:push_back(TemperatureLevelOutput.create(self.config.temperature))
 end
 
 ------------------------------------------------------------
