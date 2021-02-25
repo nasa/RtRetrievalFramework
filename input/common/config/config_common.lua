@@ -867,6 +867,15 @@ function ConfigCommon:met_h2o_vmr()
    return self.config.met:vmr("H2O", self.config.pressure:pressure_level())
 end
 
+-- These use the deprecated fixed pressure levels object
+function ConfigCommon:met_temperature_fixed_pressure()
+   return self.config.met:temperature(self.config.pinp:pressure_level())
+end
+
+function ConfigCommon:met_h2o_vmr_fixed_pressure()
+   return self.config.met:vmr("H2O", self.config.pinp:pressure_level())
+end
+
 ------------------------------------------------------------
 --- Load the TCCON apriori object using ECMWF data
 ------------------------------------------------------------
