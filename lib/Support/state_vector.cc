@@ -118,6 +118,13 @@ blitz::Array<bool, 1> StateVector::used_flag() const
 void SubStateVectorObserver::notify_update(const StateVector& Sv)
 {
   if(Sv.state().rows() < pstart + plen) {
+    // blitz::Array<std::string, 1> svname =Sv.state_vector_name();
+    // for(int i = 0; i < svname.rows(); ++i) {
+    //   if(i < Sv.state().rows())
+    // 	std::cerr << Sv.state()(i) << " : " << svname(i) << "\n";
+    //   else
+    // 	std::cerr <<  "Out_of_range : " << svname(i) << "\n";
+    // }
     std::stringstream err_msg;
     err_msg << "StateVector is of size: "
 	    << Sv.state().rows()

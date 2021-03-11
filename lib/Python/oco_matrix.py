@@ -261,7 +261,7 @@ class OcoMatrix(object):
         if header_less:
             self.data = []
         else:
-            self.data = numpy.zeros((self._dims[0], self._dims[1]), dtype=data_type, order='Fortran')
+            self.data = numpy.zeros((self._dims[0], self._dims[1]), dtype=data_type, order='F')
 
         dst_row = 0
         dst_col = 0

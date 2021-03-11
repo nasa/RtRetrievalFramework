@@ -32,7 +32,7 @@ config.fm.input = {
 }
 
 config.fm.atmosphere.pressure.apriori = ConfigCommon.met_pressure
-config.fm.atmosphere.temperature.levels.apriori = ConfigCommon.met_temperature
-config.fm.atmosphere.absorber.H2O.apriori = ConfigCommon.met_h2o_vmr
+config.fm.atmosphere.temperature.levels.apriori = ConfigCommon.met_temperature_fixed_pressure
+config.fm.atmosphere.absorber.H2O.apriori = ConfigCommon.met_h2o_vmr_fixed_pressure
 
 config:do_config()

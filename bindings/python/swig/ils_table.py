@@ -128,14 +128,16 @@ def _new_from_set(cls, version, *args):
     inst.set(*args)
     return inst
 
-import full_physics_swig.ils_function
+import full_physics_swig.sub_state_vector_array
 import full_physics_swig.generic_object
+import full_physics_swig.ils_function
 class IlsTableLinear(full_physics_swig.ils_function.IlsFunction):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
     def __init__(self, *args):
         _ils_table.IlsTableLinear_swiginit(self, _ils_table.new_IlsTableLinear(*args))
+    __swig_destroy__ = _ils_table.delete_IlsTableLinear
 
     @property
     def wavenumber(self):
@@ -151,11 +153,12 @@ class IlsTableLinear(full_physics_swig.ils_function.IlsFunction):
     def response(self):
         return self._v_response()
 
-    __swig_destroy__ = _ils_table.delete_IlsTableLinear
+IlsTableLinear.ils = new_instancemethod(_ils_table.IlsTableLinear_ils, None, IlsTableLinear)
 IlsTableLinear._v_wavenumber = new_instancemethod(_ils_table.IlsTableLinear__v_wavenumber, None, IlsTableLinear)
 IlsTableLinear._v_delta_lambda = new_instancemethod(_ils_table.IlsTableLinear__v_delta_lambda, None, IlsTableLinear)
 IlsTableLinear._v_response = new_instancemethod(_ils_table.IlsTableLinear__v_response, None, IlsTableLinear)
 IlsTableLinear.create_delta_lambda_to_response = new_instancemethod(_ils_table.IlsTableLinear_create_delta_lambda_to_response, None, IlsTableLinear)
+IlsTableLinear.clone = new_instancemethod(_ils_table.IlsTableLinear_clone, None, IlsTableLinear)
 IlsTableLinear_swigregister = _ils_table.IlsTableLinear_swigregister
 IlsTableLinear_swigregister(IlsTableLinear)
 
@@ -165,6 +168,7 @@ class IlsTableLog(full_physics_swig.ils_function.IlsFunction):
 
     def __init__(self, *args):
         _ils_table.IlsTableLog_swiginit(self, _ils_table.new_IlsTableLog(*args))
+    __swig_destroy__ = _ils_table.delete_IlsTableLog
 
     @property
     def wavenumber(self):
@@ -180,11 +184,12 @@ class IlsTableLog(full_physics_swig.ils_function.IlsFunction):
     def response(self):
         return self._v_response()
 
-    __swig_destroy__ = _ils_table.delete_IlsTableLog
+IlsTableLog.ils = new_instancemethod(_ils_table.IlsTableLog_ils, None, IlsTableLog)
 IlsTableLog._v_wavenumber = new_instancemethod(_ils_table.IlsTableLog__v_wavenumber, None, IlsTableLog)
 IlsTableLog._v_delta_lambda = new_instancemethod(_ils_table.IlsTableLog__v_delta_lambda, None, IlsTableLog)
 IlsTableLog._v_response = new_instancemethod(_ils_table.IlsTableLog__v_response, None, IlsTableLog)
 IlsTableLog.create_delta_lambda_to_response = new_instancemethod(_ils_table.IlsTableLog_create_delta_lambda_to_response, None, IlsTableLog)
+IlsTableLog.clone = new_instancemethod(_ils_table.IlsTableLog_clone, None, IlsTableLog)
 IlsTableLog_swigregister = _ils_table.IlsTableLog_swigregister
 IlsTableLog_swigregister(IlsTableLog)
 
