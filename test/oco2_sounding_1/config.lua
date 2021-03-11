@@ -2,6 +2,13 @@ require "oco_base_config"
 
 config = OcoBaseConfig:new()
 
+-- Don't normally have on, but nice to have easy way to test the new
+-- ILS scaling
+-- config.fm.instrument.ils_func.use_scale = true
+-- config.fm.instrument.ils_func.retrieve_bands = {true, true, true}
+-- config.fm.instrument.ils_func.scale_apriori = {1.0, 1.0, 1.0}
+-- config.fm.instrument.ils_func.scale_cov = {0.001, 0.001, 0.001}
+
 -- For now, suppress use of EOFs. These are in bit of flux, and there is
 -- no reason to change the output from this test each time we change the
 -- EOFs.

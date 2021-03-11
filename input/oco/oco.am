@@ -9,6 +9,7 @@ ococonfig_DATA = @ococonfigsrc@/config.lua
 ococonfig_DATA += @ococonfigsrc@/config_oco3.lua
 ococonfig_DATA += @ococonfigsrc@/config_uplooking.lua
 ococonfig_DATA += @ococonfigsrc@/config_rrv.lua
+ococonfig_DATA += @ococonfigsrc@/config_oco3_rrv.lua
 ococonfig_DATA += @ococonfigsrc@/config_uq.lua
 input_DATA += @ocoinputsrc@/l2_oco_static_input.h5
 input_DATA += @ocoinputsrc@/l2_oco_eof.h5

@@ -1,6 +1,7 @@
 #ifndef ILS_FUNCTION_H
 #define ILS_FUNCTION_H
-#include "printable.h"
+#include "state_vector.h"
+#include "observer.h"
 #include "array_ad.h"
 #include <blitz/array.h>
 
@@ -14,9 +15,14 @@ namespace FullPhysics {
   class should normalize this if needed. 
 *******************************************************************/
 
-class IlsFunction : public Printable<IlsFunction> {
+class IlsFunction : virtual public StateVectorObserver,
+                    public Observable<IlsFunction> {
 public:
   virtual ~IlsFunction() {}
+  virtual void add_observer(Observer<IlsFunction>& Obs) 
+  { add_observer_do(Obs, *this);}
+  virtual void remove_observer(Observer<IlsFunction>& Obs) 
+  { remove_observer_do(Obs, *this);}
 
 //-----------------------------------------------------------------------
 /// Return response function.
@@ -28,17 +34,26 @@ public:
 /// do. This avoids recreating the array multiple times. We resize the
 /// output, so it is fine if it doesn't happen to be the final result
 /// size. But much of the time we avoid and extra allocation and
-/// destruction. 
+/// destruction.
+///
+/// An important optimization is done in IlsConvolution, where instead
+/// of calculating dres/dstate we create a short gradient
+/// [dwn_center, dscale]. IlsConvolution then applies the chain rule
+/// to get the final results in dstate. The flag "jac_optimization"
+/// controls this.  
 ///
 /// \param wn_center The wave number of the center of the response
 ///    function
 /// \param wn The wavenumbers to return response function for.
 /// \param res Return the response function for each of the wn value.
+/// \parmm jacobian_optimization If true, then do the optimization
+///    described in this function.  
 //-----------------------------------------------------------------------
 
   virtual void ils
   (const AutoDerivative<double>& wn_center,
-   const blitz::Array<double, 1>& wn, ArrayAd<double, 1>& res) const = 0;
+   const blitz::Array<double, 1>& wn, ArrayAd<double, 1>& res,
+   bool jacobian_optimization = false) const = 0;
 
 //-----------------------------------------------------------------------
 /// Descriptive name of the band.
@@ -58,7 +73,16 @@ public:
 
   virtual std::string hdf_band_name() const { return band_name();}
 
-  virtual void print(std::ostream& os) const { os << "IlsFunction";}
+  virtual ArrayAd<double, 1> coeff_func() const
+  { // Default is no coefficients
+    ArrayAd<double, 1> res;
+    return res;
+  }
+  virtual blitz::Array<bool, 1> used_flag_func() const
+  { // Default is no coefficients
+    blitz::Array<bool, 1> res;
+    return res;
+  }
 };
 }
 #endif
