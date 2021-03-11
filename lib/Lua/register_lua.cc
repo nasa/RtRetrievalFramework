@@ -255,6 +255,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(TemperatureFixedLevel);
   REGISTER_LUA_LIST(TemperatureMet);
   REGISTER_LUA_LIST(TemperatureMetOutput);
+  REGISTER_LUA_LIST(TemperatureLevel);
   REGISTER_LUA_LIST(TemperatureLevelOffset);
   REGISTER_LUA_LIST(TemperatureLevelOffsetOutput);
   REGISTER_LUA_LIST(TemperatureFixedLevelOutput);
@@ -318,6 +319,8 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(StateVectorOutput);
   REGISTER_LUA_LIST(Level1bOutput);
   REGISTER_LUA_LIST(DispersionPolynomialOutput);
+  REGISTER_LUA_LIST(IlsTableLinearOutput);
+  REGISTER_LUA_LIST(IlsTableLogOutput);
   REGISTER_LUA_LIST(StokesCoefficientFractionOutput);
   REGISTER_LUA_LIST(ErrorAnalysisOutput);
   REGISTER_LUA_LIST(ForwardModelOutput);
