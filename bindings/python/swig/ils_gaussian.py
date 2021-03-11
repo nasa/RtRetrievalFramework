@@ -129,6 +129,7 @@ def _new_from_set(cls, version, *args):
     return inst
 
 import full_physics_swig.ils_function
+import full_physics_swig.state_vector
 import full_physics_swig.generic_object
 class IlsGaussian(full_physics_swig.ils_function.IlsFunction):
     """
@@ -144,14 +145,15 @@ class IlsGaussian(full_physics_swig.ils_function.IlsFunction):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
 
-    def ils(self, wn_center, wn, OUTPUT):
+    def ils(self, wn_center, wn, OUTPUT, jac_optimization=False):
         """
 
         void IlsGaussian::ils(const AutoDerivative< double > &wn_center, const blitz::Array<
-        double, 1 > &wn, ArrayAd< double, 1 > &res) const
+        double, 1 > &wn, ArrayAd< double, 1 > &res, bool
+        jac_optimization=false) const
 
         """
-        return _ils_gaussian.IlsGaussian_ils(self, wn_center, wn, OUTPUT)
+        return _ils_gaussian.IlsGaussian_ils(self, wn_center, wn, OUTPUT, jac_optimization)
 
     __swig_destroy__ = _ils_gaussian.delete_IlsGaussian
 IlsGaussian.ils = new_instancemethod(_ils_gaussian.IlsGaussian_ils, None, IlsGaussian)

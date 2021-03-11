@@ -3,9 +3,15 @@
 using namespace FullPhysics;
 #ifdef HAVE_LUA
 #include "register_lua.h"
+
+
+blitz::Array<double, 1> pressure_level(const boost::shared_ptr<Pressure>& press) {
+    return press->pressure_grid().value.value();
+}
+
 REGISTER_LUA_CLASS(Pressure)
 .def("max_number_level", &Pressure::max_number_level)
-.def("pressure_grid", &Pressure::pressure_grid)
+.def("pressure_level", &pressure_level)
 REGISTER_LUA_END()
 #endif
 
