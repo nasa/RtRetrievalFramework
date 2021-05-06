@@ -15,3 +15,7 @@ Oco3BaseConfig = OcoBaseConfig:new {
 --- Use land/water to select the EOFs. Might possibly get moved into
 --- OcoBaseConfig, but for now OCO-2 and OCO-3 are different.
 Oco3BaseConfig.fm.instrument.instrument_correction.creator = OcoConfig.instrument_correction_list_land_water
+
+--- Use slightly different scaling for a-band. May get moved into use for
+--- OCO-2 also, but for now have this different
+Oco3BaseConfig.fm.atmosphere.absorber.O2.table_scale = 1.0005
