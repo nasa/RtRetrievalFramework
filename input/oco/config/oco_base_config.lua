@@ -477,6 +477,8 @@ OcoBaseConfig = OcoConfig:new {
          fluorescence = {
             apriori = ConfigCommon.fluorescence_apriori("Fluorescence"),
             sif_sigma_scale = 1.0,
+	    -- factor of 1.3 is the mean scale between 757 and 771 in real data.
+	    sif_uncert_ratio = 1.3,
             covariance = ConfigCommon.fluorescence_covariance("Fluorescence"),
             creator = OcoConfig.fluorescence_effect_land_only,
             reference_point = ConfigCommon.hdf_read_double_with_unit("Fluorescence/reference_point"),
