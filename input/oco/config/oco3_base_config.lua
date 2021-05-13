@@ -19,3 +19,7 @@ Oco3BaseConfig.fm.instrument.instrument_correction.creator = OcoConfig.instrumen
 --- Use slightly different scaling for a-band. May get moved into use for
 --- OCO-2 also, but for now have this different
 Oco3BaseConfig.fm.atmosphere.absorber.O2.table_scale = 1.0005
+
+--- Use 4 EOFs for OCO3
+Oco3BaseConfig.fm.instrument.instrument_correction.ic_land = { "eof_land_1", "eof_land_2","eof_land_3", "eof_land_4"}
+Oco3BaseConfig.fm.instrument.instrument_correction.ic_water = { "eof_water_1", "eof_water_2","eof_water_3",}
