@@ -67,11 +67,11 @@ class InputContainerChooser(object):
 
 class Timer(object):    
     def __enter__(self):
-        self.start = time.clock()
+        self.start = time.process_time()
         return self
 
     def __exit__(self, *args):
-        self.end = time.clock()
+        self.end = time.process_time()
         self.interval = self.end - self.start
 
 class ProgressWriter(object):
