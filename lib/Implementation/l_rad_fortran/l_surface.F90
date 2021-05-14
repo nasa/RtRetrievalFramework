@@ -1,6 +1,9 @@
 module l_surface_m
 implicit none
 
+!  10/26/20. Revision for BRDF consistency, R. Spurr
+!    -- All changes marked by "10/26/20. BRDF Upgrade"
+
 PUBLIC
 
 contains
@@ -8,6 +11,9 @@ contains
 ! NOTE: For Lambertian, set nspars to 1 and spars(1) to Asurf. For glint, 
 ! set nspars to 3, spars(1) to ws, spars(2) to ri and spars(3) to shadow
 ! factor (set to 1.d0 for including shadowing).
+
+! 10/26/20. BRDF Upgrade. 
+!   -- This NOTE is not correct any more !!!!
 
       subroutine L_R1_glint_exact &
        (nstokes,nspars,& !I
@@ -314,14 +320,21 @@ contains
       AF21 = AF21*AF21
       AF22 = AF22*AF22
 
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1
+!       Formerly, R1(3) = + ( CTTPT+CTPPP ) * DCOEFF , Now R1(3) = - ( CTTPT+CTPPP ) * DCOEFF
+
       R1(1)=(AF11+AF12+AF21+AF22)*AF
       R1(2)=(AF11-AF22+AF12-AF21)*AF
       IF (NSTOKES .EQ. 3) THEN
         CTTPT = CF11*CF21
         CTPPP = CF12*CF22
+
+        R1(NSTOKES) = - (CTTPT+CTPPP)*DCOEFF 
+
 !        R1(NSTOKES) = (-CTTPT-CTPPP)*DCOEFF
-        R1(NSTOKES) = (CTTPT+CTPPP)*DCOEFF ! Change sign of U since this code uses the opposite sign convention as we do 
-                                           ! in 2OS and LIDORT
+!        R1(NSTOKES) = (CTTPT+CTPPP)*DCOEFF ! Change sign of U since this code uses the opposite sign convention as we do 
+!                                           ! in 2OS and LIDORT
       ENDIF
 
 !  No Shadow code if not flagged
@@ -590,24 +603,34 @@ contains
       L_AF21 = 2.0d0 * CF21 * L_CF21
       L_AF22 = 2.0d0 * CF22 * L_CF22
 
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1
+!       Formerly, R1(3) = + ( CTTPT+CTPPP ) * DCOEFF , Now R1(3) = - ( CTTPT+CTPPP ) * DCOEFF
+
       R1(1)=(AF11+AF12+AF21+AF22)*AF   ! CN2
       R1(2)=(AF11-AF22+AF12-AF21)*AF   ! CN2
       IF (NSTOKES .EQ. 3) THEN
         CTTPT = CF11*CF21             ! CN2
         CTPPP = CF12*CF22             ! CN2
-!        R1(NSTOKES) = (-CTTPT-CTPPP)*DCOEFF   ! CN2
-        R1(NSTOKES) = (CTTPT+CTPPP)*DCOEFF ! Change sign of U since this code uses the opposite sign convention as we do 
-                                           ! in 2OS and LIDORT
+
+        R1(NSTOKES) = - (CTTPT+CTPPP)*DCOEFF 
+!        R1(NSTOKES) = (-CTTPT-CTPPP)*DCOEFF
+
+
+
       ENDIF
       
+! 10/26/20. BRDF Upgrade. TWO BUGS HERE, Connected to the Stokes-U component
+!   1. Former Code for LS_R1(3,2) was signed correctly, even though R1(3) was incorrectly signed
+!   2. Ls_R1(3,2) should have DCOEFF multiplier, not AF. Was a factor of 2 too small
+
       !derivs wrt ri
       Ls_R1(1,2) = (L_AF11+L_AF12+L_AF21+L_AF22)*AF
       Ls_R1(2,2) = (L_AF11-L_AF22+L_AF12-L_AF21)*AF
       IF (NSTOKES .EQ. 3) &
-!      Ls_R1(3,2) = -(L_CF11*CF21+CF11*L_CF21+&
-!                     L_CF12*CF22+CF12*L_CF22)*AF
-      Ls_R1(3,2) = (L_CF11*CF21+CF11*L_CF21+&   ! Change sign of U since this code uses the opposite sign convention as we 
-                    L_CF12*CF22+CF12*L_CF22)*AF ! do in 2OS and LIDORT
+
+!         Ls_R1(NSTOKES,2) = -(L_CF11*CF21+CF11*L_CF21+L_CF12*CF22+CF12*L_CF22)*AF
+         Ls_R1(NSTOKES,2) = -(L_CF11*CF21+CF11*L_CF21+L_CF12*CF22+CF12*L_CF22)*DCOEFF
 
 !  Derivative before shadow effect
 
@@ -879,6 +902,11 @@ contains
       AF22 = AF22*AF22
 
       FACTOR = 0.5d0/DMOD
+
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1
+!       Formerly, R1(3) = + ( CTTPT+CTPPP ) * FACTOR , Now R1(3) = - ( CTTPT+CTPPP ) * FACTOR
+
       R1(1) = (AF11+AF12+AF21+AF22) * FACTOR
       R1(2) = (AF11-AF12+AF21-AF22) * FACTOR
 
@@ -889,8 +917,11 @@ contains
         CTTPT=CF11*CF21
         CTPPP=CF12*CF22
         FACTOR = 1.d0/DMOD
+
+        R1(3) = - ( CTTPT+CTPPP ) * FACTOR
+
 !        R1(3)  = (-CTTPT-CTPPP) * FACTOR
-        R1(3)  = (CTTPT+CTPPP) * FACTOR ! Change sign for U just as in Cox-Munk
+!        R1(3)  = (CTTPT+CTPPP) * FACTOR ! Change sign for U just as in Cox-Munk
       ENDIF
 
 !  Set the H-function
@@ -948,9 +979,14 @@ contains
 
 !  This is just the Rahman Kernel.........different name !!
 
+! 10/26/20. BRDF Upgrade. 
+!   incident and reflected zenith angles swapped here, so swap them in the call
+!   Does not matter for this kernel, as scalar only.
+!   XJ, SXJ, XI, SXI  ==> XI, SXI, XJ, SXJ 
+
       CALL rahman_function_2os &
             ( 3, PARS(2:4),& !I
-              XJ, SXJ, XI, SXI,& !I
+              XI, SXI, XJ, SXJ,& !I
               CKPHI_REF, SKPHI_REF,& !I
               RAHMAN_KERNEL )  !O
 
@@ -967,6 +1003,10 @@ contains
             ( NPARS, PARS,& !I
               XJ, SXJ, XI, SXI, CPHI, SKPHI,& !I
               RAHMAN_KERNEL ) !O
+
+! 10/26/20. BRDF Upgrade. 
+!   incident and reflected zenith angles swapped before this kernel is called
+!   so do not need to swap them here. Does not matter for this kernel, as scalar only.
 
 !  Revision. 24 October 2007.
 !  --------------------------
@@ -1252,6 +1292,10 @@ contains
       AF21 = AF21*AF21
       AF22 = AF22*AF22
 
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1
+!       Formerly, R1(3) = + ( CTTPT+CTPPP ) * FACTOR , Now R1(3) = - ( CTTPT+CTPPP ) * FACTOR
+
       FACTOR = 0.5d0/DMOD
       R1(1) = (AF11+AF12+AF21+AF22) * FACTOR
       R1(2) = (AF11-AF12+AF21-AF22) * FACTOR
@@ -1263,8 +1307,11 @@ contains
         CTTPT=CF11*CF21
         CTPPP=CF12*CF22
         FACTOR = 1.d0/DMOD
+        R1(3)  =  - ( CTTPT+CTPPP) * FACTOR
+
 !        R1(3)  = (-CTTPT-CTPPP) * FACTOR
-        R1(3)  = (CTTPT+CTPPP) * FACTOR ! Change sign for U just as in Cox-Munk
+!       R1(3)  = (CTTPT+CTPPP) * FACTOR ! Change sign for U just as in Cox-Munk
+
       ENDIF
 
 !  Set the H-function
@@ -1326,9 +1373,14 @@ contains
 
 !  This is just the Rahman Kernel.........different name !!
 
+! 10/26/20. BRDF Upgrade. 
+!   incident and reflected zenith angles swapped here, so swap them in the call
+!   Does not matter for this kernel, as scalar only.
+!   XJ, SXJ, XI, SXI  ==> XI, SXI, XJ, SXJ 
+
       CALL rahman_function_2os_plus &
             ( 3, PARS(2:4), DO_DERIV_PARS,& !I
-              XJ, SXJ, XI, SXI,& !I
+              XI, SXI, XJ, SXJ,& !I
               CKPHI_REF, SKPHI_REF,& !I
               RAHMAN_KERNEL, RAHMAN_DERIVATIVES ) !O
 
@@ -1355,6 +1407,10 @@ contains
             ( NPARS, PARS, DO_DERIV_PARS,& !I
               XJ, SXJ, XI, SXI, CPHI, SKPHI,& !I
               RAHMAN_KERNEL, RAHMAN_DERIVATIVES ) !O
+
+! 10/26/20. BRDF Upgrade. 
+!   incident and reflected zenith angles swapped before this kernel is called
+!   so do not need to swap them here. Does not matter for this kernel, as scalar only.
 
       IMPLICIT NONE
 
