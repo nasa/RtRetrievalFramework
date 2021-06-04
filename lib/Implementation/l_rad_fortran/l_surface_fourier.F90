@@ -1,12 +1,15 @@
 module l_surface_fourier_m
 
+!  10/26/20. Revision for BRDF consistency, R. Spurr
+!    -- All changes marked by "10/26/20. BRDF Upgrade"
+
 USE l_surface_m
 implicit none
 PUBLIC
 
 contains
 
-! NOT : For Lambertian, set nspars to 1 and spars(1) to Asurf. For glint, 
+! NOTE : For Lambertian, set nspars to 1 and spars(1) to Asurf. For glint, 
 ! set nspars to 3, spars(1) to ws, spars(2) to ri and spars(3) to shadow &
 ! fac or (set to 1.d0 for including shadowing).
 
@@ -203,12 +206,19 @@ contains
 !      R1M(3,1)= (-CTTPT-CTPPP)*DCOEFF
 !      R1M(3,2)= (-CTTPT+CTPPP)*DCOEFF
 
-! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1M
 
-      R1M(1,3)= (CTTTP+CPTPP)*DCOEFF
-      R1M(2,3)= (CTTTP-CPTPP)*DCOEFF
-      R1M(3,1)= (CTTPT+CTPPP)*DCOEFF
-      R1M(3,2)= (CTTPT-CTPPP)*DCOEFF
+      R1M(1,3) =  - ( CTTTP+CPTPP ) * DCOEFF   ! Sine
+      R1M(2,3) =  - ( CTTTP-CPTPP ) * DCOEFF   ! Sine
+      R1M(3,1) =  - ( CTTPT+CTPPP ) * DCOEFF   ! Sine
+      R1M(3,2) =  - ( CTTPT-CTPPP ) * DCOEFF   ! Sine
+
+! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
+!      R1M(1,3)= (CTTTP+CPTPP)*DCOEFF
+!      R1M(2,3)= (CTTTP-CPTPP)*DCOEFF
+!      R1M(3,1)= (CTTPT+CTPPP)*DCOEFF
+!      R1M(3,2)= (CTTPT-CTPPP)*DCOEFF
 
       R1M(3,3)= (CTTPP+CTPPT)*DCOEFF
       R1M(4,4)= (CTTPP-CTPPT)*DCOEFF
@@ -464,17 +474,29 @@ contains
 !      R1M(3,1)= (-CTTPT-CTPPP)*DCOEFF
 !      R1M(3,2)= (-CTTPT+CTPPP)*DCOEFF
 
-! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1M
 
-      R1M(1,3)= (CTTTP+CPTPP)*DCOEFF
-      R1M(2,3)= (CTTTP-CPTPP)*DCOEFF
-      R1M(3,1)= (CTTPT+CTPPP)*DCOEFF
-      R1M(3,2)= (CTTPT-CTPPP)*DCOEFF
+      R1M(1,3) =  - ( CTTTP+CPTPP ) * DCOEFF   ! Sine
+      R1M(2,3) =  - ( CTTTP-CPTPP ) * DCOEFF   ! Sine
+      R1M(3,1) =  - ( CTTPT+CTPPP ) * DCOEFF   ! Sine
+      R1M(3,2) =  - ( CTTPT-CTPPP ) * DCOEFF   ! Sine
+
+! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
+!      R1M(1,3)= (CTTTP+CPTPP)*DCOEFF
+!      R1M(2,3)= (CTTTP-CPTPP)*DCOEFF
+!      R1M(3,1)= (CTTPT+CTPPP)*DCOEFF
+!      R1M(3,2)= (CTTPT-CTPPP)*DCOEFF
 
       R1M(3,3)= (CTTPP+CTPPT)*DCOEFF
       R1M(4,4)= (CTTPP-CTPPT)*DCOEFF
 
 !  Derivatives wrt ri, V. Natraj, 8/17/2010
+
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1M
+!   Original coding was correct, corresponds to sign-change introduced above
+!     - this was a bug in the code.......!!!
 
       LS_R1M(1,3,2)= (-L_CTTTP-L_CPTPP)*DCOEFF
       LS_R1M(2,3,2)= (-L_CTTTP+L_CPTPP)*DCOEFF
@@ -1245,17 +1267,20 @@ contains
       CPTPP=CF21*CF22
 
       FACTOR = 1.d0/DMOD
-!      R1M(1,3)= (-CTTTP-CPTPP)*FACTOR
-!      R1M(2,3)= (-CTTTP+CPTPP)*FACTOR
-!      R1M(3,1)= (-CTTPT-CTPPP)*FACTOR
-!      R1M(3,2)= (-CTTPT+CTPPP)*FACTOR
+
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1M
+
+      R1M(1,3) =  - ( CTTTP+CPTPP ) * FACTOR   ! Sine
+      R1M(2,3) =  - ( CTTTP-CPTPP ) * FACTOR   ! Sine
+      R1M(3,1) =  - ( CTTPT+CTPPP ) * FACTOR   ! Sine
+      R1M(3,2) =  - ( CTTPT-CTPPP ) * FACTOR   ! Sine
 
 ! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
-
-      R1M(1,3)= (CTTTP+CPTPP)*FACTOR
-      R1M(2,3)= (CTTTP-CPTPP)*FACTOR
-      R1M(3,1)= (CTTPT+CTPPP)*FACTOR
-      R1M(3,2)= (CTTPT-CTPPP)*FACTOR
+!      R1M(1,3)= (CTTTP+CPTPP)*FACTOR
+!      R1M(2,3)= (CTTTP-CPTPP)*FACTOR
+!      R1M(3,1)= (CTTPT+CTPPP)*FACTOR
+!      R1M(3,2)= (CTTPT-CTPPP)*FACTOR
 
       R1M(3,3)= (CTTPP+CTPPT)*FACTOR
       R1M(4,4)= (CTTPP-CTPPT)*FACTOR
@@ -1510,17 +1535,20 @@ contains
       CPTPP=CF21*CF22
 
       FACTOR = 1.d0/DMOD
-!      R1M(1,3)= (-CTTTP-CPTPP)*FACTOR
-!      R1M(2,3)= (-CTTTP+CPTPP)*FACTOR
-!      R1M(3,1)= (-CTTPT-CTPPP)*FACTOR
-!      R1M(3,2)= (-CTTPT+CTPPP)*FACTOR
+
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1M
+
+      R1M(1,3) =  - ( CTTTP+CPTPP ) * FACTOR   ! Sine
+      R1M(2,3) =  - ( CTTTP-CPTPP ) * FACTOR   ! Sine
+      R1M(3,1) =  - ( CTTPT+CTPPP ) * FACTOR   ! Sine
+      R1M(3,2) =  - ( CTTPT-CTPPP ) * FACTOR   ! Sine
 
 ! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
-
-      R1M(1,3)= (CTTTP+CPTPP)*FACTOR
-      R1M(2,3)= (CTTTP-CPTPP)*FACTOR
-      R1M(3,1)= (CTTPT+CTPPP)*FACTOR
-      R1M(3,2)= (CTTPT-CTPPP)*FACTOR
+!      R1M(1,3)= (CTTTP+CPTPP)*FACTOR
+!      R1M(2,3)= (CTTTP-CPTPP)*FACTOR
+!      R1M(3,1)= (CTTPT+CTPPP)*FACTOR
+!      R1M(3,2)= (CTTPT-CTPPP)*FACTOR
 
       R1M(3,3)= (CTTPP+CTPPT)*FACTOR
       R1M(4,4)= (CTTPP-CTPPT)*FACTOR
