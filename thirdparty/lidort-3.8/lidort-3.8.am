@@ -1,0 +1,157 @@
+#_ This is version 3.8 of lidort. 
+
+$(libdir)/liblidort-3.8.3.la: liblidort-3.8.3.la
+	$(MKDIR_P) $(libdir)
+	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) liblidort-3.8.3.la "$(libdir)"
+	touch $@
+
+.PHONY: lidort-3.8
+
+lidort-3.8 : $(libdir)/liblidort-3.8.3.la
+
+if BUILD_LIDORT_3_8
+BUILT_SOURCES += lidort-3.8
+endif
+
+EXTRA_LTLIBRARIES += liblidort-3.8.3.la
+liblidort_3_8_3_la_SOURCES = 
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_pars.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_inputs_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_io_defs.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_lin_inputs_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_lin_io_defs.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_lin_outputs_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_lin_sup_brdf_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_lin_sup_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_lin_sup_sleave_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_lin_sup_ss_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_outputs_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_sup_brdf_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_sup_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_sup_sleave_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_def/lidort_sup_ss_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_geometry_Generic.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_WPgeometry_Routines.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_DTWPgeometry_master.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_Planckfunc.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_I.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_ILCS.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_ILPS.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_ScalarSS_Spherfuncs.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_SSWPgeometry_master.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_Taylor.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_I.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_ILCS.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_ILPS.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/SFO_LinMasters.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_focode/SFO_Master.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_la_miscsetups.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lbbf_jacobians.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lc_bvproblem.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lc_mediaprops.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lc_miscsetups.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lc_PostProcessing.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lcs_converge.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lcs_masters.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lc_wfatmos.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_l_inputs.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lp_bvproblem.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lpc_solutions.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lp_mediaprops.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lp_miscsetups.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lp_PostProcessing.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lps_converge.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lps_masters.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_lp_wfatmos.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_ls_wfsleave.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_ls_wfsurface.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_l_thermalsup.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_l_writemodules.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_sfo_lcs_interface.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/linearized/lidort_sfo_lps_interface.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_aux.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_bvproblem.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_converge.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_geometry.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_getplanck.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_inputs.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_intensity.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_mediaprops.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_miscsetups.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_PostProcessing.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_sfo_interface.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_solutions.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_Taylor.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_thermalsup.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_writemodules.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/lidort_main/regular/lidort_masters.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/accessories/lidort_brdf_lin_sup_accessories.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/accessories/lidort_brdf_sup_accessories.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/accessories/lidort_joint_sup_accessories.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/accessories/lidort_sleave_lin_sup_accessories.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/accessories/lidort_sleave_sup_accessories.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/phasfunc/Phasfunc_DevelopCoeffs.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/phasfunc/Phasfunc_ExpandCoeffs.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/phasfunc/Phasfunc_HenyeyGreenstein.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/phasfunc/Phasfunc_Master.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/phasfunc/Phasfunc_Numerical.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/phasfunc/Phasfunc_Rayleigh.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_findpar.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_lin_sup_inputs_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_lin_sup_kernels.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_lin_sup_masters.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_lin_sup_mod.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_lin_sup_outputs_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_lin_sup_routines.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_sup_aux.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_sup_inputs_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_sup_kernels.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_sup_masters.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_sup_mod.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_sup_outputs_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/brdf/brdf_sup_routines.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/sleave/sleave_findpar.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/sleave/sleave_lin_sup_inputs_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/sleave/sleave_lin_sup_masters.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/sleave/sleave_lin_sup_mod.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/sleave/sleave_lin_sup_outputs_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/sleave/sleave_lin_sup_routines.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/sleave/sleave_sup_aux.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/sleave/sleave_sup_inputs_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/sleave/sleave_sup_masters.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/sleave/sleave_sup_mod.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/sleave/sleave_sup_outputs_def.F90
+liblidort_3_8_3_la_SOURCES += @lidort_3_8_src@/sup/sleave/sleave_sup_routines.F90
+
+# In addition to release, we have a "version" number. This is more library
+# focused, and indicates if programs can use newer versions without needing
+# to recompile. Bug fixes (as opposed to changes in functionality) can 
+# usually we thought of as version changes but not release changes, so
+# version-info might go to 0:1:0.
+# See http://sources.redhat.com/autobook/autobook/autobook_91.html for
+# a description of the difference between release and version.
+
+liblidort_3_8_3_la_LDFLAGS = -rpath '$(libdir)' -version-info 0:0:0
+
+#=================================================================
+# Calculate dependencies between lidort routines
+
+thirdparty/lidort-3.8/lidort-3.8.deps : $(liblidort_3_8_3_la_SOURCES)
+	@$(MKDIR_P) thirdparty/lidort-3.8
+	@$(MKDIR_P) $(includedir)
+	@$(RUBY) $(srcdir)/config/depf90 "$(srcdir)" liblidort_3_8_3_la- "$(liblidort_3_8_3_la_SOURCES)" > $@.tmp && mv $@.tmp $@
+
+-include thirdparty/lidort-3.8/lidort-3.8.deps
+
+CLEANFILES += thirdparty/lidort-3.8/lidort-3.8.deps
+
+#=================================================================
+# Set up to put modules in modules directory.
+
+LIDORT_3_8_MOD_FLAGS := $(call fortran_module_path,$(includedir))
+liblidort_3_8_3_la_FCFLAGS = $(LIDORT_3_8_MOD_FLAGS)
+
+#=================================================================
+# Documentation needs to be rebuilt when these source files change
+
+doxygen_fortran_deps += $(liblidort_3_8_3_la_SOURCES) 
