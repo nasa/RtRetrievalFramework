@@ -2,36 +2,58 @@
 
 import os
 
-# Requires F2PY G3 code from http://code.google.com/p/f2py/
-# Used changeset:   81:69b8613d30cb
 import fparser.api
 
 from fp_interface_tools import *
 
-TWOSTREAM_MAIN_DIR = os.path.join(os.environ["L2_EXE_PATH"], "thirdparty/2stream")
+##
+
+import argparse
+
+parser = argparse.ArgumentParser(description='Create 2stream C++ interfaces')
+parser.add_argument('twostream_path', help='Path to 2steam source code')
+parser.add_argument('output_path', help='Path where output files will be written')
+args = parser.parse_args()
+
+##
+
+TWOSTREAM_MAIN_DIR = args.twostream_path
 MASTER_FILE_MODULES = {
-    os.path.join(TWOSTREAM_MAIN_DIR, '2stream_l_master.F90'): 'twostream_l_master_m',
-    os.path.join(TWOSTREAM_MAIN_DIR, '2stream_ls_brdf_supplement.F90'): 'twostream_ls_brdf_supplement_m',
+    os.path.join(TWOSTREAM_MAIN_DIR, '2stream_lps_master.f90'): 'twostream_lps_master_m',
+    os.path.join(TWOSTREAM_MAIN_DIR, '2stream_ls_brdf_supplement.f90'): 'twostream_ls_brdf_supplement_m',
     }
 
-MASTERS_IGNORE_ROUTINES = ( 'twostream_l_fourier_master', 
-                            'twostream_brdfmaker_plus', 
-                            'twostream_brdffunction_plus',
-                            'twostream_ls_brdffourier',
+MASTERS_IGNORE_ROUTINES = ( 'twostream_lps_fourier_master', 
+                            'twostream_ls_brdf_maker',
+                            'twostream_ls_brdf_function',
+                            'twostream_ls_brdf_fourier',
                             )
 
 SIZE_VARIABLE_NAMES = [ "nlayers",
                         "ntotal",
-                        "nthreads",
-                        "npars",
-                        "nspars",
                         "nbeams",
                         "n_user_streams",
                         "n_user_relazms",
-                        "n_geometries" ]
+                        "n_geometries",
+                        "nstreams_brdf",
+                        "maxtotal",
+                        "maxmessages",
+                        "max_brdf_kernels",
+                        "max_brdf_parameters",
+                        "maxstreams_brdf",
+                        "maxbeams",
+                        "max_user_streams",
+                        "max_user_obsgeoms",
+                        "max_atmoswfs",
+                        "max_surfacewfs",
+                        "max_user_relazms",
+                        "maxlayers",
+                        "max_sleavewfs",
+                        "max_geometries",
+                        ]
 
 MASTERS_CONSTRUCTOR_ARGUMENTS={}
-MASTERS_CONSTRUCTOR_ARGUMENTS["twostream_l_master_m"] = [ 'thread', 'earth_radius' ] + SIZE_VARIABLE_NAMES
+MASTERS_CONSTRUCTOR_ARGUMENTS["twostream_lps_master_m"] = [ 'earth_radius' ] + SIZE_VARIABLE_NAMES
 MASTERS_CONSTRUCTOR_ARGUMENTS["twostream_ls_brdf_supplement_m"] = SIZE_VARIABLE_NAMES
 
 NON_ATTRIBUTE_TYPES={}
@@ -43,10 +65,10 @@ ACCESSOR_CONST["twostream_l_master_m"] = lambda x: not x.find("brdf_f") >= 0
 # Output control
 
 INTERFACE_MASTERS_NAME = "twostream_interface"
-F_INTERFACE_MASTERS_FILENAME = "%s.F90" % INTERFACE_MASTERS_NAME
-H_INTERFACE_MASTERS_FILENAME = "%s.h" % INTERFACE_MASTERS_NAME
-I_INTERFACE_MASTERS_FILENAME = "%s.i" % INTERFACE_MASTERS_NAME
-TST_INTERFACE_MASTERS_FILENAME = "%s_test.cc" % INTERFACE_MASTERS_NAME
+F_INTERFACE_MASTERS_FILENAME = os.path.join(args.output_path, "%s.F90" % INTERFACE_MASTERS_NAME)
+H_INTERFACE_MASTERS_FILENAME = os.path.join(args.output_path, "%s.h" % INTERFACE_MASTERS_NAME)
+I_INTERFACE_MASTERS_FILENAME = os.path.join(args.output_path, "%s.i" % INTERFACE_MASTERS_NAME)
+TST_INTERFACE_MASTERS_FILENAME = os.path.join(args.output_path, "%s_test.cc" % INTERFACE_MASTERS_NAME)
 
 #### 
 
@@ -92,7 +114,7 @@ masters_list = parse_master_files(MASTER_FILE_MODULES,
 
 ###
 # Create C masters classes
-write_cpp_master_classes(H_INTERFACE_MASTERS_FILENAME, I_INTERFACE_MASTERS_FILENAME, masters_list)
+write_cpp_master_classes(H_INTERFACE_MASTERS_FILENAME, I_INTERFACE_MASTERS_FILENAME, masters_list, has_read_write=False)
 
 ###
 # Create F masters wrapper

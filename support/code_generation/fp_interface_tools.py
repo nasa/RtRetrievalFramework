@@ -3,13 +3,9 @@ import string
 from string import Formatter
 
 import collections
-from types import StringType
 
-# Requires F2PY G3 code from http://code.google.com/p/f2py/
-# Used changeset:   81:69b8613d30cb
 from fparser import typedecl_statements as ftypes, api as fapi
 
-# Used version 2.6
 from jinja2 import Environment, FileSystemLoader
 
 from variable_wrappers import *
@@ -31,7 +27,7 @@ def parse_master_files(filename_modules, **kwargs):
 def c_arg_decl_list(arg_dict):
     arg_list = []
     for name, decl in arg_dict.items():
-        if hasattr(decl, "__iter__"):
+        if isinstance(decl, collections.Iterable) and not isinstance(decl, str):
             var_str = "%s %s" % (decl[0], name)
         else:
             var_str = "%s %s" % (decl, name)
@@ -41,7 +37,7 @@ def c_arg_decl_list(arg_dict):
 def c_decl_lines(arg_dict):
     arg_lines = []
     for name, decl in arg_dict.items():
-        if hasattr(decl, "__iter__"):
+        if isinstance(decl, collections.Iterable) and not isinstance(decl, str):
             var_str = "%s %s%s;" % (decl[0], name, decl[1])
         else:
             var_str = "%s %s;" % (decl, name)
@@ -54,7 +50,7 @@ def f_arg_name_list(arg_dict):
 def f_decl_lines(arg_dict):
     arg_lines = []
     for name, decl in arg_dict.items():
-        if hasattr(decl, "__iter__"):
+        if isinstance(decl, collections.Iterable) and not isinstance(decl, str):
             var_str = "%s :: %s%s" % (decl[0], name, decl[1])
         else:
             var_str = "%s :: %s" % (decl, name)
@@ -62,7 +58,7 @@ def f_decl_lines(arg_dict):
     return "\n".join(arg_lines)
 
 def one_or_more_lines(lines, postfix=""):
-    if not isinstance(lines, collections.Iterable) or isinstance(lines, StringType):
+    if not isinstance(lines, collections.Iterable) or isinstance(lines, str):
         lines = [ lines ]
     return (postfix+"\n").join(lines)
 
@@ -76,13 +72,14 @@ TMPL_ENV.filters['one_or_more_lines'] = one_or_more_lines
 def write_fortran_master_modules(filename, master_classes, template_fn="interface_masters.f90", addl_modules=[]):
     template = TMPL_ENV.get_template(template_fn)
 
-    print "Writing to file: %s" % filename
+    print("Writing to file: %s" % filename)
     with open(filename, 'w') as o_stream:
         o_stream.write(template.render(master_classes=master_classes,
                                        addl_used_modules=addl_modules))
 
 
 def write_cpp_master_classes(h_filename, i_filename, master_classes, 
+                             types_filename=None, has_read_write=True,
                              h_template_fn="interface_masters.h", 
                              i_template_fn="interface_masters.i",
                              addl_includes=[]):
@@ -90,17 +87,24 @@ def write_cpp_master_classes(h_filename, i_filename, master_classes,
     h_template = TMPL_ENV.get_template(h_template_fn)
     i_template = TMPL_ENV.get_template(i_template_fn)
 
+    if types_filename is not None:
+        full_types_filename = os.path.splitext(os.path.basename(types_filename))[0]
+    else:
+        full_types_filename = None
+
     for fn, tmpl in zip((h_filename, i_filename), (h_template, i_template)):
-        print "Writing to file: %s" % fn
+        print("Writing to file: %s" % fn)
         with open(fn, 'w') as o_stream:
             o_stream.write(tmpl.render(master_classes=master_classes,
                                        addl_includes=addl_includes,
-                                       file_name=os.path.splitext(os.path.basename(fn))[0]))
+                                       file_name=os.path.splitext(os.path.basename(fn))[0],
+                                       types_filename=full_types_filename,
+                                       has_read_write=has_read_write))
 
 def write_cpp_type_tests(filename, type_classes, pars_wrapper=None, suite_name="interface_types", template_fn="interface_types_test.cc", addl_includes=[]):
     template = TMPL_ENV.get_template(template_fn)
 
-    print "Writing to file: %s" % filename
+    print("Writing to file: %s" % filename)
     with open(filename, 'w') as o_stream:
         o_stream.write(template.render(type_classes=type_classes,
                                        pars_wrapper=pars_wrapper,
@@ -110,7 +114,7 @@ def write_cpp_type_tests(filename, type_classes, pars_wrapper=None, suite_name="
 def write_fortran_type_module(filename, type_classes, pars_wrapper=None, module_name="interface_types", template_fn="interface_types.f90", addl_modules=[]):
     template = TMPL_ENV.get_template(template_fn)
 
-    print "Writing to file: %s" % filename
+    print("Writing to file: %s" % filename)
     with open(filename, 'w') as o_stream:
         o_stream.write(template.render(type_classes=type_classes,
                                        pars_wrapper=pars_wrapper,
@@ -128,7 +132,7 @@ def write_cpp_type_classes(h_filename, i_filename, type_classes,
     i_template = TMPL_ENV.get_template(i_template_fn)
 
     for fn, tmpl in zip((h_filename, i_filename), (h_template, i_template)):
-        print "Writing to file: %s" % fn
+        print("Writing to file: %s" % fn)
         with open(fn, 'w') as o_stream:
             o_stream.write(tmpl.render(type_classes=type_classes,
                                        addl_includes=addl_includes,
