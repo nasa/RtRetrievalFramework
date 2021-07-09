@@ -689,6 +689,9 @@ contains
       
       pars_giss(4) = pars(4)
 
+!  Scale
+      pars_giss(5) = pars(5)
+
       if (m .eq. 0) then
         fac = 0.5d0
       else 
@@ -894,6 +897,9 @@ contains
           
       pars_giss(4) = pars(4)
 
+!  Scale
+      pars_giss(5) = pars(5)
+
       if (m .eq. 0) then
         fac = 0.5d0
       else
@@ -996,12 +1002,33 @@ contains
         Ls_R1cscal(2,i,2) = Ls_R1cscal(2,i,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
         Ls_R1c(2,i,1:2,1,2) = Ls_R1c(2,i,1:2,1,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
         Ls_R1s(2,i,3:4,1,2) = Ls_R1s(2,i,3:4,1,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
+if (.false.) then
         if (m .eq. 0) then
           R1cscal(2,i) = R1cscal(2,i)+pars_giss(3) ! V. Natraj, 8/17/2010
           R1c(2,i,1,1) = R1c(2,i,1,1)+pars_giss(3) ! V. Natraj, 8/17/2010
           Ls_R1cscal(2,i,3) = Ls_R1cscal(2,i,3)+1.d0 ! V. Natraj, 8/17/2010
           Ls_R1c(2,i,1,1,3) = Ls_R1c(2,i,1,1,3)+1.d0 ! V. Natraj, 8/17/2010
         endif
+else
+        Ls_R1cscal(2,i,1) = Ls_R1cscal(2,i,1) * pars_giss(5)
+        Ls_R1cscal(2,i,2) = Ls_R1cscal(2,i,2) * pars_giss(5)
+        Ls_R1cscal(2,i,5) = R1cscal(2,i)
+
+        Ls_R1c(2,i,:,:,1) = Ls_R1c(2,i,:,:,1) * pars_giss(5)
+        Ls_R1c(2,i,:,:,2) = Ls_R1c(2,i,:,:,2) * pars_giss(5)
+        Ls_R1c(2,i,:,:,5) = R1c(2,i,:,:)
+
+        R1cscal(2,i)      = R1cscal(2,i)      * pars_giss(5)
+        R1c(2,i,:,:)      = R1c(2,i,:,:)      * pars_giss(5)
+
+        if (m .eq. 0) then
+          Ls_R1cscal(2,i,3) = Ls_R1cscal(2,i,3) + 1.d0
+          Ls_R1c(2,i,1,1,3) = Ls_R1c(2,i,1,1,3) + 1.d0
+
+          R1cscal(2,i)      = R1cscal(2,i) + pars_giss(3)
+          R1c(2,i,1,1)      = R1c(2,i,1,1) + pars_giss(3)
+        endif
+endif
       enddo
 
 !  Finished the Cox-Munk

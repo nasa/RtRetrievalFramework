@@ -39,7 +39,7 @@ ArrayAd<double, 1> GroundCoxmunkPlusLambertian::surface_parameter(const double w
 {
     ArrayAd<double, 1> spars = coxmunk_->surface_parameter(wn, spec_index);
     AutoDerivative<double> lamb_param = lambertian_->surface_parameter(wn, spec_index)(0);
-    spars(2) = lamb_param;
+    spars(3) = lamb_param;
     return spars;
 }
 
