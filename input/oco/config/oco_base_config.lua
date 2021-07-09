@@ -555,6 +555,15 @@ OcoBaseConfig = OcoConfig:new {
                creator = ConfigCommon.lambertian_retrieval,
             },
 
+            -- Lambertian component of coxmunk + lambertian
+            coxmunk_scaled = {
+               apriori = ConfigCommon.hdf_apriori_i("Ground/Coxmunk_Scaled"),
+               covariance = ConfigCommon.hdf_covariance_i("Ground/Coxmunk_Scaled"),
+               retrieve_bands = { true, true, true },
+               scaled_brdf_name = "CoxMunk",
+               creator = ConfigCommon.brdf_scale_retrieval,
+            },
+
             -- Brdf vegetative kernel with Rahman retrieved parameters
             brdf_veg = {
                apriori = ConfigCommon.brdf_veg_apriori("Ground/BrdfQuadratic"),
@@ -615,7 +624,8 @@ OcoBaseConfig = OcoConfig:new {
             creator = ConfigCommon.absorber_creator,
             gases = {"CO2", "H2O", "O2"},
             CO2 = {
-               apriori = ConfigCommon.co2_profile_file_apriori,
+               apriori = ConfigCommon.reference_co2_apriori_met_apriori,
+--             apriori = ConfigCommon.co2_profile_file_apriori,
                covariance = ConfigCommon.hdf_covariance("Gas/CO2"),
                absco = "v5.1.0/co2_v51.hdf",
                table_scale = {1.0, 1.0, 1.004},

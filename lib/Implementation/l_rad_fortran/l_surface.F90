@@ -17,7 +17,7 @@ contains
 
       subroutine L_R1_glint_exact &
        (nstokes,nspars,& !I
-        xj,xi,phi,ws,ri,alb,sfac,& !I ! V. Natraj, 8/17/2010
+        xj,xi,phi,ws,ri,alb,sfac,scale,& !I ! V. Natraj, 8/17/2010
         R1,Ls_R1) !O
 
       implicit none
@@ -30,7 +30,7 @@ contains
 !  inputs
 
       integer nstokes,nspars
-      double precision xj,xi,phi,ws,ri,alb,sfac ! V. Natraj, 8/17/2010
+      double precision xj,xi,phi,ws,ri,alb,sfac,scale ! V. Natraj, 8/17/2010
 
 !  outputs
 
@@ -70,6 +70,8 @@ contains
 
       pars_giss(4) = sfac
 
+      pars_giss(5) = scale
+
       call gisscoxmunk_vfunction_plus &
        (nstokes,nspars,pars_giss,& !I
         xj,sxj,xi,sxi,& !I
@@ -81,7 +83,7 @@ contains
 
       subroutine R1_glint_exact &
        (nstokes,nspars, & !I
-        xj,xi,phi,ws,ri,alb,sfac, & !I ! V. Natraj, 8/17/2010
+        xj,xi,phi,ws,ri,alb,sfac,scale, & !I ! V. Natraj, 8/17/2010
         R1) !O
 
       implicit none
@@ -94,7 +96,7 @@ contains
 !  inputs
 
       integer nstokes,nspars
-      double precision xj,xi,phi,ws,ri,alb,sfac ! V. Natraj, 8/17/2010
+      double precision xj,xi,phi,ws,ri,alb,sfac,scale ! V. Natraj, 8/17/2010
 
 !  outputs
 
@@ -128,6 +130,8 @@ contains
 !  Shadowing, changed to pars_giss(4), V. Natraj, 8/17/2010
 
       pars_giss(4) = sfac
+
+      pars_giss(5) = scale
 
       call gisscoxmunk_vfunction &
        (nstokes,nspars,pars_giss,& !I
@@ -377,7 +381,7 @@ contains
 !  8/17/2010 Lambertian component added, V. Natraj
 !  PARS(3) = ALBEDO
     
-      R1(1) = R1(1) + PARS(3)
+      R1(1) = R1(1) * PARS(5) + PARS(3)
 
 !  Finish
 
@@ -698,15 +702,14 @@ contains
 
       ENDIF
 
-!  8/17/2010 Lambertian component added, V. Natraj
-!  PARS(3) = ALBEDO
-
-      R1(1) = R1(1) + PARS(3)
-    
-!  8/17/2010 Lambertian albedo derivative added, V. Natraj
-!  Ls_R1(:,3) = ALBEDO DERIVATIVE
-    
+      Ls_R1(:,1) = Ls_R1(:,1) * PARS(5)
+      Ls_R1(:,2) = Ls_R1(:,2) * PARS(5)
       Ls_R1(1,3) = 1.d0
+      Ls_R1(:,5) = R1(:)
+
+      R1(1) = R1(1) * PARS(5) + PARS(3)
+      R1(2) = R1(2) * PARS(5)
+      R1(3) = R1(3) * PARS(5)
 
 !  Finish
 

@@ -2228,6 +2228,59 @@ function ConfigCommon.lambertian_retrieval:initial_guess()
 end
 
 ------------------------------------------------------------
+--- Lambertian ground state vector component and initial guess
+------------------------------------------------------------
+
+ConfigCommon.brdf_scale_retrieval = CreatorMultiSpec:new {}
+
+function ConfigCommon.brdf_scale_retrieval:create()
+   local num_coeff = self:apriori_v(0):rows()
+   local num_spec = self.config.number_pixel:rows()
+
+   local ap = Blitz_double_array_2d(num_spec, num_coeff)
+   local flag = Blitz_bool_array_2d(num_spec, num_coeff)
+
+   for i = 1, num_spec do
+       ap:set(i-1, Range.all(), self:apriori_v(i - 1))
+       flag:set(i-1, Range.all(), self:retrieval_flag(i))
+   end
+
+   local lambertian = GroundBrdfWeight(ap, flag, 
+                                       self.config.common.band_reference,
+                                       self.config.common.desc_band_name,
+                                       self.scaled_brdf_name)
+   return lambertian
+end
+
+function ConfigCommon.brdf_scale_retrieval:initial_guess()
+   local ig = CompositeInitialGuess()
+   for i=1,self.config.number_pixel:rows() do
+       local flag = self:retrieval_flag(i)
+
+       local ap = self:apriori_v(i - 1) 
+       local apcov_in = self:covariance_v(i - 1)
+
+       -- Copy input covariance to modified one which repeats the last covariance value if
+       -- the number of degrees is defined
+       local apcov_mod = Blitz_double_array_2d(ap:rows(), ap:rows())
+       apcov_mod:set(Range.all(), Range.all(), 0.0)
+       src_idx = 0
+       for dst_idx = 0, ap:rows()-1 do
+          apcov_mod:set(dst_idx, dst_idx, apcov_in(src_idx, src_idx))
+          if dst_idx < apcov_in:rows()-1 then
+             src_idx = src_idx + 1
+          end
+       end
+
+       local band_ig = InitialGuessValue()
+       band_ig:apriori_subset(flag, ap)
+       band_ig:apriori_covariance_subset(flag, apcov_mod)
+       ig:add_builder(band_ig)
+   end
+   return ig 
+end
+
+------------------------------------------------------------
 --- Creates a GroundOco only using a Lambertian retrieval
 ------------------------------------------------------------
 
@@ -2275,7 +2328,7 @@ function ConfigCommon.ground_coxmunk:register_output(ro)
 end
 
 ------------------------------------------------------------
---- Creates a GroundOco using both Lambertioan and Coxmunk 
+--- Creates a GroundOco using both Lambertian and Coxmunk 
 --- retrieval
 ------------------------------------------------------------
 
@@ -2292,6 +2345,26 @@ end
 
 function ConfigCommon.ground_coxmunk_plus_lamb:register_output(ro)
    ro:push_back(GroundCoxmunkPlusLambertianOutput.create(self.config.coxmunk, self.config.coxmunk_lambertian, self.config.common.hdf_band_name))
+end
+
+------------------------------------------------------------
+--- Creates a GroundOco using both Lambertian and Coxmunk 
+--- retrieval
+------------------------------------------------------------
+
+ConfigCommon.ground_coxmunk_scaled = CompositeCreator:new {}
+
+function ConfigCommon.ground_coxmunk_scaled:sub_object_key()
+   -- Ordering is important here or else the statevector is setup incorrectly
+   return { "coxmunk", "coxmunk_scaled" }
+end
+
+function ConfigCommon.ground_coxmunk_scaled:create_parent_object(sub_object)
+   return GroundCoxmunkScaled.create(self.config.coxmunk, self.config.coxmunk_scaled)
+end
+
+function ConfigCommon.ground_coxmunk_scaled:register_output(ro)
+   ro:push_back(GroundCoxmunkScaledOutput.create(self.config.l1b, self.config.coxmunk, self.config.coxmunk_scaled, self.config.common.hdf_band_name))
 end
 
 ------------------------------------------------------------
