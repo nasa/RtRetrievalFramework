@@ -148,7 +148,6 @@ class Lidort_Pars(object):
     lidort_errunit = _swig_property(_lidort_interface_types.Lidort_Pars_lidort_errunit_get)
     lidort_dbgunit = _swig_property(_lidort_interface_types.Lidort_Pars_lidort_dbgunit_get)
     max_messages = _swig_property(_lidort_interface_types.Lidort_Pars_max_messages_get)
-    maxthreads = _swig_property(_lidort_interface_types.Lidort_Pars_maxthreads_get)
     maxstreams = _swig_property(_lidort_interface_types.Lidort_Pars_maxstreams_get)
     maxlayers = _swig_property(_lidort_interface_types.Lidort_Pars_maxlayers_get)
     maxfinelayers = _swig_property(_lidort_interface_types.Lidort_Pars_maxfinelayers_get)
@@ -157,14 +156,17 @@ class Lidort_Pars(object):
     maxbeams = _swig_property(_lidort_interface_types.Lidort_Pars_maxbeams_get)
     max_user_streams = _swig_property(_lidort_interface_types.Lidort_Pars_max_user_streams_get)
     max_user_relazms = _swig_property(_lidort_interface_types.Lidort_Pars_max_user_relazms_get)
+    max_user_obsgeoms = _swig_property(_lidort_interface_types.Lidort_Pars_max_user_obsgeoms_get)
     max_user_levels = _swig_property(_lidort_interface_types.Lidort_Pars_max_user_levels_get)
     max_partlayers = _swig_property(_lidort_interface_types.Lidort_Pars_max_partlayers_get)
+    max_taylor_terms = _swig_property(_lidort_interface_types.Lidort_Pars_max_taylor_terms_get)
     max_directions = _swig_property(_lidort_interface_types.Lidort_Pars_max_directions_get)
     max_brdf_kernels = _swig_property(_lidort_interface_types.Lidort_Pars_max_brdf_kernels_get)
     max_brdf_parameters = _swig_property(_lidort_interface_types.Lidort_Pars_max_brdf_parameters_get)
     maxstreams_brdf = _swig_property(_lidort_interface_types.Lidort_Pars_maxstreams_brdf_get)
     max_msrs_muquad = _swig_property(_lidort_interface_types.Lidort_Pars_max_msrs_muquad_get)
     max_msrs_phiquad = _swig_property(_lidort_interface_types.Lidort_Pars_max_msrs_phiquad_get)
+    maxstreams_scaling = _swig_property(_lidort_interface_types.Lidort_Pars_maxstreams_scaling_get)
     max_atmoswfs = _swig_property(_lidort_interface_types.Lidort_Pars_max_atmoswfs_get)
     max_surfacewfs = _swig_property(_lidort_interface_types.Lidort_Pars_max_surfacewfs_get)
     max_sleavewfs = _swig_property(_lidort_interface_types.Lidort_Pars_max_sleavewfs_get)
@@ -197,6 +199,7 @@ class Lidort_Pars(object):
     eps3 = _swig_property(_lidort_interface_types.Lidort_Pars_eps3_get)
     eps4 = _swig_property(_lidort_interface_types.Lidort_Pars_eps4_get)
     eps5 = _swig_property(_lidort_interface_types.Lidort_Pars_eps5_get)
+    taylor_small = _swig_property(_lidort_interface_types.Lidort_Pars_taylor_small_get)
     smallnum = _swig_property(_lidort_interface_types.Lidort_Pars_smallnum_get)
     bigexp = _swig_property(_lidort_interface_types.Lidort_Pars_bigexp_get)
     hopital_tolerance = _swig_property(_lidort_interface_types.Lidort_Pars_hopital_tolerance_get)
@@ -220,8 +223,13 @@ class Lidort_Pars(object):
     roujean_idx = _swig_property(_lidort_interface_types.Lidort_Pars_roujean_idx_get)
     rahman_idx = _swig_property(_lidort_interface_types.Lidort_Pars_rahman_idx_get)
     coxmunk_idx = _swig_property(_lidort_interface_types.Lidort_Pars_coxmunk_idx_get)
-    breonveg_idx = _swig_property(_lidort_interface_types.Lidort_Pars_breonveg_idx_get)
-    breonsoil_idx = _swig_property(_lidort_interface_types.Lidort_Pars_breonsoil_idx_get)
+    bpdfsoil_idx = _swig_property(_lidort_interface_types.Lidort_Pars_bpdfsoil_idx_get)
+    bpdfvegn_idx = _swig_property(_lidort_interface_types.Lidort_Pars_bpdfvegn_idx_get)
+    bpdfndvi_idx = _swig_property(_lidort_interface_types.Lidort_Pars_bpdfndvi_idx_get)
+    newcmglint_idx = _swig_property(_lidort_interface_types.Lidort_Pars_newcmglint_idx_get)
+    rtkhotspot_idx = _swig_property(_lidort_interface_types.Lidort_Pars_rtkhotspot_idx_get)
+    modfresnel_idx = _swig_property(_lidort_interface_types.Lidort_Pars_modfresnel_idx_get)
+    snowbrdf_idx = _swig_property(_lidort_interface_types.Lidort_Pars_snowbrdf_idx_get)
     maxbrdf_idx = _swig_property(_lidort_interface_types.Lidort_Pars_maxbrdf_idx_get)
 
     def instance():
@@ -345,6 +353,33 @@ class Brdf_Linsup_Inputs(Lidort_Structure):
         return _lidort_interface_types.Brdf_Linsup_Inputs_bs_n_kernel_params_wfs(self, *args)
 
 
+    def bs_do_bsavalue_wf(self, *args):
+        """
+
+        void FullPhysics::Brdf_Linsup_Inputs::bs_do_bsavalue_wf(const bool &bs_do_bsavalue_wf_in)
+
+        """
+        return _lidort_interface_types.Brdf_Linsup_Inputs_bs_do_bsavalue_wf(self, *args)
+
+
+    def bs_do_wsavalue_wf(self, *args):
+        """
+
+        void FullPhysics::Brdf_Linsup_Inputs::bs_do_wsavalue_wf(const bool &bs_do_wsavalue_wf_in)
+
+        """
+        return _lidort_interface_types.Brdf_Linsup_Inputs_bs_do_wsavalue_wf(self, *args)
+
+
+    def bs_do_windspeed_wf(self, *args):
+        """
+
+        void FullPhysics::Brdf_Linsup_Inputs::bs_do_windspeed_wf(const bool &bs_do_windspeed_wf_in)
+
+        """
+        return _lidort_interface_types.Brdf_Linsup_Inputs_bs_do_windspeed_wf(self, *args)
+
+
     def print_desc(self, output_stream):
         """
 
@@ -359,6 +394,9 @@ Brdf_Linsup_Inputs.bs_do_kparams_derivs = new_instancemethod(_lidort_interface_t
 Brdf_Linsup_Inputs.bs_n_surface_wfs = new_instancemethod(_lidort_interface_types.Brdf_Linsup_Inputs_bs_n_surface_wfs, None, Brdf_Linsup_Inputs)
 Brdf_Linsup_Inputs.bs_n_kernel_factor_wfs = new_instancemethod(_lidort_interface_types.Brdf_Linsup_Inputs_bs_n_kernel_factor_wfs, None, Brdf_Linsup_Inputs)
 Brdf_Linsup_Inputs.bs_n_kernel_params_wfs = new_instancemethod(_lidort_interface_types.Brdf_Linsup_Inputs_bs_n_kernel_params_wfs, None, Brdf_Linsup_Inputs)
+Brdf_Linsup_Inputs.bs_do_bsavalue_wf = new_instancemethod(_lidort_interface_types.Brdf_Linsup_Inputs_bs_do_bsavalue_wf, None, Brdf_Linsup_Inputs)
+Brdf_Linsup_Inputs.bs_do_wsavalue_wf = new_instancemethod(_lidort_interface_types.Brdf_Linsup_Inputs_bs_do_wsavalue_wf, None, Brdf_Linsup_Inputs)
+Brdf_Linsup_Inputs.bs_do_windspeed_wf = new_instancemethod(_lidort_interface_types.Brdf_Linsup_Inputs_bs_do_windspeed_wf, None, Brdf_Linsup_Inputs)
 Brdf_Linsup_Inputs.print_desc = new_instancemethod(_lidort_interface_types.Brdf_Linsup_Inputs_print_desc, None, Brdf_Linsup_Inputs)
 Brdf_Linsup_Inputs_swigregister = _lidort_interface_types.Brdf_Linsup_Inputs_swigregister
 Brdf_Linsup_Inputs_swigregister(Brdf_Linsup_Inputs)
@@ -382,13 +420,13 @@ class Brdf_Linsup_Outputs(Lidort_Structure):
         _lidort_interface_types.Brdf_Linsup_Outputs_swiginit(self, _lidort_interface_types.new_Brdf_Linsup_Outputs(*args))
     __swig_destroy__ = _lidort_interface_types.delete_Brdf_Linsup_Outputs
 
-    def bs_ls_exactdb_brdfunc(self, *args):
+    def bs_ls_dbounce_brdfunc(self, *args):
         """
 
-        void FullPhysics::Brdf_Linsup_Outputs::bs_ls_exactdb_brdfunc(const blitz::Array< double, 4 > &bs_ls_exactdb_brdfunc_in)
+        void FullPhysics::Brdf_Linsup_Outputs::bs_ls_dbounce_brdfunc(const blitz::Array< double, 4 > &bs_ls_dbounce_brdfunc_in)
 
         """
-        return _lidort_interface_types.Brdf_Linsup_Outputs_bs_ls_exactdb_brdfunc(self, *args)
+        return _lidort_interface_types.Brdf_Linsup_Outputs_bs_ls_dbounce_brdfunc(self, *args)
 
 
     def bs_ls_brdf_f_0(self, *args):
@@ -430,7 +468,7 @@ class Brdf_Linsup_Outputs(Lidort_Structure):
     def bs_ls_emissivity(self, *args):
         """
 
-        void FullPhysics::Brdf_Linsup_Outputs::bs_ls_emissivity(const blitz::Array< double, 3 > &bs_ls_emissivity_in)
+        void FullPhysics::Brdf_Linsup_Outputs::bs_ls_emissivity(const blitz::Array< double, 2 > &bs_ls_emissivity_in)
 
         """
         return _lidort_interface_types.Brdf_Linsup_Outputs_bs_ls_emissivity(self, *args)
@@ -439,7 +477,7 @@ class Brdf_Linsup_Outputs(Lidort_Structure):
     def bs_ls_user_emissivity(self, *args):
         """
 
-        void FullPhysics::Brdf_Linsup_Outputs::bs_ls_user_emissivity(const blitz::Array< double, 3 > &bs_ls_user_emissivity_in)
+        void FullPhysics::Brdf_Linsup_Outputs::bs_ls_user_emissivity(const blitz::Array< double, 2 > &bs_ls_user_emissivity_in)
 
         """
         return _lidort_interface_types.Brdf_Linsup_Outputs_bs_ls_user_emissivity(self, *args)
@@ -453,7 +491,7 @@ class Brdf_Linsup_Outputs(Lidort_Structure):
         """
         return _lidort_interface_types.Brdf_Linsup_Outputs_print_desc(self, output_stream)
 
-Brdf_Linsup_Outputs.bs_ls_exactdb_brdfunc = new_instancemethod(_lidort_interface_types.Brdf_Linsup_Outputs_bs_ls_exactdb_brdfunc, None, Brdf_Linsup_Outputs)
+Brdf_Linsup_Outputs.bs_ls_dbounce_brdfunc = new_instancemethod(_lidort_interface_types.Brdf_Linsup_Outputs_bs_ls_dbounce_brdfunc, None, Brdf_Linsup_Outputs)
 Brdf_Linsup_Outputs.bs_ls_brdf_f_0 = new_instancemethod(_lidort_interface_types.Brdf_Linsup_Outputs_bs_ls_brdf_f_0, None, Brdf_Linsup_Outputs)
 Brdf_Linsup_Outputs.bs_ls_brdf_f = new_instancemethod(_lidort_interface_types.Brdf_Linsup_Outputs_bs_ls_brdf_f, None, Brdf_Linsup_Outputs)
 Brdf_Linsup_Outputs.bs_ls_user_brdf_f_0 = new_instancemethod(_lidort_interface_types.Brdf_Linsup_Outputs_bs_ls_user_brdf_f_0, None, Brdf_Linsup_Outputs)
@@ -483,15 +521,6 @@ class Brdf_Sup_Inputs(Lidort_Structure):
         _lidort_interface_types.Brdf_Sup_Inputs_swiginit(self, _lidort_interface_types.new_Brdf_Sup_Inputs(*args))
     __swig_destroy__ = _lidort_interface_types.delete_Brdf_Sup_Inputs
 
-    def bs_do_user_streams(self, *args):
-        """
-
-        void FullPhysics::Brdf_Sup_Inputs::bs_do_user_streams(const bool &bs_do_user_streams_in)
-
-        """
-        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_user_streams(self, *args)
-
-
     def bs_do_brdf_surface(self, *args):
         """
 
@@ -508,6 +537,42 @@ class Brdf_Sup_Inputs(Lidort_Structure):
 
         """
         return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_surface_emission(self, *args)
+
+
+    def bs_do_solar_sources(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_solar_sources(const bool &bs_do_solar_sources_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_solar_sources(self, *args)
+
+
+    def bs_do_user_streams(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_user_streams(const bool &bs_do_user_streams_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_user_streams(self, *args)
+
+
+    def bs_do_user_obsgeoms(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_user_obsgeoms(const bool &bs_do_user_obsgeoms_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_user_obsgeoms(self, *args)
+
+
+    def bs_do_doublet_geometry(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_doublet_geometry(const bool &bs_do_doublet_geometry_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_doublet_geometry(self, *args)
 
 
     def bs_nstreams(self, *args):
@@ -571,6 +636,42 @@ class Brdf_Sup_Inputs(Lidort_Structure):
 
         """
         return _lidort_interface_types.Brdf_Sup_Inputs_bs_user_angles_input(self, *args)
+
+
+    def bs_n_user_obsgeoms(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_n_user_obsgeoms(const int &bs_n_user_obsgeoms_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_n_user_obsgeoms(self, *args)
+
+
+    def bs_user_obsgeoms(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_user_obsgeoms(const blitz::Array< double, 2 > &bs_user_obsgeoms_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_user_obsgeoms(self, *args)
+
+
+    def bs_n_user_doublets(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_n_user_doublets(const int &bs_n_user_doublets_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_n_user_doublets(self, *args)
+
+
+    def bs_user_doublets(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_user_doublets(const blitz::Array< double, 2 > &bs_user_doublets_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_user_doublets(self, *args)
 
 
     def bs_n_brdf_kernels(self, *args):
@@ -654,13 +755,130 @@ class Brdf_Sup_Inputs(Lidort_Structure):
         return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_shadow_effect(self, *args)
 
 
-    def bs_do_exactonly(self, *args):
+    def bs_do_directbounce_only(self, *args):
         """
 
-        void FullPhysics::Brdf_Sup_Inputs::bs_do_exactonly(const bool &bs_do_exactonly_in)
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_directbounce_only(const bool &bs_do_directbounce_only_in)
 
         """
-        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_exactonly(self, *args)
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_directbounce_only(self, *args)
+
+
+    def bs_do_wsabsa_output(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_wsabsa_output(const bool &bs_do_wsabsa_output_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_wsabsa_output(self, *args)
+
+
+    def bs_do_wsa_scaling(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_wsa_scaling(const bool &bs_do_wsa_scaling_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_wsa_scaling(self, *args)
+
+
+    def bs_do_bsa_scaling(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_bsa_scaling(const bool &bs_do_bsa_scaling_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_bsa_scaling(self, *args)
+
+
+    def bs_wsa_value(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_wsa_value(const double &bs_wsa_value_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_wsa_value(self, *args)
+
+
+    def bs_bsa_value(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_bsa_value(const double &bs_bsa_value_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_bsa_value(self, *args)
+
+
+    def bs_do_newcmglint(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_newcmglint(const bool &bs_do_newcmglint_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_newcmglint(self, *args)
+
+
+    def bs_salinity(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_salinity(const double &bs_salinity_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_salinity(self, *args)
+
+
+    def bs_wavelength(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_wavelength(const double &bs_wavelength_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_wavelength(self, *args)
+
+
+    def bs_windspeed(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_windspeed(const double &bs_windspeed_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_windspeed(self, *args)
+
+
+    def bs_winddir(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_winddir(const blitz::Array< double, 1 > &bs_winddir_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_winddir(self, *args)
+
+
+    def bs_do_glintshadow(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_glintshadow(const bool &bs_do_glintshadow_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_glintshadow(self, *args)
+
+
+    def bs_do_foamoption(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_foamoption(const bool &bs_do_foamoption_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_foamoption(self, *args)
+
+
+    def bs_do_facetisotropy(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_facetisotropy(const bool &bs_do_facetisotropy_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_facetisotropy(self, *args)
 
 
     def bs_do_glitter_msrcorr(self, *args):
@@ -672,13 +890,13 @@ class Brdf_Sup_Inputs(Lidort_Structure):
         return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_glitter_msrcorr(self, *args)
 
 
-    def bs_do_glitter_msrcorr_exactonly(self, *args):
+    def bs_do_glitter_msrcorr_dbonly(self, *args):
         """
 
-        void FullPhysics::Brdf_Sup_Inputs::bs_do_glitter_msrcorr_exactonly(const bool &bs_do_glitter_msrcorr_exactonly_in)
+        void FullPhysics::Brdf_Sup_Inputs::bs_do_glitter_msrcorr_dbonly(const bool &bs_do_glitter_msrcorr_dbonly_in)
 
         """
-        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_glitter_msrcorr_exactonly(self, *args)
+        return _lidort_interface_types.Brdf_Sup_Inputs_bs_do_glitter_msrcorr_dbonly(self, *args)
 
 
     def bs_glitter_msrcorr_order(self, *args):
@@ -716,9 +934,12 @@ class Brdf_Sup_Inputs(Lidort_Structure):
         """
         return _lidort_interface_types.Brdf_Sup_Inputs_print_desc(self, output_stream)
 
-Brdf_Sup_Inputs.bs_do_user_streams = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_user_streams, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_do_brdf_surface = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_brdf_surface, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_do_surface_emission = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_surface_emission, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_solar_sources = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_solar_sources, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_user_streams = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_user_streams, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_user_obsgeoms = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_user_obsgeoms, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_doublet_geometry = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_doublet_geometry, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_nstreams = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_nstreams, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_nbeams = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_nbeams, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_beam_szas = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_beam_szas, None, Brdf_Sup_Inputs)
@@ -726,6 +947,10 @@ Brdf_Sup_Inputs.bs_n_user_relazms = new_instancemethod(_lidort_interface_types.B
 Brdf_Sup_Inputs.bs_user_relazms = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_user_relazms, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_n_user_streams = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_n_user_streams, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_user_angles_input = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_user_angles_input, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_n_user_obsgeoms = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_n_user_obsgeoms, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_user_obsgeoms = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_user_obsgeoms, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_n_user_doublets = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_n_user_doublets, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_user_doublets = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_user_doublets, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_n_brdf_kernels = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_n_brdf_kernels, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_brdf_names = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_brdf_names, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_which_brdf = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_which_brdf, None, Brdf_Sup_Inputs)
@@ -735,9 +960,22 @@ Brdf_Sup_Inputs.bs_lambertian_kernel_flag = new_instancemethod(_lidort_interface
 Brdf_Sup_Inputs.bs_brdf_factors = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_brdf_factors, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_nstreams_brdf = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_nstreams_brdf, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_do_shadow_effect = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_shadow_effect, None, Brdf_Sup_Inputs)
-Brdf_Sup_Inputs.bs_do_exactonly = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_exactonly, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_directbounce_only = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_directbounce_only, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_wsabsa_output = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_wsabsa_output, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_wsa_scaling = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_wsa_scaling, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_bsa_scaling = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_bsa_scaling, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_wsa_value = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_wsa_value, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_bsa_value = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_bsa_value, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_newcmglint = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_newcmglint, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_salinity = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_salinity, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_wavelength = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_wavelength, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_windspeed = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_windspeed, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_winddir = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_winddir, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_glintshadow = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_glintshadow, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_foamoption = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_foamoption, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_facetisotropy = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_facetisotropy, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_do_glitter_msrcorr = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_glitter_msrcorr, None, Brdf_Sup_Inputs)
-Brdf_Sup_Inputs.bs_do_glitter_msrcorr_exactonly = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_glitter_msrcorr_exactonly, None, Brdf_Sup_Inputs)
+Brdf_Sup_Inputs.bs_do_glitter_msrcorr_dbonly = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_do_glitter_msrcorr_dbonly, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_glitter_msrcorr_order = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_glitter_msrcorr_order, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_glitter_msrcorr_nmuquad = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_glitter_msrcorr_nmuquad, None, Brdf_Sup_Inputs)
 Brdf_Sup_Inputs.bs_glitter_msrcorr_nphiquad = new_instancemethod(_lidort_interface_types.Brdf_Sup_Inputs_bs_glitter_msrcorr_nphiquad, None, Brdf_Sup_Inputs)
@@ -764,13 +1002,13 @@ class Brdf_Sup_Outputs(Lidort_Structure):
         _lidort_interface_types.Brdf_Sup_Outputs_swiginit(self, _lidort_interface_types.new_Brdf_Sup_Outputs(*args))
     __swig_destroy__ = _lidort_interface_types.delete_Brdf_Sup_Outputs
 
-    def bs_exactdb_brdfunc(self, *args):
+    def bs_dbounce_brdfunc(self, *args):
         """
 
-        void FullPhysics::Brdf_Sup_Outputs::bs_exactdb_brdfunc(const blitz::Array< double, 3 > &bs_exactdb_brdfunc_in)
+        void FullPhysics::Brdf_Sup_Outputs::bs_dbounce_brdfunc(const blitz::Array< double, 3 > &bs_dbounce_brdfunc_in)
 
         """
-        return _lidort_interface_types.Brdf_Sup_Outputs_bs_exactdb_brdfunc(self, *args)
+        return _lidort_interface_types.Brdf_Sup_Outputs_bs_dbounce_brdfunc(self, *args)
 
 
     def bs_brdf_f_0(self, *args):
@@ -812,7 +1050,7 @@ class Brdf_Sup_Outputs(Lidort_Structure):
     def bs_emissivity(self, *args):
         """
 
-        void FullPhysics::Brdf_Sup_Outputs::bs_emissivity(const blitz::Array< double, 2 > &bs_emissivity_in)
+        void FullPhysics::Brdf_Sup_Outputs::bs_emissivity(const blitz::Array< double, 1 > &bs_emissivity_in)
 
         """
         return _lidort_interface_types.Brdf_Sup_Outputs_bs_emissivity(self, *args)
@@ -821,10 +1059,46 @@ class Brdf_Sup_Outputs(Lidort_Structure):
     def bs_user_emissivity(self, *args):
         """
 
-        void FullPhysics::Brdf_Sup_Outputs::bs_user_emissivity(const blitz::Array< double, 2 > &bs_user_emissivity_in)
+        void FullPhysics::Brdf_Sup_Outputs::bs_user_emissivity(const blitz::Array< double, 1 > &bs_user_emissivity_in)
 
         """
         return _lidort_interface_types.Brdf_Sup_Outputs_bs_user_emissivity(self, *args)
+
+
+    def bs_wsa_calculated(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Outputs::bs_wsa_calculated(const double &bs_wsa_calculated_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Outputs_bs_wsa_calculated(self, *args)
+
+
+    def bs_wsa_kernels(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Outputs::bs_wsa_kernels(const blitz::Array< double, 1 > &bs_wsa_kernels_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Outputs_bs_wsa_kernels(self, *args)
+
+
+    def bs_bsa_calculated(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Outputs::bs_bsa_calculated(const double &bs_bsa_calculated_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Outputs_bs_bsa_calculated(self, *args)
+
+
+    def bs_bsa_kernels(self, *args):
+        """
+
+        void FullPhysics::Brdf_Sup_Outputs::bs_bsa_kernels(const blitz::Array< double, 1 > &bs_bsa_kernels_in)
+
+        """
+        return _lidort_interface_types.Brdf_Sup_Outputs_bs_bsa_kernels(self, *args)
 
 
     def print_desc(self, output_stream):
@@ -835,13 +1109,17 @@ class Brdf_Sup_Outputs(Lidort_Structure):
         """
         return _lidort_interface_types.Brdf_Sup_Outputs_print_desc(self, output_stream)
 
-Brdf_Sup_Outputs.bs_exactdb_brdfunc = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_bs_exactdb_brdfunc, None, Brdf_Sup_Outputs)
+Brdf_Sup_Outputs.bs_dbounce_brdfunc = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_bs_dbounce_brdfunc, None, Brdf_Sup_Outputs)
 Brdf_Sup_Outputs.bs_brdf_f_0 = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_bs_brdf_f_0, None, Brdf_Sup_Outputs)
 Brdf_Sup_Outputs.bs_brdf_f = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_bs_brdf_f, None, Brdf_Sup_Outputs)
 Brdf_Sup_Outputs.bs_user_brdf_f_0 = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_bs_user_brdf_f_0, None, Brdf_Sup_Outputs)
 Brdf_Sup_Outputs.bs_user_brdf_f = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_bs_user_brdf_f, None, Brdf_Sup_Outputs)
 Brdf_Sup_Outputs.bs_emissivity = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_bs_emissivity, None, Brdf_Sup_Outputs)
 Brdf_Sup_Outputs.bs_user_emissivity = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_bs_user_emissivity, None, Brdf_Sup_Outputs)
+Brdf_Sup_Outputs.bs_wsa_calculated = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_bs_wsa_calculated, None, Brdf_Sup_Outputs)
+Brdf_Sup_Outputs.bs_wsa_kernels = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_bs_wsa_kernels, None, Brdf_Sup_Outputs)
+Brdf_Sup_Outputs.bs_bsa_calculated = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_bs_bsa_calculated, None, Brdf_Sup_Outputs)
+Brdf_Sup_Outputs.bs_bsa_kernels = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_bs_bsa_kernels, None, Brdf_Sup_Outputs)
 Brdf_Sup_Outputs.print_desc = new_instancemethod(_lidort_interface_types.Brdf_Sup_Outputs_print_desc, None, Brdf_Sup_Outputs)
 Brdf_Sup_Outputs_swigregister = _lidort_interface_types.Brdf_Sup_Outputs_swigregister
 Brdf_Sup_Outputs_swigregister(Brdf_Sup_Outputs)
@@ -917,6 +1195,488 @@ Brdf_Input_Exception_Handling.print_desc = new_instancemethod(_lidort_interface_
 Brdf_Input_Exception_Handling_swigregister = _lidort_interface_types.Brdf_Input_Exception_Handling_swigregister
 Brdf_Input_Exception_Handling_swigregister(Brdf_Input_Exception_Handling)
 
+class Brdf_Output_Exception_Handling(Lidort_Structure):
+    """
+
+    C++ includes: lidort_interface_types.h
+
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        """
+
+        FullPhysics::Brdf_Output_Exception_Handling::Brdf_Output_Exception_Handling(void *allocated_f_type_c)
+
+        """
+        _lidort_interface_types.Brdf_Output_Exception_Handling_swiginit(self, _lidort_interface_types.new_Brdf_Output_Exception_Handling(*args))
+    __swig_destroy__ = _lidort_interface_types.delete_Brdf_Output_Exception_Handling
+
+    def bs_status_output(self, *args):
+        """
+
+        void FullPhysics::Brdf_Output_Exception_Handling::bs_status_output(const int &bs_status_output_in)
+
+        """
+        return _lidort_interface_types.Brdf_Output_Exception_Handling_bs_status_output(self, *args)
+
+
+    def bs_noutputmessages(self, *args):
+        """
+
+        void FullPhysics::Brdf_Output_Exception_Handling::bs_noutputmessages(const int &bs_noutputmessages_in)
+
+        """
+        return _lidort_interface_types.Brdf_Output_Exception_Handling_bs_noutputmessages(self, *args)
+
+
+    def bs_outputmessages(self):
+        """
+
+        const std::vector< std::string > FullPhysics::Brdf_Output_Exception_Handling::bs_outputmessages() const
+
+        """
+        return _lidort_interface_types.Brdf_Output_Exception_Handling_bs_outputmessages(self)
+
+
+    def print_desc(self, output_stream):
+        """
+
+        virtual void FullPhysics::Brdf_Output_Exception_Handling::print(std::ostream &output_stream) const
+
+        """
+        return _lidort_interface_types.Brdf_Output_Exception_Handling_print_desc(self, output_stream)
+
+Brdf_Output_Exception_Handling.bs_status_output = new_instancemethod(_lidort_interface_types.Brdf_Output_Exception_Handling_bs_status_output, None, Brdf_Output_Exception_Handling)
+Brdf_Output_Exception_Handling.bs_noutputmessages = new_instancemethod(_lidort_interface_types.Brdf_Output_Exception_Handling_bs_noutputmessages, None, Brdf_Output_Exception_Handling)
+Brdf_Output_Exception_Handling.bs_outputmessages = new_instancemethod(_lidort_interface_types.Brdf_Output_Exception_Handling_bs_outputmessages, None, Brdf_Output_Exception_Handling)
+Brdf_Output_Exception_Handling.print_desc = new_instancemethod(_lidort_interface_types.Brdf_Output_Exception_Handling_print_desc, None, Brdf_Output_Exception_Handling)
+Brdf_Output_Exception_Handling_swigregister = _lidort_interface_types.Brdf_Output_Exception_Handling_swigregister
+Brdf_Output_Exception_Handling_swigregister(Brdf_Output_Exception_Handling)
+
+class Sleave_Sup_Inputs(Lidort_Structure):
+    """
+
+    C++ includes: lidort_interface_types.h
+
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        """
+
+        FullPhysics::Sleave_Sup_Inputs::Sleave_Sup_Inputs(void *allocated_f_type_c)
+
+        """
+        _lidort_interface_types.Sleave_Sup_Inputs_swiginit(self, _lidort_interface_types.new_Sleave_Sup_Inputs(*args))
+    __swig_destroy__ = _lidort_interface_types.delete_Sleave_Sup_Inputs
+
+    def sl_do_sleaving(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_sleaving(const bool &sl_do_sleaving_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_sleaving(self, *args)
+
+
+    def sl_do_isotropic(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_isotropic(const bool &sl_do_isotropic_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_isotropic(self, *args)
+
+
+    def sl_do_roughsurface(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_roughsurface(const bool &sl_do_roughsurface_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_roughsurface(self, *args)
+
+
+    def sl_do_exact(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_exact(const bool &sl_do_exact_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_exact(self, *args)
+
+
+    def sl_do_exactonly(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_exactonly(const bool &sl_do_exactonly_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_exactonly(self, *args)
+
+
+    def sl_do_fluorescence(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_fluorescence(const bool &sl_do_fluorescence_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_fluorescence(self, *args)
+
+
+    def sl_do_solar_sources(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_solar_sources(const bool &sl_do_solar_sources_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_solar_sources(self, *args)
+
+
+    def sl_sleave_datapath(self):
+        """
+
+        const std::string FullPhysics::Sleave_Sup_Inputs::sl_sleave_datapath() const
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_sleave_datapath(self)
+
+
+    def sl_do_user_streams(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_user_streams(const bool &sl_do_user_streams_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_user_streams(self, *args)
+
+
+    def sl_do_user_obsgeoms(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_user_obsgeoms(const bool &sl_do_user_obsgeoms_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_user_obsgeoms(self, *args)
+
+
+    def sl_do_doublet_geometry(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_doublet_geometry(const bool &sl_do_doublet_geometry_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_doublet_geometry(self, *args)
+
+
+    def sl_nstreams(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_nstreams(const int &sl_nstreams_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_nstreams(self, *args)
+
+
+    def sl_nbeams(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_nbeams(const int &sl_nbeams_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_nbeams(self, *args)
+
+
+    def sl_beam_szas(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_beam_szas(const blitz::Array< double, 1 > &sl_beam_szas_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_beam_szas(self, *args)
+
+
+    def sl_n_user_relazms(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_n_user_relazms(const int &sl_n_user_relazms_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_n_user_relazms(self, *args)
+
+
+    def sl_user_relazms(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_user_relazms(const blitz::Array< double, 1 > &sl_user_relazms_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_user_relazms(self, *args)
+
+
+    def sl_n_user_streams(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_n_user_streams(const int &sl_n_user_streams_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_n_user_streams(self, *args)
+
+
+    def sl_user_angles_input(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_user_angles_input(const blitz::Array< double, 1 > &sl_user_angles_input_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_user_angles_input(self, *args)
+
+
+    def sl_n_user_obsgeoms(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_n_user_obsgeoms(const int &sl_n_user_obsgeoms_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_n_user_obsgeoms(self, *args)
+
+
+    def sl_user_obsgeoms(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_user_obsgeoms(const blitz::Array< double, 2 > &sl_user_obsgeoms_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_user_obsgeoms(self, *args)
+
+
+    def sl_n_user_doublets(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_n_user_doublets(const int &sl_n_user_doublets_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_n_user_doublets(self, *args)
+
+
+    def sl_user_doublets(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_user_doublets(const blitz::Array< double, 2 > &sl_user_doublets_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_user_doublets(self, *args)
+
+
+    def sl_salinity(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_salinity(const double &sl_salinity_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_salinity(self, *args)
+
+
+    def sl_chlorconc(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_chlorconc(const double &sl_chlorconc_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_chlorconc(self, *args)
+
+
+    def sl_wavelength(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_wavelength(const double &sl_wavelength_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_wavelength(self, *args)
+
+
+    def sl_azimuthdep(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_azimuthdep(const bool &sl_azimuthdep_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_azimuthdep(self, *args)
+
+
+    def sl_do_fourier_output(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_fourier_output(const bool &sl_do_fourier_output_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_fourier_output(self, *args)
+
+
+    def sl_windspeed(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_windspeed(const double &sl_windspeed_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_windspeed(self, *args)
+
+
+    def sl_winddir(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_winddir(const blitz::Array< double, 1 > &sl_winddir_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_winddir(self, *args)
+
+
+    def sl_do_glintshadow(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_glintshadow(const bool &sl_do_glintshadow_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_glintshadow(self, *args)
+
+
+    def sl_do_foamoption(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_foamoption(const bool &sl_do_foamoption_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_foamoption(self, *args)
+
+
+    def sl_do_facetisotropy(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_do_facetisotropy(const bool &sl_do_facetisotropy_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_do_facetisotropy(self, *args)
+
+
+    def sl_fl_wavelength(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_fl_wavelength(const double &sl_fl_wavelength_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_fl_wavelength(self, *args)
+
+
+    def sl_fl_latitude(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_fl_latitude(const double &sl_fl_latitude_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_fl_latitude(self, *args)
+
+
+    def sl_fl_longitude(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_fl_longitude(const double &sl_fl_longitude_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_fl_longitude(self, *args)
+
+
+    def sl_fl_epoch(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_fl_epoch(const blitz::Array< int, 1 > &sl_fl_epoch_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_fl_epoch(self, *args)
+
+
+    def sl_fl_amplitude755(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_fl_amplitude755(const double &sl_fl_amplitude755_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_fl_amplitude755(self, *args)
+
+
+    def sl_fl_do_datagaussian(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_fl_do_datagaussian(const bool &sl_fl_do_datagaussian_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_fl_do_datagaussian(self, *args)
+
+
+    def sl_fl_inputgaussians(self, *args):
+        """
+
+        void FullPhysics::Sleave_Sup_Inputs::sl_fl_inputgaussians(const blitz::Array< double, 2 > &sl_fl_inputgaussians_in)
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_sl_fl_inputgaussians(self, *args)
+
+
+    def print_desc(self, output_stream):
+        """
+
+        virtual void FullPhysics::Sleave_Sup_Inputs::print(std::ostream &output_stream) const
+
+        """
+        return _lidort_interface_types.Sleave_Sup_Inputs_print_desc(self, output_stream)
+
+Sleave_Sup_Inputs.sl_do_sleaving = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_sleaving, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_isotropic = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_isotropic, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_roughsurface = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_roughsurface, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_exact = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_exact, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_exactonly = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_exactonly, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_fluorescence = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_fluorescence, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_solar_sources = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_solar_sources, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_sleave_datapath = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_sleave_datapath, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_user_streams = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_user_streams, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_user_obsgeoms = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_user_obsgeoms, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_doublet_geometry = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_doublet_geometry, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_nstreams = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_nstreams, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_nbeams = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_nbeams, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_beam_szas = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_beam_szas, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_n_user_relazms = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_n_user_relazms, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_user_relazms = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_user_relazms, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_n_user_streams = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_n_user_streams, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_user_angles_input = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_user_angles_input, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_n_user_obsgeoms = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_n_user_obsgeoms, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_user_obsgeoms = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_user_obsgeoms, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_n_user_doublets = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_n_user_doublets, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_user_doublets = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_user_doublets, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_salinity = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_salinity, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_chlorconc = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_chlorconc, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_wavelength = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_wavelength, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_azimuthdep = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_azimuthdep, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_fourier_output = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_fourier_output, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_windspeed = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_windspeed, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_winddir = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_winddir, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_glintshadow = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_glintshadow, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_foamoption = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_foamoption, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_do_facetisotropy = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_do_facetisotropy, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_fl_wavelength = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_fl_wavelength, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_fl_latitude = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_fl_latitude, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_fl_longitude = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_fl_longitude, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_fl_epoch = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_fl_epoch, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_fl_amplitude755 = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_fl_amplitude755, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_fl_do_datagaussian = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_fl_do_datagaussian, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.sl_fl_inputgaussians = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_sl_fl_inputgaussians, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs.print_desc = new_instancemethod(_lidort_interface_types.Sleave_Sup_Inputs_print_desc, None, Sleave_Sup_Inputs)
+Sleave_Sup_Inputs_swigregister = _lidort_interface_types.Sleave_Sup_Inputs_swigregister
+Sleave_Sup_Inputs_swigregister(Sleave_Sup_Inputs)
+
 class Lidort_Fixed_Lincontrol(Lidort_Structure):
     """
 
@@ -935,42 +1695,6 @@ class Lidort_Fixed_Lincontrol(Lidort_Structure):
         """
         _lidort_interface_types.Lidort_Fixed_Lincontrol_swiginit(self, _lidort_interface_types.new_Lidort_Fixed_Lincontrol(*args))
     __swig_destroy__ = _lidort_interface_types.delete_Lidort_Fixed_Lincontrol
-
-    def ts_do_column_linearization(self, *args):
-        """
-
-        void FullPhysics::Lidort_Fixed_Lincontrol::ts_do_column_linearization(const bool &ts_do_column_linearization_in)
-
-        """
-        return _lidort_interface_types.Lidort_Fixed_Lincontrol_ts_do_column_linearization(self, *args)
-
-
-    def ts_do_profile_linearization(self, *args):
-        """
-
-        void FullPhysics::Lidort_Fixed_Lincontrol::ts_do_profile_linearization(const bool &ts_do_profile_linearization_in)
-
-        """
-        return _lidort_interface_types.Lidort_Fixed_Lincontrol_ts_do_profile_linearization(self, *args)
-
-
-    def ts_do_surface_linearization(self, *args):
-        """
-
-        void FullPhysics::Lidort_Fixed_Lincontrol::ts_do_surface_linearization(const bool &ts_do_surface_linearization_in)
-
-        """
-        return _lidort_interface_types.Lidort_Fixed_Lincontrol_ts_do_surface_linearization(self, *args)
-
-
-    def ts_do_sleave_wfs(self, *args):
-        """
-
-        void FullPhysics::Lidort_Fixed_Lincontrol::ts_do_sleave_wfs(const bool &ts_do_sleave_wfs_in)
-
-        """
-        return _lidort_interface_types.Lidort_Fixed_Lincontrol_ts_do_sleave_wfs(self, *args)
-
 
     def ts_layer_vary_flag(self, *args):
         """
@@ -1017,6 +1741,24 @@ class Lidort_Fixed_Lincontrol(Lidort_Structure):
         return _lidort_interface_types.Lidort_Fixed_Lincontrol_ts_n_sleave_wfs(self, *args)
 
 
+    def ts_columnwf_names(self):
+        """
+
+        const std::vector< std::string > FullPhysics::Lidort_Fixed_Lincontrol::ts_columnwf_names() const
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Lincontrol_ts_columnwf_names(self)
+
+
+    def ts_profilewf_names(self):
+        """
+
+        const std::vector< std::string > FullPhysics::Lidort_Fixed_Lincontrol::ts_profilewf_names() const
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Lincontrol_ts_profilewf_names(self)
+
+
     def print_desc(self, output_stream):
         """
 
@@ -1025,15 +1767,13 @@ class Lidort_Fixed_Lincontrol(Lidort_Structure):
         """
         return _lidort_interface_types.Lidort_Fixed_Lincontrol_print_desc(self, output_stream)
 
-Lidort_Fixed_Lincontrol.ts_do_column_linearization = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Lincontrol_ts_do_column_linearization, None, Lidort_Fixed_Lincontrol)
-Lidort_Fixed_Lincontrol.ts_do_profile_linearization = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Lincontrol_ts_do_profile_linearization, None, Lidort_Fixed_Lincontrol)
-Lidort_Fixed_Lincontrol.ts_do_surface_linearization = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Lincontrol_ts_do_surface_linearization, None, Lidort_Fixed_Lincontrol)
-Lidort_Fixed_Lincontrol.ts_do_sleave_wfs = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Lincontrol_ts_do_sleave_wfs, None, Lidort_Fixed_Lincontrol)
 Lidort_Fixed_Lincontrol.ts_layer_vary_flag = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Lincontrol_ts_layer_vary_flag, None, Lidort_Fixed_Lincontrol)
 Lidort_Fixed_Lincontrol.ts_layer_vary_number = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Lincontrol_ts_layer_vary_number, None, Lidort_Fixed_Lincontrol)
 Lidort_Fixed_Lincontrol.ts_n_totalcolumn_wfs = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Lincontrol_ts_n_totalcolumn_wfs, None, Lidort_Fixed_Lincontrol)
 Lidort_Fixed_Lincontrol.ts_n_surface_wfs = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Lincontrol_ts_n_surface_wfs, None, Lidort_Fixed_Lincontrol)
 Lidort_Fixed_Lincontrol.ts_n_sleave_wfs = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Lincontrol_ts_n_sleave_wfs, None, Lidort_Fixed_Lincontrol)
+Lidort_Fixed_Lincontrol.ts_columnwf_names = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Lincontrol_ts_columnwf_names, None, Lidort_Fixed_Lincontrol)
+Lidort_Fixed_Lincontrol.ts_profilewf_names = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Lincontrol_ts_profilewf_names, None, Lidort_Fixed_Lincontrol)
 Lidort_Fixed_Lincontrol.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Lincontrol_print_desc, None, Lidort_Fixed_Lincontrol)
 Lidort_Fixed_Lincontrol_swigregister = _lidort_interface_types.Lidort_Fixed_Lincontrol_swigregister
 Lidort_Fixed_Lincontrol_swigregister(Lidort_Fixed_Lincontrol)
@@ -1060,7 +1800,7 @@ class Lidort_Fixed_Linoptical(Lidort_Structure):
     def ts_l_deltau_vert_input(self, *args):
         """
 
-        void FullPhysics::Lidort_Fixed_Linoptical::ts_l_deltau_vert_input(const blitz::Array< double, 3 > &ts_l_deltau_vert_input_in)
+        void FullPhysics::Lidort_Fixed_Linoptical::ts_l_deltau_vert_input(const blitz::Array< double, 2 > &ts_l_deltau_vert_input_in)
 
         """
         return _lidort_interface_types.Lidort_Fixed_Linoptical_ts_l_deltau_vert_input(self, *args)
@@ -1069,7 +1809,7 @@ class Lidort_Fixed_Linoptical(Lidort_Structure):
     def ts_l_omega_total_input(self, *args):
         """
 
-        void FullPhysics::Lidort_Fixed_Linoptical::ts_l_omega_total_input(const blitz::Array< double, 3 > &ts_l_omega_total_input_in)
+        void FullPhysics::Lidort_Fixed_Linoptical::ts_l_omega_total_input(const blitz::Array< double, 2 > &ts_l_omega_total_input_in)
 
         """
         return _lidort_interface_types.Lidort_Fixed_Linoptical_ts_l_omega_total_input(self, *args)
@@ -1078,10 +1818,28 @@ class Lidort_Fixed_Linoptical(Lidort_Structure):
     def ts_l_phasmoms_total_input(self, *args):
         """
 
-        void FullPhysics::Lidort_Fixed_Linoptical::ts_l_phasmoms_total_input(const blitz::Array< double, 4 > &ts_l_phasmoms_total_input_in)
+        void FullPhysics::Lidort_Fixed_Linoptical::ts_l_phasmoms_total_input(const blitz::Array< double, 3 > &ts_l_phasmoms_total_input_in)
 
         """
         return _lidort_interface_types.Lidort_Fixed_Linoptical_ts_l_phasmoms_total_input(self, *args)
+
+
+    def ts_l_phasfunc_input_up(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Linoptical::ts_l_phasfunc_input_up(const blitz::Array< double, 3 > &ts_l_phasfunc_input_up_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Linoptical_ts_l_phasfunc_input_up(self, *args)
+
+
+    def ts_l_phasfunc_input_dn(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Linoptical::ts_l_phasfunc_input_dn(const blitz::Array< double, 3 > &ts_l_phasfunc_input_dn_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Linoptical_ts_l_phasfunc_input_dn(self, *args)
 
 
     def print_desc(self, output_stream):
@@ -1095,6 +1853,8 @@ class Lidort_Fixed_Linoptical(Lidort_Structure):
 Lidort_Fixed_Linoptical.ts_l_deltau_vert_input = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Linoptical_ts_l_deltau_vert_input, None, Lidort_Fixed_Linoptical)
 Lidort_Fixed_Linoptical.ts_l_omega_total_input = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Linoptical_ts_l_omega_total_input, None, Lidort_Fixed_Linoptical)
 Lidort_Fixed_Linoptical.ts_l_phasmoms_total_input = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Linoptical_ts_l_phasmoms_total_input, None, Lidort_Fixed_Linoptical)
+Lidort_Fixed_Linoptical.ts_l_phasfunc_input_up = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Linoptical_ts_l_phasfunc_input_up, None, Lidort_Fixed_Linoptical)
+Lidort_Fixed_Linoptical.ts_l_phasfunc_input_dn = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Linoptical_ts_l_phasfunc_input_dn, None, Lidort_Fixed_Linoptical)
 Lidort_Fixed_Linoptical.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Linoptical_print_desc, None, Lidort_Fixed_Linoptical)
 Lidort_Fixed_Linoptical_swigregister = _lidort_interface_types.Lidort_Fixed_Linoptical_swigregister
 Lidort_Fixed_Linoptical_swigregister(Lidort_Fixed_Linoptical)
@@ -1150,6 +1910,127 @@ Lidort_Fixed_Lininputs.print_desc = new_instancemethod(_lidort_interface_types.L
 Lidort_Fixed_Lininputs_swigregister = _lidort_interface_types.Lidort_Fixed_Lininputs_swigregister
 Lidort_Fixed_Lininputs_swigregister(Lidort_Fixed_Lininputs)
 
+class Lidort_Modified_Lincontrol(Lidort_Structure):
+    """
+
+    C++ includes: lidort_interface_types.h
+
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        """
+
+        FullPhysics::Lidort_Modified_Lincontrol::Lidort_Modified_Lincontrol(void *allocated_f_type_c)
+
+        """
+        _lidort_interface_types.Lidort_Modified_Lincontrol_swiginit(self, _lidort_interface_types.new_Lidort_Modified_Lincontrol(*args))
+    __swig_destroy__ = _lidort_interface_types.delete_Lidort_Modified_Lincontrol
+
+    def ts_do_column_linearization(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Lincontrol::ts_do_column_linearization(const bool &ts_do_column_linearization_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_column_linearization(self, *args)
+
+
+    def ts_do_profile_linearization(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Lincontrol::ts_do_profile_linearization(const bool &ts_do_profile_linearization_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_profile_linearization(self, *args)
+
+
+    def ts_do_atmos_linearization(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Lincontrol::ts_do_atmos_linearization(const bool &ts_do_atmos_linearization_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_atmos_linearization(self, *args)
+
+
+    def ts_do_surface_linearization(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Lincontrol::ts_do_surface_linearization(const bool &ts_do_surface_linearization_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_surface_linearization(self, *args)
+
+
+    def ts_do_linearization(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Lincontrol::ts_do_linearization(const bool &ts_do_linearization_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_linearization(self, *args)
+
+
+    def ts_do_simulation_only(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Lincontrol::ts_do_simulation_only(const bool &ts_do_simulation_only_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_simulation_only(self, *args)
+
+
+    def ts_do_atmos_lbbf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Lincontrol::ts_do_atmos_lbbf(const bool &ts_do_atmos_lbbf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_atmos_lbbf(self, *args)
+
+
+    def ts_do_surface_lbbf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Lincontrol::ts_do_surface_lbbf(const bool &ts_do_surface_lbbf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_surface_lbbf(self, *args)
+
+
+    def ts_do_sleave_wfs(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Lincontrol::ts_do_sleave_wfs(const bool &ts_do_sleave_wfs_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_sleave_wfs(self, *args)
+
+
+    def print_desc(self, output_stream):
+        """
+
+        virtual void FullPhysics::Lidort_Modified_Lincontrol::print(std::ostream &output_stream) const
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Lincontrol_print_desc(self, output_stream)
+
+Lidort_Modified_Lincontrol.ts_do_column_linearization = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_column_linearization, None, Lidort_Modified_Lincontrol)
+Lidort_Modified_Lincontrol.ts_do_profile_linearization = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_profile_linearization, None, Lidort_Modified_Lincontrol)
+Lidort_Modified_Lincontrol.ts_do_atmos_linearization = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_atmos_linearization, None, Lidort_Modified_Lincontrol)
+Lidort_Modified_Lincontrol.ts_do_surface_linearization = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_surface_linearization, None, Lidort_Modified_Lincontrol)
+Lidort_Modified_Lincontrol.ts_do_linearization = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_linearization, None, Lidort_Modified_Lincontrol)
+Lidort_Modified_Lincontrol.ts_do_simulation_only = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_simulation_only, None, Lidort_Modified_Lincontrol)
+Lidort_Modified_Lincontrol.ts_do_atmos_lbbf = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_atmos_lbbf, None, Lidort_Modified_Lincontrol)
+Lidort_Modified_Lincontrol.ts_do_surface_lbbf = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_surface_lbbf, None, Lidort_Modified_Lincontrol)
+Lidort_Modified_Lincontrol.ts_do_sleave_wfs = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lincontrol_ts_do_sleave_wfs, None, Lidort_Modified_Lincontrol)
+Lidort_Modified_Lincontrol.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lincontrol_print_desc, None, Lidort_Modified_Lincontrol)
+Lidort_Modified_Lincontrol_swigregister = _lidort_interface_types.Lidort_Modified_Lincontrol_swigregister
+Lidort_Modified_Lincontrol_swigregister(Lidort_Modified_Lincontrol)
+
 class Lidort_Modified_Lininputs(Lidort_Structure):
     """
 
@@ -1169,13 +2050,13 @@ class Lidort_Modified_Lininputs(Lidort_Structure):
         _lidort_interface_types.Lidort_Modified_Lininputs_swiginit(self, _lidort_interface_types.new_Lidort_Modified_Lininputs(*args))
     __swig_destroy__ = _lidort_interface_types.delete_Lidort_Modified_Lininputs
 
-    def dummy(self, *args):
+    def mcont(self, *args):
         """
 
-        void FullPhysics::Lidort_Modified_Lininputs::dummy(const int &dummy_in)
+        void FullPhysics::Lidort_Modified_Lininputs::mcont(Lidort_Modified_Lincontrol &mcont_in)
 
         """
-        return _lidort_interface_types.Lidort_Modified_Lininputs_dummy(self, *args)
+        return _lidort_interface_types.Lidort_Modified_Lininputs_mcont(self, *args)
 
 
     def print_desc(self, output_stream):
@@ -1186,7 +2067,7 @@ class Lidort_Modified_Lininputs(Lidort_Structure):
         """
         return _lidort_interface_types.Lidort_Modified_Lininputs_print_desc(self, output_stream)
 
-Lidort_Modified_Lininputs.dummy = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lininputs_dummy, None, Lidort_Modified_Lininputs)
+Lidort_Modified_Lininputs.mcont = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lininputs_mcont, None, Lidort_Modified_Lininputs)
 Lidort_Modified_Lininputs.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Modified_Lininputs_print_desc, None, Lidort_Modified_Lininputs)
 Lidort_Modified_Lininputs_swigregister = _lidort_interface_types.Lidort_Modified_Lininputs_swigregister
 Lidort_Modified_Lininputs_swigregister(Lidort_Modified_Lininputs)
@@ -1213,55 +2094,289 @@ class Lidort_Linatmos(Lidort_Structure):
     def ts_columnwf(self, *args):
         """
 
-        void FullPhysics::Lidort_Linatmos::ts_columnwf(const blitz::Array< double, 5 > &ts_columnwf_in)
+        void FullPhysics::Lidort_Linatmos::ts_columnwf(const blitz::Array< double, 4 > &ts_columnwf_in)
 
         """
         return _lidort_interface_types.Lidort_Linatmos_ts_columnwf(self, *args)
 
 
-    def ts_mint_columnwf(self, *args):
+    def ts_meani_diffuse_colwf(self, *args):
         """
 
-        void FullPhysics::Lidort_Linatmos::ts_mint_columnwf(const blitz::Array< double, 5 > &ts_mint_columnwf_in)
+        void FullPhysics::Lidort_Linatmos::ts_meani_diffuse_colwf(const blitz::Array< double, 4 > &ts_meani_diffuse_colwf_in)
 
         """
-        return _lidort_interface_types.Lidort_Linatmos_ts_mint_columnwf(self, *args)
+        return _lidort_interface_types.Lidort_Linatmos_ts_meani_diffuse_colwf(self, *args)
 
 
-    def ts_flux_columnwf(self, *args):
+    def ts_flux_diffuse_colwf(self, *args):
         """
 
-        void FullPhysics::Lidort_Linatmos::ts_flux_columnwf(const blitz::Array< double, 5 > &ts_flux_columnwf_in)
+        void FullPhysics::Lidort_Linatmos::ts_flux_diffuse_colwf(const blitz::Array< double, 4 > &ts_flux_diffuse_colwf_in)
 
         """
-        return _lidort_interface_types.Lidort_Linatmos_ts_flux_columnwf(self, *args)
+        return _lidort_interface_types.Lidort_Linatmos_ts_flux_diffuse_colwf(self, *args)
+
+
+    def ts_dnmeani_direct_colwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_dnmeani_direct_colwf(const blitz::Array< double, 3 > &ts_dnmeani_direct_colwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_dnmeani_direct_colwf(self, *args)
+
+
+    def ts_dnflux_direct_colwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_dnflux_direct_colwf(const blitz::Array< double, 3 > &ts_dnflux_direct_colwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_dnflux_direct_colwf(self, *args)
 
 
     def ts_profilewf(self, *args):
         """
 
-        void FullPhysics::Lidort_Linatmos::ts_profilewf(const blitz::Array< double, 6 > &ts_profilewf_in)
+        void FullPhysics::Lidort_Linatmos::ts_profilewf(const blitz::Array< double, 5 > &ts_profilewf_in)
 
         """
         return _lidort_interface_types.Lidort_Linatmos_ts_profilewf(self, *args)
 
 
-    def ts_mint_profilewf(self, *args):
+    def ts_meani_diffuse_profwf(self, *args):
         """
 
-        void FullPhysics::Lidort_Linatmos::ts_mint_profilewf(const blitz::Array< double, 6 > &ts_mint_profilewf_in)
+        void FullPhysics::Lidort_Linatmos::ts_meani_diffuse_profwf(const blitz::Array< double, 5 > &ts_meani_diffuse_profwf_in)
 
         """
-        return _lidort_interface_types.Lidort_Linatmos_ts_mint_profilewf(self, *args)
+        return _lidort_interface_types.Lidort_Linatmos_ts_meani_diffuse_profwf(self, *args)
 
 
-    def ts_flux_profilewf(self, *args):
+    def ts_flux_diffuse_profwf(self, *args):
         """
 
-        void FullPhysics::Lidort_Linatmos::ts_flux_profilewf(const blitz::Array< double, 6 > &ts_flux_profilewf_in)
+        void FullPhysics::Lidort_Linatmos::ts_flux_diffuse_profwf(const blitz::Array< double, 5 > &ts_flux_diffuse_profwf_in)
 
         """
-        return _lidort_interface_types.Lidort_Linatmos_ts_flux_profilewf(self, *args)
+        return _lidort_interface_types.Lidort_Linatmos_ts_flux_diffuse_profwf(self, *args)
+
+
+    def ts_dnmeani_direct_profwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_dnmeani_direct_profwf(const blitz::Array< double, 4 > &ts_dnmeani_direct_profwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_dnmeani_direct_profwf(self, *args)
+
+
+    def ts_dnflux_direct_profwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_dnflux_direct_profwf(const blitz::Array< double, 4 > &ts_dnflux_direct_profwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_dnflux_direct_profwf(self, *args)
+
+
+    def ts_abbwfs_jacobians(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_abbwfs_jacobians(const blitz::Array< double, 4 > &ts_abbwfs_jacobians_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_abbwfs_jacobians(self, *args)
+
+
+    def ts_abbwfs_fluxes(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_abbwfs_fluxes(const blitz::Array< double, 4 > &ts_abbwfs_fluxes_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_abbwfs_fluxes(self, *args)
+
+
+    def ts_albmed_user_profwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_albmed_user_profwf(const blitz::Array< double, 3 > &ts_albmed_user_profwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_albmed_user_profwf(self, *args)
+
+
+    def ts_trnmed_user_profwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_trnmed_user_profwf(const blitz::Array< double, 3 > &ts_trnmed_user_profwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_trnmed_user_profwf(self, *args)
+
+
+    def ts_albmed_fluxes_profwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_albmed_fluxes_profwf(const blitz::Array< double, 3 > &ts_albmed_fluxes_profwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_albmed_fluxes_profwf(self, *args)
+
+
+    def ts_trnmed_fluxes_profwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_trnmed_fluxes_profwf(const blitz::Array< double, 3 > &ts_trnmed_fluxes_profwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_trnmed_fluxes_profwf(self, *args)
+
+
+    def ts_transbeam_profwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_transbeam_profwf(const blitz::Array< double, 3 > &ts_transbeam_profwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_transbeam_profwf(self, *args)
+
+
+    def ts_albmed_user_colwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_albmed_user_colwf(const blitz::Array< double, 2 > &ts_albmed_user_colwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_albmed_user_colwf(self, *args)
+
+
+    def ts_trnmed_user_colwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_trnmed_user_colwf(const blitz::Array< double, 2 > &ts_trnmed_user_colwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_trnmed_user_colwf(self, *args)
+
+
+    def ts_albmed_fluxes_colwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_albmed_fluxes_colwf(const blitz::Array< double, 2 > &ts_albmed_fluxes_colwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_albmed_fluxes_colwf(self, *args)
+
+
+    def ts_trnmed_fluxes_colwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_trnmed_fluxes_colwf(const blitz::Array< double, 2 > &ts_trnmed_fluxes_colwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_trnmed_fluxes_colwf(self, *args)
+
+
+    def ts_transbeam_colwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_transbeam_colwf(const blitz::Array< double, 2 > &ts_transbeam_colwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_transbeam_colwf(self, *args)
+
+
+    def ts_planetary_transterm_profwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_planetary_transterm_profwf(const blitz::Array< double, 3 > &ts_planetary_transterm_profwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_planetary_transterm_profwf(self, *args)
+
+
+    def ts_planetary_sbterm_profwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_planetary_sbterm_profwf(const blitz::Array< double, 2 > &ts_planetary_sbterm_profwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_planetary_sbterm_profwf(self, *args)
+
+
+    def ts_planetary_transterm_colwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_planetary_transterm_colwf(const blitz::Array< double, 2 > &ts_planetary_transterm_colwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_planetary_transterm_colwf(self, *args)
+
+
+    def ts_planetary_sbterm_colwf(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_planetary_sbterm_colwf(const blitz::Array< double, 1 > &ts_planetary_sbterm_colwf_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_planetary_sbterm_colwf(self, *args)
+
+
+    def ts_lc_lostrans(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_lc_lostrans(const blitz::Array< double, 3 > &ts_lc_lostrans_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_lc_lostrans(self, *args)
+
+
+    def ts_lc_layer_mssts(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_lc_layer_mssts(const blitz::Array< double, 3 > &ts_lc_layer_mssts_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_lc_layer_mssts(self, *args)
+
+
+    def ts_lc_surf_mssts(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_lc_surf_mssts(const blitz::Array< double, 2 > &ts_lc_surf_mssts_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_lc_surf_mssts(self, *args)
+
+
+    def ts_lp_lostrans(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_lp_lostrans(const blitz::Array< double, 3 > &ts_lp_lostrans_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_lp_lostrans(self, *args)
+
+
+    def ts_lp_layer_mssts(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_lp_layer_mssts(const blitz::Array< double, 4 > &ts_lp_layer_mssts_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_lp_layer_mssts(self, *args)
+
+
+    def ts_lp_surf_mssts(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linatmos::ts_lp_surf_mssts(const blitz::Array< double, 3 > &ts_lp_surf_mssts_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linatmos_ts_lp_surf_mssts(self, *args)
 
 
     def print_desc(self, output_stream):
@@ -1273,11 +2388,37 @@ class Lidort_Linatmos(Lidort_Structure):
         return _lidort_interface_types.Lidort_Linatmos_print_desc(self, output_stream)
 
 Lidort_Linatmos.ts_columnwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_columnwf, None, Lidort_Linatmos)
-Lidort_Linatmos.ts_mint_columnwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_mint_columnwf, None, Lidort_Linatmos)
-Lidort_Linatmos.ts_flux_columnwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_flux_columnwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_meani_diffuse_colwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_meani_diffuse_colwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_flux_diffuse_colwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_flux_diffuse_colwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_dnmeani_direct_colwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_dnmeani_direct_colwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_dnflux_direct_colwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_dnflux_direct_colwf, None, Lidort_Linatmos)
 Lidort_Linatmos.ts_profilewf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_profilewf, None, Lidort_Linatmos)
-Lidort_Linatmos.ts_mint_profilewf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_mint_profilewf, None, Lidort_Linatmos)
-Lidort_Linatmos.ts_flux_profilewf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_flux_profilewf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_meani_diffuse_profwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_meani_diffuse_profwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_flux_diffuse_profwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_flux_diffuse_profwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_dnmeani_direct_profwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_dnmeani_direct_profwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_dnflux_direct_profwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_dnflux_direct_profwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_abbwfs_jacobians = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_abbwfs_jacobians, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_abbwfs_fluxes = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_abbwfs_fluxes, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_albmed_user_profwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_albmed_user_profwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_trnmed_user_profwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_trnmed_user_profwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_albmed_fluxes_profwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_albmed_fluxes_profwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_trnmed_fluxes_profwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_trnmed_fluxes_profwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_transbeam_profwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_transbeam_profwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_albmed_user_colwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_albmed_user_colwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_trnmed_user_colwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_trnmed_user_colwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_albmed_fluxes_colwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_albmed_fluxes_colwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_trnmed_fluxes_colwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_trnmed_fluxes_colwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_transbeam_colwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_transbeam_colwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_planetary_transterm_profwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_planetary_transterm_profwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_planetary_sbterm_profwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_planetary_sbterm_profwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_planetary_transterm_colwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_planetary_transterm_colwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_planetary_sbterm_colwf = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_planetary_sbterm_colwf, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_lc_lostrans = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_lc_lostrans, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_lc_layer_mssts = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_lc_layer_mssts, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_lc_surf_mssts = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_lc_surf_mssts, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_lp_lostrans = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_lp_lostrans, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_lp_layer_mssts = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_lp_layer_mssts, None, Lidort_Linatmos)
+Lidort_Linatmos.ts_lp_surf_mssts = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_ts_lp_surf_mssts, None, Lidort_Linatmos)
 Lidort_Linatmos.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Linatmos_print_desc, None, Lidort_Linatmos)
 Lidort_Linatmos_swigregister = _lidort_interface_types.Lidort_Linatmos_swigregister
 Lidort_Linatmos_swigregister(Lidort_Linatmos)
@@ -1304,28 +2445,64 @@ class Lidort_Linsurf(Lidort_Structure):
     def ts_surfacewf(self, *args):
         """
 
-        void FullPhysics::Lidort_Linsurf::ts_surfacewf(const blitz::Array< double, 5 > &ts_surfacewf_in)
+        void FullPhysics::Lidort_Linsurf::ts_surfacewf(const blitz::Array< double, 4 > &ts_surfacewf_in)
 
         """
         return _lidort_interface_types.Lidort_Linsurf_ts_surfacewf(self, *args)
 
 
-    def ts_mint_surfacewf(self, *args):
+    def ts_meani_diffuse_surfwf(self, *args):
         """
 
-        void FullPhysics::Lidort_Linsurf::ts_mint_surfacewf(const blitz::Array< double, 5 > &ts_mint_surfacewf_in)
+        void FullPhysics::Lidort_Linsurf::ts_meani_diffuse_surfwf(const blitz::Array< double, 4 > &ts_meani_diffuse_surfwf_in)
 
         """
-        return _lidort_interface_types.Lidort_Linsurf_ts_mint_surfacewf(self, *args)
+        return _lidort_interface_types.Lidort_Linsurf_ts_meani_diffuse_surfwf(self, *args)
 
 
-    def ts_flux_surfacewf(self, *args):
+    def ts_flux_diffuse_surfwf(self, *args):
         """
 
-        void FullPhysics::Lidort_Linsurf::ts_flux_surfacewf(const blitz::Array< double, 5 > &ts_flux_surfacewf_in)
+        void FullPhysics::Lidort_Linsurf::ts_flux_diffuse_surfwf(const blitz::Array< double, 4 > &ts_flux_diffuse_surfwf_in)
 
         """
-        return _lidort_interface_types.Lidort_Linsurf_ts_flux_surfacewf(self, *args)
+        return _lidort_interface_types.Lidort_Linsurf_ts_flux_diffuse_surfwf(self, *args)
+
+
+    def ts_sbbwfs_jacobians(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linsurf::ts_sbbwfs_jacobians(const blitz::Array< double, 3 > &ts_sbbwfs_jacobians_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linsurf_ts_sbbwfs_jacobians(self, *args)
+
+
+    def ts_sbbwfs_fluxes(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linsurf::ts_sbbwfs_fluxes(const blitz::Array< double, 3 > &ts_sbbwfs_fluxes_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linsurf_ts_sbbwfs_fluxes(self, *args)
+
+
+    def ts_ls_layer_mssts(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linsurf::ts_ls_layer_mssts(const blitz::Array< double, 3 > &ts_ls_layer_mssts_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linsurf_ts_ls_layer_mssts(self, *args)
+
+
+    def ts_ls_surf_mssts(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linsurf::ts_ls_surf_mssts(const blitz::Array< double, 2 > &ts_ls_surf_mssts_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linsurf_ts_ls_surf_mssts(self, *args)
 
 
     def print_desc(self, output_stream):
@@ -1337,8 +2514,12 @@ class Lidort_Linsurf(Lidort_Structure):
         return _lidort_interface_types.Lidort_Linsurf_print_desc(self, output_stream)
 
 Lidort_Linsurf.ts_surfacewf = new_instancemethod(_lidort_interface_types.Lidort_Linsurf_ts_surfacewf, None, Lidort_Linsurf)
-Lidort_Linsurf.ts_mint_surfacewf = new_instancemethod(_lidort_interface_types.Lidort_Linsurf_ts_mint_surfacewf, None, Lidort_Linsurf)
-Lidort_Linsurf.ts_flux_surfacewf = new_instancemethod(_lidort_interface_types.Lidort_Linsurf_ts_flux_surfacewf, None, Lidort_Linsurf)
+Lidort_Linsurf.ts_meani_diffuse_surfwf = new_instancemethod(_lidort_interface_types.Lidort_Linsurf_ts_meani_diffuse_surfwf, None, Lidort_Linsurf)
+Lidort_Linsurf.ts_flux_diffuse_surfwf = new_instancemethod(_lidort_interface_types.Lidort_Linsurf_ts_flux_diffuse_surfwf, None, Lidort_Linsurf)
+Lidort_Linsurf.ts_sbbwfs_jacobians = new_instancemethod(_lidort_interface_types.Lidort_Linsurf_ts_sbbwfs_jacobians, None, Lidort_Linsurf)
+Lidort_Linsurf.ts_sbbwfs_fluxes = new_instancemethod(_lidort_interface_types.Lidort_Linsurf_ts_sbbwfs_fluxes, None, Lidort_Linsurf)
+Lidort_Linsurf.ts_ls_layer_mssts = new_instancemethod(_lidort_interface_types.Lidort_Linsurf_ts_ls_layer_mssts, None, Lidort_Linsurf)
+Lidort_Linsurf.ts_ls_surf_mssts = new_instancemethod(_lidort_interface_types.Lidort_Linsurf_ts_ls_surf_mssts, None, Lidort_Linsurf)
 Lidort_Linsurf.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Linsurf_print_desc, None, Lidort_Linsurf)
 Lidort_Linsurf_swigregister = _lidort_interface_types.Lidort_Linsurf_swigregister
 Lidort_Linsurf_swigregister(Lidort_Linsurf)
@@ -1461,7 +2642,7 @@ class Lidort_Linsup_Brdf(Lidort_Structure):
     def ts_ls_emissivity(self, *args):
         """
 
-        void FullPhysics::Lidort_Linsup_Brdf::ts_ls_emissivity(const blitz::Array< double, 3 > &ts_ls_emissivity_in)
+        void FullPhysics::Lidort_Linsup_Brdf::ts_ls_emissivity(const blitz::Array< double, 2 > &ts_ls_emissivity_in)
 
         """
         return _lidort_interface_types.Lidort_Linsup_Brdf_ts_ls_emissivity(self, *args)
@@ -1470,7 +2651,7 @@ class Lidort_Linsup_Brdf(Lidort_Structure):
     def ts_ls_user_emissivity(self, *args):
         """
 
-        void FullPhysics::Lidort_Linsup_Brdf::ts_ls_user_emissivity(const blitz::Array< double, 3 > &ts_ls_user_emissivity_in)
+        void FullPhysics::Lidort_Linsup_Brdf::ts_ls_user_emissivity(const blitz::Array< double, 2 > &ts_ls_user_emissivity_in)
 
         """
         return _lidort_interface_types.Lidort_Linsup_Brdf_ts_ls_user_emissivity(self, *args)
@@ -1494,6 +2675,77 @@ Lidort_Linsup_Brdf.ts_ls_user_emissivity = new_instancemethod(_lidort_interface_
 Lidort_Linsup_Brdf.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Linsup_Brdf_print_desc, None, Lidort_Linsup_Brdf)
 Lidort_Linsup_Brdf_swigregister = _lidort_interface_types.Lidort_Linsup_Brdf_swigregister
 Lidort_Linsup_Brdf_swigregister(Lidort_Linsup_Brdf)
+
+class Lidort_Linsup_Sleave(Lidort_Structure):
+    """
+
+    C++ includes: lidort_interface_types.h
+
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        """
+
+        FullPhysics::Lidort_Linsup_Sleave::Lidort_Linsup_Sleave(void *allocated_f_type_c)
+
+        """
+        _lidort_interface_types.Lidort_Linsup_Sleave_swiginit(self, _lidort_interface_types.new_Lidort_Linsup_Sleave(*args))
+    __swig_destroy__ = _lidort_interface_types.delete_Lidort_Linsup_Sleave
+
+    def ts_lssl_slterm_isotropic(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linsup_Sleave::ts_lssl_slterm_isotropic(const blitz::Array< double, 2 > &ts_lssl_slterm_isotropic_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_slterm_isotropic(self, *args)
+
+
+    def ts_lssl_slterm_userangles(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linsup_Sleave::ts_lssl_slterm_userangles(const blitz::Array< double, 4 > &ts_lssl_slterm_userangles_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_slterm_userangles(self, *args)
+
+
+    def ts_lssl_slterm_f_0(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linsup_Sleave::ts_lssl_slterm_f_0(const blitz::Array< double, 4 > &ts_lssl_slterm_f_0_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_slterm_f_0(self, *args)
+
+
+    def ts_lssl_user_slterm_f_0(self, *args):
+        """
+
+        void FullPhysics::Lidort_Linsup_Sleave::ts_lssl_user_slterm_f_0(const blitz::Array< double, 4 > &ts_lssl_user_slterm_f_0_in)
+
+        """
+        return _lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_user_slterm_f_0(self, *args)
+
+
+    def print_desc(self, output_stream):
+        """
+
+        virtual void FullPhysics::Lidort_Linsup_Sleave::print(std::ostream &output_stream) const
+
+        """
+        return _lidort_interface_types.Lidort_Linsup_Sleave_print_desc(self, output_stream)
+
+Lidort_Linsup_Sleave.ts_lssl_slterm_isotropic = new_instancemethod(_lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_slterm_isotropic, None, Lidort_Linsup_Sleave)
+Lidort_Linsup_Sleave.ts_lssl_slterm_userangles = new_instancemethod(_lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_slterm_userangles, None, Lidort_Linsup_Sleave)
+Lidort_Linsup_Sleave.ts_lssl_slterm_f_0 = new_instancemethod(_lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_slterm_f_0, None, Lidort_Linsup_Sleave)
+Lidort_Linsup_Sleave.ts_lssl_user_slterm_f_0 = new_instancemethod(_lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_user_slterm_f_0, None, Lidort_Linsup_Sleave)
+Lidort_Linsup_Sleave.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Linsup_Sleave_print_desc, None, Lidort_Linsup_Sleave)
+Lidort_Linsup_Sleave_swigregister = _lidort_interface_types.Lidort_Linsup_Sleave_swigregister
+Lidort_Linsup_Sleave_swigregister(Lidort_Linsup_Sleave)
 
 class Lidort_Linsup_Ss_Atmos(Lidort_Structure):
     """
@@ -1658,77 +2910,6 @@ Lidort_Linsup_Ss.print_desc = new_instancemethod(_lidort_interface_types.Lidort_
 Lidort_Linsup_Ss_swigregister = _lidort_interface_types.Lidort_Linsup_Ss_swigregister
 Lidort_Linsup_Ss_swigregister(Lidort_Linsup_Ss)
 
-class Lidort_Linsup_Sleave(Lidort_Structure):
-    """
-
-    C++ includes: lidort_interface_types.h
-
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        """
-
-        FullPhysics::Lidort_Linsup_Sleave::Lidort_Linsup_Sleave(void *allocated_f_type_c)
-
-        """
-        _lidort_interface_types.Lidort_Linsup_Sleave_swiginit(self, _lidort_interface_types.new_Lidort_Linsup_Sleave(*args))
-    __swig_destroy__ = _lidort_interface_types.delete_Lidort_Linsup_Sleave
-
-    def ts_lssl_slterm_isotropic(self, *args):
-        """
-
-        void FullPhysics::Lidort_Linsup_Sleave::ts_lssl_slterm_isotropic(const blitz::Array< double, 2 > &ts_lssl_slterm_isotropic_in)
-
-        """
-        return _lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_slterm_isotropic(self, *args)
-
-
-    def ts_lssl_slterm_userangles(self, *args):
-        """
-
-        void FullPhysics::Lidort_Linsup_Sleave::ts_lssl_slterm_userangles(const blitz::Array< double, 4 > &ts_lssl_slterm_userangles_in)
-
-        """
-        return _lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_slterm_userangles(self, *args)
-
-
-    def ts_lssl_slterm_f_0(self, *args):
-        """
-
-        void FullPhysics::Lidort_Linsup_Sleave::ts_lssl_slterm_f_0(const blitz::Array< double, 4 > &ts_lssl_slterm_f_0_in)
-
-        """
-        return _lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_slterm_f_0(self, *args)
-
-
-    def ts_lssl_user_slterm_f_0(self, *args):
-        """
-
-        void FullPhysics::Lidort_Linsup_Sleave::ts_lssl_user_slterm_f_0(const blitz::Array< double, 4 > &ts_lssl_user_slterm_f_0_in)
-
-        """
-        return _lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_user_slterm_f_0(self, *args)
-
-
-    def print_desc(self, output_stream):
-        """
-
-        virtual void FullPhysics::Lidort_Linsup_Sleave::print(std::ostream &output_stream) const
-
-        """
-        return _lidort_interface_types.Lidort_Linsup_Sleave_print_desc(self, output_stream)
-
-Lidort_Linsup_Sleave.ts_lssl_slterm_isotropic = new_instancemethod(_lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_slterm_isotropic, None, Lidort_Linsup_Sleave)
-Lidort_Linsup_Sleave.ts_lssl_slterm_userangles = new_instancemethod(_lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_slterm_userangles, None, Lidort_Linsup_Sleave)
-Lidort_Linsup_Sleave.ts_lssl_slterm_f_0 = new_instancemethod(_lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_slterm_f_0, None, Lidort_Linsup_Sleave)
-Lidort_Linsup_Sleave.ts_lssl_user_slterm_f_0 = new_instancemethod(_lidort_interface_types.Lidort_Linsup_Sleave_ts_lssl_user_slterm_f_0, None, Lidort_Linsup_Sleave)
-Lidort_Linsup_Sleave.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Linsup_Sleave_print_desc, None, Lidort_Linsup_Sleave)
-Lidort_Linsup_Sleave_swigregister = _lidort_interface_types.Lidort_Linsup_Sleave_swigregister
-Lidort_Linsup_Sleave_swigregister(Lidort_Linsup_Sleave)
-
 class Lidort_Linsup_Inout(Lidort_Structure):
     """
 
@@ -1812,52 +2993,151 @@ class Lidort_Main_Outputs(Lidort_Structure):
     def ts_intensity(self, *args):
         """
 
-        void FullPhysics::Lidort_Main_Outputs::ts_intensity(const blitz::Array< double, 4 > &ts_intensity_in)
+        void FullPhysics::Lidort_Main_Outputs::ts_intensity(const blitz::Array< double, 3 > &ts_intensity_in)
 
         """
         return _lidort_interface_types.Lidort_Main_Outputs_ts_intensity(self, *args)
 
 
-    def ts_mean_intensity(self, *args):
+    def ts_meani_diffuse(self, *args):
         """
 
-        void FullPhysics::Lidort_Main_Outputs::ts_mean_intensity(const blitz::Array< double, 4 > &ts_mean_intensity_in)
+        void FullPhysics::Lidort_Main_Outputs::ts_meani_diffuse(const blitz::Array< double, 3 > &ts_meani_diffuse_in)
 
         """
-        return _lidort_interface_types.Lidort_Main_Outputs_ts_mean_intensity(self, *args)
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_meani_diffuse(self, *args)
 
 
-    def ts_flux_integral(self, *args):
+    def ts_flux_diffuse(self, *args):
         """
 
-        void FullPhysics::Lidort_Main_Outputs::ts_flux_integral(const blitz::Array< double, 4 > &ts_flux_integral_in)
+        void FullPhysics::Lidort_Main_Outputs::ts_flux_diffuse(const blitz::Array< double, 3 > &ts_flux_diffuse_in)
 
         """
-        return _lidort_interface_types.Lidort_Main_Outputs_ts_flux_integral(self, *args)
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_flux_diffuse(self, *args)
+
+
+    def ts_dnmeani_direct(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_dnmeani_direct(const blitz::Array< double, 2 > &ts_dnmeani_direct_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_dnmeani_direct(self, *args)
 
 
     def ts_dnflux_direct(self, *args):
         """
 
-        void FullPhysics::Lidort_Main_Outputs::ts_dnflux_direct(const blitz::Array< double, 3 > &ts_dnflux_direct_in)
+        void FullPhysics::Lidort_Main_Outputs::ts_dnflux_direct(const blitz::Array< double, 2 > &ts_dnflux_direct_in)
 
         """
         return _lidort_interface_types.Lidort_Main_Outputs_ts_dnflux_direct(self, *args)
 
 
-    def ts_dnmean_direct(self, *args):
+    def ts_albmed_user(self, *args):
         """
 
-        void FullPhysics::Lidort_Main_Outputs::ts_dnmean_direct(const blitz::Array< double, 3 > &ts_dnmean_direct_in)
+        void FullPhysics::Lidort_Main_Outputs::ts_albmed_user(const blitz::Array< double, 1 > &ts_albmed_user_in)
 
         """
-        return _lidort_interface_types.Lidort_Main_Outputs_ts_dnmean_direct(self, *args)
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_albmed_user(self, *args)
+
+
+    def ts_trnmed_user(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_trnmed_user(const blitz::Array< double, 1 > &ts_trnmed_user_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_trnmed_user(self, *args)
+
+
+    def ts_albmed_fluxes(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_albmed_fluxes(const blitz::Array< double, 1 > &ts_albmed_fluxes_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_albmed_fluxes(self, *args)
+
+
+    def ts_trnmed_fluxes(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_trnmed_fluxes(const blitz::Array< double, 1 > &ts_trnmed_fluxes_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_trnmed_fluxes(self, *args)
+
+
+    def ts_planetary_transterm(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_planetary_transterm(const blitz::Array< double, 1 > &ts_planetary_transterm_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_planetary_transterm(self, *args)
+
+
+    def ts_planetary_sbterm(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_planetary_sbterm(const double &ts_planetary_sbterm_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_planetary_sbterm(self, *args)
+
+
+    def ts_pathgeoms(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_pathgeoms(const blitz::Array< double, 2 > &ts_pathgeoms_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_pathgeoms(self, *args)
+
+
+    def ts_lostrans(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_lostrans(const blitz::Array< double, 2 > &ts_lostrans_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_lostrans(self, *args)
+
+
+    def ts_layer_mssts(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_layer_mssts(const blitz::Array< double, 2 > &ts_layer_mssts_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_layer_mssts(self, *args)
+
+
+    def ts_surf_mssts(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_surf_mssts(const blitz::Array< double, 1 > &ts_surf_mssts_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_surf_mssts(self, *args)
+
+
+    def ts_contribs(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_contribs(const blitz::Array< double, 2 > &ts_contribs_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_contribs(self, *args)
 
 
     def ts_fourier_saved(self, *args):
         """
 
-        void FullPhysics::Lidort_Main_Outputs::ts_fourier_saved(const blitz::Array< int, 2 > &ts_fourier_saved_in)
+        void FullPhysics::Lidort_Main_Outputs::ts_fourier_saved(const blitz::Array< int, 1 > &ts_fourier_saved_in)
 
         """
         return _lidort_interface_types.Lidort_Main_Outputs_ts_fourier_saved(self, *args)
@@ -1872,6 +3152,42 @@ class Lidort_Main_Outputs(Lidort_Structure):
         return _lidort_interface_types.Lidort_Main_Outputs_ts_n_geometries(self, *args)
 
 
+    def ts_solarbeam_boatrans(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_solarbeam_boatrans(const blitz::Array< double, 1 > &ts_solarbeam_boatrans_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_solarbeam_boatrans(self, *args)
+
+
+    def ts_spheralb(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_spheralb(const double &ts_spheralb_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_spheralb(self, *args)
+
+
+    def ts_trans1_user(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_trans1_user(const blitz::Array< double, 1 > &ts_trans1_user_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_trans1_user(self, *args)
+
+
+    def ts_trans1_beam(self, *args):
+        """
+
+        void FullPhysics::Lidort_Main_Outputs::ts_trans1_beam(const blitz::Array< double, 1 > &ts_trans1_beam_in)
+
+        """
+        return _lidort_interface_types.Lidort_Main_Outputs_ts_trans1_beam(self, *args)
+
+
     def print_desc(self, output_stream):
         """
 
@@ -1881,15 +3197,101 @@ class Lidort_Main_Outputs(Lidort_Structure):
         return _lidort_interface_types.Lidort_Main_Outputs_print_desc(self, output_stream)
 
 Lidort_Main_Outputs.ts_intensity = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_intensity, None, Lidort_Main_Outputs)
-Lidort_Main_Outputs.ts_mean_intensity = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_mean_intensity, None, Lidort_Main_Outputs)
-Lidort_Main_Outputs.ts_flux_integral = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_flux_integral, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_meani_diffuse = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_meani_diffuse, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_flux_diffuse = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_flux_diffuse, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_dnmeani_direct = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_dnmeani_direct, None, Lidort_Main_Outputs)
 Lidort_Main_Outputs.ts_dnflux_direct = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_dnflux_direct, None, Lidort_Main_Outputs)
-Lidort_Main_Outputs.ts_dnmean_direct = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_dnmean_direct, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_albmed_user = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_albmed_user, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_trnmed_user = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_trnmed_user, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_albmed_fluxes = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_albmed_fluxes, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_trnmed_fluxes = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_trnmed_fluxes, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_planetary_transterm = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_planetary_transterm, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_planetary_sbterm = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_planetary_sbterm, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_pathgeoms = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_pathgeoms, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_lostrans = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_lostrans, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_layer_mssts = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_layer_mssts, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_surf_mssts = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_surf_mssts, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_contribs = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_contribs, None, Lidort_Main_Outputs)
 Lidort_Main_Outputs.ts_fourier_saved = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_fourier_saved, None, Lidort_Main_Outputs)
 Lidort_Main_Outputs.ts_n_geometries = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_n_geometries, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_solarbeam_boatrans = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_solarbeam_boatrans, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_spheralb = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_spheralb, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_trans1_user = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_trans1_user, None, Lidort_Main_Outputs)
+Lidort_Main_Outputs.ts_trans1_beam = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_ts_trans1_beam, None, Lidort_Main_Outputs)
 Lidort_Main_Outputs.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Main_Outputs_print_desc, None, Lidort_Main_Outputs)
 Lidort_Main_Outputs_swigregister = _lidort_interface_types.Lidort_Main_Outputs_swigregister
 Lidort_Main_Outputs_swigregister(Lidort_Main_Outputs)
+
+class Lidort_Wladjusted_Outputs(Lidort_Structure):
+    """
+
+    C++ includes: lidort_interface_types.h
+
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        """
+
+        FullPhysics::Lidort_Wladjusted_Outputs::Lidort_Wladjusted_Outputs(void *allocated_f_type_c)
+
+        """
+        _lidort_interface_types.Lidort_Wladjusted_Outputs_swiginit(self, _lidort_interface_types.new_Lidort_Wladjusted_Outputs(*args))
+    __swig_destroy__ = _lidort_interface_types.delete_Lidort_Wladjusted_Outputs
+
+    def ts_wladjusted_isotropic(self, *args):
+        """
+
+        void FullPhysics::Lidort_Wladjusted_Outputs::ts_wladjusted_isotropic(const blitz::Array< double, 1 > &ts_wladjusted_isotropic_in)
+
+        """
+        return _lidort_interface_types.Lidort_Wladjusted_Outputs_ts_wladjusted_isotropic(self, *args)
+
+
+    def ts_wladjusted_direct(self, *args):
+        """
+
+        void FullPhysics::Lidort_Wladjusted_Outputs::ts_wladjusted_direct(const blitz::Array< double, 3 > &ts_wladjusted_direct_in)
+
+        """
+        return _lidort_interface_types.Lidort_Wladjusted_Outputs_ts_wladjusted_direct(self, *args)
+
+
+    def ts_wladjusted_f_ords_0(self, *args):
+        """
+
+        void FullPhysics::Lidort_Wladjusted_Outputs::ts_wladjusted_f_ords_0(const blitz::Array< double, 3 > &ts_wladjusted_f_ords_0_in)
+
+        """
+        return _lidort_interface_types.Lidort_Wladjusted_Outputs_ts_wladjusted_f_ords_0(self, *args)
+
+
+    def ts_wladjusted_f_user_0(self, *args):
+        """
+
+        void FullPhysics::Lidort_Wladjusted_Outputs::ts_wladjusted_f_user_0(const blitz::Array< double, 3 > &ts_wladjusted_f_user_0_in)
+
+        """
+        return _lidort_interface_types.Lidort_Wladjusted_Outputs_ts_wladjusted_f_user_0(self, *args)
+
+
+    def print_desc(self, output_stream):
+        """
+
+        virtual void FullPhysics::Lidort_Wladjusted_Outputs::print(std::ostream &output_stream) const
+
+        """
+        return _lidort_interface_types.Lidort_Wladjusted_Outputs_print_desc(self, output_stream)
+
+Lidort_Wladjusted_Outputs.ts_wladjusted_isotropic = new_instancemethod(_lidort_interface_types.Lidort_Wladjusted_Outputs_ts_wladjusted_isotropic, None, Lidort_Wladjusted_Outputs)
+Lidort_Wladjusted_Outputs.ts_wladjusted_direct = new_instancemethod(_lidort_interface_types.Lidort_Wladjusted_Outputs_ts_wladjusted_direct, None, Lidort_Wladjusted_Outputs)
+Lidort_Wladjusted_Outputs.ts_wladjusted_f_ords_0 = new_instancemethod(_lidort_interface_types.Lidort_Wladjusted_Outputs_ts_wladjusted_f_ords_0, None, Lidort_Wladjusted_Outputs)
+Lidort_Wladjusted_Outputs.ts_wladjusted_f_user_0 = new_instancemethod(_lidort_interface_types.Lidort_Wladjusted_Outputs_ts_wladjusted_f_user_0, None, Lidort_Wladjusted_Outputs)
+Lidort_Wladjusted_Outputs.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Wladjusted_Outputs_print_desc, None, Lidort_Wladjusted_Outputs)
+Lidort_Wladjusted_Outputs_swigregister = _lidort_interface_types.Lidort_Wladjusted_Outputs_swigregister
+Lidort_Wladjusted_Outputs_swigregister(Lidort_Wladjusted_Outputs)
 
 class Lidort_Exception_Handling(Lidort_Structure):
     """
@@ -2111,6 +3513,15 @@ class Lidort_Outputs(Lidort_Structure):
         return _lidort_interface_types.Lidort_Outputs_main(self, *args)
 
 
+    def wlout(self, *args):
+        """
+
+        void FullPhysics::Lidort_Outputs::wlout(Lidort_Wladjusted_Outputs &wlout_in)
+
+        """
+        return _lidort_interface_types.Lidort_Outputs_wlout(self, *args)
+
+
     def status(self, *args):
         """
 
@@ -2129,6 +3540,7 @@ class Lidort_Outputs(Lidort_Structure):
         return _lidort_interface_types.Lidort_Outputs_print_desc(self, output_stream)
 
 Lidort_Outputs.main = new_instancemethod(_lidort_interface_types.Lidort_Outputs_main, None, Lidort_Outputs)
+Lidort_Outputs.wlout = new_instancemethod(_lidort_interface_types.Lidort_Outputs_wlout, None, Lidort_Outputs)
 Lidort_Outputs.status = new_instancemethod(_lidort_interface_types.Lidort_Outputs_status, None, Lidort_Outputs)
 Lidort_Outputs.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Outputs_print_desc, None, Lidort_Outputs)
 Lidort_Outputs_swigregister = _lidort_interface_types.Lidort_Outputs_swigregister
@@ -2201,7 +3613,7 @@ class Lidort_Sup_Brdf(Lidort_Structure):
     def ts_emissivity(self, *args):
         """
 
-        void FullPhysics::Lidort_Sup_Brdf::ts_emissivity(const blitz::Array< double, 2 > &ts_emissivity_in)
+        void FullPhysics::Lidort_Sup_Brdf::ts_emissivity(const blitz::Array< double, 1 > &ts_emissivity_in)
 
         """
         return _lidort_interface_types.Lidort_Sup_Brdf_ts_emissivity(self, *args)
@@ -2210,7 +3622,7 @@ class Lidort_Sup_Brdf(Lidort_Structure):
     def ts_user_emissivity(self, *args):
         """
 
-        void FullPhysics::Lidort_Sup_Brdf::ts_user_emissivity(const blitz::Array< double, 2 > &ts_user_emissivity_in)
+        void FullPhysics::Lidort_Sup_Brdf::ts_user_emissivity(const blitz::Array< double, 1 > &ts_user_emissivity_in)
 
         """
         return _lidort_interface_types.Lidort_Sup_Brdf_ts_user_emissivity(self, *args)
@@ -2343,6 +3755,15 @@ class Lidort_Sup_Ss(Lidort_Structure):
         return _lidort_interface_types.Lidort_Sup_Ss_ts_intensity_db(self, *args)
 
 
+    def ts_contribs_ss(self, *args):
+        """
+
+        void FullPhysics::Lidort_Sup_Ss::ts_contribs_ss(const blitz::Array< double, 2 > &ts_contribs_ss_in)
+
+        """
+        return _lidort_interface_types.Lidort_Sup_Ss_ts_contribs_ss(self, *args)
+
+
     def print_desc(self, output_stream):
         """
 
@@ -2353,6 +3774,7 @@ class Lidort_Sup_Ss(Lidort_Structure):
 
 Lidort_Sup_Ss.ts_intensity_ss = new_instancemethod(_lidort_interface_types.Lidort_Sup_Ss_ts_intensity_ss, None, Lidort_Sup_Ss)
 Lidort_Sup_Ss.ts_intensity_db = new_instancemethod(_lidort_interface_types.Lidort_Sup_Ss_ts_intensity_db, None, Lidort_Sup_Ss)
+Lidort_Sup_Ss.ts_contribs_ss = new_instancemethod(_lidort_interface_types.Lidort_Sup_Ss_ts_contribs_ss, None, Lidort_Sup_Ss)
 Lidort_Sup_Ss.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Sup_Ss_print_desc, None, Lidort_Sup_Ss)
 Lidort_Sup_Ss_swigregister = _lidort_interface_types.Lidort_Sup_Ss_swigregister
 Lidort_Sup_Ss_swigregister(Lidort_Sup_Ss)
@@ -2446,33 +3868,6 @@ class Lidort_Fixed_Boolean(Lidort_Structure):
         return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_fullrad_mode(self, *args)
 
 
-    def ts_do_sscorr_truncation(self, *args):
-        """
-
-        void FullPhysics::Lidort_Fixed_Boolean::ts_do_sscorr_truncation(const bool &ts_do_sscorr_truncation_in)
-
-        """
-        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_sscorr_truncation(self, *args)
-
-
-    def ts_do_ss_external(self, *args):
-        """
-
-        void FullPhysics::Lidort_Fixed_Boolean::ts_do_ss_external(const bool &ts_do_ss_external_in)
-
-        """
-        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_ss_external(self, *args)
-
-
-    def ts_do_ssfull(self, *args):
-        """
-
-        void FullPhysics::Lidort_Fixed_Boolean::ts_do_ssfull(const bool &ts_do_ssfull_in)
-
-        """
-        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_ssfull(self, *args)
-
-
     def ts_do_thermal_emission(self, *args):
         """
 
@@ -2527,6 +3922,15 @@ class Lidort_Fixed_Boolean(Lidort_Structure):
         return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_dnwelling(self, *args)
 
 
+    def ts_do_toa_contribs(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Boolean::ts_do_toa_contribs(const bool &ts_do_toa_contribs_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_toa_contribs(self, *args)
+
+
     def ts_do_surface_leaving(self, *args):
         """
 
@@ -2545,6 +3949,87 @@ class Lidort_Fixed_Boolean(Lidort_Structure):
         return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_sl_isotropic(self, *args)
 
 
+    def ts_do_water_leaving(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Boolean::ts_do_water_leaving(const bool &ts_do_water_leaving_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_water_leaving(self, *args)
+
+
+    def ts_do_fluorescence(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Boolean::ts_do_fluorescence(const bool &ts_do_fluorescence_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_fluorescence(self, *args)
+
+
+    def ts_do_tf_iteration(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Boolean::ts_do_tf_iteration(const bool &ts_do_tf_iteration_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_tf_iteration(self, *args)
+
+
+    def ts_do_wladjusted_output(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Boolean::ts_do_wladjusted_output(const bool &ts_do_wladjusted_output_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_wladjusted_output(self, *args)
+
+
+    def ts_do_toa_illumination(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Boolean::ts_do_toa_illumination(const bool &ts_do_toa_illumination_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_toa_illumination(self, *args)
+
+
+    def ts_do_boa_illumination(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Boolean::ts_do_boa_illumination(const bool &ts_do_boa_illumination_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_boa_illumination(self, *args)
+
+
+    def ts_do_albtrn_media(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Boolean::ts_do_albtrn_media(const blitz::Array< bool, 1 > &ts_do_albtrn_media_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_albtrn_media(self, *args)
+
+
+    def ts_do_planetary_problem(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Boolean::ts_do_planetary_problem(const bool &ts_do_planetary_problem_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_planetary_problem(self, *args)
+
+
+    def ts_do_mssts(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Boolean::ts_do_mssts(const bool &ts_do_mssts_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Boolean_ts_do_mssts(self, *args)
+
+
     def print_desc(self, output_stream):
         """
 
@@ -2554,17 +4039,24 @@ class Lidort_Fixed_Boolean(Lidort_Structure):
         return _lidort_interface_types.Lidort_Fixed_Boolean_print_desc(self, output_stream)
 
 Lidort_Fixed_Boolean.ts_do_fullrad_mode = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_fullrad_mode, None, Lidort_Fixed_Boolean)
-Lidort_Fixed_Boolean.ts_do_sscorr_truncation = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_sscorr_truncation, None, Lidort_Fixed_Boolean)
-Lidort_Fixed_Boolean.ts_do_ss_external = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_ss_external, None, Lidort_Fixed_Boolean)
-Lidort_Fixed_Boolean.ts_do_ssfull = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_ssfull, None, Lidort_Fixed_Boolean)
 Lidort_Fixed_Boolean.ts_do_thermal_emission = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_thermal_emission, None, Lidort_Fixed_Boolean)
 Lidort_Fixed_Boolean.ts_do_surface_emission = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_surface_emission, None, Lidort_Fixed_Boolean)
 Lidort_Fixed_Boolean.ts_do_plane_parallel = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_plane_parallel, None, Lidort_Fixed_Boolean)
 Lidort_Fixed_Boolean.ts_do_brdf_surface = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_brdf_surface, None, Lidort_Fixed_Boolean)
 Lidort_Fixed_Boolean.ts_do_upwelling = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_upwelling, None, Lidort_Fixed_Boolean)
 Lidort_Fixed_Boolean.ts_do_dnwelling = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_dnwelling, None, Lidort_Fixed_Boolean)
+Lidort_Fixed_Boolean.ts_do_toa_contribs = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_toa_contribs, None, Lidort_Fixed_Boolean)
 Lidort_Fixed_Boolean.ts_do_surface_leaving = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_surface_leaving, None, Lidort_Fixed_Boolean)
 Lidort_Fixed_Boolean.ts_do_sl_isotropic = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_sl_isotropic, None, Lidort_Fixed_Boolean)
+Lidort_Fixed_Boolean.ts_do_water_leaving = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_water_leaving, None, Lidort_Fixed_Boolean)
+Lidort_Fixed_Boolean.ts_do_fluorescence = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_fluorescence, None, Lidort_Fixed_Boolean)
+Lidort_Fixed_Boolean.ts_do_tf_iteration = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_tf_iteration, None, Lidort_Fixed_Boolean)
+Lidort_Fixed_Boolean.ts_do_wladjusted_output = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_wladjusted_output, None, Lidort_Fixed_Boolean)
+Lidort_Fixed_Boolean.ts_do_toa_illumination = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_toa_illumination, None, Lidort_Fixed_Boolean)
+Lidort_Fixed_Boolean.ts_do_boa_illumination = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_boa_illumination, None, Lidort_Fixed_Boolean)
+Lidort_Fixed_Boolean.ts_do_albtrn_media = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_albtrn_media, None, Lidort_Fixed_Boolean)
+Lidort_Fixed_Boolean.ts_do_planetary_problem = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_planetary_problem, None, Lidort_Fixed_Boolean)
+Lidort_Fixed_Boolean.ts_do_mssts = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_ts_do_mssts, None, Lidort_Fixed_Boolean)
 Lidort_Fixed_Boolean.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Boolean_print_desc, None, Lidort_Fixed_Boolean)
 Lidort_Fixed_Boolean_swigregister = _lidort_interface_types.Lidort_Fixed_Boolean_swigregister
 Lidort_Fixed_Boolean_swigregister(Lidort_Fixed_Boolean)
@@ -2587,6 +4079,15 @@ class Lidort_Fixed_Control(Lidort_Structure):
         """
         _lidort_interface_types.Lidort_Fixed_Control_swiginit(self, _lidort_interface_types.new_Lidort_Fixed_Control(*args))
     __swig_destroy__ = _lidort_interface_types.delete_Lidort_Fixed_Control
+
+    def ts_taylor_order(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Control::ts_taylor_order(const int &ts_taylor_order_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Control_ts_taylor_order(self, *args)
+
 
     def ts_nstreams(self, *args):
         """
@@ -2633,6 +4134,51 @@ class Lidort_Fixed_Control(Lidort_Structure):
         return _lidort_interface_types.Lidort_Fixed_Control_ts_lidort_accuracy(self, *args)
 
 
+    def ts_asymtx_tolerance(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Control::ts_asymtx_tolerance(const double &ts_asymtx_tolerance_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Control_ts_asymtx_tolerance(self, *args)
+
+
+    def ts_tf_maxiter(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Control::ts_tf_maxiter(const int &ts_tf_maxiter_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Control_ts_tf_maxiter(self, *args)
+
+
+    def ts_tf_criterion(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Control::ts_tf_criterion(const double &ts_tf_criterion_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Control_ts_tf_criterion(self, *args)
+
+
+    def ts_toa_illumination(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Control::ts_toa_illumination(const double &ts_toa_illumination_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Control_ts_toa_illumination(self, *args)
+
+
+    def ts_boa_illumination(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Control::ts_boa_illumination(const double &ts_boa_illumination_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Control_ts_boa_illumination(self, *args)
+
+
     def print_desc(self, output_stream):
         """
 
@@ -2641,11 +4187,17 @@ class Lidort_Fixed_Control(Lidort_Structure):
         """
         return _lidort_interface_types.Lidort_Fixed_Control_print_desc(self, output_stream)
 
+Lidort_Fixed_Control.ts_taylor_order = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Control_ts_taylor_order, None, Lidort_Fixed_Control)
 Lidort_Fixed_Control.ts_nstreams = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Control_ts_nstreams, None, Lidort_Fixed_Control)
 Lidort_Fixed_Control.ts_nlayers = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Control_ts_nlayers, None, Lidort_Fixed_Control)
 Lidort_Fixed_Control.ts_nfinelayers = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Control_ts_nfinelayers, None, Lidort_Fixed_Control)
 Lidort_Fixed_Control.ts_n_thermal_coeffs = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Control_ts_n_thermal_coeffs, None, Lidort_Fixed_Control)
 Lidort_Fixed_Control.ts_lidort_accuracy = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Control_ts_lidort_accuracy, None, Lidort_Fixed_Control)
+Lidort_Fixed_Control.ts_asymtx_tolerance = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Control_ts_asymtx_tolerance, None, Lidort_Fixed_Control)
+Lidort_Fixed_Control.ts_tf_maxiter = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Control_ts_tf_maxiter, None, Lidort_Fixed_Control)
+Lidort_Fixed_Control.ts_tf_criterion = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Control_ts_tf_criterion, None, Lidort_Fixed_Control)
+Lidort_Fixed_Control.ts_toa_illumination = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Control_ts_toa_illumination, None, Lidort_Fixed_Control)
+Lidort_Fixed_Control.ts_boa_illumination = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Control_ts_boa_illumination, None, Lidort_Fixed_Control)
 Lidort_Fixed_Control.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Control_print_desc, None, Lidort_Fixed_Control)
 Lidort_Fixed_Control_swigregister = _lidort_interface_types.Lidort_Fixed_Control_swigregister
 Lidort_Fixed_Control_swigregister(Lidort_Fixed_Control)
@@ -2710,15 +4262,6 @@ class Lidort_Fixed_Uservalues(Lidort_Structure):
         _lidort_interface_types.Lidort_Fixed_Uservalues_swiginit(self, _lidort_interface_types.new_Lidort_Fixed_Uservalues(*args))
     __swig_destroy__ = _lidort_interface_types.delete_Lidort_Fixed_Uservalues
 
-    def ts_n_user_streams(self, *args):
-        """
-
-        void FullPhysics::Lidort_Fixed_Uservalues::ts_n_user_streams(const int &ts_n_user_streams_in)
-
-        """
-        return _lidort_interface_types.Lidort_Fixed_Uservalues_ts_n_user_streams(self, *args)
-
-
     def ts_n_user_levels(self, *args):
         """
 
@@ -2736,7 +4279,6 @@ class Lidort_Fixed_Uservalues(Lidort_Structure):
         """
         return _lidort_interface_types.Lidort_Fixed_Uservalues_print_desc(self, output_stream)
 
-Lidort_Fixed_Uservalues.ts_n_user_streams = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Uservalues_ts_n_user_streams, None, Lidort_Fixed_Uservalues)
 Lidort_Fixed_Uservalues.ts_n_user_levels = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Uservalues_ts_n_user_levels, None, Lidort_Fixed_Uservalues)
 Lidort_Fixed_Uservalues.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Uservalues_print_desc, None, Lidort_Fixed_Uservalues)
 Lidort_Fixed_Uservalues_swigregister = _lidort_interface_types.Lidort_Fixed_Uservalues_swigregister
@@ -2845,7 +4387,7 @@ class Lidort_Fixed_Optical(Lidort_Structure):
     def ts_deltau_vert_input(self, *args):
         """
 
-        void FullPhysics::Lidort_Fixed_Optical::ts_deltau_vert_input(const blitz::Array< double, 2 > &ts_deltau_vert_input_in)
+        void FullPhysics::Lidort_Fixed_Optical::ts_deltau_vert_input(const blitz::Array< double, 1 > &ts_deltau_vert_input_in)
 
         """
         return _lidort_interface_types.Lidort_Fixed_Optical_ts_deltau_vert_input(self, *args)
@@ -2854,37 +4396,64 @@ class Lidort_Fixed_Optical(Lidort_Structure):
     def ts_phasmoms_total_input(self, *args):
         """
 
-        void FullPhysics::Lidort_Fixed_Optical::ts_phasmoms_total_input(const blitz::Array< double, 3 > &ts_phasmoms_total_input_in)
+        void FullPhysics::Lidort_Fixed_Optical::ts_phasmoms_total_input(const blitz::Array< double, 2 > &ts_phasmoms_total_input_in)
 
         """
         return _lidort_interface_types.Lidort_Fixed_Optical_ts_phasmoms_total_input(self, *args)
 
 
-    def ts_thermal_bb_input(self, *args):
+    def ts_phasfunc_input_up(self, *args):
         """
 
-        void FullPhysics::Lidort_Fixed_Optical::ts_thermal_bb_input(const blitz::Array< double, 2 > &ts_thermal_bb_input_in)
+        void FullPhysics::Lidort_Fixed_Optical::ts_phasfunc_input_up(const blitz::Array< double, 2 > &ts_phasfunc_input_up_in)
 
         """
-        return _lidort_interface_types.Lidort_Fixed_Optical_ts_thermal_bb_input(self, *args)
+        return _lidort_interface_types.Lidort_Fixed_Optical_ts_phasfunc_input_up(self, *args)
+
+
+    def ts_phasfunc_input_dn(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Optical::ts_phasfunc_input_dn(const blitz::Array< double, 2 > &ts_phasfunc_input_dn_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Optical_ts_phasfunc_input_dn(self, *args)
 
 
     def ts_lambertian_albedo(self, *args):
         """
 
-        void FullPhysics::Lidort_Fixed_Optical::ts_lambertian_albedo(const blitz::Array< double, 1 > &ts_lambertian_albedo_in)
+        void FullPhysics::Lidort_Fixed_Optical::ts_lambertian_albedo(const double &ts_lambertian_albedo_in)
 
         """
         return _lidort_interface_types.Lidort_Fixed_Optical_ts_lambertian_albedo(self, *args)
 
 
+    def ts_thermal_bb_input(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Optical::ts_thermal_bb_input(const blitz::Array< double, 1 > &ts_thermal_bb_input_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Optical_ts_thermal_bb_input(self, *args)
+
+
     def ts_surface_bb_input(self, *args):
         """
 
-        void FullPhysics::Lidort_Fixed_Optical::ts_surface_bb_input(const blitz::Array< double, 1 > &ts_surface_bb_input_in)
+        void FullPhysics::Lidort_Fixed_Optical::ts_surface_bb_input(const double &ts_surface_bb_input_in)
 
         """
         return _lidort_interface_types.Lidort_Fixed_Optical_ts_surface_bb_input(self, *args)
+
+
+    def ts_atmos_wavelength(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Optical::ts_atmos_wavelength(const double &ts_atmos_wavelength_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Optical_ts_atmos_wavelength(self, *args)
 
 
     def print_desc(self, output_stream):
@@ -2897,12 +4466,136 @@ class Lidort_Fixed_Optical(Lidort_Structure):
 
 Lidort_Fixed_Optical.ts_deltau_vert_input = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Optical_ts_deltau_vert_input, None, Lidort_Fixed_Optical)
 Lidort_Fixed_Optical.ts_phasmoms_total_input = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Optical_ts_phasmoms_total_input, None, Lidort_Fixed_Optical)
-Lidort_Fixed_Optical.ts_thermal_bb_input = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Optical_ts_thermal_bb_input, None, Lidort_Fixed_Optical)
+Lidort_Fixed_Optical.ts_phasfunc_input_up = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Optical_ts_phasfunc_input_up, None, Lidort_Fixed_Optical)
+Lidort_Fixed_Optical.ts_phasfunc_input_dn = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Optical_ts_phasfunc_input_dn, None, Lidort_Fixed_Optical)
 Lidort_Fixed_Optical.ts_lambertian_albedo = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Optical_ts_lambertian_albedo, None, Lidort_Fixed_Optical)
+Lidort_Fixed_Optical.ts_thermal_bb_input = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Optical_ts_thermal_bb_input, None, Lidort_Fixed_Optical)
 Lidort_Fixed_Optical.ts_surface_bb_input = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Optical_ts_surface_bb_input, None, Lidort_Fixed_Optical)
+Lidort_Fixed_Optical.ts_atmos_wavelength = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Optical_ts_atmos_wavelength, None, Lidort_Fixed_Optical)
 Lidort_Fixed_Optical.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Optical_print_desc, None, Lidort_Fixed_Optical)
 Lidort_Fixed_Optical_swigregister = _lidort_interface_types.Lidort_Fixed_Optical_swigregister
 Lidort_Fixed_Optical_swigregister(Lidort_Fixed_Optical)
+
+class Lidort_Fixed_Write(Lidort_Structure):
+    """
+
+    C++ includes: lidort_interface_types.h
+
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        """
+
+        FullPhysics::Lidort_Fixed_Write::Lidort_Fixed_Write(void *allocated_f_type_c)
+
+        """
+        _lidort_interface_types.Lidort_Fixed_Write_swiginit(self, _lidort_interface_types.new_Lidort_Fixed_Write(*args))
+    __swig_destroy__ = _lidort_interface_types.delete_Lidort_Fixed_Write
+
+    def ts_do_debug_write(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Write::ts_do_debug_write(const bool &ts_do_debug_write_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Write_ts_do_debug_write(self, *args)
+
+
+    def ts_do_write_input(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Write::ts_do_write_input(const bool &ts_do_write_input_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Write_ts_do_write_input(self, *args)
+
+
+    def ts_input_write_filename(self):
+        """
+
+        const std::string FullPhysics::Lidort_Fixed_Write::ts_input_write_filename() const
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Write_ts_input_write_filename(self)
+
+
+    def ts_do_write_scenario(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Write::ts_do_write_scenario(const bool &ts_do_write_scenario_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Write_ts_do_write_scenario(self, *args)
+
+
+    def ts_scenario_write_filename(self):
+        """
+
+        const std::string FullPhysics::Lidort_Fixed_Write::ts_scenario_write_filename() const
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Write_ts_scenario_write_filename(self)
+
+
+    def ts_do_write_fourier(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Write::ts_do_write_fourier(const bool &ts_do_write_fourier_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Write_ts_do_write_fourier(self, *args)
+
+
+    def ts_fourier_write_filename(self):
+        """
+
+        const std::string FullPhysics::Lidort_Fixed_Write::ts_fourier_write_filename() const
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Write_ts_fourier_write_filename(self)
+
+
+    def ts_do_write_results(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Write::ts_do_write_results(const bool &ts_do_write_results_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Write_ts_do_write_results(self, *args)
+
+
+    def ts_results_write_filename(self):
+        """
+
+        const std::string FullPhysics::Lidort_Fixed_Write::ts_results_write_filename() const
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Write_ts_results_write_filename(self)
+
+
+    def print_desc(self, output_stream):
+        """
+
+        virtual void FullPhysics::Lidort_Fixed_Write::print(std::ostream &output_stream) const
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Write_print_desc(self, output_stream)
+
+Lidort_Fixed_Write.ts_do_debug_write = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Write_ts_do_debug_write, None, Lidort_Fixed_Write)
+Lidort_Fixed_Write.ts_do_write_input = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Write_ts_do_write_input, None, Lidort_Fixed_Write)
+Lidort_Fixed_Write.ts_input_write_filename = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Write_ts_input_write_filename, None, Lidort_Fixed_Write)
+Lidort_Fixed_Write.ts_do_write_scenario = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Write_ts_do_write_scenario, None, Lidort_Fixed_Write)
+Lidort_Fixed_Write.ts_scenario_write_filename = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Write_ts_scenario_write_filename, None, Lidort_Fixed_Write)
+Lidort_Fixed_Write.ts_do_write_fourier = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Write_ts_do_write_fourier, None, Lidort_Fixed_Write)
+Lidort_Fixed_Write.ts_fourier_write_filename = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Write_ts_fourier_write_filename, None, Lidort_Fixed_Write)
+Lidort_Fixed_Write.ts_do_write_results = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Write_ts_do_write_results, None, Lidort_Fixed_Write)
+Lidort_Fixed_Write.ts_results_write_filename = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Write_ts_results_write_filename, None, Lidort_Fixed_Write)
+Lidort_Fixed_Write.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Write_print_desc, None, Lidort_Fixed_Write)
+Lidort_Fixed_Write_swigregister = _lidort_interface_types.Lidort_Fixed_Write_swigregister
+Lidort_Fixed_Write_swigregister(Lidort_Fixed_Write)
 
 class Lidort_Fixed_Inputs(Lidort_Structure):
     """
@@ -2977,6 +4670,15 @@ class Lidort_Fixed_Inputs(Lidort_Structure):
         return _lidort_interface_types.Lidort_Fixed_Inputs_optical(self, *args)
 
 
+    def write(self, *args):
+        """
+
+        void FullPhysics::Lidort_Fixed_Inputs::write(Lidort_Fixed_Write &write_in)
+
+        """
+        return _lidort_interface_types.Lidort_Fixed_Inputs_write(self, *args)
+
+
     def print_desc(self, output_stream):
         """
 
@@ -2991,6 +4693,7 @@ Lidort_Fixed_Inputs.sunrays = new_instancemethod(_lidort_interface_types.Lidort_
 Lidort_Fixed_Inputs.userval = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Inputs_userval, None, Lidort_Fixed_Inputs)
 Lidort_Fixed_Inputs.chapman = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Inputs_chapman, None, Lidort_Fixed_Inputs)
 Lidort_Fixed_Inputs.optical = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Inputs_optical, None, Lidort_Fixed_Inputs)
+Lidort_Fixed_Inputs.write = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Inputs_write, None, Lidort_Fixed_Inputs)
 Lidort_Fixed_Inputs.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Fixed_Inputs_print_desc, None, Lidort_Fixed_Inputs)
 Lidort_Fixed_Inputs_swigregister = _lidort_interface_types.Lidort_Fixed_Inputs_swigregister
 Lidort_Fixed_Inputs_swigregister(Lidort_Fixed_Inputs)
@@ -3014,22 +4717,67 @@ class Lidort_Modified_Boolean(Lidort_Structure):
         _lidort_interface_types.Lidort_Modified_Boolean_swiginit(self, _lidort_interface_types.new_Lidort_Modified_Boolean(*args))
     __swig_destroy__ = _lidort_interface_types.delete_Lidort_Modified_Boolean
 
-    def ts_do_sscorr_nadir(self, *args):
+    def ts_do_focorr(self, *args):
         """
 
-        void FullPhysics::Lidort_Modified_Boolean::ts_do_sscorr_nadir(const bool &ts_do_sscorr_nadir_in)
+        void FullPhysics::Lidort_Modified_Boolean::ts_do_focorr(const bool &ts_do_focorr_in)
 
         """
-        return _lidort_interface_types.Lidort_Modified_Boolean_ts_do_sscorr_nadir(self, *args)
+        return _lidort_interface_types.Lidort_Modified_Boolean_ts_do_focorr(self, *args)
 
 
-    def ts_do_sscorr_outgoing(self, *args):
+    def ts_do_focorr_external(self, *args):
         """
 
-        void FullPhysics::Lidort_Modified_Boolean::ts_do_sscorr_outgoing(const bool &ts_do_sscorr_outgoing_in)
+        void FullPhysics::Lidort_Modified_Boolean::ts_do_focorr_external(const bool &ts_do_focorr_external_in)
 
         """
-        return _lidort_interface_types.Lidort_Modified_Boolean_ts_do_sscorr_outgoing(self, *args)
+        return _lidort_interface_types.Lidort_Modified_Boolean_ts_do_focorr_external(self, *args)
+
+
+    def ts_do_focorr_nadir(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Boolean::ts_do_focorr_nadir(const bool &ts_do_focorr_nadir_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Boolean_ts_do_focorr_nadir(self, *args)
+
+
+    def ts_do_focorr_outgoing(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Boolean::ts_do_focorr_outgoing(const bool &ts_do_focorr_outgoing_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Boolean_ts_do_focorr_outgoing(self, *args)
+
+
+    def ts_do_sscorr_truncation(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Boolean::ts_do_sscorr_truncation(const bool &ts_do_sscorr_truncation_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Boolean_ts_do_sscorr_truncation(self, *args)
+
+
+    def ts_do_sscorr_usephasfunc(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Boolean::ts_do_sscorr_usephasfunc(const bool &ts_do_sscorr_usephasfunc_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Boolean_ts_do_sscorr_usephasfunc(self, *args)
+
+
+    def ts_do_external_wleave(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Boolean::ts_do_external_wleave(const bool &ts_do_external_wleave_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Boolean_ts_do_external_wleave(self, *args)
 
 
     def ts_do_double_convtest(self, *args):
@@ -3167,6 +4915,24 @@ class Lidort_Modified_Boolean(Lidort_Structure):
         return _lidort_interface_types.Lidort_Modified_Boolean_ts_do_thermal_transonly(self, *args)
 
 
+    def ts_do_observation_geometry(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Boolean::ts_do_observation_geometry(const bool &ts_do_observation_geometry_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Boolean_ts_do_observation_geometry(self, *args)
+
+
+    def ts_do_doublet_geometry(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Boolean::ts_do_doublet_geometry(const bool &ts_do_doublet_geometry_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Boolean_ts_do_doublet_geometry(self, *args)
+
+
     def print_desc(self, output_stream):
         """
 
@@ -3175,8 +4941,13 @@ class Lidort_Modified_Boolean(Lidort_Structure):
         """
         return _lidort_interface_types.Lidort_Modified_Boolean_print_desc(self, output_stream)
 
-Lidort_Modified_Boolean.ts_do_sscorr_nadir = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_sscorr_nadir, None, Lidort_Modified_Boolean)
-Lidort_Modified_Boolean.ts_do_sscorr_outgoing = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_sscorr_outgoing, None, Lidort_Modified_Boolean)
+Lidort_Modified_Boolean.ts_do_focorr = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_focorr, None, Lidort_Modified_Boolean)
+Lidort_Modified_Boolean.ts_do_focorr_external = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_focorr_external, None, Lidort_Modified_Boolean)
+Lidort_Modified_Boolean.ts_do_focorr_nadir = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_focorr_nadir, None, Lidort_Modified_Boolean)
+Lidort_Modified_Boolean.ts_do_focorr_outgoing = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_focorr_outgoing, None, Lidort_Modified_Boolean)
+Lidort_Modified_Boolean.ts_do_sscorr_truncation = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_sscorr_truncation, None, Lidort_Modified_Boolean)
+Lidort_Modified_Boolean.ts_do_sscorr_usephasfunc = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_sscorr_usephasfunc, None, Lidort_Modified_Boolean)
+Lidort_Modified_Boolean.ts_do_external_wleave = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_external_wleave, None, Lidort_Modified_Boolean)
 Lidort_Modified_Boolean.ts_do_double_convtest = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_double_convtest, None, Lidort_Modified_Boolean)
 Lidort_Modified_Boolean.ts_do_solar_sources = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_solar_sources, None, Lidort_Modified_Boolean)
 Lidort_Modified_Boolean.ts_do_refractive_geometry = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_refractive_geometry, None, Lidort_Modified_Boolean)
@@ -3192,6 +4963,8 @@ Lidort_Modified_Boolean.ts_do_user_streams = new_instancemethod(_lidort_interfac
 Lidort_Modified_Boolean.ts_do_additional_mvout = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_additional_mvout, None, Lidort_Modified_Boolean)
 Lidort_Modified_Boolean.ts_do_mvout_only = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_mvout_only, None, Lidort_Modified_Boolean)
 Lidort_Modified_Boolean.ts_do_thermal_transonly = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_thermal_transonly, None, Lidort_Modified_Boolean)
+Lidort_Modified_Boolean.ts_do_observation_geometry = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_observation_geometry, None, Lidort_Modified_Boolean)
+Lidort_Modified_Boolean.ts_do_doublet_geometry = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_ts_do_doublet_geometry, None, Lidort_Modified_Boolean)
 Lidort_Modified_Boolean.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Modified_Boolean_print_desc, None, Lidort_Modified_Boolean)
 Lidort_Modified_Boolean_swigregister = _lidort_interface_types.Lidort_Modified_Boolean_swigregister
 Lidort_Modified_Boolean_swigregister(Lidort_Modified_Boolean)
@@ -3325,6 +5098,15 @@ class Lidort_Modified_Uservalues(Lidort_Structure):
         return _lidort_interface_types.Lidort_Modified_Uservalues_ts_user_relazms(self, *args)
 
 
+    def ts_n_user_streams(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Uservalues::ts_n_user_streams(const int &ts_n_user_streams_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Uservalues_ts_n_user_streams(self, *args)
+
+
     def ts_user_angles_input(self, *args):
         """
 
@@ -3352,6 +5134,42 @@ class Lidort_Modified_Uservalues(Lidort_Structure):
         return _lidort_interface_types.Lidort_Modified_Uservalues_ts_geometry_specheight(self, *args)
 
 
+    def ts_n_user_obsgeoms(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Uservalues::ts_n_user_obsgeoms(const int &ts_n_user_obsgeoms_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Uservalues_ts_n_user_obsgeoms(self, *args)
+
+
+    def ts_user_obsgeoms_input(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Uservalues::ts_user_obsgeoms_input(const blitz::Array< double, 2 > &ts_user_obsgeoms_input_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Uservalues_ts_user_obsgeoms_input(self, *args)
+
+
+    def ts_n_user_doublets(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Uservalues::ts_n_user_doublets(const int &ts_n_user_doublets_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Uservalues_ts_n_user_doublets(self, *args)
+
+
+    def ts_user_doublets(self, *args):
+        """
+
+        void FullPhysics::Lidort_Modified_Uservalues::ts_user_doublets(const blitz::Array< double, 2 > &ts_user_doublets_in)
+
+        """
+        return _lidort_interface_types.Lidort_Modified_Uservalues_ts_user_doublets(self, *args)
+
+
     def print_desc(self, output_stream):
         """
 
@@ -3362,9 +5180,14 @@ class Lidort_Modified_Uservalues(Lidort_Structure):
 
 Lidort_Modified_Uservalues.ts_n_user_relazms = new_instancemethod(_lidort_interface_types.Lidort_Modified_Uservalues_ts_n_user_relazms, None, Lidort_Modified_Uservalues)
 Lidort_Modified_Uservalues.ts_user_relazms = new_instancemethod(_lidort_interface_types.Lidort_Modified_Uservalues_ts_user_relazms, None, Lidort_Modified_Uservalues)
+Lidort_Modified_Uservalues.ts_n_user_streams = new_instancemethod(_lidort_interface_types.Lidort_Modified_Uservalues_ts_n_user_streams, None, Lidort_Modified_Uservalues)
 Lidort_Modified_Uservalues.ts_user_angles_input = new_instancemethod(_lidort_interface_types.Lidort_Modified_Uservalues_ts_user_angles_input, None, Lidort_Modified_Uservalues)
 Lidort_Modified_Uservalues.ts_user_levels = new_instancemethod(_lidort_interface_types.Lidort_Modified_Uservalues_ts_user_levels, None, Lidort_Modified_Uservalues)
 Lidort_Modified_Uservalues.ts_geometry_specheight = new_instancemethod(_lidort_interface_types.Lidort_Modified_Uservalues_ts_geometry_specheight, None, Lidort_Modified_Uservalues)
+Lidort_Modified_Uservalues.ts_n_user_obsgeoms = new_instancemethod(_lidort_interface_types.Lidort_Modified_Uservalues_ts_n_user_obsgeoms, None, Lidort_Modified_Uservalues)
+Lidort_Modified_Uservalues.ts_user_obsgeoms_input = new_instancemethod(_lidort_interface_types.Lidort_Modified_Uservalues_ts_user_obsgeoms_input, None, Lidort_Modified_Uservalues)
+Lidort_Modified_Uservalues.ts_n_user_doublets = new_instancemethod(_lidort_interface_types.Lidort_Modified_Uservalues_ts_n_user_doublets, None, Lidort_Modified_Uservalues)
+Lidort_Modified_Uservalues.ts_user_doublets = new_instancemethod(_lidort_interface_types.Lidort_Modified_Uservalues_ts_user_doublets, None, Lidort_Modified_Uservalues)
 Lidort_Modified_Uservalues.print_desc = new_instancemethod(_lidort_interface_types.Lidort_Modified_Uservalues_print_desc, None, Lidort_Modified_Uservalues)
 Lidort_Modified_Uservalues_swigregister = _lidort_interface_types.Lidort_Modified_Uservalues_swigregister
 Lidort_Modified_Uservalues_swigregister(Lidort_Modified_Uservalues)
@@ -3432,7 +5255,7 @@ class Lidort_Modified_Optical(Lidort_Structure):
     def ts_omega_total_input(self, *args):
         """
 
-        void FullPhysics::Lidort_Modified_Optical::ts_omega_total_input(const blitz::Array< double, 2 > &ts_omega_total_input_in)
+        void FullPhysics::Lidort_Modified_Optical::ts_omega_total_input(const blitz::Array< double, 1 > &ts_omega_total_input_in)
 
         """
         return _lidort_interface_types.Lidort_Modified_Optical_ts_omega_total_input(self, *args)

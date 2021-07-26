@@ -23,7 +23,8 @@ args = parser.parse_args()
 
 LIDORT_BASE_DIR = args.lidort_path
 LIDORT_DEFS_DIR = os.path.join(LIDORT_BASE_DIR, "lidort_def")
-LIDORT_MAIN_DIR = os.path.join(LIDORT_BASE_DIR, "lidort_main")
+LIDORT_REG_MAIN_DIR = os.path.join(LIDORT_BASE_DIR, "lidort_main/regular")
+LIDORT_LIN_MAIN_DIR = os.path.join(LIDORT_BASE_DIR, "lidort_main/linearized")
 BRDF_MAIN_DIR = os.path.join(LIDORT_BASE_DIR, "sup/brdf")
 SLEAVE_MAIN_DIR = os.path.join(LIDORT_BASE_DIR, "sup/sleave")
 
@@ -82,8 +83,12 @@ BRDF_FILENAMES = (
     )
 
 # Master routines
-MASTER_FILENAMES = (
-    "lidort_l_inputs.F90",
+REG_MASTER_FILENAMES = (
+    "lidort_inputs.F90",
+    "lidort_masters.F90",
+    )
+
+LIN_MASTER_FILENAMES = (
     "lidort_l_inputs.F90",
     "lidort_lcs_masters.F90",
     "lidort_lps_masters.F90",
@@ -97,8 +102,11 @@ for fn, module_name in BRDF_FILENAMES:
     MASTER_FILE_MODULES[os.path.join(BRDF_MAIN_DIR, fn)] = module_name
 
 # Master modules have same module name as base filename + '_m'
-for fn in MASTER_FILENAMES:
-    MASTER_FILE_MODULES[os.path.join(LIDORT_MAIN_DIR, fn)] = os.path.splitext(fn)[0] + '_m'
+for fn in REG_MASTER_FILENAMES:
+    MASTER_FILE_MODULES[os.path.join(LIDORT_REG_MAIN_DIR, fn)] = os.path.splitext(fn)[0] + '_m'
+
+for fn in LIN_MASTER_FILENAMES:
+    MASTER_FILE_MODULES[os.path.join(LIDORT_LIN_MAIN_DIR, fn)] = os.path.splitext(fn)[0] + '_m'
 
 # Add testing routines
 MASTER_FILE_MODULES[os.path.join(LIDORT_BASE_DIR, 'sup/accessories/lidort_brdf_sup_accessories.F90')]   = "lidort_brdf_sup_accessories_m"
@@ -120,8 +128,6 @@ MASTERS_IGNORE_ROUTINES = ( 'lidort_check_input_dims',
                             'lidort_read_inputs',
                             'lidort_l_init_inputs',
                             'lidort_l_read_inputs',
-                            'lidort_brdf_input_check',
-                            'lidort_brdf_input_check_error',
                             'set_lidort_brdf_inputs'
                             'lidort_sleave_input_check',
                             'lidort_sleave_input_check_error',

@@ -73,13 +73,13 @@ THIRDPARTY=build or THIRDPARTY=<directory>. This gets added to all
 the third party library checks.
 ])
 AC_HDF5
-AC_LIDORT_3_6
-if test "$have_lidort_3_6" = "no"; then
+AC_LIDORT_3_8
+if test "$have_lidort_3_8" = "no"; then
    AC_MSG_ERROR([
-The LIDORT 3.6 library is required by Full Physics. Try specifying
-location using --with-lidort-3.6 if configure couldn't find the
-library. You can specify --with-lidort-3.6=build if you want to build your
-own local copy of LIDORT 3.6.
+The LIDORT 3.8 library is required by Full Physics. Try specifying
+location using --with-lidort-3.8 if configure couldn't find the
+library. You can specify --with-lidort-3.8=build if you want to build your
+own local copy of LIDORT 3.8.
 
 You can also specify THIRDPARTY=build if you want to build a local
 copy of all the Thirdparty libraries.
@@ -204,7 +204,7 @@ AC_SUBST([swigsrc], [bindings/python/swig])
 AC_SUBST([srcscript], [script])
 AC_SUBST([binsrc], [bin])
 AC_SUBST([thirdpartysrc], [thirdparty])
-AC_SUBST([lidort_3_6_src], [thirdparty/lidort-3.6])
+AC_SUBST([lidort_3_8_src], [thirdparty/lidort-3.8])
 AC_SUBST([twostream_src], [thirdparty/2stream])
 AC_SUBST([supportsrc], [lib/Support])
 AC_SUBST([interfacesrc], [lib/Interface])
@@ -347,10 +347,10 @@ AC_SUBST([lidort_maxatmoswfs], ["$ac_lidort_maxatmoswfs"])
 # that depends on it every time we rerun the configuration script.
 #======================================================================
 
-AC_CONFIG_FILES([thirdparty/lidort-3.6/lidort_def/lidort_pars.F90.tmp:thirdparty/lidort-3.6/lidort_def/lidort_pars.F90.in],
+AC_CONFIG_FILES([thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.tmp:thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.in],
 [
- f1=thirdparty/lidort-3.6/lidort_def/lidort_pars.F90.tmp
- f2=thirdparty/lidort-3.6/lidort_def/lidort_pars.F90
+ f1=thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.tmp
+ f2=thirdparty/lidort-3.8/lidort_def/lidort_pars.F90
  AS_IF([test -f $f2],
  [
    AS_IF([cmp -s $f1 $f2 2>/dev/null],
@@ -398,7 +398,7 @@ LOC_MSG()
 LOC_MSG([  HDF5 support:                 ${have_hdf5}])
 LOC_MSG([  Lua support:                  ${have_lua}])
 LOC_MSG([  Build own HDF5 library:       ${build_hdf5}])
-LOC_MSG([  Build own LIDORT 3.6 library: ${build_lidort_3_6}])
+LOC_MSG([  Build own LIDORT 3.8 library: ${build_lidort_3_8}])
 LOC_MSG([  Build own 2stream library:    ${build_twostream}])
 LOC_MSG([  Build own BZIB library:       ${build_bzlib}])
 LOC_MSG([  Build own BOOST library:      ${build_boost}])

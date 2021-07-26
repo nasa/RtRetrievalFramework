@@ -111,7 +111,7 @@
 !  Version number
 !  ==============
 
-   CHARACTER(Len=5), PARAMETER :: LIDORT_VERSION_NUMBER = '3.8.1'
+   CHARACTER(Len=5), PARAMETER :: LIDORT_VERSION_NUMBER = '3.8.3'
 
 !  File i/o unit numbers
 !  =====================
@@ -143,7 +143,7 @@
 
 !  Number of computational streams in the half-space
 
-   INTEGER, PARAMETER :: MAXSTREAMS = 10
+   INTEGER, PARAMETER :: MAXSTREAMS = 16
 
 !  Maximum number of computational layers
 
@@ -156,26 +156,26 @@
 !  Maximum number of input moments.
 !    (Use full range for exact single scatter calculations)
 
-   INTEGER, PARAMETER :: MAXMOMENTS_INPUT = 200
+   INTEGER, PARAMETER :: MAXMOMENTS_INPUT = 180
 
 !  Max number of thermal coefficients
 
-   INTEGER, PARAMETER :: MAX_THERMAL_COEFFS = 2
+   INTEGER, PARAMETER :: MAX_THERMAL_COEFFS = 3
 
 !  Geometrical and output parameters
 !  ---------------------------------
 
 !  Maximum number of solar beams
 
-   INTEGER, PARAMETER :: MAXBEAMS = 8
+   INTEGER, PARAMETER :: MAXBEAMS = 4
 
 !  Maximum number of user-defined output zenith angles
 
-   INTEGER, PARAMETER :: MAX_USER_STREAMS = 1
+   INTEGER, PARAMETER :: MAX_USER_STREAMS = 4
 
 !  Maximum number of user-defined output relative azimuth angles
 
-   INTEGER, PARAMETER :: MAX_USER_RELAZMS = 1
+   INTEGER, PARAMETER :: MAX_USER_RELAZMS = 3
 
 !  Maximum number of Observational Geoemtries
 !   New parameter, 25 October 2012
@@ -184,12 +184,12 @@
 
 !  Maximum number of output levels
 
-   INTEGER, PARAMETER :: MAX_USER_LEVELS = 2
+   INTEGER, PARAMETER :: MAX_USER_LEVELS = 5
 
 !  Maximum number of output levels away from layer boundaries 
 !   This must be less than or equal to the previous entry
 
-   INTEGER, PARAMETER :: MAX_PARTLAYERS = 1
+   INTEGER, PARAMETER :: MAX_PARTLAYERS = 2
 
 !  Maximum number of Terms for Taylor series expansions
 !    If you are retaining contributions of order EPS^n, then you need at least n+2 Taylor terms
@@ -208,11 +208,11 @@
 
 !  Maximum number of BRDF kernels. Increased to 4, Version 3.8
 
-   INTEGER, PARAMETER :: MAX_BRDF_KERNELS = 4
+   INTEGER, PARAMETER :: MAX_BRDF_KERNELS = 3
 
 !  Maximum number of BRDF parameters per kernel. Increased to 4, Version 3.8
 
-   INTEGER, PARAMETER :: MAX_BRDF_PARAMETERS = 4
+   INTEGER, PARAMETER :: MAX_BRDF_PARAMETERS = 3
 
 !  Maximum number of azimuth-quadrature streams for BRDF Fourier.
 !    5/5/20. Version 3.8.1 Upgrade. MUST BE AN EVEN NUMBER
@@ -239,11 +239,11 @@
 
 !  Maximum number of surface property weighting functions
 
-   INTEGER, PARAMETER :: MAX_SURFACEWFS = 1
+   INTEGER, PARAMETER :: MAX_SURFACEWFS = 7
 
 !  Maximum number of surface-leaving weighting functions
 
-   INTEGER, PARAMETER :: MAX_SLEAVEWFS = 1
+   INTEGER, PARAMETER :: MAX_SLEAVEWFS = 2
 
 !  Derived dimensions
 !  ==================

@@ -1,6 +1,6 @@
 // This file was auto-generated
 
-%include "fp_common.i"
+%include "common.i"
 
 {% from "constructor_def.macro" import constructor -%}
 
