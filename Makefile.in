@@ -127,7 +127,7 @@
 # list.
 #
 
-#_ This is version 3.6 of lidort. 
+#_ This is version 3.8 of lidort. 
 
 # This the 2stream radiative transfer solver
 
@@ -246,7 +246,7 @@ check_PROGRAMS = lib/test_all$(EXEEXT)
 @HAVE_LUA_TRUE@am__append_10 = -I$(srcdir)/@luasrc@ $(LUA_CPPFLAGS)
 @HAVE_LUA_TRUE@am__append_11 = $(LUA_LDFLAGS)
 @HAVE_BOOST_STATIC_FALSE@am__append_12 = $(BOOST_LDFLAGS)
-@BUILD_LIDORT_3_6_TRUE@am__append_13 = lidort-3.6
+@BUILD_LIDORT_3_8_TRUE@am__append_13 = lidort-3.8
 @BUILD_TWOSTREAM_TRUE@am__append_14 = 2stream
 
 # ========================================================================
@@ -332,7 +332,7 @@ am__aclocal_m4_deps = $(top_srcdir)/config/m4/ac_2stream.m4 \
 	$(top_srcdir)/config/m4/ac_doxygen.m4 \
 	$(top_srcdir)/config/m4/ac_gsl.m4 \
 	$(top_srcdir)/config/m4/ac_hdf5.m4 \
-	$(top_srcdir)/config/m4/ac_lidort-3.6.m4 \
+	$(top_srcdir)/config/m4/ac_lidort-3.8.3.m4 \
 	$(top_srcdir)/config/m4/ac_lua.m4 \
 	$(top_srcdir)/config/m4/ac_parallel.m4 \
 	$(top_srcdir)/config/m4/ac_pkg_swig.m4 \
@@ -365,7 +365,7 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
 mkinstalldirs = $(install_sh) -d
 CONFIG_CLEAN_FILES = script/setup_fp_env.sh \
 	lib/Support/global_fixture_default.cc \
-	thirdparty/lidort-3.6/lidort_def/lidort_pars.F90.tmp
+	thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.tmp
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(libdir)" \
 	"$(DESTDIR)$(pkgpythondir)" "$(DESTDIR)$(pkgpythonswigdir)" \
@@ -1419,78 +1419,120 @@ libfull_physics_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(AM_CFLAGS) $(CFLAGS) $(libfull_physics_la_LDFLAGS) \
 	$(LDFLAGS) -o $@
-liblidort_3_6_0_la_LIBADD =
-am_liblidort_3_6_0_la_OBJECTS =  \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_pars.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_inputs_def.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_brdf_def.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_ss_def.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_sleave_def.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_def.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_outputs_def.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_io_defs.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_aux.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_getplanck.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_geometry.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_inputs.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_miscsetups.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_corrections.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_thermalsup.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_solutions.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_bvproblem.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_intensity.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_writemodules.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_masters.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_inputs_def.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_brdf_def.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_ss_def.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_sleave_def.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_def.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_outputs_def.lo \
-	@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_io_defs.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_la_miscsetups.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lpc_solutions.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_ls_corrections.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_l_thermalsup.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_ls_wfsurface.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_ls_wfsleave.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_l_writemodules.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_miscsetups.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_corrections.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_bvproblem.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_wfatmos.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lps_masters.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_miscsetups.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_corrections.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_bvproblem.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_wfatmos.lo \
-	@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lcs_masters.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_findpar.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_inputs_def.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_outputs_def.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_aux.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_kernels.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_routines.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_masters.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_mod.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_inputs_def.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_outputs_def.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_kernels.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_routines.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_masters.lo \
-	@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_mod.lo \
-	@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_findpar.lo \
-	@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_inputs_def.lo \
-	@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_outputs_def.lo \
-	@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_routines.lo \
-	@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_masters.lo \
-	@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_mod.lo \
-	@lidort_3_6_src@/lidort_test/liblidort_3_6_0_la-lidort_sup_accessories.lo
-liblidort_3_6_0_la_OBJECTS = $(am_liblidort_3_6_0_la_OBJECTS)
-liblidort_3_6_0_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=FC \
+liblidort_3_8_3_la_LIBADD =
+am_liblidort_3_8_3_la_OBJECTS =  \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_pars.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_inputs_def.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_io_defs.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_inputs_def.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_io_defs.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_outputs_def.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_brdf_def.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_def.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_sleave_def.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_ss_def.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_outputs_def.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_brdf_def.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_def.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_sleave_def.lo \
+	@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_ss_def.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_geometry_Generic.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_WPgeometry_Routines.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_DTWPgeometry_master.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Planckfunc.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_RTCalcs_I.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_RTCalcs_ILCS.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_RTCalcs_ILPS.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_Spherfuncs.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_SSWPgeometry_master.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Taylor.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Thermal_RTCalcs_I.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Thermal_RTCalcs_ILCS.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Thermal_RTCalcs_ILPS.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-SFO_LinMasters.lo \
+	@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-SFO_Master.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_la_miscsetups.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lbbf_jacobians.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_bvproblem.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_mediaprops.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_miscsetups.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_PostProcessing.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lcs_converge.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lcs_masters.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_wfatmos.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_l_inputs.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_bvproblem.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lpc_solutions.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_mediaprops.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_miscsetups.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_PostProcessing.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lps_converge.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lps_masters.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_wfatmos.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_ls_wfsleave.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_ls_wfsurface.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_l_thermalsup.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_l_writemodules.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_sfo_lcs_interface.lo \
+	@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_sfo_lps_interface.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_aux.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_bvproblem.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_converge.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_geometry.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_getplanck.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_inputs.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_intensity.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_mediaprops.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_miscsetups.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_PostProcessing.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_sfo_interface.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_solutions.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_Taylor.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_thermalsup.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_writemodules.lo \
+	@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_masters.lo \
+	@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_brdf_lin_sup_accessories.lo \
+	@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_brdf_sup_accessories.lo \
+	@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_joint_sup_accessories.lo \
+	@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_sleave_lin_sup_accessories.lo \
+	@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_sleave_sup_accessories.lo \
+	@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_DevelopCoeffs.lo \
+	@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_ExpandCoeffs.lo \
+	@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_HenyeyGreenstein.lo \
+	@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_Master.lo \
+	@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_Numerical.lo \
+	@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_Rayleigh.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_findpar.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_inputs_def.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_kernels.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_masters.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_mod.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_outputs_def.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_routines.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_aux.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_inputs_def.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_kernels.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_masters.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_mod.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_outputs_def.lo \
+	@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_routines.lo \
+	@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_findpar.lo \
+	@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_inputs_def.lo \
+	@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_masters.lo \
+	@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_mod.lo \
+	@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_outputs_def.lo \
+	@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_routines.lo \
+	@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_aux.lo \
+	@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_inputs_def.lo \
+	@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_masters.lo \
+	@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_mod.lo \
+	@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_outputs_def.lo \
+	@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_routines.lo
+liblidort_3_8_3_la_OBJECTS = $(am_liblidort_3_8_3_la_OBJECTS)
+liblidort_3_8_3_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=FC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(FCLD) \
-	$(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) \
-	$(liblidort_3_6_0_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) \
+	$(liblidort_3_8_3_la_LDFLAGS) $(LDFLAGS) -o $@
 libtwostream_la_LIBADD =
 am_libtwostream_la_OBJECTS =  \
 	@twostream_src@/libtwostream_la-2stream_brdf_kernels.lo \
@@ -2644,12 +2686,12 @@ am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
 SOURCES = $(_swig_wrap_la_SOURCES) $(libfp_la_SOURCES) \
-	$(libfull_physics_la_SOURCES) $(liblidort_3_6_0_la_SOURCES) \
+	$(libfull_physics_la_SOURCES) $(liblidort_3_8_3_la_SOURCES) \
 	$(libtwostream_la_SOURCES) $(l2_fp_SOURCES) \
 	$(lib_test_all_SOURCES)
 DIST_SOURCES = $(am___swig_wrap_la_SOURCES_DIST) \
 	$(am__libfp_la_SOURCES_DIST) $(libfull_physics_la_SOURCES) \
-	$(liblidort_3_6_0_la_SOURCES) $(libtwostream_la_SOURCES) \
+	$(liblidort_3_8_3_la_SOURCES) $(libtwostream_la_SOURCES) \
 	$(l2_fp_SOURCES) $(am__lib_test_all_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
@@ -2948,7 +2990,7 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/bin/bin.am \
 	$(srcdir)/script/script.am $(srcdir)/support/support.am \
 	$(srcdir)/support/utils/utils.am $(srcdir)/test/test.am \
 	$(srcdir)/thirdparty/2stream/2stream.am \
-	$(srcdir)/thirdparty/lidort-3.6/lidort-3.6.am \
+	$(srcdir)/thirdparty/lidort-3.8/lidort-3.8.am \
 	$(srcdir)/thirdparty/thirdparty.am \
 	$(top_srcdir)/config/compile $(top_srcdir)/config/config.guess \
 	$(top_srcdir)/config/config.sub $(top_srcdir)/config/depcomp \
@@ -2956,7 +2998,7 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/bin/bin.am \
 	$(top_srcdir)/config/missing $(top_srcdir)/config/py-compile \
 	$(top_srcdir)/lib/Support/global_fixture_default.cc.in \
 	$(top_srcdir)/script/setup_fp_env.sh.in \
-	$(top_srcdir)/thirdparty/lidort-3.6/lidort_def/lidort_pars.F90.in \
+	$(top_srcdir)/thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.in \
 	AUTHORS COPYING ChangeLog INSTALL NEWS README config/compile \
 	config/config.guess config/config.sub config/depcomp \
 	config/install-sh config/ltmain.sh config/missing \
@@ -3063,8 +3105,8 @@ LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
-LIDORT_3_6_CPPFLAGS = @LIDORT_3_6_CPPFLAGS@
-LIDORT_3_6_LDFLAGS = @LIDORT_3_6_LDFLAGS@
+LIDORT_3_8_CPPFLAGS = @LIDORT_3_8_CPPFLAGS@
+LIDORT_3_8_LDFLAGS = @LIDORT_3_8_LDFLAGS@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
@@ -3183,7 +3225,7 @@ l2analysissrc = @l2analysissrc@
 l_radsrc = @l_radsrc@
 libdir = @libdir@
 libexecdir = @libexecdir@
-lidort_3_6_src = @lidort_3_6_src@
+lidort_3_8_src = @lidort_3_8_src@
 lidort_maxatmoswfs = @lidort_maxatmoswfs@
 lidort_maxlayer = @lidort_maxlayer@
 localedir = @localedir@
@@ -3247,7 +3289,7 @@ ACLOCAL_AMFLAGS = -I config/m4
 lib_LTLIBRARIES = libfull_physics.la
 noinst_LTLIBRARIES = libfp.la
 CLEANFILES = lib/full_physics.deps \
-	thirdparty/lidort-3.6/lidort-3.6.deps \
+	thirdparty/lidort-3.8/lidort-3.8.deps \
 	thirdparty/2stream/2stream.deps
 DISTCLEANFILES = 
 bin_SCRIPTS = @supportutilssrc@/addSoundingHeader.py \
@@ -3340,7 +3382,7 @@ EXTRA_DIST = config/depf90 lib/test_all.sh \
 	config/doxygen_fortran.cfg doc/LIDORT_userguide_v3.0.pdf \
 	doc/users_guide.pdf input/setup_env.sh input/gosat operations \
 	support unit_test_data
-EXTRA_LTLIBRARIES = liblidort-3.6.0.la libtwostream.la
+EXTRA_LTLIBRARIES = liblidort-3.8.3.la libtwostream.la
 BUILT_SOURCES = $(am__append_13) $(am__append_14) $(am__append_15) \
 	$(am__append_16) $(am__append_17) $(am__append_18) \
 	$(am__append_19) $(am__append_20) $(am__append_21) \
@@ -4105,7 +4147,7 @@ doxygen_run_extra = doc/html/overall.png
 
 #=================================================================
 # Documentation needs to be rebuilt when these source files change
-doxygen_fortran_deps = $(libfp_fortran) $(liblidort_3_6_0_la_SOURCES) \
+doxygen_fortran_deps = $(libfp_fortran) $(liblidort_3_8_3_la_SOURCES) \
 	$(libtwostream_la_SOURCES)
 doxygen_deps = $(filter-out %.f90 %.F90, $(libfp_la_SOURCES)) \
 	$(fullphysicsinc_HEADERS) @fpsrc@/doxygen.h
@@ -4351,9 +4393,9 @@ libfp_la_SOURCES = @supportsrc@/turn_on_fe_exception.cc \
 libfull_physics_la_LIBADD = libfp.la
 libfull_physics_la_LDFLAGS = $(AM_LDFLAGS) $(BOOST_LDFLAGS) \
 	$(HDF5_LDFLAGS) $(FCLIBS)
-libfp_la_CPPFLAGS = $(AM_CPPFLAGS) $(LIDORT_3_6_CPPFLAGS) \
+libfp_la_CPPFLAGS = $(AM_CPPFLAGS) $(LIDORT_3_8_CPPFLAGS) \
 	$(TWOSTREAM_CPPFLAGS) $(HDF5_CPPFLAGS) $(am__append_4)
-libfp_la_LIBADD = $(LIDORT_3_6_LDFLAGS) $(TWOSTREAM_LDFLAGS)
+libfp_la_LIBADD = $(LIDORT_3_8_LDFLAGS) $(TWOSTREAM_LDFLAGS)
 libfp_la_LDFLAGS = $(BLITZ_LDFLAGS) $(GSL_LDFLAGS) $(HDF5_LDFLAGS) \
 	$(AM_LDFLAGS) $(am__append_11)
 pkgpythontemplate_DATA = @pythontemplatesrc@/aggregate.tmpl \
@@ -4404,74 +4446,115 @@ EXTRA_l2_fp_DEPENDENCIES = version.h
 # be linked in statically.
 l2_fp_LDFLAGS = -no-install -static-libtool-libs $(AM_LDFLAGS) \
 	$(am__append_12)
-liblidort_3_6_0_la_SOURCES =  \
-	@lidort_3_6_src@/lidort_def/lidort_pars.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_inputs_def.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_sup_brdf_def.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_sup_ss_def.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_sup_sleave_def.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_sup_def.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_outputs_def.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_io_defs.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_aux.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_getplanck.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_geometry.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_inputs.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_miscsetups.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_corrections.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_thermalsup.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_solutions.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_bvproblem.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_intensity.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_writemodules.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_masters.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_lin_inputs_def.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_lin_sup_brdf_def.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_lin_sup_ss_def.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_lin_sup_sleave_def.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_lin_sup_def.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_lin_outputs_def.F90 \
-	@lidort_3_6_src@/lidort_def/lidort_lin_io_defs.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_la_miscsetups.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_lpc_solutions.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_ls_corrections.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_l_thermalsup.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_ls_wfsurface.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_ls_wfsleave.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_l_writemodules.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_lp_miscsetups.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_lp_corrections.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_lp_bvproblem.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_lp_wfatmos.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_lps_masters.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_lc_miscsetups.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_lc_corrections.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_lc_bvproblem.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_lc_wfatmos.F90 \
-	@lidort_3_6_src@/lidort_main/lidort_lcs_masters.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_findpar.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_sup_inputs_def.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_sup_outputs_def.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_sup_aux.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_sup_kernels.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_sup_routines.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_sup_masters.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_sup_mod.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_lin_sup_inputs_def.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_lin_sup_outputs_def.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_lin_sup_kernels.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_lin_sup_routines.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_lin_sup_masters.F90 \
-	@lidort_3_6_src@/sup/brdf/brdf_lin_sup_mod.F90 \
-	@lidort_3_6_src@/sup/sleave/sleave_findpar.F90 \
-	@lidort_3_6_src@/sup/sleave/sleave_sup_inputs_def.F90 \
-	@lidort_3_6_src@/sup/sleave/sleave_sup_outputs_def.F90 \
-	@lidort_3_6_src@/sup/sleave/sleave_sup_routines.F90 \
-	@lidort_3_6_src@/sup/sleave/sleave_sup_masters.F90 \
-	@lidort_3_6_src@/sup/sleave/sleave_sup_mod.F90 \
-	@lidort_3_6_src@/lidort_test/lidort_sup_accessories.F90
+liblidort_3_8_3_la_SOURCES =  \
+	@lidort_3_8_src@/lidort_def/lidort_pars.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_inputs_def.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_io_defs.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_lin_inputs_def.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_lin_io_defs.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_lin_outputs_def.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_lin_sup_brdf_def.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_lin_sup_def.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_lin_sup_sleave_def.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_lin_sup_ss_def.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_outputs_def.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_sup_brdf_def.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_sup_def.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_sup_sleave_def.F90 \
+	@lidort_3_8_src@/lidort_def/lidort_sup_ss_def.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_geometry_Generic.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_WPgeometry_Routines.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_DTWPgeometry_master.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_Planckfunc.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_I.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_ILCS.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_ILPS.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_ScalarSS_Spherfuncs.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_SSWPgeometry_master.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_Taylor.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_I.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_ILCS.F90 \
+	@lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_ILPS.F90 \
+	@lidort_3_8_src@/lidort_focode/SFO_LinMasters.F90 \
+	@lidort_3_8_src@/lidort_focode/SFO_Master.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_la_miscsetups.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lbbf_jacobians.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lc_bvproblem.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lc_mediaprops.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lc_miscsetups.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lc_PostProcessing.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lcs_converge.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lcs_masters.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lc_wfatmos.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_l_inputs.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lp_bvproblem.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lpc_solutions.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lp_mediaprops.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lp_miscsetups.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lp_PostProcessing.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lps_converge.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lps_masters.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_lp_wfatmos.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_ls_wfsleave.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_ls_wfsurface.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_l_thermalsup.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_l_writemodules.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_sfo_lcs_interface.F90 \
+	@lidort_3_8_src@/lidort_main/linearized/lidort_sfo_lps_interface.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_aux.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_bvproblem.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_converge.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_geometry.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_getplanck.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_inputs.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_intensity.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_mediaprops.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_miscsetups.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_PostProcessing.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_sfo_interface.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_solutions.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_Taylor.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_thermalsup.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_writemodules.F90 \
+	@lidort_3_8_src@/lidort_main/regular/lidort_masters.F90 \
+	@lidort_3_8_src@/sup/accessories/lidort_brdf_lin_sup_accessories.F90 \
+	@lidort_3_8_src@/sup/accessories/lidort_brdf_sup_accessories.F90 \
+	@lidort_3_8_src@/sup/accessories/lidort_joint_sup_accessories.F90 \
+	@lidort_3_8_src@/sup/accessories/lidort_sleave_lin_sup_accessories.F90 \
+	@lidort_3_8_src@/sup/accessories/lidort_sleave_sup_accessories.F90 \
+	@lidort_3_8_src@/sup/phasfunc/Phasfunc_DevelopCoeffs.F90 \
+	@lidort_3_8_src@/sup/phasfunc/Phasfunc_ExpandCoeffs.F90 \
+	@lidort_3_8_src@/sup/phasfunc/Phasfunc_HenyeyGreenstein.F90 \
+	@lidort_3_8_src@/sup/phasfunc/Phasfunc_Master.F90 \
+	@lidort_3_8_src@/sup/phasfunc/Phasfunc_Numerical.F90 \
+	@lidort_3_8_src@/sup/phasfunc/Phasfunc_Rayleigh.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_findpar.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_lin_sup_inputs_def.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_lin_sup_kernels.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_lin_sup_masters.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_lin_sup_mod.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_lin_sup_outputs_def.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_lin_sup_routines.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_sup_aux.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_sup_inputs_def.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_sup_kernels.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_sup_masters.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_sup_mod.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_sup_outputs_def.F90 \
+	@lidort_3_8_src@/sup/brdf/brdf_sup_routines.F90 \
+	@lidort_3_8_src@/sup/sleave/sleave_findpar.F90 \
+	@lidort_3_8_src@/sup/sleave/sleave_lin_sup_inputs_def.F90 \
+	@lidort_3_8_src@/sup/sleave/sleave_lin_sup_masters.F90 \
+	@lidort_3_8_src@/sup/sleave/sleave_lin_sup_mod.F90 \
+	@lidort_3_8_src@/sup/sleave/sleave_lin_sup_outputs_def.F90 \
+	@lidort_3_8_src@/sup/sleave/sleave_lin_sup_routines.F90 \
+	@lidort_3_8_src@/sup/sleave/sleave_sup_aux.F90 \
+	@lidort_3_8_src@/sup/sleave/sleave_sup_inputs_def.F90 \
+	@lidort_3_8_src@/sup/sleave/sleave_sup_masters.F90 \
+	@lidort_3_8_src@/sup/sleave/sleave_sup_mod.F90 \
+	@lidort_3_8_src@/sup/sleave/sleave_sup_outputs_def.F90 \
+	@lidort_3_8_src@/sup/sleave/sleave_sup_routines.F90
 
-#
 # In addition to release, we have a "version" number. This is more library
 # focused, and indicates if programs can use newer versions without needing
 # to recompile. Bug fixes (as opposed to changes in functionality) can 
@@ -4479,12 +4562,12 @@ liblidort_3_6_0_la_SOURCES =  \
 # version-info might go to 0:1:0.
 # See http://sources.redhat.com/autobook/autobook/autobook_91.html for
 # a description of the difference between release and version.
-liblidort_3_6_0_la_LDFLAGS = -rpath '$(libdir)' -version-info 0:0:0
+liblidort_3_8_3_la_LDFLAGS = -rpath '$(libdir)' -version-info 0:0:0
 
 #=================================================================
 # Set up to put modules in modules directory.
-LIDORT_3_6_MOD_FLAGS := $(call fortran_module_path,$(includedir))
-liblidort_3_6_0_la_FCFLAGS = $(LIDORT_3_6_MOD_FLAGS)
+LIDORT_3_8_MOD_FLAGS := $(call fortran_module_path,$(includedir))
+liblidort_3_8_3_la_FCFLAGS = $(LIDORT_3_8_MOD_FLAGS)
 libtwostream_la_SOURCES = @twostream_src@/2stream_brdf_kernels.F90 \
 	@twostream_src@/2stream_brdf_supplement.F90 \
 	@twostream_src@/2stream_ls_brdf_supplement.F90 \
@@ -4718,7 +4801,7 @@ all: $(BUILT_SOURCES)
 .SUFFIXES: .F90 .cc .cpp .lo .o .obj
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/config/am/doxygen.am $(srcdir)/lib/lib.am $(srcdir)/lib/Support/support.am $(srcdir)/lib/Interface/interface.am $(srcdir)/lib/Implementation/implementation.am $(srcdir)/lib/Implementation/l_rad_fortran/l_rad_fortran.am $(srcdir)/lib/FixedLevel/fixed_level.am $(srcdir)/lib/Deprecated/deprecated.am $(srcdir)/lib/RegisterOutput/register_output.am $(srcdir)/lib/Lua/lua.am $(srcdir)/lib/Python/python.am $(srcdir)/lib/Python/l2_analysis/l2_analysis.am $(srcdir)/bin/bin.am $(srcdir)/thirdparty/thirdparty.am $(srcdir)/thirdparty/lidort-3.6/lidort-3.6.am $(srcdir)/thirdparty/2stream/2stream.am $(srcdir)/script/script.am $(srcdir)/support/support.am $(srcdir)/support/utils/utils.am $(srcdir)/input/input.am $(srcdir)/input/common/common.am $(srcdir)/input/fts/fts.am $(srcdir)/input/gosat/gosat.am $(srcdir)/input/oco/oco.am $(srcdir)/bindings/python/python.am $(srcdir)/test/test.am $(srcdir)/doc/python/doc_python.am $(am__configure_deps)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/config/am/doxygen.am $(srcdir)/lib/lib.am $(srcdir)/lib/Support/support.am $(srcdir)/lib/Interface/interface.am $(srcdir)/lib/Implementation/implementation.am $(srcdir)/lib/Implementation/l_rad_fortran/l_rad_fortran.am $(srcdir)/lib/FixedLevel/fixed_level.am $(srcdir)/lib/Deprecated/deprecated.am $(srcdir)/lib/RegisterOutput/register_output.am $(srcdir)/lib/Lua/lua.am $(srcdir)/lib/Python/python.am $(srcdir)/lib/Python/l2_analysis/l2_analysis.am $(srcdir)/bin/bin.am $(srcdir)/thirdparty/thirdparty.am $(srcdir)/thirdparty/lidort-3.8/lidort-3.8.am $(srcdir)/thirdparty/2stream/2stream.am $(srcdir)/script/script.am $(srcdir)/support/support.am $(srcdir)/support/utils/utils.am $(srcdir)/input/input.am $(srcdir)/input/common/common.am $(srcdir)/input/fts/fts.am $(srcdir)/input/gosat/gosat.am $(srcdir)/input/oco/oco.am $(srcdir)/bindings/python/python.am $(srcdir)/test/test.am $(srcdir)/doc/python/doc_python.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -4740,7 +4823,7 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles);; \
 	esac;
-$(srcdir)/config/am/doxygen.am $(srcdir)/lib/lib.am $(srcdir)/lib/Support/support.am $(srcdir)/lib/Interface/interface.am $(srcdir)/lib/Implementation/implementation.am $(srcdir)/lib/Implementation/l_rad_fortran/l_rad_fortran.am $(srcdir)/lib/FixedLevel/fixed_level.am $(srcdir)/lib/Deprecated/deprecated.am $(srcdir)/lib/RegisterOutput/register_output.am $(srcdir)/lib/Lua/lua.am $(srcdir)/lib/Python/python.am $(srcdir)/lib/Python/l2_analysis/l2_analysis.am $(srcdir)/bin/bin.am $(srcdir)/thirdparty/thirdparty.am $(srcdir)/thirdparty/lidort-3.6/lidort-3.6.am $(srcdir)/thirdparty/2stream/2stream.am $(srcdir)/script/script.am $(srcdir)/support/support.am $(srcdir)/support/utils/utils.am $(srcdir)/input/input.am $(srcdir)/input/common/common.am $(srcdir)/input/fts/fts.am $(srcdir)/input/gosat/gosat.am $(srcdir)/input/oco/oco.am $(srcdir)/bindings/python/python.am $(srcdir)/test/test.am $(srcdir)/doc/python/doc_python.am $(am__empty):
+$(srcdir)/config/am/doxygen.am $(srcdir)/lib/lib.am $(srcdir)/lib/Support/support.am $(srcdir)/lib/Interface/interface.am $(srcdir)/lib/Implementation/implementation.am $(srcdir)/lib/Implementation/l_rad_fortran/l_rad_fortran.am $(srcdir)/lib/FixedLevel/fixed_level.am $(srcdir)/lib/Deprecated/deprecated.am $(srcdir)/lib/RegisterOutput/register_output.am $(srcdir)/lib/Lua/lua.am $(srcdir)/lib/Python/python.am $(srcdir)/lib/Python/l2_analysis/l2_analysis.am $(srcdir)/bin/bin.am $(srcdir)/thirdparty/thirdparty.am $(srcdir)/thirdparty/lidort-3.8/lidort-3.8.am $(srcdir)/thirdparty/2stream/2stream.am $(srcdir)/script/script.am $(srcdir)/support/support.am $(srcdir)/support/utils/utils.am $(srcdir)/input/input.am $(srcdir)/input/common/common.am $(srcdir)/input/fts/fts.am $(srcdir)/input/gosat/gosat.am $(srcdir)/input/oco/oco.am $(srcdir)/bindings/python/python.am $(srcdir)/test/test.am $(srcdir)/doc/python/doc_python.am $(am__empty):
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
@@ -4754,7 +4837,7 @@ script/setup_fp_env.sh: $(top_builddir)/config.status $(top_srcdir)/script/setup
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 lib/Support/global_fixture_default.cc: $(top_builddir)/config.status $(top_srcdir)/lib/Support/global_fixture_default.cc.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
-thirdparty/lidort-3.6/lidort_def/lidort_pars.F90.tmp: $(top_builddir)/config.status $(top_srcdir)/thirdparty/lidort-3.6/lidort_def/lidort_pars.F90.in
+thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.tmp: $(top_builddir)/config.status $(top_srcdir)/thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 install-binPROGRAMS: $(bin_PROGRAMS)
 	@$(NORMAL_INSTALL)
@@ -6182,234 +6265,378 @@ libfp.la: $(libfp_la_OBJECTS) $(libfp_la_DEPENDENCIES) $(EXTRA_libfp_la_DEPENDEN
 
 libfull_physics.la: $(libfull_physics_la_OBJECTS) $(libfull_physics_la_DEPENDENCIES) $(EXTRA_libfull_physics_la_DEPENDENCIES) 
 	$(AM_V_CCLD)$(libfull_physics_la_LINK) -rpath $(libdir) $(libfull_physics_la_OBJECTS) $(libfull_physics_la_LIBADD) $(LIBS)
-@lidort_3_6_src@/lidort_def/$(am__dirstamp):
-	@$(MKDIR_P) @lidort_3_6_src@/lidort_def
-	@: > @lidort_3_6_src@/lidort_def/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) @lidort_3_6_src@/lidort_def/$(DEPDIR)
-	@: > @lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_pars.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_inputs_def.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_brdf_def.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_ss_def.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_sleave_def.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_def.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_outputs_def.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_io_defs.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/$(am__dirstamp):
-	@$(MKDIR_P) @lidort_3_6_src@/lidort_main
-	@: > @lidort_3_6_src@/lidort_main/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) @lidort_3_6_src@/lidort_main/$(DEPDIR)
-	@: > @lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_aux.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_getplanck.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_geometry.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_inputs.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_miscsetups.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_corrections.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_thermalsup.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_solutions.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_bvproblem.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_intensity.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_writemodules.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_masters.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_inputs_def.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_brdf_def.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_ss_def.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_sleave_def.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_def.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_outputs_def.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_io_defs.lo:  \
-	@lidort_3_6_src@/lidort_def/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_la_miscsetups.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lpc_solutions.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_ls_corrections.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_l_thermalsup.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_ls_wfsurface.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_ls_wfsleave.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_l_writemodules.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_miscsetups.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_corrections.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_bvproblem.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_wfatmos.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lps_masters.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_miscsetups.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_corrections.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_bvproblem.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_wfatmos.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lcs_masters.lo:  \
-	@lidort_3_6_src@/lidort_main/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/$(am__dirstamp):
-	@$(MKDIR_P) @lidort_3_6_src@/sup/brdf
-	@: > @lidort_3_6_src@/sup/brdf/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) @lidort_3_6_src@/sup/brdf/$(DEPDIR)
-	@: > @lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_findpar.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_inputs_def.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_outputs_def.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_aux.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_kernels.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_routines.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_masters.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_mod.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_inputs_def.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_outputs_def.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_kernels.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_routines.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_masters.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_mod.lo:  \
-	@lidort_3_6_src@/sup/brdf/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/sleave/$(am__dirstamp):
-	@$(MKDIR_P) @lidort_3_6_src@/sup/sleave
-	@: > @lidort_3_6_src@/sup/sleave/$(am__dirstamp)
-@lidort_3_6_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) @lidort_3_6_src@/sup/sleave/$(DEPDIR)
-	@: > @lidort_3_6_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_findpar.lo:  \
-	@lidort_3_6_src@/sup/sleave/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_inputs_def.lo:  \
-	@lidort_3_6_src@/sup/sleave/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_outputs_def.lo:  \
-	@lidort_3_6_src@/sup/sleave/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_routines.lo:  \
-	@lidort_3_6_src@/sup/sleave/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_masters.lo:  \
-	@lidort_3_6_src@/sup/sleave/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_mod.lo:  \
-	@lidort_3_6_src@/sup/sleave/$(am__dirstamp) \
-	@lidort_3_6_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_test/$(am__dirstamp):
-	@$(MKDIR_P) @lidort_3_6_src@/lidort_test
-	@: > @lidort_3_6_src@/lidort_test/$(am__dirstamp)
-@lidort_3_6_src@/lidort_test/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) @lidort_3_6_src@/lidort_test/$(DEPDIR)
-	@: > @lidort_3_6_src@/lidort_test/$(DEPDIR)/$(am__dirstamp)
-@lidort_3_6_src@/lidort_test/liblidort_3_6_0_la-lidort_sup_accessories.lo:  \
-	@lidort_3_6_src@/lidort_test/$(am__dirstamp) \
-	@lidort_3_6_src@/lidort_test/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/lidort_def
+	@: > @lidort_3_8_src@/lidort_def/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/lidort_def/$(DEPDIR)
+	@: > @lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_pars.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_inputs_def.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_io_defs.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_inputs_def.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_io_defs.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_outputs_def.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_brdf_def.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_def.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_sleave_def.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_ss_def.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_outputs_def.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_brdf_def.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_def.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_sleave_def.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_ss_def.lo:  \
+	@lidort_3_8_src@/lidort_def/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/lidort_focode
+	@: > @lidort_3_8_src@/lidort_focode/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/lidort_focode/$(DEPDIR)
+	@: > @lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_geometry_Generic.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_WPgeometry_Routines.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_DTWPgeometry_master.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Planckfunc.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_RTCalcs_I.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_RTCalcs_ILCS.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_RTCalcs_ILPS.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_Spherfuncs.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_SSWPgeometry_master.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Taylor.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Thermal_RTCalcs_I.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Thermal_RTCalcs_ILCS.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Thermal_RTCalcs_ILPS.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-SFO_LinMasters.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-SFO_Master.lo:  \
+	@lidort_3_8_src@/lidort_focode/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/lidort_main/linearized
+	@: > @lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)
+	@: > @lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_la_miscsetups.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lbbf_jacobians.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_bvproblem.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_mediaprops.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_miscsetups.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_PostProcessing.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lcs_converge.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lcs_masters.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_wfatmos.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_l_inputs.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_bvproblem.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lpc_solutions.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_mediaprops.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_miscsetups.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_PostProcessing.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lps_converge.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lps_masters.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_wfatmos.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_ls_wfsleave.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_ls_wfsurface.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_l_thermalsup.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_l_writemodules.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_sfo_lcs_interface.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_sfo_lps_interface.lo:  \
+	@lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/lidort_main/regular
+	@: > @lidort_3_8_src@/lidort_main/regular/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/lidort_main/regular/$(DEPDIR)
+	@: > @lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_aux.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_bvproblem.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_converge.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_geometry.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_getplanck.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_inputs.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_intensity.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_mediaprops.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_miscsetups.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_PostProcessing.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_sfo_interface.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_solutions.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_Taylor.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_thermalsup.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_writemodules.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_masters.lo:  \
+	@lidort_3_8_src@/lidort_main/regular/$(am__dirstamp) \
+	@lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/accessories/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/sup/accessories
+	@: > @lidort_3_8_src@/sup/accessories/$(am__dirstamp)
+@lidort_3_8_src@/sup/accessories/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/sup/accessories/$(DEPDIR)
+	@: > @lidort_3_8_src@/sup/accessories/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_brdf_lin_sup_accessories.lo:  \
+	@lidort_3_8_src@/sup/accessories/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/accessories/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_brdf_sup_accessories.lo:  \
+	@lidort_3_8_src@/sup/accessories/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/accessories/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_joint_sup_accessories.lo:  \
+	@lidort_3_8_src@/sup/accessories/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/accessories/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_sleave_lin_sup_accessories.lo:  \
+	@lidort_3_8_src@/sup/accessories/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/accessories/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_sleave_sup_accessories.lo:  \
+	@lidort_3_8_src@/sup/accessories/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/accessories/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/phasfunc/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/sup/phasfunc
+	@: > @lidort_3_8_src@/sup/phasfunc/$(am__dirstamp)
+@lidort_3_8_src@/sup/phasfunc/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/sup/phasfunc/$(DEPDIR)
+	@: > @lidort_3_8_src@/sup/phasfunc/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_DevelopCoeffs.lo:  \
+	@lidort_3_8_src@/sup/phasfunc/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/phasfunc/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_ExpandCoeffs.lo:  \
+	@lidort_3_8_src@/sup/phasfunc/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/phasfunc/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_HenyeyGreenstein.lo:  \
+	@lidort_3_8_src@/sup/phasfunc/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/phasfunc/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_Master.lo:  \
+	@lidort_3_8_src@/sup/phasfunc/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/phasfunc/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_Numerical.lo:  \
+	@lidort_3_8_src@/sup/phasfunc/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/phasfunc/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_Rayleigh.lo:  \
+	@lidort_3_8_src@/sup/phasfunc/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/phasfunc/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/sup/brdf
+	@: > @lidort_3_8_src@/sup/brdf/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/sup/brdf/$(DEPDIR)
+	@: > @lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_findpar.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_inputs_def.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_kernels.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_masters.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_mod.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_outputs_def.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_routines.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_aux.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_inputs_def.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_kernels.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_masters.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_mod.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_outputs_def.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_routines.lo:  \
+	@lidort_3_8_src@/sup/brdf/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/sup/sleave
+	@: > @lidort_3_8_src@/sup/sleave/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) @lidort_3_8_src@/sup/sleave/$(DEPDIR)
+	@: > @lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_findpar.lo:  \
+	@lidort_3_8_src@/sup/sleave/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_inputs_def.lo:  \
+	@lidort_3_8_src@/sup/sleave/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_masters.lo:  \
+	@lidort_3_8_src@/sup/sleave/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_mod.lo:  \
+	@lidort_3_8_src@/sup/sleave/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_outputs_def.lo:  \
+	@lidort_3_8_src@/sup/sleave/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_routines.lo:  \
+	@lidort_3_8_src@/sup/sleave/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_aux.lo:  \
+	@lidort_3_8_src@/sup/sleave/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_inputs_def.lo:  \
+	@lidort_3_8_src@/sup/sleave/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_masters.lo:  \
+	@lidort_3_8_src@/sup/sleave/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_mod.lo:  \
+	@lidort_3_8_src@/sup/sleave/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_outputs_def.lo:  \
+	@lidort_3_8_src@/sup/sleave/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_routines.lo:  \
+	@lidort_3_8_src@/sup/sleave/$(am__dirstamp) \
+	@lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
 
-liblidort-3.6.0.la: $(liblidort_3_6_0_la_OBJECTS) $(liblidort_3_6_0_la_DEPENDENCIES) $(EXTRA_liblidort_3_6_0_la_DEPENDENCIES) 
-	$(AM_V_FCLD)$(liblidort_3_6_0_la_LINK)  $(liblidort_3_6_0_la_OBJECTS) $(liblidort_3_6_0_la_LIBADD) $(LIBS)
+liblidort-3.8.3.la: $(liblidort_3_8_3_la_OBJECTS) $(liblidort_3_8_3_la_DEPENDENCIES) $(EXTRA_liblidort_3_8_3_la_DEPENDENCIES) 
+	$(AM_V_FCLD)$(liblidort_3_8_3_la_LINK)  $(liblidort_3_8_3_la_OBJECTS) $(liblidort_3_8_3_la_LIBADD) $(LIBS)
 @twostream_src@/$(am__dirstamp):
 	@$(MKDIR_P) @twostream_src@
 	@: > @twostream_src@/$(am__dirstamp)
@@ -6927,16 +7154,22 @@ mostlyclean-compile:
 	-rm -f @interfacesrc@/*.lo
 	-rm -f @l_radsrc@/*.$(OBJEXT)
 	-rm -f @l_radsrc@/*.lo
-	-rm -f @lidort_3_6_src@/lidort_def/*.$(OBJEXT)
-	-rm -f @lidort_3_6_src@/lidort_def/*.lo
-	-rm -f @lidort_3_6_src@/lidort_main/*.$(OBJEXT)
-	-rm -f @lidort_3_6_src@/lidort_main/*.lo
-	-rm -f @lidort_3_6_src@/lidort_test/*.$(OBJEXT)
-	-rm -f @lidort_3_6_src@/lidort_test/*.lo
-	-rm -f @lidort_3_6_src@/sup/brdf/*.$(OBJEXT)
-	-rm -f @lidort_3_6_src@/sup/brdf/*.lo
-	-rm -f @lidort_3_6_src@/sup/sleave/*.$(OBJEXT)
-	-rm -f @lidort_3_6_src@/sup/sleave/*.lo
+	-rm -f @lidort_3_8_src@/lidort_def/*.$(OBJEXT)
+	-rm -f @lidort_3_8_src@/lidort_def/*.lo
+	-rm -f @lidort_3_8_src@/lidort_focode/*.$(OBJEXT)
+	-rm -f @lidort_3_8_src@/lidort_focode/*.lo
+	-rm -f @lidort_3_8_src@/lidort_main/linearized/*.$(OBJEXT)
+	-rm -f @lidort_3_8_src@/lidort_main/linearized/*.lo
+	-rm -f @lidort_3_8_src@/lidort_main/regular/*.$(OBJEXT)
+	-rm -f @lidort_3_8_src@/lidort_main/regular/*.lo
+	-rm -f @lidort_3_8_src@/sup/accessories/*.$(OBJEXT)
+	-rm -f @lidort_3_8_src@/sup/accessories/*.lo
+	-rm -f @lidort_3_8_src@/sup/brdf/*.$(OBJEXT)
+	-rm -f @lidort_3_8_src@/sup/brdf/*.lo
+	-rm -f @lidort_3_8_src@/sup/phasfunc/*.$(OBJEXT)
+	-rm -f @lidort_3_8_src@/sup/phasfunc/*.lo
+	-rm -f @lidort_3_8_src@/sup/sleave/*.$(OBJEXT)
+	-rm -f @lidort_3_8_src@/sup/sleave/*.lo
 	-rm -f @luasrc@/*.$(OBJEXT)
 	-rm -f @luasrc@/*.lo
 	-rm -f @outsrc@/*.$(OBJEXT)
@@ -7759,200 +7992,326 @@ am--depfiles: $(am__depfiles_remade)
 @deprecatedsrc@/libfp_la-solar_absorption_oco_file_f.lo: @deprecatedsrc@/solar_absorption_oco_file_f.F90
 	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(libfp_la_FCFLAGS) $(FCFLAGS) -c -o @deprecatedsrc@/libfp_la-solar_absorption_oco_file_f.lo `test -f '@deprecatedsrc@/solar_absorption_oco_file_f.F90' || echo '$(srcdir)/'`@deprecatedsrc@/solar_absorption_oco_file_f.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_pars.lo: @lidort_3_6_src@/lidort_def/lidort_pars.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_pars.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_pars.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_pars.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_pars.lo: @lidort_3_8_src@/lidort_def/lidort_pars.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_pars.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_pars.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_pars.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_inputs_def.lo: @lidort_3_6_src@/lidort_def/lidort_inputs_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_inputs_def.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_inputs_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_inputs_def.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_inputs_def.lo: @lidort_3_8_src@/lidort_def/lidort_inputs_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_inputs_def.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_inputs_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_inputs_def.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_brdf_def.lo: @lidort_3_6_src@/lidort_def/lidort_sup_brdf_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_brdf_def.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_sup_brdf_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_sup_brdf_def.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_io_defs.lo: @lidort_3_8_src@/lidort_def/lidort_io_defs.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_io_defs.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_io_defs.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_io_defs.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_ss_def.lo: @lidort_3_6_src@/lidort_def/lidort_sup_ss_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_ss_def.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_sup_ss_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_sup_ss_def.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_inputs_def.lo: @lidort_3_8_src@/lidort_def/lidort_lin_inputs_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_inputs_def.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_lin_inputs_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_lin_inputs_def.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_sleave_def.lo: @lidort_3_6_src@/lidort_def/lidort_sup_sleave_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_sleave_def.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_sup_sleave_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_sup_sleave_def.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_io_defs.lo: @lidort_3_8_src@/lidort_def/lidort_lin_io_defs.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_io_defs.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_lin_io_defs.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_lin_io_defs.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_def.lo: @lidort_3_6_src@/lidort_def/lidort_sup_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_sup_def.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_sup_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_sup_def.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_outputs_def.lo: @lidort_3_8_src@/lidort_def/lidort_lin_outputs_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_outputs_def.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_lin_outputs_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_lin_outputs_def.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_outputs_def.lo: @lidort_3_6_src@/lidort_def/lidort_outputs_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_outputs_def.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_outputs_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_outputs_def.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_brdf_def.lo: @lidort_3_8_src@/lidort_def/lidort_lin_sup_brdf_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_brdf_def.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_lin_sup_brdf_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_lin_sup_brdf_def.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_io_defs.lo: @lidort_3_6_src@/lidort_def/lidort_io_defs.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_io_defs.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_io_defs.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_io_defs.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_def.lo: @lidort_3_8_src@/lidort_def/lidort_lin_sup_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_def.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_lin_sup_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_lin_sup_def.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_aux.lo: @lidort_3_6_src@/lidort_main/lidort_aux.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_aux.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_aux.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_aux.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_sleave_def.lo: @lidort_3_8_src@/lidort_def/lidort_lin_sup_sleave_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_sleave_def.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_lin_sup_sleave_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_lin_sup_sleave_def.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_getplanck.lo: @lidort_3_6_src@/lidort_main/lidort_getplanck.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_getplanck.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_getplanck.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_getplanck.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_ss_def.lo: @lidort_3_8_src@/lidort_def/lidort_lin_sup_ss_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_lin_sup_ss_def.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_lin_sup_ss_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_lin_sup_ss_def.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_geometry.lo: @lidort_3_6_src@/lidort_main/lidort_geometry.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_geometry.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_geometry.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_geometry.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_outputs_def.lo: @lidort_3_8_src@/lidort_def/lidort_outputs_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_outputs_def.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_outputs_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_outputs_def.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_inputs.lo: @lidort_3_6_src@/lidort_main/lidort_inputs.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_inputs.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_inputs.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_inputs.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_brdf_def.lo: @lidort_3_8_src@/lidort_def/lidort_sup_brdf_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_brdf_def.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_sup_brdf_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_sup_brdf_def.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_miscsetups.lo: @lidort_3_6_src@/lidort_main/lidort_miscsetups.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_miscsetups.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_miscsetups.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_miscsetups.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_def.lo: @lidort_3_8_src@/lidort_def/lidort_sup_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_def.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_sup_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_sup_def.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_corrections.lo: @lidort_3_6_src@/lidort_main/lidort_corrections.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_corrections.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_corrections.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_corrections.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_sleave_def.lo: @lidort_3_8_src@/lidort_def/lidort_sup_sleave_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_sleave_def.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_sup_sleave_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_sup_sleave_def.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_thermalsup.lo: @lidort_3_6_src@/lidort_main/lidort_thermalsup.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_thermalsup.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_thermalsup.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_thermalsup.F90
+@lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_ss_def.lo: @lidort_3_8_src@/lidort_def/lidort_sup_ss_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_def/liblidort_3_8_3_la-lidort_sup_ss_def.lo `test -f '@lidort_3_8_src@/lidort_def/lidort_sup_ss_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_def/lidort_sup_ss_def.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_solutions.lo: @lidort_3_6_src@/lidort_main/lidort_solutions.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_solutions.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_solutions.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_solutions.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_geometry_Generic.lo: @lidort_3_8_src@/lidort_focode/FO_geometry_Generic.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_geometry_Generic.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_geometry_Generic.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_geometry_Generic.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_bvproblem.lo: @lidort_3_6_src@/lidort_main/lidort_bvproblem.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_bvproblem.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_bvproblem.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_bvproblem.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_WPgeometry_Routines.lo: @lidort_3_8_src@/lidort_focode/FO_WPgeometry_Routines.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_WPgeometry_Routines.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_WPgeometry_Routines.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_WPgeometry_Routines.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_intensity.lo: @lidort_3_6_src@/lidort_main/lidort_intensity.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_intensity.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_intensity.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_intensity.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_DTWPgeometry_master.lo: @lidort_3_8_src@/lidort_focode/FO_DTWPgeometry_master.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_DTWPgeometry_master.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_DTWPgeometry_master.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_DTWPgeometry_master.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_writemodules.lo: @lidort_3_6_src@/lidort_main/lidort_writemodules.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_writemodules.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_writemodules.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_writemodules.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Planckfunc.lo: @lidort_3_8_src@/lidort_focode/FO_Planckfunc.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Planckfunc.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_Planckfunc.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_Planckfunc.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_masters.lo: @lidort_3_6_src@/lidort_main/lidort_masters.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_masters.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_masters.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_masters.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_RTCalcs_I.lo: @lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_I.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_RTCalcs_I.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_I.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_I.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_inputs_def.lo: @lidort_3_6_src@/lidort_def/lidort_lin_inputs_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_inputs_def.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_lin_inputs_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_lin_inputs_def.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_RTCalcs_ILCS.lo: @lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_ILCS.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_RTCalcs_ILCS.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_ILCS.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_ILCS.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_brdf_def.lo: @lidort_3_6_src@/lidort_def/lidort_lin_sup_brdf_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_brdf_def.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_lin_sup_brdf_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_lin_sup_brdf_def.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_RTCalcs_ILPS.lo: @lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_ILPS.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_RTCalcs_ILPS.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_ILPS.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_ScalarSS_RTCalcs_ILPS.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_ss_def.lo: @lidort_3_6_src@/lidort_def/lidort_lin_sup_ss_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_ss_def.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_lin_sup_ss_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_lin_sup_ss_def.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_Spherfuncs.lo: @lidort_3_8_src@/lidort_focode/FO_ScalarSS_Spherfuncs.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_ScalarSS_Spherfuncs.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_ScalarSS_Spherfuncs.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_ScalarSS_Spherfuncs.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_sleave_def.lo: @lidort_3_6_src@/lidort_def/lidort_lin_sup_sleave_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_sleave_def.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_lin_sup_sleave_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_lin_sup_sleave_def.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_SSWPgeometry_master.lo: @lidort_3_8_src@/lidort_focode/FO_SSWPgeometry_master.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_SSWPgeometry_master.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_SSWPgeometry_master.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_SSWPgeometry_master.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_def.lo: @lidort_3_6_src@/lidort_def/lidort_lin_sup_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_sup_def.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_lin_sup_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_lin_sup_def.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Taylor.lo: @lidort_3_8_src@/lidort_focode/FO_Taylor.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Taylor.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_Taylor.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_Taylor.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_outputs_def.lo: @lidort_3_6_src@/lidort_def/lidort_lin_outputs_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_outputs_def.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_lin_outputs_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_lin_outputs_def.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Thermal_RTCalcs_I.lo: @lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_I.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Thermal_RTCalcs_I.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_I.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_I.F90
 
-@lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_io_defs.lo: @lidort_3_6_src@/lidort_def/lidort_lin_io_defs.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_def/liblidort_3_6_0_la-lidort_lin_io_defs.lo `test -f '@lidort_3_6_src@/lidort_def/lidort_lin_io_defs.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_def/lidort_lin_io_defs.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Thermal_RTCalcs_ILCS.lo: @lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_ILCS.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Thermal_RTCalcs_ILCS.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_ILCS.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_ILCS.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_la_miscsetups.lo: @lidort_3_6_src@/lidort_main/lidort_la_miscsetups.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_la_miscsetups.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_la_miscsetups.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_la_miscsetups.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Thermal_RTCalcs_ILPS.lo: @lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_ILPS.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-FO_Thermal_RTCalcs_ILPS.lo `test -f '@lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_ILPS.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/FO_Thermal_RTCalcs_ILPS.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lpc_solutions.lo: @lidort_3_6_src@/lidort_main/lidort_lpc_solutions.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lpc_solutions.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_lpc_solutions.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_lpc_solutions.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-SFO_LinMasters.lo: @lidort_3_8_src@/lidort_focode/SFO_LinMasters.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-SFO_LinMasters.lo `test -f '@lidort_3_8_src@/lidort_focode/SFO_LinMasters.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/SFO_LinMasters.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_ls_corrections.lo: @lidort_3_6_src@/lidort_main/lidort_ls_corrections.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_ls_corrections.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_ls_corrections.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_ls_corrections.F90
+@lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-SFO_Master.lo: @lidort_3_8_src@/lidort_focode/SFO_Master.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_focode/liblidort_3_8_3_la-SFO_Master.lo `test -f '@lidort_3_8_src@/lidort_focode/SFO_Master.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_focode/SFO_Master.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_l_thermalsup.lo: @lidort_3_6_src@/lidort_main/lidort_l_thermalsup.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_l_thermalsup.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_l_thermalsup.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_l_thermalsup.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_la_miscsetups.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_la_miscsetups.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_la_miscsetups.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_la_miscsetups.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_la_miscsetups.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_ls_wfsurface.lo: @lidort_3_6_src@/lidort_main/lidort_ls_wfsurface.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_ls_wfsurface.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_ls_wfsurface.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_ls_wfsurface.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lbbf_jacobians.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lbbf_jacobians.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lbbf_jacobians.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lbbf_jacobians.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lbbf_jacobians.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_ls_wfsleave.lo: @lidort_3_6_src@/lidort_main/lidort_ls_wfsleave.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_ls_wfsleave.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_ls_wfsleave.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_ls_wfsleave.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_bvproblem.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lc_bvproblem.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_bvproblem.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lc_bvproblem.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lc_bvproblem.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_l_writemodules.lo: @lidort_3_6_src@/lidort_main/lidort_l_writemodules.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_l_writemodules.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_l_writemodules.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_l_writemodules.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_mediaprops.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lc_mediaprops.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_mediaprops.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lc_mediaprops.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lc_mediaprops.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_miscsetups.lo: @lidort_3_6_src@/lidort_main/lidort_lp_miscsetups.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_miscsetups.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_lp_miscsetups.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_lp_miscsetups.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_miscsetups.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lc_miscsetups.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_miscsetups.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lc_miscsetups.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lc_miscsetups.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_corrections.lo: @lidort_3_6_src@/lidort_main/lidort_lp_corrections.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_corrections.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_lp_corrections.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_lp_corrections.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_PostProcessing.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lc_PostProcessing.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_PostProcessing.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lc_PostProcessing.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lc_PostProcessing.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_bvproblem.lo: @lidort_3_6_src@/lidort_main/lidort_lp_bvproblem.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_bvproblem.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_lp_bvproblem.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_lp_bvproblem.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lcs_converge.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lcs_converge.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lcs_converge.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lcs_converge.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lcs_converge.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_wfatmos.lo: @lidort_3_6_src@/lidort_main/lidort_lp_wfatmos.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lp_wfatmos.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_lp_wfatmos.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_lp_wfatmos.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lcs_masters.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lcs_masters.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lcs_masters.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lcs_masters.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lcs_masters.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lps_masters.lo: @lidort_3_6_src@/lidort_main/lidort_lps_masters.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lps_masters.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_lps_masters.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_lps_masters.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_wfatmos.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lc_wfatmos.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lc_wfatmos.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lc_wfatmos.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lc_wfatmos.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_miscsetups.lo: @lidort_3_6_src@/lidort_main/lidort_lc_miscsetups.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_miscsetups.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_lc_miscsetups.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_lc_miscsetups.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_l_inputs.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_l_inputs.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_l_inputs.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_l_inputs.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_l_inputs.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_corrections.lo: @lidort_3_6_src@/lidort_main/lidort_lc_corrections.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_corrections.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_lc_corrections.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_lc_corrections.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_bvproblem.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lp_bvproblem.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_bvproblem.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lp_bvproblem.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lp_bvproblem.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_bvproblem.lo: @lidort_3_6_src@/lidort_main/lidort_lc_bvproblem.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_bvproblem.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_lc_bvproblem.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_lc_bvproblem.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lpc_solutions.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lpc_solutions.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lpc_solutions.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lpc_solutions.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lpc_solutions.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_wfatmos.lo: @lidort_3_6_src@/lidort_main/lidort_lc_wfatmos.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lc_wfatmos.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_lc_wfatmos.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_lc_wfatmos.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_mediaprops.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lp_mediaprops.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_mediaprops.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lp_mediaprops.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lp_mediaprops.F90
 
-@lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lcs_masters.lo: @lidort_3_6_src@/lidort_main/lidort_lcs_masters.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_main/liblidort_3_6_0_la-lidort_lcs_masters.lo `test -f '@lidort_3_6_src@/lidort_main/lidort_lcs_masters.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_main/lidort_lcs_masters.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_miscsetups.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lp_miscsetups.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_miscsetups.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lp_miscsetups.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lp_miscsetups.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_findpar.lo: @lidort_3_6_src@/sup/brdf/brdf_findpar.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_findpar.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_findpar.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_findpar.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_PostProcessing.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lp_PostProcessing.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_PostProcessing.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lp_PostProcessing.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lp_PostProcessing.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_inputs_def.lo: @lidort_3_6_src@/sup/brdf/brdf_sup_inputs_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_inputs_def.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_sup_inputs_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_sup_inputs_def.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lps_converge.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lps_converge.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lps_converge.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lps_converge.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lps_converge.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_outputs_def.lo: @lidort_3_6_src@/sup/brdf/brdf_sup_outputs_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_outputs_def.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_sup_outputs_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_sup_outputs_def.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lps_masters.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lps_masters.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lps_masters.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lps_masters.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lps_masters.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_aux.lo: @lidort_3_6_src@/sup/brdf/brdf_sup_aux.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_aux.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_sup_aux.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_sup_aux.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_wfatmos.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_lp_wfatmos.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_lp_wfatmos.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_lp_wfatmos.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_lp_wfatmos.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_kernels.lo: @lidort_3_6_src@/sup/brdf/brdf_sup_kernels.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_kernels.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_sup_kernels.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_sup_kernels.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_ls_wfsleave.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_ls_wfsleave.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_ls_wfsleave.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_ls_wfsleave.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_ls_wfsleave.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_routines.lo: @lidort_3_6_src@/sup/brdf/brdf_sup_routines.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_routines.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_sup_routines.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_sup_routines.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_ls_wfsurface.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_ls_wfsurface.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_ls_wfsurface.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_ls_wfsurface.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_ls_wfsurface.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_masters.lo: @lidort_3_6_src@/sup/brdf/brdf_sup_masters.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_masters.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_sup_masters.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_sup_masters.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_l_thermalsup.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_l_thermalsup.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_l_thermalsup.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_l_thermalsup.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_l_thermalsup.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_mod.lo: @lidort_3_6_src@/sup/brdf/brdf_sup_mod.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_sup_mod.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_sup_mod.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_sup_mod.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_l_writemodules.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_l_writemodules.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_l_writemodules.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_l_writemodules.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_l_writemodules.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_inputs_def.lo: @lidort_3_6_src@/sup/brdf/brdf_lin_sup_inputs_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_inputs_def.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_lin_sup_inputs_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_lin_sup_inputs_def.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_sfo_lcs_interface.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_sfo_lcs_interface.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_sfo_lcs_interface.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_sfo_lcs_interface.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_sfo_lcs_interface.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_outputs_def.lo: @lidort_3_6_src@/sup/brdf/brdf_lin_sup_outputs_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_outputs_def.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_lin_sup_outputs_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_lin_sup_outputs_def.F90
+@lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_sfo_lps_interface.lo: @lidort_3_8_src@/lidort_main/linearized/lidort_sfo_lps_interface.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/linearized/liblidort_3_8_3_la-lidort_sfo_lps_interface.lo `test -f '@lidort_3_8_src@/lidort_main/linearized/lidort_sfo_lps_interface.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/linearized/lidort_sfo_lps_interface.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_kernels.lo: @lidort_3_6_src@/sup/brdf/brdf_lin_sup_kernels.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_kernels.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_lin_sup_kernels.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_lin_sup_kernels.F90
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_aux.lo: @lidort_3_8_src@/lidort_main/regular/lidort_aux.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_aux.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_aux.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_aux.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_routines.lo: @lidort_3_6_src@/sup/brdf/brdf_lin_sup_routines.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_routines.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_lin_sup_routines.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_lin_sup_routines.F90
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_bvproblem.lo: @lidort_3_8_src@/lidort_main/regular/lidort_bvproblem.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_bvproblem.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_bvproblem.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_bvproblem.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_masters.lo: @lidort_3_6_src@/sup/brdf/brdf_lin_sup_masters.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_masters.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_lin_sup_masters.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_lin_sup_masters.F90
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_converge.lo: @lidort_3_8_src@/lidort_main/regular/lidort_converge.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_converge.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_converge.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_converge.F90
 
-@lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_mod.lo: @lidort_3_6_src@/sup/brdf/brdf_lin_sup_mod.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/brdf/liblidort_3_6_0_la-brdf_lin_sup_mod.lo `test -f '@lidort_3_6_src@/sup/brdf/brdf_lin_sup_mod.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/brdf/brdf_lin_sup_mod.F90
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_geometry.lo: @lidort_3_8_src@/lidort_main/regular/lidort_geometry.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_geometry.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_geometry.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_geometry.F90
 
-@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_findpar.lo: @lidort_3_6_src@/sup/sleave/sleave_findpar.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_findpar.lo `test -f '@lidort_3_6_src@/sup/sleave/sleave_findpar.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/sleave/sleave_findpar.F90
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_getplanck.lo: @lidort_3_8_src@/lidort_main/regular/lidort_getplanck.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_getplanck.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_getplanck.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_getplanck.F90
 
-@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_inputs_def.lo: @lidort_3_6_src@/sup/sleave/sleave_sup_inputs_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_inputs_def.lo `test -f '@lidort_3_6_src@/sup/sleave/sleave_sup_inputs_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/sleave/sleave_sup_inputs_def.F90
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_inputs.lo: @lidort_3_8_src@/lidort_main/regular/lidort_inputs.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_inputs.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_inputs.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_inputs.F90
 
-@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_outputs_def.lo: @lidort_3_6_src@/sup/sleave/sleave_sup_outputs_def.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_outputs_def.lo `test -f '@lidort_3_6_src@/sup/sleave/sleave_sup_outputs_def.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/sleave/sleave_sup_outputs_def.F90
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_intensity.lo: @lidort_3_8_src@/lidort_main/regular/lidort_intensity.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_intensity.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_intensity.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_intensity.F90
 
-@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_routines.lo: @lidort_3_6_src@/sup/sleave/sleave_sup_routines.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_routines.lo `test -f '@lidort_3_6_src@/sup/sleave/sleave_sup_routines.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/sleave/sleave_sup_routines.F90
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_mediaprops.lo: @lidort_3_8_src@/lidort_main/regular/lidort_mediaprops.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_mediaprops.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_mediaprops.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_mediaprops.F90
 
-@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_masters.lo: @lidort_3_6_src@/sup/sleave/sleave_sup_masters.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_masters.lo `test -f '@lidort_3_6_src@/sup/sleave/sleave_sup_masters.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/sleave/sleave_sup_masters.F90
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_miscsetups.lo: @lidort_3_8_src@/lidort_main/regular/lidort_miscsetups.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_miscsetups.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_miscsetups.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_miscsetups.F90
 
-@lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_mod.lo: @lidort_3_6_src@/sup/sleave/sleave_sup_mod.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/sup/sleave/liblidort_3_6_0_la-sleave_sup_mod.lo `test -f '@lidort_3_6_src@/sup/sleave/sleave_sup_mod.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/sup/sleave/sleave_sup_mod.F90
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_PostProcessing.lo: @lidort_3_8_src@/lidort_main/regular/lidort_PostProcessing.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_PostProcessing.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_PostProcessing.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_PostProcessing.F90
 
-@lidort_3_6_src@/lidort_test/liblidort_3_6_0_la-lidort_sup_accessories.lo: @lidort_3_6_src@/lidort_test/lidort_sup_accessories.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_6_0_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_6_src@/lidort_test/liblidort_3_6_0_la-lidort_sup_accessories.lo `test -f '@lidort_3_6_src@/lidort_test/lidort_sup_accessories.F90' || echo '$(srcdir)/'`@lidort_3_6_src@/lidort_test/lidort_sup_accessories.F90
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_sfo_interface.lo: @lidort_3_8_src@/lidort_main/regular/lidort_sfo_interface.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_sfo_interface.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_sfo_interface.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_sfo_interface.F90
+
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_solutions.lo: @lidort_3_8_src@/lidort_main/regular/lidort_solutions.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_solutions.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_solutions.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_solutions.F90
+
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_Taylor.lo: @lidort_3_8_src@/lidort_main/regular/lidort_Taylor.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_Taylor.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_Taylor.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_Taylor.F90
+
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_thermalsup.lo: @lidort_3_8_src@/lidort_main/regular/lidort_thermalsup.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_thermalsup.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_thermalsup.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_thermalsup.F90
+
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_writemodules.lo: @lidort_3_8_src@/lidort_main/regular/lidort_writemodules.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_writemodules.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_writemodules.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_writemodules.F90
+
+@lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_masters.lo: @lidort_3_8_src@/lidort_main/regular/lidort_masters.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/lidort_main/regular/liblidort_3_8_3_la-lidort_masters.lo `test -f '@lidort_3_8_src@/lidort_main/regular/lidort_masters.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/lidort_main/regular/lidort_masters.F90
+
+@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_brdf_lin_sup_accessories.lo: @lidort_3_8_src@/sup/accessories/lidort_brdf_lin_sup_accessories.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_brdf_lin_sup_accessories.lo `test -f '@lidort_3_8_src@/sup/accessories/lidort_brdf_lin_sup_accessories.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/accessories/lidort_brdf_lin_sup_accessories.F90
+
+@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_brdf_sup_accessories.lo: @lidort_3_8_src@/sup/accessories/lidort_brdf_sup_accessories.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_brdf_sup_accessories.lo `test -f '@lidort_3_8_src@/sup/accessories/lidort_brdf_sup_accessories.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/accessories/lidort_brdf_sup_accessories.F90
+
+@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_joint_sup_accessories.lo: @lidort_3_8_src@/sup/accessories/lidort_joint_sup_accessories.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_joint_sup_accessories.lo `test -f '@lidort_3_8_src@/sup/accessories/lidort_joint_sup_accessories.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/accessories/lidort_joint_sup_accessories.F90
+
+@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_sleave_lin_sup_accessories.lo: @lidort_3_8_src@/sup/accessories/lidort_sleave_lin_sup_accessories.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_sleave_lin_sup_accessories.lo `test -f '@lidort_3_8_src@/sup/accessories/lidort_sleave_lin_sup_accessories.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/accessories/lidort_sleave_lin_sup_accessories.F90
+
+@lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_sleave_sup_accessories.lo: @lidort_3_8_src@/sup/accessories/lidort_sleave_sup_accessories.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/accessories/liblidort_3_8_3_la-lidort_sleave_sup_accessories.lo `test -f '@lidort_3_8_src@/sup/accessories/lidort_sleave_sup_accessories.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/accessories/lidort_sleave_sup_accessories.F90
+
+@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_DevelopCoeffs.lo: @lidort_3_8_src@/sup/phasfunc/Phasfunc_DevelopCoeffs.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_DevelopCoeffs.lo `test -f '@lidort_3_8_src@/sup/phasfunc/Phasfunc_DevelopCoeffs.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/phasfunc/Phasfunc_DevelopCoeffs.F90
+
+@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_ExpandCoeffs.lo: @lidort_3_8_src@/sup/phasfunc/Phasfunc_ExpandCoeffs.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_ExpandCoeffs.lo `test -f '@lidort_3_8_src@/sup/phasfunc/Phasfunc_ExpandCoeffs.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/phasfunc/Phasfunc_ExpandCoeffs.F90
+
+@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_HenyeyGreenstein.lo: @lidort_3_8_src@/sup/phasfunc/Phasfunc_HenyeyGreenstein.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_HenyeyGreenstein.lo `test -f '@lidort_3_8_src@/sup/phasfunc/Phasfunc_HenyeyGreenstein.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/phasfunc/Phasfunc_HenyeyGreenstein.F90
+
+@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_Master.lo: @lidort_3_8_src@/sup/phasfunc/Phasfunc_Master.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_Master.lo `test -f '@lidort_3_8_src@/sup/phasfunc/Phasfunc_Master.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/phasfunc/Phasfunc_Master.F90
+
+@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_Numerical.lo: @lidort_3_8_src@/sup/phasfunc/Phasfunc_Numerical.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_Numerical.lo `test -f '@lidort_3_8_src@/sup/phasfunc/Phasfunc_Numerical.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/phasfunc/Phasfunc_Numerical.F90
+
+@lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_Rayleigh.lo: @lidort_3_8_src@/sup/phasfunc/Phasfunc_Rayleigh.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/phasfunc/liblidort_3_8_3_la-Phasfunc_Rayleigh.lo `test -f '@lidort_3_8_src@/sup/phasfunc/Phasfunc_Rayleigh.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/phasfunc/Phasfunc_Rayleigh.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_findpar.lo: @lidort_3_8_src@/sup/brdf/brdf_findpar.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_findpar.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_findpar.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_findpar.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_inputs_def.lo: @lidort_3_8_src@/sup/brdf/brdf_lin_sup_inputs_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_inputs_def.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_lin_sup_inputs_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_lin_sup_inputs_def.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_kernels.lo: @lidort_3_8_src@/sup/brdf/brdf_lin_sup_kernels.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_kernels.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_lin_sup_kernels.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_lin_sup_kernels.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_masters.lo: @lidort_3_8_src@/sup/brdf/brdf_lin_sup_masters.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_masters.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_lin_sup_masters.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_lin_sup_masters.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_mod.lo: @lidort_3_8_src@/sup/brdf/brdf_lin_sup_mod.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_mod.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_lin_sup_mod.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_lin_sup_mod.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_outputs_def.lo: @lidort_3_8_src@/sup/brdf/brdf_lin_sup_outputs_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_outputs_def.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_lin_sup_outputs_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_lin_sup_outputs_def.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_routines.lo: @lidort_3_8_src@/sup/brdf/brdf_lin_sup_routines.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_lin_sup_routines.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_lin_sup_routines.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_lin_sup_routines.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_aux.lo: @lidort_3_8_src@/sup/brdf/brdf_sup_aux.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_aux.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_sup_aux.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_sup_aux.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_inputs_def.lo: @lidort_3_8_src@/sup/brdf/brdf_sup_inputs_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_inputs_def.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_sup_inputs_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_sup_inputs_def.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_kernels.lo: @lidort_3_8_src@/sup/brdf/brdf_sup_kernels.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_kernels.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_sup_kernels.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_sup_kernels.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_masters.lo: @lidort_3_8_src@/sup/brdf/brdf_sup_masters.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_masters.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_sup_masters.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_sup_masters.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_mod.lo: @lidort_3_8_src@/sup/brdf/brdf_sup_mod.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_mod.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_sup_mod.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_sup_mod.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_outputs_def.lo: @lidort_3_8_src@/sup/brdf/brdf_sup_outputs_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_outputs_def.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_sup_outputs_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_sup_outputs_def.F90
+
+@lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_routines.lo: @lidort_3_8_src@/sup/brdf/brdf_sup_routines.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/brdf/liblidort_3_8_3_la-brdf_sup_routines.lo `test -f '@lidort_3_8_src@/sup/brdf/brdf_sup_routines.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/brdf/brdf_sup_routines.F90
+
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_findpar.lo: @lidort_3_8_src@/sup/sleave/sleave_findpar.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_findpar.lo `test -f '@lidort_3_8_src@/sup/sleave/sleave_findpar.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/sleave/sleave_findpar.F90
+
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_inputs_def.lo: @lidort_3_8_src@/sup/sleave/sleave_lin_sup_inputs_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_inputs_def.lo `test -f '@lidort_3_8_src@/sup/sleave/sleave_lin_sup_inputs_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/sleave/sleave_lin_sup_inputs_def.F90
+
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_masters.lo: @lidort_3_8_src@/sup/sleave/sleave_lin_sup_masters.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_masters.lo `test -f '@lidort_3_8_src@/sup/sleave/sleave_lin_sup_masters.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/sleave/sleave_lin_sup_masters.F90
+
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_mod.lo: @lidort_3_8_src@/sup/sleave/sleave_lin_sup_mod.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_mod.lo `test -f '@lidort_3_8_src@/sup/sleave/sleave_lin_sup_mod.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/sleave/sleave_lin_sup_mod.F90
+
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_outputs_def.lo: @lidort_3_8_src@/sup/sleave/sleave_lin_sup_outputs_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_outputs_def.lo `test -f '@lidort_3_8_src@/sup/sleave/sleave_lin_sup_outputs_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/sleave/sleave_lin_sup_outputs_def.F90
+
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_routines.lo: @lidort_3_8_src@/sup/sleave/sleave_lin_sup_routines.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_lin_sup_routines.lo `test -f '@lidort_3_8_src@/sup/sleave/sleave_lin_sup_routines.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/sleave/sleave_lin_sup_routines.F90
+
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_aux.lo: @lidort_3_8_src@/sup/sleave/sleave_sup_aux.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_aux.lo `test -f '@lidort_3_8_src@/sup/sleave/sleave_sup_aux.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/sleave/sleave_sup_aux.F90
+
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_inputs_def.lo: @lidort_3_8_src@/sup/sleave/sleave_sup_inputs_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_inputs_def.lo `test -f '@lidort_3_8_src@/sup/sleave/sleave_sup_inputs_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/sleave/sleave_sup_inputs_def.F90
+
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_masters.lo: @lidort_3_8_src@/sup/sleave/sleave_sup_masters.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_masters.lo `test -f '@lidort_3_8_src@/sup/sleave/sleave_sup_masters.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/sleave/sleave_sup_masters.F90
+
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_mod.lo: @lidort_3_8_src@/sup/sleave/sleave_sup_mod.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_mod.lo `test -f '@lidort_3_8_src@/sup/sleave/sleave_sup_mod.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/sleave/sleave_sup_mod.F90
+
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_outputs_def.lo: @lidort_3_8_src@/sup/sleave/sleave_sup_outputs_def.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_outputs_def.lo `test -f '@lidort_3_8_src@/sup/sleave/sleave_sup_outputs_def.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/sleave/sleave_sup_outputs_def.F90
+
+@lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_routines.lo: @lidort_3_8_src@/sup/sleave/sleave_sup_routines.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(liblidort_3_8_3_la_FCFLAGS) $(FCFLAGS) -c -o @lidort_3_8_src@/sup/sleave/liblidort_3_8_3_la-sleave_sup_routines.lo `test -f '@lidort_3_8_src@/sup/sleave/sleave_sup_routines.F90' || echo '$(srcdir)/'`@lidort_3_8_src@/sup/sleave/sleave_sup_routines.F90
 
 @twostream_src@/libtwostream_la-2stream_brdf_kernels.lo: @twostream_src@/2stream_brdf_kernels.F90
 	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_brdf_kernels.lo `test -f '@twostream_src@/2stream_brdf_kernels.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_brdf_kernels.F90
@@ -11721,11 +12080,14 @@ clean-libtool:
 	-rm -rf @implsrc@/.libs @implsrc@/_libs
 	-rm -rf @interfacesrc@/.libs @interfacesrc@/_libs
 	-rm -rf @l_radsrc@/.libs @l_radsrc@/_libs
-	-rm -rf @lidort_3_6_src@/lidort_def/.libs @lidort_3_6_src@/lidort_def/_libs
-	-rm -rf @lidort_3_6_src@/lidort_main/.libs @lidort_3_6_src@/lidort_main/_libs
-	-rm -rf @lidort_3_6_src@/lidort_test/.libs @lidort_3_6_src@/lidort_test/_libs
-	-rm -rf @lidort_3_6_src@/sup/brdf/.libs @lidort_3_6_src@/sup/brdf/_libs
-	-rm -rf @lidort_3_6_src@/sup/sleave/.libs @lidort_3_6_src@/sup/sleave/_libs
+	-rm -rf @lidort_3_8_src@/lidort_def/.libs @lidort_3_8_src@/lidort_def/_libs
+	-rm -rf @lidort_3_8_src@/lidort_focode/.libs @lidort_3_8_src@/lidort_focode/_libs
+	-rm -rf @lidort_3_8_src@/lidort_main/linearized/.libs @lidort_3_8_src@/lidort_main/linearized/_libs
+	-rm -rf @lidort_3_8_src@/lidort_main/regular/.libs @lidort_3_8_src@/lidort_main/regular/_libs
+	-rm -rf @lidort_3_8_src@/sup/accessories/.libs @lidort_3_8_src@/sup/accessories/_libs
+	-rm -rf @lidort_3_8_src@/sup/brdf/.libs @lidort_3_8_src@/sup/brdf/_libs
+	-rm -rf @lidort_3_8_src@/sup/phasfunc/.libs @lidort_3_8_src@/sup/phasfunc/_libs
+	-rm -rf @lidort_3_8_src@/sup/sleave/.libs @lidort_3_8_src@/sup/sleave/_libs
 	-rm -rf @luasrc@/.libs @luasrc@/_libs
 	-rm -rf @outsrc@/.libs @outsrc@/_libs
 	-rm -rf @supportsrc@/.libs @supportsrc@/_libs
@@ -12429,16 +12791,22 @@ distclean-generic:
 	-rm -f @interfacesrc@/$(am__dirstamp)
 	-rm -f @l_radsrc@/$(DEPDIR)/$(am__dirstamp)
 	-rm -f @l_radsrc@/$(am__dirstamp)
-	-rm -f @lidort_3_6_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
-	-rm -f @lidort_3_6_src@/lidort_def/$(am__dirstamp)
-	-rm -f @lidort_3_6_src@/lidort_main/$(DEPDIR)/$(am__dirstamp)
-	-rm -f @lidort_3_6_src@/lidort_main/$(am__dirstamp)
-	-rm -f @lidort_3_6_src@/lidort_test/$(DEPDIR)/$(am__dirstamp)
-	-rm -f @lidort_3_6_src@/lidort_test/$(am__dirstamp)
-	-rm -f @lidort_3_6_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
-	-rm -f @lidort_3_6_src@/sup/brdf/$(am__dirstamp)
-	-rm -f @lidort_3_6_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
-	-rm -f @lidort_3_6_src@/sup/sleave/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/lidort_def/$(DEPDIR)/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/lidort_def/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/lidort_focode/$(DEPDIR)/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/lidort_focode/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/lidort_main/linearized/$(DEPDIR)/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/lidort_main/linearized/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/lidort_main/regular/$(DEPDIR)/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/lidort_main/regular/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/sup/accessories/$(DEPDIR)/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/sup/accessories/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/sup/brdf/$(DEPDIR)/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/sup/brdf/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/sup/phasfunc/$(DEPDIR)/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/sup/phasfunc/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/sup/sleave/$(DEPDIR)/$(am__dirstamp)
+	-rm -f @lidort_3_8_src@/sup/sleave/$(am__dirstamp)
 	-rm -f @luasrc@/$(DEPDIR)/$(am__dirstamp)
 	-rm -f @luasrc@/$(am__dirstamp)
 	-rm -f @outsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -14194,13 +14562,13 @@ vpath %.i $(srcdir)/@interfacesrc@
 # automatically detected. We depend on modules, but go ahead and rebuild
 # if anything is changed.
 
-lib/Implementation/libfp_la-lidort_interface_types.lo: $(LIDORT_3_6_LDFLAGS)
+lib/Implementation/libfp_la-lidort_interface_types.lo: $(LIDORT_3_8_LDFLAGS)
 
-lib/Implementation/libfp_la-lidort_interface_types.o: $(LIDORT_3_6_LDFLAGS)
+lib/Implementation/libfp_la-lidort_interface_types.o: $(LIDORT_3_8_LDFLAGS)
 
-lib/Implementation/libfp_la-lidort_interface_masters.lo: $(LIDORT_3_6_LDFLAGS)
+lib/Implementation/libfp_la-lidort_interface_masters.lo: $(LIDORT_3_8_LDFLAGS)
 
-lib/Implementation/libfp_la-lidort_interface_masters.o: $(LIDORT_3_6_LDFLAGS)
+lib/Implementation/libfp_la-lidort_interface_masters.o: $(LIDORT_3_8_LDFLAGS)
 
 # Explicitly list the dependency of these on TWOSTREAM, since this isn't
 # automatically detected. We depend on modules, but go ahead and rebuild
@@ -14285,26 +14653,26 @@ cpp_version.stamp:
 	@test -e version.h && cmp version.h.tmp version.h || mv version.h.tmp version.h
 	@rm -f version.h.tmp
 
-thirdparty: hdf5 boost lidort-3.6 2stream blitz gsl lua parallel
+thirdparty: hdf5 boost lidort-3.8 2stream blitz gsl lua parallel
 
-$(libdir)/liblidort-3.6.0.la: liblidort-3.6.0.la
+$(libdir)/liblidort-3.8.3.la: liblidort-3.8.3.la
 	$(MKDIR_P) $(libdir)
-	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) liblidort-3.6.0.la "$(libdir)"
+	$(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) liblidort-3.8.3.la "$(libdir)"
 	touch $@
 
-.PHONY: lidort-3.6
+.PHONY: lidort-3.8
 
-lidort-3.6 : $(libdir)/liblidort-3.6.0.la
+lidort-3.8 : $(libdir)/liblidort-3.8.3.la
 
 #=================================================================
 # Calculate dependencies between lidort routines
 
-thirdparty/lidort-3.6/lidort-3.6.deps : $(liblidort_3_6_0_la_SOURCES)
-	@$(MKDIR_P) thirdparty/lidort-3.6
+thirdparty/lidort-3.8/lidort-3.8.deps : $(liblidort_3_8_3_la_SOURCES)
+	@$(MKDIR_P) thirdparty/lidort-3.8
 	@$(MKDIR_P) $(includedir)
-	@$(RUBY) $(srcdir)/config/depf90 "$(srcdir)" liblidort_3_6_0_la- "$(liblidort_3_6_0_la_SOURCES)" > $@.tmp && mv $@.tmp $@
+	@$(RUBY) $(srcdir)/config/depf90 "$(srcdir)" liblidort_3_8_3_la- "$(liblidort_3_8_3_la_SOURCES)" > $@.tmp && mv $@.tmp $@
 
--include thirdparty/lidort-3.6/lidort-3.6.deps
+-include thirdparty/lidort-3.8/lidort-3.8.deps
 
 $(libdir)/libtwostream.la: libtwostream.la
 	$(MKDIR_P) $(libdir)
@@ -14335,7 +14703,7 @@ thirdparty/2stream/2stream.deps : $(libtwostream_la_SOURCES)
 # include thirdparty/radiant/radiant.am
 
 # ========================================================================
-# Build lidort 3.6
+# Build lidort 3.8
 
 # ========================================================================
 # Build 2stream

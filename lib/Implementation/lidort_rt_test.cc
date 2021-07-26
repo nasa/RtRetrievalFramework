@@ -126,6 +126,8 @@ BOOST_AUTO_TEST_CASE(check_los)
 
     // Pseudo spherical
     lidort_ps->rt_driver()->set_pseudo_spherical();
+    //lidort_ps->rt_driver()->lidort_interface()->lidort_modin().mbool().ts_do_no_azimuth(true);
+    
 
     // Set up LOS driver, LOS should be default
     boost::shared_ptr<LidortRt> lidort_los;

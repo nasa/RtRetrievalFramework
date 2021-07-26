@@ -222,7 +222,7 @@ class LidortBrdfDriver(SpurrBrdfDriver):
     def _v_brdf_interface(self):
         """
 
-        const boost::shared_ptr<Brdf_Linsup_Masters> FullPhysics::LidortBrdfDriver::brdf_interface() const
+        const boost::shared_ptr<Brdf_Lin_Sup_Masters> FullPhysics::LidortBrdfDriver::brdf_interface() const
         Interface to BRDF interface to allow changing configuration to values.
 
         """
@@ -411,7 +411,7 @@ class LidortRtDriver(SpurrRtDriver):
     def _v_brdf_interface(self):
         """
 
-        const boost::shared_ptr<Brdf_Linsup_Masters> FullPhysics::LidortRtDriver::brdf_interface() const
+        const boost::shared_ptr<Brdf_Lin_Sup_Masters> FullPhysics::LidortRtDriver::brdf_interface() const
 
         """
         return _lidort_driver.LidortRtDriver__v_brdf_interface(self)

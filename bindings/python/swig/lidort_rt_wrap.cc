@@ -3458,124 +3458,140 @@ namespace Swig {
 #define SWIGTYPE_p_FullPhysics__AutoDerivativeRefT_double_t swig_types[3]
 #define SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t swig_types[4]
 #define SWIGTYPE_p_FullPhysics__AutoDerivativeWithUnitT_double_t swig_types[5]
-#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[6]
-#define SWIGTYPE_p_FullPhysics__Ground swig_types[7]
-#define SWIGTYPE_p_FullPhysics__LidortBrdfDriver swig_types[8]
-#define SWIGTYPE_p_FullPhysics__LidortRt swig_types[9]
-#define SWIGTYPE_p_FullPhysics__LidortRtDriver swig_types[10]
-#define SWIGTYPE_p_FullPhysics__Lidort_Pars swig_types[11]
-#define SWIGTYPE_p_FullPhysics__NamedSpectrum swig_types[12]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Ground_t swig_types[13]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__NamedSpectrum_t swig_types[14]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[15]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t swig_types[16]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[17]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StokesCoefficient_t swig_types[18]
-#define SWIGTYPE_p_FullPhysics__ObservableT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t swig_types[19]
-#define SWIGTYPE_p_FullPhysics__ObservableT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t swig_types[20]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Ground_t swig_types[21]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__NamedSpectrum_t swig_types[22]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[23]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t swig_types[24]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[25]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StokesCoefficient_t swig_types[26]
-#define SWIGTYPE_p_FullPhysics__ObserverT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t swig_types[27]
-#define SWIGTYPE_p_FullPhysics__Pressure swig_types[28]
-#define SWIGTYPE_p_FullPhysics__RadiativeTransfer swig_types[29]
-#define SWIGTYPE_p_FullPhysics__RadiativeTransferFixedStokesCoefficient swig_types[30]
-#define SWIGTYPE_p_FullPhysics__RadiativeTransferSingleWn swig_types[31]
-#define SWIGTYPE_p_FullPhysics__RtAtmosphere swig_types[32]
-#define SWIGTYPE_p_FullPhysics__SpectralDomain swig_types[33]
-#define SWIGTYPE_p_FullPhysics__SpectralRange swig_types[34]
-#define SWIGTYPE_p_FullPhysics__Spectrum swig_types[35]
-#define SWIGTYPE_p_FullPhysics__SpurrBrdfDriver swig_types[36]
-#define SWIGTYPE_p_FullPhysics__SpurrRt swig_types[37]
-#define SWIGTYPE_p_FullPhysics__SpurrRtDriver swig_types[38]
-#define SWIGTYPE_p_FullPhysics__StateVector swig_types[39]
-#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[40]
-#define SWIGTYPE_p_FullPhysics__StokesCoefficient swig_types[41]
-#define SWIGTYPE_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t swig_types[42]
-#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[43]
-#define SWIGTYPE_p_FullPhysics__Unit swig_types[44]
-#define SWIGTYPE_p_allocator_type swig_types[45]
-#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[46]
-#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[47]
-#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[48]
-#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[49]
-#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[50]
-#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[51]
-#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[52]
-#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[53]
-#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[54]
-#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[55]
-#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[56]
-#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[57]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t swig_types[58]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t swig_types[59]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t swig_types[60]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[61]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[62]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[63]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[64]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ground_t swig_types[65]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t swig_types[66]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t swig_types[67]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRt_t swig_types[68]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t swig_types[69]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__NamedSpectrum_t swig_types[70]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t swig_types[71]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__NamedSpectrum_t_t swig_types[72]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[73]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_t swig_types[74]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[75]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StokesCoefficient_t_t swig_types[76]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t swig_types[77]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t_t swig_types[78]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_t swig_types[79]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__NamedSpectrum_t_t swig_types[80]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[81]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t swig_types[82]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[83]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StokesCoefficient_t_t swig_types[84]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t_t swig_types[85]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[86]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RadiativeTransferFixedStokesCoefficient_t swig_types[87]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RadiativeTransferSingleWn_t swig_types[88]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RadiativeTransfer_t swig_types[89]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t swig_types[90]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralDomain_t swig_types[91]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralRange_t swig_types[92]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Spectrum_t swig_types[93]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t swig_types[94]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t swig_types[95]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRt_t swig_types[96]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[97]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[98]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StokesCoefficient_t swig_types[99]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t swig_types[100]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[101]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[102]
-#define SWIGTYPE_p_char swig_types[103]
-#define SWIGTYPE_p_char_type swig_types[104]
-#define SWIGTYPE_p_difference_type swig_types[105]
-#define SWIGTYPE_p_fmtflags swig_types[106]
-#define SWIGTYPE_p_int_type swig_types[107]
-#define SWIGTYPE_p_iostate swig_types[108]
-#define SWIGTYPE_p_off_type swig_types[109]
-#define SWIGTYPE_p_openmode swig_types[110]
-#define SWIGTYPE_p_pos_type swig_types[111]
-#define SWIGTYPE_p_seekdir swig_types[112]
-#define SWIGTYPE_p_size_t swig_types[113]
-#define SWIGTYPE_p_size_type swig_types[114]
-#define SWIGTYPE_p_state_type swig_types[115]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[116]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[117]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[118]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[119]
-#define SWIGTYPE_p_traits_type swig_types[120]
-#define SWIGTYPE_p_value_type swig_types[121]
-static swig_type_info *swig_types[123];
-static swig_module_info swig_module = {swig_types, 122, 0, 0, 0, 0};
+#define SWIGTYPE_p_FullPhysics__Brdf_Lin_Sup_Masters swig_types[6]
+#define SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters swig_types[7]
+#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[8]
+#define SWIGTYPE_p_FullPhysics__Ground swig_types[9]
+#define SWIGTYPE_p_FullPhysics__LidortBrdfDriver swig_types[10]
+#define SWIGTYPE_p_FullPhysics__LidortRt swig_types[11]
+#define SWIGTYPE_p_FullPhysics__LidortRtDriver swig_types[12]
+#define SWIGTYPE_p_FullPhysics__Lidort_Brdf_Sup_Accessories swig_types[13]
+#define SWIGTYPE_p_FullPhysics__Lidort_Inputs swig_types[14]
+#define SWIGTYPE_p_FullPhysics__Lidort_L_Inputs swig_types[15]
+#define SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters swig_types[16]
+#define SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters swig_types[17]
+#define SWIGTYPE_p_FullPhysics__Lidort_Masters swig_types[18]
+#define SWIGTYPE_p_FullPhysics__Lidort_Pars swig_types[19]
+#define SWIGTYPE_p_FullPhysics__NamedSpectrum swig_types[20]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Ground_t swig_types[21]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__NamedSpectrum_t swig_types[22]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[23]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t swig_types[24]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[25]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StokesCoefficient_t swig_types[26]
+#define SWIGTYPE_p_FullPhysics__ObservableT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t swig_types[27]
+#define SWIGTYPE_p_FullPhysics__ObservableT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t swig_types[28]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Ground_t swig_types[29]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__NamedSpectrum_t swig_types[30]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[31]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t swig_types[32]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[33]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StokesCoefficient_t swig_types[34]
+#define SWIGTYPE_p_FullPhysics__ObserverT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t swig_types[35]
+#define SWIGTYPE_p_FullPhysics__Pressure swig_types[36]
+#define SWIGTYPE_p_FullPhysics__RadiativeTransfer swig_types[37]
+#define SWIGTYPE_p_FullPhysics__RadiativeTransferFixedStokesCoefficient swig_types[38]
+#define SWIGTYPE_p_FullPhysics__RadiativeTransferSingleWn swig_types[39]
+#define SWIGTYPE_p_FullPhysics__RtAtmosphere swig_types[40]
+#define SWIGTYPE_p_FullPhysics__SpectralDomain swig_types[41]
+#define SWIGTYPE_p_FullPhysics__SpectralRange swig_types[42]
+#define SWIGTYPE_p_FullPhysics__Spectrum swig_types[43]
+#define SWIGTYPE_p_FullPhysics__SpurrBrdfDriver swig_types[44]
+#define SWIGTYPE_p_FullPhysics__SpurrRt swig_types[45]
+#define SWIGTYPE_p_FullPhysics__SpurrRtDriver swig_types[46]
+#define SWIGTYPE_p_FullPhysics__StateVector swig_types[47]
+#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[48]
+#define SWIGTYPE_p_FullPhysics__StokesCoefficient swig_types[49]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t swig_types[50]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[51]
+#define SWIGTYPE_p_FullPhysics__Unit swig_types[52]
+#define SWIGTYPE_p_allocator_type swig_types[53]
+#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[54]
+#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[55]
+#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[56]
+#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[57]
+#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[58]
+#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[59]
+#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[60]
+#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[61]
+#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[62]
+#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[63]
+#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[64]
+#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[65]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t swig_types[66]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t swig_types[67]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t swig_types[68]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[69]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[70]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[71]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t swig_types[72]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t swig_types[73]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[74]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Ground_t swig_types[75]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t swig_types[76]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t swig_types[77]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRt_t swig_types[78]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t swig_types[79]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t swig_types[80]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t swig_types[81]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t swig_types[82]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t swig_types[83]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t swig_types[84]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t swig_types[85]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__NamedSpectrum_t swig_types[86]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t swig_types[87]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__NamedSpectrum_t_t swig_types[88]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[89]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_t swig_types[90]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[91]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StokesCoefficient_t_t swig_types[92]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t swig_types[93]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t_t swig_types[94]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_t swig_types[95]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__NamedSpectrum_t_t swig_types[96]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[97]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t swig_types[98]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[99]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StokesCoefficient_t_t swig_types[100]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t_t swig_types[101]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[102]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RadiativeTransferFixedStokesCoefficient_t swig_types[103]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RadiativeTransferSingleWn_t swig_types[104]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RadiativeTransfer_t swig_types[105]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t swig_types[106]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralDomain_t swig_types[107]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpectralRange_t swig_types[108]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Spectrum_t swig_types[109]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t swig_types[110]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t swig_types[111]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRt_t swig_types[112]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[113]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[114]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StokesCoefficient_t swig_types[115]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t swig_types[116]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[117]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[118]
+#define SWIGTYPE_p_char swig_types[119]
+#define SWIGTYPE_p_char_type swig_types[120]
+#define SWIGTYPE_p_difference_type swig_types[121]
+#define SWIGTYPE_p_fmtflags swig_types[122]
+#define SWIGTYPE_p_int_type swig_types[123]
+#define SWIGTYPE_p_iostate swig_types[124]
+#define SWIGTYPE_p_off_type swig_types[125]
+#define SWIGTYPE_p_openmode swig_types[126]
+#define SWIGTYPE_p_pos_type swig_types[127]
+#define SWIGTYPE_p_seekdir swig_types[128]
+#define SWIGTYPE_p_size_t swig_types[129]
+#define SWIGTYPE_p_size_type swig_types[130]
+#define SWIGTYPE_p_state_type swig_types[131]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[132]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[133]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[134]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[135]
+#define SWIGTYPE_p_traits_type swig_types[136]
+#define SWIGTYPE_p_value_type swig_types[137]
+static swig_type_info *swig_types[139];
+static swig_module_info swig_module = {swig_types, 138, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -6054,11 +6070,19 @@ static swig_type_info _swigt__p_FullPhysics__ArrayWithUnitT_double_3_t = {"_p_Fu
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeRefT_double_t = {"_p_FullPhysics__AutoDerivativeRefT_double_t", "FullPhysics::AutoDerivativeRef< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeT_double_t = {"_p_FullPhysics__AutoDerivativeT_double_t", "FullPhysics::AutoDerivative< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t = {"_p_FullPhysics__AutoDerivativeWithUnitT_double_t", "FullPhysics::AutoDerivativeWithUnit< double > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Brdf_Lin_Sup_Masters = {"_p_FullPhysics__Brdf_Lin_Sup_Masters", "FullPhysics::Brdf_Lin_Sup_Masters *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Brdf_Sup_Masters = {"_p_FullPhysics__Brdf_Sup_Masters", "FullPhysics::Brdf_Sup_Masters *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__GenericObject = {"_p_FullPhysics__GenericObject", "FullPhysics::GenericObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Ground = {"_p_FullPhysics__Ground", "FullPhysics::Ground *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__LidortBrdfDriver = {"_p_FullPhysics__LidortBrdfDriver", "FullPhysics::LidortBrdfDriver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__LidortRt = {"_p_FullPhysics__LidortRt", "FullPhysics::LidortRt *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__LidortRtDriver = {"_p_FullPhysics__LidortRtDriver", "FullPhysics::LidortRtDriver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_Brdf_Sup_Accessories = {"_p_FullPhysics__Lidort_Brdf_Sup_Accessories", "FullPhysics::Lidort_Brdf_Sup_Accessories *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_Inputs = {"_p_FullPhysics__Lidort_Inputs", "FullPhysics::Lidort_Inputs *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_L_Inputs = {"_p_FullPhysics__Lidort_L_Inputs", "FullPhysics::Lidort_L_Inputs *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_Lcs_Masters = {"_p_FullPhysics__Lidort_Lcs_Masters", "FullPhysics::Lidort_Lcs_Masters *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_Lps_Masters = {"_p_FullPhysics__Lidort_Lps_Masters", "FullPhysics::Lidort_Lps_Masters *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_Masters = {"_p_FullPhysics__Lidort_Masters", "FullPhysics::Lidort_Masters *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Pars = {"_p_FullPhysics__Lidort_Pars", "FullPhysics::Lidort_Pars *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__NamedSpectrum = {"_p_FullPhysics__NamedSpectrum", "FullPhysics::NamedSpectrum *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t = {"_p_FullPhysics__ObservableT_FullPhysics__Ground_t", "FullPhysics::Observable< FullPhysics::Ground > *", 0, 0, (void*)0, 0};
@@ -6112,11 +6136,19 @@ static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_d
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivativeRef< double > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivative< double > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivativeWithUnit< double > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t", "boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t", "boost::shared_ptr< FullPhysics::Brdf_Sup_Masters > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t = {"_p_boost__shared_ptrT_FullPhysics__GenericObject_t", "boost::shared_ptr< FullPhysics::GenericObject > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Ground_t = {"_p_boost__shared_ptrT_FullPhysics__Ground_t", "boost::shared_ptr< FullPhysics::Ground > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t = {"_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t", "boost::shared_ptr< FullPhysics::LidortBrdfDriver > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t = {"_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t", "boost::shared_ptr< FullPhysics::LidortRtDriver > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__LidortRt_t = {"_p_boost__shared_ptrT_FullPhysics__LidortRt_t", "boost::shared_ptr< FullPhysics::LidortRt > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t", "boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t", "boost::shared_ptr< FullPhysics::Lidort_Inputs > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t", "boost::shared_ptr< FullPhysics::Lidort_L_Inputs > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t", "boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t", "boost::shared_ptr< FullPhysics::Lidort_Lps_Masters > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t", "boost::shared_ptr< FullPhysics::Lidort_Masters > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t", "boost::shared_ptr< FullPhysics::Lidort_Pars > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__NamedSpectrum_t = {"_p_boost__shared_ptrT_FullPhysics__NamedSpectrum_t", "boost::shared_ptr< FullPhysics::NamedSpectrum > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::Ground > > *", 0, 0, (void*)0, 0};
@@ -6178,11 +6210,19 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__AutoDerivativeRefT_double_t,
   &_swigt__p_FullPhysics__AutoDerivativeT_double_t,
   &_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t,
+  &_swigt__p_FullPhysics__Brdf_Lin_Sup_Masters,
+  &_swigt__p_FullPhysics__Brdf_Sup_Masters,
   &_swigt__p_FullPhysics__GenericObject,
   &_swigt__p_FullPhysics__Ground,
   &_swigt__p_FullPhysics__LidortBrdfDriver,
   &_swigt__p_FullPhysics__LidortRt,
   &_swigt__p_FullPhysics__LidortRtDriver,
+  &_swigt__p_FullPhysics__Lidort_Brdf_Sup_Accessories,
+  &_swigt__p_FullPhysics__Lidort_Inputs,
+  &_swigt__p_FullPhysics__Lidort_L_Inputs,
+  &_swigt__p_FullPhysics__Lidort_Lcs_Masters,
+  &_swigt__p_FullPhysics__Lidort_Lps_Masters,
+  &_swigt__p_FullPhysics__Lidort_Masters,
   &_swigt__p_FullPhysics__Lidort_Pars,
   &_swigt__p_FullPhysics__NamedSpectrum,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t,
@@ -6236,11 +6276,19 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__LidortRt_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__NamedSpectrum_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t,
@@ -6302,11 +6350,19 @@ static swig_cast_info _swigc__p_FullPhysics__ArrayWithUnitT_double_3_t[] = {  {&
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeRefT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeWithUnitT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Brdf_Lin_Sup_Masters[] = {  {&_swigt__p_FullPhysics__Brdf_Lin_Sup_Masters, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Brdf_Sup_Masters[] = {  {&_swigt__p_FullPhysics__Brdf_Sup_Masters, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_2_t, _p_FullPhysics__ArrayWithUnitT_double_2_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t, _p_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Ground_t, _p_FullPhysics__ObserverT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t, _p_FullPhysics__ObservableT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__RadiativeTransferSingleWn, _p_FullPhysics__RadiativeTransferSingleWnTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, _p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__SpectralRange, _p_FullPhysics__SpectralRangeTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__NamedSpectrum_t, _p_FullPhysics__ObservableT_FullPhysics__NamedSpectrum_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t, _p_FullPhysics__ObserverT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__StokesCoefficient_t, _p_FullPhysics__ObserverT_FullPhysics__StokesCoefficient_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t, _p_FullPhysics__ObservableT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__SpectralDomain, _p_FullPhysics__SpectralDomainTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__NamedSpectrum_t, _p_FullPhysics__ObserverT_FullPhysics__NamedSpectrum_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__StokesCoefficient, _p_FullPhysics__StokesCoefficientTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Unit, _p_FullPhysics__UnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_1_t, _p_FullPhysics__ArrayWithUnitT_double_1_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, _p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__RtAtmosphere, _p_FullPhysics__RtAtmosphereTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t, _p_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t, _p_FullPhysics__ObservableT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, _p_FullPhysics__AutoDerivativeWithUnitT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__LidortRt, _p_FullPhysics__LidortRtTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, _p_FullPhysics__ObservableT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StokesCoefficient_t, _p_FullPhysics__ObservableT_FullPhysics__StokesCoefficient_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Spectrum, _p_FullPhysics__SpectrumTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__NamedSpectrum, _p_FullPhysics__NamedSpectrumTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Ground, _p_FullPhysics__GroundTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__RadiativeTransferFixedStokesCoefficient, _p_FullPhysics__RadiativeTransferFixedStokesCoefficientTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ArrayWithUnitT_double_3_t, _p_FullPhysics__ArrayWithUnitT_double_3_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__RadiativeTransfer, _p_FullPhysics__RadiativeTransferTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__SpurrRt, _p_FullPhysics__SpurrRtTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Ground[] = {  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__Ground, 0, 0},  {&_swigt__p_FullPhysics__Ground, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__LidortBrdfDriver[] = {  {&_swigt__p_FullPhysics__LidortBrdfDriver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__LidortRt[] = {  {&_swigt__p_FullPhysics__LidortRt, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__LidortRtDriver[] = {  {&_swigt__p_FullPhysics__LidortRtDriver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_Brdf_Sup_Accessories[] = {  {&_swigt__p_FullPhysics__Lidort_Brdf_Sup_Accessories, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_Inputs[] = {  {&_swigt__p_FullPhysics__Lidort_Inputs, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_L_Inputs[] = {  {&_swigt__p_FullPhysics__Lidort_L_Inputs, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_Lcs_Masters[] = {  {&_swigt__p_FullPhysics__Lidort_Lcs_Masters, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_Lps_Masters[] = {  {&_swigt__p_FullPhysics__Lidort_Lps_Masters, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_Masters[] = {  {&_swigt__p_FullPhysics__Lidort_Masters, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Pars[] = {  {&_swigt__p_FullPhysics__Lidort_Pars, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__NamedSpectrum[] = {  {&_swigt__p_FullPhysics__NamedSpectrum, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Ground_t[] = {  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_tTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Ground, _p_FullPhysics__GroundTo_p_FullPhysics__ObservableT_FullPhysics__Ground_t, 0, 0},{0, 0, 0, 0}};
@@ -6360,11 +6416,19 @@ static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_d
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, _p_boost__shared_ptrT_FullPhysics__Ground_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SpurrRt_t, _p_boost__shared_ptrT_FullPhysics__SpurrRt_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t, _p_boost__shared_ptrT_FullPhysics__RtAtmosphere_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__NamedSpectrum_t, _p_boost__shared_ptrT_FullPhysics__NamedSpectrum_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Spectrum_t, _p_boost__shared_ptrT_FullPhysics__Spectrum_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_2_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_3_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_t, _p_boost__shared_ptrT_FullPhysics__ArrayWithUnitT_double_1_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StokesCoefficient_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StokesCoefficient_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__NamedSpectrum_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__NamedSpectrum_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__RtAtmosphere_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__NamedSpectrum_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__NamedSpectrum_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StokesCoefficient_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StokesCoefficient_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__RtAtmosphere_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SpectralRange_t, _p_boost__shared_ptrT_FullPhysics__SpectralRange_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SpectralDomain_t, _p_boost__shared_ptrT_FullPhysics__SpectralDomain_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__RadiativeTransfer_t, _p_boost__shared_ptrT_FullPhysics__RadiativeTransfer_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__RadiativeTransferFixedStokesCoefficient_t, _p_boost__shared_ptrT_FullPhysics__RadiativeTransferFixedStokesCoefficient_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__RadiativeTransferSingleWn_t, _p_boost__shared_ptrT_FullPhysics__RadiativeTransferSingleWn_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_std__vectorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_std__allocatorT_boost__shared_ptrT_FullPhysics__NamedSpectrum_t_t_t_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__LidortRt_t, _p_boost__shared_ptrT_FullPhysics__LidortRt_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StokesCoefficient_t, _p_boost__shared_ptrT_FullPhysics__StokesCoefficient_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Ground_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__Ground_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__LidortRt_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__LidortRt_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__NamedSpectrum_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__NamedSpectrum_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Ground_t, _p_boost__shared_ptrT_FullPhysics__Ground_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__Ground_t_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t, 0, 0},{0, 0, 0, 0}};
@@ -6426,11 +6490,19 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__AutoDerivativeRefT_double_t,
   _swigc__p_FullPhysics__AutoDerivativeT_double_t,
   _swigc__p_FullPhysics__AutoDerivativeWithUnitT_double_t,
+  _swigc__p_FullPhysics__Brdf_Lin_Sup_Masters,
+  _swigc__p_FullPhysics__Brdf_Sup_Masters,
   _swigc__p_FullPhysics__GenericObject,
   _swigc__p_FullPhysics__Ground,
   _swigc__p_FullPhysics__LidortBrdfDriver,
   _swigc__p_FullPhysics__LidortRt,
   _swigc__p_FullPhysics__LidortRtDriver,
+  _swigc__p_FullPhysics__Lidort_Brdf_Sup_Accessories,
+  _swigc__p_FullPhysics__Lidort_Inputs,
+  _swigc__p_FullPhysics__Lidort_L_Inputs,
+  _swigc__p_FullPhysics__Lidort_Lcs_Masters,
+  _swigc__p_FullPhysics__Lidort_Lps_Masters,
+  _swigc__p_FullPhysics__Lidort_Masters,
   _swigc__p_FullPhysics__Lidort_Pars,
   _swigc__p_FullPhysics__NamedSpectrum,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__Ground_t,
@@ -6484,11 +6556,19 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Ground_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__LidortRt_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__NamedSpectrum_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Ground_t_t,

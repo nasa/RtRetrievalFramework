@@ -513,14 +513,14 @@ include lib/Implementation/l_rad_fortran/l_rad_fortran.am
 # automatically detected. We depend on modules, but go ahead and rebuild
 # if anything is changed.
 
-lib/Implementation/libfp_la-lidort_interface_types.lo: $(LIDORT_3_6_LDFLAGS)
+lib/Implementation/libfp_la-lidort_interface_types.lo: $(LIDORT_3_8_LDFLAGS)
 
-lib/Implementation/libfp_la-lidort_interface_types.o: $(LIDORT_3_6_LDFLAGS)
+lib/Implementation/libfp_la-lidort_interface_types.o: $(LIDORT_3_8_LDFLAGS)
 
 
-lib/Implementation/libfp_la-lidort_interface_masters.lo: $(LIDORT_3_6_LDFLAGS)
+lib/Implementation/libfp_la-lidort_interface_masters.lo: $(LIDORT_3_8_LDFLAGS)
 
-lib/Implementation/libfp_la-lidort_interface_masters.o: $(LIDORT_3_6_LDFLAGS)
+lib/Implementation/libfp_la-lidort_interface_masters.o: $(LIDORT_3_8_LDFLAGS)
 
 # Explicitly list the dependency of these on TWOSTREAM, since this isn't
 # automatically detected. We depend on modules, but go ahead and rebuild

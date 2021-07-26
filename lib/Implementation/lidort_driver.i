@@ -18,7 +18,7 @@ public:
   LidortBrdfDriver(int nstream, int nmoment);
   virtual ~LidortBrdfDriver();
 
-  %python_attribute(brdf_interface, boost::shared_ptr<Brdf_Linsup_Masters>)
+  %python_attribute(brdf_interface, boost::shared_ptr<Brdf_Lin_Sup_Masters>)
 
   virtual void setup_geometry(double sza, double azm, double zen) const;
 
@@ -47,7 +47,7 @@ public:
 
   /// Access to BRDF driver
   %python_attribute(lidort_brdf_driver, boost::shared_ptr<LidortBrdfDriver>)
-  %python_attribute(brdf_interface, boost::shared_ptr<Brdf_Linsup_Masters>)
+  %python_attribute(brdf_interface, boost::shared_ptr<Brdf_Lin_Sup_Masters>)
   %python_attribute(lidort_interface, boost::shared_ptr<Lidort_Lps_Masters>)
   void setup_height_grid(const blitz::Array<double, 1>& height_grid) const;
   void setup_geometry(double sza, double azm, double zen) const;

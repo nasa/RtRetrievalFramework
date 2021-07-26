@@ -21,7 +21,7 @@
 # list.
 #
 
-thirdparty: hdf5 boost lidort-3.6 2stream blitz gsl lua parallel
+thirdparty: hdf5 boost lidort-3.8 2stream blitz gsl lua parallel
 
 # ========================================================================
 # Build radiant
@@ -33,9 +33,9 @@ thirdparty: hdf5 boost lidort-3.6 2stream blitz gsl lua parallel
 # include thirdparty/radiant/radiant.am
 
 # ========================================================================
-# Build lidort 3.6
+# Build lidort 3.8
 
-include thirdparty/lidort-3.6/lidort-3.6.am
+include thirdparty/lidort-3.8/lidort-3.8.am
 
 # ========================================================================
 # Build 2stream
