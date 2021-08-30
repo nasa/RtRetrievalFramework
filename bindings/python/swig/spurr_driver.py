@@ -192,16 +192,6 @@ class SpurrBrdfDriver(object):
         return _spurr_driver.SpurrBrdfDriver_setup_brdf_inputs(self, surface_type, surface_parameters)
 
 
-    def set_lambertian_albedo(self, albedo_array):
-        """
-
-        void FullPhysics::SpurrBrdfDriver::set_lambertian_albedo(const blitz::Array< double, 1 > &albedo_array)
-        Initialize lambertian albedo from array that might be external to the
-        BrdfDriver. 
-        """
-        return _spurr_driver.SpurrBrdfDriver_set_lambertian_albedo(self, albedo_array)
-
-
     def _v_n_brdf_kernels(self):
         """
 
