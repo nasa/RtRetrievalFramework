@@ -3587,7 +3587,7 @@ function ConfigCommon.radiative_transfer_lsi:create()
    local rt_low
    if(low_stream == 1 and use_twostream) then
       rt_low = TwostreamRt(self.config.atmosphere, self.config.stokes_coefficient,
-                           sza, zen, azm, do_full_quadrature, pure_nadir)
+                           sza, zen, azm, do_full_quadrature)
    else
       rt_low = LidortRt(self.config.atmosphere, self.config.stokes_coefficient,
                         sza, zen, azm, pure_nadir, low_stream, nmom_low, 
