@@ -177,12 +177,6 @@ LidortRtDriver::LidortRtDriver(int nstream, int nmoment, bool do_multi_scatt_onl
   range_check(nstream, 1, lid_pars.maxstreams+1);
   range_check(nmoment, 3, lid_pars.maxmoments_input+1);
 
-  // Lambertian albedo values are stored seperate from BRDF data structures
-  // The BRDF driver will copy the value being set up into this array
-  lambertian_albedo_from_brdf.resize(1);
-  lambertian_albedo_from_brdf = 0;
-  lidort_brdf_driver()->set_lambertian_albedo(lambertian_albedo_from_brdf);
-
   // Initialize BRDF data structure
   brdf_driver()->initialize_brdf_inputs(surface_type_);
 
@@ -238,11 +232,9 @@ void LidortRtDriver::initialize_rt()
   fboolean_inputs.ts_do_thermal_emission(false);
   fboolean_inputs.ts_do_surface_emission(false);
 
-  // Leave false if doing lambertian
-  if(surface_type_ != LAMBERTIAN) {
-    brdf_interface()->brdf_sup_in().bs_do_brdf_surface(true);
-    fboolean_inputs.ts_do_brdf_surface(true);
-  }
+  // Always use BRDF supplement, don't use specialized lambertian_albedo mode
+  brdf_interface()->brdf_sup_in().bs_do_brdf_surface(true);
+  fboolean_inputs.ts_do_brdf_surface(true);
 
   // Flags for viewing mode
   fboolean_inputs.ts_do_upwelling(true);
@@ -476,9 +468,6 @@ void LidortRtDriver::setup_optical_inputs(const blitz::Array<double, 1>& od,
   // n = moments, L = layers, t = threads
   Array<double, 2> phasmoms( foptical_inputs.ts_phasmoms_total_input() );
   phasmoms(rmom, rlay) = where(abs(pf) > 1e-11, pf, 1e-11);
-
-  // Copy lambertian albedo value from BRDF interface into LIDORT interface
-  lidort_interface_->lidort_fixin().optical().ts_lambertian_albedo(lambertian_albedo_from_brdf(0));
 }
 
 void LidortRtDriver::clear_linear_inputs() const
@@ -571,9 +560,9 @@ void LidortRtDriver::setup_linear_inputs(const ArrayAd<double, 1>& od,
   // Therefore you will notice that by not multiplying dtau/dxi by xi and only
   // dividing by xi, we are cancelling out the xi in the result and hence
   // the driver really return dI/dxi
-  Array<double, 2> l_deltau( linoptical.ts_l_deltau_vert_input()(rjac,rlay,0) );
-  Array<double, 2> l_omega( linoptical.ts_l_omega_total_input()(rjac,rlay,0) );
-  Array<double, 3> l_phasmoms( linoptical.ts_l_phasmoms_total_input()(rjac,rmom,rlay,0) );
+  Array<double, 2> l_deltau( linoptical.ts_l_deltau_vert_input()(rjac,rlay) );
+  Array<double, 2> l_omega( linoptical.ts_l_omega_total_input()(rjac,rlay) );
+  Array<double, 3> l_phasmoms( linoptical.ts_l_phasmoms_total_input()(rjac,rmom,rlay) );
 
   // Transpose these to match dimensions used internally
   l_deltau.transposeSelf(secondDim, firstDim);
@@ -638,8 +627,8 @@ double LidortRtDriver::get_intensity() const
   Lidort_Pars lid_pars = Lidort_Pars::instance();
 
   // Total Intensity I(t,v,d,T) at output level t, output geometry v,
-  // direction d, thread T
-  return lidort_interface_->lidort_out().main().ts_intensity()(0,0,lid_pars.upidx-1,0);
+  // direction d
+  return lidort_interface_->lidort_out().main().ts_intensity()(0,0,lid_pars.upidx-1);
 }
 
 void LidortRtDriver::copy_jacobians(blitz::Array<double, 2>& jac_atm, blitz::Array<double, 1>& jac_surf) const
@@ -653,10 +642,10 @@ void LidortRtDriver::copy_jacobians(blitz::Array<double, 2>& jac_atm, blitz::Arr
 
   // Surface Jacobians KR(r,t,v,d) with respect to surface variable r
   // at output level t, geometry v, direction d
-  jac_surf.reference( lsoutputs.ts_surfacewf()(ra, 0, 0, lid_pars.upidx-1, 0).copy() );
+  jac_surf.reference( lsoutputs.ts_surfacewf()(ra, 0, 0, lid_pars.upidx-1).copy() );
 
   // Get profile jacobians
   // Jacobians K(q,n,t,v,d) with respect to profile atmospheric variable
   // q in layer n, at output level t, geometry v, direction d
-  jac_atm.reference( lpoutputs.ts_profilewf()(ra, ra, 0, 0, lid_pars.upidx-1, 0).copy() );
+  jac_atm.reference( lpoutputs.ts_profilewf()(ra, ra, 0, 0, lid_pars.upidx-1).copy() );
 }

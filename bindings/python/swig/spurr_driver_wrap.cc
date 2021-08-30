@@ -6519,12 +6519,7 @@ static PyMethodDef SwigMethods[] = {
 		"Sets up the BRDF inputs to be used by the BRDF calculation code This\n"
 		"routine is intended to be called for each spectral point. \n"
 		""},
-	 { (char *)"SpurrBrdfDriver_set_lambertian_albedo", _wrap_SpurrBrdfDriver_set_lambertian_albedo, METH_VARARGS, (char *)"\n"
-		"\n"
-		"void FullPhysics::SpurrBrdfDriver::set_lambertian_albedo(const blitz::Array< double, 1 > &albedo_array)\n"
-		"Initialize lambertian albedo from array that might be external to the\n"
-		"BrdfDriver. \n"
-		""},
+	 { (char *)"SpurrBrdfDriver_set_lambertian_albedo", _wrap_SpurrBrdfDriver_set_lambertian_albedo, METH_VARARGS, NULL},
 	 { (char *)"SpurrBrdfDriver__v_n_brdf_kernels", (PyCFunction)_wrap_SpurrBrdfDriver__v_n_brdf_kernels, METH_O, (char *)"\n"
 		"\n"
 		"virtual int FullPhysics::SpurrBrdfDriver::n_brdf_kernels() const =0\n"

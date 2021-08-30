@@ -107,11 +107,6 @@ protected:
   int surface_type_;
   bool pure_nadir_;
   boost::shared_ptr<Lidort_Lps_Masters> lidort_interface_;
-
-  // Lambertian albedo value gets set into this array from the BRDF driver,
-  // We need to copy this value out into LIDORT
-  blitz::Array<double, 1> lambertian_albedo_from_brdf;
-
 };
 
 }

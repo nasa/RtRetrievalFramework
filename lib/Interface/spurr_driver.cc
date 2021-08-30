@@ -176,9 +176,6 @@ void SpurrBrdfDriver::setup_lambertian_inputs(int kernel_index, ArrayAd<double, 
   
   // According to LIDORT user's guide section "2.7.1 BRDFs as a sum of kernel functions" this should be 1.0
   brdf_params(kernel_index, 0) = 1.0;
-
-  // lambertian_albedo value only used do_brdf_surface = False
-  lambertian_albedo(0) = surface_parameters(albedo_idx).value();
 }
 
 void SpurrBrdfDriver::setup_coxmunk_inputs(int kernel_index, ArrayAd<double, 1>& surface_parameters, const Array<int, 1>& parameter_indexes) const
