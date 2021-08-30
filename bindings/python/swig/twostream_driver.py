@@ -272,17 +272,16 @@ class TwostreamRtDriver(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, nlayers, npars, surface_type, do_fullquadrature=True):
+    def __init__(self, nlayers, surface_type, do_fullquadrature=True, do_solar=True, do_thermal=False):
         """
 
-        TwostreamRtDriver::TwostreamRtDriver(int nlayers, int npars, int surface_type, bool
-        do_fullquadrature=true, bool pure_nadir=false)
+        TwostreamRtDriver::TwostreamRtDriver(int nlayers, int surface_type, bool do_fullquadrature=true)
         TwostreamRtDriver Sizes of layers, and number of jacobians must be set
         up in construtor as seen in signature.
 
         Use do_fullquadratures = false only for comparison against LIDORT 
         """
-        _twostream_driver.TwostreamRtDriver_swiginit(self, _twostream_driver.new_TwostreamRtDriver(nlayers, npars, surface_type, do_fullquadrature))
+        _twostream_driver.TwostreamRtDriver_swiginit(self, _twostream_driver.new_TwostreamRtDriver(nlayers, surface_type, do_fullquadrature, do_solar, do_thermal))
 
     def setup_height_grid(self, height_grid):
         """
@@ -390,7 +389,7 @@ class TwostreamRtDriver(object):
     def _v_twostream_interface(self):
         """
 
-        boost::shared_ptr<Twostream_L_Master> FullPhysics::TwostreamRtDriver::twostream_interface() const
+        boost::shared_ptr<Twostream_Lps_Master> FullPhysics::TwostreamRtDriver::twostream_interface() const
 
         """
         return _twostream_driver.TwostreamRtDriver__v_twostream_interface(self)
@@ -414,23 +413,10 @@ class TwostreamRtDriver(object):
     def do_full_quadrature(self):
         return self._v_do_full_quadrature()
 
-
-    def _v_pure_nadir(self):
-        """
-
-        bool FullPhysics::TwostreamRtDriver::pure_nadir() const
-
-        """
-        return _twostream_driver.TwostreamRtDriver__v_pure_nadir(self)
-
-
-    @property
-    def pure_nadir(self):
-        return self._v_pure_nadir()
-
     __swig_destroy__ = _twostream_driver.delete_TwostreamRtDriver
 TwostreamRtDriver.setup_height_grid = new_instancemethod(_twostream_driver.TwostreamRtDriver_setup_height_grid, None, TwostreamRtDriver)
 TwostreamRtDriver.setup_geometry = new_instancemethod(_twostream_driver.TwostreamRtDriver_setup_geometry, None, TwostreamRtDriver)
+TwostreamRtDriver.setup_thermal_inputs = new_instancemethod(_twostream_driver.TwostreamRtDriver_setup_thermal_inputs, None, TwostreamRtDriver)
 TwostreamRtDriver.setup_optical_inputs = new_instancemethod(_twostream_driver.TwostreamRtDriver_setup_optical_inputs, None, TwostreamRtDriver)
 TwostreamRtDriver.clear_linear_inputs = new_instancemethod(_twostream_driver.TwostreamRtDriver_clear_linear_inputs, None, TwostreamRtDriver)
 TwostreamRtDriver.setup_linear_inputs = new_instancemethod(_twostream_driver.TwostreamRtDriver_setup_linear_inputs, None, TwostreamRtDriver)
@@ -441,7 +427,6 @@ TwostreamRtDriver._v_twostream_brdf_driver = new_instancemethod(_twostream_drive
 TwostreamRtDriver._v_brdf_interface = new_instancemethod(_twostream_driver.TwostreamRtDriver__v_brdf_interface, None, TwostreamRtDriver)
 TwostreamRtDriver._v_twostream_interface = new_instancemethod(_twostream_driver.TwostreamRtDriver__v_twostream_interface, None, TwostreamRtDriver)
 TwostreamRtDriver._v_do_full_quadrature = new_instancemethod(_twostream_driver.TwostreamRtDriver__v_do_full_quadrature, None, TwostreamRtDriver)
-TwostreamRtDriver._v_pure_nadir = new_instancemethod(_twostream_driver.TwostreamRtDriver__v_pure_nadir, None, TwostreamRtDriver)
 TwostreamRtDriver_swigregister = _twostream_driver.TwostreamRtDriver_swigregister
 TwostreamRtDriver_swigregister(TwostreamRtDriver)
 

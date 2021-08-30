@@ -60,7 +60,7 @@ void compare_lidort_2stream(boost::shared_ptr<RtAtmosphere>& atmosphere,
         std::cerr << ts_rad_jac.jacobian()(wn_idx, 0, jac_idx) << " ";
       std::cerr << std::endl;
     }
-    BOOST_CHECK_MATRIX_CLOSE_TOL(lid_rad_jac.jacobian()(all, 0, jac_idx), ts_rad_jac.jacobian()(all, 0, jac_idx), 1e-8);
+    BOOST_CHECK_MATRIX_CLOSE_TOL(lid_rad_jac.jacobian()(all, 0, jac_idx), ts_rad_jac.jacobian()(all, 0, jac_idx), 3e-5);
   }
 }
 
