@@ -36,7 +36,7 @@ void test_twostream(int surface_type, ArrayAd<double, 1>& surface_params, ArrayA
   blitz::Array<double, 2> jac_atm_lid;
   blitz::Array<double, 1> jac_surf_lid;
 
-  TwostreamRtDriver twostream_driver = TwostreamRtDriver(nlayer, nparam, surface_type, false);
+  TwostreamRtDriver twostream_driver = TwostreamRtDriver(nlayer, surface_type, false);
 
   // Turn off delta-m scaling
   twostream_driver.twostream_interface()->do_d2s_scaling(false);
@@ -98,10 +98,11 @@ void test_twostream(int surface_type, ArrayAd<double, 1>& surface_params, ArrayA
   lidort_driver.reflectance_and_jacobian_calculate(heights, sza(0), zen(0), azm(0),
                                                 surface_type, lid_surface_params,
                                                 od, ssa, pf, refl_lid, jac_atm_lid, jac_surf_lid);
+                                                
   twostream_driver.reflectance_and_jacobian_calculate(heights, sza(0), zen(0), azm(0),
                                                    surface_type, ts_surface_params,
                                                    od, ssa, pf, refl_ts, jac_atm_ts, jac_surf_ts);
-  
+
   if(debug_output) {
     std::cerr << "refl_lid = " << refl_lid << std::endl
               << "refl_ts  = " << refl_ts << std::endl;
@@ -149,7 +150,7 @@ void test_twostream(int surface_type, ArrayAd<double, 1>& surface_params, ArrayA
   }
 
   BOOST_CHECK_MATRIX_CLOSE_TOL(jac_atm_lid(rjac,rlay), jac_atm_ts(rjac,rlay), 1e-6);
-  BOOST_CHECK_MATRIX_CLOSE_TOL(jac_atm_ts(rjac,rlay), jac_atm_fd(rjac,rlay), 1e-4);
+  BOOST_CHECK_MATRIX_CLOSE_TOL(jac_atm_ts(rjac,rlay), jac_atm_fd(rjac,rlay), 5e-4);
 
   if(blitz::any(surface_params.value() > 0.0)) {
     // Check surface jacobians against finite difference
@@ -202,7 +203,6 @@ BOOST_AUTO_TEST_CASE(lambertian)
 
   // Perturbation value for surface fd checking
   Array<double, 1> pert_surf(1);
-  pert_surf = 1e-8;
 
   ////////////////
   // Surface only
@@ -213,17 +213,19 @@ BOOST_AUTO_TEST_CASE(lambertian)
 
   if (debug_output) std::cerr << "Surface only" << std::endl << "----------------------------" << std::endl;  
   pert_atm = 1e-4, 1e-4;
+  pert_surf = 1e-8;
   test_twostream(surface_type, surface_params, taug, taur, pert_atm, pert_surf, debug_output);
 
   ////////////////
   // Rayleigh only
-  surface_params.value() = 0;
+  surface_params.value() = 1.0e-6;
 
   taur = 2.0e-2/nlayer;
   taug = 1.0e-6/nlayer;
 
   if (debug_output) std::cerr << "Rayleigh only" << std::endl << "----------------------------" << std::endl;  
-  pert_atm = 1e-2, 1e-4;
+  pert_atm = 1e-3, -1e-4;
+  pert_surf = 1e-8;
   test_twostream(surface_type, surface_params, taug, taur, pert_atm, pert_surf, debug_output);
 
   ////////////////
@@ -235,6 +237,7 @@ BOOST_AUTO_TEST_CASE(lambertian)
 
   if (debug_output) std::cerr << "Gas + Surface" << std::endl << "----------------------------" << std::endl;  
   pert_atm = 1e-4, 1e-4;
+  pert_surf = 1e-8;
   test_twostream(surface_type, surface_params, taug, taur, pert_atm, pert_surf, debug_output);
 }
 
@@ -325,8 +328,8 @@ BOOST_AUTO_TEST_CASE(valgrind_problem)
   int nlayer, nparm, surface_type, do_fullquadrature;
   captured_input >> nlayer >> nparm >> surface_type 
                  >> do_fullquadrature;
-  TwostreamRtDriver d(nlayer, nparm, surface_type, 
-                      (do_fullquadrature == 1));
+  TwostreamRtDriver d(nlayer, surface_type, (do_fullquadrature == 1));
+                      
   double refl;
   Array<double, 2> jac_atm;
   Array<double, 1> jac_surf;

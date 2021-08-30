@@ -3,6 +3,7 @@
 #include "wgs84_constant.h"
 #include "ground.h"
 #include "spurr_brdf_types.h"
+#include "lidort_interface_types.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -16,34 +17,21 @@ TwostreamBrdfDriver::TwostreamBrdfDriver(int surface_type)
 {
   int nbeams = 1;
   int n_user_streams = 1;
-  int n_user_relazms = 1;
-
-  int nspars;
-  switch(surface_type) {
-  case LAMBERTIAN:
-    nspars = 1;
-    break;
-  case BREONVEG:
-  case BREONSOIL:
-    nspars = 5;
-    break;
-  case COXMUNK:
-    nspars = 3;
-    break;
-  default:
-    Exception e("Unhandled BRDF type: ");
-    e << surface_type;
-    throw e;
-  }
-
-  twostream_brdf_.reset( new Twostream_Ls_Brdf_Supplement(nbeams, n_user_streams, n_user_relazms, nspars) );
 
   // Number of quadtrature streams for BRDF calculation
   // Use value consistent with LIDORT
-  twostream_brdf_->nstreams_brdf(50);
+  int nstreams_brdf = 50;
+
+  Lidort_Pars lid_pars = Lidort_Pars::instance();
+
+  twostream_brdf_.reset( new Twostream_Ls_Brdf_Supplement(
+    lid_pars.maxbeams, lid_pars.max_user_streams, lid_pars.max_user_obsgeoms, lid_pars.maxstreams_brdf,
+    lid_pars.max_brdf_kernels, lid_pars.max_brdf_parameters, lid_pars.max_surfacewfs,
+    nbeams, n_user_streams, nstreams_brdf) );
 
   brdf_params.reference( twostream_brdf_->brdf_parameters() );
   brdf_factors.reference( twostream_brdf_->brdf_factors() );
+
 }
 
 void TwostreamBrdfDriver::setup_geometry(double sza, double azm, double zen) const
@@ -55,10 +43,6 @@ void TwostreamBrdfDriver::setup_geometry(double sza, double azm, double zen) con
   // Viewing zenith angle (degrees)
   Array<double, 1> user_angles( twostream_brdf_->user_angles() );
   user_angles(0) = zen;
-
-  // Azimuth angle (degrees)
-  Array<double, 1> user_relazms( twostream_brdf_->user_relazms() );
-  user_relazms(0) = azm;
 }
 
 void TwostreamBrdfDriver::calculate_brdf() const
@@ -139,11 +123,11 @@ void TwostreamBrdfDriver::do_shadow_effect(const bool do_shadow) const {
 }
 
 void TwostreamBrdfDriver::initialize_kernel_parameters(const int kernel_index,
-						       const int which_brdf,
-						       const bool lambertian_flag,
-						       const int n_brdf_parameters,
-						       const bool do_factor_wfs,
-						       const blitz::Array<bool, 1>& do_params_wfs)
+                                                       const int which_brdf,
+                                                       const bool lambertian_flag,
+                                                       const int n_brdf_parameters,
+                                                       const bool do_factor_wfs,
+                                                       const blitz::Array<bool, 1>& do_params_wfs)
 {
   Array<int, 1> ts_which_brdf( twostream_brdf_->which_brdf() );
   ts_which_brdf(kernel_index) = which_brdf;
@@ -171,28 +155,28 @@ void TwostreamBrdfDriver::initialize_kernel_parameters(const int kernel_index,
 /// Use do_fullquadratures = false only for comparison against LIDORT 
 //=======================================================================
 
-TwostreamRtDriver::TwostreamRtDriver(int nlayers, int npars, int surface_type, bool do_fullquadrature, bool pure_nadir)
-  : surface_type_(surface_type), do_fullquadrature_(do_fullquadrature), pure_nadir_(pure_nadir)
+TwostreamRtDriver::TwostreamRtDriver(int nlayers, int surface_type, bool do_fullquadrature)
+  : surface_type_(surface_type), do_fullquadrature_(do_fullquadrature)
 {
   brdf_driver_.reset( new TwostreamBrdfDriver(surface_type_) );
 
-  int nthreads       = 1;
-  int nbeams         = 1;
-  int n_user_angles  = 1;
-  int n_user_relazms = 1;
+  int nbeams          = 1;
+  int n_user_streams  = 1;
+  int n_user_relazms  = 1;
 
-  int nspars         = brdf_interface()->nspars();
-  int n_geometries   = nbeams * n_user_angles * n_user_relazms;
-  int ntotal         = 2 * nlayers;
+  int n_geometries    = nbeams * n_user_streams * n_user_relazms;
+  int ntotal          = 2 * nlayers;
 
-  int thread = 1; // 1 because this number is a Fortran index
   double earth_radius = OldConstant::wgs84_a.convert(units::km).value;
 
-  twostream_interface_.reset( new Twostream_L_Master( thread, nthreads, nlayers, ntotal, n_geometries, n_user_angles, n_user_relazms, nbeams, earth_radius, npars, nspars) );
+  Lidort_Pars lid_pars = Lidort_Pars::instance();
 
-  // Lambertian albedo values are stored seperate from BRDF data structures
-  // Do this after TwoStream has been instantiated
-  brdf_driver_->set_lambertian_albedo( twostream_interface_->lambertian_albedo() );
+  twostream_interface_.reset( new Twostream_Lps_Master( 
+    lid_pars.maxlayers, lid_pars.maxtotal, lid_pars.max_messages,
+    lid_pars.maxbeams, lid_pars.max_geometries, 
+    lid_pars.max_user_streams, lid_pars.max_user_relazms, lid_pars.max_user_obsgeoms, 
+    lid_pars.max_atmoswfs, lid_pars.max_surfacewfs, lid_pars.max_sleavewfs, 
+    nlayers, ntotal, n_user_streams, n_user_relazms, nbeams, earth_radius, n_geometries) );
 
   // Initialize BRDF data structure
   brdf_driver_->initialize_brdf_inputs(surface_type_);
@@ -202,26 +186,23 @@ TwostreamRtDriver::TwostreamRtDriver(int nlayers, int npars, int surface_type, b
 
 void TwostreamRtDriver::initialize_rt()
 {
-  // We are doing solar sources only
-  twostream_interface_->do_solar_sources(true);
 
-  // Two choices of stream value................ CHOOSE One !!!!!
+  // Set a value or divide by zeros will occur
+  twostream_interface_->bvpscalefactor(1.0);
+
+  // 2stream guide says this:
+  // For scattering applications, should be set to 0.5
+  // For thermal applications, should be set to sqrt(1/3)
   if (do_fullquadrature_)
     twostream_interface_->stream_value( sqrt(1.0e0 / 3.0e0 ) );
   else
     twostream_interface_->stream_value( 0.5e0 );
 
-  // Set pure nadir flag
-  twostream_interface_->pure_nadir(pure_nadir_);
-
   // Set stream value for BRDF interface to the same value used by 2stream interface
   brdf_interface()->stream_value( twostream_interface_->stream_value() );
 
-  // Leave false if doing lambertian
-  if(surface_type_ == LAMBERTIAN)
-    twostream_interface_->do_brdf_surface(false);
-  else
-    twostream_interface_->do_brdf_surface(true);
+  // Always usr BRDF supplement, even for lambertian albedo
+  twostream_interface_->do_brdf_surface(true);
    
   // Flags for viewing mode
   twostream_interface_->do_upwelling(true);
@@ -233,6 +214,11 @@ void TwostreamRtDriver::initialize_rt()
   // Beam source flux, same value used for all solar angles
   // Normally set to 1 for "sun-normalized" output
   twostream_interface_->flux_factor(1.0);
+
+  // Enable solar sources for RT & BRDF
+  twostream_interface_->do_solar_sources(true);
+
+  brdf_interface()->do_solar_sources(true);
 
   // Flag for calculating profile Jacobians in layer n
   // Calculate jacobians for all layers
@@ -282,30 +268,30 @@ void TwostreamRtDriver::setup_geometry(double sza, double azm, double zen) const
 }
 
 void TwostreamRtDriver::setup_optical_inputs(const blitz::Array<double, 1>& od, 
-					     const blitz::Array<double, 1>& ssa,
-					     const blitz::Array<double, 2>& pf) const
+                                             const blitz::Array<double, 1>& ssa,
+                                             const blitz::Array<double, 2>& pf) const
 {
   // Ranges for copying inputs to method
   Range rlay(0, od.extent(firstDim) - 1);
 
-  // Vertical optical depth thicness values for all layers and threads
-  Array<double, 2> deltau( twostream_interface_->deltau_input() );
-  deltau(rlay, 0) = od;
+  // Vertical optical depth thickness values for all layers
+  Array<double, 1> deltau( twostream_interface_->deltau_input() );
+  deltau(rlay) = od;
 
-  // Single scattering albedos for all layers and threads 
-  Array<double, 2> omega( twostream_interface_->omega_input() );
-  omega(rlay, 0) = where(ssa > 0.999, 0.999999, ssa);
+  // Single scattering albedos for all layers
+  Array<double, 1> omega( twostream_interface_->omega_input() );
+  omega(rlay) = where(ssa > 0.999, 0.999999, ssa);
 
   // Assymetry factor
   // Equal to one third of the first phase function moment
-  Array<double, 2> asymm_input( twostream_interface_->asymm_input() );
-  asymm_input(rlay, 0) = pf(1, rlay) / 3.0;
+  Array<double, 1> asymm_input( twostream_interface_->asymm_input() );
+  asymm_input(rlay) = pf(1, rlay) / 3.0;
 
   // Delta-m scaling factor for 2-stream
   // Equal to one fifth of the second  phase function moment
   if (twostream_interface_->do_d2s_scaling()) {
-    Array<double, 2> d2s_scaling( twostream_interface_->d2s_scaling() );
-    d2s_scaling(rlay, 0) = pf(2, rlay) / 5.0;
+    Array<double, 1> d2s_scaling( twostream_interface_->d2s_scaling() );
+    d2s_scaling(rlay) = pf(2, rlay) / 5.0;
   }
 }
 
@@ -370,10 +356,10 @@ void TwostreamRtDriver::setup_linear_inputs(const ArrayAd<double, 1>& od,
   }
 
   // Setup optical linear inputs
-  Array<double, 2> l_deltau( twostream_interface_->l_deltau_input()(rlay,rjac,0) );
-  Array<double, 2> l_omega( twostream_interface_->l_omega_input()(rlay,rjac,0) );
-  Array<double, 2> l_asymm_input( twostream_interface_->l_asymm_input()(rlay,rjac,0) );
-  Array<double, 2> l_d2s_scaling( twostream_interface_->l_d2s_scaling()(rlay,rjac,0) );
+  Array<double, 2> l_deltau( twostream_interface_->l_deltau_input()(rlay,rjac) );
+  Array<double, 2> l_omega( twostream_interface_->l_omega_input()(rlay,rjac) );
+  Array<double, 2> l_asymm_input( twostream_interface_->l_asymm_input()(rlay,rjac) );
+  Array<double, 2> l_d2s_scaling( twostream_interface_->l_d2s_scaling()(rlay,rjac) );
 
   l_deltau = od.jacobian();
   l_omega  = ssa.jacobian();
@@ -409,16 +395,16 @@ void TwostreamRtDriver::calculate_rt() const
 
 double TwostreamRtDriver::get_intensity() const
 {
-  return twostream_interface_->intensity_toa()(0, 0);
+  return twostream_interface_->intensity_toa()(0);
 }
 
 void TwostreamRtDriver::copy_jacobians(blitz::Array<double, 2>& jac_atm, blitz::Array<double, 1>& jac_surf) const
 {
   // Copy out jacobian values
   Range ra(Range::all());
-  jac_atm.reference( twostream_interface_->profilewf_toa()(0, ra, ra, 0).copy() );
+  jac_atm.reference( twostream_interface_->profilewf_toa()(0, ra, ra).copy() );
   jac_atm.transposeSelf(secondDim, firstDim); // swap to same ordering as lidort
     
-  jac_surf.reference( twostream_interface_->surfacewf_toa()(0, ra, 0).copy() );
+  jac_surf.reference( twostream_interface_->surfacewf_toa()(0, ra).copy() );
 }
 

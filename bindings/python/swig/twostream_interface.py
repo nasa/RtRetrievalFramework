@@ -128,7 +128,8 @@ def _new_from_set(cls, version, *args):
     inst.set(*args)
     return inst
 
-class Twostream_Ls_Brdf_Supplement(object):
+import full_physics_swig.generic_object
+class Twostream_Ls_Brdf_Supplement(full_physics_swig.generic_object.GenericObject):
     """
 
     C++ includes: twostream_interface.h
@@ -138,292 +139,576 @@ class Twostream_Ls_Brdf_Supplement(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, nbeams_in, n_user_streams_in, n_user_relazms_in, nspars_in):
+    def __init__(self, maxbeams_in, max_user_streams_in, max_user_obsgeoms_in, maxstreams_brdf_in, max_brdf_kernels_in, max_brdf_parameters_in, max_surfacewfs_in, nbeams_in, n_user_streams_in, nstreams_brdf_in):
         """
 
-        FullPhysics::Twostream_Ls_Brdf_Supplement::Twostream_Ls_Brdf_Supplement(const int &nbeams_in, const int &n_user_streams_in, const int
-        &n_user_relazms_in, const int &nspars_in)
+        FullPhysics::Twostream_Ls_Brdf_Supplement::Twostream_Ls_Brdf_Supplement(const int &maxbeams_in, const int &max_user_streams_in, const int
+        &max_user_obsgeoms_in, const int &maxstreams_brdf_in, const int
+        &max_brdf_kernels_in, const int &max_brdf_parameters_in, const int
+        &max_surfacewfs_in, const int &nbeams_in, const int
+        &n_user_streams_in, const int &nstreams_brdf_in)
 
         """
-        _twostream_interface.Twostream_Ls_Brdf_Supplement_swiginit(self, _twostream_interface.new_Twostream_Ls_Brdf_Supplement(nbeams_in, n_user_streams_in, n_user_relazms_in, nspars_in))
+        _twostream_interface.Twostream_Ls_Brdf_Supplement_swiginit(self, _twostream_interface.new_Twostream_Ls_Brdf_Supplement(maxbeams_in, max_user_streams_in, max_user_obsgeoms_in, maxstreams_brdf_in, max_brdf_kernels_in, max_brdf_parameters_in, max_surfacewfs_in, nbeams_in, n_user_streams_in, nstreams_brdf_in))
 
-    def lambertian_kernel_flag(self):
+    def _v_maxbeams(self):
+        """
+
+        const int& FullPhysics::Twostream_Ls_Brdf_Supplement::maxbeams() const
+
+        """
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_maxbeams(self)
+
+
+    @property
+    def maxbeams(self):
+        return self._v_maxbeams()
+
+
+    def _v_max_user_streams(self):
+        """
+
+        const int& FullPhysics::Twostream_Ls_Brdf_Supplement::max_user_streams() const
+
+        """
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_max_user_streams(self)
+
+
+    @property
+    def max_user_streams(self):
+        return self._v_max_user_streams()
+
+
+    def _v_max_user_obsgeoms(self):
+        """
+
+        const int& FullPhysics::Twostream_Ls_Brdf_Supplement::max_user_obsgeoms() const
+
+        """
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_max_user_obsgeoms(self)
+
+
+    @property
+    def max_user_obsgeoms(self):
+        return self._v_max_user_obsgeoms()
+
+
+    def _v_maxstreams_brdf(self):
+        """
+
+        const int& FullPhysics::Twostream_Ls_Brdf_Supplement::maxstreams_brdf() const
+
+        """
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_maxstreams_brdf(self)
+
+
+    @property
+    def maxstreams_brdf(self):
+        return self._v_maxstreams_brdf()
+
+
+    def _v_max_brdf_kernels(self):
+        """
+
+        const int& FullPhysics::Twostream_Ls_Brdf_Supplement::max_brdf_kernels() const
+
+        """
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_max_brdf_kernels(self)
+
+
+    @property
+    def max_brdf_kernels(self):
+        return self._v_max_brdf_kernels()
+
+
+    def _v_max_brdf_parameters(self):
+        """
+
+        const int& FullPhysics::Twostream_Ls_Brdf_Supplement::max_brdf_parameters() const
+
+        """
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_max_brdf_parameters(self)
+
+
+    @property
+    def max_brdf_parameters(self):
+        return self._v_max_brdf_parameters()
+
+
+    def _v_max_surfacewfs(self):
+        """
+
+        const int& FullPhysics::Twostream_Ls_Brdf_Supplement::max_surfacewfs() const
+
+        """
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_max_surfacewfs(self)
+
+
+    @property
+    def max_surfacewfs(self):
+        return self._v_max_surfacewfs()
+
+
+    def _v_do_solar_sources(self):
+        """
+
+        void FullPhysics::Twostream_Ls_Brdf_Supplement::do_solar_sources(const bool &do_solar_sources_in)
+
+        """
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_solar_sources(self)
+
+
+    @property
+    def do_solar_sources(self):
+        return self._v_do_solar_sources()
+
+
+    def _v_do_user_obsgeoms(self):
+        """
+
+        void FullPhysics::Twostream_Ls_Brdf_Supplement::do_user_obsgeoms(const bool &do_user_obsgeoms_in)
+
+        """
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_user_obsgeoms(self)
+
+
+    @property
+    def do_user_obsgeoms(self):
+        return self._v_do_user_obsgeoms()
+
+
+    def _v_lambertian_kernel_flag(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::lambertian_kernel_flag(const blitz::Array< bool, 1 > &lambertian_kernel_flag_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_lambertian_kernel_flag(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_lambertian_kernel_flag(self)
 
 
-    def do_shadow_effect(self):
+    @property
+    def lambertian_kernel_flag(self):
+        return self._v_lambertian_kernel_flag()
+
+
+    def _v_do_shadow_effect(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::do_shadow_effect(const bool &do_shadow_effect_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_do_shadow_effect(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_shadow_effect(self)
 
 
-    def do_surface_emission(self):
+    @property
+    def do_shadow_effect(self):
+        return self._v_do_shadow_effect()
+
+
+    def _v_do_surface_emission(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::do_surface_emission(const bool &do_surface_emission_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_do_surface_emission(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_surface_emission(self)
 
 
-    def nbeams(self):
+    @property
+    def do_surface_emission(self):
+        return self._v_do_surface_emission()
+
+
+    def _v_nbeams(self):
         """
 
         const int& FullPhysics::Twostream_Ls_Brdf_Supplement::nbeams() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_nbeams(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_nbeams(self)
 
 
-    def n_user_streams(self):
+    @property
+    def nbeams(self):
+        return self._v_nbeams()
+
+
+    def _v_n_user_streams(self):
         """
 
         const int& FullPhysics::Twostream_Ls_Brdf_Supplement::n_user_streams() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_n_user_streams(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_user_streams(self)
 
 
-    def n_user_relazms(self):
+    @property
+    def n_user_streams(self):
+        return self._v_n_user_streams()
+
+
+    def _v_n_user_obsgeoms(self):
         """
 
-        const int& FullPhysics::Twostream_Ls_Brdf_Supplement::n_user_relazms() const
+        void FullPhysics::Twostream_Ls_Brdf_Supplement::n_user_obsgeoms(const int &n_user_obsgeoms_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_n_user_relazms(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_user_obsgeoms(self)
 
 
-    def beam_szas(self):
+    @property
+    def n_user_obsgeoms(self):
+        return self._v_n_user_obsgeoms()
+
+
+    def _v_beam_szas(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::beam_szas(const blitz::Array< double, 1 > &beam_szas_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_beam_szas(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_beam_szas(self)
 
 
-    def user_angles(self):
+    @property
+    def beam_szas(self):
+        return self._v_beam_szas()
+
+
+    def _v_user_angles(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::user_angles(const blitz::Array< double, 1 > &user_angles_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_user_angles(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_user_angles(self)
 
 
-    def user_relazms(self):
+    @property
+    def user_angles(self):
+        return self._v_user_angles()
+
+
+    def _v_user_obsgeoms(self):
         """
 
-        void FullPhysics::Twostream_Ls_Brdf_Supplement::user_relazms(const blitz::Array< double, 1 > &user_relazms_in)
+        void FullPhysics::Twostream_Ls_Brdf_Supplement::user_obsgeoms(const blitz::Array< double, 2 > &user_obsgeoms_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_user_relazms(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_user_obsgeoms(self)
 
 
-    def stream_value(self):
+    @property
+    def user_obsgeoms(self):
+        return self._v_user_obsgeoms()
+
+
+    def _v_stream_value(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::stream_value(const double &stream_value_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_stream_value(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_stream_value(self)
 
 
+    @property
+    def stream_value(self):
+        return self._v_stream_value()
+
+
+    def _v_nstreams_brdf(self):
+        """
+
+        const int& FullPhysics::Twostream_Ls_Brdf_Supplement::nstreams_brdf() const
+
+        """
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_nstreams_brdf(self)
+
+
+    @property
     def nstreams_brdf(self):
-        """
-
-        void FullPhysics::Twostream_Ls_Brdf_Supplement::nstreams_brdf(const int &nstreams_brdf_in)
-
-        """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_nstreams_brdf(self)
+        return self._v_nstreams_brdf()
 
 
-    def n_brdf_kernels(self):
+    def _v_n_brdf_kernels(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::n_brdf_kernels(const int &n_brdf_kernels_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_n_brdf_kernels(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_brdf_kernels(self)
 
 
-    def which_brdf(self):
+    @property
+    def n_brdf_kernels(self):
+        return self._v_n_brdf_kernels()
+
+
+    def _v_which_brdf(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::which_brdf(const blitz::Array< int, 1 > &which_brdf_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_which_brdf(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_which_brdf(self)
 
 
-    def brdf_factors(self):
+    @property
+    def which_brdf(self):
+        return self._v_which_brdf()
+
+
+    def _v_brdf_factors(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::brdf_factors(const blitz::Array< double, 1 > &brdf_factors_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_brdf_factors(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_brdf_factors(self)
 
 
-    def n_brdf_parameters(self):
+    @property
+    def brdf_factors(self):
+        return self._v_brdf_factors()
+
+
+    def _v_n_brdf_parameters(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::n_brdf_parameters(const blitz::Array< int, 1 > &n_brdf_parameters_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_n_brdf_parameters(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_brdf_parameters(self)
 
 
-    def brdf_parameters(self):
+    @property
+    def n_brdf_parameters(self):
+        return self._v_n_brdf_parameters()
+
+
+    def _v_brdf_parameters(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::brdf_parameters(const blitz::Array< double, 2 > &brdf_parameters_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_brdf_parameters(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_brdf_parameters(self)
 
 
-    def nspars(self):
-        """
-
-        const int& FullPhysics::Twostream_Ls_Brdf_Supplement::nspars() const
-
-        """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_nspars(self)
+    @property
+    def brdf_parameters(self):
+        return self._v_brdf_parameters()
 
 
-    def do_kernel_factor_wfs(self):
+    def _v_do_kernel_factor_wfs(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::do_kernel_factor_wfs(const blitz::Array< bool, 1 > &do_kernel_factor_wfs_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_do_kernel_factor_wfs(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_kernel_factor_wfs(self)
 
 
-    def do_kernel_params_wfs(self):
+    @property
+    def do_kernel_factor_wfs(self):
+        return self._v_do_kernel_factor_wfs()
+
+
+    def _v_do_kernel_params_wfs(self):
         """
 
         void FullPhysics::Twostream_Ls_Brdf_Supplement::do_kernel_params_wfs(const blitz::Array< bool, 2 > &do_kernel_params_wfs_in)
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_do_kernel_params_wfs(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_kernel_params_wfs(self)
 
 
-    def do_kparams_derivs(self):
+    @property
+    def do_kernel_params_wfs(self):
+        return self._v_do_kernel_params_wfs()
+
+
+    def _v_do_kparams_derivs(self):
         """
 
         const blitz::Array<bool, 1>& FullPhysics::Twostream_Ls_Brdf_Supplement::do_kparams_derivs() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_do_kparams_derivs(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_kparams_derivs(self)
 
 
-    def n_surface_wfs(self):
+    @property
+    def do_kparams_derivs(self):
+        return self._v_do_kparams_derivs()
+
+
+    def _v_n_surface_wfs(self):
         """
 
         const int& FullPhysics::Twostream_Ls_Brdf_Supplement::n_surface_wfs() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_n_surface_wfs(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_surface_wfs(self)
 
 
-    def n_kernel_factor_wfs(self):
+    @property
+    def n_surface_wfs(self):
+        return self._v_n_surface_wfs()
+
+
+    def _v_n_kernel_factor_wfs(self):
         """
 
         const int& FullPhysics::Twostream_Ls_Brdf_Supplement::n_kernel_factor_wfs() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_n_kernel_factor_wfs(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_kernel_factor_wfs(self)
 
 
-    def n_kernel_params_wfs(self):
+    @property
+    def n_kernel_factor_wfs(self):
+        return self._v_n_kernel_factor_wfs()
+
+
+    def _v_n_kernel_params_wfs(self):
         """
 
         const int& FullPhysics::Twostream_Ls_Brdf_Supplement::n_kernel_params_wfs() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_n_kernel_params_wfs(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_kernel_params_wfs(self)
 
 
-    def brdf_f_0(self):
+    @property
+    def n_kernel_params_wfs(self):
+        return self._v_n_kernel_params_wfs()
+
+
+    def _v_brdf_f_0(self):
         """
 
         const blitz::Array<double, 2>& FullPhysics::Twostream_Ls_Brdf_Supplement::brdf_f_0() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_brdf_f_0(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_brdf_f_0(self)
 
 
-    def brdf_f(self):
+    @property
+    def brdf_f_0(self):
+        return self._v_brdf_f_0()
+
+
+    def _v_brdf_f(self):
         """
 
         const blitz::Array<double, 1>& FullPhysics::Twostream_Ls_Brdf_Supplement::brdf_f() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_brdf_f(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_brdf_f(self)
 
 
-    def ubrdf_f(self):
+    @property
+    def brdf_f(self):
+        return self._v_brdf_f()
+
+
+    def _v_ubrdf_f(self):
         """
 
         const blitz::Array<double, 2>& FullPhysics::Twostream_Ls_Brdf_Supplement::ubrdf_f() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_ubrdf_f(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_ubrdf_f(self)
 
 
-    def emissivity(self):
+    @property
+    def ubrdf_f(self):
+        return self._v_ubrdf_f()
+
+
+    def _v_emissivity(self):
         """
 
         const double& FullPhysics::Twostream_Ls_Brdf_Supplement::emissivity() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_emissivity(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_emissivity(self)
 
 
-    def ls_brdf_f_0(self):
+    @property
+    def emissivity(self):
+        return self._v_emissivity()
+
+
+    def _v_ls_brdf_f_0(self):
         """
 
         const blitz::Array<double, 3>& FullPhysics::Twostream_Ls_Brdf_Supplement::ls_brdf_f_0() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_ls_brdf_f_0(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_ls_brdf_f_0(self)
 
 
-    def ls_brdf_f(self):
+    @property
+    def ls_brdf_f_0(self):
+        return self._v_ls_brdf_f_0()
+
+
+    def _v_ls_brdf_f(self):
         """
 
         const blitz::Array<double, 2>& FullPhysics::Twostream_Ls_Brdf_Supplement::ls_brdf_f() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_ls_brdf_f(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_ls_brdf_f(self)
 
 
-    def ls_ubrdf_f(self):
+    @property
+    def ls_brdf_f(self):
+        return self._v_ls_brdf_f()
+
+
+    def _v_ls_ubrdf_f(self):
         """
 
         const blitz::Array<double, 3>& FullPhysics::Twostream_Ls_Brdf_Supplement::ls_ubrdf_f() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_ls_ubrdf_f(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_ls_ubrdf_f(self)
 
 
-    def ls_emissivity(self):
+    @property
+    def ls_ubrdf_f(self):
+        return self._v_ls_ubrdf_f()
+
+
+    def _v_ls_emissivity(self):
         """
 
         const blitz::Array<double, 1>& FullPhysics::Twostream_Ls_Brdf_Supplement::ls_emissivity() const
 
         """
-        return _twostream_interface.Twostream_Ls_Brdf_Supplement_ls_emissivity(self)
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_ls_emissivity(self)
+
+
+    @property
+    def ls_emissivity(self):
+        return self._v_ls_emissivity()
+
+
+    def _v_status_brdfsup(self):
+        """
+
+        const int& FullPhysics::Twostream_Ls_Brdf_Supplement::status_brdfsup() const
+
+        """
+        return _twostream_interface.Twostream_Ls_Brdf_Supplement__v_status_brdfsup(self)
+
+
+    @property
+    def status_brdfsup(self):
+        return self._v_status_brdfsup()
 
 
     def run(self):
@@ -435,42 +720,52 @@ class Twostream_Ls_Brdf_Supplement(object):
         return _twostream_interface.Twostream_Ls_Brdf_Supplement_run(self)
 
     __swig_destroy__ = _twostream_interface.delete_Twostream_Ls_Brdf_Supplement
-Twostream_Ls_Brdf_Supplement.lambertian_kernel_flag = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_lambertian_kernel_flag, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.do_shadow_effect = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_do_shadow_effect, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.do_surface_emission = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_do_surface_emission, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.nbeams = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_nbeams, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.n_user_streams = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_n_user_streams, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.n_user_relazms = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_n_user_relazms, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.beam_szas = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_beam_szas, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.user_angles = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_user_angles, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.user_relazms = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_user_relazms, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.stream_value = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_stream_value, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.nstreams_brdf = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_nstreams_brdf, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.n_brdf_kernels = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_n_brdf_kernels, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.which_brdf = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_which_brdf, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.brdf_factors = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_brdf_factors, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.n_brdf_parameters = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_n_brdf_parameters, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.brdf_parameters = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_brdf_parameters, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.nspars = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_nspars, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.do_kernel_factor_wfs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_do_kernel_factor_wfs, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.do_kernel_params_wfs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_do_kernel_params_wfs, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.do_kparams_derivs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_do_kparams_derivs, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.n_surface_wfs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_n_surface_wfs, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.n_kernel_factor_wfs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_n_kernel_factor_wfs, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.n_kernel_params_wfs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_n_kernel_params_wfs, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.brdf_f_0 = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_brdf_f_0, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.brdf_f = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_brdf_f, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.ubrdf_f = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_ubrdf_f, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.emissivity = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_emissivity, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.ls_brdf_f_0 = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_ls_brdf_f_0, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.ls_brdf_f = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_ls_brdf_f, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.ls_ubrdf_f = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_ls_ubrdf_f, None, Twostream_Ls_Brdf_Supplement)
-Twostream_Ls_Brdf_Supplement.ls_emissivity = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_ls_emissivity, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement.__str__ = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement___str__, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_maxbeams = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_maxbeams, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_max_user_streams = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_max_user_streams, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_max_user_obsgeoms = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_max_user_obsgeoms, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_maxstreams_brdf = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_maxstreams_brdf, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_max_brdf_kernels = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_max_brdf_kernels, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_max_brdf_parameters = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_max_brdf_parameters, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_max_surfacewfs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_max_surfacewfs, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_do_solar_sources = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_solar_sources, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_do_user_obsgeoms = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_user_obsgeoms, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_lambertian_kernel_flag = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_lambertian_kernel_flag, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_do_shadow_effect = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_shadow_effect, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_do_surface_emission = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_surface_emission, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_nbeams = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_nbeams, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_n_user_streams = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_user_streams, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_n_user_obsgeoms = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_user_obsgeoms, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_beam_szas = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_beam_szas, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_user_angles = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_user_angles, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_user_obsgeoms = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_user_obsgeoms, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_stream_value = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_stream_value, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_nstreams_brdf = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_nstreams_brdf, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_n_brdf_kernels = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_brdf_kernels, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_which_brdf = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_which_brdf, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_brdf_factors = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_brdf_factors, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_n_brdf_parameters = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_brdf_parameters, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_brdf_parameters = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_brdf_parameters, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_do_kernel_factor_wfs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_kernel_factor_wfs, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_do_kernel_params_wfs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_kernel_params_wfs, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_do_kparams_derivs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_do_kparams_derivs, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_n_surface_wfs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_surface_wfs, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_n_kernel_factor_wfs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_kernel_factor_wfs, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_n_kernel_params_wfs = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_n_kernel_params_wfs, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_brdf_f_0 = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_brdf_f_0, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_brdf_f = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_brdf_f, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_ubrdf_f = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_ubrdf_f, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_emissivity = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_emissivity, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_ls_brdf_f_0 = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_ls_brdf_f_0, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_ls_brdf_f = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_ls_brdf_f, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_ls_ubrdf_f = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_ls_ubrdf_f, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_ls_emissivity = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_ls_emissivity, None, Twostream_Ls_Brdf_Supplement)
+Twostream_Ls_Brdf_Supplement._v_status_brdfsup = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement__v_status_brdfsup, None, Twostream_Ls_Brdf_Supplement)
 Twostream_Ls_Brdf_Supplement.run = new_instancemethod(_twostream_interface.Twostream_Ls_Brdf_Supplement_run, None, Twostream_Ls_Brdf_Supplement)
 Twostream_Ls_Brdf_Supplement_swigregister = _twostream_interface.Twostream_Ls_Brdf_Supplement_swigregister
 Twostream_Ls_Brdf_Supplement_swigregister(Twostream_Ls_Brdf_Supplement)
 
-class Twostream_L_Master(object):
+class Twostream_Lps_Master(full_physics_swig.generic_object.GenericObject):
     """
 
     C++ includes: twostream_interface.h
@@ -480,720 +775,1529 @@ class Twostream_L_Master(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, thread_in, nthreads_in, nlayers_in, ntotal_in, n_geometries_in, n_user_streams_in, n_user_relazms_in, nbeams_in, earth_radius_in, npars_in, nspars_in):
+    def __init__(self, maxlayers_in, maxtotal_in, maxmessages_in, maxbeams_in, max_geometries_in, max_user_streams_in, max_user_relazms_in, max_user_obsgeoms_in, max_atmoswfs_in, max_surfacewfs_in, max_sleavewfs_in, nlayers_in, ntotal_in, n_user_streams_in, n_user_relazms_in, nbeams_in, earth_radius_in, n_geometries_in):
         """
 
-        FullPhysics::Twostream_L_Master::Twostream_L_Master(const int &thread_in, const int &nthreads_in, const int &nlayers_in,
-        const int &ntotal_in, const int &n_geometries_in, const int
-        &n_user_streams_in, const int &n_user_relazms_in, const int
-        &nbeams_in, const double &earth_radius_in, const int &npars_in, const
-        int &nspars_in)
+        FullPhysics::Twostream_Lps_Master::Twostream_Lps_Master(const int &maxlayers_in, const int &maxtotal_in, const int
+        &maxmessages_in, const int &maxbeams_in, const int &max_geometries_in,
+        const int &max_user_streams_in, const int &max_user_relazms_in, const
+        int &max_user_obsgeoms_in, const int &max_atmoswfs_in, const int
+        &max_surfacewfs_in, const int &max_sleavewfs_in, const int
+        &nlayers_in, const int &ntotal_in, const int &n_user_streams_in, const
+        int &n_user_relazms_in, const int &nbeams_in, const double
+        &earth_radius_in, const int &n_geometries_in)
 
         """
-        _twostream_interface.Twostream_L_Master_swiginit(self, _twostream_interface.new_Twostream_L_Master(thread_in, nthreads_in, nlayers_in, ntotal_in, n_geometries_in, n_user_streams_in, n_user_relazms_in, nbeams_in, earth_radius_in, npars_in, nspars_in))
+        _twostream_interface.Twostream_Lps_Master_swiginit(self, _twostream_interface.new_Twostream_Lps_Master(maxlayers_in, maxtotal_in, maxmessages_in, maxbeams_in, max_geometries_in, max_user_streams_in, max_user_relazms_in, max_user_obsgeoms_in, max_atmoswfs_in, max_surfacewfs_in, max_sleavewfs_in, nlayers_in, ntotal_in, n_user_streams_in, n_user_relazms_in, nbeams_in, earth_radius_in, n_geometries_in))
+    __swig_destroy__ = _twostream_interface.delete_Twostream_Lps_Master
 
-    def thread(self):
+    def _v_maxlayers(self):
         """
 
-        const int& FullPhysics::Twostream_L_Master::thread() const
+        const int& FullPhysics::Twostream_Lps_Master::maxlayers() const
 
         """
-        return _twostream_interface.Twostream_L_Master_thread(self)
+        return _twostream_interface.Twostream_Lps_Master__v_maxlayers(self)
 
 
+    @property
+    def maxlayers(self):
+        return self._v_maxlayers()
+
+
+    def _v_maxtotal(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::maxtotal() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_maxtotal(self)
+
+
+    @property
+    def maxtotal(self):
+        return self._v_maxtotal()
+
+
+    def _v_maxmessages(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::maxmessages() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_maxmessages(self)
+
+
+    @property
+    def maxmessages(self):
+        return self._v_maxmessages()
+
+
+    def _v_maxbeams(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::maxbeams() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_maxbeams(self)
+
+
+    @property
+    def maxbeams(self):
+        return self._v_maxbeams()
+
+
+    def _v_max_geometries(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::max_geometries() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_max_geometries(self)
+
+
+    @property
+    def max_geometries(self):
+        return self._v_max_geometries()
+
+
+    def _v_max_user_streams(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::max_user_streams() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_max_user_streams(self)
+
+
+    @property
+    def max_user_streams(self):
+        return self._v_max_user_streams()
+
+
+    def _v_max_user_relazms(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::max_user_relazms() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_max_user_relazms(self)
+
+
+    @property
+    def max_user_relazms(self):
+        return self._v_max_user_relazms()
+
+
+    def _v_max_user_obsgeoms(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::max_user_obsgeoms() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_max_user_obsgeoms(self)
+
+
+    @property
+    def max_user_obsgeoms(self):
+        return self._v_max_user_obsgeoms()
+
+
+    def _v_max_atmoswfs(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::max_atmoswfs() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_max_atmoswfs(self)
+
+
+    @property
+    def max_atmoswfs(self):
+        return self._v_max_atmoswfs()
+
+
+    def _v_max_surfacewfs(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::max_surfacewfs() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_max_surfacewfs(self)
+
+
+    @property
+    def max_surfacewfs(self):
+        return self._v_max_surfacewfs()
+
+
+    def _v_max_sleavewfs(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::max_sleavewfs() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_max_sleavewfs(self)
+
+
+    @property
+    def max_sleavewfs(self):
+        return self._v_max_sleavewfs()
+
+
+    def _v_do_upwelling(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::do_upwelling(const bool &do_upwelling_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_do_upwelling(self)
+
+
+    @property
     def do_upwelling(self):
+        return self._v_do_upwelling()
+
+
+    def _v_do_dnwelling(self):
         """
 
-        void FullPhysics::Twostream_L_Master::do_upwelling(const bool &do_upwelling_in)
+        void FullPhysics::Twostream_Lps_Master::do_dnwelling(const bool &do_dnwelling_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_do_upwelling(self)
+        return _twostream_interface.Twostream_Lps_Master__v_do_dnwelling(self)
 
 
+    @property
     def do_dnwelling(self):
+        return self._v_do_dnwelling()
+
+
+    def _v_do_plane_parallel(self):
         """
 
-        void FullPhysics::Twostream_L_Master::do_dnwelling(const bool &do_dnwelling_in)
+        void FullPhysics::Twostream_Lps_Master::do_plane_parallel(const bool &do_plane_parallel_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_do_dnwelling(self)
+        return _twostream_interface.Twostream_Lps_Master__v_do_plane_parallel(self)
 
 
+    @property
     def do_plane_parallel(self):
+        return self._v_do_plane_parallel()
+
+
+    def _v_do_2s_levelout(self):
         """
 
-        void FullPhysics::Twostream_L_Master::do_plane_parallel(const bool &do_plane_parallel_in)
+        void FullPhysics::Twostream_Lps_Master::do_2s_levelout(const bool &do_2s_levelout_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_do_plane_parallel(self)
+        return _twostream_interface.Twostream_Lps_Master__v_do_2s_levelout(self)
 
 
+    @property
+    def do_2s_levelout(self):
+        return self._v_do_2s_levelout()
+
+
+    def _v_do_mvout_only(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::do_mvout_only(const bool &do_mvout_only_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_do_mvout_only(self)
+
+
+    @property
+    def do_mvout_only(self):
+        return self._v_do_mvout_only()
+
+
+    def _v_do_additional_mvout(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::do_additional_mvout(const bool &do_additional_mvout_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_do_additional_mvout(self)
+
+
+    @property
+    def do_additional_mvout(self):
+        return self._v_do_additional_mvout()
+
+
+    def _v_do_solar_sources(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::do_solar_sources(const bool &do_solar_sources_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_do_solar_sources(self)
+
+
+    @property
     def do_solar_sources(self):
+        return self._v_do_solar_sources()
+
+
+    def _v_do_thermal_emission(self):
         """
 
-        void FullPhysics::Twostream_L_Master::do_solar_sources(const bool &do_solar_sources_in)
+        void FullPhysics::Twostream_Lps_Master::do_thermal_emission(const bool &do_thermal_emission_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_do_solar_sources(self)
+        return _twostream_interface.Twostream_Lps_Master__v_do_thermal_emission(self)
 
 
+    @property
     def do_thermal_emission(self):
+        return self._v_do_thermal_emission()
+
+
+    def _v_do_surface_emission(self):
         """
 
-        void FullPhysics::Twostream_L_Master::do_thermal_emission(const bool &do_thermal_emission_in)
+        void FullPhysics::Twostream_Lps_Master::do_surface_emission(const bool &do_surface_emission_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_do_thermal_emission(self)
+        return _twostream_interface.Twostream_Lps_Master__v_do_surface_emission(self)
 
 
+    @property
     def do_surface_emission(self):
+        return self._v_do_surface_emission()
+
+
+    def _v_do_d2s_scaling(self):
         """
 
-        void FullPhysics::Twostream_L_Master::do_surface_emission(const bool &do_surface_emission_in)
+        void FullPhysics::Twostream_Lps_Master::do_d2s_scaling(const bool &do_d2s_scaling_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_do_surface_emission(self)
+        return _twostream_interface.Twostream_Lps_Master__v_do_d2s_scaling(self)
 
 
+    @property
     def do_d2s_scaling(self):
+        return self._v_do_d2s_scaling()
+
+
+    def _v_do_brdf_surface(self):
         """
 
-        void FullPhysics::Twostream_L_Master::do_d2s_scaling(const bool &do_d2s_scaling_in)
+        void FullPhysics::Twostream_Lps_Master::do_brdf_surface(const bool &do_brdf_surface_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_do_d2s_scaling(self)
+        return _twostream_interface.Twostream_Lps_Master__v_do_brdf_surface(self)
 
 
+    @property
     def do_brdf_surface(self):
+        return self._v_do_brdf_surface()
+
+
+    def _v_do_user_obsgeoms(self):
         """
 
-        void FullPhysics::Twostream_L_Master::do_brdf_surface(const bool &do_brdf_surface_in)
+        void FullPhysics::Twostream_Lps_Master::do_user_obsgeoms(const bool &do_user_obsgeoms_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_do_brdf_surface(self)
+        return _twostream_interface.Twostream_Lps_Master__v_do_user_obsgeoms(self)
 
 
-    def pure_nadir(self):
+    @property
+    def do_user_obsgeoms(self):
+        return self._v_do_user_obsgeoms()
+
+
+    def _v_do_surface_leaving(self):
         """
 
-        void FullPhysics::Twostream_L_Master::pure_nadir(const bool &pure_nadir_in)
+        void FullPhysics::Twostream_Lps_Master::do_surface_leaving(const bool &do_surface_leaving_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_pure_nadir(self)
+        return _twostream_interface.Twostream_Lps_Master__v_do_surface_leaving(self)
 
 
-    def nthreads(self):
+    @property
+    def do_surface_leaving(self):
+        return self._v_do_surface_leaving()
+
+
+    def _v_do_sl_isotropic(self):
         """
 
-        const int& FullPhysics::Twostream_L_Master::nthreads() const
+        void FullPhysics::Twostream_Lps_Master::do_sl_isotropic(const bool &do_sl_isotropic_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_nthreads(self)
+        return _twostream_interface.Twostream_Lps_Master__v_do_sl_isotropic(self)
 
 
+    @property
+    def do_sl_isotropic(self):
+        return self._v_do_sl_isotropic()
+
+
+    def _v_do_pentadiag_inverse(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::do_pentadiag_inverse(const bool &do_pentadiag_inverse_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_do_pentadiag_inverse(self)
+
+
+    @property
+    def do_pentadiag_inverse(self):
+        return self._v_do_pentadiag_inverse()
+
+
+    def _v_bvpindex(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::bvpindex(const int &bvpindex_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_bvpindex(self)
+
+
+    @property
+    def bvpindex(self):
+        return self._v_bvpindex()
+
+
+    def _v_bvpscalefactor(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::bvpscalefactor(const double &bvpscalefactor_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_bvpscalefactor(self)
+
+
+    @property
+    def bvpscalefactor(self):
+        return self._v_bvpscalefactor()
+
+
+    def _v_taylor_order(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::taylor_order(const int &taylor_order_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_taylor_order(self)
+
+
+    @property
+    def taylor_order(self):
+        return self._v_taylor_order()
+
+
+    def _v_taylor_small(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::taylor_small(const double &taylor_small_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_taylor_small(self)
+
+
+    @property
+    def taylor_small(self):
+        return self._v_taylor_small()
+
+
+    def _v_tcutoff(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::tcutoff(const double &tcutoff_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_tcutoff(self)
+
+
+    @property
+    def tcutoff(self):
+        return self._v_tcutoff()
+
+
+    def _v_nlayers(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::nlayers() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_nlayers(self)
+
+
+    @property
     def nlayers(self):
+        return self._v_nlayers()
+
+
+    def _v_ntotal(self):
         """
 
-        const int& FullPhysics::Twostream_L_Master::nlayers() const
+        const int& FullPhysics::Twostream_Lps_Master::ntotal() const
 
         """
-        return _twostream_interface.Twostream_L_Master_nlayers(self)
+        return _twostream_interface.Twostream_Lps_Master__v_ntotal(self)
 
 
+    @property
     def ntotal(self):
+        return self._v_ntotal()
+
+
+    def _v_stream_value(self):
         """
 
-        const int& FullPhysics::Twostream_L_Master::ntotal() const
+        void FullPhysics::Twostream_Lps_Master::stream_value(const double &stream_value_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_ntotal(self)
+        return _twostream_interface.Twostream_Lps_Master__v_stream_value(self)
 
 
-    def n_geometries(self):
-        """
-
-        const int& FullPhysics::Twostream_L_Master::n_geometries() const
-
-        """
-        return _twostream_interface.Twostream_L_Master_n_geometries(self)
-
-
+    @property
     def stream_value(self):
+        return self._v_stream_value()
+
+
+    def _v_n_user_obsgeoms(self):
         """
 
-        void FullPhysics::Twostream_L_Master::stream_value(const double &stream_value_in)
+        void FullPhysics::Twostream_Lps_Master::n_user_obsgeoms(const int &n_user_obsgeoms_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_stream_value(self)
+        return _twostream_interface.Twostream_Lps_Master__v_n_user_obsgeoms(self)
 
 
+    @property
+    def n_user_obsgeoms(self):
+        return self._v_n_user_obsgeoms()
+
+
+    def _v_user_obsgeoms(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::user_obsgeoms(const blitz::Array< double, 2 > &user_obsgeoms_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_user_obsgeoms(self)
+
+
+    @property
+    def user_obsgeoms(self):
+        return self._v_user_obsgeoms()
+
+
+    def _v_n_user_streams(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::n_user_streams() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_n_user_streams(self)
+
+
+    @property
     def n_user_streams(self):
+        return self._v_n_user_streams()
+
+
+    def _v_user_angles(self):
         """
 
-        const int& FullPhysics::Twostream_L_Master::n_user_streams() const
+        void FullPhysics::Twostream_Lps_Master::user_angles(const blitz::Array< double, 1 > &user_angles_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_n_user_streams(self)
+        return _twostream_interface.Twostream_Lps_Master__v_user_angles(self)
 
 
+    @property
     def user_angles(self):
+        return self._v_user_angles()
+
+
+    def _v_n_user_relazms(self):
         """
 
-        void FullPhysics::Twostream_L_Master::user_angles(const blitz::Array< double, 1 > &user_angles_in)
+        const int& FullPhysics::Twostream_Lps_Master::n_user_relazms() const
 
         """
-        return _twostream_interface.Twostream_L_Master_user_angles(self)
+        return _twostream_interface.Twostream_Lps_Master__v_n_user_relazms(self)
 
 
+    @property
     def n_user_relazms(self):
+        return self._v_n_user_relazms()
+
+
+    def _v_user_relazms(self):
         """
 
-        const int& FullPhysics::Twostream_L_Master::n_user_relazms() const
+        void FullPhysics::Twostream_Lps_Master::user_relazms(const blitz::Array< double, 1 > &user_relazms_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_n_user_relazms(self)
+        return _twostream_interface.Twostream_Lps_Master__v_user_relazms(self)
 
 
+    @property
     def user_relazms(self):
+        return self._v_user_relazms()
+
+
+    def _v_flux_factor(self):
         """
 
-        void FullPhysics::Twostream_L_Master::user_relazms(const blitz::Array< double, 1 > &user_relazms_in)
+        void FullPhysics::Twostream_Lps_Master::flux_factor(const double &flux_factor_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_user_relazms(self)
+        return _twostream_interface.Twostream_Lps_Master__v_flux_factor(self)
 
 
+    @property
     def flux_factor(self):
+        return self._v_flux_factor()
+
+
+    def _v_nbeams(self):
         """
 
-        void FullPhysics::Twostream_L_Master::flux_factor(const double &flux_factor_in)
+        const int& FullPhysics::Twostream_Lps_Master::nbeams() const
 
         """
-        return _twostream_interface.Twostream_L_Master_flux_factor(self)
+        return _twostream_interface.Twostream_Lps_Master__v_nbeams(self)
 
 
+    @property
     def nbeams(self):
+        return self._v_nbeams()
+
+
+    def _v_beam_szas(self):
         """
 
-        const int& FullPhysics::Twostream_L_Master::nbeams() const
+        void FullPhysics::Twostream_Lps_Master::beam_szas(const blitz::Array< double, 1 > &beam_szas_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_nbeams(self)
+        return _twostream_interface.Twostream_Lps_Master__v_beam_szas(self)
 
 
+    @property
     def beam_szas(self):
+        return self._v_beam_szas()
+
+
+    def _v_earth_radius(self):
         """
 
-        void FullPhysics::Twostream_L_Master::beam_szas(const blitz::Array< double, 1 > &beam_szas_in)
+        const double& FullPhysics::Twostream_Lps_Master::earth_radius() const
 
         """
-        return _twostream_interface.Twostream_L_Master_beam_szas(self)
+        return _twostream_interface.Twostream_Lps_Master__v_earth_radius(self)
 
 
+    @property
     def earth_radius(self):
+        return self._v_earth_radius()
+
+
+    def _v_height_grid(self):
         """
 
-        const double& FullPhysics::Twostream_L_Master::earth_radius() const
+        void FullPhysics::Twostream_Lps_Master::height_grid(const blitz::Array< double, 1 > &height_grid_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_earth_radius(self)
+        return _twostream_interface.Twostream_Lps_Master__v_height_grid(self)
 
 
+    @property
     def height_grid(self):
+        return self._v_height_grid()
+
+
+    def _v_deltau_input(self):
         """
 
-        void FullPhysics::Twostream_L_Master::height_grid(const blitz::Array< double, 1 > &height_grid_in)
+        void FullPhysics::Twostream_Lps_Master::deltau_input(const blitz::Array< double, 1 > &deltau_input_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_height_grid(self)
+        return _twostream_interface.Twostream_Lps_Master__v_deltau_input(self)
 
 
+    @property
     def deltau_input(self):
+        return self._v_deltau_input()
+
+
+    def _v_omega_input(self):
         """
 
-        void FullPhysics::Twostream_L_Master::deltau_input(const blitz::Array< double, 2 > &deltau_input_in)
+        void FullPhysics::Twostream_Lps_Master::omega_input(const blitz::Array< double, 1 > &omega_input_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_deltau_input(self)
+        return _twostream_interface.Twostream_Lps_Master__v_omega_input(self)
 
 
+    @property
     def omega_input(self):
+        return self._v_omega_input()
+
+
+    def _v_asymm_input(self):
         """
 
-        void FullPhysics::Twostream_L_Master::omega_input(const blitz::Array< double, 2 > &omega_input_in)
+        void FullPhysics::Twostream_Lps_Master::asymm_input(const blitz::Array< double, 1 > &asymm_input_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_omega_input(self)
+        return _twostream_interface.Twostream_Lps_Master__v_asymm_input(self)
 
 
+    @property
     def asymm_input(self):
+        return self._v_asymm_input()
+
+
+    def _v_d2s_scaling(self):
         """
 
-        void FullPhysics::Twostream_L_Master::asymm_input(const blitz::Array< double, 2 > &asymm_input_in)
+        void FullPhysics::Twostream_Lps_Master::d2s_scaling(const blitz::Array< double, 1 > &d2s_scaling_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_asymm_input(self)
+        return _twostream_interface.Twostream_Lps_Master__v_d2s_scaling(self)
 
 
+    @property
     def d2s_scaling(self):
+        return self._v_d2s_scaling()
+
+
+    def _v_thermal_bb_input(self):
         """
 
-        void FullPhysics::Twostream_L_Master::d2s_scaling(const blitz::Array< double, 2 > &d2s_scaling_in)
+        void FullPhysics::Twostream_Lps_Master::thermal_bb_input(const blitz::Array< double, 1 > &thermal_bb_input_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_d2s_scaling(self)
+        return _twostream_interface.Twostream_Lps_Master__v_thermal_bb_input(self)
 
 
+    @property
     def thermal_bb_input(self):
+        return self._v_thermal_bb_input()
+
+
+    def _v_lambertian_albedo(self):
         """
 
-        void FullPhysics::Twostream_L_Master::thermal_bb_input(const blitz::Array< double, 1 > &thermal_bb_input_in)
+        void FullPhysics::Twostream_Lps_Master::lambertian_albedo(const double &lambertian_albedo_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_thermal_bb_input(self)
+        return _twostream_interface.Twostream_Lps_Master__v_lambertian_albedo(self)
 
 
+    @property
     def lambertian_albedo(self):
+        return self._v_lambertian_albedo()
+
+
+    def _v_brdf_f_0(self):
         """
 
-        void FullPhysics::Twostream_L_Master::lambertian_albedo(const blitz::Array< double, 1 > &lambertian_albedo_in)
+        void FullPhysics::Twostream_Lps_Master::brdf_f_0(const blitz::Array< double, 2 > &brdf_f_0_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_lambertian_albedo(self)
+        return _twostream_interface.Twostream_Lps_Master__v_brdf_f_0(self)
 
 
+    @property
     def brdf_f_0(self):
+        return self._v_brdf_f_0()
+
+
+    def _v_brdf_f(self):
         """
 
-        void FullPhysics::Twostream_L_Master::brdf_f_0(const blitz::Array< double, 2 > &brdf_f_0_in)
+        void FullPhysics::Twostream_Lps_Master::brdf_f(const blitz::Array< double, 1 > &brdf_f_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_brdf_f_0(self)
+        return _twostream_interface.Twostream_Lps_Master__v_brdf_f(self)
 
 
+    @property
     def brdf_f(self):
+        return self._v_brdf_f()
+
+
+    def _v_ubrdf_f(self):
         """
 
-        void FullPhysics::Twostream_L_Master::brdf_f(const blitz::Array< double, 1 > &brdf_f_in)
+        void FullPhysics::Twostream_Lps_Master::ubrdf_f(const blitz::Array< double, 2 > &ubrdf_f_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_brdf_f(self)
+        return _twostream_interface.Twostream_Lps_Master__v_ubrdf_f(self)
 
 
+    @property
     def ubrdf_f(self):
+        return self._v_ubrdf_f()
+
+
+    def _v_emissivity(self):
         """
 
-        void FullPhysics::Twostream_L_Master::ubrdf_f(const blitz::Array< double, 2 > &ubrdf_f_in)
+        void FullPhysics::Twostream_Lps_Master::emissivity(const double &emissivity_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_ubrdf_f(self)
+        return _twostream_interface.Twostream_Lps_Master__v_emissivity(self)
 
 
+    @property
     def emissivity(self):
+        return self._v_emissivity()
+
+
+    def _v_surfbb(self):
         """
 
-        void FullPhysics::Twostream_L_Master::emissivity(const double &emissivity_in)
+        void FullPhysics::Twostream_Lps_Master::surfbb(const double &surfbb_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_emissivity(self)
+        return _twostream_interface.Twostream_Lps_Master__v_surfbb(self)
 
 
+    @property
     def surfbb(self):
+        return self._v_surfbb()
+
+
+    def _v_slterm_isotropic(self):
         """
 
-        void FullPhysics::Twostream_L_Master::surfbb(const double &surfbb_in)
+        void FullPhysics::Twostream_Lps_Master::slterm_isotropic(const blitz::Array< double, 1 > &slterm_isotropic_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_surfbb(self)
+        return _twostream_interface.Twostream_Lps_Master__v_slterm_isotropic(self)
 
 
-    def do_sim_only(self):
+    @property
+    def slterm_isotropic(self):
+        return self._v_slterm_isotropic()
+
+
+    def _v_slterm_f_0(self):
         """
 
-        void FullPhysics::Twostream_L_Master::do_sim_only(const bool &do_sim_only_in)
+        void FullPhysics::Twostream_Lps_Master::slterm_f_0(const blitz::Array< double, 2 > &slterm_f_0_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_do_sim_only(self)
+        return _twostream_interface.Twostream_Lps_Master__v_slterm_f_0(self)
 
 
+    @property
+    def slterm_f_0(self):
+        return self._v_slterm_f_0()
+
+
+    def _v_do_profile_wfs(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::do_profile_wfs(const bool &do_profile_wfs_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_do_profile_wfs(self)
+
+
+    @property
     def do_profile_wfs(self):
+        return self._v_do_profile_wfs()
+
+
+    def _v_do_surface_wfs(self):
         """
 
-        void FullPhysics::Twostream_L_Master::do_profile_wfs(const bool &do_profile_wfs_in)
+        void FullPhysics::Twostream_Lps_Master::do_surface_wfs(const bool &do_surface_wfs_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_do_profile_wfs(self)
+        return _twostream_interface.Twostream_Lps_Master__v_do_surface_wfs(self)
 
 
-    def do_column_wfs(self):
-        """
-
-        void FullPhysics::Twostream_L_Master::do_column_wfs(const bool &do_column_wfs_in)
-
-        """
-        return _twostream_interface.Twostream_L_Master_do_column_wfs(self)
-
-
+    @property
     def do_surface_wfs(self):
+        return self._v_do_surface_wfs()
+
+
+    def _v_do_sleave_wfs(self):
         """
 
-        void FullPhysics::Twostream_L_Master::do_surface_wfs(const bool &do_surface_wfs_in)
+        void FullPhysics::Twostream_Lps_Master::do_sleave_wfs(const bool &do_sleave_wfs_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_do_surface_wfs(self)
+        return _twostream_interface.Twostream_Lps_Master__v_do_sleave_wfs(self)
 
 
-    def npars(self):
+    @property
+    def do_sleave_wfs(self):
+        return self._v_do_sleave_wfs()
+
+
+    def _v_layer_vary_flag(self):
         """
 
-        const int& FullPhysics::Twostream_L_Master::npars() const
+        void FullPhysics::Twostream_Lps_Master::layer_vary_flag(const blitz::Array< bool, 1 > &layer_vary_flag_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_npars(self)
+        return _twostream_interface.Twostream_Lps_Master__v_layer_vary_flag(self)
 
 
-    def nspars(self):
-        """
-
-        const int& FullPhysics::Twostream_L_Master::nspars() const
-
-        """
-        return _twostream_interface.Twostream_L_Master_nspars(self)
-
-
+    @property
     def layer_vary_flag(self):
+        return self._v_layer_vary_flag()
+
+
+    def _v_layer_vary_number(self):
         """
 
-        void FullPhysics::Twostream_L_Master::layer_vary_flag(const blitz::Array< bool, 1 > &layer_vary_flag_in)
+        void FullPhysics::Twostream_Lps_Master::layer_vary_number(const blitz::Array< int, 1 > &layer_vary_number_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_layer_vary_flag(self)
+        return _twostream_interface.Twostream_Lps_Master__v_layer_vary_number(self)
 
 
+    @property
     def layer_vary_number(self):
+        return self._v_layer_vary_number()
+
+
+    def _v_n_surface_wfs(self):
         """
 
-        void FullPhysics::Twostream_L_Master::layer_vary_number(const blitz::Array< int, 1 > &layer_vary_number_in)
+        void FullPhysics::Twostream_Lps_Master::n_surface_wfs(const int &n_surface_wfs_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_layer_vary_number(self)
+        return _twostream_interface.Twostream_Lps_Master__v_n_surface_wfs(self)
 
 
-    def n_column_wfs(self):
-        """
-
-        void FullPhysics::Twostream_L_Master::n_column_wfs(const int &n_column_wfs_in)
-
-        """
-        return _twostream_interface.Twostream_L_Master_n_column_wfs(self)
-
-
+    @property
     def n_surface_wfs(self):
+        return self._v_n_surface_wfs()
+
+
+    def _v_n_sleave_wfs(self):
         """
 
-        void FullPhysics::Twostream_L_Master::n_surface_wfs(const int &n_surface_wfs_in)
+        void FullPhysics::Twostream_Lps_Master::n_sleave_wfs(const int &n_sleave_wfs_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_n_surface_wfs(self)
+        return _twostream_interface.Twostream_Lps_Master__v_n_sleave_wfs(self)
 
 
+    @property
+    def n_sleave_wfs(self):
+        return self._v_n_sleave_wfs()
+
+
+    def _v_lssl_slterm_isotropic(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::lssl_slterm_isotropic(const blitz::Array< double, 2 > &lssl_slterm_isotropic_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_lssl_slterm_isotropic(self)
+
+
+    @property
+    def lssl_slterm_isotropic(self):
+        return self._v_lssl_slterm_isotropic()
+
+
+    def _v_lssl_slterm_f_0(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::lssl_slterm_f_0(const blitz::Array< double, 3 > &lssl_slterm_f_0_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_lssl_slterm_f_0(self)
+
+
+    @property
+    def lssl_slterm_f_0(self):
+        return self._v_lssl_slterm_f_0()
+
+
+    def _v_l_deltau_input(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::l_deltau_input(const blitz::Array< double, 2 > &l_deltau_input_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_l_deltau_input(self)
+
+
+    @property
     def l_deltau_input(self):
+        return self._v_l_deltau_input()
+
+
+    def _v_l_omega_input(self):
         """
 
-        void FullPhysics::Twostream_L_Master::l_deltau_input(const blitz::Array< double, 3 > &l_deltau_input_in)
+        void FullPhysics::Twostream_Lps_Master::l_omega_input(const blitz::Array< double, 2 > &l_omega_input_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_l_deltau_input(self)
+        return _twostream_interface.Twostream_Lps_Master__v_l_omega_input(self)
 
 
+    @property
     def l_omega_input(self):
+        return self._v_l_omega_input()
+
+
+    def _v_l_asymm_input(self):
         """
 
-        void FullPhysics::Twostream_L_Master::l_omega_input(const blitz::Array< double, 3 > &l_omega_input_in)
+        void FullPhysics::Twostream_Lps_Master::l_asymm_input(const blitz::Array< double, 2 > &l_asymm_input_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_l_omega_input(self)
+        return _twostream_interface.Twostream_Lps_Master__v_l_asymm_input(self)
 
 
+    @property
     def l_asymm_input(self):
+        return self._v_l_asymm_input()
+
+
+    def _v_l_d2s_scaling(self):
         """
 
-        void FullPhysics::Twostream_L_Master::l_asymm_input(const blitz::Array< double, 3 > &l_asymm_input_in)
+        void FullPhysics::Twostream_Lps_Master::l_d2s_scaling(const blitz::Array< double, 2 > &l_d2s_scaling_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_l_asymm_input(self)
+        return _twostream_interface.Twostream_Lps_Master__v_l_d2s_scaling(self)
 
 
+    @property
     def l_d2s_scaling(self):
+        return self._v_l_d2s_scaling()
+
+
+    def _v_ls_brdf_f_0(self):
         """
 
-        void FullPhysics::Twostream_L_Master::l_d2s_scaling(const blitz::Array< double, 3 > &l_d2s_scaling_in)
+        void FullPhysics::Twostream_Lps_Master::ls_brdf_f_0(const blitz::Array< double, 3 > &ls_brdf_f_0_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_l_d2s_scaling(self)
+        return _twostream_interface.Twostream_Lps_Master__v_ls_brdf_f_0(self)
 
 
+    @property
     def ls_brdf_f_0(self):
+        return self._v_ls_brdf_f_0()
+
+
+    def _v_ls_brdf_f(self):
         """
 
-        void FullPhysics::Twostream_L_Master::ls_brdf_f_0(const blitz::Array< double, 3 > &ls_brdf_f_0_in)
+        void FullPhysics::Twostream_Lps_Master::ls_brdf_f(const blitz::Array< double, 2 > &ls_brdf_f_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_ls_brdf_f_0(self)
+        return _twostream_interface.Twostream_Lps_Master__v_ls_brdf_f(self)
 
 
+    @property
     def ls_brdf_f(self):
+        return self._v_ls_brdf_f()
+
+
+    def _v_ls_ubrdf_f(self):
         """
 
-        void FullPhysics::Twostream_L_Master::ls_brdf_f(const blitz::Array< double, 2 > &ls_brdf_f_in)
+        void FullPhysics::Twostream_Lps_Master::ls_ubrdf_f(const blitz::Array< double, 3 > &ls_ubrdf_f_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_ls_brdf_f(self)
+        return _twostream_interface.Twostream_Lps_Master__v_ls_ubrdf_f(self)
 
 
+    @property
     def ls_ubrdf_f(self):
+        return self._v_ls_ubrdf_f()
+
+
+    def _v_ls_emissivity(self):
         """
 
-        void FullPhysics::Twostream_L_Master::ls_ubrdf_f(const blitz::Array< double, 3 > &ls_ubrdf_f_in)
+        void FullPhysics::Twostream_Lps_Master::ls_emissivity(const blitz::Array< double, 1 > &ls_emissivity_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_ls_ubrdf_f(self)
+        return _twostream_interface.Twostream_Lps_Master__v_ls_emissivity(self)
 
 
-    def ls_emiss(self):
+    @property
+    def ls_emissivity(self):
+        return self._v_ls_emissivity()
+
+
+    def _v_intensity_toa(self):
         """
 
-        void FullPhysics::Twostream_L_Master::ls_emiss(const blitz::Array< double, 1 > &ls_emiss_in)
+        void FullPhysics::Twostream_Lps_Master::intensity_toa(const blitz::Array< double, 1 > &intensity_toa_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_ls_emiss(self)
+        return _twostream_interface.Twostream_Lps_Master__v_intensity_toa(self)
 
 
+    @property
     def intensity_toa(self):
+        return self._v_intensity_toa()
+
+
+    def _v_profilewf_toa(self):
         """
 
-        void FullPhysics::Twostream_L_Master::intensity_toa(const blitz::Array< double, 2 > &intensity_toa_in)
+        void FullPhysics::Twostream_Lps_Master::profilewf_toa(const blitz::Array< double, 3 > &profilewf_toa_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_intensity_toa(self)
+        return _twostream_interface.Twostream_Lps_Master__v_profilewf_toa(self)
 
 
+    @property
     def profilewf_toa(self):
+        return self._v_profilewf_toa()
+
+
+    def _v_surfacewf_toa(self):
         """
 
-        void FullPhysics::Twostream_L_Master::profilewf_toa(const blitz::Array< double, 4 > &profilewf_toa_in)
+        void FullPhysics::Twostream_Lps_Master::surfacewf_toa(const blitz::Array< double, 2 > &surfacewf_toa_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_profilewf_toa(self)
+        return _twostream_interface.Twostream_Lps_Master__v_surfacewf_toa(self)
 
 
-    def columnwf_toa(self):
-        """
-
-        void FullPhysics::Twostream_L_Master::columnwf_toa(const blitz::Array< double, 3 > &columnwf_toa_in)
-
-        """
-        return _twostream_interface.Twostream_L_Master_columnwf_toa(self)
-
-
+    @property
     def surfacewf_toa(self):
+        return self._v_surfacewf_toa()
+
+
+    def _v_intensity_boa(self):
         """
 
-        void FullPhysics::Twostream_L_Master::surfacewf_toa(const blitz::Array< double, 3 > &surfacewf_toa_in)
+        void FullPhysics::Twostream_Lps_Master::intensity_boa(const blitz::Array< double, 1 > &intensity_boa_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_surfacewf_toa(self)
+        return _twostream_interface.Twostream_Lps_Master__v_intensity_boa(self)
 
 
+    @property
     def intensity_boa(self):
+        return self._v_intensity_boa()
+
+
+    def _v_profilewf_boa(self):
         """
 
-        void FullPhysics::Twostream_L_Master::intensity_boa(const blitz::Array< double, 2 > &intensity_boa_in)
+        void FullPhysics::Twostream_Lps_Master::profilewf_boa(const blitz::Array< double, 3 > &profilewf_boa_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_intensity_boa(self)
+        return _twostream_interface.Twostream_Lps_Master__v_profilewf_boa(self)
 
 
+    @property
     def profilewf_boa(self):
+        return self._v_profilewf_boa()
+
+
+    def _v_surfacewf_boa(self):
         """
 
-        void FullPhysics::Twostream_L_Master::profilewf_boa(const blitz::Array< double, 4 > &profilewf_boa_in)
+        void FullPhysics::Twostream_Lps_Master::surfacewf_boa(const blitz::Array< double, 2 > &surfacewf_boa_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_profilewf_boa(self)
+        return _twostream_interface.Twostream_Lps_Master__v_surfacewf_boa(self)
 
 
-    def columnwf_boa(self):
-        """
-
-        void FullPhysics::Twostream_L_Master::columnwf_boa(const blitz::Array< double, 3 > &columnwf_boa_in)
-
-        """
-        return _twostream_interface.Twostream_L_Master_columnwf_boa(self)
-
-
+    @property
     def surfacewf_boa(self):
+        return self._v_surfacewf_boa()
+
+
+    def _v_radlevel_up(self):
         """
 
-        void FullPhysics::Twostream_L_Master::surfacewf_boa(const blitz::Array< double, 3 > &surfacewf_boa_in)
+        void FullPhysics::Twostream_Lps_Master::radlevel_up(const blitz::Array< double, 2 > &radlevel_up_in)
 
         """
-        return _twostream_interface.Twostream_L_Master_surfacewf_boa(self)
+        return _twostream_interface.Twostream_Lps_Master__v_radlevel_up(self)
 
 
+    @property
+    def radlevel_up(self):
+        return self._v_radlevel_up()
+
+
+    def _v_radlevel_dn(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::radlevel_dn(const blitz::Array< double, 2 > &radlevel_dn_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_radlevel_dn(self)
+
+
+    @property
+    def radlevel_dn(self):
+        return self._v_radlevel_dn()
+
+
+    def _v_n_geometries(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::n_geometries() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_n_geometries(self)
+
+
+    @property
+    def n_geometries(self):
+        return self._v_n_geometries()
+
+
+    def _v_profjaclevel_up(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::profjaclevel_up(const blitz::Array< double, 4 > &profjaclevel_up_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_profjaclevel_up(self)
+
+
+    @property
+    def profjaclevel_up(self):
+        return self._v_profjaclevel_up()
+
+
+    def _v_profjaclevel_dn(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::profjaclevel_dn(const blitz::Array< double, 4 > &profjaclevel_dn_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_profjaclevel_dn(self)
+
+
+    @property
+    def profjaclevel_dn(self):
+        return self._v_profjaclevel_dn()
+
+
+    def _v_surfjaclevel_up(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::surfjaclevel_up(const blitz::Array< double, 3 > &surfjaclevel_up_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_surfjaclevel_up(self)
+
+
+    @property
+    def surfjaclevel_up(self):
+        return self._v_surfjaclevel_up()
+
+
+    def _v_surfjaclevel_dn(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::surfjaclevel_dn(const blitz::Array< double, 3 > &surfjaclevel_dn_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_surfjaclevel_dn(self)
+
+
+    @property
+    def surfjaclevel_dn(self):
+        return self._v_surfjaclevel_dn()
+
+
+    def _v_fluxes_toa(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::fluxes_toa(const blitz::Array< double, 2 > &fluxes_toa_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_fluxes_toa(self)
+
+
+    @property
+    def fluxes_toa(self):
+        return self._v_fluxes_toa()
+
+
+    def _v_profjacfluxes_toa(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::profjacfluxes_toa(const blitz::Array< double, 4 > &profjacfluxes_toa_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_profjacfluxes_toa(self)
+
+
+    @property
+    def profjacfluxes_toa(self):
+        return self._v_profjacfluxes_toa()
+
+
+    def _v_surfjacfluxes_toa(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::surfjacfluxes_toa(const blitz::Array< double, 3 > &surfjacfluxes_toa_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_surfjacfluxes_toa(self)
+
+
+    @property
+    def surfjacfluxes_toa(self):
+        return self._v_surfjacfluxes_toa()
+
+
+    def _v_fluxes_boa(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::fluxes_boa(const blitz::Array< double, 2 > &fluxes_boa_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_fluxes_boa(self)
+
+
+    @property
+    def fluxes_boa(self):
+        return self._v_fluxes_boa()
+
+
+    def _v_profjacfluxes_boa(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::profjacfluxes_boa(const blitz::Array< double, 4 > &profjacfluxes_boa_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_profjacfluxes_boa(self)
+
+
+    @property
+    def profjacfluxes_boa(self):
+        return self._v_profjacfluxes_boa()
+
+
+    def _v_surfjacfluxes_boa(self):
+        """
+
+        void FullPhysics::Twostream_Lps_Master::surfjacfluxes_boa(const blitz::Array< double, 3 > &surfjacfluxes_boa_in)
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_surfjacfluxes_boa(self)
+
+
+    @property
+    def surfjacfluxes_boa(self):
+        return self._v_surfjacfluxes_boa()
+
+
+    def _v_status_inputcheck(self):
+        """
+
+        const int& FullPhysics::Twostream_Lps_Master::status_inputcheck() const
+
+        """
+        return _twostream_interface.Twostream_Lps_Master__v_status_inputcheck(self)
+
+
+    @property
     def status_inputcheck(self):
-        """
-
-        const int& FullPhysics::Twostream_L_Master::status_inputcheck() const
-
-        """
-        return _twostream_interface.Twostream_L_Master_status_inputcheck(self)
+        return self._v_status_inputcheck()
 
 
     def c_nmessages(self):
         """
 
-        const int& FullPhysics::Twostream_L_Master::c_nmessages() const
+        const int& FullPhysics::Twostream_Lps_Master::c_nmessages() const
 
         """
-        return _twostream_interface.Twostream_L_Master_c_nmessages(self)
+        return _twostream_interface.Twostream_Lps_Master_c_nmessages(self)
 
 
     def c_messages(self):
         """
 
-        std::vector< std::string > FullPhysics::Twostream_L_Master::c_messages() const
+        std::vector< std::string > FullPhysics::Twostream_Lps_Master::c_messages() const
 
         """
-        return _twostream_interface.Twostream_L_Master_c_messages(self)
+        return _twostream_interface.Twostream_Lps_Master_c_messages(self)
 
 
     def c_actions(self):
         """
 
-        std::vector< std::string > FullPhysics::Twostream_L_Master::c_actions() const
+        std::vector< std::string > FullPhysics::Twostream_Lps_Master::c_actions() const
 
         """
-        return _twostream_interface.Twostream_L_Master_c_actions(self)
+        return _twostream_interface.Twostream_Lps_Master_c_actions(self)
 
 
     def status_execution(self):
         """
 
-        const int& FullPhysics::Twostream_L_Master::status_execution() const
+        const int& FullPhysics::Twostream_Lps_Master::status_execution() const
 
         """
-        return _twostream_interface.Twostream_L_Master_status_execution(self)
+        return _twostream_interface.Twostream_Lps_Master_status_execution(self)
 
 
     def e_message(self):
         """
 
-        std::string FullPhysics::Twostream_L_Master::e_message() const
+        std::string FullPhysics::Twostream_Lps_Master::e_message() const
 
         """
-        return _twostream_interface.Twostream_L_Master_e_message(self)
+        return _twostream_interface.Twostream_Lps_Master_e_message(self)
 
 
     def e_trace_1(self):
         """
 
-        std::string FullPhysics::Twostream_L_Master::e_trace_1() const
+        std::string FullPhysics::Twostream_Lps_Master::e_trace_1() const
 
         """
-        return _twostream_interface.Twostream_L_Master_e_trace_1(self)
+        return _twostream_interface.Twostream_Lps_Master_e_trace_1(self)
 
 
     def e_trace_2(self):
         """
 
-        std::string FullPhysics::Twostream_L_Master::e_trace_2() const
+        std::string FullPhysics::Twostream_Lps_Master::e_trace_2() const
 
         """
-        return _twostream_interface.Twostream_L_Master_e_trace_2(self)
+        return _twostream_interface.Twostream_Lps_Master_e_trace_2(self)
 
 
     def run(self):
         """
 
-        void FullPhysics::Twostream_L_Master::run()
+        void FullPhysics::Twostream_Lps_Master::run()
 
         """
-        return _twostream_interface.Twostream_L_Master_run(self)
+        return _twostream_interface.Twostream_Lps_Master_run(self)
 
-    __swig_destroy__ = _twostream_interface.delete_Twostream_L_Master
-Twostream_L_Master.thread = new_instancemethod(_twostream_interface.Twostream_L_Master_thread, None, Twostream_L_Master)
-Twostream_L_Master.do_upwelling = new_instancemethod(_twostream_interface.Twostream_L_Master_do_upwelling, None, Twostream_L_Master)
-Twostream_L_Master.do_dnwelling = new_instancemethod(_twostream_interface.Twostream_L_Master_do_dnwelling, None, Twostream_L_Master)
-Twostream_L_Master.do_plane_parallel = new_instancemethod(_twostream_interface.Twostream_L_Master_do_plane_parallel, None, Twostream_L_Master)
-Twostream_L_Master.do_solar_sources = new_instancemethod(_twostream_interface.Twostream_L_Master_do_solar_sources, None, Twostream_L_Master)
-Twostream_L_Master.do_thermal_emission = new_instancemethod(_twostream_interface.Twostream_L_Master_do_thermal_emission, None, Twostream_L_Master)
-Twostream_L_Master.do_surface_emission = new_instancemethod(_twostream_interface.Twostream_L_Master_do_surface_emission, None, Twostream_L_Master)
-Twostream_L_Master.do_d2s_scaling = new_instancemethod(_twostream_interface.Twostream_L_Master_do_d2s_scaling, None, Twostream_L_Master)
-Twostream_L_Master.do_brdf_surface = new_instancemethod(_twostream_interface.Twostream_L_Master_do_brdf_surface, None, Twostream_L_Master)
-Twostream_L_Master.pure_nadir = new_instancemethod(_twostream_interface.Twostream_L_Master_pure_nadir, None, Twostream_L_Master)
-Twostream_L_Master.nthreads = new_instancemethod(_twostream_interface.Twostream_L_Master_nthreads, None, Twostream_L_Master)
-Twostream_L_Master.nlayers = new_instancemethod(_twostream_interface.Twostream_L_Master_nlayers, None, Twostream_L_Master)
-Twostream_L_Master.ntotal = new_instancemethod(_twostream_interface.Twostream_L_Master_ntotal, None, Twostream_L_Master)
-Twostream_L_Master.n_geometries = new_instancemethod(_twostream_interface.Twostream_L_Master_n_geometries, None, Twostream_L_Master)
-Twostream_L_Master.stream_value = new_instancemethod(_twostream_interface.Twostream_L_Master_stream_value, None, Twostream_L_Master)
-Twostream_L_Master.n_user_streams = new_instancemethod(_twostream_interface.Twostream_L_Master_n_user_streams, None, Twostream_L_Master)
-Twostream_L_Master.user_angles = new_instancemethod(_twostream_interface.Twostream_L_Master_user_angles, None, Twostream_L_Master)
-Twostream_L_Master.n_user_relazms = new_instancemethod(_twostream_interface.Twostream_L_Master_n_user_relazms, None, Twostream_L_Master)
-Twostream_L_Master.user_relazms = new_instancemethod(_twostream_interface.Twostream_L_Master_user_relazms, None, Twostream_L_Master)
-Twostream_L_Master.flux_factor = new_instancemethod(_twostream_interface.Twostream_L_Master_flux_factor, None, Twostream_L_Master)
-Twostream_L_Master.nbeams = new_instancemethod(_twostream_interface.Twostream_L_Master_nbeams, None, Twostream_L_Master)
-Twostream_L_Master.beam_szas = new_instancemethod(_twostream_interface.Twostream_L_Master_beam_szas, None, Twostream_L_Master)
-Twostream_L_Master.earth_radius = new_instancemethod(_twostream_interface.Twostream_L_Master_earth_radius, None, Twostream_L_Master)
-Twostream_L_Master.height_grid = new_instancemethod(_twostream_interface.Twostream_L_Master_height_grid, None, Twostream_L_Master)
-Twostream_L_Master.deltau_input = new_instancemethod(_twostream_interface.Twostream_L_Master_deltau_input, None, Twostream_L_Master)
-Twostream_L_Master.omega_input = new_instancemethod(_twostream_interface.Twostream_L_Master_omega_input, None, Twostream_L_Master)
-Twostream_L_Master.asymm_input = new_instancemethod(_twostream_interface.Twostream_L_Master_asymm_input, None, Twostream_L_Master)
-Twostream_L_Master.d2s_scaling = new_instancemethod(_twostream_interface.Twostream_L_Master_d2s_scaling, None, Twostream_L_Master)
-Twostream_L_Master.thermal_bb_input = new_instancemethod(_twostream_interface.Twostream_L_Master_thermal_bb_input, None, Twostream_L_Master)
-Twostream_L_Master.lambertian_albedo = new_instancemethod(_twostream_interface.Twostream_L_Master_lambertian_albedo, None, Twostream_L_Master)
-Twostream_L_Master.brdf_f_0 = new_instancemethod(_twostream_interface.Twostream_L_Master_brdf_f_0, None, Twostream_L_Master)
-Twostream_L_Master.brdf_f = new_instancemethod(_twostream_interface.Twostream_L_Master_brdf_f, None, Twostream_L_Master)
-Twostream_L_Master.ubrdf_f = new_instancemethod(_twostream_interface.Twostream_L_Master_ubrdf_f, None, Twostream_L_Master)
-Twostream_L_Master.emissivity = new_instancemethod(_twostream_interface.Twostream_L_Master_emissivity, None, Twostream_L_Master)
-Twostream_L_Master.surfbb = new_instancemethod(_twostream_interface.Twostream_L_Master_surfbb, None, Twostream_L_Master)
-Twostream_L_Master.do_sim_only = new_instancemethod(_twostream_interface.Twostream_L_Master_do_sim_only, None, Twostream_L_Master)
-Twostream_L_Master.do_profile_wfs = new_instancemethod(_twostream_interface.Twostream_L_Master_do_profile_wfs, None, Twostream_L_Master)
-Twostream_L_Master.do_column_wfs = new_instancemethod(_twostream_interface.Twostream_L_Master_do_column_wfs, None, Twostream_L_Master)
-Twostream_L_Master.do_surface_wfs = new_instancemethod(_twostream_interface.Twostream_L_Master_do_surface_wfs, None, Twostream_L_Master)
-Twostream_L_Master.npars = new_instancemethod(_twostream_interface.Twostream_L_Master_npars, None, Twostream_L_Master)
-Twostream_L_Master.nspars = new_instancemethod(_twostream_interface.Twostream_L_Master_nspars, None, Twostream_L_Master)
-Twostream_L_Master.layer_vary_flag = new_instancemethod(_twostream_interface.Twostream_L_Master_layer_vary_flag, None, Twostream_L_Master)
-Twostream_L_Master.layer_vary_number = new_instancemethod(_twostream_interface.Twostream_L_Master_layer_vary_number, None, Twostream_L_Master)
-Twostream_L_Master.n_column_wfs = new_instancemethod(_twostream_interface.Twostream_L_Master_n_column_wfs, None, Twostream_L_Master)
-Twostream_L_Master.n_surface_wfs = new_instancemethod(_twostream_interface.Twostream_L_Master_n_surface_wfs, None, Twostream_L_Master)
-Twostream_L_Master.l_deltau_input = new_instancemethod(_twostream_interface.Twostream_L_Master_l_deltau_input, None, Twostream_L_Master)
-Twostream_L_Master.l_omega_input = new_instancemethod(_twostream_interface.Twostream_L_Master_l_omega_input, None, Twostream_L_Master)
-Twostream_L_Master.l_asymm_input = new_instancemethod(_twostream_interface.Twostream_L_Master_l_asymm_input, None, Twostream_L_Master)
-Twostream_L_Master.l_d2s_scaling = new_instancemethod(_twostream_interface.Twostream_L_Master_l_d2s_scaling, None, Twostream_L_Master)
-Twostream_L_Master.ls_brdf_f_0 = new_instancemethod(_twostream_interface.Twostream_L_Master_ls_brdf_f_0, None, Twostream_L_Master)
-Twostream_L_Master.ls_brdf_f = new_instancemethod(_twostream_interface.Twostream_L_Master_ls_brdf_f, None, Twostream_L_Master)
-Twostream_L_Master.ls_ubrdf_f = new_instancemethod(_twostream_interface.Twostream_L_Master_ls_ubrdf_f, None, Twostream_L_Master)
-Twostream_L_Master.ls_emiss = new_instancemethod(_twostream_interface.Twostream_L_Master_ls_emiss, None, Twostream_L_Master)
-Twostream_L_Master.intensity_toa = new_instancemethod(_twostream_interface.Twostream_L_Master_intensity_toa, None, Twostream_L_Master)
-Twostream_L_Master.profilewf_toa = new_instancemethod(_twostream_interface.Twostream_L_Master_profilewf_toa, None, Twostream_L_Master)
-Twostream_L_Master.columnwf_toa = new_instancemethod(_twostream_interface.Twostream_L_Master_columnwf_toa, None, Twostream_L_Master)
-Twostream_L_Master.surfacewf_toa = new_instancemethod(_twostream_interface.Twostream_L_Master_surfacewf_toa, None, Twostream_L_Master)
-Twostream_L_Master.intensity_boa = new_instancemethod(_twostream_interface.Twostream_L_Master_intensity_boa, None, Twostream_L_Master)
-Twostream_L_Master.profilewf_boa = new_instancemethod(_twostream_interface.Twostream_L_Master_profilewf_boa, None, Twostream_L_Master)
-Twostream_L_Master.columnwf_boa = new_instancemethod(_twostream_interface.Twostream_L_Master_columnwf_boa, None, Twostream_L_Master)
-Twostream_L_Master.surfacewf_boa = new_instancemethod(_twostream_interface.Twostream_L_Master_surfacewf_boa, None, Twostream_L_Master)
-Twostream_L_Master.status_inputcheck = new_instancemethod(_twostream_interface.Twostream_L_Master_status_inputcheck, None, Twostream_L_Master)
-Twostream_L_Master.c_nmessages = new_instancemethod(_twostream_interface.Twostream_L_Master_c_nmessages, None, Twostream_L_Master)
-Twostream_L_Master.c_messages = new_instancemethod(_twostream_interface.Twostream_L_Master_c_messages, None, Twostream_L_Master)
-Twostream_L_Master.c_actions = new_instancemethod(_twostream_interface.Twostream_L_Master_c_actions, None, Twostream_L_Master)
-Twostream_L_Master.status_execution = new_instancemethod(_twostream_interface.Twostream_L_Master_status_execution, None, Twostream_L_Master)
-Twostream_L_Master.e_message = new_instancemethod(_twostream_interface.Twostream_L_Master_e_message, None, Twostream_L_Master)
-Twostream_L_Master.e_trace_1 = new_instancemethod(_twostream_interface.Twostream_L_Master_e_trace_1, None, Twostream_L_Master)
-Twostream_L_Master.e_trace_2 = new_instancemethod(_twostream_interface.Twostream_L_Master_e_trace_2, None, Twostream_L_Master)
-Twostream_L_Master.run = new_instancemethod(_twostream_interface.Twostream_L_Master_run, None, Twostream_L_Master)
-Twostream_L_Master_swigregister = _twostream_interface.Twostream_L_Master_swigregister
-Twostream_L_Master_swigregister(Twostream_L_Master)
+Twostream_Lps_Master.__str__ = new_instancemethod(_twostream_interface.Twostream_Lps_Master___str__, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_maxlayers = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_maxlayers, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_maxtotal = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_maxtotal, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_maxmessages = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_maxmessages, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_maxbeams = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_maxbeams, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_max_geometries = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_max_geometries, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_max_user_streams = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_max_user_streams, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_max_user_relazms = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_max_user_relazms, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_max_user_obsgeoms = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_max_user_obsgeoms, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_max_atmoswfs = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_max_atmoswfs, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_max_surfacewfs = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_max_surfacewfs, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_max_sleavewfs = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_max_sleavewfs, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_upwelling = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_upwelling, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_dnwelling = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_dnwelling, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_plane_parallel = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_plane_parallel, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_2s_levelout = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_2s_levelout, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_mvout_only = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_mvout_only, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_additional_mvout = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_additional_mvout, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_solar_sources = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_solar_sources, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_thermal_emission = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_thermal_emission, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_surface_emission = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_surface_emission, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_d2s_scaling = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_d2s_scaling, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_brdf_surface = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_brdf_surface, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_user_obsgeoms = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_user_obsgeoms, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_surface_leaving = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_surface_leaving, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_sl_isotropic = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_sl_isotropic, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_pentadiag_inverse = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_pentadiag_inverse, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_bvpindex = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_bvpindex, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_bvpscalefactor = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_bvpscalefactor, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_taylor_order = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_taylor_order, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_taylor_small = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_taylor_small, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_tcutoff = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_tcutoff, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_nlayers = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_nlayers, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_ntotal = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_ntotal, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_stream_value = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_stream_value, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_n_user_obsgeoms = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_n_user_obsgeoms, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_user_obsgeoms = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_user_obsgeoms, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_n_user_streams = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_n_user_streams, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_user_angles = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_user_angles, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_n_user_relazms = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_n_user_relazms, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_user_relazms = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_user_relazms, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_flux_factor = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_flux_factor, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_nbeams = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_nbeams, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_beam_szas = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_beam_szas, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_earth_radius = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_earth_radius, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_height_grid = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_height_grid, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_deltau_input = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_deltau_input, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_omega_input = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_omega_input, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_asymm_input = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_asymm_input, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_d2s_scaling = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_d2s_scaling, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_thermal_bb_input = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_thermal_bb_input, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_lambertian_albedo = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_lambertian_albedo, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_brdf_f_0 = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_brdf_f_0, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_brdf_f = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_brdf_f, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_ubrdf_f = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_ubrdf_f, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_emissivity = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_emissivity, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_surfbb = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_surfbb, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_slterm_isotropic = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_slterm_isotropic, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_slterm_f_0 = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_slterm_f_0, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_profile_wfs = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_profile_wfs, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_surface_wfs = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_surface_wfs, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_do_sleave_wfs = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_do_sleave_wfs, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_layer_vary_flag = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_layer_vary_flag, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_layer_vary_number = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_layer_vary_number, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_n_surface_wfs = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_n_surface_wfs, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_n_sleave_wfs = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_n_sleave_wfs, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_lssl_slterm_isotropic = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_lssl_slterm_isotropic, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_lssl_slterm_f_0 = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_lssl_slterm_f_0, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_l_deltau_input = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_l_deltau_input, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_l_omega_input = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_l_omega_input, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_l_asymm_input = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_l_asymm_input, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_l_d2s_scaling = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_l_d2s_scaling, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_ls_brdf_f_0 = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_ls_brdf_f_0, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_ls_brdf_f = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_ls_brdf_f, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_ls_ubrdf_f = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_ls_ubrdf_f, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_ls_emissivity = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_ls_emissivity, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_intensity_toa = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_intensity_toa, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_profilewf_toa = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_profilewf_toa, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_surfacewf_toa = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_surfacewf_toa, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_intensity_boa = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_intensity_boa, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_profilewf_boa = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_profilewf_boa, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_surfacewf_boa = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_surfacewf_boa, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_radlevel_up = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_radlevel_up, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_radlevel_dn = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_radlevel_dn, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_n_geometries = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_n_geometries, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_profjaclevel_up = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_profjaclevel_up, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_profjaclevel_dn = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_profjaclevel_dn, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_surfjaclevel_up = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_surfjaclevel_up, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_surfjaclevel_dn = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_surfjaclevel_dn, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_fluxes_toa = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_fluxes_toa, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_profjacfluxes_toa = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_profjacfluxes_toa, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_surfjacfluxes_toa = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_surfjacfluxes_toa, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_fluxes_boa = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_fluxes_boa, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_profjacfluxes_boa = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_profjacfluxes_boa, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_surfjacfluxes_boa = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_surfjacfluxes_boa, None, Twostream_Lps_Master)
+Twostream_Lps_Master._v_status_inputcheck = new_instancemethod(_twostream_interface.Twostream_Lps_Master__v_status_inputcheck, None, Twostream_Lps_Master)
+Twostream_Lps_Master.c_nmessages = new_instancemethod(_twostream_interface.Twostream_Lps_Master_c_nmessages, None, Twostream_Lps_Master)
+Twostream_Lps_Master.c_messages = new_instancemethod(_twostream_interface.Twostream_Lps_Master_c_messages, None, Twostream_Lps_Master)
+Twostream_Lps_Master.c_actions = new_instancemethod(_twostream_interface.Twostream_Lps_Master_c_actions, None, Twostream_Lps_Master)
+Twostream_Lps_Master.status_execution = new_instancemethod(_twostream_interface.Twostream_Lps_Master_status_execution, None, Twostream_Lps_Master)
+Twostream_Lps_Master.e_message = new_instancemethod(_twostream_interface.Twostream_Lps_Master_e_message, None, Twostream_Lps_Master)
+Twostream_Lps_Master.e_trace_1 = new_instancemethod(_twostream_interface.Twostream_Lps_Master_e_trace_1, None, Twostream_Lps_Master)
+Twostream_Lps_Master.e_trace_2 = new_instancemethod(_twostream_interface.Twostream_Lps_Master_e_trace_2, None, Twostream_Lps_Master)
+Twostream_Lps_Master.run = new_instancemethod(_twostream_interface.Twostream_Lps_Master_run, None, Twostream_Lps_Master)
+Twostream_Lps_Master_swigregister = _twostream_interface.Twostream_Lps_Master_swigregister
+Twostream_Lps_Master_swigregister(Twostream_Lps_Master)
 
 
 

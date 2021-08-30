@@ -25,14 +25,34 @@
 ! #  Tel:             (626) 395 6962                        #
 ! #  Email :           vijay@gps.caltech.edu                #
 ! #                                                         #
+! #  Version 1.0-1.3 :                                      #
+! #     Mark 1: October  2010                               #
+! #     Mark 2: May      2011, with BRDFs                   #
+! #     Mark 3: October  2011, with Thermal sources         #
+! #                                                         #
+! #  Version 2.0-2.1 :                                      #
+! #     Mark 4: November 2012, LCS/LPS Split, Fixed Arrays  #
+! #     Mark 5: December 2012, Observation Geometry option  #
+! #                                                         #
+! #  Version 2.2-2.3 :                                      #
+! #     Mark 6: July     2013, Level outputs + control      #
+! #     Mark 7: December 2013, Flux outputs  + control      #
+! #     Mark 8: January  2014, Surface Leaving + control    #
+! #     Mark 9: June     2014, Inverse Pentadiagonal        #
+! #                                                         #
+! #  Version 2.4 :                                          #
+! #     Mark 10: August  2014, Green's function Regular     #
+! #     Mark 11: January 2015, Green's function Linearized  #
+! #                            Taylor, dethreaded, OpenMP   #
+! #                                                         #
 ! ###########################################################
 
-!    #####################################################
-!    #                                                   #
-!    #   This Version of LIDORT comes with a GNU-style   #
-!    #   license. Please read the license carefully.     #
-!    #                                                   #
-!    #####################################################
+! #############################################################
+! #                                                           #
+! #   This Version of LIDORT-2STREAM comes with a GNU-style   #
+! #   license. Please read the license carefully.             #
+! #                                                           #
+! #############################################################
 
 ! ###############################################################
 ! #                                                             #
@@ -49,8 +69,9 @@ PUBLIC
 
 contains
 
-SUBROUTINE TWOSTREAM_BVP_MATSETUP_PENTADIAG                         &
-         ( DO_INCLUDE_SURFACE, FOURIER_COMPONENT, NLAYERS, NTOTAL,  & ! input
+SUBROUTINE TWOSTREAM_BVP_MATSETUP_PENTADIAG &
+         ( MAXLAYERS, MAXTOTAL, FF, DO_INVERSE,                     & ! Dimensions
+           DO_INCLUDE_SURFACE, FOURIER_COMPONENT, NLAYERS, NTOTAL,  & ! input
            DO_BRDF_SURFACE, SURFACE_FACTOR, ALBEDO, BRDF_F,         & ! input
            XPOS, XNEG, T_DELT_EIGEN, STREAM_VALUE,                  & ! input
            H_HOMP, H_HOMM, MAT, ELM, SELM,                          & ! output
@@ -58,15 +79,24 @@ SUBROUTINE TWOSTREAM_BVP_MATSETUP_PENTADIAG                         &
 
       implicit none
 
-!  precision
+!  precision and parameters
 
-      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+      INTEGER      , PARAMETER :: dp   = KIND( 1.0D0 )
+      REAL(kind=dp), parameter :: zero = 0.0_dp, one = 1.0_dp
 
 !  input
 !  -----
 
-!  control
+!  Dimensions
 
+      INTEGER, INTENT(IN)        :: MAXLAYERS, MAXTOTAL
+
+!  Inverse control
+
+      LOGICAL      , INTENT(IN)  :: DO_INVERSE
+      REAL(kind=dp), INTENT(IN)  :: FF
+
+!  control
 
       LOGICAL, INTENT(IN)        :: DO_INCLUDE_SURFACE
       INTEGER, INTENT(IN)        :: FOURIER_COMPONENT
@@ -81,12 +111,12 @@ SUBROUTINE TWOSTREAM_BVP_MATSETUP_PENTADIAG                         &
 
 !  Eigenvector solutions
 
-      REAL(kind=dp), INTENT(IN)  :: XPOS(2,NLAYERS)
-      REAL(kind=dp), INTENT(IN)  :: XNEG(2,NLAYERS)
+      REAL(kind=dp), INTENT(IN)  :: XPOS(2,MAXLAYERS)
+      REAL(kind=dp), INTENT(IN)  :: XNEG(2,MAXLAYERS)
 
 !  transmittance factors for +/- eigenvalues
 
-      REAL(kind=dp), INTENT(IN)  :: T_DELT_EIGEN(NLAYERS)
+      REAL(kind=dp), INTENT(IN)  :: T_DELT_EIGEN(MAXLAYERS)
 
 !  Stream
 
@@ -102,11 +132,11 @@ SUBROUTINE TWOSTREAM_BVP_MATSETUP_PENTADIAG                         &
 
 !  Pentadiagonal Matrix entries for solving BCs
 
-      REAL(kind=dp), INTENT(OUT) :: MAT(NTOTAL,5)
+      REAL(kind=dp), INTENT(OUT) :: MAT(MAXTOTAL,5)
 
 !  Pentadiagonal elimination marix
 
-      REAL(kind=dp), INTENT(OUT) :: ELM (NTOTAL,4)
+      REAL(kind=dp), INTENT(OUT) :: ELM (MAXTOTAL,4)
 
 !  single layer elimination matrix
 
@@ -126,13 +156,13 @@ SUBROUTINE TWOSTREAM_BVP_MATSETUP_PENTADIAG                         &
 
 !  Help
 
-      INTEGER           :: I, N, N1, NM, NP
+      INTEGER           :: I, N, N1, NM, NP, INM, INP
       REAL(kind=dp)     :: XPNET, XMNET, FACTOR, BET, DEN, R2_HOMP, R2_HOMM
       CHARACTER(LEN=3)  :: CI
 
 !  Stability check value
 
-      REAL(kind=dp)     :: SMALLNUM=1.0D-15
+      REAL(kind=dp)     :: SMALLNUM=1.0D-20
 
 !  Status
 
@@ -146,8 +176,8 @@ SUBROUTINE TWOSTREAM_BVP_MATSETUP_PENTADIAG                         &
       H_HOMP = XPOS(1,NLAYERS) * STREAM_VALUE
       H_HOMM = XNEG(1,NLAYERS) * STREAM_VALUE
 
-      R2_HOMP = 0.0d0
-      R2_HOMM = 0.0d0
+      R2_HOMP = zero
+      R2_HOMM = zero
       IF ( DO_INCLUDE_SURFACE ) THEN
         IF ( DO_BRDF_SURFACE ) THEN
           FACTOR = SURFACE_FACTOR * BRDF_F(FOURIER_COMPONENT)
@@ -188,42 +218,61 @@ SUBROUTINE TWOSTREAM_BVP_MATSETUP_PENTADIAG                         &
 
 !  Zero for both Fourier components (Important bug!)
 
-        MAT = 0.0d0
-        ELM = 0.0d0
+        MAT = zero
+        ELM = zero
 
 !  top BC for layer 1: no downward diffuse radiation
-
-        N = 1
-        MAT(1,3)  = XPOS(1,N)
-        MAT(1,4)  = XNEG(1,N) * T_DELT_EIGEN(N)
-
 !  intermediate layer boundaries
-
-        DO N = 2, NLAYERS
-          N1 =  N - 1
-          NM = 2*N1
-          NP = NM + 1
-          MAT(NM,2) =   XPOS(1,N1) * T_DELT_EIGEN(N1)
-          MAT(NM,3) =   XNEG(1,N1)
-          MAT(NM,4) = - XPOS(1,N)
-          MAT(NM,5) = - XNEG(1,N)  * T_DELT_EIGEN(N)
-          MAT(NP,1) =   XPOS(2,N1) * T_DELT_EIGEN(N1)
-          MAT(NP,2) =   XNEG(2,N1)
-          MAT(NP,3) = - XPOS(2,N)
-          MAT(NP,4) = - XNEG(2,N)  * T_DELT_EIGEN(N)
-        ENDDO
-
 !  bottom BC (including surface reflected term)
 
-        MAT(NTOTAL,2) = XPNET * T_DELT_EIGEN(NLAYERS)
-        MAT(NTOTAL,3) = XMNET
+!  Regular set
 
-!  debug
-!        do n = 1, 12
-!          write(*,'(i3,1p5e15.6)')n,(mat(n,nm),nm=1,5)
-!        enddo
+        if ( .NOT. do_inverse ) then
+          MAT(1,3)  = XPOS(1,1)
+          MAT(1,4)  = XNEG(1,1) * T_DELT_EIGEN(1)
+          DO N = 2, NLAYERS
+            N1 =  N - 1
+            NM = 2*N1
+            NP = NM + 1
+            MAT(NM,2) =   XPOS(1,N1) * T_DELT_EIGEN(N1)
+            MAT(NM,3) =   XNEG(1,N1)
+            MAT(NM,4) = - XPOS(1,N)
+            MAT(NM,5) = - XNEG(1,N)  * T_DELT_EIGEN(N)
+            MAT(NP,1) =   XPOS(2,N1) * T_DELT_EIGEN(N1)
+            MAT(NP,2) =   XNEG(2,N1)
+            MAT(NP,3) = - XPOS(2,N)
+            MAT(NP,4) = - XNEG(2,N)  * T_DELT_EIGEN(N)
+          ENDDO
+          MAT(NTOTAL,2) = XPNET * T_DELT_EIGEN(NLAYERS)
+          MAT(NTOTAL,3) = XMNET
+        endif
+
+!  Inverted set
+
+        if ( do_inverse ) then
+          MAT(1,3)  = XMNET
+          MAT(1,4)  = XPNET * T_DELT_EIGEN(NLAYERS)
+          DO N = 2, NLAYERS
+            N1 =  N - 1
+            INM = NTOTAL - 2*N1  ; INP = INM + 1
+            MAT(INM,2) =  - XNEG(2,N)  * T_DELT_EIGEN(N)
+            MAT(INM,3) =  - XPOS(2,N)
+            MAT(INM,4) =    XNEG(2,N1)
+            MAT(INM,5) =    XPOS(2,N1) * T_DELT_EIGEN(N1)
+            MAT(INP,1) =  - XNEG(1,N)  * T_DELT_EIGEN(N)
+            MAT(INP,2) =  - XPOS(1,N)
+            MAT(INP,3) =    XNEG(1,N1)
+            MAT(INP,4) =    XPOS(1,N1) * T_DELT_EIGEN(N1)
+          ENDDO
+          MAT(NTOTAL,2) = XNEG(1,1) * T_DELT_EIGEN(1)
+          MAT(NTOTAL,3) = XPOS(1,1)
+        endif
 
       ENDIF
+
+!  Scaling
+
+      MAT = FF * MAT
 
 !  Elimination of BVP pentadiagonal matrix
 !  ---------------------------------------
@@ -232,26 +281,25 @@ SUBROUTINE TWOSTREAM_BVP_MATSETUP_PENTADIAG                         &
 
 !  Row 1
 
-        ELM(1,4) = 0.0d0
-        ELM(1,3) = 1.0d0/MAT(1,3)
+        ELM(1,4) = zero
+        ELM(1,3) = one / MAT(1,3)
         ELM(1,1) = - MAT(1,4) * ELM(1,3)
         ELM(1,2) = - MAT(1,5) * ELM(1,3)
 
 !  Row 2; includes first check for singularity
 
-        ELM(2,4) = 0.0d0
+        ELM(2,4) = zero
         bet = MAT(2,3) + MAT(2,2)*ELM(1,1)
-        IF ( DABS(Bet) .LT. SMALLNUM )  Bet = 1.0d-14   !!!! FAKING IT
         IF ( DABS(Bet) .LT. SMALLNUM ) THEN
           message = 'Singularity in Pentadiagonal Matrix, Row #  2'
           status = 1
           return
         endif
-        bet = -1.0d0/bet
+        bet = - one / bet
         ELM(2,1) = (MAT(2,4) + MAT(2,2)*ELM(1,2)) * bet
         ELM(2,2) = MAT(2,5) * bet
         ELM(2,3) = bet
-        ELM(2,4) = 0.0d0
+        ELM(2,4) = zero
 
 !  Rows 3-NT: reduce to upper triangular; includes checks for singularity
 
@@ -264,17 +312,12 @@ SUBROUTINE TWOSTREAM_BVP_MATSETUP_PENTADIAG                         &
             status = 1
             return
           endif
-          den = - 1.0d0 / den
+          den = - one / den
           ELM(i,1) = (MAT(i,4) + bet*ELM(i-1,2)) * den
           ELM(i,2) = MAT(i,5) * den
           ELM(i,3) = bet
           ELM(i,4) = den
         enddo
-
-!  debug
-!        do n = 1, 12
-!          write(*,'(i3,1p5e15.6)')n,(elm(n,nm),nm=1,4)
-!        enddo
 
 !  Elimination for Single Layer only
 !  ----------------------------------
@@ -287,14 +330,13 @@ SUBROUTINE TWOSTREAM_BVP_MATSETUP_PENTADIAG                         &
           status = 1
           return
         ENDIF
-        DEN = 1.0d0 / DEN
+        DEN = one / DEN
         SELM(1,1) =   SMAT(2,2) * DEN
         SELM(1,2) = - SMAT(1,2) * DEN
         SELM(2,1) = - SMAT(2,1) * DEN
         SELM(2,2) =   SMAT(1,1) * DEN
 
       ENDIF
-
 
 !  finish
 
@@ -303,10 +345,11 @@ SUBROUTINE TWOSTREAM_BVP_MATSETUP_PENTADIAG                         &
 
 !
 
-SUBROUTINE TWOSTREAM_BVP_SOLUTION_PENTADIAG              &
-      ( DO_INCLUDE_SURFACE, DO_INCLUDE_DIRECTBEAM,       & ! inputs
+SUBROUTINE TWOSTREAM_BVP_SOLUTION_PENTADIAG &
+      ( MAXLAYERS, MAXBEAMS, MAXTOTAL, FF, DO_INVERSE,   & ! Dimensions
+        DO_INCLUDE_SURFACE, DO_INCLUDE_DIRECTBEAM,       & ! inputs
         DO_INCLUDE_SURFEMISS, DO_BRDF_SURFACE,           & ! inputs
-        FOURIER, IPARTIC, NBEAMS, NLAYERS, NTOTAL,       & ! inputs
+        FOURIER, IPARTIC, NLAYERS, NTOTAL,               & ! inputs
         SURFACE_FACTOR, ALBEDO, BRDF_F, EMISS, SURFBB,   & ! inputs
         DIRECT_BEAM, XPOS, XNEG, WUPPER, WLOWER,         & ! inputs
         STREAM_VALUE, MAT, ELM, SELM,                    & ! inputs
@@ -314,12 +357,22 @@ SUBROUTINE TWOSTREAM_BVP_SOLUTION_PENTADIAG              &
 
       implicit none
 
-!  Precision
+!  precision and parameters
 
-      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+      INTEGER      , PARAMETER :: dp   = KIND( 1.0D0 )
+      REAL(kind=dp), parameter :: zero = 0.0_dp
 
 !  Input arguments
 !  ---------------
+
+!  Dimensions
+
+      INTEGER, INTENT(IN)        :: MAXBEAMS, MAXLAYERS, MAXTOTAL
+
+!  Inverse control
+
+      LOGICAL      , INTENT(IN)  :: DO_INVERSE
+      REAL(kind=dp), INTENT(IN)  :: FF
 
 !  Inclusion flags
 
@@ -341,21 +394,21 @@ SUBROUTINE TWOSTREAM_BVP_SOLUTION_PENTADIAG              &
 
 !  Numbers
 
-      INTEGER, INTENT(IN)        :: NBEAMS, NLAYERS, NTOTAL
+      INTEGER, INTENT(IN)        :: NLAYERS, NTOTAL
 
 !  Direct beam
 
-      REAL(kind=dp), INTENT(IN)  :: DIRECT_BEAM ( NBEAMS )
+      REAL(kind=dp), INTENT(IN)  :: DIRECT_BEAM ( MAXBEAMS )
 
 !  Eigenvector solutions
 
-      REAL(kind=dp), INTENT(IN)  :: XPOS(2,NLAYERS)
-      REAL(kind=dp), INTENT(IN)  :: XNEG(2,NLAYERS)
+      REAL(kind=dp), INTENT(IN)  :: XPOS(2,MAXLAYERS)
+      REAL(kind=dp), INTENT(IN)  :: XNEG(2,MAXLAYERS)
 
 !  Particular solutions
 
-      REAL(kind=dp), INTENT(IN)  :: WLOWER ( 2, NLAYERS )
-      REAL(kind=dp), INTENT(IN)  :: WUPPER ( 2, NLAYERS )
+      REAL(kind=dp), INTENT(IN)  :: WLOWER ( 2, MAXLAYERS )
+      REAL(kind=dp), INTENT(IN)  :: WUPPER ( 2, MAXLAYERS )
 
 !  Stream
 
@@ -363,11 +416,11 @@ SUBROUTINE TWOSTREAM_BVP_SOLUTION_PENTADIAG              &
 
 !  Pentadiagonal Matrix entries for solving BCs
 
-      REAL(kind=dp), INTENT(IN)  :: MAT(NTOTAL,5)
+      REAL(kind=dp), INTENT(IN)  :: MAT(MAXTOTAL,5)
 
 !  Pentadiagonal elimination matrix
 
-      REAL(kind=dp), INTENT(IN)  :: ELM (NTOTAL,4)
+      REAL(kind=dp), INTENT(IN)  :: ELM (MAXTOTAL,4)
 
 !  Single layer elimination matrix
 
@@ -382,36 +435,35 @@ SUBROUTINE TWOSTREAM_BVP_SOLUTION_PENTADIAG              &
 
 !  Solution constants of integration, and related quantities
 
-      REAL(kind=dp), INTENT(OUT) :: LCON(NLAYERS)
-      REAL(kind=dp), INTENT(OUT) :: MCON(NLAYERS)
+      REAL(kind=dp), INTENT(OUT) :: LCON(MAXLAYERS)
+      REAL(kind=dp), INTENT(OUT) :: MCON(MAXLAYERS)
 
-      REAL(kind=dp), INTENT(OUT) :: LCON_XVEC(2,NLAYERS)
-      REAL(kind=dp), INTENT(OUT) :: MCON_XVEC(2,NLAYERS)
+      REAL(kind=dp), INTENT(OUT) :: LCON_XVEC(2,MAXLAYERS)
+      REAL(kind=dp), INTENT(OUT) :: MCON_XVEC(2,MAXLAYERS)
 
 !  Local variables
 !  ---------------
 
 !  Column vectors for solving BCs. Not saved.
 
-      REAL(kind=dp)       :: COL    (NTOTAL)
+      REAL(kind=dp)       :: COL    (MAXTOTAL)
       REAL(kind=dp)       :: SCOL   (2)
 
 !  Other variables
 
-      INTEGER             :: N, N1, I, NM, NP
-      REAL(kind=dp)       :: FACTOR, DEN, R2_PARTIC, LOCAL_EMISS
+      INTEGER             :: N, N1, I, NM, NP, INP, INM, NI, NLAY1
+      REAL(kind=dp)       :: FACTOR, DEN, R2_PARTIC, TOA_TERM, SURFACE_TERM
       REAL(kind=dp)       :: NEW_SCOL1
 
-!  --Additional setups for the bottom layer
-!  ----------------------------------------
+!  Additional setups for the surface and TOA levels
+!  ------------------------------------------------
 
-!  Zero total reflected contributions
+!  Zero total reflected contribution (R2_PARTIC) before calculation
 !  For Lambertian reflectance, all streams are the same
 !  For BRDF, code added 4 May 2009 by R. Spurr
 
+      R2_PARTIC = zero
       H_PARTIC = WLOWER(1,NLAYERS) * STREAM_VALUE
-
-      R2_PARTIC = 0.0d0
       IF ( DO_INCLUDE_SURFACE ) THEN
         IF ( DO_BRDF_SURFACE ) THEN
           FACTOR = SURFACE_FACTOR * BRDF_F(FOURIER)
@@ -420,6 +472,30 @@ SUBROUTINE TWOSTREAM_BVP_SOLUTION_PENTADIAG              &
         ENDIF
         R2_PARTIC = H_PARTIC * FACTOR
       ENDIF
+
+!  Surface Term------------
+!    lowest (surface) boundary with albedo (diffuse radiation terms only)
+!    with non-zero albedo, include integrated downward reflectances
+!    no albedo, similar code excluding integrated reflectance
+!    Add direct beam solution (only to final level)
+!    Add thermal emission of ground surface (only to final level)
+!mick fix 2/14/2012 - changed treatment of emissivity to be consistent
+!                     with LIDORT & VLIDORT
+
+      SURFACE_TERM = - WLOWER(2,NLAYERS)
+      IF ( DO_INCLUDE_SURFACE ) THEN
+        SURFACE_TERM = SURFACE_TERM + R2_PARTIC
+        IF ( DO_INCLUDE_DIRECTBEAM ) THEN
+          SURFACE_TERM = SURFACE_TERM + DIRECT_BEAM(IPARTIC)
+        ENDIF
+      ENDIF
+      IF ( DO_INCLUDE_SURFEMISS ) THEN
+        SURFACE_TERM = SURFACE_TERM + SURFBB * EMISS
+      ENDIF
+
+!  Upper boundary for layer 1: no downward diffuse radiation
+
+      TOA_TERM  = - WUPPER(1,1)
 
 !  --set up Column for solution vector (the "B" as in AX=B)
 !  --------------------------------------------------------
@@ -430,93 +506,47 @@ SUBROUTINE TWOSTREAM_BVP_SOLUTION_PENTADIAG              &
 
 !  zero column vector
 
-        DO I = 1, NTOTAL
-          COL(I) = 0.0d0
-        ENDDO
+        COL(1:NTOTAL) = zero
 
-!  Upper boundary for layer 1: no downward diffuse radiation
+!  Fill vector
 
-        COL(1)   = - WUPPER(1,1)
+        if ( do_inverse ) then
+          COL(1)  = SURFACE_TERM
+          DO N = 2, NLAYERS
+            N1 = N - 1
+            INM = NTOTAL - 2*N1 ; INP = INM + 1
+            COL(INP) = WUPPER(1,N) - WLOWER(1,N1)
+            COL(INM) = WUPPER(2,N) - WLOWER(2,N1)
+          ENDDO
+          COL(NTOTAL) = TOA_TERM
+        else
+          COL(1)  = TOA_TERM
+          DO N = 2, NLAYERS
+            N1 = N - 1
+            NM = 2*N1 ; NP = NM + 1
+            COL(NM) = WUPPER(1,N) - WLOWER(1,N1)
+            COL(NP) = WUPPER(2,N) - WLOWER(2,N1)
+          ENDDO
+          COL(NTOTAL) = SURFACE_TERM
+        endif
 
-!  intermediate layer boundaries
+!  Scaling
 
-        DO N = 2, NLAYERS
-          N1 = N - 1
-          NM = 2*N1
-          NP = NM + 1
-          COL(NM) = WUPPER(1,N) - WLOWER(1,N1)
-          COL(NP) = WUPPER(2,N) - WLOWER(2,N1)
-        ENDDO
+!mick fix 5/29/2015 - tailor dimensions
+        !COL = FF * COL
+        COL(1:NTOTAL) = FF * COL(1:NTOTAL)
 
-!  lowest (surface) boundary with albedo (diffuse + direct)
-
-        COL(NTOTAL) = - WLOWER(2,NLAYERS)
-        IF ( DO_INCLUDE_SURFACE ) THEN
-          COL(NTOTAL) = COL(NTOTAL) + R2_PARTIC
-          IF ( DO_INCLUDE_DIRECTBEAM ) THEN
-            COL(NTOTAL) = COL(NTOTAL) + DIRECT_BEAM(IPARTIC)
-          ENDIF
-        ENDIF
-
-!  Add thermal emission of ground surface (only to final level)
-
-!mick fix 2/14/2012 - changed treatment of emissivity to be consistent
-!                     with LIDORT & VLIDORT
-
-        !IF ( DO_INCLUDE_SURFEMISS ) THEN
-        !  IF ( DO_BRDF_SURFACE ) THEN
-        !    LOCAL_EMISS = EMISS
-        !  ELSE
-        !    LOCAL_EMISS = 1.0_dp - ALBEDO
-        !  ENDIF
-        !  COL(NTOTAL) = COL(NTOTAL) + SURFBB * local_emiss
-        !ENDIF
-
-        IF ( DO_INCLUDE_SURFEMISS ) THEN
-          COL(NTOTAL) = COL(NTOTAL) + SURFBB * EMISS
-        ENDIF
-
-!    if ( do_include_surfemiss)then
-!       write(*,*)ntotal,col(ntotal),SURFBB * local_emiss ; pause
-!    endif
+!  debug
+!        do n = 1, ntotal
+!          write(44,'(2i3,1p3e24.12)')n,1,COL(N)
+!        enddo
+!       pause
 
 !  If Nlayers = 1, special case
 
       ELSE IF ( NLAYERS .EQ. 1 ) THEN
-
-!  Upper boundary for layer 1: no downward diffuse radiation
-!  lowest (surface) boundary with albedo (diffuse radiation terms only)
-!  with non-zero albedo, include integrated downward reflectances
-!  no albedo, similar code excluding integrated reflectance
-!  Add direct beam solution (only to final level)
-
-        SCOL(1) = - WUPPER(1,1)
-        SCOL(2) = - WLOWER(2,1)
-        IF ( DO_INCLUDE_SURFACE ) THEN
-          SCOL(2) = SCOL(2)  + R2_PARTIC
-          IF ( DO_INCLUDE_DIRECTBEAM ) THEN
-            SCOL(2) = SCOL(2) + DIRECT_BEAM(IPARTIC)
-          ENDIF
-        ENDIF
-
-!  Add thermal emission of ground surface (only to final level)
-
-!mick fix 2/14/2012 - changed treatment of emissivity to be consistent
-!                     with LIDORT & VLIDORT
-
-        !IF ( DO_INCLUDE_SURFEMISS ) THEN
-        !  IF ( DO_BRDF_SURFACE ) THEN
-        !    LOCAL_EMISS = EMISS
-        !  ELSE
-        !    LOCAL_EMISS = 1.0_dp - ALBEDO
-        !  ENDIF
-        !  SCOL(2) = SCOL(2) + SURFBB * local_emiss
-        !ENDIF
-
-        IF ( DO_INCLUDE_SURFEMISS ) THEN
-          SCOL(2) = SCOL(2) + SURFBB * EMISS
-        ENDIF
-
+        SCOL(1) = TOA_TERM
+        SCOL(2) = SURFACE_TERM
       ENDIF
 
 !  --Solve the boundary problem for this Fourier component (back substitution)
@@ -545,21 +575,29 @@ SUBROUTINE TWOSTREAM_BVP_SOLUTION_PENTADIAG              &
 
 !  Set integration constants LCON and MCON for -/+ eigensolutions, all layers
 
-        DO N = 1, NLAYERS
-         NM = 2*N-1
-         NP = NM + 1
-         LCON(N) = COL(NM)
-         MCON(N) = COL(NP)
-        ENDDO
+        if ( do_inverse ) then
+           NLAY1 = 1 + NLAYERS
+           DO N = 1, NLAYERS
+              NI = NLAY1 - N
+              INP = 2*NI ; INM = INP - 1
+              LCON(N) = COL(INP)
+              MCON(N) = COL(INM)
+           ENDDO
+        else
+           DO N = 1, NLAYERS
+              NM = 2*N-1 ; NP = NM + 1
+              LCON(N) = COL(NM)
+              MCON(N) = COL(NP)
+           ENDDO
+        endif
 
 !  Solve the boundary problem: Single Layer only
-
-      ELSE IF ( NLAYERS .EQ. 1 ) THEN
 !mick fix 1/9/2011 - defined NEW_SCOL1 so a MODIFIED version of SCOL(1)
 !                    is not being used in computing SCOL(2)
+
+      ELSE IF ( NLAYERS .EQ. 1 ) THEN
         NEW_SCOL1 = SELM(1,1) * SCOL(1) + SELM(1,2) * SCOL(2)
         SCOL(2)   = SELM(2,1) * SCOL(1) + SELM(2,2) * SCOL(2)
-
         LCON(1) = NEW_SCOL1
         MCON(1) = SCOL(2)
       ENDIF
@@ -567,7 +605,7 @@ SUBROUTINE TWOSTREAM_BVP_SOLUTION_PENTADIAG              &
 !  debug
 !      if ( fourier.eq.0 .and.ipartic.eq.1) then
 !        do n = 1, nlayers
-!          write(*,'(i3,1p2e24.12)')n,LCON(N),MCON(N)
+!          write(34,'(i3,1p2e24.12)')n,LCON(N),MCON(N)
 !        enddo
 !      endif
 

@@ -12,6 +12,10 @@
 %fp_shared_ptr(FullPhysics::TwostreamRt);
 
 namespace FullPhysics {
+
+// Force to be not abstract
+%feature("notabstract") TwostreamRt;
+
 class TwostreamRt : public SpurrRt {
 public:
   TwostreamRt(const boost::shared_ptr<RtAtmosphere>& Atm,
@@ -19,7 +23,9 @@ public:
               const blitz::Array<double, 1>& Sza, 
               const blitz::Array<double, 1>& Zen, 
               const blitz::Array<double, 1>& Azm,
-              bool do_fullquadrature = true);
+              bool do_fullquadrature = true,
+              bool do_solar = true,
+              bool do_thermal = false);
   %python_attribute(number_stream, int)
   %python_attribute(number_moment, int)
   %python_attribute(brdf_driver, boost::shared_ptr<TwostreamBrdfDriver>)

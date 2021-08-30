@@ -25,21 +25,41 @@
 ! #  Tel:             (626) 395 6962                        #
 ! #  Email :           vijay@gps.caltech.edu                #
 ! #                                                         #
+! #  Version 1.0-1.3 :                                      #
+! #     Mark 1: October  2010                               #
+! #     Mark 2: May      2011, with BRDFs                   #
+! #     Mark 3: October  2011, with Thermal sources         #
+! #                                                         #
+! #  Version 2.0-2.1 :                                      #
+! #     Mark 4: November 2012, LCS/LPS Split, Fixed Arrays  #
+! #     Mark 5: December 2012, Observation Geometry option  #
+! #                                                         #
+! #  Version 2.2-2.3 :                                      #
+! #     Mark 6: July     2013, Level outputs + control      #
+! #     Mark 7: December 2013, Flux outputs  + control      #
+! #     Mark 8: January  2014, Surface Leaving + control    #
+! #     Mark 9: June     2014, Inverse Pentadiagonal        #
+! #                                                         #
+! #  Version 2.4 :                                          #
+! #     Mark 10: August  2014, Green's function Regular     #
+! #     Mark 11: January 2015, Green's function Linearized  #
+! #                            Taylor, dethreaded, OpenMP   #
+! #                                                         #
 ! ###########################################################
 
-!    #####################################################
-!    #                                                   #
-!    #   This Version of LIDORT comes with a GNU-style   #
-!    #   license. Please read the license carefully.     #
-!    #                                                   #
-!    #####################################################
+! #############################################################
+! #                                                           #
+! #   This Version of LIDORT-2STREAM comes with a GNU-style   #
+! #   license. Please read the license carefully.             #
+! #                                                           #
+! #############################################################
 
 ! ###############################################################
 ! #                                                             #
 ! # Subroutines in this Module                                  #
 ! #                                                             #
 ! #            TWOSTREAM_CHECK_INPUTS_BASIC                     #
-! #            TWOSTREAM_CHECK_INPUTS_THREAD                    #
+! #            TWOSTREAM_CHECK_INPUTS_OPTICAL                   #
 ! #                                                             #
 ! #              TWOSTREAM_AUXGEOM                              #
 ! #              TWOSTREAM_QSPREP                               #
@@ -53,17 +73,23 @@
 
 module twostream_miscsetups_m
 
+   use Twostream_Taylor_m, only : Twostream_Taylor_Series_1
+
 PUBLIC
 
 contains
 
-SUBROUTINE TWOSTREAM_CHECK_INPUTS_BASIC                       &
-         ( DO_UPWELLING, DO_DNWELLING, DO_PLANE_PARALLEL,     & ! inputs
-           DO_SOLAR_SOURCES, DO_THERMAL_EMISSION,             & ! inputs
-           NLAYERS, NBEAMS, N_USER_STREAMS, N_USER_RELAZMS,   & ! inputs
-           BEAM_SZAS, USER_ANGLES, USER_RELAZMS,              & ! inputs
-           EARTH_RADIUS, HEIGHT_GRID,                         & ! inputs
-           STATUS, NMESSAGES, MESSAGE, ACTION )                 ! output
+SUBROUTINE TWOSTREAM_CHECK_INPUTS_BASIC &
+         ( MAXLAYERS, MAXMESSAGES, MAX_USER_OBSGEOMS,              & ! Dimensions !@@
+           MAXBEAMS, MAX_USER_STREAMS, MAX_USER_RELAZMS,           & ! Dimensions
+           DO_UPWELLING, DO_DNWELLING, DO_PLANE_PARALLEL,          & ! inputs
+           DO_SOLAR_SOURCES, DO_THERMAL_EMISSION,                  & ! inputs
+           DO_MVOUT_ONLY, DO_ADDITIONAL_MVOUT, DO_POSTPROCESSING,  & ! Input !@@ New line, 2p3
+           DO_USER_OBSGEOMS, N_USER_OBSGEOMS, USER_OBSGEOMS,       & ! Input !@@ New
+           NLAYERS, NBEAMS, N_USER_STREAMS, N_USER_RELAZMS,        & ! inputs
+           BEAM_SZAS, USER_ANGLES, USER_RELAZMS,                   & ! inputs
+           EARTH_RADIUS, HEIGHT_GRID,                              & ! inputs
+           STATUS, NMESSAGES, MESSAGE, ACTION )                      ! output
 
       implicit none
 
@@ -71,8 +97,22 @@ SUBROUTINE TWOSTREAM_CHECK_INPUTS_BASIC                       &
 
       INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
 
+!  Notes 21 december 2012. Observational Geometry Inputs. Marked with !@@
+
+!     Observation-Geometry New dimensioning.    MAX_USER_OBSGEOMS
+!     Observation-Geometry input control.       DO_USER_OBSGEOMS
+!     Observation-Geometry input control.       N_USER_OBSGEOMS
+!     User-defined Observation Geometry angles. USER_OBSGEOMS
+
+!  Notes 05 November 2013. Flux output flags. Version 2p3
+
 !  Inputs
 !  ------
+
+!  Dimensions :
+     
+      INTEGER, INTENT(IN) :: MAXLAYERS, MAXMESSAGES, MAX_USER_OBSGEOMS  !@@
+      INTEGER, INTENT(IN) :: MAXBEAMS, MAX_USER_STREAMS, MAX_USER_RELAZMS
 
 !  Flags
 
@@ -82,28 +122,43 @@ SUBROUTINE TWOSTREAM_CHECK_INPUTS_BASIC                       &
 !  Single scatter flags omitted from this streamlined version
 !      LOGICAL, INTENT(IN) :: DO_SSCORR_OUTGOING, DO_SSCORR_NADIR, DO_SSFULL
 
-!  Numbers
+!  !@@ Version 2p3, 11/5/13. Flux output flags, processing flag
+
+      LOGICAL, INTENT(IN)    :: DO_MVOUT_ONLY        !@@
+      LOGICAL, INTENT(IN)    :: DO_ADDITIONAL_MVOUT  !@@
+      LOGICAL, INTENT(INOUT) :: DO_POSTPROCESSING    !@@ Will always be set here.
+
+!  Observational geometry input. [Same as LIDORT]. New 12/21/12 !@@
+
+      LOGICAL, INTENT(IN) :: DO_USER_OBSGEOMS !@@
+      INTEGER, INTENT(IN) :: N_USER_OBSGEOMS  !@@
+      REAL(kind=dp), INTENT(IN) :: USER_OBSGEOMS(MAX_USER_OBSGEOMS,3) !@@
+
+!  Number of layers
 
       INTEGER, INTENT(IN) :: NLAYERS
-      INTEGER, INTENT(IN) :: NBEAMS, N_USER_STREAMS, N_USER_RELAZMS  
 
-!  Geometry
+!  Angle Numbers. [Now Intent(inout), thanks to option for ObsGeom !@@]
 
-      REAL(kind=dp), INTENT(IN) :: BEAM_SZAS    ( NBEAMS )
-      REAL(kind=dp), INTENT(IN) :: USER_ANGLES  ( N_USER_STREAMS )
-      REAL(kind=dp), INTENT(IN) :: USER_RELAZMS ( N_USER_RELAZMS )
+      INTEGER, INTENT(INOUT) :: NBEAMS, N_USER_STREAMS, N_USER_RELAZMS  
+
+!  Geometry. [Now Intent(inout), thanks to option for ObsGeom !@@]
+
+      REAL(kind=dp), INTENT(INOUT) :: BEAM_SZAS    ( MAXBEAMS )
+      REAL(kind=dp), INTENT(INOUT) :: USER_ANGLES  ( MAX_USER_STREAMS )
+      REAL(kind=dp), INTENT(INOUT) :: USER_RELAZMS ( MAX_USER_RELAZMS )
 
 !  height and earth radius
 
       REAL(kind=dp), INTENT(INOUT) :: EARTH_RADIUS
-      REAL(kind=dp), INTENT(IN)    :: HEIGHT_GRID ( 0:NLAYERS )
+      REAL(kind=dp), INTENT(IN)    :: HEIGHT_GRID ( 0:MAXLAYERS )
 
 !  Module output
 
       INTEGER      , INTENT(OUT)   :: STATUS
       INTEGER      , INTENT(INOUT) :: NMESSAGES
-      CHARACTER*(*), INTENT(INOUT) :: MESSAGE(100)
-      CHARACTER*(*), INTENT(INOUT) :: ACTION(100)
+      CHARACTER*(*), INTENT(INOUT) :: MESSAGE(MAXMESSAGES)
+      CHARACTER*(*), INTENT(INOUT) :: ACTION(MAXMESSAGES)
 
 !  local variables
 
@@ -115,6 +170,10 @@ SUBROUTINE TWOSTREAM_CHECK_INPUTS_BASIC                       &
 
       STATUS = 0
       NM = NMESSAGES
+
+!  !@@ 2p3 Initialize post-processing flag
+
+      DO_POSTPROCESSING = .false.
 
 !  Single scattering stuff omitted
 !      IF ( DO_SSCORR_OUTGOING ) THEN
@@ -133,6 +192,93 @@ SUBROUTINE TWOSTREAM_CHECK_INPUTS_BASIC                       &
 !      IF ( NBEAMS .GT. 10 ) THEN
 !      IF ( N_USER_STREAMS .GT. 10 ) THEN
 !      IF ( N_USER_RELAZMS .GT. 10 ) THEN
+
+!  Check MAX number of messages should be at least 13 (covers all errors below)
+
+      IF ( MAXMESSAGES .LT. 14 ) THEN
+        NM = NM + 1
+        MESSAGE(NM) = 'Bad input: Not enough possible messages in Checks'
+        ACTION(NM)  = 'Increase value of symbolic Dimension MAXMESSAGES to 13'
+        STATUS = 1
+      ENDIF
+
+!  November 2012. Dimensioning check re-introduced (Properly this time)
+
+      IF ( NLAYERS .GT. MAXLAYERS ) THEN
+        NM = NM + 1
+        MESSAGE(NM) = 'Bad input: Number of layers NLAYERS > Maximum dimension MAXLAYERS'
+        ACTION(NM)  = 'Increase value of symbolic Dimension MAXLAYERS'
+        STATUS = 1
+      ENDIF
+
+! !@@ New 12/21/12. Observational Geometry check
+
+      if ( DO_USER_OBSGEOMS ) THEN
+        IF ( N_USER_OBSGEOMS .GT. MAX_USER_OBSGEOMS ) THEN
+          NM = NM + 1
+          MESSAGE(NM) = 'Bad input: Number of User ObsGeoms N_USER_OBSGEOMS > Maximum dimension'
+          ACTION(NM)  = 'Increase value of symbolic Dimension MAX_USER_OBSGEOMS'
+          STATUS = 1 ; go to 5665
+        ENDIF
+      ENDIF
+
+!  !@@ Skip Next 3 checks if using observational geometry
+
+      IF ( NBEAMS .GT. MAXBEAMS ) THEN
+        NM = NM + 1
+        MESSAGE(NM) = 'Bad input: Number of beams NBEAMS > Maximum dimension MAXBEAMS'
+        ACTION(NM)  = 'Increase value of symbolic Dimension MAXBEAMS'
+        STATUS = 1
+      ENDIF
+
+      IF ( N_USER_STREAMS .GT. MAX_USER_STREAMS ) THEN
+        NM = NM + 1
+        MESSAGE(NM) = 'Bad input: Number of User streams N_USER_STREAMS > Maximum dimension'
+        ACTION(NM)  = 'Increase value of symbolic Dimension MAX_USER_STREAMS'
+        STATUS = 1
+      ENDIF
+
+      IF ( N_USER_RELAZMS .GT. MAX_USER_RELAZMS ) THEN
+        NM = NM + 1
+        MESSAGE(NM) = 'Bad input: Number of User azimuths N_USER_RELAZMS > Maximum dimension'
+        ACTION(NM)  = 'Increase value of symbolic Dimension MAX_USER_RELAZMS'
+        STATUS = 1
+      ENDIF
+
+!  !@@ Continuation point for skipping normal geometry control checks
+
+5665  continue
+
+!  !@@ No point in going on if dimemnsion checks have failed
+
+      if ( status .eq. 1 .and. NM.gt.0) then
+        NM = NM + 1
+        MESSAGE(NM) = 'Bad input: At least one dimensioning check failed'
+        ACTION(NM)  = 'Read previous messages to determine actions'
+        nmessages = nm
+        return
+      endif
+
+!  !@@ Reset angle input in Observational Geometry mode
+!  ====================================================
+
+! @@ Note differing treatment for Thermal-emission-only
+
+      IF ( DO_USER_OBSGEOMS ) THEN
+         IF ( DO_SOLAR_SOURCES ) THEN
+            NBEAMS          = N_USER_OBSGEOMS
+            N_USER_STREAMS  = N_USER_OBSGEOMS
+            N_USER_RELAZMS  = N_USER_OBSGEOMS
+            BEAM_SZAS    (1:N_USER_OBSGEOMS) = USER_OBSGEOMS(1:N_USER_OBSGEOMS,1)
+            USER_ANGLES  (1:N_USER_OBSGEOMS) = USER_OBSGEOMS(1:N_USER_OBSGEOMS,2)
+            USER_RELAZMS (1:N_USER_OBSGEOMS) = USER_OBSGEOMS(1:N_USER_OBSGEOMS,3)
+         ELSE
+            NBEAMS          = 1
+            N_USER_STREAMS  = N_USER_OBSGEOMS
+            N_USER_RELAZMS  = 1
+            USER_ANGLES  (1:N_USER_OBSGEOMS) = USER_OBSGEOMS(1:N_USER_OBSGEOMS,2)
+         ENDIF
+      ENDIF
 
 !  check directional input
 
@@ -199,6 +345,20 @@ SUBROUTINE TWOSTREAM_CHECK_INPUTS_BASIC                       &
         ENDIF
       ENDIF
 
+!  11/5/13. Version 2p3, Check FLUX flags, set post-processing
+!  -----------------------------------------------------------
+
+      IF ( DO_MVOUT_ONLY .and. DO_ADDITIONAL_MVOUT ) then
+        NM = NM + 1
+        MESSAGE(NM) = 'Bad input: both Flux-output flags are set'
+        ACTION(NM)  = 'Abort: Turn off 1 of the MVOUT flags'
+        STATUS = 1
+      ENDIF
+
+      IF ( DO_ADDITIONAL_MVOUT .or. .not.DO_MVOUT_ONLY ) then
+        DO_POSTPROCESSING = .true.
+      ENDIF
+
 !  check viewing geometry input
 !  ============================
 
@@ -216,47 +376,56 @@ SUBROUTINE TWOSTREAM_CHECK_INPUTS_BASIC                       &
 
 !  Check solar zenith angle input
 
-      DO I = 1, NBEAMS
+      LOOP = .TRUE.
+      I = 0
+      DO WHILE (LOOP .AND. I.LT.NBEAMS)
+        I = I + 1
         IF ( BEAM_SZAS(I) .LT. 0.0d0 .OR. BEAM_SZAS(I).GE.90.0D0 ) THEN
           NM = NM + 1
           WRITE(C2,'(I2)')I
           MESSAGE(NM)= 'Bad input: out-of-range beam angle, no. '//C2
           ACTION(NM) = 'Look at BEAM_SZAS input, should be < 90 & > 0'
+          LOOP = .FALSE.
           STATUS = 1
         ENDIF
       ENDDO
 
 !  Check relative azimuths
+!  @@ 2p3 Avoid this section if MVOUT_ONLY
 
-      LOOP = .TRUE.
-      I = 0
-      DO WHILE (LOOP .AND. I.LT.N_USER_RELAZMS)
-        I = I + 1
-        IF ( USER_RELAZMS(I).GT.360.0D0 .OR. USER_RELAZMS(I).LT.0.0d0 ) THEN
-          NM = NM + 1
-          WRITE(C2,'(I2)')I
-          MESSAGE(NM)='Bad input: out-of-range azimuth angle, no. '//C2
-          ACTION(NM) = 'Look at azimuth angle input, range [0,360]'
-          LOOP = .FALSE.
-          STATUS = 1
-        ENDIF
-      ENDDO
+      IF ( .not.DO_MVOUT_ONLY ) THEN
+        LOOP = .TRUE. ; I = 0
+        DO WHILE (LOOP .AND. I.LT.N_USER_RELAZMS)
+          I = I + 1
+          IF ( USER_RELAZMS(I).GT.360.0D0 .OR. USER_RELAZMS(I).LT.0.0d0 ) THEN
+            NM = NM + 1
+            WRITE(C2,'(I2)')I
+            MESSAGE(NM)='Bad input: out-of-range azimuth angle, no. '//C2
+            ACTION(NM) = 'Look at azimuth angle input, range [0,360]'
+            LOOP = .FALSE.
+            STATUS = 1
+          ENDIF
+        ENDDO
+      ENDIF
 
 !  check user-defined stream angles (should always be [0,90])
+!  @@ 2p3 Avoid this section if MVOUT_ONLY
 
-      LOOP = .TRUE.
-      I = 0
-      DO WHILE (LOOP .AND. I.LT.N_USER_STREAMS)
-        I = I + 1
-        IF ( USER_ANGLES(I) .GT. 90.0 .or.USER_ANGLES(I) .LT. 0.0d0 ) THEN
-          NM = NM + 1
-          WRITE(C2,'(I2)')I
-          MESSAGE(NM)='Bad input: out-of-range viewing angle, no. '//C2
-          ACTION(NM) = 'Look at viewing angle input, range [0,90]'
-          LOOP = .FALSE.
-          STATUS = 1
-        ENDIF
-      ENDDO
+      IF ( .not.DO_MVOUT_ONLY ) THEN
+        LOOP = .TRUE.
+        I = 0
+        DO WHILE (LOOP .AND. I.LT.N_USER_STREAMS)
+          I = I + 1
+          IF ( USER_ANGLES(I) .GT. 90.0 .or.USER_ANGLES(I) .LT. 0.0d0 ) THEN
+            NM = NM + 1
+            WRITE(C2,'(I2)')I
+            MESSAGE(NM)='Bad input: out-of-range viewing angle, no. '//C2
+            ACTION(NM) = 'Look at viewing angle input, range [0,90]'
+            LOOP = .FALSE.
+            STATUS = 1
+          ENDIF
+        ENDDO
+      ENDIF
 
 !  Check height grid input (Chapman function only)
 
@@ -285,10 +454,10 @@ END SUBROUTINE TWOSTREAM_CHECK_INPUTS_BASIC
 
 !
 
-SUBROUTINE TWOSTREAM_CHECK_INPUTS_THREAD            &
-           ( NLAYERS, NTHREADS, THREAD,             & ! input
-             DELTAU_VERT, OMEGA_TOTAL, ASYMM_TOTAL, & ! input
-             STATUS, NMESSAGES, MESSAGE, ACTION )     ! output
+SUBROUTINE TWOSTREAM_CHECK_INPUTS_OPTICAL &
+           ( MAXLAYERS, MAXMESSAGES, NLAYERS,        & ! input
+             DELTAU_VERT, OMEGA_TOTAL, ASYMM_TOTAL,  & ! input
+             STATUS, NMESSAGES, MESSAGE, ACTION )      ! output
 
       implicit none
 
@@ -299,56 +468,49 @@ SUBROUTINE TWOSTREAM_CHECK_INPUTS_THREAD            &
 !  Module inputs
 !  -------------
 
+!  Dimensions :
+     
+      INTEGER, INTENT(IN) :: MAXLAYERS, MAXMESSAGES
+
 !  Numbers
 
-      INTEGER, INTENT(IN) :: NLAYERS, NTHREADS
-
-!  Thread number
-
-      INTEGER, INTENT(IN) :: THREAD
+      INTEGER, INTENT(IN) :: NLAYERS
 
 !  Optical properties
 
-      REAL(kind=dp), INTENT(IN) :: DELTAU_VERT(NLAYERS, NTHREADS)
-      REAL(kind=dp), INTENT(IN) :: OMEGA_TOTAL(NLAYERS, NTHREADS)
-      REAL(kind=dp), INTENT(IN) :: ASYMM_TOTAL(NLAYERS, NTHREADS)
+      REAL(kind=dp), INTENT(IN) :: DELTAU_VERT (MAXLAYERS )
+      REAL(kind=dp), INTENT(IN) :: OMEGA_TOTAL (MAXLAYERS )
+      REAL(kind=dp), INTENT(IN) :: ASYMM_TOTAL (MAXLAYERS )
 
 !  Module output
 !  -------------
 
       INTEGER      , INTENT(OUT)   :: STATUS
       INTEGER      , INTENT(INOUT) :: NMESSAGES
-      CHARACTER*(*), INTENT(INOUT) :: MESSAGE(100)
-      CHARACTER*(*), INTENT(INOUT) :: ACTION(100)
+      CHARACTER*(*), INTENT(INOUT) :: MESSAGE (MAXMESSAGES)
+      CHARACTER*(*), INTENT(INOUT) :: ACTION (MAXMESSAGES)
 
 !  local variables
 
       INTEGER           :: L, NM
-      CHARACTER(LEN=3)  :: C3, WTHREAD
+      CHARACTER(LEN=3)  :: C3
 
 !  Initialize output status
 
       STATUS = 0
       NM = NMESSAGES
 
-!  thread number
-
-      WTHREAD = '000'
-      IF (THREAD.LT.10)WRITE(WTHREAD(3:3),'(I1)')THREAD
-      IF (THREAD.GT.99)WRITE(WTHREAD(1:3),'(I3)')THREAD
-      IF (THREAD.GE.10.and.THREAD.LE.99)WRITE(WTHREAD(2:3),'(I2)')THREAD
-
-!  check Thread-dependent optical property inputs
-!  ----------------------------------------------
+!  check optical property inputs
+!  -----------------------------
 
 !  Check non-negative optical thickness values
 
       DO L = 1, NLAYERS
-        IF ( DELTAU_VERT(L,THREAD).LE.0.0d0 ) THEN
+        IF ( DELTAU_VERT(L).LE.0.0_dp ) THEN
           WRITE(C3,'(I3)')L
           NM = NM + 1
           MESSAGE(NM) = 'Bad input: optical thickness <= 0, layer '//C3
-          ACTION(NM)  = 'Check opt-thick. input, thread # '//wthread
+          ACTION(NM)  = 'Check opt-thickness input '
           STATUS = 1
         ENDIF
       ENDDO
@@ -356,12 +518,12 @@ SUBROUTINE TWOSTREAM_CHECK_INPUTS_THREAD            &
 !  check single scatter albedos, for conservative scattering limit
 
       DO L = 1, NLAYERS
-        !IF ( OMEGA_TOTAL(L,THREAD).GT.0.999999d0 ) THEN !original
-        IF ( OMEGA_TOTAL(L,THREAD).GT.0.999999999d0 ) THEN
+        !IF ( OMEGA_TOTAL(L).GT.0.999999d0 ) THEN !original
+        IF ( OMEGA_TOTAL(L).GT.0.999999999d0 ) THEN
           WRITE(C3,'(I3)')L
           NM = NM + 1
           MESSAGE(NM) = 'Bad input: SS-albedo close to 1, layer '//C3
-          ACTION (NM) = 'Check SS-albedo input, thread # '//wthread
+          ACTION (NM) = 'Check single scattering albedo input'
           STATUS = 1
         ENDIF
       ENDDO
@@ -369,12 +531,12 @@ SUBROUTINE TWOSTREAM_CHECK_INPUTS_THREAD            &
 !  check single scatter albedos, for smallness limit
 
       DO L = 1, NLAYERS
-        !IF ( OMEGA_TOTAL(L,THREAD).LT.1.0d-06 ) THEN !original
-        IF ( OMEGA_TOTAL(L,THREAD).LT.1.0d-9 ) THEN
+        !IF ( OMEGA_TOTAL(L).LT.1.0d-06 ) THEN !original
+        IF ( OMEGA_TOTAL(L).LT.1.0d-9 ) THEN
           WRITE(C3,'(I3)')L
           NM = NM + 1
           MESSAGE(NM) = 'Bad input: SS-albedo too small, layer '//C3
-          ACTION (NM) = 'Check SS-albedo input, thread # '//wthread
+          ACTION (NM) = 'Check single scattering albedo input'
           STATUS = 1
         ENDIF
       ENDDO
@@ -382,12 +544,12 @@ SUBROUTINE TWOSTREAM_CHECK_INPUTS_THREAD            &
 !  check asymmetry parameter, between -1 and 1
 
       DO L = 1, NLAYERS
-        IF ( ASYMM_TOTAL(L,THREAD).LE.-1.0d0 .OR. &
-             ASYMM_TOTAL(L,THREAD).GE. 1.0d0  ) THEN
+        IF ( ASYMM_TOTAL(L).LE.-1.0d0 .OR. &
+             ASYMM_TOTAL(L).GE. 1.0d0  ) THEN
           WRITE(C3,'(I3)')L
           NM = NM + 1
           MESSAGE(NM) = 'Bad input: Asymm parameter outside [-1,1], layer'//C3
-          ACTION(NM)  = 'Check Asymm parameter input, thread # '//wthread
+          ACTION(NM)  = 'Check Asymmetry parameter input'
           STATUS = 1
         ENDIF
       ENDDO
@@ -399,12 +561,13 @@ SUBROUTINE TWOSTREAM_CHECK_INPUTS_THREAD            &
 !  Finish
 
       RETURN
-END SUBROUTINE TWOSTREAM_CHECK_INPUTS_THREAD
+END SUBROUTINE TWOSTREAM_CHECK_INPUTS_OPTICAL
 
 !
 
-SUBROUTINE TWOSTREAM_AUXGEOM             &
-      ( N_USER_STREAMS, NBEAMS, FOURIER, & ! inputs
+SUBROUTINE TWOSTREAM_AUXGEOM &
+      ( MAX_USER_STREAMS, MAXBEAMS, DO_POSTPROCESSING,  & ! Dimensions, Flag
+        N_USER_STREAMS, NBEAMS, FOURIER, & ! inputs
         X0, USER_STREAMS, STREAM_VALUE,  & ! inputs
         PX11, PXSQ, POX, PX0X, ULP )       ! outputs
 
@@ -417,6 +580,14 @@ SUBROUTINE TWOSTREAM_AUXGEOM             &
 !  Input arguments
 !  ---------------
 
+!  Dimensions
+
+      INTEGER, INTENT(IN)        ::  MAX_USER_STREAMS, MAXBEAMS
+
+!  Flag for post-processing, @@ 2p3, 11/5/13
+
+      LOGICAL, INTENT(IN)        :: DO_POSTPROCESSING
+
 !  Numbers
 
       INTEGER, INTENT(IN)        ::  N_USER_STREAMS, NBEAMS
@@ -427,16 +598,16 @@ SUBROUTINE TWOSTREAM_AUXGEOM             &
 
 !  stream directions
 
-      REAL(kind=dp), INTENT(IN)  :: X0 ( NBEAMS )
-      REAL(kind=dp), INTENT(IN)  :: USER_STREAMS ( N_USER_STREAMS )
+      REAL(kind=dp), INTENT(IN)  :: X0 ( MAXBEAMS )
+      REAL(kind=dp), INTENT(IN)  :: USER_STREAMS ( MAX_USER_STREAMS )
       REAL(kind=dp), INTENT(IN)  :: STREAM_VALUE
 
 !  Output
 !  ------
 
-      REAL(kind=dp), INTENT(OUT) :: ULP ( N_USER_STREAMS )
-      REAL(kind=dp), INTENT(OUT) :: POX  ( NBEAMS )
-      REAL(kind=dp), INTENT(OUT) :: PX0X ( NBEAMS )
+      REAL(kind=dp), INTENT(OUT) :: ULP ( MAX_USER_STREAMS )
+      REAL(kind=dp), INTENT(OUT) :: POX  ( MAXBEAMS )
+      REAL(kind=dp), INTENT(OUT) :: PX0X ( MAXBEAMS )
       REAL(kind=dp), INTENT(OUT) :: PXSQ, PX11
 
 !  Local variables
@@ -446,10 +617,14 @@ SUBROUTINE TWOSTREAM_AUXGEOM             &
 
 !  Saved quantities
 
-      DO UM = 1, N_USER_STREAMS
-        MU = USER_STREAMS(UM)
-        ULP(UM) =  -DSQRT(0.5d0*(1.0d0-MU*MU))
-      ENDDO
+      IF ( DO_POSTPROCESSING ) THEN
+        DO UM = 1, N_USER_STREAMS
+          MU = USER_STREAMS(UM)
+          ULP(UM) =  -DSQRT(0.5d0*(1.0d0-MU*MU))
+        ENDDO
+      ELSE
+        ULP = 0.0d0
+      ENDIF
 
       if ( fourier.eq.0) then
         PXSQ = STREAM_VALUE * STREAM_VALUE
@@ -475,23 +650,29 @@ END SUBROUTINE TWOSTREAM_AUXGEOM
 
 !
 
-SUBROUTINE TWOSTREAM_QSPREP                          &
-       ( NLAYERS, NBEAMS, DO_PLANE_PARALLEL,         & ! Input
+SUBROUTINE TWOSTREAM_QSPREP &
+       ( MAXLAYERS, MAXBEAMS,                        & ! Dimensions
+         NLAYERS, NBEAMS, DO_PLANE_PARALLEL,         & ! Input
          DELTAU_VERT, CHAPMAN_FACTORS, X0,           & ! Input
          DO_REFLECTED_DIRECTBEAM,                    & ! In/Out
          INITIAL_TRANS, AVERAGE_SECANT,              & ! Output
          LOCAL_CSZA, LAYER_PIS_CUTOFF,               & ! Output
          DELTAU_SLANT, TAUSLANT,                     & ! Output
-         SOLAR_BEAM_OPDEP )                            ! Output
+         TRANS_SOLAR_BEAM )                            ! Output
 
       implicit none
 
-!  precision
+!   precision and parameters
 
-      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+      INTEGER      , PARAMETER :: dp   = KIND( 1.0D0 )
+      REAL(kind=dp), parameter :: zero = 0.0_dp, one = 1.0_dp
 
 !  Inputs
 !  ------
+
+!  Dimensions
+
+      INTEGER, INTENT(IN)        :: MAXLAYERS, MAXBEAMS
 
 !  Control
 
@@ -499,11 +680,11 @@ SUBROUTINE TWOSTREAM_QSPREP                          &
 
 !  optical thickness input
 
-      REAL(kind=dp), INTENT(IN)  :: DELTAU_VERT ( NLAYERS )
+      REAL(kind=dp), INTENT(IN)  :: DELTAU_VERT ( MAXLAYERS )
 
 !  Path segments distances (km)
 
-      REAL(kind=dp), INTENT(IN)  :: CHAPMAN_FACTORS(NLAYERS,NLAYERS,NBEAMS)
+      REAL(kind=dp), INTENT(IN)  :: CHAPMAN_FACTORS(MAXLAYERS,MAXLAYERS,MAXBEAMS)
 
 !  Plane parallel control
 
@@ -518,38 +699,38 @@ SUBROUTINE TWOSTREAM_QSPREP                          &
 
 !  Reflectance flags
 !mick fix 1/24/12 - Set before subroutine.  Possibly reset below.
-      LOGICAL, INTENT(INOUT)     :: DO_REFLECTED_DIRECTBEAM ( NBEAMS )
+      LOGICAL, INTENT(INOUT)     :: DO_REFLECTED_DIRECTBEAM ( MAXBEAMS )
 
 !  Last layer to include Particular integral solution
 
-      INTEGER, INTENT(OUT)       :: LAYER_PIS_CUTOFF(NBEAMS)
+      INTEGER, INTENT(OUT)       :: LAYER_PIS_CUTOFF(MAXBEAMS)
 
 !  Average-secant and initial tramsittance factors for solar beams.
 
-      REAL(kind=dp), INTENT(OUT) :: INITIAL_TRANS  ( NLAYERS, NBEAMS )
-      REAL(kind=dp), INTENT(OUT) :: AVERAGE_SECANT ( NLAYERS, NBEAMS )
-      REAL(kind=dp), INTENT(OUT) :: LOCAL_CSZA     ( NLAYERS, NBEAMS )
+      REAL(kind=dp), INTENT(OUT) :: INITIAL_TRANS  ( MAXLAYERS, MAXBEAMS )
+      REAL(kind=dp), INTENT(OUT) :: AVERAGE_SECANT ( MAXLAYERS, MAXBEAMS )
+      REAL(kind=dp), INTENT(OUT) :: LOCAL_CSZA     ( MAXLAYERS, MAXBEAMS )
 
 !  Derived optical thickness inputs
 
-      REAL(kind=dp), INTENT(OUT) :: TAUSLANT     ( 0:NLAYERS, NBEAMS )
-      REAL(kind=dp), INTENT(OUT) :: DELTAU_SLANT ( NLAYERS, NLAYERS, NBEAMS )
+      REAL(kind=dp), INTENT(OUT) :: TAUSLANT     ( 0:MAXLAYERS, MAXBEAMS )
+      REAL(kind=dp), INTENT(OUT) :: DELTAU_SLANT ( MAXLAYERS, MAXLAYERS, MAXBEAMS )
 
 !  Solar beam attenuations
 
-      REAL(kind=dp), INTENT(OUT) :: SOLAR_BEAM_OPDEP ( NBEAMS )
+      REAL(kind=dp), INTENT(OUT) :: TRANS_SOLAR_BEAM ( MAXBEAMS )
 
 !  Local variables
 !  ---------------
 
       INTEGER       ::  N, K, IB
       REAL(kind=dp) :: S_T_0, S_T_1, SEC0, TAU, DELS
-      REAL(kind=dp) :: TAUGRID (0:NLAYERS), TAU_SOLAR(NBEAMS)
+      REAL(kind=dp) :: TAUGRID (0:MAXLAYERS), TAU_SOLAR(MAXBEAMS)
       REAL(kind=dp), PARAMETER :: MAX_TAU_PATH = 88.0d0
 
 !  Complete grid
 
-      TAUGRID(0) = 0.0d0
+      TAUGRID(0) = zero
       DO N = 1, NLAYERS
         TAUGRID(N) = TAUGRID(N-1) + DELTAU_VERT(N)
       ENDDO
@@ -570,9 +751,9 @@ SUBROUTINE TWOSTREAM_QSPREP                          &
 
       IF ( DO_PLANE_PARALLEL ) THEN
 
-       S_T_0 = 1.0d0
+       S_T_0 = one
        DO IB = 1, NBEAMS
-        SEC0 = 1.0d0 / X0(IB)
+        SEC0 = one / X0(IB)
         LAYER_PIS_CUTOFF(IB) = NLAYERS
         DO N = 1, NLAYERS
           TAUSLANT(N,IB) = TAUGRID(N) * SEC0
@@ -581,12 +762,12 @@ SUBROUTINE TWOSTREAM_QSPREP                          &
               LAYER_PIS_CUTOFF(IB) = N
             ENDIF
             AVERAGE_SECANT(N,IB) = SEC0
-            INITIAL_TRANS(N,IB)  = DEXP ( - TAUGRID(N-1) * SEC0 )
+            INITIAL_TRANS(N,IB)  = EXP ( - TAUGRID(N-1) * SEC0 )
             LOCAL_CSZA(N,IB)     = X0(IB)
           ELSE
-            AVERAGE_SECANT(N,IB) = 0.0d0
-            INITIAL_TRANS(N,IB)  = 0.0d0
-            LOCAL_CSZA(N,IB)     = 0.0d0
+            AVERAGE_SECANT(N,IB) = zero
+            INITIAL_TRANS(N,IB)  = zero
+            LOCAL_CSZA(N,IB)     = zero
           ENDIF
         ENDDO
         TAU_SOLAR(IB) = TAUSLANT(NLAYERS,IB)
@@ -601,9 +782,9 @@ SUBROUTINE TWOSTREAM_QSPREP                          &
 
 !  Get the total spherical attenuation from layer thickness sums
 
-        TAUSLANT(0,IB) = 0.0d0
+        TAUSLANT(0,IB) = zero
         DO N = 1, NLAYERS
-          TAU = 0.0d0
+          TAU = zero
           DO K = 1, N
             TAU = TAU + DELTAU_SLANT(N,K,IB)
           ENDDO
@@ -613,15 +794,15 @@ SUBROUTINE TWOSTREAM_QSPREP                          &
 
 !  set up the average secant formulation
 
-        S_T_0 = 1.0d0
-        S_T_1 = 0.0d0
+        S_T_0 = 1.0_dp
+        S_T_1 = zero
         LAYER_PIS_CUTOFF(IB) = NLAYERS
         DO N = 1, NLAYERS
           IF  (N.LE.LAYER_PIS_CUTOFF(IB) ) THEN
             IF ( TAUSLANT(N,IB) .GT. MAX_TAU_PATH ) THEN
               LAYER_PIS_CUTOFF(IB) = N
             ELSE
-              S_T_1 = DEXP ( - TAUSLANT(N,IB) )
+              S_T_1 = EXP ( - TAUSLANT(N,IB) )
             ENDIF
             AVERAGE_SECANT(N,IB) = &
                 (TAUSLANT(N,IB)-TAUSLANT(N-1,IB)) / DELTAU_VERT(N)
@@ -629,8 +810,8 @@ SUBROUTINE TWOSTREAM_QSPREP                          &
             LOCAL_CSZA(N,IB)     = X0(IB)
             S_T_0             = S_T_1
           ELSE
-            AVERAGE_SECANT(N,IB) = 0.0d0
-            INITIAL_TRANS(N,IB)  = 0.0d0
+            AVERAGE_SECANT(N,IB) = zero
+            INITIAL_TRANS(N,IB)  = zero
           ENDIF
         ENDDO
 
@@ -640,7 +821,7 @@ SUBROUTINE TWOSTREAM_QSPREP                          &
           IF  (N.LE.LAYER_PIS_CUTOFF(IB) ) THEN
             LOCAL_CSZA(N,IB) = X0(IB)
           ELSE
-            LOCAL_CSZA(N,IB) = 0.0d0
+            LOCAL_CSZA(N,IB) = zero
           ENDIF
         ENDDO
 
@@ -656,10 +837,10 @@ SUBROUTINE TWOSTREAM_QSPREP                          &
 
       DO IB = 1, NBEAMS
         IF ( TAU_SOLAR(IB) .GT. MAX_TAU_PATH ) THEN
-          SOLAR_BEAM_OPDEP(IB) = 0.0d0
+          TRANS_SOLAR_BEAM(IB)        = zero
           DO_REFLECTED_DIRECTBEAM(IB) = .FALSE.
         ELSE
-          SOLAR_BEAM_OPDEP(IB) = DEXP( - TAU_SOLAR(IB) )
+          TRANS_SOLAR_BEAM(IB) = EXP( - TAU_SOLAR(IB) )
 !mick fix 1/24/12 - Set before subroutine
           !DO_REFLECTED_DIRECTBEAM(IB) = .TRUE.
         ENDIF
@@ -672,61 +853,79 @@ END SUBROUTINE TWOSTREAM_QSPREP
 
 !
 
-SUBROUTINE TWOSTREAM_PREPTRANS                                     &
-    ( NLAYERS, N_USER_STREAMS, NBEAMS, DELTAU_VERT, USER_STREAMS,  & ! Input
+SUBROUTINE TWOSTREAM_PREPTRANS &
+    ( MAXLAYERS, MAX_USER_STREAMS, MAXBEAMS,                       & ! Dimensions
+      DO_USER_OBSGEOMS, DO_POSTPROCESSING,                         & ! Input flags (2p1,2p3)
+      NLAYERS, N_USER_STREAMS, NBEAMS, DELTAU_VERT, USER_SECANTS,  & ! Input
       INITIAL_TRANS, AVERAGE_SECANT, LAYER_PIS_CUTOFF,             & ! Input
       T_DELT_MUBAR, T_DELT_USERM, ITRANS_USERM  )                    ! Output
 
       implicit none
 
-!  precision
+!  precision and parameters
 
-      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+      INTEGER      , PARAMETER :: dp   = KIND( 1.0D0 )
+      REAL(kind=dp), parameter :: zero = 0.0_dp, one = 1.0_dp
 
 !  Prepare transmittances and transmittance factors
 
 !  Inputs
 !  ------
 
-!  Control
+!  Dimensions
 
-      INTEGER, INTENT(IN)       ::  NLAYERS, N_USER_STREAMS, NBEAMS
+      INTEGER, INTENT(IN)       :: MAXLAYERS, MAX_USER_STREAMS, MAXBEAMS
+
+!  Control Flags.
+!    !@@ Add observational geometry option 12/21/12
+!    !@@ Add Post-processing flag, 11/5/13
+
+      LOGICAL, intent(in)       :: DO_USER_OBSGEOMS   !@@
+      LOGICAL, intent(in)       :: DO_POSTPROCESSING  !@@
+
+! Numbers
+
+      INTEGER, INTENT(IN)       :: NLAYERS, N_USER_STREAMS, NBEAMS
 
 !  Input optical depths after delta-M scaling and Chapman function
 
-      REAL(kind=dp), INTENT(IN) :: DELTAU_VERT    ( NLAYERS )
+      REAL(kind=dp), INTENT(IN) :: DELTAU_VERT    ( MAXLAYERS )
 
 !  User streams
 
-      REAL(kind=dp), INTENT(IN) :: USER_STREAMS ( N_USER_STREAMS )
+      REAL(kind=dp), INTENT(IN) :: USER_SECANTS ( MAX_USER_STREAMS )
 
 !  Last layer to include Particular integral solution
 
-      INTEGER, INTENT(IN)       ::  LAYER_PIS_CUTOFF(NBEAMS)
+      INTEGER, INTENT(IN)       ::  LAYER_PIS_CUTOFF(MAXBEAMS)
 
 !  Average-secant and initial tramsittance factors for solar beams.
 
-      REAL(kind=dp), INTENT(IN) :: INITIAL_TRANS  ( NLAYERS, NBEAMS )
-      REAL(kind=dp), INTENT(IN) :: AVERAGE_SECANT ( NLAYERS, NBEAMS )
+      REAL(kind=dp), INTENT(IN) :: INITIAL_TRANS  ( MAXLAYERS, MAXBEAMS )
+      REAL(kind=dp), INTENT(IN) :: AVERAGE_SECANT ( MAXLAYERS, MAXBEAMS )
 
 !  Outputs
 !  -------
 
 !  Transmittance factors for average secant stream
 
-      REAL(kind=dp), INTENT(OUT) :: T_DELT_MUBAR ( NLAYERS, NBEAMS )
+      REAL(kind=dp), INTENT(OUT) :: T_DELT_MUBAR ( MAXLAYERS, MAXBEAMS )
 
 !  Transmittance factors for user-defined stream angles
 
-      REAL(kind=dp), INTENT(OUT) :: T_DELT_USERM ( NLAYERS, N_USER_STREAMS )
-      REAL(kind=dp), INTENT(OUT) :: ITRANS_USERM ( NLAYERS, N_USER_STREAMS, NBEAMS )
+      REAL(kind=dp), INTENT(OUT) :: T_DELT_USERM ( MAXLAYERS, MAX_USER_STREAMS )
+      REAL(kind=dp), INTENT(OUT) :: ITRANS_USERM ( MAXLAYERS, MAX_USER_STREAMS, MAXBEAMS )
 
 !  local variables
 !  ---------------
 
-      INTEGER       :: N, UM, IB
+      INTEGER       :: N, UM, IB, LUM
       REAL(kind=dp) :: SPHER
       REAL(kind=dp), PARAMETER :: MAX_TAU_PATH = 88.0d0
+
+!  Local user index. !@@ For the Observational Geometry option.
+
+      LUM = 1
 
 !  Transmittance factors for average secant streams
 !  ================================================
@@ -734,13 +933,13 @@ SUBROUTINE TWOSTREAM_PREPTRANS                                     &
       DO IB = 1, NBEAMS
         DO N = 1, NLAYERS
           IF ( N .GT. LAYER_PIS_CUTOFF(IB) ) THEN
-            T_DELT_MUBAR(N,IB) = 0.0d0
+            T_DELT_MUBAR(N,IB) = zero
           ELSE
             SPHER = DELTAU_VERT(N) * AVERAGE_SECANT(N,IB)
             IF ( SPHER .GT. MAX_TAU_PATH ) THEN
-              T_DELT_MUBAR(N,IB) = 0.0d0
+              T_DELT_MUBAR(N,IB) = zero
             ELSE
-              T_DELT_MUBAR(N,IB) = DEXP ( - SPHER )
+              T_DELT_MUBAR(N,IB) = EXP ( - SPHER )
             ENDIF
           ENDIF
         ENDDO
@@ -749,25 +948,38 @@ SUBROUTINE TWOSTREAM_PREPTRANS                                     &
 !  Transmittances for User Streams
 !  ===============================
 
-!  Initial transmittances divided by user streams
+!  Return if no post processing
 
-      DO IB = 1, NBEAMS
-        DO N = 1, NLAYERS
-         DO UM = 1, N_USER_STREAMS
-          ITRANS_USERM(N,UM,IB) = INITIAL_TRANS(N,IB)/USER_STREAMS(UM)
-         ENDDO
+      IF ( .not. DO_POSTPROCESSING ) RETURN
+
+!  Initial transmittances divided by user streams
+!  !@@ Option for Observational Goemetry, 12/21/12.
+
+      IF ( DO_USER_OBSGEOMS ) THEN
+        DO IB = 1, NBEAMS
+          DO N = 1, NLAYERS
+            ITRANS_USERM(N,LUM,IB) = INITIAL_TRANS(N,IB) * USER_SECANTS(IB)
+          ENDDO
         ENDDO
-      ENDDO
+      ELSE
+        DO IB = 1, NBEAMS
+          DO N = 1, NLAYERS
+            DO UM = 1, N_USER_STREAMS
+              ITRANS_USERM(N,UM,IB) = INITIAL_TRANS(N,IB) * USER_SECANTS(UM)
+            ENDDO
+          ENDDO
+        ENDDO
+      ENDIF
 
 !  Whole Layer transmittances
 
       DO N = 1, NLAYERS
         DO UM = 1, N_USER_STREAMS
-          SPHER = DELTAU_VERT(N) / USER_STREAMS(UM)
+          SPHER = DELTAU_VERT(N) * USER_SECANTS(UM)
           IF ( SPHER.GT.MAX_TAU_PATH ) THEN
-            T_DELT_USERM(N,UM) = 0.0d0
+            T_DELT_USERM(N,UM) = zero
           ELSE
-            T_DELT_USERM(N,UM) = DEXP ( - SPHER )
+            T_DELT_USERM(N,UM) = EXP ( - SPHER )
           ENDIF
         ENDDO
       ENDDO
@@ -779,26 +991,39 @@ END SUBROUTINE TWOSTREAM_PREPTRANS
 
 !
 
-SUBROUTINE TWOSTREAM_DIRECTBEAM                         & 
-          ( DO_INCLUDE_SURFACE, DO_BRDF_SURFACE,        & ! Input
+SUBROUTINE TWOSTREAM_DIRECTBEAM & 
+          ( MAXBEAMS,                                   & ! Dimensions
+            DO_INCLUDE_SURFACE, DO_BRDF_SURFACE,        & ! Input
+            DO_SURFACE_LEAVING, DO_SL_ISOTROPIC,        & ! input @@ 2p3
             NBEAMS, FOURIER, FLUX_FACTOR, X0,           & ! Input
             DELTA_FACTOR, ALBEDO, BRDF_F_0,             & ! Input 
-            SOLAR_BEAM_OPDEP, DO_REFLECTED_DIRECTBEAM,  & ! Input
+            SLTERM_ISOTROPIC, SLTERM_F_0,               & ! input @@ 2p3
+            TRANS_SOLAR_BEAM, DO_REFLECTED_DIRECTBEAM,  & ! Input
             ATMOS_ATTN, DIRECT_BEAM )                     ! Output
 
       implicit none
 
-!  precision
+!  precision and parameters
 
-      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+      INTEGER      , PARAMETER :: dp   = KIND( 1.0D0 )
+      REAL(kind=dp), parameter :: zero = 0.0_dp, one = 1.0_dp
 
 !  input arguments
 !  ---------------
+
+!  Dimensions
+
+      INTEGER, INTENT(IN)        :: MAXBEAMS
 
 !  Surface Control
 
       LOGICAL, INTENT(IN)        :: DO_INCLUDE_SURFACE
       LOGICAL, INTENT(IN)        :: DO_BRDF_SURFACE
+
+!  !@@ Version 2p3, 1/23/14. Surface leaving control
+
+      LOGICAL, INTENT(IN)  :: DO_SURFACE_LEAVING
+      LOGICAL, INTENT(IN)  :: DO_SL_ISOTROPIC
 
 !  Numbers
 
@@ -820,32 +1045,40 @@ SUBROUTINE TWOSTREAM_DIRECTBEAM                         &
 
       REAL(kind=dp), INTENT(IN)  :: DELTA_FACTOR
       REAL(kind=dp), INTENT(IN)  :: ALBEDO
-      REAL(kind=dp), INTENT(IN)  :: BRDF_F_0  ( 0:1, NBEAMS )
+      REAL(kind=dp), INTENT(IN)  :: BRDF_F_0  ( 0:1, MAXBEAMS )
 
 !  Do not need this, MS-mode only
-!      REAL(kind=dp), INTENT(IN)  :: UBRDF_F_0 ( 0:1, N_USER_STREAMS, NBEAMS )
+!      REAL(kind=dp), INTENT(IN)  :: UBRDF_F_0 ( 0:1, MAX_USER_STREAMS, MAXBEAMS )
+
+!  Version 2p3. 1/23/14. Introduce SLEAVE stuff
+!    ** Isotropic Surface leaving term (if flag set)
+!    ** Fourier components of Surface-leaving terms:
+!          Every solar direction, SL-transmitted quadrature streams
+
+      REAL(kind=dp), INTENT(IN) :: SLTERM_ISOTROPIC ( MAXBEAMS )
+      REAL(kind=dp), INTENT(IN) :: SLTERM_F_0 ( 0:1, MAXBEAMS )
 
 !  Solar beam attenuations and reflectance flags
 
-      REAL(kind=dp), INTENT(IN)  :: SOLAR_BEAM_OPDEP        ( NBEAMS )
-      LOGICAL, INTENT(IN)        :: DO_REFLECTED_DIRECTBEAM ( NBEAMS )
+      REAL(kind=dp), INTENT(IN)  :: TRANS_SOLAR_BEAM        ( MAXBEAMS )
+      LOGICAL, INTENT(IN)        :: DO_REFLECTED_DIRECTBEAM ( MAXBEAMS )
 
 !  output arguments
 !  ----------------
 
 !  Atmospheric attenuation
 
-      REAL(kind=dp), INTENT(OUT) :: ATMOS_ATTN ( NBEAMS )
+      REAL(kind=dp), INTENT(OUT) :: ATMOS_ATTN ( MAXBEAMS )
 
 !  Direct beam solution, do not need USER_DIRECT_BEAM value
 
-      REAL(kind=dp), INTENT(OUT) :: DIRECT_BEAM      ( NBEAMS )
-!      REAL(kind=dp), INTENT(OUT) :: USER_DIRECT_BEAM ( N_USER_STREAMS, NBEAMS )
+      REAL(kind=dp), INTENT(OUT) :: DIRECT_BEAM      ( MAXBEAMS )
+!      REAL(kind=dp), INTENT(OUT) :: USER_DIRECT_BEAM ( MAX_USER_STREAMS, MAXBEAMS )
 
 !  Local variables
 !  ---------------
 
-      REAL(kind=dp) :: PI4, X0_FLUX, ATTN, REFL_ATTN
+      REAL(kind=dp) :: PI4, X0_FLUX, ATTN, REFL_ATTN, HELP, SL
       INTEGER       :: IB
 
 !  Initialize
@@ -854,8 +1087,8 @@ SUBROUTINE TWOSTREAM_DIRECTBEAM                         &
 !   Safety first!  Return if there is no reflection.
 
       DO IB = 1, NBEAMS
-        ATMOS_ATTN(IB)  = 0.0d0
-        DIRECT_BEAM(IB) = 0.0d0
+        ATMOS_ATTN(IB)  = zero
+        DIRECT_BEAM(IB) = zero
       ENDDO
 
 !  Return if no surface
@@ -865,7 +1098,7 @@ SUBROUTINE TWOSTREAM_DIRECTBEAM                         &
 !  Attenuation of solar beam
 !  -------------------------
 
-      PI4 = DACOS(-1.0d0) * 4.0d0
+      PI4 = ACOS(-ONE) * 4.0_dp
       DO IB = 1, NBEAMS
        IF ( DO_REFLECTED_DIRECTBEAM(IB) ) THEN
 
@@ -873,9 +1106,9 @@ SUBROUTINE TWOSTREAM_DIRECTBEAM                         &
 !    Bug fixed 18 November 2005. Earlier Italian Job!!
 !    Flux Factor put back, 1 March 2007. Using 1 / pi4
 
-        X0_FLUX        = 4.0d0 * X0(IB) / DELTA_FACTOR
+        X0_FLUX        = 4.0_dp * X0(IB) / DELTA_FACTOR
         X0_FLUX        = FLUX_FACTOR * X0_FLUX / PI4
-        ATTN           = X0_FLUX * SOLAR_BEAM_OPDEP(IB)
+        ATTN           = X0_FLUX * TRANS_SOLAR_BEAM(IB)
         ATMOS_ATTN(IB) = ATTN
 
 !  Total contributions, BRDF or Lambertian
@@ -885,6 +1118,21 @@ SUBROUTINE TWOSTREAM_DIRECTBEAM                         &
         ELSE
           REFL_ATTN       = ATTN * ALBEDO
           DIRECT_BEAM(IB) = REFL_ATTN
+        ENDIF
+
+!  New Surface-Leaving stuff 1/23/14, Version 2.4
+!    Normalized to Flux-factor / DELTA_Factor
+!    Delta_Factor = 1.0 for the Isotropic or non-iso Fourier = 0 cases
+
+        IF ( DO_SURFACE_LEAVING ) THEN
+          HELP = FLUX_FACTOR / DELTA_FACTOR
+          IF ( DO_SL_ISOTROPIC .and. FOURIER.EQ.0 ) THEN
+            SL = SLTERM_ISOTROPIC(IB) * HELP
+            DIRECT_BEAM(IB) = DIRECT_BEAM(IB) + SL
+          ELSE
+            SL = SLTERM_F_0(FOURIER,IB) * HELP
+            DIRECT_BEAM(IB) = DIRECT_BEAM(IB) + SL
+          ENDIF
         ENDIF
 
 !  end direct beam calculation
@@ -899,140 +1147,165 @@ END SUBROUTINE TWOSTREAM_DIRECTBEAM
 
 !
 
-SUBROUTINE TWOSTREAM_EMULTMASTER                             &
-           ( DO_UPWELLING, DO_DNWELLING,                     & ! Input
-             NLAYERS, NBEAMS, N_USER_STREAMS, DELTAU_VERT,   & ! Input
-             USER_STREAMS, T_DELT_MUBAR, T_DELT_USERM,       & ! Input
-             ITRANS_USERM, AVERAGE_SECANT, LAYER_PIS_CUTOFF, & ! Input
-             SIGMA_M, SIGMA_P, EMULT_HOPRULE,                & ! Output
-             EMULT_UP, EMULT_DN )                              ! Output
+SUBROUTINE TWOSTREAM_EMULTMASTER &
+           ( MAXLAYERS, MAXBEAMS, MAX_USER_STREAMS,                  & ! Dimensions
+             DO_UPWELLING, DO_DNWELLING, NLAYERS, NBEAMS,            & ! Input
+             N_PPSTREAMS, PPSTREAM_MASK, TAYLOR_ORDER, TAYLOR_SMALL, & ! Input
+             USER_SECANTS, DELTAU_VERT, T_DELT_MUBAR, T_DELT_USERM,  & ! Input
+             LAYER_PIS_CUTOFF, ITRANS_USERM, AVERAGE_SECANT,         & ! Input
+             SIGMA_M, SIGMA_P, EMULT_HOPRULE, EMULT_UP, EMULT_DN )     ! Output
+
+!  Version 2.4 Overhaul-----
+!     Rob  Fix 8/15/14  - Small numbers analysis using Taylor parameters
+!     Rob  Fix 8/15/14  - Use of PPSTREAM and mask to deal with Obsgeom/Lattice choices
+!     Rob  Fix 8/15/14  - Compact code in a single subroutine
 
       implicit none
 
-!  precision
+!  precision and parameters
 
-      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+      INTEGER      , PARAMETER :: dp   = KIND( 1.0D0 )
+      REAL(kind=dp), parameter :: ZERO = 0.0_dp, ONE = 1.0_dp
 
 !  Prepare multipliers for the Beam source terms
 
 !  Input arguments
 !  ===============
 
-!  Numbers
+!  Dimensions
 
-      INTEGER, INTENT(IN)       ::  NLAYERS, NBEAMS, N_USER_STREAMS
+      INTEGER, INTENT(IN)       ::  MAXLAYERS, MAXBEAMS, MAX_USER_STREAMS
 
 !  Control
 
       LOGICAL, INTENT(IN)       :: DO_UPWELLING, DO_DNWELLING
 
-!  Layer optical thickness
+!  Numbers
 
-      REAL(kind=dp), INTENT(IN) :: DELTAU_VERT ( NLAYERS )
+      INTEGER, INTENT(IN)       ::  NLAYERS, NBEAMS
+
+!  Post-processing control mask
+
+      INTEGER, INTENT(IN)       :: N_PPSTREAMS, PPSTREAM_MASK ( MAX_USER_STREAMS, MAXBEAMS )
+
+!  Version 2p4 - Taylor series control
+      
+      INTEGER, intent(in)       :: TAYLOR_ORDER
+      REAL(kind=dp), intent(in) :: TAYLOR_SMALL
 
 !  User streams
 
-      REAL(kind=dp), INTENT(IN) :: USER_STREAMS ( N_USER_STREAMS )
+      REAL(kind=dp), INTENT(IN) :: USER_SECANTS ( MAX_USER_STREAMS )
+
+!  Layer optical thickness
+
+      REAL(kind=dp), INTENT(IN) :: DELTAU_VERT ( MAXLAYERS )
 
 !  Transmittance factors for user-defined stream angles
 !    Computed in the initial setup stage for Fourier m = 0
 
-      REAL(kind=dp), INTENT(IN) :: T_DELT_USERM ( NLAYERS, N_USER_STREAMS )
+      REAL(kind=dp), INTENT(IN) :: T_DELT_USERM ( MAXLAYERS, MAX_USER_STREAMS )
 
 !  Transmittance factors for average secant stream
 
-      REAL(kind=dp), INTENT(IN) :: T_DELT_MUBAR ( NLAYERS, NBEAMS )
-
-!  Average-secant and initial tramsittance factors for solar beams.
-
-      REAL(kind=dp), INTENT(IN) :: ITRANS_USERM   ( NLAYERS, N_USER_STREAMS, NBEAMS )
-      REAL(kind=dp), INTENT(IN) :: AVERAGE_SECANT ( NLAYERS, NBEAMS )
+      REAL(kind=dp), INTENT(IN) :: T_DELT_MUBAR ( MAXLAYERS, MAXBEAMS )
 
 !  Last layer to include Particular integral solution
 
-      INTEGER, INTENT(IN)       ::  LAYER_PIS_CUTOFF(NBEAMS)
+      INTEGER, INTENT(IN)       ::  LAYER_PIS_CUTOFF(MAXBEAMS)
+
+!  Average-secant and initial tramsittance factors for solar beams.
+
+      REAL(kind=dp), INTENT(IN) :: ITRANS_USERM   ( MAXLAYERS, MAX_USER_STREAMS, MAXBEAMS )
+      REAL(kind=dp), INTENT(IN) :: AVERAGE_SECANT ( MAXLAYERS, MAXBEAMS )
 
 !  Output = Global multipliers
 !  ===========================
 
 !  Coefficient functions for user-defined angles
 
-      REAL(kind=dp), INTENT(OUT) :: SIGMA_M(NLAYERS,N_USER_STREAMS,NBEAMS)
-      REAL(kind=dp), INTENT(OUT) :: SIGMA_P(NLAYERS,N_USER_STREAMS,NBEAMS)
+      REAL(kind=dp), INTENT(OUT) :: SIGMA_M(MAXLAYERS,MAX_USER_STREAMS,MAXBEAMS)
+      REAL(kind=dp), INTENT(OUT) :: SIGMA_P(MAXLAYERS,MAX_USER_STREAMS,MAXBEAMS)
 
 !  L'Hopital's rule logical variables
 
-      LOGICAL, INTENT(OUT)       :: EMULT_HOPRULE (NLAYERS,N_USER_STREAMS,NBEAMS)
+      LOGICAL, INTENT(OUT)       :: EMULT_HOPRULE (MAXLAYERS,MAX_USER_STREAMS,MAXBEAMS)
 
 !  Forcing term multipliers (saved for whole atmosphere)
 
-      REAL(kind=dp), INTENT(OUT) :: EMULT_UP (N_USER_STREAMS,NLAYERS,NBEAMS)
-      REAL(kind=dp), INTENT(OUT) :: EMULT_DN (N_USER_STREAMS,NLAYERS,NBEAMS)
+      REAL(kind=dp), INTENT(OUT) :: EMULT_UP (MAX_USER_STREAMS,MAXLAYERS,MAXBEAMS)
+      REAL(kind=dp), INTENT(OUT) :: EMULT_DN (MAX_USER_STREAMS,MAXLAYERS,MAXBEAMS)
 
 !  Local variables
 !  ---------------
 
 !  Other variables
 
-      INTEGER                  :: N, UM, IB
-      REAL(kind=dp)            :: WDEL, WUDEL, UDEL
-      REAL(kind=dp)            :: DIFF, SB, SU, SD, SM
-      REAL(kind=dp), PARAMETER :: HOPITAL_TOLERANCE = 0.001d0
+      INTEGER         :: N, UM, IB, LUM
+      REAL(kind=dp)   :: WDEL, WUDEL, UDEL
+      REAL(kind=dp)   :: DIFF, SB, SU, SD, SM, EPS
+
+!  Initialize output
+
+      EMULT_HOPRULE = .false.
+      SIGMA_M  = zero
+      SIGMA_P  = zero
+      EMULT_UP = zero
+      EMULT_DN = zero
 
 !  L'Hopital's Rule flags for Downwelling EMULT
 !  --------------------------------------------
 
       IF ( DO_DNWELLING ) THEN
-       DO N = 1, NLAYERS
          DO IB = 1, NBEAMS
-          SB = AVERAGE_SECANT(N,IB)
-          DO UM = 1, N_USER_STREAMS
-            SM = 1.0d0 / USER_STREAMS(UM)
-            DIFF = DABS ( SM - SB )
-            IF ( DIFF .LT. HOPITAL_TOLERANCE ) THEN
-              EMULT_HOPRULE(N,UM,IB) = .TRUE.
-            ELSE
-              EMULT_HOPRULE(N,UM,IB) = .FALSE.
-            ENDIF
-          ENDDO
+            DO N = 1, NLAYERS
+               IF ( N .LE. LAYER_PIS_CUTOFF(IB) ) THEN
+                  SB = AVERAGE_SECANT(N,IB)
+                  DO LUM = 1, N_PPSTREAMS
+                     UM = PPSTREAM_MASK(LUM,IB) 
+                     SM = USER_SECANTS(UM)
+                     DIFF = ABS ( SM - SB )
+                     IF ( DIFF .LT. TAYLOR_SMALL ) EMULT_HOPRULE(N,LUM,IB) = .TRUE.
+                  ENDDO
+               ENDIF
+            ENDDO
          ENDDO
-       ENDDO
       ENDIF
 
 !  sigma functions (all layers)
 !  ----------------------------
 
-      DO N = 1, NLAYERS
-       DO IB = 1, NBEAMS
-        SB = AVERAGE_SECANT(N,IB)
-        DO UM = 1, N_USER_STREAMS
-          SM = 1.0d0 / USER_STREAMS(UM)
-          SIGMA_P(N,UM,IB) = SB + SM
-          SIGMA_M(N,UM,IB) = SB - SM
-        ENDDO
-       ENDDO
+      DO IB = 1, NBEAMS
+         DO N = 1, NLAYERS
+            IF ( N .LE. LAYER_PIS_CUTOFF(IB) ) THEN
+               SB = AVERAGE_SECANT(N,IB)
+               DO LUM = 1, N_PPSTREAMS
+                  UM = PPSTREAM_MASK(LUM,IB) 
+                  SM = USER_SECANTS(UM)
+                  SIGMA_P(N,LUM,IB) = SB + SM
+                  SIGMA_M(N,LUM,IB) = SB - SM
+               ENDDO
+            ENDIF
+         ENDDO
       ENDDO
 
 !  upwelling External source function multipliers
 !  ----------------------------------------------
 
       IF ( DO_UPWELLING ) THEN
-        DO N = 1, NLAYERS
-          DO IB = 1, NBEAMS
-            IF ( N .GT. LAYER_PIS_CUTOFF(IB) ) THEN
-              DO UM = 1, N_USER_STREAMS
-                EMULT_UP(UM,N,IB) = 0.0d0
-              ENDDO
-            ELSE
-              WDEL = T_DELT_MUBAR(N,IB)
-              DO UM = 1, N_USER_STREAMS
-                WUDEL = WDEL * T_DELT_USERM(N,UM)
-                SU = ( 1.0d0 - WUDEL ) / SIGMA_P(N,UM,IB)
-                EMULT_UP(UM,N,IB) = ITRANS_USERM(N,UM,IB) * SU
-              ENDDO
-            ENDIF
-          ENDDO
-        ENDDO
+         DO IB = 1, NBEAMS
+            DO N = 1, NLAYERS
+               IF ( N .LE. LAYER_PIS_CUTOFF(IB) ) THEN
+                  WDEL = T_DELT_MUBAR(N,IB)
+                  DO LUM = 1, N_PPSTREAMS
+                     UM = PPSTREAM_MASK(LUM,IB) 
+                     WUDEL = WDEL * T_DELT_USERM(N,UM)
+                     SU = ( ONE - WUDEL ) / SIGMA_P(N,LUM,IB)
+                     EMULT_UP(LUM,N,IB) = ITRANS_USERM(N,LUM,IB) * SU
+                  ENDDO
+               ENDIF
+            ENDDO
+         ENDDO
       ENDIF
 
 !  debug
@@ -1047,26 +1320,24 @@ SUBROUTINE TWOSTREAM_EMULTMASTER                             &
 !    .. Note use of L'Hopitals Rule
 
       IF ( DO_DNWELLING ) THEN
-        DO N = 1, NLAYERS
-          DO IB = 1, NBEAMS
-            IF ( N .GT. LAYER_PIS_CUTOFF(IB) ) THEN
-              DO UM = 1, N_USER_STREAMS
-                EMULT_DN(UM,N,IB) = 0.0d0
-              ENDDO
-            ELSE
-              WDEL = T_DELT_MUBAR(N,IB)
-              DO UM = 1, N_USER_STREAMS
-                UDEL = T_DELT_USERM(N,UM)
-                IF ( EMULT_HOPRULE(N,UM,IB) ) THEN
-                  SD = DELTAU_VERT(N) * UDEL
-                ELSE
-                  SD = ( UDEL - WDEL ) / SIGMA_M(N,UM,IB)
-                ENDIF
-                EMULT_DN(UM,N,IB) = ITRANS_USERM(N,UM,IB) * SD
-              ENDDO
-            ENDIF
-          ENDDO
-        ENDDO
+         DO IB = 1, NBEAMS
+            DO N = 1, NLAYERS
+               IF ( N .LE. LAYER_PIS_CUTOFF(IB) ) THEN
+                  WDEL = T_DELT_MUBAR(N,IB)
+                  DO LUM = 1, N_PPSTREAMS
+                     UM = PPSTREAM_MASK(LUM,IB) 
+                     UDEL = T_DELT_USERM(N,UM)
+                     IF ( EMULT_HOPRULE(N,LUM,IB) ) THEN
+                       EPS = SIGMA_M(N,LUM,IB)
+                       CALL TWOSTREAM_TAYLOR_SERIES_1 ( TAYLOR_ORDER, EPS, DELTAU_VERT(N), WDEL, ONE, SD )
+                     ELSE
+                       SD = ( UDEL - WDEL ) / SIGMA_M(N,LUM,IB)
+                     ENDIF
+                     EMULT_DN(LUM,N,IB) = ITRANS_USERM(N,LUM,IB) * SD
+                  ENDDO
+               ENDIF
+            ENDDO
+         ENDDO
       ENDIF
 
 !  debug
@@ -1081,16 +1352,18 @@ END SUBROUTINE TWOSTREAM_EMULTMASTER
 
 !
 
-SUBROUTINE TWOSTREAM_BEAM_GEOMETRY_PREPARE               &
-           ( DO_PLANE_PARALLEL, NBEAMS, NLAYERS, IBEAM,  & ! Input
+SUBROUTINE TWOSTREAM_BEAM_GEOMETRY_PREPARE &
+           ( MAXLAYERS, MAXBEAMS,                        & ! Dimensions
+             NLAYERS, DO_PLANE_PARALLEL, IBEAM,          & ! Input
              SZA_GEOM_TRUE, REARTH, HEIGHTS,             & ! Input
              CHAPMAN_FACTORS, SZA_LEVEL_OUTPUT )           ! In/Out
 
       implicit none
 
-!  precision
+!  precision and parameters
 
-      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+      INTEGER      , PARAMETER :: dp   = KIND( 1.0D0 )
+      REAL(kind=dp), parameter :: zero = 0.0_dp, one = 1.0_dp
 
 !  Generate path CHAPMAN_FACTORS and SZA angles SZA_LEVEL_OUTPUT
 !  for a curved ray-traced beam through a multilayer atmosphere.
@@ -1098,17 +1371,21 @@ SUBROUTINE TWOSTREAM_BEAM_GEOMETRY_PREPARE               &
 !  Input arguments
 !  ===============
 
+!  Dimensions
+
+      INTEGER, INTENT(IN)  :: MAXBEAMS, MAXLAYERS
+
 !  flag for plane parallel case
 
       LOGICAL, INTENT(IN)  :: DO_PLANE_PARALLEL
 
+!  Number of layers
+
+      INTEGER, INTENT(IN)  :: NLAYERS
+
 !  Beam index
 
       INTEGER, INTENT(IN)  :: IBEAM
-
-!  number of beams and layers
-
-      INTEGER, INTENT(IN)  :: NBEAMS, NLAYERS
 
 !  True solar zenith angle (degrees)
 
@@ -1120,32 +1397,31 @@ SUBROUTINE TWOSTREAM_BEAM_GEOMETRY_PREPARE               &
 
 !  Coarse grids of heights, pressures and temperatures
 
-      REAL(kind=dp), INTENT(IN)  :: HEIGHTS (0:NLAYERS)
+      REAL(kind=dp), INTENT(IN)  :: HEIGHTS (0:MAXLAYERS)
 
 !  Output arguments
 !  ================
 
 !  Path segments distances (km)
 
-      REAL(kind=dp), INTENT(INOUT)  :: CHAPMAN_FACTORS(NLAYERS,NLAYERS,NBEAMS)
+      REAL(kind=dp), INTENT(INOUT)  :: CHAPMAN_FACTORS(MAXLAYERS,MAXLAYERS,MAXBEAMS)
 
 !  solar zenith angles at nadir
 
-      REAL(kind=dp), INTENT(INOUT)  :: SZA_LEVEL_OUTPUT(0:NLAYERS,NBEAMS)
+      REAL(kind=dp), INTENT(INOUT)  :: SZA_LEVEL_OUTPUT(0:MAXLAYERS,MAXBEAMS)
 
 !  Local variables
 !  ===============
 
 !  local height arrays
 
-      REAL(kind=dp) :: H(0:NLAYERS)
-      REAL(kind=dp) :: DELZ(NLAYERS)
+      REAL(kind=dp) :: H(0:MAXLAYERS)
+      REAL(kind=dp) :: DELZ(MAXLAYERS)
 
 !  help variables
 
       INTEGER       :: N, K, IB
-      REAL(kind=dp) :: GM_TOA, TH_TOA, MU_TOA
-      REAL(kind=dp) :: DEG_TO_RAD
+      REAL(kind=dp) :: GM_TOA, TH_TOA, MU_TOA, DEG_TO_RAD
       REAL(kind=dp) :: STH1, SINTH1, STH2, SINTH2, PHI, SINPHI, &
                        RE_LOWER, RE_UPPER, DIST, STH2D
 
@@ -1155,11 +1431,11 @@ SUBROUTINE TWOSTREAM_BEAM_GEOMETRY_PREPARE               &
 !  initialise output
 
       IB = IBEAM
-      SZA_LEVEL_OUTPUT(0,IB) = 0.0D0
+      SZA_LEVEL_OUTPUT(0,IB) = ZERO
       DO N = 1, NLAYERS
-        SZA_LEVEL_OUTPUT(N,IB) = 0.0D0
+        SZA_LEVEL_OUTPUT(N,IB) = ZERO
         DO K = 1, NLAYERS
-          CHAPMAN_FACTORS(N,K,IB) = 0.0D0
+          CHAPMAN_FACTORS(N,K,IB) = ZERO
         ENDDO
       ENDDO
 
@@ -1176,14 +1452,14 @@ SUBROUTINE TWOSTREAM_BEAM_GEOMETRY_PREPARE               &
 !  TOA values
 
       SZA_LEVEL_OUTPUT(0,IB) = SZA_GEOM_TRUE
-      DEG_TO_RAD = DATAN(1.0D0) / 45.0D0
+      DEG_TO_RAD = ATAN(1.0_DP) / 45.0_dp
       TH_TOA = SZA_GEOM_TRUE * DEG_TO_RAD
-      MU_TOA = DCOS(TH_TOA)
-      GM_TOA = DSQRT ( 1.0D0 - MU_TOA * MU_TOA )
+      MU_TOA = COS(TH_TOA)
+      GM_TOA = SQRT ( 1.0_DP - MU_TOA * MU_TOA )
 
 !  initialize
 
-      STH2D  = 0.0D0
+      STH2D  = ZERO
 
 !  plane-parallel case
 !  ===================
@@ -1192,7 +1468,7 @@ SUBROUTINE TWOSTREAM_BEAM_GEOMETRY_PREPARE               &
         DO N = 1, NLAYERS
           SZA_LEVEL_OUTPUT(N,IB) = SZA_GEOM_TRUE
           DO K = 1, N
-            CHAPMAN_FACTORS(N,K,IB) = 1.0D0 / MU_TOA
+            CHAPMAN_FACTORS(N,K,IB) = 1.0_DP / MU_TOA
           ENDDO
         ENDDO
         RETURN
@@ -1221,9 +1497,9 @@ SUBROUTINE TWOSTREAM_BEAM_GEOMETRY_PREPARE               &
 
           RE_LOWER = RE_UPPER - DELZ(K)
           SINTH2 = RE_UPPER * SINTH1 / RE_LOWER
-          STH2   = DASIN(SINTH2)
+          STH2   = ASIN(SINTH2)
           PHI    = STH2 - STH1
-          SINPHI = DSIN(PHI)
+          SINPHI = SIN(PHI)
           DIST = RE_UPPER * SINPHI / SINTH2
           CHAPMAN_FACTORS(N,K,IB) = DIST / DELZ(K)
 

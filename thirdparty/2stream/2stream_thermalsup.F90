@@ -25,14 +25,34 @@
 ! #  Tel:             (626) 395 6962                        #
 ! #  Email :           vijay@gps.caltech.edu                #
 ! #                                                         #
+! #  Version 1.0-1.3 :                                      #
+! #     Mark 1: October  2010                               #
+! #     Mark 2: May      2011, with BRDFs                   #
+! #     Mark 3: October  2011, with Thermal sources         #
+! #                                                         #
+! #  Version 2.0-2.1 :                                      #
+! #     Mark 4: November 2012, LCS/LPS Split, Fixed Arrays  #
+! #     Mark 5: December 2012, Observation Geometry option  #
+! #                                                         #
+! #  Version 2.2-2.3 :                                      #
+! #     Mark 6: July     2013, Level outputs + control      #
+! #     Mark 7: December 2013, Flux outputs  + control      #
+! #     Mark 8: January  2014, Surface Leaving + control    #
+! #     Mark 9: June     2014, Inverse Pentadiagonal        #
+! #                                                         #
+! #  Version 2.4 :                                          #
+! #     Mark 10: August  2014, Green's function Regular     #
+! #     Mark 11: January 2015, Green's function Linearized  #
+! #                            Taylor, dethreaded, OpenMP   #
+! #                                                         #
 ! ###########################################################
 
-!    #####################################################
-!    #                                                   #
-!    #   This Version of LIDORT comes with a GNU-style   #
-!    #   license. Please read the license carefully.     #
-!    #                                                   #
-!    #####################################################
+! #############################################################
+! #                                                           #
+! #   This Version of LIDORT-2STREAM comes with a GNU-style   #
+! #   license. Please read the license carefully.             #
+! #                                                           #
+! #############################################################
 
 ! ###############################################################
 ! #                                                             #
@@ -44,7 +64,7 @@
 ! #                                                             #
 ! #   discrete ordinate particular integral                     #
 ! #                                                             #
-! #          TWOSTREAM_THERMALSOLUTION                          #
+! #          TWOSTREAM_THERMALGFSOLUTION                        #
 ! #                                                             #
 ! #   postprocessing source terms                               #
 ! #                                                             #
@@ -58,9 +78,10 @@ PUBLIC
 
 contains
 
-SUBROUTINE TWOSTREAM_THERMALSETUP                                 &
-          ( NLAYERS, OMEGA_TOTAL, DELTAU_VERT, THERMAL_BB_INPUT,  & ! inputs
-            DELTAU_POWER, TCOM1 )                                   ! Outputs
+SUBROUTINE TWOSTREAM_THERMALSETUP &
+          ( MAXLAYERS, NLAYERS, OMEGA_TOTAL, & ! Inputs
+            DELTAU_VERT, THERMAL_BB_INPUT,   & ! inputs
+            THERMCOEFFS, TCOM1 )               ! Outputs
 
       implicit none
 
@@ -71,34 +92,36 @@ SUBROUTINE TWOSTREAM_THERMALSETUP                                 &
 !  subroutine arguments
 !  --------------------
 
+!  Dimensions
+
+      INTEGER, INTENT(IN)        :: MAXLAYERS
+
 !  Number of layers
 
       INTEGER, INTENT(IN)        :: NLAYERS
 
 !  Optical properties
 
-      REAL(kind=dp), INTENT (IN) :: OMEGA_TOTAL ( NLAYERS )
-      REAL(kind=dp), INTENT (IN) :: DELTAU_VERT ( NLAYERS )
+      REAL(kind=dp), INTENT (IN) :: OMEGA_TOTAL ( MAXLAYERS )
+      REAL(kind=dp), INTENT (IN) :: DELTAU_VERT ( MAXLAYERS )
 
 !  Thermal input
 
-      REAL(kind=dp), INTENT (IN) :: THERMAL_BB_INPUT ( 0:NLAYERS )
+      REAL(kind=dp), INTENT (IN) :: THERMAL_BB_INPUT ( 0:MAXLAYERS )
 
 !  Output Help variables
 
-      REAL (kind=dp), INTENT (OUT) :: DELTAU_POWER ( NLAYERS, 2 )
-      REAL (kind=dp), INTENT (OUT) :: TCOM1 ( NLAYERS, 2 )
+      REAL (kind=dp), INTENT (OUT) :: TCOM1 ( MAXLAYERS, 2 )
+      REAL (kind=dp), INTENT (OUT) :: THERMCOEFFS  ( MAXLAYERS, 2 )
 
 !  Local variables
 
       INTEGER        :: N
-      REAL (kind=dp) :: OMEGAS1, THERMCOEFFS  ( NLAYERS, 2 )
+      REAL (kind=dp) :: OMEGAS1
 
 !  thermal coefficients and powers
 
       DO N = 1, NLAYERS
-        DELTAU_POWER(N,1) = 1.0_dp
-        DELTAU_POWER(N,2) = DELTAU_VERT(N)
         THERMCOEFFS(N,1)  = THERMAL_BB_INPUT(N-1)
         THERMCOEFFS(N,2)  = (THERMAL_BB_INPUT(N)-THERMAL_BB_INPUT(N-1))/DELTAU_VERT(N)
       END DO
@@ -117,166 +140,159 @@ SUBROUTINE TWOSTREAM_THERMALSETUP                                 &
 END SUBROUTINE TWOSTREAM_THERMALSETUP
 
 
-SUBROUTINE TWOSTREAM_THERMALSOLUTION                 &
-      ( DO_UPWELLING, DO_DNWELLING, NLAYERS,         & ! Inputs
-        N_USER_STREAMS, STREAM_VALUE, USER_STREAMS,  & ! Inputs
-        OMEGA, ASYMM, SAB, DAB, DELTAU_POWER, TCOM1, & ! Inputs
-        T_WUPPER, T_WLOWER, U_TPOS2, U_TNEG2 )         ! Outputs
+SUBROUTINE TWOSTREAM_THERMALGFSOLUTION &
+      ( MAXLAYERS, NLAYERS, OMEGA, DELTAUS, THERMCOEFFS,      & ! Inputs
+        TCUTOFF, EIGENVALUE, EIGENTRANS, XPOS, NORM_SAVED,    & ! Input
+        T_C_PLUS, T_C_MINUS, TTERM_SAVE, T_WUPPER, T_WLOWER )   ! Outputs
 
       implicit none
 
-!  precision
+!  precision and parameters
 
-      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+      INTEGER      , PARAMETER :: dp   = KIND( 1.0D0 )
+      REAL(kind=dp), parameter :: ZERO = 0.0_dp, ONE = 1.0_dp
 
 !  subroutine arguments
 !  --------------------
 
-!  Flags
+!  Dimensions
 
-      LOGICAL, INTENT (IN)        :: DO_UPWELLING
-      LOGICAL, INTENT (IN)        :: DO_DNWELLING
+      INTEGER, INTENT(IN)        :: MAXLAYERS
 
 !  Numbers
 
       INTEGER, INTENT (IN)        :: NLAYERS
-      INTEGER, INTENT (IN)        :: N_USER_STREAMS
 
-!  Stream values
+!  OMEGA and DELTAUS
 
-      REAL(kind=dp), INTENT(IN)   :: STREAM_VALUE
-      REAL(kind=dp), INTENT(IN)   :: USER_STREAMS  ( N_USER_STREAMS )
-
-!  OMEGA and ASYMM
-
-      REAL(kind=dp), INTENT(IN)   :: OMEGA ( NLAYERS )
-      REAL(kind=dp), INTENT(IN)   :: ASYMM ( NLAYERS )
-
-!  local matrices from eigenvalue computation
-
-      REAL(kind=dp), INTENT(IN)   :: SAB(NLAYERS), DAB(NLAYERS)
-
-!  powers
-
-      REAL (kind=dp), INTENT (IN) :: DELTAU_POWER ( NLAYERS, 2 )
+      REAL(kind=dp), INTENT(IN)   :: OMEGA ( MAXLAYERS )
+      REAL(kind=dp), INTENT (IN)  :: DELTAUS ( MAXLAYERS )
 
 !  Help variable
 
-      REAL (kind=dp), INTENT (IN) :: TCOM1 ( NLAYERS, 2 )
+      REAL(kind=dp), INTENT (IN) :: THERMCOEFFS ( MAXLAYERS, 2 )
+
+!  Thermal Cutoff (actually a layer optical thickness minimum)
+!     Rob, introduced 14 May 2015, following 2p3 implementation (2014)
+!    Solutions are avoided for optically thin layers
+
+      REAL(kind=dp), INTENT (IN) :: TCUTOFF
+
+!  Transmittance factors and eigenvalues
+
+      REAL(kind=dp), intent(in)  :: EIGENVALUE (MAXLAYERS)
+      REAL(kind=dp), intent(in)  :: EIGENTRANS (MAXLAYERS)
+
+!  Eigenvector solutions
+
+      REAL(kind=dp), intent(in)  :: XPOS (2,MAXLAYERS)
+
+!  Saved quantities for the Green function solution
+
+      REAL(kind=dp), intent(in)  :: NORM_SAVED (MAXLAYERS)
 
 !  Output variables
 !  ----------------
 
+!  Saved quantities for the Green function solution
+
+      REAL(kind=dp), intent(out) :: TTERM_SAVE (MAXLAYERS)
+      REAL(kind=dp), intent(out) :: T_C_MINUS (MAXLAYERS,0:2)
+      REAL(kind=dp), intent(out) :: T_C_PLUS  (MAXLAYERS,0:2)
+
 !  Thermal solution at layer boundaries
 
-      REAL(kind=dp) , INTENT (OUT) ::  T_WUPPER ( 2, NLAYERS )
-      REAL(kind=dp) , INTENT (OUT) ::  T_WLOWER ( 2, NLAYERS )
-
-!  User solution
-
-      REAL(kind=dp) , INTENT (OUT) ::  U_TPOS2 ( N_USER_STREAMS, NLAYERS, 2 )
-      REAL(kind=dp) , INTENT (OUT) ::  U_TNEG2 ( N_USER_STREAMS, NLAYERS, 2 )
+      REAL(kind=dp) , INTENT (OUT) ::  T_WUPPER ( 2, MAXLAYERS )
+      REAL(kind=dp) , INTENT (OUT) ::  T_WLOWER ( 2, MAXLAYERS )
 
 !  Local variables
 ! ---------------
 
-      INTEGER       :: UM, S, N, I
-      REAL(kind=dp) :: TVEC1(2), TVEC2(2)
-      REAL(kind=dp) :: POS2, NEG2, TERM1, TERM2, TMAT, HVEC1, HVEC2, JVEC1
-      REAL(kind=dp) :: WT_HELP(0:1,2), T_HELP2(0:1,2), HMU_STREAM, OMEGA_MOM
-
+      INTEGER       :: N
+      REAL(kind=dp) :: TK, K1, TT, t_gmult_dn, t_gmult_up
+      REAL(kind=dp) :: omega1, help, sum_m, sum_p
 
 !  ZERO THE BOUNDARY LAYER VALUES
 
-      T_WUPPER(1:2,1:NLAYERS) = 0.0_dp
-      T_WLOWER(1:2,1:NLAYERS) = 0.0_dp
+   T_WUPPER(1:2,1:NLAYERS) = zero
+   T_WLOWER(1:2,1:NLAYERS) = zero
 
 ! ---------------------------------------
-! CLASSICAL SOLUTIONS FOR ALL LAYERS
+! Green function solutions for all layers
 ! ---------------------------------------
 
-      DO N = 1, NLAYERS
+   DO n = 1, nlayers
 
-!  2-stream Solutions
+!  Only do this if cutoff is not in play
 
-        TERM1 = 2.0_dp * TCOM1(N,1)
-        TERM2 = 2.0_dp * TCOM1(N,2)
-        TMAT  = SAB(N) * STREAM_VALUE
-!        if ( n.eq.1)write(*,*)sab(n) ; pause'gg'
-        HVEC1 = - TERM1 / TMAT
-!        if ( n.eq.1)write(*,*)hvec1, term1 ; pause'gg'
-        HVEC2 = - TERM2 / TMAT
-        TMAT  = - DAB(N)
-        JVEC1 = - HVEC2 / TMAT
+      if ( DELTAUS(n) .gt. TCUTOFF )  then
 
-!  Stream Solution, 1 = down, 2 = up. Values at layer boundaries
+!  get the constant term
 
-        TVEC1(1) = 0.5_dp * (HVEC1 + JVEC1)
-        TVEC1(2) = 0.5_dp * (HVEC1 - JVEC1)
-        TVEC2(1) = 0.5_dp * HVEC2
-        TVEC2(2) = TVEC2(1)
-        DO I = 1, 2
-          T_WUPPER(I,N) = TVEC1(I)
-          T_WLOWER(I,N) = TVEC1(I) + TVEC2(I) * DELTAU_POWER(N,2)
-!         write(*,*)i,n,T_WUPPER(I,N),T_WLOWER(I,N)
-        ENDDO
-!        if ( n.eq.nlayers)pause'GRONK'
+        omega1 = one - omega(n)
+        help   = xpos(1,n)+xpos(2,n)
+        tterm_save(n) = omega1 * help / norm_saved(n)
+        tt = tterm_save(n)
 
-!  USER SOLUTIONS
+! Green function multipliers
 
-        OMEGA_MOM = 3.0d0 * OMEGA(N) * ASYMM(N)
-        HMU_STREAM = STREAM_VALUE * 0.5d0
+        k1 = one / eigenvalue(n)
+        tk = eigentrans(n)
+        t_c_minus(n,2)  = k1 * thermcoeffs(n,2)
+        t_c_plus(n,2)   = k1 * thermcoeffs(n,2)
+        t_c_minus(n,1) = k1 * ( thermcoeffs(n,1) - t_c_minus(n,2) )
+        t_c_plus(n,1)  = k1 * ( thermcoeffs(n,1) + t_c_plus (n,2) )
+        sum_m = t_c_minus(n,1) + t_c_minus(n,2) * deltaus(n)
+        sum_p = t_c_plus (n,1) + t_c_plus(n,2)  * deltaus(n)
+        t_c_minus(n,0) = - t_c_minus(n,1)
+        t_c_plus(n,0)  = - sum_p
+        t_gmult_dn = tt * ( tk * t_c_minus(n,0) + sum_m )
+        t_gmult_up = tt * ( tk * t_c_plus (n,0) + t_c_plus(n,1) )
 
-        WT_help(0,1) = ( TVEC1(2) + TVEC1(1) ) * 0.5d0
-        WT_help(1,1) = ( TVEC1(2) - TVEC1(1) ) * HMU_STREAM
-        WT_help(0,2) = ( TVEC2(2) + TVEC2(1) ) * 0.5d0
-        WT_help(1,2) = ( TVEC2(2) - TVEC2(1) ) * HMU_STREAM
-        T_help2(0,1:2)  = wt_help(0,1:2) * omega(n)
-        T_help2(1,1:2)  = wt_help(1,1:2) * omega_mom
+! Set particular integral from Green function expansion
 
-        IF ( DO_UPWELLING ) THEN
-          DO UM = 1, N_USER_STREAMS
-            DO S = 1, 2
-              pos2 = T_help2(0,s) + T_help2(1,s)* user_streams(um)
-              U_TPOS2(UM,N,S) = pos2
-            ENDDO
-          ENDDO
-        ENDIF
+        t_wupper(1,n) = t_gmult_up*xpos(2,n)
+        t_wupper(2,n) = t_gmult_up*xpos(1,n)
+        t_wlower(2,n) = t_gmult_dn*xpos(2,n)
+        t_wlower(1,n) = t_gmult_dn*xpos(1,n)
 
-        IF ( DO_DNWELLING ) THEN
-          DO UM = 1, N_USER_STREAMS
-            DO S = 1, 2
-              neg2 = T_help2(0,s) - T_help2(1,s)* user_streams(um)
-              U_TNEG2(UM,N,S) = neg2
-            ENDDO
-          ENDDO
-        ENDIF
+!  End active layer condition
 
-!  END LAYER LOOP
+      ENDIF
 
-      ENDDO
+!  End layer loop
+
+   END DO
 
 !  finish
 
-      RETURN
-END SUBROUTINE TWOSTREAM_THERMALSOLUTION
+   RETURN
+END SUBROUTINE TWOSTREAM_THERMALGFSOLUTION
 
 !!
 
-SUBROUTINE TWOSTREAM_THERMALSTERMS                      &
-      ( DO_UPWELLING, DO_DNWELLING, DO_SOLAR_SOURCES,   & ! Inputs
+SUBROUTINE TWOSTREAM_THERMALSTERMS &
+      ( MAXLAYERS, MAX_USER_STREAMS,                    & ! Dimensions
+        DO_UPWELLING, DO_DNWELLING, DO_SOLAR_SOURCES,   & ! Inputs
         NLAYERS, N_USER_STREAMS, PI4, USER_STREAMS,     & ! Inputs
-        T_DELT_USERM, DELTAU_POWER, U_TPOS2, U_TNEG2,   & ! Inputs
+        TCUTOFF, T_DELT_USERM, DELTAUS,                 & ! Inputs
+        U_XPOS, U_XNEG, HMULT_1, HMULT_2,               & ! Inputs
+        T_C_PLUS, T_C_MINUS, TTERM_SAVE,                & ! Inputs
         LAYER_TSUP_UP, LAYER_TSUP_DN  )                   ! Outputs
 
       implicit none
 
-!  precision
+!  precision and parameters
 
-      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+      INTEGER      , PARAMETER :: dp   = KIND( 1.0D0 )
+      REAL(kind=dp), parameter :: ZERO = 0.0_dp, ONE = 1.0_dp
 
 !  subroutine arguments
 !  --------------------
+
+!  Dimensions
+
+      INTEGER, INTENT(IN)         :: MAXLAYERS, MAX_USER_STREAMS
 
 !  Flags
 
@@ -295,74 +311,114 @@ SUBROUTINE TWOSTREAM_THERMALSTERMS                      &
 
 !  User streams and layer transmittances
 
-      REAL(kind=dp), INTENT (IN)  :: USER_STREAMS  ( N_USER_STREAMS )
-      REAL(kind=dp), INTENT (IN)  :: T_DELT_USERM ( NLAYERS, N_USER_STREAMS )
+      REAL(kind=dp), INTENT (IN)  :: USER_STREAMS  ( MAX_USER_STREAMS )
+      REAL(kind=dp), INTENT (IN)  :: T_DELT_USERM ( MAXLAYERS, MAX_USER_STREAMS )
 
-!    powers
+!  Thermal Cutoff (actually a layer optical thickness minimum)
+!     Rob, introduced 14 May 2015, following 2p3 implementation (2014)
+!    Solutions are avoided for optically thin layers
 
-      REAL (kind=dp), INTENT (IN) :: DELTAU_POWER ( NLAYERS, 2 )
+      REAL(kind=dp), INTENT (IN) :: TCUTOFF
 
-!  User solutions
+!  Optical thickness
 
-      REAL(kind=dp) , INTENT (IN) :: U_TPOS2 ( N_USER_STREAMS, NLAYERS, 2 )
-      REAL(kind=dp) , INTENT (IN) :: U_TNEG2 ( N_USER_STREAMS, NLAYERS, 2 )
+      REAL(kind=dp), INTENT (IN)  :: DELTAUS ( MAXLAYERS )
+
+!  Eigenvectors defined at user-defined stream angles
+
+      REAL(kind=dp), intent(in)   :: U_XPOS (MAX_USER_STREAMS,MAXLAYERS)
+      REAL(kind=dp), intent(in)   :: U_XNEG (MAX_USER_STREAMS,MAXLAYERS)
+
+!  Integrated homogeneous solution multipliers (global, whole layer)
+
+      REAL(kind=dp), intent(in)  :: HMULT_1 (MAX_USER_STREAMS,MAXLAYERS)
+      REAL(kind=dp), intent(in)  :: HMULT_2 (MAX_USER_STREAMS,MAXLAYERS)
+
+!  Saved quantities for the Green function solution
+
+      REAL(kind=dp), intent(in)  :: TTERM_SAVE (MAXLAYERS)
+      REAL(kind=dp), intent(in)  :: T_C_MINUS (MAXLAYERS,0:2)
+      REAL(kind=dp), intent(in)  :: T_C_PLUS  (MAXLAYERS,0:2)
 
 !  Output variables
 !  ----------------
 
-      REAL(kind=dp), INTENT (OUT) :: LAYER_TSUP_UP ( N_USER_STREAMS, NLAYERS )
-      REAL(kind=dp), INTENT (OUT) :: LAYER_TSUP_DN ( N_USER_STREAMS, NLAYERS )
+      REAL(kind=dp), INTENT (OUT) :: LAYER_TSUP_UP ( MAX_USER_STREAMS, MAXLAYERS )
+      REAL(kind=dp), INTENT (OUT) :: LAYER_TSUP_DN ( MAX_USER_STREAMS, MAXLAYERS )
 
 !  Local variables
 ! ---------------
 
       INTEGER       :: UM, N
-      REAL(kind=dp) :: SPAR, COSMUM, FAC, SUM
-      REAL(kind=dp) :: T_MULT_UP (0:2), T_MULT_DN (0:2)
+      REAL(kind=dp) :: SUM_M, SUM_P, SU, SD, SPAR, COSMUM, FAC
+      REAL(kind=dp) :: TSGM_DU(MAXLAYERS,0:2)
+      REAL(kind=dp) :: TSGM_DD(MAXLAYERS,0:2)
+      REAL(kind=dp) :: TSGM_UU(MAXLAYERS,0:2)
+      REAL(kind=dp) :: TSGM_UD(MAXLAYERS,0:2)
 
 !  PARTICULAR SOLUTION LAYER SOURCE TERMS ( GREEN'S FUNCTION SOLUTION )
 !  --------------------------------------------------------------------
 
 !  Initialize
 
-      LAYER_TSUP_UP = 0.0_dp
-      LAYER_TSUP_DN = 0.0_dp
+    LAYER_TSUP_UP = zero
+    LAYER_TSUP_DN = zero
 
 !  INITIAL MODULUS = 4.PI IF SOLAR SOURCES ARE INCLUDED
 
-      FAC = 1.0_dp
-      IF ( DO_SOLAR_SOURCES ) FAC = PI4
+    FAC = one
+    IF ( DO_SOLAR_SOURCES ) FAC = PI4
 
 !  UPWELLING and DOWNWELLING WHOLE LAYER SOURCE TERMS
 !   NOTE: T_DELT_USERM(N,UM) WAS INDEXED OPPOSITELY
+!  Rob  Fix, 5.14.15. Only get solutions for  valid non-Cutoff layers.
 
-      DO UM = 1, N_USER_STREAMS
-        COSMUM = USER_STREAMS(UM)
+    DO UM = 1, N_USER_STREAMS
+      COSMUM = USER_STREAMS(UM)
 
-        IF ( DO_UPWELLING ) THEN
-          DO N = 1, NLAYERS
-            T_MULT_UP(2) = U_TPOS2(UM,N,2)
-            T_MULT_UP(1) = U_TPOS2(UM,N,1) + COSMUM * T_MULT_UP(2)
-            SUM = T_MULT_UP(1) + T_MULT_UP(2) * DELTAU_POWER(N,2)
-            T_MULT_UP(0)   = - SUM
-            SPAR = T_MULT_UP(0) * T_DELT_USERM(N,UM) + T_MULT_UP(1)
-            LAYER_TSUP_UP(UM,N) = FAC * SPAR
-          ENDDO
-        ENDIF
+!  Upwelling
 
-        IF ( DO_DNWELLING ) THEN
-          DO N = 1, NLAYERS
-            T_MULT_DN(2) = U_TNEG2(UM,N,2)
-            T_MULT_DN(1) = U_TNEG2(UM,N,1) - COSMUM * T_MULT_DN(2)
-            T_MULT_DN(0) = - T_MULT_DN(1)
-            SPAR = T_MULT_DN(0) * T_DELT_USERM(N,UM)
-            SPAR = SPAR + T_MULT_DN(1)
-            SPAR = SPAR + T_MULT_DN(2) * DELTAU_POWER(N,2)
-            LAYER_TSUP_DN(UM,N) = FAC * SPAR
-          ENDDO
-        ENDIF
+      IF ( DO_UPWELLING ) THEN
+        DO N = 1, NLAYERS
+          if ( deltaus(n) .gt. TCUTOFF ) then
+            tsgm_uu(n,2) = t_c_plus (n,2)
+            tsgm_ud(n,2) = t_c_minus(n,2)
+            tsgm_uu(n,1) = t_c_plus (n,1) + cosmum * tsgm_uu(n,2)
+            tsgm_ud(n,1) = t_c_minus(n,1) + cosmum * tsgm_ud(n,2)
+            tsgm_uu(n,0) = - tsgm_uu(n,1) - tsgm_uu(n,2) * deltaus(n)
+            tsgm_ud(n,0) = - tsgm_ud(n,1) - tsgm_ud(n,2) * deltaus(n)
+            su = t_c_plus(n,0)  * hmult_1(um,n) + &
+                      tsgm_uu(n,0) * t_delt_userm(n,um) + tsgm_uu(n,1)
+            sd = t_c_minus(n,0) * hmult_2(um,n) + &
+                      tsgm_ud(n,0) * t_delt_userm(n,um) + tsgm_ud(n,1)
+            spar = tterm_save(n) * ( u_xpos(um,n)*sd + u_xneg(um,n)*su )
+            layer_tsup_up(um,n) = fac * spar
+          ENDIF
+        ENDDO
+      ENDIF
 
-      ENDDO
+      IF ( DO_DNWELLING ) THEN
+        DO N = 1, NLAYERS
+          if ( deltaus(n) .gt. TCUTOFF ) then
+            tsgm_du(n,2) = t_c_plus(n,2)
+            tsgm_dd(n,2) = t_c_minus(n,2)
+            tsgm_du(n,1) = t_c_plus (n,1) - cosmum * tsgm_du(n,2)
+            tsgm_dd(n,1) = t_c_minus(n,1) - cosmum * tsgm_dd(n,2)
+            tsgm_du(n,0) = - tsgm_du(n,1)
+            tsgm_dd(n,0) = - tsgm_dd(n,1)
+            sum_p = tsgm_du(n,1)  + tsgm_du(n,2) * deltaus(n)
+            sum_m = tsgm_dd(n,1)  + tsgm_dd(n,2) * deltaus(n)
+            su = t_c_plus(n,0)  * hmult_2(um,n) + &
+                    tsgm_du(n,0) * t_delt_userm(n,um) + sum_p
+            sd = t_c_minus(n,0) * hmult_1(um,n) + &
+                    tsgm_dd(n,0) * t_delt_userm(n,um) + sum_m
+            spar = tterm_save(n) * (  u_xneg(um,n)*sd + u_xpos(um,n)*su )
+            layer_tsup_dn(um,n) = fac * spar
+          ENDIF
+        ENDDO
+      ENDIF
+
+    ENDDO
 
 !  Finish
 

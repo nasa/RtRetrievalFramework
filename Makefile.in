@@ -1537,20 +1537,36 @@ libtwostream_la_LIBADD =
 am_libtwostream_la_OBJECTS =  \
 	@twostream_src@/libtwostream_la-2stream_brdf_kernels.lo \
 	@twostream_src@/libtwostream_la-2stream_brdf_supplement.lo \
-	@twostream_src@/libtwostream_la-2stream_ls_brdf_supplement.lo \
-	@twostream_src@/libtwostream_la-2stream_ls_brdf_kernels.lo \
-	@twostream_src@/libtwostream_la-2stream_miscsetups.lo \
 	@twostream_src@/libtwostream_la-2stream_bvproblem.lo \
-	@twostream_src@/libtwostream_la-2stream_solutions.lo \
-	@twostream_src@/libtwostream_la-2stream_thermalsup.lo \
+	@twostream_src@/libtwostream_la-2stream_inputs.lo \
 	@twostream_src@/libtwostream_la-2stream_intensity.lo \
-	@twostream_src@/libtwostream_la-2stream_master.lo \
-	@twostream_src@/libtwostream_la-2stream_l_miscsetups.lo \
-	@twostream_src@/libtwostream_la-2stream_l_bvproblem.lo \
-	@twostream_src@/libtwostream_la-2stream_l_solutions.lo \
+	@twostream_src@/libtwostream_la-2stream_la_solutions.lo \
+	@twostream_src@/libtwostream_la-2stream_lc_bvproblem.lo \
+	@twostream_src@/libtwostream_la-2stream_lc_jacobians.lo \
+	@twostream_src@/libtwostream_la-2stream_lc_miscsetups.lo \
+	@twostream_src@/libtwostream_la-2stream_lcs_master.lo \
+	@twostream_src@/libtwostream_la-2stream_l_inputs.lo \
+	@twostream_src@/libtwostream_la-2stream_lp_bvproblem.lo \
+	@twostream_src@/libtwostream_la-2stream_lp_jacobians.lo \
+	@twostream_src@/libtwostream_la-2stream_lp_miscsetups.lo \
+	@twostream_src@/libtwostream_la-2stream_lps_master.lo \
+	@twostream_src@/libtwostream_la-2stream_ls_brdf_kernels.lo \
+	@twostream_src@/libtwostream_la-2stream_ls_brdf_supplement.lo \
+	@twostream_src@/libtwostream_la-2stream_ls_bvproblem.lo \
+	@twostream_src@/libtwostream_la-2stream_ls_jacobians.lo \
+	@twostream_src@/libtwostream_la-2stream_lssl_jacobians.lo \
+	@twostream_src@/libtwostream_la-2stream_lssl_sleave_supplement.lo \
 	@twostream_src@/libtwostream_la-2stream_l_thermalsup.lo \
-	@twostream_src@/libtwostream_la-2stream_l_jacobians.lo \
-	@twostream_src@/libtwostream_la-2stream_l_master.lo
+	@twostream_src@/libtwostream_la-2stream_l_writemodules.lo \
+	@twostream_src@/libtwostream_la-2stream_master.lo \
+	@twostream_src@/libtwostream_la-2stream_miscsetups.lo \
+	@twostream_src@/libtwostream_la-2stream_Planckfunc.lo \
+	@twostream_src@/libtwostream_la-2stream_sleave_routines.lo \
+	@twostream_src@/libtwostream_la-2stream_sleave_supplement.lo \
+	@twostream_src@/libtwostream_la-2stream_solutions.lo \
+	@twostream_src@/libtwostream_la-2stream_Taylor.lo \
+	@twostream_src@/libtwostream_la-2stream_thermalsup.lo \
+	@twostream_src@/libtwostream_la-2stream_writemodules.lo
 libtwostream_la_OBJECTS = $(am_libtwostream_la_OBJECTS)
 libtwostream_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=FC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(FCLD) \
@@ -4570,20 +4586,36 @@ LIDORT_3_8_MOD_FLAGS := $(call fortran_module_path,$(includedir))
 liblidort_3_8_3_la_FCFLAGS = $(LIDORT_3_8_MOD_FLAGS)
 libtwostream_la_SOURCES = @twostream_src@/2stream_brdf_kernels.F90 \
 	@twostream_src@/2stream_brdf_supplement.F90 \
-	@twostream_src@/2stream_ls_brdf_supplement.F90 \
-	@twostream_src@/2stream_ls_brdf_kernels.F90 \
-	@twostream_src@/2stream_miscsetups.F90 \
 	@twostream_src@/2stream_bvproblem.F90 \
-	@twostream_src@/2stream_solutions.F90 \
-	@twostream_src@/2stream_thermalsup.F90 \
+	@twostream_src@/2stream_inputs.F90 \
 	@twostream_src@/2stream_intensity.F90 \
-	@twostream_src@/2stream_master.F90 \
-	@twostream_src@/2stream_l_miscsetups.F90 \
-	@twostream_src@/2stream_l_bvproblem.F90 \
-	@twostream_src@/2stream_l_solutions.F90 \
+	@twostream_src@/2stream_la_solutions.F90 \
+	@twostream_src@/2stream_lc_bvproblem.F90 \
+	@twostream_src@/2stream_lc_jacobians.F90 \
+	@twostream_src@/2stream_lc_miscsetups.F90 \
+	@twostream_src@/2stream_lcs_master.F90 \
+	@twostream_src@/2stream_l_inputs.F90 \
+	@twostream_src@/2stream_lp_bvproblem.F90 \
+	@twostream_src@/2stream_lp_jacobians.F90 \
+	@twostream_src@/2stream_lp_miscsetups.F90 \
+	@twostream_src@/2stream_lps_master.F90 \
+	@twostream_src@/2stream_ls_brdf_kernels.F90 \
+	@twostream_src@/2stream_ls_brdf_supplement.F90 \
+	@twostream_src@/2stream_ls_bvproblem.F90 \
+	@twostream_src@/2stream_ls_jacobians.F90 \
+	@twostream_src@/2stream_lssl_jacobians.F90 \
+	@twostream_src@/2stream_lssl_sleave_supplement.F90 \
 	@twostream_src@/2stream_l_thermalsup.F90 \
-	@twostream_src@/2stream_l_jacobians.F90 \
-	@twostream_src@/2stream_l_master.F90
+	@twostream_src@/2stream_l_writemodules.F90 \
+	@twostream_src@/2stream_master.F90 \
+	@twostream_src@/2stream_miscsetups.F90 \
+	@twostream_src@/2stream_Planckfunc.F90 \
+	@twostream_src@/2stream_sleave_routines.F90 \
+	@twostream_src@/2stream_sleave_supplement.F90 \
+	@twostream_src@/2stream_solutions.F90 \
+	@twostream_src@/2stream_Taylor.F90 \
+	@twostream_src@/2stream_thermalsup.F90 \
+	@twostream_src@/2stream_writemodules.F90
 
 # In addition to release, we have a "version" number. This is more library
 # focused, and indicates if programs can use newer versions without needing
@@ -6649,46 +6681,94 @@ liblidort-3.8.3.la: $(liblidort_3_8_3_la_OBJECTS) $(liblidort_3_8_3_la_DEPENDENC
 @twostream_src@/libtwostream_la-2stream_brdf_supplement.lo:  \
 	@twostream_src@/$(am__dirstamp) \
 	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
-@twostream_src@/libtwostream_la-2stream_ls_brdf_supplement.lo:  \
-	@twostream_src@/$(am__dirstamp) \
-	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
-@twostream_src@/libtwostream_la-2stream_ls_brdf_kernels.lo:  \
-	@twostream_src@/$(am__dirstamp) \
-	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
-@twostream_src@/libtwostream_la-2stream_miscsetups.lo:  \
-	@twostream_src@/$(am__dirstamp) \
-	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
 @twostream_src@/libtwostream_la-2stream_bvproblem.lo:  \
 	@twostream_src@/$(am__dirstamp) \
 	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
-@twostream_src@/libtwostream_la-2stream_solutions.lo:  \
-	@twostream_src@/$(am__dirstamp) \
-	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
-@twostream_src@/libtwostream_la-2stream_thermalsup.lo:  \
+@twostream_src@/libtwostream_la-2stream_inputs.lo:  \
 	@twostream_src@/$(am__dirstamp) \
 	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
 @twostream_src@/libtwostream_la-2stream_intensity.lo:  \
 	@twostream_src@/$(am__dirstamp) \
 	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
-@twostream_src@/libtwostream_la-2stream_master.lo:  \
+@twostream_src@/libtwostream_la-2stream_la_solutions.lo:  \
 	@twostream_src@/$(am__dirstamp) \
 	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
-@twostream_src@/libtwostream_la-2stream_l_miscsetups.lo:  \
+@twostream_src@/libtwostream_la-2stream_lc_bvproblem.lo:  \
 	@twostream_src@/$(am__dirstamp) \
 	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
-@twostream_src@/libtwostream_la-2stream_l_bvproblem.lo:  \
+@twostream_src@/libtwostream_la-2stream_lc_jacobians.lo:  \
 	@twostream_src@/$(am__dirstamp) \
 	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
-@twostream_src@/libtwostream_la-2stream_l_solutions.lo:  \
+@twostream_src@/libtwostream_la-2stream_lc_miscsetups.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_lcs_master.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_l_inputs.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_lp_bvproblem.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_lp_jacobians.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_lp_miscsetups.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_lps_master.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_ls_brdf_kernels.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_ls_brdf_supplement.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_ls_bvproblem.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_ls_jacobians.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_lssl_jacobians.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_lssl_sleave_supplement.lo:  \
 	@twostream_src@/$(am__dirstamp) \
 	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
 @twostream_src@/libtwostream_la-2stream_l_thermalsup.lo:  \
 	@twostream_src@/$(am__dirstamp) \
 	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
-@twostream_src@/libtwostream_la-2stream_l_jacobians.lo:  \
+@twostream_src@/libtwostream_la-2stream_l_writemodules.lo:  \
 	@twostream_src@/$(am__dirstamp) \
 	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
-@twostream_src@/libtwostream_la-2stream_l_master.lo:  \
+@twostream_src@/libtwostream_la-2stream_master.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_miscsetups.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_Planckfunc.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_sleave_routines.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_sleave_supplement.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_solutions.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_Taylor.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_thermalsup.lo:  \
+	@twostream_src@/$(am__dirstamp) \
+	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
+@twostream_src@/libtwostream_la-2stream_writemodules.lo:  \
 	@twostream_src@/$(am__dirstamp) \
 	@twostream_src@/$(DEPDIR)/$(am__dirstamp)
 
@@ -8319,47 +8399,95 @@ am--depfiles: $(am__depfiles_remade)
 @twostream_src@/libtwostream_la-2stream_brdf_supplement.lo: @twostream_src@/2stream_brdf_supplement.F90
 	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_brdf_supplement.lo `test -f '@twostream_src@/2stream_brdf_supplement.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_brdf_supplement.F90
 
-@twostream_src@/libtwostream_la-2stream_ls_brdf_supplement.lo: @twostream_src@/2stream_ls_brdf_supplement.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_ls_brdf_supplement.lo `test -f '@twostream_src@/2stream_ls_brdf_supplement.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_ls_brdf_supplement.F90
-
-@twostream_src@/libtwostream_la-2stream_ls_brdf_kernels.lo: @twostream_src@/2stream_ls_brdf_kernels.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_ls_brdf_kernels.lo `test -f '@twostream_src@/2stream_ls_brdf_kernels.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_ls_brdf_kernels.F90
-
-@twostream_src@/libtwostream_la-2stream_miscsetups.lo: @twostream_src@/2stream_miscsetups.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_miscsetups.lo `test -f '@twostream_src@/2stream_miscsetups.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_miscsetups.F90
-
 @twostream_src@/libtwostream_la-2stream_bvproblem.lo: @twostream_src@/2stream_bvproblem.F90
 	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_bvproblem.lo `test -f '@twostream_src@/2stream_bvproblem.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_bvproblem.F90
 
-@twostream_src@/libtwostream_la-2stream_solutions.lo: @twostream_src@/2stream_solutions.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_solutions.lo `test -f '@twostream_src@/2stream_solutions.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_solutions.F90
-
-@twostream_src@/libtwostream_la-2stream_thermalsup.lo: @twostream_src@/2stream_thermalsup.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_thermalsup.lo `test -f '@twostream_src@/2stream_thermalsup.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_thermalsup.F90
+@twostream_src@/libtwostream_la-2stream_inputs.lo: @twostream_src@/2stream_inputs.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_inputs.lo `test -f '@twostream_src@/2stream_inputs.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_inputs.F90
 
 @twostream_src@/libtwostream_la-2stream_intensity.lo: @twostream_src@/2stream_intensity.F90
 	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_intensity.lo `test -f '@twostream_src@/2stream_intensity.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_intensity.F90
 
-@twostream_src@/libtwostream_la-2stream_master.lo: @twostream_src@/2stream_master.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_master.lo `test -f '@twostream_src@/2stream_master.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_master.F90
+@twostream_src@/libtwostream_la-2stream_la_solutions.lo: @twostream_src@/2stream_la_solutions.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_la_solutions.lo `test -f '@twostream_src@/2stream_la_solutions.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_la_solutions.F90
 
-@twostream_src@/libtwostream_la-2stream_l_miscsetups.lo: @twostream_src@/2stream_l_miscsetups.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_l_miscsetups.lo `test -f '@twostream_src@/2stream_l_miscsetups.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_l_miscsetups.F90
+@twostream_src@/libtwostream_la-2stream_lc_bvproblem.lo: @twostream_src@/2stream_lc_bvproblem.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_lc_bvproblem.lo `test -f '@twostream_src@/2stream_lc_bvproblem.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_lc_bvproblem.F90
 
-@twostream_src@/libtwostream_la-2stream_l_bvproblem.lo: @twostream_src@/2stream_l_bvproblem.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_l_bvproblem.lo `test -f '@twostream_src@/2stream_l_bvproblem.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_l_bvproblem.F90
+@twostream_src@/libtwostream_la-2stream_lc_jacobians.lo: @twostream_src@/2stream_lc_jacobians.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_lc_jacobians.lo `test -f '@twostream_src@/2stream_lc_jacobians.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_lc_jacobians.F90
 
-@twostream_src@/libtwostream_la-2stream_l_solutions.lo: @twostream_src@/2stream_l_solutions.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_l_solutions.lo `test -f '@twostream_src@/2stream_l_solutions.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_l_solutions.F90
+@twostream_src@/libtwostream_la-2stream_lc_miscsetups.lo: @twostream_src@/2stream_lc_miscsetups.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_lc_miscsetups.lo `test -f '@twostream_src@/2stream_lc_miscsetups.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_lc_miscsetups.F90
+
+@twostream_src@/libtwostream_la-2stream_lcs_master.lo: @twostream_src@/2stream_lcs_master.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_lcs_master.lo `test -f '@twostream_src@/2stream_lcs_master.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_lcs_master.F90
+
+@twostream_src@/libtwostream_la-2stream_l_inputs.lo: @twostream_src@/2stream_l_inputs.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_l_inputs.lo `test -f '@twostream_src@/2stream_l_inputs.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_l_inputs.F90
+
+@twostream_src@/libtwostream_la-2stream_lp_bvproblem.lo: @twostream_src@/2stream_lp_bvproblem.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_lp_bvproblem.lo `test -f '@twostream_src@/2stream_lp_bvproblem.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_lp_bvproblem.F90
+
+@twostream_src@/libtwostream_la-2stream_lp_jacobians.lo: @twostream_src@/2stream_lp_jacobians.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_lp_jacobians.lo `test -f '@twostream_src@/2stream_lp_jacobians.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_lp_jacobians.F90
+
+@twostream_src@/libtwostream_la-2stream_lp_miscsetups.lo: @twostream_src@/2stream_lp_miscsetups.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_lp_miscsetups.lo `test -f '@twostream_src@/2stream_lp_miscsetups.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_lp_miscsetups.F90
+
+@twostream_src@/libtwostream_la-2stream_lps_master.lo: @twostream_src@/2stream_lps_master.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_lps_master.lo `test -f '@twostream_src@/2stream_lps_master.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_lps_master.F90
+
+@twostream_src@/libtwostream_la-2stream_ls_brdf_kernels.lo: @twostream_src@/2stream_ls_brdf_kernels.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_ls_brdf_kernels.lo `test -f '@twostream_src@/2stream_ls_brdf_kernels.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_ls_brdf_kernels.F90
+
+@twostream_src@/libtwostream_la-2stream_ls_brdf_supplement.lo: @twostream_src@/2stream_ls_brdf_supplement.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_ls_brdf_supplement.lo `test -f '@twostream_src@/2stream_ls_brdf_supplement.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_ls_brdf_supplement.F90
+
+@twostream_src@/libtwostream_la-2stream_ls_bvproblem.lo: @twostream_src@/2stream_ls_bvproblem.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_ls_bvproblem.lo `test -f '@twostream_src@/2stream_ls_bvproblem.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_ls_bvproblem.F90
+
+@twostream_src@/libtwostream_la-2stream_ls_jacobians.lo: @twostream_src@/2stream_ls_jacobians.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_ls_jacobians.lo `test -f '@twostream_src@/2stream_ls_jacobians.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_ls_jacobians.F90
+
+@twostream_src@/libtwostream_la-2stream_lssl_jacobians.lo: @twostream_src@/2stream_lssl_jacobians.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_lssl_jacobians.lo `test -f '@twostream_src@/2stream_lssl_jacobians.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_lssl_jacobians.F90
+
+@twostream_src@/libtwostream_la-2stream_lssl_sleave_supplement.lo: @twostream_src@/2stream_lssl_sleave_supplement.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_lssl_sleave_supplement.lo `test -f '@twostream_src@/2stream_lssl_sleave_supplement.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_lssl_sleave_supplement.F90
 
 @twostream_src@/libtwostream_la-2stream_l_thermalsup.lo: @twostream_src@/2stream_l_thermalsup.F90
 	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_l_thermalsup.lo `test -f '@twostream_src@/2stream_l_thermalsup.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_l_thermalsup.F90
 
-@twostream_src@/libtwostream_la-2stream_l_jacobians.lo: @twostream_src@/2stream_l_jacobians.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_l_jacobians.lo `test -f '@twostream_src@/2stream_l_jacobians.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_l_jacobians.F90
+@twostream_src@/libtwostream_la-2stream_l_writemodules.lo: @twostream_src@/2stream_l_writemodules.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_l_writemodules.lo `test -f '@twostream_src@/2stream_l_writemodules.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_l_writemodules.F90
 
-@twostream_src@/libtwostream_la-2stream_l_master.lo: @twostream_src@/2stream_l_master.F90
-	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_l_master.lo `test -f '@twostream_src@/2stream_l_master.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_l_master.F90
+@twostream_src@/libtwostream_la-2stream_master.lo: @twostream_src@/2stream_master.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_master.lo `test -f '@twostream_src@/2stream_master.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_master.F90
+
+@twostream_src@/libtwostream_la-2stream_miscsetups.lo: @twostream_src@/2stream_miscsetups.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_miscsetups.lo `test -f '@twostream_src@/2stream_miscsetups.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_miscsetups.F90
+
+@twostream_src@/libtwostream_la-2stream_Planckfunc.lo: @twostream_src@/2stream_Planckfunc.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_Planckfunc.lo `test -f '@twostream_src@/2stream_Planckfunc.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_Planckfunc.F90
+
+@twostream_src@/libtwostream_la-2stream_sleave_routines.lo: @twostream_src@/2stream_sleave_routines.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_sleave_routines.lo `test -f '@twostream_src@/2stream_sleave_routines.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_sleave_routines.F90
+
+@twostream_src@/libtwostream_la-2stream_sleave_supplement.lo: @twostream_src@/2stream_sleave_supplement.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_sleave_supplement.lo `test -f '@twostream_src@/2stream_sleave_supplement.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_sleave_supplement.F90
+
+@twostream_src@/libtwostream_la-2stream_solutions.lo: @twostream_src@/2stream_solutions.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_solutions.lo `test -f '@twostream_src@/2stream_solutions.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_solutions.F90
+
+@twostream_src@/libtwostream_la-2stream_Taylor.lo: @twostream_src@/2stream_Taylor.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_Taylor.lo `test -f '@twostream_src@/2stream_Taylor.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_Taylor.F90
+
+@twostream_src@/libtwostream_la-2stream_thermalsup.lo: @twostream_src@/2stream_thermalsup.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_thermalsup.lo `test -f '@twostream_src@/2stream_thermalsup.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_thermalsup.F90
+
+@twostream_src@/libtwostream_la-2stream_writemodules.lo: @twostream_src@/2stream_writemodules.F90
+	$(AM_V_PPFC)$(LIBTOOL) $(AM_V_lt) --tag=FC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(FC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libtwostream_la_FCFLAGS) $(FCFLAGS) -c -o @twostream_src@/libtwostream_la-2stream_writemodules.lo `test -f '@twostream_src@/2stream_writemodules.F90' || echo '$(srcdir)/'`@twostream_src@/2stream_writemodules.F90
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
