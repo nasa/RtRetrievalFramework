@@ -272,7 +272,7 @@ class TwostreamRtDriver(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, nlayers, surface_type, do_fullquadrature=True, do_solar=True, do_thermal=False):
+    def __init__(self, nlayers, surface_type, do_fullquadrature=True):
         """
 
         TwostreamRtDriver::TwostreamRtDriver(int nlayers, int surface_type, bool do_fullquadrature=true)
@@ -281,7 +281,7 @@ class TwostreamRtDriver(object):
 
         Use do_fullquadratures = false only for comparison against LIDORT 
         """
-        _twostream_driver.TwostreamRtDriver_swiginit(self, _twostream_driver.new_TwostreamRtDriver(nlayers, surface_type, do_fullquadrature, do_solar, do_thermal))
+        _twostream_driver.TwostreamRtDriver_swiginit(self, _twostream_driver.new_TwostreamRtDriver(nlayers, surface_type, do_fullquadrature))
 
     def setup_height_grid(self, height_grid):
         """
@@ -416,7 +416,6 @@ class TwostreamRtDriver(object):
     __swig_destroy__ = _twostream_driver.delete_TwostreamRtDriver
 TwostreamRtDriver.setup_height_grid = new_instancemethod(_twostream_driver.TwostreamRtDriver_setup_height_grid, None, TwostreamRtDriver)
 TwostreamRtDriver.setup_geometry = new_instancemethod(_twostream_driver.TwostreamRtDriver_setup_geometry, None, TwostreamRtDriver)
-TwostreamRtDriver.setup_thermal_inputs = new_instancemethod(_twostream_driver.TwostreamRtDriver_setup_thermal_inputs, None, TwostreamRtDriver)
 TwostreamRtDriver.setup_optical_inputs = new_instancemethod(_twostream_driver.TwostreamRtDriver_setup_optical_inputs, None, TwostreamRtDriver)
 TwostreamRtDriver.clear_linear_inputs = new_instancemethod(_twostream_driver.TwostreamRtDriver_clear_linear_inputs, None, TwostreamRtDriver)
 TwostreamRtDriver.setup_linear_inputs = new_instancemethod(_twostream_driver.TwostreamRtDriver_setup_linear_inputs, None, TwostreamRtDriver)

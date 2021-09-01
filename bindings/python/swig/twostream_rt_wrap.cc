@@ -5188,298 +5188,6 @@ SWIGINTERN PyObject *_wrap_new_TwostreamRt__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   blitz::Array< double,1 > *arg4 = 0 ;
   blitz::Array< double,1 > *arg5 = 0 ;
   bool arg6 ;
-  bool arg7 ;
-  bool arg8 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::RtAtmosphere > tempshared1 ;
-  boost::shared_ptr< FullPhysics::RtAtmosphere > temp2shared1 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  boost::shared_ptr< FullPhysics::StokesCoefficient > tempshared2 ;
-  boost::shared_ptr< FullPhysics::StokesCoefficient > temp2shared2 ;
-  blitz::Array< double,1 > a3 ;
-  PythonObject numpy3 ;
-  blitz::Array< double,1 > a4 ;
-  PythonObject numpy4 ;
-  blitz::Array< double,1 > a5 ;
-  PythonObject numpy5 ;
-  bool val6 ;
-  int ecode6 = 0 ;
-  bool val7 ;
-  int ecode7 = 0 ;
-  bool val8 ;
-  int ecode8 = 0 ;
-  FullPhysics::TwostreamRt *result = 0 ;
-  
-  if ((nobjs < 8) || (nobjs > 8)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t,  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_TwostreamRt" "', argument " "1"" of type '" "boost::shared_ptr< FullPhysics::RtAtmosphere > const &""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      if (argp1) tempshared1 = *reinterpret_cast< boost::shared_ptr< FullPhysics::RtAtmosphere > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< FullPhysics::RtAtmosphere > * >(argp1);
-      arg1 = &tempshared1;
-    } else {
-      arg1 = (argp1) ? reinterpret_cast< boost::shared_ptr< FullPhysics::RtAtmosphere > * >(argp1) : &tempshared1;
-    }
-    // Special handling if this is a director class. In that case, we
-    // don't own the underlying python object. Instead,
-    // we tell python we have a reference to the underlying object, and
-    // when this gets destroyed we decrement the reference to the python
-    // object. 
-    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg1->get());
-    if(dp) {
-      Py_INCREF(dp->swig_get_self());
-      temp2shared1.reset(arg1->get(), PythonRefPtrCleanup(dp->swig_get_self()));
-      arg1 = &temp2shared1;
-    }
-  }
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StokesCoefficient_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_TwostreamRt" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::StokesCoefficient > const &""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::StokesCoefficient > * >(argp2);
-      delete reinterpret_cast< boost::shared_ptr< FullPhysics::StokesCoefficient > * >(argp2);
-      arg2 = &tempshared2;
-    } else {
-      arg2 = (argp2) ? reinterpret_cast< boost::shared_ptr< FullPhysics::StokesCoefficient > * >(argp2) : &tempshared2;
-    }
-    // Special handling if this is a director class. In that case, we
-    // don't own the underlying python object. Instead,
-    // we tell python we have a reference to the underlying object, and
-    // when this gets destroyed we decrement the reference to the python
-    // object. 
-    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg2->get());
-    if(dp) {
-      Py_INCREF(dp->swig_get_self());
-      temp2shared2.reset(arg2->get(), PythonRefPtrCleanup(dp->swig_get_self()));
-      arg2 = &temp2shared2;
-    }
-  }
-  {
-    int res = SWIG_ConvertPtr(swig_obj[2], (void**)(&arg3), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy3.obj = to_numpy<double>(swig_obj[2]);
-      if(!numpy3.obj)
-      return NULL;
-      a3.reference(to_blitz_array<double, 1>(numpy3));
-      arg3 = &a3;
-    }
-  }
-  {
-    int res = SWIG_ConvertPtr(swig_obj[3], (void**)(&arg4), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy4.obj = to_numpy<double>(swig_obj[3]);
-      if(!numpy4.obj)
-      return NULL;
-      a4.reference(to_blitz_array<double, 1>(numpy4));
-      arg4 = &a4;
-    }
-  }
-  {
-    int res = SWIG_ConvertPtr(swig_obj[4], (void**)(&arg5), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy5.obj = to_numpy<double>(swig_obj[4]);
-      if(!numpy5.obj)
-      return NULL;
-      a5.reference(to_blitz_array<double, 1>(numpy5));
-      arg5 = &a5;
-    }
-  }
-  ecode6 = SWIG_AsVal_bool(swig_obj[5], &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_TwostreamRt" "', argument " "6"" of type '" "bool""'");
-  } 
-  arg6 = static_cast< bool >(val6);
-  ecode7 = SWIG_AsVal_bool(swig_obj[6], &val7);
-  if (!SWIG_IsOK(ecode7)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_TwostreamRt" "', argument " "7"" of type '" "bool""'");
-  } 
-  arg7 = static_cast< bool >(val7);
-  ecode8 = SWIG_AsVal_bool(swig_obj[7], &val8);
-  if (!SWIG_IsOK(ecode8)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_TwostreamRt" "', argument " "8"" of type '" "bool""'");
-  } 
-  arg8 = static_cast< bool >(val8);
-  {
-    try {
-      result = (FullPhysics::TwostreamRt *)new FullPhysics::TwostreamRt((boost::shared_ptr< FullPhysics::RtAtmosphere > const &)*arg1,(boost::shared_ptr< FullPhysics::StokesCoefficient > const &)*arg2,(blitz::Array< double,1 > const &)*arg3,(blitz::Array< double,1 > const &)*arg4,(blitz::Array< double,1 > const &)*arg5,arg6,arg7,arg8);
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  {
-    boost::shared_ptr<  FullPhysics::TwostreamRt > *smartresult = result ? new boost::shared_ptr<  FullPhysics::TwostreamRt >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TwostreamRt_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
-  }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_TwostreamRt__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  boost::shared_ptr< FullPhysics::RtAtmosphere > *arg1 = 0 ;
-  boost::shared_ptr< FullPhysics::StokesCoefficient > *arg2 = 0 ;
-  blitz::Array< double,1 > *arg3 = 0 ;
-  blitz::Array< double,1 > *arg4 = 0 ;
-  blitz::Array< double,1 > *arg5 = 0 ;
-  bool arg6 ;
-  bool arg7 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::RtAtmosphere > tempshared1 ;
-  boost::shared_ptr< FullPhysics::RtAtmosphere > temp2shared1 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  boost::shared_ptr< FullPhysics::StokesCoefficient > tempshared2 ;
-  boost::shared_ptr< FullPhysics::StokesCoefficient > temp2shared2 ;
-  blitz::Array< double,1 > a3 ;
-  PythonObject numpy3 ;
-  blitz::Array< double,1 > a4 ;
-  PythonObject numpy4 ;
-  blitz::Array< double,1 > a5 ;
-  PythonObject numpy5 ;
-  bool val6 ;
-  int ecode6 = 0 ;
-  bool val7 ;
-  int ecode7 = 0 ;
-  FullPhysics::TwostreamRt *result = 0 ;
-  
-  if ((nobjs < 7) || (nobjs > 7)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__RtAtmosphere_t,  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_TwostreamRt" "', argument " "1"" of type '" "boost::shared_ptr< FullPhysics::RtAtmosphere > const &""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      if (argp1) tempshared1 = *reinterpret_cast< boost::shared_ptr< FullPhysics::RtAtmosphere > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< FullPhysics::RtAtmosphere > * >(argp1);
-      arg1 = &tempshared1;
-    } else {
-      arg1 = (argp1) ? reinterpret_cast< boost::shared_ptr< FullPhysics::RtAtmosphere > * >(argp1) : &tempshared1;
-    }
-    // Special handling if this is a director class. In that case, we
-    // don't own the underlying python object. Instead,
-    // we tell python we have a reference to the underlying object, and
-    // when this gets destroyed we decrement the reference to the python
-    // object. 
-    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg1->get());
-    if(dp) {
-      Py_INCREF(dp->swig_get_self());
-      temp2shared1.reset(arg1->get(), PythonRefPtrCleanup(dp->swig_get_self()));
-      arg1 = &temp2shared1;
-    }
-  }
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StokesCoefficient_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_TwostreamRt" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::StokesCoefficient > const &""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::StokesCoefficient > * >(argp2);
-      delete reinterpret_cast< boost::shared_ptr< FullPhysics::StokesCoefficient > * >(argp2);
-      arg2 = &tempshared2;
-    } else {
-      arg2 = (argp2) ? reinterpret_cast< boost::shared_ptr< FullPhysics::StokesCoefficient > * >(argp2) : &tempshared2;
-    }
-    // Special handling if this is a director class. In that case, we
-    // don't own the underlying python object. Instead,
-    // we tell python we have a reference to the underlying object, and
-    // when this gets destroyed we decrement the reference to the python
-    // object. 
-    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg2->get());
-    if(dp) {
-      Py_INCREF(dp->swig_get_self());
-      temp2shared2.reset(arg2->get(), PythonRefPtrCleanup(dp->swig_get_self()));
-      arg2 = &temp2shared2;
-    }
-  }
-  {
-    int res = SWIG_ConvertPtr(swig_obj[2], (void**)(&arg3), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy3.obj = to_numpy<double>(swig_obj[2]);
-      if(!numpy3.obj)
-      return NULL;
-      a3.reference(to_blitz_array<double, 1>(numpy3));
-      arg3 = &a3;
-    }
-  }
-  {
-    int res = SWIG_ConvertPtr(swig_obj[3], (void**)(&arg4), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy4.obj = to_numpy<double>(swig_obj[3]);
-      if(!numpy4.obj)
-      return NULL;
-      a4.reference(to_blitz_array<double, 1>(numpy4));
-      arg4 = &a4;
-    }
-  }
-  {
-    int res = SWIG_ConvertPtr(swig_obj[4], (void**)(&arg5), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy5.obj = to_numpy<double>(swig_obj[4]);
-      if(!numpy5.obj)
-      return NULL;
-      a5.reference(to_blitz_array<double, 1>(numpy5));
-      arg5 = &a5;
-    }
-  }
-  ecode6 = SWIG_AsVal_bool(swig_obj[5], &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_TwostreamRt" "', argument " "6"" of type '" "bool""'");
-  } 
-  arg6 = static_cast< bool >(val6);
-  ecode7 = SWIG_AsVal_bool(swig_obj[6], &val7);
-  if (!SWIG_IsOK(ecode7)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_TwostreamRt" "', argument " "7"" of type '" "bool""'");
-  } 
-  arg7 = static_cast< bool >(val7);
-  {
-    try {
-      result = (FullPhysics::TwostreamRt *)new FullPhysics::TwostreamRt((boost::shared_ptr< FullPhysics::RtAtmosphere > const &)*arg1,(boost::shared_ptr< FullPhysics::StokesCoefficient > const &)*arg2,(blitz::Array< double,1 > const &)*arg3,(blitz::Array< double,1 > const &)*arg4,(blitz::Array< double,1 > const &)*arg5,arg6,arg7);
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  {
-    boost::shared_ptr<  FullPhysics::TwostreamRt > *smartresult = result ? new boost::shared_ptr<  FullPhysics::TwostreamRt >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TwostreamRt_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
-  }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_TwostreamRt__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  boost::shared_ptr< FullPhysics::RtAtmosphere > *arg1 = 0 ;
-  boost::shared_ptr< FullPhysics::StokesCoefficient > *arg2 = 0 ;
-  blitz::Array< double,1 > *arg3 = 0 ;
-  blitz::Array< double,1 > *arg4 = 0 ;
-  blitz::Array< double,1 > *arg5 = 0 ;
-  bool arg6 ;
   void *argp1 ;
   int res1 = 0 ;
   boost::shared_ptr< FullPhysics::RtAtmosphere > tempshared1 ;
@@ -5606,7 +5314,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_TwostreamRt__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_TwostreamRt__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   boost::shared_ptr< FullPhysics::RtAtmosphere > *arg1 = 0 ;
   boost::shared_ptr< FullPhysics::StokesCoefficient > *arg2 = 0 ;
@@ -5734,30 +5442,22 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_TwostreamRt(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[9] = {
+  PyObject *argv[7] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"new_TwostreamRt",0,8,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_TwostreamRt",0,6,argv))) SWIG_fail;
   --argc;
   if (argc == 5) {
-    return _wrap_new_TwostreamRt__SWIG_3(self, argc, argv);
-  }
-  if (argc == 6) {
-    return _wrap_new_TwostreamRt__SWIG_2(self, argc, argv);
-  }
-  if (argc == 7) {
     return _wrap_new_TwostreamRt__SWIG_1(self, argc, argv);
   }
-  if (argc == 8) {
+  if (argc == 6) {
     return _wrap_new_TwostreamRt__SWIG_0(self, argc, argv);
   }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_TwostreamRt'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::TwostreamRt::TwostreamRt(boost::shared_ptr< FullPhysics::RtAtmosphere > const &,boost::shared_ptr< FullPhysics::StokesCoefficient > const &,blitz::Array< double,1 > const &,blitz::Array< double,1 > const &,blitz::Array< double,1 > const &,bool,bool,bool)\n"
-    "    FullPhysics::TwostreamRt::TwostreamRt(boost::shared_ptr< FullPhysics::RtAtmosphere > const &,boost::shared_ptr< FullPhysics::StokesCoefficient > const &,blitz::Array< double,1 > const &,blitz::Array< double,1 > const &,blitz::Array< double,1 > const &,bool,bool)\n"
     "    FullPhysics::TwostreamRt::TwostreamRt(boost::shared_ptr< FullPhysics::RtAtmosphere > const &,boost::shared_ptr< FullPhysics::StokesCoefficient > const &,blitz::Array< double,1 > const &,blitz::Array< double,1 > const &,blitz::Array< double,1 > const &,bool)\n"
     "    FullPhysics::TwostreamRt::TwostreamRt(boost::shared_ptr< FullPhysics::RtAtmosphere > const &,boost::shared_ptr< FullPhysics::StokesCoefficient > const &,blitz::Array< double,1 > const &,blitz::Array< double,1 > const &,blitz::Array< double,1 > const &)\n");
   return 0;
