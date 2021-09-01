@@ -5609,126 +5609,6 @@ SWIGINTERN PyObject *_wrap_new_TwostreamRtDriver__SWIG_0(PyObject *SWIGUNUSEDPAR
   int arg1 ;
   int arg2 ;
   bool arg3 ;
-  bool arg4 ;
-  bool arg5 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  bool val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  bool val5 ;
-  int ecode5 = 0 ;
-  FullPhysics::TwostreamRtDriver *result = 0 ;
-  
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_TwostreamRtDriver" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_TwostreamRtDriver" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_TwostreamRtDriver" "', argument " "3"" of type '" "bool""'");
-  } 
-  arg3 = static_cast< bool >(val3);
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_TwostreamRtDriver" "', argument " "4"" of type '" "bool""'");
-  } 
-  arg4 = static_cast< bool >(val4);
-  ecode5 = SWIG_AsVal_bool(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_TwostreamRtDriver" "', argument " "5"" of type '" "bool""'");
-  } 
-  arg5 = static_cast< bool >(val5);
-  {
-    try {
-      result = (FullPhysics::TwostreamRtDriver *)new FullPhysics::TwostreamRtDriver(arg1,arg2,arg3,arg4,arg5);
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  {
-    boost::shared_ptr<  FullPhysics::TwostreamRtDriver > *smartresult = result ? new boost::shared_ptr<  FullPhysics::TwostreamRtDriver >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TwostreamRtDriver_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
-  }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_TwostreamRtDriver__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  int arg2 ;
-  bool arg3 ;
-  bool arg4 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  bool val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  FullPhysics::TwostreamRtDriver *result = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_TwostreamRtDriver" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_TwostreamRtDriver" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_TwostreamRtDriver" "', argument " "3"" of type '" "bool""'");
-  } 
-  arg3 = static_cast< bool >(val3);
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_TwostreamRtDriver" "', argument " "4"" of type '" "bool""'");
-  } 
-  arg4 = static_cast< bool >(val4);
-  {
-    try {
-      result = (FullPhysics::TwostreamRtDriver *)new FullPhysics::TwostreamRtDriver(arg1,arg2,arg3,arg4);
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  {
-    boost::shared_ptr<  FullPhysics::TwostreamRtDriver > *smartresult = result ? new boost::shared_ptr<  FullPhysics::TwostreamRtDriver >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TwostreamRtDriver_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
-  }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_TwostreamRtDriver__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  int arg2 ;
-  bool arg3 ;
   int val1 ;
   int ecode1 = 0 ;
   int val2 ;
@@ -5772,7 +5652,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_TwostreamRtDriver__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_TwostreamRtDriver__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -5814,30 +5694,22 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_TwostreamRtDriver(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[6] = {
+  PyObject *argv[4] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"new_TwostreamRtDriver",0,5,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_TwostreamRtDriver",0,3,argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
-    return _wrap_new_TwostreamRtDriver__SWIG_3(self, argc, argv);
-  }
-  if (argc == 3) {
-    return _wrap_new_TwostreamRtDriver__SWIG_2(self, argc, argv);
-  }
-  if (argc == 4) {
     return _wrap_new_TwostreamRtDriver__SWIG_1(self, argc, argv);
   }
-  if (argc == 5) {
+  if (argc == 3) {
     return _wrap_new_TwostreamRtDriver__SWIG_0(self, argc, argv);
   }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_TwostreamRtDriver'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::TwostreamRtDriver::TwostreamRtDriver(int,int,bool,bool,bool)\n"
-    "    FullPhysics::TwostreamRtDriver::TwostreamRtDriver(int,int,bool,bool)\n"
     "    FullPhysics::TwostreamRtDriver::TwostreamRtDriver(int,int,bool)\n"
     "    FullPhysics::TwostreamRtDriver::TwostreamRtDriver(int,int)\n");
   return 0;
@@ -5951,63 +5823,6 @@ SWIGINTERN PyObject *_wrap_TwostreamRtDriver_setup_geometry(PyObject *SWIGUNUSED
   {
     try {
       ((FullPhysics::TwostreamRtDriver const *)arg1)->setup_geometry(arg2,arg3,arg4);
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_TwostreamRtDriver_setup_thermal_inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::TwostreamRtDriver *arg1 = (FullPhysics::TwostreamRtDriver *) 0 ;
-  double arg2 ;
-  SwigValueWrapper< blitz::Array< double,1 > > arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::TwostreamRtDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::TwostreamRtDriver const > *smartarg1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PythonObject numpy3 ;
-  PyObject *swig_obj[3] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"TwostreamRtDriver_setup_thermal_inputs",3,3,swig_obj)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TwostreamRtDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TwostreamRtDriver_setup_thermal_inputs" "', argument " "1"" of type '" "FullPhysics::TwostreamRtDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TwostreamRtDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TwostreamRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::TwostreamRtDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TwostreamRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::TwostreamRtDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TwostreamRtDriver_setup_thermal_inputs" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  {
-    numpy3.obj = to_numpy<double>(swig_obj[2]);
-    if(!numpy3.obj)
-    return NULL;
-    arg3 = to_blitz_array<double, 1>(numpy3);
-  }
-  {
-    try {
-      ((FullPhysics::TwostreamRtDriver const *)arg1)->setup_thermal_inputs(arg2,arg3);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -6679,7 +6494,6 @@ static PyMethodDef SwigMethods[] = {
 		"void TwostreamRtDriver::setup_geometry(double sza, double azm, double zen) const\n"
 		"\n"
 		""},
-	 { (char *)"TwostreamRtDriver_setup_thermal_inputs", _wrap_TwostreamRtDriver_setup_thermal_inputs, METH_VARARGS, NULL},
 	 { (char *)"TwostreamRtDriver_setup_optical_inputs", _wrap_TwostreamRtDriver_setup_optical_inputs, METH_VARARGS, (char *)"\n"
 		"\n"
 		"void TwostreamRtDriver::setup_optical_inputs(const blitz::Array< double, 1 > &od, const blitz::Array< double, 1 >\n"

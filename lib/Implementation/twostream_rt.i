@@ -23,9 +23,7 @@ public:
               const blitz::Array<double, 1>& Sza, 
               const blitz::Array<double, 1>& Zen, 
               const blitz::Array<double, 1>& Azm,
-              bool do_fullquadrature = true,
-              bool do_solar = true,
-              bool do_thermal = false);
+              bool do_fullquadrature = true);
   %python_attribute(number_stream, int)
   %python_attribute(number_moment, int)
   %python_attribute(brdf_driver, boost::shared_ptr<TwostreamBrdfDriver>)

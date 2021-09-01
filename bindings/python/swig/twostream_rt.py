@@ -149,7 +149,7 @@ class TwostreamRt(full_physics_swig.spurr_rt.SpurrRt):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, Atm, Stokes_coef, Sza, Zen, Azm, do_fullquadrature=True, do_solar=True, do_thermal=False):
+    def __init__(self, Atm, Stokes_coef, Sza, Zen, Azm, do_fullquadrature=True):
         """
 
         TwostreamRt::TwostreamRt(const boost::shared_ptr< RtAtmosphere > &Atm, const
@@ -176,7 +176,7 @@ class TwostreamRt(full_physics_swig.spurr_rt.SpurrRt):
 
         do_fullquadrature:  false only for comparison against LIDORT 
         """
-        _twostream_rt.TwostreamRt_swiginit(self, _twostream_rt.new_TwostreamRt(Atm, Stokes_coef, Sza, Zen, Azm, do_fullquadrature, do_solar, do_thermal))
+        _twostream_rt.TwostreamRt_swiginit(self, _twostream_rt.new_TwostreamRt(Atm, Stokes_coef, Sza, Zen, Azm, do_fullquadrature))
 
     @property
     def number_stream(self):
