@@ -23,7 +23,8 @@ public:
 
   blitz::Array<double, 1> kernel_value_params(const int Spec_index);
   virtual const double kernel_value(const int Spec_index, const double Sza, const double Vza, const double Azm);
-  
+  virtual const blitz::Array<double, 1> kernel_value_giss(const int Spec_index, const double Sza, const double Vza, const double Azm);
+
   virtual boost::shared_ptr<Ground> clone() const;
 
   virtual std::string state_vector_name_i(int i) const;
