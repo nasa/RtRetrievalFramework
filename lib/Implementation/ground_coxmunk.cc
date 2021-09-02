@@ -10,6 +10,7 @@ using namespace blitz;
 
 extern "C" {
     double exact_brdf_value_coxmunk(const double* params, const double* sza, const double* vza, const double* azm);
+    void exact_brdf_value_l_rad_gisscoxmunk(const double* params, const double* sza, const double* vza, const double* azm, double* value);
 }
 
 #ifdef HAVE_LUA
@@ -58,6 +59,7 @@ const double GroundCoxmunk::refractive_index(const int Spec_idx) const
 blitz::Array<double, 1> GroundCoxmunk::kernel_value_params(const int Spec_index)
 {
     blitz::Array<double, 1> params(NUM_BRDF_PARAMS, blitz::ColumnMajorArray<1>());
+    params = 0.;
     params(0) = windspeed().value();
     params(1) = refractive_index(Spec_index);
     return params;
@@ -67,6 +69,14 @@ const double GroundCoxmunk::kernel_value(const int Spec_index, const double Sza,
 {
     blitz::Array<double, 1> params = kernel_value_params(Spec_index);
     return exact_brdf_value_coxmunk(params.dataFirst(), &Sza, &Vza, &Azm);
+}
+
+const blitz::Array<double, 1> GroundCoxmunk::kernel_value_giss(const int Spec_index, const double Sza, const double Vza, const double Azm)
+{
+    blitz::Array<double, 1> params = kernel_value_params(Spec_index);
+    blitz::Array<double, 1> value(3);
+    exact_brdf_value_l_rad_gisscoxmunk(params.dataFirst(), &Sza, &Vza, &Azm, value.dataFirst());
+    return value;
 }
 
 boost::shared_ptr<Ground> GroundCoxmunk::clone() const {
