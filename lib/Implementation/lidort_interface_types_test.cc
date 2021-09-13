@@ -42,8 +42,8 @@ BOOST_AUTO_TEST_CASE(lidort_pars)
   BOOST_CHECK_EQUAL(tst_obj.max_partlayers, 2);
   BOOST_CHECK_EQUAL(tst_obj.max_taylor_terms, 7);
   BOOST_CHECK_EQUAL(tst_obj.max_directions, 2);
-  BOOST_CHECK_EQUAL(tst_obj.max_brdf_kernels, 3);
-  BOOST_CHECK_EQUAL(tst_obj.max_brdf_parameters, 3);
+  BOOST_CHECK_EQUAL(tst_obj.max_brdf_kernels, 4);
+  BOOST_CHECK_EQUAL(tst_obj.max_brdf_parameters, 4);
   BOOST_CHECK_EQUAL(tst_obj.maxstreams_brdf, 100);
   BOOST_CHECK_EQUAL(tst_obj.max_msrs_muquad, 50);
   BOOST_CHECK_EQUAL(tst_obj.max_msrs_phiquad, 100);

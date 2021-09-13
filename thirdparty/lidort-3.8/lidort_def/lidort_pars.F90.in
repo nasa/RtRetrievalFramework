@@ -208,11 +208,11 @@
 
 !  Maximum number of BRDF kernels. Increased to 4, Version 3.8
 
-   INTEGER, PARAMETER :: MAX_BRDF_KERNELS = 3
+   INTEGER, PARAMETER :: MAX_BRDF_KERNELS = 4
 
 !  Maximum number of BRDF parameters per kernel. Increased to 4, Version 3.8
 
-   INTEGER, PARAMETER :: MAX_BRDF_PARAMETERS = 3
+   INTEGER, PARAMETER :: MAX_BRDF_PARAMETERS = 4
 
 !  Maximum number of azimuth-quadrature streams for BRDF Fourier.
 !    5/5/20. Version 3.8.1 Upgrade. MUST BE AN EVEN NUMBER

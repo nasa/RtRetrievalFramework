@@ -21,6 +21,7 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   int npars          = 3;
   int nspars         = 1;
   int nstreams_brdf  = 50;
+  int nbrdf          = 4;
 
   int n_geometries   = nbeams * n_user_angles*n_user_relazms;
   int ntotal         = 2*nlayers;
@@ -83,15 +84,15 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
 
   // Other BRDF variables
   bool do_shadow_effect;
-  Array<bool, 1> lambertian_kernel_flag(3);
-  Array<bool, 1> do_kernel_factor_wfs(3);
-  Array<bool, 2> do_kernel_params_wfs(3,3);
-  Array<bool, 1> do_kparams_derivs(3);
+  Array<bool, 1> lambertian_kernel_flag(nbrdf);
+  Array<bool, 1> do_kernel_factor_wfs(nbrdf);
+  Array<bool, 2> do_kernel_params_wfs(nbrdf,nbrdf);
+  Array<bool, 1> do_kparams_derivs(nbrdf);
   int n_brdf_kernels;
-  Array<int, 1> n_brdf_parameters(3);
-  Array<int, 1> which_brdf(3);
-  Array<double, 1> brdf_factors(3);
-  Array<double, 2> brdf_parameters(3,3);
+  Array<int, 1> n_brdf_parameters(nbrdf);
+  Array<int, 1> which_brdf(nbrdf);
+  Array<double, 1> brdf_factors(nbrdf);
+  Array<double, 2> brdf_parameters(nbrdf,nbrdf);
 
   // Thermal variables
   double surfbb = 0;
