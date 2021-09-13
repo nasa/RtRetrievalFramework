@@ -18,12 +18,19 @@ public:
   virtual ArrayAd<double, 1> surface_parameter(const double wn, const int spec_index) const;
 
   virtual const AutoDerivative<double> windspeed() const;
+  virtual const double windspeed_uncert() const;
 
   virtual const double refractive_index(const int Spec_idx) const;
 
   blitz::Array<double, 1> kernel_value_params(const int Spec_index);
-  virtual const double kernel_value(const int Spec_index, const double Sza, const double Vza, const double Azm);
-  virtual const blitz::Array<double, 1> kernel_value_giss(const int Spec_index, const double Sza, const double Vza, const double Azm);
+  virtual const double kernel_value(const int Spec_index, const double Sza,
+                                    const double Vza, const double Azm);
+  virtual const blitz::Array<double, 1> kernel_value_giss
+                                   (const int Spec_index, const double Sza,
+                                    const double Vza, const double Azm);
+  virtual const blitz::Array<AutoDerivative<double>, 1> kernel_value_l_giss
+                                   (const int Spec_index, const double Sza,
+                                    const double Vza, const double Azm);
 
   virtual boost::shared_ptr<Ground> clone() const;
 
