@@ -81,6 +81,32 @@ double kernel_amplitude_giss(boost::shared_ptr<Level1b>& L1b,
     return res;
 }
 
+AutoDerivative<double> kernel_amplitude_l_giss(boost::shared_ptr<Level1b>& L1b,
+                                               boost::shared_ptr<GroundCoxmunk>& Coxmunk,
+                                               int spec_idx)
+{
+    Unit angle_unit("deg");
+
+    blitz::Array<double, 2> stokes_coeff =
+        L1b->stokes_coefficient(spec_idx);
+
+    blitz::Array<AutoDerivative<double>, 1> kernel_value_l_giss =
+        Coxmunk->kernel_value_l_giss(spec_idx,
+            L1b->solar_zenith(spec_idx).convert(angle_unit).value,
+            L1b->sounding_zenith(spec_idx).convert(angle_unit).value,
+            L1b->relative_azimuth(spec_idx).convert(angle_unit).value);
+
+    AutoDerivative<double> res(kernel_value_l_giss(0) * stokes_coeff(0,0));
+
+    for (int j = 1; j < kernel_value_l_giss.rows(); ++j) {
+        for (int k = 0; k < 1; ++k) {
+            res += kernel_value_l_giss(j) * stokes_coeff(j,k);
+        }
+    }
+
+    return res;
+}
+
 double reflectance_intercept(boost::shared_ptr<Level1b>& L1b,
                              boost::shared_ptr<GroundCoxmunk>& Coxmunk,
                              boost::shared_ptr<GroundBrdfWeight>& Brdf_weight,
@@ -117,8 +143,11 @@ double reflectance_intercept_uncert(boost::shared_ptr<Level1b>& L1b,
                                     boost::shared_ptr<GroundBrdfWeightOutput>& weight_output,
                                     int spec_idx)
 {
-  return weight_output->weight_intercept_uncert(Brdf_weight, spec_idx) *
-         kernel_amplitude_giss(L1b, Coxmunk, spec_idx);
+  AutoDerivative<double> kern_amp = kernel_amplitude_l_giss(L1b, Coxmunk, spec_idx);
+
+  return weight_output->weight_intercept_uncert(Brdf_weight, spec_idx) * kern_amp.value() +
+         weight_output->weight_intercept       (Brdf_weight, spec_idx) * kern_amp.gradient()(0) *
+         Coxmunk->windspeed_uncert();
 }
 
 double reflectance_slope_uncert(boost::shared_ptr<Level1b>& L1b,
@@ -127,8 +156,11 @@ double reflectance_slope_uncert(boost::shared_ptr<Level1b>& L1b,
                                 boost::shared_ptr<GroundBrdfWeightOutput>& weight_output,
                                 int spec_idx)
 {
-  return weight_output->weight_slope_uncert(Brdf_weight, spec_idx) *
-         kernel_amplitude_giss(L1b, Coxmunk, spec_idx);
+  AutoDerivative<double> kern_amp = kernel_amplitude_l_giss(L1b, Coxmunk, spec_idx);
+
+  return weight_output->weight_slope_uncert(Brdf_weight, spec_idx) * kern_amp.value() +
+         weight_output->weight_slope       (Brdf_weight, spec_idx) * kern_amp.gradient()(0) *
+         Coxmunk->windspeed_uncert();
 }
 
 double reflectance_coeff_uncert(boost::shared_ptr<Level1b>& L1b,
@@ -137,8 +169,11 @@ double reflectance_coeff_uncert(boost::shared_ptr<Level1b>& L1b,
                                 boost::shared_ptr<GroundBrdfWeightOutput>& weight_output,
                                 int spec_idx, int i)
 {
-  return weight_output->weight_coeff_uncert(Brdf_weight, spec_idx, i) *
-         kernel_amplitude_giss(L1b, Coxmunk, spec_idx);
+  AutoDerivative<double> kern_amp = kernel_amplitude_l_giss(L1b, Coxmunk, spec_idx);
+
+  return weight_output->weight_coeff_uncert(Brdf_weight, spec_idx, i) * kern_amp.value() +
+         weight_output->weight_coeff       (Brdf_weight, spec_idx, i) * kern_amp.gradient()(0) *
+         Coxmunk->windspeed_uncert();
 }
 
 void GroundCoxmunkScaledOutput::register_output_apriori(const boost::shared_ptr<Output>& out) const

@@ -52,6 +52,17 @@ contains
         call exact_brdf_value_l_rad_gcm_f(params, sza, vza, azm, r1)
     end subroutine exact_brdf_value_l_rad_gisscoxmunk
 
+    subroutine exact_brdf_value_l_rad_l_gisscoxmunk(params, sza, vza, azm, r1, ls_r1) bind(c)
+        real(kind=c_double), intent(in)  :: params(5)
+        real(kind=c_double), intent(in)  :: sza
+        real(kind=c_double), intent(in)  :: vza
+        real(kind=c_double), intent(in)  :: azm
+        real(fpk),           intent(out) :: r1(NSTOKES)
+        real(fpk),           intent(out) :: ls_r1(NSTOKES,5)
+
+        call exact_brdf_value_l_rad_l_gcm_f(params, sza, vza, azm, r1, ls_r1)
+    end subroutine exact_brdf_value_l_rad_l_gisscoxmunk
+
  !------------------------------------------------------------------------------
 
     real(kind=c_double) function exact_brdf_value_f(breon_type, params, sza, vza, azm) bind(c)
@@ -316,11 +327,11 @@ contains
 
 !  Set values for the basic l_rad variables
 
-      spars(1) = 1.
-      spars(2) = BRDF_PARAMETERS(1,1)
-      spars(3) = BRDF_PARAMETERS(1,2)
+      spars(1) = (params(1) * 0.00512 + 0.003) * 0.5
+      spars(2) =  params(2)
+      spars(3) = 0.
       spars(4) = 0.
-      spars(5) = 0.
+      spars(5) = BRDF_FACTORS(1)
 
 !  Cosine and since of SZA
 
@@ -396,11 +407,11 @@ contains
       INTEGER, PARAMETER :: NSTOKES = 3
       INTEGER, PARAMETER :: NSPARS = 5
 
-      real(kind=c_double), intent(in) :: params(NSPARS)
-      real(kind=c_double), intent(in) :: sza
-      real(kind=c_double), intent(in) :: vza
-      real(kind=c_double), intent(in) :: azm
-      real(fpk),           intent(in) :: R1(NSTOKES)
+      real(kind=c_double), intent(in)  :: params(NSPARS)
+      real(kind=c_double), intent(in)  :: sza
+      real(kind=c_double), intent(in)  :: vza
+      real(kind=c_double), intent(in)  :: azm
+      real(fpk),           intent(out) :: R1(NSTOKES)
 
 !  Number and index-list of bidirectional functions
 
@@ -448,10 +459,6 @@ contains
       real(fpk) :: SPARS(NSPARS)
       real(fpk) :: XI, SXI, XJ, SXJ
       real(fpk) :: CKPHI_REF, SKPHI_REF
-
-!  Calculated BRDF
-
-      REAL(fpk)  :: EXACT_CALC_BRDF
 
 !  Help
 
@@ -518,8 +525,6 @@ contains
 !  Exact BRDF (LIDORT)
 !  -------------------
 
-      EXACT_CALC_BRDF = ZERO
-
 !  Kernel loop
 
       DO K = 1, N_BRDF_KERNELS
@@ -536,11 +541,164 @@ contains
             ENDDO
          ENDDO
 
-         EXACT_CALC_BRDF = EXACT_CALC_BRDF + BRDF_FACTORS(K) * EXACTDB_BRDFUNC(1,1,1)
-
       ENDDO
 
     END SUBROUTINE exact_brdf_value_l_rad_gcm_f
+
+ !------------------------------------------------------------------------------
+
+    subroutine exact_brdf_value_l_rad_l_gcm_f(params, sza, vza, azm, R1, Ls_R1) bind(c)
+
+      USE brdf_sup_routines_m, only : BRDF_FUNCTION
+
+!  Parameters for lrad
+
+      INTEGER, PARAMETER :: NSTOKES = 3
+      INTEGER, PARAMETER :: NSPARS = 5
+
+      real(kind=c_double), intent(in)  :: params(NSPARS)
+      real(kind=c_double), intent(in)  :: sza
+      real(kind=c_double), intent(in)  :: vza
+      real(kind=c_double), intent(in)  :: azm
+      real(fpk),           intent(out) :: R1(NSTOKES)
+      real(fpk),           intent(out) :: Ls_R1(NSTOKES,NSPARS)
+
+!  Number and index-list of bidirectional functions
+
+      INTEGER   :: N_BRDF_KERNELS
+      INTEGER   :: WHICH_BRDF ( MAX_BRDF_KERNELS )
+
+!  Parameters required for Kernel families
+
+      INTEGER   :: N_BRDF_PARAMETERS ( MAX_BRDF_KERNELS )
+      REAL(fpk) :: BRDF_PARAMETERS   ( MAX_BRDF_KERNELS, MAX_BRDF_PARAMETERS )
+
+!  Input kernel amplitude factors
+
+      REAL(fpk) :: BRDF_FACTORS ( MAX_BRDF_KERNELS )
+
+!  Cos and since of SZAs
+
+      REAL(fpk)   :: SZASURCOS(MAXBEAMS)
+      REAL(fpk)   :: SZASURSIN(MAXBEAMS)
+
+!  Local angle control
+
+      INTEGER    :: NBEAMS
+      INTEGER    :: N_USER_STREAMS
+      INTEGER    :: N_USER_RELAZMS
+
+!  Angles
+
+      REAL(fpk) :: BEAM_SZAS         (MAXBEAMS)
+      REAL(fpk) :: USER_ANGLES_INPUT (MAX_USER_STREAMS)
+      REAL(fpk) :: USER_RELAZMS      (MAX_USER_RELAZMS)
+      REAL(fpk) :: USER_STREAMS      (MAX_USER_STREAMS)
+      REAL(fpk) :: USER_SINES        (MAX_USER_STREAMS)
+      REAL(fpk) :: PHIANG            (MAX_USER_RELAZMS)
+      REAL(fpk) :: COSPHI            (MAX_USER_RELAZMS)
+      REAL(fpk) :: SINPHI            (MAX_USER_RELAZMS)
+
+!  Exact DB values from LIDORT
+
+      REAL(fpk)  :: EXACTDB_BRDFUNC ( MAX_USER_STREAMS, MAX_USER_RELAZMS, MAXBEAMS )
+
+!  Lrad variables
+
+      INTEGER   :: HFUNCTION_INDEX
+      real(fpk) :: SPARS(NSPARS)
+      real(fpk) :: XI, SXI, XJ, SXJ
+      real(fpk) :: CKPHI_REF, SKPHI_REF
+
+!  Help
+
+      INTEGER    :: IB, K, UI, IA
+      REAL(fpk)  :: MUX
+
+!  Set values for the basic LIDORT variables
+
+      N_BRDF_KERNELS = 1
+      WHICH_BRDF(1) = COXMUNK_IDX
+      N_BRDF_PARAMETERS(1) = 2
+      BRDF_PARAMETERS = ZERO
+      BRDF_PARAMETERS(1,1) = params(1) * 0.00512 + 0.003
+      BRDF_PARAMETERS(1,2) = params(2)
+      BRDF_FACTORS(1) = 1.
+      NBEAMS = 1
+      BEAM_SZAS(1) = sza
+      N_USER_STREAMS = 1
+      USER_ANGLES_INPUT(1) = vza
+      N_USER_RELAZMS = 1
+      USER_RELAZMS(1) = azm
+
+!  Set values for the basic l_rad variables
+
+      spars(1) = (params(1) * 0.00512 + 0.003) * 0.5
+      spars(2) =  params(2)
+      spars(3) = 0.
+      spars(4) = 0.
+      spars(5) = BRDF_FACTORS(1)
+
+!  Cosine and since of SZA
+
+      DO IB = 1, NBEAMS
+         MUX =  COS(BEAM_SZAS(IB)*DEG_TO_RAD)
+         SZASURCOS(IB) = MUX
+         SZASURSIN(IB) = SQRT(1.0_fpk-MUX*MUX)
+      ENDDO
+
+      XI = SZASURCOS(1)
+      SXI = SZASURSIN(1)
+
+!  Cosine and since of VZA
+
+      DO UI = 1, N_USER_STREAMS
+         MUX =  COS(USER_ANGLES_INPUT(UI)*DEG_TO_RAD)
+         USER_STREAMS(UI) = MUX
+         USER_SINES(UI) = SQRT(1.0_fpk-MUX*MUX)
+      ENDDO
+
+      XJ = USER_STREAMS(1)
+      SXJ = USER_SINES(1)
+
+!  Cosine and since of AZM
+
+      DO IA = 1, N_USER_RELAZMS
+         PHIANG(IA) = USER_RELAZMS(IA)*DEG_TO_RAD
+         COSPHI(IA) = COS(PHIANG(IA))
+         SINPHI(IA) = SIN(PHIANG(IA))
+      ENDDO
+
+      CKPHI_REF = COSPHI(1)
+      SKPHI_REF = SINPHI(1)
+
+!  Exact BRDF (LIDORT)
+!  -------------------
+
+      Ls_R1 = ZERO
+
+!  Kernel loop
+
+      DO K = 1, N_BRDF_KERNELS
+
+         DO IA = 1, N_USER_RELAZMS
+            DO IB = 1, NBEAMS
+               DO UI = 1, N_USER_STREAMS
+                  call gisscoxmunk_vfunction_plus &
+                     (NSTOKES, NSPARS, spars, & ! Inputs
+                      XJ, SXJ, XI, SXI,       & ! Inputs
+                      CKPHI_REF, SKPHI_REF,   & ! Inputs
+                      R1, Ls_R1)                ! Output
+
+                      ! Convert deriv wrt to 0.5 * (0.003 + 0.00512 W) to wrt W. 
+                      Ls_R1(:,1) = Ls_R1(:,1) * 0.5 * 0.00512D0
+               ENDDO
+            ENDDO
+         ENDDO
+
+      ENDDO
+
+    END SUBROUTINE exact_brdf_value_l_rad_l_gcm_f
 
  !------------------------------------------------------------------------------
 
