@@ -1162,7 +1162,7 @@ SUBROUTINE TWOSTREAM_LPS_MASTER &
              LS_BRDF_F_0, LS_BRDF_F, LS_UBRDF_F, LS_EMISSIVITY,                    & ! Input L_surface
              LSSL_SLTERM_ISOTROPIC, LSSL_SLTERM_F_0,                               & ! Input L_Sleave @@ 2p3
              LP_INITIAL_TRANS, LP_AVERAGE_SECANT, LP_T_DELT_MUBAR,                 & ! In/Out L_Miscsetups
-             L_T_DELT_USERM, LP_EMULT_UP, LP_EMULT_DN,                             & ! In/Out L_Miscsetups\
+             L_T_DELT_USERM, LP_EMULT_UP, LP_EMULT_DN,                             & ! In/Out L_Miscsetups
              INTENSITY_F_UP, INTENSITY_F_DN, RADLEVEL_F_UP, RADLEVEL_F_DN,         & ! Output !@@ 2p2
              PROFILEWF_F_UP, PROFILEWF_F_DN, PROFJACLEVEL_F_UP, PROFJACLEVEL_F_DN, & ! Output !@@ 2p2
              SURFACEWF_F_UP, SURFACEWF_F_DN, SURFJACLEVEL_F_UP, SURFJACLEVEL_F_DN, & ! Output !@@ 2p2
@@ -1343,7 +1343,7 @@ SUBROUTINE TWOSTREAM_LPS_FOURIER_MASTER &
           LS_BRDF_F_0, LS_BRDF_F, LS_UBRDF_F, LS_EMISSIVITY,                    & ! Input L_surface
           LSSL_SLTERM_ISOTROPIC, LSSL_SLTERM_F_0,                               & ! Input L_Sleave @@ 2p3
           LP_INITIAL_TRANS, LP_AVERAGE_SECANT, LP_T_DELT_MUBAR,                 & ! In/Out L_Miscsetups
-          L_T_DELT_USERM, LP_EMULT_UP, LP_EMULT_DN,                             & ! In/Out L_Miscsetups\
+          L_T_DELT_USERM, LP_EMULT_UP, LP_EMULT_DN,                             & ! In/Out L_Miscsetups
           INTENSITY_F_UP, INTENSITY_F_DN, RADLEVEL_F_UP, RADLEVEL_F_DN,         & ! Output !@@ 2p2
           PROFILEWF_F_UP, PROFILEWF_F_DN, PROFJACLEVEL_F_UP, PROFJACLEVEL_F_DN, & ! Output !@@ 2p2
           SURFACEWF_F_UP, SURFACEWF_F_DN, SURFJACLEVEL_F_UP, SURFJACLEVEL_F_DN, & ! Output !@@ 2p2
@@ -1531,14 +1531,14 @@ SUBROUTINE TWOSTREAM_LPS_FOURIER_MASTER &
 
 !  User-defined solutions
 
-      REAL(kind=dp) :: INTENSITY_F_UP (MAX_USER_STREAMS,MAXBEAMS)
-      REAL(kind=dp) :: INTENSITY_F_DN (MAX_USER_STREAMS,MAXBEAMS)
+      REAL(kind=dp), INTENT(OUT) :: INTENSITY_F_UP (MAX_USER_STREAMS,MAXBEAMS)
+      REAL(kind=dp), INTENT(OUT) :: INTENSITY_F_DN (MAX_USER_STREAMS,MAXBEAMS)
 
 !  Fourier-component solutions at ALL levels
 !     ! @@ Rob Spurr, 17 July 2013, Version 2.2 --> Optional Output at ALL LEVELS
 
-      REAL(kind=dp) :: RADLEVEL_F_UP (MAX_USER_STREAMS,MAXBEAMS,0:MAXLAYERS)
-      REAL(kind=dp) :: RADLEVEL_F_DN (MAX_USER_STREAMS,MAXBEAMS,0:MAXLAYERS)
+      REAL(kind=dp), INTENT(OUT) :: RADLEVEL_F_UP (MAX_USER_STREAMS,MAXBEAMS,0:MAXLAYERS)
+      REAL(kind=dp), INTENT(OUT) :: RADLEVEL_F_DN (MAX_USER_STREAMS,MAXBEAMS,0:MAXLAYERS)
 
 !  User-defined Fourier component solutions
 
