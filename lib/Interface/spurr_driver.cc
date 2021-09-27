@@ -131,15 +131,15 @@ ArrayAd<double, 1> SpurrBrdfDriver::setup_brdf_inputs(int surface_type, const Ar
     break;
   case COXMUNK:
     parameter_indexes.resize(4);
-    parameter_indexes(0) = 0;
-    parameter_indexes(1) = 1;
-    parameter_indexes(2) = 2;
-    parameter_indexes(3) = 4;
+    parameter_indexes(0) = 0; // scale factor
+    parameter_indexes(1) = 1; // windspeed
+    parameter_indexes(2) = 2; // refractive index
+    parameter_indexes(3) = 4; // shadowing
     setup_coxmunk_inputs(0, rt_surf_params, parameter_indexes);
 
     // lamberitan component to coxmunk
     parameter_indexes.resize(1);
-    parameter_indexes(0) = 3;
+    parameter_indexes(0) = 3; // albedo
     setup_lambertian_inputs(1, rt_surf_params, parameter_indexes);
     break;
   case BREONVEG:
