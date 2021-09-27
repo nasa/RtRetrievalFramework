@@ -61,7 +61,7 @@ double kernel_amplitude_giss(boost::shared_ptr<Level1b>& L1b,
 {
     Unit angle_unit("deg");
 
-    blitz::Array<double, 2> stokes_coeff =
+    blitz::Array<double, 1> stokes_coeff =
         L1b->stokes_coefficient(spec_idx);
 
     blitz::Array<double, 1> kernel_value_giss =
@@ -73,10 +73,9 @@ double kernel_amplitude_giss(boost::shared_ptr<Level1b>& L1b,
     double res = 0;
 
     for (int j = 0; j < stokes_coeff.rows(); ++j) {
-        for (int k = 0; k < 1; ++k) {
-            res += kernel_value_giss(j) * stokes_coeff(j,k);
-        }
+        res += kernel_value_giss(j) * stokes_coeff(j);
     }
+
 
     return res;
 }
@@ -87,7 +86,7 @@ AutoDerivative<double> kernel_amplitude_l_giss(boost::shared_ptr<Level1b>& L1b,
 {
     Unit angle_unit("deg");
 
-    blitz::Array<double, 2> stokes_coeff =
+    blitz::Array<double, 1> stokes_coeff =
         L1b->stokes_coefficient(spec_idx);
 
     blitz::Array<AutoDerivative<double>, 1> kernel_value_l_giss =
@@ -99,9 +98,7 @@ AutoDerivative<double> kernel_amplitude_l_giss(boost::shared_ptr<Level1b>& L1b,
     AutoDerivative<double> res(kernel_value_l_giss(0) * stokes_coeff(0,0));
 
     for (int j = 1; j < kernel_value_l_giss.rows(); ++j) {
-        for (int k = 0; k < 1; ++k) {
-            res += kernel_value_l_giss(j) * stokes_coeff(j,k);
-        }
+        res += kernel_value_l_giss(j) * stokes_coeff(j);
     }
 
     return res;

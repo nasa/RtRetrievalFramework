@@ -247,7 +247,7 @@ BOOST_AUTO_TEST_CASE(coxmunk)
 
   int nlayer = 2;
   int nparam = 2;
-  ArrayAd<double, 1> surface_params(4, 3); 
+  ArrayAd<double, 1> surface_params(5, 4); 
   ArrayAd<double, 1> taug(nlayer, nparam);
   ArrayAd<double, 1> taur(nlayer, nparam);
 
@@ -260,14 +260,15 @@ BOOST_AUTO_TEST_CASE(coxmunk)
   pert_atm = 1e-4, 1e-4;
   
   // Surface only
-  surface_params(0) = 7;
-  surface_params(1) = 1.334;
-  surface_params(2) = 0.8;
-  surface_params(3) = 0.0;
+  surface_params(0) = 1;
+  surface_params(1) = 7;
+  surface_params(2) = 1.334;
+  surface_params(3) = 0.8;
+  surface_params(4) = 0.0;
 
   // Surface perturbations
   blitz::Array<double, 1> pert_surf(surface_params.number_variable());
-  pert_surf = 1e-4, 1e-4, 1e-4;
+  pert_surf = 1e-4, 1e-4, 1e-4, 1e-4;
   //pert_surf(1) = sqrt(surface_params(1).value()*surface_params(1).value() + pert_surf(1)) - surface_params(1).value();
 
   taur = 1.0e-6/nlayer;
