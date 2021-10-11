@@ -212,8 +212,8 @@ OcoBaseConfig = OcoConfig:new {
 	    --		 "zero_offset_waveform"},
             --ic_target = { "eof_glint_1", "eof_glint_2","eof_glint_3",
 	    --		  "zero_offset_waveform"},
-            ic_land = { "eof_land_1", "eof_land_2","eof_land_3", "eof_land_4"},
-            ic_water = { "eof_water_1", "eof_water_2","eof_water_3","eof_water_4"},
+            ic_land = { "eof_land_1", "eof_land_2", "eof_land_3" },
+            ic_water = { "eof_water_1", "eof_water_2", "eof_water_3" },
             eof_land_1 = {
                hdf_group = "Instrument/EmpiricalOrthogonalFunction/Land",
                apriori = ConfigCommon.hdf_eof_apriori_i_j("Instrument/EmpiricalOrthogonalFunction", 1 - 1),
