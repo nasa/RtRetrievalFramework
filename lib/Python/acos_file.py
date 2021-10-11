@@ -355,7 +355,13 @@ class SoundingDataFile(h5py.File):
             # not get split incorrectly 
             # Ensure we are using a unicode string instead of bytes as HDF lib will return
             shape_names = []
-            dataset_shape = dataset_shape[0].decode('utf-8').replace("_Array", '')
+
+            # Work arond differences between h5py versions
+            try:
+                dataset_shape = dataset_shape[0].replace("_Array", '')
+            except:
+                dataset_shape = dataset_shape[0].decode('utf-8').replace("_Array", '')
+
             # Search for next location of _
             while dataset_shape.find("_") >= 0:
                 split_loc = dataset_shape.find("_")
