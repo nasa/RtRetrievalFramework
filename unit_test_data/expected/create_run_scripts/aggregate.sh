@@ -135,22 +135,19 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
 	echo $l2_agg_fn > $inp_files_tmp
 	if [ ! -z "$input_file_mapping" ] && [ -e "$input_file_mapping" ]; then
         # Set up input files from file mapping
-        while read -r sounding_id file_map; do
-            eval $(echo $file_map | tr ';' '\n')
-            if [ ! -z "$spectrum_file" ] && [ ! -z "$imap_file" ] && [ ! -z "$aband_file" ]; then
-                echo $spectrum_file
-                echo $imap_file 
-                echo $aband_file 
-            elif [ ! -z "$spectrum_file" ] && [ ! -z "$imap_file" ] ; then
-                echo $spectrum_file
-                echo $imap_file 
-            fi
-        done < $input_file_mapping | sort | uniq >> $inp_files_tmp
+            while read -r sounding_id file_map; do
+		eval $(echo $file_map | tr ';' '\n')
+		if [ ! -z "$spectrum_file" ] && [ ! -z "$imap_file" ] && [ ! -z "$aband_file" ]; then
+                    echo $spectrum_file
+                    echo $imap_file 
+                    echo $aband_file 
+		fi
+            done < $input_file_mapping | sort | uniq >> $inp_files_tmp
 	else
-        # Use input files from script variables
-        for fn in $spectrum_file $imap_file $aband_file; do
-            echo $fn >> $inp_files_tmp
-        done
+            # Use input files from script variables
+            for fn in $spectrum_file $imap_file $aband_file; do
+		echo $fn >> $inp_files_tmp
+            done
 	fi
 
 	log_file=agg_$(basename ${l2_plus_more_agg_fn} | sed 's/\.h5$/.log/')
