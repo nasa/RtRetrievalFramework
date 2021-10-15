@@ -118,41 +118,44 @@ if [ ! -e "$l2_plus_more_agg_fn" ]; then
     # If we already have the l1_aggregate_*.h5 for each of the
     # groups l2_fp_job.sh worked on, just combine those.
     if [ "$do_aggregate" = "True" ]; then
-	inp_files_tmp=$(mktemp)
-	echo $l2_agg_fn > $inp_files_tmp
-	find create_run_scripts_test/output -name "l1_aggregate_*.h5" >> $inp_files_tmp
+    inp_files_tmp=$(mktemp)
+    echo $l2_agg_fn > $inp_files_tmp
+    find create_run_scripts_test/output -name "l1_aggregate_*.h5" >> $inp_files_tmp
 
-	log_file=agg_$(basename ${l2_plus_more_agg_fn} | sed 's/\.h5$/.log/')
-	/l2_support_fake_path/utils/splice_product_files.py --multiple-file-type --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l create_run_scripts_test/log/$log_file $* -w 16 --temp $worker_temp
+    log_file=agg_$(basename ${l2_plus_more_agg_fn} | sed 's/\.h5$/.log/')
+    /l2_support_fake_path/utils/splice_product_files.py --multiple-file-type --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l create_run_scripts_test/log/$log_file $* -w 16 --temp $worker_temp
 
-	rm $inp_files_tmp
-	rm $l2_snd_id_tmp2
+    rm $inp_files_tmp
+    rm $l2_snd_id_tmp2
     else
-	# Otherwise, generate everything from scratch
-	# Combine L1B and L2 files into one file with IMAP and ABand
-	# files if they are supplied
-	inp_files_tmp=$(mktemp)
-	echo $l2_agg_fn > $inp_files_tmp
-	if [ ! -z "$input_file_mapping" ] && [ -e "$input_file_mapping" ]; then
+    # Otherwise, generate everything from scratch
+    # Combine L1B and L2 files into one file with IMAP and ABand
+    # files if they are supplied
+    inp_files_tmp=$(mktemp)
+    echo $l2_agg_fn > $inp_files_tmp
+    if [ ! -z "$input_file_mapping" ] && [ -e "$input_file_mapping" ]; then
         # Set up input files from file mapping
-            while read -r sounding_id file_map; do
-		eval $(echo $file_map | tr ';' '\n')
-		if [ ! -z "$spectrum_file" ] && [ ! -z "$imap_file" ] && [ ! -z "$aband_file" ]; then
-                    echo $spectrum_file
-                    echo $imap_file 
-                    echo $aband_file 
-		fi
-            done < $input_file_mapping | sort | uniq >> $inp_files_tmp
-	else
-            # Use input files from script variables
-            for fn in $spectrum_file $imap_file $aband_file; do
-		echo $fn >> $inp_files_tmp
-            done
-	fi
+        while read -r sounding_id file_map; do
+            eval $(echo $file_map | tr ';' '\n')
+            if [ ! -z "$spectrum_file" ] && [ ! -z "$imap_file" ] && [ ! -z "$aband_file" ]; then
+                echo $spectrum_file
+                echo $imap_file 
+                echo $aband_file 
+            elif [ ! -z "$spectrum_file" ] && [ ! -z "$imap_file" ]; then
+                echo $spectrum_file
+                echo $imap_file 
+            fi
+        done < $input_file_mapping | sort | uniq >> $inp_files_tmp
+    else
+        # Use input files from script variables
+        for fn in $spectrum_file $imap_file $aband_file; do
+            echo $fn >> $inp_files_tmp
+        done
+    fi
 
-	log_file=agg_$(basename ${l2_plus_more_agg_fn} | sed 's/\.h5$/.log/')
-	/l2_support_fake_path/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l create_run_scripts_test/log/$log_file
-	rm $l2_snd_id_tmp2 $inp_files_tmp
+    log_file=agg_$(basename ${l2_plus_more_agg_fn} | sed 's/\.h5$/.log/')
+    /l2_support_fake_path/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l2_plus_more_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l create_run_scripts_test/log/$log_file
+    rm $l2_snd_id_tmp2 $inp_files_tmp
     fi
     # Create retrieval_index dataset based on L1B file
     if [ ! -z "$spectrum_file" ]; then
