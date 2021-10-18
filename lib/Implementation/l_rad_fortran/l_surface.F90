@@ -911,7 +911,9 @@ contains
 !       Formerly, R1(3) = + ( CTTPT+CTPPP ) * FACTOR , Now R1(3) = - ( CTTPT+CTPPP ) * FACTOR
 
       R1(1) = (AF11+AF12+AF21+AF22) * FACTOR
-      R1(2) = (AF11-AF12+AF21-AF22) * FACTOR
+
+!  Corrected R1(2). This should equal the (2,1) entry in the 4x4 reflection matrix. V. Natraj, 9/9/21
+      R1(2) = (AF11-AF22+AF12-AF21) * FACTOR
 
 !  Setting (3,1) component
 !  -----------------------
@@ -995,7 +997,9 @@ contains
 
 !  Add to the specular term
 
-      R1(1) = PARS(5)*R1(1) + PARS(1)*RAHMAN_KERNEL
+!  New scaling from Aronne Merrelli
+      R1(:) = R1(:) * PARS(5)
+      R1(1) = R1(1) + PARS(1)*RAHMAN_KERNEL 
 
 !  Finish
 
@@ -1301,7 +1305,9 @@ contains
 
       FACTOR = 0.5d0/DMOD
       R1(1) = (AF11+AF12+AF21+AF22) * FACTOR
-      R1(2) = (AF11-AF12+AF21-AF22) * FACTOR
+
+!  Corrected R1(2). This should equal the (2,1) entry in the 4x4 reflection matrix. V. Natraj, 9/9/21
+      R1(2) = (AF11-AF22+AF12-AF21) * FACTOR
 
 !  Setting (3,1) component
 !  -----------------------
@@ -1389,17 +1395,26 @@ contains
 
 !  Add to the specular term
 
-      R1(1) = PARS(5)*R1(1) + PARS(1)*RAHMAN_KERNEL
+!  New scaling from Aronne Merrelli
+
+      R1(:) = R1(:) * PARS(5)
+      R1(1) = R1(1) + PARS(1)*RAHMAN_KERNEL
 
 !  Derivatives
 
       DO J = 1, 3
         IF ( DO_DERIV_PARS(J) ) THEN
-          Ls_R1(1,J+1) = RAHMAN_DERIVATIVES(J)
+          ! New scaling from Aronne Merrelli
+          ! also scale RAHMAN derivatives
+          Ls_R1(1,J+1) = PARS(1)*RAHMAN_DERIVATIVES(J) 
         ENDIF
       ENDDO
       Ls_R1(1,1) = RAHMAN_KERNEL
       Ls_R1(1,5) = (R1(1)-PARS(1)*RAHMAN_KERNEL)/PARS(5)
+
+!  Scaling for other elements. V. Natraj 9/8/21.
+
+      Ls_R1(2:NSTOKES,5) = R1(2:NSTOKES)/PARS(5)
 
 !  Finish
 
