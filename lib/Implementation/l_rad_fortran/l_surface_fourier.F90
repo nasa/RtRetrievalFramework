@@ -730,6 +730,10 @@ contains
             R1s(1,j,k1,k2) = R1s(1,j,k1,k2)*shadij
           enddo
         enddo
+!  V. Natraj 10/25/21. Scaling
+        R1cscal(1,j) = R1cscal(1,j)*pars_giss(5)
+        R1c(1,j,1:2,1:2) = R1c(1,j,1:2,1:2)*pars_giss(5)
+        R1s(1,j,1:2,3:4) = R1s(1,j,1:2,3:4)*pars_giss(5)
         if (m .eq. 0) then
           R1cscal(1,j) = R1cscal(1,j)+pars_giss(3) ! V. Natraj, 8/17/2010
           R1c(1,j,1,1) = R1c(1,j,1,1)+pars_giss(3) ! V. Natraj, 8/17/2010
@@ -764,6 +768,10 @@ contains
         do k1 = 3,4
           R1s(2,i,k1,1) = R1s(2,i,k1,1)*shadij
         enddo
+!  V. Natraj 10/25/21. Scaling
+        R1cscal(2,i) = R1cscal(2,i)*pars_giss(5)
+        R1c(2,i,1:2,1) = R1c(2,i,1:2,1)*pars_giss(5)
+        R1s(2,i,3:4,1) = R1s(2,i,3:4,1)*pars_giss(5)
         if (m .eq. 0) then
           R1cscal(2,i) = R1cscal(2,i)+pars_giss(3) ! V. Natraj, 8/17/2010
           R1c(2,i,1,1) = R1c(2,i,1,1)+pars_giss(3) ! V. Natraj, 8/17/2010
@@ -951,6 +959,19 @@ contains
         Ls_R1cscal(1,j,2) = Ls_R1cscal(1,j,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
         Ls_R1c(1,j,1:2,1:2,2) = Ls_R1c(1,j,1:2,1:2,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
         Ls_R1s(1,j,1:2,3:4,2) = Ls_R1s(1,j,1:2,3:4,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
+!  V. Natraj 10/25/21. Scaling
+        Ls_R1cscal(1,j,1) = Ls_R1cscal(1,j,1)*pars_giss(5)
+        Ls_R1c(1,j,1:2,1:2,1) = Ls_R1c(1,j,1:2,1:2,1)*pars_giss(5)
+        Ls_R1s(1,j,1:2,3:4,1) = Ls_R1s(1,j,1:2,3:4,1)*pars_giss(5)
+        Ls_R1cscal(1,j,2) = Ls_R1cscal(1,j,2)*pars_giss(5)
+        Ls_R1c(1,j,1:2,1:2,2) = Ls_R1c(1,j,1:2,1:2,2)*pars_giss(5)
+        Ls_R1s(1,j,1:2,3:4,2) = Ls_R1s(1,j,1:2,3:4,2)*pars_giss(5)
+        Ls_R1cscal(1,j,5) = R1cscal(1,j)
+        Ls_R1c(1,j,1:2,1:2,5) = R1c(1,j,1:2,1:2)
+        Ls_R1s(1,j,1:2,3:4,5) = R1s(1,j,1:2,3:4)
+        R1cscal(1,j) = R1cscal(1,j)*pars_giss(5)
+        R1c(1,j,1:2,1:2) = R1c(1,j,1:2,1:2)*pars_giss(5)
+        R1s(1,j,1:2,3:4) = R1s(1,j,1:2,3:4)*pars_giss(5)
         if (m .eq. 0) then
           R1cscal(1,j) = R1cscal(1,j)+pars_giss(3) ! V. Natraj, 8/17/2010
           R1c(1,j,1,1) = R1c(1,j,1,1)+pars_giss(3) ! V. Natraj, 8/17/2010
@@ -1002,33 +1023,25 @@ contains
         Ls_R1cscal(2,i,2) = Ls_R1cscal(2,i,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
         Ls_R1c(2,i,1:2,1,2) = Ls_R1c(2,i,1:2,1,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
         Ls_R1s(2,i,3:4,1,2) = Ls_R1s(2,i,3:4,1,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
-if (.false.) then
+!  V. Natraj 10/25/21. Scaling
+        Ls_R1cscal(2,i,1) = Ls_R1cscal(2,i,1)*pars_giss(5)
+        Ls_R1c(2,i,1:2,1,1) = Ls_R1c(2,i,1:2,1,1)*pars_giss(5)
+        Ls_R1s(2,i,3:4,1,1) = Ls_R1s(2,i,3:4,1,1)*pars_giss(5)
+        Ls_R1cscal(2,i,2) = Ls_R1cscal(2,i,2)*pars_giss(5)
+        Ls_R1c(2,i,1:2,1,2) = Ls_R1c(2,i,1:2,1,2)*pars_giss(5)
+        Ls_R1s(2,i,3:4,1,2) = Ls_R1s(2,i,3:4,1,2)*pars_giss(5)
+        Ls_R1cscal(2,i,5) = R1cscal(2,i)
+        Ls_R1c(2,i,1:2,1,5) = R1c(2,i,1:2,1)
+        Ls_R1s(2,i,3:4,1,5) = R1s(2,i,3:4,1)
+        R1cscal(2,i) = R1cscal(2,i)*pars_giss(5)
+        R1c(2,i,1:2,1) = R1c(2,i,1:2,1)*pars_giss(5)
+        R1s(2,i,3:4,1) = R1s(2,i,3:4,1)*pars_giss(5)
         if (m .eq. 0) then
           R1cscal(2,i) = R1cscal(2,i)+pars_giss(3) ! V. Natraj, 8/17/2010
           R1c(2,i,1,1) = R1c(2,i,1,1)+pars_giss(3) ! V. Natraj, 8/17/2010
           Ls_R1cscal(2,i,3) = Ls_R1cscal(2,i,3)+1.d0 ! V. Natraj, 8/17/2010
           Ls_R1c(2,i,1,1,3) = Ls_R1c(2,i,1,1,3)+1.d0 ! V. Natraj, 8/17/2010
         endif
-else
-        Ls_R1cscal(2,i,1) = Ls_R1cscal(2,i,1) * pars_giss(5)
-        Ls_R1cscal(2,i,2) = Ls_R1cscal(2,i,2) * pars_giss(5)
-        Ls_R1cscal(2,i,5) = R1cscal(2,i)
-
-        Ls_R1c(2,i,:,:,1) = Ls_R1c(2,i,:,:,1) * pars_giss(5)
-        Ls_R1c(2,i,:,:,2) = Ls_R1c(2,i,:,:,2) * pars_giss(5)
-        Ls_R1c(2,i,:,:,5) = R1c(2,i,:,:)
-
-        R1cscal(2,i)      = R1cscal(2,i)      * pars_giss(5)
-        R1c(2,i,:,:)      = R1c(2,i,:,:)      * pars_giss(5)
-
-        if (m .eq. 0) then
-          Ls_R1cscal(2,i,3) = Ls_R1cscal(2,i,3) + 1.d0
-          Ls_R1c(2,i,1,1,3) = Ls_R1c(2,i,1,1,3) + 1.d0
-
-          R1cscal(2,i)      = R1cscal(2,i) + pars_giss(3)
-          R1c(2,i,1,1)      = R1c(2,i,1,1) + pars_giss(3)
-        endif
-endif
       enddo
 
 !  Finished the Cox-Munk
@@ -1375,7 +1388,9 @@ endif
 
 !  Add to the specular term
 
-      R1M(1,1) = PARS(5)*R1M(1,1) + PARS(1)*RAHMAN_KERNEL
+!  New scaling from Aronne Merrelli
+      R1M(:,:) = R1M(:,:) * PARS(5)
+      R1M(1,1) = R1M(1,1) + PARS(1)*RAHMAN_KERNEL 
 
 !  Finish
 
@@ -1647,17 +1662,27 @@ endif
 
 !  Add to the specular term
 
-      R1M(1,1) = PARS(5)*R1M(1,1) + PARS(1)*RAHMAN_KERNEL
+!  New scaling from Aronne Merrelli
+
+      R1M(:,:) = R1M(:,:) * PARS(5)
+      R1M(1,1) = R1M(1,1) + PARS(1)*RAHMAN_KERNEL   
 
 !  Derivatives
 
       DO J = 1, 3
         IF ( DO_DERIV_PARS(J) ) THEN
-          Ls_R1M(1,1,J+1) = RAHMAN_DERIVATIVES(J)
+          ! New scaling from Aronne Merrelli
+          ! also scale RAHMAN derivatives
+          Ls_R1M(1,1,J+1) = PARS(1)*RAHMAN_DERIVATIVES(J)
         ENDIF
       ENDDO
       Ls_R1M(1,1,1) = RAHMAN_KERNEL
       Ls_R1M(1,1,5) = (R1M(1,1)-PARS(1)*RAHMAN_KERNEL)/PARS(5)
+
+!  Scaling for other elements. V. Natraj 10/25/21.
+
+      Ls_R1M(1,2:4,5) = R1M(1,2:4)/PARS(5)
+      Ls_R1M(2:4,1:4,5) = R1M(2:4,1:4)/PARS(5)
 
 !  Finish
 
