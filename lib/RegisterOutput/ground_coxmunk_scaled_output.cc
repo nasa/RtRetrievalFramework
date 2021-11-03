@@ -142,9 +142,9 @@ double reflectance_intercept_uncert(boost::shared_ptr<Level1b>& L1b,
 {
   AutoDerivative<double> kern_amp = kernel_amplitude_l_giss(L1b, Coxmunk, spec_idx);
 
-  return weight_output->weight_intercept_uncert(Brdf_weight, spec_idx) * kern_amp.value() +
-         weight_output->weight_intercept       (Brdf_weight, spec_idx) * kern_amp.gradient()(0) *
-         Coxmunk->windspeed_uncert();
+  return sqrt(pow(weight_output->weight_intercept_uncert(Brdf_weight, spec_idx) * kern_amp.value(), 2) +
+              pow(weight_output->weight_intercept       (Brdf_weight, spec_idx) * kern_amp.gradient()(0) *
+                  Coxmunk->windspeed_uncert(), 2));
 }
 
 double reflectance_slope_uncert(boost::shared_ptr<Level1b>& L1b,
@@ -155,9 +155,9 @@ double reflectance_slope_uncert(boost::shared_ptr<Level1b>& L1b,
 {
   AutoDerivative<double> kern_amp = kernel_amplitude_l_giss(L1b, Coxmunk, spec_idx);
 
-  return weight_output->weight_slope_uncert(Brdf_weight, spec_idx) * kern_amp.value() +
-         weight_output->weight_slope       (Brdf_weight, spec_idx) * kern_amp.gradient()(0) *
-         Coxmunk->windspeed_uncert();
+  return sqrt(pow(weight_output->weight_slope_uncert(Brdf_weight, spec_idx) * kern_amp.value(), 2) +
+              pow(weight_output->weight_slope       (Brdf_weight, spec_idx) * kern_amp.gradient()(0) *
+                  Coxmunk->windspeed_uncert(), 2));
 }
 
 double reflectance_coeff_uncert(boost::shared_ptr<Level1b>& L1b,
@@ -168,9 +168,9 @@ double reflectance_coeff_uncert(boost::shared_ptr<Level1b>& L1b,
 {
   AutoDerivative<double> kern_amp = kernel_amplitude_l_giss(L1b, Coxmunk, spec_idx);
 
-  return weight_output->weight_coeff_uncert(Brdf_weight, spec_idx, i) * kern_amp.value() +
-         weight_output->weight_coeff       (Brdf_weight, spec_idx, i) * kern_amp.gradient()(0) *
-         Coxmunk->windspeed_uncert();
+  return sqrt(pow(weight_output->weight_coeff_uncert(Brdf_weight, spec_idx, i) * kern_amp.value(), 2) +
+              pow(weight_output->weight_coeff       (Brdf_weight, spec_idx, i) * kern_amp.gradient()(0) *
+                  Coxmunk->windspeed_uncert(), 2));
 }
 
 void GroundCoxmunkScaledOutput::register_output_apriori(const boost::shared_ptr<Output>& out) const
