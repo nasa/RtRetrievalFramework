@@ -455,7 +455,7 @@ OcoBaseConfig = OcoConfig:new {
                creator = ConfigCommon.brdf_soil_retrieval,
             },
 
-            creator = OcoConfig.ground_from_ground_type,
+            creator = OcoConfig.ground_from_ground_type_scaled,
          },
          aerosol = {
             creator = ConfigCommon.aerosol_met_prior_creator,
