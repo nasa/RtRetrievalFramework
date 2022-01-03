@@ -502,7 +502,9 @@ OcoBaseConfig = OcoConfig:new {
                apriori = ConfigCommon.co2_profile_file_apriori,
                covariance = ConfigCommon.hdf_covariance("Gas/CO2"),
                absco = "v5.2_final/co2_v52.hdf",
-               table_scale = {1.0, 1.0, 0.9975},
+	       --- I often forget the ordering here. This is O2 A-band,
+	       --- WCO2, and SCO2
+               table_scale = {1.0, 0.994, 0.9875},
                creator = ConfigCommon.vmr_level,
             },
             H2O = {
