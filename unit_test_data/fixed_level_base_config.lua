@@ -31,10 +31,23 @@ FixedLevelBaseConfig = AcosConfig:new {
 -- Connor solver
 ------------------------------------------------------------
 
-   solver = { max_iteration=12, max_divergence=8,
-	      max_chisq=1.4, threshold=1.0, gamma_initial=10.0,
-	      create = ConfigCommon.connor_solver,
-	   },
+   solver = { threshold=1.0,
+              min_iteration=1,
+              max_iteration=12,
+              max_divergence=8,
+              max_chisq=1.4,
+              gamma_initial=10.0,
+              h2o_scale_index0=-20,
+              h2o_scale_index1=-20,
+              h2o_scale_cov_initial=0.001,
+              ch4_scale_index0=-21,
+              ch4_scale_index1=-21,
+              ch4_scale_cov_initial=0.001,
+              co_scale_index0=-22,
+              co_scale_index1=-22,
+              co_scale_cov_initial=0.0001,
+              create = ConfigCommon.connor_solver,
+            },
 
 ------------------------------------------------------------
 -- Iterative solver
@@ -218,6 +231,15 @@ FixedLevelBaseConfig = AcosConfig:new {
                covariance = ConfigCommon.hdf_covariance_i("Ground/Coxmunk_Albedo"),
                retrieve_bands = { true, true, true },
                creator = ConfigCommon.lambertian_retrieval,
+            },
+
+            -- Lambertian component of coxmunk + lambertian
+            coxmunk_scaled = {
+               apriori = ConfigCommon.hdf_apriori_i("Ground/Coxmunk_Scaled"),
+               covariance = ConfigCommon.hdf_covariance_i("Ground/Coxmunk_Scaled"),
+               retrieve_bands = { true, true, true },
+               scaled_brdf_name = "CoxMunk",
+               creator = ConfigCommon.brdf_scale_retrieval,
             },
 
             -- Brdf vegetative kernel with Rahman retrieved parameters

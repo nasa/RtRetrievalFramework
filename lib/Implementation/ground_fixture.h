@@ -1,6 +1,8 @@
- #include "ground_lambertian.h"
-#include "ground_coxmunk.h"
+#include "ground_lambertian.h"
 #include "ground_brdf.h"
+#include "ground_brdf_weight.h"
+#include "ground_coxmunk.h"
+#include "ground_coxmunk_scaled.h"
 #include "configuration_fixture.h"
 #include "unit_test_support.h"
 
@@ -11,6 +13,7 @@ class GroundFixture : public GlobalFixture {
 public:
     boost::shared_ptr<GroundLambertian> lambertian;
     boost::shared_ptr<GroundCoxmunk> coxmunk;
+    boost::shared_ptr<GroundBrdfWeight> brdf_weight;
     boost::shared_ptr<GroundBrdfVeg> brdf_veg;
     boost::shared_ptr<GroundBrdfSoil> brdf_soil;
 
@@ -49,6 +52,10 @@ public:
         refr_index(2) = 1.334;
 
         coxmunk.reset(new GroundCoxmunk(7.1, false, refr_index));
+
+        // BrdfWeight
+        std::string brdf_name("CoxMunk");
+        brdf_weight.reset(new GroundBrdfWeight(params, flags, ref_points_w_unit, band_name, brdf_name));
 
         // BRDF (Rahman + Breon)
         Array<double, 2> brdf_coeffs(3, 7);

@@ -3,6 +3,7 @@
 #include "register_output_base.h"
 #include "level_1b.h"
 #include "ground_coxmunk_output.h"
+#include "ground_coxmunk_scaled.h"
 #include "ground_brdf_weight_output.h"
 
 namespace FullPhysics {

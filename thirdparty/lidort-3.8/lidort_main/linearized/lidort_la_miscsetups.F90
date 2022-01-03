@@ -236,11 +236,12 @@ SUBROUTINE LIDORT_LA_DELTAMSCALE                               &
 !  5/5/20. Version 3.8.1 Upgrades.
 !   ==>  Set the special variable for the Asymmetry = 0 Jacobian case
 !   ==>  Must be properly initialized (5/27/20)
+!   ==>  Only required for NSTREAMS > 1 (nm1 > 1). Bugfix 11/17/21.
 
       DO N = 1, NLAYERS
          DO Q = 1, LAYER_VARY_NUMBER(N)
             IF (  DO_PHASFUNC_VARIATION(Q,N) ) THEN
-               DO_SPECIAL_VARIATION(Q,N) = &
+               DO_SPECIAL_VARIATION(Q,N) = ( nm1.gt.1) .and.&
                  ( L_PHASMOMS_TOTAL_INPUT(Q,1,N) .eq. SUM ( L_PHASMOMS_TOTAL_INPUT(Q,1:nm1,N) ) )
             ELSE
                DO_SPECIAL_VARIATION(Q,N) = .false.
