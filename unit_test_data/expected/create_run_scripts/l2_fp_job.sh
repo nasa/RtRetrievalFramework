@@ -191,7 +191,7 @@ if [ "$do_aggregate" = "True" ]; then
     else
         # Use input files from script variables
         for fn in $spectrum_file $imap_file $aband_file; do
-            echo $fn > $inp_files_tmp
+            echo $fn >> $inp_files_tmp
         done
     fi
     /l2_support_fake_path/utils/splice_product_files.py --multiple-file-types --splice-all --rename-mapping --agg-names-filter -o $l1_agg_fn -i $inp_files_tmp -s $l2_snd_id_tmp2 -l ${log_directory}/l1_aggregate_$(printf "%04d" $job_index).log
