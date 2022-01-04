@@ -2657,6 +2657,10 @@
       WSA_CALC = zero ; TOTAL_WSA_CALC = zero ; D_TOTAL_WSA_CALC = zero
       BSA_CALC = zero ; TOTAL_BSA_CALC = zero ; D_TOTAL_BSA_CALC = zero
 
+      ! Ensure that LOCAL_BRDF_DERIVS is initialized even if
+      ! DO_KPARS_DERIV(K) is false
+      LOCAL_BRDF_DERIVS = .FALSE.
+
 !  Fill BRDF arrays
 !  ----------------
 
