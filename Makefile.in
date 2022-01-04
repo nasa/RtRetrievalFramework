@@ -970,10 +970,10 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/turn_on_fe_exception.cc \
 	@implsrc@/level_1b_average.cc \
 	@implsrc@/level_1b_scale_radiance.cc @implsrc@/level_1b_oco.cc \
 	@implsrc@/level_1b_uq.cc @implsrc@/level_1b_cache.cc \
-	@implsrc@/absorber_absco.cc @implsrc@/ground_brdf_weight.cc \
-	@implsrc@/ground_lambertian.cc @implsrc@/ground_coxmunk.cc \
+	@implsrc@/absorber_absco.cc @implsrc@/ground_lambertian.cc \
+	@implsrc@/ground_brdf.cc @implsrc@/ground_brdf_weight.cc \
+	@implsrc@/ground_coxmunk.cc @implsrc@/ground_coxmunk_scaled.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian.cc \
-	@implsrc@/ground_coxmunk_scaled.cc @implsrc@/ground_brdf.cc \
 	@implsrc@/brdf_functions.F90 @implsrc@/aerosol_optical.cc \
 	@implsrc@/atmosphere_oco.cc @implsrc@/relative_humidity.cc \
 	@implsrc@/altitude_hydrostatic.cc @implsrc@/rayleigh.cc \
@@ -1065,12 +1065,12 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/turn_on_fe_exception.cc \
 	@deprecatedsrc@/solar_absorption_oco_file_f.F90 \
 	@outsrc@/register_output_base.cc @outsrc@/pressure_output.cc \
 	@outsrc@/altitude_output.cc \
-	@outsrc@/ground_brdf_weight_output.cc \
 	@outsrc@/ground_lambertian_output.cc \
-	@outsrc@/ground_coxmunk_output.cc \
-	@outsrc@/ground_coxmunk_plus_lambertian_output.cc \
-	@outsrc@/ground_coxmunk_scaled_output.cc \
 	@outsrc@/ground_brdf_output.cc \
+	@outsrc@/ground_brdf_weight_output.cc \
+	@outsrc@/ground_coxmunk_output.cc \
+	@outsrc@/ground_coxmunk_scaled_output.cc \
+	@outsrc@/ground_coxmunk_plus_lambertian_output.cc \
 	@outsrc@/dispersion_polynomial_output.cc \
 	@outsrc@/ils_table_linear_output.cc \
 	@outsrc@/ils_table_log_output.cc \
@@ -1245,12 +1245,12 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-turn_on_fe_exception.lo \
 	@implsrc@/libfp_la-level_1b_uq.lo \
 	@implsrc@/libfp_la-level_1b_cache.lo \
 	@implsrc@/libfp_la-absorber_absco.lo \
-	@implsrc@/libfp_la-ground_brdf_weight.lo \
 	@implsrc@/libfp_la-ground_lambertian.lo \
-	@implsrc@/libfp_la-ground_coxmunk.lo \
-	@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo \
-	@implsrc@/libfp_la-ground_coxmunk_scaled.lo \
 	@implsrc@/libfp_la-ground_brdf.lo \
+	@implsrc@/libfp_la-ground_brdf_weight.lo \
+	@implsrc@/libfp_la-ground_coxmunk.lo \
+	@implsrc@/libfp_la-ground_coxmunk_scaled.lo \
+	@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo \
 	@implsrc@/libfp_la-brdf_functions.lo \
 	@implsrc@/libfp_la-aerosol_optical.lo \
 	@implsrc@/libfp_la-atmosphere_oco.lo \
@@ -1376,12 +1376,12 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-turn_on_fe_exception.lo \
 	@outsrc@/libfp_la-register_output_base.lo \
 	@outsrc@/libfp_la-pressure_output.lo \
 	@outsrc@/libfp_la-altitude_output.lo \
-	@outsrc@/libfp_la-ground_brdf_weight_output.lo \
 	@outsrc@/libfp_la-ground_lambertian_output.lo \
-	@outsrc@/libfp_la-ground_coxmunk_output.lo \
-	@outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo \
-	@outsrc@/libfp_la-ground_coxmunk_scaled_output.lo \
 	@outsrc@/libfp_la-ground_brdf_output.lo \
+	@outsrc@/libfp_la-ground_brdf_weight_output.lo \
+	@outsrc@/libfp_la-ground_coxmunk_output.lo \
+	@outsrc@/libfp_la-ground_coxmunk_scaled_output.lo \
+	@outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo \
 	@outsrc@/libfp_la-dispersion_polynomial_output.lo \
 	@outsrc@/libfp_la-ils_table_linear_output.lo \
 	@outsrc@/libfp_la-ils_table_log_output.lo \
@@ -1662,9 +1662,11 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@implsrc@/spectrally_resolved_noise_test.cc \
 	@implsrc@/absorber_absco_test.cc \
 	@implsrc@/ground_lambertian_test.cc \
-	@implsrc@/ground_coxmunk_test.cc \
-	@implsrc@/ground_coxmunk_plus_lambertian_test.cc \
 	@implsrc@/ground_brdf_test.cc \
+	@implsrc@/ground_brdf_weight_test.cc \
+	@implsrc@/ground_coxmunk_test.cc \
+	@implsrc@/ground_coxmunk_scaled_test.cc \
+	@implsrc@/ground_coxmunk_plus_lambertian_test.cc \
 	@implsrc@/aerosol_optical_test.cc \
 	@implsrc@/atmosphere_oco_test.cc \
 	@implsrc@/relative_humidity_test.cc \
@@ -1733,9 +1735,10 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@outsrc@/oco_forward_model_output_test.cc \
 	@outsrc@/connor_convergence_output_test.cc \
 	@outsrc@/ground_lambertian_output_test.cc \
-	@outsrc@/ground_coxmunk_output_test.cc \
-	@outsrc@/ground_coxmunk_plus_lambertian_output_test.cc \
 	@outsrc@/ground_brdf_output_test.cc \
+	@outsrc@/ground_coxmunk_output_test.cc \
+	@outsrc@/ground_coxmunk_scaled_output_test.cc \
+	@outsrc@/ground_coxmunk_plus_lambertian_output_test.cc \
 	@outsrc@/dispersion_polynomial_output_test.cc \
 	@outsrc@/stokes_coefficient_fraction_output_test.cc \
 	@outsrc@/zero_offset_waveform_output_test.cc \
@@ -1836,9 +1839,11 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@implsrc@/spectrally_resolved_noise_test.$(OBJEXT) \
 	@implsrc@/absorber_absco_test.$(OBJEXT) \
 	@implsrc@/ground_lambertian_test.$(OBJEXT) \
-	@implsrc@/ground_coxmunk_test.$(OBJEXT) \
-	@implsrc@/ground_coxmunk_plus_lambertian_test.$(OBJEXT) \
 	@implsrc@/ground_brdf_test.$(OBJEXT) \
+	@implsrc@/ground_brdf_weight_test.$(OBJEXT) \
+	@implsrc@/ground_coxmunk_test.$(OBJEXT) \
+	@implsrc@/ground_coxmunk_scaled_test.$(OBJEXT) \
+	@implsrc@/ground_coxmunk_plus_lambertian_test.$(OBJEXT) \
 	@implsrc@/aerosol_optical_test.$(OBJEXT) \
 	@implsrc@/atmosphere_oco_test.$(OBJEXT) \
 	@implsrc@/relative_humidity_test.$(OBJEXT) \
@@ -1912,9 +1917,10 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@outsrc@/oco_forward_model_output_test.$(OBJEXT) \
 	@outsrc@/connor_convergence_output_test.$(OBJEXT) \
 	@outsrc@/ground_lambertian_output_test.$(OBJEXT) \
-	@outsrc@/ground_coxmunk_output_test.$(OBJEXT) \
-	@outsrc@/ground_coxmunk_plus_lambertian_output_test.$(OBJEXT) \
 	@outsrc@/ground_brdf_output_test.$(OBJEXT) \
+	@outsrc@/ground_coxmunk_output_test.$(OBJEXT) \
+	@outsrc@/ground_coxmunk_scaled_output_test.$(OBJEXT) \
+	@outsrc@/ground_coxmunk_plus_lambertian_output_test.$(OBJEXT) \
 	@outsrc@/dispersion_polynomial_output_test.$(OBJEXT) \
 	@outsrc@/stokes_coefficient_fraction_output_test.$(OBJEXT) \
 	@outsrc@/zero_offset_waveform_output_test.$(OBJEXT) \
@@ -2008,7 +2014,9 @@ am__depfiles_remade = @binsrc@/$(DEPDIR)/l2_fp.Po \
 	@implsrc@/$(DEPDIR)/gas_vmr_apriori_test.Po \
 	@implsrc@/$(DEPDIR)/gosat_noise_model_test.Po \
 	@implsrc@/$(DEPDIR)/ground_brdf_test.Po \
+	@implsrc@/$(DEPDIR)/ground_brdf_weight_test.Po \
 	@implsrc@/$(DEPDIR)/ground_coxmunk_plus_lambertian_test.Po \
+	@implsrc@/$(DEPDIR)/ground_coxmunk_scaled_test.Po \
 	@implsrc@/$(DEPDIR)/ground_coxmunk_test.Po \
 	@implsrc@/$(DEPDIR)/ground_lambertian_test.Po \
 	@implsrc@/$(DEPDIR)/hdf_constant_test.Po \
@@ -2288,6 +2296,7 @@ am__depfiles_remade = @binsrc@/$(DEPDIR)/l2_fp.Po \
 	@outsrc@/$(DEPDIR)/ground_brdf_output_test.Po \
 	@outsrc@/$(DEPDIR)/ground_coxmunk_output_test.Po \
 	@outsrc@/$(DEPDIR)/ground_coxmunk_plus_lambertian_output_test.Po \
+	@outsrc@/$(DEPDIR)/ground_coxmunk_scaled_output_test.Po \
 	@outsrc@/$(DEPDIR)/ground_lambertian_output_test.Po \
 	@outsrc@/$(DEPDIR)/high_res_spectrum_output_test.Po \
 	@outsrc@/$(DEPDIR)/level_1b_output_test.Po \
@@ -2842,10 +2851,10 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@implsrc@/level_1b_acos.h @implsrc@/level_1b_average.h \
 	@implsrc@/level_1b_scale_radiance.h @implsrc@/level_1b_oco.h \
 	@implsrc@/level_1b_uq.h @implsrc@/level_1b_cache.h \
-	@implsrc@/absorber_absco.h @implsrc@/ground_brdf_weight.h \
-	@implsrc@/ground_lambertian.h @implsrc@/ground_coxmunk.h \
+	@implsrc@/absorber_absco.h @implsrc@/ground_lambertian.h \
+	@implsrc@/ground_brdf.h @implsrc@/ground_brdf_weight.h \
+	@implsrc@/ground_coxmunk.h @implsrc@/ground_coxmunk_scaled.h \
 	@implsrc@/ground_coxmunk_plus_lambertian.h \
-	@implsrc@/ground_coxmunk_scaled.h @implsrc@/ground_brdf.h \
 	@implsrc@/aerosol_optical.h @implsrc@/atmosphere_oco.h \
 	@implsrc@/relative_humidity.h @implsrc@/altitude_hydrostatic.h \
 	@implsrc@/rayleigh.h @implsrc@/absco.h @implsrc@/absco_hdf.h \
@@ -2917,13 +2926,12 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@deprecatedsrc@/solar_continuum_polynomial.h \
 	@deprecatedsrc@/solar_absorption_oco_file.h \
 	@outsrc@/register_output_base.h @outsrc@/pressure_output.h \
-	@outsrc@/altitude_output.h \
-	@outsrc@/ground_brdf_weight_output.h \
-	@outsrc@/ground_lambertian_output.h \
-	@outsrc@/ground_coxmunk_output.h \
-	@outsrc@/ground_coxmunk_plus_lambertian_output.h \
-	@outsrc@/ground_coxmunk_scaled_output.h \
+	@outsrc@/altitude_output.h @outsrc@/ground_lambertian_output.h \
 	@outsrc@/ground_brdf_output.h \
+	@outsrc@/ground_brdf_weight_output.h \
+	@outsrc@/ground_coxmunk_output.h \
+	@outsrc@/ground_coxmunk_scaled_output.h \
+	@outsrc@/ground_coxmunk_plus_lambertian_output.h \
 	@outsrc@/dispersion_polynomial_output.h \
 	@outsrc@/ils_table_linear_output.h \
 	@outsrc@/ils_table_log_output.h \
@@ -3538,10 +3546,10 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@implsrc@/level_1b_acos.h @implsrc@/level_1b_average.h \
 	@implsrc@/level_1b_scale_radiance.h @implsrc@/level_1b_oco.h \
 	@implsrc@/level_1b_uq.h @implsrc@/level_1b_cache.h \
-	@implsrc@/absorber_absco.h @implsrc@/ground_brdf_weight.h \
-	@implsrc@/ground_lambertian.h @implsrc@/ground_coxmunk.h \
+	@implsrc@/absorber_absco.h @implsrc@/ground_lambertian.h \
+	@implsrc@/ground_brdf.h @implsrc@/ground_brdf_weight.h \
+	@implsrc@/ground_coxmunk.h @implsrc@/ground_coxmunk_scaled.h \
 	@implsrc@/ground_coxmunk_plus_lambertian.h \
-	@implsrc@/ground_coxmunk_scaled.h @implsrc@/ground_brdf.h \
 	@implsrc@/aerosol_optical.h @implsrc@/atmosphere_oco.h \
 	@implsrc@/relative_humidity.h @implsrc@/altitude_hydrostatic.h \
 	@implsrc@/rayleigh.h @implsrc@/absco.h @implsrc@/absco_hdf.h \
@@ -3613,13 +3621,12 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@deprecatedsrc@/solar_continuum_polynomial.h \
 	@deprecatedsrc@/solar_absorption_oco_file.h \
 	@outsrc@/register_output_base.h @outsrc@/pressure_output.h \
-	@outsrc@/altitude_output.h \
-	@outsrc@/ground_brdf_weight_output.h \
-	@outsrc@/ground_lambertian_output.h \
-	@outsrc@/ground_coxmunk_output.h \
-	@outsrc@/ground_coxmunk_plus_lambertian_output.h \
-	@outsrc@/ground_coxmunk_scaled_output.h \
+	@outsrc@/altitude_output.h @outsrc@/ground_lambertian_output.h \
 	@outsrc@/ground_brdf_output.h \
+	@outsrc@/ground_brdf_weight_output.h \
+	@outsrc@/ground_coxmunk_output.h \
+	@outsrc@/ground_coxmunk_scaled_output.h \
+	@outsrc@/ground_coxmunk_plus_lambertian_output.h \
 	@outsrc@/dispersion_polynomial_output.h \
 	@outsrc@/ils_table_linear_output.h \
 	@outsrc@/ils_table_log_output.h \
@@ -3731,9 +3738,11 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@implsrc@/spectrally_resolved_noise_test.cc \
 	@implsrc@/absorber_absco_test.cc \
 	@implsrc@/ground_lambertian_test.cc \
-	@implsrc@/ground_coxmunk_test.cc \
-	@implsrc@/ground_coxmunk_plus_lambertian_test.cc \
 	@implsrc@/ground_brdf_test.cc \
+	@implsrc@/ground_brdf_weight_test.cc \
+	@implsrc@/ground_coxmunk_test.cc \
+	@implsrc@/ground_coxmunk_scaled_test.cc \
+	@implsrc@/ground_coxmunk_plus_lambertian_test.cc \
 	@implsrc@/aerosol_optical_test.cc \
 	@implsrc@/atmosphere_oco_test.cc \
 	@implsrc@/relative_humidity_test.cc \
@@ -3802,9 +3811,10 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@outsrc@/oco_forward_model_output_test.cc \
 	@outsrc@/connor_convergence_output_test.cc \
 	@outsrc@/ground_lambertian_output_test.cc \
-	@outsrc@/ground_coxmunk_output_test.cc \
-	@outsrc@/ground_coxmunk_plus_lambertian_output_test.cc \
 	@outsrc@/ground_brdf_output_test.cc \
+	@outsrc@/ground_coxmunk_output_test.cc \
+	@outsrc@/ground_coxmunk_scaled_output_test.cc \
+	@outsrc@/ground_coxmunk_plus_lambertian_output_test.cc \
 	@outsrc@/dispersion_polynomial_output_test.cc \
 	@outsrc@/stokes_coefficient_fraction_output_test.cc \
 	@outsrc@/zero_offset_waveform_output_test.cc \
@@ -4292,10 +4302,10 @@ libfp_la_SOURCES = @supportsrc@/turn_on_fe_exception.cc \
 	@implsrc@/level_1b_average.cc \
 	@implsrc@/level_1b_scale_radiance.cc @implsrc@/level_1b_oco.cc \
 	@implsrc@/level_1b_uq.cc @implsrc@/level_1b_cache.cc \
-	@implsrc@/absorber_absco.cc @implsrc@/ground_brdf_weight.cc \
-	@implsrc@/ground_lambertian.cc @implsrc@/ground_coxmunk.cc \
+	@implsrc@/absorber_absco.cc @implsrc@/ground_lambertian.cc \
+	@implsrc@/ground_brdf.cc @implsrc@/ground_brdf_weight.cc \
+	@implsrc@/ground_coxmunk.cc @implsrc@/ground_coxmunk_scaled.cc \
 	@implsrc@/ground_coxmunk_plus_lambertian.cc \
-	@implsrc@/ground_coxmunk_scaled.cc @implsrc@/ground_brdf.cc \
 	@implsrc@/brdf_functions.F90 @implsrc@/aerosol_optical.cc \
 	@implsrc@/atmosphere_oco.cc @implsrc@/relative_humidity.cc \
 	@implsrc@/altitude_hydrostatic.cc @implsrc@/rayleigh.cc \
@@ -4387,12 +4397,12 @@ libfp_la_SOURCES = @supportsrc@/turn_on_fe_exception.cc \
 	@deprecatedsrc@/solar_absorption_oco_file_f.F90 \
 	@outsrc@/register_output_base.cc @outsrc@/pressure_output.cc \
 	@outsrc@/altitude_output.cc \
-	@outsrc@/ground_brdf_weight_output.cc \
 	@outsrc@/ground_lambertian_output.cc \
-	@outsrc@/ground_coxmunk_output.cc \
-	@outsrc@/ground_coxmunk_plus_lambertian_output.cc \
-	@outsrc@/ground_coxmunk_scaled_output.cc \
 	@outsrc@/ground_brdf_output.cc \
+	@outsrc@/ground_brdf_weight_output.cc \
+	@outsrc@/ground_coxmunk_output.cc \
+	@outsrc@/ground_coxmunk_scaled_output.cc \
+	@outsrc@/ground_coxmunk_plus_lambertian_output.cc \
 	@outsrc@/dispersion_polynomial_output.cc \
 	@outsrc@/ils_table_linear_output.cc \
 	@outsrc@/ils_table_log_output.cc \
@@ -5921,18 +5931,18 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-absorber_absco.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
-@implsrc@/libfp_la-ground_brdf_weight.lo: @implsrc@/$(am__dirstamp) \
-	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-ground_lambertian.lo: @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-ground_brdf.lo: @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-ground_brdf_weight.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-ground_coxmunk.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
-@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo:  \
-	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-ground_coxmunk_scaled.lo:  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
-@implsrc@/libfp_la-ground_brdf.lo: @implsrc@/$(am__dirstamp) \
-	@implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo:  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-brdf_functions.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-aerosol_optical.lo: @implsrc@/$(am__dirstamp) \
@@ -6225,18 +6235,18 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-altitude_output.lo: @outsrc@/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
-@outsrc@/libfp_la-ground_brdf_weight_output.lo:  \
-	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-ground_lambertian_output.lo:  \
-	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
-@outsrc@/libfp_la-ground_coxmunk_output.lo: @outsrc@/$(am__dirstamp) \
-	@outsrc@/$(DEPDIR)/$(am__dirstamp)
-@outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo:  \
-	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
-@outsrc@/libfp_la-ground_coxmunk_scaled_output.lo:  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-ground_brdf_output.lo: @outsrc@/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/libfp_la-ground_brdf_weight_output.lo:  \
+	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/libfp_la-ground_coxmunk_output.lo: @outsrc@/$(am__dirstamp) \
+	@outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/libfp_la-ground_coxmunk_scaled_output.lo:  \
+	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo:  \
+	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-dispersion_polynomial_output.lo:  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-ils_table_linear_output.lo:  \
@@ -7010,12 +7020,16 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/ground_lambertian_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
-@implsrc@/ground_coxmunk_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
-	@implsrc@/$(DEPDIR)/$(am__dirstamp)
-@implsrc@/ground_coxmunk_plus_lambertian_test.$(OBJEXT):  \
-	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/ground_brdf_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/ground_brdf_weight_test.$(OBJEXT):  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/ground_coxmunk_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/ground_coxmunk_scaled_test.$(OBJEXT):  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/ground_coxmunk_plus_lambertian_test.$(OBJEXT):  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/aerosol_optical_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/atmosphere_oco_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
@@ -7171,12 +7185,14 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/ground_lambertian_output_test.$(OBJEXT):  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/ground_brdf_output_test.$(OBJEXT): @outsrc@/$(am__dirstamp) \
+	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/ground_coxmunk_output_test.$(OBJEXT):  \
+	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/ground_coxmunk_scaled_output_test.$(OBJEXT):  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/ground_coxmunk_plus_lambertian_output_test.$(OBJEXT):  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
-@outsrc@/ground_brdf_output_test.$(OBJEXT): @outsrc@/$(am__dirstamp) \
-	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/dispersion_polynomial_output_test.$(OBJEXT):  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/stokes_coefficient_fraction_output_test.$(OBJEXT):  \
@@ -7351,7 +7367,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/gas_vmr_apriori_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/gosat_noise_model_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_brdf_test.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_brdf_weight_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_coxmunk_plus_lambertian_test.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_coxmunk_scaled_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_coxmunk_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/ground_lambertian_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/hdf_constant_test.Po@am__quote@ # am--include-marker
@@ -7631,6 +7649,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/ground_brdf_output_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/ground_coxmunk_output_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/ground_coxmunk_plus_lambertian_output_test.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/ground_coxmunk_scaled_output_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/ground_lambertian_output_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/high_res_spectrum_output_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/level_1b_output_test.Po@am__quote@ # am--include-marker
@@ -11182,19 +11201,26 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-absorber_absco.lo `test -f '@implsrc@/absorber_absco.cc' || echo '$(srcdir)/'`@implsrc@/absorber_absco.cc
 
-@implsrc@/libfp_la-ground_brdf_weight.lo: @implsrc@/ground_brdf_weight.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-ground_brdf_weight.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-ground_brdf_weight.Tpo -c -o @implsrc@/libfp_la-ground_brdf_weight.lo `test -f '@implsrc@/ground_brdf_weight.cc' || echo '$(srcdir)/'`@implsrc@/ground_brdf_weight.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-ground_brdf_weight.Tpo @implsrc@/$(DEPDIR)/libfp_la-ground_brdf_weight.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/ground_brdf_weight.cc' object='@implsrc@/libfp_la-ground_brdf_weight.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_brdf_weight.lo `test -f '@implsrc@/ground_brdf_weight.cc' || echo '$(srcdir)/'`@implsrc@/ground_brdf_weight.cc
-
 @implsrc@/libfp_la-ground_lambertian.lo: @implsrc@/ground_lambertian.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-ground_lambertian.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-ground_lambertian.Tpo -c -o @implsrc@/libfp_la-ground_lambertian.lo `test -f '@implsrc@/ground_lambertian.cc' || echo '$(srcdir)/'`@implsrc@/ground_lambertian.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-ground_lambertian.Tpo @implsrc@/$(DEPDIR)/libfp_la-ground_lambertian.Plo
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/ground_lambertian.cc' object='@implsrc@/libfp_la-ground_lambertian.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_lambertian.lo `test -f '@implsrc@/ground_lambertian.cc' || echo '$(srcdir)/'`@implsrc@/ground_lambertian.cc
+
+@implsrc@/libfp_la-ground_brdf.lo: @implsrc@/ground_brdf.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-ground_brdf.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-ground_brdf.Tpo -c -o @implsrc@/libfp_la-ground_brdf.lo `test -f '@implsrc@/ground_brdf.cc' || echo '$(srcdir)/'`@implsrc@/ground_brdf.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-ground_brdf.Tpo @implsrc@/$(DEPDIR)/libfp_la-ground_brdf.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/ground_brdf.cc' object='@implsrc@/libfp_la-ground_brdf.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_brdf.lo `test -f '@implsrc@/ground_brdf.cc' || echo '$(srcdir)/'`@implsrc@/ground_brdf.cc
+
+@implsrc@/libfp_la-ground_brdf_weight.lo: @implsrc@/ground_brdf_weight.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-ground_brdf_weight.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-ground_brdf_weight.Tpo -c -o @implsrc@/libfp_la-ground_brdf_weight.lo `test -f '@implsrc@/ground_brdf_weight.cc' || echo '$(srcdir)/'`@implsrc@/ground_brdf_weight.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-ground_brdf_weight.Tpo @implsrc@/$(DEPDIR)/libfp_la-ground_brdf_weight.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/ground_brdf_weight.cc' object='@implsrc@/libfp_la-ground_brdf_weight.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_brdf_weight.lo `test -f '@implsrc@/ground_brdf_weight.cc' || echo '$(srcdir)/'`@implsrc@/ground_brdf_weight.cc
 
 @implsrc@/libfp_la-ground_coxmunk.lo: @implsrc@/ground_coxmunk.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-ground_coxmunk.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk.Tpo -c -o @implsrc@/libfp_la-ground_coxmunk.lo `test -f '@implsrc@/ground_coxmunk.cc' || echo '$(srcdir)/'`@implsrc@/ground_coxmunk.cc
@@ -11203,13 +11229,6 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_coxmunk.lo `test -f '@implsrc@/ground_coxmunk.cc' || echo '$(srcdir)/'`@implsrc@/ground_coxmunk.cc
 
-@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo: @implsrc@/ground_coxmunk_plus_lambertian.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian.Tpo -c -o @implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo `test -f '@implsrc@/ground_coxmunk_plus_lambertian.cc' || echo '$(srcdir)/'`@implsrc@/ground_coxmunk_plus_lambertian.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian.Tpo @implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/ground_coxmunk_plus_lambertian.cc' object='@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo `test -f '@implsrc@/ground_coxmunk_plus_lambertian.cc' || echo '$(srcdir)/'`@implsrc@/ground_coxmunk_plus_lambertian.cc
-
 @implsrc@/libfp_la-ground_coxmunk_scaled.lo: @implsrc@/ground_coxmunk_scaled.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-ground_coxmunk_scaled.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_scaled.Tpo -c -o @implsrc@/libfp_la-ground_coxmunk_scaled.lo `test -f '@implsrc@/ground_coxmunk_scaled.cc' || echo '$(srcdir)/'`@implsrc@/ground_coxmunk_scaled.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_scaled.Tpo @implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_scaled.Plo
@@ -11217,12 +11236,12 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_coxmunk_scaled.lo `test -f '@implsrc@/ground_coxmunk_scaled.cc' || echo '$(srcdir)/'`@implsrc@/ground_coxmunk_scaled.cc
 
-@implsrc@/libfp_la-ground_brdf.lo: @implsrc@/ground_brdf.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-ground_brdf.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-ground_brdf.Tpo -c -o @implsrc@/libfp_la-ground_brdf.lo `test -f '@implsrc@/ground_brdf.cc' || echo '$(srcdir)/'`@implsrc@/ground_brdf.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-ground_brdf.Tpo @implsrc@/$(DEPDIR)/libfp_la-ground_brdf.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/ground_brdf.cc' object='@implsrc@/libfp_la-ground_brdf.lo' libtool=yes @AMDEPBACKSLASH@
+@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo: @implsrc@/ground_coxmunk_plus_lambertian.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian.Tpo -c -o @implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo `test -f '@implsrc@/ground_coxmunk_plus_lambertian.cc' || echo '$(srcdir)/'`@implsrc@/ground_coxmunk_plus_lambertian.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian.Tpo @implsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/ground_coxmunk_plus_lambertian.cc' object='@implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_brdf.lo `test -f '@implsrc@/ground_brdf.cc' || echo '$(srcdir)/'`@implsrc@/ground_brdf.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-ground_coxmunk_plus_lambertian.lo `test -f '@implsrc@/ground_coxmunk_plus_lambertian.cc' || echo '$(srcdir)/'`@implsrc@/ground_coxmunk_plus_lambertian.cc
 
 @implsrc@/libfp_la-aerosol_optical.lo: @implsrc@/aerosol_optical.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-aerosol_optical.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-aerosol_optical.Tpo -c -o @implsrc@/libfp_la-aerosol_optical.lo `test -f '@implsrc@/aerosol_optical.cc' || echo '$(srcdir)/'`@implsrc@/aerosol_optical.cc
@@ -11931,19 +11950,26 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-altitude_output.lo `test -f '@outsrc@/altitude_output.cc' || echo '$(srcdir)/'`@outsrc@/altitude_output.cc
 
-@outsrc@/libfp_la-ground_brdf_weight_output.lo: @outsrc@/ground_brdf_weight_output.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-ground_brdf_weight_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_weight_output.Tpo -c -o @outsrc@/libfp_la-ground_brdf_weight_output.lo `test -f '@outsrc@/ground_brdf_weight_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_brdf_weight_output.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_weight_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_weight_output.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/ground_brdf_weight_output.cc' object='@outsrc@/libfp_la-ground_brdf_weight_output.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ground_brdf_weight_output.lo `test -f '@outsrc@/ground_brdf_weight_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_brdf_weight_output.cc
-
 @outsrc@/libfp_la-ground_lambertian_output.lo: @outsrc@/ground_lambertian_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-ground_lambertian_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-ground_lambertian_output.Tpo -c -o @outsrc@/libfp_la-ground_lambertian_output.lo `test -f '@outsrc@/ground_lambertian_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_lambertian_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-ground_lambertian_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-ground_lambertian_output.Plo
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/ground_lambertian_output.cc' object='@outsrc@/libfp_la-ground_lambertian_output.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ground_lambertian_output.lo `test -f '@outsrc@/ground_lambertian_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_lambertian_output.cc
+
+@outsrc@/libfp_la-ground_brdf_output.lo: @outsrc@/ground_brdf_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-ground_brdf_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_output.Tpo -c -o @outsrc@/libfp_la-ground_brdf_output.lo `test -f '@outsrc@/ground_brdf_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_brdf_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_output.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/ground_brdf_output.cc' object='@outsrc@/libfp_la-ground_brdf_output.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ground_brdf_output.lo `test -f '@outsrc@/ground_brdf_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_brdf_output.cc
+
+@outsrc@/libfp_la-ground_brdf_weight_output.lo: @outsrc@/ground_brdf_weight_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-ground_brdf_weight_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_weight_output.Tpo -c -o @outsrc@/libfp_la-ground_brdf_weight_output.lo `test -f '@outsrc@/ground_brdf_weight_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_brdf_weight_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_weight_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_weight_output.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/ground_brdf_weight_output.cc' object='@outsrc@/libfp_la-ground_brdf_weight_output.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ground_brdf_weight_output.lo `test -f '@outsrc@/ground_brdf_weight_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_brdf_weight_output.cc
 
 @outsrc@/libfp_la-ground_coxmunk_output.lo: @outsrc@/ground_coxmunk_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-ground_coxmunk_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_output.Tpo -c -o @outsrc@/libfp_la-ground_coxmunk_output.lo `test -f '@outsrc@/ground_coxmunk_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_coxmunk_output.cc
@@ -11952,13 +11978,6 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ground_coxmunk_output.lo `test -f '@outsrc@/ground_coxmunk_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_coxmunk_output.cc
 
-@outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo: @outsrc@/ground_coxmunk_plus_lambertian_output.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian_output.Tpo -c -o @outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo `test -f '@outsrc@/ground_coxmunk_plus_lambertian_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_coxmunk_plus_lambertian_output.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian_output.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/ground_coxmunk_plus_lambertian_output.cc' object='@outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo `test -f '@outsrc@/ground_coxmunk_plus_lambertian_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_coxmunk_plus_lambertian_output.cc
-
 @outsrc@/libfp_la-ground_coxmunk_scaled_output.lo: @outsrc@/ground_coxmunk_scaled_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-ground_coxmunk_scaled_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_scaled_output.Tpo -c -o @outsrc@/libfp_la-ground_coxmunk_scaled_output.lo `test -f '@outsrc@/ground_coxmunk_scaled_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_coxmunk_scaled_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_scaled_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_scaled_output.Plo
@@ -11966,12 +11985,12 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ground_coxmunk_scaled_output.lo `test -f '@outsrc@/ground_coxmunk_scaled_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_coxmunk_scaled_output.cc
 
-@outsrc@/libfp_la-ground_brdf_output.lo: @outsrc@/ground_brdf_output.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-ground_brdf_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_output.Tpo -c -o @outsrc@/libfp_la-ground_brdf_output.lo `test -f '@outsrc@/ground_brdf_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_brdf_output.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-ground_brdf_output.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/ground_brdf_output.cc' object='@outsrc@/libfp_la-ground_brdf_output.lo' libtool=yes @AMDEPBACKSLASH@
+@outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo: @outsrc@/ground_coxmunk_plus_lambertian_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian_output.Tpo -c -o @outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo `test -f '@outsrc@/ground_coxmunk_plus_lambertian_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_coxmunk_plus_lambertian_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-ground_coxmunk_plus_lambertian_output.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/ground_coxmunk_plus_lambertian_output.cc' object='@outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ground_brdf_output.lo `test -f '@outsrc@/ground_brdf_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_brdf_output.cc
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-ground_coxmunk_plus_lambertian_output.lo `test -f '@outsrc@/ground_coxmunk_plus_lambertian_output.cc' || echo '$(srcdir)/'`@outsrc@/ground_coxmunk_plus_lambertian_output.cc
 
 @outsrc@/libfp_la-dispersion_polynomial_output.lo: @outsrc@/dispersion_polynomial_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-dispersion_polynomial_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-dispersion_polynomial_output.Tpo -c -o @outsrc@/libfp_la-dispersion_polynomial_output.lo `test -f '@outsrc@/dispersion_polynomial_output.cc' || echo '$(srcdir)/'`@outsrc@/dispersion_polynomial_output.cc
@@ -13080,7 +13099,9 @@ distclean: distclean-am
 	-rm -f @implsrc@/$(DEPDIR)/gas_vmr_apriori_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/gosat_noise_model_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/ground_brdf_test.Po
+	-rm -f @implsrc@/$(DEPDIR)/ground_brdf_weight_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/ground_coxmunk_plus_lambertian_test.Po
+	-rm -f @implsrc@/$(DEPDIR)/ground_coxmunk_scaled_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/ground_coxmunk_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/ground_lambertian_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/hdf_constant_test.Po
@@ -13360,6 +13381,7 @@ distclean: distclean-am
 	-rm -f @outsrc@/$(DEPDIR)/ground_brdf_output_test.Po
 	-rm -f @outsrc@/$(DEPDIR)/ground_coxmunk_output_test.Po
 	-rm -f @outsrc@/$(DEPDIR)/ground_coxmunk_plus_lambertian_output_test.Po
+	-rm -f @outsrc@/$(DEPDIR)/ground_coxmunk_scaled_output_test.Po
 	-rm -f @outsrc@/$(DEPDIR)/ground_lambertian_output_test.Po
 	-rm -f @outsrc@/$(DEPDIR)/high_res_spectrum_output_test.Po
 	-rm -f @outsrc@/$(DEPDIR)/level_1b_output_test.Po
@@ -13841,7 +13863,9 @@ maintainer-clean: maintainer-clean-am
 	-rm -f @implsrc@/$(DEPDIR)/gas_vmr_apriori_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/gosat_noise_model_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/ground_brdf_test.Po
+	-rm -f @implsrc@/$(DEPDIR)/ground_brdf_weight_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/ground_coxmunk_plus_lambertian_test.Po
+	-rm -f @implsrc@/$(DEPDIR)/ground_coxmunk_scaled_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/ground_coxmunk_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/ground_lambertian_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/hdf_constant_test.Po
@@ -14121,6 +14145,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f @outsrc@/$(DEPDIR)/ground_brdf_output_test.Po
 	-rm -f @outsrc@/$(DEPDIR)/ground_coxmunk_output_test.Po
 	-rm -f @outsrc@/$(DEPDIR)/ground_coxmunk_plus_lambertian_output_test.Po
+	-rm -f @outsrc@/$(DEPDIR)/ground_coxmunk_scaled_output_test.Po
 	-rm -f @outsrc@/$(DEPDIR)/ground_lambertian_output_test.Po
 	-rm -f @outsrc@/$(DEPDIR)/high_res_spectrum_output_test.Po
 	-rm -f @outsrc@/$(DEPDIR)/level_1b_output_test.Po
