@@ -29584,13 +29584,16 @@ fi
 # installing on Pleiades
 #======================================================================
 
+# Note the newer TOSS version of Pleiades has a number of modules already,
+# so only build the missing ones now.
+
 
 # Check whether --with-python-module was given.
 if test "${with_python_module+set}" = set; then :
-  withval=$with_python_module; build_nose=yes
-	    build_h5py=yes
-	    build_future=yes
-	    build_six=yes
+  withval=$with_python_module; build_nose=no
+	    build_h5py=no
+	    build_future=no
+	    build_six=no
 	    build_ply=yes
             build_ruport=yes
 	    rubygemdir='${prefix}'`${RUBY} -rrbconfig -rrubygems -e 'print Gem.dir.sub(RbConfig::CONFIG.fetch(%q(prefix)), %q())'`
