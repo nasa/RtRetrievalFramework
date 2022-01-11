@@ -15158,7 +15158,7 @@ $(NOSE_TARGET): $(thirdpartysrc)/$(NOSE_NAME).tar.gz
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $> && exit 0; exit 1
+        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $< && exit 0; exit 1
 	touch $@
 	@echo "========================== Done building nose"
 
@@ -15218,7 +15218,7 @@ $(H5PY_TARGET): $(thirdpartysrc)/$(H5PY_NAME).tar.gz $(HDF5_TARGET) $(NOSE_BUILD
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        HDF5_DIR=~/deploy/L2/B11.0.05 $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $> && exit 0; exit 1
+        HDF5_DIR=~/deploy/L2/B11.0.05 $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $< && exit 0; exit 1
 	touch $@
 	@echo "========================== Done building h5py"
 
@@ -15233,7 +15233,7 @@ $(PLY_TARGET): $(thirdpartysrc)/$(PLY_NAME).tar.gz $(NOSE_BUILD_TARGET) $(H5PY_B
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $> && exit 0; exit 1
+        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $< && exit 0; exit 1
 	touch $@
 	@echo "========================== Done building ply"
 
@@ -15248,7 +15248,7 @@ $(FUTURE_TARGET): $(thirdpartysrc)/$(FUTURE_NAME).tar.gz $(NOSE_BUILD_TARGET) $(
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $> && exit 0; exit 1
+        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $< && exit 0; exit 1
 	touch $@
 	@echo "========================== Done building future"
 
@@ -15263,7 +15263,7 @@ $(SIX_TARGET): $(thirdpartysrc)/$(SIX_NAME).tar.gz $(NOSE_BUILD_TARGET) $(H5PY_B
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $> && exit 0; exit 1
+        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $< && exit 0; exit 1
 	touch $@
 	@echo "========================== Done building six"
 
