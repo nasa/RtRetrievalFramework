@@ -496,16 +496,11 @@ EXTRA_DIST += @thirdpartysrc@/$(NOSE_NAME).tar.gz
 
 $(NOSE_TARGET): $(thirdpartysrc)/$(NOSE_NAME).tar.gz
 	@echo "*************************** Building nose"
-	$(MKDIR_P) $(pythondir)
-	-rm -rf $(NOSE_NAME)
-	${AMTAR} xzf $<
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        cd $(NOSE_NAME) && \
-        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
-	rm -rf $(NOSE_NAME)
-	touch $(NOSE_TARGET)
+        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $> && exit 0; exit 1
+	touch $@
 	@echo "========================== Done building nose"
 
 # ========================================================================
@@ -615,16 +610,11 @@ EXTRA_DIST += @thirdpartysrc@/$(H5PY_NAME).tar.gz
 
 $(H5PY_TARGET): $(thirdpartysrc)/$(H5PY_NAME).tar.gz $(HDF5_TARGET) $(NOSE_BUILD_TARGET)
 	@echo "*************************** Building h5py"
-	$(MKDIR_P) $(pythondir)
-	-rm -rf $(H5PY_NAME)
-	${AMTAR} xzf $<
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        cd $(H5PY_NAME) && python setup.py configure --hdf5=$(prefix) && \
-        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
-	rm -rf $(H5PY_NAME)
-	touch $(H5PY_TARGET)
+        HDF5_DIR=~/deploy/L2/B11.0.05 $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $> && exit 0; exit 1
+	touch $@
 	@echo "========================== Done building h5py"
 
 # ========================================================================
@@ -656,15 +646,10 @@ EXTRA_DIST += @thirdpartysrc@/$(PLY_NAME).tar.gz
 
 $(PLY_TARGET): $(thirdpartysrc)/$(PLY_NAME).tar.gz $(NOSE_BUILD_TARGET) $(H5PY_BUILD_TARGET)
 	@echo "*************************** Building ply"
-	$(MKDIR_P) $(pythondir)
-	-rm -rf $(PLY_NAME)
-	${AMTAR} xzf $<
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        cd $(PLY_NAME) && \
-        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
-	rm -rf $(PLY_NAME)
+        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $> && exit 0; exit 1
 	touch $@
 	@echo "========================== Done building ply"
 
@@ -697,15 +682,10 @@ EXTRA_DIST += @thirdpartysrc@/$(FUTURE_NAME).tar.gz
 
 $(FUTURE_TARGET): $(thirdpartysrc)/$(FUTURE_NAME).tar.gz $(NOSE_BUILD_TARGET) $(H5PY_BUILD_TARGET) $(PLY_BUILD_TARGET)
 	@echo "*************************** Building future"
-	$(MKDIR_P) $(pythondir)
-	-rm -rf $(FUTURE_NAME)
-	${AMTAR} xzf $<
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        cd $(FUTURE_NAME) && \
-        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
-	rm -rf $(FUTURE_NAME)
+        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $> && exit 0; exit 1
 	touch $@
 	@echo "========================== Done building future"
 
@@ -738,14 +718,9 @@ EXTRA_DIST += @thirdpartysrc@/$(SIX_NAME).tar.gz
 
 $(SIX_TARGET): $(thirdpartysrc)/$(SIX_NAME).tar.gz $(NOSE_BUILD_TARGET) $(H5PY_BUILD_TARGET) $(PLY_BUILD_TARGET) $(FUTURE_BUILD_TARGET)
 	@echo "*************************** Building six"
-	$(MKDIR_P) $(pythondir)
-	-rm -rf $(SIX_NAME)
-	${AMTAR} xzf $<
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        cd $(SIX_NAME) && \
-        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
-	rm -rf $(SIX_NAME)
+        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $> && exit 0; exit 1
 	touch $@
 	@echo "========================== Done building six"
