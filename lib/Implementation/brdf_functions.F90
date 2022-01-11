@@ -525,6 +525,8 @@ contains
 !  Exact BRDF (LIDORT)
 !  -------------------
 
+     R1 = ZERO
+
 !  Kernel loop
 
       DO K = 1, N_BRDF_KERNELS
@@ -675,6 +677,7 @@ contains
 !  Exact BRDF (LIDORT)
 !  -------------------
 
+      R1 = ZERO
       Ls_R1 = ZERO
 
 !  Kernel loop
