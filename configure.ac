@@ -264,7 +264,7 @@ AC_ARG_WITH([python-module],
 	    build_six=yes
 	    build_ply=yes
             build_ruport=yes
-	    rubygemdir='${prefix}'`${RUBY} -rrbconfig -rrubygems -e 'print Gem.dir.sub(Config::CONFIG.fetch(%q(prefix)), %q())'`
+	    rubygemdir='${prefix}'`${RUBY} -rrbconfig -rrubygems -e 'print Gem.dir.sub(RbConfig::CONFIG.fetch(%q(prefix)), %q())'`
 	   ],
            [build_nose=no
 	    build_h5py=no
