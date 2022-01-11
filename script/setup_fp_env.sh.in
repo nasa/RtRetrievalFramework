@@ -45,10 +45,12 @@ alias parallel=@PARALLEL@
 # Note if you update this, also update ../pleiades_build.script
 if [ -e /usr/share/modules/init/bash ]; then
     source /usr/share/modules/init/bash
-    module load gcc/4.9.4
-    module load /nasa/modulefiles/pkgsrc/sles12/python3/3.5.2
-    # This contains ruby 2.2.6p396
-    module load /nasa/modulefiles/pkgsrc/sles12/pkgsrc/2016Q4
+    # The new TOSS-3 has a new enough version of gcc (4.8.5). 4.9.4 from SLES 12 isn't
+    # available any more
+    #module load gcc/4.9.4
+    module load python3/3.9.5
+    # This contains ruby 2.6.8p205
+    module load  pkgsrc/2021Q2
     # Needed to get ruby working. Not sure why
     ulimit -Ss unlimited
 fi
