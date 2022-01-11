@@ -71,6 +71,9 @@ boost: $(BOOST_TARGET)
 
 if BUILD_BOOST
 BUILT_SOURCES += $(BOOST_TARGET)
+BOOST_DEPEND_TARGET = $(BOOST_TARGET)
+else
+BOOST_DEPEND_TARGET = 
 endif
 
 # ========================================================================
@@ -417,7 +420,7 @@ $(LUA_TARGET): $(thirdpartysrc)/$(LUA_NAME).tar.gz $(thirdpartysrc)/$(LUA_PATCH)
 	touch $(LUA_TARGET)
 	@echo "========================== Done building Lua"
 
-$(LUABIND_TARGET): $(thirdpartysrc)/$(LUABIND_NAME).tar.gz $(LUA_TARGET) $(BOOST_TARGET) $(thirdpartysrc)/$(LUABIND_PATCH) $(thirdpartysrc)/$(LUABIND_PATCH2) $(thirdpartysrc)/$(LUABIND_PATCH3)
+$(LUABIND_TARGET): $(thirdpartysrc)/$(LUABIND_NAME).tar.gz $(LUA_TARGET) $(BOOST_DEPEND_TARGET) $(thirdpartysrc)/$(LUABIND_PATCH) $(thirdpartysrc)/$(LUABIND_PATCH2) $(thirdpartysrc)/$(LUABIND_PATCH3)
 	@echo "*************************** Building Luabind"
 	${AMTAR} xzf $< && cd $(LUABIND_NAME) && \
         patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(LUABIND_PATCH) && \
