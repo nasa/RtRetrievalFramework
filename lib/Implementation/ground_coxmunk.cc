@@ -114,7 +114,7 @@ const blitz::Array<AutoDerivative<double>, 1> GroundCoxmunk::kernel_value_l_giss
     blitz::Array<AutoDerivative<double>, 1> value2(3);
 
     AutoDerivative<double> temp;
-    for (int i; i < value2.rows(); ++i) {
+    for (int i = 0; i < value2.rows(); ++i) {
         AutoDerivative<double> temp(value(i), l_value(blitz::Range::all(),i));
         value2(i) = temp;
     }
