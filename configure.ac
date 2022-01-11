@@ -255,13 +255,16 @@ AM_CONDITIONAL([WITH_DOCUMENTATION], [test x$with_documentation = xyes])
 # installing on Pleiades
 #======================================================================
 
+# Note the newer TOSS version of Pleiades has a number of modules already,
+# so only build the missing ones now.
+
 AC_ARG_WITH([python-module],
            [AS_HELP_STRING([--with-python-module],
              [Build our own copy of the python modules we depend on. Normally you would just install this modules on your system, but for Pleiades this is convenient to build ourselves..])],
-           [build_nose=yes
-	    build_h5py=yes
-	    build_future=yes
-	    build_six=yes
+           [build_nose=no
+	    build_h5py=no
+	    build_future=no
+	    build_six=no
 	    build_ply=yes
             build_ruport=yes
 	    rubygemdir='${prefix}'`${RUBY} -rrbconfig -rrubygems -e 'print Gem.dir.sub(RbConfig::CONFIG.fetch(%q(prefix)), %q())'`
