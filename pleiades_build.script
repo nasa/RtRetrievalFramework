@@ -91,7 +91,7 @@ mkdir -p build
 cd build
 
 # Do configuration
-../configure --with-parallel=build --with-lidort-3.8=build --with-2stream=build --with-blitz=build --with-lua=build --prefix=$1 --with-absco=$2 --with-python-module --with-merra=$3
+../configure --with-lidort-3.8=build --with-2stream=build --with-blitz=build --with-lua=build --with-boost=$PKGSRC_BASE --with-gsl=$PKGSRC_BASE --with-hdf5=$PKGSRC_BASE --prefix=$1 --with-absco=$2 --with-python-module --with-merra=$3
 
 # The frontend system typically has 32 processors. We use 20 here, pretty much 
 # arbitrarily. This can be adjusted to whatever if needed.
