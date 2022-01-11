@@ -72,10 +72,9 @@ double kernel_amplitude_giss(boost::shared_ptr<Level1b>& L1b,
 
     double res = 0;
 
-    for (int j = 0; j < stokes_coeff.rows(); ++j) {
+    for (int j = 0; j < kernel_value_giss.rows(); ++j) {
         res += kernel_value_giss(j) * stokes_coeff(j);
     }
-
 
     return res;
 }
@@ -95,7 +94,7 @@ AutoDerivative<double> kernel_amplitude_l_giss(boost::shared_ptr<Level1b>& L1b,
             L1b->sounding_zenith(spec_idx).convert(angle_unit).value,
             L1b->relative_azimuth(spec_idx).convert(angle_unit).value);
 
-    AutoDerivative<double> res(kernel_value_l_giss(0) * stokes_coeff(0,0));
+    AutoDerivative<double> res(kernel_value_l_giss(0) * stokes_coeff(0));
 
     for (int j = 1; j < kernel_value_l_giss.rows(); ++j) {
         res += kernel_value_l_giss(j) * stokes_coeff(j);
