@@ -1698,6 +1698,7 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@implsrc@/nonuniform_lsi_rt_test.cc \
 	@implsrc@/temperature_met_test.cc \
 	@implsrc@/temperature_level_offset_test.cc \
+	@implsrc@/temperature_level_shape_test.cc \
 	@implsrc@/absorber_vmr_met_test.cc \
 	@implsrc@/absorber_vmr_level_test.cc \
 	@implsrc@/absorber_vmr_log_level_test.cc \
@@ -1880,6 +1881,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@implsrc@/nonuniform_lsi_rt_test.$(OBJEXT) \
 	@implsrc@/temperature_met_test.$(OBJEXT) \
 	@implsrc@/temperature_level_offset_test.$(OBJEXT) \
+	@implsrc@/temperature_level_shape_test.$(OBJEXT) \
 	@implsrc@/absorber_vmr_met_test.$(OBJEXT) \
 	@implsrc@/absorber_vmr_level_test.$(OBJEXT) \
 	@implsrc@/absorber_vmr_log_level_test.$(OBJEXT) \
@@ -2209,6 +2211,7 @@ am__depfiles_remade = @binsrc@/$(DEPDIR)/l2_fp.Po \
 	@implsrc@/$(DEPDIR)/stokes_coefficient_fraction_test.Po \
 	@implsrc@/$(DEPDIR)/tccon_apriori_test.Po \
 	@implsrc@/$(DEPDIR)/temperature_level_offset_test.Po \
+	@implsrc@/$(DEPDIR)/temperature_level_shape_test.Po \
 	@implsrc@/$(DEPDIR)/temperature_met_test.Po \
 	@implsrc@/$(DEPDIR)/twostream_driver_test.Po \
 	@implsrc@/$(DEPDIR)/twostream_interface_test.Po \
@@ -3777,6 +3780,7 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@implsrc@/nonuniform_lsi_rt_test.cc \
 	@implsrc@/temperature_met_test.cc \
 	@implsrc@/temperature_level_offset_test.cc \
+	@implsrc@/temperature_level_shape_test.cc \
 	@implsrc@/absorber_vmr_met_test.cc \
 	@implsrc@/absorber_vmr_level_test.cc \
 	@implsrc@/absorber_vmr_log_level_test.cc \
@@ -7108,6 +7112,8 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/temperature_level_offset_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/temperature_level_shape_test.$(OBJEXT):  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/absorber_vmr_met_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/absorber_vmr_level_test.$(OBJEXT):  \
@@ -7570,6 +7576,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/stokes_coefficient_fraction_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/tccon_apriori_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/temperature_level_offset_test.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/temperature_level_shape_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/temperature_met_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/twostream_driver_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/twostream_interface_test.Po@am__quote@ # am--include-marker
@@ -13310,6 +13317,7 @@ distclean: distclean-am
 	-rm -f @implsrc@/$(DEPDIR)/stokes_coefficient_fraction_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/tccon_apriori_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/temperature_level_offset_test.Po
+	-rm -f @implsrc@/$(DEPDIR)/temperature_level_shape_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/temperature_met_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/twostream_driver_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/twostream_interface_test.Po
@@ -14075,6 +14083,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f @implsrc@/$(DEPDIR)/stokes_coefficient_fraction_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/tccon_apriori_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/temperature_level_offset_test.Po
+	-rm -f @implsrc@/$(DEPDIR)/temperature_level_shape_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/temperature_met_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/twostream_driver_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/twostream_interface_test.Po

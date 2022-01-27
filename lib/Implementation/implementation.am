@@ -488,6 +488,7 @@ lib_test_all_SOURCES+= @implsrc@/nonuniform_spectrum_sampling_test.cc
 lib_test_all_SOURCES+= @implsrc@/nonuniform_lsi_rt_test.cc
 lib_test_all_SOURCES+= @implsrc@/temperature_met_test.cc
 lib_test_all_SOURCES+= @implsrc@/temperature_level_offset_test.cc
+lib_test_all_SOURCES+= @implsrc@/temperature_level_shape_test.cc
 lib_test_all_SOURCES+= @implsrc@/absorber_vmr_met_test.cc
 lib_test_all_SOURCES+= @implsrc@/absorber_vmr_level_test.cc
 lib_test_all_SOURCES+= @implsrc@/absorber_vmr_log_level_test.cc
