@@ -2161,6 +2161,45 @@ function ConfigCommon.temperature_level_offset:register_output(ro)
 end
 
 ------------------------------------------------------------
+--- Temperature retrieved using a set of scale factors
+--- used with a set of predefined profile shapes added to the
+--- initial guess temperature profile.
+------------------------------------------------------------
+
+ConfigCommon.temperature_level_shape = CreatorApriori:new {}
+
+function ConfigCommon.temperature_level_shape:create()
+   temp_levels = self:temperature_levels()
+   num_level = temp_levels:rows()
+   num_shape = self.num_profiles
+
+   if not num_shape then
+       print("num_profile parameter must be defined for temperature_level_shape creator")
+   end
+
+   if not self.shape_filename then
+      print("shape_filename parameter must be defined for temperature_level_shape creator")
+   end
+   
+   local shape_file = HdfFile(self.shape_filename)
+   local shape_profiles = Blitz_double_array_2d(num_level, num_shape)
+
+   for shape_num=1,num_shape do
+      local ds_name = "Temperature/EOF/shape_" .. shape_num
+      shape_profiles:set(Range.all(), shape_num-1, shape_file:read_double_1d(ds_name))
+   end
+
+   local shape_scaling = self:apriori()
+
+   return TemperatureLevelShape(temp_levels, shape_profiles, shape_scaling,
+                                self.config.pressure, self:retrieval_flag())
+end
+
+function ConfigCommon.temperature_level_shape:register_output(ro)
+   --ro:push_back(TemperatureLevelShapeOutput.create(self.config.temperature))
+end
+
+------------------------------------------------------------
 --- Temperature using specificed level values
 --- where we fit all levels
 ------------------------------------------------------------
