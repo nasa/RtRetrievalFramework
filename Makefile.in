@@ -4658,8 +4658,6 @@ libtwostream_la_LDFLAGS = -rpath '$(libdir)' -version-info 0:0:0
 # Set up to put modules in modules directory.
 TWOSTREAM_MOD_FLAGS := $(call fortran_module_path,$(includedir))
 libtwostream_la_FCFLAGS = $(TWOSTREAM_MOD_FLAGS)
-@BUILD_BOOST_FALSE@BOOST_DEPEND_TARGET = 
-@BUILD_BOOST_TRUE@BOOST_DEPEND_TARGET = $(BOOST_TARGET)
 
 # ========================================================================
 # Rule to Build HDF5.
@@ -15107,7 +15105,7 @@ $(LUA_TARGET): $(thirdpartysrc)/$(LUA_NAME).tar.gz $(thirdpartysrc)/$(LUA_PATCH)
 	touch $(LUA_TARGET)
 	@echo "========================== Done building Lua"
 
-$(LUABIND_TARGET): $(thirdpartysrc)/$(LUABIND_NAME).tar.gz $(LUA_TARGET) $(BOOST_DEPEND_TARGET) $(thirdpartysrc)/$(LUABIND_PATCH) $(thirdpartysrc)/$(LUABIND_PATCH2) $(thirdpartysrc)/$(LUABIND_PATCH3)
+$(LUABIND_TARGET): $(thirdpartysrc)/$(LUABIND_NAME).tar.gz $(LUA_TARGET) $(BOOST_TARGET) $(thirdpartysrc)/$(LUABIND_PATCH) $(thirdpartysrc)/$(LUABIND_PATCH2) $(thirdpartysrc)/$(LUABIND_PATCH3)
 	@echo "*************************** Building Luabind"
 	${AMTAR} xzf $< && cd $(LUABIND_NAME) && \
         patch -p1 < $(abs_srcdir)/$(thirdpartysrc)/$(LUABIND_PATCH) && \
@@ -15157,11 +15155,16 @@ nose: $(NOSE_TARGET)
 
 $(NOSE_TARGET): $(thirdpartysrc)/$(NOSE_NAME).tar.gz
 	@echo "*************************** Building nose"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(NOSE_NAME)
+	${AMTAR} xzf $<
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $< && exit 0; exit 1
-	touch $@
+        cd $(NOSE_NAME) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(NOSE_NAME)
+	touch $(NOSE_TARGET)
 	@echo "========================== Done building nose"
 
 # ========================================================================
@@ -15217,11 +15220,16 @@ h5py: $(H5PY_TARGET)
 
 $(H5PY_TARGET): $(thirdpartysrc)/$(H5PY_NAME).tar.gz $(HDF5_TARGET) $(NOSE_BUILD_TARGET)
 	@echo "*************************** Building h5py"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(H5PY_NAME)
+	${AMTAR} xzf $<
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        HDF5_DIR=~/deploy/L2/B11.0.05 $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $< && exit 0; exit 1
-	touch $@
+        cd $(H5PY_NAME) && python setup.py configure --hdf5=$(prefix) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(H5PY_NAME)
+	touch $(H5PY_TARGET)
 	@echo "========================== Done building h5py"
 
 # ========================================================================
@@ -15232,10 +15240,15 @@ ply: $(PLY_TARGET)
 
 $(PLY_TARGET): $(thirdpartysrc)/$(PLY_NAME).tar.gz $(NOSE_BUILD_TARGET) $(H5PY_BUILD_TARGET)
 	@echo "*************************** Building ply"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(PLY_NAME)
+	${AMTAR} xzf $<
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $< && exit 0; exit 1
+        cd $(PLY_NAME) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(PLY_NAME)
 	touch $@
 	@echo "========================== Done building ply"
 
@@ -15247,10 +15260,15 @@ future: $(FUTURE_TARGET)
 
 $(FUTURE_TARGET): $(thirdpartysrc)/$(FUTURE_NAME).tar.gz $(NOSE_BUILD_TARGET) $(H5PY_BUILD_TARGET) $(PLY_BUILD_TARGET)
 	@echo "*************************** Building future"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(FUTURE_NAME)
+	${AMTAR} xzf $<
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $< && exit 0; exit 1
+        cd $(FUTURE_NAME) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(FUTURE_NAME)
 	touch $@
 	@echo "========================== Done building future"
 
@@ -15262,10 +15280,15 @@ six: $(SIX_TARGET)
 
 $(SIX_TARGET): $(thirdpartysrc)/$(SIX_NAME).tar.gz $(NOSE_BUILD_TARGET) $(H5PY_BUILD_TARGET) $(PLY_BUILD_TARGET) $(FUTURE_BUILD_TARGET)
 	@echo "*************************** Building six"
+	$(MKDIR_P) $(pythondir)
+	-rm -rf $(SIX_NAME)
+	${AMTAR} xzf $<
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        $(PYTHON) -m pip install --no-binary :all: --ignore-installed --no-deps --prefix="$(prefix)" $< && exit 0; exit 1
+        cd $(SIX_NAME) && \
+        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
+	rm -rf $(SIX_NAME)
 	touch $@
 	@echo "========================== Done building six"
 
