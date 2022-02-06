@@ -369,7 +369,7 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
 CONFIG_CLEAN_FILES = script/setup_fp_env.sh \
-	lib/Support/global_fixture_default.cc \
+	lib/Support/global_fixture_default.cc script/python_wrap.sh \
 	thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.tmp
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(libdir)" \
@@ -3039,6 +3039,7 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/bin/bin.am \
 	$(top_srcdir)/config/install-sh $(top_srcdir)/config/ltmain.sh \
 	$(top_srcdir)/config/missing $(top_srcdir)/config/py-compile \
 	$(top_srcdir)/lib/Support/global_fixture_default.cc.in \
+	$(top_srcdir)/script/python_wrap.sh.in \
 	$(top_srcdir)/script/setup_fp_env.sh.in \
 	$(top_srcdir)/thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.in \
 	AUTHORS COPYING ChangeLog INSTALL NEWS README config/compile \
@@ -4906,6 +4907,8 @@ $(am__aclocal_m4_deps):
 script/setup_fp_env.sh: $(top_builddir)/config.status $(top_srcdir)/script/setup_fp_env.sh.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 lib/Support/global_fixture_default.cc: $(top_builddir)/config.status $(top_srcdir)/lib/Support/global_fixture_default.cc.in
+	cd $(top_builddir) && $(SHELL) ./config.status $@
+script/python_wrap.sh: $(top_builddir)/config.status $(top_srcdir)/script/python_wrap.sh.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.tmp: $(top_builddir)/config.status $(top_srcdir)/thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@

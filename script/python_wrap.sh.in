@@ -1,0 +1,11 @@
+#! /bin/sh
+# This is a short script for setting up the LD_LIBRARY_PATH and then calling the python that
+# we have built. This is used just during the build of the system, it isn't installed.
+
+if [ -n "$LD_LIBRARY_PATH" ]; then
+  export LD_LIBRARY_PATH=@prefix@/lib:${LD_LIBRARY_PATH}
+else
+  export LD_LIBRARY_PATH=@prefix@/lib
+fi
+
+@prefix@/bin/python "$@"
