@@ -104,7 +104,24 @@ AC_ARG_WITH([python-swig],
     ],
     [want_python="no"])
 
-if test "x$want_python" = "xyes"; then
+  if test "$build_python" == "yes"; then
+     AM_PATH_PYTHON(,, [:])
+     # Will need to update this if we change the version we are building
+     python_inc_path=python3.9
+     python_lib_path=python3.9
+     PYTHON=`pwd`"/external/python_wrap.sh" 
+     PYTHON_CPPFLAGS="-I\${prefix}/include/${python_inc_path}"
+     PYTHON_NUMPY_CPPFLAGS="-I\${prefix}/lib/${python_lib_path}/site-packages/numpy/core/include"
+     pythondir="lib/${python_lib_path}/site-packages" 
+     platpythondir="lib/${python_lib_path}/site-packages" 
+     build_python_swig="yes"
+     PYTHON_CPPFLAGS="$PYTHON_CPPFLAGS $numpy_cppflags"
+     AC_SUBST(PYTHON_CPPFLAGS)
+     AC_SUBST([platpythondir])
+     PYTHON_LDFLAGS=""
+     AC_SUBST(PYTHON_LDFLAGS)
+   else
+     if test "x$want_python" = "xyes"; then
 	AC_PATH_PROG([PYTHON],[python[$PYTHON_VERSION]])
 	if test "$ac_python_path" != ""; then
 	   PYTHON=$ac_python_path
@@ -321,6 +338,7 @@ $ac_numpy_result])
 	# turn back to default flags
 	CPPFLAGS="$ac_save_CPPFLAGS"
 	LIBS="$ac_save_LIBS"
+       fi
     fi
 fi
 AM_CONDITIONAL([BUILD_PYTHON_SWIG], [test "$build_python_swig" = "yes"])
