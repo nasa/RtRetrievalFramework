@@ -15255,7 +15255,7 @@ $(H5PY_TARGET): $(thirdpartysrc)/$(H5PY_NAME).tar.gz $(HDF5_TARGET) $(PYTHON_BUI
 	touch $(H5PY_TARGET)
 	@echo "========================== Done building h5py"
 
-$(PYTHON_TARGET): $(srcexternal)/$(PYTHON_NAME).tgz 
+$(PYTHON_TARGET): $(thirdpartysrc)/$(PYTHON_NAME).tgz 
 	@echo "*************************** Building python"
 	-rm -rf $(PYTHON_NAME)
 	${AMTAR} xzf $<
