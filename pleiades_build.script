@@ -76,10 +76,9 @@ set -e
 # Note if you change this, also change script/setup_fp_env.sh.in
 if [ -e /usr/share/modules/init/bash ]; then
     source /usr/share/modules/init/bash
-    # The new TOSS-3 has a new enough version of gcc (4.8.5). 4.9.4 from SLES 12 isn't
-    # available any more
-    #module load gcc/4.9.4
-    module load python3/3.9.5
+    # Note we can't use TOSS-3 python3/3.9.5. This pulls in
+    # a too new version of HDF5, which I never could figure out how
+    # to avoid. Instead we build our own copy of python 3.9.
     # This contains ruby 2.6.8p205
     module load  pkgsrc/2021Q2
     # Needed to get ruby working. Not sure why

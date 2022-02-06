@@ -641,19 +641,6 @@ lidort_maxatmoswfs
 lidort_maxlayer
 merradir
 abscodir
-rubygemdir
-BUILD_RUPORT_FALSE
-BUILD_RUPORT_TRUE
-BUILD_PLY_FALSE
-BUILD_PLY_TRUE
-BUILD_SIX_FALSE
-BUILD_SIX_TRUE
-BUILD_FUTURE_FALSE
-BUILD_FUTURE_TRUE
-BUILD_H5PY_FALSE
-BUILD_H5PY_TRUE
-BUILD_NOSE_FALSE
-BUILD_NOSE_TRUE
 WITH_DOCUMENTATION_FALSE
 WITH_DOCUMENTATION_TRUE
 ocoinputsrc
@@ -800,13 +787,6 @@ THIRDPARTY
 fortran_extra_ldflags
 fortran_module_path
 HAVE_CXX11
-pkgpyexecdir
-pyexecdir
-pkgpythondir
-pythondir
-PYTHON_PLATFORM
-PYTHON_EXEC_PREFIX
-PYTHON_PREFIX
 RUBY_VERSION
 RUBY
 SWIG_PYTHON_CPPFLAGS
@@ -816,9 +796,17 @@ BUILD_PYTHON_SWIG_TRUE
 PYTHON_EXTRA_LDFLAGS
 PYTHON_EXTRA_LIBS
 PYTHON_SITE_PKG
-PYTHON_LDFLAGS
-PYTHON_CPPFLAGS
 PYTHON26
+PYTHON_LDFLAGS
+platpythondir
+PYTHON_CPPFLAGS
+pkgpyexecdir
+pyexecdir
+pkgpythondir
+pythondir
+PYTHON_PLATFORM
+PYTHON_EXEC_PREFIX
+PYTHON_PREFIX
 PYTHON_VERSION
 PYTHON
 HAVE_SWIG_FALSE
@@ -866,6 +854,21 @@ F77
 ac_ct_FC
 FCFLAGS
 FC
+rubygemdir
+BUILD_RUPORT_FALSE
+BUILD_RUPORT_TRUE
+BUILD_PLY_FALSE
+BUILD_PLY_TRUE
+BUILD_SIX_FALSE
+BUILD_SIX_TRUE
+BUILD_FUTURE_FALSE
+BUILD_FUTURE_TRUE
+BUILD_PYTHON_FALSE
+BUILD_PYTHON_TRUE
+BUILD_H5PY_FALSE
+BUILD_H5PY_TRUE
+BUILD_NOSE_FALSE
+BUILD_NOSE_TRUE
 CPP
 LT_SYS_LIBRARY_PATH
 OTOOL64
@@ -996,6 +999,7 @@ enable_dependency_tracking
 with_gnu_ld
 with_sysroot
 enable_libtool_lock
+with_python_module
 with_parallel
 with_python_swig
 enable_debug
@@ -1020,7 +1024,6 @@ enable_doxygen_html
 enable_doxygen_ps
 enable_doxygen_pdf
 with_documentation
-with_python_module
 with_absco
 with_merra
 with_lidort_maxlayer
@@ -1710,6 +1713,10 @@ Optional Packages:
   --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
   --with-sysroot[=DIR]    Search for dependent libraries within DIR (or the
                           compiler's sysroot if not specified).
+  --with-python-module    Build our own copy of the python modules we depend
+                          on. Normally you would just install this modules on
+                          your system, but for Pleiades this is convenient to
+                          build ourselves..
   --with-parallel[=DIR]   use PARALLEL (default is yes if found) - it is
                           possible to specify the root directory for PARALLEL
                           (optional). You can also specify "build" if you want
@@ -1761,10 +1768,6 @@ Optional Packages:
                           a build environment that is used for development,
                           but you'll want all of your "real" build
                           environments to also install the documentation.
-  --with-python-module    Build our own copy of the python modules we depend
-                          on. Normally you would just install this modules on
-                          your system, but for Pleiades this is convenient to
-                          build ourselves..
   --with-absco[=DIR]      give the location of the ABSCO tables to use in the
                           l2_fp_run and unit tests. The default is
                           /groups/algorithm/l2_fp/absco. This is only needed
@@ -12653,6 +12656,94 @@ CC=$lt_save_CC
 
 
 # Only expand once:
+
+
+
+#======================================================================
+# Build our own version of the python modules we depend on. Useful for
+# installing on Pleiades
+#======================================================================
+
+
+# Check whether --with-python-module was given.
+if test "${with_python_module+set}" = set; then :
+  withval=$with_python_module; build_nose=no
+	    build_h5py=yes
+	    build_future=no
+	    build_six=no
+	    build_python=yes
+	    build_ply=yes
+            build_ruport=yes
+	    rubygemdir='${prefix}'`${RUBY} -rrbconfig -rrubygems -e 'print Gem.dir.sub(RbConfig::CONFIG.fetch(%q(prefix)), %q())'`
+
+else
+  build_nose=no
+	    build_h5py=no
+	    build_six=no
+	    build_future=no
+	    build_python=no
+	    build_ply=yes
+	    build_ply=no
+            build_ruport=no
+            rubygemdir=""
+
+fi
+
+ if test x$build_nose = xyes; then
+  BUILD_NOSE_TRUE=
+  BUILD_NOSE_FALSE='#'
+else
+  BUILD_NOSE_TRUE='#'
+  BUILD_NOSE_FALSE=
+fi
+
+ if test x$build_h5py = xyes; then
+  BUILD_H5PY_TRUE=
+  BUILD_H5PY_FALSE='#'
+else
+  BUILD_H5PY_TRUE='#'
+  BUILD_H5PY_FALSE=
+fi
+
+ if test x$build_python = xyes; then
+  BUILD_PYTHON_TRUE=
+  BUILD_PYTHON_FALSE='#'
+else
+  BUILD_PYTHON_TRUE='#'
+  BUILD_PYTHON_FALSE=
+fi
+
+ if test x$build_future = xyes; then
+  BUILD_FUTURE_TRUE=
+  BUILD_FUTURE_FALSE='#'
+else
+  BUILD_FUTURE_TRUE='#'
+  BUILD_FUTURE_FALSE=
+fi
+
+ if test x$build_six = xyes; then
+  BUILD_SIX_TRUE=
+  BUILD_SIX_FALSE='#'
+else
+  BUILD_SIX_TRUE='#'
+  BUILD_SIX_FALSE=
+fi
+
+ if test x$build_ply = xyes; then
+  BUILD_PLY_TRUE=
+  BUILD_PLY_FALSE='#'
+else
+  BUILD_PLY_TRUE='#'
+  BUILD_PLY_FALSE=
+fi
+
+ if test x$build_ruport = xyes; then
+  BUILD_RUPORT_TRUE=
+  BUILD_RUPORT_FALSE='#'
+else
+  BUILD_RUPORT_TRUE='#'
+  BUILD_RUPORT_FALSE=
+fi
 
 
 
@@ -24464,7 +24555,230 @@ else
 fi
 
 
-if test "x$want_python" = "xyes"; then
+  if test "$build_python" == "yes"; then
+
+
+
+
+
+
+        # Find any Python interpreter.
+    if test -z "$PYTHON"; then
+      for ac_prog in python python2 python3  python3.9 python3.8 python3.7 python3.6 python3.5 python3.4 python3.3  python3.2 python3.1 python3.0  python2.7 python2.6 python2.5 python2.4 python2.3 python2.2 python2.1  python2.0
+do
+  # Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_PYTHON+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $PYTHON in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_PYTHON="$PYTHON" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_PYTHON="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+PYTHON=$ac_cv_path_PYTHON
+if test -n "$PYTHON"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PYTHON" >&5
+$as_echo "$PYTHON" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+  test -n "$PYTHON" && break
+done
+test -n "$PYTHON" || PYTHON=":"
+
+    fi
+    am_display_PYTHON=python
+
+
+  if test "$PYTHON" = :; then
+      :
+  else
+
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON version" >&5
+$as_echo_n "checking for $am_display_PYTHON version... " >&6; }
+if ${am_cv_python_version+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  am_cv_python_version=`$PYTHON -c "import sys; sys.stdout.write(sys.version[:3])"`
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_python_version" >&5
+$as_echo "$am_cv_python_version" >&6; }
+  PYTHON_VERSION=$am_cv_python_version
+
+
+
+  PYTHON_PREFIX='${prefix}'
+
+  PYTHON_EXEC_PREFIX='${exec_prefix}'
+
+
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON platform" >&5
+$as_echo_n "checking for $am_display_PYTHON platform... " >&6; }
+if ${am_cv_python_platform+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  am_cv_python_platform=`$PYTHON -c "import sys; sys.stdout.write(sys.platform)"`
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_python_platform" >&5
+$as_echo "$am_cv_python_platform" >&6; }
+  PYTHON_PLATFORM=$am_cv_python_platform
+
+
+  # Just factor out some code duplication.
+  am_python_setup_sysconfig="\
+import sys
+# Prefer sysconfig over distutils.sysconfig, for better compatibility
+# with python 3.x.  See automake bug#10227.
+try:
+    import sysconfig
+except ImportError:
+    can_use_sysconfig = 0
+else:
+    can_use_sysconfig = 1
+# Can't use sysconfig in CPython 2.7, since it's broken in virtualenvs:
+# <https://github.com/pypa/virtualenv/issues/118>
+try:
+    from platform import python_implementation
+    if python_implementation() == 'CPython' and sys.version[:3] == '2.7':
+        can_use_sysconfig = 0
+except ImportError:
+    pass"
+
+
+            { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON script directory" >&5
+$as_echo_n "checking for $am_display_PYTHON script directory... " >&6; }
+if ${am_cv_python_pythondir+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  if test "x$prefix" = xNONE
+     then
+       am_py_prefix=$ac_default_prefix
+     else
+       am_py_prefix=$prefix
+     fi
+     am_cv_python_pythondir=`$PYTHON -c "
+$am_python_setup_sysconfig
+if can_use_sysconfig:
+    sitedir = sysconfig.get_path('purelib', vars={'base':'$am_py_prefix'})
+else:
+    from distutils import sysconfig
+    sitedir = sysconfig.get_python_lib(0, 0, prefix='$am_py_prefix')
+sys.stdout.write(sitedir)"`
+     case $am_cv_python_pythondir in
+     $am_py_prefix*)
+       am__strip_prefix=`echo "$am_py_prefix" | sed 's|.|.|g'`
+       am_cv_python_pythondir=`echo "$am_cv_python_pythondir" | sed "s,^$am__strip_prefix,$PYTHON_PREFIX,"`
+       ;;
+     *)
+       case $am_py_prefix in
+         /usr|/System*) ;;
+         *)
+	  am_cv_python_pythondir=$PYTHON_PREFIX/lib/python$PYTHON_VERSION/site-packages
+	  ;;
+       esac
+       ;;
+     esac
+
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_python_pythondir" >&5
+$as_echo "$am_cv_python_pythondir" >&6; }
+  pythondir=$am_cv_python_pythondir
+
+
+
+  pkgpythondir=\${pythondir}/$PACKAGE
+
+
+        { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON extension module directory" >&5
+$as_echo_n "checking for $am_display_PYTHON extension module directory... " >&6; }
+if ${am_cv_python_pyexecdir+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  if test "x$exec_prefix" = xNONE
+     then
+       am_py_exec_prefix=$am_py_prefix
+     else
+       am_py_exec_prefix=$exec_prefix
+     fi
+     am_cv_python_pyexecdir=`$PYTHON -c "
+$am_python_setup_sysconfig
+if can_use_sysconfig:
+    sitedir = sysconfig.get_path('platlib', vars={'platbase':'$am_py_prefix'})
+else:
+    from distutils import sysconfig
+    sitedir = sysconfig.get_python_lib(1, 0, prefix='$am_py_prefix')
+sys.stdout.write(sitedir)"`
+     case $am_cv_python_pyexecdir in
+     $am_py_exec_prefix*)
+       am__strip_prefix=`echo "$am_py_exec_prefix" | sed 's|.|.|g'`
+       am_cv_python_pyexecdir=`echo "$am_cv_python_pyexecdir" | sed "s,^$am__strip_prefix,$PYTHON_EXEC_PREFIX,"`
+       ;;
+     *)
+       case $am_py_exec_prefix in
+         /usr|/System*) ;;
+         *)
+	   am_cv_python_pyexecdir=$PYTHON_EXEC_PREFIX/lib/python$PYTHON_VERSION/site-packages
+	   ;;
+       esac
+       ;;
+     esac
+
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_python_pyexecdir" >&5
+$as_echo "$am_cv_python_pyexecdir" >&6; }
+  pyexecdir=$am_cv_python_pyexecdir
+
+
+
+  pkgpyexecdir=\${pyexecdir}/$PACKAGE
+
+
+
+  fi
+
+
+     # Will need to update this if we change the version we are building
+     python_inc_path=python3.9
+     python_lib_path=python3.9
+     PYTHON=`pwd`"/external/python_wrap.sh"
+     PYTHON_CPPFLAGS="-I\${prefix}/include/${python_inc_path}"
+     PYTHON_NUMPY_CPPFLAGS="-I\${prefix}/lib/${python_lib_path}/site-packages/numpy/core/include"
+     pythondir="lib/${python_lib_path}/site-packages"
+     platpythondir="lib/${python_lib_path}/site-packages"
+     build_python_swig="yes"
+     PYTHON_CPPFLAGS="$PYTHON_CPPFLAGS $numpy_cppflags"
+
+
+     PYTHON_LDFLAGS=""
+
+   else
+     if test "x$want_python" = "xyes"; then
 	# Extract the first word of "python[$PYTHON_VERSION]", so it can be a program name with args.
 set dummy python$PYTHON_VERSION; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -24828,6 +25142,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 	# turn back to default flags
 	CPPFLAGS="$ac_save_CPPFLAGS"
 	LIBS="$ac_save_LIBS"
+       fi
     fi
 fi
  if test "$build_python_swig" = "yes"; then
@@ -24900,213 +25215,6 @@ fi
 if test "$ac_ruby_path" != ""; then
   RUBY=$ac_ruby_path
 fi
-
-
-
-
-
-
-
-        # Find any Python interpreter.
-    if test -z "$PYTHON"; then
-      for ac_prog in python python2 python3  python3.9 python3.8 python3.7 python3.6 python3.5 python3.4 python3.3  python3.2 python3.1 python3.0  python2.7 python2.6 python2.5 python2.4 python2.3 python2.2 python2.1  python2.0
-do
-  # Extract the first word of "$ac_prog", so it can be a program name with args.
-set dummy $ac_prog; ac_word=$2
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-$as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_path_PYTHON+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  case $PYTHON in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_PYTHON="$PYTHON" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_PYTHON="$as_dir/$ac_word$ac_exec_ext"
-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-  ;;
-esac
-fi
-PYTHON=$ac_cv_path_PYTHON
-if test -n "$PYTHON"; then
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PYTHON" >&5
-$as_echo "$PYTHON" >&6; }
-else
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-fi
-
-
-  test -n "$PYTHON" && break
-done
-test -n "$PYTHON" || PYTHON=":"
-
-    fi
-    am_display_PYTHON=python
-
-
-  if test "$PYTHON" = :; then
-      as_fn_error $? "no suitable Python interpreter found" "$LINENO" 5
-  else
-
-
-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON version" >&5
-$as_echo_n "checking for $am_display_PYTHON version... " >&6; }
-if ${am_cv_python_version+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  am_cv_python_version=`$PYTHON -c "import sys; sys.stdout.write(sys.version[:3])"`
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_python_version" >&5
-$as_echo "$am_cv_python_version" >&6; }
-  PYTHON_VERSION=$am_cv_python_version
-
-
-
-  PYTHON_PREFIX='${prefix}'
-
-  PYTHON_EXEC_PREFIX='${exec_prefix}'
-
-
-
-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON platform" >&5
-$as_echo_n "checking for $am_display_PYTHON platform... " >&6; }
-if ${am_cv_python_platform+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  am_cv_python_platform=`$PYTHON -c "import sys; sys.stdout.write(sys.platform)"`
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_python_platform" >&5
-$as_echo "$am_cv_python_platform" >&6; }
-  PYTHON_PLATFORM=$am_cv_python_platform
-
-
-  # Just factor out some code duplication.
-  am_python_setup_sysconfig="\
-import sys
-# Prefer sysconfig over distutils.sysconfig, for better compatibility
-# with python 3.x.  See automake bug#10227.
-try:
-    import sysconfig
-except ImportError:
-    can_use_sysconfig = 0
-else:
-    can_use_sysconfig = 1
-# Can't use sysconfig in CPython 2.7, since it's broken in virtualenvs:
-# <https://github.com/pypa/virtualenv/issues/118>
-try:
-    from platform import python_implementation
-    if python_implementation() == 'CPython' and sys.version[:3] == '2.7':
-        can_use_sysconfig = 0
-except ImportError:
-    pass"
-
-
-            { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON script directory" >&5
-$as_echo_n "checking for $am_display_PYTHON script directory... " >&6; }
-if ${am_cv_python_pythondir+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  if test "x$prefix" = xNONE
-     then
-       am_py_prefix=$ac_default_prefix
-     else
-       am_py_prefix=$prefix
-     fi
-     am_cv_python_pythondir=`$PYTHON -c "
-$am_python_setup_sysconfig
-if can_use_sysconfig:
-    sitedir = sysconfig.get_path('purelib', vars={'base':'$am_py_prefix'})
-else:
-    from distutils import sysconfig
-    sitedir = sysconfig.get_python_lib(0, 0, prefix='$am_py_prefix')
-sys.stdout.write(sitedir)"`
-     case $am_cv_python_pythondir in
-     $am_py_prefix*)
-       am__strip_prefix=`echo "$am_py_prefix" | sed 's|.|.|g'`
-       am_cv_python_pythondir=`echo "$am_cv_python_pythondir" | sed "s,^$am__strip_prefix,$PYTHON_PREFIX,"`
-       ;;
-     *)
-       case $am_py_prefix in
-         /usr|/System*) ;;
-         *)
-	  am_cv_python_pythondir=$PYTHON_PREFIX/lib/python$PYTHON_VERSION/site-packages
-	  ;;
-       esac
-       ;;
-     esac
-
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_python_pythondir" >&5
-$as_echo "$am_cv_python_pythondir" >&6; }
-  pythondir=$am_cv_python_pythondir
-
-
-
-  pkgpythondir=\${pythondir}/$PACKAGE
-
-
-        { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $am_display_PYTHON extension module directory" >&5
-$as_echo_n "checking for $am_display_PYTHON extension module directory... " >&6; }
-if ${am_cv_python_pyexecdir+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  if test "x$exec_prefix" = xNONE
-     then
-       am_py_exec_prefix=$am_py_prefix
-     else
-       am_py_exec_prefix=$exec_prefix
-     fi
-     am_cv_python_pyexecdir=`$PYTHON -c "
-$am_python_setup_sysconfig
-if can_use_sysconfig:
-    sitedir = sysconfig.get_path('platlib', vars={'platbase':'$am_py_prefix'})
-else:
-    from distutils import sysconfig
-    sitedir = sysconfig.get_python_lib(1, 0, prefix='$am_py_prefix')
-sys.stdout.write(sitedir)"`
-     case $am_cv_python_pyexecdir in
-     $am_py_exec_prefix*)
-       am__strip_prefix=`echo "$am_py_exec_prefix" | sed 's|.|.|g'`
-       am_cv_python_pyexecdir=`echo "$am_cv_python_pyexecdir" | sed "s,^$am__strip_prefix,$PYTHON_EXEC_PREFIX,"`
-       ;;
-     *)
-       case $am_py_exec_prefix in
-         /usr|/System*) ;;
-         *)
-	   am_cv_python_pyexecdir=$PYTHON_EXEC_PREFIX/lib/python$PYTHON_VERSION/site-packages
-	   ;;
-       esac
-       ;;
-     esac
-
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_python_pyexecdir" >&5
-$as_echo "$am_cv_python_pyexecdir" >&6; }
-  pyexecdir=$am_cv_python_pyexecdir
-
-
-
-  pkgpyexecdir=\${pyexecdir}/$PACKAGE
-
-
-
-  fi
-
 
 if test $PYTHON == ":"; then
    as_fn_error $? "
@@ -29580,84 +29688,6 @@ fi
 
 
 #======================================================================
-# Build our own version of the python modules we depend on. Useful for
-# installing on Pleiades
-#======================================================================
-
-
-# Check whether --with-python-module was given.
-if test "${with_python_module+set}" = set; then :
-  withval=$with_python_module; build_nose=yes
-	    build_h5py=yes
-	    build_future=yes
-	    build_six=yes
-	    build_ply=yes
-            build_ruport=yes
-	    rubygemdir='${prefix}'`${RUBY} -rrbconfig -rrubygems -e 'print Gem.dir.sub(RbConfig::CONFIG.fetch(%q(prefix)), %q())'`
-
-else
-  build_nose=no
-	    build_h5py=no
-	    build_six=no
-	    build_future=no
-	    build_ply=yes
-	    build_ply=no
-            build_ruport=no
-            rubygemdir=""
-
-fi
-
- if test x$build_nose = xyes; then
-  BUILD_NOSE_TRUE=
-  BUILD_NOSE_FALSE='#'
-else
-  BUILD_NOSE_TRUE='#'
-  BUILD_NOSE_FALSE=
-fi
-
- if test x$build_h5py = xyes; then
-  BUILD_H5PY_TRUE=
-  BUILD_H5PY_FALSE='#'
-else
-  BUILD_H5PY_TRUE='#'
-  BUILD_H5PY_FALSE=
-fi
-
- if test x$build_future = xyes; then
-  BUILD_FUTURE_TRUE=
-  BUILD_FUTURE_FALSE='#'
-else
-  BUILD_FUTURE_TRUE='#'
-  BUILD_FUTURE_FALSE=
-fi
-
- if test x$build_six = xyes; then
-  BUILD_SIX_TRUE=
-  BUILD_SIX_FALSE='#'
-else
-  BUILD_SIX_TRUE='#'
-  BUILD_SIX_FALSE=
-fi
-
- if test x$build_ply = xyes; then
-  BUILD_PLY_TRUE=
-  BUILD_PLY_FALSE='#'
-else
-  BUILD_PLY_TRUE='#'
-  BUILD_PLY_FALSE=
-fi
-
- if test x$build_ruport = xyes; then
-  BUILD_RUPORT_TRUE=
-  BUILD_RUPORT_FALSE='#'
-else
-  BUILD_RUPORT_TRUE='#'
-  BUILD_RUPORT_FALSE=
-fi
-
-
-
-#======================================================================
 # Allow location of absco tables to be changed. This is used by the
 # l2_fp_run test, as well as some unit tests.
 #======================================================================
@@ -29937,6 +29967,34 @@ if test -z "${am__fastdepCC_TRUE}" && test -z "${am__fastdepCC_FALSE}"; then
   as_fn_error $? "conditional \"am__fastdepCC\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
+if test -z "${BUILD_NOSE_TRUE}" && test -z "${BUILD_NOSE_FALSE}"; then
+  as_fn_error $? "conditional \"BUILD_NOSE\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${BUILD_H5PY_TRUE}" && test -z "${BUILD_H5PY_FALSE}"; then
+  as_fn_error $? "conditional \"BUILD_H5PY\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${BUILD_PYTHON_TRUE}" && test -z "${BUILD_PYTHON_FALSE}"; then
+  as_fn_error $? "conditional \"BUILD_PYTHON\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${BUILD_FUTURE_TRUE}" && test -z "${BUILD_FUTURE_FALSE}"; then
+  as_fn_error $? "conditional \"BUILD_FUTURE\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${BUILD_SIX_TRUE}" && test -z "${BUILD_SIX_FALSE}"; then
+  as_fn_error $? "conditional \"BUILD_SIX\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${BUILD_PLY_TRUE}" && test -z "${BUILD_PLY_FALSE}"; then
+  as_fn_error $? "conditional \"BUILD_PLY\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${BUILD_RUPORT_TRUE}" && test -z "${BUILD_RUPORT_FALSE}"; then
+  as_fn_error $? "conditional \"BUILD_RUPORT\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
 if test -z "${am__fastdepCC_TRUE}" && test -z "${am__fastdepCC_FALSE}"; then
   as_fn_error $? "conditional \"am__fastdepCC\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
@@ -30159,30 +30217,6 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${WITH_DOCUMENTATION_TRUE}" && test -z "${WITH_DOCUMENTATION_FALSE}"; then
   as_fn_error $? "conditional \"WITH_DOCUMENTATION\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${BUILD_NOSE_TRUE}" && test -z "${BUILD_NOSE_FALSE}"; then
-  as_fn_error $? "conditional \"BUILD_NOSE\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${BUILD_H5PY_TRUE}" && test -z "${BUILD_H5PY_FALSE}"; then
-  as_fn_error $? "conditional \"BUILD_H5PY\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${BUILD_FUTURE_TRUE}" && test -z "${BUILD_FUTURE_FALSE}"; then
-  as_fn_error $? "conditional \"BUILD_FUTURE\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${BUILD_SIX_TRUE}" && test -z "${BUILD_SIX_FALSE}"; then
-  as_fn_error $? "conditional \"BUILD_SIX\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${BUILD_PLY_TRUE}" && test -z "${BUILD_PLY_FALSE}"; then
-  as_fn_error $? "conditional \"BUILD_PLY\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${BUILD_RUPORT_TRUE}" && test -z "${BUILD_RUPORT_FALSE}"; then
-  as_fn_error $? "conditional \"BUILD_RUPORT\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 

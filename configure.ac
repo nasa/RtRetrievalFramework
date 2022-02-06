@@ -17,6 +17,42 @@ AM_INIT_AUTOMAKE([1.9 tar-pax])
 AM_MAINTAINER_MODE
 AC_PROG_LIBTOOL
 
+#======================================================================
+# Build our own version of the python modules we depend on. Useful for
+# installing on Pleiades
+#======================================================================
+
+AC_ARG_WITH([python-module],
+           [AS_HELP_STRING([--with-python-module],
+             [Build our own copy of the python modules we depend on. Normally you would just install this modules on your system, but for Pleiades this is convenient to build ourselves..])],
+           [build_nose=no
+	    build_h5py=yes
+	    build_future=no
+	    build_six=no
+	    build_python=yes
+	    build_ply=yes
+            build_ruport=yes
+	    rubygemdir='${prefix}'`${RUBY} -rrbconfig -rrubygems -e 'print Gem.dir.sub(RbConfig::CONFIG.fetch(%q(prefix)), %q())'`
+	   ],
+           [build_nose=no
+	    build_h5py=no
+	    build_six=no
+	    build_future=no
+	    build_python=no
+	    build_ply=yes
+	    build_ply=no
+            build_ruport=no
+            rubygemdir=""
+	   ])
+AM_CONDITIONAL([BUILD_NOSE], [test x$build_nose = xyes])
+AM_CONDITIONAL([BUILD_H5PY], [test x$build_h5py = xyes])
+AM_CONDITIONAL([BUILD_PYTHON], [test x$build_python = xyes])
+AM_CONDITIONAL([BUILD_FUTURE], [test x$build_future = xyes])
+AM_CONDITIONAL([BUILD_SIX], [test x$build_six = xyes])
+AM_CONDITIONAL([BUILD_PLY], [test x$build_ply = xyes])
+AM_CONDITIONAL([BUILD_RUPORT], [test x$build_ruport = xyes])
+AC_SUBST(rubygemdir)
+
 AC_PREFIX_DEFAULT([`pwd`/install])
 AC_PROG_CC
 AC_PROG_FC([ifort gfortran f90 f95 g95 pathf90 pgf90])
@@ -47,7 +83,6 @@ SWIG_ENABLE_CXX
 AC_PYTHON_DEVEL(>= '2.6')
 SWIG_PYTHON
 AC_RUBY
-AM_PATH_PYTHON
 if test $PYTHON == ":"; then
    AC_MSG_ERROR([
 We currently require python to build the Full Physics library.
@@ -249,39 +284,6 @@ environments to also install the documentation.])],
            [],
            [with_documentation=no])
 AM_CONDITIONAL([WITH_DOCUMENTATION], [test x$with_documentation = xyes])
-
-#======================================================================
-# Build our own version of the python modules we depend on. Useful for
-# installing on Pleiades
-#======================================================================
-
-AC_ARG_WITH([python-module],
-           [AS_HELP_STRING([--with-python-module],
-             [Build our own copy of the python modules we depend on. Normally you would just install this modules on your system, but for Pleiades this is convenient to build ourselves..])],
-           [build_nose=yes
-	    build_h5py=yes
-	    build_future=yes
-	    build_six=yes
-	    build_ply=yes
-            build_ruport=yes
-	    rubygemdir='${prefix}'`${RUBY} -rrbconfig -rrubygems -e 'print Gem.dir.sub(RbConfig::CONFIG.fetch(%q(prefix)), %q())'`
-	   ],
-           [build_nose=no
-	    build_h5py=no
-	    build_six=no
-	    build_future=no
-	    build_ply=yes
-	    build_ply=no
-            build_ruport=no
-            rubygemdir=""
-	   ])
-AM_CONDITIONAL([BUILD_NOSE], [test x$build_nose = xyes])
-AM_CONDITIONAL([BUILD_H5PY], [test x$build_h5py = xyes])
-AM_CONDITIONAL([BUILD_FUTURE], [test x$build_future = xyes])
-AM_CONDITIONAL([BUILD_SIX], [test x$build_six = xyes])
-AM_CONDITIONAL([BUILD_PLY], [test x$build_ply = xyes])
-AM_CONDITIONAL([BUILD_RUPORT], [test x$build_ruport = xyes])
-AC_SUBST(rubygemdir)
 
 #======================================================================
 # Allow location of absco tables to be changed. This is used by the
