@@ -104,6 +104,7 @@ AC_ARG_VAR([THIRDPARTY], [
 It is common that either 1) you want to build a local copy of all
 thirdparty software or 2) you have a central location not already
 searched for that you want to be searched. You can specify
+
 THIRDPARTY=build or THIRDPARTY=<directory>. This gets added to all
 the third party library checks.
 ])
@@ -309,7 +310,7 @@ if test ! -d "$ac_merra_path"; then
    AC_MSG_WARN([The MERRA directory $ac_merra_path is not found. This is only needed for the l2_fp_run and some unit tests, if you don't have the MERRA tables available you can still build everything else, just not do the l2_fp_run and some unit tests. You can specify an MERRA directory if desired using --with-merra.])
 fi
 
-AC_CONFIG_FILES([Makefile script/setup_fp_env.sh lib/Support/global_fixture_default.cc])
+AC_CONFIG_FILES([Makefile script/setup_fp_env.sh lib/Support/global_fixture_default.cc script/python_wrap.sh])
 
 if test "$have_swig" = "yes" -a "$USE_MAINTAINER_MODE" != "no"; then
   generate_swig="yes"

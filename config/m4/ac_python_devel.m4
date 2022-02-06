@@ -109,7 +109,7 @@ AC_ARG_WITH([python-swig],
      # Will need to update this if we change the version we are building
      python_inc_path=python3.9
      python_lib_path=python3.9
-     PYTHON=`pwd`"/external/python_wrap.sh" 
+     PYTHON=`pwd`"/script/python_wrap.sh" 
      PYTHON_CPPFLAGS="-I\${prefix}/include/${python_inc_path}"
      PYTHON_NUMPY_CPPFLAGS="-I\${prefix}/lib/${python_lib_path}/site-packages/numpy/core/include"
      pythondir="lib/${python_lib_path}/site-packages" 
