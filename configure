@@ -29727,7 +29727,10 @@ if test ! -d "$ac_merra_path"; then
 $as_echo "$as_me: WARNING: The MERRA directory $ac_merra_path is not found. This is only needed for the l2_fp_run and some unit tests, if you don't have the MERRA tables available you can still build everything else, just not do the l2_fp_run and some unit tests. You can specify an MERRA directory if desired using --with-merra." >&2;}
 fi
 
-ac_config_files="$ac_config_files Makefile script/setup_fp_env.sh lib/Support/global_fixture_default.cc script/python_wrap.sh"
+ac_config_files="$ac_config_files Makefile script/setup_fp_env.sh lib/Support/global_fixture_default.cc"
+
+ac_config_files="$ac_config_files script/python_wrap.sh"
+
 
 
 if test "$have_swig" = "yes" -a "$USE_MAINTAINER_MODE" != "no"; then
@@ -32890,6 +32893,7 @@ compiler_lib_search_path=$lt_compiler_lib_search_path_CXX
 _LT_EOF
 
  ;;
+    "script/python_wrap.sh":F) chmod +x script/python_wrap.sh ;;
     "thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.tmp":F)
  f1=thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.tmp
  f2=thirdparty/lidort-3.8/lidort_def/lidort_pars.F90
