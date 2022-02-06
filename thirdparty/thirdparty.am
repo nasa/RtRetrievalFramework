@@ -650,7 +650,6 @@ endif
 
 PYTHON_NAME = Python-3.9.9
 PYTHON_TARGET = $(DESTDIR)$(bindir)/python3
-BUILT_SOURCES += $(PYTHON_TARGET)
 
 $(PYTHON_TARGET): $(thirdpartysrc)/$(PYTHON_NAME).tgz 
 	@echo "*************************** Building python"
