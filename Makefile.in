@@ -3285,6 +3285,7 @@ pdfdir = @pdfdir@
 pkgpyexecdir = @pkgpyexecdir@
 pkgpythondir = @pkgpythondir@
 pkgpythontemplatedir = @pkgpythontemplatedir@
+platpythondir = @platpythondir@
 populateconfigsrc = @populateconfigsrc@
 prefix = @prefix@
 program_transform_name = @program_transform_name@

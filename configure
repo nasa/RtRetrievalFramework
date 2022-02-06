@@ -798,6 +798,7 @@ PYTHON_EXTRA_LIBS
 PYTHON_SITE_PKG
 PYTHON26
 PYTHON_LDFLAGS
+platpythondir
 PYTHON_CPPFLAGS
 pkgpyexecdir
 pyexecdir
@@ -24768,8 +24769,11 @@ $as_echo "$am_cv_python_pyexecdir" >&6; }
      PYTHON=`pwd`"/script/python_wrap.sh"
      PYTHON_CPPFLAGS="-I\${prefix}/include/${python_inc_path}"
      PYTHON_NUMPY_CPPFLAGS="-I\${prefix}/lib/${python_lib_path}/site-packages/numpy/core/include"
+     pythondir="lib/${python_lib_path}/site-packages"
+     platpythondir="lib/${python_lib_path}/site-packages"
      build_python_swig="yes"
      PYTHON_CPPFLAGS="$PYTHON_CPPFLAGS $numpy_cppflags"
+
 
      PYTHON_LDFLAGS=""
 
@@ -25138,9 +25142,14 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 	# turn back to default flags
 	CPPFLAGS="$ac_save_CPPFLAGS"
 	LIBS="$ac_save_LIBS"
-       fi
+	fi
+      pythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(False,False,''))"`
+      platpythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(True,False,''))"`
+
     fi
 fi
+pkgpythondir=\${prefix}/\${pythondir}/$PACKAGE
+
  if test "$build_python_swig" = "yes"; then
   BUILD_PYTHON_SWIG_TRUE=
   BUILD_PYTHON_SWIG_FALSE='#'

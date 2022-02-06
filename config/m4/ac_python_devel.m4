@@ -112,9 +112,12 @@ AC_ARG_WITH([python-swig],
      PYTHON=`pwd`"/script/python_wrap.sh" 
      PYTHON_CPPFLAGS="-I\${prefix}/include/${python_inc_path}"
      PYTHON_NUMPY_CPPFLAGS="-I\${prefix}/lib/${python_lib_path}/site-packages/numpy/core/include"
+     pythondir="lib/${python_lib_path}/site-packages" 
+     platpythondir="lib/${python_lib_path}/site-packages" 
      build_python_swig="yes"
      PYTHON_CPPFLAGS="$PYTHON_CPPFLAGS $numpy_cppflags"
      AC_SUBST(PYTHON_CPPFLAGS)
+     AC_SUBST([platpythondir])
      PYTHON_LDFLAGS=""
      AC_SUBST(PYTHON_LDFLAGS)
    else
@@ -335,8 +338,12 @@ $ac_numpy_result])
 	# turn back to default flags
 	CPPFLAGS="$ac_save_CPPFLAGS"
 	LIBS="$ac_save_LIBS"
-       fi
+	fi
+      pythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(False,False,''))"`
+      platpythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(True,False,''))"`
+      AC_SUBST([platpythondir])
     fi
 fi
+AC_SUBST([pkgpythondir], [\${prefix}/\${pythondir}/$PACKAGE])
 AM_CONDITIONAL([BUILD_PYTHON_SWIG], [test "$build_python_swig" = "yes"])
 ])
