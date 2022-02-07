@@ -25145,10 +25145,12 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 	fi
       pythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(False,False,''))"`
       platpythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(True,False,''))"`
+      pythondir="\${prefix}/${pythondir}"
+      platpythondir="\${prefix}/${platpythondir}"
 
     fi
 fi
-pkgpythondir=\${prefix}/\${pythondir}/$PACKAGE
+pkgpythondir=\${pythondir}/$PACKAGE
 
  if test "$build_python_swig" = "yes"; then
   BUILD_PYTHON_SWIG_TRUE=

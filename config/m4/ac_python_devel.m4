@@ -341,9 +341,11 @@ $ac_numpy_result])
 	fi
       pythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(False,False,''))"`
       platpythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(True,False,''))"`
+      pythondir="\${prefix}/${pythondir}"
+      platpythondir="\${prefix}/${platpythondir}"
       AC_SUBST([platpythondir])
     fi
 fi
-AC_SUBST([pkgpythondir], [\${prefix}/\${pythondir}/$PACKAGE])
+AC_SUBST([pkgpythondir], [\${pythondir}/$PACKAGE])
 AM_CONDITIONAL([BUILD_PYTHON_SWIG], [test "$build_python_swig" = "yes"])
 ])
