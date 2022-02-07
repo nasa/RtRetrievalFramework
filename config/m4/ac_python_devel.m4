@@ -111,7 +111,7 @@ AC_ARG_WITH([python-swig],
      python_lib_path=python3.9
      PYTHON=`pwd`"/script/python_wrap.sh" 
      PYTHON_CPPFLAGS="-I\${prefix}/include/${python_inc_path}"
-     PYTHON_NUMPY_CPPFLAGS="-I\${prefix}/lib/${python_lib_path}/site-packages/numpy/core/include"
+     numpy_cppflags="-I\${prefix}/lib/${python_lib_path}/site-packages/numpy/core/include"
      pythondir="\${prefix}/lib/${python_lib_path}/site-packages" 
      platpythondir="\${prefix}/lib/${python_lib_path}/site-packages" 
      build_python_swig="yes"
