@@ -339,11 +339,13 @@ $ac_numpy_result])
 	CPPFLAGS="$ac_save_CPPFLAGS"
 	LIBS="$ac_save_LIBS"
 	fi
-      pythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(False,False,''))"`
-      platpythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(True,False,''))"`
-      pythondir="\${prefix}/${pythondir}"
-      platpythondir="\${prefix}/${platpythondir}"
-      AC_SUBST([platpythondir])
+	pythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(False,False,''))"`
+	platpythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(True,False,''))"`
+	pythondir="\${prefix}/${pythondir}"
+	platpythondir="\${prefix}/${platpythondir}"
+	AC_SUBST([platpythondir])
+      else
+        AM_PATH_PYTHON(,, [:])
     fi
 fi
 AC_SUBST([pkgpythondir], [\${pythondir}/$PACKAGE])
