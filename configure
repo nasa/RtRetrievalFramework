@@ -25150,8 +25150,6 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
     fi
 fi
-pythondir=${pythondir}
-
 pkgpythondir=\${pythondir}/$PACKAGE
 
  if test "$build_python_swig" = "yes"; then
