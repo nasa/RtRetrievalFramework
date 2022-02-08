@@ -339,13 +339,14 @@ $ac_numpy_result])
 	CPPFLAGS="$ac_save_CPPFLAGS"
 	LIBS="$ac_save_LIBS"
 	fi
+      pythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(False,False,''))"`
+      platpythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(True,False,''))"`
+      pythondir="\${prefix}/${pythondir}"
+      platpythondir="\${prefix}/${platpythondir}"
+      AC_SUBST([platpythondir])
     fi
-    pythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(False,False,''))"`
-    platpythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(True,False,''))"`
-    pythondir="\${prefix}/${pythondir}"
-    platpythondir="\${prefix}/${platpythondir}"
-    AC_SUBST([platpythondir])
 fi
+AC_SUBST([pythondir], [${pythondir}])
 AC_SUBST([pkgpythondir], [\${pythondir}/$PACKAGE])
 AM_CONDITIONAL([BUILD_PYTHON_SWIG], [test "$build_python_swig" = "yes"])
 ])
