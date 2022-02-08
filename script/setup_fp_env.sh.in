@@ -52,6 +52,12 @@ if [ -e /usr/share/modules/init/bash ]; then
     module load  pkgsrc/2021Q2
     # Needed to get ruby working. Not sure why
     ulimit -Ss unlimited
+    # Need to run our copy of python
+    if [ -n "$LD_LIBRARY_PATH" ]; then
+	export LD_LIBRARY_PATH=@libdir@:${LD_LIBRARY_PATH}
+    else
+	export LD_LIBRARY_PATH=@libdir@
+    fi
 fi
 
     
