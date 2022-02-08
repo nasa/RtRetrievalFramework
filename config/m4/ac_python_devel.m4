@@ -346,6 +346,7 @@ $ac_numpy_result])
       AC_SUBST([platpythondir])
     fi
 fi
+AC_SUBST([pythondir], [${pythondir}])
 AC_SUBST([pkgpythondir], [\${pythondir}/$PACKAGE])
 AM_CONDITIONAL([BUILD_PYTHON_SWIG], [test "$build_python_swig" = "yes"])
 ])
