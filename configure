@@ -25143,13 +25143,15 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 	CPPFLAGS="$ac_save_CPPFLAGS"
 	LIBS="$ac_save_LIBS"
 	fi
-    fi
-    pythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(False,False,''))"`
-    platpythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(True,False,''))"`
-    pythondir="\${prefix}/${pythondir}"
-    platpythondir="\${prefix}/${platpythondir}"
+      pythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(False,False,''))"`
+      platpythondir=`$PYTHON -c "from distutils.sysconfig import *; print(get_python_lib(True,False,''))"`
+      pythondir="\${prefix}/${pythondir}"
+      platpythondir="\${prefix}/${platpythondir}"
 
+    fi
 fi
+pythondir=${pythondir}
+
 pkgpythondir=\${pythondir}/$PACKAGE
 
  if test "$build_python_swig" = "yes"; then
