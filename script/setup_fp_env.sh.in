@@ -45,12 +45,19 @@ alias parallel=@PARALLEL@
 # Note if you update this, also update ../pleiades_build.script
 if [ -e /usr/share/modules/init/bash ]; then
     source /usr/share/modules/init/bash
-    module load gcc/4.9.4
-    module load /nasa/modulefiles/pkgsrc/sles12/python3/3.5.2
-    # This contains ruby 2.2.6p396
-    module load /nasa/modulefiles/pkgsrc/sles12/pkgsrc/2016Q4
+    # Note we can't use TOSS-3 python3/3.9.5. This pulls in
+    # a too new version of HDF5, which I never could figure out how
+    # to avoid. Instead we build our own copy of python 3.9.
+    # This contains ruby 2.6.8p205
+    module load  pkgsrc/2021Q2
     # Needed to get ruby working. Not sure why
     ulimit -Ss unlimited
+    # Need to run our copy of python
+    if [ -n "$LD_LIBRARY_PATH" ]; then
+	export LD_LIBRARY_PATH=@libdir@:${LD_LIBRARY_PATH}
+    else
+	export LD_LIBRARY_PATH=@libdir@
+    fi
 fi
 
     

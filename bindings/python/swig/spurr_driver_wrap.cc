@@ -5301,61 +5301,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SpurrBrdfDriver_set_lambertian_albedo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
-  blitz::Array< double,1 > *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::SpurrBrdfDriver > tempshared1 ;
-  boost::shared_ptr< FullPhysics::SpurrBrdfDriver > *smartarg1 = 0 ;
-  blitz::Array< double,1 > a2 ;
-  PythonObject numpy2 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"SpurrBrdfDriver_set_lambertian_albedo",2,2,swig_obj)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrBrdfDriver_set_lambertian_albedo" "', argument " "1"" of type '" "FullPhysics::SpurrBrdfDriver *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    int res = SWIG_ConvertPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy2.obj = to_numpy<double>(swig_obj[1]);
-      if(!numpy2.obj)
-      return NULL;
-      a2.reference(to_blitz_array<double, 1>(numpy2));
-      arg2 = &a2;
-    }
-  }
-  {
-    try {
-      (arg1)->set_lambertian_albedo((blitz::Array< double,1 > const &)*arg2);
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_SpurrBrdfDriver__v_n_brdf_kernels(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
@@ -6518,12 +6463,6 @@ static PyMethodDef SwigMethods[] = {
 		"const\n"
 		"Sets up the BRDF inputs to be used by the BRDF calculation code This\n"
 		"routine is intended to be called for each spectral point. \n"
-		""},
-	 { (char *)"SpurrBrdfDriver_set_lambertian_albedo", _wrap_SpurrBrdfDriver_set_lambertian_albedo, METH_VARARGS, (char *)"\n"
-		"\n"
-		"void FullPhysics::SpurrBrdfDriver::set_lambertian_albedo(const blitz::Array< double, 1 > &albedo_array)\n"
-		"Initialize lambertian albedo from array that might be external to the\n"
-		"BrdfDriver. \n"
 		""},
 	 { (char *)"SpurrBrdfDriver__v_n_brdf_kernels", (PyCFunction)_wrap_SpurrBrdfDriver__v_n_brdf_kernels, METH_O, (char *)"\n"
 		"\n"

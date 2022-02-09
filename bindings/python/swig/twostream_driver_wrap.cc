@@ -3459,47 +3459,49 @@ namespace Swig {
 #define SWIGTYPE_p_FullPhysics__GenericObject swig_types[4]
 #define SWIGTYPE_p_FullPhysics__TwostreamBrdfDriver swig_types[5]
 #define SWIGTYPE_p_FullPhysics__TwostreamRtDriver swig_types[6]
-#define SWIGTYPE_p_allocator_type swig_types[7]
-#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[8]
-#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[9]
-#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[10]
-#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[11]
-#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[12]
-#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[13]
-#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[14]
-#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[15]
-#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[16]
-#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[17]
-#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[18]
-#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[19]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[20]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[21]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[22]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TwostreamBrdfDriver_t swig_types[23]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TwostreamRtDriver_t swig_types[24]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Twostream_L_Master_t swig_types[25]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_t swig_types[26]
-#define SWIGTYPE_p_char swig_types[27]
-#define SWIGTYPE_p_char_type swig_types[28]
-#define SWIGTYPE_p_difference_type swig_types[29]
-#define SWIGTYPE_p_fmtflags swig_types[30]
-#define SWIGTYPE_p_int_type swig_types[31]
-#define SWIGTYPE_p_iostate swig_types[32]
-#define SWIGTYPE_p_off_type swig_types[33]
-#define SWIGTYPE_p_openmode swig_types[34]
-#define SWIGTYPE_p_pos_type swig_types[35]
-#define SWIGTYPE_p_seekdir swig_types[36]
-#define SWIGTYPE_p_size_t swig_types[37]
-#define SWIGTYPE_p_size_type swig_types[38]
-#define SWIGTYPE_p_state_type swig_types[39]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[40]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[41]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[42]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[43]
-#define SWIGTYPE_p_traits_type swig_types[44]
-#define SWIGTYPE_p_value_type swig_types[45]
-static swig_type_info *swig_types[47];
-static swig_module_info swig_module = {swig_types, 46, 0, 0, 0, 0};
+#define SWIGTYPE_p_FullPhysics__Twostream_Lps_Master swig_types[7]
+#define SWIGTYPE_p_FullPhysics__Twostream_Ls_Brdf_Supplement swig_types[8]
+#define SWIGTYPE_p_allocator_type swig_types[9]
+#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[10]
+#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[11]
+#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[12]
+#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[13]
+#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[14]
+#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[15]
+#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[16]
+#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[17]
+#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[18]
+#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[19]
+#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[20]
+#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[21]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[22]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[23]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[24]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TwostreamBrdfDriver_t swig_types[25]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TwostreamRtDriver_t swig_types[26]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Twostream_Lps_Master_t swig_types[27]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_t swig_types[28]
+#define SWIGTYPE_p_char swig_types[29]
+#define SWIGTYPE_p_char_type swig_types[30]
+#define SWIGTYPE_p_difference_type swig_types[31]
+#define SWIGTYPE_p_fmtflags swig_types[32]
+#define SWIGTYPE_p_int_type swig_types[33]
+#define SWIGTYPE_p_iostate swig_types[34]
+#define SWIGTYPE_p_off_type swig_types[35]
+#define SWIGTYPE_p_openmode swig_types[36]
+#define SWIGTYPE_p_pos_type swig_types[37]
+#define SWIGTYPE_p_seekdir swig_types[38]
+#define SWIGTYPE_p_size_t swig_types[39]
+#define SWIGTYPE_p_size_type swig_types[40]
+#define SWIGTYPE_p_state_type swig_types[41]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[42]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[43]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[44]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[45]
+#define SWIGTYPE_p_traits_type swig_types[46]
+#define SWIGTYPE_p_value_type swig_types[47]
+static swig_type_info *swig_types[49];
+static swig_module_info swig_module = {swig_types, 48, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5504,7 +5506,7 @@ SWIGINTERN PyObject *_wrap_TwostreamBrdfDriver__v_brdf_interface(PyObject *SWIGU
   boost::shared_ptr< FullPhysics::TwostreamBrdfDriver const > tempshared1 ;
   boost::shared_ptr< FullPhysics::TwostreamBrdfDriver const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
-  SwigValueWrapper< boost::shared_ptr< FullPhysics::Twostream_Ls_Brdf_Supplement > > result;
+  boost::shared_ptr< FullPhysics::Twostream_Ls_Brdf_Supplement > result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -5532,7 +5534,9 @@ SWIGINTERN PyObject *_wrap_TwostreamBrdfDriver__v_brdf_interface(PyObject *SWIGU
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_NewPointerObj((new boost::shared_ptr< FullPhysics::Twostream_Ls_Brdf_Supplement >(static_cast< const boost::shared_ptr< FullPhysics::Twostream_Ls_Brdf_Supplement >& >(result))), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_t, SWIG_POINTER_OWN |  0 );
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -5604,19 +5608,16 @@ SWIGINTERN PyObject *_wrap_new_TwostreamRtDriver__SWIG_0(PyObject *SWIGUNUSEDPAR
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
-  int arg3 ;
-  bool arg4 ;
+  bool arg3 ;
   int val1 ;
   int ecode1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  int val3 ;
+  bool val3 ;
   int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
   FullPhysics::TwostreamRtDriver *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_TwostreamRtDriver" "', argument " "1"" of type '" "int""'");
@@ -5627,19 +5628,14 @@ SWIGINTERN PyObject *_wrap_new_TwostreamRtDriver__SWIG_0(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_TwostreamRtDriver" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_TwostreamRtDriver" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_TwostreamRtDriver" "', argument " "3"" of type '" "bool""'");
   } 
-  arg3 = static_cast< int >(val3);
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_TwostreamRtDriver" "', argument " "4"" of type '" "bool""'");
-  } 
-  arg4 = static_cast< bool >(val4);
+  arg3 = static_cast< bool >(val3);
   {
     try {
-      result = (FullPhysics::TwostreamRtDriver *)new FullPhysics::TwostreamRtDriver(arg1,arg2,arg3,arg4);
+      result = (FullPhysics::TwostreamRtDriver *)new FullPhysics::TwostreamRtDriver(arg1,arg2,arg3);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5660,16 +5656,13 @@ SWIGINTERN PyObject *_wrap_new_TwostreamRtDriver__SWIG_1(PyObject *SWIGUNUSEDPAR
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
-  int arg3 ;
   int val1 ;
   int ecode1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   FullPhysics::TwostreamRtDriver *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_TwostreamRtDriver" "', argument " "1"" of type '" "int""'");
@@ -5680,14 +5673,9 @@ SWIGINTERN PyObject *_wrap_new_TwostreamRtDriver__SWIG_1(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_TwostreamRtDriver" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_TwostreamRtDriver" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
   {
     try {
-      result = (FullPhysics::TwostreamRtDriver *)new FullPhysics::TwostreamRtDriver(arg1,arg2,arg3);
+      result = (FullPhysics::TwostreamRtDriver *)new FullPhysics::TwostreamRtDriver(arg1,arg2);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5706,24 +5694,24 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_TwostreamRtDriver(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[4] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"new_TwostreamRtDriver",0,4,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_TwostreamRtDriver",0,3,argv))) SWIG_fail;
   --argc;
-  if (argc == 3) {
+  if (argc == 2) {
     return _wrap_new_TwostreamRtDriver__SWIG_1(self, argc, argv);
   }
-  if (argc == 4) {
+  if (argc == 3) {
     return _wrap_new_TwostreamRtDriver__SWIG_0(self, argc, argv);
   }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_TwostreamRtDriver'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    FullPhysics::TwostreamRtDriver::TwostreamRtDriver(int,int,int,bool)\n"
-    "    FullPhysics::TwostreamRtDriver::TwostreamRtDriver(int,int,int)\n");
+    "    FullPhysics::TwostreamRtDriver::TwostreamRtDriver(int,int,bool)\n"
+    "    FullPhysics::TwostreamRtDriver::TwostreamRtDriver(int,int)\n");
   return 0;
 }
 
@@ -6256,7 +6244,7 @@ SWIGINTERN PyObject *_wrap_TwostreamRtDriver__v_brdf_interface(PyObject *SWIGUNU
   boost::shared_ptr< FullPhysics::TwostreamRtDriver const > tempshared1 ;
   boost::shared_ptr< FullPhysics::TwostreamRtDriver const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
-  SwigValueWrapper< boost::shared_ptr< FullPhysics::Twostream_Ls_Brdf_Supplement > > result;
+  boost::shared_ptr< FullPhysics::Twostream_Ls_Brdf_Supplement > result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -6284,7 +6272,9 @@ SWIGINTERN PyObject *_wrap_TwostreamRtDriver__v_brdf_interface(PyObject *SWIGUNU
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_NewPointerObj((new boost::shared_ptr< FullPhysics::Twostream_Ls_Brdf_Supplement >(static_cast< const boost::shared_ptr< FullPhysics::Twostream_Ls_Brdf_Supplement >& >(result))), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_t, SWIG_POINTER_OWN |  0 );
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -6299,7 +6289,7 @@ SWIGINTERN PyObject *_wrap_TwostreamRtDriver__v_twostream_interface(PyObject *SW
   boost::shared_ptr< FullPhysics::TwostreamRtDriver const > tempshared1 ;
   boost::shared_ptr< FullPhysics::TwostreamRtDriver const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
-  SwigValueWrapper< boost::shared_ptr< FullPhysics::Twostream_L_Master > > result;
+  boost::shared_ptr< FullPhysics::Twostream_Lps_Master > result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -6327,7 +6317,9 @@ SWIGINTERN PyObject *_wrap_TwostreamRtDriver__v_twostream_interface(PyObject *SW
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_NewPointerObj((new boost::shared_ptr< FullPhysics::Twostream_L_Master >(static_cast< const boost::shared_ptr< FullPhysics::Twostream_L_Master >& >(result))), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Twostream_L_Master_t, SWIG_POINTER_OWN |  0 );
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -6364,49 +6356,6 @@ SWIGINTERN PyObject *_wrap_TwostreamRtDriver__v_do_full_quadrature(PyObject *SWI
   {
     try {
       result = (bool)((FullPhysics::TwostreamRtDriver const *)arg1)->do_full_quadrature();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_TwostreamRtDriver__v_pure_nadir(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::TwostreamRtDriver *arg1 = (FullPhysics::TwostreamRtDriver *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::TwostreamRtDriver const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::TwostreamRtDriver const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  bool result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__TwostreamRtDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TwostreamRtDriver__v_pure_nadir" "', argument " "1"" of type '" "FullPhysics::TwostreamRtDriver const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::TwostreamRtDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::TwostreamRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::TwostreamRtDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::TwostreamRtDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::TwostreamRtDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      result = (bool)((FullPhysics::TwostreamRtDriver const *)arg1)->pure_nadir();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -6529,8 +6478,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"TwostreamBrdfDriver_swiginit", TwostreamBrdfDriver_swiginit, METH_VARARGS, NULL},
 	 { (char *)"new_TwostreamRtDriver", _wrap_new_TwostreamRtDriver, METH_VARARGS, (char *)"\n"
 		"\n"
-		"TwostreamRtDriver::TwostreamRtDriver(int nlayers, int npars, int surface_type, bool\n"
-		"do_fullquadrature=true, bool pure_nadir=false)\n"
+		"TwostreamRtDriver::TwostreamRtDriver(int nlayers, int surface_type, bool do_fullquadrature=true)\n"
 		"TwostreamRtDriver Sizes of layers, and number of jacobians must be set\n"
 		"up in construtor as seen in signature.\n"
 		"\n"
@@ -6591,17 +6539,12 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"TwostreamRtDriver__v_twostream_interface", (PyCFunction)_wrap_TwostreamRtDriver__v_twostream_interface, METH_O, (char *)"\n"
 		"\n"
-		"boost::shared_ptr<Twostream_L_Master> FullPhysics::TwostreamRtDriver::twostream_interface() const\n"
+		"boost::shared_ptr<Twostream_Lps_Master> FullPhysics::TwostreamRtDriver::twostream_interface() const\n"
 		"\n"
 		""},
 	 { (char *)"TwostreamRtDriver__v_do_full_quadrature", (PyCFunction)_wrap_TwostreamRtDriver__v_do_full_quadrature, METH_O, (char *)"\n"
 		"\n"
 		"bool FullPhysics::TwostreamRtDriver::do_full_quadrature() const\n"
-		"\n"
-		""},
-	 { (char *)"TwostreamRtDriver__v_pure_nadir", (PyCFunction)_wrap_TwostreamRtDriver__v_pure_nadir, METH_O, (char *)"\n"
-		"\n"
-		"bool FullPhysics::TwostreamRtDriver::pure_nadir() const\n"
 		"\n"
 		""},
 	 { (char *)"delete_TwostreamRtDriver", (PyCFunction)_wrap_delete_TwostreamRtDriver, METH_O, NULL},
@@ -6622,11 +6565,17 @@ static void *_p_std__basic_istreamT_char_std__char_traitsT_char_t_tTo_p_std__bas
 static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_ios< char,std::char_traits< char > > *) (std::basic_istream< char > *) ((std::basic_iostream< char,std::char_traits< char > > *) x));
 }
+static void *_p_FullPhysics__Twostream_Ls_Brdf_SupplementTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Twostream_Ls_Brdf_Supplement *) x));
+}
 static void *_p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::AutoDerivative< double > *) x));
 }
 static void *_p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::AutoDerivativeRef< double > *) x));
+}
+static void *_p_FullPhysics__Twostream_Lps_MasterTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Twostream_Lps_Master *) x));
 }
 static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_istreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_istream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
@@ -6638,9 +6587,17 @@ static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_b
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AutoDerivative< double > > *)x);
 }
+static void *_p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Twostream_Ls_Brdf_Supplement > *)x);
+}
 static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AutoDerivativeRef< double > > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__Twostream_Lps_Master_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Twostream_Lps_Master > *)x);
 }
 static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_1_t = {"_p_FullPhysics__ArrayAdT_double_1_t", "FullPhysics::ArrayAd< double,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_2_t = {"_p_FullPhysics__ArrayAdT_double_2_t", "FullPhysics::ArrayAd< double,2 > *", 0, 0, (void*)0, 0};
@@ -6649,6 +6606,8 @@ static swig_type_info _swigt__p_FullPhysics__AutoDerivativeT_double_t = {"_p_Ful
 static swig_type_info _swigt__p_FullPhysics__GenericObject = {"_p_FullPhysics__GenericObject", "FullPhysics::GenericObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__TwostreamBrdfDriver = {"_p_FullPhysics__TwostreamBrdfDriver", "FullPhysics::TwostreamBrdfDriver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__TwostreamRtDriver = {"_p_FullPhysics__TwostreamRtDriver", "FullPhysics::TwostreamRtDriver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Twostream_Lps_Master = {"_p_FullPhysics__Twostream_Lps_Master", "FullPhysics::Twostream_Lps_Master *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Twostream_Ls_Brdf_Supplement = {"_p_FullPhysics__Twostream_Ls_Brdf_Supplement", "FullPhysics::Twostream_Ls_Brdf_Supplement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_bool_1_t = {"_p_blitz__ArrayT_bool_1_t", "blitz::Array< bool,1 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_bool_2_t = {"_p_blitz__ArrayT_bool_2_t", "blitz::Array< bool,2 > *", 0, 0, (void*)0, 0};
@@ -6667,7 +6626,7 @@ static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t = {"_p_boost__shared_ptrT_FullPhysics__GenericObject_t", "boost::shared_ptr< FullPhysics::GenericObject > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__TwostreamBrdfDriver_t = {"_p_boost__shared_ptrT_FullPhysics__TwostreamBrdfDriver_t", "boost::shared_ptr< FullPhysics::TwostreamBrdfDriver > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__TwostreamRtDriver_t = {"_p_boost__shared_ptrT_FullPhysics__TwostreamRtDriver_t", "boost::shared_ptr< FullPhysics::TwostreamRtDriver > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Twostream_L_Master_t = {"_p_boost__shared_ptrT_FullPhysics__Twostream_L_Master_t", "boost::shared_ptr< FullPhysics::Twostream_L_Master > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Twostream_Lps_Master_t = {"_p_boost__shared_ptrT_FullPhysics__Twostream_Lps_Master_t", "boost::shared_ptr< FullPhysics::Twostream_Lps_Master > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_t = {"_p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_t", "boost::shared_ptr< FullPhysics::Twostream_Ls_Brdf_Supplement > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char_type = {"_p_char_type", "char_type *", 0, 0, (void*)0, 0};
@@ -6697,6 +6656,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__GenericObject,
   &_swigt__p_FullPhysics__TwostreamBrdfDriver,
   &_swigt__p_FullPhysics__TwostreamRtDriver,
+  &_swigt__p_FullPhysics__Twostream_Lps_Master,
+  &_swigt__p_FullPhysics__Twostream_Ls_Brdf_Supplement,
   &_swigt__p_allocator_type,
   &_swigt__p_blitz__ArrayT_bool_1_t,
   &_swigt__p_blitz__ArrayT_bool_2_t,
@@ -6715,7 +6676,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__TwostreamBrdfDriver_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__TwostreamRtDriver_t,
-  &_swigt__p_boost__shared_ptrT_FullPhysics__Twostream_L_Master_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Twostream_Lps_Master_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_t,
   &_swigt__p_char,
   &_swigt__p_char_type,
@@ -6742,9 +6703,11 @@ static swig_cast_info _swigc__p_FullPhysics__ArrayAdT_double_1_t[] = {  {&_swigt
 static swig_cast_info _swigc__p_FullPhysics__ArrayAdT_double_2_t[] = {  {&_swigt__p_FullPhysics__ArrayAdT_double_2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeRefT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__Twostream_Ls_Brdf_Supplement, _p_FullPhysics__Twostream_Ls_Brdf_SupplementTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__Twostream_Lps_Master, _p_FullPhysics__Twostream_Lps_MasterTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__TwostreamBrdfDriver[] = {  {&_swigt__p_FullPhysics__TwostreamBrdfDriver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__TwostreamRtDriver[] = {  {&_swigt__p_FullPhysics__TwostreamRtDriver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Twostream_Lps_Master[] = {  {&_swigt__p_FullPhysics__Twostream_Lps_Master, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Twostream_Ls_Brdf_Supplement[] = {  {&_swigt__p_FullPhysics__Twostream_Ls_Brdf_Supplement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_bool_1_t[] = {  {&_swigt__p_blitz__ArrayT_bool_1_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_bool_2_t[] = {  {&_swigt__p_blitz__ArrayT_bool_2_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -6760,10 +6723,10 @@ static swig_cast_info _swigc__p_blitz__ArrayT_int_3_t[] = {  {&_swigt__p_blitz__
 static swig_cast_info _swigc__p_blitz__ArrayT_int_4_t[] = {  {&_swigt__p_blitz__ArrayT_int_4_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Twostream_Lps_Master_t, _p_boost__shared_ptrT_FullPhysics__Twostream_Lps_Master_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_t, _p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__TwostreamBrdfDriver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TwostreamBrdfDriver_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__TwostreamRtDriver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__TwostreamRtDriver_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Twostream_L_Master_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Twostream_L_Master_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Twostream_Lps_Master_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Twostream_Lps_Master_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char_type[] = {  {&_swigt__p_char_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -6793,6 +6756,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__GenericObject,
   _swigc__p_FullPhysics__TwostreamBrdfDriver,
   _swigc__p_FullPhysics__TwostreamRtDriver,
+  _swigc__p_FullPhysics__Twostream_Lps_Master,
+  _swigc__p_FullPhysics__Twostream_Ls_Brdf_Supplement,
   _swigc__p_allocator_type,
   _swigc__p_blitz__ArrayT_bool_1_t,
   _swigc__p_blitz__ArrayT_bool_2_t,
@@ -6811,7 +6776,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__TwostreamBrdfDriver_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__TwostreamRtDriver_t,
-  _swigc__p_boost__shared_ptrT_FullPhysics__Twostream_L_Master_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Twostream_Lps_Master_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Twostream_Ls_Brdf_Supplement_t,
   _swigc__p_char,
   _swigc__p_char_type,

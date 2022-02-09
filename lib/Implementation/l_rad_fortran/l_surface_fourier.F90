@@ -1,12 +1,15 @@
 module l_surface_fourier_m
 
+!  10/26/20. Revision for BRDF consistency, R. Spurr
+!    -- All changes marked by "10/26/20. BRDF Upgrade"
+
 USE l_surface_m
 implicit none
 PUBLIC
 
 contains
 
-! NOT : For Lambertian, set nspars to 1 and spars(1) to Asurf. For glint, 
+! NOTE : For Lambertian, set nspars to 1 and spars(1) to Asurf. For glint, 
 ! set nspars to 3, spars(1) to ws, spars(2) to ri and spars(3) to shadow &
 ! fac or (set to 1.d0 for including shadowing).
 
@@ -203,12 +206,19 @@ contains
 !      R1M(3,1)= (-CTTPT-CTPPP)*DCOEFF
 !      R1M(3,2)= (-CTTPT+CTPPP)*DCOEFF
 
-! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1M
 
-      R1M(1,3)= (CTTTP+CPTPP)*DCOEFF
-      R1M(2,3)= (CTTTP-CPTPP)*DCOEFF
-      R1M(3,1)= (CTTPT+CTPPP)*DCOEFF
-      R1M(3,2)= (CTTPT-CTPPP)*DCOEFF
+      R1M(1,3) =  - ( CTTTP+CPTPP ) * DCOEFF   ! Sine
+      R1M(2,3) =  - ( CTTTP-CPTPP ) * DCOEFF   ! Sine
+      R1M(3,1) =  - ( CTTPT+CTPPP ) * DCOEFF   ! Sine
+      R1M(3,2) =  - ( CTTPT-CTPPP ) * DCOEFF   ! Sine
+
+! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
+!      R1M(1,3)= (CTTTP+CPTPP)*DCOEFF
+!      R1M(2,3)= (CTTTP-CPTPP)*DCOEFF
+!      R1M(3,1)= (CTTPT+CTPPP)*DCOEFF
+!      R1M(3,2)= (CTTPT-CTPPP)*DCOEFF
 
       R1M(3,3)= (CTTPP+CTPPT)*DCOEFF
       R1M(4,4)= (CTTPP-CTPPT)*DCOEFF
@@ -464,17 +474,29 @@ contains
 !      R1M(3,1)= (-CTTPT-CTPPP)*DCOEFF
 !      R1M(3,2)= (-CTTPT+CTPPP)*DCOEFF
 
-! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1M
 
-      R1M(1,3)= (CTTTP+CPTPP)*DCOEFF
-      R1M(2,3)= (CTTTP-CPTPP)*DCOEFF
-      R1M(3,1)= (CTTPT+CTPPP)*DCOEFF
-      R1M(3,2)= (CTTPT-CTPPP)*DCOEFF
+      R1M(1,3) =  - ( CTTTP+CPTPP ) * DCOEFF   ! Sine
+      R1M(2,3) =  - ( CTTTP-CPTPP ) * DCOEFF   ! Sine
+      R1M(3,1) =  - ( CTTPT+CTPPP ) * DCOEFF   ! Sine
+      R1M(3,2) =  - ( CTTPT-CTPPP ) * DCOEFF   ! Sine
+
+! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
+!      R1M(1,3)= (CTTTP+CPTPP)*DCOEFF
+!      R1M(2,3)= (CTTTP-CPTPP)*DCOEFF
+!      R1M(3,1)= (CTTPT+CTPPP)*DCOEFF
+!      R1M(3,2)= (CTTPT-CTPPP)*DCOEFF
 
       R1M(3,3)= (CTTPP+CTPPT)*DCOEFF
       R1M(4,4)= (CTTPP-CTPPT)*DCOEFF
 
 !  Derivatives wrt ri, V. Natraj, 8/17/2010
+
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1M
+!   Original coding was correct, corresponds to sign-change introduced above
+!     - this was a bug in the code.......!!!
 
       LS_R1M(1,3,2)= (-L_CTTTP-L_CPTPP)*DCOEFF
       LS_R1M(2,3,2)= (-L_CTTTP+L_CPTPP)*DCOEFF
@@ -667,6 +689,9 @@ contains
       
       pars_giss(4) = pars(4)
 
+!  Scale
+      pars_giss(5) = pars(5)
+
       if (m .eq. 0) then
         fac = 0.5d0
       else 
@@ -705,6 +730,10 @@ contains
             R1s(1,j,k1,k2) = R1s(1,j,k1,k2)*shadij
           enddo
         enddo
+!  V. Natraj 10/25/21. Scaling
+        R1cscal(1,j) = R1cscal(1,j)*pars_giss(5)
+        R1c(1,j,1:2,1:2) = R1c(1,j,1:2,1:2)*pars_giss(5)
+        R1s(1,j,1:2,3:4) = R1s(1,j,1:2,3:4)*pars_giss(5)
         if (m .eq. 0) then
           R1cscal(1,j) = R1cscal(1,j)+pars_giss(3) ! V. Natraj, 8/17/2010
           R1c(1,j,1,1) = R1c(1,j,1,1)+pars_giss(3) ! V. Natraj, 8/17/2010
@@ -739,6 +768,10 @@ contains
         do k1 = 3,4
           R1s(2,i,k1,1) = R1s(2,i,k1,1)*shadij
         enddo
+!  V. Natraj 10/25/21. Scaling
+        R1cscal(2,i) = R1cscal(2,i)*pars_giss(5)
+        R1c(2,i,1:2,1) = R1c(2,i,1:2,1)*pars_giss(5)
+        R1s(2,i,3:4,1) = R1s(2,i,3:4,1)*pars_giss(5)
         if (m .eq. 0) then
           R1cscal(2,i) = R1cscal(2,i)+pars_giss(3) ! V. Natraj, 8/17/2010
           R1c(2,i,1,1) = R1c(2,i,1,1)+pars_giss(3) ! V. Natraj, 8/17/2010
@@ -872,6 +905,9 @@ contains
           
       pars_giss(4) = pars(4)
 
+!  Scale
+      pars_giss(5) = pars(5)
+
       if (m .eq. 0) then
         fac = 0.5d0
       else
@@ -923,6 +959,19 @@ contains
         Ls_R1cscal(1,j,2) = Ls_R1cscal(1,j,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
         Ls_R1c(1,j,1:2,1:2,2) = Ls_R1c(1,j,1:2,1:2,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
         Ls_R1s(1,j,1:2,3:4,2) = Ls_R1s(1,j,1:2,3:4,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
+!  V. Natraj 10/25/21. Scaling
+        Ls_R1cscal(1,j,1) = Ls_R1cscal(1,j,1)*pars_giss(5)
+        Ls_R1c(1,j,1:2,1:2,1) = Ls_R1c(1,j,1:2,1:2,1)*pars_giss(5)
+        Ls_R1s(1,j,1:2,3:4,1) = Ls_R1s(1,j,1:2,3:4,1)*pars_giss(5)
+        Ls_R1cscal(1,j,2) = Ls_R1cscal(1,j,2)*pars_giss(5)
+        Ls_R1c(1,j,1:2,1:2,2) = Ls_R1c(1,j,1:2,1:2,2)*pars_giss(5)
+        Ls_R1s(1,j,1:2,3:4,2) = Ls_R1s(1,j,1:2,3:4,2)*pars_giss(5)
+        Ls_R1cscal(1,j,5) = R1cscal(1,j)
+        Ls_R1c(1,j,1:2,1:2,5) = R1c(1,j,1:2,1:2)
+        Ls_R1s(1,j,1:2,3:4,5) = R1s(1,j,1:2,3:4)
+        R1cscal(1,j) = R1cscal(1,j)*pars_giss(5)
+        R1c(1,j,1:2,1:2) = R1c(1,j,1:2,1:2)*pars_giss(5)
+        R1s(1,j,1:2,3:4) = R1s(1,j,1:2,3:4)*pars_giss(5)
         if (m .eq. 0) then
           R1cscal(1,j) = R1cscal(1,j)+pars_giss(3) ! V. Natraj, 8/17/2010
           R1c(1,j,1,1) = R1c(1,j,1,1)+pars_giss(3) ! V. Natraj, 8/17/2010
@@ -974,6 +1023,19 @@ contains
         Ls_R1cscal(2,i,2) = Ls_R1cscal(2,i,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
         Ls_R1c(2,i,1:2,1,2) = Ls_R1c(2,i,1:2,1,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
         Ls_R1s(2,i,3:4,1,2) = Ls_R1s(2,i,3:4,1,2)*shadij ! deriv wrt ri just propagates, V. Natraj, 8/17/2010
+!  V. Natraj 10/25/21. Scaling
+        Ls_R1cscal(2,i,1) = Ls_R1cscal(2,i,1)*pars_giss(5)
+        Ls_R1c(2,i,1:2,1,1) = Ls_R1c(2,i,1:2,1,1)*pars_giss(5)
+        Ls_R1s(2,i,3:4,1,1) = Ls_R1s(2,i,3:4,1,1)*pars_giss(5)
+        Ls_R1cscal(2,i,2) = Ls_R1cscal(2,i,2)*pars_giss(5)
+        Ls_R1c(2,i,1:2,1,2) = Ls_R1c(2,i,1:2,1,2)*pars_giss(5)
+        Ls_R1s(2,i,3:4,1,2) = Ls_R1s(2,i,3:4,1,2)*pars_giss(5)
+        Ls_R1cscal(2,i,5) = R1cscal(2,i)
+        Ls_R1c(2,i,1:2,1,5) = R1c(2,i,1:2,1)
+        Ls_R1s(2,i,3:4,1,5) = R1s(2,i,3:4,1)
+        R1cscal(2,i) = R1cscal(2,i)*pars_giss(5)
+        R1c(2,i,1:2,1) = R1c(2,i,1:2,1)*pars_giss(5)
+        R1s(2,i,3:4,1) = R1s(2,i,3:4,1)*pars_giss(5)
         if (m .eq. 0) then
           R1cscal(2,i) = R1cscal(2,i)+pars_giss(3) ! V. Natraj, 8/17/2010
           R1c(2,i,1,1) = R1c(2,i,1,1)+pars_giss(3) ! V. Natraj, 8/17/2010
@@ -1245,17 +1307,20 @@ contains
       CPTPP=CF21*CF22
 
       FACTOR = 1.d0/DMOD
-!      R1M(1,3)= (-CTTTP-CPTPP)*FACTOR
-!      R1M(2,3)= (-CTTTP+CPTPP)*FACTOR
-!      R1M(3,1)= (-CTTPT-CTPPP)*FACTOR
-!      R1M(3,2)= (-CTTPT+CTPPP)*FACTOR
+
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1M
+
+      R1M(1,3) =  - ( CTTTP+CPTPP ) * FACTOR   ! Sine
+      R1M(2,3) =  - ( CTTTP-CPTPP ) * FACTOR   ! Sine
+      R1M(3,1) =  - ( CTTPT+CTPPP ) * FACTOR   ! Sine
+      R1M(3,2) =  - ( CTTPT-CTPPP ) * FACTOR   ! Sine
 
 ! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
-
-      R1M(1,3)= (CTTTP+CPTPP)*FACTOR
-      R1M(2,3)= (CTTTP-CPTPP)*FACTOR
-      R1M(3,1)= (CTTPT+CTPPP)*FACTOR
-      R1M(3,2)= (CTTPT-CTPPP)*FACTOR
+!      R1M(1,3)= (CTTTP+CPTPP)*FACTOR
+!      R1M(2,3)= (CTTTP-CPTPP)*FACTOR
+!      R1M(3,1)= (CTTPT+CTPPP)*FACTOR
+!      R1M(3,2)= (CTTPT-CTPPP)*FACTOR
 
       R1M(3,3)= (CTTPP+CTPPT)*FACTOR
       R1M(4,4)= (CTTPP-CTPPT)*FACTOR
@@ -1323,7 +1388,9 @@ contains
 
 !  Add to the specular term
 
-      R1M(1,1) = PARS(5)*R1M(1,1) + PARS(1)*RAHMAN_KERNEL
+!  New scaling from Aronne Merrelli
+      R1M(:,:) = R1M(:,:) * PARS(5)
+      R1M(1,1) = R1M(1,1) + PARS(1)*RAHMAN_KERNEL 
 
 !  Finish
 
@@ -1510,17 +1577,20 @@ contains
       CPTPP=CF21*CF22
 
       FACTOR = 1.d0/DMOD
-!      R1M(1,3)= (-CTTTP-CPTPP)*FACTOR
-!      R1M(2,3)= (-CTTTP+CPTPP)*FACTOR
-!      R1M(3,1)= (-CTTPT-CTPPP)*FACTOR
-!      R1M(3,2)= (-CTTPT+CTPPP)*FACTOR
+
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1M
+
+      R1M(1,3) =  - ( CTTTP+CPTPP ) * FACTOR   ! Sine
+      R1M(2,3) =  - ( CTTTP-CPTPP ) * FACTOR   ! Sine
+      R1M(3,1) =  - ( CTTPT+CTPPP ) * FACTOR   ! Sine
+      R1M(3,2) =  - ( CTTPT-CTPPP ) * FACTOR   ! Sine
 
 ! Change the sign of the sine terms to account for the opposite sign convention compared to 2OS and LIDORT
-
-      R1M(1,3)= (CTTTP+CPTPP)*FACTOR
-      R1M(2,3)= (CTTTP-CPTPP)*FACTOR
-      R1M(3,1)= (CTTPT+CTPPP)*FACTOR
-      R1M(3,2)= (CTTPT-CTPPP)*FACTOR
+!      R1M(1,3)= (CTTTP+CPTPP)*FACTOR
+!      R1M(2,3)= (CTTTP-CPTPP)*FACTOR
+!      R1M(3,1)= (CTTPT+CTPPP)*FACTOR
+!      R1M(3,2)= (CTTPT-CTPPP)*FACTOR
 
       R1M(3,3)= (CTTPP+CTPPT)*FACTOR
       R1M(4,4)= (CTTPP-CTPPT)*FACTOR
@@ -1592,17 +1662,27 @@ contains
 
 !  Add to the specular term
 
-      R1M(1,1) = PARS(5)*R1M(1,1) + PARS(1)*RAHMAN_KERNEL
+!  New scaling from Aronne Merrelli
+
+      R1M(:,:) = R1M(:,:) * PARS(5)
+      R1M(1,1) = R1M(1,1) + PARS(1)*RAHMAN_KERNEL   
 
 !  Derivatives
 
       DO J = 1, 3
         IF ( DO_DERIV_PARS(J) ) THEN
-          Ls_R1M(1,1,J+1) = RAHMAN_DERIVATIVES(J)
+          ! New scaling from Aronne Merrelli
+          ! also scale RAHMAN derivatives
+          Ls_R1M(1,1,J+1) = PARS(1)*RAHMAN_DERIVATIVES(J)
         ENDIF
       ENDDO
       Ls_R1M(1,1,1) = RAHMAN_KERNEL
       Ls_R1M(1,1,5) = (R1M(1,1)-PARS(1)*RAHMAN_KERNEL)/PARS(5)
+
+!  Scaling for other elements. V. Natraj 10/25/21.
+
+      Ls_R1M(1,2:4,5) = R1M(1,2:4)/PARS(5)
+      Ls_R1M(2:4,1:4,5) = R1M(2:4,1:4)/PARS(5)
 
 !  Finish
 

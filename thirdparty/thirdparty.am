@@ -21,7 +21,7 @@
 # list.
 #
 
-thirdparty: hdf5 boost lidort-3.6 2stream blitz gsl lua parallel
+thirdparty: hdf5 boost lidort-3.8 2stream blitz gsl lua parallel
 
 # ========================================================================
 # Build radiant
@@ -33,9 +33,9 @@ thirdparty: hdf5 boost lidort-3.6 2stream blitz gsl lua parallel
 # include thirdparty/radiant/radiant.am
 
 # ========================================================================
-# Build lidort 3.6
+# Build lidort 3.8
 
-include thirdparty/lidort-3.6/lidort-3.6.am
+include thirdparty/lidort-3.8/lidort-3.8.am
 
 # ========================================================================
 # Build 2stream
@@ -465,11 +465,14 @@ $(GSL_TARGET): $(thirdpartysrc)/$(GSL_NAME).tar.gz
 
 .PHONY: python_module nose ruport h5py
 
-python_module: nose ruport h5py
+python_module: pip_install_requirements ruport h5py
 
 # ========================================================================
 # Simple name to install module. We don't install this normally, the
 # user need to explicitly build this if desired.
+#
+# NOTE - this is only, left in place for reference. Now just do a normal
+# pip install of all dependencies.
 
 nose: $(NOSE_TARGET)
 
@@ -585,6 +588,17 @@ $(TRANSSIMPLE_TARGET): $(thirdpartysrc)/$(TRANSSIMPLE_NAME).gem
 	touch $(TRANSSIMPLE_TARGET)
 	@echo "========================== Done building transaction-simple"
 
+# ========================================================================
+# Install all requirements. Note we need a separate build of h5py because
+# we are using an older version of HDF5. The newer of HDF5 version has 
+# imcompatible breakage of our code - we will perhaps update this some
+# day but this will be a bit of work
+
+pip_install_requirements: $(H5PY_BUILD_TARGET) $(PYTHON_BUILD_TARGET)
+	export PATH=$(bindir):$$PATH && \
+        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
+        $(PYTHON) -m pip install -r $(srcdir)/requirements.txt && exit 0; exit 1
 
 # ========================================================================
 # Simple name to install module. We don't install this normally, the
@@ -613,19 +627,50 @@ H5PY_NAME = h5py-2.10.0
 H5PY_TARGET = $(DESTDIR)$(pythondir)/h5py_is_installed
 EXTRA_DIST += @thirdpartysrc@/$(H5PY_NAME).tar.gz
 
-$(H5PY_TARGET): $(thirdpartysrc)/$(H5PY_NAME).tar.gz $(HDF5_TARGET) $(NOSE_BUILD_TARGET)
+$(H5PY_TARGET): $(thirdpartysrc)/$(H5PY_NAME).tar.gz $(HDF5_TARGET) $(PYTHON_BUILD_TARGET)
 	@echo "*************************** Building h5py"
-	$(MKDIR_P) $(pythondir)
-	-rm -rf $(H5PY_NAME)
-	${AMTAR} xzf $<
 	export PATH=$(bindir):$$PATH && \
         export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
         export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
-        cd $(H5PY_NAME) && python setup.py configure --hdf5=$(prefix) && \
-        $(PYTHON) setup.py install --prefix="$(prefix)" && exit 0; exit 1
-	rm -rf $(H5PY_NAME)
+        HDF5_DIR="$(prefix)" $(PYTHON) -m pip install --no-binary h5py $< && exit 0; exit 1
 	touch $(H5PY_TARGET)
 	@echo "========================== Done building h5py"
+
+
+# ========================================================================
+# Build python
+
+if BUILD_PYTHON
+BUILT_SOURCES += $(PYTHON_TARGET)
+BUILT_SOURCES += pip_install_requirements
+PYTHON_BUILD_TARGET = $(PYTHON_TARGET)
+else
+PYTHON_BUILD_TARGET = 
+endif
+
+PYTHON_NAME = Python-3.9.9
+PYTHON_TARGET = $(DESTDIR)$(bindir)/python3
+
+$(PYTHON_TARGET): $(thirdpartysrc)/$(PYTHON_NAME).tgz 
+	@echo "*************************** Building python"
+	-rm -rf $(PYTHON_NAME)
+	${AMTAR} xzf $<
+	cd $(PYTHON_NAME) && \
+        export PATH="$(bindir):$$PATH" && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):$(DESTDIR)$(prefix)/lib64:${LD_LIBRARY_PATH}" && \
+        ./configure --prefix="$(prefix)" \
+            --enable-shared --with-ensurepip=install \
+            LDFLAGS="-L$(DESTDIR)$(libdir) -L$(DESTDIR)$(libdir)/../lib64" \
+            CPPFLAGS="-I$(DESTDIR)$(includedir)" \
+            CXX="$(CXX)" CC="$(CC)" F77="$(F77)" && \
+        $(MAKE) -j 1 && $(MAKE) -j 1 install && exit 0; exit 1
+	cd $(bindir) && $(LN_S) python3 python && \
+            $(LN_S) idle3 idle && \
+            $(LN_S) python3-config python-config && \
+            $(LN_S) pydoc3 pydoc && $(LN_S) pip3 pip
+	rm -rf $(PYTHON_NAME)
+	touch $(PYTHON_TARGET)
+	@echo "========================== Done building python"
 
 # ========================================================================
 # Simple name to install module. We don't install this normally, the

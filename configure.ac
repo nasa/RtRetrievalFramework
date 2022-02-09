@@ -1,9 +1,9 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(full_physics, 10.3.00)
+AC_INIT(full_physics, 11.0.05)
 
 # Base version for commlib.
-[commonlib_version='10.2.00a']
+[commonlib_version='11.0.00a']
 
 AC_COPYRIGHT(
 [Copyright 2020, California Institute of Technology. 
@@ -16,6 +16,42 @@ AC_CONFIG_AUX_DIR([config])
 AM_INIT_AUTOMAKE([1.9 tar-pax])
 AM_MAINTAINER_MODE
 AC_PROG_LIBTOOL
+
+#======================================================================
+# Build our own version of the python modules we depend on. Useful for
+# installing on Pleiades
+#======================================================================
+
+AC_ARG_WITH([python-module],
+           [AS_HELP_STRING([--with-python-module],
+             [Build our own copy of the python modules we depend on. Normally you would just install this modules on your system, but for Pleiades this is convenient to build ourselves..])],
+           [build_nose=no
+	    build_h5py=yes
+	    build_future=no
+	    build_six=no
+	    build_python=yes
+	    build_ply=yes
+            build_ruport=yes
+	    rubygemdir='${prefix}'`${RUBY} -rrbconfig -rrubygems -e 'print Gem.dir.sub(RbConfig::CONFIG.fetch(%q(prefix)), %q())'`
+	   ],
+           [build_nose=no
+	    build_h5py=no
+	    build_six=no
+	    build_future=no
+	    build_python=no
+	    build_ply=yes
+	    build_ply=no
+            build_ruport=no
+            rubygemdir=""
+	   ])
+AM_CONDITIONAL([BUILD_NOSE], [test x$build_nose = xyes])
+AM_CONDITIONAL([BUILD_H5PY], [test x$build_h5py = xyes])
+AM_CONDITIONAL([BUILD_PYTHON], [test x$build_python = xyes])
+AM_CONDITIONAL([BUILD_FUTURE], [test x$build_future = xyes])
+AM_CONDITIONAL([BUILD_SIX], [test x$build_six = xyes])
+AM_CONDITIONAL([BUILD_PLY], [test x$build_ply = xyes])
+AM_CONDITIONAL([BUILD_RUPORT], [test x$build_ruport = xyes])
+AC_SUBST(rubygemdir)
 
 AC_PREFIX_DEFAULT([`pwd`/install])
 AC_PROG_CC
@@ -47,7 +83,6 @@ SWIG_ENABLE_CXX
 AC_PYTHON_DEVEL(>= '2.6')
 SWIG_PYTHON
 AC_RUBY
-AM_PATH_PYTHON
 if test $PYTHON == ":"; then
    AC_MSG_ERROR([
 We currently require python to build the Full Physics library.
@@ -69,17 +104,18 @@ AC_ARG_VAR([THIRDPARTY], [
 It is common that either 1) you want to build a local copy of all
 thirdparty software or 2) you have a central location not already
 searched for that you want to be searched. You can specify
+
 THIRDPARTY=build or THIRDPARTY=<directory>. This gets added to all
 the third party library checks.
 ])
 AC_HDF5
-AC_LIDORT_3_6
-if test "$have_lidort_3_6" = "no"; then
+AC_LIDORT_3_8
+if test "$have_lidort_3_8" = "no"; then
    AC_MSG_ERROR([
-The LIDORT 3.6 library is required by Full Physics. Try specifying
-location using --with-lidort-3.6 if configure couldn't find the
-library. You can specify --with-lidort-3.6=build if you want to build your
-own local copy of LIDORT 3.6.
+The LIDORT 3.8 library is required by Full Physics. Try specifying
+location using --with-lidort-3.8 if configure couldn't find the
+library. You can specify --with-lidort-3.8=build if you want to build your
+own local copy of LIDORT 3.8.
 
 You can also specify THIRDPARTY=build if you want to build a local
 copy of all the Thirdparty libraries.
@@ -204,7 +240,7 @@ AC_SUBST([swigsrc], [bindings/python/swig])
 AC_SUBST([srcscript], [script])
 AC_SUBST([binsrc], [bin])
 AC_SUBST([thirdpartysrc], [thirdparty])
-AC_SUBST([lidort_3_6_src], [thirdparty/lidort-3.6])
+AC_SUBST([lidort_3_8_src], [thirdparty/lidort-3.8])
 AC_SUBST([twostream_src], [thirdparty/2stream])
 AC_SUBST([supportsrc], [lib/Support])
 AC_SUBST([interfacesrc], [lib/Interface])
@@ -251,39 +287,6 @@ environments to also install the documentation.])],
 AM_CONDITIONAL([WITH_DOCUMENTATION], [test x$with_documentation = xyes])
 
 #======================================================================
-# Build our own version of the python modules we depend on. Useful for
-# installing on Pleiades
-#======================================================================
-
-AC_ARG_WITH([python-module],
-           [AS_HELP_STRING([--with-python-module],
-             [Build our own copy of the python modules we depend on. Normally you would just install this modules on your system, but for Pleiades this is convenient to build ourselves..])],
-           [build_nose=yes
-	    build_h5py=yes
-	    build_future=yes
-	    build_six=yes
-	    build_ply=yes
-            build_ruport=yes
-	    rubygemdir='${prefix}'`${RUBY} -rrbconfig -rrubygems -e 'print Gem.dir.sub(Config::CONFIG.fetch(%q(prefix)), %q())'`
-	   ],
-           [build_nose=no
-	    build_h5py=no
-	    build_six=no
-	    build_future=no
-	    build_ply=yes
-	    build_ply=no
-            build_ruport=no
-            rubygemdir=""
-	   ])
-AM_CONDITIONAL([BUILD_NOSE], [test x$build_nose = xyes])
-AM_CONDITIONAL([BUILD_H5PY], [test x$build_h5py = xyes])
-AM_CONDITIONAL([BUILD_FUTURE], [test x$build_future = xyes])
-AM_CONDITIONAL([BUILD_SIX], [test x$build_six = xyes])
-AM_CONDITIONAL([BUILD_PLY], [test x$build_ply = xyes])
-AM_CONDITIONAL([BUILD_RUPORT], [test x$build_ruport = xyes])
-AC_SUBST(rubygemdir)
-
-#======================================================================
 # Allow location of absco tables to be changed. This is used by the
 # l2_fp_run test, as well as some unit tests.
 #======================================================================
@@ -308,6 +311,8 @@ if test ! -d "$ac_merra_path"; then
 fi
 
 AC_CONFIG_FILES([Makefile script/setup_fp_env.sh lib/Support/global_fixture_default.cc])
+AC_CONFIG_FILES([script/python_wrap.sh], [chmod +x script/python_wrap.sh])
+
 
 if test "$have_swig" = "yes" -a "$USE_MAINTAINER_MODE" != "no"; then
   generate_swig="yes"
@@ -347,10 +352,10 @@ AC_SUBST([lidort_maxatmoswfs], ["$ac_lidort_maxatmoswfs"])
 # that depends on it every time we rerun the configuration script.
 #======================================================================
 
-AC_CONFIG_FILES([thirdparty/lidort-3.6/lidort_def/lidort_pars.F90.tmp:thirdparty/lidort-3.6/lidort_def/lidort_pars.F90.in],
+AC_CONFIG_FILES([thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.tmp:thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.in],
 [
- f1=thirdparty/lidort-3.6/lidort_def/lidort_pars.F90.tmp
- f2=thirdparty/lidort-3.6/lidort_def/lidort_pars.F90
+ f1=thirdparty/lidort-3.8/lidort_def/lidort_pars.F90.tmp
+ f2=thirdparty/lidort-3.8/lidort_def/lidort_pars.F90
  AS_IF([test -f $f2],
  [
    AS_IF([cmp -s $f1 $f2 2>/dev/null],
@@ -398,7 +403,7 @@ LOC_MSG()
 LOC_MSG([  HDF5 support:                 ${have_hdf5}])
 LOC_MSG([  Lua support:                  ${have_lua}])
 LOC_MSG([  Build own HDF5 library:       ${build_hdf5}])
-LOC_MSG([  Build own LIDORT 3.6 library: ${build_lidort_3_6}])
+LOC_MSG([  Build own LIDORT 3.8 library: ${build_lidort_3_8}])
 LOC_MSG([  Build own 2stream library:    ${build_twostream}])
 LOC_MSG([  Build own BZIB library:       ${build_bzlib}])
 LOC_MSG([  Build own BOOST library:      ${build_boost}])

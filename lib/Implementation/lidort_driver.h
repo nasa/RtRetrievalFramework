@@ -17,7 +17,7 @@ public:
 
   /// Interface to BRDF interface to allow changing configuration to values
   // other than default
-  const boost::shared_ptr<Brdf_Linsup_Masters> brdf_interface() const { return brdf_interface_; };
+  const boost::shared_ptr<Brdf_Lin_Sup_Masters> brdf_interface() const { return brdf_interface_; };
 
   virtual void setup_geometry(double sza, double azm, double zen) const;
 
@@ -48,7 +48,7 @@ protected:
 					    const bool do_factor_wfs,
 					    const blitz::Array<bool, 1>& do_params_wfs);
 
-  boost::shared_ptr<Brdf_Linsup_Masters> brdf_interface_;
+  boost::shared_ptr<Brdf_Lin_Sup_Masters> brdf_interface_;
 };
 
 /****************************************************************//**
@@ -76,7 +76,7 @@ public:
   const boost::shared_ptr<LidortBrdfDriver> lidort_brdf_driver() const
   { return boost::shared_ptr<LidortBrdfDriver>(boost::dynamic_pointer_cast<LidortBrdfDriver>(brdf_driver_)); }
 
-  const boost::shared_ptr<Brdf_Linsup_Masters> brdf_interface() const
+  const boost::shared_ptr<Brdf_Lin_Sup_Masters> brdf_interface() const
   { return boost::dynamic_pointer_cast<LidortBrdfDriver>(brdf_driver_)->brdf_interface(); }
 
   /// Interface to LIDORT RT software inputs to allow changing LIDORT configuration to values other than default

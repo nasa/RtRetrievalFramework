@@ -128,7 +128,7 @@ def _new_from_set(cls, version, *args):
     inst.set(*args)
     return inst
 
-class Brdf_Linsup_Masters(object):
+class Brdf_Lin_Sup_Masters(object):
     """
 
     C++ includes: lidort_interface_masters.h
@@ -138,21 +138,31 @@ class Brdf_Linsup_Masters(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, thread_in):
+    def __init__(self):
         """
 
-        FullPhysics::Brdf_Linsup_Masters::Brdf_Linsup_Masters(const int &thread_in)
+        FullPhysics::Brdf_Lin_Sup_Masters::Brdf_Lin_Sup_Masters()
 
         """
-        _lidort_interface_masters.Brdf_Linsup_Masters_swiginit(self, _lidort_interface_masters.new_Brdf_Linsup_Masters(thread_in))
+        _lidort_interface_masters.Brdf_Lin_Sup_Masters_swiginit(self, _lidort_interface_masters.new_Brdf_Lin_Sup_Masters())
+    __swig_destroy__ = _lidort_interface_masters.delete_Brdf_Lin_Sup_Masters
+
+    def __str__(self):
+        """
+
+        std::string FullPhysics::Brdf_Lin_Sup_Masters::print_to_string() const
+
+        """
+        return _lidort_interface_masters.Brdf_Lin_Sup_Masters___str__(self)
+
 
     def _v_brdf_sup_in(self):
         """
 
-        const Brdf_Sup_Inputs& FullPhysics::Brdf_Linsup_Masters::brdf_sup_in() const
+        const Brdf_Sup_Inputs& FullPhysics::Brdf_Lin_Sup_Masters::brdf_sup_in() const
 
         """
-        return _lidort_interface_masters.Brdf_Linsup_Masters__v_brdf_sup_in(self)
+        return _lidort_interface_masters.Brdf_Lin_Sup_Masters__v_brdf_sup_in(self)
 
 
     @property
@@ -160,13 +170,27 @@ class Brdf_Linsup_Masters(object):
         return self._v_brdf_sup_in()
 
 
+    def _v_brdf_linsup_in(self):
+        """
+
+        const Brdf_Linsup_Inputs& FullPhysics::Brdf_Lin_Sup_Masters::brdf_linsup_in() const
+
+        """
+        return _lidort_interface_masters.Brdf_Lin_Sup_Masters__v_brdf_linsup_in(self)
+
+
+    @property
+    def brdf_linsup_in(self):
+        return self._v_brdf_linsup_in()
+
+
     def _v_brdf_sup_inputstatus(self):
         """
 
-        const Brdf_Input_Exception_Handling& FullPhysics::Brdf_Linsup_Masters::brdf_sup_inputstatus() const
+        const Brdf_Input_Exception_Handling& FullPhysics::Brdf_Lin_Sup_Masters::brdf_sup_inputstatus() const
 
         """
-        return _lidort_interface_masters.Brdf_Linsup_Masters__v_brdf_sup_inputstatus(self)
+        return _lidort_interface_masters.Brdf_Lin_Sup_Masters__v_brdf_sup_inputstatus(self)
 
 
     @property
@@ -174,27 +198,13 @@ class Brdf_Linsup_Masters(object):
         return self._v_brdf_sup_inputstatus()
 
 
-    def _v_thread(self):
-        """
-
-        const int& FullPhysics::Brdf_Linsup_Masters::thread() const
-
-        """
-        return _lidort_interface_masters.Brdf_Linsup_Masters__v_thread(self)
-
-
-    @property
-    def thread(self):
-        return self._v_thread()
-
-
     def _v_brdf_sup_out(self):
         """
 
-        const Brdf_Sup_Outputs& FullPhysics::Brdf_Linsup_Masters::brdf_sup_out() const
+        const Brdf_Sup_Outputs& FullPhysics::Brdf_Lin_Sup_Masters::brdf_sup_out() const
 
         """
-        return _lidort_interface_masters.Brdf_Linsup_Masters__v_brdf_sup_out(self)
+        return _lidort_interface_masters.Brdf_Lin_Sup_Masters__v_brdf_sup_out(self)
 
 
     @property
@@ -205,10 +215,10 @@ class Brdf_Linsup_Masters(object):
     def _v_brdf_linsup_out(self):
         """
 
-        const Brdf_Linsup_Outputs& FullPhysics::Brdf_Linsup_Masters::brdf_linsup_out() const
+        const Brdf_Linsup_Outputs& FullPhysics::Brdf_Lin_Sup_Masters::brdf_linsup_out() const
 
         """
-        return _lidort_interface_masters.Brdf_Linsup_Masters__v_brdf_linsup_out(self)
+        return _lidort_interface_masters.Brdf_Lin_Sup_Masters__v_brdf_linsup_out(self)
 
 
     @property
@@ -216,33 +226,48 @@ class Brdf_Linsup_Masters(object):
         return self._v_brdf_linsup_out()
 
 
+    def _v_brdf_sup_outputstatus(self):
+        """
+
+        const Brdf_Output_Exception_Handling& FullPhysics::Brdf_Lin_Sup_Masters::brdf_sup_outputstatus() const
+
+        """
+        return _lidort_interface_masters.Brdf_Lin_Sup_Masters__v_brdf_sup_outputstatus(self)
+
+
+    @property
+    def brdf_sup_outputstatus(self):
+        return self._v_brdf_sup_outputstatus()
+
+
     def read_config(self, filnam_in):
         """
 
-        void FullPhysics::Brdf_Linsup_Masters::read_config(const std::string &filnam_in)
+        void FullPhysics::Brdf_Lin_Sup_Masters::read_config(const std::string &filnam_in)
 
         """
-        return _lidort_interface_masters.Brdf_Linsup_Masters_read_config(self, filnam_in)
+        return _lidort_interface_masters.Brdf_Lin_Sup_Masters_read_config(self, filnam_in)
 
 
     def run(self, do_debug_restoration_in, nmoments_input_in):
         """
 
-        void FullPhysics::Brdf_Linsup_Masters::run(const bool &do_debug_restoration_in, const int &nmoments_input_in)
+        void FullPhysics::Brdf_Lin_Sup_Masters::run(const bool &do_debug_restoration_in, const int &nmoments_input_in)
 
         """
-        return _lidort_interface_masters.Brdf_Linsup_Masters_run(self, do_debug_restoration_in, nmoments_input_in)
+        return _lidort_interface_masters.Brdf_Lin_Sup_Masters_run(self, do_debug_restoration_in, nmoments_input_in)
 
-    __swig_destroy__ = _lidort_interface_masters.delete_Brdf_Linsup_Masters
-Brdf_Linsup_Masters._v_brdf_sup_in = new_instancemethod(_lidort_interface_masters.Brdf_Linsup_Masters__v_brdf_sup_in, None, Brdf_Linsup_Masters)
-Brdf_Linsup_Masters._v_brdf_sup_inputstatus = new_instancemethod(_lidort_interface_masters.Brdf_Linsup_Masters__v_brdf_sup_inputstatus, None, Brdf_Linsup_Masters)
-Brdf_Linsup_Masters._v_thread = new_instancemethod(_lidort_interface_masters.Brdf_Linsup_Masters__v_thread, None, Brdf_Linsup_Masters)
-Brdf_Linsup_Masters._v_brdf_sup_out = new_instancemethod(_lidort_interface_masters.Brdf_Linsup_Masters__v_brdf_sup_out, None, Brdf_Linsup_Masters)
-Brdf_Linsup_Masters._v_brdf_linsup_out = new_instancemethod(_lidort_interface_masters.Brdf_Linsup_Masters__v_brdf_linsup_out, None, Brdf_Linsup_Masters)
-Brdf_Linsup_Masters.read_config = new_instancemethod(_lidort_interface_masters.Brdf_Linsup_Masters_read_config, None, Brdf_Linsup_Masters)
-Brdf_Linsup_Masters.run = new_instancemethod(_lidort_interface_masters.Brdf_Linsup_Masters_run, None, Brdf_Linsup_Masters)
-Brdf_Linsup_Masters_swigregister = _lidort_interface_masters.Brdf_Linsup_Masters_swigregister
-Brdf_Linsup_Masters_swigregister(Brdf_Linsup_Masters)
+Brdf_Lin_Sup_Masters.__str__ = new_instancemethod(_lidort_interface_masters.Brdf_Lin_Sup_Masters___str__, None, Brdf_Lin_Sup_Masters)
+Brdf_Lin_Sup_Masters._v_brdf_sup_in = new_instancemethod(_lidort_interface_masters.Brdf_Lin_Sup_Masters__v_brdf_sup_in, None, Brdf_Lin_Sup_Masters)
+Brdf_Lin_Sup_Masters._v_brdf_linsup_in = new_instancemethod(_lidort_interface_masters.Brdf_Lin_Sup_Masters__v_brdf_linsup_in, None, Brdf_Lin_Sup_Masters)
+Brdf_Lin_Sup_Masters._v_brdf_sup_inputstatus = new_instancemethod(_lidort_interface_masters.Brdf_Lin_Sup_Masters__v_brdf_sup_inputstatus, None, Brdf_Lin_Sup_Masters)
+Brdf_Lin_Sup_Masters._v_brdf_sup_out = new_instancemethod(_lidort_interface_masters.Brdf_Lin_Sup_Masters__v_brdf_sup_out, None, Brdf_Lin_Sup_Masters)
+Brdf_Lin_Sup_Masters._v_brdf_linsup_out = new_instancemethod(_lidort_interface_masters.Brdf_Lin_Sup_Masters__v_brdf_linsup_out, None, Brdf_Lin_Sup_Masters)
+Brdf_Lin_Sup_Masters._v_brdf_sup_outputstatus = new_instancemethod(_lidort_interface_masters.Brdf_Lin_Sup_Masters__v_brdf_sup_outputstatus, None, Brdf_Lin_Sup_Masters)
+Brdf_Lin_Sup_Masters.read_config = new_instancemethod(_lidort_interface_masters.Brdf_Lin_Sup_Masters_read_config, None, Brdf_Lin_Sup_Masters)
+Brdf_Lin_Sup_Masters.run = new_instancemethod(_lidort_interface_masters.Brdf_Lin_Sup_Masters_run, None, Brdf_Lin_Sup_Masters)
+Brdf_Lin_Sup_Masters_swigregister = _lidort_interface_masters.Brdf_Lin_Sup_Masters_swigregister
+Brdf_Lin_Sup_Masters_swigregister(Brdf_Lin_Sup_Masters)
 
 class Brdf_Sup_Masters(object):
     """
@@ -254,13 +279,23 @@ class Brdf_Sup_Masters(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, thread_in):
+    def __init__(self):
         """
 
-        FullPhysics::Brdf_Sup_Masters::Brdf_Sup_Masters(const int &thread_in)
+        FullPhysics::Brdf_Sup_Masters::Brdf_Sup_Masters()
 
         """
-        _lidort_interface_masters.Brdf_Sup_Masters_swiginit(self, _lidort_interface_masters.new_Brdf_Sup_Masters(thread_in))
+        _lidort_interface_masters.Brdf_Sup_Masters_swiginit(self, _lidort_interface_masters.new_Brdf_Sup_Masters())
+    __swig_destroy__ = _lidort_interface_masters.delete_Brdf_Sup_Masters
+
+    def __str__(self):
+        """
+
+        std::string FullPhysics::Brdf_Sup_Masters::print_to_string() const
+
+        """
+        return _lidort_interface_masters.Brdf_Sup_Masters___str__(self)
+
 
     def _v_brdf_sup_in(self):
         """
@@ -290,20 +325,6 @@ class Brdf_Sup_Masters(object):
         return self._v_brdf_sup_inputstatus()
 
 
-    def _v_thread(self):
-        """
-
-        const int& FullPhysics::Brdf_Sup_Masters::thread() const
-
-        """
-        return _lidort_interface_masters.Brdf_Sup_Masters__v_thread(self)
-
-
-    @property
-    def thread(self):
-        return self._v_thread()
-
-
     def _v_brdf_sup_out(self):
         """
 
@@ -316,6 +337,20 @@ class Brdf_Sup_Masters(object):
     @property
     def brdf_sup_out(self):
         return self._v_brdf_sup_out()
+
+
+    def _v_brdf_sup_outputstatus(self):
+        """
+
+        const Brdf_Output_Exception_Handling& FullPhysics::Brdf_Sup_Masters::brdf_sup_outputstatus() const
+
+        """
+        return _lidort_interface_masters.Brdf_Sup_Masters__v_brdf_sup_outputstatus(self)
+
+
+    @property
+    def brdf_sup_outputstatus(self):
+        return self._v_brdf_sup_outputstatus()
 
 
     def read_config(self, filnam_in):
@@ -335,15 +370,428 @@ class Brdf_Sup_Masters(object):
         """
         return _lidort_interface_masters.Brdf_Sup_Masters_run(self, do_debug_restoration_in, nmoments_input_in)
 
-    __swig_destroy__ = _lidort_interface_masters.delete_Brdf_Sup_Masters
+Brdf_Sup_Masters.__str__ = new_instancemethod(_lidort_interface_masters.Brdf_Sup_Masters___str__, None, Brdf_Sup_Masters)
 Brdf_Sup_Masters._v_brdf_sup_in = new_instancemethod(_lidort_interface_masters.Brdf_Sup_Masters__v_brdf_sup_in, None, Brdf_Sup_Masters)
 Brdf_Sup_Masters._v_brdf_sup_inputstatus = new_instancemethod(_lidort_interface_masters.Brdf_Sup_Masters__v_brdf_sup_inputstatus, None, Brdf_Sup_Masters)
-Brdf_Sup_Masters._v_thread = new_instancemethod(_lidort_interface_masters.Brdf_Sup_Masters__v_thread, None, Brdf_Sup_Masters)
 Brdf_Sup_Masters._v_brdf_sup_out = new_instancemethod(_lidort_interface_masters.Brdf_Sup_Masters__v_brdf_sup_out, None, Brdf_Sup_Masters)
+Brdf_Sup_Masters._v_brdf_sup_outputstatus = new_instancemethod(_lidort_interface_masters.Brdf_Sup_Masters__v_brdf_sup_outputstatus, None, Brdf_Sup_Masters)
 Brdf_Sup_Masters.read_config = new_instancemethod(_lidort_interface_masters.Brdf_Sup_Masters_read_config, None, Brdf_Sup_Masters)
 Brdf_Sup_Masters.run = new_instancemethod(_lidort_interface_masters.Brdf_Sup_Masters_run, None, Brdf_Sup_Masters)
 Brdf_Sup_Masters_swigregister = _lidort_interface_masters.Brdf_Sup_Masters_swigregister
 Brdf_Sup_Masters_swigregister(Brdf_Sup_Masters)
+
+class Lidort_Inputs(object):
+    """
+
+    C++ includes: lidort_interface_masters.h
+
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        """
+
+        FullPhysics::Lidort_Inputs::Lidort_Inputs()
+
+        """
+        _lidort_interface_masters.Lidort_Inputs_swiginit(self, _lidort_interface_masters.new_Lidort_Inputs())
+    __swig_destroy__ = _lidort_interface_masters.delete_Lidort_Inputs
+
+    def __str__(self):
+        """
+
+        std::string FullPhysics::Lidort_Inputs::print_to_string() const
+
+        """
+        return _lidort_interface_masters.Lidort_Inputs___str__(self)
+
+
+    def _v_lidort_sup(self):
+        """
+
+        void FullPhysics::Lidort_Inputs::lidort_sup(Lidort_Sup_Inout &lidort_sup_in)
+
+        """
+        return _lidort_interface_masters.Lidort_Inputs__v_lidort_sup(self)
+
+
+    @property
+    def lidort_sup(self):
+        return self._v_lidort_sup()
+
+
+    def _v_lidort_fixin(self):
+        """
+
+        const Lidort_Fixed_Inputs& FullPhysics::Lidort_Inputs::lidort_fixin() const
+
+        """
+        return _lidort_interface_masters.Lidort_Inputs__v_lidort_fixin(self)
+
+
+    @property
+    def lidort_fixin(self):
+        return self._v_lidort_fixin()
+
+
+    def _v_lidort_modin(self):
+        """
+
+        const Lidort_Modified_Inputs& FullPhysics::Lidort_Inputs::lidort_modin() const
+
+        """
+        return _lidort_interface_masters.Lidort_Inputs__v_lidort_modin(self)
+
+
+    @property
+    def lidort_modin(self):
+        return self._v_lidort_modin()
+
+
+    def _v_lidort_inputstatus(self):
+        """
+
+        const Lidort_Input_Exception_Handling& FullPhysics::Lidort_Inputs::lidort_inputstatus() const
+
+        """
+        return _lidort_interface_masters.Lidort_Inputs__v_lidort_inputstatus(self)
+
+
+    @property
+    def lidort_inputstatus(self):
+        return self._v_lidort_inputstatus()
+
+
+    def brdf_sup_init(self):
+        """
+
+        void FullPhysics::Lidort_Inputs::brdf_sup_init()
+
+        """
+        return _lidort_interface_masters.Lidort_Inputs_brdf_sup_init(self)
+
+
+    def read_config(self, filnam_in):
+        """
+
+        void FullPhysics::Lidort_Inputs::read_config(const std::string &filnam_in)
+
+        """
+        return _lidort_interface_masters.Lidort_Inputs_read_config(self, filnam_in)
+
+
+    def sleave_sup_init(self):
+        """
+
+        void FullPhysics::Lidort_Inputs::sleave_sup_init()
+
+        """
+        return _lidort_interface_masters.Lidort_Inputs_sleave_sup_init(self)
+
+
+    def ss_sup_init(self):
+        """
+
+        void FullPhysics::Lidort_Inputs::ss_sup_init()
+
+        """
+        return _lidort_interface_masters.Lidort_Inputs_ss_sup_init(self)
+
+
+    def sup_init(self):
+        """
+
+        void FullPhysics::Lidort_Inputs::sup_init()
+
+        """
+        return _lidort_interface_masters.Lidort_Inputs_sup_init(self)
+
+Lidort_Inputs.__str__ = new_instancemethod(_lidort_interface_masters.Lidort_Inputs___str__, None, Lidort_Inputs)
+Lidort_Inputs._v_lidort_sup = new_instancemethod(_lidort_interface_masters.Lidort_Inputs__v_lidort_sup, None, Lidort_Inputs)
+Lidort_Inputs._v_lidort_fixin = new_instancemethod(_lidort_interface_masters.Lidort_Inputs__v_lidort_fixin, None, Lidort_Inputs)
+Lidort_Inputs._v_lidort_modin = new_instancemethod(_lidort_interface_masters.Lidort_Inputs__v_lidort_modin, None, Lidort_Inputs)
+Lidort_Inputs._v_lidort_inputstatus = new_instancemethod(_lidort_interface_masters.Lidort_Inputs__v_lidort_inputstatus, None, Lidort_Inputs)
+Lidort_Inputs.brdf_sup_init = new_instancemethod(_lidort_interface_masters.Lidort_Inputs_brdf_sup_init, None, Lidort_Inputs)
+Lidort_Inputs.read_config = new_instancemethod(_lidort_interface_masters.Lidort_Inputs_read_config, None, Lidort_Inputs)
+Lidort_Inputs.sleave_sup_init = new_instancemethod(_lidort_interface_masters.Lidort_Inputs_sleave_sup_init, None, Lidort_Inputs)
+Lidort_Inputs.ss_sup_init = new_instancemethod(_lidort_interface_masters.Lidort_Inputs_ss_sup_init, None, Lidort_Inputs)
+Lidort_Inputs.sup_init = new_instancemethod(_lidort_interface_masters.Lidort_Inputs_sup_init, None, Lidort_Inputs)
+Lidort_Inputs_swigregister = _lidort_interface_masters.Lidort_Inputs_swigregister
+Lidort_Inputs_swigregister(Lidort_Inputs)
+
+class Lidort_Masters(object):
+    """
+
+    C++ includes: lidort_interface_masters.h
+
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        """
+
+        FullPhysics::Lidort_Masters::Lidort_Masters()
+
+        """
+        _lidort_interface_masters.Lidort_Masters_swiginit(self, _lidort_interface_masters.new_Lidort_Masters())
+    __swig_destroy__ = _lidort_interface_masters.delete_Lidort_Masters
+
+    def __str__(self):
+        """
+
+        std::string FullPhysics::Lidort_Masters::print_to_string() const
+
+        """
+        return _lidort_interface_masters.Lidort_Masters___str__(self)
+
+
+    def _v_lidort_fixin(self):
+        """
+
+        void FullPhysics::Lidort_Masters::lidort_fixin(Lidort_Fixed_Inputs &lidort_fixin_in)
+
+        """
+        return _lidort_interface_masters.Lidort_Masters__v_lidort_fixin(self)
+
+
+    @property
+    def lidort_fixin(self):
+        return self._v_lidort_fixin()
+
+
+    def _v_lidort_modin(self):
+        """
+
+        void FullPhysics::Lidort_Masters::lidort_modin(Lidort_Modified_Inputs &lidort_modin_in)
+
+        """
+        return _lidort_interface_masters.Lidort_Masters__v_lidort_modin(self)
+
+
+    @property
+    def lidort_modin(self):
+        return self._v_lidort_modin()
+
+
+    def _v_lidort_sup(self):
+        """
+
+        void FullPhysics::Lidort_Masters::lidort_sup(Lidort_Sup_Inout &lidort_sup_in)
+
+        """
+        return _lidort_interface_masters.Lidort_Masters__v_lidort_sup(self)
+
+
+    @property
+    def lidort_sup(self):
+        return self._v_lidort_sup()
+
+
+    def _v_lidort_out(self):
+        """
+
+        const Lidort_Outputs& FullPhysics::Lidort_Masters::lidort_out() const
+
+        """
+        return _lidort_interface_masters.Lidort_Masters__v_lidort_out(self)
+
+
+    @property
+    def lidort_out(self):
+        return self._v_lidort_out()
+
+
+    def run(self, do_debug_input_in):
+        """
+
+        void FullPhysics::Lidort_Masters::run(const bool &do_debug_input_in)
+
+        """
+        return _lidort_interface_masters.Lidort_Masters_run(self, do_debug_input_in)
+
+Lidort_Masters.__str__ = new_instancemethod(_lidort_interface_masters.Lidort_Masters___str__, None, Lidort_Masters)
+Lidort_Masters._v_lidort_fixin = new_instancemethod(_lidort_interface_masters.Lidort_Masters__v_lidort_fixin, None, Lidort_Masters)
+Lidort_Masters._v_lidort_modin = new_instancemethod(_lidort_interface_masters.Lidort_Masters__v_lidort_modin, None, Lidort_Masters)
+Lidort_Masters._v_lidort_sup = new_instancemethod(_lidort_interface_masters.Lidort_Masters__v_lidort_sup, None, Lidort_Masters)
+Lidort_Masters._v_lidort_out = new_instancemethod(_lidort_interface_masters.Lidort_Masters__v_lidort_out, None, Lidort_Masters)
+Lidort_Masters.run = new_instancemethod(_lidort_interface_masters.Lidort_Masters_run, None, Lidort_Masters)
+Lidort_Masters_swigregister = _lidort_interface_masters.Lidort_Masters_swigregister
+Lidort_Masters_swigregister(Lidort_Masters)
+
+class Lidort_L_Inputs(object):
+    """
+
+    C++ includes: lidort_interface_masters.h
+
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        """
+
+        FullPhysics::Lidort_L_Inputs::Lidort_L_Inputs()
+
+        """
+        _lidort_interface_masters.Lidort_L_Inputs_swiginit(self, _lidort_interface_masters.new_Lidort_L_Inputs())
+    __swig_destroy__ = _lidort_interface_masters.delete_Lidort_L_Inputs
+
+    def __str__(self):
+        """
+
+        std::string FullPhysics::Lidort_L_Inputs::print_to_string() const
+
+        """
+        return _lidort_interface_masters.Lidort_L_Inputs___str__(self)
+
+
+    def _v_lidort_linsup(self):
+        """
+
+        void FullPhysics::Lidort_L_Inputs::lidort_linsup(Lidort_Linsup_Inout &lidort_linsup_in)
+
+        """
+        return _lidort_interface_masters.Lidort_L_Inputs__v_lidort_linsup(self)
+
+
+    @property
+    def lidort_linsup(self):
+        return self._v_lidort_linsup()
+
+
+    def _v_lidort_fixin(self):
+        """
+
+        const Lidort_Fixed_Inputs& FullPhysics::Lidort_L_Inputs::lidort_fixin() const
+
+        """
+        return _lidort_interface_masters.Lidort_L_Inputs__v_lidort_fixin(self)
+
+
+    @property
+    def lidort_fixin(self):
+        return self._v_lidort_fixin()
+
+
+    def _v_lidort_modin(self):
+        """
+
+        const Lidort_Modified_Inputs& FullPhysics::Lidort_L_Inputs::lidort_modin() const
+
+        """
+        return _lidort_interface_masters.Lidort_L_Inputs__v_lidort_modin(self)
+
+
+    @property
+    def lidort_modin(self):
+        return self._v_lidort_modin()
+
+
+    def _v_lidort_linfixin(self):
+        """
+
+        const Lidort_Fixed_Lininputs& FullPhysics::Lidort_L_Inputs::lidort_linfixin() const
+
+        """
+        return _lidort_interface_masters.Lidort_L_Inputs__v_lidort_linfixin(self)
+
+
+    @property
+    def lidort_linfixin(self):
+        return self._v_lidort_linfixin()
+
+
+    def _v_lidort_linmodin(self):
+        """
+
+        const Lidort_Modified_Lininputs& FullPhysics::Lidort_L_Inputs::lidort_linmodin() const
+
+        """
+        return _lidort_interface_masters.Lidort_L_Inputs__v_lidort_linmodin(self)
+
+
+    @property
+    def lidort_linmodin(self):
+        return self._v_lidort_linmodin()
+
+
+    def _v_lidort_inputstatus(self):
+        """
+
+        const Lidort_Input_Exception_Handling& FullPhysics::Lidort_L_Inputs::lidort_inputstatus() const
+
+        """
+        return _lidort_interface_masters.Lidort_L_Inputs__v_lidort_inputstatus(self)
+
+
+    @property
+    def lidort_inputstatus(self):
+        return self._v_lidort_inputstatus()
+
+
+    def brdf_linsup_init(self):
+        """
+
+        void FullPhysics::Lidort_L_Inputs::brdf_linsup_init()
+
+        """
+        return _lidort_interface_masters.Lidort_L_Inputs_brdf_linsup_init(self)
+
+
+    def read_config(self, filnam_in):
+        """
+
+        void FullPhysics::Lidort_L_Inputs::read_config(const std::string &filnam_in)
+
+        """
+        return _lidort_interface_masters.Lidort_L_Inputs_read_config(self, filnam_in)
+
+
+    def linsup_init(self):
+        """
+
+        void FullPhysics::Lidort_L_Inputs::linsup_init()
+
+        """
+        return _lidort_interface_masters.Lidort_L_Inputs_linsup_init(self)
+
+
+    def sleave_linsup_init(self):
+        """
+
+        void FullPhysics::Lidort_L_Inputs::sleave_linsup_init()
+
+        """
+        return _lidort_interface_masters.Lidort_L_Inputs_sleave_linsup_init(self)
+
+
+    def ss_linsup_init(self):
+        """
+
+        void FullPhysics::Lidort_L_Inputs::ss_linsup_init()
+
+        """
+        return _lidort_interface_masters.Lidort_L_Inputs_ss_linsup_init(self)
+
+Lidort_L_Inputs.__str__ = new_instancemethod(_lidort_interface_masters.Lidort_L_Inputs___str__, None, Lidort_L_Inputs)
+Lidort_L_Inputs._v_lidort_linsup = new_instancemethod(_lidort_interface_masters.Lidort_L_Inputs__v_lidort_linsup, None, Lidort_L_Inputs)
+Lidort_L_Inputs._v_lidort_fixin = new_instancemethod(_lidort_interface_masters.Lidort_L_Inputs__v_lidort_fixin, None, Lidort_L_Inputs)
+Lidort_L_Inputs._v_lidort_modin = new_instancemethod(_lidort_interface_masters.Lidort_L_Inputs__v_lidort_modin, None, Lidort_L_Inputs)
+Lidort_L_Inputs._v_lidort_linfixin = new_instancemethod(_lidort_interface_masters.Lidort_L_Inputs__v_lidort_linfixin, None, Lidort_L_Inputs)
+Lidort_L_Inputs._v_lidort_linmodin = new_instancemethod(_lidort_interface_masters.Lidort_L_Inputs__v_lidort_linmodin, None, Lidort_L_Inputs)
+Lidort_L_Inputs._v_lidort_inputstatus = new_instancemethod(_lidort_interface_masters.Lidort_L_Inputs__v_lidort_inputstatus, None, Lidort_L_Inputs)
+Lidort_L_Inputs.brdf_linsup_init = new_instancemethod(_lidort_interface_masters.Lidort_L_Inputs_brdf_linsup_init, None, Lidort_L_Inputs)
+Lidort_L_Inputs.read_config = new_instancemethod(_lidort_interface_masters.Lidort_L_Inputs_read_config, None, Lidort_L_Inputs)
+Lidort_L_Inputs.linsup_init = new_instancemethod(_lidort_interface_masters.Lidort_L_Inputs_linsup_init, None, Lidort_L_Inputs)
+Lidort_L_Inputs.sleave_linsup_init = new_instancemethod(_lidort_interface_masters.Lidort_L_Inputs_sleave_linsup_init, None, Lidort_L_Inputs)
+Lidort_L_Inputs.ss_linsup_init = new_instancemethod(_lidort_interface_masters.Lidort_L_Inputs_ss_linsup_init, None, Lidort_L_Inputs)
+Lidort_L_Inputs_swigregister = _lidort_interface_masters.Lidort_L_Inputs_swigregister
+Lidort_L_Inputs_swigregister(Lidort_L_Inputs)
 
 class Lidort_Lcs_Masters(object):
     """
@@ -355,26 +803,22 @@ class Lidort_Lcs_Masters(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, thread_in):
+    def __init__(self):
         """
 
-        FullPhysics::Lidort_Lcs_Masters::Lidort_Lcs_Masters(const int &thread_in)
+        FullPhysics::Lidort_Lcs_Masters::Lidort_Lcs_Masters()
 
         """
-        _lidort_interface_masters.Lidort_Lcs_Masters_swiginit(self, _lidort_interface_masters.new_Lidort_Lcs_Masters(thread_in))
+        _lidort_interface_masters.Lidort_Lcs_Masters_swiginit(self, _lidort_interface_masters.new_Lidort_Lcs_Masters())
+    __swig_destroy__ = _lidort_interface_masters.delete_Lidort_Lcs_Masters
 
-    def _v_thread(self):
+    def __str__(self):
         """
 
-        const int& FullPhysics::Lidort_Lcs_Masters::thread() const
+        std::string FullPhysics::Lidort_Lcs_Masters::print_to_string() const
 
         """
-        return _lidort_interface_masters.Lidort_Lcs_Masters__v_thread(self)
-
-
-    @property
-    def thread(self):
-        return self._v_thread()
+        return _lidort_interface_masters.Lidort_Lcs_Masters___str__(self)
 
 
     def _v_lidort_fixin(self):
@@ -422,7 +866,7 @@ class Lidort_Lcs_Masters(object):
     def _v_lidort_out(self):
         """
 
-        void FullPhysics::Lidort_Lcs_Masters::lidort_out(Lidort_Outputs &lidort_out_in)
+        const Lidort_Outputs& FullPhysics::Lidort_Lcs_Masters::lidort_out() const
 
         """
         return _lidort_interface_masters.Lidort_Lcs_Masters__v_lidort_out(self)
@@ -478,7 +922,7 @@ class Lidort_Lcs_Masters(object):
     def _v_lidort_linout(self):
         """
 
-        void FullPhysics::Lidort_Lcs_Masters::lidort_linout(Lidort_Linoutputs &lidort_linout_in)
+        const Lidort_Linoutputs& FullPhysics::Lidort_Lcs_Masters::lidort_linout() const
 
         """
         return _lidort_interface_masters.Lidort_Lcs_Masters__v_lidort_linout(self)
@@ -489,16 +933,15 @@ class Lidort_Lcs_Masters(object):
         return self._v_lidort_linout()
 
 
-    def run(self):
+    def run(self, do_debug_input_in):
         """
 
-        void FullPhysics::Lidort_Lcs_Masters::run()
+        void FullPhysics::Lidort_Lcs_Masters::run(const bool &do_debug_input_in)
 
         """
-        return _lidort_interface_masters.Lidort_Lcs_Masters_run(self)
+        return _lidort_interface_masters.Lidort_Lcs_Masters_run(self, do_debug_input_in)
 
-    __swig_destroy__ = _lidort_interface_masters.delete_Lidort_Lcs_Masters
-Lidort_Lcs_Masters._v_thread = new_instancemethod(_lidort_interface_masters.Lidort_Lcs_Masters__v_thread, None, Lidort_Lcs_Masters)
+Lidort_Lcs_Masters.__str__ = new_instancemethod(_lidort_interface_masters.Lidort_Lcs_Masters___str__, None, Lidort_Lcs_Masters)
 Lidort_Lcs_Masters._v_lidort_fixin = new_instancemethod(_lidort_interface_masters.Lidort_Lcs_Masters__v_lidort_fixin, None, Lidort_Lcs_Masters)
 Lidort_Lcs_Masters._v_lidort_modin = new_instancemethod(_lidort_interface_masters.Lidort_Lcs_Masters__v_lidort_modin, None, Lidort_Lcs_Masters)
 Lidort_Lcs_Masters._v_lidort_sup = new_instancemethod(_lidort_interface_masters.Lidort_Lcs_Masters__v_lidort_sup, None, Lidort_Lcs_Masters)
@@ -521,26 +964,22 @@ class Lidort_Lps_Masters(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
-    def __init__(self, thread_in):
+    def __init__(self):
         """
 
-        FullPhysics::Lidort_Lps_Masters::Lidort_Lps_Masters(const int &thread_in)
+        FullPhysics::Lidort_Lps_Masters::Lidort_Lps_Masters()
 
         """
-        _lidort_interface_masters.Lidort_Lps_Masters_swiginit(self, _lidort_interface_masters.new_Lidort_Lps_Masters(thread_in))
+        _lidort_interface_masters.Lidort_Lps_Masters_swiginit(self, _lidort_interface_masters.new_Lidort_Lps_Masters())
+    __swig_destroy__ = _lidort_interface_masters.delete_Lidort_Lps_Masters
 
-    def _v_thread(self):
+    def __str__(self):
         """
 
-        const int& FullPhysics::Lidort_Lps_Masters::thread() const
+        std::string FullPhysics::Lidort_Lps_Masters::print_to_string() const
 
         """
-        return _lidort_interface_masters.Lidort_Lps_Masters__v_thread(self)
-
-
-    @property
-    def thread(self):
-        return self._v_thread()
+        return _lidort_interface_masters.Lidort_Lps_Masters___str__(self)
 
 
     def _v_lidort_fixin(self):
@@ -588,7 +1027,7 @@ class Lidort_Lps_Masters(object):
     def _v_lidort_out(self):
         """
 
-        void FullPhysics::Lidort_Lps_Masters::lidort_out(Lidort_Outputs &lidort_out_in)
+        const Lidort_Outputs& FullPhysics::Lidort_Lps_Masters::lidort_out() const
 
         """
         return _lidort_interface_masters.Lidort_Lps_Masters__v_lidort_out(self)
@@ -644,7 +1083,7 @@ class Lidort_Lps_Masters(object):
     def _v_lidort_linout(self):
         """
 
-        void FullPhysics::Lidort_Lps_Masters::lidort_linout(Lidort_Linoutputs &lidort_linout_in)
+        const Lidort_Linoutputs& FullPhysics::Lidort_Lps_Masters::lidort_linout() const
 
         """
         return _lidort_interface_masters.Lidort_Lps_Masters__v_lidort_linout(self)
@@ -655,16 +1094,15 @@ class Lidort_Lps_Masters(object):
         return self._v_lidort_linout()
 
 
-    def run(self):
+    def run(self, do_debug_input_in):
         """
 
-        void FullPhysics::Lidort_Lps_Masters::run()
+        void FullPhysics::Lidort_Lps_Masters::run(const bool &do_debug_input_in)
 
         """
-        return _lidort_interface_masters.Lidort_Lps_Masters_run(self)
+        return _lidort_interface_masters.Lidort_Lps_Masters_run(self, do_debug_input_in)
 
-    __swig_destroy__ = _lidort_interface_masters.delete_Lidort_Lps_Masters
-Lidort_Lps_Masters._v_thread = new_instancemethod(_lidort_interface_masters.Lidort_Lps_Masters__v_thread, None, Lidort_Lps_Masters)
+Lidort_Lps_Masters.__str__ = new_instancemethod(_lidort_interface_masters.Lidort_Lps_Masters___str__, None, Lidort_Lps_Masters)
 Lidort_Lps_Masters._v_lidort_fixin = new_instancemethod(_lidort_interface_masters.Lidort_Lps_Masters__v_lidort_fixin, None, Lidort_Lps_Masters)
 Lidort_Lps_Masters._v_lidort_modin = new_instancemethod(_lidort_interface_masters.Lidort_Lps_Masters__v_lidort_modin, None, Lidort_Lps_Masters)
 Lidort_Lps_Masters._v_lidort_sup = new_instancemethod(_lidort_interface_masters.Lidort_Lps_Masters__v_lidort_sup, None, Lidort_Lps_Masters)
@@ -677,189 +1115,7 @@ Lidort_Lps_Masters.run = new_instancemethod(_lidort_interface_masters.Lidort_Lps
 Lidort_Lps_Masters_swigregister = _lidort_interface_masters.Lidort_Lps_Masters_swigregister
 Lidort_Lps_Masters_swigregister(Lidort_Lps_Masters)
 
-class Lidort_Inputs(object):
-    """
-
-    C++ includes: lidort_interface_masters.h
-
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        """
-
-        FullPhysics::Lidort_Inputs::Lidort_Inputs()
-
-        """
-        _lidort_interface_masters.Lidort_Inputs_swiginit(self, _lidort_interface_masters.new_Lidort_Inputs())
-
-    def _v_lidort_fixin(self):
-        """
-
-        const Lidort_Fixed_Inputs& FullPhysics::Lidort_Inputs::lidort_fixin() const
-
-        """
-        return _lidort_interface_masters.Lidort_Inputs__v_lidort_fixin(self)
-
-
-    @property
-    def lidort_fixin(self):
-        return self._v_lidort_fixin()
-
-
-    def _v_lidort_modin(self):
-        """
-
-        const Lidort_Modified_Inputs& FullPhysics::Lidort_Inputs::lidort_modin() const
-
-        """
-        return _lidort_interface_masters.Lidort_Inputs__v_lidort_modin(self)
-
-
-    @property
-    def lidort_modin(self):
-        return self._v_lidort_modin()
-
-
-    def _v_lidort_inputstatus(self):
-        """
-
-        const Lidort_Input_Exception_Handling& FullPhysics::Lidort_Inputs::lidort_inputstatus() const
-
-        """
-        return _lidort_interface_masters.Lidort_Inputs__v_lidort_inputstatus(self)
-
-
-    @property
-    def lidort_inputstatus(self):
-        return self._v_lidort_inputstatus()
-
-
-    def read_config(self, filnam_in):
-        """
-
-        void FullPhysics::Lidort_Inputs::read_config(const std::string &filnam_in)
-
-        """
-        return _lidort_interface_masters.Lidort_Inputs_read_config(self, filnam_in)
-
-    __swig_destroy__ = _lidort_interface_masters.delete_Lidort_Inputs
-Lidort_Inputs._v_lidort_fixin = new_instancemethod(_lidort_interface_masters.Lidort_Inputs__v_lidort_fixin, None, Lidort_Inputs)
-Lidort_Inputs._v_lidort_modin = new_instancemethod(_lidort_interface_masters.Lidort_Inputs__v_lidort_modin, None, Lidort_Inputs)
-Lidort_Inputs._v_lidort_inputstatus = new_instancemethod(_lidort_interface_masters.Lidort_Inputs__v_lidort_inputstatus, None, Lidort_Inputs)
-Lidort_Inputs.read_config = new_instancemethod(_lidort_interface_masters.Lidort_Inputs_read_config, None, Lidort_Inputs)
-Lidort_Inputs_swigregister = _lidort_interface_masters.Lidort_Inputs_swigregister
-Lidort_Inputs_swigregister(Lidort_Inputs)
-
-class Lidort_Masters(object):
-    """
-
-    C++ includes: lidort_interface_masters.h
-
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def __init__(self, thread_in):
-        """
-
-        FullPhysics::Lidort_Masters::Lidort_Masters(const int &thread_in)
-
-        """
-        _lidort_interface_masters.Lidort_Masters_swiginit(self, _lidort_interface_masters.new_Lidort_Masters(thread_in))
-
-    def _v_thread(self):
-        """
-
-        const int& FullPhysics::Lidort_Masters::thread() const
-
-        """
-        return _lidort_interface_masters.Lidort_Masters__v_thread(self)
-
-
-    @property
-    def thread(self):
-        return self._v_thread()
-
-
-    def _v_lidort_fixin(self):
-        """
-
-        void FullPhysics::Lidort_Masters::lidort_fixin(Lidort_Fixed_Inputs &lidort_fixin_in)
-
-        """
-        return _lidort_interface_masters.Lidort_Masters__v_lidort_fixin(self)
-
-
-    @property
-    def lidort_fixin(self):
-        return self._v_lidort_fixin()
-
-
-    def _v_lidort_modin(self):
-        """
-
-        void FullPhysics::Lidort_Masters::lidort_modin(Lidort_Modified_Inputs &lidort_modin_in)
-
-        """
-        return _lidort_interface_masters.Lidort_Masters__v_lidort_modin(self)
-
-
-    @property
-    def lidort_modin(self):
-        return self._v_lidort_modin()
-
-
-    def _v_lidort_sup(self):
-        """
-
-        void FullPhysics::Lidort_Masters::lidort_sup(Lidort_Sup_Inout &lidort_sup_in)
-
-        """
-        return _lidort_interface_masters.Lidort_Masters__v_lidort_sup(self)
-
-
-    @property
-    def lidort_sup(self):
-        return self._v_lidort_sup()
-
-
-    def _v_lidort_out(self):
-        """
-
-        void FullPhysics::Lidort_Masters::lidort_out(Lidort_Outputs &lidort_out_in)
-
-        """
-        return _lidort_interface_masters.Lidort_Masters__v_lidort_out(self)
-
-
-    @property
-    def lidort_out(self):
-        return self._v_lidort_out()
-
-
-    def run(self):
-        """
-
-        void FullPhysics::Lidort_Masters::run()
-
-        """
-        return _lidort_interface_masters.Lidort_Masters_run(self)
-
-    __swig_destroy__ = _lidort_interface_masters.delete_Lidort_Masters
-Lidort_Masters._v_thread = new_instancemethod(_lidort_interface_masters.Lidort_Masters__v_thread, None, Lidort_Masters)
-Lidort_Masters._v_lidort_fixin = new_instancemethod(_lidort_interface_masters.Lidort_Masters__v_lidort_fixin, None, Lidort_Masters)
-Lidort_Masters._v_lidort_modin = new_instancemethod(_lidort_interface_masters.Lidort_Masters__v_lidort_modin, None, Lidort_Masters)
-Lidort_Masters._v_lidort_sup = new_instancemethod(_lidort_interface_masters.Lidort_Masters__v_lidort_sup, None, Lidort_Masters)
-Lidort_Masters._v_lidort_out = new_instancemethod(_lidort_interface_masters.Lidort_Masters__v_lidort_out, None, Lidort_Masters)
-Lidort_Masters.run = new_instancemethod(_lidort_interface_masters.Lidort_Masters_run, None, Lidort_Masters)
-Lidort_Masters_swigregister = _lidort_interface_masters.Lidort_Masters_swigregister
-Lidort_Masters_swigregister(Lidort_Masters)
-
-class Lidort_Sup_Accessories(object):
+class Lidort_Brdf_Sup_Accessories(object):
     """
 
     C++ includes: lidort_interface_masters.h
@@ -872,20 +1128,30 @@ class Lidort_Sup_Accessories(object):
     def __init__(self, brdf_sup_in_in, lidort_fixin_in, lidort_modin_in):
         """
 
-        FullPhysics::Lidort_Sup_Accessories::Lidort_Sup_Accessories(boost::shared_ptr< Brdf_Sup_Inputs > &brdf_sup_in_in,
+        FullPhysics::Lidort_Brdf_Sup_Accessories::Lidort_Brdf_Sup_Accessories(boost::shared_ptr< Brdf_Sup_Inputs > &brdf_sup_in_in,
         boost::shared_ptr< Lidort_Fixed_Inputs > &lidort_fixin_in,
         boost::shared_ptr< Lidort_Modified_Inputs > &lidort_modin_in)
 
         """
-        _lidort_interface_masters.Lidort_Sup_Accessories_swiginit(self, _lidort_interface_masters.new_Lidort_Sup_Accessories(brdf_sup_in_in, lidort_fixin_in, lidort_modin_in))
+        _lidort_interface_masters.Lidort_Brdf_Sup_Accessories_swiginit(self, _lidort_interface_masters.new_Lidort_Brdf_Sup_Accessories(brdf_sup_in_in, lidort_fixin_in, lidort_modin_in))
+    __swig_destroy__ = _lidort_interface_masters.delete_Lidort_Brdf_Sup_Accessories
+
+    def __str__(self):
+        """
+
+        std::string FullPhysics::Lidort_Brdf_Sup_Accessories::print_to_string() const
+
+        """
+        return _lidort_interface_masters.Lidort_Brdf_Sup_Accessories___str__(self)
+
 
     def _v_brdf_sup_in(self):
         """
 
-        const Brdf_Sup_Inputs& FullPhysics::Lidort_Sup_Accessories::brdf_sup_in() const
+        const Brdf_Sup_Inputs& FullPhysics::Lidort_Brdf_Sup_Accessories::brdf_sup_in() const
 
         """
-        return _lidort_interface_masters.Lidort_Sup_Accessories__v_brdf_sup_in(self)
+        return _lidort_interface_masters.Lidort_Brdf_Sup_Accessories__v_brdf_sup_in(self)
 
 
     @property
@@ -896,10 +1162,10 @@ class Lidort_Sup_Accessories(object):
     def _v_lidort_fixin(self):
         """
 
-        const Lidort_Fixed_Inputs& FullPhysics::Lidort_Sup_Accessories::lidort_fixin() const
+        const Lidort_Fixed_Inputs& FullPhysics::Lidort_Brdf_Sup_Accessories::lidort_fixin() const
 
         """
-        return _lidort_interface_masters.Lidort_Sup_Accessories__v_lidort_fixin(self)
+        return _lidort_interface_masters.Lidort_Brdf_Sup_Accessories__v_lidort_fixin(self)
 
 
     @property
@@ -910,10 +1176,10 @@ class Lidort_Sup_Accessories(object):
     def _v_lidort_modin(self):
         """
 
-        const Lidort_Modified_Inputs& FullPhysics::Lidort_Sup_Accessories::lidort_modin() const
+        const Lidort_Modified_Inputs& FullPhysics::Lidort_Brdf_Sup_Accessories::lidort_modin() const
 
         """
-        return _lidort_interface_masters.Lidort_Sup_Accessories__v_lidort_modin(self)
+        return _lidort_interface_masters.Lidort_Brdf_Sup_Accessories__v_lidort_modin(self)
 
 
     @property
@@ -924,10 +1190,10 @@ class Lidort_Sup_Accessories(object):
     def _v_lidort_brdfcheck_status(self):
         """
 
-        const Lidort_Exception_Handling& FullPhysics::Lidort_Sup_Accessories::lidort_brdfcheck_status() const
+        const Lidort_Exception_Handling& FullPhysics::Lidort_Brdf_Sup_Accessories::lidort_brdfcheck_status() const
 
         """
-        return _lidort_interface_masters.Lidort_Sup_Accessories__v_lidort_brdfcheck_status(self)
+        return _lidort_interface_masters.Lidort_Brdf_Sup_Accessories__v_lidort_brdfcheck_status(self)
 
 
     @property
@@ -935,22 +1201,72 @@ class Lidort_Sup_Accessories(object):
         return self._v_lidort_brdfcheck_status()
 
 
-    def brdf_input_checker(self):
+    def _v_brdf_sup_out(self):
         """
 
-        void FullPhysics::Lidort_Sup_Accessories::brdf_input_checker()
+        void FullPhysics::Lidort_Brdf_Sup_Accessories::brdf_sup_out(Brdf_Sup_Outputs &brdf_sup_out_in)
 
         """
-        return _lidort_interface_masters.Lidort_Sup_Accessories_brdf_input_checker(self)
+        return _lidort_interface_masters.Lidort_Brdf_Sup_Accessories__v_brdf_sup_out(self)
 
-    __swig_destroy__ = _lidort_interface_masters.delete_Lidort_Sup_Accessories
-Lidort_Sup_Accessories._v_brdf_sup_in = new_instancemethod(_lidort_interface_masters.Lidort_Sup_Accessories__v_brdf_sup_in, None, Lidort_Sup_Accessories)
-Lidort_Sup_Accessories._v_lidort_fixin = new_instancemethod(_lidort_interface_masters.Lidort_Sup_Accessories__v_lidort_fixin, None, Lidort_Sup_Accessories)
-Lidort_Sup_Accessories._v_lidort_modin = new_instancemethod(_lidort_interface_masters.Lidort_Sup_Accessories__v_lidort_modin, None, Lidort_Sup_Accessories)
-Lidort_Sup_Accessories._v_lidort_brdfcheck_status = new_instancemethod(_lidort_interface_masters.Lidort_Sup_Accessories__v_lidort_brdfcheck_status, None, Lidort_Sup_Accessories)
-Lidort_Sup_Accessories.brdf_input_checker = new_instancemethod(_lidort_interface_masters.Lidort_Sup_Accessories_brdf_input_checker, None, Lidort_Sup_Accessories)
-Lidort_Sup_Accessories_swigregister = _lidort_interface_masters.Lidort_Sup_Accessories_swigregister
-Lidort_Sup_Accessories_swigregister(Lidort_Sup_Accessories)
+
+    @property
+    def brdf_sup_out(self):
+        return self._v_brdf_sup_out()
+
+
+    def _v_lidort_sup(self):
+        """
+
+        void FullPhysics::Lidort_Brdf_Sup_Accessories::lidort_sup(Lidort_Sup_Inout &lidort_sup_in)
+
+        """
+        return _lidort_interface_masters.Lidort_Brdf_Sup_Accessories__v_lidort_sup(self)
+
+
+    @property
+    def lidort_sup(self):
+        return self._v_lidort_sup()
+
+
+    def brdf_input_check(self):
+        """
+
+        void FullPhysics::Lidort_Brdf_Sup_Accessories::brdf_input_check()
+
+        """
+        return _lidort_interface_masters.Lidort_Brdf_Sup_Accessories_brdf_input_check(self)
+
+
+    def brdf_input_check_error(self, errorfile_in):
+        """
+
+        void FullPhysics::Lidort_Brdf_Sup_Accessories::brdf_input_check_error(const std::string &errorfile_in)
+
+        """
+        return _lidort_interface_masters.Lidort_Brdf_Sup_Accessories_brdf_input_check_error(self, errorfile_in)
+
+
+    def set_brdf_inputs(self):
+        """
+
+        void FullPhysics::Lidort_Brdf_Sup_Accessories::set_brdf_inputs()
+
+        """
+        return _lidort_interface_masters.Lidort_Brdf_Sup_Accessories_set_brdf_inputs(self)
+
+Lidort_Brdf_Sup_Accessories.__str__ = new_instancemethod(_lidort_interface_masters.Lidort_Brdf_Sup_Accessories___str__, None, Lidort_Brdf_Sup_Accessories)
+Lidort_Brdf_Sup_Accessories._v_brdf_sup_in = new_instancemethod(_lidort_interface_masters.Lidort_Brdf_Sup_Accessories__v_brdf_sup_in, None, Lidort_Brdf_Sup_Accessories)
+Lidort_Brdf_Sup_Accessories._v_lidort_fixin = new_instancemethod(_lidort_interface_masters.Lidort_Brdf_Sup_Accessories__v_lidort_fixin, None, Lidort_Brdf_Sup_Accessories)
+Lidort_Brdf_Sup_Accessories._v_lidort_modin = new_instancemethod(_lidort_interface_masters.Lidort_Brdf_Sup_Accessories__v_lidort_modin, None, Lidort_Brdf_Sup_Accessories)
+Lidort_Brdf_Sup_Accessories._v_lidort_brdfcheck_status = new_instancemethod(_lidort_interface_masters.Lidort_Brdf_Sup_Accessories__v_lidort_brdfcheck_status, None, Lidort_Brdf_Sup_Accessories)
+Lidort_Brdf_Sup_Accessories._v_brdf_sup_out = new_instancemethod(_lidort_interface_masters.Lidort_Brdf_Sup_Accessories__v_brdf_sup_out, None, Lidort_Brdf_Sup_Accessories)
+Lidort_Brdf_Sup_Accessories._v_lidort_sup = new_instancemethod(_lidort_interface_masters.Lidort_Brdf_Sup_Accessories__v_lidort_sup, None, Lidort_Brdf_Sup_Accessories)
+Lidort_Brdf_Sup_Accessories.brdf_input_check = new_instancemethod(_lidort_interface_masters.Lidort_Brdf_Sup_Accessories_brdf_input_check, None, Lidort_Brdf_Sup_Accessories)
+Lidort_Brdf_Sup_Accessories.brdf_input_check_error = new_instancemethod(_lidort_interface_masters.Lidort_Brdf_Sup_Accessories_brdf_input_check_error, None, Lidort_Brdf_Sup_Accessories)
+Lidort_Brdf_Sup_Accessories.set_brdf_inputs = new_instancemethod(_lidort_interface_masters.Lidort_Brdf_Sup_Accessories_set_brdf_inputs, None, Lidort_Brdf_Sup_Accessories)
+Lidort_Brdf_Sup_Accessories_swigregister = _lidort_interface_masters.Lidort_Brdf_Sup_Accessories_swigregister
+Lidort_Brdf_Sup_Accessories_swigregister(Lidort_Brdf_Sup_Accessories)
 
 
 

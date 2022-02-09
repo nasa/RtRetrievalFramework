@@ -58,6 +58,7 @@ public:
     virtual void breon_factor(const int spec_index, const AutoDerivative<double>& val);
     virtual void weight_intercept(const int spec_index, const AutoDerivative<double>& val);
     virtual void weight_slope(const int spec_index, const AutoDerivative<double>& val);
+    void weight_coeff(const int spec_index, const AutoDerivative<double>& val, const int weight_index);
     void weight_parameters(const int spec_index, const ArrayAd<double, 1>& val);
 
     const blitz::Array<double, 2> brdf_covariance(const int spec_index) const;

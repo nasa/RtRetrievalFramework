@@ -147,10 +147,36 @@ class TwostreamRt(full_physics_swig.spurr_rt.SpurrRt):
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def __init__(self, Atm, Stokes_coef, Sza, Zen, Azm, do_fullquadrature=True):
+        """
+
+        TwostreamRt::TwostreamRt(const boost::shared_ptr< RtAtmosphere > &Atm, const
+        boost::shared_ptr< StokesCoefficient > &Stokes_coef, const
+        blitz::Array< double, 1 > &Sza, const blitz::Array< double, 1 > &Zen,
+        const blitz::Array< double, 1 > &Azm, bool do_fullquadrature=true)
+        Constructor.
+
+        Parameters:
+        -----------
+
+        Atm:  Atmosphere class with optical properties to model
+
+        Stokes_coef:  Multiplier for each stokes component
+
+        Sza:  Solar zenith angle. This is in degrees, and should be in the
+        range 0 to 90, and have size number_spectrometer()
+
+        Zen:  Zenith angle (degrees), in range 0 to 90, and have size
+        number_spectrometer()
+
+        Azm:  Azimuth angle (degrees), in range 0 to 360, and have size
+        number_spectrometer()
+
+        do_fullquadrature:  false only for comparison against LIDORT 
+        """
+        _twostream_rt.TwostreamRt_swiginit(self, _twostream_rt.new_TwostreamRt(Atm, Stokes_coef, Sza, Zen, Azm, do_fullquadrature))
 
     @property
     def number_stream(self):

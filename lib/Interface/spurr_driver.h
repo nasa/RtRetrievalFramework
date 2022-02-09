@@ -49,12 +49,6 @@ public:
   virtual bool do_kparams_derivs(const int kernel_index) const = 0;
   virtual bool do_shadow_effect() const = 0;
 
-  /// Initialize lambertian albedo from array that might be 
-  /// external to the BrdfDriver
-  void set_lambertian_albedo(const blitz::Array<double, 1>& albedo_array) {
-    lambertian_albedo.reference( albedo_array );
-  }
-
 protected:
   virtual void initialize_brdf_kernel(int kernel_type);
 
@@ -83,7 +77,6 @@ protected:
   // These are set through attributes linked to a valid array by the implementing class. 
   mutable blitz::Array<double, 1> brdf_factors;
   mutable blitz::Array<double, 2> brdf_params;
-  mutable blitz::Array<double, 1> lambertian_albedo;
 };
 
 /****************************************************************//**

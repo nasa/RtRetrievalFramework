@@ -47,6 +47,7 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
   int n_brdf_parameters;
   bool do_factor_wfs;
   Array<bool, 1> do_params_wfs;
+
   switch (which_brdf) {
   case LAMBERTIAN:
     lambertian_flag = true;
@@ -60,7 +61,7 @@ void SpurrBrdfDriver::initialize_brdf_kernel(int which_brdf) {
   case COXMUNK:
     n_brdf_parameters = 3;
 
-    do_factor_wfs = false;
+    do_factor_wfs = true;
 
     do_params_wfs.resize(n_brdf_parameters);
     do_params_wfs(0) = true;
@@ -129,15 +130,16 @@ ArrayAd<double, 1> SpurrBrdfDriver::setup_brdf_inputs(int surface_type, const Ar
 
     break;
   case COXMUNK:
-    parameter_indexes.resize(3);
-    parameter_indexes(0) = 0;
-    parameter_indexes(1) = 1;
-    parameter_indexes(2) = 3;
+    parameter_indexes.resize(4);
+    parameter_indexes(0) = 0; // scale factor
+    parameter_indexes(1) = 1; // windspeed
+    parameter_indexes(2) = 2; // refractive index
+    parameter_indexes(3) = 4; // shadowing
     setup_coxmunk_inputs(0, rt_surf_params, parameter_indexes);
 
     // lamberitan component to coxmunk
     parameter_indexes.resize(1);
-    parameter_indexes(0) = 2;
+    parameter_indexes(0) = 3; // albedo
     setup_lambertian_inputs(1, rt_surf_params, parameter_indexes);
     break;
   case BREONVEG:
@@ -176,26 +178,26 @@ void SpurrBrdfDriver::setup_lambertian_inputs(int kernel_index, ArrayAd<double, 
   
   // According to LIDORT user's guide section "2.7.1 BRDFs as a sum of kernel functions" this should be 1.0
   brdf_params(kernel_index, 0) = 1.0;
-
-  // lambertian_albedo value only used do_brdf_surface = False
-  lambertian_albedo(0) = surface_parameters(albedo_idx).value();
 }
 
 void SpurrBrdfDriver::setup_coxmunk_inputs(int kernel_index, ArrayAd<double, 1>& surface_parameters, const Array<int, 1>& parameter_indexes) const
 {
-  brdf_factors(kernel_index) = 1.0;
-
   // Modify surface_parameters in place so that jacobians reflect modifications
-  int ws_idx = parameter_indexes(0);
-  int refr_idx = parameter_indexes(1);
-  int shadow_idx = parameter_indexes(2);
+  int scale_idx  = parameter_indexes(0);
+  int ws_idx     = parameter_indexes(1);
+  int refr_idx   = parameter_indexes(2);
+  int shadow_idx = parameter_indexes(3);
+
+  brdf_factors(kernel_index) = surface_parameters(scale_idx).value();
 
   // windspeed
   surface_parameters(ws_idx) = 0.003 + 0.00512 * surface_parameters(ws_idx);
   brdf_params(kernel_index, 0) = surface_parameters(ws_idx).value();
+
   // refactive index of water (squared)
   surface_parameters(refr_idx) = surface_parameters(refr_idx) * surface_parameters(refr_idx); // refractive index of air
   brdf_params(kernel_index, 1) = surface_parameters(refr_idx).value();
+
   // shadowing flag, for kernel routine
   // kernel routine seems to use this value despite shadowing flag below
   brdf_params(kernel_index, 2) = surface_parameters(shadow_idx).value();

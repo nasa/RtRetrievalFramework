@@ -5,9 +5,6 @@
 #include "unit_test_support.h"
 {{ includes(addl_includes) }}
 
-// Default maximum number of layers
-#define LIDORT_MAXLAYER 23
-
 using namespace FullPhysics;
 using namespace blitz;
 

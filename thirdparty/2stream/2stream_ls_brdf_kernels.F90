@@ -1,6 +1,58 @@
-module twostream_ls_brdfkernels_m
+! ###########################################################
+! #                                                         #
+! #             THE TWOSTREAM LIDORT MODEL                  #
+! #                                                         #
+! #      (LInearized Discrete Ordinate Radiative Transfer)  #
+! #       --         -        -        -         -          #
+! #                                                         #
+! ###########################################################
 
-public
+! ###########################################################
+! #                                                         #
+! #  Authors :      Robert. J. D. Spurr (1)                 #
+! #                 Vijay Natraj        (2)                 #
+! #                                                         #
+! #  Address (1) :     RT Solutions, Inc.                   #
+! #                    9 Channing Street                    #
+! #                    Cambridge, MA 02138, USA             #
+! #  Tel:             (617) 492 1183                        #
+! #  Email :           rtsolutions@verizon.net              #
+! #                                                         #
+! #  Address (2) :     CalTech                              #
+! #                    Department of Planetary Sciences     #
+! #                    1200 East California Boulevard       #
+! #                    Pasadena, CA 91125                   #
+! #  Tel:             (626) 395 6962                        #
+! #  Email :           vijay@gps.caltech.edu                #
+! #                                                         #
+! #  Version 1.0-1.3 :                                      #
+! #     Mark 1: October  2010                               #
+! #     Mark 2: May      2011, with BRDFs                   #
+! #     Mark 3: October  2011, with Thermal sources         #
+! #                                                         #
+! #  Version 2.0-2.1 :                                      #
+! #     Mark 4: November 2012, LCS/LPS Split, Fixed Arrays  #
+! #     Mark 5: December 2012, Observation Geometry option  #
+! #                                                         #
+! #  Version 2.2-2.3 :                                      #
+! #     Mark 6: July     2013, Level outputs + control      #
+! #     Mark 7: December 2013, Flux outputs  + control      #
+! #     Mark 8: January  2014, Surface Leaving + control    #
+! #     Mark 9: June     2014, Inverse Pentadiagonal        #
+! #                                                         #
+! #  Version 2.4 :                                          #
+! #     Mark 10: August  2014, Green's function Regular     #
+! #     Mark 11: January 2015, Green's function Linearized  #
+! #                            Taylor, dethreaded, OpenMP   #
+! #                                                         #
+! ###########################################################
+
+! #############################################################
+! #                                                           #
+! #   This Version of LIDORT-2STREAM comes with a GNU-style   #
+! #   license. Please read the license carefully.             #
+! #                                                           #
+! #############################################################
 
 ! ###############################################################
 ! #                                                             #
@@ -12,14 +64,28 @@ public
 ! #            TWOSTREAM_RAHMAN_FUNCTION_PLUS                   #
 ! #            TWOSTREAM_COXMUNK_FUNCTION_PLUS                  #
 ! #                                                             #
+! #  These three kernels upgraded for Version 2.4, in line      #
+! #       wiht LIDORT Version 3.7                               #
+! #                                                             #
+! #            TWOSTREAM_BPDFSOIL_FUNCTION_PLUS                 #
+! #            TWOSTREAM_BPDFVEGN_FUNCTION_PLUS                 #
+! #            TWOSTREAM_BPDFNDVI_FUNCTION_PLUS                 #
+! #                                                             #
+! #  PRIVATE Subroutines in this Module                         #
+! #            FRESNEL_SCALAR_PLUS_2S                           #
+! #                                                             #
 ! ###############################################################
+
+module twostream_ls_brdfkernels_m
+
+public
 
 contains
 
-SUBROUTINE TWOSTREAM_HAPKE_FUNCTION_PLUS             &
-            ( NPARS, PARS, DO_DERIV_PARS,            &
-              XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI,    &
-              HAPKE_KERNEL, HAPKE_DERIVATIVES )
+SUBROUTINE TWOSTREAM_HAPKE_FUNCTION_PLUS &
+           ( MAXPARS, NPARS, PARS, DO_DERIV_PARS,   &
+             XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI,    &
+             HAPKE_KERNEL, HAPKE_DERIVATIVES )
 
       implicit none
 
@@ -29,12 +95,12 @@ SUBROUTINE TWOSTREAM_HAPKE_FUNCTION_PLUS             &
 
 !  SUBROUTINE TWOSTREAM_arguments
 
-      INTEGER  , intent(in)  :: NPARS
-      REAL(kind=dp), intent(in)  :: PARS ( 3 )
-      LOGICAL  , intent(in)  :: DO_DERIV_PARS ( 3 )
+      INTEGER  , intent(in)  :: MAXPARS, NPARS
+      REAL(kind=dp), intent(in)  :: PARS ( MAXPARS )
+      LOGICAL  , intent(in)  :: DO_DERIV_PARS ( MAXPARS )
       REAL(kind=dp), intent(in)  :: XI, SXI, XJ, SXJ, PHI, CPHI, SKPHI
       REAL(kind=dp), intent(out) :: HAPKE_KERNEL
-      REAL(kind=dp), intent(out) :: HAPKE_DERIVATIVES ( 3 )
+      REAL(kind=dp), intent(out) :: HAPKE_DERIVATIVES ( MAXPARS )
 
 !  Hapke Kernel function.
 !    - New version, Fresh Coding
@@ -145,10 +211,10 @@ END SUBROUTINE TWOSTREAM_HAPKE_FUNCTION_PLUS
 
 !
 
-SUBROUTINE TWOSTREAM_LISPARSE_FUNCTION_PLUS                    &
-            ( NPARS, PARS, DO_DERIV_PARS,   &
-              XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI,    &
-              LISPARSE_KERNEL, LISPARSE_DERIVATIVES )
+SUBROUTINE TWOSTREAM_LISPARSE_FUNCTION_PLUS &
+           ( MAXPARS, NPARS, PARS, DO_DERIV_PARS,   &
+             XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI,    &
+             LISPARSE_KERNEL, LISPARSE_DERIVATIVES )
 
       implicit none
 
@@ -158,12 +224,12 @@ SUBROUTINE TWOSTREAM_LISPARSE_FUNCTION_PLUS                    &
 
 !  SUBROUTINE TWOSTREAM_arguments
 
-      INTEGER  , intent(in)  :: NPARS
-      REAL(kind=dp), intent(in)  :: PARS ( 3 )
-      LOGICAL  , intent(in)  :: DO_DERIV_PARS ( 3 )
+      INTEGER  , intent(in)  :: MAXPARS, NPARS
+      REAL(kind=dp), intent(in)  :: PARS ( MAXPARS )
+      LOGICAL  , intent(in)  :: DO_DERIV_PARS ( MAXPARS )
       REAL(kind=dp), intent(in)  :: XI, SXI, XJ, SXJ, PHI, CPHI, SKPHI
       REAL(kind=dp), intent(out) :: LISPARSE_KERNEL
-      REAL(kind=dp), intent(out) :: LISPARSE_DERIVATIVES ( 3 )
+      REAL(kind=dp), intent(out) :: LISPARSE_DERIVATIVES ( MAXPARS )
 
 !  local variables
 
@@ -283,10 +349,10 @@ END SUBROUTINE TWOSTREAM_LISPARSE_FUNCTION_PLUS
 
 !
 
-SUBROUTINE TWOSTREAM_LIDENSE_FUNCTION_PLUS                     &
-             ( NPARS, PARS, DO_DERIV_PARS,  &
-               XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI,   &
-               LIDENSE_KERNEL, LIDENSE_DERIVATIVES )
+SUBROUTINE TWOSTREAM_LIDENSE_FUNCTION_PLUS &
+           ( MAXPARS, NPARS, PARS, DO_DERIV_PARS,  &
+             XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI,   &
+             LIDENSE_KERNEL, LIDENSE_DERIVATIVES )
 
       implicit none
 
@@ -296,12 +362,12 @@ SUBROUTINE TWOSTREAM_LIDENSE_FUNCTION_PLUS                     &
 
 !  SUBROUTINE TWOSTREAM_arguments
 
-      INTEGER  , intent(in)  :: NPARS
-      REAL(kind=dp), intent(in)  :: PARS ( 3 )
-      LOGICAL  , intent(in)  :: DO_DERIV_PARS ( 3 )
+      INTEGER  , intent(in)  :: MAXPARS, NPARS
+      REAL(kind=dp), intent(in)  :: PARS ( MAXPARS )
+      LOGICAL  , intent(in)  :: DO_DERIV_PARS ( MAXPARS )
       REAL(kind=dp), intent(in)  :: XI, SXI, XJ, SXJ, PHI, CPHI, SKPHI
       REAL(kind=dp), intent(out) :: LIDENSE_KERNEL
-      REAL(kind=dp), intent(out) :: LIDENSE_DERIVATIVES ( 3 )
+      REAL(kind=dp), intent(out) :: LIDENSE_DERIVATIVES ( MAXPARS )
 
 !  local variables
 
@@ -421,10 +487,10 @@ END SUBROUTINE TWOSTREAM_LIDENSE_FUNCTION_PLUS
 
 !
 
-SUBROUTINE TWOSTREAM_RAHMAN_FUNCTION_PLUS                    &
-            ( NPARS, PARS, DO_DERIV_PARS, &
-              XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI,  &
-              RAHMAN_KERNEL, RAHMAN_DERIVATIVES )
+SUBROUTINE TWOSTREAM_RAHMAN_FUNCTION_PLUS &
+           ( MAXPARS, NPARS, PARS, DO_DERIV_PARS, &
+             XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI,  &
+             RAHMAN_KERNEL, RAHMAN_DERIVATIVES )
 
       implicit none
 
@@ -434,12 +500,12 @@ SUBROUTINE TWOSTREAM_RAHMAN_FUNCTION_PLUS                    &
 
 !  SUBROUTINE TWOSTREAM_arguments
 
-      INTEGER  , intent(in)  :: NPARS
-      REAL(kind=dp), intent(in)  :: PARS ( 3 )
-      LOGICAL  , intent(in)  :: DO_DERIV_PARS ( 3 )
+      INTEGER  , intent(in)  :: MAXPARS, NPARS
+      REAL(kind=dp), intent(in)  :: PARS ( MAXPARS )
+      LOGICAL  , intent(in)  :: DO_DERIV_PARS ( MAXPARS )
       REAL(kind=dp), intent(in)  :: XI, SXI, XJ, SXJ, PHI, CPHI, SKPHI
       REAL(kind=dp), intent(out) :: RAHMAN_KERNEL
-      REAL(kind=dp), intent(out) :: RAHMAN_DERIVATIVES ( 3 )
+      REAL(kind=dp), intent(out) :: RAHMAN_DERIVATIVES ( MAXPARS )
 
 !  local variables
 
@@ -561,10 +627,12 @@ END SUBROUTINE TWOSTREAM_RAHMAN_FUNCTION_PLUS
 
 !
 
-SUBROUTINE TWOSTREAM_COXMUNK_FUNCTION_PLUS                    &
-            ( NPARS, PARS, DO_DERIV_PARS,  &
-              XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI,   &
-              COXMUNK_KERNEL, COXMUNK_DERIVATIVES )
+SUBROUTINE TWOSTREAM_COXMUNK_FUNCTION_PLUS &
+           ( MAXPARS, NPARS, PARS, DO_DERIV_PARS,  &
+             XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI,   &
+             COXMUNK_KERNEL, COXMUNK_DERIVATIVES )
+
+      USE TWOSTREAM_BRDFKERNELS_M, ONLY: TWOSTREAM_DERFC_E
 
       implicit none
 
@@ -574,12 +642,12 @@ SUBROUTINE TWOSTREAM_COXMUNK_FUNCTION_PLUS                    &
 
 !  SUBROUTINE TWOSTREAM_arguments
 
-      INTEGER  , intent(in)  :: NPARS
-      REAL(kind=dp), intent(in)  :: PARS ( 3 )
-      LOGICAL  , intent(in)  :: DO_DERIV_PARS ( 3 )
+      INTEGER  , intent(in)  :: MAXPARS, NPARS
+      REAL(kind=dp), intent(in)  :: PARS ( MAXPARS )
+      LOGICAL  , intent(in)  :: DO_DERIV_PARS ( MAXPARS )
       REAL(kind=dp), intent(in)  :: XI, SXI, XJ, SXJ, PHI, CPHI, SKPHI
       REAL(kind=dp), intent(out) :: COXMUNK_KERNEL
-      REAL(kind=dp), intent(out) :: COXMUNK_DERIVATIVES ( 3 )
+      REAL(kind=dp), intent(out) :: COXMUNK_DERIVATIVES ( MAXPARS )
 
 !  Critical exponent taken out
 
@@ -698,13 +766,17 @@ SUBROUTINE TWOSTREAM_COXMUNK_FUNCTION_PLUS                    &
       XXI  = XI*XI
       DCOT_I = XI/DSQRT(1.0_dp-XXI)
       T1_I   = DEXP(-DCOT_I*DCOT_I*S2)
-      T2_I   = DERFC(DCOT_I*S3)
+! mick fix 11/7/2012 - use TWOSTREAM_DERFC_E
+      !T2_I   = DERFC(DCOT_I*S3)
+      T2_I   = TWOSTREAM_DERFC_E(DCOT_I*S3)
       SHADOWI = 0.5_dp * ( S1*T1_I/DCOT_I - T2_I )
 
       XXJ  = XJ*XJ
       DCOT_R = XJ/DSQRT(1.0_dp-XXJ)
       T1_R   = DEXP(-DCOT_R*DCOT_R*S2)
-      T2_R   = DERFC(DCOT_R*S3)
+! mick fix 11/7/2012 - use TWOSTREAM_DERFC_E
+      !T2_R   = DERFC(DCOT_R*S3)
+      T2_R   = TWOSTREAM_DERFC_E(DCOT_R*S3)
       SHADOWR = 0.5_dp * ( S1*T1_R/DCOT_R - T2_R )
 
       SHADOW = 1.0_dp/(1.0_dp+SHADOWI+SHADOWR)
@@ -740,6 +812,315 @@ SUBROUTINE TWOSTREAM_COXMUNK_FUNCTION_PLUS                    &
       RETURN
 END SUBROUTINE TWOSTREAM_COXMUNK_FUNCTION_PLUS
 
+!
+
+SUBROUTINE TWOSTREAM_BPDFSOIL_FUNCTION_PLUS  &
+   ( MAXPARS, NPARS, PARS, DO_DERIV_PARS, XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI, &
+     BPDFSOIL_KERNEL, BPDFSOIL_DERIVATIVES )
+
+      implicit none
+
+!  precision
+
+      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+
+!  Subroutine arguments
+
+      INTEGER      , intent(in)  :: MAXPARS, NPARS
+      REAL(kind=dp), intent(in)  :: PARS ( MAXPARS )
+      LOGICAL      , intent(in)  :: DO_DERIV_PARS ( MAXPARS )
+      REAL(kind=dp), intent(in)  :: XI, SXI, XJ, SXJ, PHI, CPHI, SKPHI
+      REAL(kind=dp), intent(out) :: BPDFSOIL_KERNEL
+      REAL(kind=dp), intent(out) :: BPDFSOIL_DERIVATIVES ( MAXPARS )
+
+!  Local variables
+
+      REAL(kind=dp)  :: REFSQ, Z, Z1, Z2,  FP, XPHI, CKPHI, ATTEN, FP1, DFP
+      REAL(kind=dp)  :: sgamma, cgamma, calpha, calpha_sq, salpha, PIE
+
+!  F-.M. Breon BPDF Soil model (2009).
+!   This is just the (1,1) component - no polarization
+
+!  Initialise
+
+      PIE = ACOS(-1.0_dp)
+      BPDFSOIL_KERNEL      = 0.0_dp
+      BPDFSOIL_DERIVATIVES = 0.0_dp
+      XPHI  = PIE - PHI
+      CKPHI = - CPHI
+
+!  Scatter angles, Fresnel reflection
+!      PARS(1) = refractive index
+
+      Z = XI * XJ + SXI * SXJ * CKPHI
+      IF ( Z .GT. 1.0_dp) Z = 1.0_dp
+      Z1 = ACOS(Z)
+      Z2 = COS(Z1*0.5_dp)
+      REFSQ = PARS(1) * PARS(1)
+      CALL FRESNEL_SCALAR_PLUS_2S ( REFSQ, Z2, FP, DFP ) ; DFP = 2.0_dp * PARS(1) * DFP
+
+!  Breon and Mick code
+!    Scattering angle (=> gamma = scattering angle/2) 
+!    Note: 0.5 factor applied in alpha & Fp below
+!      scat_angle = DACOS(mus*muv + DSQRT((1._fp_kind - mus*mus) &
+!                                 *(1._fp_kind - muv*muv)) &
+!                                 *DCOS(phi)) 
+!      gamma = scat_angle/2._fp_kind
+!      Z2 = dcos(gamma)
+
+!   Angle of the surface that generates specular reflection from 
+!  sun to view directions (theta)
+!      alpha = DACOS(HALF*(mus+muv)/dcos(gamma))
+
+      calpha    = 0.5_dp * (xi + xj) / Z2  
+      calpha_sq = calpha*calpha
+      salpha    = sqrt(1.0_dp - calpha_sq)
+
+      Fp1 = 0.25_dp / xi / xj
+
+!  BRDF  with attenuation factor
+
+      cgamma = Z2
+      sgamma = sqrt ( 1.0_dp - cgamma * cgamma )
+      atten  = 1.0_dp - sgamma
+      BPDFSOIL_KERNEL = Fp1 * FP * atten
+
+!  Derivatives
+
+      IF ( DO_DERIV_PARS(1) )  BPDFSOIL_DERIVATIVES(1) = Fp1 * DFP * atten
+
+!     Finish
+
+      RETURN
+END SUBROUTINE TWOSTREAM_BPDFSOIL_FUNCTION_PLUS
+
+!
+
+SUBROUTINE TWOSTREAM_BPDFVEGN_FUNCTION_PLUS  &
+   ( MAXPARS, NPARS, PARS, DO_DERIV_PARS, XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI, &
+     BPDFVEGN_KERNEL, BPDFVEGN_DERIVATIVES )
+
+      implicit none
+
+!  precision
+
+      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+
+!  Subroutine arguments
+
+      INTEGER      , intent(in)  :: MAXPARS, NPARS
+      REAL(kind=dp), intent(in)  :: PARS ( MAXPARS )
+      LOGICAL      , intent(in)  :: DO_DERIV_PARS ( MAXPARS )
+      REAL(kind=dp), intent(in)  :: XI, SXI, XJ, SXJ, PHI, CPHI, SKPHI
+      REAL(kind=dp), intent(out) :: BPDFVEGN_KERNEL
+      REAL(kind=dp), intent(out) :: BPDFVEGN_DERIVATIVES ( MAXPARS )
+
+!  Local variables
+
+      REAL(kind=dp)  :: REFSQ, Z, Z1, Z2, FP, FP0, XPHI, CKPHI, ATTEN, PROJECTIONS
+      REAL(kind=dp)  :: sgamma, cgamma, calpha, calpha_sq, salpha, PIE
+      REAL(kind=dp)  :: PLEAF, GS, GV, DFP
+
+!  Data coefficients
+
+      REAL(kind=dp)  :: PLAGIOPHILE_COEFFS(4)
+      DATA PLAGIOPHILE_COEFFS /0.43181098_dp,  0.011187479_dp, &
+                               0.043329567_dp, 0.19262991_dp/
+
+!  F-.M. Breon BPDF vegetation model (2009).
+!   This is just the (1,1) component - no polarization
+
+!  Initialize
+
+      PIE = ACOS(-1.0_dp)
+      BPDFVEGN_KERNEL      = 0.0_dp
+      BPDFVEGN_DERIVATIVES = 0.0_dp
+      XPHI  = PIE - PHI
+      CKPHI = - CPHI
+
+!  Scatter angles, Fresnel reflection
+!      PARS(1) = refractive index
+
+      Z = XI * XJ + SXI * SXJ * CKPHI
+      IF ( Z .GT. 1.0_dp) Z = 1.0_dp
+      Z1 = ACOS(Z)
+      Z2 = COS(Z1*0.5_dp)
+      REFSQ = PARS(1) * PARS(1)
+      CALL FRESNEL_SCALAR_PLUS_2S ( REFSQ, Z2, FP, DFP ) ; DFP = 2.0_dp * PARS(1) * DFP
+
+!  Breon and Mick code
+!    Scattering angle (=> gamma = scattering angle/2) 
+!    Note: 0.5 factor applied in alpha & Fp below
+!      scat_angle = DACOS(mus*muv + DSQRT((1._fp_kind - mus*mus) &
+!                                 *(1._fp_kind - muv*muv)) &
+!                                 *DCOS(phi)) 
+!      gamma = scat_angle/2._fp_kind
+!      Z2 = dcos(gamma)
+
+!   Angle of the surface that generates specular reflection from 
+!  sun to view directions (theta)
+
+!      alpha = DACOS(HALF*(mus+muv)/dcos(gamma))
+
+      calpha    = 0.5_dp * (xi + xj) / Z2
+      calpha_sq = calpha*calpha
+      salpha    = sqrt(1.0_dp - calpha_sq)
+
+! Projection of leaf surface to outgoing direction
+
+      gv = PLAGIOPHILE_COEFFS(1) + xi * &
+          (PLAGIOPHILE_COEFFS(2) + xi * &
+          (PLAGIOPHILE_COEFFS(3) + PLAGIOPHILE_COEFFS(4)*xi))
+
+! Projection of leaf surface to incident direction
+
+      gs = PLAGIOPHILE_COEFFS(1) + xj * &
+          (PLAGIOPHILE_COEFFS(2) + xj * &
+          (PLAGIOPHILE_COEFFS(3) + PLAGIOPHILE_COEFFS(4)*xj))
+
+! Probability of leaf orientation (plagiophile distr.)
+
+      Pleaf = 16.0_dp * calpha_sq * salpha  / pie
+
+! Polarization model for vegetation
+
+      PROJECTIONS =  Gv/xi + Gs/xj
+      Fp0 = 0.25_dp * PLEAF / xi / xj / PROJECTIONS
+
+! BRDF  with attenuation factor
+
+      cgamma = Z2
+      sgamma = sqrt ( 1.0_dp - cgamma * cgamma )
+      atten  = 1.0_dp - sgamma
+      BPDFVEGN_KERNEL = Fp0 * FP * atten
+
+!  Derivatives
+
+      IF ( DO_DERIV_PARS(1) )  BPDFVEGN_DERIVATIVES(1) = Fp0 * DFP * atten
+
+!     Finish
+
+      RETURN
+END SUBROUTINE TWOSTREAM_BPDFVEGN_FUNCTION_PLUS
+
+!
+
+SUBROUTINE TWOSTREAM_BPDFNDVI_FUNCTION_PLUS &
+   ( MAXPARS, NPARS, PARS, DO_DERIV_PARS, XJ, SXJ, XI, SXI, PHI, CPHI, SKPHI, &
+     BPDFNDVI_KERNEL, BPDFNDVI_DERIVATIVES )
+
+      IMPLICIT NONE
+
+!  precision
+
+      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+
+!  Subroutine arguments
+
+      INTEGER      , intent(in)  :: MAXPARS, NPARS
+      REAL(kind=dp), intent(in)  :: PARS ( MAXPARS )
+      LOGICAL      , intent(in)  :: DO_DERIV_PARS ( MAXPARS )
+      REAL(kind=dp), intent(in)  :: XI, SXI, XJ, SXJ, PHI, CPHI, SKPHI
+      REAL(kind=dp), intent(out) :: BPDFNDVI_KERNEL
+      REAL(kind=dp), intent(out) :: BPDFNDVI_DERIVATIVES ( MAXPARS )
+
+!  Local variables
+
+      REAL(kind=dp)  :: REFSQ, Z, Z1, Z2, FP, XPHI, CKPHI, ATTEN, NDVI, EXPNDVI, C
+      REAL(kind=dp)  :: DFP, DNDVI, DEXPNDVI, KERNEL, PIE
+      REAL(kind=dp)  :: sgamma, cgamma
+
+!  F-.M. Breon BPDF NDVI model (2009).
+!   This is just the (1,1) component - no polarization
+
+!  Initialise
+ 
+      PIE = ACOS(-1.0_dp)
+      BPDFNDVI_KERNEL      = 0.0_dp
+      BPDFNDVI_DERIVATIVES = 0.0_dp
+      XPHI  = PIE - PHI
+      CKPHI = - CPHI
+
+!  Scatter angles, Fresnel reflection
+!      PARS(1) = refractive index
+
+      Z = XI * XJ + SXI * SXJ * CKPHI
+      IF ( Z .GT. 1.0_dp) Z = 1.0_dp
+      Z1 = ACOS(Z)
+      Z2 = COS(Z1*0.5_dp)
+      REFSQ = PARS(1) * PARS(1)
+      CALL FRESNEL_SCALAR_PLUS_2S ( REFSQ, Z2, FP, DFP ) ; DFP = 2.0_dp * PARS(1) * DFP
+
+!  PARS(2) = NDVI
+!  Exponential of the NDVI ( Out of range values default to zero )
+
+      NDVI = PARS(2) ; DNDVI = 1.0_dp
+      IF ( NDVI .GT. 1.0_dp .or. NDVI .lt. -1.0_dp) THEN
+        NDVI = 0.0_dp ; DNDVI = 0.0_dp
+      ENDIF
+      EXPNDVI  = EXP ( - NDVI )
+      DEXPNDVI = - EXPNDVI * DNDVI
+
+! attenuation factor
+
+      cgamma = Z2
+      sgamma = sqrt ( 1.0_dp - cgamma * cgamma )
+      atten  = exp ( - sgamma / cgamma )
+
+!  PARS(3) = Scaling Factor
+
+      C = PARS(3) 
+      KERNEL = 0.25_dp * atten / ( xi + xj )
+      BPDFNDVI_KERNEL = KERNEL * C * FP * EXPNDVI
+
+!  Derivatives
+
+      IF ( DO_DERIV_PARS(1) ) BPDFNDVI_DERIVATIVES(1) = KERNEL * C * DFP * EXPNDVI
+      IF ( DO_DERIV_PARS(2) ) BPDFNDVI_DERIVATIVES(2) = KERNEL * C * FP  * DEXPNDVI
+      IF ( DO_DERIV_PARS(3) ) BPDFNDVI_DERIVATIVES(3) = KERNEL * FP * EXPNDVI
+
+!  Finish
+
+      RETURN
+END SUBROUTINE TWOSTREAM_BPDFNDVI_FUNCTION_PLUS
+
+!
+
+SUBROUTINE FRESNEL_SCALAR_PLUS_2S ( PAR1, Z2, FP, DFP )
+
+      implicit none
+
+!  precision
+
+      INTEGER, PARAMETER :: dp     = KIND( 1.0D0 )
+
+!  Subroutine arguments
+
+      REAL(kind=dp), intent(in)  :: PAR1, Z2
+      REAL(kind=dp), intent(out) :: FP, DFP
+
+!  Local variables
+
+      REAL(kind=dp)  :: Z2_SQ_M1, H1, H2, RP, RL, DH1, DH2, DRP, DRL
+
+!  Code
+
+      Z2_SQ_M1 = Z2 * Z2 - 1.0_dp
+      H1 = PAR1 * Z2
+      H2 = SQRT ( PAR1 + Z2_SQ_M1 )
+      RP = ( H1 - H2 ) / ( H1 + H2 )
+      RL = ( Z2 - H2 ) / ( Z2 + H2 )
+      FP = 0.5_dp * ( RP*RP + RL*RL )
+
+      DH1 = Z2   ; DH2 = 0.5_dp / H2
+      DRP = ( ( DH1 - DH2 ) - RP * ( DH1 + DH2 ) ) / ( H1 + H2 )
+      DRL =  - DH2 * ( 1.0_dp + RL ) / ( Z2 + H2 )
+      DFP = RP * DRP + RL * DRL
+
+!  End
+
+      RETURN
+END SUBROUTINE FRESNEL_SCALAR_PLUS_2S
 
 ! end
 

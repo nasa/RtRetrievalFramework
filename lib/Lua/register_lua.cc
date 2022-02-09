@@ -269,12 +269,16 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(AerosolExtinctionLinear);
   REGISTER_LUA_LIST(AerosolExtinctionLog);
   REGISTER_LUA_LIST(AerosolShapeGaussian);
+  REGISTER_LUA_LIST(GroundBrdfWeight);
+  REGISTER_LUA_LIST(GroundBrdfWeightOutput);
   REGISTER_LUA_LIST(GroundLambertian);
   REGISTER_LUA_LIST(GroundLambertianOutput);
   REGISTER_LUA_LIST(GroundCoxmunk);
   REGISTER_LUA_LIST(GroundCoxmunkOutput);
   REGISTER_LUA_LIST(GroundCoxmunkPlusLambertian);
   REGISTER_LUA_LIST(GroundCoxmunkPlusLambertianOutput);
+  REGISTER_LUA_LIST(GroundCoxmunkScaled);
+  REGISTER_LUA_LIST(GroundCoxmunkScaledOutput);
   REGISTER_LUA_LIST(GroundBrdfVeg);
   REGISTER_LUA_LIST(GroundBrdfSoil);
   REGISTER_LUA_LIST(GroundBrdfOutput);

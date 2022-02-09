@@ -399,6 +399,28 @@ function OcoConfig.ground_from_ground_type:get_creator()
    end
 end
 
+OcoConfig.ground_from_ground_type_scaled = DispatchCreator:new()
+
+function OcoConfig.ground_from_ground_type_scaled:get_creator()
+   local ground_type = self.config:ground_type_name()
+
+   if (ground_type == "lambertian") then
+      return ConfigCommon.ground_lambertian
+   elseif (ground_type == "brdf_soil") then
+      return ConfigCommon.ground_brdf_soil
+   elseif (ground_type == "brdf_veg") then
+      return ConfigCommon.ground_brdf_veg
+   elseif (ground_type == "coxmunk") then
+      if(self.config.using_radiance_scaling ~= nil) then
+         return ConfigCommon.ground_coxmunk
+      else
+         return ConfigCommon.ground_coxmunk_scaled
+      end
+   else
+      error("Invalid ground type value: " .. ground_type)
+   end
+end
+
 ------------------------------------------------------------
 --- Create lambertian ground initial guess from radiance
 --- but the other parts from the static HDF file

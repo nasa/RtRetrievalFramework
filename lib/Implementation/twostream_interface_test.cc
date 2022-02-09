@@ -1,5 +1,6 @@
 #include "twostream_interface.h"
 #include "unit_test_support.h"
+#include "lidort_interface_types.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -9,8 +10,10 @@ BOOST_FIXTURE_TEST_SUITE(twostream_interface, GlobalFixture)
 BOOST_AUTO_TEST_CASE(twostream_l_master)
 {
 
+  // For obtaining maximum sizes
+  Lidort_Pars lid_pars = Lidort_Pars::instance();
+ 
   // Dimensioning integers
-  int nthreads       = 1;
   int nbeams         = 2;
   int n_user_angles  = 2;
   int n_user_relazms = 2;
@@ -18,6 +21,7 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   int npars          = 3;
   int nspars         = 1;
   int nstreams_brdf  = 50;
+  int nbrdf          = 4;
 
   int n_geometries   = nbeams * n_user_angles*n_user_relazms;
   int ntotal         = 2*nlayers;
@@ -38,14 +42,12 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   bool do_brdf_surface;
 
   // Linearization flags
-  bool do_profile_wfs, do_column_wfs, do_surface_wfs;
-  bool do_sim_only;
+  bool do_profile_wfs, do_surface_wfs;
 
   // Linearization control
   Array<bool, 1> layer_vflag( nlayers );
   Array<int, 1> layer_vnumber( nlayers );
 
-  int n_column_wfs;
   int n_surface_wfs;
 
   // Geometry
@@ -56,11 +58,8 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   // Stream value
   double stream_value;
 
-  // Lambertian Surface control (threaded)
-  Array<double, 1> lambertian_albedo(nthreads);
-
   // Cox-Munk Surface control (threaded)
-  Array<double, 1> wind_speed(nthreads);
+  double wind_speed;
 
   // BRDF Fourier components (NOT threaded)
   // 0 and 1 Fourier components of BRDF, following order (same all threads)
@@ -85,25 +84,21 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
 
   // Other BRDF variables
   bool do_shadow_effect;
-  Array<bool, 1> lambertian_kernel_flag(3);
-  Array<bool, 1> do_kernel_factor_wfs(3);
-  Array<bool, 2> do_kernel_params_wfs(3,3);
-  Array<bool, 1> do_kparams_derivs(3);
+  Array<bool, 1> lambertian_kernel_flag(nbrdf);
+  Array<bool, 1> do_kernel_factor_wfs(nbrdf);
+  Array<bool, 2> do_kernel_params_wfs(nbrdf,nbrdf);
+  Array<bool, 1> do_kparams_derivs(nbrdf);
   int n_brdf_kernels;
-  Array<int, 1> n_brdf_parameters(3);
-  Array<int, 1> which_brdf(3);
-  Array<double, 1> brdf_factors(3);
-  Array<double, 2> brdf_parameters(3,3);
+  Array<int, 1> n_brdf_parameters(nbrdf);
+  Array<int, 1> which_brdf(nbrdf);
+  Array<double, 1> brdf_factors(nbrdf);
+  Array<double, 2> brdf_parameters(nbrdf,nbrdf);
 
   // Thermal variables
-  // Not using thermal variables
-  //double surfbb;
-  //Array<double, 1> thermal_bb_input(nlayers+1); // ( 0:NLAYERS )
-  //double emissivity;
-  //Array<double, 1> ls_emiss(nspars);
-
-  // Input thread
-  int thread;
+  double surfbb = 0;
+  Array<double, 1> thermal_bb_input(nlayers+1); // ( 0:NLAYERS )
+  double emissivity;
+  Array<double, 1> ls_emissivity(nspars);
 
   // Flux factor
   double flux_factor;
@@ -113,29 +108,26 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   Array<double, 1> height_grid(nlayers+1); // ( 0:NLAYERS )
 
   // Atmospheric Optical properties
-  Array<double, 2> deltau_input(nlayers, nthreads);
-  Array<double, 2> omega_input(nlayers, nthreads);
-  Array<double, 2> asymm_input(nlayers, nthreads);
-  Array<double, 2> d2s_scaling(nlayers, nthreads);
+  Array<double, 1> deltau_input(nlayers);
+  Array<double, 1> omega_input(nlayers);
+  Array<double, 1> asymm_input(nlayers);
+  Array<double, 1> d2s_scaling(nlayers);
 
   // Linearized optical properties
-  Array<double, 3> l_deltau_input(nlayers, npars, nthreads);
-  Array<double, 3> l_omega_input(nlayers, npars, nthreads);
-  Array<double, 3> l_asymm_input(nlayers, npars, nthreads);
-  Array<double, 3> l_d2s_scaling(nlayers, npars, nthreads);
+  Array<double, 2> l_deltau_input(nlayers, npars);
+  Array<double, 2> l_omega_input(nlayers, npars);
+  Array<double, 2> l_asymm_input(nlayers, npars);
+  Array<double, 2> l_d2s_scaling(nlayers, npars);
 
   // Results
-  Array<double, 2> intensity_toa(n_geometries, nthreads);
-  Array<double, 2> intensity_boa(n_geometries, nthreads);
+  Array<double, 1> intensity_toa(n_geometries);
+  Array<double, 1> intensity_boa(n_geometries);
   
-  Array<double, 4> profilewf_toa(n_geometries, nlayers, npars, nthreads);
-  Array<double, 4> profilewf_boa(n_geometries, nlayers, npars, nthreads);
+  Array<double, 3> profilewf_toa(n_geometries, nlayers, npars);
+  Array<double, 3> profilewf_boa(n_geometries, nlayers, npars);
 
-  Array<double, 3> columnwf_toa(n_geometries, npars, nthreads);
-  Array<double, 3> columnwf_boa(n_geometries, npars, nthreads);
-
-  Array<double, 3> surfacewf_toa(n_geometries, nspars, nthreads);
-  Array<double, 3> surfacewf_boa(n_geometries, nspars, nthreads);
+  Array<double, 2> surfacewf_toa(n_geometries, nspars);
+  Array<double, 2> surfacewf_boa(n_geometries, nspars);
 
   // Exception handling
   int status_inputcheck;
@@ -174,7 +166,7 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   b2 = 0.5, 0.5, 0.5;
 
   double column_save = 1.0e0;
-  double windspeed_save = 10.e0;
+  wind_speed = 10.e0;
 
   // Set up inputs
   do_brdf_surface     = false;
@@ -210,8 +202,7 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   // Set up the BRDF stuff, Cox Munk
   // ======================================================
 
-  thread = 1; int T = 0;
-
+  do_solar_sources          = true;
   do_shadow_effect          = true;
   lambertian_kernel_flag(0) = false;
   do_kernel_factor_wfs      = false;
@@ -228,16 +219,21 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   brdf_factors(0)           = 1.e0;
   brdf_parameters           = 0.e0;
   brdf_parameters(0,1)      = 1.33e0 * 1.33e0; // Square of refractive index
-  wind_speed(T)             = windspeed_save;
-  brdf_parameters(0,0)      = 0.003e0 + 0.00512e0 * wind_speed(T); // Slope squared
+  brdf_parameters(0,0)      = 0.003e0 + 0.00512e0 * wind_speed; // Slope squared
 
   // Call linearized BRDF supplement
-  Twostream_Ls_Brdf_Supplement twostream_brdf(nbeams, n_user_angles, n_user_relazms, nspars);
+  Twostream_Ls_Brdf_Supplement twostream_brdf(
+    // Max sizes
+    nbeams, n_user_angles, lid_pars.max_user_obsgeoms, nstreams_brdf,
+    lid_pars.max_brdf_kernels, lid_pars.max_brdf_parameters, nspars,
+    // Instance sizes
+    nbeams, n_user_angles, nstreams_brdf);
 
   // Inputs
+
+  twostream_brdf.do_solar_sources(do_solar_sources);
   twostream_brdf.do_shadow_effect(do_shadow_effect);
   twostream_brdf.do_surface_emission(do_surface_emission);
-  twostream_brdf.nstreams_brdf(nstreams_brdf);
   twostream_brdf.n_brdf_kernels(n_brdf_kernels);
   twostream_brdf.n_brdf_parameters(n_brdf_parameters);
        
@@ -252,7 +248,7 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
 
   twostream_brdf.beam_szas(beam_szas);
   twostream_brdf.user_angles(user_angles);
-  twostream_brdf.user_relazms(user_relazms);
+  //twostream_brdf.user_relazms(user_relazms);
   twostream_brdf.stream_value(stream_value);
 
   // Make calculation
@@ -272,19 +268,17 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   ls_brdf_f.reference(twostream_brdf.ls_brdf_f());
   ls_ubrdf_f.reference(twostream_brdf.ls_ubrdf_f());
 
-  //emissivity = twostream_brdf.emissivity();
-  //ls_emiss.reference(twostream_brdf.ls_emissivity());
+  emissivity = twostream_brdf.emissivity();
+  ls_emissivity.reference(twostream_brdf.ls_emissivity());
 
   // Baseline calculation 2 : RADIANCE+ PROFILE/SURFACE WFS
   // ======================================================
 
   //  Control for 3 profile WFs
   do_profile_wfs = true;
-  do_column_wfs  = false;
   do_surface_wfs = true;
-  do_sim_only    = false;
+  //do_sim_only    = false;
 
-  n_column_wfs  = 0;
   n_surface_wfs = 1;
   for(int n = 0; n < nlayers; n++) {
     layer_vflag(n)   = true;
@@ -292,26 +286,25 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   }
 
   //  Optical property inputs
-  lambertian_albedo(T) = 0.e0;
   column = column_save;
   for(int n = 0; n < nlayers; n++) {
     abc(n) = column * abc_save(n) + abc2_save(n);
     sca(n) = sca_save(n) + sca2_save(n);
-    deltau_input(n,T) = abc(n) + sca(n);
-    omega_input(n,T)  = sca(n) /  deltau_input(n,T);
-    asymm_input(n,T)  = asy_save(n)* sca2_save(n) / sca(n);
+    deltau_input(n) = abc(n) + sca(n);
+    omega_input(n)  = sca(n) /  deltau_input(n);
+    asymm_input(n)  = asy_save(n)* sca2_save(n) / sca(n);
     m1 = b2(n) * sca_save(n);
     m2 = 5.0e0 * asy_save(n) * asy_save(n) * sca2_save(n);
-    d2s_scaling(n,T)  = ( m1 + m2 ) / sca(n) / 5.0e0;
+    d2s_scaling(n)  = ( m1 + m2 ) / sca(n) / 5.0e0;
   }
 
   //  First WF is w.r.t abc_save(n)
   for(int n = 0; n < nlayers; n++) {
-    omega = omega_input(n,T);
-    l_deltau_input(n,0,T) = column;
-    l_omega_input (n,0,T) = - column * omega /deltau_input(n,T);
-    l_asymm_input (n,0,T) = 0.0e0;
-    l_d2s_scaling (n,0,T) = 0.0e0;
+    omega = omega_input(n);
+    l_deltau_input(n,0) = column;
+    l_omega_input (n,0) = - column * omega /deltau_input(n);
+    l_asymm_input (n,0) = 0.0e0;
+    l_d2s_scaling (n,0) = 0.0e0;
   }
 
   //  Second WF is w.r.t sca_save(n)
@@ -320,40 +313,47 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
     s2     =  sca2_save(n) / sca(n);
     m1     = b2(n) * sca_save(n) / sca(n);
     m2     = 5.0e0 * asy_save(n) * asy_save(n) * s2;
-    omega1 = 1.0e0-omega_input(n,T);
-    l_deltau_input(n,1,T) = 1.0e0;
-    l_omega_input (n,1,T) = omega1 / deltau_input(n,T);
-    l_asymm_input (n,1,T) = - asymm_input(n,T) / sca(n);
-    l_d2s_scaling (n,1,T) = ( b2(n) - (m1+m2) ) / sca(n) / 5.0e0;
+    omega1 = 1.0e0-omega_input(n);
+    l_deltau_input(n,1) = 1.0e0;
+    l_omega_input (n,1) = omega1 / deltau_input(n);
+    l_asymm_input (n,1) = - asymm_input(n) / sca(n);
+    l_d2s_scaling (n,1) = ( b2(n) - (m1+m2) ) / sca(n) / 5.0e0;
   }
 
   //  Third WF is w.r.t. asy_save(n)
   for(int n = 0; n < nlayers; n++) {
     sca(n) = sca_save(n) + sca2_save(n);
     s2     =  sca2_save(n) / sca(n);
-    l_deltau_input(n,2,T) = 0.0e0;
-    l_omega_input (n,2,T) = 0.0e0;
-    l_asymm_input (n,2,T) = s2;
-    l_d2s_scaling (n,2,T) = 2.0e0 * asy_save(n) * s2;
+    l_deltau_input(n,2) = 0.0e0;
+    l_omega_input (n,2) = 0.0e0;
+    l_asymm_input (n,2) = s2;
+    l_d2s_scaling (n,2) = 2.0e0 * asy_save(n) * s2;
   }
 
   //  Normalize, profile WFs
   for(int n = 0; n < nlayers; n++) {
-    l_deltau_input(n,0,T) = l_deltau_input(n,0,T) * abc_save(n);
-    l_omega_input (n,0,T) = l_omega_input (n,0,T) * abc_save(n);
-    l_asymm_input (n,0,T) = l_asymm_input (n,0,T) * abc_save(n);
-    l_d2s_scaling (n,0,T) = l_d2s_scaling (n,0,T) * abc_save(n);
-    l_deltau_input(n,1,T) = l_deltau_input(n,1,T) * sca_save(n);
-    l_omega_input (n,1,T) = l_omega_input (n,1,T) * sca_save(n);
-    l_asymm_input (n,1,T) = l_asymm_input (n,1,T) * sca_save(n);
-    l_d2s_scaling (n,1,T) = l_d2s_scaling (n,1,T) * sca_save(n);
-    l_deltau_input(n,2,T) = l_deltau_input(n,2,T) * asy_save(n);
-    l_omega_input (n,2,T) = l_omega_input (n,2,T) * asy_save(n);
-    l_asymm_input (n,2,T) = l_asymm_input (n,2,T) * asy_save(n);
-    l_d2s_scaling (n,2,T) = l_d2s_scaling (n,2,T) * asy_save(n);
+    l_deltau_input(n,0) = l_deltau_input(n,0) * abc_save(n);
+    l_omega_input (n,0) = l_omega_input (n,0) * abc_save(n);
+    l_asymm_input (n,0) = l_asymm_input (n,0) * abc_save(n);
+    l_d2s_scaling (n,0) = l_d2s_scaling (n,0) * abc_save(n);
+    l_deltau_input(n,1) = l_deltau_input(n,1) * sca_save(n);
+    l_omega_input (n,1) = l_omega_input (n,1) * sca_save(n);
+    l_asymm_input (n,1) = l_asymm_input (n,1) * sca_save(n);
+    l_d2s_scaling (n,1) = l_d2s_scaling (n,1) * sca_save(n);
+    l_deltau_input(n,2) = l_deltau_input(n,2) * asy_save(n);
+    l_omega_input (n,2) = l_omega_input (n,2) * asy_save(n);
+    l_asymm_input (n,2) = l_asymm_input (n,2) * asy_save(n);
+    l_d2s_scaling (n,2) = l_d2s_scaling (n,2) * asy_save(n);
   }
 
-  Twostream_L_Master twostream_rt = Twostream_L_Master(thread, nthreads, nlayers, ntotal, n_geometries, n_user_angles, n_user_relazms, nbeams, earth_radius, npars, nspars);
+  Twostream_Lps_Master twostream_rt = Twostream_Lps_Master( 
+    // Max sizes
+    nlayers, lid_pars.maxtotal, lid_pars.max_messages,
+    nbeams, n_geometries, 
+    n_user_angles, n_user_relazms, lid_pars.max_user_obsgeoms, 
+    npars, nspars, lid_pars.max_sleavewfs, 
+    // Instance sizes
+    nlayers, ntotal, n_user_angles, n_user_relazms, nbeams, earth_radius, n_geometries);
       
   // Input
   twostream_rt.do_upwelling(do_upwelling);
@@ -368,14 +368,12 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   twostream_rt.do_surface_emission(do_surface_emission);
 
   twostream_rt.do_profile_wfs(do_profile_wfs);
-  twostream_rt.do_column_wfs(do_column_wfs);
   twostream_rt.do_surface_wfs(do_surface_wfs);
-  twostream_rt.do_sim_only(do_sim_only);
+  //twostream_rt.do_sim_only(do_sim_only);
 
   twostream_rt.layer_vary_flag(layer_vflag);
   twostream_rt.layer_vary_number(layer_vnumber);
 
-  twostream_rt.n_column_wfs(n_column_wfs);
   twostream_rt.n_surface_wfs(n_surface_wfs);
 
   twostream_rt.beam_szas(beam_szas);
@@ -383,16 +381,16 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   twostream_rt.user_relazms(user_relazms);
   twostream_rt.stream_value(stream_value);
 
-  twostream_rt.lambertian_albedo(lambertian_albedo);
+  twostream_rt.bvpscalefactor(1.0);
+
   twostream_rt.brdf_f_0(brdf_f_0);
   twostream_rt.brdf_f(brdf_f);
   twostream_rt.ubrdf_f(ubrdf_f);
 
-  // Not using thermal portions
-  //twostream_rt.thermal_bb_input(thermal_bb_input);
-  //twostream_rt.surfbb(surfbb);
-  //twostream_rt.emissivity(emissivity);
-  //twostream_rt.ls_emiss(ls_emiss);
+  twostream_rt.thermal_bb_input(thermal_bb_input);
+  twostream_rt.surfbb(surfbb);
+  twostream_rt.emissivity(emissivity);
+  twostream_rt.ls_emissivity(ls_emissivity);
 
   twostream_rt.ls_brdf_f_0(ls_brdf_f_0);
   twostream_rt.ls_brdf_f(ls_brdf_f);
@@ -418,12 +416,10 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
   // Output
   intensity_toa.reference(twostream_rt.intensity_toa());
   profilewf_toa.reference(twostream_rt.profilewf_toa());
-  columnwf_toa.reference(twostream_rt.columnwf_toa());
   surfacewf_toa.reference(twostream_rt.surfacewf_toa());
   
   intensity_boa.reference(twostream_rt.intensity_boa());
   profilewf_boa.reference(twostream_rt.profilewf_boa());
-  columnwf_boa.reference(twostream_rt.columnwf_boa());
   surfacewf_boa.reference(twostream_rt.surfacewf_boa());
   
   status_inputcheck = twostream_rt.status_inputcheck();
@@ -469,23 +465,23 @@ BOOST_AUTO_TEST_CASE(twostream_l_master)
 
   // Ordering of arrays are different so we need to compare one-dimensionally
   Range all = Range::all();
-  BOOST_CHECK_MATRIX_CLOSE(intensity_toa(all, 0), intensity_toa_expt(all, 0));
-  BOOST_CHECK_MATRIX_CLOSE(intensity_boa(all, 0), intensity_boa_expt(all, 0));
+  BOOST_CHECK_MATRIX_CLOSE(intensity_toa(all), intensity_toa_expt(all, 0));
+  BOOST_CHECK_MATRIX_CLOSE(intensity_boa(all), intensity_boa_expt(all, 0));
   for(int g = 0; g < n_geometries; g++) {
     for(int n = 0; n < nlayers; n++) {
-      BOOST_CHECK_MATRIX_CLOSE(profilewf_toa(g, n, all, 0), profilewf_toa_expt(g, n, all, 0));
-      BOOST_CHECK_MATRIX_CLOSE(profilewf_boa(g, n, all, 0), profilewf_boa_expt(g, n, all, 0));
+      BOOST_CHECK_MATRIX_CLOSE(profilewf_toa(g, n, all), profilewf_toa_expt(g, n, all, 0));
+      BOOST_CHECK_MATRIX_CLOSE(profilewf_boa(g, n, all), profilewf_boa_expt(g, n, all, 0));
     }
-    BOOST_CHECK_MATRIX_CLOSE(surfacewf_boa(g, all, 0), surfacewf_boa_expt(g, all, 0));
-    BOOST_CHECK_MATRIX_CLOSE(surfacewf_toa(g, all, 0), surfacewf_toa_expt(g, all, 0));
+    BOOST_CHECK_MATRIX_CLOSE(surfacewf_boa(g, all), surfacewf_boa_expt(g, all, 0));
+    BOOST_CHECK_MATRIX_CLOSE(surfacewf_toa(g, all), surfacewf_toa_expt(g, all, 0));
   }
 
   // Display result
   if(false) {
     std::cerr << std::scientific << std::setprecision(10);
     for(int g = 0; g < n_geometries; g++) {
-      std::cerr << "intensity_toa: " << g << " = " << intensity_toa(g, 0) << std::endl
-		<< "intensity_boa: " << g << " = " << intensity_boa(g, 0) << std::endl;
+      std::cerr << "intensity_toa: " << g << " = " << intensity_toa(g) << std::endl
+		<< "intensity_boa: " << g << " = " << intensity_boa(g) << std::endl;
       for(int n = 0; n < nlayers; n++) {
 	std::cerr << "profilewf_toa: " << g << " " << n << " = " << profilewf_toa(g, n, all, 0) << std::endl
 		  << "profilewf_boa: " << g << " " << n << " = " << profilewf_boa(g, n, all, 0) << std::endl;

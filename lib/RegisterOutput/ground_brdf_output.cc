@@ -133,7 +133,7 @@ public:
         return uncert_value(spec_idx, GroundBrdf::BRDF_WEIGHT_SLOPE_INDEX);
     }
 
-    double weight_uncert(int spec_idx, int weight_idx)
+    double weight_coeff_uncert(int spec_idx, int weight_idx)
     {
         return uncert_value(spec_idx, 5 + weight_idx);
     }
@@ -150,7 +150,7 @@ public:
 
     double reflectance_weight_uncert(int spec_idx, int weight_idx)
     {
-        return weight_uncert(spec_idx, weight_idx) * kernel_amplitude(spec_idx);
+        return weight_coeff_uncert(spec_idx, weight_idx) * kernel_amplitude(spec_idx);
     }
 
     double kernel_amplitude(int spec_idx) const
@@ -196,6 +196,7 @@ void GroundBrdfOutput::register_output_apriori(const boost::shared_ptr<Output>& 
 
       { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_slope, helper, spec_idx);
         out->register_data_source("/RetrievalResults/brdf_weight_slope_apriori_" + band_name, f); }
+
       for (int i = 2; i < brdf->number_weight_parameters(); ++i) {
           { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_coeff, helper, spec_idx, i);
             out->register_data_source("/RetrievalResults/brdf_weight_" + (i == 2 ? std::string("quadratic") : std::to_string(i)) + "_apriori_" + band_name, f); }
@@ -268,7 +269,7 @@ void GroundBrdfOutput::register_output(const boost::shared_ptr<Output>& out) con
           { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_coeff, helper, spec_idx, i);
             out->register_data_source("/RetrievalResults/brdf_weight_" + (i == 2 ? std::string("quadratic") : std::to_string(i)) + "_" + band_name, f); }
 
-          { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_uncert, helper, spec_idx, i);
+          { boost::function<double ()> f = boost::bind(&BrdfOutputHelper::weight_coeff_uncert, helper, spec_idx, i);
             out->register_data_source("/RetrievalResults/brdf_weight_" + (i == 2 ? std::string("quadratic") : std::to_string(i)) + "_uncert_" + band_name, f); }
       }
 

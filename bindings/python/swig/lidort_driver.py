@@ -164,7 +164,6 @@ class SpurrBrdfDriver(object):
 SpurrBrdfDriver.initialize_brdf_inputs = new_instancemethod(_lidort_driver.SpurrBrdfDriver_initialize_brdf_inputs, None, SpurrBrdfDriver)
 SpurrBrdfDriver.setup_geometry = new_instancemethod(_lidort_driver.SpurrBrdfDriver_setup_geometry, None, SpurrBrdfDriver)
 SpurrBrdfDriver.setup_brdf_inputs = new_instancemethod(_lidort_driver.SpurrBrdfDriver_setup_brdf_inputs, None, SpurrBrdfDriver)
-SpurrBrdfDriver.set_lambertian_albedo = new_instancemethod(_lidort_driver.SpurrBrdfDriver_set_lambertian_albedo, None, SpurrBrdfDriver)
 SpurrBrdfDriver._v_n_brdf_kernels = new_instancemethod(_lidort_driver.SpurrBrdfDriver__v_n_brdf_kernels, None, SpurrBrdfDriver)
 SpurrBrdfDriver._v_n_kernel_factor_wfs = new_instancemethod(_lidort_driver.SpurrBrdfDriver__v_n_kernel_factor_wfs, None, SpurrBrdfDriver)
 SpurrBrdfDriver._v_n_kernel_params_wfs = new_instancemethod(_lidort_driver.SpurrBrdfDriver__v_n_kernel_params_wfs, None, SpurrBrdfDriver)
@@ -222,7 +221,7 @@ class LidortBrdfDriver(SpurrBrdfDriver):
     def _v_brdf_interface(self):
         """
 
-        const boost::shared_ptr<Brdf_Linsup_Masters> FullPhysics::LidortBrdfDriver::brdf_interface() const
+        const boost::shared_ptr<Brdf_Lin_Sup_Masters> FullPhysics::LidortBrdfDriver::brdf_interface() const
         Interface to BRDF interface to allow changing configuration to values.
 
         """
@@ -411,7 +410,7 @@ class LidortRtDriver(SpurrRtDriver):
     def _v_brdf_interface(self):
         """
 
-        const boost::shared_ptr<Brdf_Linsup_Masters> FullPhysics::LidortRtDriver::brdf_interface() const
+        const boost::shared_ptr<Brdf_Lin_Sup_Masters> FullPhysics::LidortRtDriver::brdf_interface() const
 
         """
         return _lidort_driver.LidortRtDriver__v_brdf_interface(self)

@@ -1,13 +1,12 @@
-// -*- mode: c++; -*-
-// (Not really c++, but closest emacs mode)
-
 // This file was auto-generated
+
+%include "common.i"
 
 %{
 #include "{{ file_name }}.h"
 %}
 
-{%if pars_wrapper %}%shared_ptr(FullPhysics::{{ pars_wrapper.class_name }});{% endif %}
+{%if pars_wrapper %}%fp_shared_ptr(FullPhysics::{{ pars_wrapper.class_name }});{% endif %}
 
 namespace FullPhysics {
 
