@@ -63,7 +63,7 @@ contains
 
       integer k1,n,p
       logical verbo
-      double precision Asurf,ws,ri,sfac
+      double precision Asurf,ws,ri,sfac,scale
 
       do k1 = 1, nstokes
         R1(k1) = 0.d0
@@ -143,13 +143,14 @@ contains
         Asurf = spars(3)
 !  Shadow parameter changed to spars(4), 8/17/2010, V. Natraj
         sfac = spars(4)
+        scale = spars(5)
 
 !  R1 and Linearized R1
 
         if (s_linearize) then
           call L_R1_glint_exact &
            (nstokes,nspars, & !inputs
-            emu,emu0,phi,ws,ri,Asurf,sfac, & !inputs ! V. Natraj, 8/17/2010
+            emu,emu0,phi,ws,ri,Asurf,sfac,scale, & !inputs ! V. Natraj, 8/17/2010
             R1,Ls_R1) ! outputs
 
 !  R1 alone
@@ -157,7 +158,7 @@ contains
         else
           call R1_glint_exact &
            (nstokes,nspars, & !inputs
-            emu,emu0,phi,ws,ri,Asurf,sfac, & !inputs ! V. Natraj, 8/17/2010
+            emu,emu0,phi,ws,ri,Asurf,sfac,scale, & !inputs ! V. Natraj, 8/17/2010
             R1) ! output
         endif
 

@@ -12,6 +12,10 @@
 %fp_shared_ptr(FullPhysics::TwostreamRt);
 
 namespace FullPhysics {
+
+// Force to be not abstract
+%feature("notabstract") TwostreamRt;
+
 class TwostreamRt : public SpurrRt {
 public:
   TwostreamRt(const boost::shared_ptr<RtAtmosphere>& Atm,

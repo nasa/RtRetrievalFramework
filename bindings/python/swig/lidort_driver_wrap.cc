@@ -3456,57 +3456,71 @@ namespace Swig {
 #define SWIGTYPE_p_FullPhysics__ArrayAdT_double_2_t swig_types[1]
 #define SWIGTYPE_p_FullPhysics__AutoDerivativeRefT_double_t swig_types[2]
 #define SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t swig_types[3]
-#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[4]
-#define SWIGTYPE_p_FullPhysics__LidortBrdfDriver swig_types[5]
-#define SWIGTYPE_p_FullPhysics__LidortRtDriver swig_types[6]
-#define SWIGTYPE_p_FullPhysics__Lidort_Pars swig_types[7]
-#define SWIGTYPE_p_FullPhysics__SpurrBrdfDriver swig_types[8]
-#define SWIGTYPE_p_FullPhysics__SpurrRtDriver swig_types[9]
-#define SWIGTYPE_p_allocator_type swig_types[10]
-#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[11]
-#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[12]
-#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[13]
-#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[14]
-#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[15]
-#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[16]
-#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[17]
-#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[18]
-#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[19]
-#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[20]
-#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[21]
-#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[22]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[23]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[24]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Linsup_Masters_t swig_types[25]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[26]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t swig_types[27]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t swig_types[28]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t swig_types[29]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t swig_types[30]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t swig_types[31]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t swig_types[32]
-#define SWIGTYPE_p_char swig_types[33]
-#define SWIGTYPE_p_char_type swig_types[34]
-#define SWIGTYPE_p_difference_type swig_types[35]
-#define SWIGTYPE_p_double swig_types[36]
-#define SWIGTYPE_p_fmtflags swig_types[37]
-#define SWIGTYPE_p_int_type swig_types[38]
-#define SWIGTYPE_p_iostate swig_types[39]
-#define SWIGTYPE_p_off_type swig_types[40]
-#define SWIGTYPE_p_openmode swig_types[41]
-#define SWIGTYPE_p_pos_type swig_types[42]
-#define SWIGTYPE_p_seekdir swig_types[43]
-#define SWIGTYPE_p_size_t swig_types[44]
-#define SWIGTYPE_p_size_type swig_types[45]
-#define SWIGTYPE_p_state_type swig_types[46]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[47]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[48]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[49]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[50]
-#define SWIGTYPE_p_traits_type swig_types[51]
-#define SWIGTYPE_p_value_type swig_types[52]
-static swig_type_info *swig_types[54];
-static swig_module_info swig_module = {swig_types, 53, 0, 0, 0, 0};
+#define SWIGTYPE_p_FullPhysics__Brdf_Lin_Sup_Masters swig_types[4]
+#define SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters swig_types[5]
+#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[6]
+#define SWIGTYPE_p_FullPhysics__LidortBrdfDriver swig_types[7]
+#define SWIGTYPE_p_FullPhysics__LidortRtDriver swig_types[8]
+#define SWIGTYPE_p_FullPhysics__Lidort_Brdf_Sup_Accessories swig_types[9]
+#define SWIGTYPE_p_FullPhysics__Lidort_Inputs swig_types[10]
+#define SWIGTYPE_p_FullPhysics__Lidort_L_Inputs swig_types[11]
+#define SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters swig_types[12]
+#define SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters swig_types[13]
+#define SWIGTYPE_p_FullPhysics__Lidort_Masters swig_types[14]
+#define SWIGTYPE_p_FullPhysics__Lidort_Pars swig_types[15]
+#define SWIGTYPE_p_FullPhysics__SpurrBrdfDriver swig_types[16]
+#define SWIGTYPE_p_FullPhysics__SpurrRtDriver swig_types[17]
+#define SWIGTYPE_p_allocator_type swig_types[18]
+#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[19]
+#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[20]
+#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[21]
+#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[22]
+#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[23]
+#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[24]
+#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[25]
+#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[26]
+#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[27]
+#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[28]
+#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[29]
+#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[30]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[31]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[32]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t swig_types[33]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t swig_types[34]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[35]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t swig_types[36]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t swig_types[37]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t swig_types[38]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t swig_types[39]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t swig_types[40]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t swig_types[41]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t swig_types[42]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t swig_types[43]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t swig_types[44]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t swig_types[45]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t swig_types[46]
+#define SWIGTYPE_p_char swig_types[47]
+#define SWIGTYPE_p_char_type swig_types[48]
+#define SWIGTYPE_p_difference_type swig_types[49]
+#define SWIGTYPE_p_double swig_types[50]
+#define SWIGTYPE_p_fmtflags swig_types[51]
+#define SWIGTYPE_p_int_type swig_types[52]
+#define SWIGTYPE_p_iostate swig_types[53]
+#define SWIGTYPE_p_off_type swig_types[54]
+#define SWIGTYPE_p_openmode swig_types[55]
+#define SWIGTYPE_p_pos_type swig_types[56]
+#define SWIGTYPE_p_seekdir swig_types[57]
+#define SWIGTYPE_p_size_t swig_types[58]
+#define SWIGTYPE_p_size_type swig_types[59]
+#define SWIGTYPE_p_state_type swig_types[60]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[61]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[62]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[63]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[64]
+#define SWIGTYPE_p_traits_type swig_types[65]
+#define SWIGTYPE_p_value_type swig_types[66]
+static swig_type_info *swig_types[68];
+static swig_module_info swig_module = {swig_types, 67, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5325,61 +5339,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SpurrBrdfDriver_set_lambertian_albedo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
-  blitz::Array< double,1 > *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::SpurrBrdfDriver > tempshared1 ;
-  boost::shared_ptr< FullPhysics::SpurrBrdfDriver > *smartarg1 = 0 ;
-  blitz::Array< double,1 > a2 ;
-  PythonObject numpy2 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"SpurrBrdfDriver_set_lambertian_albedo",2,2,swig_obj)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SpurrBrdfDriver_set_lambertian_albedo" "', argument " "1"" of type '" "FullPhysics::SpurrBrdfDriver *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::SpurrBrdfDriver > * >(argp1);
-      arg1 = const_cast< FullPhysics::SpurrBrdfDriver * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    int res = SWIG_ConvertPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_blitz__ArrayT_double_1_t, 
-      0 );
-    if(!SWIG_IsOK(res)) {
-      numpy2.obj = to_numpy<double>(swig_obj[1]);
-      if(!numpy2.obj)
-      return NULL;
-      a2.reference(to_blitz_array<double, 1>(numpy2));
-      arg2 = &a2;
-    }
-  }
-  {
-    try {
-      (arg1)->set_lambertian_albedo((blitz::Array< double,1 > const &)*arg2);
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_SpurrBrdfDriver__v_n_brdf_kernels(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::SpurrBrdfDriver *arg1 = (FullPhysics::SpurrBrdfDriver *) 0 ;
@@ -6612,7 +6571,7 @@ SWIGINTERN PyObject *_wrap_LidortBrdfDriver__v_brdf_interface(PyObject *SWIGUNUS
   boost::shared_ptr< FullPhysics::LidortBrdfDriver const > tempshared1 ;
   boost::shared_ptr< FullPhysics::LidortBrdfDriver const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
-  SwigValueWrapper< boost::shared_ptr< FullPhysics::Brdf_Linsup_Masters > > result;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters > result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -6640,7 +6599,9 @@ SWIGINTERN PyObject *_wrap_LidortBrdfDriver__v_brdf_interface(PyObject *SWIGUNUS
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_NewPointerObj((new boost::shared_ptr< FullPhysics::Brdf_Linsup_Masters >(static_cast< const boost::shared_ptr< FullPhysics::Brdf_Linsup_Masters >& >(result))), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Linsup_Masters_t, SWIG_POINTER_OWN |  0 );
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -7229,7 +7190,7 @@ SWIGINTERN PyObject *_wrap_LidortRtDriver__v_brdf_interface(PyObject *SWIGUNUSED
   boost::shared_ptr< FullPhysics::LidortRtDriver const > tempshared1 ;
   boost::shared_ptr< FullPhysics::LidortRtDriver const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
-  SwigValueWrapper< boost::shared_ptr< FullPhysics::Brdf_Linsup_Masters > > result;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters > result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -7257,7 +7218,9 @@ SWIGINTERN PyObject *_wrap_LidortRtDriver__v_brdf_interface(PyObject *SWIGUNUSED
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_NewPointerObj((new boost::shared_ptr< FullPhysics::Brdf_Linsup_Masters >(static_cast< const boost::shared_ptr< FullPhysics::Brdf_Linsup_Masters >& >(result))), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Linsup_Masters_t, SWIG_POINTER_OWN |  0 );
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -7272,7 +7235,7 @@ SWIGINTERN PyObject *_wrap_LidortRtDriver__v_lidort_interface(PyObject *SWIGUNUS
   boost::shared_ptr< FullPhysics::LidortRtDriver const > tempshared1 ;
   boost::shared_ptr< FullPhysics::LidortRtDriver const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
-  SwigValueWrapper< boost::shared_ptr< FullPhysics::Lidort_Lps_Masters > > result;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters > result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -7300,7 +7263,9 @@ SWIGINTERN PyObject *_wrap_LidortRtDriver__v_lidort_interface(PyObject *SWIGUNUS
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_NewPointerObj((new boost::shared_ptr< FullPhysics::Lidort_Lps_Masters >(static_cast< const boost::shared_ptr< FullPhysics::Lidort_Lps_Masters >& >(result))), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, SWIG_POINTER_OWN |  0 );
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -7365,7 +7330,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SpurrBrdfDriver_initialize_brdf_inputs", _wrap_SpurrBrdfDriver_initialize_brdf_inputs, METH_VARARGS, NULL},
 	 { (char *)"SpurrBrdfDriver_setup_geometry", _wrap_SpurrBrdfDriver_setup_geometry, METH_VARARGS, NULL},
 	 { (char *)"SpurrBrdfDriver_setup_brdf_inputs", _wrap_SpurrBrdfDriver_setup_brdf_inputs, METH_VARARGS, NULL},
-	 { (char *)"SpurrBrdfDriver_set_lambertian_albedo", _wrap_SpurrBrdfDriver_set_lambertian_albedo, METH_VARARGS, NULL},
 	 { (char *)"SpurrBrdfDriver__v_n_brdf_kernels", (PyCFunction)_wrap_SpurrBrdfDriver__v_n_brdf_kernels, METH_O, NULL},
 	 { (char *)"SpurrBrdfDriver__v_n_kernel_factor_wfs", (PyCFunction)_wrap_SpurrBrdfDriver__v_n_kernel_factor_wfs, METH_O, NULL},
 	 { (char *)"SpurrBrdfDriver__v_n_kernel_params_wfs", (PyCFunction)_wrap_SpurrBrdfDriver__v_n_kernel_params_wfs, METH_O, NULL},
@@ -7398,7 +7362,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"LidortBrdfDriver__v_brdf_interface", (PyCFunction)_wrap_LidortBrdfDriver__v_brdf_interface, METH_O, (char *)"\n"
 		"\n"
-		"const boost::shared_ptr<Brdf_Linsup_Masters> FullPhysics::LidortBrdfDriver::brdf_interface() const\n"
+		"const boost::shared_ptr<Brdf_Lin_Sup_Masters> FullPhysics::LidortBrdfDriver::brdf_interface() const\n"
 		"Interface to BRDF interface to allow changing configuration to values.\n"
 		"\n"
 		""},
@@ -7468,7 +7432,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"LidortRtDriver__v_brdf_interface", (PyCFunction)_wrap_LidortRtDriver__v_brdf_interface, METH_O, (char *)"\n"
 		"\n"
-		"const boost::shared_ptr<Brdf_Linsup_Masters> FullPhysics::LidortRtDriver::brdf_interface() const\n"
+		"const boost::shared_ptr<Brdf_Lin_Sup_Masters> FullPhysics::LidortRtDriver::brdf_interface() const\n"
 		"\n"
 		""},
 	 { (char *)"LidortRtDriver__v_lidort_interface", (PyCFunction)_wrap_LidortRtDriver__v_lidort_interface, METH_O, (char *)"\n"
@@ -7533,9 +7497,17 @@ static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_1_t = {"_p_FullPhys
 static swig_type_info _swigt__p_FullPhysics__ArrayAdT_double_2_t = {"_p_FullPhysics__ArrayAdT_double_2_t", "FullPhysics::ArrayAd< double,2 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeRefT_double_t = {"_p_FullPhysics__AutoDerivativeRefT_double_t", "FullPhysics::AutoDerivativeRef< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeT_double_t = {"_p_FullPhysics__AutoDerivativeT_double_t", "FullPhysics::AutoDerivative< double > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Brdf_Lin_Sup_Masters = {"_p_FullPhysics__Brdf_Lin_Sup_Masters", "FullPhysics::Brdf_Lin_Sup_Masters *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Brdf_Sup_Masters = {"_p_FullPhysics__Brdf_Sup_Masters", "FullPhysics::Brdf_Sup_Masters *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__GenericObject = {"_p_FullPhysics__GenericObject", "FullPhysics::GenericObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__LidortBrdfDriver = {"_p_FullPhysics__LidortBrdfDriver", "FullPhysics::LidortBrdfDriver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__LidortRtDriver = {"_p_FullPhysics__LidortRtDriver", "FullPhysics::LidortRtDriver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_Brdf_Sup_Accessories = {"_p_FullPhysics__Lidort_Brdf_Sup_Accessories", "FullPhysics::Lidort_Brdf_Sup_Accessories *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_Inputs = {"_p_FullPhysics__Lidort_Inputs", "FullPhysics::Lidort_Inputs *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_L_Inputs = {"_p_FullPhysics__Lidort_L_Inputs", "FullPhysics::Lidort_L_Inputs *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_Lcs_Masters = {"_p_FullPhysics__Lidort_Lcs_Masters", "FullPhysics::Lidort_Lcs_Masters *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_Lps_Masters = {"_p_FullPhysics__Lidort_Lps_Masters", "FullPhysics::Lidort_Lps_Masters *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_Masters = {"_p_FullPhysics__Lidort_Masters", "FullPhysics::Lidort_Masters *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Pars = {"_p_FullPhysics__Lidort_Pars", "FullPhysics::Lidort_Pars *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__SpurrBrdfDriver = {"_p_FullPhysics__SpurrBrdfDriver", "FullPhysics::SpurrBrdfDriver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__SpurrRtDriver = {"_p_FullPhysics__SpurrRtDriver", "FullPhysics::SpurrRtDriver *", 0, 0, (void*)0, 0};
@@ -7554,11 +7526,17 @@ static swig_type_info _swigt__p_blitz__ArrayT_int_3_t = {"_p_blitz__ArrayT_int_3
 static swig_type_info _swigt__p_blitz__ArrayT_int_4_t = {"_p_blitz__ArrayT_int_4_t", "blitz::Array< int,4 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivativeRef< double > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivative< double > > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Linsup_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Brdf_Linsup_Masters_t", "boost::shared_ptr< FullPhysics::Brdf_Linsup_Masters > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t", "boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t", "boost::shared_ptr< FullPhysics::Brdf_Sup_Masters > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t = {"_p_boost__shared_ptrT_FullPhysics__GenericObject_t", "boost::shared_ptr< FullPhysics::GenericObject > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t = {"_p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t", "boost::shared_ptr< FullPhysics::LidortBrdfDriver > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t = {"_p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t", "boost::shared_ptr< FullPhysics::LidortRtDriver > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t", "boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t", "boost::shared_ptr< FullPhysics::Lidort_Inputs > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t", "boost::shared_ptr< FullPhysics::Lidort_L_Inputs > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t", "boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t", "boost::shared_ptr< FullPhysics::Lidort_Lps_Masters > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t", "boost::shared_ptr< FullPhysics::Lidort_Masters > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t", "boost::shared_ptr< FullPhysics::Lidort_Pars > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t = {"_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t", "boost::shared_ptr< FullPhysics::SpurrBrdfDriver > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t = {"_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t", "boost::shared_ptr< FullPhysics::SpurrRtDriver > *", 0, 0, (void*)0, 0};
@@ -7588,9 +7566,17 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__ArrayAdT_double_2_t,
   &_swigt__p_FullPhysics__AutoDerivativeRefT_double_t,
   &_swigt__p_FullPhysics__AutoDerivativeT_double_t,
+  &_swigt__p_FullPhysics__Brdf_Lin_Sup_Masters,
+  &_swigt__p_FullPhysics__Brdf_Sup_Masters,
   &_swigt__p_FullPhysics__GenericObject,
   &_swigt__p_FullPhysics__LidortBrdfDriver,
   &_swigt__p_FullPhysics__LidortRtDriver,
+  &_swigt__p_FullPhysics__Lidort_Brdf_Sup_Accessories,
+  &_swigt__p_FullPhysics__Lidort_Inputs,
+  &_swigt__p_FullPhysics__Lidort_L_Inputs,
+  &_swigt__p_FullPhysics__Lidort_Lcs_Masters,
+  &_swigt__p_FullPhysics__Lidort_Lps_Masters,
+  &_swigt__p_FullPhysics__Lidort_Masters,
   &_swigt__p_FullPhysics__Lidort_Pars,
   &_swigt__p_FullPhysics__SpurrBrdfDriver,
   &_swigt__p_FullPhysics__SpurrRtDriver,
@@ -7609,11 +7595,17 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_blitz__ArrayT_int_4_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,
-  &_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Linsup_Masters_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t,
@@ -7643,9 +7635,17 @@ static swig_cast_info _swigc__p_FullPhysics__ArrayAdT_double_1_t[] = {  {&_swigt
 static swig_cast_info _swigc__p_FullPhysics__ArrayAdT_double_2_t[] = {  {&_swigt__p_FullPhysics__ArrayAdT_double_2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeRefT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Brdf_Lin_Sup_Masters[] = {  {&_swigt__p_FullPhysics__Brdf_Lin_Sup_Masters, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Brdf_Sup_Masters[] = {  {&_swigt__p_FullPhysics__Brdf_Sup_Masters, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__LidortBrdfDriver[] = {  {&_swigt__p_FullPhysics__LidortBrdfDriver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__LidortRtDriver[] = {  {&_swigt__p_FullPhysics__LidortRtDriver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_Brdf_Sup_Accessories[] = {  {&_swigt__p_FullPhysics__Lidort_Brdf_Sup_Accessories, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_Inputs[] = {  {&_swigt__p_FullPhysics__Lidort_Inputs, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_L_Inputs[] = {  {&_swigt__p_FullPhysics__Lidort_L_Inputs, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_Lcs_Masters[] = {  {&_swigt__p_FullPhysics__Lidort_Lcs_Masters, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_Lps_Masters[] = {  {&_swigt__p_FullPhysics__Lidort_Lps_Masters, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_Masters[] = {  {&_swigt__p_FullPhysics__Lidort_Masters, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Pars[] = {  {&_swigt__p_FullPhysics__Lidort_Pars, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__SpurrBrdfDriver[] = {  {&_swigt__p_FullPhysics__SpurrBrdfDriver, 0, 0, 0},  {&_swigt__p_FullPhysics__LidortBrdfDriver, _p_FullPhysics__LidortBrdfDriverTo_p_FullPhysics__SpurrBrdfDriver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__SpurrRtDriver[] = {  {&_swigt__p_FullPhysics__SpurrRtDriver, 0, 0, 0},  {&_swigt__p_FullPhysics__LidortRtDriver, _p_FullPhysics__LidortRtDriverTo_p_FullPhysics__SpurrRtDriver, 0, 0},{0, 0, 0, 0}};
@@ -7664,11 +7664,17 @@ static swig_cast_info _swigc__p_blitz__ArrayT_int_3_t[] = {  {&_swigt__p_blitz__
 static swig_cast_info _swigc__p_blitz__ArrayT_int_4_t[] = {  {&_swigt__p_blitz__ArrayT_int_4_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Linsup_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Linsup_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t, _p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_tTo_p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t, _p_boost__shared_ptrT_FullPhysics__LidortRtDriver_tTo_p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t, 0, 0},{0, 0, 0, 0}};
@@ -7698,9 +7704,17 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__ArrayAdT_double_2_t,
   _swigc__p_FullPhysics__AutoDerivativeRefT_double_t,
   _swigc__p_FullPhysics__AutoDerivativeT_double_t,
+  _swigc__p_FullPhysics__Brdf_Lin_Sup_Masters,
+  _swigc__p_FullPhysics__Brdf_Sup_Masters,
   _swigc__p_FullPhysics__GenericObject,
   _swigc__p_FullPhysics__LidortBrdfDriver,
   _swigc__p_FullPhysics__LidortRtDriver,
+  _swigc__p_FullPhysics__Lidort_Brdf_Sup_Accessories,
+  _swigc__p_FullPhysics__Lidort_Inputs,
+  _swigc__p_FullPhysics__Lidort_L_Inputs,
+  _swigc__p_FullPhysics__Lidort_Lcs_Masters,
+  _swigc__p_FullPhysics__Lidort_Lps_Masters,
+  _swigc__p_FullPhysics__Lidort_Masters,
   _swigc__p_FullPhysics__Lidort_Pars,
   _swigc__p_FullPhysics__SpurrBrdfDriver,
   _swigc__p_FullPhysics__SpurrRtDriver,
@@ -7719,11 +7733,17 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_blitz__ArrayT_int_4_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,
-  _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Linsup_Masters_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__LidortBrdfDriver_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__LidortRtDriver_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__SpurrBrdfDriver_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__SpurrRtDriver_t,

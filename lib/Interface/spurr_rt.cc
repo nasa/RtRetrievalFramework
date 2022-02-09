@@ -6,6 +6,7 @@
 #include "ground_lambertian.h"
 #include "ground_coxmunk.h"
 #include "ground_coxmunk_plus_lambertian.h"
+#include "ground_coxmunk_scaled.h"
 #include "ground_brdf.h"
 
 using namespace FullPhysics;
@@ -60,11 +61,13 @@ SpurrRt::SpurrRt(const boost::shared_ptr<RtAtmosphere>& Atm,
     surface_type_int = COXMUNK;
   } else if(dynamic_cast<GroundCoxmunkPlusLambertian*>(atm->ground().get())) {
     surface_type_int = COXMUNK;
+  } else if(dynamic_cast<GroundCoxmunkScaled*>(atm->ground().get())) {
+    surface_type_int = COXMUNK;
   } else if(dynamic_cast<GroundBrdfVeg*>(atm->ground().get())) {
     surface_type_int = BREONVEG;
   } else if(dynamic_cast<GroundBrdfSoil*>(atm->ground().get())) {
     surface_type_int = BREONSOIL;
-   } else {
+  } else {
     Exception err_msg;
     err_msg << "Spurr RT can not determine surface type integer from ground class: "
             << atm->ground();
@@ -225,6 +228,7 @@ ArrayAd<double, 1> SpurrRt::stokes_and_jacobian_single_wn(double Wn, int Spec_in
   /// Jacobian to the reflectance with respect to the state vector.
   //-----------------------------------------------------------------------
   Array<double, 1> jac(jac_iv.depth());
+
   for(int i = 0; i < jac.rows(); ++i) {
     double val = 0;
     // dimensions swapped on jac_iv and jac_atm

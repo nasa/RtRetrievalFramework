@@ -137,7 +137,18 @@ void LRadDriver::setup_surface_params(const Array<double, 1>& surface_param)
     if (surface_param_f.rows() != surface_param.rows()) {
         surface_param_f.reference(Array<double, 1>(surface_param.rows(), ColumnMajorArray<1>()));
     }
-    surface_param_f = surface_param;
+
+    // A hack to deal with the different ordering.  There should be a better
+    // place to do this.
+    if (surface_type != 2)
+        surface_param_f = surface_param;
+    else {
+        surface_param_f(0) = surface_param(1);
+        surface_param_f(1) = surface_param(2);
+        surface_param_f(2) = surface_param(3);
+        surface_param_f(3) = surface_param(4);
+        surface_param_f(4) = surface_param(0);
+    }
 }
 
 void LRadDriver::setup_optical_inputs(const Array<double, 1>& od, 
@@ -464,7 +475,21 @@ Array<double, 2> LRadDriver::surface_jacobian() const
         throw Exception("Surface jacobians array has not yet been allocated. Set up linear inputs first.");
     }
 
-    return jac_surf_f;
+    // A hack to deal with the different ordering.  There should be a better
+    // place to do this.
+    if (surface_type != 2)
+        return jac_surf_f;
+    else {
+        Array<double, 2> temp(3,5);
+
+        temp(Range::all(),0) = jac_surf_f(Range::all(),4);
+        temp(Range::all(),1) = jac_surf_f(Range::all(),0);
+        temp(Range::all(),2) = jac_surf_f(Range::all(),1);
+        temp(Range::all(),3) = jac_surf_f(Range::all(),2);
+        temp(Range::all(),4) = jac_surf_f(Range::all(),3);
+
+        return temp;
+    }
 }
 
 void LRadDriver::print(std::ostream& Os, bool Short_form) const

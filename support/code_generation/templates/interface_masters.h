@@ -20,18 +20,18 @@ namespace FullPhysics {
 //-----------------------------------------------------------------------
 
 extern "C" {
-{%- for routine_type in ["read", "write"] %}
+{%- if has_read_write %}{%- for routine_type in ["read", "write"] %}
 {%- set f_routine_name = master.name + "_" + routine_type %} 
 {%- set routine_wrap = master.attributes_wrapper(f_routine_name, ignore="thread") %}
 {%- set wrap = routine_wrap.c_wrapper() %}
   void {{ wrap.wrapper_name }}(const char* filename, const int* filename_len, {{ routine_wrap.extern_arg_decls()|join(", ") }});
-{%- endfor %}
+{%- endfor %}{% endif %}
 {%- for routine in master.routines %}
   void {{ routine.f_wrapper_name }}({{ routine.extern_arg_decls()|join(", ") }});
 {%- endfor %}
 }
 
-class {{ master.class_name }} {
+class {{ master.class_name }} : public virtual GenericObject {
 
 public:
   {{ constructor(master.class_name, def.constructor_args, def.class_inits) }} 
@@ -41,6 +41,15 @@ public:
     {% for attr in master.attributes if attr.is_f_type("Type") and not attr.constructor_arg -%}
     {{ attr.c_store_var_name }}.reset( new {{ attr.class_name() }}() );
     {% endfor %}
+  }
+
+  virtual ~{{ master.class_name }}() = default;
+
+  std::string print_to_string() const
+  {
+      std::ostringstream output;
+      output << *this;
+      return output.str();
   }
 
   {% for attr in master.attributes -%}
@@ -67,7 +76,7 @@ public:
     {% block post_wrap scoped %}{{ wrap.post_wrap_code|join("\n")|indent(4) }}{% endblock %}
   }
 {% endfor -%}
-  {% for routine_type in ["read", "write"] -%}
+  {% if has_read_write %}{% for routine_type in ["read", "write"] -%}
   {% set f_routine_name = master.name + "_" + routine_type -%} 
   {% set routine_wrap = master.attributes_wrapper(f_routine_name, ignore="thread") -%}
   {% set wrap = routine_wrap.c_wrapper() %} 
@@ -81,7 +90,7 @@ public:
     {{ wrap.wrapper_name }}(filename_lcl, &filename_in_len, {{ wrap.f_arguments|join(", ") }});
     {{ wrap.post_wrap_code|join("\n")|indent(4) }}
   }
-  {% endfor %}
+  {% endfor %}{% endif %}
   {%set out_op = master.c_output_operator(use_accessor=True) -%}
   {{ out_op.signature }} {
     {{ out_op.contents|indent(4) }}

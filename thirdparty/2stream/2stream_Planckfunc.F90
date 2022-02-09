@@ -1,3 +1,66 @@
+! ###########################################################
+! #                                                         #
+! #             THE TWOSTREAM LIDORT MODEL                  #
+! #                                                         #
+! #      (LInearized Discrete Ordinate Radiative Transfer)  #
+! #       --         -        -        -         -          #
+! #                                                         #
+! ###########################################################
+
+! ###########################################################
+! #                                                         #
+! #  Authors :      Robert. J. D. Spurr (1)                 #
+! #                 Vijay Natraj        (2)                 #
+! #                                                         #
+! #  Address (1) :     RT Solutions, Inc.                   #
+! #                    9 Channing Street                    #
+! #                    Cambridge, MA 02138, USA             #
+! #  Tel:             (617) 492 1183                        #
+! #  Email :           rtsolutions@verizon.net              #
+! #                                                         #
+! #  Address (2) :     CalTech                              #
+! #                    Department of Planetary Sciences     #
+! #                    1200 East California Boulevard       #
+! #                    Pasadena, CA 91125                   #
+! #  Tel:             (626) 395 6962                        #
+! #  Email :           vijay@gps.caltech.edu                #
+! #                                                         #
+! #  Version 1.0-1.3 :                                      #
+! #     Mark 1: October  2010                               #
+! #     Mark 2: May      2011, with BRDFs                   #
+! #     Mark 3: October  2011, with Thermal sources         #
+! #                                                         #
+! #  Version 2.0-2.1 :                                      #
+! #     Mark 4: November 2012, LCS/LPS Split, Fixed Arrays  #
+! #     Mark 5: December 2012, Observation Geometry option  #
+! #                                                         #
+! #  Version 2.2-2.3 :                                      #
+! #     Mark 6: July     2013, Level outputs + control      #
+! #     Mark 7: December 2013, Flux outputs  + control      #
+! #     Mark 8: January  2014, Surface Leaving + control    #
+! #     Mark 9: June     2014, Inverse Pentadiagonal        #
+! #                                                         #
+! #  Version 2.4 :                                          #
+! #     Mark 10: August  2014, Green's function Regular     #
+! #     Mark 11: January 2015, Green's function Linearized  #
+! #                            Taylor, dethreaded, OpenMP   #
+! #                                                         #
+! ###########################################################
+
+! #############################################################
+! #                                                           #
+! #   This Version of LIDORT-2STREAM comes with a GNU-style   #
+! #   license. Please read the license carefully.             #
+! #                                                           #
+! #############################################################
+
+! ###############################################################
+! #                                                             #
+! # Subroutines in this Module                                  #
+! #                                                             #
+! #            get_planckfunction                               #
+! #                                                             #
+! ###############################################################
 
       module TWOSTREAM_getPlanck
 
@@ -18,8 +81,8 @@
 !     WNUMLO, WNUMHI are the wavenumber integration limits
 !     TEMPERATURE is self-evident, must be in units K
 
-      DOUBLE PRECISION,  intent(in)  :: WNUMLO, WNUMHI
-      DOUBLE PRECISION,  intent(in)  :: TEMPERATURE
+      DOUBLE PRECISION, intent(in)  :: WNUMLO, WNUMHI
+      DOUBLE PRECISION, intent(in)  :: TEMPERATURE
 
 !  output arguments
 !  ----------------
@@ -27,40 +90,55 @@
 !     BBFUNC is the Planck function
 !     SMALLV is a debug diagnostic
 
-      DOUBLE PRECISION,  intent(out) :: BBFUNC
-      INTEGER     ,  intent(out) :: SMALLV
+      DOUBLE PRECISION, intent(out) :: BBFUNC
+      INTEGER,          intent(out) :: SMALLV
 
 !  Exception handling
 
-      LOGICAL     ,  intent(out) :: FAIL
+      LOGICAL,       intent(out) :: FAIL
       CHARACTER*(*), intent(out) :: MESSAGE
 
 !  Local variables
 !  ---------------
 
-!  Saved variables
-
-      DOUBLE PRECISION :: DPI, CONC, VMAX, EPSIL, SIGDPI
-      SAVE            DPI, CONC, VMAX, EPSIL, SIGDPI
-      DATA            DPI / 0.0d0 /
-
-!  Other data statements
-
-      INTEGER      :: NSIMPSON
-      DOUBLE PRECISION :: C2, SIGMA, VCUT, VCP(7), CRITERION
-      DATA        C2 / 1.438786D0 /
-      DATA     SIGMA / 5.67032D-8 /
-      DATA      VCUT / 1.5 /
-      DATA       VCP / 10.25, 5.7, 3.9, 2.9, 2.3, 1.9, 0.0 /
-      DATA CRITERION / 1.0d-10 /
-      DATA  NSIMPSON / 25 /
+!  Local parameters for:
+!  (1) General use
+      DOUBLE PRECISION, parameter :: &
+        C2     = 1.438786d0,         & !Planck function constant #2
+        SIGMA  = 5.67032d-8,         & !Stefan-Boltzmann constant
+        SIGDPI = 1.80491891383d-8,   & !SIGMA/Pi
+        POWER4 = 4.0d0,              &
+        CONC   = 1.5398973382d-01    !15.0d0/(Pi**POWER4)
+!  (2) Method discrimination
+      DOUBLE PRECISION, parameter :: &
+        EPSIL  = 1.0d-8, &
+        VMAX   = 32.0d0
+!  (2a) Method #1: Simpson's rule
+      INTEGER, PARAMETER :: &
+        NSIMPSON = 25
+      DOUBLE PRECISION, parameter :: &
+        CRITERION = 1.0d-10
+!  (2b) Method #2: Polynomial series
+      DOUBLE PRECISION, parameter :: &
+        A1 =  3.33333333333d-01, & !  1.0/3.0
+        A2 = -1.25d-01,          & ! -1.0/8.0
+        A3 =  1.66666666667d-02, & !  1.0/60.0
+        A4 = -1.98412698413d-04, & ! -1.0/5040.0
+        A5 =  3.67430922986d-06, & !  1.0/272160.0
+        A6 = -7.51563251563d-08    ! -1.0/13305600.0
+!  (2c) Method #3: Exponential series
+      DOUBLE PRECISION, parameter :: &
+        VCUT = 1.5d0
+      DOUBLE PRECISION, parameter, dimension(7) :: &
+        VCP  = (/ 10.25d0, 5.7d0, 3.9d0, 2.9d0, &
+                   2.3d0,  1.9d0, 0.0d0 /)
 
 !  Other variables
 
-      INTEGER      :: N, K, M, MMAX, I
+      INTEGER   :: N, K, M, MMAX, I
 
       DOUBLE PRECISION :: XLOW, XHIG, XX, X(2), XCUBE, EXPX, OEXPXM1
-      DOUBLE PRECISION :: RANGE, XSTEP, XSTEP3, FACTOR, GAMMA, POWER4
+      DOUBLE PRECISION :: RANGE, XSTEP, XSTEP3, FACTOR, GAMMA
       DOUBLE PRECISION :: PLANCK_LOW, PLANCK_HIG, PLANCK, SCALING
       DOUBLE PRECISION :: VAL, VAL0, OLDVAL, T
 
@@ -68,36 +146,12 @@
       DOUBLE PRECISION :: PLANCK_EXP(2)
       DOUBLE PRECISION :: PLANCK_POL(2)
 
-!  Parameters for the polynomial series
-
-      DOUBLE PRECISION :: A1, A2, A3, A4, A5, A6
-
 !  Initialize output
 
       FAIL    = .false.
       MESSAGE = ' '
       SMALLV  = 0
       BBFUNC  = 0.0d0
-
-!  set parameters
-
-      A1 =  1.0D0 / 3.0D0
-      A2 = -1.0D0 / 8.0D0
-      A3 =  1.0D0 / 60.0D0
-      A4 = -1.0D0 / 5040.0D0
-      A5 =  1.0D0 / 272160.0D0
-      A6 = -1.0D0 / 13305600.0D0
-
-!  set the saved variables
-
-      IF ( DPI .EQ. 0.0d0 ) THEN
-         DPI    = 2.0d0*DASIN(1.0d0)
-         VMAX   = 32.0d0
-         EPSIL  = 1.0d-08
-         SIGDPI = SIGMA / DPI
-         POWER4 = 4.0d0
-         CONC   = 15.0d0 / DPI ** POWER4
-      END IF
 
 !  Check input
 
@@ -116,7 +170,6 @@
 
 !  Scaling constants
 
-      POWER4 = 4.0d0
       SCALING  = SIGDPI * T ** POWER4
 
 !  Wavenumbers are very close.  Get integral
@@ -124,7 +177,7 @@
 
       IF ( X(1).GT.EPSIL .AND. X(2).LT.VMAX .AND. &
          ( WNUMHI - WNUMLO ) / WNUMHI .LT. 1.D-2 ) THEN
-
+!write(*,*) 'doing simpson'
          SMALLV = 3
 
 !  interval
@@ -134,7 +187,7 @@
          RANGE = XHIG - XLOW
 
 !  Two end values
-         
+
          EXPX    = DEXP ( XLOW )
          OEXPXM1 = 1.0d0 / ( EXPX - 1.0d0 )
          XCUBE   = XLOW * XLOW * XLOW
@@ -216,6 +269,7 @@
 !  Power series
 
        IF( X( I ).LT.VCUT ) THEN
+!write(*,*) 'doing polynomial'
         SMALLV = SMALLV + 1
         XX  = X(I)
         XSQ = XX * XX
@@ -224,7 +278,7 @@
        ELSE
 
 !  Use exponential series
-
+!write(*,*) 'doing exponential'
 !  .......Find the upper limit of the series
 
         MMAX  = 0
@@ -237,11 +291,10 @@
         EX  = DEXP( - X(I) )
         F   = 1.0d0
         PL  = 0.0d0
-        POWER4 = -4.0d0
         DO  M = 1, MMAX
           MV = M*X(I)
           F  = EX * F
-          M4 = DBLE(M) ** POWER4
+          M4 = DBLE(M) ** (-POWER4)
           PL = PL + F*(6.0d0+MV*(6.0d0+MV*(3.0d0+MV)))*M4
         ENDDO
         PLANCK_EXP(I)  = PL * CONC
@@ -253,7 +306,7 @@
 !      SMALLV = 1   ---> ** WNUMLO small, WNUMHI large
 !      SMALLV = 2   ---> ** WNUMLO and WNUMHI both large
 
-      IF( SMALLV.EQ.2 ) THEN                            
+      IF( SMALLV.EQ.2 ) THEN
         VAL  =  PLANCK_POL(2) -  PLANCK_POL(1)
       ELSE IF( SMALLV.EQ.1 ) THEN
         VAL  = 1.0d0 - PLANCK_POL (1) -  PLANCK_EXP(2)

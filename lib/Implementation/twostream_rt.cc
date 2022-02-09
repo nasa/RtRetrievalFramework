@@ -1,6 +1,5 @@
 #include "twostream_rt.h"
 #include "ostream_pad.h"
-#include "lidort_interface_types.h"
 
 using namespace FullPhysics;
 using namespace blitz;
@@ -18,7 +17,7 @@ REGISTER_LUA_DERIVED_CLASS(TwostreamRt, RadiativeTransfer)
                           const blitz::Array<double, 1>&,
                           const blitz::Array<double, 1>&, 
                           const blitz::Array<double, 1>&,
-                          bool, bool>())
+                          bool>())
 REGISTER_LUA_END()
 #endif
 
@@ -39,28 +38,21 @@ const bool dump_data = false;
 /// \param Azm Azimuth angle (degrees), in range 0 to 360, and have size
 ///      number_spectrometer()
 /// \param do_fullquadrature false only for comparison against LIDORT 
-/// \param pure_nadir Flag for controlling azimuth dependence in the
-///      output LIDORT will complain if user zenith is 0 and this is
-///      not set, when not using ss correction mode
 //-----------------------------------------------------------------------
 
 TwostreamRt::TwostreamRt(const boost::shared_ptr<RtAtmosphere>& Atm,
-              const boost::shared_ptr<StokesCoefficient>& Stokes_coef,
+                         const boost::shared_ptr<StokesCoefficient>& Stokes_coef,
                          const blitz::Array<double, 1>& Sza,
                          const blitz::Array<double, 1>& Zen,
                          const blitz::Array<double, 1>& Azm, 
-                         bool do_fullquadrature,
-                         bool pure_nadir)
+                         bool do_fullquadrature)
 : SpurrRt(Atm, Stokes_coef, Sza, Zen, Azm)
 {   
-  // Use MAX_ATMOSWFS used by LIDORT for consistency
-  Lidort_Pars lid_pars = Lidort_Pars::instance();
-  rt_driver_.reset(new TwostreamRtDriver(atm->number_layer(), lid_pars.max_atmoswfs, surface_type(), do_fullquadrature, pure_nadir));
+  rt_driver_.reset(new TwostreamRtDriver(atm->number_layer(), surface_type(), do_fullquadrature));
   if(dump_data)
     std::cout << "# Nlayer:\n" << atm->number_layer() << "\n"
-	      << "# Nparm: \n" << lid_pars.max_atmoswfs << "\n"
-	      << "# Surface type:\n" << surface_type() << "\n"
-	      << "# do_fullquadrature:\n" << do_fullquadrature << "\n";
+              << "# Surface type:\n" << surface_type() << "\n"
+              << "# do_fullquadrature:\n" << do_fullquadrature << "\n";
 }
 
 //-----------------------------------------------------------------------
@@ -73,7 +65,6 @@ void TwostreamRt::print(std::ostream& Os, bool Short_form) const
   OstreamPad opad1(Os, "  ");
   SpurrRt::print(opad1, Short_form);
   opad1.strict_sync();
-  Os << "do_full_quadrature = " << (rt_driver()->do_full_quadrature() ? "true" : "false") << "\n"
-     << "pure_nadir = " << (rt_driver()->pure_nadir() ? "True" : "False") << "\n";
+  Os << "do_full_quadrature = " << (rt_driver()->do_full_quadrature() ? "true" : "false") << "\n";
   opad1.strict_sync();
 }

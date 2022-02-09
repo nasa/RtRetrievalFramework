@@ -192,16 +192,6 @@ class SpurrBrdfDriver(object):
         return _spurr_driver.SpurrBrdfDriver_setup_brdf_inputs(self, surface_type, surface_parameters)
 
 
-    def set_lambertian_albedo(self, albedo_array):
-        """
-
-        void FullPhysics::SpurrBrdfDriver::set_lambertian_albedo(const blitz::Array< double, 1 > &albedo_array)
-        Initialize lambertian albedo from array that might be external to the
-        BrdfDriver. 
-        """
-        return _spurr_driver.SpurrBrdfDriver_set_lambertian_albedo(self, albedo_array)
-
-
     def _v_n_brdf_kernels(self):
         """
 
@@ -275,7 +265,6 @@ class SpurrBrdfDriver(object):
 SpurrBrdfDriver.initialize_brdf_inputs = new_instancemethod(_spurr_driver.SpurrBrdfDriver_initialize_brdf_inputs, None, SpurrBrdfDriver)
 SpurrBrdfDriver.setup_geometry = new_instancemethod(_spurr_driver.SpurrBrdfDriver_setup_geometry, None, SpurrBrdfDriver)
 SpurrBrdfDriver.setup_brdf_inputs = new_instancemethod(_spurr_driver.SpurrBrdfDriver_setup_brdf_inputs, None, SpurrBrdfDriver)
-SpurrBrdfDriver.set_lambertian_albedo = new_instancemethod(_spurr_driver.SpurrBrdfDriver_set_lambertian_albedo, None, SpurrBrdfDriver)
 SpurrBrdfDriver._v_n_brdf_kernels = new_instancemethod(_spurr_driver.SpurrBrdfDriver__v_n_brdf_kernels, None, SpurrBrdfDriver)
 SpurrBrdfDriver._v_n_kernel_factor_wfs = new_instancemethod(_spurr_driver.SpurrBrdfDriver__v_n_kernel_factor_wfs, None, SpurrBrdfDriver)
 SpurrBrdfDriver._v_n_kernel_params_wfs = new_instancemethod(_spurr_driver.SpurrBrdfDriver__v_n_kernel_params_wfs, None, SpurrBrdfDriver)

@@ -1,19 +1,9 @@
 import re
 
-# Requires F2PY G3 code from http://code.google.com/p/f2py/
-# Used changeset:   81:69b8613d30cb
 from fparser import typedecl_statements as ftypes
 from fparser.base_classes import Variable
 
-import collections
-from types import StringType
-
-try:
-    # Python 2.7+
-    from collections import OrderedDict
-except ImportError:
-    # http://pypi.python.org/pypi/ordereddict
-    from ordereddict import OrderedDict
+from collections import OrderedDict, Iterable
 
 ##
 # Type conversions
@@ -46,6 +36,7 @@ KIND_TYPE_BIT_MAPPING = { "lidort_spkind": 32,
                           "dpk": 64,
                           "fpk": 64,
                           "dp": 64,
+                          "ffp": 64,
                           }
 
 ##
@@ -111,6 +102,10 @@ def get_decl_mapping(variable_obj, mapping_dict, **fmt_vals):
     return mapped_val
 
 def fix_var_init(var_obj, init_str):
+
+    if init_str is None:
+        raise Exception("No initialization string for variable object:", var_obj)
+
     # Convert configure replacement value to preprocessor macro
     c_match = re.match("@([^@]+)@", init_str)
     if c_match:
@@ -123,6 +118,9 @@ def fix_var_init(var_obj, init_str):
 
     # Remove _fpk type specifier from init strings
     init_str = re.sub("_fpk$", "", init_str)
+
+    # Remove _ffp type specifier from init strings
+    init_str = re.sub("_ffp$", "", init_str)
 
     # Remove _fpk type specifier from init strings
     init_str = re.sub("_dp$", "", init_str)
@@ -151,6 +149,7 @@ def get_f_wrap_routine_name(module_name, routine_name, postfix="wrap", **kwargs)
     return_name += routine_name + "_" + postfix
     # Remove some extraneous strings from wrapper name
     return_name = return_name.replace("lidort_","").replace("module_","")
+    return_name = return_name.replace("optimized_","")
     return return_name
 
 def get_c_wrap_routine_name(module_name, routine_name):
@@ -163,6 +162,7 @@ def get_c_wrap_routine_name(module_name, routine_name):
 def get_class_name(module_name):
     module_name = module_name.replace("_module","").title()
     module_name = re.sub("_[mM]$", "", module_name)
+    module_name = re.sub("_optimized", "", module_name, flags=re.IGNORECASE)
     return module_name
 
 class VariableWrapper(Variable):
@@ -363,16 +363,16 @@ class VariableWrapper(Variable):
         return init_code
 
     def c_accessor_set_decl(self, **kwargs):
-        return self.c_arg_var_decls(**kwargs).items()[0]
+        return list(self.c_arg_var_decls(**kwargs).items())[0]
 
     def c_accessor_return_decl(self, const=False, **kwargs):
         const_str = "const " if const else ""
-        (return_name, return_type) = self.c_store_var_decls(**kwargs).items()[0]
+        (return_name, return_type) = list(self.c_store_var_decls(**kwargs).items())[0]
         return (return_name, const_str + return_type)
 
     def c_routine(self, signature, contents_arr, indent=2):
         routine_code = ""
-        if not isinstance(signature, collections.Iterable) or isinstance(signature, StringType):
+        if not isinstance(signature, Iterable) or isinstance(signature, str):
             signature = [ signature ]
         for curr_sig in signature:
             routine_code += "{signature} {{\n{contents}\n}}\n".\
@@ -399,6 +399,14 @@ class VariableWrapper(Variable):
                    ref_str = "&" if return_ref else "",
                    accessor_name=accessor_name or self.accessor_name,
                    const = " const" if method_const else "")
+
+    def i_get_accessor_sig(self, accessor_name=None, return_ref=True, return_const=None, **kwargs):
+
+        return_name, return_type = self.c_accessor_return_decl(const=return_const, **kwargs)
+        return "%python_attribute({accessor_name}, {out_var_type}{ref_str})". \
+            format(out_var_type=return_type,
+                   ref_str = "&" if return_ref else "",
+                   accessor_name=accessor_name or self.accessor_name)
 
     def c_set_accessor_sig(self, accessor_name=None, set_const=True, **kwargs):
         set_name, set_type = self.c_accessor_set_decl(const=set_const, **kwargs)
@@ -549,7 +557,7 @@ class VariableWrapper(Variable):
 
     def is_f_type(self, type_spec):
         if isinstance(type_spec, str):
-            type_spec = eval("ftypes.%s" % type_spec)
+            type_spec = getattr(ftypes, type_spec)
         return type(self.typedecl) is type_spec
 
     def intent_str(self):
@@ -591,18 +599,19 @@ class VariableWrapper(Variable):
     def f_zero_value(self):
         # Not all types have the ability to query the zero value:
         typedecl_by_name = self.typedecl.get_type_decl(self.typedecl.name)
-        if typedecl_by_name != None:
-            return self.typedecl.get_zero_value()
+        if isinstance(self.typedecl, ftypes.Type) and typedecl_by_name is None:
+            raise Exception("Could not determine f_zero_value for: %s in routine %s" % (self.name, self.routine_obj.name))
         else:
-            return None
+            return self.typedecl.get_zero_value()
 
     def c_zero_value(self):
         # Not all types have the ability to query the zero value:
         typedecl_by_name = self.typedecl.get_type_decl(self.typedecl.name)
-        if typedecl_by_name != None:
-            return fix_var_init(self, self.typedecl.get_zero_value())
+        if isinstance(self.typedecl, ftypes.Type) and typedecl_by_name is None:
+            if self.routine_obj is not None:
+                raise Exception("Could not determine c_zero_value for: %s in routine %s" % (self.name, self.routine_obj.name))
         else:
-            return None
+            return fix_var_init(self, self.typedecl.get_zero_value())
 
     def f_lower_bounds(self):
          if self.is_array():
@@ -754,9 +763,16 @@ class CharWrapper(VariableWrapper):
 
         return (f_idx_str, c_idx_str, all_idx_str)
 
-    def f_copy_to_c_code(self, source_name=None, dest_name=None):
+    def f_copy_to_c_code(self, source_name=None, dest_name=None, bounds_name=None):
+
+        if bounds_name is None:
+            if self.is_output_arg(): 
+                bounds_name = self.f_conv_var_name
+            else:
+                bounds_name = self.f_arg_store_name
+
+        copy_to_code = self.f_copy_loop_start(bounds_name)
         end_loop_code = self.f_copy_loop_end()
-        copy_to_code = self.f_copy_loop_start(self.f_store_var_name)
 
         if source_name == None:
             source_name = self.f_conv_var_name
@@ -788,8 +804,11 @@ class CharWrapper(VariableWrapper):
         return copy_to_code
 
     def f_copy_from_c_code(self, source_name=None, dest_name=None):
+
+        bounds_name = self.f_arg_var_name
+
+        copy_from_code = self.f_copy_loop_start(bounds_name)
         end_loop_code = self.f_copy_loop_end()
-        copy_from_code = self.f_copy_loop_start(self.f_store_var_name)
 
         if source_name == None:
             source_name = self.f_arg_var_name
@@ -848,6 +867,9 @@ class CharWrapper(VariableWrapper):
 
     def c_get_accessor_sig(self, accessor_name=None):
         return VariableWrapper.c_get_accessor_sig(self, accessor_name, return_ref=False)
+
+    def i_get_accessor_sig(self, accessor_name=None):
+        return self.c_get_accessor_sig(accessor_name=accessor_name)
 
     def c_call_f_wrapper_args(self):
         call_args = []
@@ -922,6 +944,8 @@ class CharAttributeWrapper(CharWrapper):
         return self.typedecl.selector[dim_idx]
 
     def char_len(self):
+        if self.typedecl.get_length() == '*':
+            raise Exception("Can not get character length of char(len=*) for variable named: %s in routine: %s" % (self.name, self.routine_obj.name))
         return int(self.typedecl.get_length())+1
 
     def c_constructor_code(self):

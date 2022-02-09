@@ -1,6 +1,9 @@
 module l_surface_m
 implicit none
 
+!  10/26/20. Revision for BRDF consistency, R. Spurr
+!    -- All changes marked by "10/26/20. BRDF Upgrade"
+
 PUBLIC
 
 contains
@@ -9,9 +12,12 @@ contains
 ! set nspars to 3, spars(1) to ws, spars(2) to ri and spars(3) to shadow
 ! factor (set to 1.d0 for including shadowing).
 
+! 10/26/20. BRDF Upgrade. 
+!   -- This NOTE is not correct any more !!!!
+
       subroutine L_R1_glint_exact &
        (nstokes,nspars,& !I
-        xj,xi,phi,ws,ri,alb,sfac,& !I ! V. Natraj, 8/17/2010
+        xj,xi,phi,ws,ri,alb,sfac,scale,& !I ! V. Natraj, 8/17/2010
         R1,Ls_R1) !O
 
       implicit none
@@ -24,7 +30,7 @@ contains
 !  inputs
 
       integer nstokes,nspars
-      double precision xj,xi,phi,ws,ri,alb,sfac ! V. Natraj, 8/17/2010
+      double precision xj,xi,phi,ws,ri,alb,sfac,scale ! V. Natraj, 8/17/2010
 
 !  outputs
 
@@ -64,6 +70,8 @@ contains
 
       pars_giss(4) = sfac
 
+      pars_giss(5) = scale
+
       call gisscoxmunk_vfunction_plus &
        (nstokes,nspars,pars_giss,& !I
         xj,sxj,xi,sxi,& !I
@@ -75,7 +83,7 @@ contains
 
       subroutine R1_glint_exact &
        (nstokes,nspars, & !I
-        xj,xi,phi,ws,ri,alb,sfac, & !I ! V. Natraj, 8/17/2010
+        xj,xi,phi,ws,ri,alb,sfac,scale, & !I ! V. Natraj, 8/17/2010
         R1) !O
 
       implicit none
@@ -88,7 +96,7 @@ contains
 !  inputs
 
       integer nstokes,nspars
-      double precision xj,xi,phi,ws,ri,alb,sfac ! V. Natraj, 8/17/2010
+      double precision xj,xi,phi,ws,ri,alb,sfac,scale ! V. Natraj, 8/17/2010
 
 !  outputs
 
@@ -122,6 +130,8 @@ contains
 !  Shadowing, changed to pars_giss(4), V. Natraj, 8/17/2010
 
       pars_giss(4) = sfac
+
+      pars_giss(5) = scale
 
       call gisscoxmunk_vfunction &
        (nstokes,nspars,pars_giss,& !I
@@ -314,14 +324,21 @@ contains
       AF21 = AF21*AF21
       AF22 = AF22*AF22
 
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1
+!       Formerly, R1(3) = + ( CTTPT+CTPPP ) * DCOEFF , Now R1(3) = - ( CTTPT+CTPPP ) * DCOEFF
+
       R1(1)=(AF11+AF12+AF21+AF22)*AF
       R1(2)=(AF11-AF22+AF12-AF21)*AF
       IF (NSTOKES .EQ. 3) THEN
         CTTPT = CF11*CF21
         CTPPP = CF12*CF22
+
+        R1(NSTOKES) = - (CTTPT+CTPPP)*DCOEFF 
+
 !        R1(NSTOKES) = (-CTTPT-CTPPP)*DCOEFF
-        R1(NSTOKES) = (CTTPT+CTPPP)*DCOEFF ! Change sign of U since this code uses the opposite sign convention as we do 
-                                           ! in 2OS and LIDORT
+!        R1(NSTOKES) = (CTTPT+CTPPP)*DCOEFF ! Change sign of U since this code uses the opposite sign convention as we do 
+!                                           ! in 2OS and LIDORT
       ENDIF
 
 !  No Shadow code if not flagged
@@ -364,7 +381,13 @@ contains
 !  8/17/2010 Lambertian component added, V. Natraj
 !  PARS(3) = ALBEDO
     
-      R1(1) = R1(1) + PARS(3)
+!  V. Natraj 10/25/21. Scaling
+
+      R1(1) = R1(1) * PARS(5) + PARS(3)
+      R1(2) = R1(2) * PARS(5)
+      IF (NSTOKES .EQ. 3) THEN
+        R1(3) = R1(3) * PARS(5)
+      ENDIF
 
 !  Finish
 
@@ -590,24 +613,34 @@ contains
       L_AF21 = 2.0d0 * CF21 * L_CF21
       L_AF22 = 2.0d0 * CF22 * L_CF22
 
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1
+!       Formerly, R1(3) = + ( CTTPT+CTPPP ) * DCOEFF , Now R1(3) = - ( CTTPT+CTPPP ) * DCOEFF
+
       R1(1)=(AF11+AF12+AF21+AF22)*AF   ! CN2
       R1(2)=(AF11-AF22+AF12-AF21)*AF   ! CN2
       IF (NSTOKES .EQ. 3) THEN
         CTTPT = CF11*CF21             ! CN2
         CTPPP = CF12*CF22             ! CN2
-!        R1(NSTOKES) = (-CTTPT-CTPPP)*DCOEFF   ! CN2
-        R1(NSTOKES) = (CTTPT+CTPPP)*DCOEFF ! Change sign of U since this code uses the opposite sign convention as we do 
-                                           ! in 2OS and LIDORT
+
+        R1(NSTOKES) = - (CTTPT+CTPPP)*DCOEFF 
+!        R1(NSTOKES) = (-CTTPT-CTPPP)*DCOEFF
+
+
+
       ENDIF
       
+! 10/26/20. BRDF Upgrade. TWO BUGS HERE, Connected to the Stokes-U component
+!   1. Former Code for LS_R1(3,2) was signed correctly, even though R1(3) was incorrectly signed
+!   2. Ls_R1(3,2) should have DCOEFF multiplier, not AF. Was a factor of 2 too small
+
       !derivs wrt ri
       Ls_R1(1,2) = (L_AF11+L_AF12+L_AF21+L_AF22)*AF
       Ls_R1(2,2) = (L_AF11-L_AF22+L_AF12-L_AF21)*AF
       IF (NSTOKES .EQ. 3) &
-!      Ls_R1(3,2) = -(L_CF11*CF21+CF11*L_CF21+&
-!                     L_CF12*CF22+CF12*L_CF22)*AF
-      Ls_R1(3,2) = (L_CF11*CF21+CF11*L_CF21+&   ! Change sign of U since this code uses the opposite sign convention as we 
-                    L_CF12*CF22+CF12*L_CF22)*AF ! do in 2OS and LIDORT
+
+!         Ls_R1(NSTOKES,2) = -(L_CF11*CF21+CF11*L_CF21+L_CF12*CF22+CF12*L_CF22)*AF
+         Ls_R1(NSTOKES,2) = -(L_CF11*CF21+CF11*L_CF21+L_CF12*CF22+CF12*L_CF22)*DCOEFF
 
 !  Derivative before shadow effect
 
@@ -675,15 +708,18 @@ contains
 
       ENDIF
 
-!  8/17/2010 Lambertian component added, V. Natraj
-!  PARS(3) = ALBEDO
+!  V. Natraj 10/25/21. Scaling
 
-      R1(1) = R1(1) + PARS(3)
-    
-!  8/17/2010 Lambertian albedo derivative added, V. Natraj
-!  Ls_R1(:,3) = ALBEDO DERIVATIVE
-    
+      Ls_R1(:,1) = Ls_R1(:,1) * PARS(5)
+      Ls_R1(:,2) = Ls_R1(:,2) * PARS(5)
       Ls_R1(1,3) = 1.d0
+      Ls_R1(:,5) = R1(:)
+
+      R1(1) = R1(1) * PARS(5) + PARS(3)
+      R1(2) = R1(2) * PARS(5)
+      IF (NSTOKES .EQ. 3) THEN
+        R1(3) = R1(3) * PARS(5)
+      ENDIF
 
 !  Finish
 
@@ -879,8 +915,15 @@ contains
       AF22 = AF22*AF22
 
       FACTOR = 0.5d0/DMOD
+
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1
+!       Formerly, R1(3) = + ( CTTPT+CTPPP ) * FACTOR , Now R1(3) = - ( CTTPT+CTPPP ) * FACTOR
+
       R1(1) = (AF11+AF12+AF21+AF22) * FACTOR
-      R1(2) = (AF11-AF12+AF21-AF22) * FACTOR
+
+!  Corrected R1(2). This should equal the (2,1) entry in the 4x4 reflection matrix. V. Natraj, 9/9/21
+      R1(2) = (AF11-AF22+AF12-AF21) * FACTOR
 
 !  Setting (3,1) component
 !  -----------------------
@@ -889,8 +932,11 @@ contains
         CTTPT=CF11*CF21
         CTPPP=CF12*CF22
         FACTOR = 1.d0/DMOD
+
+        R1(3) = - ( CTTPT+CTPPP ) * FACTOR
+
 !        R1(3)  = (-CTTPT-CTPPP) * FACTOR
-        R1(3)  = (CTTPT+CTPPP) * FACTOR ! Change sign for U just as in Cox-Munk
+!        R1(3)  = (CTTPT+CTPPP) * FACTOR ! Change sign for U just as in Cox-Munk
       ENDIF
 
 !  Set the H-function
@@ -948,15 +994,22 @@ contains
 
 !  This is just the Rahman Kernel.........different name !!
 
+! 10/26/20. BRDF Upgrade. 
+!   incident and reflected zenith angles swapped here, so swap them in the call
+!   Does not matter for this kernel, as scalar only.
+!   XJ, SXJ, XI, SXI  ==> XI, SXI, XJ, SXJ 
+
       CALL rahman_function_2os &
             ( 3, PARS(2:4),& !I
-              XJ, SXJ, XI, SXI,& !I
+              XI, SXI, XJ, SXJ,& !I
               CKPHI_REF, SKPHI_REF,& !I
               RAHMAN_KERNEL )  !O
 
 !  Add to the specular term
 
-      R1(1) = PARS(5)*R1(1) + PARS(1)*RAHMAN_KERNEL
+!  New scaling from Aronne Merrelli
+      R1(:) = R1(:) * PARS(5)
+      R1(1) = R1(1) + PARS(1)*RAHMAN_KERNEL 
 
 !  Finish
 
@@ -967,6 +1020,10 @@ contains
             ( NPARS, PARS,& !I
               XJ, SXJ, XI, SXI, CPHI, SKPHI,& !I
               RAHMAN_KERNEL ) !O
+
+! 10/26/20. BRDF Upgrade. 
+!   incident and reflected zenith angles swapped before this kernel is called
+!   so do not need to swap them here. Does not matter for this kernel, as scalar only.
 
 !  Revision. 24 October 2007.
 !  --------------------------
@@ -1252,9 +1309,15 @@ contains
       AF21 = AF21*AF21
       AF22 = AF22*AF22
 
+! 10/26/20. BRDF Upgrade. 
+!   Sign Switch for the stokes-U contributions to R1
+!       Formerly, R1(3) = + ( CTTPT+CTPPP ) * FACTOR , Now R1(3) = - ( CTTPT+CTPPP ) * FACTOR
+
       FACTOR = 0.5d0/DMOD
       R1(1) = (AF11+AF12+AF21+AF22) * FACTOR
-      R1(2) = (AF11-AF12+AF21-AF22) * FACTOR
+
+!  Corrected R1(2). This should equal the (2,1) entry in the 4x4 reflection matrix. V. Natraj, 9/9/21
+      R1(2) = (AF11-AF22+AF12-AF21) * FACTOR
 
 !  Setting (3,1) component
 !  -----------------------
@@ -1263,8 +1326,11 @@ contains
         CTTPT=CF11*CF21
         CTPPP=CF12*CF22
         FACTOR = 1.d0/DMOD
+        R1(3)  =  - ( CTTPT+CTPPP) * FACTOR
+
 !        R1(3)  = (-CTTPT-CTPPP) * FACTOR
-        R1(3)  = (CTTPT+CTPPP) * FACTOR ! Change sign for U just as in Cox-Munk
+!       R1(3)  = (CTTPT+CTPPP) * FACTOR ! Change sign for U just as in Cox-Munk
+
       ENDIF
 
 !  Set the H-function
@@ -1326,25 +1392,39 @@ contains
 
 !  This is just the Rahman Kernel.........different name !!
 
+! 10/26/20. BRDF Upgrade. 
+!   incident and reflected zenith angles swapped here, so swap them in the call
+!   Does not matter for this kernel, as scalar only.
+!   XJ, SXJ, XI, SXI  ==> XI, SXI, XJ, SXJ 
+
       CALL rahman_function_2os_plus &
             ( 3, PARS(2:4), DO_DERIV_PARS,& !I
-              XJ, SXJ, XI, SXI,& !I
+              XI, SXI, XJ, SXJ,& !I
               CKPHI_REF, SKPHI_REF,& !I
               RAHMAN_KERNEL, RAHMAN_DERIVATIVES ) !O
 
 !  Add to the specular term
 
-      R1(1) = PARS(5)*R1(1) + PARS(1)*RAHMAN_KERNEL
+!  New scaling from Aronne Merrelli
+
+      R1(:) = R1(:) * PARS(5)
+      R1(1) = R1(1) + PARS(1)*RAHMAN_KERNEL
 
 !  Derivatives
 
       DO J = 1, 3
         IF ( DO_DERIV_PARS(J) ) THEN
-          Ls_R1(1,J+1) = RAHMAN_DERIVATIVES(J)
+          ! New scaling from Aronne Merrelli
+          ! also scale RAHMAN derivatives
+          Ls_R1(1,J+1) = PARS(1)*RAHMAN_DERIVATIVES(J) 
         ENDIF
       ENDDO
       Ls_R1(1,1) = RAHMAN_KERNEL
       Ls_R1(1,5) = (R1(1)-PARS(1)*RAHMAN_KERNEL)/PARS(5)
+
+!  Scaling for other elements. V. Natraj 10/25/21.
+
+      Ls_R1(2:NSTOKES,5) = R1(2:NSTOKES)/PARS(5)
 
 !  Finish
 
@@ -1355,6 +1435,10 @@ contains
             ( NPARS, PARS, DO_DERIV_PARS,& !I
               XJ, SXJ, XI, SXI, CPHI, SKPHI,& !I
               RAHMAN_KERNEL, RAHMAN_DERIVATIVES ) !O
+
+! 10/26/20. BRDF Upgrade. 
+!   incident and reflected zenith angles swapped before this kernel is called
+!   so do not need to swap them here. Does not matter for this kernel, as scalar only.
 
       IMPLICIT NONE
 

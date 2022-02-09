@@ -13,7 +13,11 @@ implicit none
 ! Links to module: "{{ pars_wrapper.f_type_name }}" in file: "{{ pars_wrapper.source_basename }}"
 type, bind(c) :: {{ pars_wrapper.f_bind_name }}
   {% for var in pars_wrapper.variables -%}
+  {%- if var.name == "lidort_version_number" -%}
+  {{ var.f_store_var_decls(with_prefix=False, srch_type="argument_char")|f_decl_lines|indent(2) }}({{ var.typedecl.get_length() }})
+  {%- else -%}
   {{ var.f_store_var_decls(with_prefix=False)|f_decl_lines|indent(2) }}
+  {%- endif %}
   {% endfor %}
 end type {{ pars_wrapper.f_bind_name }}
 {% endif %}
@@ -36,9 +40,16 @@ contains
 {% if pars_wrapper %}
 subroutine set_lidort_pars(pars_struct) bind(C)
   type({{ pars_wrapper.f_type_name }}_c) :: pars_struct
+  integer :: len_idx
 
   {% for var in pars_wrapper.variables -%}
+  {%- if var.name == "lidort_version_number" -%}
+  do len_idx = 1, {{var.typedecl.get_length()}}
+    pars_struct%{{ var.name }}(len_idx:len_idx) = {{ var.name|upper }}(len_idx:len_idx)
+  end do
+  {%- else -%}
   pars_struct%{{ var.name }} = {{ var.name|upper }}
+  {%- endif %}
   {% endfor %}
 end subroutine set_lidort_pars
 {% endif %}
@@ -153,7 +164,7 @@ subroutine {{ var.f_wrapper_routine_name() }}(fortran_type_c, {{ var.f_arg_var_d
 
   call c_f_pointer(fortran_type_c, fortran_type_f)
 
-  {{ var.f_copy_to_c_code(source_name="fortran_type_f%"+var.f_store_var_name)|join("\n")|indent(2) }}
+  {{ var.f_copy_to_c_code(source_name="fortran_type_f%"+var.f_store_var_name, bounds_name=var.f_store_var_name)|join("\n")|indent(2) }}
 
 end subroutine {{ var.f_wrapper_routine_name() }}
 {{- type.addl_f_routines|indent(2) }}

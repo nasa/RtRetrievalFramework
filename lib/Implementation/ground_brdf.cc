@@ -273,6 +273,13 @@ void GroundBrdf::weight_slope(const int spec_index, const AutoDerivative<double>
     coeff(num_coeff * spec_index + BRDF_WEIGHT_SLOPE_INDEX) = val;
 }
 
+void GroundBrdf::weight_coeff(const int spec_index, const AutoDerivative<double>& val, const int weight_index)
+{
+    range_check(spec_index, 0, number_spectrometer());
+
+    coeff(num_coeff * spec_index + (NUM_BRDF_PARAMS + weight_index)) = val;
+}
+
 void GroundBrdf::weight_parameters(const int spec_index, const ArrayAd<double, 1>& val)
 {
     range_check(spec_index, 0, number_spectrometer());

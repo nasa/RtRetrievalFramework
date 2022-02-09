@@ -3453,65 +3453,76 @@ namespace Swig {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_FullPhysics__Brdf_Input_Exception_Handling swig_types[0]
-#define SWIGTYPE_p_FullPhysics__Brdf_Linsup_Masters swig_types[1]
-#define SWIGTYPE_p_FullPhysics__Brdf_Linsup_Outputs swig_types[2]
-#define SWIGTYPE_p_FullPhysics__Brdf_Sup_Inputs swig_types[3]
-#define SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters swig_types[4]
-#define SWIGTYPE_p_FullPhysics__Brdf_Sup_Outputs swig_types[5]
-#define SWIGTYPE_p_FullPhysics__Lidort_Exception_Handling swig_types[6]
-#define SWIGTYPE_p_FullPhysics__Lidort_Fixed_Inputs swig_types[7]
-#define SWIGTYPE_p_FullPhysics__Lidort_Fixed_Lininputs swig_types[8]
-#define SWIGTYPE_p_FullPhysics__Lidort_Input_Exception_Handling swig_types[9]
-#define SWIGTYPE_p_FullPhysics__Lidort_Inputs swig_types[10]
-#define SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters swig_types[11]
-#define SWIGTYPE_p_FullPhysics__Lidort_Linoutputs swig_types[12]
-#define SWIGTYPE_p_FullPhysics__Lidort_Linsup_Inout swig_types[13]
-#define SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters swig_types[14]
-#define SWIGTYPE_p_FullPhysics__Lidort_Masters swig_types[15]
-#define SWIGTYPE_p_FullPhysics__Lidort_Modified_Inputs swig_types[16]
-#define SWIGTYPE_p_FullPhysics__Lidort_Modified_Lininputs swig_types[17]
-#define SWIGTYPE_p_FullPhysics__Lidort_Outputs swig_types[18]
-#define SWIGTYPE_p_FullPhysics__Lidort_Pars swig_types[19]
-#define SWIGTYPE_p_FullPhysics__Lidort_Sup_Accessories swig_types[20]
-#define SWIGTYPE_p_FullPhysics__Lidort_Sup_Inout swig_types[21]
-#define SWIGTYPE_p_allocator_type swig_types[22]
-#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[23]
-#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[24]
-#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[25]
-#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[26]
-#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[27]
-#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[28]
-#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[29]
-#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[30]
-#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[31]
-#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[32]
-#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[33]
-#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[34]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Inputs_t swig_types[35]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Fixed_Inputs_t swig_types[36]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Modified_Inputs_t swig_types[37]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t swig_types[38]
-#define SWIGTYPE_p_char swig_types[39]
-#define SWIGTYPE_p_char_type swig_types[40]
-#define SWIGTYPE_p_difference_type swig_types[41]
-#define SWIGTYPE_p_fmtflags swig_types[42]
-#define SWIGTYPE_p_int_type swig_types[43]
-#define SWIGTYPE_p_iostate swig_types[44]
-#define SWIGTYPE_p_off_type swig_types[45]
-#define SWIGTYPE_p_openmode swig_types[46]
-#define SWIGTYPE_p_pos_type swig_types[47]
-#define SWIGTYPE_p_seekdir swig_types[48]
-#define SWIGTYPE_p_size_t swig_types[49]
-#define SWIGTYPE_p_size_type swig_types[50]
-#define SWIGTYPE_p_state_type swig_types[51]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[52]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[53]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[54]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[55]
-#define SWIGTYPE_p_traits_type swig_types[56]
-#define SWIGTYPE_p_value_type swig_types[57]
-static swig_type_info *swig_types[59];
-static swig_module_info swig_module = {swig_types, 58, 0, 0, 0, 0};
+#define SWIGTYPE_p_FullPhysics__Brdf_Lin_Sup_Masters swig_types[1]
+#define SWIGTYPE_p_FullPhysics__Brdf_Linsup_Inputs swig_types[2]
+#define SWIGTYPE_p_FullPhysics__Brdf_Linsup_Outputs swig_types[3]
+#define SWIGTYPE_p_FullPhysics__Brdf_Output_Exception_Handling swig_types[4]
+#define SWIGTYPE_p_FullPhysics__Brdf_Sup_Inputs swig_types[5]
+#define SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters swig_types[6]
+#define SWIGTYPE_p_FullPhysics__Brdf_Sup_Outputs swig_types[7]
+#define SWIGTYPE_p_FullPhysics__Lidort_Brdf_Sup_Accessories swig_types[8]
+#define SWIGTYPE_p_FullPhysics__Lidort_Exception_Handling swig_types[9]
+#define SWIGTYPE_p_FullPhysics__Lidort_Fixed_Inputs swig_types[10]
+#define SWIGTYPE_p_FullPhysics__Lidort_Fixed_Lininputs swig_types[11]
+#define SWIGTYPE_p_FullPhysics__Lidort_Input_Exception_Handling swig_types[12]
+#define SWIGTYPE_p_FullPhysics__Lidort_Inputs swig_types[13]
+#define SWIGTYPE_p_FullPhysics__Lidort_L_Inputs swig_types[14]
+#define SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters swig_types[15]
+#define SWIGTYPE_p_FullPhysics__Lidort_Linoutputs swig_types[16]
+#define SWIGTYPE_p_FullPhysics__Lidort_Linsup_Inout swig_types[17]
+#define SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters swig_types[18]
+#define SWIGTYPE_p_FullPhysics__Lidort_Masters swig_types[19]
+#define SWIGTYPE_p_FullPhysics__Lidort_Modified_Inputs swig_types[20]
+#define SWIGTYPE_p_FullPhysics__Lidort_Modified_Lininputs swig_types[21]
+#define SWIGTYPE_p_FullPhysics__Lidort_Outputs swig_types[22]
+#define SWIGTYPE_p_FullPhysics__Lidort_Pars swig_types[23]
+#define SWIGTYPE_p_FullPhysics__Lidort_Sup_Inout swig_types[24]
+#define SWIGTYPE_p_allocator_type swig_types[25]
+#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[26]
+#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[27]
+#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[28]
+#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[29]
+#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[30]
+#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[31]
+#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[32]
+#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[33]
+#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[34]
+#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[35]
+#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[36]
+#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[37]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t swig_types[38]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Inputs_t swig_types[39]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t swig_types[40]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t swig_types[41]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Fixed_Inputs_t swig_types[42]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t swig_types[43]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t swig_types[44]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t swig_types[45]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t swig_types[46]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t swig_types[47]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Modified_Inputs_t swig_types[48]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t swig_types[49]
+#define SWIGTYPE_p_char swig_types[50]
+#define SWIGTYPE_p_char_type swig_types[51]
+#define SWIGTYPE_p_difference_type swig_types[52]
+#define SWIGTYPE_p_fmtflags swig_types[53]
+#define SWIGTYPE_p_int_type swig_types[54]
+#define SWIGTYPE_p_iostate swig_types[55]
+#define SWIGTYPE_p_off_type swig_types[56]
+#define SWIGTYPE_p_openmode swig_types[57]
+#define SWIGTYPE_p_pos_type swig_types[58]
+#define SWIGTYPE_p_seekdir swig_types[59]
+#define SWIGTYPE_p_size_t swig_types[60]
+#define SWIGTYPE_p_size_type swig_types[61]
+#define SWIGTYPE_p_state_type swig_types[62]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[63]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[64]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[65]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[66]
+#define SWIGTYPE_p_traits_type swig_types[67]
+#define SWIGTYPE_p_value_type swig_types[68]
+static swig_type_info *swig_types[70];
+static swig_module_info swig_module = {swig_types, 69, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4954,155 +4965,17 @@ template<class T, int D> inline blitz::Array<T, D>
 #include "lidort_interface_masters.h"
 
 
-#include <limits.h>
-#if !defined(SWIG_NO_LLONG_MAX)
-# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
-#   define LLONG_MAX __LONG_LONG_MAX__
-#   define LLONG_MIN (-LLONG_MAX - 1LL)
-#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
-# endif
-#endif
-
-
-SWIGINTERN int
-SWIG_AsVal_double (PyObject *obj, double *val)
-{
-  int res = SWIG_TypeError;
-  if (PyFloat_Check(obj)) {
-    if (val) *val = PyFloat_AsDouble(obj);
-    return SWIG_OK;
-#if PY_VERSION_HEX < 0x03000000
-  } else if (PyInt_Check(obj)) {
-    if (val) *val = (double) PyInt_AsLong(obj);
-    return SWIG_OK;
-#endif
-  } else if (PyLong_Check(obj)) {
-    double v = PyLong_AsDouble(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-    }
+struct SWIG_null_deleter {
+  void operator() (void const *) const {
   }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    double d = PyFloat_AsDouble(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = d;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      long v = PyLong_AsLong(obj);
-      if (!PyErr_Occurred()) {
-	if (val) *val = v;
-	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
-      } else {
-	PyErr_Clear();
-      }
-    }
-  }
-#endif
-  return res;
-}
+};
+#define SWIG_NO_NULL_DELETER_0 , SWIG_null_deleter()
+#define SWIG_NO_NULL_DELETER_1
+#define SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW
+#define SWIG_NO_NULL_DELETER_SWIG_POINTER_OWN
 
 
-#include <float.h>
-
-
-#include <math.h>
-
-
-SWIGINTERNINLINE int
-SWIG_CanCastAsInteger(double *d, double min, double max) {
-  double x = *d;
-  if ((min <= x && x <= max)) {
-   double fx = floor(x);
-   double cx = ceil(x);
-   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
-   if ((errno == EDOM) || (errno == ERANGE)) {
-     errno = 0;
-   } else {
-     double summ, reps, diff;
-     if (rd < x) {
-       diff = x - rd;
-     } else if (rd > x) {
-       diff = rd - x;
-     } else {
-       return 1;
-     }
-     summ = rd + x;
-     reps = diff/summ;
-     if (reps < 8*DBL_EPSILON) {
-       *d = rd;
-       return 1;
-     }
-   }
-  }
-  return 0;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_long (PyObject *obj, long* val)
-{
-#if PY_VERSION_HEX < 0x03000000
-  if (PyInt_Check(obj)) {
-    if (val) *val = PyInt_AsLong(obj);
-    return SWIG_OK;
-  } else
-#endif
-  if (PyLong_Check(obj)) {
-    long v = PyLong_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-      return SWIG_OverflowError;
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    long v = PyInt_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      double d;
-      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
-      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
-	if (val) *val = (long)(d);
-	return res;
-      }
-    }
-  }
-#endif
-  return SWIG_TypeError;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_int (PyObject * obj, int *val)
-{
-  long v;
-  int res = SWIG_AsVal_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v < INT_MIN || v > INT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< int >(v);
-    }
-  }  
-  return res;
-}
+#define SWIG_NO_NULL_DELETER_SWIG_BUILTIN_INIT
 
 
 SWIGINTERN swig_type_info*
@@ -5115,6 +4988,42 @@ SWIG_pchar_descriptor(void)
     init = 1;
   }
   return info;
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_FromCharPtrAndSize(const char* carray, size_t size)
+{
+  if (carray) {
+    if (size > INT_MAX) {
+      swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+      return pchar_descriptor ? 
+	SWIG_InternalNewPointerObj(const_cast< char * >(carray), pchar_descriptor, 0) : SWIG_Py_Void();
+    } else {
+#if PY_VERSION_HEX >= 0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+      return PyBytes_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#else
+#if PY_VERSION_HEX >= 0x03010000
+      return PyUnicode_DecodeUTF8(carray, static_cast< Py_ssize_t >(size), "surrogateescape");
+#else
+      return PyUnicode_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#endif
+#endif
+#else
+      return PyString_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#endif
+    }
+  } else {
+    return SWIG_Py_Void();
+  }
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_std_string  (const std::string& s)
+{
+  return SWIG_FromCharPtrAndSize(s.data(), s.size());
 }
 
 
@@ -5263,6 +5172,131 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
 
 
 SWIGINTERN int
+SWIG_AsVal_double (PyObject *obj, double *val)
+{
+  int res = SWIG_TypeError;
+  if (PyFloat_Check(obj)) {
+    if (val) *val = PyFloat_AsDouble(obj);
+    return SWIG_OK;
+#if PY_VERSION_HEX < 0x03000000
+  } else if (PyInt_Check(obj)) {
+    if (val) *val = (double) PyInt_AsLong(obj);
+    return SWIG_OK;
+#endif
+  } else if (PyLong_Check(obj)) {
+    double v = PyLong_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    double d = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = d;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      long v = PyLong_AsLong(obj);
+      if (!PyErr_Occurred()) {
+	if (val) *val = v;
+	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
+      } else {
+	PyErr_Clear();
+      }
+    }
+  }
+#endif
+  return res;
+}
+
+
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx = floor(x);
+   double cx = ceil(x);
+   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+#if PY_VERSION_HEX < 0x03000000
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+      return SWIG_OverflowError;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
 SWIG_AsVal_bool (PyObject *obj, bool *val)
 {
   int r;
@@ -5276,6 +5310,32 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 }
 
 
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+SWIGINTERN int
+SWIG_AsVal_int (PyObject * obj, int *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < INT_MIN || v > INT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< int >(v);
+    }
+  }  
+  return res;
+}
+
+
 
 /* ---------------------------------------------------
  * C++ director class methods
@@ -5286,57 +5346,145 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_new_Brdf_Linsup_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Brdf_Lin_Sup_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  int *arg1 = 0 ;
-  int temp1 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Brdf_Linsup_Masters *result = 0 ;
+  FullPhysics::Brdf_Lin_Sup_Masters *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Brdf_Linsup_Masters" "', argument " "1"" of type '" "int""'");
-  } 
-  temp1 = static_cast< int >(val1);
-  arg1 = &temp1;
+  if (!SWIG_Python_UnpackTuple(args,"new_Brdf_Lin_Sup_Masters",0,0,0)) SWIG_fail;
   {
     try {
-      result = (FullPhysics::Brdf_Linsup_Masters *)new FullPhysics::Brdf_Linsup_Masters((int const &)*arg1);
+      result = (FullPhysics::Brdf_Lin_Sup_Masters *)new FullPhysics::Brdf_Lin_Sup_Masters();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Brdf_Linsup_Masters, SWIG_POINTER_NEW |  0 );
+  {
+    boost::shared_ptr<  FullPhysics::Brdf_Lin_Sup_Masters > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Brdf_Lin_Sup_Masters >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_Brdf_Linsup_Masters__v_brdf_sup_in(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_Brdf_Lin_Sup_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Brdf_Linsup_Masters *arg1 = (FullPhysics::Brdf_Linsup_Masters *) 0 ;
+  FullPhysics::Brdf_Lin_Sup_Masters *arg1 = (FullPhysics::Brdf_Lin_Sup_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Brdf_Lin_Sup_Masters" "', argument " "1"" of type '" "FullPhysics::Brdf_Lin_Sup_Masters *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (void)arg1; delete smartarg1;
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Brdf_Lin_Sup_Masters___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Brdf_Lin_Sup_Masters *arg1 = (FullPhysics::Brdf_Lin_Sup_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Lin_Sup_Masters___str__" "', argument " "1"" of type '" "FullPhysics::Brdf_Lin_Sup_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::Brdf_Lin_Sup_Masters const *)arg1)->print_to_string();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Brdf_Lin_Sup_Masters__v_brdf_sup_in(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Brdf_Lin_Sup_Masters *arg1 = (FullPhysics::Brdf_Lin_Sup_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Brdf_Sup_Inputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Linsup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Linsup_Masters__v_brdf_sup_in" "', argument " "1"" of type '" "FullPhysics::Brdf_Linsup_Masters const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Lin_Sup_Masters__v_brdf_sup_in" "', argument " "1"" of type '" "FullPhysics::Brdf_Lin_Sup_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Linsup_Masters * >(argp1);
   {
     try {
-      result = (FullPhysics::Brdf_Sup_Inputs *) &((FullPhysics::Brdf_Linsup_Masters const *)arg1)->brdf_sup_in();
+      result = (FullPhysics::Brdf_Sup_Inputs *) &((FullPhysics::Brdf_Lin_Sup_Masters const *)arg1)->brdf_sup_in();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5350,24 +5498,79 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Brdf_Linsup_Masters__v_brdf_sup_inputstatus(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Brdf_Lin_Sup_Masters__v_brdf_linsup_in(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Brdf_Linsup_Masters *arg1 = (FullPhysics::Brdf_Linsup_Masters *) 0 ;
+  FullPhysics::Brdf_Lin_Sup_Masters *arg1 = (FullPhysics::Brdf_Lin_Sup_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Brdf_Linsup_Inputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Lin_Sup_Masters__v_brdf_linsup_in" "', argument " "1"" of type '" "FullPhysics::Brdf_Lin_Sup_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Brdf_Linsup_Inputs *) &((FullPhysics::Brdf_Lin_Sup_Masters const *)arg1)->brdf_linsup_in();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Brdf_Linsup_Inputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Brdf_Lin_Sup_Masters__v_brdf_sup_inputstatus(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Brdf_Lin_Sup_Masters *arg1 = (FullPhysics::Brdf_Lin_Sup_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Brdf_Input_Exception_Handling *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Linsup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Linsup_Masters__v_brdf_sup_inputstatus" "', argument " "1"" of type '" "FullPhysics::Brdf_Linsup_Masters const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Lin_Sup_Masters__v_brdf_sup_inputstatus" "', argument " "1"" of type '" "FullPhysics::Brdf_Lin_Sup_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Linsup_Masters * >(argp1);
   {
     try {
-      result = (FullPhysics::Brdf_Input_Exception_Handling *) &((FullPhysics::Brdf_Linsup_Masters const *)arg1)->brdf_sup_inputstatus();
+      result = (FullPhysics::Brdf_Input_Exception_Handling *) &((FullPhysics::Brdf_Lin_Sup_Masters const *)arg1)->brdf_sup_inputstatus();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5381,55 +5584,36 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Brdf_Linsup_Masters__v_thread(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Brdf_Lin_Sup_Masters__v_brdf_sup_out(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Brdf_Linsup_Masters *arg1 = (FullPhysics::Brdf_Linsup_Masters *) 0 ;
+  FullPhysics::Brdf_Lin_Sup_Masters *arg1 = (FullPhysics::Brdf_Lin_Sup_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Linsup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Linsup_Masters__v_thread" "', argument " "1"" of type '" "FullPhysics::Brdf_Linsup_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Linsup_Masters * >(argp1);
-  {
-    try {
-      result = (int)((FullPhysics::Brdf_Linsup_Masters const *)arg1)->thread();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Brdf_Linsup_Masters__v_brdf_sup_out(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Brdf_Linsup_Masters *arg1 = (FullPhysics::Brdf_Linsup_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Brdf_Sup_Outputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Linsup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Linsup_Masters__v_brdf_sup_out" "', argument " "1"" of type '" "FullPhysics::Brdf_Linsup_Masters const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Lin_Sup_Masters__v_brdf_sup_out" "', argument " "1"" of type '" "FullPhysics::Brdf_Lin_Sup_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Linsup_Masters * >(argp1);
   {
     try {
-      result = (FullPhysics::Brdf_Sup_Outputs *) &((FullPhysics::Brdf_Linsup_Masters const *)arg1)->brdf_sup_out();
+      result = (FullPhysics::Brdf_Sup_Outputs *) &((FullPhysics::Brdf_Lin_Sup_Masters const *)arg1)->brdf_sup_out();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5443,24 +5627,36 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Brdf_Linsup_Masters__v_brdf_linsup_out(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Brdf_Lin_Sup_Masters__v_brdf_linsup_out(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Brdf_Linsup_Masters *arg1 = (FullPhysics::Brdf_Linsup_Masters *) 0 ;
+  FullPhysics::Brdf_Lin_Sup_Masters *arg1 = (FullPhysics::Brdf_Lin_Sup_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Brdf_Linsup_Outputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Linsup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Linsup_Masters__v_brdf_linsup_out" "', argument " "1"" of type '" "FullPhysics::Brdf_Linsup_Masters const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Lin_Sup_Masters__v_brdf_linsup_out" "', argument " "1"" of type '" "FullPhysics::Brdf_Lin_Sup_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Linsup_Masters * >(argp1);
   {
     try {
-      result = (FullPhysics::Brdf_Linsup_Outputs *) &((FullPhysics::Brdf_Linsup_Masters const *)arg1)->brdf_linsup_out();
+      result = (FullPhysics::Brdf_Linsup_Outputs *) &((FullPhysics::Brdf_Lin_Sup_Masters const *)arg1)->brdf_linsup_out();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5474,29 +5670,84 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Brdf_Linsup_Masters_read_config(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Brdf_Lin_Sup_Masters__v_brdf_sup_outputstatus(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Brdf_Linsup_Masters *arg1 = (FullPhysics::Brdf_Linsup_Masters *) 0 ;
+  FullPhysics::Brdf_Lin_Sup_Masters *arg1 = (FullPhysics::Brdf_Lin_Sup_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Brdf_Output_Exception_Handling *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Lin_Sup_Masters__v_brdf_sup_outputstatus" "', argument " "1"" of type '" "FullPhysics::Brdf_Lin_Sup_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Brdf_Output_Exception_Handling *) &((FullPhysics::Brdf_Lin_Sup_Masters const *)arg1)->brdf_sup_outputstatus();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Brdf_Output_Exception_Handling, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Brdf_Lin_Sup_Masters_read_config(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Brdf_Lin_Sup_Masters *arg1 = (FullPhysics::Brdf_Lin_Sup_Masters *) 0 ;
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters > *smartarg1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
   PyObject *swig_obj[2] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"Brdf_Linsup_Masters_read_config",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Linsup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Linsup_Masters_read_config" "', argument " "1"" of type '" "FullPhysics::Brdf_Linsup_Masters *""'"); 
+  if (!SWIG_Python_UnpackTuple(args,"Brdf_Lin_Sup_Masters_read_config",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Lin_Sup_Masters_read_config" "', argument " "1"" of type '" "FullPhysics::Brdf_Lin_Sup_Masters *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Linsup_Masters * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Brdf_Linsup_Masters_read_config" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Brdf_Lin_Sup_Masters_read_config" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Brdf_Linsup_Masters_read_config" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Brdf_Lin_Sup_Masters_read_config" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
@@ -5518,13 +5769,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Brdf_Linsup_Masters_run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Brdf_Lin_Sup_Masters_run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Brdf_Linsup_Masters *arg1 = (FullPhysics::Brdf_Linsup_Masters *) 0 ;
+  FullPhysics::Brdf_Lin_Sup_Masters *arg1 = (FullPhysics::Brdf_Lin_Sup_Masters *) 0 ;
   bool *arg2 = 0 ;
   int *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters > *smartarg1 = 0 ;
   bool temp2 ;
   bool val2 ;
   int ecode2 = 0 ;
@@ -5533,21 +5786,31 @@ SWIGINTERN PyObject *_wrap_Brdf_Linsup_Masters_run(PyObject *SWIGUNUSEDPARM(self
   int ecode3 = 0 ;
   PyObject *swig_obj[3] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"Brdf_Linsup_Masters_run",3,3,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Linsup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Linsup_Masters_run" "', argument " "1"" of type '" "FullPhysics::Brdf_Linsup_Masters *""'"); 
+  if (!SWIG_Python_UnpackTuple(args,"Brdf_Lin_Sup_Masters_run",3,3,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Lin_Sup_Masters_run" "', argument " "1"" of type '" "FullPhysics::Brdf_Lin_Sup_Masters *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Lin_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Lin_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Linsup_Masters * >(argp1);
   ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Brdf_Linsup_Masters_run" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Brdf_Lin_Sup_Masters_run" "', argument " "2"" of type '" "bool""'");
   } 
   temp2 = static_cast< bool >(val2);
   arg2 = &temp2;
   ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Brdf_Linsup_Masters_run" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Brdf_Lin_Sup_Masters_run" "', argument " "3"" of type '" "int""'");
   } 
   temp3 = static_cast< int >(val3);
   arg3 = &temp3;
@@ -5567,23 +5830,70 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_Brdf_Linsup_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *Brdf_Lin_Sup_Masters_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *Brdf_Lin_Sup_Masters_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_Brdf_Sup_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Brdf_Linsup_Masters *arg1 = (FullPhysics::Brdf_Linsup_Masters *) 0 ;
+  FullPhysics::Brdf_Sup_Masters *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"new_Brdf_Sup_Masters",0,0,0)) SWIG_fail;
+  {
+    try {
+      result = (FullPhysics::Brdf_Sup_Masters *)new FullPhysics::Brdf_Sup_Masters();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::Brdf_Sup_Masters > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Brdf_Sup_Masters >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Brdf_Sup_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Brdf_Sup_Masters *arg1 = (FullPhysics::Brdf_Sup_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Linsup_Masters, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Brdf_Linsup_Masters" "', argument " "1"" of type '" "FullPhysics::Brdf_Linsup_Masters *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Brdf_Sup_Masters" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Linsup_Masters * >(argp1);
   {
     try {
-      delete arg1;
+      (void)arg1; delete smartarg1;
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5597,44 +5907,43 @@ fail:
 }
 
 
-SWIGINTERN PyObject *Brdf_Linsup_Masters_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_FullPhysics__Brdf_Linsup_Masters, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *Brdf_Linsup_Masters_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
-SWIGINTERN PyObject *_wrap_new_Brdf_Sup_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Brdf_Sup_Masters___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  int *arg1 = 0 ;
-  int temp1 ;
-  int val1 ;
-  int ecode1 = 0 ;
+  FullPhysics::Brdf_Sup_Masters *arg1 = (FullPhysics::Brdf_Sup_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
-  FullPhysics::Brdf_Sup_Masters *result = 0 ;
+  std::string result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Brdf_Sup_Masters" "', argument " "1"" of type '" "int""'");
-  } 
-  temp1 = static_cast< int >(val1);
-  arg1 = &temp1;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters___str__" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
   {
     try {
-      result = (FullPhysics::Brdf_Sup_Masters *)new FullPhysics::Brdf_Sup_Masters((int const &)*arg1);
+      result = ((FullPhysics::Brdf_Sup_Masters const *)arg1)->print_to_string();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -5646,16 +5955,28 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Masters__v_brdf_sup_in(PyObject *SWIGUNUSEDP
   FullPhysics::Brdf_Sup_Masters *arg1 = (FullPhysics::Brdf_Sup_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Brdf_Sup_Inputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters__v_brdf_sup_in" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters__v_brdf_sup_in" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Sup_Masters * >(argp1);
   {
     try {
       result = (FullPhysics::Brdf_Sup_Inputs *) &((FullPhysics::Brdf_Sup_Masters const *)arg1)->brdf_sup_in();
@@ -5677,16 +5998,28 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Masters__v_brdf_sup_inputstatus(PyObject *SW
   FullPhysics::Brdf_Sup_Masters *arg1 = (FullPhysics::Brdf_Sup_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Brdf_Input_Exception_Handling *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters__v_brdf_sup_inputstatus" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters__v_brdf_sup_inputstatus" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Sup_Masters * >(argp1);
   {
     try {
       result = (FullPhysics::Brdf_Input_Exception_Handling *) &((FullPhysics::Brdf_Sup_Masters const *)arg1)->brdf_sup_inputstatus();
@@ -5703,52 +6036,33 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Brdf_Sup_Masters__v_thread(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Brdf_Sup_Masters *arg1 = (FullPhysics::Brdf_Sup_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters__v_thread" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Sup_Masters * >(argp1);
-  {
-    try {
-      result = (int)((FullPhysics::Brdf_Sup_Masters const *)arg1)->thread();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_Brdf_Sup_Masters__v_brdf_sup_out(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Brdf_Sup_Masters *arg1 = (FullPhysics::Brdf_Sup_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Brdf_Sup_Outputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters__v_brdf_sup_out" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters__v_brdf_sup_out" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Sup_Masters * >(argp1);
   {
     try {
       result = (FullPhysics::Brdf_Sup_Outputs *) &((FullPhysics::Brdf_Sup_Masters const *)arg1)->brdf_sup_out();
@@ -5765,21 +6079,76 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Brdf_Sup_Masters__v_brdf_sup_outputstatus(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Brdf_Sup_Masters *arg1 = (FullPhysics::Brdf_Sup_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Brdf_Output_Exception_Handling *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters__v_brdf_sup_outputstatus" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Brdf_Output_Exception_Handling *) &((FullPhysics::Brdf_Sup_Masters const *)arg1)->brdf_sup_outputstatus();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Brdf_Output_Exception_Handling, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Brdf_Sup_Masters_read_config(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Brdf_Sup_Masters *arg1 = (FullPhysics::Brdf_Sup_Masters *) 0 ;
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters > *smartarg1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"Brdf_Sup_Masters_read_config",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters_read_config" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters_read_config" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Sup_Masters * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
@@ -5816,6 +6185,8 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Masters_run(PyObject *SWIGUNUSEDPARM(self), 
   int *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Masters > *smartarg1 = 0 ;
   bool temp2 ;
   bool val2 ;
   int ecode2 = 0 ;
@@ -5825,11 +6196,21 @@ SWIGINTERN PyObject *_wrap_Brdf_Sup_Masters_run(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *swig_obj[3] ;
   
   if (!SWIG_Python_UnpackTuple(args,"Brdf_Sup_Masters_run",3,3,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters_run" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Brdf_Sup_Masters_run" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Brdf_Sup_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Brdf_Sup_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Sup_Masters * >(argp1);
   ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Brdf_Sup_Masters_run" "', argument " "2"" of type '" "bool""'");
@@ -5858,810 +6239,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_Brdf_Sup_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Brdf_Sup_Masters *arg1 = (FullPhysics::Brdf_Sup_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Brdf_Sup_Masters" "', argument " "1"" of type '" "FullPhysics::Brdf_Sup_Masters *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Brdf_Sup_Masters * >(argp1);
-  {
-    try {
-      delete arg1;
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *Brdf_Sup_Masters_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_FullPhysics__Brdf_Sup_Masters, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
 SWIGINTERN PyObject *Brdf_Sup_Masters_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
-SWIGINTERN PyObject *_wrap_new_Lidort_Lcs_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  int *arg1 = 0 ;
-  int temp1 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Lcs_Masters *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Lidort_Lcs_Masters" "', argument " "1"" of type '" "int""'");
-  } 
-  temp1 = static_cast< int >(val1);
-  arg1 = &temp1;
-  {
-    try {
-      result = (FullPhysics::Lidort_Lcs_Masters *)new FullPhysics::Lidort_Lcs_Masters((int const &)*arg1);
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_thread(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_thread" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lcs_Masters * >(argp1);
-  {
-    try {
-      result = (int)((FullPhysics::Lidort_Lcs_Masters const *)arg1)->thread();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_fixin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Fixed_Inputs *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_fixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lcs_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Fixed_Inputs *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_fixin();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Fixed_Inputs, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_modin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Modified_Inputs *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_modin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lcs_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Modified_Inputs *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_modin();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Modified_Inputs, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_sup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Sup_Inout *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_sup" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lcs_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Sup_Inout *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_sup();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Sup_Inout, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_out(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Outputs *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_out" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lcs_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Outputs *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_out();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Outputs, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_linfixin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Fixed_Lininputs *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_linfixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lcs_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Fixed_Lininputs *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_linfixin();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Fixed_Lininputs, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_linmodin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Modified_Lininputs *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_linmodin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lcs_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Modified_Lininputs *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_linmodin();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Modified_Lininputs, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_linsup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Linsup_Inout *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_linsup" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lcs_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Linsup_Inout *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_linsup();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Linsup_Inout, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_linout(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Linoutputs *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_linout" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lcs_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Linoutputs *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_linout();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Linoutputs, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters_run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters_run" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lcs_Masters * >(argp1);
-  {
-    try {
-      (arg1)->run();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_Lidort_Lcs_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Lidort_Lcs_Masters" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lcs_Masters * >(argp1);
-  {
-    try {
-      delete arg1;
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *Lidort_Lcs_Masters_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_FullPhysics__Lidort_Lcs_Masters, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *Lidort_Lcs_Masters_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
-SWIGINTERN PyObject *_wrap_new_Lidort_Lps_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  int *arg1 = 0 ;
-  int temp1 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Lps_Masters *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Lidort_Lps_Masters" "', argument " "1"" of type '" "int""'");
-  } 
-  temp1 = static_cast< int >(val1);
-  arg1 = &temp1;
-  {
-    try {
-      result = (FullPhysics::Lidort_Lps_Masters *)new FullPhysics::Lidort_Lps_Masters((int const &)*arg1);
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_thread(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_thread" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lps_Masters * >(argp1);
-  {
-    try {
-      result = (int)((FullPhysics::Lidort_Lps_Masters const *)arg1)->thread();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_fixin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Fixed_Inputs *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_fixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lps_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Fixed_Inputs *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_fixin();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Fixed_Inputs, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_modin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Modified_Inputs *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_modin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lps_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Modified_Inputs *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_modin();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Modified_Inputs, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_sup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Sup_Inout *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_sup" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lps_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Sup_Inout *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_sup();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Sup_Inout, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_out(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Outputs *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_out" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lps_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Outputs *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_out();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Outputs, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_linfixin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Fixed_Lininputs *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_linfixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lps_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Fixed_Lininputs *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_linfixin();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Fixed_Lininputs, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_linmodin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Modified_Lininputs *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_linmodin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lps_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Modified_Lininputs *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_linmodin();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Modified_Lininputs, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_linsup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Linsup_Inout *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_linsup" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lps_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Linsup_Inout *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_linsup();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Linsup_Inout, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_linout(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  FullPhysics::Lidort_Linoutputs *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_linout" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lps_Masters * >(argp1);
-  {
-    try {
-      result = (FullPhysics::Lidort_Linoutputs *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_linout();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Linoutputs, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters_run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters_run" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lps_Masters * >(argp1);
-  {
-    try {
-      (arg1)->run();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_Lidort_Lps_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Lidort_Lps_Masters" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Lps_Masters * >(argp1);
-  {
-    try {
-      delete arg1;
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *Lidort_Lps_Masters_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_FullPhysics__Lidort_Lps_Masters, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *Lidort_Lps_Masters_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -6679,7 +6264,138 @@ SWIGINTERN PyObject *_wrap_new_Lidort_Inputs(PyObject *SWIGUNUSEDPARM(self), PyO
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Inputs, SWIG_POINTER_NEW |  0 );
+  {
+    boost::shared_ptr<  FullPhysics::Lidort_Inputs > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Lidort_Inputs >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Lidort_Inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Inputs *arg1 = (FullPhysics::Lidort_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Lidort_Inputs" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (void)arg1; delete smartarg1;
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Inputs___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Inputs *arg1 = (FullPhysics::Lidort_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs___str__" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::Lidort_Inputs const *)arg1)->print_to_string();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Inputs__v_lidort_sup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Inputs *arg1 = (FullPhysics::Lidort_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Sup_Inout *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs__v_lidort_sup" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Sup_Inout *) &((FullPhysics::Lidort_Inputs const *)arg1)->lidort_sup();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Sup_Inout, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -6691,16 +6407,28 @@ SWIGINTERN PyObject *_wrap_Lidort_Inputs__v_lidort_fixin(PyObject *SWIGUNUSEDPAR
   FullPhysics::Lidort_Inputs *arg1 = (FullPhysics::Lidort_Inputs *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Lidort_Fixed_Inputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Inputs, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs__v_lidort_fixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs__v_lidort_fixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Inputs * >(argp1);
   {
     try {
       result = (FullPhysics::Lidort_Fixed_Inputs *) &((FullPhysics::Lidort_Inputs const *)arg1)->lidort_fixin();
@@ -6722,16 +6450,28 @@ SWIGINTERN PyObject *_wrap_Lidort_Inputs__v_lidort_modin(PyObject *SWIGUNUSEDPAR
   FullPhysics::Lidort_Inputs *arg1 = (FullPhysics::Lidort_Inputs *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Lidort_Modified_Inputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Inputs, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs__v_lidort_modin" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs__v_lidort_modin" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Inputs * >(argp1);
   {
     try {
       result = (FullPhysics::Lidort_Modified_Inputs *) &((FullPhysics::Lidort_Inputs const *)arg1)->lidort_modin();
@@ -6753,16 +6493,28 @@ SWIGINTERN PyObject *_wrap_Lidort_Inputs__v_lidort_inputstatus(PyObject *SWIGUNU
   FullPhysics::Lidort_Inputs *arg1 = (FullPhysics::Lidort_Inputs *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Lidort_Input_Exception_Handling *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Inputs, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs__v_lidort_inputstatus" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs__v_lidort_inputstatus" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Inputs * >(argp1);
   {
     try {
       result = (FullPhysics::Lidort_Input_Exception_Handling *) &((FullPhysics::Lidort_Inputs const *)arg1)->lidort_inputstatus();
@@ -6779,21 +6531,75 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Lidort_Inputs_brdf_sup_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Inputs *arg1 = (FullPhysics::Lidort_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs_brdf_sup_init" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (arg1)->brdf_sup_init();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Lidort_Inputs_read_config(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Lidort_Inputs *arg1 = (FullPhysics::Lidort_Inputs *) 0 ;
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs > *smartarg1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"Lidort_Inputs_read_config",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Inputs, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs_read_config" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs_read_config" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Inputs * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
@@ -6823,23 +6629,119 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_Lidort_Inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lidort_Inputs_sleave_sup_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Lidort_Inputs *arg1 = (FullPhysics::Lidort_Inputs *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Inputs, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Lidort_Inputs" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs_sleave_sup_init" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Inputs * >(argp1);
   {
     try {
-      delete arg1;
+      (arg1)->sleave_sup_init();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Inputs_ss_sup_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Inputs *arg1 = (FullPhysics::Lidort_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs_ss_sup_init" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (arg1)->ss_sup_init();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Inputs_sup_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Inputs *arg1 = (FullPhysics::Lidort_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Inputs > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Inputs_sup_init" "', argument " "1"" of type '" "FullPhysics::Lidort_Inputs *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (arg1)->sup_init();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -6856,7 +6758,7 @@ fail:
 SWIGINTERN PyObject *Lidort_Inputs_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_FullPhysics__Lidort_Inputs, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -6866,62 +6768,107 @@ SWIGINTERN PyObject *Lidort_Inputs_swiginit(PyObject *SWIGUNUSEDPARM(self), PyOb
 
 SWIGINTERN PyObject *_wrap_new_Lidort_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  int *arg1 = 0 ;
-  int temp1 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  PyObject *swig_obj[1] ;
   FullPhysics::Lidort_Masters *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Lidort_Masters" "', argument " "1"" of type '" "int""'");
-  } 
-  temp1 = static_cast< int >(val1);
-  arg1 = &temp1;
+  if (!SWIG_Python_UnpackTuple(args,"new_Lidort_Masters",0,0,0)) SWIG_fail;
   {
     try {
-      result = (FullPhysics::Lidort_Masters *)new FullPhysics::Lidort_Masters((int const &)*arg1);
+      result = (FullPhysics::Lidort_Masters *)new FullPhysics::Lidort_Masters();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Masters, SWIG_POINTER_NEW |  0 );
+  {
+    boost::shared_ptr<  FullPhysics::Lidort_Masters > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Lidort_Masters >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_Lidort_Masters__v_thread(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_Lidort_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Lidort_Masters *arg1 = (FullPhysics::Lidort_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
-  int result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Masters__v_thread" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Lidort_Masters" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Masters * >(argp1);
   {
     try {
-      result = (int)((FullPhysics::Lidort_Masters const *)arg1)->thread();
+      (void)arg1; delete smartarg1;
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_From_int(static_cast< int >(result));
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Masters___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Masters *arg1 = (FullPhysics::Lidort_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Masters___str__" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::Lidort_Masters const *)arg1)->print_to_string();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -6933,16 +6880,28 @@ SWIGINTERN PyObject *_wrap_Lidort_Masters__v_lidort_fixin(PyObject *SWIGUNUSEDPA
   FullPhysics::Lidort_Masters *arg1 = (FullPhysics::Lidort_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Lidort_Fixed_Inputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Masters__v_lidort_fixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Masters__v_lidort_fixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Masters * >(argp1);
   {
     try {
       result = (FullPhysics::Lidort_Fixed_Inputs *) &((FullPhysics::Lidort_Masters const *)arg1)->lidort_fixin();
@@ -6964,16 +6923,28 @@ SWIGINTERN PyObject *_wrap_Lidort_Masters__v_lidort_modin(PyObject *SWIGUNUSEDPA
   FullPhysics::Lidort_Masters *arg1 = (FullPhysics::Lidort_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Lidort_Modified_Inputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Masters__v_lidort_modin" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Masters__v_lidort_modin" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Masters * >(argp1);
   {
     try {
       result = (FullPhysics::Lidort_Modified_Inputs *) &((FullPhysics::Lidort_Masters const *)arg1)->lidort_modin();
@@ -6995,16 +6966,28 @@ SWIGINTERN PyObject *_wrap_Lidort_Masters__v_lidort_sup(PyObject *SWIGUNUSEDPARM
   FullPhysics::Lidort_Masters *arg1 = (FullPhysics::Lidort_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Lidort_Sup_Inout *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Masters__v_lidort_sup" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Masters__v_lidort_sup" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Masters * >(argp1);
   {
     try {
       result = (FullPhysics::Lidort_Sup_Inout *) &((FullPhysics::Lidort_Masters const *)arg1)->lidort_sup();
@@ -7026,16 +7009,28 @@ SWIGINTERN PyObject *_wrap_Lidort_Masters__v_lidort_out(PyObject *SWIGUNUSEDPARM
   FullPhysics::Lidort_Masters *arg1 = (FullPhysics::Lidort_Masters *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Lidort_Outputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Masters__v_lidort_out" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Masters__v_lidort_out" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Masters * >(argp1);
   {
     try {
       result = (FullPhysics::Lidort_Outputs *) &((FullPhysics::Lidort_Masters const *)arg1)->lidort_out();
@@ -7055,50 +7050,41 @@ fail:
 SWIGINTERN PyObject *_wrap_Lidort_Masters_run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   FullPhysics::Lidort_Masters *arg1 = (FullPhysics::Lidort_Masters *) 0 ;
+  bool *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Masters > *smartarg1 = 0 ;
+  bool temp2 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Masters, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Masters_run" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Masters * >(argp1);
+  if (!SWIG_Python_UnpackTuple(args,"Lidort_Masters_run",2,2,swig_obj)) SWIG_fail;
   {
-    try {
-      (arg1)->run();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Masters_run" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Masters * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_Lidort_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::Lidort_Masters *arg1 = (FullPhysics::Lidort_Masters *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Masters, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Lidort_Masters" "', argument " "1"" of type '" "FullPhysics::Lidort_Masters *""'"); 
-  }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Masters * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lidort_Masters_run" "', argument " "2"" of type '" "bool""'");
+  } 
+  temp2 = static_cast< bool >(val2);
+  arg2 = &temp2;
   {
     try {
-      delete arg1;
+      (arg1)->run((bool const &)*arg2);
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -7115,7 +7101,7 @@ fail:
 SWIGINTERN PyObject *Lidort_Masters_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_FullPhysics__Lidort_Masters, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -7123,110 +7109,188 @@ SWIGINTERN PyObject *Lidort_Masters_swiginit(PyObject *SWIGUNUSEDPARM(self), PyO
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_Lidort_Sup_Accessories(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Lidort_L_Inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  boost::shared_ptr< FullPhysics::Brdf_Sup_Inputs > *arg1 = 0 ;
-  boost::shared_ptr< FullPhysics::Lidort_Fixed_Inputs > *arg2 = 0 ;
-  boost::shared_ptr< FullPhysics::Lidort_Modified_Inputs > *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  PyObject *swig_obj[3] ;
-  FullPhysics::Lidort_Sup_Accessories *result = 0 ;
+  FullPhysics::Lidort_L_Inputs *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args,"new_Lidort_Sup_Accessories",3,3,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Inputs_t,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Lidort_Sup_Accessories" "', argument " "1"" of type '" "boost::shared_ptr< FullPhysics::Brdf_Sup_Inputs > &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Lidort_Sup_Accessories" "', argument " "1"" of type '" "boost::shared_ptr< FullPhysics::Brdf_Sup_Inputs > &""'"); 
-  }
-  arg1 = reinterpret_cast< boost::shared_ptr< FullPhysics::Brdf_Sup_Inputs > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Fixed_Inputs_t,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Lidort_Sup_Accessories" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Lidort_Fixed_Inputs > &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Lidort_Sup_Accessories" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Lidort_Fixed_Inputs > &""'"); 
-  }
-  arg2 = reinterpret_cast< boost::shared_ptr< FullPhysics::Lidort_Fixed_Inputs > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Modified_Inputs_t,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_Lidort_Sup_Accessories" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::Lidort_Modified_Inputs > &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Lidort_Sup_Accessories" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::Lidort_Modified_Inputs > &""'"); 
-  }
-  arg3 = reinterpret_cast< boost::shared_ptr< FullPhysics::Lidort_Modified_Inputs > * >(argp3);
+  if (!SWIG_Python_UnpackTuple(args,"new_Lidort_L_Inputs",0,0,0)) SWIG_fail;
   {
     try {
-      result = (FullPhysics::Lidort_Sup_Accessories *)new FullPhysics::Lidort_Sup_Accessories(*arg1,*arg2,*arg3);
+      result = (FullPhysics::Lidort_L_Inputs *)new FullPhysics::Lidort_L_Inputs();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Sup_Accessories, SWIG_POINTER_NEW |  0 );
+  {
+    boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Lidort_L_Inputs >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_Lidort_Sup_Accessories__v_brdf_sup_in(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_Lidort_L_Inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Lidort_Sup_Accessories *arg1 = (FullPhysics::Lidort_Sup_Accessories *) 0 ;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
-  FullPhysics::Brdf_Sup_Inputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Sup_Accessories, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Sup_Accessories__v_brdf_sup_in" "', argument " "1"" of type '" "FullPhysics::Lidort_Sup_Accessories const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Lidort_L_Inputs" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Sup_Accessories * >(argp1);
   {
     try {
-      result = (FullPhysics::Brdf_Sup_Inputs *) &((FullPhysics::Lidort_Sup_Accessories const *)arg1)->brdf_sup_in();
+      (void)arg1; delete smartarg1;
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Brdf_Sup_Inputs, 0 |  0 );
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_Lidort_Sup_Accessories__v_lidort_fixin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lidort_L_Inputs___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Lidort_Sup_Accessories *arg1 = (FullPhysics::Lidort_Sup_Accessories *) 0 ;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_L_Inputs___str__" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::Lidort_L_Inputs const *)arg1)->print_to_string();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_L_Inputs__v_lidort_linsup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Linsup_Inout *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_L_Inputs__v_lidort_linsup" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Linsup_Inout *) &((FullPhysics::Lidort_L_Inputs const *)arg1)->lidort_linsup();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Linsup_Inout, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_L_Inputs__v_lidort_fixin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Lidort_Fixed_Inputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Sup_Accessories, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Sup_Accessories__v_lidort_fixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Sup_Accessories const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_L_Inputs__v_lidort_fixin" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Sup_Accessories * >(argp1);
   {
     try {
-      result = (FullPhysics::Lidort_Fixed_Inputs *) &((FullPhysics::Lidort_Sup_Accessories const *)arg1)->lidort_fixin();
+      result = (FullPhysics::Lidort_Fixed_Inputs *) &((FullPhysics::Lidort_L_Inputs const *)arg1)->lidort_fixin();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -7240,24 +7304,36 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Lidort_Sup_Accessories__v_lidort_modin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lidort_L_Inputs__v_lidort_modin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Lidort_Sup_Accessories *arg1 = (FullPhysics::Lidort_Sup_Accessories *) 0 ;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Lidort_Modified_Inputs *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Sup_Accessories, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Sup_Accessories__v_lidort_modin" "', argument " "1"" of type '" "FullPhysics::Lidort_Sup_Accessories const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_L_Inputs__v_lidort_modin" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Sup_Accessories * >(argp1);
   {
     try {
-      result = (FullPhysics::Lidort_Modified_Inputs *) &((FullPhysics::Lidort_Sup_Accessories const *)arg1)->lidort_modin();
+      result = (FullPhysics::Lidort_Modified_Inputs *) &((FullPhysics::Lidort_L_Inputs const *)arg1)->lidort_modin();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -7271,24 +7347,1702 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Lidort_Sup_Accessories__v_lidort_brdfcheck_status(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lidort_L_Inputs__v_lidort_linfixin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Lidort_Sup_Accessories *arg1 = (FullPhysics::Lidort_Sup_Accessories *) 0 ;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Fixed_Lininputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_L_Inputs__v_lidort_linfixin" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Fixed_Lininputs *) &((FullPhysics::Lidort_L_Inputs const *)arg1)->lidort_linfixin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Fixed_Lininputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_L_Inputs__v_lidort_linmodin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Modified_Lininputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_L_Inputs__v_lidort_linmodin" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Modified_Lininputs *) &((FullPhysics::Lidort_L_Inputs const *)arg1)->lidort_linmodin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Modified_Lininputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_L_Inputs__v_lidort_inputstatus(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Input_Exception_Handling *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_L_Inputs__v_lidort_inputstatus" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Input_Exception_Handling *) &((FullPhysics::Lidort_L_Inputs const *)arg1)->lidort_inputstatus();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Input_Exception_Handling, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_L_Inputs_brdf_linsup_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_L_Inputs_brdf_linsup_init" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (arg1)->brdf_linsup_init();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_L_Inputs_read_config(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"Lidort_L_Inputs_read_config",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_L_Inputs_read_config" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Lidort_L_Inputs_read_config" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Lidort_L_Inputs_read_config" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      (arg1)->read_config((std::string const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_L_Inputs_linsup_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_L_Inputs_linsup_init" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (arg1)->linsup_init();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_L_Inputs_sleave_linsup_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_L_Inputs_sleave_linsup_init" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (arg1)->sleave_linsup_init();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_L_Inputs_ss_linsup_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_L_Inputs *arg1 = (FullPhysics::Lidort_L_Inputs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_L_Inputs > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_L_Inputs_ss_linsup_init" "', argument " "1"" of type '" "FullPhysics::Lidort_L_Inputs *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_L_Inputs > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_L_Inputs * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (arg1)->ss_linsup_init();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Lidort_L_Inputs_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *Lidort_L_Inputs_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_Lidort_Lcs_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lcs_Masters *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"new_Lidort_Lcs_Masters",0,0,0)) SWIG_fail;
+  {
+    try {
+      result = (FullPhysics::Lidort_Lcs_Masters *)new FullPhysics::Lidort_Lcs_Masters();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::Lidort_Lcs_Masters > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Lidort_Lcs_Masters >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Lidort_Lcs_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Lidort_Lcs_Masters" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (void)arg1; delete smartarg1;
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters___str__" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::Lidort_Lcs_Masters const *)arg1)->print_to_string();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_fixin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Fixed_Inputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_fixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Fixed_Inputs *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_fixin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Fixed_Inputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_modin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Modified_Inputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_modin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Modified_Inputs *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_modin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Modified_Inputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_sup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Sup_Inout *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_sup" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Sup_Inout *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_sup();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Sup_Inout, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_out(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Outputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_out" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Outputs *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_out();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Outputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_linfixin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Fixed_Lininputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_linfixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Fixed_Lininputs *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_linfixin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Fixed_Lininputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_linmodin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Modified_Lininputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_linmodin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Modified_Lininputs *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_linmodin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Modified_Lininputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_linsup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Linsup_Inout *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_linsup" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Linsup_Inout *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_linsup();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Linsup_Inout, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters__v_lidort_linout(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Linoutputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters__v_lidort_linout" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Linoutputs *) &((FullPhysics::Lidort_Lcs_Masters const *)arg1)->lidort_linout();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Linoutputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lcs_Masters_run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lcs_Masters *arg1 = (FullPhysics::Lidort_Lcs_Masters *) 0 ;
+  bool *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters > *smartarg1 = 0 ;
+  bool temp2 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"Lidort_Lcs_Masters_run",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lcs_Masters_run" "', argument " "1"" of type '" "FullPhysics::Lidort_Lcs_Masters *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Lcs_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lcs_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lidort_Lcs_Masters_run" "', argument " "2"" of type '" "bool""'");
+  } 
+  temp2 = static_cast< bool >(val2);
+  arg2 = &temp2;
+  {
+    try {
+      (arg1)->run((bool const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Lidort_Lcs_Masters_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *Lidort_Lcs_Masters_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_Lidort_Lps_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lps_Masters *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"new_Lidort_Lps_Masters",0,0,0)) SWIG_fail;
+  {
+    try {
+      result = (FullPhysics::Lidort_Lps_Masters *)new FullPhysics::Lidort_Lps_Masters();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::Lidort_Lps_Masters > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Lidort_Lps_Masters >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Lidort_Lps_Masters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Lidort_Lps_Masters" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (void)arg1; delete smartarg1;
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters___str__" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::Lidort_Lps_Masters const *)arg1)->print_to_string();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_fixin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Fixed_Inputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_fixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Fixed_Inputs *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_fixin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Fixed_Inputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_modin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Modified_Inputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_modin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Modified_Inputs *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_modin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Modified_Inputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_sup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Sup_Inout *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_sup" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Sup_Inout *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_sup();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Sup_Inout, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_out(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Outputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_out" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Outputs *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_out();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Outputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_linfixin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Fixed_Lininputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_linfixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Fixed_Lininputs *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_linfixin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Fixed_Lininputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_linmodin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Modified_Lininputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_linmodin" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Modified_Lininputs *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_linmodin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Modified_Lininputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_linsup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Linsup_Inout *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_linsup" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Linsup_Inout *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_linsup();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Linsup_Inout, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters__v_lidort_linout(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Linoutputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters__v_lidort_linout" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Linoutputs *) &((FullPhysics::Lidort_Lps_Masters const *)arg1)->lidort_linout();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Linoutputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Lps_Masters_run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Lps_Masters *arg1 = (FullPhysics::Lidort_Lps_Masters *) 0 ;
+  bool *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Lps_Masters > *smartarg1 = 0 ;
+  bool temp2 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"Lidort_Lps_Masters_run",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Lps_Masters_run" "', argument " "1"" of type '" "FullPhysics::Lidort_Lps_Masters *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Lps_Masters > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Lps_Masters * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lidort_Lps_Masters_run" "', argument " "2"" of type '" "bool""'");
+  } 
+  temp2 = static_cast< bool >(val2);
+  arg2 = &temp2;
+  {
+    try {
+      (arg1)->run((bool const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Lidort_Lps_Masters_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *Lidort_Lps_Masters_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_Lidort_Brdf_Sup_Accessories(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  boost::shared_ptr< FullPhysics::Brdf_Sup_Inputs > *arg1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Fixed_Inputs > *arg2 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Modified_Inputs > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  FullPhysics::Lidort_Brdf_Sup_Accessories *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"new_Lidort_Brdf_Sup_Accessories",3,3,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Inputs_t,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Lidort_Brdf_Sup_Accessories" "', argument " "1"" of type '" "boost::shared_ptr< FullPhysics::Brdf_Sup_Inputs > &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Lidort_Brdf_Sup_Accessories" "', argument " "1"" of type '" "boost::shared_ptr< FullPhysics::Brdf_Sup_Inputs > &""'"); 
+  }
+  arg1 = reinterpret_cast< boost::shared_ptr< FullPhysics::Brdf_Sup_Inputs > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Fixed_Inputs_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Lidort_Brdf_Sup_Accessories" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Lidort_Fixed_Inputs > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Lidort_Brdf_Sup_Accessories" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Lidort_Fixed_Inputs > &""'"); 
+  }
+  arg2 = reinterpret_cast< boost::shared_ptr< FullPhysics::Lidort_Fixed_Inputs > * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Modified_Inputs_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_Lidort_Brdf_Sup_Accessories" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::Lidort_Modified_Inputs > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Lidort_Brdf_Sup_Accessories" "', argument " "3"" of type '" "boost::shared_ptr< FullPhysics::Lidort_Modified_Inputs > &""'"); 
+  }
+  arg3 = reinterpret_cast< boost::shared_ptr< FullPhysics::Lidort_Modified_Inputs > * >(argp3);
+  {
+    try {
+      result = (FullPhysics::Lidort_Brdf_Sup_Accessories *)new FullPhysics::Lidort_Brdf_Sup_Accessories(*arg1,*arg2,*arg3);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > *smartresult = result ? new boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Lidort_Brdf_Sup_Accessories(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Brdf_Sup_Accessories *arg1 = (FullPhysics::Lidort_Brdf_Sup_Accessories *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Lidort_Brdf_Sup_Accessories" "', argument " "1"" of type '" "FullPhysics::Lidort_Brdf_Sup_Accessories *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      (void)arg1; delete smartarg1;
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Brdf_Sup_Accessories___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Brdf_Sup_Accessories *arg1 = (FullPhysics::Lidort_Brdf_Sup_Accessories *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Brdf_Sup_Accessories___str__" "', argument " "1"" of type '" "FullPhysics::Lidort_Brdf_Sup_Accessories const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::Lidort_Brdf_Sup_Accessories const *)arg1)->print_to_string();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Brdf_Sup_Accessories__v_brdf_sup_in(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Brdf_Sup_Accessories *arg1 = (FullPhysics::Lidort_Brdf_Sup_Accessories *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Brdf_Sup_Inputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Brdf_Sup_Accessories__v_brdf_sup_in" "', argument " "1"" of type '" "FullPhysics::Lidort_Brdf_Sup_Accessories const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Brdf_Sup_Inputs *) &((FullPhysics::Lidort_Brdf_Sup_Accessories const *)arg1)->brdf_sup_in();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Brdf_Sup_Inputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Brdf_Sup_Accessories__v_lidort_fixin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Brdf_Sup_Accessories *arg1 = (FullPhysics::Lidort_Brdf_Sup_Accessories *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Fixed_Inputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Brdf_Sup_Accessories__v_lidort_fixin" "', argument " "1"" of type '" "FullPhysics::Lidort_Brdf_Sup_Accessories const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Fixed_Inputs *) &((FullPhysics::Lidort_Brdf_Sup_Accessories const *)arg1)->lidort_fixin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Fixed_Inputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Brdf_Sup_Accessories__v_lidort_modin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Brdf_Sup_Accessories *arg1 = (FullPhysics::Lidort_Brdf_Sup_Accessories *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Modified_Inputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Brdf_Sup_Accessories__v_lidort_modin" "', argument " "1"" of type '" "FullPhysics::Lidort_Brdf_Sup_Accessories const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Modified_Inputs *) &((FullPhysics::Lidort_Brdf_Sup_Accessories const *)arg1)->lidort_modin();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Modified_Inputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Brdf_Sup_Accessories__v_lidort_brdfcheck_status(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Brdf_Sup_Accessories *arg1 = (FullPhysics::Lidort_Brdf_Sup_Accessories *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   FullPhysics::Lidort_Exception_Handling *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Sup_Accessories, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Sup_Accessories__v_lidort_brdfcheck_status" "', argument " "1"" of type '" "FullPhysics::Lidort_Sup_Accessories const *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Brdf_Sup_Accessories__v_lidort_brdfcheck_status" "', argument " "1"" of type '" "FullPhysics::Lidort_Brdf_Sup_Accessories const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Sup_Accessories * >(argp1);
   {
     try {
-      result = (FullPhysics::Lidort_Exception_Handling *) &((FullPhysics::Lidort_Sup_Accessories const *)arg1)->lidort_brdfcheck_status();
+      result = (FullPhysics::Lidort_Exception_Handling *) &((FullPhysics::Lidort_Brdf_Sup_Accessories const *)arg1)->lidort_brdfcheck_status();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -7302,23 +9056,121 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Lidort_Sup_Accessories_brdf_input_checker(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lidort_Brdf_Sup_Accessories__v_brdf_sup_out(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Lidort_Sup_Accessories *arg1 = (FullPhysics::Lidort_Sup_Accessories *) 0 ;
+  FullPhysics::Lidort_Brdf_Sup_Accessories *arg1 = (FullPhysics::Lidort_Brdf_Sup_Accessories *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Brdf_Sup_Outputs *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Brdf_Sup_Accessories__v_brdf_sup_out" "', argument " "1"" of type '" "FullPhysics::Lidort_Brdf_Sup_Accessories const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Brdf_Sup_Outputs *) &((FullPhysics::Lidort_Brdf_Sup_Accessories const *)arg1)->brdf_sup_out();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Brdf_Sup_Outputs, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Brdf_Sup_Accessories__v_lidort_sup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Brdf_Sup_Accessories *arg1 = (FullPhysics::Lidort_Brdf_Sup_Accessories *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  FullPhysics::Lidort_Sup_Inout *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Brdf_Sup_Accessories__v_lidort_sup" "', argument " "1"" of type '" "FullPhysics::Lidort_Brdf_Sup_Accessories const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (FullPhysics::Lidort_Sup_Inout *) &((FullPhysics::Lidort_Brdf_Sup_Accessories const *)arg1)->lidort_sup();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FullPhysics__Lidort_Sup_Inout, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Brdf_Sup_Accessories_brdf_input_check(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Brdf_Sup_Accessories *arg1 = (FullPhysics::Lidort_Brdf_Sup_Accessories *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Sup_Accessories, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Sup_Accessories_brdf_input_checker" "', argument " "1"" of type '" "FullPhysics::Lidort_Sup_Accessories *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Brdf_Sup_Accessories_brdf_input_check" "', argument " "1"" of type '" "FullPhysics::Lidort_Brdf_Sup_Accessories *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Sup_Accessories * >(argp1);
   {
     try {
-      (arg1)->brdf_input_checker();
+      (arg1)->brdf_input_check();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -7332,23 +9184,91 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_Lidort_Sup_Accessories(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lidort_Brdf_Sup_Accessories_brdf_input_check_error(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::Lidort_Sup_Accessories *arg1 = (FullPhysics::Lidort_Sup_Accessories *) 0 ;
+  FullPhysics::Lidort_Brdf_Sup_Accessories *arg1 = (FullPhysics::Lidort_Brdf_Sup_Accessories *) 0 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"Lidort_Brdf_Sup_Accessories_brdf_input_check_error",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Brdf_Sup_Accessories_brdf_input_check_error" "', argument " "1"" of type '" "FullPhysics::Lidort_Brdf_Sup_Accessories *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Lidort_Brdf_Sup_Accessories_brdf_input_check_error" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Lidort_Brdf_Sup_Accessories_brdf_input_check_error" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      (arg1)->brdf_input_check_error((std::string const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lidort_Brdf_Sup_Accessories_set_brdf_inputs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::Lidort_Brdf_Sup_Accessories *arg1 = (FullPhysics::Lidort_Brdf_Sup_Accessories *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories > tempshared1 ;
+  boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_FullPhysics__Lidort_Sup_Accessories, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Lidort_Sup_Accessories" "', argument " "1"" of type '" "FullPhysics::Lidort_Sup_Accessories *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lidort_Brdf_Sup_Accessories_set_brdf_inputs" "', argument " "1"" of type '" "FullPhysics::Lidort_Brdf_Sup_Accessories *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::Lidort_Brdf_Sup_Accessories > * >(argp1);
+      arg1 = const_cast< FullPhysics::Lidort_Brdf_Sup_Accessories * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< FullPhysics::Lidort_Sup_Accessories * >(argp1);
   {
     try {
-      delete arg1;
+      (arg1)->set_brdf_inputs();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -7362,65 +9282,89 @@ fail:
 }
 
 
-SWIGINTERN PyObject *Lidort_Sup_Accessories_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *Lidort_Brdf_Sup_Accessories_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_FullPhysics__Lidort_Sup_Accessories, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *Lidort_Sup_Accessories_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *Lidort_Brdf_Sup_Accessories_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"new_Brdf_Linsup_Masters", (PyCFunction)_wrap_new_Brdf_Linsup_Masters, METH_O, (char *)"\n"
+	 { (char *)"new_Brdf_Lin_Sup_Masters", (PyCFunction)_wrap_new_Brdf_Lin_Sup_Masters, METH_NOARGS, (char *)"\n"
 		"\n"
-		"FullPhysics::Brdf_Linsup_Masters::Brdf_Linsup_Masters(const int &thread_in)\n"
-		"\n"
-		""},
-	 { (char *)"Brdf_Linsup_Masters__v_brdf_sup_in", (PyCFunction)_wrap_Brdf_Linsup_Masters__v_brdf_sup_in, METH_O, (char *)"\n"
-		"\n"
-		"const Brdf_Sup_Inputs& FullPhysics::Brdf_Linsup_Masters::brdf_sup_in() const\n"
+		"FullPhysics::Brdf_Lin_Sup_Masters::Brdf_Lin_Sup_Masters()\n"
 		"\n"
 		""},
-	 { (char *)"Brdf_Linsup_Masters__v_brdf_sup_inputstatus", (PyCFunction)_wrap_Brdf_Linsup_Masters__v_brdf_sup_inputstatus, METH_O, (char *)"\n"
+	 { (char *)"delete_Brdf_Lin_Sup_Masters", (PyCFunction)_wrap_delete_Brdf_Lin_Sup_Masters, METH_O, (char *)"\n"
 		"\n"
-		"const Brdf_Input_Exception_Handling& FullPhysics::Brdf_Linsup_Masters::brdf_sup_inputstatus() const\n"
-		"\n"
-		""},
-	 { (char *)"Brdf_Linsup_Masters__v_thread", (PyCFunction)_wrap_Brdf_Linsup_Masters__v_thread, METH_O, (char *)"\n"
-		"\n"
-		"const int& FullPhysics::Brdf_Linsup_Masters::thread() const\n"
+		"virtual FullPhysics::Brdf_Lin_Sup_Masters::~Brdf_Lin_Sup_Masters()=default\n"
 		"\n"
 		""},
-	 { (char *)"Brdf_Linsup_Masters__v_brdf_sup_out", (PyCFunction)_wrap_Brdf_Linsup_Masters__v_brdf_sup_out, METH_O, (char *)"\n"
+	 { (char *)"Brdf_Lin_Sup_Masters___str__", (PyCFunction)_wrap_Brdf_Lin_Sup_Masters___str__, METH_O, (char *)"\n"
 		"\n"
-		"const Brdf_Sup_Outputs& FullPhysics::Brdf_Linsup_Masters::brdf_sup_out() const\n"
-		"\n"
-		""},
-	 { (char *)"Brdf_Linsup_Masters__v_brdf_linsup_out", (PyCFunction)_wrap_Brdf_Linsup_Masters__v_brdf_linsup_out, METH_O, (char *)"\n"
-		"\n"
-		"const Brdf_Linsup_Outputs& FullPhysics::Brdf_Linsup_Masters::brdf_linsup_out() const\n"
+		"std::string FullPhysics::Brdf_Lin_Sup_Masters::print_to_string() const\n"
 		"\n"
 		""},
-	 { (char *)"Brdf_Linsup_Masters_read_config", _wrap_Brdf_Linsup_Masters_read_config, METH_VARARGS, (char *)"\n"
+	 { (char *)"Brdf_Lin_Sup_Masters__v_brdf_sup_in", (PyCFunction)_wrap_Brdf_Lin_Sup_Masters__v_brdf_sup_in, METH_O, (char *)"\n"
 		"\n"
-		"void FullPhysics::Brdf_Linsup_Masters::read_config(const std::string &filnam_in)\n"
-		"\n"
-		""},
-	 { (char *)"Brdf_Linsup_Masters_run", _wrap_Brdf_Linsup_Masters_run, METH_VARARGS, (char *)"\n"
-		"\n"
-		"void FullPhysics::Brdf_Linsup_Masters::run(const bool &do_debug_restoration_in, const int &nmoments_input_in)\n"
+		"const Brdf_Sup_Inputs& FullPhysics::Brdf_Lin_Sup_Masters::brdf_sup_in() const\n"
 		"\n"
 		""},
-	 { (char *)"delete_Brdf_Linsup_Masters", (PyCFunction)_wrap_delete_Brdf_Linsup_Masters, METH_O, NULL},
-	 { (char *)"Brdf_Linsup_Masters_swigregister", Brdf_Linsup_Masters_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Brdf_Linsup_Masters_swiginit", Brdf_Linsup_Masters_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_Brdf_Sup_Masters", (PyCFunction)_wrap_new_Brdf_Sup_Masters, METH_O, (char *)"\n"
+	 { (char *)"Brdf_Lin_Sup_Masters__v_brdf_linsup_in", (PyCFunction)_wrap_Brdf_Lin_Sup_Masters__v_brdf_linsup_in, METH_O, (char *)"\n"
 		"\n"
-		"FullPhysics::Brdf_Sup_Masters::Brdf_Sup_Masters(const int &thread_in)\n"
+		"const Brdf_Linsup_Inputs& FullPhysics::Brdf_Lin_Sup_Masters::brdf_linsup_in() const\n"
+		"\n"
+		""},
+	 { (char *)"Brdf_Lin_Sup_Masters__v_brdf_sup_inputstatus", (PyCFunction)_wrap_Brdf_Lin_Sup_Masters__v_brdf_sup_inputstatus, METH_O, (char *)"\n"
+		"\n"
+		"const Brdf_Input_Exception_Handling& FullPhysics::Brdf_Lin_Sup_Masters::brdf_sup_inputstatus() const\n"
+		"\n"
+		""},
+	 { (char *)"Brdf_Lin_Sup_Masters__v_brdf_sup_out", (PyCFunction)_wrap_Brdf_Lin_Sup_Masters__v_brdf_sup_out, METH_O, (char *)"\n"
+		"\n"
+		"const Brdf_Sup_Outputs& FullPhysics::Brdf_Lin_Sup_Masters::brdf_sup_out() const\n"
+		"\n"
+		""},
+	 { (char *)"Brdf_Lin_Sup_Masters__v_brdf_linsup_out", (PyCFunction)_wrap_Brdf_Lin_Sup_Masters__v_brdf_linsup_out, METH_O, (char *)"\n"
+		"\n"
+		"const Brdf_Linsup_Outputs& FullPhysics::Brdf_Lin_Sup_Masters::brdf_linsup_out() const\n"
+		"\n"
+		""},
+	 { (char *)"Brdf_Lin_Sup_Masters__v_brdf_sup_outputstatus", (PyCFunction)_wrap_Brdf_Lin_Sup_Masters__v_brdf_sup_outputstatus, METH_O, (char *)"\n"
+		"\n"
+		"const Brdf_Output_Exception_Handling& FullPhysics::Brdf_Lin_Sup_Masters::brdf_sup_outputstatus() const\n"
+		"\n"
+		""},
+	 { (char *)"Brdf_Lin_Sup_Masters_read_config", _wrap_Brdf_Lin_Sup_Masters_read_config, METH_VARARGS, (char *)"\n"
+		"\n"
+		"void FullPhysics::Brdf_Lin_Sup_Masters::read_config(const std::string &filnam_in)\n"
+		"\n"
+		""},
+	 { (char *)"Brdf_Lin_Sup_Masters_run", _wrap_Brdf_Lin_Sup_Masters_run, METH_VARARGS, (char *)"\n"
+		"\n"
+		"void FullPhysics::Brdf_Lin_Sup_Masters::run(const bool &do_debug_restoration_in, const int &nmoments_input_in)\n"
+		"\n"
+		""},
+	 { (char *)"Brdf_Lin_Sup_Masters_swigregister", Brdf_Lin_Sup_Masters_swigregister, METH_VARARGS, NULL},
+	 { (char *)"Brdf_Lin_Sup_Masters_swiginit", Brdf_Lin_Sup_Masters_swiginit, METH_VARARGS, NULL},
+	 { (char *)"new_Brdf_Sup_Masters", (PyCFunction)_wrap_new_Brdf_Sup_Masters, METH_NOARGS, (char *)"\n"
+		"\n"
+		"FullPhysics::Brdf_Sup_Masters::Brdf_Sup_Masters()\n"
+		"\n"
+		""},
+	 { (char *)"delete_Brdf_Sup_Masters", (PyCFunction)_wrap_delete_Brdf_Sup_Masters, METH_O, (char *)"\n"
+		"\n"
+		"virtual FullPhysics::Brdf_Sup_Masters::~Brdf_Sup_Masters()=default\n"
+		"\n"
+		""},
+	 { (char *)"Brdf_Sup_Masters___str__", (PyCFunction)_wrap_Brdf_Sup_Masters___str__, METH_O, (char *)"\n"
+		"\n"
+		"std::string FullPhysics::Brdf_Sup_Masters::print_to_string() const\n"
 		"\n"
 		""},
 	 { (char *)"Brdf_Sup_Masters__v_brdf_sup_in", (PyCFunction)_wrap_Brdf_Sup_Masters__v_brdf_sup_in, METH_O, (char *)"\n"
@@ -7433,14 +9377,14 @@ static PyMethodDef SwigMethods[] = {
 		"const Brdf_Input_Exception_Handling& FullPhysics::Brdf_Sup_Masters::brdf_sup_inputstatus() const\n"
 		"\n"
 		""},
-	 { (char *)"Brdf_Sup_Masters__v_thread", (PyCFunction)_wrap_Brdf_Sup_Masters__v_thread, METH_O, (char *)"\n"
-		"\n"
-		"const int& FullPhysics::Brdf_Sup_Masters::thread() const\n"
-		"\n"
-		""},
 	 { (char *)"Brdf_Sup_Masters__v_brdf_sup_out", (PyCFunction)_wrap_Brdf_Sup_Masters__v_brdf_sup_out, METH_O, (char *)"\n"
 		"\n"
 		"const Brdf_Sup_Outputs& FullPhysics::Brdf_Sup_Masters::brdf_sup_out() const\n"
+		"\n"
+		""},
+	 { (char *)"Brdf_Sup_Masters__v_brdf_sup_outputstatus", (PyCFunction)_wrap_Brdf_Sup_Masters__v_brdf_sup_outputstatus, METH_O, (char *)"\n"
+		"\n"
+		"const Brdf_Output_Exception_Handling& FullPhysics::Brdf_Sup_Masters::brdf_sup_outputstatus() const\n"
 		"\n"
 		""},
 	 { (char *)"Brdf_Sup_Masters_read_config", _wrap_Brdf_Sup_Masters_read_config, METH_VARARGS, (char *)"\n"
@@ -7453,128 +9397,26 @@ static PyMethodDef SwigMethods[] = {
 		"void FullPhysics::Brdf_Sup_Masters::run(const bool &do_debug_restoration_in, const int &nmoments_input_in)\n"
 		"\n"
 		""},
-	 { (char *)"delete_Brdf_Sup_Masters", (PyCFunction)_wrap_delete_Brdf_Sup_Masters, METH_O, NULL},
 	 { (char *)"Brdf_Sup_Masters_swigregister", Brdf_Sup_Masters_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Brdf_Sup_Masters_swiginit", Brdf_Sup_Masters_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_Lidort_Lcs_Masters", (PyCFunction)_wrap_new_Lidort_Lcs_Masters, METH_O, (char *)"\n"
-		"\n"
-		"FullPhysics::Lidort_Lcs_Masters::Lidort_Lcs_Masters(const int &thread_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lcs_Masters__v_thread", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_thread, METH_O, (char *)"\n"
-		"\n"
-		"const int& FullPhysics::Lidort_Lcs_Masters::thread() const\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lcs_Masters__v_lidort_fixin", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_fixin, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lcs_Masters::lidort_fixin(Lidort_Fixed_Inputs &lidort_fixin_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lcs_Masters__v_lidort_modin", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_modin, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lcs_Masters::lidort_modin(Lidort_Modified_Inputs &lidort_modin_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lcs_Masters__v_lidort_sup", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_sup, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lcs_Masters::lidort_sup(Lidort_Sup_Inout &lidort_sup_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lcs_Masters__v_lidort_out", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_out, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lcs_Masters::lidort_out(Lidort_Outputs &lidort_out_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lcs_Masters__v_lidort_linfixin", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_linfixin, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lcs_Masters::lidort_linfixin(Lidort_Fixed_Lininputs &lidort_linfixin_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lcs_Masters__v_lidort_linmodin", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_linmodin, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lcs_Masters::lidort_linmodin(Lidort_Modified_Lininputs &lidort_linmodin_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lcs_Masters__v_lidort_linsup", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_linsup, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lcs_Masters::lidort_linsup(Lidort_Linsup_Inout &lidort_linsup_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lcs_Masters__v_lidort_linout", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_linout, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lcs_Masters::lidort_linout(Lidort_Linoutputs &lidort_linout_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lcs_Masters_run", (PyCFunction)_wrap_Lidort_Lcs_Masters_run, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lcs_Masters::run()\n"
-		"\n"
-		""},
-	 { (char *)"delete_Lidort_Lcs_Masters", (PyCFunction)_wrap_delete_Lidort_Lcs_Masters, METH_O, NULL},
-	 { (char *)"Lidort_Lcs_Masters_swigregister", Lidort_Lcs_Masters_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Lidort_Lcs_Masters_swiginit", Lidort_Lcs_Masters_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_Lidort_Lps_Masters", (PyCFunction)_wrap_new_Lidort_Lps_Masters, METH_O, (char *)"\n"
-		"\n"
-		"FullPhysics::Lidort_Lps_Masters::Lidort_Lps_Masters(const int &thread_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lps_Masters__v_thread", (PyCFunction)_wrap_Lidort_Lps_Masters__v_thread, METH_O, (char *)"\n"
-		"\n"
-		"const int& FullPhysics::Lidort_Lps_Masters::thread() const\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lps_Masters__v_lidort_fixin", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_fixin, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lps_Masters::lidort_fixin(Lidort_Fixed_Inputs &lidort_fixin_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lps_Masters__v_lidort_modin", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_modin, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lps_Masters::lidort_modin(Lidort_Modified_Inputs &lidort_modin_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lps_Masters__v_lidort_sup", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_sup, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lps_Masters::lidort_sup(Lidort_Sup_Inout &lidort_sup_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lps_Masters__v_lidort_out", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_out, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lps_Masters::lidort_out(Lidort_Outputs &lidort_out_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lps_Masters__v_lidort_linfixin", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_linfixin, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lps_Masters::lidort_linfixin(Lidort_Fixed_Lininputs &lidort_linfixin_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lps_Masters__v_lidort_linmodin", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_linmodin, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lps_Masters::lidort_linmodin(Lidort_Modified_Lininputs &lidort_linmodin_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lps_Masters__v_lidort_linsup", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_linsup, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lps_Masters::lidort_linsup(Lidort_Linsup_Inout &lidort_linsup_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lps_Masters__v_lidort_linout", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_linout, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lps_Masters::lidort_linout(Lidort_Linoutputs &lidort_linout_in)\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Lps_Masters_run", (PyCFunction)_wrap_Lidort_Lps_Masters_run, METH_O, (char *)"\n"
-		"\n"
-		"void FullPhysics::Lidort_Lps_Masters::run()\n"
-		"\n"
-		""},
-	 { (char *)"delete_Lidort_Lps_Masters", (PyCFunction)_wrap_delete_Lidort_Lps_Masters, METH_O, NULL},
-	 { (char *)"Lidort_Lps_Masters_swigregister", Lidort_Lps_Masters_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Lidort_Lps_Masters_swiginit", Lidort_Lps_Masters_swiginit, METH_VARARGS, NULL},
 	 { (char *)"new_Lidort_Inputs", (PyCFunction)_wrap_new_Lidort_Inputs, METH_NOARGS, (char *)"\n"
 		"\n"
 		"FullPhysics::Lidort_Inputs::Lidort_Inputs()\n"
+		"\n"
+		""},
+	 { (char *)"delete_Lidort_Inputs", (PyCFunction)_wrap_delete_Lidort_Inputs, METH_O, (char *)"\n"
+		"\n"
+		"virtual FullPhysics::Lidort_Inputs::~Lidort_Inputs()=default\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Inputs___str__", (PyCFunction)_wrap_Lidort_Inputs___str__, METH_O, (char *)"\n"
+		"\n"
+		"std::string FullPhysics::Lidort_Inputs::print_to_string() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Inputs__v_lidort_sup", (PyCFunction)_wrap_Lidort_Inputs__v_lidort_sup, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Inputs::lidort_sup(Lidort_Sup_Inout &lidort_sup_in)\n"
 		"\n"
 		""},
 	 { (char *)"Lidort_Inputs__v_lidort_fixin", (PyCFunction)_wrap_Lidort_Inputs__v_lidort_fixin, METH_O, (char *)"\n"
@@ -7592,22 +9434,46 @@ static PyMethodDef SwigMethods[] = {
 		"const Lidort_Input_Exception_Handling& FullPhysics::Lidort_Inputs::lidort_inputstatus() const\n"
 		"\n"
 		""},
+	 { (char *)"Lidort_Inputs_brdf_sup_init", (PyCFunction)_wrap_Lidort_Inputs_brdf_sup_init, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Inputs::brdf_sup_init()\n"
+		"\n"
+		""},
 	 { (char *)"Lidort_Inputs_read_config", _wrap_Lidort_Inputs_read_config, METH_VARARGS, (char *)"\n"
 		"\n"
 		"void FullPhysics::Lidort_Inputs::read_config(const std::string &filnam_in)\n"
 		"\n"
 		""},
-	 { (char *)"delete_Lidort_Inputs", (PyCFunction)_wrap_delete_Lidort_Inputs, METH_O, NULL},
-	 { (char *)"Lidort_Inputs_swigregister", Lidort_Inputs_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Lidort_Inputs_swiginit", Lidort_Inputs_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_Lidort_Masters", (PyCFunction)_wrap_new_Lidort_Masters, METH_O, (char *)"\n"
+	 { (char *)"Lidort_Inputs_sleave_sup_init", (PyCFunction)_wrap_Lidort_Inputs_sleave_sup_init, METH_O, (char *)"\n"
 		"\n"
-		"FullPhysics::Lidort_Masters::Lidort_Masters(const int &thread_in)\n"
+		"void FullPhysics::Lidort_Inputs::sleave_sup_init()\n"
 		"\n"
 		""},
-	 { (char *)"Lidort_Masters__v_thread", (PyCFunction)_wrap_Lidort_Masters__v_thread, METH_O, (char *)"\n"
+	 { (char *)"Lidort_Inputs_ss_sup_init", (PyCFunction)_wrap_Lidort_Inputs_ss_sup_init, METH_O, (char *)"\n"
 		"\n"
-		"const int& FullPhysics::Lidort_Masters::thread() const\n"
+		"void FullPhysics::Lidort_Inputs::ss_sup_init()\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Inputs_sup_init", (PyCFunction)_wrap_Lidort_Inputs_sup_init, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Inputs::sup_init()\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Inputs_swigregister", Lidort_Inputs_swigregister, METH_VARARGS, NULL},
+	 { (char *)"Lidort_Inputs_swiginit", Lidort_Inputs_swiginit, METH_VARARGS, NULL},
+	 { (char *)"new_Lidort_Masters", (PyCFunction)_wrap_new_Lidort_Masters, METH_NOARGS, (char *)"\n"
+		"\n"
+		"FullPhysics::Lidort_Masters::Lidort_Masters()\n"
+		"\n"
+		""},
+	 { (char *)"delete_Lidort_Masters", (PyCFunction)_wrap_delete_Lidort_Masters, METH_O, (char *)"\n"
+		"\n"
+		"virtual FullPhysics::Lidort_Masters::~Lidort_Masters()=default\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Masters___str__", (PyCFunction)_wrap_Lidort_Masters___str__, METH_O, (char *)"\n"
+		"\n"
+		"std::string FullPhysics::Lidort_Masters::print_to_string() const\n"
 		"\n"
 		""},
 	 { (char *)"Lidort_Masters__v_lidort_fixin", (PyCFunction)_wrap_Lidort_Masters__v_lidort_fixin, METH_O, (char *)"\n"
@@ -7627,52 +9493,276 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"Lidort_Masters__v_lidort_out", (PyCFunction)_wrap_Lidort_Masters__v_lidort_out, METH_O, (char *)"\n"
 		"\n"
-		"void FullPhysics::Lidort_Masters::lidort_out(Lidort_Outputs &lidort_out_in)\n"
+		"const Lidort_Outputs& FullPhysics::Lidort_Masters::lidort_out() const\n"
 		"\n"
 		""},
-	 { (char *)"Lidort_Masters_run", (PyCFunction)_wrap_Lidort_Masters_run, METH_O, (char *)"\n"
+	 { (char *)"Lidort_Masters_run", _wrap_Lidort_Masters_run, METH_VARARGS, (char *)"\n"
 		"\n"
-		"void FullPhysics::Lidort_Masters::run()\n"
+		"void FullPhysics::Lidort_Masters::run(const bool &do_debug_input_in)\n"
 		"\n"
 		""},
-	 { (char *)"delete_Lidort_Masters", (PyCFunction)_wrap_delete_Lidort_Masters, METH_O, NULL},
 	 { (char *)"Lidort_Masters_swigregister", Lidort_Masters_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Lidort_Masters_swiginit", Lidort_Masters_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_Lidort_Sup_Accessories", _wrap_new_Lidort_Sup_Accessories, METH_VARARGS, (char *)"\n"
+	 { (char *)"new_Lidort_L_Inputs", (PyCFunction)_wrap_new_Lidort_L_Inputs, METH_NOARGS, (char *)"\n"
 		"\n"
-		"FullPhysics::Lidort_Sup_Accessories::Lidort_Sup_Accessories(boost::shared_ptr< Brdf_Sup_Inputs > &brdf_sup_in_in,\n"
+		"FullPhysics::Lidort_L_Inputs::Lidort_L_Inputs()\n"
+		"\n"
+		""},
+	 { (char *)"delete_Lidort_L_Inputs", (PyCFunction)_wrap_delete_Lidort_L_Inputs, METH_O, (char *)"\n"
+		"\n"
+		"virtual FullPhysics::Lidort_L_Inputs::~Lidort_L_Inputs()=default\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs___str__", (PyCFunction)_wrap_Lidort_L_Inputs___str__, METH_O, (char *)"\n"
+		"\n"
+		"std::string FullPhysics::Lidort_L_Inputs::print_to_string() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs__v_lidort_linsup", (PyCFunction)_wrap_Lidort_L_Inputs__v_lidort_linsup, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_L_Inputs::lidort_linsup(Lidort_Linsup_Inout &lidort_linsup_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs__v_lidort_fixin", (PyCFunction)_wrap_Lidort_L_Inputs__v_lidort_fixin, METH_O, (char *)"\n"
+		"\n"
+		"const Lidort_Fixed_Inputs& FullPhysics::Lidort_L_Inputs::lidort_fixin() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs__v_lidort_modin", (PyCFunction)_wrap_Lidort_L_Inputs__v_lidort_modin, METH_O, (char *)"\n"
+		"\n"
+		"const Lidort_Modified_Inputs& FullPhysics::Lidort_L_Inputs::lidort_modin() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs__v_lidort_linfixin", (PyCFunction)_wrap_Lidort_L_Inputs__v_lidort_linfixin, METH_O, (char *)"\n"
+		"\n"
+		"const Lidort_Fixed_Lininputs& FullPhysics::Lidort_L_Inputs::lidort_linfixin() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs__v_lidort_linmodin", (PyCFunction)_wrap_Lidort_L_Inputs__v_lidort_linmodin, METH_O, (char *)"\n"
+		"\n"
+		"const Lidort_Modified_Lininputs& FullPhysics::Lidort_L_Inputs::lidort_linmodin() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs__v_lidort_inputstatus", (PyCFunction)_wrap_Lidort_L_Inputs__v_lidort_inputstatus, METH_O, (char *)"\n"
+		"\n"
+		"const Lidort_Input_Exception_Handling& FullPhysics::Lidort_L_Inputs::lidort_inputstatus() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs_brdf_linsup_init", (PyCFunction)_wrap_Lidort_L_Inputs_brdf_linsup_init, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_L_Inputs::brdf_linsup_init()\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs_read_config", _wrap_Lidort_L_Inputs_read_config, METH_VARARGS, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_L_Inputs::read_config(const std::string &filnam_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs_linsup_init", (PyCFunction)_wrap_Lidort_L_Inputs_linsup_init, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_L_Inputs::linsup_init()\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs_sleave_linsup_init", (PyCFunction)_wrap_Lidort_L_Inputs_sleave_linsup_init, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_L_Inputs::sleave_linsup_init()\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs_ss_linsup_init", (PyCFunction)_wrap_Lidort_L_Inputs_ss_linsup_init, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_L_Inputs::ss_linsup_init()\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_L_Inputs_swigregister", Lidort_L_Inputs_swigregister, METH_VARARGS, NULL},
+	 { (char *)"Lidort_L_Inputs_swiginit", Lidort_L_Inputs_swiginit, METH_VARARGS, NULL},
+	 { (char *)"new_Lidort_Lcs_Masters", (PyCFunction)_wrap_new_Lidort_Lcs_Masters, METH_NOARGS, (char *)"\n"
+		"\n"
+		"FullPhysics::Lidort_Lcs_Masters::Lidort_Lcs_Masters()\n"
+		"\n"
+		""},
+	 { (char *)"delete_Lidort_Lcs_Masters", (PyCFunction)_wrap_delete_Lidort_Lcs_Masters, METH_O, (char *)"\n"
+		"\n"
+		"virtual FullPhysics::Lidort_Lcs_Masters::~Lidort_Lcs_Masters()=default\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lcs_Masters___str__", (PyCFunction)_wrap_Lidort_Lcs_Masters___str__, METH_O, (char *)"\n"
+		"\n"
+		"std::string FullPhysics::Lidort_Lcs_Masters::print_to_string() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lcs_Masters__v_lidort_fixin", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_fixin, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lcs_Masters::lidort_fixin(Lidort_Fixed_Inputs &lidort_fixin_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lcs_Masters__v_lidort_modin", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_modin, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lcs_Masters::lidort_modin(Lidort_Modified_Inputs &lidort_modin_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lcs_Masters__v_lidort_sup", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_sup, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lcs_Masters::lidort_sup(Lidort_Sup_Inout &lidort_sup_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lcs_Masters__v_lidort_out", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_out, METH_O, (char *)"\n"
+		"\n"
+		"const Lidort_Outputs& FullPhysics::Lidort_Lcs_Masters::lidort_out() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lcs_Masters__v_lidort_linfixin", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_linfixin, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lcs_Masters::lidort_linfixin(Lidort_Fixed_Lininputs &lidort_linfixin_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lcs_Masters__v_lidort_linmodin", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_linmodin, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lcs_Masters::lidort_linmodin(Lidort_Modified_Lininputs &lidort_linmodin_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lcs_Masters__v_lidort_linsup", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_linsup, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lcs_Masters::lidort_linsup(Lidort_Linsup_Inout &lidort_linsup_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lcs_Masters__v_lidort_linout", (PyCFunction)_wrap_Lidort_Lcs_Masters__v_lidort_linout, METH_O, (char *)"\n"
+		"\n"
+		"const Lidort_Linoutputs& FullPhysics::Lidort_Lcs_Masters::lidort_linout() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lcs_Masters_run", _wrap_Lidort_Lcs_Masters_run, METH_VARARGS, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lcs_Masters::run(const bool &do_debug_input_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lcs_Masters_swigregister", Lidort_Lcs_Masters_swigregister, METH_VARARGS, NULL},
+	 { (char *)"Lidort_Lcs_Masters_swiginit", Lidort_Lcs_Masters_swiginit, METH_VARARGS, NULL},
+	 { (char *)"new_Lidort_Lps_Masters", (PyCFunction)_wrap_new_Lidort_Lps_Masters, METH_NOARGS, (char *)"\n"
+		"\n"
+		"FullPhysics::Lidort_Lps_Masters::Lidort_Lps_Masters()\n"
+		"\n"
+		""},
+	 { (char *)"delete_Lidort_Lps_Masters", (PyCFunction)_wrap_delete_Lidort_Lps_Masters, METH_O, (char *)"\n"
+		"\n"
+		"virtual FullPhysics::Lidort_Lps_Masters::~Lidort_Lps_Masters()=default\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lps_Masters___str__", (PyCFunction)_wrap_Lidort_Lps_Masters___str__, METH_O, (char *)"\n"
+		"\n"
+		"std::string FullPhysics::Lidort_Lps_Masters::print_to_string() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lps_Masters__v_lidort_fixin", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_fixin, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lps_Masters::lidort_fixin(Lidort_Fixed_Inputs &lidort_fixin_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lps_Masters__v_lidort_modin", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_modin, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lps_Masters::lidort_modin(Lidort_Modified_Inputs &lidort_modin_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lps_Masters__v_lidort_sup", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_sup, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lps_Masters::lidort_sup(Lidort_Sup_Inout &lidort_sup_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lps_Masters__v_lidort_out", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_out, METH_O, (char *)"\n"
+		"\n"
+		"const Lidort_Outputs& FullPhysics::Lidort_Lps_Masters::lidort_out() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lps_Masters__v_lidort_linfixin", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_linfixin, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lps_Masters::lidort_linfixin(Lidort_Fixed_Lininputs &lidort_linfixin_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lps_Masters__v_lidort_linmodin", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_linmodin, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lps_Masters::lidort_linmodin(Lidort_Modified_Lininputs &lidort_linmodin_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lps_Masters__v_lidort_linsup", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_linsup, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lps_Masters::lidort_linsup(Lidort_Linsup_Inout &lidort_linsup_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lps_Masters__v_lidort_linout", (PyCFunction)_wrap_Lidort_Lps_Masters__v_lidort_linout, METH_O, (char *)"\n"
+		"\n"
+		"const Lidort_Linoutputs& FullPhysics::Lidort_Lps_Masters::lidort_linout() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lps_Masters_run", _wrap_Lidort_Lps_Masters_run, METH_VARARGS, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Lps_Masters::run(const bool &do_debug_input_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Lps_Masters_swigregister", Lidort_Lps_Masters_swigregister, METH_VARARGS, NULL},
+	 { (char *)"Lidort_Lps_Masters_swiginit", Lidort_Lps_Masters_swiginit, METH_VARARGS, NULL},
+	 { (char *)"new_Lidort_Brdf_Sup_Accessories", _wrap_new_Lidort_Brdf_Sup_Accessories, METH_VARARGS, (char *)"\n"
+		"\n"
+		"FullPhysics::Lidort_Brdf_Sup_Accessories::Lidort_Brdf_Sup_Accessories(boost::shared_ptr< Brdf_Sup_Inputs > &brdf_sup_in_in,\n"
 		"boost::shared_ptr< Lidort_Fixed_Inputs > &lidort_fixin_in,\n"
 		"boost::shared_ptr< Lidort_Modified_Inputs > &lidort_modin_in)\n"
 		"\n"
 		""},
-	 { (char *)"Lidort_Sup_Accessories__v_brdf_sup_in", (PyCFunction)_wrap_Lidort_Sup_Accessories__v_brdf_sup_in, METH_O, (char *)"\n"
+	 { (char *)"delete_Lidort_Brdf_Sup_Accessories", (PyCFunction)_wrap_delete_Lidort_Brdf_Sup_Accessories, METH_O, (char *)"\n"
 		"\n"
-		"const Brdf_Sup_Inputs& FullPhysics::Lidort_Sup_Accessories::brdf_sup_in() const\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Sup_Accessories__v_lidort_fixin", (PyCFunction)_wrap_Lidort_Sup_Accessories__v_lidort_fixin, METH_O, (char *)"\n"
-		"\n"
-		"const Lidort_Fixed_Inputs& FullPhysics::Lidort_Sup_Accessories::lidort_fixin() const\n"
+		"virtual FullPhysics::Lidort_Brdf_Sup_Accessories::~Lidort_Brdf_Sup_Accessories()=default\n"
 		"\n"
 		""},
-	 { (char *)"Lidort_Sup_Accessories__v_lidort_modin", (PyCFunction)_wrap_Lidort_Sup_Accessories__v_lidort_modin, METH_O, (char *)"\n"
+	 { (char *)"Lidort_Brdf_Sup_Accessories___str__", (PyCFunction)_wrap_Lidort_Brdf_Sup_Accessories___str__, METH_O, (char *)"\n"
 		"\n"
-		"const Lidort_Modified_Inputs& FullPhysics::Lidort_Sup_Accessories::lidort_modin() const\n"
-		"\n"
-		""},
-	 { (char *)"Lidort_Sup_Accessories__v_lidort_brdfcheck_status", (PyCFunction)_wrap_Lidort_Sup_Accessories__v_lidort_brdfcheck_status, METH_O, (char *)"\n"
-		"\n"
-		"const Lidort_Exception_Handling& FullPhysics::Lidort_Sup_Accessories::lidort_brdfcheck_status() const\n"
+		"std::string FullPhysics::Lidort_Brdf_Sup_Accessories::print_to_string() const\n"
 		"\n"
 		""},
-	 { (char *)"Lidort_Sup_Accessories_brdf_input_checker", (PyCFunction)_wrap_Lidort_Sup_Accessories_brdf_input_checker, METH_O, (char *)"\n"
+	 { (char *)"Lidort_Brdf_Sup_Accessories__v_brdf_sup_in", (PyCFunction)_wrap_Lidort_Brdf_Sup_Accessories__v_brdf_sup_in, METH_O, (char *)"\n"
 		"\n"
-		"void FullPhysics::Lidort_Sup_Accessories::brdf_input_checker()\n"
+		"const Brdf_Sup_Inputs& FullPhysics::Lidort_Brdf_Sup_Accessories::brdf_sup_in() const\n"
 		"\n"
 		""},
-	 { (char *)"delete_Lidort_Sup_Accessories", (PyCFunction)_wrap_delete_Lidort_Sup_Accessories, METH_O, NULL},
-	 { (char *)"Lidort_Sup_Accessories_swigregister", Lidort_Sup_Accessories_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Lidort_Sup_Accessories_swiginit", Lidort_Sup_Accessories_swiginit, METH_VARARGS, NULL},
+	 { (char *)"Lidort_Brdf_Sup_Accessories__v_lidort_fixin", (PyCFunction)_wrap_Lidort_Brdf_Sup_Accessories__v_lidort_fixin, METH_O, (char *)"\n"
+		"\n"
+		"const Lidort_Fixed_Inputs& FullPhysics::Lidort_Brdf_Sup_Accessories::lidort_fixin() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Brdf_Sup_Accessories__v_lidort_modin", (PyCFunction)_wrap_Lidort_Brdf_Sup_Accessories__v_lidort_modin, METH_O, (char *)"\n"
+		"\n"
+		"const Lidort_Modified_Inputs& FullPhysics::Lidort_Brdf_Sup_Accessories::lidort_modin() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Brdf_Sup_Accessories__v_lidort_brdfcheck_status", (PyCFunction)_wrap_Lidort_Brdf_Sup_Accessories__v_lidort_brdfcheck_status, METH_O, (char *)"\n"
+		"\n"
+		"const Lidort_Exception_Handling& FullPhysics::Lidort_Brdf_Sup_Accessories::lidort_brdfcheck_status() const\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Brdf_Sup_Accessories__v_brdf_sup_out", (PyCFunction)_wrap_Lidort_Brdf_Sup_Accessories__v_brdf_sup_out, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Brdf_Sup_Accessories::brdf_sup_out(Brdf_Sup_Outputs &brdf_sup_out_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Brdf_Sup_Accessories__v_lidort_sup", (PyCFunction)_wrap_Lidort_Brdf_Sup_Accessories__v_lidort_sup, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Brdf_Sup_Accessories::lidort_sup(Lidort_Sup_Inout &lidort_sup_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Brdf_Sup_Accessories_brdf_input_check", (PyCFunction)_wrap_Lidort_Brdf_Sup_Accessories_brdf_input_check, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Brdf_Sup_Accessories::brdf_input_check()\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Brdf_Sup_Accessories_brdf_input_check_error", _wrap_Lidort_Brdf_Sup_Accessories_brdf_input_check_error, METH_VARARGS, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Brdf_Sup_Accessories::brdf_input_check_error(const std::string &errorfile_in)\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Brdf_Sup_Accessories_set_brdf_inputs", (PyCFunction)_wrap_Lidort_Brdf_Sup_Accessories_set_brdf_inputs, METH_O, (char *)"\n"
+		"\n"
+		"void FullPhysics::Lidort_Brdf_Sup_Accessories::set_brdf_inputs()\n"
+		"\n"
+		""},
+	 { (char *)"Lidort_Brdf_Sup_Accessories_swigregister", Lidort_Brdf_Sup_Accessories_swigregister, METH_VARARGS, NULL},
+	 { (char *)"Lidort_Brdf_Sup_Accessories_swiginit", Lidort_Brdf_Sup_Accessories_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -7695,16 +9785,20 @@ static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__ba
     return (void *)((std::basic_istream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
 }
 static swig_type_info _swigt__p_FullPhysics__Brdf_Input_Exception_Handling = {"_p_FullPhysics__Brdf_Input_Exception_Handling", "FullPhysics::Brdf_Input_Exception_Handling *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_FullPhysics__Brdf_Linsup_Masters = {"_p_FullPhysics__Brdf_Linsup_Masters", "FullPhysics::Brdf_Linsup_Masters *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Brdf_Lin_Sup_Masters = {"_p_FullPhysics__Brdf_Lin_Sup_Masters", "FullPhysics::Brdf_Lin_Sup_Masters *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Brdf_Linsup_Inputs = {"_p_FullPhysics__Brdf_Linsup_Inputs", "FullPhysics::Brdf_Linsup_Inputs *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Brdf_Linsup_Outputs = {"_p_FullPhysics__Brdf_Linsup_Outputs", "FullPhysics::Brdf_Linsup_Outputs *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Brdf_Output_Exception_Handling = {"_p_FullPhysics__Brdf_Output_Exception_Handling", "FullPhysics::Brdf_Output_Exception_Handling *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Brdf_Sup_Inputs = {"_p_FullPhysics__Brdf_Sup_Inputs", "FullPhysics::Brdf_Sup_Inputs *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Brdf_Sup_Masters = {"_p_FullPhysics__Brdf_Sup_Masters", "FullPhysics::Brdf_Sup_Masters *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Brdf_Sup_Outputs = {"_p_FullPhysics__Brdf_Sup_Outputs", "FullPhysics::Brdf_Sup_Outputs *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_Brdf_Sup_Accessories = {"_p_FullPhysics__Lidort_Brdf_Sup_Accessories", "FullPhysics::Lidort_Brdf_Sup_Accessories *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Exception_Handling = {"_p_FullPhysics__Lidort_Exception_Handling", "FullPhysics::Lidort_Exception_Handling *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Fixed_Inputs = {"_p_FullPhysics__Lidort_Fixed_Inputs", "FullPhysics::Lidort_Fixed_Inputs *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Fixed_Lininputs = {"_p_FullPhysics__Lidort_Fixed_Lininputs", "FullPhysics::Lidort_Fixed_Lininputs *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Input_Exception_Handling = {"_p_FullPhysics__Lidort_Input_Exception_Handling", "FullPhysics::Lidort_Input_Exception_Handling *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Inputs = {"_p_FullPhysics__Lidort_Inputs", "FullPhysics::Lidort_Inputs *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__Lidort_L_Inputs = {"_p_FullPhysics__Lidort_L_Inputs", "FullPhysics::Lidort_L_Inputs *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Lcs_Masters = {"_p_FullPhysics__Lidort_Lcs_Masters", "FullPhysics::Lidort_Lcs_Masters *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Linoutputs = {"_p_FullPhysics__Lidort_Linoutputs", "FullPhysics::Lidort_Linoutputs *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Linsup_Inout = {"_p_FullPhysics__Lidort_Linsup_Inout", "FullPhysics::Lidort_Linsup_Inout *", 0, 0, (void*)0, 0};
@@ -7714,7 +9808,6 @@ static swig_type_info _swigt__p_FullPhysics__Lidort_Modified_Inputs = {"_p_FullP
 static swig_type_info _swigt__p_FullPhysics__Lidort_Modified_Lininputs = {"_p_FullPhysics__Lidort_Modified_Lininputs", "FullPhysics::Lidort_Modified_Lininputs *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Outputs = {"_p_FullPhysics__Lidort_Outputs", "FullPhysics::Lidort_Outputs *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Pars = {"_p_FullPhysics__Lidort_Pars", "FullPhysics::Lidort_Pars *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_FullPhysics__Lidort_Sup_Accessories = {"_p_FullPhysics__Lidort_Sup_Accessories", "FullPhysics::Lidort_Sup_Accessories *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__Lidort_Sup_Inout = {"_p_FullPhysics__Lidort_Sup_Inout", "FullPhysics::Lidort_Sup_Inout *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_bool_1_t = {"_p_blitz__ArrayT_bool_1_t", "blitz::Array< bool,1 > *", 0, 0, (void*)0, 0};
@@ -7729,8 +9822,16 @@ static swig_type_info _swigt__p_blitz__ArrayT_int_1_t = {"_p_blitz__ArrayT_int_1
 static swig_type_info _swigt__p_blitz__ArrayT_int_2_t = {"_p_blitz__ArrayT_int_2_t", "blitz::Array< int,2 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_int_3_t = {"_p_blitz__ArrayT_int_3_t", "blitz::Array< int,3 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_int_4_t = {"_p_blitz__ArrayT_int_4_t", "blitz::Array< int,4 > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t", "boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Inputs_t = {"_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Inputs_t", "boost::shared_ptr< FullPhysics::Brdf_Sup_Inputs > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t", "boost::shared_ptr< FullPhysics::Brdf_Sup_Masters > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t", "boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Fixed_Inputs_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Fixed_Inputs_t", "boost::shared_ptr< FullPhysics::Lidort_Fixed_Inputs > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t", "boost::shared_ptr< FullPhysics::Lidort_Inputs > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t", "boost::shared_ptr< FullPhysics::Lidort_L_Inputs > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t", "boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t", "boost::shared_ptr< FullPhysics::Lidort_Lps_Masters > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t", "boost::shared_ptr< FullPhysics::Lidort_Masters > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Modified_Inputs_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Modified_Inputs_t", "boost::shared_ptr< FullPhysics::Lidort_Modified_Inputs > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t = {"_p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t", "boost::shared_ptr< FullPhysics::Lidort_Pars > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -7755,16 +9856,20 @@ static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__Brdf_Input_Exception_Handling,
-  &_swigt__p_FullPhysics__Brdf_Linsup_Masters,
+  &_swigt__p_FullPhysics__Brdf_Lin_Sup_Masters,
+  &_swigt__p_FullPhysics__Brdf_Linsup_Inputs,
   &_swigt__p_FullPhysics__Brdf_Linsup_Outputs,
+  &_swigt__p_FullPhysics__Brdf_Output_Exception_Handling,
   &_swigt__p_FullPhysics__Brdf_Sup_Inputs,
   &_swigt__p_FullPhysics__Brdf_Sup_Masters,
   &_swigt__p_FullPhysics__Brdf_Sup_Outputs,
+  &_swigt__p_FullPhysics__Lidort_Brdf_Sup_Accessories,
   &_swigt__p_FullPhysics__Lidort_Exception_Handling,
   &_swigt__p_FullPhysics__Lidort_Fixed_Inputs,
   &_swigt__p_FullPhysics__Lidort_Fixed_Lininputs,
   &_swigt__p_FullPhysics__Lidort_Input_Exception_Handling,
   &_swigt__p_FullPhysics__Lidort_Inputs,
+  &_swigt__p_FullPhysics__Lidort_L_Inputs,
   &_swigt__p_FullPhysics__Lidort_Lcs_Masters,
   &_swigt__p_FullPhysics__Lidort_Linoutputs,
   &_swigt__p_FullPhysics__Lidort_Linsup_Inout,
@@ -7774,7 +9879,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__Lidort_Modified_Lininputs,
   &_swigt__p_FullPhysics__Lidort_Outputs,
   &_swigt__p_FullPhysics__Lidort_Pars,
-  &_swigt__p_FullPhysics__Lidort_Sup_Accessories,
   &_swigt__p_FullPhysics__Lidort_Sup_Inout,
   &_swigt__p_allocator_type,
   &_swigt__p_blitz__ArrayT_bool_1_t,
@@ -7789,8 +9893,16 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_blitz__ArrayT_int_2_t,
   &_swigt__p_blitz__ArrayT_int_3_t,
   &_swigt__p_blitz__ArrayT_int_4_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Inputs_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Fixed_Inputs_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Modified_Inputs_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t,
   &_swigt__p_char,
@@ -7815,16 +9927,20 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_FullPhysics__Brdf_Input_Exception_Handling[] = {  {&_swigt__p_FullPhysics__Brdf_Input_Exception_Handling, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__Brdf_Linsup_Masters[] = {  {&_swigt__p_FullPhysics__Brdf_Linsup_Masters, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Brdf_Lin_Sup_Masters[] = {  {&_swigt__p_FullPhysics__Brdf_Lin_Sup_Masters, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Brdf_Linsup_Inputs[] = {  {&_swigt__p_FullPhysics__Brdf_Linsup_Inputs, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Brdf_Linsup_Outputs[] = {  {&_swigt__p_FullPhysics__Brdf_Linsup_Outputs, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Brdf_Output_Exception_Handling[] = {  {&_swigt__p_FullPhysics__Brdf_Output_Exception_Handling, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Brdf_Sup_Inputs[] = {  {&_swigt__p_FullPhysics__Brdf_Sup_Inputs, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Brdf_Sup_Masters[] = {  {&_swigt__p_FullPhysics__Brdf_Sup_Masters, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Brdf_Sup_Outputs[] = {  {&_swigt__p_FullPhysics__Brdf_Sup_Outputs, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_Brdf_Sup_Accessories[] = {  {&_swigt__p_FullPhysics__Lidort_Brdf_Sup_Accessories, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Exception_Handling[] = {  {&_swigt__p_FullPhysics__Lidort_Exception_Handling, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Fixed_Inputs[] = {  {&_swigt__p_FullPhysics__Lidort_Fixed_Inputs, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Fixed_Lininputs[] = {  {&_swigt__p_FullPhysics__Lidort_Fixed_Lininputs, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Input_Exception_Handling[] = {  {&_swigt__p_FullPhysics__Lidort_Input_Exception_Handling, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Inputs[] = {  {&_swigt__p_FullPhysics__Lidort_Inputs, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__Lidort_L_Inputs[] = {  {&_swigt__p_FullPhysics__Lidort_L_Inputs, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Lcs_Masters[] = {  {&_swigt__p_FullPhysics__Lidort_Lcs_Masters, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Linoutputs[] = {  {&_swigt__p_FullPhysics__Lidort_Linoutputs, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Linsup_Inout[] = {  {&_swigt__p_FullPhysics__Lidort_Linsup_Inout, 0, 0, 0},{0, 0, 0, 0}};
@@ -7834,7 +9950,6 @@ static swig_cast_info _swigc__p_FullPhysics__Lidort_Modified_Inputs[] = {  {&_sw
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Modified_Lininputs[] = {  {&_swigt__p_FullPhysics__Lidort_Modified_Lininputs, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Outputs[] = {  {&_swigt__p_FullPhysics__Lidort_Outputs, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Pars[] = {  {&_swigt__p_FullPhysics__Lidort_Pars, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__Lidort_Sup_Accessories[] = {  {&_swigt__p_FullPhysics__Lidort_Sup_Accessories, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Lidort_Sup_Inout[] = {  {&_swigt__p_FullPhysics__Lidort_Sup_Inout, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_bool_1_t[] = {  {&_swigt__p_blitz__ArrayT_bool_1_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -7849,8 +9964,16 @@ static swig_cast_info _swigc__p_blitz__ArrayT_int_1_t[] = {  {&_swigt__p_blitz__
 static swig_cast_info _swigc__p_blitz__ArrayT_int_2_t[] = {  {&_swigt__p_blitz__ArrayT_int_2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_int_3_t[] = {  {&_swigt__p_blitz__ArrayT_int_3_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_int_4_t[] = {  {&_swigt__p_blitz__ArrayT_int_4_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Inputs_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Inputs_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Fixed_Inputs_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Fixed_Inputs_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Modified_Inputs_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Modified_Inputs_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -7875,16 +9998,20 @@ static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__Brdf_Input_Exception_Handling,
-  _swigc__p_FullPhysics__Brdf_Linsup_Masters,
+  _swigc__p_FullPhysics__Brdf_Lin_Sup_Masters,
+  _swigc__p_FullPhysics__Brdf_Linsup_Inputs,
   _swigc__p_FullPhysics__Brdf_Linsup_Outputs,
+  _swigc__p_FullPhysics__Brdf_Output_Exception_Handling,
   _swigc__p_FullPhysics__Brdf_Sup_Inputs,
   _swigc__p_FullPhysics__Brdf_Sup_Masters,
   _swigc__p_FullPhysics__Brdf_Sup_Outputs,
+  _swigc__p_FullPhysics__Lidort_Brdf_Sup_Accessories,
   _swigc__p_FullPhysics__Lidort_Exception_Handling,
   _swigc__p_FullPhysics__Lidort_Fixed_Inputs,
   _swigc__p_FullPhysics__Lidort_Fixed_Lininputs,
   _swigc__p_FullPhysics__Lidort_Input_Exception_Handling,
   _swigc__p_FullPhysics__Lidort_Inputs,
+  _swigc__p_FullPhysics__Lidort_L_Inputs,
   _swigc__p_FullPhysics__Lidort_Lcs_Masters,
   _swigc__p_FullPhysics__Lidort_Linoutputs,
   _swigc__p_FullPhysics__Lidort_Linsup_Inout,
@@ -7894,7 +10021,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__Lidort_Modified_Lininputs,
   _swigc__p_FullPhysics__Lidort_Outputs,
   _swigc__p_FullPhysics__Lidort_Pars,
-  _swigc__p_FullPhysics__Lidort_Sup_Accessories,
   _swigc__p_FullPhysics__Lidort_Sup_Inout,
   _swigc__p_allocator_type,
   _swigc__p_blitz__ArrayT_bool_1_t,
@@ -7909,8 +10035,16 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_blitz__ArrayT_int_2_t,
   _swigc__p_blitz__ArrayT_int_3_t,
   _swigc__p_blitz__ArrayT_int_4_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Lin_Sup_Masters_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Inputs_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Brdf_Sup_Masters_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Brdf_Sup_Accessories_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Fixed_Inputs_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Inputs_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_L_Inputs_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lcs_Masters_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Lps_Masters_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Masters_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Modified_Inputs_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__Lidort_Pars_t,
   _swigc__p_char,
@@ -8623,6 +10757,38 @@ SWIG_init(void) {
   SWIG_InstallConstants(d,swig_const_table);
   
   SWIG_Python_SetConstant(d, "SHARED_PTR_DISOWN",SWIG_From_int(static_cast< int >(0)));
+  
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Brdf_Lin_Sup_Masters))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Brdf_Lin_Sup_Masters >("boost::shared_ptr< FullPhysics::Brdf_Lin_Sup_Masters > *"));
+  
+  
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Brdf_Sup_Masters))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Brdf_Sup_Masters >("boost::shared_ptr< FullPhysics::Brdf_Sup_Masters > *"));
+  
+  
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Lidort_Inputs))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Lidort_Inputs >("boost::shared_ptr< FullPhysics::Lidort_Inputs > *"));
+  
+  
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Lidort_Masters))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Lidort_Masters >("boost::shared_ptr< FullPhysics::Lidort_Masters > *"));
+  
+  
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Lidort_L_Inputs))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Lidort_L_Inputs >("boost::shared_ptr< FullPhysics::Lidort_L_Inputs > *"));
+  
+  
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Lidort_Lcs_Masters))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Lidort_Lcs_Masters >("boost::shared_ptr< FullPhysics::Lidort_Lcs_Masters > *"));
+  
+  
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Lidort_Lps_Masters))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Lidort_Lps_Masters >("boost::shared_ptr< FullPhysics::Lidort_Lps_Masters > *"));
+  
+  
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::Lidort_Brdf_Sup_Accessories))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::Lidort_Brdf_Sup_Accessories >("boost::shared_ptr< FullPhysics::Lidort_Brdf_Sup_Accessories > *"));
+  
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

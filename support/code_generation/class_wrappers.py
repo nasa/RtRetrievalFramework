@@ -1,10 +1,9 @@
 import os
 import re
 
-from StringIO import StringIO
+from io import StringIO
+from collections import OrderedDict
 
-# Requires F2PY G3 code from http://code.google.com/p/f2py/
-# Used changeset:   81:69b8613d30cb
 from fparser import typedecl_statements as ftypes
 from fparser import statements 
 
@@ -37,7 +36,7 @@ class WrapperClass(object):
                 setattr(self, copy_name, "")
 
     def c_output_operator(self, variables, use_accessor=False, as_printable=False):
-        decl_details={}
+        decl_details = OrderedDict()
         max_var_len = max([ len(var.name) for var in variables ])
 
         if as_printable:
@@ -133,17 +132,19 @@ class TypeClass(WrapperClass):
 
 class RoutineWrapper(WrapperClass):
                                        
-    def __init__(self, arguments, name, module_name=None, parent=None, variable_configuration=None, **kwargs):
+    def __init__(self, arguments, name, module_name=None, parent=None, variable_configuration=None, c_routine_name_func=get_c_wrap_routine_name, f_routine_name_func=get_f_wrap_routine_name, **kwargs):
         self.name = name
         self.module_name = module_name
         self.parent = parent
-        self.f_wrapper_name = get_f_wrap_routine_name(module_name, self.name, **kwargs)
+        self.c_routine_name_func = c_routine_name_func
+        self.f_routine_name_func = f_routine_name_func
+        self.f_wrapper_name = self.f_routine_name_func(module_name, self.name, **kwargs)
 
-        self.size_variables = {}
+        self.size_variables = OrderedDict()
         self.arguments = []
         for var_obj in arguments: 
 
-            var_conf = {}
+            var_conf = OrderedDict()
             if variable_configuration:
                 if isinstance(variable_configuration, dict):
                     var_conf = variable_configuration
@@ -184,8 +185,8 @@ class RoutineWrapper(WrapperClass):
             f_args_list += wrap_obj.c_call_f_wrapper_args()
 
 
-        c_routine_name = get_c_wrap_routine_name(self.module_name, self.name)
-        f_routine_name = get_f_wrap_routine_name(self.module_name, self.name)
+        c_routine_name = self.c_routine_name_func(self.module_name, self.name)
+        f_routine_name = self.f_routine_name_func(self.module_name, self.name)
         wrap_signature = "void {routine_name}({arguments})".format(routine_name=c_routine_name, arguments=", ".join(c_args_decl))
 
         return { "wrapper_name": self.f_wrapper_name,
@@ -246,7 +247,7 @@ class MasterClass(WrapperClass):
         self.source_filename = module_obj.reader.file.name
         self.source_basename = os.path.basename(self.source_filename)
 
-        for mod_routine in module_obj.a.module_provides.values():
+        for mod_routine in sorted(module_obj.a.module_provides.values(), key=lambda r: r.name):
             if mod_routine.is_public() and not mod_routine.name in ignore_routines:
                 routine = Master_Routine(mod_routine, parent=self, **kwargs)
                 self.routines.append(routine)

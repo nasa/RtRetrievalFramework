@@ -16,17 +16,16 @@ BOOST_AUTO_TEST_CASE(basic)
     //Everything here should just be a repeat of the inputs
     for (int idx = 0; idx < 3; idx++) {
         // windspeed
-        BOOST_CHECK_CLOSE(coxmunk->surface_parameter(13000, idx)(0).value(), 7.1, 1e-8);
+        BOOST_CHECK_CLOSE(coxmunk->surface_parameter(13000, idx)(1).value(), 7.1, 1e-8);
         // lambertian
-        BOOST_CHECK_CLOSE(coxmunk->surface_parameter(13000, idx)(2).value(), 0.0, 1e-8);
-        // shadowing
         BOOST_CHECK_CLOSE(coxmunk->surface_parameter(13000, idx)(3).value(), 0.0, 1e-8);
+        // shadowing
+        BOOST_CHECK_CLOSE(coxmunk->surface_parameter(13000, idx)(4).value(), 0.0, 1e-8);
     }
   
-    BOOST_CHECK_CLOSE(coxmunk->surface_parameter(13000, 0)(1).value(), 1.331, 1e-8);
-    BOOST_CHECK_CLOSE(coxmunk->surface_parameter(6500, 1)(1).value(), 1.332, 1e-8);
-    BOOST_CHECK_CLOSE(coxmunk->surface_parameter(5000, 2)(1).value(), 1.334, 1e-8);
-
+    BOOST_CHECK_CLOSE(coxmunk->surface_parameter(13000, 0)(2).value(), 1.331, 1e-8);
+    BOOST_CHECK_CLOSE(coxmunk->surface_parameter(6500, 1)(2).value(), 1.332, 1e-8);
+    BOOST_CHECK_CLOSE(coxmunk->surface_parameter(5000, 2)(2).value(), 1.334, 1e-8);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
@@ -37,14 +36,15 @@ BOOST_AUTO_TEST_CASE(jacobian)
 {
     ArrayAd<double, 1> surface = config_ground->surface_parameter(13000, 0);
 
-    BOOST_CHECK_EQUAL(surface.value().rows(), 4);
+    BOOST_CHECK_EQUAL(surface.value().rows(), 5);
   
-    BOOST_CHECK_CLOSE(surface.value()(0), 7.0, 1e-8);
-    BOOST_CHECK_CLOSE(surface.value()(1), 1.331, 1e-8);
-    BOOST_CHECK_CLOSE(surface.value()(2), 0.0, 1e-8);
+    BOOST_CHECK_CLOSE(surface.value()(0), 1.0, 1e-8);
+    BOOST_CHECK_CLOSE(surface.value()(1), 7.0, 1e-8);
+    BOOST_CHECK_CLOSE(surface.value()(2), 1.331, 1e-8);
     BOOST_CHECK_CLOSE(surface.value()(3), 0.0, 1e-8);
-    
-    BOOST_CHECK_CLOSE(surface.jacobian()(0, 103), 1, 1e-8);
+    BOOST_CHECK_CLOSE(surface.value()(4), 0.0, 1e-8);
+
+    BOOST_CHECK_CLOSE(surface.jacobian()(1, 103), 1, 1e-8);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -385,19 +385,19 @@ GosatBaseConfig = AcosConfig:new {
             CO2 = {
                apriori = ConfigCommon.reference_co2_apriori_met_apriori,
                covariance = ConfigCommon.hdf_covariance("Gas/CO2"),
-               absco = "v5.1.0/co2_v51.hdf",
-               table_scale = {1.0, 1.0, 1.004},
+               absco = "v5.2_final/co2_v52.hdf",
+               table_scale = {1.0, 0.994, 0.9875},
                creator = ConfigCommon.vmr_level,
             },
             H2O = {
                scale_apriori = 1.0,
                scale_cov = 0.25,
-               absco = "v5.1.0/h2o_v51.hdf",
+               absco = "v5.2_final/h2o_v52.hdf",
                creator = ConfigCommon.vmr_met,
             },
             O2 = {
                apriori = ConfigCommon.hdf_read_double_1d("Gas/O2/average_mole_fraction"),
-               absco = "v5.1.0/o2_v51.hdf",
+               absco = "v5.2_final/o2_v52.hdf",
                table_scale = 1.0048,
                creator = ConfigCommon.vmr_level_constant_well_mixed,
             },

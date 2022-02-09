@@ -1,0 +1,468 @@
+! #############################################################
+! #                                                           #
+! #                     LIDORT_3p8p3                          #
+! #                                                           #
+! #    (LInearized Discrete Ordinate Radiative Transfer)      #
+! #     --         -        -        -         -              #
+! #                                                           #
+! #############################################################
+
+! #############################################################
+! #                                                           #
+! #  Authors :     Robert  J. D. Spurr (1)                    #
+! #                Matthew J. Christi                         #
+! #                                                           #
+! #  Address (1) : RT Solutions, Inc.                         #
+! #                9 Channing Street                          #
+! #                Cambridge, MA 02138, USA                   #
+! #                                                           #
+! #  Tel:          (617) 492 1183                             #
+! #  Email :       rtsolutions@verizon.net                    #
+! #                                                           #
+! #  This Version :   LIDORT_3p8p3                            #
+! #  Release Date :   31 March 2021                           #
+! #                                                           #
+! #  Previous LIDORT Versions under Standard GPL 3.0:         #
+! #  ------------------------------------------------         #
+! #                                                           #
+! #      3.7   F90, released        June  2014                #
+! #      3.8   F90, released        March 2017                #
+! #      3.8.1 F90, released        June  2019                #
+! #      3.8.2 F90, limited release May   2020                #
+! #                                                           #
+! #  Features Summary of Recent LIDORT Versions               #
+! #  ------------------------------------------               #
+! #                                                           #
+! #      NEW: THERMAL SUPPLEMENT INCLUDED    (3.2)            #
+! #      NEW: OUTGOING SPHERICITY CORRECTION (3.2)            #
+! #      NEW: TOTAL COLUMN JACOBIANS         (3.3)            #
+! #      VLIDORT COMPATIBILITY               (3.4)            #
+! #      THREADED/OPTIMIZED F90 code         (3.5)            #
+! #      EXTERNAL SS / NEW I/O STRUCTURES    (3.6)            #
+! #                                                           #
+! #      Surface-leaving, BRDF Albedo-scaling     (3.7)       # 
+! #      Taylor series, BBF Jacobians, ThreadSafe (3.7)       #
+! #      New Water-Leaving Treatment              (3.8)       #
+! #      BRDF-Telescoping, enabled                (3.8)       #
+! #      Several Performance Enhancements         (3.8)       #
+! #      Water-leaving coupled code               (3.8.1)     #
+! #      Planetary problem, media properties      (3.8.1)     #
+! #      Doublet geometry post-processing         (3.8.2)     #
+! #      Reduction zeroing, dynamic memory        (3.8.2)     #
+! #                                                           #
+! #  Features Summary of This VLIDORT Version                 #
+! #  ----------------------------------------                 #
+! #                                                           #
+! #  3.8.3, released 31 March 2021.                           #
+! #    ==> Sphericity Corrections using MS source terms       #
+! #    ==> BRDF upgrades, including new snow reflectance      #
+! #    ==> SLEAVE Upgrades, extended water-leaving treatment  #
+! #                                                           #
+! #############################################################
+
+! ###################################################################
+! #                                                                 #
+! # This is Version 3.8.3 of the LIDORT software library.           #
+! # This library comes with the Standard GNU General Public License,#
+! # Version 3.0, 29 June 2007. Please read this license carefully.  #
+! #                                                                 #
+! #      LIDORT Copyright (c) 1999-2021.                            #
+! #          Robert Spurr, RT Solutions, Inc.                       #
+! #          9 Channing Street, Cambridge, MA 02138, USA.           #
+! #                                                                 #
+! #                                                                 #
+! # This file is part of LIDORT_3p8p3 ( Version 3.8.3. )            #
+! #                                                                 #
+! # LIDORT_3p8p3 is free software: you can redistribute it          #
+! # and/or modify it under the terms of the Standard GNU GPL        #
+! # (General Public License) as published by the Free Software      #
+! # Foundation, either version 3.0 of this License, or any          #
+! # later version.                                                  #
+! #                                                                 #
+! # LIDORT_3p8p3 is distributed in the hope that it will be         #
+! # useful, but WITHOUT ANY WARRANTY; without even the implied      #
+! # warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR         #
+! # PURPOSE. See the Standard GNU General Public License (GPL)      #
+! # for more details.                                               #
+! #                                                                 #
+! # You should have received a copy of the Standard GNU General     #
+! # Public License (GPL) Version 3.0, along with the LIDORT_3p8p3   #
+! # code package. If not, see <http://www.gnu.org/licenses/>.       #
+! #                                                                 #
+! ###################################################################
+
+!  File name :  lidort_pars.f90
+!  Purpose   :  Module of constants for LIDORT model.
+
+   MODULE LIDORT_PARS_m
+
+   IMPLICIT NONE
+
+!  LIDORT global test log variables
+!   INTEGER, PARAMETER :: MAXTESTLOGS = 7
+!   LOGICAL :: LIDORT_TEST_LOG ( MAXTESTLOGS )
+
+!  Real number type definitions
+
+   INTEGER, PARAMETER :: LIDORT_SPKIND = SELECTED_REAL_KIND(6)
+   INTEGER, PARAMETER :: LIDORT_DPKIND = SELECTED_REAL_KIND(15)
+   INTEGER, PARAMETER :: FPK = LIDORT_DPKIND
+
+!  Version number
+!  ==============
+
+   CHARACTER(Len=5), PARAMETER :: LIDORT_VERSION_NUMBER = '3.8.3'
+
+!  File i/o unit numbers
+!  =====================
+
+   INTEGER, PARAMETER :: LIDORT_INUNIT   = 21
+   INTEGER, PARAMETER :: LIDORT_SCENUNIT = 22
+   INTEGER, PARAMETER :: LIDORT_FUNIT    = 23
+   INTEGER, PARAMETER :: LIDORT_RESUNIT  = 24
+   INTEGER, PARAMETER :: LIDORT_ERRUNIT  = 25
+   INTEGER, PARAMETER :: LIDORT_DBGUNIT  = 26
+
+!  Special file debug units
+
+      INTEGER :: SDU,LDU
+
+!  Basic dimensions
+!  ================
+
+!  Exception handling, maximum number of messages
+
+   INTEGER, PARAMETER :: MAX_MESSAGES = 25
+
+!  Computational dimensioning
+!  --------------------------
+
+!  Internal Threading removed Version 3.7, 02 May 2014
+!  Maximum number of computational threads
+!   INTEGER, PARAMETER :: MAXTHREADS = 8
+
+!  Number of computational streams in the half-space
+
+   INTEGER, PARAMETER :: MAXSTREAMS = 16
+
+!  Maximum number of computational layers
+
+   INTEGER, PARAMETER :: MAXLAYERS = @lidort_maxlayer@
+
+!  Maximum number of fine layers used in single scattering corrections
+
+   INTEGER, PARAMETER :: MAXFINELAYERS = 4
+
+!  Maximum number of input moments.
+!    (Use full range for exact single scatter calculations)
+
+   INTEGER, PARAMETER :: MAXMOMENTS_INPUT = 180
+
+!  Max number of thermal coefficients
+
+   INTEGER, PARAMETER :: MAX_THERMAL_COEFFS = 3
+
+!  Geometrical and output parameters
+!  ---------------------------------
+
+!  Maximum number of solar beams
+
+   INTEGER, PARAMETER :: MAXBEAMS = 4
+
+!  Maximum number of user-defined output zenith angles
+
+   INTEGER, PARAMETER :: MAX_USER_STREAMS = 4
+
+!  Maximum number of user-defined output relative azimuth angles
+
+   INTEGER, PARAMETER :: MAX_USER_RELAZMS = 3
+
+!  Maximum number of Observational Geoemtries
+!   New parameter, 25 October 2012
+
+   INTEGER, PARAMETER :: MAX_USER_OBSGEOMS = 8
+
+!  Maximum number of output levels
+
+   INTEGER, PARAMETER :: MAX_USER_LEVELS = 5
+
+!  Maximum number of output levels away from layer boundaries 
+!   This must be less than or equal to the previous entry
+
+   INTEGER, PARAMETER :: MAX_PARTLAYERS = 2
+
+!  Maximum number of Terms for Taylor series expansions
+!    If you are retaining contributions of order EPS^n, then you need at least n+2 Taylor terms
+
+   INTEGER, PARAMETER :: MAX_TAYLOR_TERMS = 7
+
+!  Fixed parameters
+!  ----------------
+
+!  Two directions (Up and Down)
+
+   INTEGER, PARAMETER :: MAX_DIRECTIONS = 2
+
+!  Surface BRDF dimensioning
+!  -------------------------
+
+!  Maximum number of BRDF kernels. Increased to 4, Version 3.8
+
+   INTEGER, PARAMETER :: MAX_BRDF_KERNELS = 4
+
+!  Maximum number of BRDF parameters per kernel. Increased to 4, Version 3.8
+
+   INTEGER, PARAMETER :: MAX_BRDF_PARAMETERS = 4
+
+!  Maximum number of azimuth-quadrature streams for BRDF Fourier.
+!    5/5/20. Version 3.8.1 Upgrade. MUST BE AN EVEN NUMBER
+
+!     INTEGER, PARAMETER :: MAXSTREAMS_BRDF = 2
+      INTEGER, PARAMETER :: MAXSTREAMS_BRDF = 100    ! best
+
+!  Maximum numbers for the MSR quadratures
+
+   INTEGER, PARAMETER :: MAX_MSRS_MUQUAD  = 50
+   INTEGER, PARAMETER :: MAX_MSRS_PHIQUAD = 100
+
+!  Number of quadrature streams for internal WSA/BSA scaling
+!    New, Version 3.7. User does not need to know this value.
+
+   INTEGER, parameter :: MAXSTREAMS_SCALING = 24
+
+!  Weighting functions
+!  -------------------
+
+!  Maximum number of profile/column weighting functions
+
+   INTEGER, PARAMETER :: MAX_ATMOSWFS = @lidort_maxatmoswfs@
+
+!  Maximum number of surface property weighting functions
+
+   INTEGER, PARAMETER :: MAX_SURFACEWFS = 7
+
+!  Maximum number of surface-leaving weighting functions
+
+   INTEGER, PARAMETER :: MAX_SLEAVEWFS = 2
+
+!  Derived dimensions
+!  ==================
+
+!  Maximum possible geometries
+
+   INTEGER, PARAMETER :: MAX_GEOMETRIES = &
+               MAX_USER_STREAMS*MAX_USER_RELAZMS*MAXBEAMS
+
+!  All streams
+
+   INTEGER, PARAMETER :: MAX_ALLSTRMS = MAX_USER_STREAMS + MAXSTREAMS
+
+!  All streams for the Legendre PI-matrix setup.
+!   Straightline setting: This setting should avoid dimensioning error
+!   INTEGER, PARAMETER :: MAX_ALLSTRMS_P1 = MAX_ALLSTRMS + MAXBEAMS
+
+!  All streams for the Legendre setup.
+!   This setting should avoid dimensioning error  Watch out for  Kill
+
+   INTEGER, PARAMETER :: MAX_ALLSTRMS_P1 = &
+                             MAX_ALLSTRMS + MAXBEAMS*MAXLAYERS
+
+!  Maximum number of moments in the diffuse field calculation
+!   This is always 2*MAXSTREAMS, in case we need DELTA-M
+!  Maximum number of Fourier components = 2*MAXSTREAMS - 1
+
+   INTEGER, PARAMETER :: MAXMOMENTS = 2*MAXSTREAMS
+   INTEGER, PARAMETER :: MAXFOURIER = 2*MAXSTREAMS - 1
+
+!  Half the number of BRDF azimuth quadratures
+
+   INTEGER, PARAMETER :: MAXSTHALF_BRDF = MAXSTREAMS_BRDF / 2
+
+!  Other derived dimensions
+
+   INTEGER, PARAMETER :: MAXSTREAMS_2  = 2*MAXSTREAMS
+   INTEGER, PARAMETER :: MAXSTREAMS_P1 = MAXSTREAMS + 1
+
+!  For the BVP problems
+
+   INTEGER, PARAMETER :: MAXTOTAL = MAXLAYERS*MAXSTREAMS_2
+   INTEGER, PARAMETER :: MAXBANDTOTAL = 9*MAXSTREAMS - 2
+
+!  Format constants (Internal debug only)
+!  ================
+
+   CHARACTER (LEN=*), PARAMETER :: FMT_HEADING = '( / T6, ''-----> '', A, /)'
+   CHARACTER (LEN=*), PARAMETER :: FMT_INTEGER = '(T6, A, T58, I10)'
+   CHARACTER (LEN=*), PARAMETER :: FMT_REAL    = '(T6, A, T58, 1PG14.6)'
+   CHARACTER (LEN=*), PARAMETER :: FMT_CHAR    = '(T6, A, T48, A20)'
+   CHARACTER (LEN=*), PARAMETER :: FMT_SECTION = '( / T6, ''-----> '', A, /)'
+
+!  Debug write format (DWF) constants
+!  ==================================
+
+   CHARACTER (LEN=*), PARAMETER :: DWFL  = '(A,L1)'
+   CHARACTER (LEN=*), PARAMETER :: DWFL1 = '(A,I3,A,L1)'
+   CHARACTER (LEN=*), PARAMETER :: DWFL2 = '(2(A,I3),A,L1)'
+
+   CHARACTER (LEN=*), PARAMETER :: DWFI  = '(A,I5)'
+   CHARACTER (LEN=*), PARAMETER :: DWFI1 = '(A,I3,A,I5)'
+   CHARACTER (LEN=*), PARAMETER :: DWFI2 = '(2(A,I3),A,I5)'
+
+   CHARACTER (LEN=*), PARAMETER :: DWFR  = '(A,ES13.6E2)'
+   CHARACTER (LEN=*), PARAMETER :: DWFR1 = '(A,I3,A,ES13.6E2)'
+   CHARACTER (LEN=*), PARAMETER :: DWFR2 = '(2(A,I3),A,ES13.6E2)'
+   CHARACTER (LEN=*), PARAMETER :: DWFR3 = '(3(A,I3),A,ES13.6E2)'
+   CHARACTER (LEN=*), PARAMETER :: DWFR4 = '(4(A,I3),A,ES13.6E2)'
+   CHARACTER (LEN=*), PARAMETER :: DWFR5 = '(5(A,I3),A,ES13.6E2)'
+   CHARACTER (LEN=*), PARAMETER :: DWFR6 = '(6(A,I3),A,ES13.6E2)'
+   CHARACTER (LEN=*), PARAMETER :: DWFR7 = '(7(A,I3),A,ES13.6E2)'
+
+   CHARACTER (LEN=*), PARAMETER :: DWFR1_3 = '(A,I3,3(A,ES13.6E2))'
+
+   CHARACTER (LEN=*), PARAMETER :: DWFC  = '(2A)'
+   CHARACTER (LEN=*), PARAMETER :: DWFC1 = '(A,I3,2A)'
+   CHARACTER (LEN=*), PARAMETER :: DWFC2 = '(2(A,I3),2A)'
+
+!  Numbers
+!  =======
+
+   real(fpk), PARAMETER :: ONE = 1.0_fpk, ZERO  = 0.0_fpk, ONEP5 = 1.5_fpk
+   real(fpk), PARAMETER :: TWO = 2.0_fpk, THREE = 3.0_fpk, FOUR  = 4.0_fpk
+   real(fpk), PARAMETER :: QUARTER = 0.25_fpk, HALF = 0.5_fpk
+
+   real(fpk), PARAMETER :: MINUS_ONE = - ONE
+   real(fpk), PARAMETER :: MINUS_TWO = - TWO
+
+   real(fpk), PARAMETER :: PIE = ACOS(MINUS_ONE)
+   real(fpk), PARAMETER :: DEG_TO_RAD = PIE/180.0_fpk
+!   real(fpk), PARAMETER :: PIE = 3.141592653589793D0   ! Why this ?????
+
+   real(fpk), PARAMETER :: PI2  = TWO  * PIE
+   real(fpk), PARAMETER :: PI4  = FOUR * PIE
+   real(fpk), PARAMETER :: PIO2 = HALF * PIE
+   real(fpk), PARAMETER :: PIO4 = QUARTER * PIE
+
+   real(fpk), PARAMETER :: EPS3 = 0.001_fpk
+   real(fpk), PARAMETER :: EPS4 = 0.0001_fpk
+   real(fpk), PARAMETER :: EPS5 = 0.00001_fpk
+
+!  Rob fix 5/6/13 - Taylor series limiting values. Set to 0.0001, 3/3/17
+
+   real(fpk), PARAMETER :: TAYLOR_SMALL = 0.0001_fpk
+
+   !real(fpk), PARAMETER :: TAYLOR_SMALL = 0.0005_fpk
+   !real(fpk), PARAMETER :: TAYLOR_SMALL = 0.0010_fpk
+   !real(fpk), PARAMETER :: TAYLOR_LARGE = 10000.0_fpk (not used now)
+
+   real(fpk), PARAMETER :: SMALLNUM = 0.000000001_fpk
+
+!  Maximum negative exponential argument
+
+   real(fpk), PARAMETER :: BIGEXP = 32.0_fpk
+
+!  Control for Using L'Hopital's Rule
+
+   real(fpk), PARAMETER :: HOPITAL_TOLERANCE = EPS5
+
+!  Control for limits of single scatter albedo
+
+   real(fpk), PARAMETER :: OMEGA_SMALLNUM = 0.00000001_fpk
+
+!  Control for limits of extinction optical depth along solar path
+!  Control for limits of extinction optical depth along USER paths
+!  Control for limits of extinction optical depth along QUADRATURE paths
+
+   real(fpk), PARAMETER :: MAX_TAU_SPATH = BIGEXP
+   real(fpk), PARAMETER :: MAX_TAU_UPATH = BIGEXP
+   real(fpk), PARAMETER :: MAX_TAU_QPATH = BIGEXP
+
+!  Error indices
+!  =============
+
+   INTEGER, PARAMETER :: LIDORT_SERIOUS  = 4
+   INTEGER, PARAMETER :: LIDORT_WARNING  = 3
+   INTEGER, PARAMETER :: LIDORT_INFO     = 2
+   INTEGER, PARAMETER :: LIDORT_DEBUG    = 1
+   INTEGER, PARAMETER :: LIDORT_SUCCESS  = 0
+
+!  Directional indices
+
+   INTEGER, PARAMETER :: UPIDX  = 1
+   INTEGER, PARAMETER :: DNIDX  = 2
+
+!  Surface indices
+!  ---------------
+
+!  These refer to the BRDF kernel functions currently included.
+
+   INTEGER, PARAMETER :: LAMBERTIAN_IDX  = 1
+   INTEGER, PARAMETER :: ROSSTHIN_IDX    = 2
+   INTEGER, PARAMETER :: ROSSTHICK_IDX   = 3
+   INTEGER, PARAMETER :: LISPARSE_IDX    = 4
+   INTEGER, PARAMETER :: LIDENSE_IDX     = 5
+   INTEGER, PARAMETER :: HAPKE_IDX       = 6
+   INTEGER, PARAMETER :: ROUJEAN_IDX     = 7
+   INTEGER, PARAMETER :: RAHMAN_IDX      = 8
+   INTEGER, PARAMETER :: COXMUNK_IDX     = 9
+
+!  Old version 3.6
+!   INTEGER, PARAMETER :: BREONVEG_IDX    = 10
+!   INTEGER, PARAMETER :: BREONSOIL_IDX   = 11
+!   INTEGER, PARAMETER :: MAXBRDF_IDX = BREONSOIL_IDX
+
+!  New BPDF functions for Version 3.7
+!   These match the options in VLIDORT Version 2.7.
+
+   INTEGER, PARAMETER :: BPDFSOIL_IDX         = 10
+   INTEGER, PARAMETER :: BPDFVEGN_IDX         = 11
+   INTEGER, PARAMETER :: BPDFNDVI_IDX         = 12
+
+!  New Cox-Munk function for Version 3.7
+
+   INTEGER, PARAMETER :: NewCMGLINT_IDX       = 13
+
+!  New for Version 3.8. Introduced 3/3/17, following VLIDORT Version 2.8
+!  ---------------------------------------------------------------------
+
+!  This is the Old Ross-Thick kernel with a hot-spot modification
+!     Derives from the following references.
+
+!  F. M. Breon, F. Maignan, M. Leroy and I. Grant, 
+!    "Analysis of hot spot directional siganatures measured from space",
+!      J. Geophys. Res., 107, D16, 4282, (2002)
+
+!  E. Vermote C. Justice, and F. M. Breon,
+!    "Towards a generalized approach for correction of the BRDF effect in MODIS reflectances"
+!      IEEE Trans. Geo. Rem. Sens., 10.1109/TGRS.2008.2005997 (2008)
+!   -- Ross-Thick Hotspot Kernel from
+
+   INTEGER, PARAMETER :: RTKHOTSPOT_IDX   = 14
+
+!  This is a "Modified Fresnel" kernel developed for polarized reflectances
+!   Taken from the following reference.
+
+!  P. Litvinov, O. Hasekamp and B. Cairns,
+!    "Models for surface reflection of radiance and polarized radiance: Comparison
+!     with airborne multi-angle photopolarimetric measurements and implications for
+!     modeling top-of-atmopshere measurements,
+!       Rem. Sens. Env., 115, 781-792, (2011).
+
+   INTEGER, PARAMETER :: MODFRESNEL_IDX     = 15
+
+!  2/28/21. Version 3.8.3. Analytical Model for Snow BRDF.
+!     -- Kokhanovsky and Breon, IEEE GeoScience & Remote Sensing Letters, Vol 9(5), 928-932 (2012)
+!     -- First introduced to LIDORT, 18 November 2020.
+
+      INTEGER, PARAMETER :: SNOWBRDF_IDX     = 16
+
+!  Maximum index. Revised to take into account two new kernels for 2.8.
+!   INTEGER, PARAMETER :: MAXBRDF_IDX = MODFRESNEL_IDX
+
+!  2/28/21. Version 3.8.3. Maximum index
+!    -- Revised to take into account New snow brdf index.
+
+      INTEGER, PARAMETER :: MAXBRDF_IDX = SNOWBRDF_IDX
+
+!  End of file.
+
+   END MODULE LIDORT_PARS_m

@@ -36,7 +36,7 @@ fi
 # Use compare_hdf for files in the test/ directory,
 # which are L2 output
 if [[ "$(dirname $new_file)" =~ "test/" ]]; then
-    compare_hdf $old_file $new_file
+    compare_hdf -r $old_file $new_file
 else
     h5diff -c $old_file $new_file
 
