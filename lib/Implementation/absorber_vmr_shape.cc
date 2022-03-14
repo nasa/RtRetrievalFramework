@@ -80,7 +80,7 @@ void AbsorberVmrShape::calc_vmr() const
 // See base class for description of this function.
 std::string AbsorberVmrShape::state_vector_name_i(int i) const
 {
-    return "Absorber VMR Shape Scaling #" +
+    return gas_name() + " VMR Shape Scaling #" +
            boost::lexical_cast<std::string>(i + 1);
 }
 

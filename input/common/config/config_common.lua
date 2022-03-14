@@ -3434,6 +3434,46 @@ function ConfigCommon.vmr_fixed_level_constant_well_mixed:apriori_v()
 end
 
 ------------------------------------------------------------
+--- Absorber retrieved using a set of scale factors
+--- used with a set of predefined profile shapes added to the
+--- initial guess absorber vmr profile.
+------------------------------------------------------------
+
+ConfigCommon.absorber_vmr_shape = CreatorVmr:new {}
+
+function ConfigCommon.absorber_vmr_shape:create_vmr()
+   vmr_values = self:vmr_levels()
+   num_level = vmr_values:rows()
+   num_shape = self.num_profiles
+
+   if not num_shape then
+       print("num_profile parameter must be defined for absorber_vmr_shape creator")
+   end
+
+   if not self.shape_filename then
+      print("shape_filename parameter must be defined for absorber_vmr_shape creator")
+   end
+   
+   local shape_file = HdfFile(self.shape_filename)
+   local shape_profiles = Blitz_double_array_2d(num_level, num_shape)
+
+   for shape_num=1,num_shape do
+      local ds_name = "Gas/" .. self.name .. "/EOF/shape_" .. shape_num
+      shape_profiles:set(Range.all(), shape_num-1, shape_file:read_double_1d(ds_name))
+   end
+
+   local shape_scaling = self:apriori()
+
+   self.vmr = AbsorberVmrShape(vmr_values, shape_profiles, shape_scaling,
+                               self.config.pressure, self:retrieval_flag(), self.name)
+   return self.vmr
+end
+
+function ConfigCommon.absorber_vmr_shape:register_output(ro)
+   --ro:push_back(AbsorberVmrShapeOutput.create(self.config.temperature))
+end
+
+------------------------------------------------------------
 --- Create absorber.
 ------------------------------------------------------------
 

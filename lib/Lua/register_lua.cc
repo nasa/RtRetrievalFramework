@@ -296,6 +296,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(AbsorberVmrLogLevelOutput);
   REGISTER_LUA_LIST(AbsorberVmrLevelScaled);
   REGISTER_LUA_LIST(AbsorberVmrLevelScaledOutput);
+  REGISTER_LUA_LIST(AbsorberVmrShape);
   REGISTER_LUA_LIST(AbscoHdf);
   REGISTER_LUA_LIST(AbsorberAbsco);
   REGISTER_LUA_LIST(AbsorberAbscoOutput);
