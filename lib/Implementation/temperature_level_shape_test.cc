@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE(basic)
   // Files have 20 levels, just use first 19
   Array<double, 2> shape_prof(19, 3);
   for(int shape_idx = 0; shape_idx < shape_prof.cols(); shape_idx++) {
-    shape_prof(Range::all(), shape_idx) = shape_file.read_field<double, 1>("Temperature/EOF/shape_" + boost::lexical_cast<std::string>(shape_idx + 1))(Range(0,19));
+    shape_prof(Range::all(), shape_idx) = shape_file.read_field<double, 1>("Temperature/EOF/shape_" + boost::lexical_cast<std::string>(shape_idx + 1))(Range(0,18));
   }
 
   Array<double, 1> shape_scaling(3);

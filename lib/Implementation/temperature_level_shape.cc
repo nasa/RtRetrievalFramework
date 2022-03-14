@@ -29,7 +29,7 @@ TemperatureLevelShape::TemperatureLevelShape(const blitz::Array<double, 1> Temp_
                                              const blitz::Array<double, 1> Shape_scaling,
                                              const boost::shared_ptr<Pressure>& Press,
                                              const blitz::Array<bool, 1>& Shape_flag)
-: pressure(Press), temp_base(Temp_base), shape_prof(Shape_profile) 
+: temp_base(Temp_base), shape_prof(Shape_profile) 
 {
     init(Shape_scaling, Shape_flag, Press);
 }

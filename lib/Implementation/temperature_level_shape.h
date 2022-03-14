@@ -69,7 +69,7 @@ public:
     /// units of Pascals
     //-----------------------------------------------------------------------
     virtual blitz::Array<double, 1> pressure_profile() const
-    { return pressure->pressure_grid().value.value(); }
+    { return press->pressure_grid().value.value(); }
 
     virtual ArrayWithUnit<double, 1> important_pressure_level() const
     {
@@ -80,7 +80,6 @@ protected:
 private:
     blitz::Array<double, 1> temp_base;
     blitz::Array<double, 2> shape_prof;
-    boost::shared_ptr<Pressure> pressure;
 };
 }
 #endif
