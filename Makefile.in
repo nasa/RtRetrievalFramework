@@ -1013,7 +1013,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/turn_on_fe_exception.cc \
 	@implsrc@/absorber_vmr_met.cc @implsrc@/absorber_vmr_level.cc \
 	@implsrc@/absorber_vmr_log_level.cc \
 	@implsrc@/absorber_vmr_level_scaled.cc \
-	@implsrc@/pressure_sigma.cc \
+	@implsrc@/absorber_vmr_shape.cc @implsrc@/pressure_sigma.cc \
 	@implsrc@/stokes_coefficient_constant.cc \
 	@implsrc@/stokes_coefficient_fraction.cc \
 	@implsrc@/tccon_apriori.cc @implsrc@/reference_vmr_apriori.cc \
@@ -1309,6 +1309,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-turn_on_fe_exception.lo \
 	@implsrc@/libfp_la-absorber_vmr_level.lo \
 	@implsrc@/libfp_la-absorber_vmr_log_level.lo \
 	@implsrc@/libfp_la-absorber_vmr_level_scaled.lo \
+	@implsrc@/libfp_la-absorber_vmr_shape.lo \
 	@implsrc@/libfp_la-pressure_sigma.lo \
 	@implsrc@/libfp_la-stokes_coefficient_constant.lo \
 	@implsrc@/libfp_la-stokes_coefficient_fraction.lo \
@@ -1703,6 +1704,7 @@ am__lib_test_all_SOURCES_DIST = lib/test_all.cc \
 	@implsrc@/absorber_vmr_level_test.cc \
 	@implsrc@/absorber_vmr_log_level_test.cc \
 	@implsrc@/absorber_vmr_level_scaled_test.cc \
+	@implsrc@/absorber_vmr_shape_test.cc \
 	@implsrc@/pressure_sigma_test.cc \
 	@implsrc@/stokes_coefficient_constant_test.cc \
 	@implsrc@/stokes_coefficient_fraction_test.cc \
@@ -1886,6 +1888,7 @@ am_lib_test_all_OBJECTS = lib/test_all.$(OBJEXT) \
 	@implsrc@/absorber_vmr_level_test.$(OBJEXT) \
 	@implsrc@/absorber_vmr_log_level_test.$(OBJEXT) \
 	@implsrc@/absorber_vmr_level_scaled_test.$(OBJEXT) \
+	@implsrc@/absorber_vmr_shape_test.$(OBJEXT) \
 	@implsrc@/pressure_sigma_test.$(OBJEXT) \
 	@implsrc@/stokes_coefficient_constant_test.$(OBJEXT) \
 	@implsrc@/stokes_coefficient_fraction_test.$(OBJEXT) \
@@ -1987,6 +1990,7 @@ am__depfiles_remade = @binsrc@/$(DEPDIR)/l2_fp.Po \
 	@implsrc@/$(DEPDIR)/absorber_vmr_level_test.Po \
 	@implsrc@/$(DEPDIR)/absorber_vmr_log_level_test.Po \
 	@implsrc@/$(DEPDIR)/absorber_vmr_met_test.Po \
+	@implsrc@/$(DEPDIR)/absorber_vmr_shape_test.Po \
 	@implsrc@/$(DEPDIR)/aerosol_met_prior_test.Po \
 	@implsrc@/$(DEPDIR)/aerosol_optical_test.Po \
 	@implsrc@/$(DEPDIR)/aerosol_property_hdf_test.Po \
@@ -2047,6 +2051,7 @@ am__depfiles_remade = @binsrc@/$(DEPDIR)/l2_fp.Po \
 	@implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level_scaled.Plo \
 	@implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_log_level.Plo \
 	@implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met.Plo \
+	@implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape.Plo \
 	@implsrc@/$(DEPDIR)/libfp_la-aerosol_extinction_linear.Plo \
 	@implsrc@/$(DEPDIR)/libfp_la-aerosol_extinction_log.Plo \
 	@implsrc@/$(DEPDIR)/libfp_la-aerosol_met_prior.Plo \
@@ -2895,7 +2900,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@implsrc@/absorber_vmr_met.h @implsrc@/absorber_vmr_level.h \
 	@implsrc@/absorber_vmr_log_level.h \
 	@implsrc@/absorber_vmr_level_scaled.h \
-	@implsrc@/pressure_sigma.h \
+	@implsrc@/absorber_vmr_shape.h @implsrc@/pressure_sigma.h \
 	@implsrc@/stokes_coefficient_constant.h \
 	@implsrc@/stokes_coefficient_fraction.h \
 	@implsrc@/tccon_apriori.h @implsrc@/reference_vmr_apriori.h \
@@ -3591,7 +3596,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@implsrc@/absorber_vmr_met.h @implsrc@/absorber_vmr_level.h \
 	@implsrc@/absorber_vmr_log_level.h \
 	@implsrc@/absorber_vmr_level_scaled.h \
-	@implsrc@/pressure_sigma.h \
+	@implsrc@/absorber_vmr_shape.h @implsrc@/pressure_sigma.h \
 	@implsrc@/stokes_coefficient_constant.h \
 	@implsrc@/stokes_coefficient_fraction.h \
 	@implsrc@/tccon_apriori.h @implsrc@/reference_vmr_apriori.h \
@@ -3785,6 +3790,7 @@ lib_test_all_SOURCES = lib/test_all.cc @supportsrc@/global_fixture.cc \
 	@implsrc@/absorber_vmr_level_test.cc \
 	@implsrc@/absorber_vmr_log_level_test.cc \
 	@implsrc@/absorber_vmr_level_scaled_test.cc \
+	@implsrc@/absorber_vmr_shape_test.cc \
 	@implsrc@/pressure_sigma_test.cc \
 	@implsrc@/stokes_coefficient_constant_test.cc \
 	@implsrc@/stokes_coefficient_fraction_test.cc \
@@ -4354,7 +4360,7 @@ libfp_la_SOURCES = @supportsrc@/turn_on_fe_exception.cc \
 	@implsrc@/absorber_vmr_met.cc @implsrc@/absorber_vmr_level.cc \
 	@implsrc@/absorber_vmr_log_level.cc \
 	@implsrc@/absorber_vmr_level_scaled.cc \
-	@implsrc@/pressure_sigma.cc \
+	@implsrc@/absorber_vmr_shape.cc @implsrc@/pressure_sigma.cc \
 	@implsrc@/stokes_coefficient_constant.cc \
 	@implsrc@/stokes_coefficient_fraction.cc \
 	@implsrc@/tccon_apriori.cc @implsrc@/reference_vmr_apriori.cc \
@@ -6073,6 +6079,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-absorber_vmr_level_scaled.lo:  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/libfp_la-absorber_vmr_shape.lo: @implsrc@/$(am__dirstamp) \
+	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-pressure_sigma.lo: @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/libfp_la-stokes_coefficient_constant.lo:  \
@@ -7122,6 +7130,8 @@ lib/test_all.$(OBJEXT): lib/$(am__dirstamp) \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/absorber_vmr_level_scaled_test.$(OBJEXT):  \
 	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
+@implsrc@/absorber_vmr_shape_test.$(OBJEXT):  \
+	@implsrc@/$(am__dirstamp) @implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/pressure_sigma_test.$(OBJEXT): @implsrc@/$(am__dirstamp) \
 	@implsrc@/$(DEPDIR)/$(am__dirstamp)
 @implsrc@/stokes_coefficient_constant_test.$(OBJEXT):  \
@@ -7352,6 +7362,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/absorber_vmr_level_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/absorber_vmr_log_level_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/absorber_vmr_met_test.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/absorber_vmr_shape_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/aerosol_met_prior_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/aerosol_optical_test.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/aerosol_property_hdf_test.Po@am__quote@ # am--include-marker
@@ -7412,6 +7423,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level_scaled.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_log_level.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-aerosol_extinction_linear.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-aerosol_extinction_log.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@implsrc@/$(DEPDIR)/libfp_la-aerosol_met_prior.Plo@am__quote@ # am--include-marker
@@ -11604,6 +11616,13 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-absorber_vmr_level_scaled.lo `test -f '@implsrc@/absorber_vmr_level_scaled.cc' || echo '$(srcdir)/'`@implsrc@/absorber_vmr_level_scaled.cc
 
+@implsrc@/libfp_la-absorber_vmr_shape.lo: @implsrc@/absorber_vmr_shape.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-absorber_vmr_shape.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape.Tpo -c -o @implsrc@/libfp_la-absorber_vmr_shape.lo `test -f '@implsrc@/absorber_vmr_shape.cc' || echo '$(srcdir)/'`@implsrc@/absorber_vmr_shape.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape.Tpo @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@implsrc@/absorber_vmr_shape.cc' object='@implsrc@/libfp_la-absorber_vmr_shape.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @implsrc@/libfp_la-absorber_vmr_shape.lo `test -f '@implsrc@/absorber_vmr_shape.cc' || echo '$(srcdir)/'`@implsrc@/absorber_vmr_shape.cc
+
 @implsrc@/libfp_la-pressure_sigma.lo: @implsrc@/pressure_sigma.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @implsrc@/libfp_la-pressure_sigma.lo -MD -MP -MF @implsrc@/$(DEPDIR)/libfp_la-pressure_sigma.Tpo -c -o @implsrc@/libfp_la-pressure_sigma.lo `test -f '@implsrc@/pressure_sigma.cc' || echo '$(srcdir)/'`@implsrc@/pressure_sigma.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @implsrc@/$(DEPDIR)/libfp_la-pressure_sigma.Tpo @implsrc@/$(DEPDIR)/libfp_la-pressure_sigma.Plo
@@ -13093,6 +13112,7 @@ distclean: distclean-am
 	-rm -f @implsrc@/$(DEPDIR)/absorber_vmr_level_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/absorber_vmr_log_level_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/absorber_vmr_met_test.Po
+	-rm -f @implsrc@/$(DEPDIR)/absorber_vmr_shape_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/aerosol_met_prior_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/aerosol_optical_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/aerosol_property_hdf_test.Po
@@ -13153,6 +13173,7 @@ distclean: distclean-am
 	-rm -f @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level_scaled.Plo
 	-rm -f @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_log_level.Plo
 	-rm -f @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met.Plo
+	-rm -f @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape.Plo
 	-rm -f @implsrc@/$(DEPDIR)/libfp_la-aerosol_extinction_linear.Plo
 	-rm -f @implsrc@/$(DEPDIR)/libfp_la-aerosol_extinction_log.Plo
 	-rm -f @implsrc@/$(DEPDIR)/libfp_la-aerosol_met_prior.Plo
@@ -13859,6 +13880,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f @implsrc@/$(DEPDIR)/absorber_vmr_level_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/absorber_vmr_log_level_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/absorber_vmr_met_test.Po
+	-rm -f @implsrc@/$(DEPDIR)/absorber_vmr_shape_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/aerosol_met_prior_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/aerosol_optical_test.Po
 	-rm -f @implsrc@/$(DEPDIR)/aerosol_property_hdf_test.Po
@@ -13919,6 +13941,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level_scaled.Plo
 	-rm -f @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_log_level.Plo
 	-rm -f @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met.Plo
+	-rm -f @implsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape.Plo
 	-rm -f @implsrc@/$(DEPDIR)/libfp_la-aerosol_extinction_linear.Plo
 	-rm -f @implsrc@/$(DEPDIR)/libfp_la-aerosol_extinction_log.Plo
 	-rm -f @implsrc@/$(DEPDIR)/libfp_la-aerosol_met_prior.Plo
