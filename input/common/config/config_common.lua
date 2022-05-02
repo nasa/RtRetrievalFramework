@@ -2178,7 +2178,23 @@ end
 function ConfigCommon.temperature_level_shape:covariance_v()
    num_shape = self.num_profiles
 
-   return self:covariance()(Range(0, num_shape-1), Range(0, num_shape-1))
+   local cov
+
+   if self.covariance ~= nil then
+      cov = self:covariance()
+   else
+      local shape_file = HdfFile(self.shape_filename)
+      cov = Blitz_double_array_2d(num_shape, num_shape)
+
+      cov:set(Range(0, num_shape-1), Range(0, num_shape-1), 0.0)
+   
+      for shape_num=1,num_shape do
+         local ds_name = "Temperature/EOF/shape_" .. shape_num .. "_uncertainty"
+         cov:set(shape_num-1, shape_num-1, shape_file:read_double_scalar(ds_name))
+      end
+   end
+
+   return cov(Range(0, num_shape-1), Range(0, num_shape-1))
 end
 
 function ConfigCommon.temperature_level_shape:create()
@@ -3465,7 +3481,23 @@ end
 function ConfigCommon.absorber_vmr_shape:covariance_v()
    num_shape = self.num_profiles
 
-   return self:covariance()(Range(0, num_shape-1), Range(0, num_shape-1))
+   local cov
+
+   if self.covariance ~= nil then
+      cov = self:covariance()
+   else
+      local shape_file = HdfFile(self.shape_filename)
+      cov = Blitz_double_array_2d(num_shape, num_shape)
+
+      cov:set(Range(0, num_shape-1), Range(0, num_shape-1), 0.0)
+   
+      for shape_num=1,num_shape do
+         local ds_name = "Gas/" .. self.name .. "/EOF/shape_" .. shape_num .. "_uncertainty"
+         cov:set(shape_num-1, shape_num-1, shape_file:read_double_scalar(ds_name))
+      end
+   end
+
+   return cov(Range(0, num_shape-1), Range(0, num_shape-1))
 end
 
 function ConfigCommon.absorber_vmr_shape:create_vmr()
@@ -3474,7 +3506,7 @@ function ConfigCommon.absorber_vmr_shape:create_vmr()
    num_shape = self.num_profiles
 
    if not num_shape then
-       print("num_profile parameter must be defined for absorber_vmr_shape creator")
+      print("num_profile parameter must be defined for absorber_vmr_shape creator")
    end
 
    if not self.shape_filename then
