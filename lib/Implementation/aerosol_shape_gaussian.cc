@@ -63,7 +63,12 @@ void AerosolShapeGaussian::calc_aerosol_extinction() const
     }
   }
 
-  AutoDerivative<double> scaling_N = desired_aod / total_aod();
+  // Comparing against 0 is not enough as small underflow numbers can also cause division by zero
+  // floating point exceptions
+  AutoDerivative<double> scaling_N = 0.0;
+  if (total_aod() > 1e-6) {
+      scaling_N = desired_aod / total_aod();
+  }
 
   for(int lev = 0; lev < aext.rows(); lev++)
     aext(lev) = aext(lev) * scaling_N;
