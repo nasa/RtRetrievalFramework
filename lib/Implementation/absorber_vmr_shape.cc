@@ -31,6 +31,15 @@ AbsorberVmrShape::AbsorberVmrShape(const blitz::Array<double, 1> VMR_base,
 : AbsorberVmrImpBase(Gas_name, Shape_scaling, Shape_flag, Press, false),
   vmr_base_(VMR_base), shape_prof(Shape_profile)
 {
+    if (Shape_profile.cols() != Shape_scaling.rows()) {
+        std::stringstream err_msg;
+        err_msg << "Number of shape profiles: "
+                << Shape_profile.cols()
+                << " != number of shape scaling values: "
+                << Shape_scaling.rows();
+        throw Exception(err_msg.str());
+    }
+
 }
 
 //-----------------------------------------------------------------------

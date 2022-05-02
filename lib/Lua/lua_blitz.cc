@@ -29,6 +29,8 @@ std::string blitz_double_array_1d_tostring(const Array<double, 1>& V)
 // int 1d
 int blitz_int_array_1d_read(const Array<int, 1>& V, int i)
 { range_check(i, 0, V.rows()); return V(i); }
+blitz::Array<int, 1> blitz_int_array_1d_slice(const Array<int, 1>& V, Range i)
+{ return V(i); }
 void blitz_int_array_1d_set_i(Array<int, 1>& V, int i, int v)
 { range_check(i, 0, V.rows()); V(i) = v; }
 void blitz_int_array_1d_set_r(Array<int, 1>& V, Range r, int v)
@@ -44,6 +46,8 @@ std::string blitz_int_array_1d_tostring(const Array<int, 1>& V)
 // bool 1d
 bool blitz_bool_array_1d_read(const Array<bool, 1>& V, int i)
 { range_check(i, 0, V.rows()); return V(i); }
+blitz::Array<bool, 1> blitz_bool_array_1d_slice(const Array<bool, 1>& V, Range i)
+{ return V(i); }
 void blitz_bool_array_1d_set_i(Array<bool, 1>& V, int i, bool v)
 { range_check(i, 0, V.rows()); V(i) = v; }
 void blitz_bool_array_1d_set_r(Array<bool, 1>& V, Range r, bool v)
@@ -757,6 +761,7 @@ REGISTER_LUA_CLASS_NAME(ai1, Blitz_int_array_1d)
 .def(luabind::constructor<int>())
 .def("rows", &Array<int, 1>::rows)
 .def("__call", &blitz_int_array_1d_read)
+.def("__call", &blitz_int_array_1d_slice)
 .def("set", &blitz_int_array_1d_set_i)
 .def("set", &blitz_int_array_1d_set_r)
 .def("__tostring", &blitz_int_array_1d_tostring)
@@ -766,6 +771,7 @@ REGISTER_LUA_CLASS_NAME(ab1, Blitz_bool_array_1d)
 .def(luabind::constructor<int>())
 .def("rows", &Array<bool, 1>::rows)
 .def("__call", &blitz_bool_array_1d_read)
+.def("__call", &blitz_bool_array_1d_slice)
 .def("set", &blitz_bool_array_1d_set_i)
 .def("set", &blitz_bool_array_1d_set_r)
 .def("__tostring", &blitz_bool_array_1d_tostring)

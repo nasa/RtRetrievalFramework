@@ -2168,6 +2168,19 @@ end
 
 ConfigCommon.temperature_level_shape = CreatorApriori:new {}
 
+function ConfigCommon.temperature_level_shape:apriori_v()
+   num_shape = self.num_profiles
+
+   -- Adjust values to the number of profiles selected
+   return self:apriori()(Range(0, num_shape-1))
+end
+
+function ConfigCommon.temperature_level_shape:covariance_v()
+   num_shape = self.num_profiles
+
+   return self:covariance()(Range(0, num_shape-1), Range(0, num_shape-1))
+end
+
 function ConfigCommon.temperature_level_shape:create()
    temp_levels = self:temperature_levels()
    num_level = temp_levels:rows()
@@ -2189,10 +2202,11 @@ function ConfigCommon.temperature_level_shape:create()
       shape_profiles:set(Range.all(), shape_num-1, shape_file:read_double_1d(ds_name))
    end
 
-   local shape_scaling = self:apriori()
+   local shape_scaling = self:apriori_v()
+   local shape_flag = self:retrieval_flag()
 
    return TemperatureLevelShape(temp_levels, shape_profiles, shape_scaling,
-                                self.config.pressure, self:retrieval_flag())
+                                self.config.pressure, shape_flag)
 end
 
 function ConfigCommon.temperature_level_shape:register_output(ro)
@@ -3441,6 +3455,19 @@ end
 
 ConfigCommon.absorber_vmr_shape = CreatorVmr:new {}
 
+function ConfigCommon.absorber_vmr_shape:apriori_v()
+   num_shape = self.num_profiles
+
+   -- Adjust values to the number of profiles selected
+   return self:apriori()(Range(0, num_shape-1))
+end
+
+function ConfigCommon.absorber_vmr_shape:covariance_v()
+   num_shape = self.num_profiles
+
+   return self:covariance()(Range(0, num_shape-1), Range(0, num_shape-1))
+end
+
 function ConfigCommon.absorber_vmr_shape:create_vmr()
    vmr_values = self:vmr_levels()
    num_level = vmr_values:rows()
@@ -3462,10 +3489,11 @@ function ConfigCommon.absorber_vmr_shape:create_vmr()
       shape_profiles:set(Range.all(), shape_num-1, shape_file:read_double_1d(ds_name))
    end
 
-   local shape_scaling = self:apriori()
+   local shape_scaling = self:apriori_v()
+   local shape_flag = self:retrieval_flag()
 
    self.vmr = AbsorberVmrShape(vmr_values, shape_profiles, shape_scaling,
-                               self.config.pressure, self:retrieval_flag(), self.name)
+                               self.config.pressure, shape_flag, self.name)
    return self.vmr
 end
 
