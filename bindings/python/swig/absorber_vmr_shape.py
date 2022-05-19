@@ -6,19 +6,19 @@
 
 from sys import version_info as _swig_python_version_info
 if _swig_python_version_info >= (3, 0, 0):
-    new_instancemethod = lambda func, inst, cls: _absorber_vmr_met.SWIG_PyInstanceMethod_New(func)
+    new_instancemethod = lambda func, inst, cls: _absorber_vmr_shape.SWIG_PyInstanceMethod_New(func)
 else:
     from new import instancemethod as new_instancemethod
 if _swig_python_version_info >= (2, 7, 0):
     def swig_import_helper():
         import importlib
         pkg = __name__.rpartition('.')[0]
-        mname = '.'.join((pkg, '_absorber_vmr_met')).lstrip('.')
+        mname = '.'.join((pkg, '_absorber_vmr_shape')).lstrip('.')
         try:
             return importlib.import_module(mname)
         except ImportError:
-            return importlib.import_module('_absorber_vmr_met')
-    _absorber_vmr_met = swig_import_helper()
+            return importlib.import_module('_absorber_vmr_shape')
+    _absorber_vmr_shape = swig_import_helper()
     del swig_import_helper
 elif _swig_python_version_info >= (2, 6, 0):
     def swig_import_helper():
@@ -26,20 +26,20 @@ elif _swig_python_version_info >= (2, 6, 0):
         import imp
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_absorber_vmr_met', [dirname(__file__)])
+            fp, pathname, description = imp.find_module('_absorber_vmr_shape', [dirname(__file__)])
         except ImportError:
-            import _absorber_vmr_met
-            return _absorber_vmr_met
+            import _absorber_vmr_shape
+            return _absorber_vmr_shape
         try:
-            _mod = imp.load_module('_absorber_vmr_met', fp, pathname, description)
+            _mod = imp.load_module('_absorber_vmr_shape', fp, pathname, description)
         finally:
             if fp is not None:
                 fp.close()
         return _mod
-    _absorber_vmr_met = swig_import_helper()
+    _absorber_vmr_shape = swig_import_helper()
     del swig_import_helper
 else:
-    import _absorber_vmr_met
+    import _absorber_vmr_shape
 del _swig_python_version_info
 
 try:
@@ -107,7 +107,7 @@ except __builtin__.Exception:
     weakref_proxy = lambda x: x
 
 
-SHARED_PTR_DISOWN = _absorber_vmr_met.SHARED_PTR_DISOWN
+SHARED_PTR_DISOWN = _absorber_vmr_shape.SHARED_PTR_DISOWN
 
 def _new_from_init(cls, version, *args):
     '''For use with pickle, covers common case where we just store the
@@ -128,22 +128,27 @@ def _new_from_set(cls, version, *args):
     inst.set(*args)
     return inst
 
-import full_physics_swig.absorber_vmr_scaled
 import full_physics_swig.absorber_vmr_imp_base
 import full_physics_swig.state_vector
 import full_physics_swig.generic_object
 import full_physics_swig.sub_state_vector_array
 import full_physics_swig.absorber_vmr
-class AbsorberVmrMet(full_physics_swig.absorber_vmr_scaled.AbsorberVmrScaled):
+class AbsorberVmrShape(full_physics_swig.absorber_vmr_imp_base.AbsorberVmrImpBase):
     """
 
-    This class maps the state vector to the absorber VMR on each level.
+    This class maintains the absorbver VMR portion of the state.
 
-    This particular implementation uses the value from MET file
-    (interpolated to the current pressure grid), along with a scale
-    factor.
+    The absorber is retrieved as a set of scalings applied to a set of
+    shape profiles combined with an initial guess VMR profile.
 
-    C++ includes: absorber_vmr_met.h 
+    The shape is computed as follows for each level i absorber_final(i) =
+    absorber_base(i) + scaling1 * shape1(i) + scaling2 * shape2(i) + ...
+    scalingN * shapeN(i)
+
+    Where scalingN are the scale factors and shapeN are the shape profile
+    values.
+
+    C++ includes: absorber_vmr_shape.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -152,66 +157,97 @@ class AbsorberVmrMet(full_physics_swig.absorber_vmr_scaled.AbsorberVmrScaled):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
 
-    def _v_specific_humidity(self):
+    def clone(self, *args):
         """
 
-        blitz::Array< double, 1 > AbsorberVmrMet::specific_humidity() const
-        Humidity from MET, used to write to output file. 
+        boost::shared_ptr< AbsorberVmr > AbsorberVmrShape::clone(const boost::shared_ptr< Pressure > &Press) const
+
         """
-        return _absorber_vmr_met.AbsorberVmrMet__v_specific_humidity(self)
+        return _absorber_vmr_shape.AbsorberVmrShape_clone(self, *args)
+
+
+    def _v_sub_state_identifier(self):
+        """
+
+        virtual std::string FullPhysics::AbsorberVmrShape::sub_state_identifier() const
+
+        """
+        return _absorber_vmr_shape.AbsorberVmrShape__v_sub_state_identifier(self)
 
 
     @property
-    def specific_humidity(self):
-        return self._v_specific_humidity()
+    def sub_state_identifier(self):
+        return self._v_sub_state_identifier()
 
 
-    def _v_vmr_profile(self):
+    def _v_vmr_base(self):
         """
 
-        blitz::Array< double, 1 > AbsorberVmrMet::vmr_profile() const
-        VMR values converted from specific humidity. 
+        virtual blitz::Array<double, 1> FullPhysics::AbsorberVmrShape::vmr_base() const
+        Base VMR profile associated with the pressure profile, values are in
+        Kelvin. 
         """
-        return _absorber_vmr_met.AbsorberVmrMet__v_vmr_profile(self)
+        return _absorber_vmr_shape.AbsorberVmrShape__v_vmr_base(self)
 
 
     @property
-    def vmr_profile(self):
-        return self._v_vmr_profile()
+    def vmr_base(self):
+        return self._v_vmr_base()
+
+
+    def _v_shape_profile(self):
+        """
+
+        virtual blitz::Array<double, 2> FullPhysics::AbsorberVmrShape::shape_profile() const
+        Shape profiles combined with base VMR dimenison are: N_level x
+        N_scaling. 
+        """
+        return _absorber_vmr_shape.AbsorberVmrShape__v_shape_profile(self)
+
+
+    @property
+    def shape_profile(self):
+        return self._v_shape_profile()
+
+
+    def _v_shape_scaling(self):
+        """
+
+        virtual blitz::Array<double, 1> FullPhysics::AbsorberVmrShape::shape_scaling() const
+        Scale factors combined with the shape profiles with dimension:
+        N_scaling. 
+        """
+        return _absorber_vmr_shape.AbsorberVmrShape__v_shape_scaling(self)
+
+
+    @property
+    def shape_scaling(self):
+        return self._v_shape_scaling()
 
 
     def _v_pressure_profile(self):
         """
 
-        blitz::Array< double, 1 > AbsorberVmrMet::pressure_profile() const
-        Pressure levels that humidity is on from MET, used to write to output
-        file. 
+        virtual blitz::Array<double, 1> FullPhysics::AbsorberVmrShape::pressure_profile() const
+        Pressure levels that serve as the grid for the VMR values in units of
+        Pascals. 
         """
-        return _absorber_vmr_met.AbsorberVmrMet__v_pressure_profile(self)
+        return _absorber_vmr_shape.AbsorberVmrShape__v_pressure_profile(self)
 
 
     @property
     def pressure_profile(self):
         return self._v_pressure_profile()
 
-
-    @property
-    def scale_factor(self):
-        return self._v_scale_factor()
-
-
-    @property
-    def scale_uncertainty(self):
-        return self._v_scale_uncertainty()
-
-    __swig_destroy__ = _absorber_vmr_met.delete_AbsorberVmrMet
-AbsorberVmrMet._v_specific_humidity = new_instancemethod(_absorber_vmr_met.AbsorberVmrMet__v_specific_humidity, None, AbsorberVmrMet)
-AbsorberVmrMet._v_vmr_profile = new_instancemethod(_absorber_vmr_met.AbsorberVmrMet__v_vmr_profile, None, AbsorberVmrMet)
-AbsorberVmrMet._v_pressure_profile = new_instancemethod(_absorber_vmr_met.AbsorberVmrMet__v_pressure_profile, None, AbsorberVmrMet)
-AbsorberVmrMet._v_scale_factor = new_instancemethod(_absorber_vmr_met.AbsorberVmrMet__v_scale_factor, None, AbsorberVmrMet)
-AbsorberVmrMet._v_scale_uncertainty = new_instancemethod(_absorber_vmr_met.AbsorberVmrMet__v_scale_uncertainty, None, AbsorberVmrMet)
-AbsorberVmrMet_swigregister = _absorber_vmr_met.AbsorberVmrMet_swigregister
-AbsorberVmrMet_swigregister(AbsorberVmrMet)
+    __swig_destroy__ = _absorber_vmr_shape.delete_AbsorberVmrShape
+AbsorberVmrShape.clone = new_instancemethod(_absorber_vmr_shape.AbsorberVmrShape_clone, None, AbsorberVmrShape)
+AbsorberVmrShape._v_sub_state_identifier = new_instancemethod(_absorber_vmr_shape.AbsorberVmrShape__v_sub_state_identifier, None, AbsorberVmrShape)
+AbsorberVmrShape._v_vmr_base = new_instancemethod(_absorber_vmr_shape.AbsorberVmrShape__v_vmr_base, None, AbsorberVmrShape)
+AbsorberVmrShape._v_shape_profile = new_instancemethod(_absorber_vmr_shape.AbsorberVmrShape__v_shape_profile, None, AbsorberVmrShape)
+AbsorberVmrShape._v_shape_scaling = new_instancemethod(_absorber_vmr_shape.AbsorberVmrShape__v_shape_scaling, None, AbsorberVmrShape)
+AbsorberVmrShape._v_pressure_profile = new_instancemethod(_absorber_vmr_shape.AbsorberVmrShape__v_pressure_profile, None, AbsorberVmrShape)
+AbsorberVmrShape_swigregister = _absorber_vmr_shape.AbsorberVmrShape_swigregister
+AbsorberVmrShape_swigregister(AbsorberVmrShape)
 
 
 

@@ -18,6 +18,9 @@ public:
 		   const std::string& Gas_name);
   virtual boost::shared_ptr<AbsorberVmr> 
   clone(const boost::shared_ptr<Pressure>& Press) const;
+  %python_attribute(specific_humidity, blitz::Array<double, 1>)
+  %python_attribute(vmr_profile, blitz::Array<double, 1>)
+  %python_attribute(pressure_profile, blitz::Array<double, 1>)
   %python_attribute(scale_factor, double)
   %python_attribute(scale_uncertainty, double)
 };

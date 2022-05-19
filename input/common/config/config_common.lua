@@ -853,6 +853,16 @@ function ConfigCommon:met_pressure()
    return r
 end
 
+function ConfigCommon:met_pressure_levels()
+   return self.config.met:pressure_levels()
+end
+
+function ConfigCommon:met_pressure_obj()
+   press_levels = self.config.met:pressure_levels()
+   return PressureSigma(press_levels, press_levels(press_levels:rows()-1), false)
+end
+
+
 function ConfigCommon:met_windspeed()
    local r = Blitz_double_array_1d(1)
    r:set(0,self.config.met:windspeed())
@@ -865,6 +875,10 @@ end
 
 function ConfigCommon:met_h2o_vmr()
    return self.config.met:vmr("H2O", self.config.pressure:pressure_level())
+end
+
+function ConfigCommon:met_h2o_vmr_full()
+   return self.config.met:vmr("H2O")
 end
 
 -- These use the deprecated fixed pressure levels object
@@ -3512,7 +3526,13 @@ function ConfigCommon.absorber_vmr_shape:create_vmr()
    if not self.shape_filename then
       print("shape_filename parameter must be defined for absorber_vmr_shape creator")
    end
-   
+
+   if self.pressure ~= nil then
+      pressure = self:pressure()
+   else
+      pressure = self.config.pressure
+   end
+
    local shape_file = HdfFile(self.shape_filename)
    local shape_profiles = Blitz_double_array_2d(num_level, num_shape)
 
@@ -3525,7 +3545,7 @@ function ConfigCommon.absorber_vmr_shape:create_vmr()
    local shape_flag = self:retrieval_flag()
 
    self.vmr = AbsorberVmrShape(vmr_values, shape_profiles, shape_scaling,
-                               self.config.pressure, shape_flag, self.name)
+                               pressure, shape_flag, self.name)
    return self.vmr
 end
 

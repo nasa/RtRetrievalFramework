@@ -373,6 +373,7 @@ SWIG_SRC += @swigsrc@/absorber_vmr_met_wrap.cc
 SWIG_SRC += @swigsrc@/absorber_vmr_level_wrap.cc
 SWIG_SRC += @swigsrc@/absorber_vmr_log_level_wrap.cc
 SWIG_SRC += @swigsrc@/absorber_vmr_level_scaled_wrap.cc
+SWIG_SRC += @swigsrc@/absorber_vmr_shape_wrap.cc
 SWIG_SRC += @swigsrc@/pressure_sigma_wrap.cc
 SWIG_SRC += @swigsrc@/stokes_coefficient_constant_wrap.cc
 SWIG_SRC += @swigsrc@/stokes_coefficient_fraction_wrap.cc

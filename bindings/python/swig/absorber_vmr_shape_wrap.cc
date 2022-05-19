@@ -3454,80 +3454,76 @@ namespace Swig {
 
 #define SWIGTYPE_p_FullPhysics__AbsorberVmr swig_types[0]
 #define SWIGTYPE_p_FullPhysics__AbsorberVmrImpBase swig_types[1]
-#define SWIGTYPE_p_FullPhysics__AbsorberVmrMet swig_types[2]
-#define SWIGTYPE_p_FullPhysics__AbsorberVmrScaled swig_types[3]
-#define SWIGTYPE_p_FullPhysics__AutoDerivativeRefT_double_t swig_types[4]
-#define SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t swig_types[5]
-#define SWIGTYPE_p_FullPhysics__AutoDerivativeWithUnitT_double_t swig_types[6]
-#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[7]
-#define SWIGTYPE_p_FullPhysics__Meteorology swig_types[8]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t swig_types[9]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[10]
-#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[11]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t swig_types[12]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[13]
-#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[14]
-#define SWIGTYPE_p_FullPhysics__Pressure swig_types[15]
-#define SWIGTYPE_p_FullPhysics__StateVector swig_types[16]
-#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[17]
-#define SWIGTYPE_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t swig_types[18]
-#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[19]
-#define SWIGTYPE_p_FullPhysics__Unit swig_types[20]
-#define SWIGTYPE_p_allocator_type swig_types[21]
-#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[22]
-#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[23]
-#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[24]
-#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[25]
-#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[26]
-#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[27]
-#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[28]
-#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[29]
-#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[30]
-#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[31]
-#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[32]
-#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[33]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t swig_types[34]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t swig_types[35]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t swig_types[36]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t swig_types[37]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[38]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[39]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[40]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[41]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Meteorology_t swig_types[42]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t swig_types[43]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[44]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[45]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t swig_types[46]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[47]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[48]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[49]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[50]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[51]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t swig_types[52]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[53]
-#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[54]
-#define SWIGTYPE_p_char swig_types[55]
-#define SWIGTYPE_p_char_type swig_types[56]
-#define SWIGTYPE_p_difference_type swig_types[57]
-#define SWIGTYPE_p_fmtflags swig_types[58]
-#define SWIGTYPE_p_int_type swig_types[59]
-#define SWIGTYPE_p_iostate swig_types[60]
-#define SWIGTYPE_p_off_type swig_types[61]
-#define SWIGTYPE_p_openmode swig_types[62]
-#define SWIGTYPE_p_pos_type swig_types[63]
-#define SWIGTYPE_p_seekdir swig_types[64]
-#define SWIGTYPE_p_size_t swig_types[65]
-#define SWIGTYPE_p_size_type swig_types[66]
-#define SWIGTYPE_p_state_type swig_types[67]
-#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[68]
-#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[69]
-#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[70]
-#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[71]
-#define SWIGTYPE_p_traits_type swig_types[72]
-#define SWIGTYPE_p_value_type swig_types[73]
-static swig_type_info *swig_types[75];
-static swig_module_info swig_module = {swig_types, 74, 0, 0, 0, 0};
+#define SWIGTYPE_p_FullPhysics__AbsorberVmrShape swig_types[2]
+#define SWIGTYPE_p_FullPhysics__AutoDerivativeRefT_double_t swig_types[3]
+#define SWIGTYPE_p_FullPhysics__AutoDerivativeT_double_t swig_types[4]
+#define SWIGTYPE_p_FullPhysics__AutoDerivativeWithUnitT_double_t swig_types[5]
+#define SWIGTYPE_p_FullPhysics__GenericObject swig_types[6]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t swig_types[7]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__Pressure_t swig_types[8]
+#define SWIGTYPE_p_FullPhysics__ObservableT_FullPhysics__StateVector_t swig_types[9]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t swig_types[10]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__Pressure_t swig_types[11]
+#define SWIGTYPE_p_FullPhysics__ObserverT_FullPhysics__StateVector_t swig_types[12]
+#define SWIGTYPE_p_FullPhysics__Pressure swig_types[13]
+#define SWIGTYPE_p_FullPhysics__StateVector swig_types[14]
+#define SWIGTYPE_p_FullPhysics__StateVectorObserver swig_types[15]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t swig_types[16]
+#define SWIGTYPE_p_FullPhysics__SubStateVectorObserver swig_types[17]
+#define SWIGTYPE_p_FullPhysics__Unit swig_types[18]
+#define SWIGTYPE_p_allocator_type swig_types[19]
+#define SWIGTYPE_p_blitz__ArrayT_bool_1_t swig_types[20]
+#define SWIGTYPE_p_blitz__ArrayT_bool_2_t swig_types[21]
+#define SWIGTYPE_p_blitz__ArrayT_bool_3_t swig_types[22]
+#define SWIGTYPE_p_blitz__ArrayT_bool_4_t swig_types[23]
+#define SWIGTYPE_p_blitz__ArrayT_double_1_t swig_types[24]
+#define SWIGTYPE_p_blitz__ArrayT_double_2_t swig_types[25]
+#define SWIGTYPE_p_blitz__ArrayT_double_3_t swig_types[26]
+#define SWIGTYPE_p_blitz__ArrayT_double_4_t swig_types[27]
+#define SWIGTYPE_p_blitz__ArrayT_int_1_t swig_types[28]
+#define SWIGTYPE_p_blitz__ArrayT_int_2_t swig_types[29]
+#define SWIGTYPE_p_blitz__ArrayT_int_3_t swig_types[30]
+#define SWIGTYPE_p_blitz__ArrayT_int_4_t swig_types[31]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t swig_types[32]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t swig_types[33]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t swig_types[34]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t swig_types[35]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t swig_types[36]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t swig_types[37]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__GenericObject_t swig_types[38]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t swig_types[39]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t swig_types[40]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t swig_types[41]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t swig_types[42]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t swig_types[43]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t swig_types[44]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t swig_types[45]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t swig_types[46]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__StateVector_t swig_types[47]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t swig_types[48]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t swig_types[49]
+#define SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Unit_t swig_types[50]
+#define SWIGTYPE_p_char swig_types[51]
+#define SWIGTYPE_p_char_type swig_types[52]
+#define SWIGTYPE_p_difference_type swig_types[53]
+#define SWIGTYPE_p_fmtflags swig_types[54]
+#define SWIGTYPE_p_int_type swig_types[55]
+#define SWIGTYPE_p_iostate swig_types[56]
+#define SWIGTYPE_p_off_type swig_types[57]
+#define SWIGTYPE_p_openmode swig_types[58]
+#define SWIGTYPE_p_pos_type swig_types[59]
+#define SWIGTYPE_p_seekdir swig_types[60]
+#define SWIGTYPE_p_size_t swig_types[61]
+#define SWIGTYPE_p_size_type swig_types[62]
+#define SWIGTYPE_p_state_type swig_types[63]
+#define SWIGTYPE_p_std__basic_iosT_char_std__char_traitsT_char_t_t swig_types[64]
+#define SWIGTYPE_p_std__basic_iostreamT_char_std__char_traitsT_char_t_t swig_types[65]
+#define SWIGTYPE_p_std__basic_istreamT_char_std__char_traitsT_char_t_t swig_types[66]
+#define SWIGTYPE_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t swig_types[67]
+#define SWIGTYPE_p_traits_type swig_types[68]
+#define SWIGTYPE_p_value_type swig_types[69]
+static swig_type_info *swig_types[71];
+static swig_module_info swig_module = {swig_types, 70, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3553,16 +3549,16 @@ static swig_module_info swig_module = {swig_types, 74, 0, 0, 0, 0};
 #define SWIG_TypeQuery SWIG_Python_TypeQuery
 
 /*-----------------------------------------------
-              @(target):= _absorber_vmr_met.so
+              @(target):= _absorber_vmr_shape.so
   ------------------------------------------------*/
 #if PY_VERSION_HEX >= 0x03000000
-#  define SWIG_init    PyInit__absorber_vmr_met
+#  define SWIG_init    PyInit__absorber_vmr_shape
 
 #else
-#  define SWIG_init    init_absorber_vmr_met
+#  define SWIG_init    init_absorber_vmr_shape
 
 #endif
-#define SWIG_name    "_absorber_vmr_met"
+#define SWIG_name    "_absorber_vmr_shape"
 
 #define SWIGVERSION 0x030012 
 #define SWIG_VERSION SWIGVERSION
@@ -4967,10 +4963,56 @@ template<class T, int D> inline blitz::Array<T, D>
 
 
 
-#include "absorber_vmr_met.h"
+#include "absorber_vmr_shape.h"
 
 
-  #define SWIG_From_double   PyFloat_FromDouble 
+SWIGINTERN swig_type_info*
+SWIG_pchar_descriptor(void)
+{
+  static int init = 0;
+  static swig_type_info* info = 0;
+  if (!init) {
+    info = SWIG_TypeQuery("_p_char");
+    init = 1;
+  }
+  return info;
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_FromCharPtrAndSize(const char* carray, size_t size)
+{
+  if (carray) {
+    if (size > INT_MAX) {
+      swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+      return pchar_descriptor ? 
+	SWIG_InternalNewPointerObj(const_cast< char * >(carray), pchar_descriptor, 0) : SWIG_Py_Void();
+    } else {
+#if PY_VERSION_HEX >= 0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+      return PyBytes_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#else
+#if PY_VERSION_HEX >= 0x03010000
+      return PyUnicode_DecodeUTF8(carray, static_cast< Py_ssize_t >(size), "surrogateescape");
+#else
+      return PyUnicode_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#endif
+#endif
+#else
+      return PyString_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#endif
+    }
+  } else {
+    return SWIG_Py_Void();
+  }
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_std_string  (const std::string& s)
+{
+  return SWIG_FromCharPtrAndSize(s.data(), s.size());
+}
 
 
 
@@ -4978,18 +5020,201 @@ template<class T, int D> inline blitz::Array<T, D>
  * C++ director class methods
  * --------------------------------------------------- */
 
-#include "absorber_vmr_met_wrap.h"
+#include "absorber_vmr_shape_wrap.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_AbsorberVmrMet__v_specific_humidity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_AbsorberVmrShape_clone__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  FullPhysics::AbsorberVmrMet *arg1 = (FullPhysics::AbsorberVmrMet *) 0 ;
+  FullPhysics::AbsorberVmrShape *arg1 = (FullPhysics::AbsorberVmrShape *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::AbsorberVmrMet const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::AbsorberVmrMet const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmr > result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrShape_clone" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrShape const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::AbsorberVmrShape const *)arg1)->clone();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AbsorberVmrShape_clone__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  FullPhysics::AbsorberVmrShape *arg1 = (FullPhysics::AbsorberVmrShape *) 0 ;
+  boost::shared_ptr< FullPhysics::Pressure > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > *smartarg1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  boost::shared_ptr< FullPhysics::Pressure > tempshared2 ;
+  boost::shared_ptr< FullPhysics::Pressure > temp2shared2 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmr > result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrShape_clone" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrShape const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__Pressure_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AbsorberVmrShape_clone" "', argument " "2"" of type '" "boost::shared_ptr< FullPhysics::Pressure > const &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp2) tempshared2 = *reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp2);
+      delete reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp2);
+      arg2 = &tempshared2;
+    } else {
+      arg2 = (argp2) ? reinterpret_cast< boost::shared_ptr< FullPhysics::Pressure > * >(argp2) : &tempshared2;
+    }
+    // Special handling if this is a director class. In that case, we
+    // don't own the underlying python object. Instead,
+    // we tell python we have a reference to the underlying object, and
+    // when this gets destroyed we decrement the reference to the python
+    // object. 
+    Swig::Director* dp = dynamic_cast<Swig::Director*>(arg2->get());
+    if(dp) {
+      Py_INCREF(dp->swig_get_self());
+      temp2shared2.reset(arg2->get(), PythonRefPtrCleanup(dp->swig_get_self()));
+      arg2 = &temp2shared2;
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::AbsorberVmrShape const *)arg1)->clone((boost::shared_ptr< FullPhysics::Pressure > const &)*arg2);
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    resultobj = FullPhysics::swig_to_python(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AbsorberVmrShape_clone(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"AbsorberVmrShape_clone",0,2,argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    return _wrap_AbsorberVmrShape_clone__SWIG_0(self, argc, argv);
+  }
+  if (argc == 2) {
+    return _wrap_AbsorberVmrShape_clone__SWIG_1(self, argc, argv);
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AbsorberVmrShape_clone'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    FullPhysics::AbsorberVmrShape::clone() const\n"
+    "    FullPhysics::AbsorberVmrShape::clone(boost::shared_ptr< FullPhysics::Pressure > const &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_AbsorberVmrShape__v_sub_state_identifier(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::AbsorberVmrShape *arg1 = (FullPhysics::AbsorberVmrShape *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrShape__v_sub_state_identifier" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrShape const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::AbsorberVmrShape const *)arg1)->sub_state_identifier();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AbsorberVmrShape__v_vmr_base(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::AbsorberVmrShape *arg1 = (FullPhysics::AbsorberVmrShape *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   SwigValueWrapper< blitz::Array< double,1 > > result;
   
@@ -4997,22 +5222,22 @@ SWIGINTERN PyObject *_wrap_AbsorberVmrMet__v_specific_humidity(PyObject *SWIGUNU
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrMet__v_specific_humidity" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrMet const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrShape__v_vmr_base" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrShape const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      arg1 = const_cast< FullPhysics::AbsorberVmrMet * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      arg1 = const_cast< FullPhysics::AbsorberVmrMet * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = ((FullPhysics::AbsorberVmrMet const *)arg1)->specific_humidity();
+      result = ((FullPhysics::AbsorberVmrShape const *)arg1)->vmr_base();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5042,13 +5267,72 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_AbsorberVmrMet__v_vmr_profile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_AbsorberVmrShape__v_shape_profile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::AbsorberVmrMet *arg1 = (FullPhysics::AbsorberVmrMet *) 0 ;
+  FullPhysics::AbsorberVmrShape *arg1 = (FullPhysics::AbsorberVmrShape *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::AbsorberVmrMet const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::AbsorberVmrMet const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SwigValueWrapper< blitz::Array< double,2 > > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrShape__v_shape_profile" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrShape const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = ((FullPhysics::AbsorberVmrShape const *)arg1)->shape_profile();
+    } catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+  }
+  {
+    npy_intp dims[2], stride[2];
+    for(int i = 0; i < 2; ++i) {
+      dims[i] = (&result)->extent(i);
+      // Note numpy stride is in terms of bytes, while blitz in in terms
+      // of type T.
+      stride[i] = (&result)->stride(i) * sizeof(double);
+    }
+    resultobj = PyArray_New(&PyArray_Type, 2, dims, type_to_npy<double>(), 
+      stride, (&result)->data(), 0, 0, 0);
+    blitz::Array<double, 2>* t = new blitz::Array<double, 2>(result);
+    PyArray_SetBaseObject
+    ((PyArrayObject *)resultobj,
+      SWIG_NewPointerObj(SWIG_as_voidptr(t), 
+        SWIGTYPE_p_blitz__ArrayT_double_2_t, 
+        SWIG_POINTER_NEW | 0 ));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AbsorberVmrShape__v_shape_scaling(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FullPhysics::AbsorberVmrShape *arg1 = (FullPhysics::AbsorberVmrShape *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   SwigValueWrapper< blitz::Array< double,1 > > result;
   
@@ -5056,22 +5340,22 @@ SWIGINTERN PyObject *_wrap_AbsorberVmrMet__v_vmr_profile(PyObject *SWIGUNUSEDPAR
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrMet__v_vmr_profile" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrMet const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrShape__v_shape_scaling" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrShape const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      arg1 = const_cast< FullPhysics::AbsorberVmrMet * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      arg1 = const_cast< FullPhysics::AbsorberVmrMet * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = ((FullPhysics::AbsorberVmrMet const *)arg1)->vmr_profile();
+      result = ((FullPhysics::AbsorberVmrShape const *)arg1)->shape_scaling();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5101,13 +5385,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_AbsorberVmrMet__v_pressure_profile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_AbsorberVmrShape__v_pressure_profile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::AbsorberVmrMet *arg1 = (FullPhysics::AbsorberVmrMet *) 0 ;
+  FullPhysics::AbsorberVmrShape *arg1 = (FullPhysics::AbsorberVmrShape *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::AbsorberVmrMet const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::AbsorberVmrMet const > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape const > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   SwigValueWrapper< blitz::Array< double,1 > > result;
   
@@ -5115,22 +5399,22 @@ SWIGINTERN PyObject *_wrap_AbsorberVmrMet__v_pressure_profile(PyObject *SWIGUNUS
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrMet__v_pressure_profile" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrMet const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrShape__v_pressure_profile" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrShape const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      arg1 = const_cast< FullPhysics::AbsorberVmrMet * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      arg1 = const_cast< FullPhysics::AbsorberVmrMet * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
     try {
-      result = ((FullPhysics::AbsorberVmrMet const *)arg1)->pressure_profile();
+      result = ((FullPhysics::AbsorberVmrShape const *)arg1)->pressure_profile();
     } catch (Swig::DirectorException &e) {
       SWIG_fail; 
     } catch (const std::exception& e) {
@@ -5160,116 +5444,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_AbsorberVmrMet__v_scale_factor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_AbsorberVmrShape(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  FullPhysics::AbsorberVmrMet *arg1 = (FullPhysics::AbsorberVmrMet *) 0 ;
+  FullPhysics::AbsorberVmrShape *arg1 = (FullPhysics::AbsorberVmrShape *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::AbsorberVmrMet const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::AbsorberVmrMet const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  double result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrMet__v_scale_factor" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrMet const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      arg1 = const_cast< FullPhysics::AbsorberVmrMet * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      arg1 = const_cast< FullPhysics::AbsorberVmrMet * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      result = (double)((FullPhysics::AbsorberVmrMet const *)arg1)->scale_factor();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_AbsorberVmrMet__v_scale_uncertainty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::AbsorberVmrMet *arg1 = (FullPhysics::AbsorberVmrMet *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::AbsorberVmrMet const > tempshared1 ;
-  boost::shared_ptr< FullPhysics::AbsorberVmrMet const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  double result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbsorberVmrMet__v_scale_uncertainty" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrMet const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      arg1 = const_cast< FullPhysics::AbsorberVmrMet * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr< const FullPhysics::AbsorberVmrMet > * >(argp1);
-      arg1 = const_cast< FullPhysics::AbsorberVmrMet * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      result = (double)((FullPhysics::AbsorberVmrMet const *)arg1)->scale_uncertainty();
-    } catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_AbsorberVmrMet(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  FullPhysics::AbsorberVmrMet *arg1 = (FullPhysics::AbsorberVmrMet *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  boost::shared_ptr< FullPhysics::AbsorberVmrMet > tempshared1 ;
-  boost::shared_ptr< FullPhysics::AbsorberVmrMet > *smartarg1 = 0 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape > tempshared1 ;
+  boost::shared_ptr< FullPhysics::AbsorberVmrShape > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AbsorberVmrMet" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrMet *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AbsorberVmrShape" "', argument " "1"" of type '" "FullPhysics::AbsorberVmrShape *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::AbsorberVmrMet > * >(argp1);
-      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::AbsorberVmrMet > * >(argp1);
-      arg1 = const_cast< FullPhysics::AbsorberVmrMet * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< boost::shared_ptr<  FullPhysics::AbsorberVmrShape > * >(argp1);
+      delete reinterpret_cast< boost::shared_ptr<  FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::AbsorberVmrMet > * >(argp1);
-      arg1 = const_cast< FullPhysics::AbsorberVmrMet * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< boost::shared_ptr<  FullPhysics::AbsorberVmrShape > * >(argp1);
+      arg1 = const_cast< FullPhysics::AbsorberVmrShape * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
@@ -5288,202 +5486,188 @@ fail:
 }
 
 
-SWIGINTERN PyObject *AbsorberVmrMet_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *AbsorberVmrShape_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"AbsorberVmrMet__v_specific_humidity", (PyCFunction)_wrap_AbsorberVmrMet__v_specific_humidity, METH_O, (char *)"\n"
+	 { (char *)"AbsorberVmrShape_clone", _wrap_AbsorberVmrShape_clone, METH_VARARGS, (char *)"\n"
 		"\n"
-		"blitz::Array< double, 1 > AbsorberVmrMet::specific_humidity() const\n"
-		"Humidity from MET, used to write to output file. \n"
-		""},
-	 { (char *)"AbsorberVmrMet__v_vmr_profile", (PyCFunction)_wrap_AbsorberVmrMet__v_vmr_profile, METH_O, (char *)"\n"
-		"\n"
-		"blitz::Array< double, 1 > AbsorberVmrMet::vmr_profile() const\n"
-		"VMR values converted from specific humidity. \n"
-		""},
-	 { (char *)"AbsorberVmrMet__v_pressure_profile", (PyCFunction)_wrap_AbsorberVmrMet__v_pressure_profile, METH_O, (char *)"\n"
-		"\n"
-		"blitz::Array< double, 1 > AbsorberVmrMet::pressure_profile() const\n"
-		"Pressure levels that humidity is on from MET, used to write to output\n"
-		"file. \n"
-		""},
-	 { (char *)"AbsorberVmrMet__v_scale_factor", (PyCFunction)_wrap_AbsorberVmrMet__v_scale_factor, METH_O, NULL},
-	 { (char *)"AbsorberVmrMet__v_scale_uncertainty", (PyCFunction)_wrap_AbsorberVmrMet__v_scale_uncertainty, METH_O, NULL},
-	 { (char *)"delete_AbsorberVmrMet", (PyCFunction)_wrap_delete_AbsorberVmrMet, METH_O, (char *)"\n"
-		"\n"
-		"virtual FullPhysics::AbsorberVmrMet::~AbsorberVmrMet()\n"
+		"boost::shared_ptr< AbsorberVmr > AbsorberVmrShape::clone(const boost::shared_ptr< Pressure > &Press) const\n"
 		"\n"
 		""},
-	 { (char *)"AbsorberVmrMet_swigregister", AbsorberVmrMet_swigregister, METH_VARARGS, NULL},
+	 { (char *)"AbsorberVmrShape__v_sub_state_identifier", (PyCFunction)_wrap_AbsorberVmrShape__v_sub_state_identifier, METH_O, (char *)"\n"
+		"\n"
+		"virtual std::string FullPhysics::AbsorberVmrShape::sub_state_identifier() const\n"
+		"\n"
+		""},
+	 { (char *)"AbsorberVmrShape__v_vmr_base", (PyCFunction)_wrap_AbsorberVmrShape__v_vmr_base, METH_O, (char *)"\n"
+		"\n"
+		"virtual blitz::Array<double, 1> FullPhysics::AbsorberVmrShape::vmr_base() const\n"
+		"Base VMR profile associated with the pressure profile, values are in\n"
+		"Kelvin. \n"
+		""},
+	 { (char *)"AbsorberVmrShape__v_shape_profile", (PyCFunction)_wrap_AbsorberVmrShape__v_shape_profile, METH_O, (char *)"\n"
+		"\n"
+		"virtual blitz::Array<double, 2> FullPhysics::AbsorberVmrShape::shape_profile() const\n"
+		"Shape profiles combined with base VMR dimenison are: N_level x\n"
+		"N_scaling. \n"
+		""},
+	 { (char *)"AbsorberVmrShape__v_shape_scaling", (PyCFunction)_wrap_AbsorberVmrShape__v_shape_scaling, METH_O, (char *)"\n"
+		"\n"
+		"virtual blitz::Array<double, 1> FullPhysics::AbsorberVmrShape::shape_scaling() const\n"
+		"Scale factors combined with the shape profiles with dimension:\n"
+		"N_scaling. \n"
+		""},
+	 { (char *)"AbsorberVmrShape__v_pressure_profile", (PyCFunction)_wrap_AbsorberVmrShape__v_pressure_profile, METH_O, (char *)"\n"
+		"\n"
+		"virtual blitz::Array<double, 1> FullPhysics::AbsorberVmrShape::pressure_profile() const\n"
+		"Pressure levels that serve as the grid for the VMR values in units of\n"
+		"Pascals. \n"
+		""},
+	 { (char *)"delete_AbsorberVmrShape", (PyCFunction)_wrap_delete_AbsorberVmrShape, METH_O, (char *)"\n"
+		"\n"
+		"virtual FullPhysics::AbsorberVmrShape::~AbsorberVmrShape()=default\n"
+		"\n"
+		""},
+	 { (char *)"AbsorberVmrShape_swigregister", AbsorberVmrShape_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::AbsorberVmr >(*(boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *)x);
+static void *_p_std__basic_ostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((std::basic_ios< char,std::char_traits< char > > *)  ((std::basic_ostream< char,std::char_traits< char > > *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::AbsorberVmr >(*(boost::shared_ptr< FullPhysics::AbsorberVmrMet > *)x);
+static void *_p_std__basic_istreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((std::basic_ios< char,std::char_traits< char > > *)  ((std::basic_istream< char,std::char_traits< char > > *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::AbsorberVmr >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::AbsorberVmr >(*(boost::shared_ptr< FullPhysics::AbsorberVmrScaled > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::AbsorberVmrScaled >(*(boost::shared_ptr< FullPhysics::AbsorberVmrMet > *)x);
-}
-static void *_p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__AbsorberVmrImpBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::AbsorberVmrImpBase *) (FullPhysics::AbsorberVmrScaled *) ((FullPhysics::AbsorberVmrMet *) x));
-}
-static void *_p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__AbsorberVmrImpBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::AbsorberVmrImpBase *)  ((FullPhysics::AbsorberVmrScaled *) x));
+static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((std::basic_ios< char,std::char_traits< char > > *) (std::basic_istream< char > *) ((std::basic_iostream< char,std::char_traits< char > > *) x));
 }
 static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorObserver >(*(boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorObserver >(*(boost::shared_ptr< FullPhysics::AbsorberVmrMet > *)x);
-}
 static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorObserver >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorObserver >(*(boost::shared_ptr< FullPhysics::AbsorberVmrScaled > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorObserver >(*(boost::shared_ptr< FullPhysics::AbsorberVmrShape > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t(void *x, int *newmemory) {
+static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *)(FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmrImpBase *) x));
+}
+static void *_p_FullPhysics__StateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *)  ((FullPhysics::StateVectorObserver *) x));
+}
+static void *_p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::SubStateVectorObserver *) x));
+}
+static void *_p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *)(FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrShape *) x));
+}
+static void *_p_FullPhysics__PressureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::Pressure *) x));
+}
+static void *_p_FullPhysics__AbsorberVmrTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::AbsorberVmr *) x));
+}
+static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *)(FullPhysics::AbsorberVmr *) ((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) x));
+}
+static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::AbsorberVmrImpBase >(*(boost::shared_ptr< FullPhysics::AbsorberVmrMet > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::SubStateVectorObserver > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::AbsorberVmrImpBase >(*(boost::shared_ptr< FullPhysics::AbsorberVmrScaled > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrMet > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::AbsorberVmr > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::Pressure > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrScaled > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::AbsorberVmrShape > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
+static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::AbsorberVmr > *) (FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmrImpBase *) x));
+}
+static void *_p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::AbsorberVmr > *) (FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrShape *) x));
+}
+static void *_p_FullPhysics__AbsorberVmrTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::AbsorberVmr > *)  ((FullPhysics::AbsorberVmr *) x));
+}
+static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::AbsorberVmr > *) (FullPhysics::AbsorberVmr *) ((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) x));
+}
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::AbsorberVmr > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::AbsorberVmr >(*(boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > >(*(boost::shared_ptr< FullPhysics::Pressure > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::AbsorberVmr >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::StateVector > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::AbsorberVmr >(*(boost::shared_ptr< FullPhysics::AbsorberVmrShape > *)x);
 }
-static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__AbsorberVmr(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::AbsorberVmr *) (FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmrImpBase *) x));
-}
-static void *_p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__AbsorberVmr(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::AbsorberVmr *) (FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *)(FullPhysics::AbsorberVmrScaled *) ((FullPhysics::AbsorberVmrMet *) x));
-}
-static void *_p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__AbsorberVmr(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::AbsorberVmr *) (FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrScaled *) x));
-}
-static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__AbsorberVmr(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::AbsorberVmr *)  ((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) x));
-}
-static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrShape > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::StateVector > > *)x);
+static void *_p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__AbsorberVmrImpBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::AbsorberVmrImpBase *)  ((FullPhysics::AbsorberVmrShape *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *)x);
+static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::StateVectorObserver *) (FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmrImpBase *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AbsorberVmrMet > *)x);
+static void *_p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::SubStateVectorObserver *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AbsorberVmrScaled > *)x);
+static void *_p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::StateVectorObserver *) (FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrShape *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Pressure > *)x);
+static void *_p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::Pressure *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > > *)x);
+static void *_p_FullPhysics__AbsorberVmrTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::AbsorberVmr *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AutoDerivativeRef< double > > *)x);
+static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::StateVectorObserver *) (FullPhysics::AbsorberVmr *) ((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::AbsorberVmr > > *)x);
+static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::SubStateVectorObserver *) (FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmrImpBase *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::Pressure > > *)x);
+static void *_p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::SubStateVectorObserver *) (FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrShape *) x));
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AbsorberVmr > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AutoDerivative< double > > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Unit > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__Meteorology_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Meteorology > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AutoDerivativeWithUnit< double > > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::StateVector > *)x);
+static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::SubStateVectorObserver *)  ((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) x));
 }
 static void *_p_FullPhysics__UnitTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Unit *) x));
@@ -5496,9 +5680,6 @@ static void *_p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhys
 }
 static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmrImpBase *) x));
-}
-static void *_p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrScaled *) x));
 }
 static void *_p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observer< FullPhysics::Pressure > *) x));
@@ -5524,66 +5705,14 @@ static void *_p_FullPhysics__AbsorberVmrTo_p_FullPhysics__GenericObject(void *x,
 static void *_p_FullPhysics__PressureTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::Pressure > *) ((FullPhysics::Pressure *) x));
 }
-static void *_p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *)(FullPhysics::AbsorberVmrScaled *) ((FullPhysics::AbsorberVmrMet *) x));
-}
 static void *_p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::StateVector > *) ((FullPhysics::StateVector *) x));
 }
 static void *_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Observable< FullPhysics::AbsorberVmr > *) x));
 }
-static void *_p_FullPhysics__MeteorologyTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::GenericObject *)  ((FullPhysics::Meteorology *) x));
-}
-static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)  ((FullPhysics::AbsorberVmrImpBase *) x));
-}
-static void *_p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) (FullPhysics::AbsorberVmrImpBase *)(FullPhysics::AbsorberVmrScaled *) ((FullPhysics::AbsorberVmrMet *) x));
-}
-static void *_p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) (FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrScaled *) x));
-}
-static void *_p_std__basic_ostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((std::basic_ios< char,std::char_traits< char > > *)  ((std::basic_ostream< char,std::char_traits< char > > *) x));
-}
-static void *_p_std__basic_istreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((std::basic_ios< char,std::char_traits< char > > *)  ((std::basic_istream< char,std::char_traits< char > > *) x));
-}
-static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_iosT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((std::basic_ios< char,std::char_traits< char > > *) (std::basic_istream< char > *) ((std::basic_iostream< char,std::char_traits< char > > *) x));
-}
-static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::SubStateVectorObserver > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::AbsorberVmrMet > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::AbsorberVmrScaled > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::Pressure > *)x);
-}
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::StateVectorObserver >(*(boost::shared_ptr< FullPhysics::AbsorberVmr > *)x);
-}
-static void *_p_FullPhysics__StateVectorTo_p_FullPhysics__ObservableT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observable< FullPhysics::StateVector > *)  ((FullPhysics::StateVector *) x));
+static void *_p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__GenericObject(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::GenericObject *) (FullPhysics::Observable< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrShape *) x));
 }
 static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -5593,10 +5722,6 @@ static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
-    *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrMet > *)x);
-}
 static void *_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::StateVectorObserver > *)x);
@@ -5605,123 +5730,140 @@ static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrScaled > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::AbsorberVmr > *)x);
 }
 static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::Pressure > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::AbsorberVmr > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Observer< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrShape > *)x);
 }
-static void *_p_FullPhysics__PressureTo_p_FullPhysics__ObservableT_FullPhysics__Pressure_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observable< FullPhysics::Pressure > *)  ((FullPhysics::Pressure *) x));
-}
-static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *)(FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmrImpBase *) x));
-}
-static void *_p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *)(FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *)(FullPhysics::AbsorberVmrScaled *) ((FullPhysics::AbsorberVmrMet *) x));
-}
-static void *_p_FullPhysics__StateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *)  ((FullPhysics::StateVectorObserver *) x));
-}
-static void *_p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::SubStateVectorObserver *) x));
-}
-static void *_p_FullPhysics__PressureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::Pressure *) x));
-}
-static void *_p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *)(FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrScaled *) x));
-}
-static void *_p_FullPhysics__AbsorberVmrTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *) ((FullPhysics::AbsorberVmr *) x));
-}
-static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observer< FullPhysics::StateVector > *) (FullPhysics::StateVectorObserver *)(FullPhysics::AbsorberVmr *) ((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) x));
-}
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::StateVector > >(*(boost::shared_ptr< FullPhysics::StateVector > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
+static void *_p_FullPhysics__StateVectorTo_p_FullPhysics__ObservableT_FullPhysics__StateVector_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::StateVector > *)  ((FullPhysics::StateVector *) x));
+}
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrMet > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *)x);
 }
-static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
+static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrScaled > *)x);
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > > *)x);
 }
-static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((std::basic_ostream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::AbsorberVmr > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > >(*(boost::shared_ptr< FullPhysics::AbsorberVmrShape > *)x);
+}
+static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > >(*(boost::shared_ptr< FullPhysics::Pressure > *)x);
+}
+static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)  ((FullPhysics::AbsorberVmrImpBase *) x));
+}
+static void *_p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) (FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrShape *) x));
+}
+static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__AbsorberVmr(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::AbsorberVmr *) (FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmrImpBase *) x));
+}
+static void *_p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__AbsorberVmr(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::AbsorberVmr *) (FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrShape *) x));
+}
+static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__AbsorberVmr(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::AbsorberVmr *)  ((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) x));
 }
 static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_istreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::basic_istream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
 }
-static void *_p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__AbsorberVmrScaled(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::AbsorberVmrScaled *)  ((FullPhysics::AbsorberVmrMet *) x));
+static void *_p_std__basic_iostreamT_char_std__char_traitsT_char_t_tTo_p_std__basic_ostreamT_char_std__char_traitsT_char_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((std::basic_ostream< char,std::char_traits< char > > *)  ((std::basic_iostream< char,std::char_traits< char > > *) x));
 }
-static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::SubStateVectorObserver *) (FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmrImpBase *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > > *)x);
 }
-static void *_p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::SubStateVectorObserver *) (FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *)(FullPhysics::AbsorberVmrScaled *) ((FullPhysics::AbsorberVmrMet *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > > *)x);
 }
-static void *_p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::SubStateVectorObserver *) (FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrScaled *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observable< FullPhysics::StateVector > > *)x);
 }
-static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__SubStateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::SubStateVectorObserver *)  ((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *)x);
 }
-static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::StateVectorObserver *) (FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmrImpBase *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AbsorberVmrShape > *)x);
 }
-static void *_p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::StateVectorObserver *) (FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *)(FullPhysics::AbsorberVmrScaled *) ((FullPhysics::AbsorberVmrMet *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Pressure > *)x);
 }
-static void *_p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::SubStateVectorObserver *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > > *)x);
 }
-static void *_p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::Pressure *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AutoDerivativeRef< double > > *)x);
 }
-static void *_p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::StateVectorObserver *) (FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrScaled *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::Pressure > > *)x);
 }
-static void *_p_FullPhysics__AbsorberVmrTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::StateVectorObserver *)  ((FullPhysics::AbsorberVmr *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Observer< FullPhysics::AbsorberVmr > > *)x);
 }
-static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__StateVectorObserver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::StateVectorObserver *) (FullPhysics::AbsorberVmr *) ((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AbsorberVmr > *)x);
 }
-static void *_p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observable< FullPhysics::AbsorberVmr > *) (FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) ((FullPhysics::AbsorberVmrImpBase *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AutoDerivative< double > > *)x);
 }
-static void *_p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observable< FullPhysics::AbsorberVmr > *) (FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *)(FullPhysics::AbsorberVmrScaled *) ((FullPhysics::AbsorberVmrMet *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::Unit > *)x);
 }
-static void *_p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observable< FullPhysics::AbsorberVmr > *) (FullPhysics::AbsorberVmr *)(FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *)(FullPhysics::AbsorberVmrImpBase *) ((FullPhysics::AbsorberVmrScaled *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::AutoDerivativeWithUnit< double > > *)x);
 }
-static void *_p_FullPhysics__AbsorberVmrTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observable< FullPhysics::AbsorberVmr > *)  ((FullPhysics::AbsorberVmr *) x));
+static void *_p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::GenericObject >(*(boost::shared_ptr< FullPhysics::StateVector > *)x);
 }
-static void *_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((FullPhysics::Observable< FullPhysics::AbsorberVmr > *) (FullPhysics::AbsorberVmr *) ((FullPhysics::SubStateVectorArray< FullPhysics::AbsorberVmr > *) x));
+static void *_p_FullPhysics__PressureTo_p_FullPhysics__ObservableT_FullPhysics__Pressure_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((FullPhysics::Observable< FullPhysics::Pressure > *)  ((FullPhysics::Pressure *) x));
+}
+static void *_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new boost::shared_ptr< FullPhysics::AbsorberVmrImpBase >(*(boost::shared_ptr< FullPhysics::AbsorberVmrShape > *)x);
 }
 static swig_type_info _swigt__p_FullPhysics__AbsorberVmr = {"_p_FullPhysics__AbsorberVmr", "FullPhysics::AbsorberVmr *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AbsorberVmrImpBase = {"_p_FullPhysics__AbsorberVmrImpBase", "FullPhysics::AbsorberVmrImpBase *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_FullPhysics__AbsorberVmrMet = {"_p_FullPhysics__AbsorberVmrMet", "FullPhysics::AbsorberVmrMet *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_FullPhysics__AbsorberVmrScaled = {"_p_FullPhysics__AbsorberVmrScaled", "FullPhysics::AbsorberVmrScaled *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FullPhysics__AbsorberVmrShape = {"_p_FullPhysics__AbsorberVmrShape", "FullPhysics::AbsorberVmrShape *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeRefT_double_t = {"_p_FullPhysics__AutoDerivativeRefT_double_t", "FullPhysics::AutoDerivativeRef< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeT_double_t = {"_p_FullPhysics__AutoDerivativeT_double_t", "FullPhysics::AutoDerivative< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t = {"_p_FullPhysics__AutoDerivativeWithUnitT_double_t", "FullPhysics::AutoDerivativeWithUnit< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__GenericObject = {"_p_FullPhysics__GenericObject", "FullPhysics::GenericObject *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_FullPhysics__Meteorology = {"_p_FullPhysics__Meteorology", "FullPhysics::Meteorology *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t = {"_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t", "FullPhysics::Observable< FullPhysics::AbsorberVmr > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t = {"_p_FullPhysics__ObservableT_FullPhysics__Pressure_t", "FullPhysics::Observable< FullPhysics::Pressure > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t = {"_p_FullPhysics__ObservableT_FullPhysics__StateVector_t", "FullPhysics::Observable< FullPhysics::StateVector > *", 0, 0, (void*)0, 0};
@@ -5748,14 +5890,12 @@ static swig_type_info _swigt__p_blitz__ArrayT_int_2_t = {"_p_blitz__ArrayT_int_2
 static swig_type_info _swigt__p_blitz__ArrayT_int_3_t = {"_p_blitz__ArrayT_int_3_t", "blitz::Array< int,3 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_blitz__ArrayT_int_4_t = {"_p_blitz__ArrayT_int_4_t", "blitz::Array< int,4 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t = {"_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t", "boost::shared_ptr< FullPhysics::AbsorberVmrImpBase > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t = {"_p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t", "boost::shared_ptr< FullPhysics::AbsorberVmrMet > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t = {"_p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t", "boost::shared_ptr< FullPhysics::AbsorberVmrScaled > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t = {"_p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t", "boost::shared_ptr< FullPhysics::AbsorberVmrShape > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t = {"_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t", "boost::shared_ptr< FullPhysics::AbsorberVmr > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivativeRef< double > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivative< double > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t = {"_p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t", "boost::shared_ptr< FullPhysics::AutoDerivativeWithUnit< double > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t = {"_p_boost__shared_ptrT_FullPhysics__GenericObject_t", "boost::shared_ptr< FullPhysics::GenericObject > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t = {"_p_boost__shared_ptrT_FullPhysics__Meteorology_t", "boost::shared_ptr< FullPhysics::Meteorology > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::AbsorberVmr > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::Pressure > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t = {"_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t", "boost::shared_ptr< FullPhysics::Observable< FullPhysics::StateVector > > *", 0, 0, (void*)0, 0};
@@ -5791,13 +5931,11 @@ static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FullPhysics__AbsorberVmr,
   &_swigt__p_FullPhysics__AbsorberVmrImpBase,
-  &_swigt__p_FullPhysics__AbsorberVmrMet,
-  &_swigt__p_FullPhysics__AbsorberVmrScaled,
+  &_swigt__p_FullPhysics__AbsorberVmrShape,
   &_swigt__p_FullPhysics__AutoDerivativeRefT_double_t,
   &_swigt__p_FullPhysics__AutoDerivativeT_double_t,
   &_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t,
   &_swigt__p_FullPhysics__GenericObject,
-  &_swigt__p_FullPhysics__Meteorology,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t,
   &_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t,
@@ -5824,14 +5962,12 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_blitz__ArrayT_int_3_t,
   &_swigt__p_blitz__ArrayT_int_4_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t,
-  &_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t,
-  &_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t,
+  &_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
-  &_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t,
   &_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t,
@@ -5865,26 +6001,24 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_value_type,
 };
 
-static swig_cast_info _swigc__p_FullPhysics__AbsorberVmr[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__AbsorberVmr, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrMet, _p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__AbsorberVmr, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__AbsorberVmr, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrScaled, _p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__AbsorberVmr, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__AbsorberVmrImpBase[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, 0, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrMet, _p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__AbsorberVmrImpBase, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrScaled, _p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__AbsorberVmrImpBase, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__AbsorberVmrMet[] = {  {&_swigt__p_FullPhysics__AbsorberVmrMet, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__AbsorberVmrScaled[] = {  {&_swigt__p_FullPhysics__AbsorberVmrMet, _p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__AbsorberVmrScaled, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrScaled, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__AbsorberVmr[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__AbsorberVmr, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__AbsorberVmr, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrShape, _p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__AbsorberVmr, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__AbsorberVmrImpBase[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, 0, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrShape, _p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__AbsorberVmrImpBase, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__AbsorberVmrShape[] = {  {&_swigt__p_FullPhysics__AbsorberVmrShape, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeRefT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__AutoDerivativeWithUnitT_double_t[] = {  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, _p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrScaled, _p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, _p_FullPhysics__AutoDerivativeWithUnitT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrMet, _p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Unit, _p_FullPhysics__UnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, _p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Meteorology, _p_FullPhysics__MeteorologyTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, _p_FullPhysics__ObservableT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__Meteorology[] = {  {&_swigt__p_FullPhysics__Meteorology, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrMet, _p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrScaled, _p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__GenericObject[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, _p_FullPhysics__ObserverT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeWithUnitT_double_t, _p_FullPhysics__AutoDerivativeWithUnitT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeRefT_double_t, _p_FullPhysics__AutoDerivativeRefT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AutoDerivativeT_double_t, _p_FullPhysics__AutoDerivativeT_double_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__Unit, _p_FullPhysics__UnitTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__GenericObject, 0, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrShape, _p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, _p_FullPhysics__ObservableT_FullPhysics__StateVector_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__GenericObject, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, _p_FullPhysics__ObservableT_FullPhysics__Pressure_tTo_p_FullPhysics__GenericObject, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrShape, _p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__Pressure_t[] = {  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__Pressure_t, 0, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObservableT_FullPhysics__Pressure_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObservableT_FullPhysics__StateVector_t[] = {  {&_swigt__p_FullPhysics__StateVector, _p_FullPhysics__StateVectorTo_p_FullPhysics__ObservableT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__ObservableT_FullPhysics__StateVector_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__Pressure_t[] = {  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__Pressure_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__StateVector_t[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrMet, _p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, _p_FullPhysics__StateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrScaled, _p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__ObserverT_FullPhysics__StateVector_t[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, _p_FullPhysics__StateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrShape, _p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__ObserverT_FullPhysics__StateVector_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Pressure[] = {  {&_swigt__p_FullPhysics__Pressure, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__StateVector[] = {  {&_swigt__p_FullPhysics__StateVector, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__StateVectorObserver[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrMet, _p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrScaled, _p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__StateVectorObserver, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrMet, _p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, 0, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrScaled, _p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_FullPhysics__SubStateVectorObserver[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__SubStateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrMet, _p_FullPhysics__AbsorberVmrMetTo_p_FullPhysics__SubStateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__SubStateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrScaled, _p_FullPhysics__AbsorberVmrScaledTo_p_FullPhysics__SubStateVectorObserver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__StateVectorObserver[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__StateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, _p_FullPhysics__SubStateVectorObserverTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrShape, _p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__Pressure, _p_FullPhysics__PressureTo_p_FullPhysics__StateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmr, _p_FullPhysics__AbsorberVmrTo_p_FullPhysics__StateVectorObserver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, 0, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrShape, _p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FullPhysics__SubStateVectorObserver[] = {  {&_swigt__p_FullPhysics__AbsorberVmrImpBase, _p_FullPhysics__AbsorberVmrImpBaseTo_p_FullPhysics__SubStateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorObserver, 0, 0, 0},  {&_swigt__p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t, _p_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_tTo_p_FullPhysics__SubStateVectorObserver, 0, 0},  {&_swigt__p_FullPhysics__AbsorberVmrShape, _p_FullPhysics__AbsorberVmrShapeTo_p_FullPhysics__SubStateVectorObserver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FullPhysics__Unit[] = {  {&_swigt__p_FullPhysics__Unit, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_bool_1_t[] = {  {&_swigt__p_blitz__ArrayT_bool_1_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5899,26 +6033,24 @@ static swig_cast_info _swigc__p_blitz__ArrayT_int_1_t[] = {  {&_swigt__p_blitz__
 static swig_cast_info _swigc__p_blitz__ArrayT_int_2_t[] = {  {&_swigt__p_blitz__ArrayT_int_2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_int_3_t[] = {  {&_swigt__p_blitz__ArrayT_int_3_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_blitz__ArrayT_int_4_t[] = {  {&_swigt__p_blitz__ArrayT_int_4_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t, _p_boost__shared_ptrT_FullPhysics__Meteorology_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Meteorology_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Meteorology_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, _p_boost__shared_ptrT_FullPhysics__Unit_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t, _p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, _p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, _p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_tTo_p_boost__shared_ptrT_FullPhysics__GenericObject_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, _p_boost__shared_ptrT_FullPhysics__StateVector_tTo_p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__AbsorberVmr_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__Pressure_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__StateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__StateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__ObserverT_FullPhysics__StateVector_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Pressure_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmr_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__Pressure_t, _p_boost__shared_ptrT_FullPhysics__Pressure_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_tTo_p_boost__shared_ptrT_FullPhysics__StateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__StateVector_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__StateVector_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t, _p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0, 0},  {&_swigt__p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_t, _p_boost__shared_ptrT_FullPhysics__SubStateVectorArrayT_FullPhysics__AbsorberVmr_t_tTo_p_boost__shared_ptrT_FullPhysics__SubStateVectorObserver_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__shared_ptrT_FullPhysics__Unit_t[] = {  {&_swigt__p_boost__shared_ptrT_FullPhysics__Unit_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char_type[] = {  {&_swigt__p_char_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -5943,13 +6075,11 @@ static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FullPhysics__AbsorberVmr,
   _swigc__p_FullPhysics__AbsorberVmrImpBase,
-  _swigc__p_FullPhysics__AbsorberVmrMet,
-  _swigc__p_FullPhysics__AbsorberVmrScaled,
+  _swigc__p_FullPhysics__AbsorberVmrShape,
   _swigc__p_FullPhysics__AutoDerivativeRefT_double_t,
   _swigc__p_FullPhysics__AutoDerivativeT_double_t,
   _swigc__p_FullPhysics__AutoDerivativeWithUnitT_double_t,
   _swigc__p_FullPhysics__GenericObject,
-  _swigc__p_FullPhysics__Meteorology,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__Pressure_t,
   _swigc__p_FullPhysics__ObservableT_FullPhysics__StateVector_t,
@@ -5976,14 +6106,12 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_blitz__ArrayT_int_3_t,
   _swigc__p_blitz__ArrayT_int_4_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AbsorberVmrImpBase_t,
-  _swigc__p_boost__shared_ptrT_FullPhysics__AbsorberVmrMet_t,
-  _swigc__p_boost__shared_ptrT_FullPhysics__AbsorberVmrScaled_t,
+  _swigc__p_boost__shared_ptrT_FullPhysics__AbsorberVmrShape_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AbsorberVmr_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeRefT_double_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeT_double_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__AutoDerivativeWithUnitT_double_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__GenericObject_t,
-  _swigc__p_boost__shared_ptrT_FullPhysics__Meteorology_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__AbsorberVmr_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__Pressure_t_t,
   _swigc__p_boost__shared_ptrT_FullPhysics__ObservableT_FullPhysics__StateVector_t_t,
@@ -6707,8 +6835,8 @@ SWIG_init(void) {
   
   SWIG_Python_SetConstant(d, "SHARED_PTR_DISOWN",SWIG_From_int(static_cast< int >(0)));
   
-  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::AbsorberVmrMet))] =
-  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::AbsorberVmrMet >("boost::shared_ptr< FullPhysics::AbsorberVmrMet > *"));
+  FullPhysics::swig_type_map[FullPhysics::type_index(typeid(FullPhysics::AbsorberVmrShape))] =
+  boost::shared_ptr<FullPhysics::SwigTypeMapperBase>(new FullPhysics::SwigTypeMapper< FullPhysics::AbsorberVmrShape >("boost::shared_ptr< FullPhysics::AbsorberVmrShape > *"));
   
 #if PY_VERSION_HEX >= 0x03000000
   return m;

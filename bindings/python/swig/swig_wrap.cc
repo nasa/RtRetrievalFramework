@@ -226,6 +226,7 @@ extern "C" {
   SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_level)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_log_level)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_level_scaled)(void);
+  SWIG_INIT_TYPE SWIG_INIT_FUNC(absorber_vmr_shape)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(pressure_sigma)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(stokes_coefficient_constant)(void);
   SWIG_INIT_TYPE SWIG_INIT_FUNC(stokes_coefficient_fraction)(void);
@@ -628,6 +629,7 @@ init_swig_wrap(void)
   SWIG_INIT_MODULE(package, "_absorber_vmr_level", SWIG_INIT_FUNC(absorber_vmr_level));
   SWIG_INIT_MODULE(package, "_absorber_vmr_log_level", SWIG_INIT_FUNC(absorber_vmr_log_level));
   SWIG_INIT_MODULE(package, "_absorber_vmr_level_scaled", SWIG_INIT_FUNC(absorber_vmr_level_scaled));
+  SWIG_INIT_MODULE(package, "_absorber_vmr_shape", SWIG_INIT_FUNC(absorber_vmr_shape));
   SWIG_INIT_MODULE(package, "_pressure_sigma", SWIG_INIT_FUNC(pressure_sigma));
   SWIG_INIT_MODULE(package, "_stokes_coefficient_constant", SWIG_INIT_FUNC(stokes_coefficient_constant));
   SWIG_INIT_MODULE(package, "_stokes_coefficient_fraction", SWIG_INIT_FUNC(stokes_coefficient_fraction));

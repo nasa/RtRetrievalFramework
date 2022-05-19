@@ -569,6 +569,7 @@ am___swig_wrap_la_SOURCES_DIST = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/absorber_vmr_level_wrap.cc \
 	@swigsrc@/absorber_vmr_log_level_wrap.cc \
 	@swigsrc@/absorber_vmr_level_scaled_wrap.cc \
+	@swigsrc@/absorber_vmr_shape_wrap.cc \
 	@swigsrc@/pressure_sigma_wrap.cc \
 	@swigsrc@/stokes_coefficient_constant_wrap.cc \
 	@swigsrc@/stokes_coefficient_fraction_wrap.cc \
@@ -813,6 +814,7 @@ am__objects_2 = @swigsrc@/_swig_wrap_la-fp_exception_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_level_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_log_level_wrap.lo \
 	@swigsrc@/_swig_wrap_la-absorber_vmr_level_scaled_wrap.lo \
+	@swigsrc@/_swig_wrap_la-absorber_vmr_shape_wrap.lo \
 	@swigsrc@/_swig_wrap_la-pressure_sigma_wrap.lo \
 	@swigsrc@/_swig_wrap_la-stokes_coefficient_constant_wrap.lo \
 	@swigsrc@/_swig_wrap_la-stokes_coefficient_fraction_wrap.lo \
@@ -2443,6 +2445,7 @@ am__depfiles_remade = @binsrc@/$(DEPDIR)/l2_fp.Po \
 	@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_log_level_wrap.Plo \
 	@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_met_wrap.Plo \
 	@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_scaled_wrap.Plo \
+	@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_shape_wrap.Plo \
 	@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_wrap.Plo \
 	@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_wrap.Plo \
 	@swigsrc@/$(DEPDIR)/_swig_wrap_la-acos_met_file_wrap.Plo \
@@ -4104,6 +4107,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 	@swigsrc@/absorber_vmr_level_wrap.cc \
 	@swigsrc@/absorber_vmr_log_level_wrap.cc \
 	@swigsrc@/absorber_vmr_level_scaled_wrap.cc \
+	@swigsrc@/absorber_vmr_shape_wrap.cc \
 	@swigsrc@/pressure_sigma_wrap.cc \
 	@swigsrc@/stokes_coefficient_constant_wrap.cc \
 	@swigsrc@/stokes_coefficient_fraction_wrap.cc \
@@ -5482,6 +5486,8 @@ clean-pkgpythonswigLTLIBRARIES:
 @swigsrc@/_swig_wrap_la-absorber_vmr_log_level_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-absorber_vmr_level_scaled_wrap.lo:  \
+	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
+@swigsrc@/_swig_wrap_la-absorber_vmr_shape_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
 @swigsrc@/_swig_wrap_la-pressure_sigma_wrap.lo:  \
 	@swigsrc@/$(am__dirstamp) @swigsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -7815,6 +7821,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_log_level_wrap.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_met_wrap.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_scaled_wrap.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_shape_wrap.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_wrap.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_wrap.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@swigsrc@/$(DEPDIR)/_swig_wrap_la-acos_met_file_wrap.Plo@am__quote@ # am--include-marker
@@ -9942,6 +9949,13 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/absorber_vmr_level_scaled_wrap.cc' object='@swigsrc@/_swig_wrap_la-absorber_vmr_level_scaled_wrap.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-absorber_vmr_level_scaled_wrap.lo `test -f '@swigsrc@/absorber_vmr_level_scaled_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/absorber_vmr_level_scaled_wrap.cc
+
+@swigsrc@/_swig_wrap_la-absorber_vmr_shape_wrap.lo: @swigsrc@/absorber_vmr_shape_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-absorber_vmr_shape_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_shape_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-absorber_vmr_shape_wrap.lo `test -f '@swigsrc@/absorber_vmr_shape_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/absorber_vmr_shape_wrap.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_shape_wrap.Tpo @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_shape_wrap.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@swigsrc@/absorber_vmr_shape_wrap.cc' object='@swigsrc@/_swig_wrap_la-absorber_vmr_shape_wrap.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -c -o @swigsrc@/_swig_wrap_la-absorber_vmr_shape_wrap.lo `test -f '@swigsrc@/absorber_vmr_shape_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/absorber_vmr_shape_wrap.cc
 
 @swigsrc@/_swig_wrap_la-pressure_sigma_wrap.lo: @swigsrc@/pressure_sigma_wrap.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(_swig_wrap_la_CPPFLAGS) $(CPPFLAGS) $(_swig_wrap_la_CXXFLAGS) $(CXXFLAGS) -MT @swigsrc@/_swig_wrap_la-pressure_sigma_wrap.lo -MD -MP -MF @swigsrc@/$(DEPDIR)/_swig_wrap_la-pressure_sigma_wrap.Tpo -c -o @swigsrc@/_swig_wrap_la-pressure_sigma_wrap.lo `test -f '@swigsrc@/pressure_sigma_wrap.cc' || echo '$(srcdir)/'`@swigsrc@/pressure_sigma_wrap.cc
@@ -13565,6 +13579,7 @@ distclean: distclean-am
 	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_log_level_wrap.Plo
 	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_met_wrap.Plo
 	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_scaled_wrap.Plo
+	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_shape_wrap.Plo
 	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_wrap.Plo
 	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_wrap.Plo
 	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-acos_met_file_wrap.Plo
@@ -14333,6 +14348,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_log_level_wrap.Plo
 	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_met_wrap.Plo
 	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_scaled_wrap.Plo
+	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_shape_wrap.Plo
 	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_vmr_wrap.Plo
 	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-absorber_wrap.Plo
 	-rm -f @swigsrc@/$(DEPDIR)/_swig_wrap_la-acos_met_file_wrap.Plo

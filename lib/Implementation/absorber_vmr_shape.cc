@@ -68,6 +68,15 @@ void AbsorberVmrShape::calc_vmr() const
         throw Exception(err_msg.str());
     }
 
+    if (coeff.rows() != shape_prof.cols()) {
+        std::stringstream err_msg;
+        err_msg << "Number of scaling coefficients: "
+                << coeff.rows()
+                << " != number of profile shapes: "
+                << shape_prof.cols();
+        throw Exception(err_msg.str());
+    }
+
     std::vector<AutoDerivative<double> > plist;
     std::vector<AutoDerivative<double> > vmrlist;
 
@@ -75,7 +84,7 @@ void AbsorberVmrShape::calc_vmr() const
         plist.push_back(press_profile(lev_idx));
 
         AutoDerivative<double> vmr_val = vmr_base_(lev_idx);
-        for(int shape_idx = 0; shape_idx < shape_prof.cols(); shape_idx++) {
+        for(int shape_idx = 0; shape_idx < coeff.rows(); shape_idx++) {
             vmr_val += coeff(shape_idx) * shape_prof(lev_idx, shape_idx);
         }
         vmrlist.push_back(vmr_val);
@@ -104,6 +113,13 @@ void AbsorberVmrShape::print(std::ostream& Os) const
 {
     OstreamPad opad(Os, "    ");
     Os << "AbsorberVmrShape:\n"
-       << "  Gas name:       " << gas_name() << "\n";
+       << "  Gas name:     " << gas_name() << "\n"
+       << "  Scale factors:\n";
+    opad << coeff.value() << "\n";
+    opad.strict_sync();
+    Os << "  Shape Profile Dimensions: " << shape_prof.rows() << " x " << shape_prof.cols() << "\n";
+    opad.strict_sync();
+    Os << "  Retrieval Flag:\n";
+    opad << used_flag << "\n";
     opad.strict_sync();
 }
