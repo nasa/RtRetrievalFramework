@@ -3538,7 +3538,8 @@ function ConfigCommon.absorber_vmr_shape:create_vmr()
 
    for shape_num=1,num_shape do
       local ds_name = "Gas/" .. self.name .. "/EOF/shape_" .. shape_num
-      shape_profiles:set(Range.all(), shape_num-1, shape_file:read_double_1d(ds_name))
+      local shape_data = shape_file:read_double_1d(ds_name)
+      shape_profiles:set(Range(0, shape_data:rows()-1), shape_num-1, shape_data)
    end
 
    local shape_scaling = self:apriori_v()
