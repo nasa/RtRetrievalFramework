@@ -18,34 +18,57 @@ BOOST_AUTO_TEST_CASE(basic)
       4.66057518e-04, 5.48717085e-04, 5.73098800e-04, 6.15544205e-04, 7.41377218e-04,
       9.09569234e-04, 1.30658765e-03, 1.46738835e-03;
 
+  int num_profiles = 3;
+
   HdfFile shape_file(test_data_dir() + "in/shape_scaling/IGRA_EOF_20220121.h5");
 
   // Files have 20 levels, just use first 19
-  Array<double, 2> shape_prof(19, 3);
+  Array<double, 2> shape_prof(vmr_base.rows(), num_profiles);
   for(int shape_idx = 0; shape_idx < shape_prof.cols(); shape_idx++) {
     shape_prof(Range::all(), shape_idx) = shape_file.read_field<double, 1>("Gas/H2O/EOF/shape_" + boost::lexical_cast<std::string>(shape_idx + 1))(Range(0,18));
   }
 
-  Array<double, 1> shape_scaling(3);
-  shape_scaling = 0.1, 0.2, 0.3;
-
-  Array<bool, 1> scaling_flag(shape_scaling.rows());
+  Array<bool, 1> scaling_flag(num_profiles);
   scaling_flag = true;
 
-  AbsorberVmrShape absorber_shape(vmr_base, shape_prof, shape_scaling, config_pressure, scaling_flag, "H2O");
+  // Linear retrieval
+  Array<double, 1> shape_scaling_lin(num_profiles);
+  shape_scaling_lin = 0.1, 0.2, 0.3;
 
-  StateVector sv;
-  sv.add_observer(absorber_shape);
+  AbsorberVmrShape absorber_shape_lin(vmr_base, shape_prof, shape_scaling_lin, config_pressure, scaling_flag, "H2O");
+
+  StateVector sv_lin;
+  sv_lin.add_observer(absorber_shape_lin);
 
   for(int lev_idx = 0; lev_idx < vmr_base.rows(); lev_idx++) {
     AutoDerivative<double> pres_lev = config_pressure->pressure_grid()(lev_idx).value;
-    double vmr_calc = absorber_shape.volume_mixing_ratio(pres_lev).value();
+    double vmr_calc = absorber_shape_lin.volume_mixing_ratio(pres_lev).value();
     double vmr_expect = vmr_base(lev_idx) +
-      shape_scaling(0) * shape_prof(lev_idx, 0) +
-      shape_scaling(1) * shape_prof(lev_idx, 1) +
-      shape_scaling(2) * shape_prof(lev_idx, 2);
+      shape_scaling_lin(0) * shape_prof(lev_idx, 0) +
+      shape_scaling_lin(1) * shape_prof(lev_idx, 1) +
+      shape_scaling_lin(2) * shape_prof(lev_idx, 2);
     BOOST_CHECK_CLOSE(vmr_calc, vmr_expect, 1e-8);
   }
+
+  // Log retrieval
+  Array<double, 1> shape_scaling_log(3);
+  shape_scaling_log = log(0.1), log(0.2), log(0.3);
+
+  AbsorberVmrShape absorber_shape_log(vmr_base, shape_prof, shape_scaling_log, config_pressure, scaling_flag, "H2O", true);
+
+  StateVector sv_log;
+  sv_log.add_observer(absorber_shape_log);
+
+  for(int lev_idx = 0; lev_idx < vmr_base.rows(); lev_idx++) {
+    AutoDerivative<double> pres_lev = config_pressure->pressure_grid()(lev_idx).value;
+    double vmr_calc = absorber_shape_log.volume_mixing_ratio(pres_lev).value();
+    double vmr_expect = vmr_base(lev_idx) +
+      exp(shape_scaling_log(0)) * shape_prof(lev_idx, 0) +
+      exp(shape_scaling_log(1)) * shape_prof(lev_idx, 1) +
+      exp(shape_scaling_log(2)) * shape_prof(lev_idx, 2);
+    BOOST_CHECK_CLOSE(vmr_calc, vmr_expect, 1e-8);
+  }
+
 }
 
 BOOST_AUTO_TEST_SUITE_END()

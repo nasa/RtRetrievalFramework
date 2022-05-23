@@ -14,6 +14,13 @@ REGISTER_LUA_DERIVED_CLASS(AbsorberVmrShape, AbsorberVmr)
                           const boost::shared_ptr<Pressure>&,
                           const blitz::Array<bool, 1>&,
                           const std::string&>())
+.def(luabind::constructor<const blitz::Array<double, 1>&,
+                          const blitz::Array<double, 2>&,
+                          const blitz::Array<double, 1>&,
+                          const boost::shared_ptr<Pressure>&,
+                          const blitz::Array<bool, 1>&,
+                          const std::string&,
+                          const bool>())
 REGISTER_LUA_END()
 #endif
 
@@ -26,10 +33,11 @@ AbsorberVmrShape::AbsorberVmrShape(const blitz::Array<double, 1> VMR_base,
                                    const blitz::Array<double, 1> Shape_scaling,
                                    const boost::shared_ptr<Pressure>& Press,
                                    const blitz::Array<bool, 1>& Shape_flag,
-                                   const std::string& Gas_name)
+                                   const std::string& Gas_name,
+                                   const bool Log_retrieval)
 
 : AbsorberVmrImpBase(Gas_name, Shape_scaling, Shape_flag, Press, false),
-  vmr_base_(VMR_base), shape_prof(Shape_profile)
+  vmr_base_(VMR_base), shape_prof(Shape_profile), log_retrieval(Log_retrieval)
 {
     if (Shape_profile.cols() != Shape_scaling.rows()) {
         std::stringstream err_msg;
@@ -85,7 +93,15 @@ void AbsorberVmrShape::calc_vmr() const
 
         AutoDerivative<double> vmr_val = vmr_base_(lev_idx);
         for(int shape_idx = 0; shape_idx < coeff.rows(); shape_idx++) {
-            vmr_val += coeff(shape_idx) * shape_prof(lev_idx, shape_idx);
+            AutoDerivative<double> scaling;
+
+            if (log_retrieval) {
+                scaling = exp(coeff(shape_idx));
+            } else {
+                scaling = coeff(shape_idx);
+            }
+
+            vmr_val += scaling * shape_prof(lev_idx, shape_idx);
         }
         vmrlist.push_back(vmr_val);
     }
@@ -95,10 +111,21 @@ void AbsorberVmrShape::calc_vmr() const
     vmr = boost::bind(&lin_type::operator(), lin, _1);
 }
 
+Array<double, 1> AbsorberVmrShape::shape_scaling() const
+{ 
+    Array<double, 1> res(coeff.rows());
+    if (log_retrieval) {
+        res = exp(coeff.value());
+    } else {
+        res = coeff.value();
+    }
+    return res;
+}
+
 // See base class for description of this function.
 std::string AbsorberVmrShape::state_vector_name_i(int i) const
 {
-    return gas_name() + " VMR Shape Scaling #" +
+    return gas_name() + " VMR Shape Scaling " + (log_retrieval ? "Log" : "Linear") + " #" +
            boost::lexical_cast<std::string>(i + 1);
 }
 
@@ -115,11 +142,13 @@ void AbsorberVmrShape::print(std::ostream& Os) const
     Os << "AbsorberVmrShape:\n"
        << "  Gas name:     " << gas_name() << "\n"
        << "  Scale factors:\n";
-    opad << coeff.value() << "\n";
+    opad << shape_scaling() << "\n";
     opad.strict_sync();
     Os << "  Shape Profile Dimensions: " << shape_prof.rows() << " x " << shape_prof.cols() << "\n";
     opad.strict_sync();
     Os << "  Retrieval Flag:\n";
     opad << used_flag << "\n";
+    opad.strict_sync();
+    Os << "  Log Retrieval: " << (log_retrieval ? "True" : "False") << "\n";
     opad.strict_sync();
 }

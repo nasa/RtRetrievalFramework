@@ -3527,10 +3527,18 @@ function ConfigCommon.absorber_vmr_shape:create_vmr()
       print("shape_filename parameter must be defined for absorber_vmr_shape creator")
    end
 
+   local pressure
    if self.pressure ~= nil then
       pressure = self:pressure()
    else
       pressure = self.config.pressure
+   end
+
+   local log_retrieval
+   if self.log_retrieval == nil then
+      log_retrieval = false
+   else
+      log_retrieval = self.log_retrieval
    end
 
    local shape_file = HdfFile(self.shape_filename)
@@ -3546,7 +3554,7 @@ function ConfigCommon.absorber_vmr_shape:create_vmr()
    local shape_flag = self:retrieval_flag()
 
    self.vmr = AbsorberVmrShape(vmr_values, shape_profiles, shape_scaling,
-                               pressure, shape_flag, self.name)
+                               pressure, shape_flag, self.name, log_retrieval)
    return self.vmr
 end
 

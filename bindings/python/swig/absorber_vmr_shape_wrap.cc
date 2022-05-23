@@ -5519,7 +5519,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"AbsorberVmrShape__v_shape_scaling", (PyCFunction)_wrap_AbsorberVmrShape__v_shape_scaling, METH_O, (char *)"\n"
 		"\n"
-		"virtual blitz::Array<double, 1> FullPhysics::AbsorberVmrShape::shape_scaling() const\n"
+		"Array< double, 1 > AbsorberVmrShape::shape_scaling() const\n"
 		"Scale factors combined with the shape profiles with dimension:\n"
 		"N_scaling. \n"
 		""},

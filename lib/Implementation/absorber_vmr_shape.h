@@ -21,7 +21,8 @@ public:
                      const blitz::Array<double, 1> Shape_scaling,
                      const boost::shared_ptr<Pressure>& Press,
                      const blitz::Array<bool, 1>& Shape_flag,
-                     const std::string& Gas_name);
+                     const std::string& Gas_name,
+                     const bool Log_retrieval = false);
 
     virtual ~AbsorberVmrShape() = default;
 
@@ -62,8 +63,7 @@ public:
     /// N_scaling 
     //-----------------------------------------------------------------------
 
-    virtual blitz::Array<double, 1> shape_scaling() const
-    { return coeff.value(); }
+    virtual blitz::Array<double, 1> shape_scaling() const;
 
     //-----------------------------------------------------------------------
     /// Pressure levels that serve as the grid for the VMR values in
@@ -77,6 +77,7 @@ protected:
 private:
     blitz::Array<double, 1> vmr_base_;
     blitz::Array<double, 2> shape_prof;
+    bool log_retrieval;
 };
 }
 #endif
