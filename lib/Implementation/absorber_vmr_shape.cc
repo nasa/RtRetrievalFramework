@@ -34,10 +34,10 @@ AbsorberVmrShape::AbsorberVmrShape(const blitz::Array<double, 1> VMR_base,
                                    const boost::shared_ptr<Pressure>& Press,
                                    const blitz::Array<bool, 1>& Shape_flag,
                                    const std::string& Gas_name,
-                                   const bool Log_retrieval)
+                                   const bool Log_profiles)
 
 : AbsorberVmrImpBase(Gas_name, Shape_scaling, Shape_flag, Press, false),
-  vmr_base_(VMR_base), shape_prof(Shape_profile), log_retrieval(Log_retrieval)
+  vmr_base_(VMR_base), shape_prof(Shape_profile), log_profiles(Log_profiles)
 {
     if (Shape_profile.cols() != Shape_scaling.rows()) {
         std::stringstream err_msg;
@@ -91,19 +91,26 @@ void AbsorberVmrShape::calc_vmr() const
     for(int lev_idx = 0; lev_idx < press_profile.rows(); ++lev_idx) {
         plist.push_back(press_profile(lev_idx));
 
-        AutoDerivative<double> vmr_val = vmr_base_(lev_idx);
-        for(int shape_idx = 0; shape_idx < coeff.rows(); shape_idx++) {
-            AutoDerivative<double> scaling;
-
-            if (log_retrieval) {
-                scaling = exp(coeff(shape_idx));
-            } else {
-                scaling = coeff(shape_idx);
-            }
-
-            vmr_val += scaling * shape_prof(lev_idx, shape_idx);
+        // If log_profiles is enabled then convert the base VMR into log space
+        // for the combination with the shape profiles which should already be
+        // in log space
+        AutoDerivative<double> vmr_val;
+        if (log_profiles) {
+            vmr_val = log(vmr_base_(lev_idx));
+        } else {
+            vmr_val = vmr_base_(lev_idx);
         }
-        vmrlist.push_back(vmr_val);
+
+        for(int shape_idx = 0; shape_idx < coeff.rows(); shape_idx++) {
+            vmr_val += coeff(shape_idx) * shape_prof(lev_idx, shape_idx);
+        }
+
+        // If log_profiles is enable convert combined VMR value back into linear space
+        if (log_profiles) {
+            vmrlist.push_back(exp(vmr_val));
+        } else {
+            vmrlist.push_back(vmr_val);
+        }
     }
 
     typedef LinearInterpolate<AutoDerivative<double>, AutoDerivative<double> > lin_type;
@@ -111,21 +118,10 @@ void AbsorberVmrShape::calc_vmr() const
     vmr = boost::bind(&lin_type::operator(), lin, _1);
 }
 
-Array<double, 1> AbsorberVmrShape::shape_scaling() const
-{ 
-    Array<double, 1> res(coeff.rows());
-    if (log_retrieval) {
-        res = exp(coeff.value());
-    } else {
-        res = coeff.value();
-    }
-    return res;
-}
-
 // See base class for description of this function.
 std::string AbsorberVmrShape::state_vector_name_i(int i) const
 {
-    return gas_name() + " VMR Shape Scaling " + (log_retrieval ? "Log" : "Linear") + " #" +
+    return gas_name() + " VMR Shape Scaling " + (log_profiles ? "Log" : "Linear") + " Profiles #" +
            boost::lexical_cast<std::string>(i + 1);
 }
 
@@ -149,6 +145,6 @@ void AbsorberVmrShape::print(std::ostream& Os) const
     Os << "  Retrieval Flag:\n";
     opad << used_flag << "\n";
     opad.strict_sync();
-    Os << "  Log Retrieval: " << (log_retrieval ? "True" : "False") << "\n";
+    Os << "  Log Profiles: " << (log_profiles ? "True" : "False") << "\n";
     opad.strict_sync();
 }

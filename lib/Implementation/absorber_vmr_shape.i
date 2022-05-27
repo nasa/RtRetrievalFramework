@@ -17,7 +17,7 @@ public:
                      const boost::shared_ptr<Pressure>& Press,
                      const blitz::Array<bool, 1>& Shape_flag,
                      const std::string& Gas_name,
-                     const bool Log_retrieval = false);
+                     const bool Log_profiles = false);
     virtual boost::shared_ptr<AbsorberVmr> clone() const;
     virtual boost::shared_ptr<AbsorberVmr> clone(const boost::shared_ptr<Pressure>& Press) const;
     %python_attribute(sub_state_identifier, std::string);

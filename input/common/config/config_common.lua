@@ -3545,7 +3545,13 @@ function ConfigCommon.absorber_vmr_shape:create_vmr()
    local shape_profiles = Blitz_double_array_2d(num_level, num_shape)
 
    for shape_num=1,num_shape do
-      local ds_name = "Gas/" .. self.name .. "/EOF/shape_" .. shape_num
+      local ds_name
+      if log_retrieval then
+         ds_name = "Gas/" .. self.name .. "/EOF/shape_" .. shape_num
+      else
+         ds_name = "Gas/" .. self.name .. "/EOF/log_shape_" .. shape_num
+      end
+
       local shape_data = shape_file:read_double_1d(ds_name)
       shape_profiles:set(Range(0, shape_data:rows()-1), shape_num-1, shape_data)
    end

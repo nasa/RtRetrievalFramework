@@ -213,7 +213,7 @@ class AbsorberVmrShape(full_physics_swig.absorber_vmr_imp_base.AbsorberVmrImpBas
     def _v_shape_scaling(self):
         """
 
-        Array< double, 1 > AbsorberVmrShape::shape_scaling() const
+        virtual blitz::Array<double, 1> FullPhysics::AbsorberVmrShape::shape_scaling() const
         Scale factors combined with the shape profiles with dimension:
         N_scaling. 
         """
