@@ -1,5 +1,6 @@
 #include "temperature_level_shape.h"
 
+#include "ostream_pad.h"
 #include "linear_interpolate.h"
 
 #include <boost/bind.hpp>
@@ -32,6 +33,15 @@ TemperatureLevelShape::TemperatureLevelShape(const blitz::Array<double, 1> Temp_
 : temp_base(Temp_base), shape_prof(Shape_profile) 
 {
     init(Shape_scaling, Shape_flag, Press);
+
+    if (Shape_profile.cols() != Shape_scaling.rows()) {
+        std::stringstream err_msg;
+        err_msg << "Number of shape profiles: "
+                << Shape_profile.cols()
+                << " != number of shape scaling values: "
+                << Shape_scaling.rows();
+        throw Exception(err_msg.str());
+    }
 }
 
 //-----------------------------------------------------------------------
@@ -57,6 +67,15 @@ void TemperatureLevelShape::calc_temperature_grid() const
                 << press_profile.rows()
                 << " != size of shape profile levels: "
                 << shape_prof.rows();
+        throw Exception(err_msg.str());
+    }
+
+    if (coeff.rows() != shape_prof.cols()) {
+        std::stringstream err_msg;
+        err_msg << "Number of scaling coefficients: "
+                << coeff.rows()
+                << " != number of profile shapes: "
+                << shape_prof.cols();
         throw Exception(err_msg.str());
     }
 
@@ -93,5 +112,14 @@ boost::shared_ptr<Temperature> TemperatureLevelShape::clone(const boost::shared_
 
 void TemperatureLevelShape::print(std::ostream& Os) const
 {
-    Os << "Temperature Level Shape\n";
+    OstreamPad opad(Os, "    ");
+    Os << "TemperatureLevelShape:\n"
+       << "  Scale factors:\n";
+    opad << shape_scaling() << "\n";
+    opad.strict_sync();
+    Os << "  Shape Profile Dimensions: " << shape_prof.rows() << " x " << shape_prof.cols() << "\n";
+    opad.strict_sync();
+    Os << "  Retrieval Flag:\n";
+    opad << used_flag << "\n";
+    opad.strict_sync();
 }
