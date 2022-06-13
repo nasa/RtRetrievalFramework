@@ -259,6 +259,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(TemperatureLevelOffset);
   REGISTER_LUA_LIST(TemperatureLevelOffsetOutput);
   REGISTER_LUA_LIST(TemperatureLevelShape);
+  REGISTER_LUA_LIST(TemperatureLevelShapeOutput);
   REGISTER_LUA_LIST(TemperatureFixedLevelOutput);
   REGISTER_LUA_LIST(RelativeHumidity);
   REGISTER_LUA_LIST(InitialGuess);
@@ -297,6 +298,7 @@ void RegisterLua::register_lua(lua_State* ls)
   REGISTER_LUA_LIST(AbsorberVmrLevelScaled);
   REGISTER_LUA_LIST(AbsorberVmrLevelScaledOutput);
   REGISTER_LUA_LIST(AbsorberVmrShape);
+  REGISTER_LUA_LIST(AbsorberVmrShapeOutput);
   REGISTER_LUA_LIST(AbscoHdf);
   REGISTER_LUA_LIST(AbsorberAbsco);
   REGISTER_LUA_LIST(AbsorberAbscoOutput);

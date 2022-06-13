@@ -2251,7 +2251,7 @@ function ConfigCommon.temperature_level_shape:create()
 end
 
 function ConfigCommon.temperature_level_shape:register_output(ro)
-   --ro:push_back(TemperatureLevelShapeOutput.create(self.config.temperature))
+   ro:push_back(TemperatureLevelShapeOutput.create(self.config.temperature))
 end
 
 ------------------------------------------------------------
@@ -3576,7 +3576,7 @@ function ConfigCommon.absorber_vmr_shape:create_vmr()
 end
 
 function ConfigCommon.absorber_vmr_shape:register_output(ro)
-   --ro:push_back(AbsorberVmrShapeOutput.create(self.config.temperature))
+   ro:push_back(AbsorberVmrShapeOutput.create(self.vmr))
 end
 
 ------------------------------------------------------------

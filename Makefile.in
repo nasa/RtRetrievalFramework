@@ -1085,6 +1085,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/turn_on_fe_exception.cc \
 	@outsrc@/absorber_vmr_log_level_output.cc \
 	@outsrc@/absorber_vmr_level_scaled_output.cc \
 	@outsrc@/absorber_vmr_met_output.cc \
+	@outsrc@/absorber_vmr_shape_output.cc \
 	@outsrc@/aerosol_aod_output.cc \
 	@outsrc@/aerosol_consolidated_output.cc \
 	@outsrc@/connor_solver_output.cc \
@@ -1095,6 +1096,7 @@ am__libfp_la_SOURCES_DIST = @supportsrc@/turn_on_fe_exception.cc \
 	@outsrc@/level_1b_output.cc @outsrc@/state_vector_output.cc \
 	@outsrc@/temperature_met_output.cc \
 	@outsrc@/temperature_level_offset_output.cc \
+	@outsrc@/temperature_level_shape_output.cc \
 	@outsrc@/aerosol_param_output.cc \
 	@outsrc@/fts_run_log_output.cc \
 	@outsrc@/dispersion_fit_output.cc \
@@ -1398,6 +1400,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-turn_on_fe_exception.lo \
 	@outsrc@/libfp_la-absorber_vmr_log_level_output.lo \
 	@outsrc@/libfp_la-absorber_vmr_level_scaled_output.lo \
 	@outsrc@/libfp_la-absorber_vmr_met_output.lo \
+	@outsrc@/libfp_la-absorber_vmr_shape_output.lo \
 	@outsrc@/libfp_la-aerosol_aod_output.lo \
 	@outsrc@/libfp_la-aerosol_consolidated_output.lo \
 	@outsrc@/libfp_la-connor_solver_output.lo \
@@ -1409,6 +1412,7 @@ am_libfp_la_OBJECTS = @supportsrc@/libfp_la-turn_on_fe_exception.lo \
 	@outsrc@/libfp_la-state_vector_output.lo \
 	@outsrc@/libfp_la-temperature_met_output.lo \
 	@outsrc@/libfp_la-temperature_level_offset_output.lo \
+	@outsrc@/libfp_la-temperature_level_shape_output.lo \
 	@outsrc@/libfp_la-aerosol_param_output.lo \
 	@outsrc@/libfp_la-fts_run_log_output.lo \
 	@outsrc@/libfp_la-dispersion_fit_output.lo \
@@ -2318,6 +2322,7 @@ am__depfiles_remade = @binsrc@/$(DEPDIR)/l2_fp.Po \
 	@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level_scaled_output.Plo \
 	@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_log_level_output.Plo \
 	@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met_output.Plo \
+	@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape_output.Plo \
 	@outsrc@/$(DEPDIR)/libfp_la-aerosol_aod_output.Plo \
 	@outsrc@/$(DEPDIR)/libfp_la-aerosol_consolidated_output.Plo \
 	@outsrc@/$(DEPDIR)/libfp_la-aerosol_param_output.Plo \
@@ -2352,6 +2357,7 @@ am__depfiles_remade = @binsrc@/$(DEPDIR)/l2_fp.Po \
 	@outsrc@/$(DEPDIR)/libfp_la-state_vector_output.Plo \
 	@outsrc@/$(DEPDIR)/libfp_la-stokes_coefficient_fraction_output.Plo \
 	@outsrc@/$(DEPDIR)/libfp_la-temperature_level_offset_output.Plo \
+	@outsrc@/$(DEPDIR)/libfp_la-temperature_level_shape_output.Plo \
 	@outsrc@/$(DEPDIR)/libfp_la-temperature_met_output.Plo \
 	@outsrc@/$(DEPDIR)/libfp_la-zero_offset_waveform_output.Plo \
 	@outsrc@/$(DEPDIR)/oco_forward_model_output_test.Po \
@@ -2957,6 +2963,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@outsrc@/absorber_vmr_log_level_output.h \
 	@outsrc@/absorber_vmr_level_scaled_output.h \
 	@outsrc@/absorber_vmr_met_output.h \
+	@outsrc@/absorber_vmr_shape_output.h \
 	@outsrc@/absorber_absco_output.h @outsrc@/aerosol_aod_output.h \
 	@outsrc@/aerosol_consolidated_output.h \
 	@outsrc@/connor_solver_output.h \
@@ -2967,6 +2974,7 @@ am__fullphysicsinc_HEADERS_DIST = @supportsrc@/generic_object.h \
 	@outsrc@/level_1b_output.h @outsrc@/state_vector_output.h \
 	@outsrc@/temperature_met_output.h \
 	@outsrc@/temperature_level_offset_output.h \
+	@outsrc@/temperature_level_shape_output.h \
 	@outsrc@/aerosol_param_output.h @outsrc@/fts_run_log_output.h \
 	@outsrc@/dispersion_fit_output.h \
 	@outsrc@/source_files_output.h \
@@ -3653,6 +3661,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@outsrc@/absorber_vmr_log_level_output.h \
 	@outsrc@/absorber_vmr_level_scaled_output.h \
 	@outsrc@/absorber_vmr_met_output.h \
+	@outsrc@/absorber_vmr_shape_output.h \
 	@outsrc@/absorber_absco_output.h @outsrc@/aerosol_aod_output.h \
 	@outsrc@/aerosol_consolidated_output.h \
 	@outsrc@/connor_solver_output.h \
@@ -3663,6 +3672,7 @@ fullphysicsinc_HEADERS = @supportsrc@/generic_object.h \
 	@outsrc@/level_1b_output.h @outsrc@/state_vector_output.h \
 	@outsrc@/temperature_met_output.h \
 	@outsrc@/temperature_level_offset_output.h \
+	@outsrc@/temperature_level_shape_output.h \
 	@outsrc@/aerosol_param_output.h @outsrc@/fts_run_log_output.h \
 	@outsrc@/dispersion_fit_output.h \
 	@outsrc@/source_files_output.h \
@@ -4434,6 +4444,7 @@ libfp_la_SOURCES = @supportsrc@/turn_on_fe_exception.cc \
 	@outsrc@/absorber_vmr_log_level_output.cc \
 	@outsrc@/absorber_vmr_level_scaled_output.cc \
 	@outsrc@/absorber_vmr_met_output.cc \
+	@outsrc@/absorber_vmr_shape_output.cc \
 	@outsrc@/aerosol_aod_output.cc \
 	@outsrc@/aerosol_consolidated_output.cc \
 	@outsrc@/connor_solver_output.cc \
@@ -4444,6 +4455,7 @@ libfp_la_SOURCES = @supportsrc@/turn_on_fe_exception.cc \
 	@outsrc@/level_1b_output.cc @outsrc@/state_vector_output.cc \
 	@outsrc@/temperature_met_output.cc \
 	@outsrc@/temperature_level_offset_output.cc \
+	@outsrc@/temperature_level_shape_output.cc \
 	@outsrc@/aerosol_param_output.cc \
 	@outsrc@/fts_run_log_output.cc \
 	@outsrc@/dispersion_fit_output.cc \
@@ -6297,6 +6309,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-absorber_vmr_met_output.lo:  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/libfp_la-absorber_vmr_shape_output.lo:  \
+	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-aerosol_aod_output.lo: @outsrc@/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-aerosol_consolidated_output.lo:  \
@@ -6318,6 +6332,8 @@ _swig_wrap.la: $(_swig_wrap_la_OBJECTS) $(_swig_wrap_la_DEPENDENCIES) $(EXTRA__s
 @outsrc@/libfp_la-temperature_met_output.lo: @outsrc@/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-temperature_level_offset_output.lo:  \
+	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
+@outsrc@/libfp_la-temperature_level_shape_output.lo:  \
 	@outsrc@/$(am__dirstamp) @outsrc@/$(DEPDIR)/$(am__dirstamp)
 @outsrc@/libfp_la-aerosol_param_output.lo: @outsrc@/$(am__dirstamp) \
 	@outsrc@/$(DEPDIR)/$(am__dirstamp)
@@ -7694,6 +7710,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level_scaled_output.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_log_level_output.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met_output.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape_output.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-aerosol_aod_output.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-aerosol_consolidated_output.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-aerosol_param_output.Plo@am__quote@ # am--include-marker
@@ -7728,6 +7745,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-state_vector_output.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-stokes_coefficient_fraction_output.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-temperature_level_offset_output.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-temperature_level_shape_output.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-temperature_met_output.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/libfp_la-zero_offset_waveform_output.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@@outsrc@/$(DEPDIR)/oco_forward_model_output_test.Po@am__quote@ # am--include-marker
@@ -12127,6 +12145,13 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-absorber_vmr_met_output.lo `test -f '@outsrc@/absorber_vmr_met_output.cc' || echo '$(srcdir)/'`@outsrc@/absorber_vmr_met_output.cc
 
+@outsrc@/libfp_la-absorber_vmr_shape_output.lo: @outsrc@/absorber_vmr_shape_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-absorber_vmr_shape_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape_output.Tpo -c -o @outsrc@/libfp_la-absorber_vmr_shape_output.lo `test -f '@outsrc@/absorber_vmr_shape_output.cc' || echo '$(srcdir)/'`@outsrc@/absorber_vmr_shape_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape_output.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/absorber_vmr_shape_output.cc' object='@outsrc@/libfp_la-absorber_vmr_shape_output.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-absorber_vmr_shape_output.lo `test -f '@outsrc@/absorber_vmr_shape_output.cc' || echo '$(srcdir)/'`@outsrc@/absorber_vmr_shape_output.cc
+
 @outsrc@/libfp_la-aerosol_aod_output.lo: @outsrc@/aerosol_aod_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-aerosol_aod_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-aerosol_aod_output.Tpo -c -o @outsrc@/libfp_la-aerosol_aod_output.lo `test -f '@outsrc@/aerosol_aod_output.cc' || echo '$(srcdir)/'`@outsrc@/aerosol_aod_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-aerosol_aod_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-aerosol_aod_output.Plo
@@ -12203,6 +12228,13 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/temperature_level_offset_output.cc' object='@outsrc@/libfp_la-temperature_level_offset_output.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-temperature_level_offset_output.lo `test -f '@outsrc@/temperature_level_offset_output.cc' || echo '$(srcdir)/'`@outsrc@/temperature_level_offset_output.cc
+
+@outsrc@/libfp_la-temperature_level_shape_output.lo: @outsrc@/temperature_level_shape_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-temperature_level_shape_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-temperature_level_shape_output.Tpo -c -o @outsrc@/libfp_la-temperature_level_shape_output.lo `test -f '@outsrc@/temperature_level_shape_output.cc' || echo '$(srcdir)/'`@outsrc@/temperature_level_shape_output.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) @outsrc@/$(DEPDIR)/libfp_la-temperature_level_shape_output.Tpo @outsrc@/$(DEPDIR)/libfp_la-temperature_level_shape_output.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='@outsrc@/temperature_level_shape_output.cc' object='@outsrc@/libfp_la-temperature_level_shape_output.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o @outsrc@/libfp_la-temperature_level_shape_output.lo `test -f '@outsrc@/temperature_level_shape_output.cc' || echo '$(srcdir)/'`@outsrc@/temperature_level_shape_output.cc
 
 @outsrc@/libfp_la-aerosol_param_output.lo: @outsrc@/aerosol_param_output.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libfp_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT @outsrc@/libfp_la-aerosol_param_output.lo -MD -MP -MF @outsrc@/$(DEPDIR)/libfp_la-aerosol_param_output.Tpo -c -o @outsrc@/libfp_la-aerosol_param_output.lo `test -f '@outsrc@/aerosol_param_output.cc' || echo '$(srcdir)/'`@outsrc@/aerosol_param_output.cc
@@ -13452,6 +13484,7 @@ distclean: distclean-am
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level_scaled_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_log_level_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met_output.Plo
+	-rm -f @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-aerosol_aod_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-aerosol_consolidated_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-aerosol_param_output.Plo
@@ -13486,6 +13519,7 @@ distclean: distclean-am
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-state_vector_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-stokes_coefficient_fraction_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-temperature_level_offset_output.Plo
+	-rm -f @outsrc@/$(DEPDIR)/libfp_la-temperature_level_shape_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-temperature_met_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-zero_offset_waveform_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/oco_forward_model_output_test.Po
@@ -14221,6 +14255,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_level_scaled_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_log_level_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_met_output.Plo
+	-rm -f @outsrc@/$(DEPDIR)/libfp_la-absorber_vmr_shape_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-aerosol_aod_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-aerosol_consolidated_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-aerosol_param_output.Plo
@@ -14255,6 +14290,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-state_vector_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-stokes_coefficient_fraction_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-temperature_level_offset_output.Plo
+	-rm -f @outsrc@/$(DEPDIR)/libfp_la-temperature_level_shape_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-temperature_met_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/libfp_la-zero_offset_waveform_output.Plo
 	-rm -f @outsrc@/$(DEPDIR)/oco_forward_model_output_test.Po
