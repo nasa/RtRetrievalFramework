@@ -873,6 +873,10 @@ function ConfigCommon:met_temperature()
    return self.config.met:temperature(self.config.pressure:pressure_level())
 end
 
+function ConfigCommon:met_temperature_full()
+   return self.config.met:temperature()
+end
+
 function ConfigCommon:met_h2o_vmr()
    return self.config.met:vmr("H2O", self.config.pressure:pressure_level())
 end
@@ -2223,7 +2227,14 @@ function ConfigCommon.temperature_level_shape:create()
    if not self.shape_filename then
       print("shape_filename parameter must be defined for temperature_level_shape creator")
    end
-   
+
+   local pressure
+   if self.pressure ~= nil then
+      pressure = self:pressure()
+   else
+      pressure = self.config.pressure
+   end
+ 
    local shape_file = HdfFile(self.shape_filename)
    local shape_profiles = Blitz_double_array_2d(num_level, num_shape)
 
@@ -2236,7 +2247,7 @@ function ConfigCommon.temperature_level_shape:create()
    local shape_flag = self:retrieval_flag()
 
    return TemperatureLevelShape(temp_levels, shape_profiles, shape_scaling,
-                                self.config.pressure, shape_flag)
+                                pressure, shape_flag)
 end
 
 function ConfigCommon.temperature_level_shape:register_output(ro)
