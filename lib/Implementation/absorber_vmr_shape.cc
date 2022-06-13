@@ -129,7 +129,7 @@ boost::shared_ptr<AbsorberVmr> AbsorberVmrShape::clone
 (const boost::shared_ptr<Pressure>& Press) const
 {
     return boost::shared_ptr<AbsorberVmr>
-        (new AbsorberVmrShape(vmr_base_, shape_prof, coeff.value(), Press->clone(), used_flag, gas_name()));
+        (new AbsorberVmrShape(vmr_base_, shape_prof, coeff.value(), Press->clone(), used_flag, gas_name(), log_profiles));
 }
 
 void AbsorberVmrShape::print(std::ostream& Os) const

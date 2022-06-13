@@ -30,7 +30,7 @@ public:
 
     virtual boost::shared_ptr<AbsorberVmr> clone() const
     {
-        return clone(boost::shared_ptr<Pressure>());
+        return clone(press);
     }
 
     virtual boost::shared_ptr<AbsorberVmr> clone(const boost::shared_ptr<Pressure>& Press) const;
