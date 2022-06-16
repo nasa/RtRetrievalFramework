@@ -36,8 +36,6 @@ void AbsorberVmrShapeOutput::register_output_apriori(const boost::shared_ptr<Out
 
 void AbsorberVmrShapeOutput::register_output(const boost::shared_ptr<Output>& out) const
 {
-    std::cerr << "Here register_output" << std::endl;
-
     std::string gname = a->gas_name();
     boost::to_lower(gname);
     out->register_data_source("/RetrievalResults/" + gname + "_shape_scale_factor",

@@ -2,6 +2,7 @@
 
 #include "ostream_pad.h"
 #include "linear_interpolate.h"
+#include "logger.h"
 
 #include <boost/bind.hpp>
 #include <boost/lexical_cast.hpp>
@@ -106,8 +107,17 @@ std::string TemperatureLevelShape::state_vector_name_i(int i) const
 
 boost::shared_ptr<Temperature> TemperatureLevelShape::clone(const boost::shared_ptr<Pressure>& Press) const
 {
+    // Ignore the passed Press if the internally kept pressure might be on a different number of levels
+    // The VMR is computed through interpolation to a destination pressure grid, so this should be fine
+    boost::shared_ptr<Pressure> clone_press;
+    if (Press->number_level() == press->number_level()) {
+        clone_press = Press;
+    } else {
+        Logger::warning() << "TemperatureLevelShape::clone() not using passed pressure object because number of levels: " << Press->number_level() << " does not match number of levels of internal pressure object: " << press->number_level() << '\n'; 
+        clone_press = press;
+    }
     return boost::shared_ptr<TemperatureLevelShape>
-        (new TemperatureLevelShape(temp_base, shape_prof, coeff.value(), Press->clone(), used_flag));
+        (new TemperatureLevelShape(temp_base, shape_prof, coeff.value(), clone_press->clone(), used_flag));
 }
 
 void TemperatureLevelShape::print(std::ostream& Os) const
