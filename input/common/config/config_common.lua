@@ -3506,6 +3506,13 @@ end
 function ConfigCommon.absorber_vmr_shape:covariance_v()
    num_shape = self.num_profiles
 
+   local log_retrieval
+   if self.log_retrieval == nil then
+      log_retrieval = false
+   else
+      log_retrieval = self.log_retrieval
+   end
+
    local cov
 
    if self.covariance ~= nil then
@@ -3517,7 +3524,13 @@ function ConfigCommon.absorber_vmr_shape:covariance_v()
       cov:set(Range(0, num_shape-1), Range(0, num_shape-1), 0.0)
    
       for shape_num=1,num_shape do
-         local ds_name = "Gas/" .. self.name .. "/EOF/shape_" .. shape_num .. "_uncertainty"
+         local ds_name 
+         if log_retrieval then
+            ds_name = "Gas/" .. self.name .. "/EOF/log_shape_" .. shape_num .. "_uncertainty"
+         else
+            ds_name = "Gas/" .. self.name .. "/EOF/shape_" .. shape_num .. "_uncertainty"
+         end
+
          cov:set(shape_num-1, shape_num-1, shape_file:read_double_scalar(ds_name))
       end
    end
