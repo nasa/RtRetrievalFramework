@@ -257,7 +257,7 @@ $(includedir)/bzlib.h: $(thirdpartysrc)/$(BZLIB_NAME).tar.gz
 # we pass the option threading=single to turn that off. If we ever do
 # need it, we can change this option.
 
-BOOST_NAME = boost_1_59_0
+BOOST_NAME = boost_1_75_0
 
 # Select one of the files installed. We use the timestamp on this to
 # determine if we already have installed boost, or if we need to. Nothing
@@ -270,19 +270,36 @@ $(BOOST_TARGET): $(thirdpartysrc)/$(BOOST_NAME).tar.gz $(BZLIB_TARGET)
 	@echo "*************************** Building BOOST"
 	${AMTAR} xzf $<
 	cd $(BOOST_NAME) && \
-        ./bootstrap.sh --prefix="$(prefix)" \
-           --with-libraries=date_time,regex,iostreams,filesystem && \
-        echo "using gcc : : $(CXX) ;" > tools/build/src/user-config.jam && \
-        echo "using darwin : : $(CXX) ;" >> tools/build/src/user-config.jam && \
-        ./bjam install threading=single link=static,shared cxxflags="${BZLIB_CPPFLAGS}" linkflags="${BZLIB_LDFLAGS}" && exit 0; exit 1
+        ./bootstrap.sh --prefix="$(DESTDIR)$(prefix)" $(BOOST_ICU_FLAG) --without-libraries=python --with-toolset=gcc && \
+        ./b2 --ignore-site-config variant=release threading=multi \
+              address-model=64 architecture=x86 binary-format=elf abi=sysv \
+              runtime-link=shared link=shared toolset=gcc $(BOOST_ICU_FLAG2) \
+              cxxflags="-I$(DESTDIR)$(includedir)" \
+              linkflags="-L$(DESTDIR)$(libdir)" --layout=system install \
+              && exit 0; exit 1
 # On mac, the full name of the library isn't put into the installed library.
 # This command will fail on linux, which is fine. We just ignore failure.
-	-install_name_tool -id ${prefix}/lib/libboost_regex.dylib ${prefix}/lib/libboost_regex.dylib
+	-install_name_tool -id ${prefix}/lib/libboost_chrono.dylib ${prefix}/lib/libboost_chrono.dylib
 	-install_name_tool -id ${prefix}/lib/libboost_date_time.dylib ${prefix}/lib/libboost_date_time.dylib
-	-install_name_tool -id ${prefix}/lib/libboost_iostreams.dylib ${prefix}/lib/libboost_iostreams.dylib
 	-install_name_tool -id ${prefix}/lib/libboost_filesystem.dylib ${prefix}/lib/libboost_filesystem.dylib
-	-install_name_tool -change libboost_system.dylib ${prefix}/lib/libboost_system.dylib ${prefix}/lib/libboost_filesystem.dylib
+	-install_name_tool -id ${prefix}/lib/libboost_iostreams.dylib ${prefix}/lib/libboost_iostreams.dylib
+	-install_name_tool -id ${prefix}/lib/libboost_prg_exec_monitor.dylib ${prefix}/lib/libboost_prg_exec_monitor.dylib
+	-install_name_tool -id ${prefix}/lib/libboost_regex.dylib ${prefix}/lib/libboost_regex.dylib
+	-install_name_tool -id ${prefix}/lib/libboost_serialization.dylib ${prefix}/lib/libboost_serialization.dylib
 	-install_name_tool -id ${prefix}/lib/libboost_system.dylib ${prefix}/lib/libboost_system.dylib
+	-install_name_tool -id ${prefix}/lib/libboost_timer.dylib ${prefix}/lib/libboost_timer.dylib
+	-install_name_tool -id ${prefix}/lib/libboost_unit_test_framework.dylib ${prefix}/lib/libboost_unit_test_framework.dylib
+	-install_name_tool -id ${prefix}/lib/libboost_wserialization.dylib ${prefix}/lib/libboost_wserialization.dylib
+# Also need to fix where we point to some libraries
+	-install_name_tool -change libboost_system.dylib ${prefix}/lib/libboost_system.dylib ${prefix}/lib/libboost_chrono.dylib 
+	-install_name_tool -change libboost_system.dylib ${prefix}/lib/libboost_system.dylib ${prefix}/lib/libboost_filesystem.dylib 
+	-install_name_tool -change libboost_system.dylib ${prefix}/lib/libboost_system.dylib ${prefix}/lib/libboost_prg_exec_monitor.dylib
+	-install_name_tool -change libboost_timer.dylib ${prefix}/lib/libboost_timer.dylib ${prefix}/lib/libboost_prg_exec_monitor.dylib
+	-install_name_tool -change libboost_system.dylib ${prefix}/lib/libboost_system.dylib ${prefix}/lib/libboost_timer.dylib
+	-install_name_tool -change libboost_chrono.dylib ${prefix}/lib/libboost_chrono.dylib ${prefix}/lib/libboost_timer.dylib
+	-install_name_tool -change libboost_system.dylib ${prefix}/lib/libboost_system.dylib ${prefix}/lib/libboost_unit_test_framework.dylib
+	-install_name_tool -change libboost_timer.dylib ${prefix}/lib/libboost_timer.dylib ${prefix}/lib/libboost_unit_test_framework.dylib
+	-install_name_tool -change libboost_serialization.dylib ${prefix}/lib/libboost_serialization.dylib ${prefix}/lib/libboost_wserialization.dylib
 	rm -rf $(BOOST_NAME)
 	touch $(BOOST_TARGET)
 	@echo "========================== Done building BOOST"
