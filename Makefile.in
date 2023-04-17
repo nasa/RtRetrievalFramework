@@ -4672,13 +4672,13 @@ libtwostream_la_FCFLAGS = $(TWOSTREAM_MOD_FLAGS)
 # The --enable-using-memchecker option is used to prevent varioius (harmless)
 # valgrind errors. See http://www.hdfgroup.org/HDF5/faq/valgrind.html for
 # details on this.
-HDF5_NAME = hdf5-1.8.14
+HDF5_NAME = hdf5-1.14.0
 HDF5_TARGET = $(libdir)/libhdf5.la
 
 # ========================================================================
 # Rule to buile gnu parallel.
 #
-PARALLEL_NAME = parallel-20170522
+PARALLEL_NAME = parallel-20210122
 PARALLEL_TARGET = $(bindir)/parallel
 
 # ========================================================================
@@ -4707,14 +4707,14 @@ BOOST_TARGET = $(includedir)/boost/smart_ptr.hpp
 
 # ========================================================================
 # Build blitz++
-BLITZ_NAME = blitz-0.9
+BLITZ_NAME = blitz-1.0.1
 BLITZ_TARGET = $(libdir)/libblitz.la
 
-# This patch is described at 
-# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=455661. This adds some
-# header files that are needed by gcc >= 4.3. These really should have
-# always been there, but the headers in gcc were a bit messy before
-BLITZ_PATCH = blitz++.patch
+# Default blitz build also creates stencil-classes.cc. This is a problem
+# because this depends on python 2 which might not be available. Since this
+# is a static file, just generate this and add as a patch so we don't need
+# to create at run time.
+BLITZ_PATCH = blitz-add-stencil.patch
 
 # ========================================================================
 # Build ncurses. This is only needed by Readline right now.
@@ -4760,7 +4760,7 @@ LUABIND_PATCH3 = luabind_boost_1_57.patch
 
 # ========================================================================
 # Build gsl++
-GSL_NAME = gsl-1.14
+GSL_NAME = gsl-2.6
 GSL_TARGET = $(libdir)/libgsl.la
 @BUILD_NOSE_FALSE@NOSE_BUILD_TARGET = 
 # We need to single thread building of python modules, because otherwise
@@ -15166,7 +15166,7 @@ $(GSL_TARGET): $(thirdpartysrc)/$(GSL_NAME).tar.gz
 	@echo "*************************** Building GSL"
 	${AMTAR} xzf $<
 	cd $(GSL_NAME) \
-        && ./configure --prefix="$(prefix)" \
+        && ./configure --prefix="$(prefix)" --disable-static \
            CXX="$(CXX)" CC="$(CC)" F77="$(F77)" && \
         $(MAKE) && $(MAKE) install && exit 0; exit 1
 	rm -rf $(GSL_NAME)
