@@ -2827,7 +2827,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 # Base version for commlib.
-commonlib_version='11.0.00a'
+commonlib_version='11.0.00a_el8'
 
 
 
