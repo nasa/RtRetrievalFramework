@@ -9,7 +9,7 @@
 # This configure script is free software; the Free Software Foundation
 # gives unlimited permission to copy, distribute and modify it.
 #
-# Copyright 2020, California Institute of Technology.
+# Copyright 2023, California Institute of Technology.
 # ALL RIGHTS RESERVED. U.S. Government Sponsorship acknowledged.
 ## -------------------- ##
 ## M4sh Initialization. ##
@@ -1914,7 +1914,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This configure script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it.
 
-Copyright 2020, California Institute of Technology.
+Copyright 2023, California Institute of Technology.
 ALL RIGHTS RESERVED. U.S. Government Sponsorship acknowledged.
 _ACEOF
   exit
@@ -2827,7 +2827,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 # Base version for commlib.
-commonlib_version='11.0.00a_el8'
+commonlib_version='11.0.00b'
 
 
 
