@@ -295,7 +295,7 @@ HdfFile::HdfFile(const std::string& Fname, Mode M)
 //-----------------------------------------------------------------------
 
 void HdfFile::create_group_if_needed(const std::string& Dataname, 
-				     H5::CommonFG& Parent)
+				     H5::H5Location& Parent)
 {
   size_t i = Dataname.find_first_of('/');
   if(i ==std::string::npos)
@@ -331,7 +331,7 @@ bool HdfFile::is_group(const std::string& Objname) const
 //-----------------------------------------------------------------------
 
 bool HdfFile::is_present(const std::string& Objname, 
-			 const H5::CommonFG& Parent) const
+			 const H5::H5Location& Parent) const
 {
   try {
     H5G_stat_t statbuf;

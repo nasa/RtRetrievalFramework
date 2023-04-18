@@ -51,14 +51,13 @@ void NLLSSolverGSL::solve()
   // for gsl status
   int gsl_status = GSL_FAILURE;
 
-  gsl_vector *g = gsl_vector_calloc(f.p);
   gsl_multifit_fdfsolver *s = gsl_multifit_fdfsolver_alloc (T, f.n, f.p);
 
   int num_step = 0;
 
   blitz::Array<double, 1> X(P->parameters());
 
-  if( s && g )
+  if( s)
     if( !(gsl_status = gsl_multifit_fdfsolver_set(s, &f, GslVector(X).gsl())) ) {
 
       // The following three lines are only for recording purpose.
@@ -71,10 +70,9 @@ void NLLSSolverGSL::solve()
       do {
         num_step++;
         if( (gsl_status = gsl_multifit_fdfsolver_iterate(s)) ) break;
-        if( (gsl_status = gsl_multifit_gradient(s->J, s->f, g)) ) break;
         gsl_status = gsl_multifit_test_delta(s->dx, s->x, dX_tol_abs, dX_tol_rel);
         if( gsl_status == GSL_CONTINUE )
-          gsl_status = gsl_multifit_test_gradient(g, G_tol_abs);
+          gsl_status = gsl_multifit_test_gradient(s->g, G_tol_abs);
         if( verbose ) print_state(num_step, s, gsl_status);
 
         // The following three lines are only for recording purpose.
@@ -95,6 +93,5 @@ void NLLSSolverGSL::solve()
   else
     stat = ERROR;
 
-  if( g ) gsl_vector_free(g);
   if( s ) gsl_multifit_fdfsolver_free(s);
 }

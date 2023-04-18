@@ -58,7 +58,7 @@ void TemperatureLevel::calc_temperature_grid() const
 
     typedef LinearInterpolate<AutoDerivative<double>, AutoDerivative<double> > lin_type;
     boost::shared_ptr<lin_type> lin(new lin_type(plist.begin(), plist.end(), tlist.begin()));
-    tgrid = boost::bind(&lin_type::operator(), lin, _1);
+    tgrid = boost::bind(&lin_type::operator(), lin, boost::placeholders::_1);
 }
 
 // See base class for description of this function.

@@ -28,8 +28,10 @@ public:
   {
     int status = fchdir(dirhandle);
     close(dirhandle);
-    if(status != 0)
-      throw Exception("Call to fchdir failed");
+    // Ignore error here, we can't really do anything with a failure
+    // so just ignore
+    //if(status != 0)
+    //  throw Exception("Call to fchdir failed");
   }
 private:
   int dirhandle;
