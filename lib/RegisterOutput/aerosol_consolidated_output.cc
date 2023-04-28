@@ -27,7 +27,7 @@ public:
         Array<double, 2> aer_aod_matrix_(all_aer_names.size(), 4);
         aer_aod_matrix_ = fill_value<double>(); 
 
-        for(int out_aer_idx = 0; out_aer_idx < all_aer_names.size(); out_aer_idx++) {
+        for(int out_aer_idx = 0; out_aer_idx < (int) all_aer_names.size(); out_aer_idx++) {
             auto match_iter = std::find(ret_aer_names.begin(), ret_aer_names.end(), all_aer_names[out_aer_idx]);
 
             if(match_iter != ret_aer_names.end()) {
@@ -53,7 +53,7 @@ public:
         Array<double, 2> aer_param_matrix_(all_aer_names.size(), max_num_param);
         aer_param_matrix_ = fill_value<double>();
 
-        for(int out_aer_idx = 0; out_aer_idx < all_aer_names.size(); out_aer_idx++) {
+        for(int out_aer_idx = 0; out_aer_idx < (int) all_aer_names.size(); out_aer_idx++) {
             auto match_iter = std::find(ret_aer_names.begin(), ret_aer_names.end(), all_aer_names[out_aer_idx]);
 
             if(match_iter != ret_aer_names.end()) {
@@ -74,7 +74,7 @@ public:
         Array<double, 2> aer_param_uncert_matrix_(all_aer_names.size(), max_num_param);
         aer_param_uncert_matrix_ = fill_value<double>();
 
-        for(int out_aer_idx = 0; out_aer_idx < all_aer_names.size(); out_aer_idx++) {
+        for(int out_aer_idx = 0; out_aer_idx < (int) all_aer_names.size(); out_aer_idx++) {
             auto match_iter = std::find(ret_aer_names.begin(), ret_aer_names.end(), all_aer_names[out_aer_idx]);
 
             if(match_iter != ret_aer_names.end()) {
@@ -97,7 +97,7 @@ public:
     blitz::Array<std::string, 1> all_aerosol_names() const { 
         // Convert to blitz array for output
         blitz::Array<std::string, 1> out_aer_names(all_aer_names.size());
-        for(int i; i < all_aer_names.size(); i++)
+        for(int i; i < (int) all_aer_names.size(); i++)
             out_aer_names(i) = all_aer_names[i];
         return out_aer_names;
     }
@@ -116,7 +116,7 @@ private:
 
         // Find the maximum number of parameters and also fill in the model types array
         max_num_param = 0;
-        for(int out_aer_idx = 0; out_aer_idx < all_aer_names.size(); out_aer_idx++) {
+        for(int out_aer_idx = 0; out_aer_idx < (int) all_aer_names.size(); out_aer_idx++) {
             auto match_iter = std::find(ret_aer_names.begin(), ret_aer_names.end(), all_aer_names[out_aer_idx]);
 
             if(match_iter != ret_aer_names.end()) {

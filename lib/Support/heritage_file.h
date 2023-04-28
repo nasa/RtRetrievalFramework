@@ -174,7 +174,7 @@ template<class T> inline T HeritageFile::value(const
   std::string v = get_value_or_exception(k, Block_index);
   try {
     return boost::lexical_cast<T>(v);
-  } catch(boost::bad_lexical_cast) {
+  } catch(const boost::bad_lexical_cast&) {
     Exception e(
 "Error reading file. The value for " + Keyword + " is not\n"
 "the expected type\n");
@@ -196,7 +196,7 @@ HeritageFile::value<Time>(const
   std::string s = get_value_or_exception(k, Block_index);
   try {
     return Time::parse_time(s);
-  } catch(boost::bad_lexical_cast) {
+  } catch(const boost::bad_lexical_cast&) {
     Exception e(
 "Error reading file. The value for " + Keyword + " is not\n"
 "a datetime\n");
@@ -240,7 +240,7 @@ std::vector<double> HeritageFile::value<std::vector<double> >
   try {
     for(; i != iend; ++i)
       res.push_back(boost::lexical_cast<double>(*i));
-  } catch(boost::bad_lexical_cast) {
+  } catch(const boost::bad_lexical_cast&) {
     Exception e(
 "Error reading file. The value for " + Keyword + " is not\n"
 "the expected type\n");
@@ -285,7 +285,7 @@ std::vector<int> HeritageFile::value<std::vector<int> >
 	throw e;
       }
     }
-  } catch(boost::bad_lexical_cast) {
+  } catch(const boost::bad_lexical_cast&) {
     Exception e("Error reading file. The value for " + Keyword + " is not\n"
 		"the expected type\n");
     e << "File: " << keyword_to_file.find(k)->second << "\n"

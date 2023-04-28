@@ -26,7 +26,8 @@ public:
   }
   ~DirChange() 
   {
-    int status = fchdir(dirhandle);
+    //int status = fchdir(dirhandle);
+    fchdir(dirhandle);
     close(dirhandle);
     // Ignore error here, we can't really do anything with a failure
     // so just ignore

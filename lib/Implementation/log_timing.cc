@@ -57,7 +57,7 @@ LogTiming::LogTiming()
 	getline(proc, ln);
       speed_mhz = boost::lexical_cast<double>(m[1]);
     }
-  } catch(std::ifstream::failure e) {
+  } catch(const std::ifstream::failure& e) {
     // Clear any partial initialization.
     cpu_model = "";
     speed_mhz = -1;
@@ -127,7 +127,7 @@ void LogTiming::write_to_log(const std::string& Prefix) const
 	getline(proc, ln);
       t = boost::lexical_cast<double>(m[1]);
       log << "Resident memory current: " << (t / 1024) << " MB\n";
-  } catch(std::ifstream::failure e) {
+  } catch(const std::ifstream::failure& e) {
     log << "Memory usage information isn't available on this platform\n"
 	<< "(Available on Linux only)\n";
   } 
