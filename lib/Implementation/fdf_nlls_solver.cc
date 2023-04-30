@@ -40,6 +40,8 @@ int fdf_nlls_solver(
       do {
         (*num_iter)++;
         if( (status = gsl_multifit_fdfsolver_iterate(s)) ) break;
+        int info=0;
+        status = gsl_multifit_fdfsolver_test(s, 1.0e-4, 1.0e-4, 1.0e-4, &info);
         status = gsl_multifit_test_delta(s->dx, s->x, dx_epsabs, dx_epsrel);
         if( status == GSL_CONTINUE )
           status = gsl_multifit_test_gradient(s->g, g_epsabs);

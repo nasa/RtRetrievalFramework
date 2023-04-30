@@ -149,12 +149,14 @@ class NLLSSolverGSL(full_physics_swig.nlls_solver.NLLSSolver):
         """
 
         FullPhysics::NLLSSolverGSL::NLLSSolverGSL(int max_cost_function_calls, double dx_tol_abs, double dx_tol_rel,
-        double g_tol_abs, const boost::shared_ptr< NLLSProblem > &p, bool
+        double g_tol, const boost::shared_ptr< NLLSProblem > &p, bool
         vrbs=false)
         Initializes the solver.
 
         Parameters:
         -----------
+
+        p:  Input value
 
         max_cost_function_calls:  Input value
 
@@ -162,9 +164,7 @@ class NLLSSolverGSL(full_physics_swig.nlls_solver.NLLSSolver):
 
         dx_tol_rel:  Input value
 
-        g_tol_abs:  Input value
-
-        p:  Input value
+        g_tol:  Input value
 
         vrbs:  Input value 
         """
