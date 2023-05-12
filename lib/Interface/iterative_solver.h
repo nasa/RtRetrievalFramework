@@ -48,6 +48,7 @@ public:
   enum status_t {
     SUCCESS,  ///< solve method called and a solution found
     CONTINUE, ///< solve method called but did not converge to a solution
+    STALLED,  ///< solve method was called but stalled
     ERROR,    ///< solve method called but an error was encountered
     UNTRIED   ///< solve method not called yet
   };

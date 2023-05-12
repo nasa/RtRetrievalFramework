@@ -186,7 +186,7 @@ void GosatNoiseModel::read_hdf_noise_file(const HdfFile& Noise_file,
 	Noise_file.read_field<double, 2>("SoundingSpectra/noise_" + Hdf_band_name[spec_idx] + "_l1b", 
 					 TinyVector<int, 2>(frame_idx, snd_idx),
 					 TinyVector<int, 2>(1, 1))(0, 0);
-    } catch(Exception not_found_error ) {
+    } catch(const Exception& not_found_error ) {
       band_noise_val(spec_idx) =
 	Noise_file.read_field<double, 2>("SoundingSpectra/noise_" + Hdf_band_name[spec_idx], 
 					 TinyVector<int, 2>(frame_idx, snd_idx),

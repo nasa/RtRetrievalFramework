@@ -51,7 +51,7 @@ void AbsorberVmrScaled::calc_vmr() const
     lin_type;
   boost::shared_ptr<lin_type> lin
     (new lin_type(plist.begin(), plist.end(), vlist.begin()));
-  vmr = boost::bind(&lin_type::operator(), lin, _1);
+  vmr = boost::bind(&lin_type::operator(), lin, boost::placeholders::_1);
 }
 
 void AbsorberVmrScaled::print(std::ostream& Os) const

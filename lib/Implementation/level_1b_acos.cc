@@ -50,7 +50,7 @@ Level1bAcos::Level1bAcos(const boost::shared_ptr<HdfFile>& Hfile,
 
 void Level1bAcos::initialize()
 {
-  firstIndex i1; secondIndex i2; thirdIndex(i3);
+  firstIndex i1; secondIndex i2; thirdIndex i3;
 //-----------------------------------------------------------------------
 /// Read all of the data we need.
 //-----------------------------------------------------------------------
@@ -88,7 +88,7 @@ void Level1bAcos::initialize()
   try {
     land_frac.reference
       (hfile->read_field<double, 3>("FootprintGeometry/footprint_land_fraction", start, sz));
-  } catch( Exception not_found_error ) {
+  } catch(const Exception& not_found_error ) {
     land_frac.resize(zen.value.shape());
     land_frac = 100.0;
   }
@@ -100,7 +100,7 @@ void Level1bAcos::initialize()
 			      TinyVector<int, 2>(sindex, sounding_number), 
 			      TinyVector<int, 2>(1,1));
     gain_code = ds_gain_codes(0, 0)[0];
-  } catch( Exception not_found_error ) {
+  } catch(const Exception& not_found_error ) {
     gain_code = 'H';
   }    
   is_h_gain_ = (gain_code == 'H');
@@ -112,7 +112,7 @@ void Level1bAcos::initialize()
       (hfile->read_field<double, 3>("FootprintGeometry/footprint_time_tai93",
 				   TinyVector<int, 3>(sindex, 0, 0),
 				    TinyVector<int, 3>(1, 1, 1)));
-  } catch( Exception not_found_error ) {
+  } catch(const Exception& not_found_error ) {
     tm.reference
       (hfile->read_field<double, 3>("FootprintGeometry/footprint_time",
 				    TinyVector<int, 3>(sindex, 0, 0),

@@ -33,10 +33,20 @@ REGISTER_LUA_END()
 
 void print_state( unsigned int iter, gsl_multifit_fdfsolver * s, int status)
 {
-  printf( "iter = %3u;  |f(x)| = %g;  |dx| = %g;  status = %s\n", 
-          iter, gsl_blas_dnrm2(s->f), gsl_blas_dnrm2(s->dx), gsl_strerror(status) );
-  printf("Solver '%s' takes the problem to x\n", gsl_multifit_fdfsolver_name(s));
-  (void) gsl_vector_fprintf(stdout, s->x, "%g");
+  double c = gsl_blas_dnrm2( gsl_multifit_fdfsolver_residual(s) );
+  printf( "Solver '%s';  iter = %3u;  (|f(x)|^2)/2 = %g;  status = %s\n", 
+          gsl_multifit_fdfsolver_name(s), iter, c*c/2.0, gsl_strerror(status) );
+
+  printf( "Where x is\n" );
+  (void) gsl_vector_fprintf(stdout, gsl_multifit_fdfsolver_position(s), "%25.14lf");
+
+//  printf( "The step dx is\n");
+//  (void) gsl_vector_fprintf(stdout, s->dx, "%25.14lf");
+
+  printf( "The gradient g(x) is\n");
+  (void) gsl_vector_fprintf(stdout, s->g, "%25.14lf");
+
+  printf( "\n" );
 }
 
 
@@ -50,51 +60,75 @@ void NLLSSolverGSL::solve()
 
   // for gsl status
   int gsl_status = GSL_FAILURE;
+  int gsl_status_conv = GSL_CONTINUE;
 
-  gsl_vector *g = gsl_vector_calloc(f.p);
   gsl_multifit_fdfsolver *s = gsl_multifit_fdfsolver_alloc (T, f.n, f.p);
-
-  int num_step = 0;
 
   blitz::Array<double, 1> X(P->parameters());
 
-  if( s && g )
+  int num_step = 0;
+  stat = UNTRIED;
+  if( s )
     if( !(gsl_status = gsl_multifit_fdfsolver_set(s, &f, GslVector(X).gsl())) ) {
-
-      // The following three lines are only for recording purpose.
-      // They record info at the initial guess (the starting point).
-      //
-      record_cost_at_accepted_point(P->cost());
-      record_accepted_point(P->parameters());
-      record_gradient_at_accepted_point(P->gradient());
-
+      stat = CONTINUE;
       do {
         num_step++;
-        if( (gsl_status = gsl_multifit_fdfsolver_iterate(s)) ) break;
-        if( (gsl_status = gsl_multifit_gradient(s->J, s->f, g)) ) break;
-        gsl_status = gsl_multifit_test_delta(s->dx, s->x, dX_tol_abs, dX_tol_rel);
-        if( gsl_status == GSL_CONTINUE )
-          gsl_status = gsl_multifit_test_gradient(g, G_tol_abs);
-        if( verbose ) print_state(num_step, s, gsl_status);
 
         // The following three lines are only for recording purpose.
+        // Info at the initial guess (the starting point) is also 
+        // recorded here.
         //
         record_cost_at_accepted_point(P->cost());
         record_accepted_point(P->parameters());
         record_gradient_at_accepted_point(P->gradient());
 
-      } while (gsl_status == GSL_CONTINUE && P->num_cost_evaluations() < max_cost_f_calls);
+        // A return status of GSL_ENOPROG by the following function
+        // does not suggest convergence, and it only means that the
+        // function call did not encounter an error.  However, a
+        // return status of GSL_ENOPROG means that the function call
+        // did not make any progress.  Stalling can happen at a true
+        // minimum or some other reason.
+        //
+        gsl_status = gsl_multifit_fdfsolver_iterate(s);
+        if( (gsl_status != GSL_SUCCESS) && (gsl_status != GSL_ENOPROG) ) {
+          stat = ERROR;
+          break;
+        }
+
+        // According to my test (02/11/2018), gsl_multifit_fdfsolver_test
+        // does not work correctly; however, it is necessary to call it 
+        // to get the gradient calculated.
+        //
+        int info=0;
+        gsl_status_conv = gsl_multifit_fdfsolver_test(s, 1.0e-4, 1.0e-4, 1.0e-4, &info);
+        //
+        gsl_status_conv = gsl_multifit_test_delta(s->dx, s->x, Dx_tol_abs, Dx_tol_rel);
+        if( gsl_status_conv == GSL_CONTINUE )
+          gsl_status_conv = gsl_multifit_test_gradient(s->g, G_tol);
+
+        if( gsl_status_conv == GSL_SUCCESS ) {
+          stat = SUCCESS;
+          break;
+        }
+
+        if(gsl_status == GSL_ENOPROG) {
+          stat = STALLED;
+          break;
+        }
+
+        if( verbose ) print_state(num_step, s, gsl_status_conv);
+
+      } while (gsl_status_conv == GSL_CONTINUE && P->num_cost_evaluations() < max_cost_f_calls);
     }
 
-  if( verbose ) printf( "Final GSL message:  %s \n", gsl_strerror(gsl_status) );
+  // The following three lines are only for recording purpose.
+  //
+  record_cost_at_accepted_point(P->cost());
+  record_accepted_point(P->parameters());
+  record_gradient_at_accepted_point(P->gradient());
 
-  if( gsl_status == GSL_SUCCESS )
-    stat = SUCCESS;
-  else if( gsl_status == GSL_CONTINUE )
-    stat = CONTINUE;
-  else
-    stat = ERROR;
+  if( verbose && (stat != CONTINUE) )
+    print_state( num_step, s, ((stat == ERROR)?gsl_status:gsl_status_conv) );
 
-  if( g ) gsl_vector_free(g);
   if( s ) gsl_multifit_fdfsolver_free(s);
 }

@@ -1,6 +1,6 @@
 # When we do a * generalize_inverse(a) with GSL, the first element is nowhere
 # near 1.0.
-113 x 113
+(0,112) x (0,112)
 [  2.06614e-12         0         0         0         0         0         0 
           0         0         0         0         0         0         0 
           0         0         0         0         0         0         0 
@@ -1924,7 +1924,7 @@
        0.25 ]
 
 # Cholesky decomposition with GSL does not appear to work here.
-113 x 113
+(0,112) x (0,112)
 [ 2.06614e-12 -7.95601e-13         0         0         0         0         0 
           0         0         0         0         0         0         0 
           0         0         0         0         0         0         0 
@@ -3849,7 +3849,7 @@
 
 
 # Edwins example in l2_20100207003807.log. Matrix he used for cholesky decomp
-112 x 112
+(0,111) x (0,111)
 [ 2.06613697505131e-12 -7.95601215117236e-13         0         0         0         0         0 
           0         0         0         0         0         0         0 
           0         0         0         0         0         0         0 
@@ -5756,7 +5756,7 @@
   ]
 
 # Results he got
-112 x 112
+(0,111) x (0,111)
 [ 2.06613697505131e-12         0         0         0         0         0         0 
           0         0         0         0         0         0         0 
           0         0         0         0         0         0         0 

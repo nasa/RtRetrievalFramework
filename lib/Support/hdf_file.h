@@ -159,13 +159,13 @@ private:
   std::string fname;
   Mode mode_;
   void create_group_if_needed(const std::string& Dataname, 
-			      H5::CommonFG& Parent);
+			      H5::H5Location& Parent);
   H5::Attribute open_attribute(const std::string& Aname) const;
   H5::Attribute create_attribute(const std::string& Aname, 
 	 const H5::DataSpace& Ds, const H5::DataType& P);
   bool is_group(const std::string& Objname) const;
   bool is_present(const std::string& Objname, 
-		  const H5::CommonFG& Parent) const;
+		  const H5::H5Location& Parent) const;
   void write_type(const std::string& Dataname, const H5::DataType& P);
 };
 
