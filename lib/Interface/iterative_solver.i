@@ -11,7 +11,7 @@
 namespace FullPhysics {
 class IterativeSolver : public GenericObject {
 public:
-  enum status_t {SUCCESS, CONTINUE, ERROR, UNTRIED};
+  enum status_t {SUCCESS, CONTINUE, STALLED, ERROR, UNTRIED};
   IterativeSolver(int max_cost_function_calls, 
                   double dx_tol_abs, double dx_tol_rel, bool vrbs);
   virtual ~IterativeSolver();

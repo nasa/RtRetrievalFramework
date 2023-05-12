@@ -6664,6 +6664,7 @@ SWIG_init(void) {
   
   SWIG_Python_SetConstant(d, "IterativeSolver_SUCCESS",SWIG_From_int(static_cast< int >(FullPhysics::IterativeSolver::SUCCESS)));
   SWIG_Python_SetConstant(d, "IterativeSolver_CONTINUE",SWIG_From_int(static_cast< int >(FullPhysics::IterativeSolver::CONTINUE)));
+  SWIG_Python_SetConstant(d, "IterativeSolver_STALLED",SWIG_From_int(static_cast< int >(FullPhysics::IterativeSolver::STALLED)));
   SWIG_Python_SetConstant(d, "IterativeSolver_ERROR",SWIG_From_int(static_cast< int >(FullPhysics::IterativeSolver::ERROR)));
   SWIG_Python_SetConstant(d, "IterativeSolver_UNTRIED",SWIG_From_int(static_cast< int >(FullPhysics::IterativeSolver::UNTRIED)));
 #if PY_VERSION_HEX >= 0x03000000

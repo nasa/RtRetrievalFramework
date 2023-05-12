@@ -30,7 +30,7 @@ SpectrallyResolvedNoise::SpectrallyResolvedNoise(boost::shared_ptr<NoiseModel> B
 //-----------------------------------------------------------------------
 
 void SpectrallyResolvedNoise::set_full_noise_scaling(int Spec_index, const blitz::Array<double, 1> Noise_scaling) {
-  if(band_noise_coeffs_.size() <= Spec_index) {
+  if((int) band_noise_coeffs_.size() <= Spec_index) {
     band_noise_coeffs_.resize(Spec_index+1);
     band_single_value_.resize(Spec_index+1);
   }
@@ -44,7 +44,7 @@ void SpectrallyResolvedNoise::set_full_noise_scaling(int Spec_index, const blitz
 //-----------------------------------------------------------------------
 
 void SpectrallyResolvedNoise::set_single_noise_scaling(int Spec_index, double Noise_scaling) {
-  if(band_noise_coeffs_.size() <= Spec_index) {
+  if((int) band_noise_coeffs_.size() <= Spec_index) {
     band_noise_coeffs_.resize(Spec_index+1);
     band_single_value_.resize(Spec_index+1);
   }
@@ -61,7 +61,7 @@ void SpectrallyResolvedNoise::set_single_noise_scaling(int Spec_index, double No
 
 blitz::Array<double, 1> SpectrallyResolvedNoise::uncertainty(int Spec_index, const blitz::Array<double, 1>& Radiance) const {
   Array<double, 1> uncert = base_model_->uncertainty(Spec_index, Radiance);
-  if (band_noise_coeffs_.size() <= Spec_index or band_noise_coeffs_[Spec_index].rows() == 0)
+  if ((int) band_noise_coeffs_.size() <= Spec_index or band_noise_coeffs_[Spec_index].rows() == 0)
     return uncert;
 
   Range all = Range::all(); 

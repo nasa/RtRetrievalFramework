@@ -1,6 +1,6 @@
 # Derived from NCEP_20040721_46N_090W.mod
 # Latitude: 45.945
-24 x 5
+(0,23) x (0,4)
 # Presssure, Temperature, Height, Molecular Weight, H20 VMR
 [
 1.000e+03    300.933      0.029    28.9640    3.401e-02 

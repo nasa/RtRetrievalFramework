@@ -1,0 +1,292 @@
+diff -Naur luabind-0.9.1/luabind/adopt_policy.hpp luabind-0.9.1-new/luabind/adopt_policy.hpp
+--- luabind-0.9.1/luabind/adopt_policy.hpp	2023-04-17 15:41:10.259849577 -0700
++++ luabind-0.9.1-new/luabind/adopt_policy.hpp	2023-04-17 17:44:24.966338165 -0700
+@@ -92,7 +92,7 @@
+     template <class T>
+     struct pointer_or_default<void, T>
+     {
+-        typedef std::auto_ptr<T> type;
++        typedef std::unique_ptr<T> type;
+     };
+ 
+ 	template <class Pointer>
+diff -Naur luabind-0.9.1/luabind/class.hpp luabind-0.9.1-new/luabind/class.hpp
+--- luabind-0.9.1/luabind/class.hpp	2023-04-17 15:41:10.263849588 -0700
++++ luabind-0.9.1-new/luabind/class.hpp	2023-04-17 18:07:41.768552202 -0700
+@@ -75,7 +75,7 @@
+ #include <vector>
+ #include <cassert>
+ 
+-#include <boost/bind.hpp>
++#include <boost/bind/bind.hpp>
+ #include <boost/preprocessor/repetition/enum_params.hpp>
+ #include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
+ #include <boost/preprocessor/repetition/repeat.hpp>
+@@ -335,7 +335,7 @@
+         template <class T>
+         struct default_pointer<null_type, T>
+         {
+-            typedef std::auto_ptr<T> type;
++            typedef std::unique_ptr<T> type;
+         };
+ 
+         template <class Class, class Pointer, class Signature, class Policies>
+diff -Naur luabind-0.9.1/luabind/detail/call_function.hpp luabind-0.9.1-new/luabind/detail/call_function.hpp
+--- luabind-0.9.1/luabind/detail/call_function.hpp	2023-04-17 15:41:10.274849618 -0700
++++ luabind-0.9.1-new/luabind/detail/call_function.hpp	2023-04-17 21:25:43.832616289 -0700
+@@ -79,7 +79,7 @@
+ 					rhs.m_called = true;
+ 				}
+ 
+-				~proxy_function_caller()
++			        ~proxy_function_caller() noexcept(false)
+ 				{
+ 					if (m_called) return;
+ 
+diff -Naur luabind-0.9.1/luabind/detail/constructor.hpp luabind-0.9.1-new/luabind/detail/constructor.hpp
+--- luabind-0.9.1/luabind/detail/constructor.hpp	2023-04-17 15:41:10.301849692 -0700
++++ luabind-0.9.1-new/luabind/detail/constructor.hpp	2023-04-17 21:18:37.427406750 -0700
+@@ -45,7 +45,7 @@
+     {
+         object_rep* self = touserdata<object_rep>(self_);
+ 
+-        std::auto_ptr<T> instance(new T);
++        std::unique_ptr<T> instance(new T);
+         inject_backref(self_.interpreter(), instance.get(), instance.get());
+ 
+         void* naked_ptr = instance.get();
+@@ -54,7 +54,7 @@
+         void* storage = self->allocate(sizeof(holder_type));
+ 
+         self->set_instance(new (storage) holder_type(
+-            ptr, registered_class<T>::id, naked_ptr));
++	     std::move(ptr), registered_class<T>::id, naked_ptr));
+     }
+ };
+ 
+@@ -90,7 +90,7 @@
+     {
+         object_rep* self = touserdata<object_rep>(self_);
+ 
+-        std::auto_ptr<T> instance(new T(BOOST_PP_ENUM_PARAMS(N,_)));
++        std::unique_ptr<T> instance(new T(BOOST_PP_ENUM_PARAMS(N,_)));
+         inject_backref(self_.interpreter(), instance.get(), instance.get());
+ 
+         void* naked_ptr = instance.get();
+@@ -99,7 +99,7 @@
+         void* storage = self->allocate(sizeof(holder_type));
+ 
+         self->set_instance(new (storage) holder_type(
+-            ptr, registered_class<T>::id, naked_ptr));
++	     std::move(ptr), registered_class<T>::id, naked_ptr));
+     }
+ };
+ 
+diff -Naur luabind-0.9.1/luabind/detail/has_get_pointer.hpp luabind-0.9.1-new/luabind/detail/has_get_pointer.hpp
+--- luabind-0.9.1/luabind/detail/has_get_pointer.hpp	2010-08-31 06:24:52.000000000 -0700
++++ luabind-0.9.1-new/luabind/detail/has_get_pointer.hpp	2023-04-17 17:44:25.090338517 -0700
+@@ -58,7 +58,7 @@
+   T* get_pointer(T const volatile*);
+ 
+   template<class T>
+-  T* get_pointer(std::auto_ptr<T> const&);
++  T* get_pointer(std::unique_ptr<T> const&);
+ 
+ # endif
+ 
+diff -Naur luabind-0.9.1/luabind/detail/instance_holder.hpp luabind-0.9.1-new/luabind/detail/instance_holder.hpp
+--- luabind-0.9.1/luabind/detail/instance_holder.hpp	2023-04-17 15:41:10.314849728 -0700
++++ luabind-0.9.1-new/luabind/detail/instance_holder.hpp	2023-04-17 18:24:07.101470299 -0700
+@@ -50,7 +50,7 @@
+ }
+ 
+ template <class T>
+-void release_ownership(std::auto_ptr<T>& p)
++void release_ownership(std::unique_ptr<T>& p)
+ {
+     p.release();
+ }
+@@ -76,7 +76,7 @@
+         P p, class_id dynamic_id, void* dynamic_ptr
+     )
+       : instance_holder(check_const_pointer(false ? get_pointer(p) : 0))
+-      , p(p)
++      , p(std::move(p))
+       , weak(0)
+       , dynamic_id(dynamic_id)
+       , dynamic_ptr(dynamic_ptr)
+diff -Naur luabind-0.9.1/luabind/detail/make_instance.hpp luabind-0.9.1-new/luabind/detail/make_instance.hpp
+--- luabind-0.9.1/luabind/detail/make_instance.hpp	2023-04-17 15:41:10.320849744 -0700
++++ luabind-0.9.1-new/luabind/detail/make_instance.hpp	2023-04-17 18:15:47.996995094 -0700
+@@ -88,7 +88,7 @@
+ 
+     try
+     {
+-        new (storage) holder_type(p, dynamic.first, dynamic.second);
++      new (storage) holder_type(std::move(p), dynamic.first, dynamic.second);
+     }
+     catch (...)
+     {
+diff -Naur luabind-0.9.1/luabind/detail/policy.hpp luabind-0.9.1-new/luabind/detail/policy.hpp
+--- luabind-0.9.1/luabind/detail/policy.hpp	2023-04-17 15:41:10.331849774 -0700
++++ luabind-0.9.1-new/luabind/detail/policy.hpp	2023-04-17 18:03:32.228807586 -0700
+@@ -182,8 +182,8 @@
+     template <class T>
+     void make_pointee_instance(lua_State* L, T& x, mpl::false_, mpl::true_)
+     {
+-        std::auto_ptr<T> ptr(new T(x));
+-        make_instance(L, ptr);
++        std::unique_ptr<T> ptr(new T(x));
++        make_instance(L, std::move(ptr));
+     }
+ 
+     template <class T>
+diff -Naur luabind-0.9.1/luabind/function.hpp luabind-0.9.1-new/luabind/function.hpp
+--- luabind-0.9.1/luabind/function.hpp	2010-08-31 06:24:52.000000000 -0700
++++ luabind-0.9.1-new/luabind/function.hpp	2023-04-17 17:52:03.038731787 -0700
+@@ -46,8 +46,8 @@
+ template <class F, class Policies>
+ scope def(char const* name, F f, Policies const& policies)
+ {
+-    return scope(std::auto_ptr<detail::registration>(
+-        new detail::function_registration<F, Policies>(name, f, policies)));
++  return scope(std::move(std::unique_ptr<detail::registration>(
++	       new detail::function_registration<F, Policies>(name, f, policies))));
+ }
+ 
+ template <class F>
+diff -Naur luabind-0.9.1/luabind/scope.hpp luabind-0.9.1-new/luabind/scope.hpp
+--- luabind-0.9.1/luabind/scope.hpp	2010-08-31 06:24:52.000000000 -0700
++++ luabind-0.9.1-new/luabind/scope.hpp	2023-04-17 17:44:24.897337969 -0700
+@@ -56,7 +56,7 @@
+     struct LUABIND_API scope
+     {
+         scope();
+-        explicit scope(std::auto_ptr<detail::registration> reg);
++        explicit scope(std::unique_ptr<detail::registration> reg);
+         scope(scope const& other_);
+         ~scope();
+ 
+diff -Naur luabind-0.9.1/src/class.cpp luabind-0.9.1-new/src/class.cpp
+--- luabind-0.9.1/src/class.cpp	2010-08-31 06:24:52.000000000 -0700
++++ luabind-0.9.1-new/src/class.cpp	2023-04-17 17:50:44.364492869 -0700
+@@ -235,8 +235,8 @@
+     // -- interface ---------------------------------------------------------
+ 
+     class_base::class_base(char const* name)
+-        : scope(std::auto_ptr<registration>(
+-                m_registration = new class_registration(name))
++      : scope(std::move(std::unique_ptr<registration>(
++		      m_registration = new class_registration(name)))
+           )
+     {
+     }
+@@ -258,14 +258,14 @@
+ 
+ 	void class_base::add_member(registration* member)
+ 	{
+-		std::auto_ptr<registration> ptr(member);
+-		m_registration->m_members.operator,(scope(ptr));
++		std::unique_ptr<registration> ptr(member);
++		m_registration->m_members.operator,(scope(std::move(ptr)));
+ 	}
+ 
+ 	void class_base::add_default_member(registration* member)
+ 	{
+-		std::auto_ptr<registration> ptr(member);
+-		m_registration->m_default_members.operator,(scope(ptr));
++		std::unique_ptr<registration> ptr(member);
++		m_registration->m_default_members.operator,(scope(std::move(ptr)));
+ 	}
+ 
+     const char* class_base::name() const 
+diff -Naur luabind-0.9.1/src/scope.cpp luabind-0.9.1-new/src/scope.cpp
+--- luabind-0.9.1/src/scope.cpp	2023-04-17 15:41:10.412849995 -0700
++++ luabind-0.9.1-new/src/scope.cpp	2023-04-17 17:44:27.828346295 -0700
+@@ -52,7 +52,7 @@
+     {
+     }
+     
+-    scope::scope(std::auto_ptr<detail::registration> reg)
++    scope::scope(std::unique_ptr<detail::registration> reg)
+         : m_chain(reg.release())
+     {
+     }
+@@ -196,7 +196,7 @@
+     };
+ 
+     namespace_::namespace_(char const* name)
+-        : scope(std::auto_ptr<detail::registration>(
++        : scope(std::unique_ptr<detail::registration>(
+               m_registration = new registration_(name)))
+     {
+     }
+diff -Naur luabind-0.9.1/test/test_automatic_smart_ptr.cpp luabind-0.9.1-new/test/test_automatic_smart_ptr.cpp
+--- luabind-0.9.1/test/test_automatic_smart_ptr.cpp	2010-08-31 06:24:52.000000000 -0700
++++ luabind-0.9.1-new/test/test_automatic_smart_ptr.cpp	2023-04-17 17:44:27.877346434 -0700
+@@ -51,9 +51,9 @@
+     return p.p;
+ }
+ 
+-std::auto_ptr<X> make1()
++std::unique_ptr<X> make1()
+ {
+-    return std::auto_ptr<X>(new X(1));
++    return std::unique_ptr<X>(new X(1));
+ }
+ 
+ boost::shared_ptr<X> make2()
+diff -Naur luabind-0.9.1/test/test_dynamic_type.cpp luabind-0.9.1-new/test/test_dynamic_type.cpp
+--- luabind-0.9.1/test/test_dynamic_type.cpp	2010-08-31 06:24:52.000000000 -0700
++++ luabind-0.9.1-new/test/test_dynamic_type.cpp	2023-04-17 17:44:27.916346544 -0700
+@@ -41,14 +41,14 @@
+     {}
+ };
+ 
+-std::auto_ptr<Base> make_derived()
++std::unique_ptr<Base> make_derived()
+ {
+-    return std::auto_ptr<Base>(new Derived);
++    return std::unique_ptr<Base>(new Derived);
+ }
+ 
+-std::auto_ptr<Base> make_unregistered()
++std::unique_ptr<Base> make_unregistered()
+ {
+-    return std::auto_ptr<Base>(new Unregistered);
++    return std::unique_ptr<Base>(new Unregistered);
+ }
+ 
+ void test_main(lua_State* L)
+diff -Naur luabind-0.9.1/test/test_lua_classes.cpp luabind-0.9.1-new/test/test_lua_classes.cpp
+--- luabind-0.9.1/test/test_lua_classes.cpp	2010-08-31 06:24:52.000000000 -0700
++++ luabind-0.9.1-new/test/test_lua_classes.cpp	2023-04-17 17:44:27.958346664 -0700
+@@ -301,12 +301,12 @@
+ 			);
+ 	}
+ 
+-	std::auto_ptr<base> own_ptr;
++	std::unique_ptr<base> own_ptr;
+ 	{
+ 		LUABIND_CHECK_STACK(L);
+ 
+ 		TEST_NOTHROW(
+-		    own_ptr = std::auto_ptr<base>(
++		    own_ptr = std::unique_ptr<base>(
+                 call_function<base*>(L, "make_derived") [ adopt(result) ])
+ 			);
+ 	}
+@@ -323,11 +323,11 @@
+     TEST_NOTHROW(
+         TEST_CHECK(own_ptr->f() == "derived:f() : base:f()")
+     );
+-	own_ptr = std::auto_ptr<base>();
++	own_ptr = std::unique_ptr<base>();
+ 
+ 	// test virtual functions that are not overridden by lua
+     TEST_NOTHROW(
+-        own_ptr = std::auto_ptr<base>(
++        own_ptr = std::unique_ptr<base>(
+             call_function<base*>(L, "make_empty_derived") [ adopt(result) ])
+         );
+     TEST_NOTHROW(

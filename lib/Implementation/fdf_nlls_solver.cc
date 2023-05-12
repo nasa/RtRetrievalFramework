@@ -30,21 +30,21 @@ int fdf_nlls_solver(
 
   int status = GSL_FAILURE;
 
-  gsl_vector *g = gsl_vector_calloc(f->p);
   gsl_multifit_fdfsolver * s = gsl_multifit_fdfsolver_alloc (T, f->n, f->p);
 
   *num_iter = 0;
 
-  if( s && g )
+  if( s )
     if( !gsl_multifit_fdfsolver_set(s, f, x0) ) {
 
       do {
         (*num_iter)++;
         if( (status = gsl_multifit_fdfsolver_iterate(s)) ) break;
-        if( (status = gsl_multifit_gradient(s->J, s->f, g)) ) break;
+        int info=0;
+        status = gsl_multifit_fdfsolver_test(s, 1.0e-4, 1.0e-4, 1.0e-4, &info);
         status = gsl_multifit_test_delta(s->dx, s->x, dx_epsabs, dx_epsrel);
         if( status == GSL_CONTINUE )
-          status = gsl_multifit_test_gradient(g, g_epsabs);
+          status = gsl_multifit_test_gradient(s->g, g_epsabs);
         if( bool_verbose ) printf_state(*num_iter, s, status);
       } while (status == GSL_CONTINUE && *num_iter <= max_iter);
 
@@ -52,9 +52,7 @@ int fdf_nlls_solver(
 
   if(x) gsl_vector_memcpy(x, s->x);
   if(r) gsl_vector_memcpy(r, s->f);
-  if(J) gsl_matrix_memcpy(J, s->J);
 
-  if( g ) gsl_vector_free(g);
   if( s ) gsl_multifit_fdfsolver_free(s);
 
   return status;

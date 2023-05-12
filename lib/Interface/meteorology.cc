@@ -70,13 +70,16 @@ blitz::Array<double, 1> Meteorology::h2o_vmr() const
     return vmr;
 }
 
-Array<double, 1> Meteorology::interpolate_to_grid(const Array<double, 1>& Profile, const Array<double, 1>& Dest_pressure_levels) const
+Array<double, 1> Meteorology::interpolate_to_grid
+(const Array<double, 1>& Profile,
+ const Array<double, 1>& Dest_pressure_levels) const
 {
-    LogLogInterpolate<double, double> prof_interp(pressure_levels().begin(), pressure_levels().end(), Profile.begin());
-    Array<double, 1> prof_res(Dest_pressure_levels.shape());
-    for(int i = 0; i < Dest_pressure_levels.rows(); ++i) {
-        prof_res(i) = prof_interp(Dest_pressure_levels(i));
-    }
-    return prof_res;
+  Array<double, 1> p = pressure_levels();
+  LogLogInterpolate<double, double> prof_interp(p.begin(), p.end(),
+						Profile.begin());
+  Array<double, 1> prof_res(Dest_pressure_levels.shape());
+  for(int i = 0; i < Dest_pressure_levels.rows(); ++i)
+    prof_res(i) = prof_interp(Dest_pressure_levels(i));
+  return prof_res;
 }
 

@@ -139,7 +139,7 @@ public:
   {
     try {
       return luabind::object_cast<T>(obj);
-    } catch(std::exception eoriginal) {
+    } catch(const std::exception& eoriginal) {
       Exception e;
       e << "Error converting lua value to\n"
         << "Requested type: " << typeid(T).name() << "\n";

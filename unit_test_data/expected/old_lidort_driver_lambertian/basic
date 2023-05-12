@@ -1,5 +1,5 @@
 # d_state_jac_expect
-2 x 93
+(0,1) x (0,92)
 [
     1.65575830013481924E-007 6.01025643985799995E-002 
     5.91998508966710274E-002 5.89192565196665491E-002 
@@ -101,7 +101,7 @@
 # jac_expect
 # Not sure about this expected result. We'll need to confirm this in the
 # Fortran code
-2 x 112
+(0,1) x (0,111)
 [         0        -0        -0        -0        -0        -0        -0 
          -0        -0        -0        -0        -0        -0        -0 
          -0        -0        -0        -0        -0         0         0 

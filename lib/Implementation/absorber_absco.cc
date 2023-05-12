@@ -90,8 +90,8 @@ double eps_abs, double eps_rel) const
   if(!gas_absorption[Species_index]->have_data(wn))
     return 0.0;
   boost::function<double (double)> f;
-  f = boost::bind(&AbsorberAbsco::integrand, this, wn, _1, Spec_index, 
-		  Species_index);
+  f = boost::bind(&AbsorberAbsco::integrand, this, wn, boost::placeholders::_1,
+		  Spec_index, Species_index);
   ArrayAdWithUnit<double, 1> pgrid(press->pressure_grid().convert(units::Pa));
   std::vector<double> bp;
   Array<double, 1> imp = 
