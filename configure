@@ -640,6 +640,7 @@ AM_CXXFLAGS
 lidort_maxatmoswfs
 lidort_maxlayer
 merradir
+EXTRA_BOOST_LDFLAGS
 abscodir
 WITH_DOCUMENTATION_FALSE
 WITH_DOCUMENTATION_TRUE
@@ -1025,6 +1026,7 @@ enable_doxygen_ps
 enable_doxygen_pdf
 with_documentation
 with_absco
+with_extra_boost_rpath
 with_merra
 with_lidort_maxlayer
 with_lidort_maxatmoswfs
@@ -1775,6 +1777,9 @@ Optional Packages:
                           have the ABSCO tables available you can still build
                           everything else, just not do the l2_fp_run and some
                           unit tests.
+  --with-extra-boost-rpath[=DIR]
+                          give extra rpath needed for linking boost on
+                          pleiades
   --with-merra[=DIR]      give the location of the MERRA tables to use in the
                           l2_fp_run and unit tests. The default is
                           /groups/algorithm/l2_fp/merra_composite. This is
@@ -29921,6 +29926,21 @@ if test ! -d "$ac_absco_path"; then
    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: The ABSCO directory $ac_absco_path is not found. This is only needed for the l2_fp_run and some unit tests, if you don't have the ABSCO tables available you can still build everything else, just not do the l2_fp_run and some unit tests. You can specify an ABSCO directory if desired using --with-absco." >&5
 $as_echo "$as_me: WARNING: The ABSCO directory $ac_absco_path is not found. This is only needed for the l2_fp_run and some unit tests, if you don't have the ABSCO tables available you can still build everything else, just not do the l2_fp_run and some unit tests. You can specify an ABSCO directory if desired using --with-absco." >&2;}
 fi
+
+#======================================================================
+# Pleiades needs extra flags for using the BOOST we build
+#======================================================================
+
+
+# Check whether --with-extra-boost-rpath was given.
+if test "${with_extra_boost_rpath+set}" = set; then :
+  withval=$with_extra_boost_rpath;  ac_extra_boost_rpath="-R $withval"
+else
+   ac_extra_boost_rpath=""
+fi
+
+EXTRA_BOOST_LDFLAGS="$ac_extra_boost_rpath"
+
 
 #======================================================================
 # Allow location of merra tables to be changed. This is used by the

@@ -90,7 +90,8 @@ mkdir -p build
 cd build
 
 # Do configuration
-../configure THIRDPARTY=build --prefix=$1 --with-absco=$2 --with-python-module --with-merra=$3
+# The extra boost path is needed for libraries boost picks up
+../configure THIRDPARTY=build --with-extra-boost-rpath=$PKGSRC_BASE/lib --prefix=$1 --with-absco=$2 --with-python-module --with-merra=$3
 
 # The frontend system typically has 32 processors. We use 20 here, pretty much 
 # arbitrarily. This can be adjusted to whatever if needed.
