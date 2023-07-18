@@ -45,11 +45,11 @@ alias parallel=@PARALLEL@
 # Note if you update this, also update ../pleiades_build.script
 if [ -e /usr/share/modules/init/bash ]; then
     source /usr/share/modules/init/bash
-    # Note we can't use TOSS-3 python3/3.9.5. This pulls in
+    # Note we can't use TOSS-4 python3/3.9.5. This pulls in
     # a too new version of HDF5, which I never could figure out how
     # to avoid. Instead we build our own copy of python 3.9.
-    # This contains ruby 2.6.8p205
-    module load  pkgsrc/2021Q2
+    # This contains ruby 2.7
+    module load  pkgsrc/2022Q1-rome
     # Needed to get ruby working. Not sure why
     ulimit -Ss unlimited
     # Need to run our copy of python

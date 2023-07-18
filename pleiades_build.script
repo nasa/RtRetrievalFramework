@@ -80,6 +80,8 @@ if [ -e /usr/share/modules/init/bash ]; then
     # a too new version of HDF5, which I never could figure out how
     # to avoid. Instead we build our own copy of python 3.9.
     # This contains ruby 2.7
+    # Note if you update this, make sure to change script/setup_fp_env.sh.in
+    # also
     module load  pkgsrc/2022Q1-rome
     # Needed to get ruby working. Not sure why
     ulimit -Ss unlimited
