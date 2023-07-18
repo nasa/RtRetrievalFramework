@@ -4799,7 +4799,7 @@ TRANSSIMPLE_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(TRANSSIMPLE_NAME)
 # ========================================================================
 # Build h5py. Note that normally we just assume this has been installed,
 # but on Pleiades it is cleaner to install ourselves
-H5PY_NAME = h5py-2.10.0
+H5PY_NAME = h5py-3.9.0
 H5PY_TARGET = $(DESTDIR)$(pythondir)/h5py_is_installed
 @BUILD_PYTHON_FALSE@PYTHON_BUILD_TARGET = 
 @BUILD_PYTHON_TRUE@PYTHON_BUILD_TARGET = $(PYTHON_TARGET)
