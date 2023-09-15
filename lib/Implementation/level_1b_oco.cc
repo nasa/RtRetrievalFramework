@@ -55,7 +55,7 @@ Level1bOco::Level1bOco(const boost::shared_ptr<HdfFile>& Hfile,
 
 void Level1bOco::initialize()
 {
-  firstIndex i1; secondIndex i2; thirdIndex(i3);
+  firstIndex i1; secondIndex i2; thirdIndex i3;
   Range ra(Range::all());
 
 //-----------------------------------------------------------------------
@@ -110,7 +110,7 @@ void Level1bOco::initialize()
   try {
     wl_coeffs = hfile->read_field_with_unit<double, 3>
       ("/InstrumentHeader/dispersion_coef_samp", units::micron);
-  } catch( Exception not_found_error ) {
+  } catch(const Exception& not_found_error ) {
     wl_coeffs = hfile->read_field_with_unit<double, 3>
       ("Metadata/DispersionCoefSamp", units::micron);
   }

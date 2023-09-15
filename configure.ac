@@ -1,12 +1,12 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(full_physics, 11.0.05)
+AC_INIT(full_physics, 11.0.31)
 
 # Base version for commlib.
-[commonlib_version='11.0.00a']
+[commonlib_version='11.0.00b']
 
 AC_COPYRIGHT(
-[Copyright 2020, California Institute of Technology. 
+[Copyright 2023, California Institute of Technology. 
 ALL RIGHTS RESERVED. U.S. Government Sponsorship acknowledged.])
 
 AC_CONFIG_AUX_DIR([config])
@@ -297,6 +297,14 @@ AC_SUBST([abscodir], ["$ac_absco_path"])
 if test ! -d "$ac_absco_path"; then
    AC_MSG_WARN([The ABSCO directory $ac_absco_path is not found. This is only needed for the l2_fp_run and some unit tests, if you don't have the ABSCO tables available you can still build everything else, just not do the l2_fp_run and some unit tests. You can specify an ABSCO directory if desired using --with-absco.])
 fi
+
+#======================================================================
+# Pleiades needs extra flags for using the BOOST we build
+#======================================================================
+
+AC_ARG_WITH([extra-boost-rpath],
+AS_HELP_STRING([--with-extra-boost-rpath@<:@=DIR@:>@], [give extra rpath needed for linking boost on pleiades]), [ ac_extra_boost_rpath="-R $withval" ], [ ac_extra_boost_rpath=""] )
+AC_SUBST([EXTRA_BOOST_LDFLAGS], ["$ac_extra_boost_rpath"])
 
 #======================================================================
 # Allow location of merra tables to be changed. This is used by the

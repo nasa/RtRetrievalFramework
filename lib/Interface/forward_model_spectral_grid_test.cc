@@ -56,7 +56,7 @@ void check_expected_pixel_list(std::string filename, std::vector<std::vector<int
         expected_inputs >> num_pix;
 
         std::vector<int> plist;
-        for(int pix = 0; pix << num_pix; pix++) {
+        for(int pix = 0; pix < num_pix; pix++) {
             int pix_value;
             expected_inputs >> pix_value;
 

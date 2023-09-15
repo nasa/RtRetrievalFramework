@@ -36,8 +36,9 @@ GroundCoxmunkScaledOutput::GroundCoxmunkScaledOutput(
         const boost::shared_ptr<GroundCoxmunk>& Coxmunk,
         const boost::shared_ptr<GroundBrdfWeight>& Brdf_weight,
         const std::vector<std::string>& Hdf_band_names)
-: l1b(L1b), coxmunk(Coxmunk), brdf_weight(Brdf_weight), hdf_band_names(Hdf_band_names),
-  surface_type("Coxmunk-Scaled")
+: hdf_band_names(Hdf_band_names), surface_type("Coxmunk-Scaled"),
+  l1b(L1b), coxmunk(Coxmunk),
+  brdf_weight(Brdf_weight)
 {
     coxmunk_output.reset(new GroundCoxmunkOutput(Coxmunk));
     brdf_weight_output.reset(new GroundBrdfWeightOutput(Brdf_weight, Hdf_band_names));

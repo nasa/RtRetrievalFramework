@@ -11,7 +11,7 @@ BOOST_AUTO_TEST_CASE(basic_test)
 {
   GslIntegrate ig;
   boost::function<double (double)>  f;
-  f = ::cos;
+  f = (static_cast<double(*)(double)>(&std::cos));
   BOOST_CHECK_CLOSE(ig.integrate(f, 0, M_PI / 2), 1.0, 1e-8);
 }
 

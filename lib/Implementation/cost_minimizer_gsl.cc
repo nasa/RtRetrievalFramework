@@ -55,7 +55,7 @@ CostMinimizerGSL::CostMinimizerGSL(int max_cost_function_calls,
   : CostMinimizer(max_cost_function_calls, dx_tol_abs, dx_tol_rel, p, vrbs),
     Size_tol(size_tol), Initial_step_size(init_step_size)
 {
-  if(init_step_size.size() && (init_step_size.size() != p->expected_parameter_size())) {
+  if(init_step_size.size() && ((int) init_step_size.size() != p->expected_parameter_size())) {
     Exception e;
     e << "If initial-step-size provided, its size must be equal to the expected-parameter-size:\n"
       << " Initial-step-size: " << init_step_size.size() << "\n"
@@ -104,7 +104,7 @@ void CostMinimizerGSL::solve()
     }
   }
 
-  if( s && ss_initialized );
+  if( s && ss_initialized )
     if( !(gsl_status = gsl_multimin_fminimizer_set(s, &f, GslVector(X).gsl(), ss)) ) {
 
       // The following two lines are only for recording purpose.

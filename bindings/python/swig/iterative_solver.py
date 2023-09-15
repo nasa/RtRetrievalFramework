@@ -165,6 +165,7 @@ class IterativeSolver(full_physics_swig.generic_object.GenericObject):
     __repr__ = _swig_repr
     SUCCESS = _iterative_solver.IterativeSolver_SUCCESS
     CONTINUE = _iterative_solver.IterativeSolver_CONTINUE
+    STALLED = _iterative_solver.IterativeSolver_STALLED
     ERROR = _iterative_solver.IterativeSolver_ERROR
     UNTRIED = _iterative_solver.IterativeSolver_UNTRIED
     __swig_destroy__ = _iterative_solver.delete_IterativeSolver
