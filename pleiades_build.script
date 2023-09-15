@@ -76,11 +76,13 @@ set -e
 # Note if you change this, also change script/setup_fp_env.sh.in
 if [ -e /usr/share/modules/init/bash ]; then
     source /usr/share/modules/init/bash
-    # Note we can't use TOSS-3 python3/3.9.5. This pulls in
+    # Note we can't use TOSS-4 python3/3.9.5. This pulls in
     # a too new version of HDF5, which I never could figure out how
     # to avoid. Instead we build our own copy of python 3.9.
-    # This contains ruby 2.6.8p205
-    module load  pkgsrc/2021Q2
+    # This contains ruby 2.7
+    # Note if you update this, make sure to change script/setup_fp_env.sh.in
+    # also
+    module load  pkgsrc/2022Q1-rome
     # Needed to get ruby working. Not sure why
     ulimit -Ss unlimited
 fi
@@ -90,7 +92,8 @@ mkdir -p build
 cd build
 
 # Do configuration
-../configure THIRDPARTY=build --prefix=$1 --with-absco=$2 --with-python-module --with-merra=$3
+# The extra boost path is needed for libraries boost picks up
+../configure THIRDPARTY=build --with-extra-boost-rpath=$PKGSRC_BASE/lib --prefix=$1 --with-absco=$2 --with-python-module --with-merra=$3
 
 # The frontend system typically has 32 processors. We use 20 here, pretty much 
 # arbitrarily. This can be adjusted to whatever if needed.

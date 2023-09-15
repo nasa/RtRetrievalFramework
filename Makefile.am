@@ -66,6 +66,7 @@ AM_CPPFLAGS+= $(BOOST_CPPFLAGS)
 BOOST_LDFLAGS = -L$(BOOST_LIBDIR) -R $(BOOST_LIBDIR) 
 BOOST_LDFLAGS+= -lboost_regex -lboost_date_time -lboost_iostreams 
 BOOST_LDFLAGS+= -lboost_filesystem -lboost_system
+BOOST_LDFLAGS+= $(EXTRA_BOOST_LDFLAGS)
 if HAVE_BOOST_STATIC
   BOOST_LDSTATIC = $(BOOST_LIBDIR)/libboost_regex.a
   BOOST_LDSTATIC+= $(BOOST_LIBDIR)/libboost_date_time.a

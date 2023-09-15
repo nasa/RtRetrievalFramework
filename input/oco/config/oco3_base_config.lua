@@ -15,3 +15,9 @@ Oco3BaseConfig = OcoBaseConfig:new {
 -- Use 4 EOFs for OCO3
 Oco3BaseConfig.fm.instrument.instrument_correction.ic_land = { "eof_land_1", "eof_land_2","eof_land_3", "eof_land_4" }
 Oco3BaseConfig.fm.instrument.instrument_correction.ic_water = { "eof_water_1", "eof_water_2","eof_water_3","eof_water_4" }
+
+--- But only 3 EOFs for band 1 and 2
+Oco3BaseConfig.fm.instrument.instrument_correction.eof_land_4.retrieve_bands = { false, false, true }
+Oco3BaseConfig.fm.instrument.instrument_correction.eof_land_4.eof_used = { false, false, true }
+Oco3BaseConfig.fm.instrument.instrument_correction.eof_water_4.retrieve_bands = { false, false, true }
+Oco3BaseConfig.fm.instrument.instrument_correction.eof_water_4.eof_used = { false, false, true }

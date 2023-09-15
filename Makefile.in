@@ -3124,6 +3124,7 @@ ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
+EXTRA_BOOST_LDFLAGS = @EXTRA_BOOST_LDFLAGS@
 F77 = @F77@
 FC = @FC@
 FCFLAGS = @FCFLAGS@
@@ -4146,7 +4147,7 @@ SWIG_SRC = @swigsrc@/fp_exception_wrap.cc \
 SWIG_FLAG = -I$(abs_srcdir)/@fpsrc@ -O
 BOOST_LDFLAGS = -L$(BOOST_LIBDIR) -R $(BOOST_LIBDIR) -lboost_regex \
 	-lboost_date_time -lboost_iostreams -lboost_filesystem \
-	-lboost_system
+	-lboost_system $(EXTRA_BOOST_LDFLAGS)
 @HAVE_BOOST_STATIC_TRUE@BOOST_LDSTATIC =  \
 @HAVE_BOOST_STATIC_TRUE@	$(BOOST_LIBDIR)/libboost_regex.a \
 @HAVE_BOOST_STATIC_TRUE@	$(BOOST_LIBDIR)/libboost_date_time.a \
@@ -4799,7 +4800,7 @@ TRANSSIMPLE_TARGET = $(DESTDIR)$(rubygemdir)/gems/$(TRANSSIMPLE_NAME)
 # ========================================================================
 # Build h5py. Note that normally we just assume this has been installed,
 # but on Pleiades it is cleaner to install ourselves
-H5PY_NAME = h5py-2.10.0
+H5PY_NAME = h5py-3.9.0
 H5PY_TARGET = $(DESTDIR)$(pythondir)/h5py_is_installed
 @BUILD_PYTHON_FALSE@PYTHON_BUILD_TARGET = 
 @BUILD_PYTHON_TRUE@PYTHON_BUILD_TARGET = $(PYTHON_TARGET)
