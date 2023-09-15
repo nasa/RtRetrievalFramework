@@ -299,6 +299,14 @@ if test ! -d "$ac_absco_path"; then
 fi
 
 #======================================================================
+# Pleiades needs extra flags for using the BOOST we build
+#======================================================================
+
+AC_ARG_WITH([extra-boost-rpath],
+AS_HELP_STRING([--with-extra-boost-rpath@<:@=DIR@:>@], [give extra rpath needed for linking boost on pleiades]), [ ac_extra_boost_rpath="-R $withval" ], [ ac_extra_boost_rpath=""] )
+AC_SUBST([EXTRA_BOOST_LDFLAGS], ["$ac_extra_boost_rpath"])
+
+#======================================================================
 # Allow location of merra tables to be changed. This is used by the
 # l2_fp_run test, as well as some unit tests.
 #======================================================================
