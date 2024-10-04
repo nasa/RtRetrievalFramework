@@ -674,6 +674,10 @@ endif
 PYTHON_NAME = Python-3.9.9
 PYTHON_TARGET = $(DESTDIR)$(bindir)/python3
 
+# For some reason that I've never understood, the install on pleiades sometimees
+# leave pip out in the python install. So we use "ensurepip" to make sure it is there.
+# If pip is already there, ensurepip doesn't do anything.
+
 $(PYTHON_TARGET): $(thirdpartysrc)/$(PYTHON_NAME).tgz 
 	@echo "*************************** Building python"
 	-rm -rf $(PYTHON_NAME)
@@ -692,6 +696,10 @@ $(PYTHON_TARGET): $(thirdpartysrc)/$(PYTHON_NAME).tgz
             $(LN_S) python3-config python-config && \
             $(LN_S) pydoc3 pydoc && $(LN_S) pip3 pip
 	rm -rf $(PYTHON_NAME)
+	export PATH=$(bindir):$$PATH && \
+        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
+        $(PYTHON) -m ensurepip
 	touch $(PYTHON_TARGET)
 	@echo "========================== Done building python"
 

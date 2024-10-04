@@ -2740,7 +2740,7 @@ am__can_run_installinfo = \
   esac
 am__py_compile = PYTHON=$(PYTHON) $(SHELL) $(py_compile)
 am__pep3147_tweak = \
-  sed -e 's|\.py$$||' -e 's|[^/]*$$|&.*.pyc\n&.*.pyo|'
+  sed -e 's|\.py$$||' -e 's|[^/]*$$|__pycache__/&.*.py|'
 am__pkgpythonswig_PYTHON_DIST = @pythonsrc@/__init__.py $(patsubst \
 	%_wrap.cc, %.py, $(SWIG_SRC))
 py_compile = $(top_srcdir)/config/py-compile
@@ -12355,15 +12355,20 @@ uninstall-pkgl2analysisPYTHON:
 	dir='$(DESTDIR)$(pkgl2analysisdir)'; \
 	pyc_files=`echo "$$py_files" | sed 's|$$|c|'`; \
 	pyo_files=`echo "$$py_files" | sed 's|$$|o|'`; \
+	py_files_pep3147=`echo "$$py_files" | $(am__pep3147_tweak)`; \
+	echo "$$py_files_pep3147";\
+	pyc_files_pep3147=`echo "$$py_files_pep3147" | sed 's|$$|c|'`; \
+	pyo_files_pep3147=`echo "$$py_files_pep3147" | sed 's|$$|o|'`; \
 	st=0; \
-	for files in "$$py_files" "$$pyc_files" "$$pyo_files"; do \
+	for files in \
+	  "$$py_files" \
+	  "$$pyc_files" \
+	  "$$pyo_files" \
+	  "$$pyc_files_pep3147" \
+	  "$$pyo_files_pep3147" \
+	; do \
 	  $(am__uninstall_files_from_dir) || st=$$?; \
 	done; \
-	dir='$(DESTDIR)$(pkgl2analysisdir)/__pycache__'; \
-	echo "$$py_files" | $(am__pep3147_tweak) | $(am__base_list) | \
-	  while read files; do \
-	    $(am__uninstall_files_from_dir) || st=$$?; \
-	  done || exit $$?; \
 	exit $$st
 install-pkgpythonPYTHON: $(pkgpython_PYTHON)
 	@$(NORMAL_INSTALL)
@@ -12398,15 +12403,20 @@ uninstall-pkgpythonPYTHON:
 	dir='$(DESTDIR)$(pkgpythondir)'; \
 	pyc_files=`echo "$$py_files" | sed 's|$$|c|'`; \
 	pyo_files=`echo "$$py_files" | sed 's|$$|o|'`; \
+	py_files_pep3147=`echo "$$py_files" | $(am__pep3147_tweak)`; \
+	echo "$$py_files_pep3147";\
+	pyc_files_pep3147=`echo "$$py_files_pep3147" | sed 's|$$|c|'`; \
+	pyo_files_pep3147=`echo "$$py_files_pep3147" | sed 's|$$|o|'`; \
 	st=0; \
-	for files in "$$py_files" "$$pyc_files" "$$pyo_files"; do \
+	for files in \
+	  "$$py_files" \
+	  "$$pyc_files" \
+	  "$$pyo_files" \
+	  "$$pyc_files_pep3147" \
+	  "$$pyo_files_pep3147" \
+	; do \
 	  $(am__uninstall_files_from_dir) || st=$$?; \
 	done; \
-	dir='$(DESTDIR)$(pkgpythondir)/__pycache__'; \
-	echo "$$py_files" | $(am__pep3147_tweak) | $(am__base_list) | \
-	  while read files; do \
-	    $(am__uninstall_files_from_dir) || st=$$?; \
-	  done || exit $$?; \
 	exit $$st
 install-pkgpythonswigPYTHON: $(pkgpythonswig_PYTHON)
 	@$(NORMAL_INSTALL)
@@ -12441,15 +12451,20 @@ uninstall-pkgpythonswigPYTHON:
 	dir='$(DESTDIR)$(pkgpythonswigdir)'; \
 	pyc_files=`echo "$$py_files" | sed 's|$$|c|'`; \
 	pyo_files=`echo "$$py_files" | sed 's|$$|o|'`; \
+	py_files_pep3147=`echo "$$py_files" | $(am__pep3147_tweak)`; \
+	echo "$$py_files_pep3147";\
+	pyc_files_pep3147=`echo "$$py_files_pep3147" | sed 's|$$|c|'`; \
+	pyo_files_pep3147=`echo "$$py_files_pep3147" | sed 's|$$|o|'`; \
 	st=0; \
-	for files in "$$py_files" "$$pyc_files" "$$pyo_files"; do \
+	for files in \
+	  "$$py_files" \
+	  "$$pyc_files" \
+	  "$$pyo_files" \
+	  "$$pyc_files_pep3147" \
+	  "$$pyo_files_pep3147" \
+	; do \
 	  $(am__uninstall_files_from_dir) || st=$$?; \
 	done; \
-	dir='$(DESTDIR)$(pkgpythonswigdir)/__pycache__'; \
-	echo "$$py_files" | $(am__pep3147_tweak) | $(am__base_list) | \
-	  while read files; do \
-	    $(am__uninstall_files_from_dir) || st=$$?; \
-	  done || exit $$?; \
 	exit $$st
 install-configDATA: $(config_DATA)
 	@$(NORMAL_INSTALL)
@@ -15279,6 +15294,10 @@ $(H5PY_TARGET): $(thirdpartysrc)/$(H5PY_NAME).tar.gz $(HDF5_TARGET) $(PYTHON_BUI
 	touch $(H5PY_TARGET)
 	@echo "========================== Done building h5py"
 
+# For some reason that I've never understood, the install on pleiades sometimees
+# leave pip out in the python install. So we use "ensurepip" to make sure it is there.
+# If pip is already there, ensurepip doesn't do anything.
+
 $(PYTHON_TARGET): $(thirdpartysrc)/$(PYTHON_NAME).tgz 
 	@echo "*************************** Building python"
 	-rm -rf $(PYTHON_NAME)
@@ -15297,6 +15316,10 @@ $(PYTHON_TARGET): $(thirdpartysrc)/$(PYTHON_NAME).tgz
             $(LN_S) python3-config python-config && \
             $(LN_S) pydoc3 pydoc && $(LN_S) pip3 pip
 	rm -rf $(PYTHON_NAME)
+	export PATH=$(bindir):$$PATH && \
+        export PYTHONPATH=$(pythondir):$$PYTHONPATH && \
+        export LD_LIBRARY_PATH="$(DESTDIR)$(libdir):${LD_LIBRARY_PATH}" && \
+        $(PYTHON) -m ensurepip
 	touch $(PYTHON_TARGET)
 	@echo "========================== Done building python"
 

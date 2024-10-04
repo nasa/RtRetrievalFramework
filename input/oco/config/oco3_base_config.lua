@@ -21,3 +21,9 @@ Oco3BaseConfig.fm.instrument.instrument_correction.eof_land_4.retrieve_bands = {
 Oco3BaseConfig.fm.instrument.instrument_correction.eof_land_4.eof_used = { false, false, true }
 Oco3BaseConfig.fm.instrument.instrument_correction.eof_water_4.retrieve_bands = { false, false, true }
 Oco3BaseConfig.fm.instrument.instrument_correction.eof_water_4.eof_used = { false, false, true }
+
+--- Use different absco scaling than OCO-2
+Oco3BaseConfig.fm.atmosphere.absorber.CO2.table_scale = { 1.0, 0.9994, 0.9875 }
+Oco3BaseConfig.fm.atmosphere.absorber.O2.table_scale = 1.001
+
+ 
